@@ -1,4 +1,15 @@
 
+*	Get submatch 1 for all lines
+    *   
+        ```bash
+        echo -e "Bla\nBla\nImportant1: One \nBla\nImportant2: Two\nBla\nBla" | \
+           sed -n 's/^Important1: *\([^ ]*\) */\1/p'
+
+        OUTPUT:
+        one
+        ```
+    *   `-n` means silent
+
 
 *	Replace a multi-line string
 	https://unix.stackexchange.com/questions/26284/how-can-i-use-sed-to-replace-a-multi-line-string?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
@@ -18,8 +29,10 @@
     *	`'p'` means now print the line.
     *	`/[{]/,/[}]/` is a range expression. It means scan until you find something that matches the first pattern (/[{]/) AND then scan until you find the 2nd pattern (/[}]/) THEN perform whatever actions you find in between the { } in the sed code. In this case 'p' and the debugging code. (not explained here, use it, mod it or take it out as works best for you).
 
+
 *	Read a file
 	*	`sed -i -e '/fox/{r f.html' -e 'd}'`
+	
 	
 * 	Append (line after pattern)
 	*	
@@ -29,6 +42,7 @@
 	line2' inputfile
 	```
 	*	`sed -i '/SearchPattern/aNew Text' SomeFile.txt`
+	
 	
 *	Prepend (line before pattern)
 	*	

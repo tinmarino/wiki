@@ -15,8 +15,8 @@
 ## Misc
   * [Todo](Todo)
   * [Text](Text)
-  * [Test](Test)
   * [StackOverflow](StackOverflow)
 
-## [Tindoc](Tindoc)
+
+* [Test](Test)
 		
