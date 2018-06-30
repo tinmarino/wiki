@@ -6,6 +6,8 @@
   * [Markdown](Markdown)
   * [Dot](Dot)
   * [Python](Python)
+  * [Cmake](Cmake)
+  * [Windows](Windows)
 
 ## Program
   * [Firefox](Firefox)

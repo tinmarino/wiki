@@ -1,6 +1,7 @@
 [TOINSTALL](TOINSTALL)
 
 *	[Practical_Vim](Practical_Vim)
+* 	[Vimstyle](Vimstyle) (from Google)
 	
 
 CTRL-W z        CTRL-W_z
