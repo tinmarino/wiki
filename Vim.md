@@ -2,6 +2,11 @@
 
 *	[Practical_Vim](Practical_Vim)
 * 	[Vimstyle](Vimstyle) (from Google)
+* 	[BordelVim](BordelVim)
+* 	[CheatVim](CheatVim)
+* 	[Plugin](Plugin)
+* 	[Tips](Tips)
+
 	
 
 CTRL-W z        CTRL-W_z
@@ -56,3 +61,6 @@ CTRL-W CTRL-Z   CTRL-W_CTRL-Z
 TEXT object
 vimtextobject for function argument
 vim-indent-obejct for indent
+
+
+
