@@ -1,7 +1,16 @@
+
+repondrea à Butcha (fb)
+LAtex:
+	Auto detect ft
+	tab off 2 spaces
+
 read sandbox
 Gecode crossword
 
 VIM VOTE
+	map slit got to the new window
+	Manage pluggin clearly = explicitely
+	Create alias for direcoties like $start $opt
 	md -> hide <bkd></kbd>
 		-> rarr <- larr
 	add perl regex -> execute code in regex

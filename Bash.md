@@ -1,5 +1,8 @@
 
-
+*	bash -x ./script.sh
+	set -x  # at the beginning of the script
+	to debug
+	
 
 *	arr=($line)			# Space separated string -> array
 
