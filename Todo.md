@@ -1,4 +1,6 @@
 
+REMove TODO from this git (that may become public)
+
 repondrea à Butcha (fb)
 LAtex:
 	Auto detect ft
@@ -8,6 +10,8 @@ read sandbox
 Gecode crossword
 
 VIM VOTE
+	read vimwiki healp (maps for moving fast)
+	fg do not work with termux (not tmp access)
 	map slit got to the new window
 	Manage pluggin clearly = explicitely
 	Create alias for direcoties like $start $opt

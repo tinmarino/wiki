@@ -14,23 +14,29 @@
 
 		}' *.txt 
 	```
-	*	-n means 'no default print lines as processed'.
-    *	'p' means now print the line.
-    *	The construct /[{]/,/[}]/ is a range expression. It means scan until you find something that matches the first pattern (/[{]/) AND then scan until you find the 2nd pattern (/[}]/) THEN perform whatever actions you find in between the { } in the sed code. In this case 'p' and the debugging code. (not explained here, use it, mod it or take it out as works best for you).
+	*	`-n` means 'no default print lines as processed'.
+    *	`'p'` means now print the line.
+    *	`/[{]/,/[}]/` is a range expression. It means scan until you find something that matches the first pattern (/[{]/) AND then scan until you find the 2nd pattern (/[}]/) THEN perform whatever actions you find in between the { } in the sed code. In this case 'p' and the debugging code. (not explained here, use it, mod it or take it out as works best for you).
 
 *	Read a file
-	sed -i -e '/fox/{r f.html' -e 'd}'
+	*	`sed -i -e '/fox/{r f.html' -e 'd}'`
 	
 * 	Append (line after pattern)
-	*	```sed -i '/pattern/a \
+	*	
+	```bash
+	sed -i '/pattern/a \
 	line1 \
-	line2' inputfile ```
-	*	sed -i '/SearchPattern/aNew Text' SomeFile.txt
+	line2' inputfile
+	```
+	*	`sed -i '/SearchPattern/aNew Text' SomeFile.txt`
 	
 *	Prepend (line before pattern)
-	*	```sed -i '/pattern/i \
+	*	
+	```bash
+	sed -i '/pattern/i \
 	line1 \
-	line2' inputfile ```
+	line2' inputfile
+	```
 	
 	
 
