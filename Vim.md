@@ -1,5 +1,6 @@
 [TOINSTALL](TOINSTALL)
 
+*	[Practical_Vim](Practical_Vim)
 	
 
 CTRL-W z        CTRL-W_z

@@ -2,6 +2,7 @@
 # [Awk](Awk)
 # [Readline](Readline)
 # [Screen](Screen)
+# [Termux](Termux)
 
 * 	List signals shortcuts
 	* 	`stty -a`
