@@ -17,7 +17,6 @@ for page inspector go [there](https://developer.mozilla.org/en-US/docs/Tools/Pag
 
 | Command                 | Shortcut                    |
 |-------------------------|-----------------------------|
-| Command                 | Shortcut                    |
 | Back                    | <kbd>Alt + &larr;</kbd>     |
 |                         | <kbd>Ctrl + [</kdb>         |
 | Forward                 | <kbd>Alt + &rarr</kdb>      |

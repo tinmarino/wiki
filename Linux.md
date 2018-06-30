@@ -1,4 +1,7 @@
 # [Sed](Sed)
+# [Awk](Awk)
+# [Readline](Readline)
+# [Screen](Screen)
 
 * 	List signals shortcuts
 	* 	`stty -a`
