@@ -3,8 +3,6 @@
   * [Linux](Linux)
   * [Bash](Bash)
   * [Vim](Vim)
-  * [Markdown](Markdown)
-  * [Dot](Dot)
   * [Python](Python)
   * [Cmake](Cmake)
   * [Windows](Windows)
@@ -23,5 +21,8 @@
   * [Text](Text)
   * [StackOverflow](StackOverflow)
 
+## Markup
+  * [Markdown](Markdown)
+  * [Dot](Dot)
 
 * [Test](Test)

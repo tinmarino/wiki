@@ -1,6 +1,13 @@
 % To learn git 
 
 
+*   Store credentials
+
+`git config --global credential.helper cache`
+Tells Git to keep your password cached in memory for (by default) 15 minutes. You can set a longer timeout with:
+`git config credential.helper store`
+Stores permanently
+Note: While this is convenient, Git will store your credentials in clear text in a local file (.git-credentials) under your project directory (see below for the "home" directory). If you don't like this, delete this file and switch to using the cache option.
 
 
 0. List							|git-list|

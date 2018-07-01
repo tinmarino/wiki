@@ -15,12 +15,15 @@
 * expr 10 + 10
 
 
-* List all users, groups
-	*	`cut -d: -f1 /etc/passwd`
+*   List all users, groups
 	*	`groups`
+	*	`cut -d: -f1 /etc/passwd`
+
+*   Mem : If no screen
+    *   `df`  list mount points 
 
 
-
+<<<<<<< HEAD
 *linux.txt*                 Linux Memories, Usefull when no screen or connection
                           Can become ugly 
 
@@ -75,54 +78,75 @@ $ sleep 42 &
  [1] 5260
  $ echo $!
  5260
+=======
+>>>>>>> After merge
+
+
+### Jobs and Processes
+
+`jobs -l`   
+`disown %2`  
+`kill -l`  # to see the trap list  
+`exec vi` # replace the shell by vim => destroy the shell)
+`tty` # to get my tty (of course)  
+`stty -a` # show shell shortcut for SIGNALS  
+`echo $$; echo $BASHPID` # Get my (shell) pid
+`$$` -> Expands to the process ID of the (current) shell.  
+`$!` -> Expands to the process ID of the most recently executed background command.  
+`$PROMPT_COMMAND` To automate cmds  
+`disown -h %<jobid>` # After that, you can safely exit the terminal
+
+
+`/proc/{PID}/cwd`         is as symlink the pwd of the current process   
+```  
+" Send commadn to oter terminal (shell)  
+A: mkfifo mypipe  
+A: eval $(cat mypipe)  
+B: echo "ls" > mypipe  
+vi Mem/vim; eval $(cat /tmp/ttypipe21)  
+```
+   
+
+
+#### Ps
+
+`ps ax | grep pts/16`  
+`ps -f ax | grep pts/16`  
+`ps --ppid $$ -o CMD`  
 
 
 
-" Send commadn to oter terminal (shell)
-A: mkfifo mypipe
-A: eval $(cat mypipe)
-B: echo "ls" > mypipe
-vi Mem/vim; eval $(cat /tmp/ttypipe21)
-coproc ?? 
+
+#### Change default
+
+/usr/share/gnome/applications/defaults.list  
+touch ~/.local/share/applications/defaults.list  
+touch ~/.local/share/applications/mimeapps.list  
+mimetype img.jpg   
+  
+// Get current font   
+gsettings get org.gnome.desktop.interface monospace-font-name  
+  
+gconftool-2 --get /apps/gnome-terminal/profiles/Unnamed/font  
+gconftool-2 --set /apps/gnome-terminal/profiles/Unnamed/font --type string "courier new 12"  
 
 
+#### Mouse
+
+sudo modprobe -r psmouse  
+sudo modprobe psmouse proto=imps  
 
 
+### Par (format text with indent and hard-wrap)
 
-
-
-                                                              *mlinux-default*
-
-
-  /usr/share/gnome/applications/defaults.list
-  touch ~/.local/share/applications/defaults.list
-  touch ~/.local/share/applications/mimeapps.list
-  mimetype img.jpg 
-
-
-																*mlinux-mouse*
-
-sudo modprobe -r psmouse
-sudo modprobe psmouse proto=imps
-																 *mlinux-font*
-	// Get current font 
-	gsettings get org.gnome.desktop.interface monospace-font-name
-
-	gconftool-2 --get /apps/gnome-terminal/profiles/Unnamed/font
-  	gconftool-2 --set /apps/gnome-terminal/profiles/Unnamed/font --type string "courier new 12"
-
-
-
-
-                                                                  *mlinux-par*
-par
--   w - specify line length
+```
+    w - specify line length
     r - repeat characters in bodiless lines (empty line "" -> "    "
--   j - justifies text (add extra spaces to end at same point)
+    j - justifies text (add extra spaces to end at same point)
     e - remove ‘superflous’ lines
     q - handle nested quotations in plaintext email
--   f - fit: good argumnent for all lines to be good len (even th first; 
+    f - fit: good argumnent for all lines to be good len (even th first; 
 	    protected one
+```
 
 
-d do disown -h %<jobid>. After that, you can safely exit the terminal
