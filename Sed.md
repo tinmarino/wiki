@@ -37,8 +37,6 @@
 
 
 
-vim: ft=myhelp
-
 
 *	Multiline pattern
 	*

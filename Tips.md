@@ -4,6 +4,7 @@
 ===============================================================================
 Tips ~
 
+*   Use `s/\%V` to substitude within selection and not full lines
 
 Vim can browse tar and zip archives
 uppercase maps to jump between files
