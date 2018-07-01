@@ -34,6 +34,26 @@ noremap p p`[
 
 
 -> h iskeyword /\k /[:alpha:] [:alnum:]
+
+Something likelet $vimfiles = "c:\\ldigas-home\\gvim72\\vim\\vimfiles"so when I go cd $vimfiles  it puts me inc:\ldigas-home\gvim72\\vim\vimfilesOr did you have so
+
+
+
+set shell=/bin/bash\ -i
+
+Vim's default CTRL-T is a good alternative to mashing CTRL-O, because it is coarser grained: it moves back through tag jumps only
+
+Exec cmd
+"Examples: ":call Exec('buffers') "This will include the output of :buffers into the current buffer. " "Also try: ":call Exec('ls') ":call Exec('autocmd') " funct! Exec(command) redir =>output silent exec a:command redir END let @o = output execute "put o" endfunct! 
+
+:'<,'>:w !command<CR>
+:'<,'>!command<CR>
+
+
+
+[](-)> h iskeyword /\k /[:alpha:] [:alnum:]
+
+
 vi <(man $1)
 man ls | vi -
 runtime! ftplugin/man.vim

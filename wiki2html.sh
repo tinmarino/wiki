@@ -1,4 +1,3 @@
-#!/bin/bash
 
 FORCE="$1"
 SYNTAX="$2"
@@ -24,3 +23,13 @@ fi
 # >&2 echo "MATH: $MATH"
 
 sed -r 's/(\[.+\])\(([^#)]+)\)/\1(\2.html)/g' <"$INPUT" | pandoc $MATH -s -f $SYNTAX -t html -c $CSSFILENAME | sed -r 's/<li>(.*)\[ \]/<li class="todo done0">\1/g; s/<li>(.*)\[X\]/<li class="todo done4">\1/g' >"$OUTPUT.html"
+
+termux(){
+sed -r 's/(\[.+\])\(([^)]+)\)/\1(\2.html)/g' <"$INPUT" | \
+	python -m markdown | \
+	sed -r 's/<li>(.*)\[ \]/<li class="todo done0">\1/g; s/<li>(.*)\[X\]/<li class="todo done4">\1/g' >"$OUTPUT.html"
+
+
+
+	# pandoc $MATH -s -f $SYNTAX -t html -c $CSSFILENAME | \
+}

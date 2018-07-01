@@ -1,4 +1,3 @@
-
 REMove TODO from this git (that may become public)
 
 repondrea à Butcha (fb)
@@ -7,6 +6,12 @@ LAtex:
 	tab off 2 spaces
 
 read sandbox
+cmder suspend 
+  try win a
+  
+
+
+[read](read) sandbox
 Gecode crossword
 
 VIM VOTE

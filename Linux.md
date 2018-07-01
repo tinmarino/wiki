@@ -8,6 +8,13 @@
 * 	List signals shortcuts
 	* 	`stty -a`
 
+* bc 
+  * `echo "ibase=16;FF" | bc`
+  * 
+
+* expr 10 + 10
+
+
 * List all users, groups
 	*	`cut -d: -f1 /etc/passwd`
 	*	`groups`
@@ -22,7 +29,6 @@ df  # list mount points
 
 
 
-==============================================================================
 JOBS                                                   *mlinux-cd* *mlinux-jobs*
 
 This resume the work, commands I discover while trying to cd to vim's pwd when
@@ -85,7 +91,6 @@ coproc ??
 
 
 
-==============================================================================
                                                               *mlinux-default*
 
 
@@ -120,5 +125,4 @@ par
 	    protected one
 
 
-
- vim:tw=78:ft=myhelp 
+d do disown -h %<jobid>. After that, you can safely exit the terminal
