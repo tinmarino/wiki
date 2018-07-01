@@ -22,11 +22,11 @@ fi
 
 # >&2 echo "MATH: $MATH"
 
-unix(){
+munix(){
 sed -r 's/(\[.+\])\(([^#)]+)\)/\1(\2.html)/g' <"$INPUT" | pandoc $MATH -s -f $SYNTAX -t html -c $CSSFILENAME | sed -r 's/<li>(.*)\[ \]/<li class="todo done0">\1/g; s/<li>(.*)\[X\]/<li class="todo done4">\1/g' >"$OUTPUT.html"
 }
 
-termux(){
+mtermux(){
 sed -r 's/(\[.+\])\(([^)]+)\)/\1(\2.html)/g' <"$INPUT" | \
 	python -m markdown | \
 	sed -r 's/<li>(.*)\[ \]/<li class="todo done0">\1/g; s/<li>(.*)\[X\]/<li class="todo done4">\1/g' >"$OUTPUT.html"
@@ -36,4 +36,4 @@ sed -r 's/(\[.+\])\(([^)]+)\)/\1(\2.html)/g' <"$INPUT" | \
 	# pandoc $MATH -s -f $SYNTAX -t html -c $CSSFILENAME | \
 }
 
-termux
+munix
