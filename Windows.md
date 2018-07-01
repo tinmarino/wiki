@@ -1,4 +1,3 @@
-
 *cmder-shortcut*            Cmder Is the windows terminal emulator
 
 Tab manipulation  ~
@@ -20,4 +19,6 @@ Ctrl + r	: History search
 Shift + mouse 	: Select and copy from buffer 
 Right click 	: Paste text (or ctrl + shift + v)
 
-vim: ft=myhelp
+
+win r   cmd 
+run
