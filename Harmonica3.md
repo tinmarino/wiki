@@ -1,15 +1,32 @@
-*harmonica3.txt*         Practical Vim book notes
+% Harmonica 3
 
 
-TODO bob dylan at harptabs
-     elthon jone
-song of the day 300
-https://www.harptabs.com/songlist.php?MaxFields=30&DisplayBy=dailyview&Page=12
+*   [So you think you can tell](#so-you-think-you-can-tell)
+*   [EXERCICES](#exercices)
+*   [REDEMPTION SONG](#redemption-song)
+*   [Across The Universe](#across-the-universe)
+*   [Nowhere Man](#nowhere-man)
+*   [Yellow submarine](#yellow-submarine)
+*   [time after time](#time-after-time)
+*   [True color](#true-color)
+*   [Girls just want to have fun](#girls-just-want-to-have-fun)
+*   [Just the way you are](#just-the-way-you-are)
+*   [Wonderwall](#wonderwall)
+*   [Hit the road jack](#hit the road jack)
+*   [Auvergnat](#auvergnat)
+*   [Mauvaise reputation](#mauvaise-reputation)
+*   [Mistral gagnant](#mistral-gagnant)
+*   [Je vais taimer ](#je-vais-taimer) 
 
-==============================================================================
-                                                           *mharmonica-*
-~
 
+TODO bob dylan at harptabs <br>
+     elthon jone <br>
+song of the day 300 <br>
+https://www.harptabs.com/songlist.php?MaxFields=30&DisplayBy=dailyview&Page=12 <br>
+
+### So you think you can tell
+
+```text
  	-5 -5  5    -5    5   4  -43 
 so, so you think you can tell 
 
@@ -74,16 +91,16 @@ Running over the same old ground
 And how we found
 The same old fears
 Wish you were here
+```
 
 
 
 
 
-==============================================================================
-                                                  *mharmonica-exercices*
-EXERCICES ~
+### EXERCICES
 from https://www.harptabs.com/song.php?ID=2527
 
+```text
 C SCALES (up & down):
 Low
 +1 -1 +2   -2'' -2   -3'' -3 +4
@@ -214,14 +231,14 @@ Ex. M
 Ex. N
 (-1-4) (+2+5) (+3+6) (-3-7) (-4-8) (+5+8)
 (+6+9) (-6-10) (then play in reverse) 
+```
 
 
 
 
-==============================================================================
-                                                  *mharmonica-redemption-song*
-REDEMPTION SONG ~
+### REDEMPTION SONG
 
+```text
 
  4  -4  5  4    -5  -6  6   5
 
@@ -299,12 +316,14 @@ redemption song, redemption song, redemption song
 
  5  -5  -6  6  6  6  -5  5  -5  6  6  6
 Emancipate yourselves from mental slavery.... 
+```
 
 
 
-=============================================================================
-                                              *mharmonica-across-the-universe*
 
+### Across The Universe
+
+```text
  	7    7   7   7  -7   -6   6  -6
 Words are fly-ing out like end-less
 
@@ -334,14 +353,16 @@ Noth-ing's gon-na change my world,
 
   7   7     7   7   -7    7   5
 Noth-ing's gon-na change my world. 
+```
 
 
 
-==============================================================================
-                                                      *mharmonica-nowhere-man*
+### Nowhere Man
+                                                      
 6    6  7  -7   -6    6   -5  -5  -6  -6
 He's a real No-where Man, Sit-ting in his
 
+```text
 6   -5    5    -4  -4  -5  -5  5   -4    4
 No-where Land, Mak-ing all his no-where plans
 
@@ -387,12 +408,13 @@ Knows not where he's going to,
 Isn't he a bit like you and me?
 
 Repeat Chorus 
+```
 
 
 
-==============================================================================
-                                                 *mharmonica-yellow-submarine*
+### Yellow submarine
 
+```text
  5  -5  6     5  -4  5    4
 IN THE TOWN WHERE I WAS BORN
 
@@ -441,11 +463,12 @@ SKY OF BLUE AND SEA OF GREEN
 
  5  5  -4  4 -3  5  5  -4
 IN OUR YEL--LOW SUB-MA-RINE
+```
 
 
-==============================================================================
-                                                  *mharmonica-time-after-time*
+### time after time
 
+```text
 -4-3   4  4  -4 -3  4   4   -4    4    4   -4
 Lyin` in my bed I hear the clock tick and think
 5   5
@@ -487,12 +510,13 @@ O.K.
 Secrets stolen from deep inside The drum beats
 out of time
 (REPEAT CHORUS)
+```
 
 
 
-==============================================================================
-                                                       *mharmonica-true-color*
+### True color
 
+```text
 <-5 -5  -5   4   4  -3 3
 You--- with the sad eyes
   6   -6  7  7  -6  
@@ -558,12 +582,13 @@ Your true colors
 True colors are beautiful,
  4   4  4  -3
 Like a rainbow
+```
 
 
 
-==============================================================================
-                                      *mharmonica-grils-just-want-to-have-fun*
+### Girls just want to have fun
 
+```text
 3  -4   -4  -4 -4   -4 -4   -4
 I come home in the morning light
 -4 -4 -3   3    3   -3  -4 -3  -3   -4   -4  -3 3   
@@ -606,13 +631,14 @@ I want to be the one to walk in the sun
 Oh girls they want to have fun
 -4 -5  -4    -4   -3  3  <-2  -3 3
 Oh--- girls just want to have fun-
+```
 
 
 
 
-==============================================================================
-                                             *mharmonica-just-the-way-you-are*
+### Just the way you are
 
+```text
 6    6   6  5
 Oh, her eye-s,
 6   6  5
@@ -666,14 +692,15 @@ the whole world stops and stares for a-while.
 Cause girl, you're a-ma-zing,
 -9    8   7  -8   7
 just the way you are.
+```
 
 
 
 
 
-==============================================================================
-                                                       *mharmonica-wonderwall*
+### Wonderwall
 
+```text
 
 
 8  -8  7  -8 7  -8  7   -8 
@@ -768,13 +795,14 @@ I said maybe
 You're gonna  be the one that saves me
 And after all
 You're my wonderwall
+```
 
 
 
 
-==============================================================================
-                                                *mharmonica-hit-the-road-jack*
+### Hit the road jack
 
+```text
  5   4   -4   3     3    4    4   -4   -4
 Hit the road Jack, and don't you come back
  4   5    5  -6   -6  7    7   -6     
@@ -862,13 +890,14 @@ No more, no more, no more, no more
 Hit the road Jack
  3    4    4   -4   -4   3   3 
 And don't you come back no more
+```
 
 
 
 
-==============================================================================
-                                                *mharmonica-auvergnat*
+### Auvergnat
 
+```text
  	
 
 -5   -5 +6 -6  -5  +5< -5  +6
@@ -942,15 +971,16 @@ Toi l'étranger quand tu mourras
 Que le croqu'mort t'emportera
 Qu'il te conduise à travers ciel
 Au père éternel
+```
 
 
 
 
 
-==============================================================================
-                                              *mharmonica-mauvaise-reputation*
+### Mauvaise reputation
  	
 
+```text
 +7 -6 +7 -6 -7 +7 -8 +7     
 Au village, sans prétention,   
 
@@ -970,10 +1000,11 @@ Je ne fait pourtant de tort à personne
 En suivant mon chemin de petit bonhomme.
 
 	
+```
 
-==============================================================================
-                                                  *mharmonica-mistral-gagnant*
+### Mistral gagnant
 
+```text
  	
 A m'asseoir sur un banc cinq minutes avec toi
  4    4      5      5    5     5      5     5    5   -4  4    5
@@ -1010,13 +1041,13 @@ Car-en-sac et Minto, caramel à un franc
 
 Et les mistrals gagnants
   3    3   -4    -4    -4    4
+```
 
 
 
-==============================================================================
-                                                   *mharmonica-je-vais-taimer*
+### Je vais taimer
 
-
+```
 +6 -6   +7 -6   +6  -5  +5  -5   +6  +6
 A faire pâ-lir tous les Mar-quis de Sade
 -5 +6    -6 +6  -5  +5  -4   +5 -5  -5
@@ -1111,5 +1142,5 @@ Com-me j´au-rai tel-lement ai-mé être aimé
 Je vais t´ai-mer
 +6  -5  +6   +5-4-3
 Je vais t´ai-mer
-
+```
 
