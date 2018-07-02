@@ -1,4 +1,6 @@
 
+*   [Quotes](Quotes)
+
 *   [Principle_of_war](Principle_of_war)
 *   [TaoTeKing](TaoTeKing)
 *   [Art Poetique](Art_Poetique)

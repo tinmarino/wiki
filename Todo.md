@@ -165,9 +165,3 @@ feuille sur le closet pour les trucs à faire avec internet, avec mon pc.
 mettre ke fichier "papiers" commun avec Rocio. 
 voir si mon réseau est safe, voir comment accéder aux données perso 
 crontab pour se reveiller tout les jours et prendre une foto, mettre ne ligne se rééteindre. 
-
-
-ne pas aovoir à retirer le cable pour décharger. 
-
-DONE
-make doc for all languages.
