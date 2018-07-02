@@ -7,7 +7,37 @@
 * 	[Plugin](Plugin)
 * 	[Tips](Tips)
 
-	
+
+## From work
+
+*   `set cul!` if scrooling slow for a long line
+*   `set lazyredraw` can be usefull too
+*   h ttyfast
+*   222go  go to byte 222
+
+## Environment
+
+* echo $PATH
+* let myvar = $PATH
+* let $PATH = '/foo:/bar'
+* i<c-r>=$PATH
+
+
+## C-s
+
+* Can lock the terminal : <c-q> to unlock
+* stty -ixon # for a permanent solution
+
+## GVim
+
+:set guioptions-=m " remove menu bar
+:set guioptions-=T " remove toobar
+:set guioptions-=r " remove right hand scrool bar 
+:set guioptions-=L " remove lefthand scrooll bar
+
+Note: 'go' is an abbr for guioptions
+
+## FRom before
 
 CTRL-W z        CTRL-W_z
 CTRL-W CTRL-Z   CTRL-W_CTRL-Z
