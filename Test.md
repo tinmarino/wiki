@@ -1,7 +1,7 @@
 
 Consider the following example: >
  = Toggleable list of todo items =
-  * [ ] Toggle list item on/off.
+  * [.] Toggle list item on/off.
      * [ ] Simple toggling between [ ] and [X].
      * [ ] All list's subitems should be toggled on/off appropriately.
      * [ ] Toggle child subitems only if current line is list item
