@@ -1,3 +1,6 @@
+caca 2>&1 | tail -n 2
+cat <&1
+mv /mnt/usbdisk/[^l]* /home/user/stuff/.
 shopt -s expand_aliases
   to get aliases in Vim
 *	cd - 
