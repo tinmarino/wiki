@@ -1144,3 +1144,91 @@ Je vais t´ai-mer
 Je vais t´ai-mer
 ```
 
+# Ojala
+
+<pre>
+-8  -8  -8   8  -9   9  -9
+O   ja   la que las ho -jas
+
+8   -8  7    -8    8  -9  8
+no  te  to - quen  el cuerpo
+
+-8   7  8  -8
+cuando  caigan
+
+
+7  7  7  6  6   6   6
+Para que no las puedas
+
+6   6  8  -8  7 (-6&-8) # double note
+convertir en cristal
+
+
+9 -9  8  -8   7  -7   -6
+O-ja-là  que  la llu--via
+
+-6  -6  -6   9  -9   8  -8
+de--je  de  ser mi--la--gro
+
+-8  7#  7  7   7  -7   -7
+que ba--ja por tu cuer--po
+
+-8  -8   -8 -6  -6 -7b    -6
+O - ja - là que la tie---rra
+
+6  6  6   -5   5  5   -4
+no te be - se los pa - sos
+
+
+-8  -8   -8  8   -9   9    -9
+O - ja - la se (te a)--ca--be
+
+8  -8  7   -8  8   -9    8
+la mi--ra--da con--stan--te
+
+7  7   7   -8  8    -9  8 
+la pa--la--bra pre--ci--sa
+
+-8  7   7   -8  8   -9  7
+la son--ri--sa per--fe--cta
+
+
+7   7    7  -8  8  9   9
+O - ja - là pa--se al--go
+
+9   9  9   -9  8  -8   7
+que te bo--rre de pron--to
+
+7 7 7   -8  -7  -7  7
+una luz ce--ga--do--ra
+
+7  7   7  -8 8  -9  -9
+un dis-pa-ro de nie-ve
+
+
+-9  -9  -9   9 -10 9  9
+O - ja - la por lo me-nos
+
+9   -8 -8  8  -8  8   8
+que me lle-ve la muer-te
+
+7  7  7  -8  -7  7  7
+pa-ra no ver-te tan-to 
+
+7  7  7  -8  8  -9  -9
+pa-ra no ver-te siem-pre
+
+-9 -9 -9  9  -10  9  -9
+en to-dos los se-gun-dos
+
+7  7  7   7   7__-8  8 
+en to-das las vi-sio-nes
+
+-6b -6  -6b  6  6  6   6
+O - ja - la que no pue-dan
+
+6   6  6  -6 -6 -7  -8  -8  
+to-car-te ni en can-cio-nes
+
+</pre>
+
