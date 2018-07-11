@@ -4,6 +4,17 @@
 * [Screen](Screen)
 * [Termux](Termux)
 * [Git](Git)
+* [Gcc](Gcc)
+
+
+*   Remove windows line ending
+  * `tr -d '\15\32' < winfile.txt >  unixfile.txt`
+  * `tr -d "\r" < file`
+  * `vi -c '%s/^M//g` # use ctrl-v ctrl-m to insert the `^M`
+  * `sed 's/\x0D$//'`
+  * `find ./ -type f -exec dos2unix {} \;`
+  * `awk '{ sub("\r$",""); print }' dos.txt > unix.txt`
+
 
 * 	List signals shortcuts
 	* 	`stty -a`
