@@ -39,6 +39,7 @@ sed -r 's/(\[.+\])\(([^)]+)\)/\1(\2.html)/g' <"$INPUT" | \
 	# pandoc $MATH -s -f $SYNTAX -t html -c $CSSFILENAME | \
 }
 
+mchoose(){
 tmp=$(uname -a)
 
 shopt -s nocasematch
@@ -47,3 +48,5 @@ if [[ "$tmp" =~ "android" ]] ; then
 else
 	munix
 fi
+}
+mtermux
