@@ -1,16 +1,67 @@
-caca 2>&1 | tail -n 2
-cat <&1
-mv /mnt/usbdisk/[^l]* /home/user/stuff/.
-shopt -s expand_aliases
-  to get aliases in Vim
-*	cd - 
-Go back and foward
+% BASH Bourne Again SHell
 
-*	`bash -x ./script.sh`
-	*   set -x  # at the beginning of the script
-	*   to debug
+*	Center text (read ~/Bin/hi.sh)
+	*	
+		```bash
+		title="El terminal de la Ponette"
+		printf "%*s\n" $(( ( ${#title} + $columns ) / 2  )) "$title"
+
+
+		while read -r line
+		do
+				echo "$line"
+		done < <(jobs)
+		while read -r line  ; do echo -e  "ccaca $line" ; done< <(echo -e "$toto")
+
+		lines=$(tput lines)
+		columns=$(tput cols)
+
+		IFS='' read -r -d '' String <<"EOF"
+		<?xml version="1.0" encoding='UTF-8'?>
+		 <painting>
+			 <img src="madonna.jpg" alt='Foligno Madonna, by Raphael'/>
+			 <caption>This is Raphael's "Foligno" Madonna, painted in
+			 <date>1511</date>-<date>1512</date>.</caption>
+		 </painting>
+		EOF
+		This will put your text into your variable without needing to escape the quotes. It will also handle unbalanced quotes (apostrophes, i.e. '). Putting quotes around the sentinel (EOF) prevents the text from undergoing parameter expansion. The -d'' causes it to read multiple lines (ignore newlines). read is a Bash built-in so it doesn't require calling an external command such as cat.
+		And if you are using this multi-line String variable to write to a file, put the variable around "QUOTES" like echo "${String}" > /tmp/multiline_file.txt or echo "${String}" | tee /tmp/multiline_file.txt. Took me more than an hour to find that.
+		# more there : https://stackoverflow.com/questions/1167746/how-to-assign-a-heredoc-value-to-a-variable-in-bash
+		```
+
+
+
+
+
+
+
+*	Redirection
+	*	`caca 2>&1 | tail -n 2`
+	*	`cat <&1`
+
+
+* Regex
+	*	`mv /mnt/usbdisk/[^l]* /home/user/stuff/.`
+
+
+*   Preserving spaces
+	*   `var="abc        def    gh ijk"`
+	*   `echo $var`
+		*  BAD : `abc def gh ijk`
+	*   `echo "$var"`
+	*   `echo "${var}"`
+	*   `IFS='%' ; echo $var`
+		*   GOOD : `abc        def    gh ijk`
+		* 	Put your variable inside double quote to prevent field splitting, which ate your spaces:
+
+
+* Debugging
+	*	`bash -x ./script.sh`
+		*   set -x  # at the beginning of the script
+		*   to debug
 	
-*	`arr=($line)` # Space separated string -> array
+*	Arrays
+	* `arr=($line)` # Space separated string -> array
 
 
 * 	Let a variable
@@ -30,32 +81,26 @@ Go back and foward
         ```
 	
 
-*	$CDPATH  is the path bash looks at
 
-*	shopt -s cdable_vars
-  now I can go to some vars
+* Configuration
+	*	shopt -s chanble_vars
+		now I can go to some vars
+	*	shopt -s expand_aliases
+  	to get aliases in Vim
+		
 
- 8
-down vote
+*	Chaging directories fast
+	*	`pushd -n /Project/Warnest/docs/`
+	*	`pushd -n ~/Dropbox/Projects/ds/test/`  
+	* `dirs`
+	*	`cd -` # Go back and foward
+	*	`$CDPATH` #  is the path bash looks at
+	then,  
 
-Use "pushd -n" (assuming you use bash).
+	cd ~ is your home,  
 
-Add to your ~/.bashrc:
+	cd ~1 is ~/Dropbox/Projects/ds/test/  
 
-pushd -n /Project/Warnest/docs/
-pushd -n ~/Dropbox/Projects/ds/test/
+	cd ~2 is /Project/Warnest/docs/  
 
-then,
-
-cd ~ is your home,
-
-cd ~1 is ~/Dropbox/Projects/ds/test/
-
-cd ~2 is /Project/Warnest/docs/
-
-You can use ~1,~2 etc in exactly the same way as
-
-pd toto
-dirs
-pd 3
-
+	You can use ~1,~2 etc in exactly the same way as  
