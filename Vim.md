@@ -1,3 +1,6 @@
+\(External.*\)\@<!mem
+
+
 [TOINSTALL](TOINSTALL)
 
 *	[Practical_Vim](Practical_Vim)
