@@ -11,7 +11,6 @@
 * 	[Plugin](Plugin)
 * 	[Tips](Tips)
 
-
 ## From work
 
 *   `set cul!` if scrooling slow for a long line
@@ -47,6 +46,15 @@
 Note: 'go' is an abbr for guioptions
 
 ## FRom before
+
+set autochdir to auto chdir to current file
+:tabdo lcd /dir/
+Another useful setting is set tags=./tags,tags;$HOME which tells Vim to look
+    for a tags file in the directory of the current file, then in the "current
+    directory" and up and up until it reaches your ~/. 
+getpid()
+vim —cmd 'cd `pwd`'
+	
 
 CTRL-W z        CTRL-W_z
 CTRL-W CTRL-Z   CTRL-W_CTRL-Z
