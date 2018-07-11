@@ -21,6 +21,18 @@ Note: While this is convenient, Git will store your credentials in clear text in
 8. Local 						|git-local|
 
 
+# Tips
+
+*   Ignore Windows newline
+    *   `git config --global core.autocrlf true`
+
+
+
+# Change history
+
+`git rebase -i <commit>~1` # Can edit or delete commits  
+
+
 
 # 0. Stack
 
