@@ -2,9 +2,11 @@
 * [Awk](Awk)
 * [Readline](Readline)
 * [Screen](Screen)
+* [Dialog](Dialog)
 * [Termux](Termux)
 * [Git](Git)
 * [Gcc](Gcc)
+* [Pentest](Pentest)
 
 
 *   Remove windows line ending

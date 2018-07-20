@@ -3,6 +3,7 @@
   * [Linux](Linux)
     * [Bash](Bash)
     * [Vim](Vim)
+	* [Emacs](Emacs)
   * [Windows](Windows)
     * [Batch](Batch)
     * [Cmder](Cmder)
