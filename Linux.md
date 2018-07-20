@@ -2,10 +2,12 @@
 * [Awk](Awk)
 * [Readline](Readline)
 * [Screen](Screen)
+* [Dialog](Dialog)
 * [Termux](Termux)
 * [Git](Git)
 * [Gcc](Gcc)
 * [Tmux](Tmux)
+* [Pentest](Pentest)
 
 
 *	List device UUID
@@ -42,7 +44,6 @@
     *   `df`  list mount points 
 
 
-<<<<<<< HEAD
 *linux.txt*                 Linux Memories, Usefull when no screen or connection
                           Can become ugly 
 
@@ -97,8 +98,6 @@ $ sleep 42 &
  [1] 5260
  $ echo $!
  5260
-=======
->>>>>>> After merge
 
 
 ### Jobs and Processes
