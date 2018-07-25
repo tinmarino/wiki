@@ -8,6 +8,7 @@
 *   [VimStory](VimStory)
 * 	[BordelVim](BordelVim)
 * 	[CheatVim](CheatVim)
+* [Environment](V-Environment)
 * 	[Plugin](Plugin)
 * 	[Tips](Tips)
 
