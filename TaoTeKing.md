@@ -815,7 +815,7 @@ C'est pourquoi (le Tao) est l'être le plus estimable du monde.
 (Le sage) pratique le non-agir, il s'occupe de la non-occupation, et savoure ce qui est sans saveur.  
 Les choses grandes ou petites, nombreuses ou rares, (sont égales à ses yeux).  
 Il venge ses injures par des bienfaits.  
-Il commence par des choses aisées, lorsqu'il en médite de difficiles ; par de petites choses, lorsqu'il en projette de grandes.  
+Il commence par des choses aisées, lorsqu'il en médite de difficiles ; par de petites choses, lorsqu'il en projette de grande grandes.
 Les choses les plus difficiles du monde on nécessairement commencé par être aisées.  
 Les choses les plus grandes du monde ont nécessairement commencé par être petites.  
 DE là vient que, jusqu'à la fin, le Saint ne cherche point à faire de grandes choses ; c'est pourquoi il peut accomplir de grandes choses.  
