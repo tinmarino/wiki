@@ -4,7 +4,7 @@
 	:NewJarEntry in .classpath
 
 
-
+This makes it easy to count the number of occurrences of the word under the cursor: first press * to search for the current word, then enter :%s///gn to count all occurrences of that word. 
                                                                 *v-eclim-idid*
 if import android cannot be resolved:
 add to .classpath (graddle)
@@ -18,8 +18,19 @@ gI insert text at column 1
 :read !command
 :set backspace=indent,eol,start
 
+  !sort | uniq -c
+AAA
+AAA
+AAA
+BBB
+BBB
+AAA
+AAA
 
-
+you would end up with
+3 AAA
+2 BBB
+2 AAA
 
 
 *v-appearance.txt*          Statusline (todo merge with script)
