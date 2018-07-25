@@ -49,4 +49,4 @@ else
 	munix
 fi
 }
-mtermux
+mchoose
