@@ -70,4 +70,5 @@
 
 NOTE : Additional information is available to a Vim script. For example, :help tabpagebuflist() shows how to list all buffers in all tabs.
 
-A script called bugreport.vim is provided with Vim. When run, the script produces a file with information about Vim's environment. To see the script, use the command `:view $VIMRUNTIME/bugreport.vim` in Vim. 
+A script called bugreport.vim is provided with Vim. When run, the script produces a file with information about Vim's environment.  
+To see the script, use the command `:view $VIMRUNTIME/bugreport.vim` in Vim. 
