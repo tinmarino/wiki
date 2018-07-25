@@ -26,7 +26,8 @@ Note: While this is convenient, Git will store your credentials in clear text in
 *   Ignore Windows newline
     *   `git config --global core.autocrlf true`
 
-*   
+*	Show word regex in diff
+	*	`git diff --word-diff-regex=.`
 
 
 # Change history
