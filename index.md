@@ -25,8 +25,12 @@
 ## Language
   * [Python](Python)
   * [Js](Js)
+  * [C](C)
+  	* [Keywords](C-Keywords) 
+	* [Operators](C-Operators)
   * [Cmake](Cmake)
   * __Markup__
+	* [Pandoc](Pandoc)
     * [Markdown](Markdown)
     * [Dot](Dot)
 
