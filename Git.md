@@ -32,6 +32,9 @@ Note: While this is convenient, Git will store your credentials in clear text in
 * Make backup
     *  `git stash && git stash apply`
 
+*	Show word regex in diff
+	*	`git diff --word-diff-regex=.`
+
 
 # Change history
 
