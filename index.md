@@ -1,4 +1,3 @@
-# Vimwiki Menu
 ## Software
   * [Linux](Linux)
     * [Bash](Bash)
@@ -24,6 +23,7 @@
 
 ## Language
   * [Python](Python)
+	* [Keywords](Py-Keywords)
   * [Js](Js)
   * [C](C)
   	* [Keywords](C-Keywords) 
