@@ -1,8 +1,13 @@
-*v-tips.txt*                Tips ordered by result not type
-                          Actually not ordered
+% Vim Tips
 
-===============================================================================
-Tips ~
+* Find where root runtime is 
+	* `:echo $VIMRUNTIME` -> `/usr/share/vim/vim74`
+	
+* Source autoload file
+	* `:call example#BadFunction()`
+
+* Find where a map has been defined (in which script)
+	* `:verbose map <c-z>` 
 
 *   Use `s/\%V` to substitude within selection and not full lines
 

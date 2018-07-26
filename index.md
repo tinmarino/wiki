@@ -16,6 +16,7 @@
 		
 
 ## Misc
+  * [Draw](Draw)
   * [Memo](Memo)
   * [Todo](Todo)
   * [Text](Text)
