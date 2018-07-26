@@ -1,4 +1,5 @@
 *c-vimstyle.txt*            Vim Style by google
+[V style](V-style)
                                                         *c-viml* *c-vimscript*
 
 

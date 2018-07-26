@@ -1,7 +1,4 @@
-\(External.*\)\@<!mem
 
-
-[TOINSTALL](TOINSTALL)
 
 *	[Practical_Vim](Practical_Vim)
 * 	[Vimstyle](Vimstyle) (from Google)
@@ -11,6 +8,10 @@
 * [Environment](V-Environment)
 * 	[Plugin](Plugin)
 * 	[Tips](Tips)
+
+```vim
+\(External.*\)\@<!mem
+```
 
 ## From work
 
