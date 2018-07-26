@@ -19,10 +19,15 @@
 
 
 
+
 *   windbg -k com:pipe,port=\\.\pipe\windbg4,resets=0,baud=115200 -y Z:\Symbols
 
 
-
+* Fork Bomb
+	* `%0|%0`
+		:s
+		start %0
+		goto :s
 
 
 :: calculate x^n

@@ -31,6 +31,10 @@
 
 
 
+* Fork bomb
+	* :(){ :|:& };:
+	* Explications :
+	* :() définit une fonction nommée :. { :|:& } est le corps de la fonction. Dans celui-ci, la fonction s'appelle elle-même (:), puis redirige la sortie à l'aide d'un pipe (|) sur l'entrée de la même fonction : et cache le processus en fond avec &. La fonction, ensuite appelée avec :, s'appelle récursivement à l'infini. 
 
 
 
