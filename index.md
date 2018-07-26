@@ -32,6 +32,7 @@
   	* [Keywords](C-Keywords) 
 	* [Operators](C-Operators)
   * [Cmake](Cmake)
+  * [Perl](Perl)
   * __Markup__
 	* [Pandoc](Pandoc)
     * [Markdown](Markdown)
