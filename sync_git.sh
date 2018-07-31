@@ -1,21 +1,25 @@
 #!/bin/bash
 # This file serves for synchronosation
 
-
 current_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+# Sychrnonize argument folder
+function ssync(){
+    title=$(basename -- "$1")
+    title=${title^^}
+    echo "--->  $title  ================================================="
+    pushd $1 > /dev/null
+    git pull --rebase
+    git push
+    popd > /dev/null
+}
 
 echo "---> Synchronizing from internet"
-echo "---> Wiki ================================================"
-cd $current_dir
-git pull --rebase
 
-echo "---> Wiki HTML ==========================================="
-cd ../wiki_html
-git pull --rebase
 
-echo "---> Todo ================================================"
-cd ../todo
-git pull --rebase
+ssync ~/.vim
+ssync $current_dir
+ssync ../wiki_html
+ssync ../todo
 
 
 echo "<--- Synchronization finihed"
