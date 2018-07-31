@@ -1,21 +1,17 @@
 
-
 *	[Practical_Vim](Practical_Vim)
 * 	[Vimstyle](Vimstyle) (from Google)
 *   [VimStory](VimStory)
 * 	[BordelVim](BordelVim)
-* 	[CheatVim](CheatVim)
-* [Environment](V-Environment)
-* 	[Plugin](Plugin)
-* 	[Tips](Tips)
+* [Plugin](Plugin)
+* [Tips](Tips)
 * [Negative Regex](V-negative-regex)
+
+## From work
 
 ```vim
 \(External.*\)\@<!mem
 ```
-
-## From work
-
 *   `set cul!` if scrooling slow for a long line
 *   `set lazyredraw` can be usefull too
 *   h ttyfast

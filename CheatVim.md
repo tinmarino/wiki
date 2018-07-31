@@ -3,50 +3,50 @@
 
 ### Key
 
-|       |                                              |
-| ---   | ---                                          |
+|       |   |
+| ---   | --- |
 | ga    | Caracter value, in unicode, ascii, hex octal |
-| s     | cl: Change one char                          |
-| C     | c$: Change full line                         |
-| S     | ^C: Change line the end                      |
-| <s-J> | paste next line at the end of current        |
-| <c-l> | redraw screen                                |
-| 8g8   | see if some invalid utf8 char                |
+| s     | cl: Change one char |
+| C     | c$: Change full line |
+| S     | ^C: Change line the end |
+| <s-J> | paste next line at the end of current |
+| <c-l> | redraw screen |
+| 8g8   | see if some invalid utf8 char |
 | gw i  | indent filter: like gq but not moving cursor |
-| zt    | (zm, zb) puts current line to top of screen  |
-| z.    | or zz puts current line to center of screen  |
-| zb    | puts current line to bottom of screen        |
+| zt    | (zm, zb) puts current line to top of screen |
+| z.    | or zz puts current line to center of screen |
+| zb    | puts current line to bottom of screen |
 
 # Jump
 
-|               |                                                                 |
-| ---           | ---                                                             |
-| :jumps        | Display jump list                                               |
-| __1 Nice__    |                                                                 |
-| %             | Matching bracket                                                |
-| <C-i>         | Next location, insert position                                  |
-| <C-o>         | Previous (older) location                                       |
-| '.            | To last inserted text                                           |
-| _ or ^        | move to first (non blank caracter)                              |
-| gi            | Insert at last modified position                                |
-| gI            | Insert at col 1                                                 |
+|               |   |
+| ---           | --- |
+| :jumps        | Display jump list |
+| __1 Nice__    |   |
+| %             | Matching bracket |
+| <C-i>         | Next location, insert position |
+| <C-o>         | Previous (older) location |
+| '.            | To last inserted text |
+| _ or ^        | move to first (non blank caracter) |
+| gi            | Insert at last modified position |
+| gI            | Insert at col 1 |
 | -, +          | Insert at first non blank char at [count] lines before or after |
-| gx            | xRef (html on browser)                                          |
-| gd, gD        | Local(function), Global (file) declaration (no syntax)          |
-| [I            | include-search of a word                                        |
-| gf            | open file name under cursor (SUPER)                             |
-| __2 Not bad__ |                                                                 |
-| g_            | Last non-blank character of the line                            |
-| L M H         | Bottom, Middle, Top of screen                                   |
-| ge            | Backward to end of word                                         |
-| g; and g,     | Older and newer changes                                         |
-| __3 Keys__    |                                                                 |
-| ( , )         | One sentence (sentences starts with .)                          |
-| { , }         | One paragraph                                                   |
-| fx            | Next occurrence of character x                                  |
-| tx            | Before next occurrence of character                             |
-|               | Note: Capital letters and some chars are much rarer.            |
-|               | spot them                                                       |
+| gx            | xRef (html on browser) |
+| gd, gD        | Local(function), Global (file) declaration (no syntax) |
+| [I            | include-search of a word |
+| gf            | open file name under cursor (SUPER) |
+| __2 Not bad__ |   |
+| g_            | Last non-blank character of the line |
+| L M H         | Bottom, Middle, Top of screen |
+| ge            | Backward to end of word |
+| g; and g,     | Older and newer changes |
+| __3 Keys__    |   |
+| ( , )         | One sentence (sentences starts with .) |
+| { , }         | One paragraph |
+| fx            | Next occurrence of character x |
+| tx            | Before next occurrence of character |
+|               | Note: Capital letters and some chars are much rarer. |
+|               | spot them |
 
 
 
@@ -58,12 +58,12 @@
 | `i<c-h>`      | Delete Char                 |
 | `i<c-w>`      | Delete Word                 |
 | `i<c-u>`      | Delete Line                 |
-| `i<c-v><c-m>` | Carraige return for windows |
+| `i<c-v><c-m>` | Carriage return for windows |
 | `i<c-k>c1 c2` | Insert unicode by digraph   |
 | `i<c-t>`      | Indent current line         |
 | `i<c-d>`      | Unindent current line       |
 
-
+ 
 
 |                    |                                                        |
 | ---                | ---                                                    |
@@ -106,22 +106,22 @@
                                                              
 ### Register list
 
-|     |                                                                                 |
-| --- | -----------------------------------------------------------------------         |
-| a   | Named register                                                                  |
-| A   | Append                                                                          |
+|     |   |
+| --- | ----------------------------------------------------------------------- |
+| a   | Named register |
+| A   | Append |
 | "   | Unamed register is the uname reg, everything going to a reg also go to this one |
-| _   | is the black hole register, empty when reading but writable.                    |
-|     | everything going to it go to /dev/null to avoid erase the standar register      |
-|     | when deleting something                                                         |
-| -   | the small delete (lesss than one line for example thing you delete with 3x      |
-| .   | last inserted text                                                              |
-| %   | filename                                                                        |
-| :   | command                                                                         |
-| /   | search                                                                          |
-| =   | expression # to take the result of an arbitrary expression                      |
-| +   | and * are for interface with system clipboard "maybe install vimx               |
-| #   | name od atlernate file                                                          |
+| _   | is the black hole register, empty when reading but writable. |
+|     | everything going to it go to /dev/null to avoid erase the standar register |
+|     | when deleting something |
+| -   | the small delete (lesss than one line for example thing you delete with 3x |
+| .   | last inserted text |
+| %   | filename |
+| :   | command |
+| /   | search |
+| =   | expression # to take the result of an arbitrary expression |
+| +   | and * are for interface with system clipboard "maybe install vimx |
+| #   | name od atlernate file |
 
 
 
@@ -129,28 +129,26 @@
 
 ### Fold
 
-|            |                                                                         |
+|            |   |
 | ---        | ----------------------------------------------------------------------- |
-| __Create__ |                                                                         |
-| zf         | Operator to create fold                                                 |
-|            | zf10j, zf/string, zf'a                                                  |
-| __Move__   |                                                                         |
-| zj         | To the next fold.                                                       |
-| zk         | To the previous fold.                                                   |
-| ]z         | To end of open fold.                                                    |
-| [z         | To start of open fold.                                                  |
-| __Change__ |                                                                         |
-| zo, zO     | Opens a (all) fold at the cursor.                                       |
-| zc, zC     | Close (all)                                                             |
-| zm         | Increases the foldlevel by one.                                         |
-| zM         | Closes all open folds.                                                  |
-| zr         | Decreases the foldlevel by one.                                         |
-| zR         | Decreases the foldlevel to zero -- all folds will be open.              |
-| zd         | Deletes the fold at the cursor.                                         |
-| zE         | Deletes all folds.                                                      |
+| __Create__ |   |
+| zf         | Operator to create fold |
+|            | zf10j, zf/string, zf'a |
+| __Move__   |   |
+| zj         | To the next fold. |
+| zk         | To the previous fold. |
+| ]z         | To end of open fold. |
+| [z         | To start of open fold. |
+| __Change__ |   |
+| zo, zO     | Opens a (all) fold at the cursor. |
+| zc, zC     | Close (all) |
+| zm         | Increases the foldlevel by one. |
+| zM         | Closes all open folds. |
+| zr         | Decreases the foldlevel by one. |
+| zR         | Decreases the foldlevel to zero -- all folds will be open. |
+| zd         | Deletes the fold at the cursor. |
+| zE         | Deletes all folds. |
 
-
-### Fold
 
 ```vim
 :syn match comment "\v(^\s*//.*\n)+" fold
@@ -169,13 +167,13 @@ set "foldtext"              " witch show what you see when folded
 http://www.csb.yale.edu/userguides/wordprocess/vi-summary.html
 
 
-|      |                                     |
-| ---  | ---                                 |
-| :t$  | Copy current line to the end        |
-| :#   | Display current line number         |
-| :&   | Repeat last substitue               |
-| :42  | Jump to line 42, as does typing42G. |
-| :e . | Edit: Open integrated explorer      |
+|      |   |
+| ---  | --- |
+| :t$  | Copy current line to the end |
+| :#   | Display current line number |
+| :&   | Repeat last substitue |
+| :42  | Jump to line 42, as does typing 42G. |
+| :e . | Edit: Open integrated explorer |
 
 
 
