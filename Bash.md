@@ -1,5 +1,8 @@
 % BASH Bourne Again SHell
 
+* Faster redirect to null `| :` instead of `> /dev/null`
+
+
 *	Center text (read ~/Bin/hi.sh)
 	*	
 		```bash
