@@ -1,14 +1,13 @@
 
-
 *	[Practical_Vim](Practical_Vim)
 * 	[Vimstyle](Vimstyle) (from Google)
 *   [VimStory](VimStory)
 * 	[BordelVim](BordelVim)
-* 	[CheatVim](CheatVim)
-* [Environment](V-Environment)
-* 	[Plugin](Plugin)
-* 	[Tips](Tips)
+* [Plugin](Plugin)
+* [Tips](Tips)
 * [Negative Regex](V-negative-regex)
+
+## From work
 
 ```vim
 \(External.*\)\@<!mem
