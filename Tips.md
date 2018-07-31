@@ -1,5 +1,23 @@
 % Vim Tips
 
+* Substitute without escaping the replcement
+  * `:%sno/search_string/replace_string/g`
+  * `:s/</\='&lt;'/g`
+
+* Delete everything except text
+  * `:%s/\(^\|\(text\)\@<=\).\{-}\($\|text\)\@=//g`
+  *
+    ```
+    \(^\|\(text\)\@<=\)     # means start of line, or some point preceded by “text”
+    .\{-}                   # as few characters as possible
+    \($\|text\)\@=          # without globbing characters, checking that we reached either end of line or occurrence of “text”.
+    ```
+  * Another way to do it:
+
+  * Create a function that count matches of a pattern in a string (see :help match() to help you design that)
+  * Use: :%s/.*/\=repeat('text', matchcount('text', submatch(0)))
+
+
 * Find where root runtime is 
 	* `:echo $VIMRUNTIME` -> `/usr/share/vim/vim74`
 	

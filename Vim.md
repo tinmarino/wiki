@@ -8,6 +8,7 @@
 * [Environment](V-Environment)
 * 	[Plugin](Plugin)
 * 	[Tips](Tips)
+* [Negative Regex](V-negative-regex)
 
 ```vim
 \(External.*\)\@<!mem
