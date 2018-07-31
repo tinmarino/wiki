@@ -32,6 +32,29 @@ Note: While this is convenient, Git will store your credentials in clear text in
 * Make backup
     *  `git stash && git stash apply`
 
+*	Personal gitignore
+  * `git config --local -e`
+  * We want to edit the git config of the repository we’re in. The —-local flag specifies that we’re editing the config of just this repository and the —e flag tells git to edit the config. For more info on this, run git config to see all of the options.
+  * 
+	```
+	[core]
+
+		... (existing configurations)
+		excludesfile = ~/Documents/my_repo/.local_gitignore
+
+	[remote "origin"]
+
+		... (existing configurations)
+
+	[branch "master"]
+
+		... (existing configurations)
+	```
+  * Add the line in the core and then edit your .local_gitignore
+
+*   Ignore Windows newline
+    *   `git config --global core.autocrlf true`
+
 *	Show word regex in diff
 	*	`git diff --word-diff-regex=.`
 
