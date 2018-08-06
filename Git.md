@@ -32,6 +32,16 @@ Note: While this is convenient, Git will store your credentials in clear text in
 * Make backup
     *  `git stash && git stash apply`
 
+* Aliasing
+  * `git config --global alias.wdiff diff --color-words`
+  * Edit `~/.gitconfig`
+    ```
+      [alias]
+          wdiff = diff --color-words
+    ```
+* Word by word diff
+  * `git diff --color-words`
+
 *	Personal gitignore
   * `git config --local -e`
   * We want to edit the git config of the repository we’re in. The —-local flag specifies that we’re editing the config of just this repository and the —e flag tells git to edit the config. For more info on this, run git config to see all of the options.

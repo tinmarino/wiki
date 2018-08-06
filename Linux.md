@@ -8,7 +8,18 @@
 * [Gcc](Gcc)
 * [Tmux](Tmux)
 * [Pentest](Pentest)
+* [Imagemagick](Imagemagick)
 
+* 	Remotely move mouse : `xdotool`
+	```
+	#! /bin/bash
+	# move the mouse  x    y
+	xdotool mousemove 1800 500
+	# left click
+	xdotool click 1
+	# right click
+	xdotool click 3
+	```
 
 *	List device UUID
 	ls /dev:disk/by_uuid

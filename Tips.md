@@ -1,5 +1,10 @@
 % Vim Tips
 
+
+* Script : Get filetype of a buffer
+	* `:let bufFiletype = getbufvar(bufNr, '&filetype')`
+
+
 * Substitute without escaping the replcement
   * `:%sno/search_string/replace_string/g`
   * `:s/</\='&lt;'/g`

@@ -20,6 +20,7 @@ ssync ~/.vim
 ssync $current_dir
 ssync ../wiki_html
 ssync ../todo
+ssync ../html
 
 
 echo "<--- Synchronization finihed"

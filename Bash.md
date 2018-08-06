@@ -1,5 +1,17 @@
 % BASH Bourne Again SHell
 
+* Get filename and extension
+	* `filename=$(basename -- "$fullfile")`
+	* `extension="${filename##*.}"`
+	* `filename="${filename%.*}"`
+
+
+* Get source directory of a script
+	* `DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"`
+	* `dirname $0`
+	* `dirname "$(readlink -f "$0")"`
+
+
 * Faster redirect to null `| :` instead of `> /dev/null`
 
 
