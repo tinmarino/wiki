@@ -7,7 +7,18 @@
 * [Git](Git)
 * [Gcc](Gcc)
 * [Pentest](Pentest)
+* [Imagemagick](Imagemagick)
 
+* 	Remotely move mouse : `xdotool`
+	```
+	#! /bin/bash
+	# move the mouse  x    y
+	xdotool mousemove 1800 500
+	# left click
+	xdotool click 1
+	# right click
+	xdotool click 3
+	```
 
 *   Remove windows line ending
   * `tr -d '\15\32' < winfile.txt >  unixfile.txt`

@@ -6,6 +6,7 @@
 * [Plugin](Plugin)
 * [Tips](Tips)
 * [Negative Regex](V-negative-regex)
+* [Script](V-Script)
 
 ## From work
 

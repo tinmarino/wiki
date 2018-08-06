@@ -23,6 +23,15 @@ Note: While this is convenient, Git will store your credentials in clear text in
 
 # Tips
 
+* Aliasing
+  * `git config --global alias.wdiff diff --color-words`
+  * Edit `~/.gitconfig`
+    ```
+      [alias]
+          wdiff = diff --color-words
+    ```
+* Word by word diff
+  * `git diff --color-words`
 
 *	Personal gitignore
   * `git config --local -e`

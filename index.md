@@ -24,6 +24,7 @@
 
 
 ## Language
+  * [Links](Links)
   * [Python](Python)
 	* [Keywords](Py-Keywords)
   * [Js](Js)
