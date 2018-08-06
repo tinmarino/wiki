@@ -1,5 +1,13 @@
 % Readline
 
+
+* History with the current command head
+in inputrc
+"\C-p": history-search-backward            # arrow up
+"\C-n": history-search-forward             # arrow down
+"\e[A": history-search-backward            # arrow up
+"\e[B": history-search-forward             # arrow down
+
 |              |                                                                                                              |
 | ---          | -------------------------------------------------                                                            |
 | `<Up>`       | Previously used commands in the current session.                                                             |
