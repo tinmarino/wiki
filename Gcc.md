@@ -1,4 +1,10 @@
 
+
+
+* Echo include dirs
+	* g++ -E -x c++ - -v < /dev/null 
+	* clang++ -E -x c++ - -v < /dev/null
+
 * Use of Make
   * `export CFLAGS="-g"`
 
