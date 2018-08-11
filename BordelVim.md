@@ -324,4 +324,3 @@ idid-gvim ~
 
 
 
-vim: ft=myhelp
