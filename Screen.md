@@ -1,6 +1,13 @@
 % GNU screen cheat
 
 
+
+* Create window in same pwd
+  ```
+  bind x
+  bind x stuff "screen -X chdir \$PWD;screen^M"
+  ```
+
 ## Getting in test
 
 |                  |                                              |
