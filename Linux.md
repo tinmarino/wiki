@@ -9,16 +9,15 @@
 * [Pentest](Pentest)
 * [Imagemagick](Imagemagick)
 
-*	Tar
-```
-tar -cvf tecmint-14-09-12.tar /home/tecmint/
-tar cvzf MyImages-14-09-12.tar.gz /home/MyImages
-    c – Creates a new .tar archive file.
-    v – Verbosely show the .tar file progress.
-    f – File name type of the archive file.
-	z - Compress
-tar -xvf thumbnails-14-09-12.tar.gz
-```
+*	Tar   
+
+	tar - cvf tecmint-14-09-12.tar /home/tecmint/
+	tar cvzf MyImages-14-09-12.tar.gz /home/MyImages
+			c – Creates a new .tar archive file.
+			v – Verbosely show the .tar file progress.
+			f – File name type of the archive file.
+		z - Compress
+	tar -xvf thumbnails-14-09-12.tar.gz
 
 * 	Remotely move mouse : `xdotool`
 	```

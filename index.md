@@ -4,12 +4,24 @@
     * [Vim](Vim)
 	* [Emacs](Emacs)
   * [Windows](Windows)
-	* [Raccourci](Windows_Raccourci)
     * [Batch](Batch)
     * [Cmder](Cmder)
     * [Empire](Empire)
     * [Compilation](Compilation)
 
+## Language
+  * [Links](Links)
+	### Script
+  * [Perl](Perl)
+  * [Python](Python)
+  * [Js](Js)
+	### Compiled
+  * [C](C)
+  * [Cmake](Cmake)
+  ### Markup
+	* [Pandoc](Pandoc)
+	* [Markdown](Markdown)
+	* [Dot](Dot)
 
 ## Program
   * [Firefox](Firefox)

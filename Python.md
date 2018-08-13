@@ -1,5 +1,5 @@
-*c-python.txt*              Cheat: Python Language  
 
+* [Keywords](Py-Keywords)
 
 *   Use stdout and restore
     sys.stdout = openb("tmp", "w")

@@ -2,6 +2,10 @@
 
 
 
+* Change number, rename window
+	ctrl+a :number x 
+	ctrl+a A
+
 * Create window in same pwd
   ```
   bind x

@@ -6,6 +6,8 @@ title: 'Pandoc - Demos'
 From Vim :
     pandoc -s -r html http://www.gnu.org/software/make/ -o %
 
+If hhtml is not utf8 use iconv
+	wget http://www.oreilly.com/tim/herbert/ch00.html -O -| iconv -f ISO-8859-1 -t UTF8 | pandoc -f html -t markdown -o ch00.md
 
 
 Examples
