@@ -1,3 +1,6 @@
+# [If & For & Sub = Structures](Perl-Structure)
+# [List & Hash = Arrays](Perl-Array)
+# [/ = Regexp (Downloaded)](Perl-Regexp-Downloaded)
 # [Perldoc](Perl-Perldoc)
 # [Tutorial France Anger](Perl-Tuto-France)
 
@@ -43,3 +46,7 @@ Even without the /x modifier, you can enclose comments in (?# ... ):my $foo = "z
 	
 * Change file content
 	* perl -i.bak  -p -e 's/old/new/g;' *.config
+
+
+# Links (maybe to parse and add)
+* Readen from France/Anger http://www.info.univ-angers.fr/~gh/tuteurs/tutperl.htm#dataty

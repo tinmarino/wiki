@@ -11,6 +11,19 @@
     * [Empire](Empire)
     * [Compilation](Compilation)
 
+## Language
+  * [Links](Links)
+	### Script
+  * [Perl](Perl)
+  * [Python](Python)
+  * [Js](Js)
+	### Compiled
+  * [C](C)
+  * [Cmake](Cmake)
+  ### Markup
+	* [Pandoc](Pandoc)
+	* [Markdown](Markdown)
+	* [Dot](Dot)
 
 ## Program
   * [Firefox](Firefox)

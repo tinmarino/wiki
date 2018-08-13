@@ -1,4 +1,3 @@
-*c-python.txt*              Cheat: Python Language  
 
 * Print python zen (19 principles)
     import this
@@ -13,7 +12,9 @@
     "foo is %(bar)s" % {"bar":bar}
     "foo is %(bar)s" % locals()
 
-* Use stdout and restore
+* [Keywords](Py-Keywords)
+
+*   Use stdout and restore
     sys.stdout = openb("tmp", "w")
     sys.stdout = sys.__stdout__
 

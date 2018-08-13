@@ -1,4 +1,4 @@
-% To learn git 
+% Git Wiki
 
 
 *   Store credentials
@@ -41,6 +41,35 @@ Note: While this is convenient, Git will store your credentials in clear text in
     ```
 * Word by word diff
   * `git diff --color-words`
+Checkout all the files
+
+	git checkout -- .
+
+Choose ours ours (master) theirs (current branch) automaticcaly in case of conflict
+
+	git rebase -Xtheirs branch-b
+	git merge -Xours origin/master
+	git checkout --ours foo/bar.java
+	git add foo/bar.java
+
+
+Merge unrelated history (to merge different project)
+
+	--allow-unrelated-histories 
+
+Ignore file mode (755 in chmod)
+	
+	git config core.fileMode false
+
+Aliasing
+
+  git config --global alias.wdiff diff --color-words`
+  // Edit `~/.gitconfig`
+	[alias]
+			wdiff = diff --color-words
+			
+Word by word diff
+	git diff --color-words
 
 *	Personal gitignore
   * `git config --local -e`
