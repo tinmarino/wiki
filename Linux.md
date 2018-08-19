@@ -1,6 +1,7 @@
 * [Sed](Sed)
 * [Awk](Awk)
 * [Readline](Readline)
+* [Tmux](Tmux)
 * [Screen](Screen)
 * [Dialog](Dialog)
 * [Termux](Termux)
@@ -17,8 +18,9 @@
 			c – Creates a new .tar archive file.
 			v – Verbosely show the .tar file progress.
 			f – File name type of the archive file.
-		z - Compress
+	  	z - Compress
 	tar -xvf thumbnails-14-09-12.tar.gz
+	tar -zxvf tar-archive-name.tar.gz 
 
 * 	Remotely move mouse : `xdotool`
 	```
