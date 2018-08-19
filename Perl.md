@@ -10,41 +10,49 @@ my $foo = "zombies are the bombies";if ($foo =~ /             zombie  # sorry pi
 Even without the /x modifier, you can enclose comments in (?# ... ):my $foo = "zombies are the bombies";if ( $foo =~ /zombie(?# sorry pirates)/ ) {    print "urg. brains.\n";}
 
 
+Extend @LIB
+	export PERL5LIB=/home/foobar/code
+	use lib '/home/foobar/code';
+	use My::Module;
+	perl -I /home/foobar/code script.pl  # That is a capital i like include
+	
 
-* Fork Bomb
-        perl -e "fork while fork" &
+Fork Bomb
+	perl -e "fork while fork" &
 		
-* Console 
-	 perl -de1 # debugging a trivial programe
+Console 
+	perl -de1 # debugging a trivial programe
 
-* Write multiple line regex
-	* Delete the space, then type CtrlV, CtrlJ.
-		Then Return.
+Write multiple line regex  
+	* Delete the space, then type CtrlV, CtrlJ.  
+		Then Return.  
 		The Ctrl-V prevents the shell interpreting the next character (newline) literally.
-	* 
+	* toto
 		
 
-* Match brace, bracket or parenthesis
+Match brace, bracket or parenthesis
 	* Use Text::Balanced
-  *
+	*
 	```
 	my $re; $re = qr/ \{ (?: [^{}]* | (??{$re}) )* \} /x;
-  my @array = $str =~ /$re/xg;
+	my @array = $str =~ /$re/xg;
 	```
 
 
-* Get environment varaibles
+Get environment varaibles
 	* `$userName =  $ENV{'LOGNAME'};`
 	* print "Hello, $userName\n"; 
 
 
 # Command line
 
-* Interactive shell
+Interactive shell
 	* perl -de1
 	* rlwrap perl -d -e 1
+	* perlconsole (get history)
+	* see psh
 	
-* Change file content
+Change file content
 	* perl -i.bak  -p -e 's/old/new/g;' *.config
 
 
