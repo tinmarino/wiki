@@ -1,14 +1,47 @@
-# [If & For & Sub = Structures](Perl-Structure)
-# [List & Hash = Arrays](Perl-Array)
-# [/ = Regexp (Downloaded)](Perl-Regexp-Downloaded)
-# [Perldoc](Perl-Perldoc)
-# [Tutorial France Anger](Perl-Tuto-France)
+* [Perldoc](Perl-Perldoc)
+* [Cheatsheet_one_page](Perl-Cheatsheet_one_page)
+
+* [If & For & Sub = Structures](Perl-Structure)
+* [List & Hash = Arrays](Perl-Array)
+* [/ = Regexp (Downloaded)](Perl-Regexp-Downloaded)
+* [Tutorial France Anger](Perl-Tuto-France)
+* [One_Liners (Downloaded)](Perl-One_Liners)
+
+# Packages
+
+|                |   |
+| ---            | --- |
+| Cwd            | Change working directory |
+| Reply          | Read Execute Print Loop |
+| PDL            | Perl Data Library |
+| PDL::IO::Image | Image manipulation (object) |
+|                |   |
+|                |   |
+
 
 my $foo = "zombies are the bombies";if ($foo =~ /             zombie  # sorry pirates            /x ) {    print "urg. brains.\n";}
 /x modifier for pretty regzx print
 
 Even without the /x modifier, you can enclose comments in (?# ... ):my $foo = "zombies are the bombies";if ( $foo =~ /zombie(?# sorry pirates)/ ) {    print "urg. brains.\n";}
 
+
+Get package path
+  perl -MTime::HiRes -e 'print $INC{"Time/HiRes.pm"}' or perldoc -l Time::HiRes
+	cpan -D Time::HiRes
+
+How do I completely remove an element from an array?
+	@array = grep { $_ != $element_omitted } @array;
+	```
+	@files = qw(/foo/bar/file.pdf /foo/baz/file2.jpg);
+
+	foreach $file (@files) {
+			# exclude any files whose full name contains the string 'bar'
+			next if $file =~ /bar/;
+
+			# print all other files
+			print "$file\n";
+	}
+	```
 
 Extend @LIB
 	export PERL5LIB=/home/foobar/code
@@ -54,6 +87,55 @@ Interactive shell
 	
 Change file content
 	* perl -i.bak  -p -e 's/old/new/g;' *.config
+
+
+| Argument | Description |
+|----------|---|
+| -0       | Split on NULL byte (almost never) |
+| -0777    | Treat the file as a whole (do not delete new lines |
+| -I path  | Add path to @INC |
+| -i[.bak] | Do in place substitution like : |
+|          | `perl -i.bak -ne 'print unless /^#/' script.sh` |
+| -a       | Enable autosplit mode : split input lines on whitespace into the @F array |
+|          | `ls -l <bar> perl -lane 'print "$F[7] $F[1]"'` |
+| -F:      | Choose the -a delimiter (here :) |
+|          | `perl -F: -lane 'print $F[0]' /etc/passwd` |
+| -MModule | Include module : `-MRegexp::Common` |
+| -n       | Process files line by line |
+| -p       | Process line by line and print output |
+| -v       | Check Perl version |
+|          |   |
+|          |   |
+|          |   |
+
+The perl command is in apostrophes, and escaping those is hard work…
+So if your regex happens to contain apostrophes, first place it in an env variable then refer to it by name :
+	env mypattern="'\w+" perl -0777 -ne 'while(m/$ENV{mypattern}/g){print "$&\n";}' yourfile
+
+
+
+# Regexp
+
+| Regexp        | Meaning |
+|---------------|---|
+| `(?=regex)`   | Positive lookahead |
+| `(?!regex)`   | Negative lookahead |
+| `(?=(regex))` | Capturing lookahead |
+| `(?<=text)b`  | Positive lookbehind |
+| `(?<!text)b`  | Negative lookbehind |
+| `(?:regex)`   | Non capturing group |
+| `\K`          | \vs in vim (start recording) |
+|               |   |
+
+
+
+
+| Modifer | Meaning |
+|---------|---|
+| s       | Include newlines in . |
+| m       | Include newlines in ^ and $ |
+| r       | Non destructive |
+|         |   |
 
 
 # Links (maybe to parse and add)

@@ -4,10 +4,29 @@
 
 tmux list-keys | grep "send-keys -X cancel"
 
+Reorder windows?
+	swap-window -s 3 -t 1
+	swap-window -t 0
+	move-window -t 0 #  In the unlikely case of having no window at index 0, do:
+	bind-key T swap-window -t 0
+
 
 # tmux cheat sheet
 
 (C-x means ctrl+x, M-x means alt+x)
+
+## Getting help
+
+Display a list of keyboard shortcuts:
+
+    C-a ?
+
+Navigate using Vim or Emacs shortcuts, depending on the value of `mode-keys`. Emacs is the default, and if you want Vim shortcuts for help and copy modes (e.g. j, k, C-u, C-d), add the following line to `~/.tmux.conf`:
+
+    setw -g mode-keys vi
+
+Any command mentioned in this list can be executed as `tmux something` or `C-a :something` (or added to `~/.tmux.conf`).
+
 
 
 ## Prefix key
@@ -31,35 +50,34 @@ Window is a single screen covered with panes. (Once might compare it to a ‘vir
 
 Pane is a rectangular part of a window that runs a specific command, e.g. a shell.
 
-
-## Getting help
-
-Display a list of keyboard shortcuts:
-
-    C-a ?
-
-Navigate using Vim or Emacs shortcuts, depending on the value of `mode-keys`. Emacs is the default, and if you want Vim shortcuts for help and copy modes (e.g. j, k, C-u, C-d), add the following line to `~/.tmux.conf`:
-
-    setw -g mode-keys vi
-
-Any command mentioned in this list can be executed as `tmux something` or `C-a :something` (or added to `~/.tmux.conf`).
+swap-window -s 3 -t 1
+swap-window -t 0
+move-window -t 0
+bind-key T swap-window -t 0
+bind-key -n C-S-Left swap-window -t -1
+bind-key -n C-S-Right swap-window -t +1
 
 
-## Managing sessions
+## Sessions
 
 Creating a session:
 
-    tmux new-session -s work
+	tmux new[-session] -s work
 
 Create a new session that shares all windows with an existing session, but has its own separate notion of which window is current:
 
-    tmux new-session -s work2 -t work
+	tmux new-session -s work2 -t work
 
 Attach to a session:
 
     tmux attach -t work
 
 Detach from a session: `C-a d`.
+
+Kill session 
+	tmux kill-session -t mysession      # Kill my session
+	tmux kill-session -a                # Kill all sessions
+	tmux kill-session -a -t mysession   # Kill all sessions but the current
 
 Switch between sessions:
 
@@ -71,10 +89,9 @@ Switch between sessions:
 Other:
 
     C-a $          rename the current session
-    C-a
 
 
-## Managing windows
+## Windows
 
 Create a window:
 
@@ -82,9 +99,7 @@ Create a window:
 
 Switch between windows:
 
-    C-a 1 ...      switch to window 1, ..., 9, 0
-    C-a 9
-    C-a 0
+    C-a 0 ... 9    switch to window 0, ..., 9
     C-a p          previous window
     C-a n          next window
     C-a l          ‘last’ (previously used) window
@@ -97,20 +112,34 @@ Switch between windows with a twist:
     C-a M-p        previous such window
 
 
-Other:
+Rename, Kill:
 
     C-a ,          rename the current window
     C-a &          kill the current window
+		
+Reorder (from commmands)
+	:swap-window -s 2 -t 1    # Reorder window, swap window number 2(src) and 1(dst)
+	:swap-window -t -1        # Move current window to the left by one position
 
 
 ## Managing split panes
 
-Creating a new pane by splitting an existing one:
+__Split__: Creating a new pane by splitting an existing one:
 
-    C-a "          split vertically (top/bottom)
-    C-a %          split horizontally (left/right)
+	C-a "          split vertically (top/bottom)
+	C-a %          split horizontally (left/right)
 
-Switching between panes:
+  * __Conf__: Spliting panes using | and _
+		
+		bind | split-window -h  
+		bind - split-window -v  
+		bind _ split-window -v  
+		unbind '"'  
+		unbind %  
+	
+		
+
+__Switch__: between panes:
 
     C-a left       go to the next pane on the left
     C-a right      (or one of these other directions)
@@ -118,8 +147,9 @@ Switching between panes:
     C-a down
     C-a o          go to the next pane (cycle through all of them)
     C-a ;          go to the ‘last’ (previously used) pane
+    C-a q 0 ... 9  go to pane number 0 ... 9
 
-Moving panes around:
+__Move__: panes around:
 
     C-a {          move the current pane to the previous position
     C-a }          move the current pane to the next position
@@ -130,14 +160,26 @@ Moving panes around:
     C-a :move-pane -t :3.2
                    split window 3's pane 2 and move the current pane there
 
-Resizing panes:
+__Resize__: panes:
 
     C-a M-up, C-a M-down, C-a M-left, C-a M-right
                    resize by 5 rows/columns
     C-a C-up, C-a C-down, C-a C-left, C-a C-right
                    resize by 1 row/column
+    C-a z          toggle pane zoom
+		
+  * __Conf__: Resizing commands
 
-Applying predefined layouts:
+		:resize-pane -D (Resizes the current pane down)
+		:resize-pane -U (Resizes the current pane upward)
+		:resize-pane -L (Resizes the current pane left)
+		:resize-pane -R (Resizes the current pane right)
+		:resize-pane -D 10 (Resizes the current pane down by 10 cells)
+		:resize-pane -U 10 (Resizes the current pane upward by 10 cells)
+		:resize-pane -L 10 (Resizes the current pane left by 10 cells)
+		:resize-pane -R 10 (Resizes the current pane right by 10 cells)
+
+__Evenify__: Applying predefined layouts:
 
     C-a M-1        switch to even-horizontal layout
     C-a M-2        switch to even-vertical layout
@@ -147,10 +189,73 @@ Applying predefined layouts:
     C-a space      switch to the next layout
 
 
-Other:
+__Other__:
 
     C-a x          kill the current pane
     C-a q          display pane numbers for a short while
+
+
+
+## Copy mode
+
+
+
+:setw -g mode-keys vi	  # use vi keys in buffer
+
+
+	Function                vi             emacs
+	Back to indentation     ^              M-m
+	Clear selection         Escape         C-g
+	Copy selection          Enter          M-w
+	Cursor down             j              Down
+	Cursor left             h              Left
+	Cursor right            l              Right
+	Cursor to bottom line   L
+	Cursor to middle line   M              M-r
+	Cursor to top line      H              M-R
+	Cursor up               k              Up
+	Delete entire line      d              C-u
+	Delete to end of line   D              C-k
+	End of line             $              C-e
+	Goto line               :              g
+	Half page down          C-d            M-Down
+	Half page up            C-u            M-Up
+	Next page               C-f            Page down
+	Next word               w              M-f
+	Paste buffer            p              C-y
+	Previous page           C-b            Page up
+	Previous word           b              M-b
+	Quit mode               q              Escape
+	Scroll down             C-Down or J    C-Down
+	Scroll up               C-Up or K      C-Up
+	Search again            n              n
+	Search backward         ?              C-r
+	Search forward          /              C-s
+	Start of line           0              C-a
+	Start selection         Space          C-Space
+	Transpose chars                        C-t
+
+
+__From and to copy mode__:
+
+	Ctrl + b ]               # Paste contents of buffer_0
+	Ctrl + b [               # Enter copy mode
+	Ctrl + b PgUp            # Enter copy mode and scroll one page up
+	q                        # Quit mode
+	Spacebar                 # Start selection
+	Esc                      # Clear selection
+	Enter                    # Copy selection
+	
+	
+	
+__Copy commands__
+
+	:show-buffer             # display buffer_0 contents
+	:capture-pane            # copy entire visible contents of pane to a buffer
+	:list-buffers            # Show all buffers
+	:choose-buffer           # Show all buffers and paste selected
+	:save-buffer buf.txt     # Save buffer contents to buf.txt
+	:delete-buffer -b 1      # delete buffer_1
 
 
 ## Other config file settings
@@ -171,7 +276,7 @@ set -g status-bg cyan
 set-option -g prefix C-a
 unbind C-b 
 
-### key bindings
+# key bindings (other cheat)
 tmux may be controlled from an attached client by using a key combination of a prefix key, ‘C-b’ (Ctrl-b) by default, followed by a command key.
 
 * ? List all key bindings.
