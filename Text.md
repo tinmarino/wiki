@@ -1,5 +1,6 @@
 
 *   [Quotes](Quotes)
+*		[Emoji](Emoji)
 
 *   [Principle_of_war](Principle_of_war)
 *   [TaoTeKing](TaoTeKing)

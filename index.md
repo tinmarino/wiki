@@ -21,6 +21,7 @@
   * [C](C)
   * [Cmake](Cmake)
   ### Markup
+	* [Latex](Latex)
 	* [Pandoc](Pandoc)
 	* [Markdown](Markdown)
 	* [Dot](Dot)
@@ -30,6 +31,7 @@
 		
 
 ## Misc
+	* [Accronym](Accronym)
   * [Draw](Draw)
   * [Memo](Memo)
   * [Todo](Todo)

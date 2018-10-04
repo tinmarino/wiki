@@ -1,5 +1,13 @@
 % Perldoc [option]
 
+Fast
+----
+
+>perldoc perlcheat
+:packadd viewdoc
+:ViewDocPerl perlcheat
+
+
 Module Options                               
 --------------                               
          Module documentation     
@@ -10,9 +18,11 @@ Module Options
 
 Search Options
 --------------
--f     Get a built-in function definition
--v     Get a variable definition
--q      Search the faq for a keyword
+-f			Get a built-in function definition
+				`perldoc -f open`
+-v			Get a variable definition
+-q			Search the faq for a keyword
+				`perldoc -q html`
 
 
 Commonly Used Entries
@@ -23,6 +33,7 @@ perlfunc     Built-in functions documentation
 perlvar      Predefined variables documentation
 perlref      References documentation
 perlre       Regex documentation
+perlcheat
 faq          The Perl FAQ
 
 Help
