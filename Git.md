@@ -26,11 +26,19 @@ Note: While this is convenient, Git will store your credentials in clear text in
 *   Ignore Windows newline
     *   `git config --global core.autocrlf true`
 
+*   
 
 
 # Change history
 
-`git rebase -i <commit>~1` # Can edit or delete commits  
+## Analyse
+
+* To see which commit modified the file
+    * `git log --all -- <filepath accepting *>`
+    * `git log --all --full-history -- **/thefile.*`
+    * 
+
+* `git rebase -i <commit>~1`          # Can edit or delete commits  
 
 
 
