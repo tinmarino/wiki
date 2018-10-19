@@ -355,6 +355,8 @@ g&                  to make a replacement on all file lines ( equivalent to :%s/
 1025,$s:^\(\d\+\.*\d*\)\s\+\(\d*\.*\d*\):\=printf("%f\t%f",submatch(1)/3.0, submatch(2) /3.0)
 1025,$s:^\(\d*\)\s\+\(\d*\):\=submatch(1) . "\t" . submatch(2)*200
 1025,$s:^(d*):=submatch(1)*200
+:s/helo/hello/g 4   Do the substitution in the next 4 lines
+:%s/^/\=line('.') . "."/g       Substitute all line with its line number
 
 
 ### Range 

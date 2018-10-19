@@ -5,6 +5,7 @@
 
 *	[Practical_Vim](Practical_Vim)
 * 	[Vimstyle](Vimstyle) (from Google)
+*   [VimStory](VimStory)
 * 	[BordelVim](BordelVim)
 * 	[CheatVim](CheatVim)
 * 	[Plugin](Plugin)
@@ -17,6 +18,11 @@
 *   `set lazyredraw` can be usefull too
 *   h ttyfast
 *   222go  go to byte 222
+
+## No newline at end of file
+
+*   `vim -b file` or `set binary`
+*   `:set noeol` or `set nofixendofline`
 
 ## Environment
 

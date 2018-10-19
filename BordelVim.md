@@ -12,6 +12,12 @@ add to .classpath (graddle)
    	<classpathentry exported="true" kind="lib" path="/home2/tourneboeuf/Software/Android/SDK/android-sdk-linux/platforms/android-22/android.jar"/>
 
 
+gI insert text at column 1
+
+:read name
+:read !command
+:set backspace=indent,eol,start
+
 
 
 
