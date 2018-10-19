@@ -1,4 +1,8 @@
 
+*   Get pid
+    title=mycmd
+    tasklist /v /fo csv | findstr /i "mycmd"
+    
 
 *   `start`
     *   `/B`    In background -> Like echo "aezaz" &
