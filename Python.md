@@ -1,9 +1,17 @@
 *c-python.txt*              Cheat: Python Language  
 
 
+*   Use stdout and restore
+    sys.stdout = openb("tmp", "w")
+    sys.stdout = sys.__stdout__
 
 *   Hexadeciaml outputs
     get_ipython().display_formatter.formatters['text/plain'].for_type([[int,]] lambda n, p, cycle : p.text("0x%x" %n))
+    
+*   With Statement : 2 one the same line
+    with open('a', 'w') as a, open ('b', 'w') as b :
+        do_stuff()
+        
 
 
 ==============================================================================
@@ -29,6 +37,10 @@ Counting-For-Loop ~
 for i in range(start, end [, step]):
   statements
     -> (start is included; end is not)
+    
+with context_manager_classs as cr ~
+a Context Manager class must have `__enter__` and `__exit__` methods
+
 
 FUNCTION DEFINITIONS                                       *c-python-function*
 def name(arg1, arg2, ...):
