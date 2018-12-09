@@ -1,3 +1,4 @@
+* [Perl Snippet](Perl-Snippet)
 * [Perldoc](Perl-Perldoc)
 * [Cheatsheet_one_page](Perl-Cheatsheet_one_page)
 

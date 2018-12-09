@@ -1,3 +1,4 @@
+*		[Algérie](Algérie)
 
 *   [Quotes](Quotes)
 *		[Emoji](Emoji)
@@ -7,6 +8,7 @@
 *   [Art Poetique](Art_Poetique)
 *   [Art De Péter](Art_De-Peter)
 
+*		[Hymne Algerien](Hymne-Algerien)
 
 *   [Harmonica1](Harmonica1)
 *   [Harmonica2](Harmonica2)
