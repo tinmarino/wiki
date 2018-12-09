@@ -1,12 +1,53 @@
-* [Perl Snippet](Perl-Snippet)
 * [Perldoc](Perl-Perldoc)
 * [Cheatsheet_one_page](Perl-Cheatsheet_one_page)
+* [One_Liners](Perl-One_Liners)
 
+
+# Old
 * [If & For & Sub = Structures](Perl-Structure)
 * [List & Hash = Arrays](Perl-Array)
 * [/ = Regexp (Downloaded)](Perl-Regexp-Downloaded)
 * [Tutorial France Anger](Perl-Tuto-France)
-* [One_Liners (Downloaded)](Perl-One_Liners)
+* [Perl One_Liners_old](Perl-One_Liners_old)
+* [Perl Snippet](Perl-Snippet)
+
+
+# Command line
+
+Interactive shell
+	* perl -de1
+	* rlwrap perl -d -e 1
+	* perlconsole (get history)
+	* see psh
+	* reply (the best because it uses readline)
+	
+Change file content
+	* perl -i.bak  -p -e 's/old/new/g;' *.config
+
+
+| Argument | Description |
+|----------|---|
+| -0       | Split on NULL byte (almost never) |
+| -0777    | Treat the file as a whole (do not delete new lines |
+| -I path  | Add path to @INC |
+| -i[.bak] | Do in place substitution like : |
+|          | `perl -i.bak -ne 'print unless /^#/' script.sh` |
+| -a       | Enable autosplit mode : split input lines on whitespace into the @F array |
+|          | `ls -l <bar> perl -lane 'print "$F[7] $F[1]"'` |
+| -F:      | Choose the -a delimiter (here :) |
+|          | `perl -F: -lane 'print $F[0]' /etc/passwd` |
+| -MModule | Include module : `-MRegexp::Common` |
+| -n       | Process files line by line |
+| -p       | Process line by line and print output |
+| -v       | Check Perl version |
+|          |   |
+|          |   |
+|          |   |
+
+The perl command is in apostrophes, and escaping those is hard work…
+So if your regex happens to contain apostrophes, first place it in an env variable then refer to it by name :
+	env mypattern="'\w+" perl -0777 -ne 'while(m/$ENV{mypattern}/g){print "$&\n";}' yourfile
+
 
 # Packages
 
@@ -44,6 +85,9 @@ How do I completely remove an element from an array?
 	}
 	```
 
+Print Hash
+	print "$_ $h{$_}\n" for (keys %h);
+
 Extend @LIB
 	export PERL5LIB=/home/foobar/code
 	use lib '/home/foobar/code';
@@ -76,42 +120,6 @@ Match brace, bracket or parenthesis
 Get environment varaibles
 	* `$userName =  $ENV{'LOGNAME'};`
 	* print "Hello, $userName\n"; 
-
-
-# Command line
-
-Interactive shell
-	* perl -de1
-	* rlwrap perl -d -e 1
-	* perlconsole (get history)
-	* see psh
-	
-Change file content
-	* perl -i.bak  -p -e 's/old/new/g;' *.config
-
-
-| Argument | Description |
-|----------|---|
-| -0       | Split on NULL byte (almost never) |
-| -0777    | Treat the file as a whole (do not delete new lines |
-| -I path  | Add path to @INC |
-| -i[.bak] | Do in place substitution like : |
-|          | `perl -i.bak -ne 'print unless /^#/' script.sh` |
-| -a       | Enable autosplit mode : split input lines on whitespace into the @F array |
-|          | `ls -l <bar> perl -lane 'print "$F[7] $F[1]"'` |
-| -F:      | Choose the -a delimiter (here :) |
-|          | `perl -F: -lane 'print $F[0]' /etc/passwd` |
-| -MModule | Include module : `-MRegexp::Common` |
-| -n       | Process files line by line |
-| -p       | Process line by line and print output |
-| -v       | Check Perl version |
-|          |   |
-|          |   |
-|          |   |
-
-The perl command is in apostrophes, and escaping those is hard work…
-So if your regex happens to contain apostrophes, first place it in an env variable then refer to it by name :
-	env mypattern="'\w+" perl -0777 -ne 'while(m/$ENV{mypattern}/g){print "$&\n";}' yourfile
 
 
 
