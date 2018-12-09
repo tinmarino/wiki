@@ -18,6 +18,11 @@ Reorder windows?
 	bind-key T swap-window -t 0
 
 
+
+
+================================================================================
+
+
 # tmux cheat sheet
 
 (C-x means ctrl+x, M-x means alt+x)

@@ -12,6 +12,12 @@
 * [Imagemagick](Imagemagick)
 * [BusyBox](BusyBox)
 
+* Hybernate
+	sudo pm-hibernate
+	sudo systemctl hibernate
+
+
+
 *	Tar   
 
 	tar - cvf tecmint-14-09-12.tar /home/tecmint/
