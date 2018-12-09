@@ -33,7 +33,8 @@ perlfunc     Built-in functions documentation
 perlvar      Predefined variables documentation
 perlref      References documentation
 perlre       Regex documentation
-perlcheat
+perlcheat		 Cheatsheet
+perlrun			 Command line options
 faq          The Perl FAQ
 
 Help
