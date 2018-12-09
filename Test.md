@@ -18,3 +18,22 @@ This sould be followed by code
 	and yes 
 	this shoudl be co
 	de
+	
+This is a table
+
+| Name      |  Size |    Cost |
+|-----------+------:+--------:|
+| Africans  |    22 |      31 |
+| Normandie |    33 | 2066.55 |
+| Nord      |    84 |      33 |
+| Total     | 117.0 |    2099 |
+%% tmf: $4,2=Sum(2:-1) ; $4,3=float2nr(Sum(2:-1))
+
+From CSV 
+
+| Name    | Pay1 | Pay2 |
+|---------+-----:+-----:|
+| Frinde1 |  221 |   33 |
+| Frinde2 |   22 |   33 |
+| Frinde3 |   22 |   33 |
+
