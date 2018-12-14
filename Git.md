@@ -10,23 +10,27 @@ Stores permanently
 Note: While this is convenient, Git will store your credentials in clear text in a local file (.git-credentials) under your project directory (see below for the "home" directory). If you don't like this, delete this file and switch to using the cache option.
 
 
-0. List							|git-list|
-1. Start						|git-init|
-2. Config 						|git-config|
-3. Aliases 						|git-alias|
-4. Branches 					|git-branch|
-5. Merge 						|git-merge|
-6. Rebasing 					|git-rebase|
-7. Remote 						|git-remote|
-8. Local 						|git-local|
+0. List
+1. Start
+2. Config
+3. Aliases
+4. Branches
+5. Merge
+6. Rebasing
+7. Remote
+8. Local
 
 
 # Tips
 
-*   Ignore Windows newline
-    *   `git config --global core.autocrlf true`
+* Ignore Windows newline
+    * `git config --global core.autocrlf true`
 
-*   
+* Get statistic lines changed stats
+    * `git diff --stat`
+
+* Make backup
+    *  `git stash && git stash apply`
 
 
 # Change history
