@@ -1,5 +1,13 @@
 *c-python.txt*              Cheat: Python Language  
 
+*   Format string
+    "foo is {}".format(bar)
+    "foo is {bar}".format(bar=bar)
+    "foo is %s" % (bar,)
+    "foo is %(bar)s" % {"bar":bar}
+    "foo is %(bar)s" % locals()
+    
+
 
 *   Use stdout and restore
     sys.stdout = openb("tmp", "w")
