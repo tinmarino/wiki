@@ -6,6 +6,9 @@
 * [Git](Git)
 * [Gcc](Gcc)
 
+*   Find file (and print only finle name)
+    * `find /dir1 -type f -printf "%f\n"`
+    * `find ./dir1 -type f -exec basename {} \;`  # If no printf 
 
 *   Remove windows line ending
   * `tr -d '\15\32' < winfile.txt >  unixfile.txt`

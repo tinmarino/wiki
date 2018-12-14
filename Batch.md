@@ -1,3 +1,5 @@
+* Get MD5
+    certUtil -hashfile example.zip MD5
 
 *   Get pid
     title=mycmd
