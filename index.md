@@ -4,6 +4,7 @@
     * [Vim](Vim)
 		* [Emacs](Emacs)
   * [Windows](Windows)
+    * [Powershell](Powershell)
     * [Batch](Batch)
     * [Cmder](Cmder)
     * [Empire](Empire)
