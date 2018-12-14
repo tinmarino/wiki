@@ -15,17 +15,33 @@
 ```
 
 *	`1gt` goto tab 1
+
+* wchar encoding
+  :e ++enc=utf-16
+
 *   `set cul!` if scrooling slow for a long line
 *   `set lazyredraw` can be usefull too
 *   h ttyfast
 *   222go  go to byte 222
 
-## No newline at end of file
+
+### Sort lines according to line length
+*   :%s/.*/\=printf("%03d", len(submatch(0)) . "|" . submatch(0)/ | sor n | %s/..../  
+    To sort all lines according to line lenght, otherwise, use awk with filter
+    
+    
+### Reverse line order
+*   :%!tac
+*   :%!tail -r
+*   g/^/m0
+
+
+### No newline at end of file
 
 *   `vim -b file` or `set binary`
 *   `:set noeol` or `set nofixendofline`
 
-## Environment
+### Environment
 
 * echo $PATH
 * let myvar = $PATH
@@ -33,12 +49,12 @@
 * i<c-r>=$PATH
 
 
-## C-s
+### C-s
 
 * Can lock the terminal : <c-q> to unlock
 * stty -ixon # for a permanent solution
 
-## GVim
+### GVim
 
 :set guioptions-=m " remove menu bar
 :set guioptions-=T " remove toobar
