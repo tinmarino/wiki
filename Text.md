@@ -10,3 +10,7 @@
 *   [Harmonica1](Harmonica1)
 *   [Harmonica2](Harmonica2)
 *   [Harmonica3](Harmonica3)
+
+
+
+Subsidiarité : déléguer une tâche à l'échellon le plus bas possible
