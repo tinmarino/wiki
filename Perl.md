@@ -37,7 +37,10 @@ Change file content
 |          | `ls -l <bar> perl -lane 'print "$F[7] $F[1]"'` |
 | -F:      | Choose the -a delimiter (here :) |
 |          | `perl -F: -lane 'print $F[0]' /etc/passwd` |
+|          |   |
 | -MModule | Include module : `-MRegexp::Common` |
+|          | `perl -MList::Util=max -ape 's/$/" " . max(@F)/e unless $.==1' input` |
+|          | `-Mmodule=foo,bar` is `use module split(/,/,q{foo,bar})` |
 | -n       | Process files line by line |
 | -p       | Process line by line and print output |
 | -v       | Check Perl version |
