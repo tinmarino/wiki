@@ -10,6 +10,7 @@
 * [Pentest](Pentest)
 * [Imagemagick](Imagemagick)
 * [BusyBox](BusyBox)
+* [W3m](W3m)
 
 * Hybernate
 	sudo pm-hibernate

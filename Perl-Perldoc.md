@@ -29,6 +29,7 @@ Commonly Used Entries
 ---------------------
 perl         Language overview, list of all other entries
 perltoc      Table of contents
+perlsyn			 List of all symbols (if for))
 perlfunc     Built-in functions documentation
 perlvar      Predefined variables documentation
 perlref      References documentation

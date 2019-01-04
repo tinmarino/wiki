@@ -1,5 +1,7 @@
 % Readline
 
+Reload inputrc
+  bind -f ~/.inputrc
 
 * History with the current command head
 in inputrc
