@@ -17,6 +17,7 @@
 *   [Harmonica2](Harmonica2)
 *   [Harmonica3](Harmonica3)
 
+*	[Cohen : if it be your will](Cohen-If-it-be-your-will)
 
 
 Subsidiarité : déléguer une tâche à l'échellon le plus bas possible

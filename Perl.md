@@ -43,8 +43,8 @@ Change file content
 |          | `-Mmodule=foo,bar` is `use module split(/,/,q{foo,bar})` |
 | -n       | Process files line by line |
 | -p       | Process line by line and print output |
+| -l         | Remove newline char before giving line to you (and add it at the end)  |
 | -v       | Check Perl version |
-|          |   |
 |          |   |
 |          |   |
 
