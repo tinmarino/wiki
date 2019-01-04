@@ -1,7 +1,12 @@
+Il ne faut pas attendre d'être parfait pour commencer quelque chose de bien. (Abbé Pierre) 
+
+Nous avons autant besion de raisons de vivre que de quoi vivre (Abbé Pierre)
+C'est la vie qui doir créer la loi. Et non pas la loi, figer la vie. (Abbé Pierre)
+Souviens-toi d'aimer. (Abbé Pierre)
+ L'espérance, c'est de croire que la vie a un sens. (Abbé Pierre)
+  (Abbé Pierre)
+	
 * The competent programmer is fully aware of the strictly limited size of his own skull	(Dijkstra, the humble programmer)
-
-
-
 
 *		It's hard enough to start a revolution, even harder to sustain it and hardest of all to win it. But it's only afterward, once we've won, that the real difficulties begins. 
 
@@ -18,5 +23,3 @@
 * Fais du mieux que tu peux car c'est le mieux que tu puisse faire.
 * Peux importe l'altitude, seule la pente compte.
 * Il est légitime que les plus forts te traitent comme tu traites les plus faibles.
-* 
-
