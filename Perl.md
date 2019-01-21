@@ -3,6 +3,7 @@
 * [One_Liners](Perl-One_Liners)
 
 
+[Perl Programming Note](Perl-Programming-Note)
 # Old
 * [If & For & Sub = Structures](Perl-Structure)
 * [List & Hash = Arrays](Perl-Array)
@@ -121,10 +122,9 @@ Match brace, bracket or parenthesis
 	```
 
 
-Get environment varaibles
+Get environment variables
 	* `$userName =  $ENV{'LOGNAME'};`
 	* print "Hello, $userName\n"; 
-
 
 
 # Regexp
