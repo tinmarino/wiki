@@ -1,3 +1,13 @@
+* Assemble
+	* gcc file.c -masm=intel-S -o file.d # assemble
+	* gcc -c file.s -i file.o # compile
+	* gcc file.o -o file # link
+	* gcc file.S -o  file
+	* .s means pure asm .S means macro too
+	* man as
+	* see inline asm
+	* man objdump
+	* -m32  # compile 32 must instal libc en 32 bits
 
 
 
