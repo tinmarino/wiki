@@ -1,6 +1,9 @@
 % Tmux : TerminalMultiplexer
 
+[Tmux Conf](Tmux-Conf)
+
 # Tips
+
 
 tmux list-keys | grep "send-keys -X cancel"
 
