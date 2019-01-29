@@ -1,5 +1,7 @@
 % BASH Bourne Again SHell
 
+[Bash Rc](Bash-Rc)
+
 * Get filename and extension
 	* `filename=$(basename -- "$fullfile")`
 	* `extension="${filename##*.}"`

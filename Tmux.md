@@ -6,8 +6,10 @@
     tmux list-commands
     tmux info
     tmux source-file ~/.tmux.conf
+[Tmux Conf](Tmux-Conf)
 
 # Tips
+
 
 tmux list-keys | grep "send-keys -X cancel"
 
