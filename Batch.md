@@ -1,3 +1,32 @@
+* Comment
+	rem this do nothing
+	echo toto & rem this will nto be displayed
+	echo toto & :: also that
+
+
+* Display file content    # Same as cat (unix)
+	type file.txt
+	more file.txt
+
+
+* Filetype association
+	assoc .pl=Perl
+	ftype Perl="C:\Perl\bin\perl.exe" "%1" %*
+	
+	
+* Path extension (add .pl as executable files)
+	set PATHEXT=%PATHEXT%;.pl
+	set PATHEXT=%PATHEXT%;.    # Add empty extension to executables
+
+
+* Shellbang
+	assoc .=shebangfile
+	ftype shebangfile=shebang.bat "%1" %*
+	set PATHEXT=%PATHEXT%;.
+	TODO : get shellbang file from whitescreen nicolas windows shelbangs
+	
+	echo "@%*" > env.bat
+	
 * Get MD5
     certUtil -hashfile example.zip MD5
 
@@ -8,9 +37,6 @@
 
 *   `start`
     *   `/B`    In background -> Like echo "aezaz" &
-
-
-*   `type c.txt`            # Same as cat (unix)
 
 
 *   `set /a result=(100*x)/y`
@@ -24,6 +50,8 @@
 *   windbg -k com:pipe,port=\\.\pipe\windbg4,resets=0,baud=115200 -y Z:\Symbols
 
 
+* FINDSTR
+  * `findstr /I /S "Search text" *.*`
 
 
 
