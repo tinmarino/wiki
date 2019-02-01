@@ -1,5 +1,47 @@
 * [Js Fuck](Js-Fuck)
 
+
+# Cheat
+
+* Scroll to bottom of page (dynamically appending content)
+    ```html
+    <body id='body' onLoad='main()'>
+        <div id="top"></div>
+        <div id="bottom"></div>
+    </body>
+    <script>
+        document.getElementById('bottom').scrollIntoView();
+    </script>
+    ```
+* Load page on click
+    ```html
+    <input id="btntest" type="button" value="Check"
+    onclick="window.location.href = 'http://www.google.com'" />
+    ```
+    
+* Passing additional parameters to a Promise .then
+    P.then( doWork.bind('text', null) );
+    P.then( function(data) {return doWork('text', data);} );
+    P.then( data => doWork('text', data) );
+    
+    
+# Vars
+
+| keyword | meaning  |
+| ---     | ---      |
+| var     | function |
+| let     | block    |
+| []      | global   |
+    
+# Loop
+
+* Loop 100 times
+    for (let i of Array(100).keys()) {
+        console.log(i);
+    }
+    
+    
+    
 # String
 
 * Substring
