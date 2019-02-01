@@ -19,6 +19,7 @@
   * [Memo](Memo)
   * [Todo](Todo)
   * [Text](Text)
+  * [Link](Link)
   * [StackOverflow](StackOverflow)
 
 

@@ -5,6 +5,11 @@
 * [Termux](Termux)
 * [Git](Git)
 * [Gcc](Gcc)
+* [Tmux](Tmux)
+
+
+*	List device UUID
+	ls /dev:disk/by_uuid
 
 *   Find file (and print only finle name)
     * `find /dir1 -type f -printf "%f\n"`

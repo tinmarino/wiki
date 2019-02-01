@@ -1,22 +1,26 @@
 *c-python.txt*              Cheat: Python Language  
 
-*   Format string
+* Print python zen (19 principles)
+    import this
+    
+* Get interpreter executable path
+    sys.executable
+    
+* Format string
     "foo is {}".format(bar)
     "foo is {bar}".format(bar=bar)
     "foo is %s" % (bar,)
     "foo is %(bar)s" % {"bar":bar}
     "foo is %(bar)s" % locals()
-    
 
-
-*   Use stdout and restore
+* Use stdout and restore
     sys.stdout = openb("tmp", "w")
     sys.stdout = sys.__stdout__
 
-*   Hexadeciaml outputs
+* Hexadeciaml outputs
     get_ipython().display_formatter.formatters['text/plain'].for_type([[int,]] lambda n, p, cycle : p.text("0x%x" %n))
     
-*   With Statement : 2 one the same line
+* With Statement : 2 one the same line
     with open('a', 'w') as a, open ('b', 'w') as b :
         do_stuff()
         
