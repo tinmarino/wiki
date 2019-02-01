@@ -14,6 +14,10 @@
 
 ## From work
 
+* set fileencoding=utf-8
+* set bomb
+* :w ++enc=utf-8 %
+* args *
 * wchar encoding
   :e ++enc=utf-16
 
