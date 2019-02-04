@@ -3,6 +3,11 @@
 
 # Cheat
 
+* Save
+    ```js
+    window.document.execCommand("saveAs", true, "test.txt")
+    ```
+
 * Scroll to bottom of page (dynamically appending content)
     ```html
     <body id='body' onLoad='main()'>
