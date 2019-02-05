@@ -22,8 +22,6 @@
 * args *
 * wchar encoding
   :e ++enc=utf-16
-
-
 *	`1gt` goto tab 1
 *   `set cul!` if scrooling slow for a long line
 *   `set lazyredraw` can be usefull too

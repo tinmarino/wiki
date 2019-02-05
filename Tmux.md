@@ -1,12 +1,23 @@
 % Tmux : TerminalMultiplexer
 
+[Tmux Conf](Tmux-Conf)
+
 # Get help
 
     tmux list-keys
     tmux list-commands
     tmux info
     tmux source-file ~/.tmux.conf
-[Tmux Conf](Tmux-Conf)
+		
+Display a list of keyboard shortcuts:
+
+    C-a ?
+
+Navigate using Vim or Emacs shortcuts, depending on the value of `mode-keys`. Emacs is the default, and if you want Vim shortcuts for help and copy modes (e.g. j, k, C-u, C-d), add the following line to `~/.tmux.conf`:
+
+    setw -g mode-keys vi
+
+Any command mentioned in this list can be executed as `tmux something` or `C-a :something` (or added to `~/.tmux.conf`).
 
 # Tips
 
@@ -19,28 +30,9 @@ Reorder windows?
 	move-window -t 0 #  In the unlikely case of having no window at index 0, do:
 	bind-key T swap-window -t 0
 
-
-
-
-================================================================================
-
-
 # tmux cheat sheet
 
 (C-x means ctrl+x, M-x means alt+x)
-
-## Getting help
-
-Display a list of keyboard shortcuts:
-
-    C-a ?
-
-Navigate using Vim or Emacs shortcuts, depending on the value of `mode-keys`. Emacs is the default, and if you want Vim shortcuts for help and copy modes (e.g. j, k, C-u, C-d), add the following line to `~/.tmux.conf`:
-
-    setw -g mode-keys vi
-
-Any command mentioned in this list can be executed as `tmux something` or `C-a :something` (or added to `~/.tmux.conf`).
-
 
 
 ## Prefix key
@@ -380,4 +372,3 @@ tmux may be controlled from an attached client by using a key combination of a p
 * M-Up, M-Down, M-Left, M-Right Resize the current pane in steps of five cells.
 
 Key bindings may be changed with the bind-key and unbind-key commands.
->>>>>>> Content

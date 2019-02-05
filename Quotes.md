@@ -32,4 +32,3 @@
 * Peux importe l'altitude, seule la pente compte.
 
 * Il est légitime que les plus forts te traitent comme tu traites les plus faibles.
-

@@ -7,7 +7,6 @@
 * [Termux](Termux)
 * [Git](Git)
 * [Gcc](Gcc)
-* [Tmux](Tmux)
 * [Pentest](Pentest)
 * [Imagemagick](Imagemagick)
 * [BusyBox](BusyBox)

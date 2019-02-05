@@ -41,9 +41,9 @@ Note: While this is convenient, Git will store your credentials in clear text in
     ```
 * Word by word diff
   * `git diff --color-words`
-Checkout all the files
 
-	git checkout -- .
+* Checkout all the files
+	* `git checkout -- .`
 
 Choose ours ours (master) theirs (current branch) automaticcaly in case of conflict
 
