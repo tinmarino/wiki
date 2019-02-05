@@ -1,3 +1,5 @@
+```
+>>>>>>> Emoji add
 # Emoji Data for UTR #51
 #
 # File:    emoji-data.txt
@@ -1313,3 +1315,4 @@
 1F1FF 1F1E6 ;	emoji ;	L2 ;	none ;	x	# V6.0 (🇿🇦) flag for South Africa
 1F1FF 1F1F2 ;	emoji ;	L2 ;	none ;	x	# V6.0 (🇿🇲) flag for Zambia
 1F1FF 1F1FC ;	emoji ;	L2 ;	none ;	x	# V6.0 (🇿🇼) flag for Zimbabwe
+```
