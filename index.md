@@ -43,9 +43,11 @@
   * [Memo](Memo)
   * [Todo](Todo)
   * [Text](Text)
+  * [Emoji](Emoji)
   * [Link](Link)
 	* [Notes](Notes)
   * [StackOverflow](StackOverflow)
 
 * [Interrupt](Interrupt)
 * [Test](Test)
+* [Pentest Uri](Pentest-Uri)
