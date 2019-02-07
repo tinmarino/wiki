@@ -38,6 +38,7 @@
   * [Todo](Todo)
   * [Text](Text)
   * [Link](Link)
+	* [Notes](Notes)
   * [StackOverflow](StackOverflow)
 
 * [Interrupt](Interrupt)
