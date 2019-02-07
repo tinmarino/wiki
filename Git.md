@@ -45,7 +45,7 @@ Note: While this is convenient, Git will store your credentials in clear text in
 * Checkout all the files
 	* `git checkout -- .`
 
-Choose ours ours (master) theirs (current branch) automaticcaly in case of conflict
+Choose ours (master) theirs (current branch) automaticcaly in case of conflict
 
 	git rebase -Xtheirs branch-b
 	git merge -Xours origin/master
