@@ -1,5 +1,5 @@
 * Assemble
-	* gcc file.c -masm=intel-S -o file.d # assemble
+	* gcc file.c -masm=intel -S -o file.d # assemble
 	* gcc -c file.s -i file.o # compile
 	* gcc file.o -o file # link
 	* gcc file.S -o  file
