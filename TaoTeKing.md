@@ -81,7 +81,7 @@ L'eau excelle à faire du bien aux êtres et ne lutte point.
 Elle habite les lieux que déteste la foule.  
 C'est pourquoi (le sage) approche du Tao.  
 Il se plaît dans la situation la plus humble.  
-Son cur aime à être profond comme un abîme.  
+Son coeur aime à être profond comme un abîme.  
 S'il fait des largesses, il excelle à montrer de l'humanité.  
 S'il parle, il excelle à pratiquer la vérité.  
 S'il gouverne, il excelle à procurer la paix.  
@@ -607,7 +607,7 @@ Celui qui est pur et tranquille devient le modèle de l'univers.
 # Poême 46                    
   
 Lorsque le Tao régnait dans le monde, on renvoyait les chevaux pour cultiver les champs.  
-Depuis quele Tao ne règne plus dans le monde, les chevaux de combat naissent sur les frontières.  
+Depuis que le Tao ne règne plus dans le monde, les chevaux de combat naissent sur les frontières.  
 Il n'y a pas de plus grand crime que de se livrer à ses désirs.  
 Il n'y a pas de plus grand malheur que de ne pas savoir se suffire.  
 Il n'y a pas de plus grande calamité que le désir d'acquérir.  
@@ -618,7 +618,7 @@ Celui qui sait se suffire est toujours content de son sort.
 # Poême 47                    
   
 Sans sortir de ma maison, je connais l'univers ; sans regarder par ma fenêtre, je découvre les voies du ciel.  
-Plus l'on s'éloigne et moi l'on apprend<sup>38</sup>.  
+Plus l'on s'éloigne et moins l'on apprend<sup>38</sup>.  
 C'est pourquoi le sage arrive (où il veut) sans marcher ; il nomme les objets sans les voir, sans agir, il accomplit de grandes choses.  
   
   
