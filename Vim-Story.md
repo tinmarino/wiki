@@ -1,6 +1,4 @@
 
-
-
 # Chronology
 
 Vi started to run on Amiga (no existing port of Vi) imitating Stevie
