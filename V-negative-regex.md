@@ -139,28 +139,3 @@ non-matching lines there:
 
 You are now are editing a clone of your original file with all lines not
 matching "warning" removed and you can edit it at will.
-
-[References]{#References .mw-headline}[[![](data:image/gif;base64,R0lGODlhAQABAIABAAAAAP///yH5BAEAAAEALAAAAAABAAEAQAICTAEAOw%3D%3D){.sprite .edit-pencil}Edit](/wiki/Search_for_lines_not_containing_pattern_and_other_helpful_searches?action=edit&section=2 "Edit References section")]{.editsection}
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
--   [:help /\\@=](http://vimdoc.sourceforge.net/cgi-bin/help?tag=%2F%5C%40%3D){.external
-    .text}
--   [:help /\\@!](http://vimdoc.sourceforge.net/cgi-bin/help?tag=%2F%5C%40%21){.external
-    .text}
--   [:help /\\@&lt;=](http://vimdoc.sourceforge.net/cgi-bin/help?tag=%2F%5C%40%3C%3D){.external
-    .text}
--   [:help /\\@&lt;!](http://vimdoc.sourceforge.net/cgi-bin/help?tag=%2F%5C%40%3C%21){.external
-    .text}
--   [:help /\\@&gt;](http://vimdoc.sourceforge.net/cgi-bin/help?tag=%2F%5C%40%3E){.external
-    .text}
--   [:help /\\zs](http://vimdoc.sourceforge.net/cgi-bin/help?tag=%2F%5Czs){.external
-    .text}
--   [:help /\\ze](http://vimdoc.sourceforge.net/cgi-bin/help?tag=%2F%5Cze){.external
-    .text}
--   [:help /\\%\^](http://vimdoc.sourceforge.net/cgi-bin/help?tag=%2F%5C%25%5E){.external
-    .text}
--   [:help /\\%\$](http://vimdoc.sourceforge.net/cgi-bin/help?tag=%2F%5C%25%24){.external
-    .text}
--   [:help :g](http://vimdoc.sourceforge.net/cgi-bin/help?tag=%3Ag){.external
-    .text}
-

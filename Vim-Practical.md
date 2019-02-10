@@ -343,7 +343,6 @@ Tip 96. Find and Replace Across Multiple Files
                               " suppress these error messages
     :vimgrep /<C-r>// **/*.txt
     The author made a vimL snippet for :quickfixdo
-```vim
         command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
         function! QuickfixFilenames()
         let buffer_numbers = {}
@@ -352,7 +351,6 @@ Tip 96. Find and Replace Across Multiple Files
         endfor
         return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
         endfunction
-   ```
 ```
 
 ### 15. Global Commands 
