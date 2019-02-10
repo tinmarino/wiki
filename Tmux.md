@@ -9,6 +9,16 @@
     tmux info
     tmux source-file ~/.tmux.conf
 		
+		list-keys -T copy-mode-vi
+		
+		
+# Copy mode
+		bind-key -T copy-mode-vi 'v' send -X begin-selection
+		bind-key -T copy-mode-vi 'y' send -X copy-selection-and-cancel
+		<C-b> =  # show the yank ring
+		
+		
+		
 Display a list of keyboard shortcuts:
 
     C-a ?
@@ -21,6 +31,9 @@ Any command mentioned in this list can be executed as `tmux something` or `C-a :
 
 # Tips
 
+* Rename window
+	* `bind-key + ,`
+	* `set-window-option -g automatic-rename off`
 
 tmux list-keys | grep "send-keys -X cancel"
 

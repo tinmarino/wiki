@@ -1,3 +1,8 @@
+
+* B : Previous buffer (page)
+* H : Help
+
+
 w3m MANUAL
 
                         Akinori Ito
