@@ -1,3 +1,26 @@
+* Le plus lucratif des commerces serait d'acheter les hommes ce qu'ils valent et de les revendre ce qu'ils s'estiment (Jean-Antoine Petit-Sein)
+
+* Ce n'est pas parce que les choses sont difficiles qye nous n'osons pas ; mais c'est parce que nous n'osons pas qu'elles sont difficiles (Sénèque)
+
+* Celui qui a l'oeil fixé sur une étoile ne se retourne pas (Léonardo da Vinci)
+
+* Nous ne possédons réellement que ce que nois avons donné (Frédéric Ozanam)
+
+* Mieux vaut se mettre sérieusement à quelque chose de médiocre que de rêver éternellement au parfait (Pierre Palau)
+
+* C'est dans la négligeance des petits devoirs qu'on fait l'apprentissage des grandes fautes (Suzanne Necker)
+
+* C'est avec une petite chose et une grande idée que Dieu fait ses chefs-d'oeuvre (Léon Ollé-Laprune)
+
+* Je ne sais pas, Seigneur, si vous êtes content de moi; mais moi, je suis très content de Vous ! (Louis Bourdaloue)
+
+* L'autorité n'est peut être que l'art de faire de ses buts un idéal pour les autres (Ber'ard Grasset)
+
+* Le soleil n'est que l'ombre de Dieu (Michel-Ange)
+
+* Il en coûte cher pour devenir raisonnable : il en coûte sa jeunesse (Madamme de la Fayette) 
+
+
 * The competent programmer is fully aware of the strictly limited size of his own skull	(Dijkstra, the humble programmer)
 
 *		It's hard enough to start a revolution, even harder to sustain it and hardest of all to win it. But it's only afterward, once we've won, that the real difficulties begins. 
