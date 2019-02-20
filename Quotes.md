@@ -20,6 +20,27 @@
 
 * Il en coûte cher pour devenir raisonnable : il en coûte sa jeunesse (Madamme de la Fayette) 
 
+* Ce n'est pas la foi qui est difficile ; c'est l'humilité (Louis Veuillot)
+
+* Deux excès : exclure la raison, n'admettre que la raison (Blaise Pascal)
+
+* L'ombre nous suit quand nous allons vers la lumière et nous précède quand nous nous éloignons d'elle (Vladimir Ghika)
+
+* Si tu t'arrêtes à jeter des pierres aux chiens qui aboient contre toi, tu n'arriveras jamais au but de ton voyage (proverbe arabe)
+
+* La rouille use beaucoup plus le fer que ne le fait le travail (Louis Veuillot)
+
+* Qu'on soit brave ou qu'on soit poltron, le risque est le même : pourquoi ne pas être brave ? (Capitain Pierre Garçot)
+
+* Les succès crient au crétien : Continue, comme les revers lui disent : Recommence (père Antonin-Gilbert Sertil)
+
+* Commence par admirer ce que Dieu te montre, et tu n'auras pas le temps de chercher ce qu'il te cache (Alexandre Dumas)
+
+* La récompense d'une bonne action, c'est de l'avoir faite (Sénèque)
+
+* Ne me dites pas que ce problème est difficile. S'il n'était pas difficile, ce ne serait pas un problème (Maréchal Foch)
+
+* Mili : Soyons fermes, purs et fidèles. Au bout de nos peines, il y a la plus grande gloire du monde, celles des hommes qui n'pnt pas cédé (Charles de Gaulle)
 
 * The competent programmer is fully aware of the strictly limited size of his own skull	(Dijkstra, the humble programmer)
 
