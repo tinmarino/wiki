@@ -1,9 +1,9 @@
 * [Perldoc](Perl-Perldoc)
 * [Cheatsheet_one_page](Perl-Cheatsheet_one_page)
 * [One_Liners](Perl-One_Liners)
+* [Perl Programming Note](Perl-Programming-Note)
+* [Japh](Perl-Japh) : Just Another Perl Hacker
 
-
-[Perl Programming Note](Perl-Programming-Note)
 # Old
 * [If & For & Sub = Structures](Perl-Structure)
 * [List & Hash = Arrays](Perl-Array)
@@ -11,6 +11,12 @@
 * [Tutorial France Anger](Perl-Tuto-France)
 * [Perl One_Liners_old](Perl-One_Liners_old)
 * [Perl Snippet](Perl-Snippet)
+
+# Tips
+
+use Number::Format 'format_number'
+glob
+.perldlrc  # to edit and load automatically some libs
 
 
 # Command line
@@ -56,6 +62,9 @@ So if your regex happens to contain apostrophes, first place it in an env variab
 
 # Packages
 
+cpan install CPAN
+cpan reload cpan
+
 |                |   |
 | ---            | --- |
 | Cwd            | Change working directory |
@@ -89,7 +98,22 @@ How do I completely remove an element from an array?
 			print "$file\n";
 	}
 	```
+# Pdl
 
+
+pdl
+>demo
+# Profiling
+
+	perl -d:DProf program.pl
+	dprofpp
+	dprofpp -p program.pl
+	perl -d:NYTProf some_perl.pl
+	nytprofhtml
+	
+	perldoc perldebguts
+	
+	
 Print Hash
 	print "$_ $h{$_}\n" for (keys %h);
 

@@ -1,3 +1,5 @@
+* In trying to make programming predictable, computer scientists have mostly succeeded in making it boring (Larry Wall)
+
 * Le plus lucratif des commerces serait d'acheter les hommes ce qu'ils valent et de les revendre ce qu'ils s'estiment (Jean-Antoine Petit-Sein)
 
 * Ce n'est pas parce que les choses sont difficiles qye nous n'osons pas ; mais c'est parce que nous n'osons pas qu'elles sont difficiles (Sénèque)
