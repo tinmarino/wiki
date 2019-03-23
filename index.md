@@ -12,7 +12,6 @@
 		* [Compilation](Compilation)
 
 ## Language
-	* [Links](Links)
 	### Script
 	* [Perl](Perl)
 	* [Python](Python)
@@ -25,6 +24,9 @@
 	* [Pandoc](Pandoc)
 	* [Markdown](Markdown)
 	* [Dot](Dot)
+	### Algorithm
+	* [Paradigm](Paradigm-Programming)
+	* [Links](Links)
 
 ## Program
 	* [Firefox](Firefox)

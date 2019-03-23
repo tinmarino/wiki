@@ -290,7 +290,6 @@ Les Copains d'abord
 ```
 
 
-
                                                   
 ### DES QUE LE VENT SOUFFLERA 
 
@@ -569,37 +568,29 @@ Nous l'avons franchi souviens-toi...
 
 ```text
 5  -5   5 -4  4   -4   4  -4   5  -4  4   4
-
 I list-en to the wind to the wind of my soul
 
   5     5   -5  5  -4   4   -4  4  -4  5   -4   4   4 
-
 Where I’ll end up well, I think o-nly God real-ly knows
 
 5 -4  4  4   4   4   -4   5   4  -4  4    3  4   -4  4   5  4 
-
 I sat u-pon the set-ting sun but ne-ver, ne-ver, ne-ver ne-ver
 
 5 -4  4    4   4  4  -4   5   4  -4  4    3  5   -4  4 
-
 I ne-ver want-ed wat-er once no, ne-ver, ne-ver, ne-ver
 
   
 
 5  -5   5 -4  4  -4    4   -4    5  -4   4  4 
-
 I list-en to my words but they fall far be-low
 
 5  -5  5 -4  4   -4   4    4  -4   5    -4    4  4
-
 I let my mu-sic take me where my heart wants to go 
 
 5  -4  4  4   4   4  -4     5   4   -4  4   3  4  -4  4   5 -44 
-
 I swam u-pon the de-vil’s lake but, ne-ver ne-ver ne-ver ne-ver 
 
   5  -4  4    4   4    4  -4  5-44   4  -4  4    3  5   -4  4
-
 I’ll ne-ver make the same mis-take, no, ne-ver, ne-ver, ne-ver
 ```
 
