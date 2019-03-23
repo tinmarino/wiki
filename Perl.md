@@ -32,28 +32,26 @@ Change file content
 	* perl -i.bak  -p -e 's/old/new/g;' *.config
 
 
-| Argument | Description |
-|----------|---|
-| -0       | Split on NULL byte (almost never) |
-| -00      | Split on paragraph |
-| -0777    | Treat the file as a whole (do not delete new lines |
-| -I path  | Add path to @INC |
-| -i[.bak] | Do in place substitution like : |
-|          | `perl -i.bak -ne 'print unless /^#/' script.sh` |
-| -a       | Enable autosplit mode : split input lines on whitespace into the @F array |
-|          | `ls -l <bar> perl -lane 'print "$F[7] $F[1]"'` |
-| -F:      | Choose the -a delimiter (here :) |
-|          | `perl -F: -lane 'print $F[0]' /etc/passwd` |
-|          |   |
-| -MModule | Include module : `-MRegexp::Common` |
-|          | `perl -MList::Util=max -ape 's/$/" " . max(@F)/e unless $.==1' input` |
-|          | `-Mmodule=foo,bar` is `use module split(/,/,q{foo,bar})` |
-| -n       | Process files line by line |
-| -p       | Process line by line and print output |
-| -l         | Remove newline char before giving line to you (and add it at the end)  |
-| -v       | Check Perl version |
-|          |   |
-|          |   |
+| Argument   | Description |
+| ---------- | --- |
+| -0         | Split on NULL byte (almost never) |
+| -00        | Split on paragraph |
+| -0777      | Treat the file as a whole (do not delete new lines |
+| -I path    | Add path to @INC |
+| -i[.bak]   | Do in place substitution like : |
+|            | `perl -i.bak -ne 'print unless /^#/' script.sh` |
+| -a         | Enable autosplit mode : split input lines on whitespace into the @F array |
+|            | `ls -l <bar> perl -lane 'print "$F[7] $F[1]"'` |
+| -F:        | Choose the -a delimiter (here :) |
+|            | `perl -F: -lane 'print $F[0]' /etc/passwd` |
+|            |   |
+| -MModule   | Include module : `-MRegexp::Common` |
+|            | `perl -MList::Util=max -ape 's/$/" " . max(@F)/e unless $.==1' input` |
+|            | `-Mmodule=foo,bar` is `use module split(/,/,q{foo,bar})` |
+| -n         | Process files line by line |
+| -p         | Process line by line and print output |
+| -l         | Remove newline char before giving line to you (and add it at the end) |
+| -v         | Check Perl version |
 
 The perl command is in apostrophes, and escaping those is hard work…
 So if your regex happens to contain apostrophes, first place it in an env variable then refer to it by name :
@@ -71,8 +69,6 @@ cpan reload cpan
 | Reply          | Read Execute Print Loop |
 | PDL            | Perl Data Library |
 | PDL::IO::Image | Image manipulation (object) |
-|                |   |
-|                |   |
 
 
 my $foo = "zombies are the bombies";if ($foo =~ /             zombie  # sorry pirates            /x ) {    print "urg. brains.\n";}

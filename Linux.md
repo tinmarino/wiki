@@ -12,6 +12,15 @@
 * [BusyBox](BusyBox)
 * [W3m](W3m)
 
+* Module (kernel)
+    depmod - handle dependency descriptions for loadable kernel modules.
+    insmod - install loadable kernel module.
+    lsmod - list loaded modules.
+    modinfo - display information about a kernel module.
+    modprobe - high level handling of loadable modules.
+    rmmod - unload loadable modules.
+
+
 * Hybernate
 	sudo pm-hibernate
 	sudo systemctl hibernate
