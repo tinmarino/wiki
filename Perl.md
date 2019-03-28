@@ -19,6 +19,89 @@ glob
 .perldlrc  # to edit and load automatically some libs
 
 
+Symbol table edition
+	for (keys %main::){say}
+	*sym = $main::{"/"}
+
+Use Unicode::Collate::Sort  
+
+my $foo = "zombies are the bombies";if ($foo =~ /             zombie  # sorry pirates            /x ) {    print "urg. brains.\n";}
+/x modifier for pretty regzx print
+
+Even without the /x modifier, you can enclose comments in (?# ... ):my $foo = "zombies are the bombies";if ( $foo =~ /zombie(?# sorry pirates)/ ) {    print "urg. brains.\n";}
+
+
+Get package path
+  perl -MTime::HiRes -e 'print $INC{"Time/HiRes.pm"}' or perldoc -l Time::HiRes
+	cpan -D Time::HiRes
+
+How do I completely remove an element from an array?
+	@array = grep { $_ != $element_omitted } @array;
+	```
+	@files = qw(/foo/bar/file.pdf /foo/baz/file2.jpg);
+
+	foreach $file (@files) {
+			# exclude any files whose full name contains the string 'bar'
+			next if $file =~ /bar/;
+
+			# print all other files
+			print "$file\n";
+	}
+	```
+
+Pdl
+	pdl >demo
+
+
+
+Profiling
+
+	perl -d:DProf program.pl
+	dprofpp
+	dprofpp -p program.pl
+	perl -d:NYTProf some_perl.pl
+	nytprofhtml
+	
+	perldoc perldebguts
+	
+	
+Print Hash
+	print "$_ $h{$_}\n" for (keys %h);
+
+Extend @LIB
+	export PERL5LIB=/home/foobar/code
+	use lib '/home/foobar/code';
+	use My::Module;
+	perl -I /home/foobar/code script.pl  # That is a capital i like include
+	
+
+Fork Bomb
+	perl -e "fork while fork" &
+		
+Console 
+	perl -de1 # debugging a trivial programe
+
+Write multiple line regex  
+	* Delete the space, then type CtrlV, CtrlJ.  
+		Then Return.  
+		The Ctrl-V prevents the shell interpreting the next character (newline) literally.
+	* toto
+		
+
+Match brace, bracket or parenthesis
+	* Use Text::Balanced
+	*
+	```
+	my $re; $re = qr/ \{ (?: [^{}]* | (??{$re}) )* \} /x;
+	my @array = $str =~ /$re/xg;
+	```
+
+
+Get environment variables
+	* `$userName =  $ENV{'LOGNAME'};`
+	* print "Hello, $userName\n"; 
+
+
 # Command line
 
 Interactive shell
@@ -70,83 +153,6 @@ cpan reload cpan
 | PDL            | Perl Data Library |
 | PDL::IO::Image | Image manipulation (object) |
 
-
-my $foo = "zombies are the bombies";if ($foo =~ /             zombie  # sorry pirates            /x ) {    print "urg. brains.\n";}
-/x modifier for pretty regzx print
-
-Even without the /x modifier, you can enclose comments in (?# ... ):my $foo = "zombies are the bombies";if ( $foo =~ /zombie(?# sorry pirates)/ ) {    print "urg. brains.\n";}
-
-
-Get package path
-  perl -MTime::HiRes -e 'print $INC{"Time/HiRes.pm"}' or perldoc -l Time::HiRes
-	cpan -D Time::HiRes
-
-How do I completely remove an element from an array?
-	@array = grep { $_ != $element_omitted } @array;
-	```
-	@files = qw(/foo/bar/file.pdf /foo/baz/file2.jpg);
-
-	foreach $file (@files) {
-			# exclude any files whose full name contains the string 'bar'
-			next if $file =~ /bar/;
-
-			# print all other files
-			print "$file\n";
-	}
-	```
-# Pdl
-
-
-pdl
->demo
-# Profiling
-
-	perl -d:DProf program.pl
-	dprofpp
-	dprofpp -p program.pl
-	perl -d:NYTProf some_perl.pl
-	nytprofhtml
-	
-	perldoc perldebguts
-	
-	
-Print Hash
-	print "$_ $h{$_}\n" for (keys %h);
-
-Extend @LIB
-	export PERL5LIB=/home/foobar/code
-	use lib '/home/foobar/code';
-	use My::Module;
-	perl -I /home/foobar/code script.pl  # That is a capital i like include
-	
-
-Fork Bomb
-	perl -e "fork while fork" &
-		
-Console 
-	perl -de1 # debugging a trivial programe
-
-Write multiple line regex  
-	* Delete the space, then type CtrlV, CtrlJ.  
-		Then Return.  
-		The Ctrl-V prevents the shell interpreting the next character (newline) literally.
-	* toto
-		
-
-Match brace, bracket or parenthesis
-	* Use Text::Balanced
-	*
-	```
-	my $re; $re = qr/ \{ (?: [^{}]* | (??{$re}) )* \} /x;
-	my @array = $str =~ /$re/xg;
-	```
-
-
-Get environment variables
-	* `$userName =  $ENV{'LOGNAME'};`
-	* print "Hello, $userName\n"; 
-
-
 # Regexp
 
 | Regexp        | Meaning |
@@ -158,8 +164,6 @@ Get environment variables
 | `(?<!text)b`  | Negative lookbehind |
 | `(?:regex)`   | Non capturing group |
 | `\K`          | \vs in vim (start recording) |
-|               |   |
-
 
 
 
@@ -168,7 +172,6 @@ Get environment variables
 | s       | Include newlines in . |
 | m       | Include newlines in ^ and $ |
 | r       | Non destructive |
-|         |   |
 
 
 # Links (maybe to parse and add)
