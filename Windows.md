@@ -1,5 +1,22 @@
 * [Raccourci](Windows_Raccourci)
 * [Cmder](Windows_Cmder)
+* [[Windows Services](Windows-Services)]
+
+
+* User and groups (local)
+    * `lusrmgr`
+
+* Procmon
+    * To trace boot process
+        * remove the drivers if error
+        * Do not capture befor reoobting
+        * Open procmon afeter startup, it will ask you if you wanna recover the boot logs
+        * Save as a logfile
+        * `procmon /BackingFile c:\Users\user\Desktop\proc.pml /AcceptEula /Quiet /noconnect`
+        * `procmon /Terminate`
+
+* Driver loading management `fltmc`
+    * `fltmc UNLOAD PROCMON23`
 
 ## Tab manipulation
 
@@ -29,5 +46,4 @@ shift+f5 : Full screen current slide
 
 # Windows shortcut
 
-win r   cmd 
-run
+win r cmd  # as run
