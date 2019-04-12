@@ -1,7 +1,27 @@
 * [Js Fuck](Js-Fuck)
+* [Js Security](Js-Security)
 
 
 # Cheat
+
+* XmlHttpRequest
+    ```js
+    const req = new XMLHttpRequest();
+    req.open("GET", "url", true);
+    req.send(null);
+    console.log(req.responseText);
+    ```
+    * req.onreadystatechange = function(){console.log("ready")}
+    * req.readyState  // === 4 (request finished)
+    * req.status  // === 200 (response received)
+    * req.(setRequest|getResponse)Header()
+
+* history (window.history)
+    * pushState(history.state, "title", "http://url")
+    * back()
+    * foward()
+    * go(1) && go(-1)
+    * length
 
 * Save
     ```js
@@ -18,11 +38,21 @@
         document.getElementById('bottom').scrollIntoView();
     </script>
     ```
-* Load page on click
-    ```html
-    <input id="btntest" type="button" value="Check"
-    onclick="window.location.href = 'http://www.google.com'" />
-    ```
+
+* Change url :
+    * Load page on click
+        ```html
+        <input id="btntest" type="button" value="Check"
+        onclick="window.location.href = 'http://www.google.com'" />
+        ```
+    * `window.open(url)` # open url in new tab
+    * `window.navigate("index.html")`  # open url __same__ tab (navigate)
+    * `document.location.replace("index.html")`  # open url __same__ tab (replace)
+    * `window.location.href` # url
+    * `window.location.hostname` # domain name
+    * `window.location.pathname` # path and filename of current page
+    * `window.location.protocol` # protocl (http:)
+    * `window.location.assign` # load document
     
 * Passing additional parameters to a Promise .then
     P.then( doWork.bind('text', null) );
