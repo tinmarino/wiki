@@ -2,10 +2,10 @@
   * [Linux](Linux)
     * [Bash](Bash)
     * [Vim](Vim)
-		* [Emacs](Emacs)
+    * [Emacs](Emacs)
   * [Windows](Windows)
     * [Powershell](Powershell)
-		* [Raccourci](Windows_Raccourci)
+    * [Raccourci](Windows_Raccourci)
     * [Batch](Batch)
     * [Cmder](Cmder)
     * [Empire](Empire)
@@ -13,26 +13,27 @@
 
 ## Language
   * [Links](Links)
-	### Script
+  ### Script
   * [Perl](Perl)
   * [Python](Python)
   * [Js](Js)
-	### Compiled
+  ### Compiled
   * [C](C)
   * [Cmake](Cmake)
   ### Markup
-	* [Latex](Latex)
-	* [Pandoc](Pandoc)
-	* [Markdown](Markdown)
-	* [Dot](Dot)
+    * [Html](Html)
+    * [Latex](Latex)
+    * [Pandoc](Pandoc)
+    * [Markdown](Markdown)
+    * [Dot](Dot)
 
 ## Program
   * [Firefox](Firefox)
-	* [Ia](Ia)
-		
+    * [Ia](Ia)
+
 
 ## Misc
-	* [Accronym](Accronym)
+  * [Accronym](Accronym)
   * [Draw](Draw)
   * [Memo](Memo)
   * [Todo](Todo)
