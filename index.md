@@ -20,6 +20,7 @@
 	* [C](C)
 	* [Cmake](Cmake)
 	### Markup
+	* [Html](Html)
 	* [Latex](Latex)
 	* [Pandoc](Pandoc)
 	* [Markdown](Markdown)
@@ -36,9 +37,9 @@
 	* [Math](Math)
 	* [Physics](Physics)
 
+
 ## Misc
-	* [Accronym](Accronym)
-	* [Food](Food)
+  * [Accronym](Accronym)
   * [Draw](Draw)
   * [Memo](Memo)
   * [Todo](Todo)
