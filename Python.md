@@ -2,8 +2,9 @@
 * Print python zen (19 principles)
     import this
     
-* Get interpreter executable path
-    sys.executable
+* Get Path 
+    sys.executable # interpreter executable path
+    os.path.realpath(__file__) # current script
     
 * Format string
     "foo is {}".format(bar)
@@ -11,6 +12,7 @@
     "foo is %s" % (bar,)
     "foo is %(bar)s" % {"bar":bar}
     "foo is %(bar)s" % locals()
+    "{{Hello}} {0}".format(42)  # prints {Hello} 42
 
 * [Keywords](Py-Keywords)
 

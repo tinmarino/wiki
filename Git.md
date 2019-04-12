@@ -10,17 +10,6 @@ Stores permanently
 Note: While this is convenient, Git will store your credentials in clear text in a local file (.git-credentials) under your project directory (see below for the "home" directory). If you don't like this, delete this file and switch to using the cache option.
 
 
-0. List
-1. Start
-2. Config
-3. Aliases
-4. Branches
-5. Merge
-6. Rebasing
-7. Remote
-8. Local
-
-
 # Tips
 
 * Ignore Windows newline
@@ -108,6 +97,17 @@ Word by word diff
     * 
 
 * `git rebase -i <commit>~1`          # Can edit or delete commits  
+
+
+0. List
+1. Start
+2. Config
+3. Aliases
+4. Branches
+5. Merge
+6. Rebasing
+7. Remote
+8. Local
 
 
 
