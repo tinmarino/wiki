@@ -1,8 +1,8 @@
 
-*	[Practical_Vim](Practical_Vim)
-* 	[Vimstyle](Vimstyle) (from Google)
-*   [VimStory](VimStory)
-* 	[BordelVim](BordelVim)
+* [Practical_Vim](Practical_Vim)
+* [Vimstyle](Vimstyle) (from Google)
+* [VimStory](VimStory)
+* [BordelVim](BordelVim)
 * [Plugin](Plugin)
 * [Tips](Tips)
 * [Negative Regex](V-negative-regex)
@@ -27,6 +27,10 @@
 *   `set lazyredraw` can be usefull too
 *   h ttyfast
 *   222go  go to byte 222
+
+
+### Save with sudo
+*   `:w !sudo tee %
 
 
 ### Sort lines according to line length
