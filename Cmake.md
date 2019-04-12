@@ -24,6 +24,7 @@ cmake-commands ~
 	cmake --build . --config release
 	cmake .. -G "NMake Makefiles" # To create and nmake file dans build I can compile then with nmake 
 	nmake /help # in windows to get help 
+    -DCMAKE_BUILD_TYPE=Relase
 <bash	
 
 
