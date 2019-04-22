@@ -1,5 +1,12 @@
 % Readline
 
+
+$ echo -e "\e[?1000;1006;1015h" # Enable
+$ echo -e "\e[?1000;1006;1015l" # Disable
+$ bind '"\e[<":"echo totot is happy"'
+$ bind -m emacs  -x '"\C-h":"echo totot is happy"'
+
+
 man console_codes
 echo -e "\e[?1000h" # h-> Enable = Report 
 echo -e "\e[?1000l" # l-> Disable = Stop
@@ -24,7 +31,7 @@ C-v : quoted insertion
 
 
 # Mouse and xterm
-echo -ne "\033[4;7H" # cursor line 4; column 7 (from left top = 1;1)
+echo -ne "\033[4;7H" # cursor x 4; y 7 (from left top = 1;1)
 
 
 * History with the current command head

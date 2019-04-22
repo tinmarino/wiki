@@ -12,6 +12,23 @@
 * [BusyBox](BusyBox)
 * [W3m](W3m)
 
+
+
+* Files (Read, get specific info)
+	* /proc/sys/vm/block_dump  # echo 1 lgos IO; then tail -f /var/log/syslog
+	* /proc/[pid]/io
+
+
+
+* Xrand
+	redshift
+	xrandr -q | grep " connected"  # gives me LVDS1
+	xrandr --output LVDS1 --brightness 0.5
+	xbacklight -set 50
+	xbacklight -inc 10
+	xbacklight -dec 10 
+	echo 400 | sudo tee /sys/class/backlight/intel_backlight/brightness
+
 * Module (kernel)
     depmod - handle dependency descriptions for loadable kernel modules.
     insmod - install loadable kernel module.
@@ -20,11 +37,18 @@
     modprobe - high level handling of loadable modules.
     rmmod - unload loadable modules.
 
+* User Rights, Capabilities
+	visudo
 
 * Hybernate
 	sudo pm-hibernate
 	sudo systemctl hibernate
 
+* Move mouse
+  tmux send-key -t session:pane ls
+	tput - initialize a terminal or query terminfo database
+		- color output
+	xdotool - send keystrokes
 
 
 *	Tar   
