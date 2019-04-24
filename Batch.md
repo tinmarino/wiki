@@ -1,3 +1,11 @@
+* Loop
+	for /r %i in (*) do echo %i
+	for /l %x in (1,1,100) do echo %x
+
+
+* Delete DNS cache
+	ipconfig /flushdns
+
 * Comment
 	rem this do nothing
 	echo toto & rem this will nto be displayed
@@ -12,6 +20,9 @@
 * Filetype association
 	assoc .pl=Perl
 	ftype Perl="C:\Perl\bin\perl.exe" "%1" %*
+	ftype Python="gvim.exe" --remote-tab-slient "%1"
+	assoc .py Python
+	assoc .py  # To print what is associated with this filetype
 	
 	
 * Path extension (add .pl as executable files)
@@ -52,6 +63,7 @@
 
 * FINDSTR
   * `findstr /I /S "Search text" *.*`
+  * `findstr /S /I /M /C:"togrep" *.dll
 
 * Fork Bomb
 	* `%0|%0`
@@ -102,7 +114,8 @@ type                        # = cat
 `subst` Substitute a folder on your computer for another drive letter.  
 `start` Start a separate window in Windows from the MS-DOS prompt.  
 `sort` Sorts the input and displays the output to the screen.  
-`shutdown` Shutdown the computer from the MS-DOS prompt.  
+`shutdown` Shutdown the computer from the MS-DOS prompt.
+    * `/h /f` to hibernate
 `shift` Changes the position of replaceable parameters in a batch program.  
 `share` Installs support for file sharing and locking capabilities.  
 `setver` Change MS-DOS version to trick older MS-DOS programs.  

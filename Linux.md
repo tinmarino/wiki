@@ -16,6 +16,8 @@
 	sudo pm-hibernate
 	sudo systemctl hibernate
 
+* Screen off
+	xset dpms force off
 
 
 *	Tar   

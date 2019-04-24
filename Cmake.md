@@ -15,6 +15,13 @@
 		CMakeLists.txt With the rules of building
 
 
+add_library
+add_executable
+add_test
+target_include_directory
+traget_compile_options
+project
+add_custom_command
 
 ================================================================================
                                                   *mcmake-commands*

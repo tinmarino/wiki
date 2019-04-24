@@ -29,6 +29,18 @@
         
 
 
+# Why love Python ?
+
+* Multi platform
+* A language to rule them all (wrapper)
+* Easy (learn and write)
+* Expressive : short != c, java, explicit != perl
+* Flexible (scirpt, object, web)
+* active
+* Documented
+* Modules by default are enought
+* 
+
 ==============================================================================
 STATEMENTS                                               *c-python-statement*
 

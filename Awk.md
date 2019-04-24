@@ -1,5 +1,11 @@
 % Awk
 
+# Tips
+
+* Print part of each line
+	awk '{print substr($0, 2, 6)'} file.txt
+
+
 # USAGE
 
 awk [ - v var=val ] 'program' [file1 file2...] <br>

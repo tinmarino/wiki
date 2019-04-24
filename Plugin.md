@@ -90,8 +90,10 @@ https://github.com/ivanov/vim-ipython
 A HUGE collection of python plugins taht are up to date because they are
 written in python. Thanks to the +python feature of vim that is now embeded
 with a python interpreter.
-    PEP8
-    Pyflakes
+    Pylama                  # Wraps others
+    Rope                    # Refractoring
+    PEP8; Pyflakes, Pylint  # Code checking
+    
     And much much more.
 NB: Community pluggin as dirty as python
 

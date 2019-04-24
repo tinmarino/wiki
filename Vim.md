@@ -16,6 +16,7 @@
 
 ## From work
 
+* `:%! clumn -t` align columns
 * set fileencoding=utf-8
 * set bomb
 * :w ++enc=utf-8 %
@@ -27,6 +28,9 @@
 *   `set lazyredraw` can be usefull too
 *   h ttyfast
 *   222go  go to byte 222
+
+### Work with binary
+	xxd -r -p
 
 
 ### Save with sudo
