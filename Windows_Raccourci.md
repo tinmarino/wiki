@@ -5,6 +5,13 @@ description: |
 title: 'Keyboard shortcuts in Windows - Windows Help'
 ---
 
+
+### My
+
+* `Ctrl Shift D `		Change desktop
+* `win tab`				Task view
+
+
 ### Copy, paste, and other general keyboard shortcuts {#copy-paste-and-other-general-keyboard-shortcuts .ng-scope}
 
   Press this key                                             To do this

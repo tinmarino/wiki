@@ -44,6 +44,8 @@
 
 * Mili : Soyons fermes, purs et fidèles. Au bout de nos peines, il y a la plus grande gloire du monde, celles des hommes qui n'pnt pas cédé (Charles de Gaulle)
 
+* Méfie toi de la rivière qui est trop calme
+
 * The competent programmer is fully aware of the strictly limited size of his own skull	(Dijkstra, the humble programmer)
 
 *		It's hard enough to start a revolution, even harder to sustain it and hardest of all to win it. But it's only afterward, once we've won, that the real difficulties begins. 
