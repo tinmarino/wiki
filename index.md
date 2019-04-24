@@ -10,8 +10,10 @@
 		* [Cmder](Cmder)
 		* [Empire](Empire)
 		* [Compilation](Compilation)
+    * [Visual Studio](Visual-Studio)
 
 ## Language
+  * [Links](Links)
 	### Script
 	* [Perl](Perl)
 	* [Python](Python)
@@ -19,6 +21,7 @@
 	### Compiled
 	* [C](C)
 	* [Cmake](Cmake)
+  * [Assembly](Assembly)
 	### Markup
 	* [Html](Html)
 	* [Latex](Latex)
@@ -36,7 +39,6 @@
 ## Science
 	* [Math](Math)
 	* [Physics](Physics)
-
 
 ## Misc
   * [Accronym](Accronym)
