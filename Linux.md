@@ -52,9 +52,10 @@
 		- color output
 	xdotool - send keystrokes
 
+* Screen off
+	xset dpms force off
 
 *	Tar   
-
 	tar - cvf tecmint-14-09-12.tar /home/tecmint/
 	tar cvzf MyImages-14-09-12.tar.gz /home/MyImages
 			c – Creates a new .tar archive file.

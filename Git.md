@@ -12,6 +12,24 @@ Note: While this is convenient, Git will store your credentials in clear text in
 
 # Tips
 
+### Ugly tips from draft
+git ls-files
+git ls-tree --full-tree -r HEAD
+git cherrypick <commit_sha1>
+git add -p # add by chunk (remember patch)
+
+* Clone only last commit
+  * `git clone --depth=1 http://www.github.com/toto/project.git`
+
+* Disable security check (https)
+  * `git -c http.sslVerify=false origin master`
+
+* Unstage all
+    * `git reset HEAD`
+
+* Stop tracking
+    * `git rm --cached file`
+
 * Ignore Windows newline
     * `git config --global core.autocrlf true`
 
