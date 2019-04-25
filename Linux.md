@@ -13,7 +13,6 @@
 * [W3m](W3m)
 
 
-
 * Files (Read, get specific info)
 	* /proc/sys/vm/block_dump  # echo 1 lgos IO; then tail -f /var/log/syslog
 	* /proc/[pid]/io
@@ -41,6 +40,17 @@
 
 * User Rights, Capabilities
 	visudo
+* File
+* /etc/resolv.conf
+* /etc/nework/interface
+* cat | xargs grep
+* find . -type f -size +10M
+* grep -Po '[^[:digit:]]'
+* grep -A 1 print 1 line before
+* grep -B 1 print 1 line before
+* grep -C 3 print 3 lines before and after
+* grep --include=*.txt
+* cat toto.txt | grep -arnobUP "\xCA\xCA"
 
 * Hybernate
 	sudo pm-hibernate

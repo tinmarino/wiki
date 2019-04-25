@@ -7,7 +7,7 @@
 * [VimStory](VimStory)
 * [BordelVim](BordelVim)
 * [Plugin](Plugin)
-* [Tips](Tips)
+* [Tips](Tips) : advanced commands
 * [Negative Regex](V-negative-regex)
 * [Script](V-Script)
 
@@ -51,7 +51,32 @@
 
 * Use `s/\%V` to substitude within selection and not full lines
 
+:h formatoptions  :set fo+=t # to autowrap
+:match visu /\%7l\|%10l/
+:hi visu ctermbg=darked
 
+## Client -- Server
+	vim --servernbame DEMO		# Open with name DEMO
+	vim --servername DEOM --remote some-file.txt  # Send some file
+	vim --servername DEMO --remote-send ':3d<CR>' # Send command
+	
+
+## Fast buffer switching
+	* `:oldfiles`
+	* `:bro[wse] ol[dfiles] [!]`
+	* `:changes`
+	* `'0 '1 '2 '3 ... '9`
+	* `CtrlP` pluggin
+
+## Ctags 
+	* `ctags -R -f ./.git/tags .`
+	* `:tag function_name`
+	* `C-}` : see all tags
+	* `C-]` : jump to tag
+	* `:tn | :tp` : jump to next | previous tag
+	* `:ts`	: tag select : get a list
+
+## From work
 
 * `:%! clumn -t` align columns
 * set fileencoding=utf-8
@@ -67,7 +92,10 @@
 *   222go  go to byte 222
 
 ### Work with binary
-	xxd -r -p
+	xxd -r 		# reverse
+		-p		
+		-c56
+		-g 1 	# bytes per line
 
 
 ### Save with sudo
@@ -86,7 +114,6 @@
 
 
 ### No newline at end of file
-
 *   `vim -b file` or `set binary`
 *   `:set noeol` or `set nofixendofline`
 
