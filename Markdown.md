@@ -2,7 +2,14 @@
 
 ## Syntax
 
-*   __Lines break__ with __2 spaces__ a `<br>` or a blank line for paragraphs
+* Comment
+  * `<!-- my comment -->`
+  * `[//]: <>(my comment)`
+
+* Font style :
+  * `*italic* or _italic_ ` : _italic_
+  * `__bold__ or **bold**` : __bold__
+  * `~~scratched~~` : ~~scratched~~
 
 * Diff : [+ addition +] or {+ addition +} and [- deletiion -]
 
@@ -20,7 +27,30 @@
 
 * Subscirpt `H<sub>2</sub>O and E = mc^2`
 
+* Link :
+  * `[clickme](#title-name)` to point to some `# Title Name`
+  * [goto google](http://google.com)
+  * [in-ref-written][in_ref]
+  * [in_ref]: http://wwww.google.fr
+
+* Image : `![img](http://.... "Ttitle"{width="40px" height="400px}})
+
+* Hightlight : `== text to print ==` -> == text to print ==
+
+* Footnote : `see me [11] later` and later `[11]: The 'footnote'`
+
+* Newline :
+  * 2 spaces at end of line
+  * blank line -> paragraph : 2 newlines in md
+
 ## Html
 
-*	`&nbsp;` To make spaces
-*	`<kbd>Shift</kbd>` to get keyboard shotcuts <kdb>Shift</kbd>
+* `&nbsp;` To make spaces
+* `<kbd>Shift</kbd>` to get keyboard shotcuts <kdb>Shift</kbd>
+* `<br>` : newline
+
+## Pandoc
+
+* `pandoc --number-sections`
+* `pandoc --toc`
+* TODO bash compleiton
