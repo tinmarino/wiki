@@ -19,7 +19,6 @@ Il existe pleins d'extremum globaux. On reste a la fin dans un local mais c pas 
 
 * Optimizer, change le learning rate en dynamique : ADAM, GSD. Y'en a un qui utilise un momentum, après 2, 3 chute, on continue de tomber dans cette direction.
 
-
 # Difficultés
 
 1. Classification
@@ -30,80 +29,68 @@ Il existe pleins d'extremum globaux. On reste a la fin dans un local mais c pas 
 # Vocabulaire
 
 ### Transfert learning
-
 Utiliser un réseau déjà entrainer pour effectuer une autre tache.
 
 ### Early stopping
-
 Pour lutter contre le sur apprentissage.
-Sinon augmenter le nb de données d'après tissage ou réduire la taille du modèle.
+Sinon augmenter le nombre de données d'apprentissage ou réduire la taille du modèle.
 
 ### Règles expertes
 Arbre de décision d'expert
 
 ### PushButton
-Réseau de neurones automatiquement générés
+Réseau de neurone automatiquement généré
 
 ### Random Forest
 Choisir aléatoirement un batch (1%) des vecteurs d'entrés. Et ne s'intéresse qu'à un sous ensemble des coordonnées. Il crée ensuite l'arbre de décision minimal qui permet de discriminer au mieux ces vecteurs. C'est comme si il crée des arbres de décision experts en chaque coordonnées puis il prend la majorités des votes. Utilise `Scikit learn`. L'avantage est qu'on peut remonter à l'origine des décisions facilement.
 Chaque arbre prend un échantillon différent.
-A chaque branche de l'arbre, on ne discrimine qu'une coordonée, genre `x0 < 0.3`
+A chaque branche de l'arbre, on ne discrimine qu'une coordonnée, genre `x0 < 0.3`
 
 
 ### K-means
 
 ### Hot encoding
-
 C'est pour encoder une valeur de manière discrète. En mettant chaque possibilité comme une dimension de vecteur. Comme l'output de la reconnaissance de caractère.
 
 ### SoftMax
-
-Permet de donner une sortie en probabilité dans des categories discrétes.
-Pour l'erreur sur la fin, on utilise la cross entropy.
+Permet de donner une sortie en probabilité dans des catégories discrètes.
+Pour l'erreur sur la fin, on utilise l'entropie croisée.
 
 ### Cross Validation
-
-S'entrainer sur 90% et valider sur 10%. Mais faire 10 fois l'experience en faisant varier les 10%. afin que, au final, ils aient couvert tout le set. Voir changer la seed du random select et refaire tout ça. Du genre faire 30 expériences pour un test. Attentions aux papiers qui affichent le meilleur resultat (des 30 tests). C'est la moyenne qui compte. Ces derniers ne font rien de plus que se prendre un biai favorable aux culs.
+S'entrainer sur 90% et valider sur 10% mais faire 10 fois l'expérience en faisant varier les 10%, pour au final qu'ils aient couvert tout le set. Voir changer la graine de la sélection aléatoire et refaire tout ça. Du genre faire 30 expériences pour un test. Attentions aux papiers qui affichent le meilleur résultat. C'est la moyenne qui compte.
 
 ### Matrice de confusion
-
 M(x, y) est le nombre d'élément de catégorie x classés y par le système. A partir de cette Matrice, on peut calculer plusieurs métriques différentes. Souvent ces métriques mesures les faux positifs __ou__ négatifs suivant telle ou telle dimension (i.e. ici des familles).
 
-#### Precision
-
-Nombre de bonne classification de chaque classe / nb d'element classé dans cette classe (inclu les mauvais)
+#### Précision
+Nombre de bonne classification de chaque classe / nb d'élément classé dans cette classe (inclue les mauvais)
 
 #### Rappel
-
-Nombre de bonne classification de chaque classe / nb d'element dans cette classe
+Nombre de bonne classification de chaque classe / nombre d'élément dans cette classe
 
 #### F1 score
+Moyenne géométrique Rappel et Précision : `2.p.r / (p + r)`
 
-Moyenne geometrique Rappel et Precision : `2p.r / (p + r)`
-
-## Stats
-
-* Regarder le nb d'object pour chaque label
+## Statistiques
+* Regarder le nombre d'objets pour chaque label
 	* Bien comprendre qui est majoritaire et si ceux qui m'intèressent sont minoritaire, pourquoi ? Ou sont-ils ? Est ce que je considère les autres ? En superisé (ou semi) ?
 	* C'est parfois normal, par exemple pour chercher un evenement rare : une tumeur dans une image médicale. On a des échantillons d'intérêt minoritaire. Bonne chance.
 
 # Todo
-
-* Exporter au format numpy (pour faciliter de load)
+* Exporter au format numpy (pour faciliter le chargement)
 * Numpy sous forme binaire pour mmap rapide
-* Prendre les exemples du cour pour les collegues.
+* Prendre les exemples du cour pour les collègues.
 
-* Faire des stats
+* Faire des statistiques
 	* Voir les outsiders
-	* Faire un histogram
+	* Faire un histogramme
 
 * Regarder
 	* KNeighborsClassifier
 	* LinearDiscriminantAnalysis
 
-* Preparer un Golden Standard, ce qui est comme un test de non regression pour l'IA.
+* Préparer un Golden Standard, ce qui est comme un test de non régression pour l'IA.
 	
 # Numpy / Plt / Scikit learn
-
 * plt.bar(array)
 * plt.boxplot(array_x, array_y)
