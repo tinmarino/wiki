@@ -1,3 +1,33 @@
+* Display : get info
+	print np.__file__
+	print sys.executable
+	priunt os.environment['_']
+	print sys.maxsize
+	
+	
+
+* Documentation (docstrings)
+	"""
+	This is first line
+	
+	:param param1: description
+	:type  param1:
+	:return(s) :
+	:raise(s) : 
+	"""
+	* Note : use ':' and not '@'
+
+* Debug
+  	* `IPython.core.debugger.Pdb.set_trace()`
+	* `vars(myobj)`
+	* `for attr in dir(myobj) if not callable(getattr(obj, attr)) and not attr.startswit('__')
+	* `obj.__dict__`
+	* ipy = get_ipython()
+	* from IPython import embeded ; embeded()
+	* from IPython.terminal.iapp import TerminalIPythonApp
+	* app = TerminalIPythonApp.instance()
+	* app.initialize(argv=[])
+	* app.start()
 
 * Print python zen (19 principles)
     import this
@@ -20,8 +50,11 @@
     sys.stdout = openb("tmp", "w")
     sys.stdout = sys.__stdout__
 
-* Hexadeciaml outputs
+* Hexadecimal outputs
     get_ipython().display_formatter.formatters['text/plain'].for_type([[int,]] lambda n, p, cycle : p.text("0x%x" %n))
+	
+* Hexadecimal editor
+	data = [hex(ord(c)) for c in bytearray]
     
 * With Statement : 2 one the same line
     with open('a', 'w') as a, open ('b', 'w') as b :

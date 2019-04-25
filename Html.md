@@ -1,5 +1,8 @@
 
 
+* Color
+	* `<span style="color:red">My test *here* is red</span>
+
 ## <a> : Hyperlink
 
 * `<a href="url" title="My url">link text or image</a>`

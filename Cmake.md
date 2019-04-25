@@ -1,5 +1,11 @@
 *cmake*                     Cmake, C, Cpp Project builder
 
+
+# CMAKE_CXX_FLAGS
+	if(CMAKE_CXX_FLAGS_DEBUG MATCHES "/MD")
+		string(REGEX REPLACE "/MD" "/MT" CMAKE... CMAKE...)
+	endif()
+
 	This help aims to explain some cmake commands lines, functions and
 	examples 
 

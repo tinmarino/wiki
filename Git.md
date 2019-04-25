@@ -18,6 +18,16 @@ git ls-tree --full-tree -r HEAD
 git cherrypick <commit_sha1>
 git add -p # add by chunk (remember patch)
 
+* Grep regex
+  * `git log -S'regex'`
+  * `git log -S'regex'`
+
+* Compress
+  * `git gc`
+
+* Filter : remove certain files
+  * `git filter-branch --tree-filter 'rm -f pass.txt' ~HEAD`
+
 * Clone only last commit
   * `git clone --depth=1 http://www.github.com/toto/project.git`
 
