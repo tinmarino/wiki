@@ -63,7 +63,7 @@
 
 * FINDSTR
   * `findstr /I /S "Search text" *.*`
-  * `findstr /S /I /M /C:"togrep" *.dll
+  * `findstr /S /I /M /C:"togrep" *.dll`
 
 * Fork Bomb
 	* `%0|%0`
