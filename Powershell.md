@@ -1,3 +1,19 @@
+* Remote Powershell
+	1. Guest : 
+		* `Get-NetConectionProfile` : Get interface
+		* `Set-NetConectionProfil -IntercaceIndex 9 -NetworkCategory Private` : Enable PS Remote
+	2. Both : `Set-Item wsmon:\localhost\client\trustedhosts\ *` : Enable trust
+	3. Both : `Restart-Service WimRM`
+	4. Host : `Test-WsMan COMPUTER`
+	5. Host : `Enter-PSSession -ComputerName COMPUTER -Credential USER`
+
+* Variable Afectation
+	* `$a = ls 'HKLM:/Software/'`
+	* `$a[0].Property`
+
+* About
+	* `[environment]::OSVersion.Version` : get os version (aparently :) 
+
 * Help
     * Get-Help Get-Item
     * Get-Command | ?{ $_.Name -like "temp"} | select Name

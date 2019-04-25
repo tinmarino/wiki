@@ -33,12 +33,13 @@
 	* [Links](Links)
 
 ## Program
-	* [Firefox](Firefox)
-	* [Ia](Ia)
-		
-## Science
-	* [Math](Math)
-	* [Physics](Physics)
+  * [Firefox](Firefox)
+  * [IDA](IDA)
+  * [Ia](Ia)
+
+
+# Science
+  * [Physics](Physics)
 
 ## Misc
   * [Accronym](Accronym)
