@@ -76,7 +76,6 @@ Read vimcast of drew neil and tim pope
 # Advanced commands
 
 ```
-:b#|bd#
 
 # Moving
 ( | ) 					# Jump backward | forward one sentence
@@ -84,9 +83,14 @@ Read vimcast of drew neil and tim pope
 _ | ^					# Move to the first non-blank
 '. 						# Jump to last modificated line
 
+# Edit
+T,c,                    # Delete between coma
+
 # Display
 ga 						# Show as Ascii
 g8 						# Show as Unicode (:h character-class)
+8g8						# Detect invalid utf8 characters
+zl, zh, zL, zH			# Scrool horizontally
 
 # Folding
 zc, zC | zo, zO 		# Close | Open [nested] folds
@@ -102,6 +106,7 @@ zj | zk 				# Move between folds
 /\%xYY					# YY hex ord(ascii)
 /\%uYYYY				# YYYYY hex ord(unicode)
 :args * .* **/{*, .*}   # Add all file to buffers
+:b#|bd#
 
 											
 ```										
