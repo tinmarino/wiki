@@ -10,8 +10,11 @@
   * `*italic* or _italic_ ` : _italic_
   * `__bold__ or **bold**` : __bold__
   * `~~scratched~~` : ~~scratched~~
+  * `->center<-` : ->center<-
 
-* Diff : [+ addition +] or {+ addition +} and [- deletiion -]
+* Diff :
+	* [+ addition +] or {+ addition +} and [- deletiion -]
+	* ``` \`\`\`diff +add or -remove ```
 
 * Tasklist : `- [x] Completed task`
 

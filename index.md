@@ -7,7 +7,6 @@
     * [Powershell](Powershell)
     * [Raccourci](Windows_Raccourci)
     * [Batch](Batch)
-    * [Cmder](Cmder)
     * [Empire](Empire)
     * [Compilation](Compilation)
     * [Visual Studio](Visual-Studio)
@@ -33,7 +32,6 @@
   * [Firefox](Firefox)
   * [IDA](IDA)
   * [Ia](Ia)
-
 
 # Science
   * [Physics](Physics)
