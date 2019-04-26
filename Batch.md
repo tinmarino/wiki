@@ -1,3 +1,8 @@
+* Cmd
+	cmd /c "echo toto"  & rem run comand and dye
+	cmd /k "echo toto"  & rem run comand and survive
+
+
 * Loop
 	for /r %i in (*) do echo %i
 	for /l %x in (1,1,100) do echo %x
