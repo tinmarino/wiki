@@ -13,6 +13,9 @@
 	* extern so importing this.h get iPi defined
 	* const for the precompiler (to avoid errors)
 * `#pragma pack(1)` 	# to let the structure without aligning each field
+* `__FILE__` 		# Name of the file.c
+* `__LINE__` 		# Current line
+* `__FUNCTION__` 	# Name of current function
 
 
 * Jump to arbitrary addr
@@ -20,12 +23,10 @@
 	foo();
 
 # Notes
-
 * Le tableau aloue de la mémoire et le pointeur non => préféré le tableau
 
 
 ### Random
-
 	```c
 	#include <time.h>
 	srand(time(NULL)); 	# Set seed
@@ -34,7 +35,6 @@
 	```
 
 ## Calling conventions, function prototype
-
 * `typedef int(__cdecl callback_t)(HANDLE h_process);`
 
 ### Usercall
