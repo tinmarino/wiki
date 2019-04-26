@@ -101,6 +101,7 @@ zj | zk 				# Move between folds
 :@"						# Execute what is yanked
 /\%xYY					# YY hex ord(ascii)
 /\%uYYYY				# YYYYY hex ord(unicode)
+:args * .* **/{*, .*}   # Add all file to buffers
 
 											
 ```										

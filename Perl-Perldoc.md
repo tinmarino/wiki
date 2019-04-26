@@ -29,13 +29,13 @@ Commonly Used Entries
 ---------------------
 perl         Language overview, list of all other entries
 perltoc      Table of contents
-perlsyn			 List of all symbols (if for))
+perlsyn      List of all symbols (if for))
 perlfunc     Built-in functions documentation
 perlvar      Predefined variables documentation
 perlref      References documentation
 perlre       Regex documentation
-perlcheat		 Cheatsheet
-perlrun			 Command line options
+perlcheat    Cheatsheet
+perlrun      Command line options
 faq          The Perl FAQ
 perlsecret   Some secret operator 
 perldebguts  Debug if you have guts
