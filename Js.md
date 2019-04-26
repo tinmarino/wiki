@@ -79,8 +79,8 @@
     for (let i of Array(100).keys()) {
         console.log(i);
     }
-    
-    
+
+
 # Array
 * `var a = [1, 2, 3]`
     
@@ -88,6 +88,8 @@
 * Substring
 * [RegExp](Js-RegExp)
 * `unescape("hello%20world")`
+* `substr(from, length)`
+* `substring(from, to)`
 
 var str = "Hi";  
 var res = str.substring(1,4)  
@@ -119,3 +121,4 @@ var res = str.replace(/w3schools/i, "Microsoft");
 * `var o = {1:2, "toto":3}`
 * `Object.keys(o).length`
 * `var a = 1; window['a'];`
+* `for (var prerty in obj){}`

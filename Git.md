@@ -5,8 +5,6 @@
 # Tips
 
 ### Ugly tips from draft
-git ls-files
-git ls-tree --full-tree -r HEAD
 git cherrypick <commit_sha1>
 git add -p # add by chunk (remember patch)
 
@@ -15,16 +13,53 @@ git add -p # add by chunk (remember patch)
 	* `git config credential.helper store` : Stores permanently
 	* Note : While this is convenient, Git will store your credentials in clear text in a local file (.git-credentials) under your project directory (see below for the "home" directory). If you don't like this, delete this file and switch to using the cache option.
 
+* Display
+	* `git log --all --full-history -- **/thefile.*`
+	* `git log --diff-filter=D --summary | grep delete`
+	* `git log --all --{file_path}` : file_path can have * inside
+	* `git log --pretty=format:"%h"`
+	* `git log --pretty=oneline`
+	* `git log -S watever [--source --all] [--decorate] [--reverse]`
+	* `git log -G "^(\s)*function foo[(][)](\s)**{$"` : regex
+	* `git reflog`
+	* `git show <COMMIT_ID> -- <FILE_PATH>` : show deleted files
+	* `git checkout <SHA>^ -- <FILE_PATH>`
+	* `git check-ignore *` : show ignored files
+	* `git ls-files --others --exclude=standard`
+	* `git ls-tree --full-tree -r HEAD`
+	* `git cat-file -s`
+	* `git diff-tree`
+	* 
+
+* Interface
+	* `git add -i` : add items without copying full file name
+
+
+* Patch
+	* `git .git/objects/pack SAMPLE`
+	* `git unpack-object < SAMPLE/*.pack`
+
+* Ignore
+	* `.git/info/exclude` : personal gitignore
+
+* Clean
+	* `git clean -[xd]n` : Show what I will clean
+	* `git clean -[xd]f` : Do
+
 * Grep regex
   * `git log -S'regex'`
   * `git log -S'regex'`
 	* `git grep "regex"`
 
 * Compress
-  * `git gc`
+	* `git reflog expire --expire=now --all`
+  * `git gc [--agressive --prune=now]` : garbage collector
 
 * Filter : remove certain files
   * `git filter-branch --tree-filter 'rm -f pass.txt' ~HEAD`
+	* `git filter-branch --tree-filter 'git clean -f -X' -- --all
+		* Removegitignore form history
+		* Aster rebasing with a gitignore at first commit
 
 * Clone only last commit
   * `git clone --depth=1 http://www.github.com/toto/project.git`
@@ -120,9 +155,11 @@ Word by word diff
 * To see which commit modified the file
     * `git log --all -- <filepath accepting *>`
     * `git log --all --full-history -- **/thefile.*`
-    * 
-
-* `git rebase -i <commit>~1`          # Can edit or delete commits  
+* Filter
+		* `git filter-branch --index-filter "git rm --cached --ignore-unmach file.txt" [HEAD~5..HEAD` # file?txt can have a *
+* Clean
+	* `git rebase -i <commit>~1`          # Can edit or delete commits  
+	* `git commit --amend --author="tinwin <tin@windows>`
 
 
 0. List

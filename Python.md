@@ -61,6 +61,9 @@
         do_stuff()
         
 
+## Function, Utils
+
+* `rstrip()` = chomp
 
 # Why love Python ?
 

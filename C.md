@@ -9,6 +9,8 @@ Include path (print)
 
 # Macro
 
+* `#define dbgprint(X,...) printf(X, ##__VA_ARGS__)` : variadic argument macro
+* `#` operator is called the __stringifier__
 * `__declspec(dllexport)` 		# windows : export function in dll 
 * `__debugbreak()`				# Set breakpoint
 * `offsetof(struct_t, elt_t)` 	# Get elemenet offset
