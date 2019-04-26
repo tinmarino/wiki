@@ -12,6 +12,7 @@
 			 /r 	# reboot
 			 /t 10  # in 10 sec
 	powercfg /hibernate on
+	powercfg /hibernate off  # To be able to resize C (because /hiberfil.sys is an unmovable file)
 
 * Screen off
 	scrnsave.scr /s
