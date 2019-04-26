@@ -59,6 +59,7 @@
 * grep --include=*.txt
 * cat toto.txt | grep -arnobUP "\xCA\xCA"
 * echo "conbtent" | mail -s "subject" user@email.com
+* find . -maxdepth 1 -exec grep foo {}
 
 * Hybernate
 	sudo pm-hibernate
