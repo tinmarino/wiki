@@ -44,6 +44,8 @@
 
 # Famous instructions (x86)
 
+* Lea relative ro rip are only valids in 64 bits
+
 | Mnemonic     | Opcodes (hex)     |
 | ---          | ---               |
 | NOP          | 90                |

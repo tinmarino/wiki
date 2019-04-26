@@ -4,6 +4,19 @@ This is to test, play withg empire, a framework to send comand to a remote sessi
 Usually, it take 3 sec for empire to connect
 Before, you should check the ip
 
+# Quick start
+* `>help`
+* Listener | agent | module
+* `>listeners`
+  * `>uselisteners <Tab>`
+  * `>info`
+  * `>sert|unset`
+  * `>execute`
+* `>usestager <Tab> `
+* `>agents`
+  * `>list`
+
+
 # Execute (Windows commands)
 
 ### Analyse
