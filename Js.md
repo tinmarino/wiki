@@ -54,6 +54,11 @@
     * `window.location.protocol` # protocl (http:)
     * `window.location.assign` # load document
     
+* Get info
+	* window.navigator -> dict full of info
+	* window.status -> chang status bar of browser : connection received ;..
+	* window.origin -> get the url origin of myself
+
 * Passing additional parameters to a Promise .then
     P.then( doWork.bind('text', null) );
     P.then( function(data) {return doWork('text', data);} );
@@ -76,11 +81,13 @@
     }
     
     
+# Array
+* `var a = [1, 2, 3]`
     
 # String
-
 * Substring
 * [RegExp](Js-RegExp)
+* `unescape("hello%20world")`
 
 var str = "Hi";  
 var res = str.substring(1,4)  
@@ -109,3 +116,6 @@ var res = str.replace(/w3schools/i, "Microsoft");
 
 
 # Object
+* `var o = {1:2, "toto":3}`
+* `Object.keys(o).length`
+* `var a = 1; window['a'];`

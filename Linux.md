@@ -12,7 +12,6 @@
 * [BusyBox](BusyBox)
 * [W3m](W3m)
 
-
 * Files (Read, get specific info)
 	* /proc/sys/vm/block_dump  # echo 1 lgos IO; then tail -f /var/log/syslog
 	* /proc/[pid]/io
@@ -40,9 +39,17 @@
 
 * User Rights, Capabilities
 	visudo
-* File
+
+# File
 * /etc/resolv.conf
 * /etc/nework/interface
+* /etc/hosts
+* /etc/mailname
+* /etc/hostname
+
+
+* tail -f
+* apt --allow-unauthentificated
 * cat | xargs grep
 * find . -type f -size +10M
 * grep -Po '[^[:digit:]]'
@@ -51,6 +58,7 @@
 * grep -C 3 print 3 lines before and after
 * grep --include=*.txt
 * cat toto.txt | grep -arnobUP "\xCA\xCA"
+* echo "conbtent" | mail -s "subject" user@email.com
 
 * Hybernate
 	sudo pm-hibernate
