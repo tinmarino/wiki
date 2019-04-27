@@ -17,6 +17,8 @@
 * Files (Read, get specific info)
 	* /proc/sys/vm/block_dump  # echo 1 lgos IO; then tail -f /var/log/syslog
 	* /proc/[pid]/io
+	* /proc/net/dev
+	* /sys/class/net/${interface}/statistics/ 
 
 
 
