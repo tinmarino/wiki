@@ -1,15 +1,6 @@
 * [Vim Menu](Vim-Menu)
-* [BordelVim](BordelVim)
 
-* [OldTips](Tips)
-* [Practical_Vim](Practical_Vim)
-* [Vimstyle](Vimstyle) (from Google)
-* [VimStory](VimStory)
-* [BordelVim](BordelVim)
-* [Plugin](Plugin)
 * [Tips](Tips) : advanced commands
-* [Negative Regex](V-negative-regex)
-* [Script](V-Script)
 
 # Tips
 

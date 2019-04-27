@@ -48,7 +48,7 @@
   * [Text](Text)
   * [Emoji](Emoji)
   * [Link](Link)
-	* [Notes](Notes)
+  * [Notes](Notes)
   * [StackOverflow](StackOverflow)
 
 * [Interrupt](Interrupt)

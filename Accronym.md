@@ -1,3 +1,8 @@
+---
+title: Accronyms
+---
+
+
 | Accronym | Meaning |
 | ---      | ------------------------ |
 | ACPI     | Advanced Configuration and Power Interface |
