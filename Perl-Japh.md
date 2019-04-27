@@ -24,6 +24,7 @@ exec return y s gt sin sort split```
 
 
 
+``` 
 
 
 
@@ -1051,37 +1052,6 @@ Technical Consultant
 Manitoba Public Library Services
 
 %%
-#Mark-Jason Dominus http://www.plover.com/
-
-require 5.00553;
-use re 'eval';
-$|=1;
-$z = qr{(?{local$d=1})
-        (?:`(?{$d++})
-          |.(?{$d--})
-        )+?
-        (?(?{$d})(?!))
-       }x;
-$_="``As`SB``Ad``S``BS`BBI``Ae``B`SI`Ed``A?``C``CIi`pI``E?Z``BZZZZZ`KI
-```CX`KIZZQZZZQZZZZZQZZZZQZ``BZZ```CX`KX`KXQ``Ee``EeZZZZZQZ```CX`KIZZQ
-```CX`KIZZQZZZZQ```CXZ`KIZZQ``Ee```CX`KIZZQ``EdZZZQZ``BZZ```CX`KX`KXQ`
-`BZ```CX`KIZZ`KXZQ``Ee```CX`KIZZQ``EdZZZQ``BZZZZ`KXQZ``BZZ```CX`KX`KXQ
-``B```CXZ`KIZZ`KXQ``Ee``EeZZZZZQ``B``EeZZZ`KXQ``Ee``EdZZZQ``Ee```CX`KI
-ZZQ``EdZZZQ``Ed``Ee```CX`KX`KI";
-s/\n//g;s/Q/`KI``E?/g;s/X/IZZZ/g;s/Z/``Es/g;
-1 while
-  s{`I($z)          (?{$q=0})|``K($z)($z)                    (?{$q=1})
-   |```S($z)($z)($z)(?{$q=2})|```B($z)($z)($z)               (?{$q=3})
-   |```C($z)($z)($z)(?{$q=4})|``A($z)($z)                    (?{$q=5})
-   |`i($z)     (?{$R++,$q=6})|`p($z)(?{print(chr 120-$R), $R=0, $q=7})
-   |`E($z)          (?{$q=8})|`V($z)                         (?{$q=9})
-   }
-   {local $^W; 
-   $q<5 ?($1,$2,"``$4$6`$5$6","`$7`$8$9","``$10$12$11")[$q]
-   :$q==5?($bind{$13}=$14,"")
-   :($15,"",$bind{$17},"")[$q-6]
-    }ex;
-%%
 Author:  Mark-Jason Dominus
 @P=split//,".URRUU\c8R";@d=split//,"\nrekcah xinU / lreP rehtona tsuJ";sub p{
 @p{"r$p","u$p"}=(P,P);pipe"r$p","u$p";++$p;($q*=2)+=$f=!fork;map{$P=$P[$f|ord
@@ -1679,3 +1649,4 @@ From:         merlyn@iwarp.intel.com (Randal Schwartz)
 $_="cker,rl haer PeanothJust ";1 while s/(.{5})(.{5})?/$_{$2}=$1,$2/e;print while $_=$_{$_};
 %%     
 
+``` 
