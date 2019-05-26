@@ -15,6 +15,7 @@
   * [Links](Links)
 	### Script
 	* [Perl](Perl)
+	* [Ruby](Ruby)
 	* [Python](Python)
 	* [Js](Js)
 	### Compiled

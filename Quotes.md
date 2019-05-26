@@ -1,3 +1,5 @@
+* Un outil ne vaut que par la main qui l'anime (maréchal de Lattre)
+
 * In trying to make programming predictable, computer scientists have mostly succeeded in making it boring (Larry Wall)
 
 * Le plus lucratif des commerces serait d'acheter les hommes ce qu'ils valent et de les revendre ce qu'ils s'estiment (Jean-Antoine Petit-Sein)
