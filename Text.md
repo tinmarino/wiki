@@ -18,5 +18,7 @@
 * [Harmonica3](Harmonica3)
 
 * [Emoji](Emoji)
+* [Emoji Best](Emoji-Best)
+* [Draw](Draw)
 
 Subsidiarité : déléguer une tâche à l'échellon le plus bas possible

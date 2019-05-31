@@ -13,24 +13,24 @@
 
 ## Language
   * [Links](Links)
-	### Script
-	* [Perl](Perl)
-	* [Ruby](Ruby)
-	* [Python](Python)
-	* [Js](Js)
-	### Compiled
-	* [C](C)
-	* [Cmake](Cmake)
+  ### Script
+  * [Perl](Perl)
+  * [Ruby](Ruby)
+  * [Python](Python)
+  * [Js](Js)
+  ### Compiled
+  * [C](C)
+  * [Cmake](Cmake)
   * [Assembly](Assembly)
-	### Markup
-	* [Html](Html)
-	* [Latex](Latex)
-	* [Pandoc](Pandoc)
-	* [Markdown](Markdown)
-	* [Dot](Dot)
-	### Algorithm
-	* [Paradigm](Paradigm-Programming)
-	* [Links](Links)
+  ### Markup
+  * [Html](Html)
+  * [Latex](Latex)
+  * [Pandoc](Pandoc)
+  * [Markdown](Markdown)
+  * [Dot](Dot)
+  ### Algorithm
+  * [Paradigm](Paradigm-Programming)
+  * [Links](Links)
 
 ## Program
   * [Firefox](Firefox)
@@ -42,16 +42,7 @@
 
 ## Misc
   * [Accronym](Accronym)
-  * [Draw](Draw)
-  * [Memo](Memo)
-  * [Todo](Todo)
   * [Text](Text)
-  * [Emoji](Emoji)
-	* [Emoji Best](Emoji-Best)
-  * [Link](Link)
-  * [Notes](Notes)
-  * [StackOverflow](StackOverflow)
 
 * [Interrupt](Interrupt)
 * [Test](Test)
-* [Pentest Uri](Pentest-Uri)
