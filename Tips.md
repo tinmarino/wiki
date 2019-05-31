@@ -4,6 +4,14 @@
 \(External.*\)\@<!mem
 ```
 
+* Command stdout redirection
+	:!		# get last output
+	redir @a
+	echo toto
+	redir END
+	let @a=getcwd() 
+	
+	
 * Random, Sort, Shuffle
   	* Random shuffle
 		:10,20!shuf<CR>

@@ -102,6 +102,7 @@
 # Interupt table (TODO my own file)
 
 * `int 31h` : Memory allocation, sector manipulation, table of descriptors
+* `int 2Eh` : Sleep
 * `int 21h` : 
 * `int 13h` : Access to disk
 * `int 10h` :

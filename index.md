@@ -47,6 +47,7 @@
   * [Todo](Todo)
   * [Text](Text)
   * [Emoji](Emoji)
+	* [Emoji Best](Emoji-Best)
   * [Link](Link)
   * [Notes](Notes)
   * [StackOverflow](StackOverflow)

@@ -13,6 +13,10 @@ git add -p # add by chunk (remember patch)
 	* `git config credential.helper store` : Stores permanently
 	* Note : While this is convenient, Git will store your credentials in clear text in a local file (.git-credentials) under your project directory (see below for the "home" directory). If you don't like this, delete this file and switch to using the cache option.
 
+* Submodules
+	* git submodule update --recursive --remote
+
+
 * Display
 	* `git log --all --full-history -- **/thefile.*`
 	* `git log --diff-filter=D --summary | grep delete`

@@ -1,4 +1,21 @@
-% Jon Skeet
+# Divers
+
+* Léon et Luc
+	- Papa, pourquoi tu as appelé mon frère Léon ?
+	- parce qu'à l'envers ca fait Noel
+	- ah d'accord merci
+	- de rien Luc
+
+
+# Math et Science
+
+* Quel récipient nous permettra de boire une super-soupe ? Hyper-bol
+* Un romain entre dans un bar
+  - Il lève deux doigts et dit « 5 bières s’il vous plait ! ».
+* Que dit un homme complexe à une femme réelle ? Viens danser ! ( "dans C", l'ensemble des complexes)
+
+
+# Jon Skeet
 
 * Jon Skeet is the only top 100 SO user who is human. The others are bots that he coded to pass the time between questions.
 * Jon Skeet coded his last project entirely in Microsoft Paint, just for the challenge.

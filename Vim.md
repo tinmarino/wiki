@@ -4,6 +4,10 @@
 
 # Tips
 
+* Check variable, set default
+	let g:pluginname_setting = get(g: | 'pluginname_setting', "default")
+	if exists('g:pymode') | echo 'exists' | endif
+
 * Copy without yanking selection in visual
 	xnoremap p pgvy`
 
