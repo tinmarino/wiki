@@ -7,7 +7,10 @@ function ssync(){
     title=$(basename -- "$1")
     title=${title^^}
     echo "--->  $title  ================================================="
+    mkdir $1
     pushd $1 > /dev/null
+    git add .
+    git commit -m "___ <- sync_git.sh"
     git pull --rebase
     git push
     popd > /dev/null
