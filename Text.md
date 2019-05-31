@@ -1,9 +1,12 @@
 * [Quotes](Quotes)
-* [Emoji](Emoji)
-* [Principle_of_war](Principle_of_war)
-* [TaoTeKing](TaoTeKing)
+
+* [Poesie1](Poesie1)
+
+* [Cohen : if it be your will](Cohen-If-it-be-your-will)
 * [Art Poetique](Art_Poetique)
 * [Art De Péter](Art_De-Peter)
+* [Principle_of_war](Principle_of_war)
+* [TaoTeKing](TaoTeKing)
 * [Hymne Algerien](Hymne-Algerien)
 * [Coran_en_ouvrant_le](Coran_en_ouvrant_le)
 * [Coran_Comparatif_Traductions](Coran_Comparatif_Traductions)
@@ -14,7 +17,6 @@
 * [Harmonica2](Harmonica2)
 * [Harmonica3](Harmonica3)
 
-* [Cohen : if it be your will](Cohen-If-it-be-your-will)
-* [Poesie1](Poesie1)
+* [Emoji](Emoji)
 
 Subsidiarité : déléguer une tâche à l'échellon le plus bas possible

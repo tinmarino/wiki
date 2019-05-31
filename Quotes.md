@@ -1,3 +1,5 @@
+* L'expérience est le nom que chacun donne à ses erreurs (Oscar Wilde 1892)
+
 * Un outil ne vaut que par la main qui l'anime (maréchal de Lattre)
 
 * In trying to make programming predictable, computer scientists have mostly succeeded in making it boring (Larry Wall)
@@ -50,13 +52,13 @@
 
 * The competent programmer is fully aware of the strictly limited size of his own skull	(Dijkstra, the humble programmer)
 
-*		It's hard enough to start a revolution, even harder to sustain it and hardest of all to win it. But it's only afterward, once we've won, that the real difficulties begins. 
+*	It's hard enough to start a revolution, even harder to sustain it and hardest of all to win it. But it's only afterward, once we've won, that the real difficulties begins. 
 
-*		Doubtless this is somewhat interesting to someone somewhere, but we'll restrain ourselves from talking about them somehow (Perl book timotee)
+*	Doubtless this is somewhat interesting to someone somewhere, but we'll restrain ourselves from talking about them somehow (Perl book timotee)
 
-*   Wizards had always known that the act of observation changed the thing that was observed, and sometimes forgot that it also changed the observer too. (Terry Pratchett  -  Interesting times)
+* Wizards had always known that the act of observation changed the thing that was observed, and sometimes forgot that it also changed the observer too. (Terry Pratchett  -  Interesting times)
 
-*   On ne discute pas avec une brouette on la pousse (Pierre de Villiers)
+* On ne discute pas avec une brouette on la pousse (Pierre de Villiers)
 
 
 # Abbé Pierre
@@ -81,7 +83,7 @@
 
 * Peux importe l'altitude, seule la pente compte.
 
-* Il est légitime que les plus forts te traitent comme tu traites les plus faibles.
+* Ton fort te traite tel tu traites ton faible
 
 # Fast
 
