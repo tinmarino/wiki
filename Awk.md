@@ -3,7 +3,7 @@
 # Tips
 
 * Print part of each line
-	awk '{print substr($0, 2, 6)'} file.txt
+  awk '{print substr($0, 2, 6)'} file.txt
 
 
 # USAGE

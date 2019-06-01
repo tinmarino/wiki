@@ -4,6 +4,9 @@
 
 # Tips
 
+* Show highlight sytnax type
+	echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+
 * Check variable, set default
 	let g:pluginname_setting = get(g: | 'pluginname_setting', "default")
 	if exists('g:pymode') | echo 'exists' | endif

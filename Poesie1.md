@@ -1,3 +1,21 @@
+# Contents
+  - [L''hirondelle (Sophie d''Arbouville 1840)](#L''hirondelle (Sophie d''Arbouville 1840))
+  - [Demain dès l''aube (Victor Hugo 1856)](#Demain dès l''aube (Victor Hugo 1856))
+  - [Et la mer et l''amour (Pierre de Marbeuf)](#Et la mer et l''amour (Pierre de Marbeuf))
+  - [Art poétique (Verlaine 1884)](#Art poétique (Verlaine 1884))
+  - [Mon rêve familier (Verlaine 1866)](#Mon rêve familier (Verlaine 1866))
+  - [Le ciel est, par-dessus… (Paul Verlaine)](#Le ciel est, par-dessus… (Paul Verlaine))
+  - [La vie antérieure (Beaudelaire)](#La vie antérieure (Beaudelaire))
+  - [À une passante (Beaudelaire)](#À une passante (Beaudelaire))
+  - [L''invitation au voyage (Beaudelaire)](#L''invitation au voyage (Beaudelaire))
+  - [Élévation (Beaudelaire)](#Élévation (Beaudelaire))
+  - [Le lièvre et la tortue (Jean de La Fontaine 1678)](#Le lièvre et la tortue (Jean de La Fontaine 1678))
+  - [Le bateau ivre (Rimbaud 1870)](#Le bateau ivre (Rimbaud 1870))
+  - [Le dormeur du val (Rimbaud)](#Le dormeur du val (Rimbaud))
+  - [Impatient](#Impatient)
+
+
+
 # L'hirondelle (Sophie d'Arbouville 1840)
 
 Ô petite hirondelle  
@@ -558,6 +576,22 @@ Nature, berce-le chaudement : il a froid.
 Les parfums ne font pas frissonner sa narine ;  
 Il dort dans le soleil, la main sur sa poitrine,  
 Tranquille. Il a deux trous rouges au côté droit.  
+
+
+# Tableau de poètes
+
+|                       |             |   |
+| ---                   | ---         | --- |
+| Pierre De Ronsard     | 1524 – 1585 | La Pléiade |
+| Joachim Du Bellay     | 1522 – 1560 | La Pléiade |
+| Victor Hugo           | 1802 – 1885 | Romantisme |
+| Charles Baudelaire    | 1821 – 1867  | Esthétisme |
+| Arthur Rimbaud        | 1854 – 1891 | Symbolisme |
+| Paul Verlaine         | 1844 – 1896 | Symbolisme |
+| Guillaume Apollinaire | 1880 – 1918 | Surréalisme |
+| Paul Eluard           | 1895 – 1952 | Dadaïsme |
+| Louis Aragon          | 1897 – 1982 | Dadaïsme |
+| Jacques Prévert       | 1900 – 1977 | Surréalisme |
 
 
 # Impatient  
