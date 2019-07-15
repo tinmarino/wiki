@@ -21,6 +21,8 @@ Any command mentioned in this list can be executed as `tmux something` or `C-a :
 
 # Tips
 
+Add mouse support
+	set -g mouse on
 
 tmux list-keys | grep "send-keys -X cancel"
 
