@@ -65,6 +65,10 @@ So if your regex happens to contain apostrophes, first place it in an env variab
 |                |   |
 |                |   |
 
+* Interpolate code in string = `@{[LIST EXPR]}` or `${\(SCALAR EXPR)}`
+    * `say "@{[ 3 + 4 ]}"`
+    * `say "${\ function }"` -> `say "${\ do { 3 + 4 }}"` or `say "${\( 3 + 4 )}"`
+	* Use dot operator
 
 my $foo = "zombies are the bombies";if ($foo =~ /             zombie  # sorry pirates            /x ) {    print "urg. brains.\n";}
 /x modifier for pretty regzx print
