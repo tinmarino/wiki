@@ -13,6 +13,10 @@ git add -p # add by chunk (remember patch)
 	* `git config credential.helper store` : Stores permanently
 	* Note : While this is convenient, Git will store your credentials in clear text in a local file (.git-credentials) under your project directory (see below for the "home" directory). If you don't like this, delete this file and switch to using the cache option.
 
+* Merge commit
+  * `git reset --soft "HEAD~10"` # Merge last 10 commits into 1
+
+
 * Display
 	* `git log --all --full-history -- **/thefile.*`
 	* `git log --diff-filter=D --summary | grep delete`
@@ -29,7 +33,7 @@ git add -p # add by chunk (remember patch)
 	* `git ls-tree --full-tree -r HEAD`
 	* `git cat-file -s`
 	* `git diff-tree`
-	* 
+
 
 * Interface
 	* `git add -i` : add items without copying full file name
@@ -53,7 +57,7 @@ git add -p # add by chunk (remember patch)
 
 * Compress
 	* `git reflog expire --expire=now --all`
-  * `git gc [--agressive --prune=now]` : garbage collector
+  * `git gc [--aggressive --prune=now]` : garbage collector
 
 * Filter : remove certain files
   * `git filter-branch --tree-filter 'rm -f pass.txt' ~HEAD`
