@@ -35,6 +35,7 @@
 
 # Science
   * [Physics](Physics)
+  * [Math](Math)
 
 ## Misc
   * [Accronym](Accronym)
