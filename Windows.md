@@ -103,8 +103,9 @@
 
 * `int 31h` : Memory allocation, sector manipulation, table of descriptors
 * `int 21h` : 
+* `int 20h` : Terminate program
 * `int 13h` : Access to disk
-* `int 10h` :
+* `int 10h` : BIOS
 	* `fct 00h` : Change video mode and clear screen
 	* `fct 01h` : Set cursor type
 	* `fct 13h` : Show string on screen
