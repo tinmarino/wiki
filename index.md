@@ -39,6 +39,8 @@
 
 # Science
   * [Physics](Physics)
+  * [Communication](Communication)
+  * [Hindi](Hindi)
 
 ## Misc
   * [Accronym](Accronym)
