@@ -137,6 +137,12 @@
 
 Note: 'go' is an abbr for guioptions
 
+### Plugin
+
+#### Ctrlp
+
+* `let g:ctrlp_cache_dir = $HOME . '/cache/ctrlp'`
+
 ## FRom before
 
 set autochdir to auto chdir to current file

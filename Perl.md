@@ -31,6 +31,11 @@ my $foo = "zombies are the bombies";if ($foo =~ /             zombie  # sorry pi
 Even without the /x modifier, you can enclose comments in (?# ... ):my $foo = "zombies are the bombies";if ( $foo =~ /zombie(?# sorry pirates)/ ) {    print "urg. brains.\n";}
 
 
+Add to path
+  use lib qw(.); # Will add your cwd to @INC
+  use lib qw(. /path/to/my/home /some/other/dir); # will add those dirs 
+  perl -I/path/to/include script
+  
 Get package path
   perl -MTime::HiRes -e 'print $INC{"Time/HiRes.pm"}' or perldoc -l Time::HiRes
 	cpan -D Time::HiRes
@@ -101,6 +106,21 @@ Get environment variables
 	* `$userName =  $ENV{'LOGNAME'};`
 	* print "Hello, $userName\n"; 
 
+# Installing modules
+
+tar zxf Digest-SHA1-2.13.tar.gz
+cd Digest-SHA1-2.13
+perl Makefile.PL
+make
+make test
+make install
+
+tar zxf ...
+cd ...
+perl Build.PL
+./Build
+./Build test
+./Build install
 
 # Command line
 

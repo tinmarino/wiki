@@ -1,6 +1,6 @@
 * [Raccourci](Windows_Raccourci)
 * [Cmder](Windows_Cmder)
-* [[Windows Services](Windows-Services)]
+* [Windows Services](Windows-Services)
 * [Ms Dos](Ms-Dos)
 
 * Check if admin
@@ -43,7 +43,8 @@
 * Some services cannot be debugged locally because of traps (anti-debug). So one must debug natively (i.e kernel, remote)
 
 # Security
-## T
+
+* GetModuleHandle(NULL) -> Base address (even if specified as HMODULE)
 
 # API
 

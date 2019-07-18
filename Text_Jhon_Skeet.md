@@ -30,3 +30,17 @@
 * when invoking one of Jon's callbacks, the runtime adds "please"
 * drivers think twice before they dare interrupt Jon's code
 * Jon Skeet doesn't need a debugger, he just stares down the bug until the code confesses
+
+When Jon saves a file, the file thanks him.
+When John Skeet does a search on Google.. the only result is “I’ll be right back”.
+John Skeet returned IntelliSense and got his money back!
+The only time Jon Skeet was wrong was when he thought he had made a mistake.
+Jon Skeet’s heart rate is 5 GHz.
+When you search for “guru” on Google it says “Did you mean Jon Skeet?”
+Drivers think twice before they dare interrupt Jon’s code.
+Jon Skeet does not sleep…. He waits.
+There is no ‘CTRL’ button on Jon Skeet’s computer. Jon Skeet is always in control.
+Jon Skeet has written the best programming language. Its source has just one command… void JonSkeet();
+When Jon Skeet throws an exception, nothing can catch it.
+Jon Skeet is beyond Turing-complete; he is Turing-invincible.
+

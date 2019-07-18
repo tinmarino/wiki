@@ -1,3 +1,5 @@
+* Qui perd la légitimité perd la guerre (jc+)
+
 * L'expérience est le nom que chacun donne à ses erreurs (Oscar Wilde 1892)
 
 * Un outil ne vaut que par la main qui l'anime (maréchal de Lattre)
@@ -59,6 +61,7 @@
 * Wizards had always known that the act of observation changed the thing that was observed, and sometimes forgot that it also changed the observer too. (Terry Pratchett  -  Interesting times)
 
 * On ne discute pas avec une brouette on la pousse (Pierre de Villiers)
+
 
 
 # Abbé Pierre
