@@ -20,5 +20,12 @@
 * [Emoji](Emoji)
 * [Emoji Best](Emoji-Best)
 * [Draw](Draw)
+* [AsciiFunny](AsciiFunny)
+* [AsciiScarecrowAsciiArtFaq](AsciiScarecrowAsciiArtFaq)
+* [[AsciiScarecrowMenu](AsciiScarecrowMenu)
+* [AsciiScarecrowAsciiArtFaqNew](AsciiScarecrowAsciiArtFaqNew)
+* [AsciiScarecrowArchive](AsciiScarecrowArchive)
+* [AsciiScarecrowBestBBS](AsciiScarecrowBestBBS)
+* [[AsciiScarecrowArtGallery](AsciiScarecrowArtGallery)
 
 Subsidiarité : déléguer une tâche à l'échellon le plus bas possible
