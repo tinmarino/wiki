@@ -1,3 +1,5 @@
+```text
+
 From https://www.incredibleart.org/links/ascii/scarecrow.html (2019)
 
 
@@ -142,3 +144,4 @@ Funnies
 
 This section is an archive of The Scarecrow, Bob Allison's massive resource on ASCII Art.
 Bob Allison mysteriously disappeared from the web in 1996.
+```

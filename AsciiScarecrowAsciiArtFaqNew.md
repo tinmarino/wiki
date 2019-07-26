@@ -1,3 +1,4 @@
+```text
 ========================================================================
     | |     : :                  ::        \   \              ;;
     J J     : :                  ::         \   \            ;;
@@ -2001,3 +2002,4 @@ mga, you would change the 'mga' to 'mga/jms'.
              PICTURE VIEWING HELP, WRITTEN BY MARTIN ATKINS
                   LAST UPDATED THURSDAY JULY 13th 1998
 --------------------------------------------------------------------------
+```

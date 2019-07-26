@@ -2,6 +2,7 @@
 * [Cmder](Windows_Cmder)
 * [Windows Services](Windows-Services)
 * [Ms Dos](Ms-Dos)
+* [Windows Interrupt](Windows_Interrupt)
 
 * Check if admin
 	* `regedit /HKLM/SAM` : if you can open AM, you are priviledged

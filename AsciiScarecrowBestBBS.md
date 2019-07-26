@@ -1,3 +1,4 @@
+```text
     Scarecrow's ASCII BBS Gallery
 
     Back in the early days of the internet and the worldwide web, there was a system called the bulletin board system, or BBS. The BBS allowed users to share files, exchange messages, and post to online bulletin boards. They were popular with tech groups across the world. They have disappeared, but here are ASCII art files that once were shared on the system.
@@ -1720,3 +1721,4 @@ Send Art To: boba_gagme_wwa_com
 
             
 
+```

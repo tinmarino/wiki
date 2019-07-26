@@ -1,4 +1,5 @@
 
+```text
 Scarecrow's ASCII Art FAQ
 
      .___.   .______. .______. ______. ______.      .___.    _____.   _______.
@@ -382,3 +383,4 @@ received from the following nice people:
    Colin Douthwaite
             
 
+```
