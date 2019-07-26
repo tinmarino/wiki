@@ -21,8 +21,22 @@
 
 # Ascii / Draw
 
+* [AsciiVeronicaKarlsson](AsciiVeronicaKarlsson)
 * [AsciiJgsAnimalZoo](AsciiJgsAnimalZoo)
 * [AsciiJgsAnimalBird](AsciiJgsAnimalBird)
+* [AsciiJgsAnimalFarm](AsciiJgsAnimalFarm)
+* [AsciiJgsAnimalPet](AsciiJgsAnimalPet)
+* [AsciiJgsAnimalAquatic](AsciiJgsAnimalAquatic)
+* [AsciiJgsOddAndEnd](AsciiJgsOddAndEnd)
+* [AsciiJgsSig](AsciiJgsSig)
+* [AsciiJgsSchool](AsciiJgsSchool)
+* [AsciiJgsFood](AsciiJgsFood)
+* [AsciiJgsFavorite](AsciiJgsFavorite)
+* [AsciiJgsThought](AsciiJgsThought)
+* [AsciiJgs2000Dec](AsciiJgs2000Dec)
+* [AsciiJgs2001Mar](AsciiJgs2001Mar)
+* [AsciiJgs2001Jun](AsciiJgs2001Jun)
+
 * [AsciiCows](AsciiCows)
 * [AsciiCowz](AsciiCowz)
 * [AsciiSpyingAtTheWall](AsciiSpyingAtTheWall)
