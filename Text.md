@@ -21,6 +21,8 @@
 
 # Ascii / Draw
 
+* [AsciiJgsAnimalZoo](AsciiJgsAnimalZoo)
+* [AsciiJgsAnimalBird](AsciiJgsAnimalBird)
 * [AsciiComputer](AsciiComputer)
 * [AsciiAnimalRat](AsciiAnimalRat)
 * [AsciiAnimalCow](AsciiAnimalCow)
