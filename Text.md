@@ -23,10 +23,15 @@
 
 * [AsciiJgsAnimalZoo](AsciiJgsAnimalZoo)
 * [AsciiJgsAnimalBird](AsciiJgsAnimalBird)
+* [AsciiCows](AsciiCows)
+* [AsciiCowz](AsciiCowz)
+* [AsciiSpyingAtTheWall](AsciiSpyingAtTheWall)
 * [AsciiComputer](AsciiComputer)
 * [AsciiAnimalRat](AsciiAnimalRat)
 * [AsciiAnimalCow](AsciiAnimalCow)
 * [AsciiArtDesign](AsciiArtDesign)
+
+* [AsciiAuthorVeilleuxNormand](AsciiAuthorVeilleuxNormand)
 
 * [AsciiPorno](AsciiPorno)
 * [AsciiWorld](AsciiWorld)
