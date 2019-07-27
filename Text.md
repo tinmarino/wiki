@@ -36,6 +36,16 @@
 * [AsciiJgs2000Dec](AsciiJgs2000Dec)
 * [AsciiJgs2001Mar](AsciiJgs2001Mar)
 * [AsciiJgs2001Jun](AsciiJgs2001Jun)
+* [AsciiJgsSmall](AsciiJgsSmall)
+* [AsciiJgsLogo](AsciiJgsLogo)
+* [AsciiJgsComputer](AsciiJgsComputer)
+
+* [AsciiTutorialJoanStark](AsciiTutorialJoanStark)
+* [AsciiTutorialDanielAu](AsciiTutorialDanielAu)
+* [AsciiTutorialSusieOviatt](AsciiTutorialSusieOviatt)
+* [AsciiTutorialRowanCrawford](AsciiTutorialRowanCrawford)
+* [AsciiTutorialNormandVeilleux](AsciiTutorialNormandVeilleux)
+* [AsciiTutorialTargon](AsciiTutorialTargon)
 
 * [AsciiCows](AsciiCows)
 * [AsciiCowz](AsciiCowz)
