@@ -39,7 +39,7 @@
 * [AsciiJgsSmall](AsciiJgsSmall)
 * [AsciiJgsLogo](AsciiJgsLogo)
 * [AsciiJgsComputer](AsciiJgsComputer)
-* [AsciiJgsSmileyAndAccronym](sciiJgsSmileyAndAccronym)
+* [AsciiJgsSmileyAndAccronym](AsciiJgsSmileyAndAccronym)
 * [AsciiJgsHuman](AsciiJgsHuman)
 
 * [AsciiTutorialJoanStark](AsciiTutorialJoanStark)
