@@ -1,3 +1,7 @@
+* Serialize
+  * json.dumps(o_toto, default=lambda o: getattr(o, '__dict__', str(o)))
+
+
 * Display : get info
 	print np.__file__
 	print sys.executable
@@ -405,28 +409,27 @@ Python Date Formatting ~
     -> 4. This is not a mistake. Range takes account of leap and double-leap seconds.} 
 
 
-==============================================================================
-EXAMPLES                                                   *c-python-examples*
->python
-#Loop-Over-Sequence
+```python
+# Loop-Over-Sequence
 for index, value in enumerate(seq):
   print("{} : {}".format(index, value))
 
-#Loop-Over-Dictionary
+# Loop-Over-Dictionary
 for key in sorted(dict):
   print(dict[key])
 
-#Read-a-File
+# Read-a-File
 with open("filename", "r") as f:
   for line in f:
     line = line.rstrip("\textbackslash{}n") # Strip newline
     print(line)
 <python
 
-==============================================================================
-Thanks ~
-sschaub     https://www.cheatography.com/sschaub/cheat-sheets/essential-python/
-davechild   https://www.cheatography.com/davechild/cheat-sheets/python/
+# Entropy
+s = [ord(a) for a in "azerty"] ;\
+h = np.histogram(s, bins=range(256))[0] ;\
+print(   scipy.stats.entropy(h) / np.log(len(set(s)))   )
+```
 
 
 
