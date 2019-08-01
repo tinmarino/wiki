@@ -1,23 +1,78 @@
-* [Algérie](Algérie)
+
+# Poesie
 
 * [Quotes](Quotes)
-* [Emoji](Emoji)
+* [Art Poetique](Art_Poetique)
+* [Art De Péter](Art_De-Peter)
+* [Jokes : Jhon Skeet (best at SO)](Text_Jhon_Skeet)
+* [Poesie1](Poesie1)
+* [Cohen : if it be your will](Cohen-If-it-be-your-will)
+
+# Théologie
 
 * [Principle_of_war](Principle_of_war)
 * [TaoTeKing](TaoTeKing)
-* [Art Poetique](Art_Poetique)
-* [Art De Péter](Art_De-Peter)
 * [Hymne Algerien](Hymne-Algerien)
 * [Coran_en_ouvrant_le](Coran_en_ouvrant_le)
 * [Coran_Comparatif_Traductions](Coran_Comparatif_Traductions)
 
-* [Jokes : Jhon Skeet (best at SO)](Text_Jhon_Skeet)
+# Harmonica
 
 * [Harmonica1](Harmonica1)
 * [Harmonica2](Harmonica2)
 * [Harmonica3](Harmonica3)
 
-* [Cohen : if it be your will](Cohen-If-it-be-your-will)
+# Ascii / Draw
 
+* [AsciiVeronicaKarlsson](AsciiVeronicaKarlsson)
+* [AsciiJgsAnimalZoo](AsciiJgsAnimalZoo)
+* [AsciiJgsAnimalBird](AsciiJgsAnimalBird)
+* [AsciiJgsAnimalFarm](AsciiJgsAnimalFarm)
+* [AsciiJgsAnimalPet](AsciiJgsAnimalPet)
+* [AsciiJgsAnimalAquatic](AsciiJgsAnimalAquatic)
+* [AsciiJgsOddAndEnd](AsciiJgsOddAndEnd)
+* [AsciiJgsSig](AsciiJgsSig)
+* [AsciiJgsSchool](AsciiJgsSchool)
+* [AsciiJgsFood](AsciiJgsFood)
+* [AsciiJgsFavorite](AsciiJgsFavorite)
+* [AsciiJgsThought](AsciiJgsThought)
+* [AsciiJgs2000Dec](AsciiJgs2000Dec)
+* [AsciiJgs2001Mar](AsciiJgs2001Mar)
+* [AsciiJgs2001Jun](AsciiJgs2001Jun)
+* [AsciiJgsSmall](AsciiJgsSmall)
+* [AsciiJgsLogo](AsciiJgsLogo)
+* [AsciiJgsComputer](AsciiJgsComputer)
+* [AsciiJgsSmileyAndAccronym](AsciiJgsSmileyAndAccronym)
+* [AsciiJgsHuman](AsciiJgsHuman)
 
-Subsidiarité : déléguer une tâche à l'échellon le plus bas possible
+* [AsciiTutorialJoanStark](AsciiTutorialJoanStark)
+* [AsciiTutorialDanielAu](AsciiTutorialDanielAu)
+* [AsciiTutorialSusieOviatt](AsciiTutorialSusieOviatt)
+* [AsciiTutorialRowanCrawford](AsciiTutorialRowanCrawford)
+* [AsciiTutorialNormandVeilleux](AsciiTutorialNormandVeilleux)
+* [AsciiTutorialTargon](AsciiTutorialTargon)
+
+* [AsciiCows](AsciiCows)
+* [AsciiCowz](AsciiCowz)
+* [AsciiSpyingAtTheWall](AsciiSpyingAtTheWall)
+* [AsciiComputer](AsciiComputer)
+* [AsciiAnimalRat](AsciiAnimalRat)
+* [AsciiAnimalCow](AsciiAnimalCow)
+* [AsciiArtDesign](AsciiArtDesign)
+
+* [AsciiAuthorVeilleuxNormand](AsciiAuthorVeilleuxNormand)
+
+* [AsciiPorno](AsciiPorno)
+* [AsciiWorld](AsciiWorld)
+* [AsciiUrl](AsciiUrl)
+* [AsciiFunny](AsciiFunny)
+* [AsciiScarecrowAsciiArtFaq](AsciiScarecrowAsciiArtFaq)
+* [[AsciiScarecrowMenu](AsciiScarecrowMenu)
+* [AsciiScarecrowAsciiArtFaqNew](AsciiScarecrowAsciiArtFaqNew)
+* [AsciiScarecrowArchive](AsciiScarecrowArchive)
+* [AsciiScarecrowBestBBS](AsciiScarecrowBestBBS)
+* [[AsciiScarecrowArtGallery](AsciiScarecrowArtGallery)
+
+* [Emoji](Emoji)
+* [Emoji Best](Emoji-Best)
+* [Draw](Draw)

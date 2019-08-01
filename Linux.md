@@ -13,12 +13,38 @@
 * [BusyBox](BusyBox)
 * [W3m](W3m)
 
-# File
-* /etc/resolv.conf
-* /etc/nework/interface
-* /etc/hosts
-* /etc/mailname
-* /etc/hostname
+# Files (Read, get specific info)
+  * /proc/sys/vm/block_dump  # echo 1 lgos IO; then tail -f /var/log/syslog
+  * /proc/[pid]/io
+  * /proc/net/dev
+  * /sys/class/net/${interface}/statistics/ 
+  * /etc/resolv.conf
+  * /etc/nework/interface
+  * /etc/hosts
+  * /etc/mailname
+  * /etc/hostname
+
+
+
+* Xrand
+  redshift
+  xrandr -q | grep " connected"  # gives me LVDS1
+  xrandr --output LVDS1 --brightness 0.5
+  xbacklight -set 50
+  xbacklight -inc 10
+  xbacklight -dec 10 
+  echo 400 | sudo tee /sys/class/backlight/intel_backlight/brightness
+
+* Module (kernel)
+    depmod - handle dependency descriptions for loadable kernel modules.
+    insmod - install loadable kernel module.
+    lsmod - list loaded modules.
+    modinfo - display information about a kernel module.
+    modprobe - high level handling of loadable modules.
+    rmmod - unload loadable modules.
+
+* User Rights, Capabilities
+  visudo
 
 
 * tail -f
@@ -33,40 +59,43 @@
 * cat toto.txt | grep -arnobUP "\xCA\xCA"
 * echo "conbtent" | mail -s "subject" user@email.com
 * find . -maxdepth 1 -exec grep foo {}
-  
 
 * Hybernate
-	sudo pm-hibernate
-	sudo systemctl hibernate
+  sudo pm-hibernate
+  sudo systemctl hibernate
+
+* Move mouse
+  tmux send-key -t session:pane ls
+  tput - initialize a terminal or query terminfo database
+    - color output
+  xdotool - send keystrokes
 
 * Screen off
-	xset dpms force off
+  xset dpms force off
 
+*  Tar   
+  tar - cvf tecmint-14-09-12.tar /home/tecmint/
+  tar cvzf MyImages-14-09-12.tar.gz /home/MyImages
+      c – Creates a new .tar archive file.
+      v – Verbosely show the .tar file progress.
+      f – File name type of the archive file.
+      z - Compress
+  tar -xvf thumbnails-14-09-12.tar.gz
+  tar -zxvf tar-archive-name.tar.gz 
 
-*	Tar   
+*   Remotely move mouse : `xdotool`
+  ```
+  #! /bin/bash
+  # move the mouse  x    y
+  xdotool mousemove 1800 500
+  # left click
+  xdotool click 1
+  # right click
+  xdotool click 3
+  ```
 
-	tar - cvf tecmint-14-09-12.tar /home/tecmint/
-	tar cvzf MyImages-14-09-12.tar.gz /home/MyImages
-			c – Creates a new .tar archive file.
-			v – Verbosely show the .tar file progress.
-			f – File name type of the archive file.
-	  	z - Compress
-	tar -xvf thumbnails-14-09-12.tar.gz
-	tar -zxvf tar-archive-name.tar.gz 
-
-* 	Remotely move mouse : `xdotool`
-	```
-	#! /bin/bash
-	# move the mouse  x    y
-	xdotool mousemove 1800 500
-	# left click
-	xdotool click 1
-	# right click
-	xdotool click 3
-	```
-
-*	List device UUID
-	ls /dev:disk/by_uuid
+*  List device UUID
+  ls /dev:disk/by_uuid
 
 *   Find file (and print only finle name)
     * `find /dir1 -type f -printf "%f\n"`
@@ -81,8 +110,8 @@
   * `awk '{ sub("\r$",""); print }' dos.txt > unix.txt`
 
 
-* 	List signals shortcuts
-	* 	`stty -a`
+*   List signals shortcuts
+  *   `stty -a`
 
 * bc 
   * `echo "ibase=16;FF" | bc`
@@ -92,8 +121,8 @@
 
 
 *   List all users, groups
-	*	`groups`
-	*	`cut -d: -f1 /etc/passwd`
+  *  `groups`
+  *  `cut -d: -f1 /etc/passwd`
 
 *   Mem : If no screen
     *   `df`  list mount points 
@@ -123,7 +152,7 @@ bash
 alias fg="$VIM --remote-send ':cd $PWD<CR>'; fg"
 xdotool 
 kill -l  # to see the trap list
-		# 20 for ctrl-z sigstp
+    # 20 for ctrl-z sigstp
 !./ttyecho -n /dev/pts/22 "echo hello"
 -> Give to me the write to read and write at tty or ioctl 
 disown %2
@@ -219,7 +248,7 @@ sudo modprobe psmouse proto=imps
     e - remove ‘superflous’ lines
     q - handle nested quotations in plaintext email
     f - fit: good argumnent for all lines to be good len (even th first; 
-	    protected one
+      protected one
 ```
 
 

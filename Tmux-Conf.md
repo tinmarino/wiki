@@ -1,29 +1,25 @@
-# remap prefix from 'C-b' to 'C-a'
-unbind C-b
-set -g prefix C-q
-#set-option -g prefix C-Space
-#unbind C-Space
-#bind C-Space send-prefix
-#bind-key C-Space send-prefix
+# remap prefix from 'C-b' to 'C-q'
+	unbind C-b
+	set -g prefix C-q
 
 # Enable mouse mode (tmux 2.1 and above)
-set -g mouse on
+	set -g mouse on
 
 # split panes using | and -
-bind | split-window -h
-bind - split-window -v
-bind _ split-window -v
-unbind '"'
-unbind %
+	bind | split-window -h
+	bind - split-window -v
+	bind _ split-window -v
+	unbind '"'
+	unbind %
 
-# reload config file (change file location to your the tmux.conf you want to use)
-bind r source-file ~/.tmux.conf
+# reload config file
+	bind r source-file ~/.tmux.conf
 
 # don't rename windows automatically
-set-option -g allow-rename off
+	set-option -g allow-rename off
 
 # trigger copy mode by
-bind -n M-Up copy-mode
+	bind -n M-Up copy-mode
 
 # Do not copy selection and cancel copy mode on drag end event
 # Prefer iTerm style selection: select, then mouse click to copy to buffer

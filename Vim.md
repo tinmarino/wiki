@@ -1,4 +1,4 @@
-
+* [Vim Menu](Vim-Menu)
 * [Practical_Vim](Practical_Vim)
 * [Vimstyle](Vimstyle) (from Google)
 * [VimStory](VimStory)
@@ -33,11 +33,77 @@
 	* `:tn | :tp` : jump to next | previous tag
 	* `:ts`	: tag select : get a list
 
-## From work
+# Tips
 
-```vim
-\(External.*\)\@<!mem
-```
+* Show highlight sytnax type
+	echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+
+* Check variable, set default
+	let g:pluginname_setting = get(g: | 'pluginname_setting', "default")
+	if exists('g:pymode') | echo 'exists' | endif
+
+* Copy without yanking selection in visual
+	xnoremap p pgvy`
+
+* Read man files
+	runtime! ftplugin/man.vim  an Man 3 printf
+
+* Script : Get filetype of a buffer
+	:let bufFiletype = getbufvar(bufNr, '&filetype')
+
+* Substitute without escaping the replcement
+  * `:%sno/search_string/replace_string/g`
+  * `:s/</\='&lt;'/g`
+
+* Delete everything except text
+  * `:%s/\(^\|\(text\)\@<=\).\{-}\($\|text\)\@=//g`
+  *
+    ```
+    \(^\|\(text\)\@<=\)     # means start of line, or some point preceded by “text”
+    .\{-}                   # as few characters as possible
+    \($\|text\)\@=          # without globbing characters, checking that we reached either end of line or occurrence of “text”.
+    ```
+  * Another way to do it:
+
+  * Create a function that count matches of a pattern in a string (see :help match() to help you design that)
+  * Use: :%s/.*/\=repeat('text', matchcount('text', submatch(0)))
+
+
+* Find where root runtime is 
+	* `:echo $VIMRUNTIME` -> `/usr/share/vim/vim74`
+	
+* Source autoload file
+	* `:call example#BadFunction()`
+
+* Find where a map has been defined (in which script)
+	* `:verbose map <c-z>` 
+
+* Use `s/\%V` to substitude within selection and not full lines
+
+:h formatoptions  :set fo+=t # to autowrap
+:match visu /\%7l\|%10l/
+:hi visu ctermbg=darked
+
+## Client -- Server
+	vim --servernbame DEMO		# Open with name DEMO
+	vim --servername DEOM --remote some-file.txt  # Send some file
+	vim --servername DEMO --remote-send ':3d<CR>' # Send command
+	
+
+## Fast buffer switching
+	* `:oldfiles`
+	* `:bro[wse] ol[dfiles] [!]`
+	* `:changes`
+	* `'0 '1 '2 '3 ... '9`
+	* `CtrlP` pluggin
+
+## Ctags 
+	* `ctags -R -f ./.git/tags .`
+	* `:tag function_name`
+	* `C-}` : see all tags
+	* `C-]` : jump to tag
+	* `:tn | :tp` : jump to next | previous tag
+	* `:ts`	: tag select : get a list
 
 ## From work
 
@@ -101,6 +167,12 @@
 :set guioptions-=L " remove lefthand scrooll bar
 
 Note: 'go' is an abbr for guioptions
+
+### Plugin
+
+#### Ctrlp
+
+* `let g:ctrlp_cache_dir = $HOME . '/cache/ctrlp'`
 
 ## FRom before
 

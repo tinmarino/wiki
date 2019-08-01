@@ -12,9 +12,10 @@
     * [Visual Studio](Visual-Studio)
 
 ## Language
-  * [Links](Links)
+  * [Links](Programming-Links)
   ### Script
   * [Perl](Perl)
+  * [Ruby](Ruby)
   * [Python](Python)
   * [Js](Js)
   ### Compiled
@@ -27,6 +28,8 @@
   * [Pandoc](Pandoc)
   * [Markdown](Markdown)
   * [Dot](Dot)
+  ### Algorithm
+  * [Paradigm](Paradigm-Programming)
 
 ## Program
   * [Firefox](Firefox)
@@ -36,6 +39,9 @@
 # Science
   * [Physics](Physics)
   * [Math](Math)
+  * [Communication](Communication)
+  * [Hindi](Hindi)
+  * [Plastic](Plastic)
 
 ## Misc
   * [Accronym](Accronym)
@@ -44,9 +50,6 @@
   * [Todo](Todo)
   * [Text](Text)
   * [Emoji](Emoji)
-  * [Link](Link)
   * [StackOverflow](StackOverflow)
 
-* [Interrupt](Interrupt)
 * [Test](Test)
-* [Pentest Uri](Pentest-Uri)

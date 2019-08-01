@@ -1,7 +1,9 @@
 * [Raccourci](Windows_Raccourci)
 * [Cmder](Windows_Cmder)
-* [[Windows Services](Windows-Services)]
+* [Windows Services](Windows-Services)
 * [Ms Dos](Ms-Dos)
+* [Windows Interrupt](Windows_Interrupt)
+* [Interrupt](Interrupt)
 
 * Check if admin
 	* `regedit /HKLM/SAM` : if you can open AM, you are priviledged
@@ -43,7 +45,8 @@
 * Some services cannot be debugged locally because of traps (anti-debug). So one must debug natively (i.e kernel, remote)
 
 # Security
-## T
+
+* GetModuleHandle(NULL) -> Base address (even if specified as HMODULE)
 
 # API
 
@@ -102,6 +105,7 @@
 # Interupt table (TODO my own file)
 
 * `int 31h` : Memory allocation, sector manipulation, table of descriptors
+* `int 2Eh` : Sleep
 * `int 21h` : 
 * `int 20h` : Terminate program
 * `int 13h` : Access to disk

@@ -1,5 +1,6 @@
 % Android terminal
 
+* [Termux Faq](Termux-Faq)
 
 
 ### Volume Down 

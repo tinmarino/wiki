@@ -1,5 +1,8 @@
+* [Particules](Phy-Particule)
+
 * 10^80 : nb d'atome de l'univers
 * 10^120 : nb de shannon = nb de jeu posssible au échecs
+* planck : 6.62607004 × 10-34 m^2 kg / s
 
 
 # Multipliers
