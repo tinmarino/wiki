@@ -2,6 +2,9 @@
 
 [Bash Rc](Bash-Rc)
 
+* Read file line by line
+  * cat peptides.txt | while read line; do_something_with_$line_here; done
+  * while read p; do echo "$p" ; done <peptides.txt
 
 * Xterm change mouse cursor
   * `printf '\033[6 q'`
