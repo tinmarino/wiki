@@ -2743,14 +2743,4 @@ visit "Bevy O' Bunnies Rabbity" Website
     to page 1 of pets
 
 .:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:.
-
-
-to main pageSearch this site
-
-.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:._.:*~*:.
-
-This Page is an outdated, user-generated website brought to you by an archive.It was mirrored from Geocities at the end of October, 2009.
-For any questions concerning this page try to contact the respective author. (To report any malicious content send the URL to oocities(at gmail dot com). For question about the archive visit: OoCities.org.
-[x]
-[x]
-[x]close
+```

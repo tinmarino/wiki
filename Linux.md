@@ -14,6 +14,10 @@
 * [BusyBox](BusyBox)
 * [W3m](W3m)
 * [Nvidia](Nvidia)
+* [Ubuntu](Ubuntu)
+
+# Not so used
+* [Accronym](Accronym)
 
 # Files (Read, get specific info)
   * /proc/sys/vm/block_dump  # echo 1 lgos IO; then tail -f /var/log/syslog

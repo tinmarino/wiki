@@ -11,30 +11,33 @@
     * [Compilation](Compilation)
     * [Visual Studio](Visual-Studio)
 
+
 ## Language
-  * [Links](Programming-Links)
+  * [Links](Programming-Links)  
   ### Script
   * [Perl](Perl)
   * [Ruby](Ruby)
   * [Python](Python)
-  * [Js](Js)
+  * [Js](Js)  
   ### Compiled
   * [C](C)
   * [Cmake](Cmake)
-  * [Assembly](Assembly)
+  * [Assembly](Assembly)  
   ### Markup
   * [Html](Html)
   * [Latex](Latex)
   * [Pandoc](Pandoc)
   * [Markdown](Markdown)
-  * [Dot](Dot)
+  * [Dot](Dot)   
   ### Algorithm
   * [Paradigm](Paradigm-Programming)
+
 
 ## Program
   * [Firefox](Firefox)
   * [IDA](IDA)
   * [Ia](Ia)
+
 
 # Science
   * [Physics](Physics)
@@ -44,12 +47,6 @@
   * [Plastic](Plastic)
 
 ## Misc
-  * [Accronym](Accronym)
-  * [Draw](Draw)
-  * [Memo](Memo)
-  * [Todo](Todo)
   * [Text](Text)
-  * [Emoji](Emoji)
-  * [StackOverflow](StackOverflow)
 
 * [Test](Test)
