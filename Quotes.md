@@ -1,3 +1,7 @@
+* Think like a man of action, act like a man of thought (Henri Bergson)
+
+* You must use your mind to get things off your mind (David Allen)
+
 * Qui perd la légitimité perd la guerre (jc+)
 
 * L'expérience est le nom que chacun donne à ses erreurs (Oscar Wilde 1892)
