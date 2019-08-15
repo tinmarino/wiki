@@ -14,8 +14,10 @@
   * Note : While this is convenient, Git will store your credentials in clear text in a local file (.git-credentials) under your project directory (see below for the "home" directory). If you don't like this, delete this file and switch to using the cache option.
 
 * Submodules
-  * git submodule update --recursive --remote
-  * git submodule sync  # after modyfing .gitmodules
+  * `git submodule update --recursive --remote --jobs 8`
+  * `git submodule sync`  # after modyfing .gitmodules
+  * `git pull --recurse-submodules`
+  * `git submodule forech [--recursive] 'git reset --hard'`
 
 * Merge commit
   * `git reset --soft "HEAD~10"` # Merge last 10 commits into 1
@@ -36,9 +38,6 @@
 	* `git ls-tree --full-tree -r HEAD`
 	* `git cat-file -s`
 	* `git diff-tree`
-
-* Submodules
-  * git submodule update --recursive --remote
 
 * Interface
   * `git add -i` : add items without copying full file name

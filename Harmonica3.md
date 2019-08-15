@@ -1244,3 +1244,309 @@ to-car-te ni en can-cio-nes
 
 </pre>
 
+
+### La java bleu
+
+```text
+5 -4 -3 -2 4 (4 4 4)
+-6 -5 -5 6 -6 6 5
+-5 -4 -4 5 -5 5 4
+-4 4 -3 -3" -3 4 -4 5 4 -4
+
+5 -4 -3 -2 4 (4 4 4)
+-6 -5 -5 6 -6 6 5
+-5 -4 -5 -6 6 -5 5 4 5 6
+5 -4 -3 -2 4 (4 4 4)
+
+5 5 6 6 4 5 4
+4 -4 5 6 5 -5 -4
+5 5 6 6 4 5 4
+-4 5 -4 -3 -2 4
+
+-4 -2 -3 -4
+5 4 -4 5
+-5 -4 5 -5 -4 5 -5 -6 -6' 6
+
+-4 -2 -3 -4
+5 4 -4 5
+5° -4 5
+5° -4 5
+5° -6 -6' 6
+
+5 -4 -3 -2 4 (4 4 4)
+-6 -5 -5 6 -6 6 5
+-5 -4 -5 -6 6 -5
+5 4 5 6
+5 -4 -3 -2 4 (4 4 4)
+
+C'est la java bleue
+La java la plus belle
+Celle qui ensorcelle
+Et que l'on danse les yeux dans les yeux
+Au rythme joyeux
+Quand les corps se confondent
+Comme elle au monde
+Il n'y en a pas deux
+C'est la java bleue
+
+Il est au bal musette
+Un air rempli de douceur
+Qui fait tourner les têtes
+Qui fait chavirer les curs
+Tandis qu'on glisse à petits pas
+Serrant celle qu'on aime dans ses bras
+Tout bas l'on dit dans un frisson
+En écoutant jouer l'accordéon.
+
+Chérie sous mon étreinte
+Je veux te serrer plus fort
+Pour mieux garder l'empreinte
+Et la chaleur de ton corps
+Que de promesses, que de serments
+On se fait dans la folie d'un moment
+Mais ses serments remplis d'amour
+On sait qu'on ne les tiendra pas toujours.
+```
+
+### TODO AU CAFÉ DU CANAL -
+
+```text
+Pierre Perret menu
+Paroles et musique : Pierre Perret
+Tonalité :
+
+    Gb |G |Ab |A |Bb |B |C |Db |D |Eb |E |F |Gb 
+
+
+Intro : Bm 
+ 
+ 
+Au café du canal
+
+Paroles et musique : Pierre Perret – © Editions Adèle 1977
+
+Chez la jolie Rosette au café du canal
+Sur le tronc du tilleul qui ombrageait le bal
+On pouvait lire sous deux cœurs entrelacés
+‘’Ici on peut apporter ses baisers’’
+Moi mes baisers je les avais perdus
+Et je croyais déjà avoir tout embrassé
+Mais je ne savais pas que tu étais venue
+Et que ta bouche neuve en était tapissée
+
+La chance jusqu’ici ne m’avait pas souri
+Sur mon berceau les fées se penchaient pas beaucoup
+Et chaque fois que j’ tombais dans un carré d’orties
+Y avait une guêpe qui me piquait dans l’ cou
+Pourtant ma chance aujourd’hui elle est là
+Sous la tonnelle verte de tes cils courbés
+Quand tu m’as regardé pour la première fois
+Ma vieille liberté s’est mise à tituber
+
+On était seuls au monde en ce bal populeux
+Et dans une seul’ main j’emprisonnais ta taille
+Tes seins poussaient les plis de ton corsage bleu
+Ils ont bien failli gagner la bataille
+J’aime le ciel parce qu’il est dans tes yeux
+J’aime l’oiseau parce qu’il sait ton nom
+J’aime ton rire et tous ces mots curieux
+Que tu viens murmurer au col de mon veston
+
+Et je revois tes mains croisées sur ta poitrine
+Tes habits jetés sur une chaise au pied du lit
+Ton pauvre cœur faisait des p’tits bonds de sardine
+Quand j’ai posé ma tête contre lui
+Dieu tu remercies Dieu ça c’est bien de toi
+Mais mon amour pour toi est autrement plus fort
+Est-ce que Dieu aurait pu dormir auprès de toi
+Pendant toute une nuit sans toucher à ton corps
+
+Chez la jolie Rosette au café du canal
+Sur le tronc du tilleul qui ombrageait le bal
+On pouvait lire sous deux cœurs entrelacés
+‘’Ici on peut apporter ses baisers’’
+```
+
+### Le jazz et la java (C. nougaro)
+
+```text
+
+5 5 -5 6 -5 -5 6 -6 5
+5 5 -5 6 -5 -5 6 -6 -7
+
+-6 -5 -6 7 -7 -6 6 5 6 -7 -6 6 -5  |
+5 5 -5 6 -5 -5 5 -4 4              | Bis
+
+5 4 5 4 5 -4 -3 -4 5 4 5 6
+5 4 5 4 5 -4 -3 -4 5 4 5 -6
+6 -4 5 -5 -4 5 -4 5 6 -5 -4 5
+
+Quand le jazz est
+Quand le jazz est là
+La java s'en
+La java s'en va
+Il y a de l'orage dans l'air
+Il y a de l'eau dans le
+Gaz entre le jazz et la java
+
+Chaque jour un peu plus y a le jazz qui s'installe
+Alors la rage au coeur la java fait la malle
+Ses p'tit's fesses en bataille sous sa jupe fendue
+Elle écrase sa gauloise et s'en va dans la rue
+
+Quand le jazz est
+
+Quand le jazz est là
+La java s'en
+La java s'en va
+Il y a de l'orage dans l'air
+Il y a de l'eau dans le
+Gaz entre le jazz et la java
+
+Quand j'écoute béat un solo de batterie
+V'là la java qui râle au nom de la patrie
+Mais quand je crie bravo à l'accordéoniste
+C'est le jazz qui m'engueule me traitant de raciste
+
+Quand le jazz est
+Quand le jazz est là
+La java s'en
+La java s'en va
+Il y a de l'orage dans l'air
+
+Il y a de l'eau dans le
+Gaz entre le jazz et la java
+
+Pour moi jazz et java c'est du pareil au même
+J'me soûle à la Bastille et m'noircis à Harlem
+Pour moi jazz et java dans le fond c'est tout comme
+Quand le jazz dit: Go man , la java dit: Go home.
+
+Quand le jazz est
+Quand le jazz est là
+La java s'en
+La java s'en va
+Il y a de l'orage dans l'air
+Il y a de l'eau dans le
+Gaz entre le jazz et la java
+
+Jazz et java copains ça doit pouvoir se faire
+
+Pour qu'il en soit ainsi,tiens,je partage en frère
+Je donne au jazz mes pieds pour marquer son tempo
+Et je donne à la java mes mains pour le bas de son dos.
+```
+
+## La vie en rose
+
+```text
+7 -7 -6 6 5 7 -7
+-6 6 5 4 -7 -6
+6 5 -3 4 -7 -6 6
+
+-8 7 -7 -6 -5 7 -7
+-6 6 -5 -4 -7 -6
+6 -5 -3 -4 -7 -6 6
+
+7 -7 -6 6 5 7 -7
+-6 6 5 4 -7 -6
+6 5 -3 4 7 7
+
+-8 -8   7 -8 -8    7 -8 -8   7 6
+-8 -8   7 -8 -8    7 -8 -8   7 87 8
+
+
+Des yeux qui font baisser les miens
+Un rire qui se perd sur sa bouche
+Voilà le portrait sans retouche
+De l'homme auquel j'appartiens
+
+Quand il me prend dans ses bras
+Il me parle tout bas
+je vois la vie en rose
+
+Il me dit des mots d'amour
+Des mots de tous les jours
+Et ça me fait quelque chose
+
+Il est entré dans mon cœur
+Une part de bonheur
+Dont je connais la cause
+
+
+C'est lui pour moi
+Moi pour lui
+Dans la vie
+Il me l'a dit, l'a juré pour la vie
+
+Et dès que je l'aperçois
+Alors je sens en moi,
+Mon cœur qui bat...
+
+Des nuits d’amour à plus finir
+Un grand bonheur qui prend sa place
+Devant lui les chagrins s’effacent
+Heureux heureux à en mourir
+
+Quand il me prend dans ses bras
+Il me parle tout bas
+Je vois la vie en rose
+
+
+Il me dit des mots d'amour
+Des mots de tous les jours
+Et ça me fait quelque chose
+
+Il est entré dans mon cœur
+Une part de bonheur
+Dont je connais la cause
+
+C'est Toi pour moi
+Moi pour Toi
+Dans la vie
+Tu me l'as dit, l'as juré pour la vie
+
+Et dès que je t'aperçois
+Alors je sens en moi, mon cœur qui bat... 
+```
+
+### Stand by me
+
+```text
+ 5    6   -6    5   6
+When the night has come
+ 4  -4    5  -4  4
+And the land is dark
+ 4  -4   5    4  5  -4 4  -4    -4    4
+And the moon is the only light we'll see
+5  6   -6   5  6 -6   5 -5   5   5  -4  4 
+Oh I won't be afraid, no I won't be afraid
+ 4   5   -4  4   4   5 -4  5 -4  4  4
+Just as long as you stand, stand by me
+
+ 6 -6  6     7 -7    -6 6  6  -7   5 4  -4 4
+So darlin', darlin', stand by me, stand by me
+5  -4 4    5 -4 -4 4    5 -4 -4 4
+Oh stand  stand by me, stand by me
+
+5   6  -6   5   5   5   -6 6
+If the sky that we look upon
+ -4     5  5  -4   4
+Should tumble and fall
+  4 -4    5   4      5    -4  4  -4 4  -4   4
+And the mountains should crumble in to the sea
+5   6   -6   5   6   -6   6 -5 -4 4   5  -4  4       
+I won't cry, I won't cry, no I won't shed a tear
+ 4   5   -4  4   4   5 -4  5 -4  4  4
+Just as long as you stand, stand by me
+ 
+ 6 -6  6     7 -7    -6 6  6  -7   5 4  -4 4
+So darlin', darlin', stand by me, stand by me
+5  -4 4    5 -4 -4 4    5 -4 -4 4
+Oh stand  stand by me, stand by me
+```
+
+
+
+### TODO Il jouai du piano debout (France Gall)
+

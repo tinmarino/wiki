@@ -22,7 +22,14 @@
 * [Harmonica2](Harmonica2)
 * [Harmonica3](Harmonica3)
 
-# Ascii / Draw
+# Draw
+
+* [Figlet Font](Figlet-Font)
+* [Emoji](Emoji)
+* [Emoji Best](Emoji-Best)
+* [Draw](Draw)
+
+# Ascii
 
 * [AsciiVeronicaKarlsson](AsciiVeronicaKarlsson)
 * [AsciiJgsAnimalZoo](AsciiJgsAnimalZoo)
@@ -72,7 +79,3 @@
 * [AsciiScarecrowArchive](AsciiScarecrowArchive)
 * [AsciiScarecrowBestBBS](AsciiScarecrowBestBBS)
 * [[AsciiScarecrowArtGallery](AsciiScarecrowArtGallery)
-
-* [Emoji](Emoji)
-* [Emoji Best](Emoji-Best)
-* [Draw](Draw)

@@ -45,6 +45,7 @@
   * [Communication](Communication)
   * [Hindi](Hindi)
   * [Plastic](Plastic)
+  * [Chile](Chile)
 
 ## Misc
   * [Text](Text)
