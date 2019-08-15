@@ -794,15 +794,15 @@ Il suffisait de te parler, pour t'apprivoiser.
 
 Refrain:
 
- 5    -4  4 -4 4    -5    5    4 5 -4
+ 5    -4  4  -4  4     -5     5  4  5  -4
 
 Aux Champs-Elysées, aux Champs-Elysées
 
- 5  6  5    -4  5   -4    4  5 4 4 -3 4  -3
+5  6  5    -4  5  -4    4  5  4    4    -3 4  -3
 
 au soleil, sous la pluie, à midi ou à minuit,
 
--3 3 4  -4    4    5    4  4   3    4   4 -4  4 
+-3 3 4   -4  4  5  4  4     3    4   4 -4  4 
 
 Il y a tout c'que vous voulez aux Champs-Elysées
 

@@ -9,6 +9,7 @@
 * [Negative Regex](V-negative-regex)
 * [Script](V-Script)
 
+:au FileTypepyrhon setlocal formatprg=autopep8\ -
 :h formatoptions  :set fo+=t # to autowrap
 :match visu /\%7l\|%10l/
 :hi visu ctermbg=darked

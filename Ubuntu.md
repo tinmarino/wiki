@@ -1,3 +1,8 @@
+
+# Restart
+* gnome-shell --replace
+* alt f2 + r  or `restart`
+
 # Power management : suspend then hibernate
   * In `/etc/systemd/sleep.conf` new file:
     ```

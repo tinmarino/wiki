@@ -418,18 +418,18 @@ Repeat Chorus
  5  -5  6     5  -4  5    4
 IN THE TOWN WHERE I WAS BORN
 
-  5   5 -4 4 -3 -3    5    5  -4
+  5   5 -4 4 -3    -3    5    5  -4
 LIVED A  MAN---WHO SAILED TO SEA
 
  5  -5  6   5  -4  5   4
 AND HE TOLD US OF HIS LIFE
 
- 5  5  -4 4 -3 -3  5   5  -4
+ 5  5  -4 4 -3    -3  5   5  -4
 IN THE LAND--- OF SUB-MA-RINES
 
 CHORUS-
 
-6  6  6  6  -6  -4  -4  -4  -4  -4
+6  6  6  6     -6    -4  -4  -4  -4  -4
 WE ALL LIVE IN A YEL-LOW SUB-MA-RINE
 
 -4  -4  -4  -4 -4    4   4   4  4  4
@@ -1050,14 +1050,38 @@ Et les mistrals gagnants
 ```
 +6 -6   +7 -6   +6  -5  +5  -5   +6  +6
 A faire pâ-lir tous les Mar-quis de Sade
+
 -5 +6    -6 +6  -5  +5  -4   +5 -5  -5
 A faire rou-gir les pu-tains de la rade
+
 +5 -5    +6-5   +5  -4  -3  -4  +5 +5
 A faire cri-er grâce à tous les é-chos
+
+
 -3 -4    +5  -6    -6   -6   +6 -5 -4 +6
 A faire trem-bler les murs de Jé-ri-cho
+
 -4  +5  -5+5-4-3
 Je vais t´ai-mer
+
+-3  +5   +6  -7
+Je vais t´ai-mer
+
+    +7    +7 -6 -6  +6 +6  -5  -5
+Comme on ne t´a ja-mais ai-mée
+
++3  -4   -5  +7
+Je vais t´ai-mer
+
+-6    -6  +6  +6  -5 -5  +5  +5 +6 +6
+Plus loin que tes rê-ves ont i-ma-giné
+
+-3  -4   +5 -6+6-5
+Je vais t´ai-mer
+
++6 +6   -5  +6
+Je vais t´ai-mer
+
 
 +6 -6    +7  -6  +6  -5  +5   -5  +6  +6
 A faire flam-ber des en-fers dans tes yeux
@@ -1070,18 +1094,6 @@ A faire pri-er et sup-pli-er nos mains
 -4  +5  -5  +5-4-3
 Je vais t´ai-mer
 
--3  +5   +6  -7
-Je vais t´ai-mer
-    +7    +7 -6 -6  +6 +6  -5  -5
-Comme on ne t´a ja-mais ai-mée
-+3  -4   -5  +7
-Je vais t´ai-mer
--6    -6  +6  +6  -5 -5  +5  +5 +6 +6
-Plus loin que tes rê-ves ont i-ma-giné
--3  -4   +5 -6+6-5
-Je vais t´ai-mer
-+6 +6   -5  +6
-Je vais t´ai-mer
 
 -3  +5   +6  -7
 Je vais t´ai-mer

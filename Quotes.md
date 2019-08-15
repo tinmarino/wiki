@@ -1,3 +1,5 @@
+* It is better to be wrong than  to be vague (Freeman Dyson)
+
 * Think like a man of action, act like a man of thought (Henri Bergson)
 
 * You must use your mind to get things off your mind (David Allen)

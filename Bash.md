@@ -97,7 +97,10 @@
 
 * Debugging
 	*	`bash -x ./script.sh`
-		*   set -x  # at the beginning of the script
+
+	* set -x 
+  * trap read debug
+    * # at the beginning of the script
 		*   to debug
 	
 *	Arrays

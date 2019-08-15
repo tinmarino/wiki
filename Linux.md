@@ -19,6 +19,12 @@
 # Not so used
 * [Accronym](Accronym)
 
+* clear
+* reset 
+* tmux :clear-history 
+* tmux :bind -n C-k clear-history  #-n to avoid prefix
+* tmux: bind b send-keys-R \; clear-history
+  
 # Files (Read, get specific info)
   * /proc/sys/vm/block_dump  # echo 1 lgos IO; then tail -f /var/log/syslog
   * /proc/[pid]/io
