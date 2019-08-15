@@ -2,10 +2,13 @@
 # Poesie
 
 * [Quotes](Quotes)
+* [Poesie-My](Poesie-My)
+* [Poesie1](Poesie1)
+* [Dict-Francais-All](Dict-Francais-All)
+* [Dict Francais Verbes](Dict-Francais-Verbes)
 * [Art Poetique](Art_Poetique)
 * [Art De Péter](Art_De-Peter)
 * [Jokes : Jhon Skeet (best at SO)](Text_Jhon_Skeet)
-* [Poesie1](Poesie1)
 * [Cohen : if it be your will](Cohen-If-it-be-your-will)
 
 # Théologie
