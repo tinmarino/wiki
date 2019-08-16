@@ -5,13 +5,13 @@
 Pour toi, Cyber corsaire, Moi, marin de passage
 __Jouant__ aux émissaires, __je n'ai qu'un seul__ message.
 Qu'importe ton école, ton maître et sa bannière,
-Quand un devoir te colle, fais le à ta manière.
+Quand un devoir te colle, fais-le à ta manière.
 
 ## 2/ Silverfox
-Le renard argenté, t'as jeter sa Bouétard
-__________________________________________
-__________________________________________
-D'un clien d'oeil anglisé, il te __remet__ Thales
+Le renard argenté, t'as jeter ta Bouétard.
+Les Courant fréquentés, tentent trop les tétards.
+Le Chaix tif canidés, __te l'appris en noblesse__
+D'un clien d'oeil anglisé, __il te remet__ Thales
 
 ## 3/ Comme-Intro
 Comme ce Grelot qui te suit quand tu perd Lecompte
@@ -20,10 +20,10 @@ Comme ce Bienaimé qui, Comiti téléphone,
 Alain proviste, t'as prélevé, d'un monde aphone.
 
 ## 4/ Comme-Detro
-Comme un Beauman uel, Dujardin d'Olivier
-__________________________________________________
-__________________________________________________
-__________________________________________________
+Comme un Beauman uscrit, Dujardin d'Olivier.
+Comme un Boulo __bien fait__, séduisant Lebouvier.
+Comme cette Herby gnorante, des __faveurs__ Duchêne.
+Comme un Sonet qui vante, __ceux qui n'ont pas de chaines__.
 
 ## 5/ Annonce fin
 ____________________________________________________________
@@ -33,7 +33,7 @@ ____________________________________________________________
 
 
 ## 6/ Detro
-Pour toi, Andin Syncère, Moi, marin de passage
+Pour toi, andin syncère, moi, marin de passage
 Jouant aux émissaires, je n'ai qu'un seul message.
 Qu'importe ton école, ton maître et sa bannière,
 Quand un devoir te colle, fais le à ta manière.
