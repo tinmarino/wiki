@@ -4,9 +4,20 @@
 * [Ms Dos](Ms-Dos)
 * [Windows Interrupt](Windows_Interrupt)
 * [Interrupt](Interrupt)
+* [Empire](Empire)
+* [Visual Studio](Visual-Studio)
 
-* Check if admin
-	* `regedit /HKLM/SAM` : if you can open AM, you are priviledged
+* Dialog
+  *	Window Hello : `dialog --title 'Message' --msgbox 'Hello, world!' 5 20`
+
+  *	Yes / no menu : `dialog --title "Message" --yesno "Are you having\ fun?" 6 25`
+
+  *	Infobox : `dialog --infobox "Please wait" 10 30 ; sleep 4`
+  *	Inputbox : `dialog --inputbox "Enter your name:" 8 40 2>answer`
+  * 	Textbox : `dialog --textbox ~/../usr/etc/profile 22 70`
+  * 	
+  * Check if admin
+    * `regedit /HKLM/SAM` : if you can open AM, you are priviledged
 
 * Power off (shutdown)
 	shutdown /h /f  # hibernate force

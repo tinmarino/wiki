@@ -2,14 +2,9 @@
   * [Linux](Linux)
     * [Bash](Bash)
     * [Vim](Vim)
-    * [Emacs](Emacs)
   * [Windows](Windows)
     * [Powershell](Powershell)
-    * [Raccourci](Windows_Raccourci)
     * [Batch](Batch)
-    * [Empire](Empire)
-    * [Compilation](Compilation)
-    * [Visual Studio](Visual-Studio)
 
 
 ## Language

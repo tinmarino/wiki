@@ -9,6 +9,7 @@
 * [Git](Git)
 * [Gcc](Gcc)
 * [Pentest](Pentest)
+* [Emacs](Emacs)
 * [Network](Network) : Unbound
 * [Imagemagick](Imagemagick)
 * [BusyBox](BusyBox)
