@@ -1,3 +1,12 @@
+# Interact with system clipboard
+  set -g set-clipboard on
+  bind -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "xsel -i --clipboard"
+  bind -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel "xsel -i --clipboard"
+
+# history limit, scrool back buffer
+  set-option -g history-limit 50000
+  If a "line" really is just the characters within it, then we can assume 128 bytes is a reasonable line size in memory. If I'm willing to commit 32 MB to scroll back for a single pane (which suits me, I don't use many panes), then I could increase my history limit to roughly 2 ** (25 - 7) = 256K or 250 thousand lines
+
 # remap prefix from 'C-b' to 'C-q'
 	unbind C-b
 	set -g prefix C-q
