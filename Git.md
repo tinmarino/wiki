@@ -4,6 +4,12 @@
 
 ### Ugly tips from draft
 
+* git diff --cached (stage vs currznt dir)
+* git diff --staged (stage vs commit)
+* git config --list
+
+
+
 * Add wisely
   * `git cherrypick <commit_sha1>`
   * `git add -p # add by chunk (remember patch)`

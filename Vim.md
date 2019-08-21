@@ -9,6 +9,13 @@
 * [Negative Regex](V-negative-regex)
 * [Script](V-Script)
 
+
+* :sort n/\(\S\+\s\+\)\{2}/   # match 2nd column
+* T,c,
+* :%! column -t
+* sort(list), put, getline(int), setlone(int, list) join(list), split(string), len(list), get
+
+
 :au FileTypepyrhon setlocal formatprg=autopep8\ -
 :h formatoptions  :set fo+=t # to autowrap
 :match visu /\%7l\|%10l/
