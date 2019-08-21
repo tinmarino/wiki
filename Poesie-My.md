@@ -31,11 +31,11 @@ Comme le Boulo préscrit, qui réjouit Lebouvier.
 Comme cette Herby-gnorante, des chants déchus Duchêne.
 Comme un Sonet qui vante, les vents de la bohême.
                         
-C'est celle que l'on préfère, vivons à notre manière
+C'est celle que l'on préfère, voyons à notre manière
 
 Holin-compris binaire, ce secret Amiaux-tique
-Que nous absor-Bion Stagaire. Traverser l'Atlantique
-Emportant l'IRP, même s'il nous l'interdit;
+Que nous absor-Bion Stagaire. Même s'il nous interdit
+d'emporter l'IRP à travers l'Atlantique,
 Durant des dissipés, je léve l'é-Polet dis :
 
 Pour toi, ami Andin, moi, pasteur de passage
