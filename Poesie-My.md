@@ -8,7 +8,7 @@
 6. Detro
 
 Pour toi, cyber-corsaire, moi, marin de passage
-Jouant à l'émissaire, je n'ai qu'un seul message.
+Jouant aux émissaires, je n'ai qu'un seul message.
 Qu'importe ton école, ton maître et sa bannière,
 Quand un devoir te colle, fais-le à ta manière.
 
