@@ -2,6 +2,7 @@
 
 [Bash Rc](Bash-Rc)
 
+* Exit with <C-D>
 * cat directory any write
   * `inotifywait -qme close_write . | while read -r fil ; do cat $fil ; done`
 

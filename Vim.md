@@ -17,6 +17,7 @@
 * vim -u NONE
 * :%s/^/\=printf('%-4d', line('.')
 * :put /
+* /^[a-zàâçéèêëîïôûùüÿñæœ .-]*$/i  french regex 
 * :sort n/\(\S\+\s\+\)\{2}/   # match 2nd column
 * T,c,
 * :%! column -t
