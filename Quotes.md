@@ -86,9 +86,9 @@
 
 # Tinmarino
 
-* Dans le doute, écoute ton coeur. Tous les chemins mênent à ta mort mais suivant celui çi, au moins tu auras vécu.
+* Dans le doute, écoute ton coeur. Tous les chemins mênent à ta mort mais suivant celui çi, au moins tu auras vécu
 
-* Fais de ton mieu car c'est le mieux que tu puisse faire.
+* Fais de ton mieu car c'est le mieux que tu puisse faire
 
 * Peux importe l'altitude, seule la pente compte.
 
@@ -102,13 +102,15 @@ Ton    Tel  Traite
    Faible         
 ```
 
+* Nous sommes tous des touristes dans cet univers
+
 * Pourquoi se tuer pour un monde meilleur sans profiter du meilleur des mondes
 
 * L'âge est la plus grave des blessures car elle se creuse tout les jours (pas de moi / enfin je ne crois pas)
 
-* Voyage en toi et oublis l'ailleurs. Voyage partout et oublis ton coeur.
+* Voyage en toi et oublis l'ailleurs. Voyage partout et oublis ton coeur
 
-* On ne se perd jamais. On perd ce qu'on a aimait.
+* On ne se perd jamais. On perd ce qu'on a aimait
 
 
 # Fast
