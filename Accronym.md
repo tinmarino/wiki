@@ -90,6 +90,7 @@ title: Accronyms
 | LBA      | Logical Block Addressing                                      |
 | LDR      | Loader                                                        |
 | LDT      | Local Descriptor Table                                        |
+| LLC      | Logical Link Control                                          |
 | LLMNR    | Link-Local Multicast Name Resolution                   |
 | LLMNR    | Link-Local Multicast Name Resolution                   |
 | LPE      | Local Privilege Escalation                                    |
@@ -136,6 +137,7 @@ title: Accronyms
 | PTE      | Page Table Entry                                              |
 | PTR      | Partition Boot Record (vs MBR)                                |
 | PUA      | Potencially Unwanted Application                              |
+| QED      | Quot Erat Demostradum                                         |
 | RAID     | Redundant Array of Independant Disks                        |
 | RCE      | Remote Code Execution                                         |
 | ROP      | Returned Oriented Programming                                 |
@@ -176,6 +178,7 @@ title: Accronyms
 | UEFI     | Unified Extensible Firmware Interface                    |
 | URI      | Uniform Ressource Identifier                                  |
 | URL      | Uniform Ressource Locator                                     |
+| URM      | Universal Register Machine                                    |
 | URN      | Uniform Ressource Name                                        |
 | VAD      | Virtual Address Descriptor                                    |
 | VBA      | Visual Basic for Application                                  |
@@ -193,6 +196,7 @@ title: Accronyms
 | WSC      | Windows Script Component                                      |
 | WSS      | Web Service Security                                          |
 | WSH      | Windows Scripting Host                                        |
+| WZC      | Wireless Zero Configuration                                   |
 | XD       | eXecute Disable                                               |
 | XOP      | eXtended OPeration                                            |
 | XSS      | Cross Site Scripting                                          |
