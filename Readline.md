@@ -62,6 +62,11 @@ in inputrc
 | `<S-Insert>` |   |
 | `<Tab>`      | Command completion. |
 
+| `<A-t>` | transpose 2 words |
+| `<A-b>` | Back 1 word       |
+| `<A-l>` | Lower 1 word      |
+
+
 From:
 https://help.gnome.org/users/gnome-terminal/stable/adv-keyboard-shortcuts.html.en
 http://www.catonmat.net/download/readline-emacs-editing-mode-cheat-sheet.pdf

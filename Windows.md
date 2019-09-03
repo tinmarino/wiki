@@ -7,6 +7,8 @@
 * [Empire](Empire)
 * [Visual Studio](Visual-Studio)
 
+* dd fs:34 -> GetLastError()
+
 * Dialog
   *	Window Hello : `dialog --title 'Message' --msgbox 'Hello, world!' 5 20`
 

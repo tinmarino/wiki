@@ -10,6 +10,13 @@
 * [Script](V-Script)
 
 
+* :retab
+* for file in * ; do vi +':w ++ff=unix' +':q' $file
+* vim file.txt 'x:s/bar/foo/g' ':wq'
+* :sort [u]niq [n]teger (like 20 before 100
+* vim -u NONE
+* :%s/^/\=printf('%-4d', line('.')
+* :put /
 * :sort n/\(\S\+\s\+\)\{2}/   # match 2nd column
 * T,c,
 * :%! column -t

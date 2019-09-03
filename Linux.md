@@ -20,6 +20,11 @@
 # Not so used
 * [Accronym](Accronym)
 
+* echo -e "\a" # beep
+
+- qed -> ed -> ex -> vi -> vim
+-     -> grep -> sed -> awk -> perl -> ack -> ag
+
 * clear
 * reset 
 * tmux :clear-history 

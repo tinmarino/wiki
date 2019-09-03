@@ -1,3 +1,9 @@
+* set([1,2,3,1,1]) -> [1,2,3] (uniq)
+* scipy.stats.entropy
+
+* List of permutation
+  * itertools.combinations('12345', 3)
+
 * Serialize
   * json.dumps(o_toto, default=lambda o: getattr(o, '__dict__', str(o)))
 
