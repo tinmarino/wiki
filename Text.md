@@ -7,6 +7,7 @@
 * [Dict-Francais-All](Dict-Francais-All)
 * [Dict Francais Verbes](Dict-Francais-Verbes)
 * [Art Poetique](Art_Poetique)
+* [Horace_Art_Poetique](Horace_Art_Poetique)
 * [Art De Péter](Art_De-Peter)
 * [Jokes : Jhon Skeet (best at SO)](Text_Jhon_Skeet)
 * [Cohen : if it be your will](Cohen-If-it-be-your-will)
