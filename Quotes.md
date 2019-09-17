@@ -1,3 +1,11 @@
+* Il n'est point de coupable au repos (Boileau)
+
+* Personne n'est content de ceux qui ne sont contents de personne (Jean de La Bruyère)
+
+* Ceux qui emploient mal leur temps sont les premiers à se plaindre de sa brièveté (Jean de La Bruyère)
+
+* Plans get you into things but you've got to work your way out (Will Rogers)
+
 * It is better to be wrong than  to be vague (Freeman Dyson)
 
 * Think like a man of action, act like a man of thought (Henri Bergson)
@@ -68,6 +76,18 @@
 
 * On ne discute pas avec une brouette on la pousse (Pierre de Villiers)
 
+# Boileau
+
+* Écrive qui voudra : chacun à ce métier  
+Peut perdre impunément de l'encre et du papier (Satire 9 : à mon esprit)
+
+* L'ignorance toujours est prête à s'admirer.  
+Faites-vous des amis prompts à vous censurer ;  
+Qu'ils soient de vos écrits les confidents sincères,  
+Et de tous vos défauts les zélés adversaires. (Art po, Chant 1)
+
+* Un sot trouve toujours un plus sot qui l'admire.
+
 
 
 # Abbé Pierre
@@ -83,6 +103,18 @@
 * L'espérance, c'est de croire que la vie a un sens. (Abbé Pierre)
   (Abbé Pierre)
 	
+# Informatique
+
+* Dans le doute, reboot. Si tu te tates, formates
+
+* Tester, c'est douter 
+
+* Le seul ordinateur réellement protégé est un ordinateur éteint ....et encore !!!  
+
+* Rien n'est impossible à celui qui n'a pas à le faire
+
+* Ce qui est simple est faux, ce qui ne l'est pas est inutilisable. (Paul Valéry)
+
 
 # Tinmarino
 
@@ -112,7 +144,7 @@ Ton    Tel  Traite
 
 * On ne se perd jamais. On perd ce qu'on a aimait
 
+* L'essentiel est dans le détail
 
-# Fast
+* Pour être précis, vise loin
 
-* apuntando lejos apubtamos mejor

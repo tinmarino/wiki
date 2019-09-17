@@ -1,11 +1,13 @@
 
-# Poesie
-
 * [Quotes](Quotes)
-* [Poesie-My](Poesie-My)
-* [Poesie1](Poesie1)
+* [Getting Things Done](Getting-Things-Done)
 * [Dict-Francais-All](Dict-Francais-All)
 * [Dict Francais Verbes](Dict-Francais-Verbes)
+
+# Poesie
+
+* [Poesie-My](Poesie-My)
+* [Poesie1](Poesie1)
 * [Art Poetique](Art_Poetique)
 * [Horace_Art_Poetique](Horace_Art_Poetique)
 * [Art De Péter](Art_De-Peter)
