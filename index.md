@@ -1,4 +1,4 @@
-## Softwar
+## Sottware
   * [Linux](Linux)
     * [Bash](Bash)
     * [Vim](Vim)
