@@ -10,6 +10,7 @@
 * [Script](V-Script)
 
 
+* where [[=c=]] is the equivalence class for the c character
 * :retab
 * for file in * ; do vi +':w ++ff=unix' +':q' $file
 * vim file.txt 'x:s/bar/foo/g' ':wq'

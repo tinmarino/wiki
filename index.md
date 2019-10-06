@@ -41,8 +41,10 @@
   * [Hindi](Hindi)
   * [Plastic](Plastic)
   * [Chile](Chile)
+  * [Francais Figure De Style](Francais-Figure-De-Style)
 
 ## Misc
   * [Text](Text)
+  * [Regles Expeditionnaire](Regles-Expeditionnaire)
 
 * [Test](Test)

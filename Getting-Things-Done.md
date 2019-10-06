@@ -43,7 +43,7 @@
 * Only he who handles his ideas lightly is master of his ideas, and only he who is master of his ideas is not enslaved by them (Lin Yutang)
 * Your best thoughts about your work won't happen while you're at work
 * Success is learning to deal with plan B (Unknown)
-* There are no interruptions, tjere are only mismanaged inputs
+* There are no interruptions, there are only mismanaged inputs
 * The best place to succed is where you are with what you have (Charles Schwab)
 * If your boat is sinking, you really don't care in which direction it's pointed
 * Pick battles big enought to matter, small enought to win (Jonathan Kozol)
