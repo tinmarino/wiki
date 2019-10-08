@@ -23,7 +23,17 @@
   - [Math](Math)
   - [This is a diary test](diary/2019-02-10)
 
-here $1 is matched for  [[name]] 
+
+# Array test
+
+| 1               | 2 |
+| -               | - |
+| [Test1](#Test1) | [Test2](#Test2) |
+
+
+# Languages
+
+((( ( (here $1 is matched for  [[name]]) ) ))) 
 
 {{{python
    for i in range(10):
