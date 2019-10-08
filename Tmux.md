@@ -150,16 +150,6 @@ __Split__: Creating a new pane by splitting an existing one:
 	C-a "          split vertically (top/bottom)
 	C-a %          split horizontally (left/right)
 
-  * __Conf__: Spliting panes using | and _
-		
-		bind | split-window -h  
-		bind - split-window -v  
-		bind _ split-window -v  
-		unbind '"'  
-		unbind %  
-	
-		
-
 __Switch__: between panes:
 
     C-a left       go to the next pane on the left

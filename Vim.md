@@ -11,6 +11,10 @@
 
 
 * where [[=c=]] is the equivalence class for the c character
+# Debug
+
+* `:command Man` : to see where Man has been defined
+
 * :retab
 * for file in * ; do vi +':w ++ff=unix' +':q' $file
 * vim file.txt 'x:s/bar/foo/g' ':wq'

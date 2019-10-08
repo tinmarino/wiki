@@ -1,4 +1,4 @@
-## Sottware
+## Software
   * [Linux](Linux)
     * [Bash](Bash)
     * [Vim](Vim)
@@ -46,5 +46,6 @@
 ## Misc
   * [Text](Text)
   * [Regles Expeditionnaire](Regles-Expeditionnaire)
+  * [KeyBinding Custom](KeyBinding-Custom)
 
 * [Test](Test)
