@@ -2,6 +2,8 @@
 
 [Bash Rc](Bash-Rc)
 
+* `current_script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"`
+
 * Exit with <C-D>
 * cat directory any write
   * `inotifywait -qme close_write . | while read -r fil ; do cat $fil ; done`
