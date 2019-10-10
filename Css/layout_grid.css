@@ -1,28 +1,24 @@
 /*
 GRID betwenn 1 and 3
 
-TODO: do not expand pre
-TODO: Second title colro
-
-
 */
 
 
-.parent {
+body {
   --repeat: auto-fit;
 }
 @media (min-width: calc(400 * 2px)) {
-  .parent {
+  body {
     --repeat: 2;
   }
 }
 @media (min-width: calc(400 * 3px)) {
-  .parent {
+  body {
     --repeat: 3;
   }
 }
 
-.parent {
+body {
   display: grid;
 
   grid-gap: 0.3cm;

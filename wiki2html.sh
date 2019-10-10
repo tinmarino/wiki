@@ -24,18 +24,27 @@ fi
 
 
 # Compile for unix (with pandoc & Perl)
+# TODO replace sed and comment
+# TODO all in one perl script
+# TODO if no css: yaml in file set a default (include.css)
 munix(){
-sed -r 's/(\[.+\])\(([^#)]+)\)/\1(\2.html)/g' <"$INPUT" \
-  `# Double the new line before code` \
-  | perl -0pe 's/((^|\n\S)[^\n]*)\n\t([^*])/\1\n\n\t\3/g;' \
-  `# Remove spaces in void lines` \
-  | perl -lpe 's/^\s*$//' \
-  `# Compile` \
-	| pandoc $MATH -s -f $SYNTAX -t html -T $FILE -c $CSSFILENAME \
-	`# | sed -r 's/<li>(.*)\[ \]/<li class="todo done0">\1/g; s/<li>(.*)\[X\]/<li class="todo done4">\1/g'` \
->"$OUTPUT.html"
+  # Read `css:` in metadata
+  export CSS_EMBED=$(perl -0777 -ne '$_ =~ /^ *---(.+?)---/s ; $meta=$1; while ($meta =~ /^css:(.+)$/mg) {$css .= " -c " . $1}; print substr $css, 4' "$INPUT")
+  [ "$CSS_EMBED" ] && export CSSFILENAME=$CSS_EMBED && echo Css files are: $CSSFILENAME
+
+  cat "$INPUT" |
+  perl -pe 's/^###[^#]/:::::::::\n::::::::: {.h3-sections}\n$&/g' |  # Make h3 section
+  perl -pe 's/^##[^#]/:::::::::\n$&/g' | # Close before hight headings
+  perl -pe '++$stop if m/:::::::::\s*\S+/; !$stop && s/^::::::::://' | # Remove the first one closing nothing
+  sed -r 's/(\[.+\])\(([^#)]+)\)/\1(\2.html)/g' |
+  perl -0pe 's/((^|\n\S)[^\n]*)\n\t([^*])/\1\n\n\t\3/g;' |  # Double the new line before code
+  perl -lpe 's/^\s*$//' | tee test1.md |  # Remove spaces in void lines
+  pandoc $MATH -s -f $SYNTAX -t html -T $FILE -c $CSSFILENAME >"$OUTPUT.html" # Compile: missing -c $CSSFILENAME
 }
 
+bck() {
+  echo toto
+}
 
 # Obsolete ?
 mtermux(){
