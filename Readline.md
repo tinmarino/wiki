@@ -1,6 +1,8 @@
 % Readline
 
 
+
+* <C-X><C-E> : dit current line with vim
 $ echo -e "\e[?1000;1006;1015h" # Enable
 $ echo -e "\e[?1000;1006;1015l" # Disable
 $ bind '"\e[<":"echo totot is happy"'

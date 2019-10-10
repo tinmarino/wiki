@@ -4,6 +4,8 @@
 
 ### Ugly tips from draft
 
+* git push <remote_name> --delete <branch_name>  # or -d branch or :branch
+* git commit --amend --no-edit # Amend without changing message
 * git diff --cached (stage vs currznt dir)
 * git diff --staged (stage vs commit)
 * git config --list

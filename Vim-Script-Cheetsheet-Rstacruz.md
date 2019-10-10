@@ -8,16 +8,18 @@ weight: -10
 tags: [Featurable]
 ---
 
-### Start hacking
+## My test {.columns}
+
+### Start hacking {column=0.5}
 
 ```vim
-let name = "John"
+[let](let) name = "John"
 echo "Hello, " . name
 ```
 
 You can either put this in a script (`script.vim`) and run it (`:source script.vim`), or you can type the commands individually in normal mode as `:let` and `:echo`.
 
-### Learn by example
+### Learn by example {column=0.5}
 
 ```vim
 function! SuperTab()
@@ -37,8 +39,7 @@ imap <Tab> <C-R>=SuperTab()<CR>
 Variables
 ---------
 
-### Defining
-{: .-prime}
+### Defining {.prime}
 
 ```vim
 let var = "hello"

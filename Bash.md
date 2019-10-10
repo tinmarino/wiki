@@ -4,6 +4,13 @@
 
 * `current_script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"`
 
+# Commpletion
+
+* `complete -p` : list 
+
+
+# Other tips
+
 * Exit with <C-D>
 * cat directory any write
   * `inotifywait -qme close_write . | while read -r fil ; do cat $fil ; done`
