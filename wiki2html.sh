@@ -13,6 +13,8 @@ OUTDIR=${OUTPUTDIR%$FILEPATH*}
 OUTPUT="$OUTDIR"/$FILENAME
 CSSFILENAME=$(basename "$6")
 
+
+# Define $MATH
 HAS_MATH=$(grep -o "\$\$.\+\$\$" "$INPUT")
 if [ ! -z "$HAS_MATH" ]; then
     MATH="--mathjax=https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
@@ -20,8 +22,8 @@ else
     MATH=""
 fi
 
-# >&2 echo "MATH: $MATH"
 
+# Compile for unix (with pandoc & Perl)
 munix(){
 sed -r 's/(\[.+\])\(([^#)]+)\)/\1(\2.html)/g' <"$INPUT" \
   `# Double the new line before code` \
@@ -34,28 +36,28 @@ sed -r 's/(\[.+\])\(([^#)]+)\)/\1(\2.html)/g' <"$INPUT" \
 >"$OUTPUT.html"
 }
 
+
+# Obsolete ?
 mtermux(){
 sed -r 's/(\[.+\])\(([^)]+)\)/\1(\2.html)/g' <"$INPUT" | \
 	python -m markdown | \
 	sed -r 's/<li>(.*)\[ \]/<li class="todo done0">\1/g; s/<li>(.*)\[X\]/<li class="todo done4">\1/g' >"$OUTPUT.html"
-
-
-
 	# pandoc $MATH -s -f $SYNTAX -t html -c $CSSFILENAME | \
 }
 
-mchoose(){
 
-# Choose which compiler : in termux no pandoc yet
-# Better no to compile on termux
-tmp=$(uname -a)
-
-shopt -s nocasematch
-if [[ "$tmp" =~ "android" ]] ; then
-	mtermux
-else
-	munix
-fi
+# Main
+mmain(){
+  tmp=$(uname -a)
+  
+  shopt -s nocasematch
+  if [[ "$tmp" =~ "android" ]] ; then
+  	mtermux
+  else
+  	munix
+  fi
 }
 
-mchoose
+
+# Start
+mmain
