@@ -53,11 +53,9 @@ imap <Tab> <C-R>=SuperTab()<CR>
 
 
 :::::::::::
-::::::::::: {.h3-sections}
 
 ## Variables
 
-:::::::::::
 ::::::::::: {.h3-sections}
 ### Defining {.prime}
 
@@ -122,10 +120,8 @@ let var .= 'string'   " concat
 ```
 
 :::::::::::
-::::::::::: {.h3-sections}
 ## Strings
 
-:::::::::::
 ::::::::::: {.h3-sections}
 ### Strings
 
@@ -164,10 +160,8 @@ Also see `:help functions`
 See: [String functions](http://learnvimscriptthehardway.stevelosh.com/chapters/27.html)
 
 :::::::::::
-::::::::::: {.h3-sections}
 ## Functions
 
-:::::::::::
 ::::::::::: {.h3-sections}
 ### Functions
 {: .-prime}
@@ -241,9 +235,9 @@ infect('jake', 'bella')
 See `:help function-argument`.  See: [Var arguments](http://learnvimscriptthehardway.stevelosh.com/chapters/24.html)
 
 :::::::::::
-::::::::::: {.h3-sections}
 ## Loops
 
+::::::::::: {.h3-sections}
 ```vim
 for s in list
   echo s
@@ -258,10 +252,8 @@ endwhile
 ```
 
 :::::::::::
-::::::::::: {.h3-sections}
 ## Custom commands
 
-:::::::::::
 ::::::::::: {.h3-sections}
 ### Custom commands
 {: .-prime}
@@ -410,10 +402,8 @@ endif
 ```
 
 :::::::::::
-::::::::::: {.h3-sections}
 ## Lists
 
-:::::::::::
 ::::::::::: {.h3-sections}
 ### Lists
 
@@ -481,10 +471,8 @@ call filter(files, 'v:val != ""')
 ```
 
 :::::::::::
-::::::::::: {.h3-sections}
 ## Dictionaries
 
-:::::::::::
 ::::::::::: {.h3-sections}
 ### Dictionaries
 
@@ -560,9 +548,9 @@ let extend(s:fruits, { ... })
 ```
 
 :::::::::::
-::::::::::: {.h3-sections}
 ## Casting
 
+::::::::::: {.h3-sections}
 ```vim
 str2float("2.3")
 str2nr("3")
@@ -570,10 +558,8 @@ float2nr("3.14")
 ```
 
 :::::::::::
-::::::::::: {.h3-sections}
 ## Numbers
 
-:::::::::::
 ::::::::::: {.h3-sections}
 ### Numbers
 {: .-prime}
@@ -624,10 +610,8 @@ asin() acos() atan()
 ```
 
 :::::::::::
-::::::::::: {.h3-sections}
 ## Vim-isms
 
-:::::::::::
 ::::::::::: {.h3-sections}
 ### Execute a command
 
@@ -728,11 +712,9 @@ exists("g:...")
 ```
 
 :::::::::::
-::::::::::: {.h3-sections}
 ## Mapping
 {: .-three-column}
 
-:::::::::::
 ::::::::::: {.h3-sections}
 ### Mapping commands
 
@@ -773,10 +755,8 @@ xnoremap
 | `<nowait>` | |
 
 :::::::::::
-::::::::::: {.h3-sections}
 ## Syntax
 
-:::::::::::
 ::::::::::: {.h3-sections}
 ### Highlights
 
