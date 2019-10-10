@@ -1,15 +1,88 @@
-/* This works
-body {
-  column-count: 3;
-}
-*/
 
-h2 {
-  .column {
-    column-count: 2;
+
+
+.parent {
+  --repeat: auto-fit;
+}
+@media (min-width: calc(600 * 2px)) {
+  .parent {
+    --repeat: 2;
+  }
+}
+@media (min-width: calc(600 * 3px)) {
+  .parent {
+    --repeat: 3;
   }
 }
 
+.parent {
+  display: grid;
+
+  grid-gap: 0.3cm;
+
+  grid-template-columns: repeat(var(--repeat), minmax(600px, 1fr));
+
+  justify-items: start;
+  align-items: start;
+}
+
+
+
+.h3-sections {
+  max-width: 600px;
+}
+
+h2 {
+}
+
+
+/*
+
+# Item 
+  width: 100%;
+  height: 100%;
+  min-width: 600px;
+  max-width: 600px;
+
+
+# Container
+  grid-auto-columns: minmax(600px, 33%);
+  grid-template-columns: repeat(var(--repeat, auto-fit), minmax(calc(250 * 1px) , 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(600px, 1fr) );
+  grid-template-rows: auto;
+  grid-auto-rows: minmax(600px, auto);
+
+  grid-template-columns: repeat( auto-fit, minmax(600px, 3fr) );
+grid-template-columns: repeat( 3, minmax(250px, 1fr) );
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+@media(max-width:540px){
+  .parent {
+     grid-template-columns: 1fr;
+  }
+}
+
+This works
+body {
+  column-count: 3;
+}
+
+.three-column {
+  @media (min-width: 769px) {
+    & > .h3-section {
+      width: 50%;
+    }
+  }
+
+  @media (min-width: 961px) {
+    & > .h3-section {
+      width: 33.33%;
+    }
+  }
+}
+Not work
 h3 {
   background-color: dodgerblue;
   padding: 1rem;
@@ -23,3 +96,5 @@ h2 {
   grid-gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
+
+*/

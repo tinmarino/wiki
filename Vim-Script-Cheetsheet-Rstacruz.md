@@ -8,18 +8,21 @@ weight: -10
 tags: [Featurable]
 ---
 
-## My test {.columns}
 
-### Start hacking {column=0.5}
+:::::::::::::: {.parent}
+::::::::::: {.h3-sections}
+### Start hacking
 
 ```vim
-[let](let) name = "John"
+let name = "John"
 echo "Hello, " . name
 ```
 
 You can either put this in a script (`script.vim`) and run it (`:source script.vim`), or you can type the commands individually in normal mode as `:let` and `:echo`.
 
-### Learn by example {column=0.5}
+:::::::::::
+::::::::::: {.h3-sections}
+### Learn by example {.prime}
 
 ```vim
 function! SuperTab()
@@ -36,15 +39,23 @@ imap <Tab> <C-R>=SuperTab()<CR>
 
 [Here](http://www.vimbits.com/bits/46)'s another example with [functions](#functions), [variables](#variables) and [mapping](#mapping).
 
-Variables
----------
 
+
+
+:::::::::::
+::::::::::: {.h3-sections}
+## Variables
+
+:::::::::::
+::::::::::: {.h3-sections}
 ### Defining {.prime}
 
 ```vim
 let var = "hello"
 ```
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Variable prefixes
 
 ```vim
@@ -55,6 +66,8 @@ let l:foo = 'bar'              " l: local (to function)
 
 The `s:` prefix is also available in function names. See `:help local-variables`
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Other prefixes
 
 ```vim
@@ -69,6 +82,8 @@ let @/ = ''          " @  register (this clears last search pattern)
 echo $PATH           " $  env
 ```
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Vim options
 
 ```vim
@@ -80,6 +95,8 @@ echo &l:option
 
 Prefix Vim options with `&`
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Operators
 
 ```vim
@@ -93,8 +110,12 @@ let var += 5
 let var .= 'string'   " concat
 ```
 
+:::::::::::
+::::::::::: {.h3-sections}
 ## Strings
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Strings
 
 ```vim
@@ -110,6 +131,8 @@ echo "result = " . re   " concatenation
 Also see `:help literal-string` and `:help expr-quote`.
 See: [Strings](http://learnvimscriptthehardway.stevelosh.com/chapters/26.html)
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### String functions
 
 ```vim
@@ -129,9 +152,12 @@ toupper('Hello')
 Also see `:help functions`
 See: [String functions](http://learnvimscriptthehardway.stevelosh.com/chapters/27.html)
 
-Functions
----------
+:::::::::::
+::::::::::: {.h3-sections}
+## Functions
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Functions
 {: .-prime}
 
@@ -147,12 +173,16 @@ endfunction
 
 See: [Functions](http://learnvimscriptthehardway.stevelosh.com/chapters/23.html)
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Namespacing
 
 ```vim
 function! myplugin#hello()
 ```
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Calling functions
 
 ```vim
@@ -160,12 +190,16 @@ call s:Initialize()
 call s:Initialize("hello")
 ```
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Consuming return values
 
 ```vim
 echo "Result: " . s:Initialize()
 ```
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Abortable
 
 ```vim
@@ -175,6 +209,8 @@ endfunction
 
 Aborts when an error occurs.
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Var arguments
 
 ```vim
@@ -193,8 +229,9 @@ infect('jake', 'bella')
 
 See `:help function-argument`.  See: [Var arguments](http://learnvimscriptthehardway.stevelosh.com/chapters/24.html)
 
-Loops
------
+:::::::::::
+::::::::::: {.h3-sections}
+## Loops
 
 ```vim
 for s in list
@@ -209,9 +246,12 @@ while x < 5
 endwhile
 ```
 
-Custom commands
----------------
+:::::::::::
+::::::::::: {.h3-sections}
+## Custom commands
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Custom commands
 {: .-prime}
 
@@ -221,6 +261,8 @@ command! Save :set fo=want tw=80 nowrap
 
 Custom commands start with uppercase letters. The `!` redefines a command if it already exists.
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Commands calling functions
 
 ```vim
@@ -234,6 +276,8 @@ function! s:foo()
 endfunction
 ```
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Commands with arguments
 
 ```vim
@@ -252,6 +296,8 @@ command! -nargs=? Save call script#foo(<args>)
 Flow
 ----
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Conditionals
 
 ```vim
@@ -265,6 +311,8 @@ else
 endif
 ```
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Truthiness
 
 ```vim
@@ -283,6 +331,8 @@ if "xfz"   "=> 0 (false)
 No booleans. `0` is false, `1` is true.
 See: [Truthiness](http://learnvimscriptthehardway.stevelosh.com/chapters/21.html)
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Operators
 
 ```vim
@@ -295,6 +345,8 @@ if !c
 See `:help expression-syntax`.
 See: [Operators](http://learnvimscriptthehardway.stevelosh.com/chapters/22.html)
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Strings
 
 ```vim
@@ -305,6 +357,8 @@ if name == 'John'      " depends on :set ignorecase
 " also: is#, is?, >=#, >=?, and so on
 ```
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Identity operators
 
 ```vim
@@ -314,6 +368,8 @@ a isnot b
 
 Checks if it's the same instance object.
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Regexp matches
 
 ```vim
@@ -321,6 +377,8 @@ Checks if it's the same instance object.
 "hello" !~ '/x/'
 ```
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Single line
 
 ```vim
@@ -330,6 +388,8 @@ a ? b : c
 
 Use `|` to join lines together.
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Boolean logic
 
 ```vim
@@ -338,9 +398,12 @@ if g:use_dispatch && s:has_dispatch
 endif
 ```
 
-Lists
------
+:::::::::::
+::::::::::: {.h3-sections}
+## Lists
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Lists
 
 ```vim
@@ -354,6 +417,8 @@ let second = get(mylist, 1)
 let second = get(mylist, 1, "NONE")
 ```
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Functions
 
 ```vim
@@ -366,6 +431,8 @@ let sortedlist = sort(copy(list))
 split('hello there world', ' ')
 ```
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Concatenation
 
 ```vim
@@ -373,6 +440,8 @@ let longlist = mylist + [5, 6]
 let mylist += [7, 8]
 ```
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Sublists
 
 ```vim
@@ -382,6 +451,8 @@ let shortlist = mylist[2:]     " same
 let shortlist = mylist[2:2]    " one item
 ```
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Push
 
 ```vim
@@ -389,6 +460,8 @@ let alist = [1, 2, 3]
 let alist = add(alist, 4)
 ```
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Map
 
 ```vim
@@ -396,9 +469,12 @@ call map(files, "bufname(v:val)")  " use v:val for value
 call filter(files, 'v:val != ""')
 ```
 
-Dictionaries
-------------
+:::::::::::
+::::::::::: {.h3-sections}
+## Dictionaries
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Dictionaries
 
 ```vim
@@ -413,6 +489,8 @@ echo get(colors, "apple")   " suppress error
 
 See `:help dict`
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Using dictionaries
 
 ```vim
@@ -441,6 +519,8 @@ string(dict)
 map(dict, '<>> " . v:val')
 ```
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Iteration
 
 ```vim
@@ -449,6 +529,8 @@ for key in keys(mydict)
 endfor
 ```
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Prefixes
 
 ```vim
@@ -457,6 +539,8 @@ keys(s:)
 
 Prefixes (`s:`, `g:`, `l:`, etc) are actually dictionaries.
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Extending
 
 ```vim
@@ -464,8 +548,9 @@ Prefixes (`s:`, `g:`, `l:`, etc) are actually dictionaries.
 let extend(s:fruits, { ... })
 ```
 
-Casting
--------
+:::::::::::
+::::::::::: {.h3-sections}
+## Casting
 
 ```vim
 str2float("2.3")
@@ -473,9 +558,12 @@ str2nr("3")
 float2nr("3.14")
 ```
 
-Numbers
--------
+:::::::::::
+::::::::::: {.h3-sections}
+## Numbers
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Numbers
 {: .-prime}
 
@@ -488,6 +576,8 @@ let int = 0755   " octal
 See `:help Number`.
 See: [Numbers](http://learnvimscriptthehardway.stevelosh.com/chapters/25.html)
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Floats
 
 ```vim
@@ -497,6 +587,8 @@ let fl = 5.4e4
 
 See `:help Float`
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Arithmetic
 
 ```vim
@@ -505,6 +597,8 @@ See `:help Float`
 3 * 2.0   "=> 6.0
 ```
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Math functions
 
 ```vim
@@ -518,9 +612,12 @@ sinh() cosh() tanh()
 asin() acos() atan()
 ```
 
-Vim-isms
---------
+:::::::::::
+::::::::::: {.h3-sections}
+## Vim-isms
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Execute a command
 
 ```vim
@@ -531,6 +628,8 @@ execute "e " . fnameescape(filename)
 Runs an ex command you typically run with `:`. Also see `:help execute`.
 See: [Execute a command](http://learnvimscriptthehardway.stevelosh.com/chapters/28.html)
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Running keystrokes
 
 ```vim
@@ -543,6 +642,8 @@ execute "normal! gg/foo\<cr>dd"
 Use `:normal` to execute keystrokes as if you're typing them in normal mode. Combine with `:execute` for special keystrokes.
 See: [Running keystrokes](http://learnvimscriptthehardway.stevelosh.com/chapters/29.html)
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Getting filenames
 
 ```vim
@@ -555,6 +656,8 @@ echo expand("%:e")    " txt
 
 See `:help expand`
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Silencing
 
 ```vim
@@ -563,6 +666,8 @@ silent g/Aap/p
 
 Suppresses output. See `:help silent`
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Echo
 
 ```vim
@@ -574,6 +679,8 @@ echohl WarningMsg | echomsg "=> " . a:msg | echohl None
 ```
 
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Settings
 
 ```vim
@@ -584,6 +691,8 @@ set numberwidth=5
 set guioptions+=e
 ```
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Prompts
 
 ```vim
@@ -591,6 +700,8 @@ let result = confirm("Sure?")
 execute "confirm q"
 ```
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Built-ins
 
 ```vim
@@ -605,10 +716,13 @@ exists("+option")
 exists("g:...")
 ```
 
-Mapping
--------
+:::::::::::
+::::::::::: {.h3-sections}
+## Mapping
 {: .-three-column}
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Mapping commands
 
 ```vim
@@ -623,6 +737,8 @@ xnoremap
 ...
 ```
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Explanation
 
 ```vim
@@ -637,15 +753,20 @@ xnoremap
 ```
 {: .-setup}
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Arguments
 
 | `<buffer>` | only in current buffer |
 | `<silent>` | no echo |
 | `<nowait>` | |
 
-Syntax
-------
+:::::::::::
+::::::::::: {.h3-sections}
+## Syntax
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Highlights
 
 ```vim
@@ -656,6 +777,8 @@ hi Comment
   guifg=#80a0ff
 ```
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Filetype detection
 
 ```vim
@@ -666,6 +789,8 @@ augroup END
 au Filetype markdown setlocal spell
 ```
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Conceal
 
 ```vim
@@ -674,6 +799,8 @@ syn match newLine "<br>" conceal cchar=}
 hi newLine guifg=green
 ```
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Region conceal
 
 ```vim
@@ -682,6 +809,8 @@ hi inBold gui=bold
 hi bTag guifg=blue
 ```
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Syntax
 
 ```vim
@@ -702,6 +831,8 @@ flags:
 hi def link markdownH1 htmlH1
 ```
 
+:::::::::::
+::::::::::: {.h3-sections}
 ### Include guards
 
 ```vim
@@ -714,3 +845,5 @@ endif
 let g:loaded_myplugin = 1
 ```
 
+:::::::::::
+::::::::::::::
