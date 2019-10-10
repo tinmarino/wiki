@@ -1,4 +1,9 @@
 /* http://thomasf.github.io/solarized-css/solarized-dark.css */
+/*
+
+*/
+
+
 @import url(http://fonts.googleapis.com/css?family=Inconsolata);
 @import url(http://fonts.googleapis.com/css?family=PT+Sans);
 @import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700);
@@ -92,7 +97,9 @@ a:hover {
 h1 {
   color: #d33682;
 }
-h2,
+h2{
+  color: #cb4b16;
+}
 h3,
 h4,
 h5,

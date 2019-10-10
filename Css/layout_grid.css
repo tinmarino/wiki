@@ -1,7 +1,8 @@
 /*
 GRID betwenn 1 and 3
 
-TODO: break at h2
+TODO: do not expand pre
+TODO: Second title colro
 
 
 */
@@ -10,12 +11,12 @@ TODO: break at h2
 .parent {
   --repeat: auto-fit;
 }
-@media (min-width: calc(600 * 2px)) {
+@media (min-width: calc(400 * 2px)) {
   .parent {
     --repeat: 2;
   }
 }
-@media (min-width: calc(600 * 3px)) {
+@media (min-width: calc(400 * 3px)) {
   .parent {
     --repeat: 3;
   }
@@ -25,14 +26,29 @@ TODO: break at h2
   display: grid;
 
   grid-gap: 0.3cm;
+  grid-auto-rows auto;
 
-  grid-template-columns: repeat(var(--repeat), minmax(200px, 600px));
+  grid-template-columns: repeat(var(--repeat), minmax(400px, 1fr));
 
   justify-items: start;
   align-items: start;
 }
 
-
+/* Expand right h2 */
 h2 {
   grid-column: 1/-1;
+  width: 100%;
+}
+h2:after {
+    content: ' ';
+    display: block;
+    border: 2px solid;
+    border-radius: 4px;
+		max-width: 83%;
+}
+
+/* Reduce header margins: just pad */
+h2,
+h3 {
+  margin: 0px;
 }

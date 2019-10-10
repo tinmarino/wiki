@@ -34,6 +34,7 @@
 * [Emoji](Emoji)
 * [Emoji Best](Emoji-Best)
 * [Draw](Draw)
+* [Color Solarized](Color-Solarized)
 
 # Ascii
 
