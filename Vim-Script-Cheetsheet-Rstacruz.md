@@ -61,7 +61,12 @@ imap <Tab> <C-R>=SuperTab()<CR>
 
 
 
+## Titre à retirer
+
+Putain y'a 2 titres collé, chaud pour `perl`
+
 ## Variables
+
 
 ### Defining
 
