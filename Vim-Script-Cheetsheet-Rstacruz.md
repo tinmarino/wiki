@@ -19,7 +19,7 @@ tags: [Featurable]
 item 1 There is Some code here
 
 You can either put this in a script (`script.vim`) and run it (`:source script.vim`), or you can type the commands individually in normal mode as `:let` and `:echo`.
-```vim
+```language-vim
 for s in list " a loong - a long  - a long  - a long  - a long  - a long  - a long  - a long 
   echo s 
   continue  " jump to start of loop a long - a long - a long - a long - a long - a long -
@@ -41,7 +41,7 @@ You can either put this in a script (`script.vim`) and run it (`:source script.v
 ::::::::::: {.h3-sections}
 ### Start hacking
 
-```vim
+```language-vim
 let name = "John"
 echo "Hello, " . name
 ```
@@ -50,9 +50,9 @@ You can either put this in a script (`script.vim`) and run it (`:source script.v
 
 :::::::::::
 ::::::::::: {.h3-sections}
-### Learn by example {.prime}
+### Learn by example
 
-```vim
+```language-vim
 function! SuperTab()
   let l:part = strpart(getline('.'),col('.')-2,1)
   if (l:part=~'^\W\?$')
@@ -75,9 +75,9 @@ imap <Tab> <C-R>=SuperTab()<CR>
 ## Variables
 
 ::::::::::: {.h3-sections}
-### Defining {.prime}
+### Defining
 
-```vim
+```language-vim
 let var = "hello"
 ```
 
@@ -85,7 +85,7 @@ let var = "hello"
 ::::::::::: {.h3-sections}
 ### Variable prefixes
 
-```vim
+```language-vim
 let g:ack_options = '-s -H'    " g: global
 let s:ack_program = 'ack'      " s: local (to script)
 let l:foo = 'bar'              " l: local (to function)
@@ -97,14 +97,14 @@ The `s:` prefix is also available in function names. See `:help local-variables`
 ::::::::::: {.h3-sections}
 ### Other prefixes
 
-```vim
+```language-vim
 let w:foo = 'bar'    " w: window
 let b:state = 'on'   " b: buffer
 let t:state = 'off'  " t: tab
 echo v:var           " v: vim special
 ```
 
-```vim
+```language-vim
 let @/ = ''          " @  register (this clears last search pattern)
 echo $PATH           " $  env
 ```
@@ -113,7 +113,7 @@ echo $PATH           " $  env
 ::::::::::: {.h3-sections}
 ### Vim options
 
-```vim
+```language-vim
 echo 'tabstop is ' . &tabstop
 if &insertmode
 echo &g:option
@@ -126,12 +126,12 @@ Prefix Vim options with `&`
 ::::::::::: {.h3-sections}
 ### Operators
 
-```vim
+```language-vim
 a + b             " numbers only!
 'hello ' . name   " concat
 ```
 
-```vim
+```language-vim
 let var -= 2
 let var += 5
 let var .= 'string'   " concat
@@ -143,7 +143,7 @@ let var .= 'string'   " concat
 ::::::::::: {.h3-sections}
 ### Strings
 
-```vim
+```language-vim
 let str = "String"
 let str = "String with \n newline"
 
@@ -160,7 +160,7 @@ See: [Strings](http://learnvimscriptthehardway.stevelosh.com/chapters/26.html)
 ::::::::::: {.h3-sections}
 ### String functions
 
-```vim
+```language-vim
 strlen(str)    " length
 len(str)       " same
 strchars(str)  " character length
@@ -182,9 +182,8 @@ See: [String functions](http://learnvimscriptthehardway.stevelosh.com/chapters/2
 
 ::::::::::: {.h3-sections}
 ### Functions
-{: .-prime}
 
-```vim
+```language-vim
 " prefix with s: for local script-only functions
 function! s:Initialize(cmd, args)
   " a: prefix for arguments
@@ -200,7 +199,7 @@ See: [Functions](http://learnvimscriptthehardway.stevelosh.com/chapters/23.html)
 ::::::::::: {.h3-sections}
 ### Namespacing
 
-```vim
+```language-vim
 function! myplugin#hello()
 ```
 
@@ -208,7 +207,7 @@ function! myplugin#hello()
 ::::::::::: {.h3-sections}
 ### Calling functions
 
-```vim
+```language-vim
 call s:Initialize()
 call s:Initialize("hello")
 ```
@@ -217,7 +216,7 @@ call s:Initialize("hello")
 ::::::::::: {.h3-sections}
 ### Consuming return values
 
-```vim
+```language-vim
 echo "Result: " . s:Initialize()
 ```
 
@@ -225,7 +224,7 @@ echo "Result: " . s:Initialize()
 ::::::::::: {.h3-sections}
 ### Abortable
 
-```vim
+```language-vim
 function! myfunction() abort
 endfunction
 ```
@@ -236,7 +235,7 @@ Aborts when an error occurs.
 ::::::::::: {.h3-sections}
 ### Var arguments
 
-```vim
+```language-vim
 function! infect(...)
   echo a:0    "=> 2
   echo a:1    "=> jake
@@ -256,7 +255,7 @@ See `:help function-argument`.  See: [Var arguments](http://learnvimscriptthehar
 ## Loops
 
 ::::::::::: {.h3-sections}
-```vim
+```language-vim
 for s in list
   echo s
   continue  " jump to start of loop
@@ -264,7 +263,7 @@ for s in list
 endfor
 ```
 
-```vim
+```language-vim
 while x < 5
 endwhile
 ```
@@ -274,9 +273,8 @@ endwhile
 
 ::::::::::: {.h3-sections}
 ### Custom commands
-{: .-prime}
 
-```vim
+```language-vim
 command! Save :set fo=want tw=80 nowrap
 ```
 
@@ -286,12 +284,11 @@ Custom commands start with uppercase letters. The `!` redefines a command if it 
 ::::::::::: {.h3-sections}
 ### Commands calling functions
 
-```vim
+```language-vim
 command! Save call <SID>foo()
 ```
-{: .-setup}
 
-```vim
+```language-vim
 function! s:foo()
   ...
 endfunction
@@ -301,10 +298,9 @@ endfunction
 ::::::::::: {.h3-sections}
 ### Commands with arguments
 
-```vim
+```language-vim
 command! -nargs=? Save call script#foo(<args>)
 ```
-{: .-setup}
 
 | What | What |
 | ---- | ---- |
@@ -321,7 +317,7 @@ Flow
 ::::::::::: {.h3-sections}
 ### Conditionals
 
-```vim
+```language-vim
 let char = getchar()
 if char == "\<LeftMouse>"
   " ...
@@ -336,12 +332,12 @@ endif
 ::::::::::: {.h3-sections}
 ### Truthiness
 
-```vim
+```language-vim
 if 1 | echo "true"  | endif
 if 0 | echo "false" | endif
 ```
 
-```vim
+```language-vim
 if 1       "=> 1 (true)
 if 0       "=> 0 (false)
 if "1"     "=> 1 (true)
@@ -356,7 +352,7 @@ See: [Truthiness](http://learnvimscriptthehardway.stevelosh.com/chapters/21.html
 ::::::::::: {.h3-sections}
 ### Operators
 
-```vim
+```language-vim
 if 3 > 2
 if a && b
 if (a && b) || (c && d)
@@ -370,7 +366,7 @@ See: [Operators](http://learnvimscriptthehardway.stevelosh.com/chapters/22.html)
 ::::::::::: {.h3-sections}
 ### Strings
 
-```vim
+```language-vim
 if name ==# 'John'     " case-sensitive
 if name ==? 'John'     " case-insensitive
 if name == 'John'      " depends on :set ignorecase
@@ -382,7 +378,7 @@ if name == 'John'      " depends on :set ignorecase
 ::::::::::: {.h3-sections}
 ### Identity operators
 
-```vim
+```language-vim
 a is b
 a isnot b
 ```
@@ -393,7 +389,7 @@ Checks if it's the same instance object.
 ::::::::::: {.h3-sections}
 ### Regexp matches
 
-```vim
+```language-vim
 "hello" =~ '/x/'
 "hello" !~ '/x/'
 ```
@@ -402,7 +398,7 @@ Checks if it's the same instance object.
 ::::::::::: {.h3-sections}
 ### Single line
 
-```vim
+```language-vim
 if empty(a:path) | return [] | endif
 a ? b : c
 ```
@@ -413,7 +409,7 @@ Use `|` to join lines together.
 ::::::::::: {.h3-sections}
 ### Boolean logic
 
-```vim
+```language-vim
 if g:use_dispatch && s:has_dispatch
   ···
 endif
@@ -425,7 +421,7 @@ endif
 ::::::::::: {.h3-sections}
 ### Lists
 
-```vim
+```language-vim
 let mylist = [1, two, 3, "four"]
 
 let first = mylist[0]
@@ -440,7 +436,7 @@ let second = get(mylist, 1, "NONE")
 ::::::::::: {.h3-sections}
 ### Functions
 
-```vim
+```language-vim
 len(mylist)
 empty(mylist)
 
@@ -454,7 +450,7 @@ split('hello there world', ' ')
 ::::::::::: {.h3-sections}
 ### Concatenation
 
-```vim
+```language-vim
 let longlist = mylist + [5, 6]
 let mylist += [7, 8]
 ```
@@ -463,7 +459,7 @@ let mylist += [7, 8]
 ::::::::::: {.h3-sections}
 ### Sublists
 
-```vim
+```language-vim
 let shortlist = mylist[2:-1]
 let shortlist = mylist[2:]     " same
 
@@ -474,7 +470,7 @@ let shortlist = mylist[2:2]    " one item
 ::::::::::: {.h3-sections}
 ### Push
 
-```vim
+```language-vim
 let alist = [1, 2, 3]
 let alist = add(alist, 4)
 ```
@@ -483,7 +479,7 @@ let alist = add(alist, 4)
 ::::::::::: {.h3-sections}
 ### Map
 
-```vim
+```language-vim
 call map(files, "bufname(v:val)")  " use v:val for value
 call filter(files, 'v:val != ""')
 ```
@@ -494,7 +490,7 @@ call filter(files, 'v:val != ""')
 ::::::::::: {.h3-sections}
 ### Dictionaries
 
-```vim
+```language-vim
 let colors = {
   \ "apple": "red",
   \ "banana": "yellow"
@@ -510,11 +506,11 @@ See `:help dict`
 ::::::::::: {.h3-sections}
 ### Using dictionaries
 
-```vim
+```language-vim
 remove(colors, "apple")
 ```
 
-```vim
+```language-vim
 " :help E715
 if has_key(dict, 'foo')
 if empty(dict)
@@ -522,17 +518,17 @@ keys(dict)
 len(dict)
 ```
 
-```vim
+```language-vim
 max(dict)
 min(dict)
 ```
 
-```vim
+```language-vim
 count(dict, 'x')
 string(dict)
 ```
 
-```vim
+```language-vim
 map(dict, '<>> " . v:val')
 ```
 
@@ -540,7 +536,7 @@ map(dict, '<>> " . v:val')
 ::::::::::: {.h3-sections}
 ### Iteration
 
-```vim
+```language-vim
 for key in keys(mydict)
   echo key . ': ' . mydict(key)
 endfor
@@ -550,7 +546,7 @@ endfor
 ::::::::::: {.h3-sections}
 ### Prefixes
 
-```vim
+```language-vim
 keys(s:)
 ```
 
@@ -560,7 +556,7 @@ Prefixes (`s:`, `g:`, `l:`, etc) are actually dictionaries.
 ::::::::::: {.h3-sections}
 ### Extending
 
-```vim
+```language-vim
 " Extending with more
 let extend(s:fruits, { ... })
 ```
@@ -569,7 +565,7 @@ let extend(s:fruits, { ... })
 ## Casting
 
 ::::::::::: {.h3-sections}
-```vim
+```language-vim
 str2float("2.3")
 str2nr("3")
 float2nr("3.14")
@@ -580,9 +576,8 @@ float2nr("3.14")
 
 ::::::::::: {.h3-sections}
 ### Numbers
-{: .-prime}
 
-```vim
+```language-vim
 let int = 1000
 let int = 0xff
 let int = 0755   " octal
@@ -595,7 +590,7 @@ See: [Numbers](http://learnvimscriptthehardway.stevelosh.com/chapters/25.html)
 ::::::::::: {.h3-sections}
 ### Floats
 
-```vim
+```language-vim
 let fl = 100.1
 let fl = 5.4e4
 ```
@@ -606,7 +601,7 @@ See `:help Float`
 ::::::::::: {.h3-sections}
 ### Arithmetic
 
-```vim
+```language-vim
 3 / 2     "=> 1, integer division
 3 / 2.0   "=> 1.5
 3 * 2.0   "=> 6.0
@@ -616,7 +611,7 @@ See `:help Float`
 ::::::::::: {.h3-sections}
 ### Math functions
 
-```vim
+```language-vim
 sqrt(100)
 floor(3.5)
 ceil(3.3)
@@ -633,7 +628,7 @@ asin() acos() atan()
 ::::::::::: {.h3-sections}
 ### Execute a command
 
-```vim
+```language-vim
 execute "vsplit"
 execute "e " . fnameescape(filename)
 ```
@@ -645,7 +640,7 @@ See: [Execute a command](http://learnvimscriptthehardway.stevelosh.com/chapters/
 ::::::::::: {.h3-sections}
 ### Running keystrokes
 
-```vim
+```language-vim
 normal G
 normal! G   " skips key mappings
 
@@ -659,7 +654,7 @@ See: [Running keystrokes](http://learnvimscriptthehardway.stevelosh.com/chapters
 ::::::::::: {.h3-sections}
 ### Getting filenames
 
-```vim
+```language-vim
 echo expand("%")      " path/file.txt
 echo expand("%:t")    " file.txt
 echo expand("%:p:h")  " /home/you/path/file.txt
@@ -673,7 +668,7 @@ See `:help expand`
 ::::::::::: {.h3-sections}
 ### Silencing
 
-```vim
+```language-vim
 silent g/Aap/p
 ```
 
@@ -683,7 +678,7 @@ Suppresses output. See `:help silent`
 ::::::::::: {.h3-sections}
 ### Echo
 
-```vim
+```language-vim
 echoerr 'oh it failed'
 echomsg 'hello there'
 echo 'hello'
@@ -696,7 +691,7 @@ echohl WarningMsg | echomsg "=> " . a:msg | echohl None
 ::::::::::: {.h3-sections}
 ### Settings
 
-```vim
+```language-vim
 set number
 set nonumber
 set number!     " toggle
@@ -708,7 +703,7 @@ set guioptions+=e
 ::::::::::: {.h3-sections}
 ### Prompts
 
-```vim
+```language-vim
 let result = confirm("Sure?")
 execute "confirm q"
 ```
@@ -717,7 +712,7 @@ execute "confirm q"
 ::::::::::: {.h3-sections}
 ### Built-ins
 
-```vim
+```language-vim
 has("feature")  " :h feature-list
 executable("python")
 globpath(&rtp, "syntax/c.vim")
@@ -731,12 +726,11 @@ exists("g:...")
 
 :::::::::::
 ## Mapping
-{: .-three-column}
 
 ::::::::::: {.h3-sections}
 ### Mapping commands
 
-```vim
+```language-vim
 nmap
 vmap
 imap
@@ -752,7 +746,7 @@ xnoremap
 ::::::::::: {.h3-sections}
 ### Explanation
 
-```vim
+```language-vim
 [nvixso](nore)map
 ```
 
@@ -762,7 +756,6 @@ xnoremap
  └ normal, visual, insert,
    eX mode, select, operator-pending
 ```
-{: .-setup}
 
 :::::::::::
 ::::::::::: {.h3-sections}
@@ -778,7 +771,7 @@ xnoremap
 ::::::::::: {.h3-sections}
 ### Highlights
 
-```vim
+```language-vim
 hi Comment
   term=bold,underline
   gui=bold
@@ -790,7 +783,7 @@ hi Comment
 ::::::::::: {.h3-sections}
 ### Filetype detection
 
-```vim
+```language-vim
 augroup filetypedetect
   au! BufNewFile,BufRead *.json setf javascript
 augroup END
@@ -802,7 +795,7 @@ au Filetype markdown setlocal spell
 ::::::::::: {.h3-sections}
 ### Conceal
 
-```vim
+```language-vim
 set conceallevel=2
 syn match newLine "<br>" conceal cchar=}
 hi newLine guifg=green
@@ -812,7 +805,7 @@ hi newLine guifg=green
 ::::::::::: {.h3-sections}
 ### Region conceal
 
-```vim
+```language-vim
 syn region inBold concealends matchgroup=bTag start="<b>" end="</b>"
 hi inBold gui=bold
 hi bTag guifg=blue
@@ -822,7 +815,7 @@ hi bTag guifg=blue
 ::::::::::: {.h3-sections}
 ### Syntax
 
-```vim
+```language-vim
 syn match :name ":regex" :flags
 
 syn region Comment  start="/\*"  end="\*/"
@@ -844,7 +837,7 @@ hi def link markdownH1 htmlH1
 ::::::::::: {.h3-sections}
 ### Include guards
 
-```vim
+```language-vim
 if exists('g:loaded_myplugin')
   finish
 endif
@@ -856,3 +849,8 @@ let g:loaded_myplugin = 1
 
 :::::::::::
 ::::::::::::::
+
+<script src="prism_vim_dark.js"></script>
+<script>
+!function(e){function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}var t={};n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{configurable:!1,enumerable:!0,get:r})},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,n){return Object.prototype.hasOwnProperty.call(e,n)},n.p="",n(n.s=2)}([function(e,n){function t(e,n){var t=e.matches||e.matchesSelector||e.msMatchesSelector||e.mozMatchesSelector||e.webkitMatchesSelector||e.oMatchesSelector;if(t)return t.call(e,n);if(e.parentNode){for(var r=e.parentNode.querySelectorAll(n),o=r.length;o--;0)if(r[o]===e)return!0;return!1}}e.exports=t},function(e,n,t){function r(e,n){if(n){if(Array.isArray(n))return void o(n,function(n){r(e,n)});if(e.classList){var t=n.split(" ").filter(Boolean);o(t,function(n){e.classList.add(n)})}else e.className+=" "+n}}var o=t(4);e.exports=r},function(e,n,t){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function o(){d||((0,c.default)(document.documentElement,"LoadDone"),d=!0)}var i=t(3),u=r(i),a=t(1),c=r(a),f=t(6),l=r(f),s=document.querySelector("[data-js-main-body]");s&&((0,u.default)(s),(0,c.default)(s,"-wrapified")),(0,l.default)(window,"load",o),setTimeout(o,5e3);var d=void 0},function(e,n,t){"use strict";function r(e){return e&&e.__esModule?e:{default:e}}function o(e){if(Array.isArray(e)){for(var n=0,t=Array(e.length);n<e.length;n++)t[n]=e[n];return t}return Array.from(e)}function i(e){u(e).forEach(function(e){(0,p.findChildren)(e,"[data-js-h3-section-list]").forEach(function(e){a(e)})})}function u(e){return c(e,{tag:"h2",wrapperFn:function(){return(0,p.createDiv)({class:"h2-section"})},bodyFn:function(){return(0,p.createDiv)({class:"body h3-section-list","data-js-h3-section-list":""})}})}function a(e){return c(e,{tag:"h3",wrapperFn:function(){return(0,p.createDiv)({class:"h3-section"})},bodyFn:function(){return(0,p.createDiv)({class:"body"})}})}function c(e,n){function t(e,n,t){var r=i(),o=e.className;o&&(0,d.default)(r,o),(0,p.before)(e,r);var a=u();return o&&(0,d.default)(a,o),(0,p.appendMany)(a,t),n&&r.appendChild(n),r.appendChild(a),r}var r=n.tag,i=n.wrapperFn,u=n.bodyFn,a=e.children[0],c=[];if(a&&!(0,l.default)(a,r)){var f=(0,p.nextUntil)(a,r);c.push(t(a,null,[a].concat(o(f))))}return(0,p.findChildren)(e,r).forEach(function(e){var n=(0,p.nextUntil)(e,r);c.push(t(e,e,n))}),c}Object.defineProperty(n,"__esModule",{value:!0}),n.default=i,n.groupify=c;var f=t(0),l=r(f),s=t(1),d=r(s),p=t(5)},function(e,n){function t(e,n){var t,r,o=e.length;if("number"==typeof o)for(t=0;t<o;t++)n(e[t],t);else{r=0;for(t in e)e.hasOwnProperty(t)&&n(e[t],t,r++)}return e}e.exports=t},function(e,n,t){"use strict";function r(e){if(Array.isArray(e)){for(var n=0,t=Array(e.length);n<e.length;n++)t[n]=e[n];return t}return Array.from(e)}function o(e,n){n.forEach(function(n){e.appendChild(n)})}function i(e,n){return u(e.nextSibling,n,[])}function u(e,n,t){return e?(0,s.default)(e,n)?t:u(e.nextSibling,n,[].concat(r(t),[e])):t}function a(e,n){e.parentNode.insertBefore(n,e)}function c(e,n){return[].slice.call(e.children).filter(function(e){return(0,s.default)(e,n)})}function f(e){var n=document.createElement("div");return Object.keys(e).forEach(function(t){n.setAttribute(t,e[t])}),n}Object.defineProperty(n,"__esModule",{value:!0}),n.appendMany=o,n.nextUntil=i,n.before=a,n.findChildren=c,n.createDiv=f;var l=t(0),s=function(e){return e&&e.__esModule?e:{default:e}}(l)},function(e,n){function t(e,n,t){e.addEventListener?e.addEventListener(n,t):e.attachEvent("on"+n,function(){t.call(e)})}e.exports=t}]);
+</script>
