@@ -33,3 +33,6 @@ TODO: break at h2
 }
 
 
+h2 {
+  grid-row-end: auto;
+}

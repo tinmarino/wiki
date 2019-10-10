@@ -54,6 +54,7 @@ imap <Tab> <C-R>=SuperTab()<CR>
 
 :::::::::::
 ::::::::::: {.h3-sections}
+
 ## Variables
 
 :::::::::::
