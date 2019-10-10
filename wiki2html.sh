@@ -33,18 +33,18 @@ munix(){
   [ "$CSS_EMBED" ] && export CSSFILENAME=$CSS_EMBED && echo Css files are: $CSSFILENAME
 
   cat "$INPUT" |
-  perl -pe 's/^###[^#]/:::::::::\n::::::::: {.h3-sections}\n$&/g' |  # Make h3 section
-  perl -pe 's/^##[^#]/:::::::::\n$&/g' | # Close before hight headings
-  perl -pe '++$stop if m/:::::::::\s*\S+/; !$stop && s/^::::::::://' | # Remove the first one closing nothing
+  perl -pe '$line=$_;
+    $open and $line =~ s/^###[^#]/:::::::::\n::::::::: {.h3-sections}\n$&/ ;
+    !$open and $line =~ s/^###[^#]/::::::::: {.h3-sections}\n$&/ and $open=1;
+    $open and $line =~ s/^##?#?[^#]/:::::::::\n$&/ and $open=0;
+    $_ = $line;
+    ' |  # Open-Close if open, open if can, close if open and can
   sed -r 's/(\[.+\])\(([^#)]+)\)/\1(\2.html)/g' |
   perl -0pe 's/((^|\n\S)[^\n]*)\n\t([^*])/\1\n\n\t\3/g;' |  # Double the new line before code
-  perl -lpe 's/^\s*$//' | tee test1.md |  # Remove spaces in void lines
+  perl -lpe 's/^\s*$//' | # Remove spaces in void lines
   pandoc $MATH -s -f $SYNTAX -t html -T $FILE -c $CSSFILENAME >"$OUTPUT.html" # Compile: missing -c $CSSFILENAME
 }
 
-bck() {
-  echo toto
-}
 
 # Obsolete ?
 mtermux(){
