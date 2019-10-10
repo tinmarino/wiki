@@ -1,6 +1,17 @@
+/* This works
+body {
+  column-count: 3;
+}
+*/
+
+h2 {
+  .column {
+    column-count: 2;
+  }
+}
+
 h3 {
   background-color: dodgerblue;
-  color: white;
   padding: 1rem;
   height: 4rem;
 }
