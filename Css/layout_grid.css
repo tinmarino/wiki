@@ -1,4 +1,10 @@
+/*
+GRID betwenn 1 and 3
 
+TODO: break at h2
+
+
+*/
 
 
 .parent {
@@ -20,7 +26,7 @@
 
   grid-gap: 0.3cm;
 
-  grid-template-columns: repeat(var(--repeat), minmax(600px, 1fr));
+  grid-template-columns: repeat(var(--repeat), minmax(200px, 600px));
 
   justify-items: start;
   align-items: start;
@@ -28,12 +34,6 @@
 
 
 
-.h3-sections {
-  max-width: 600px;
-}
-
-h2 {
-}
 
 
 /*
@@ -69,12 +69,20 @@ body {
   column-count: 3;
 }
 
+# Old
+
+  word-wrap: break-word;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
 .three-column {
   @media (min-width: 769px) {
     & > .h3-section {
       width: 50%;
     }
   }
+
 
   @media (min-width: 961px) {
     & > .h3-section {

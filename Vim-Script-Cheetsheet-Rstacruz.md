@@ -11,6 +11,16 @@ tags: [Featurable]
 
 :::::::::::::: {.parent}
 ::::::::::: {.h3-sections}
+### TEst fir item
+
+item 1 There is no code here jsut TODO and stuff higlighted (maybe)
+
+item 2 There is no code here jsut TODO and stuff higlighted (maybe)
+
+You can either put this in a script (`script.vim`) and run it (`:source script.vim`), or you can type the commands individually in normal mode as `:let` and `:echo`.
+
+:::::::::::
+::::::::::: {.h3-sections}
 ### Start hacking
 
 ```vim
