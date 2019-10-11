@@ -14,6 +14,7 @@
 * [W3m](W3m)
 * [Nvidia](Nvidia)
 * [Ubuntu](Ubuntu)
+* [Man](Man)
 
 # Program
 * [Imagemagick](Imagemagick)

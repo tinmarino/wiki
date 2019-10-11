@@ -85,3 +85,6 @@
 * `RDMSR`       # Read the 64 bit MSR register specified by ECX to EDX:EAX
 * `WDMSR`       # Write ...
 * `JMP -2`    # EB FE infinite loop
+* RETF        # Return far
+* INVLPG      # Invalidate TLB Entry
+* LFS         # Load far pointer
