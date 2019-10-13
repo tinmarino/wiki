@@ -1,7 +1,7 @@
 # C
 
-* [Keywords](C-Keywords) 
-* [Operators](C-Operators)
+* [Keywords](Cheat/C-Keywords) 
+* [Operators](Cheat/C-Operators)
 * [Regle De Codage](C-Regle-De-Codage)
 
 Include path (print)

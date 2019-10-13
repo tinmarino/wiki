@@ -4,21 +4,21 @@ GRID betwenn 1 and 3
 */
 
 
-body {
+.parent {
   --repeat: auto-fit;
 }
 @media (min-width: calc(400 * 2px)) {
-  body {
+  .parent {
     --repeat: 2;
   }
 }
 @media (min-width: calc(400 * 3px)) {
-  body {
+  .parent {
     --repeat: 3;
   }
 }
 
-body {
+.parent {
   display: grid;
 
   grid-gap: 0.3cm;
