@@ -1,5 +1,5 @@
 * [Vim Menu](Vim-Menu)
-* [Vim Script Cheetsheet Rstacruz](Vim-Script-Cheetsheet-Rstacruz)
+* [Vim Script Cheetsheet Rstacruz](Cheat/Vim-Script-Devhints.md)
 * [Practical_Vim](Practical_Vim)
 * [Vimstyle](Vimstyle) (from Google)
 * [VimStory](VimStory)

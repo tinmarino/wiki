@@ -1,3 +1,5 @@
+### All lines Stuff
+
 Double-space a file
 	perl -pe '$\ = "\n"' file
 	perl -pe '$_ .= "\n"' file
@@ -30,7 +32,9 @@ Compress/expand all blank lines into N consecutive lines
 Insert a space between all characters
 	perl -lpe 's// /g'
 
-# Numbering
+
+### Numbering
+
 Number all lines in a file
 	perl -pe '$_ = "$. $_"'
 	perl -ne 'print "$. $_"'
@@ -89,7 +93,7 @@ Number words on each individual line
 	perl -pe '$i=0; s/(\w+)/++$i.".$1"/ge'
 
 
-# Calculations
+### Calculations
 
 Check if a number is a prime
 	perl -lne '(1x$_) !~ /^1?$|^(11+?)\1+$/ && print "$_ is prime"'
@@ -169,7 +173,7 @@ Convert an unsigned integer to an IP address
 	print map { (($ip>>8*($_))&0xFF) } reverse 0..3
 	'
 
-# Array and string
+### Array and string
 
 Generate and print the alphabet
 	perl -E 'say a..z'
@@ -222,7 +226,7 @@ Find the number of elements in an array
 	perl -le 'print scalar (@ARGV=<*.txt>)'
 
 
-# Text convertion
+### Text convertion
 
 ROT13 a string
 	perl -le '$string = "bananas"; $string =~ y/A-Za-z/N-ZA-Mn-za-m/; print $string'
@@ -291,7 +295,7 @@ Print columns in reverse order
 	perl -alne 'print "@{[reverse @F]}"'
 	perl -F: -alne '$" = ":"; print "@{[reverse @F]}"'
 
-# Selectively Printing and Deleting Lines
+### Selectively Printing and Deleting Lines
 
 The first line of a file (emulate head -1)
 	perl -ne 'print; exit' file
@@ -369,7 +373,7 @@ All unique lines
 	perl -ne 'print unless $a{$_}++'
 
 
-#­Useful Regular Expressions
+###­Useful Regular Expressions
 
 
 Match something that looks like an IP address

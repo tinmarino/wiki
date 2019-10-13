@@ -146,7 +146,7 @@ Change file content
 | ---------- | --- |
 | -0         | Split on NULL byte (almost never) |
 | -00        | Split on paragraph |
-| -0777      | Treat the file as a whole (do not delete new lines |
+| -0777      | Treat the file as a whole (do not delete new lines) |
 | -I path    | Add path to @INC |
 | -i[.bak]   | Do in place substitution like : |
 |            | `perl -i.bak -ne 'print unless /^#/' script.sh` |

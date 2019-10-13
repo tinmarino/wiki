@@ -46,6 +46,7 @@
 ## Misc
   * [Text](Text)
   * [Regles Expeditionnaire](Regles-Expeditionnaire)
+  * [Cheats](Cheats)
   * [KeyBinding Custom](KeyBinding-Custom)
 
 * [Test](Test)

@@ -32,17 +32,32 @@ munix(){
   export CSS_EMBED=$(perl -0777 -ne '$_ =~ /^ *---(.+?)---/s ; $meta=$1; while ($meta =~ /^css:(.+)$/mg) {$css .= " -c " . $1}; print substr $css, 4' "$INPUT")
   [ "$CSS_EMBED" ] && export CSSFILENAME=$CSS_EMBED && echo Css files are: $CSSFILENAME
 
+  # Convertion pipeline
   cat "$INPUT" |
+  # Add h3-section betewwen h3 headings and h3 end
+  # TODO close if at end
   perl -pe '$line=$_;
-    $open and $line =~ s/^###[^#]/:::::::::\n::::::::: {.h3-sections}\n$&/ ;
-    !$open and $line =~ s/^###[^#]/::::::::: {.h3-sections}\n$&/ and $open=1;
+    # Open-Close if open
+    $open and $line =~ s/^###[^#]/:::::::::\n::::::::: {.h3-section}\n$&/ ;
+    # Open if can
+    !$open and $line =~ s/^###[^#]/::::::::: {.h3-section}\n$&/ and $open=1;
+    # close if open and can
     $open and $line =~ s/^##?#?[^#]/:::::::::\n$&/ and $open=0;
-    $_ = $line;
-    ' |  # Open-Close if open, open if can, close if open and can
+    $_ = $line; 
+    END { $open and print "\n:::::::::\n" }
+    ' |
+  # Surround h3 section by parent
+  perl -0777 -pe 's/::::::::: \{.h3-section}/::: {.parent}\n$&/ ;
+    s/^.*:::::::::\n/$&:::\n/s ;
+  ' |
+  # Change links: add html
   sed -r 's/(\[.+\])\(([^#)]+)\)/\1(\2.html)/g' |
-  perl -0pe 's/((^|\n\S)[^\n]*)\n\t([^*])/\1\n\n\t\3/g;' |  # Double the new line before code
-  perl -lpe 's/^\s*$//' | # Remove spaces in void lines
-  pandoc $MATH -s -f $SYNTAX -t html -T $FILE -c $CSSFILENAME >"$OUTPUT.html" # Compile: missing -c $CSSFILENAME
+  # Double the new line before code
+  perl -0pe 's/((^|\n\S)[^\n]*)\n\t([^*])/\1\n\n\t\3/g;' |
+  # Remove spaces in void lines
+  perl -lpe 's/^\s*$//' |
+  # Compile
+  pandoc $MATH -s -f $SYNTAX -t html -T $FILE -c $CSSFILENAME >"$OUTPUT.html"
 }
 
 
