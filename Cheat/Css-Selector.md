@@ -64,12 +64,13 @@ function start() {
     // Fill color
     var div_color = document.getElementById('div_color');
     var a_color = [
+        '../Css/color_dark_blue_striking_and_simple',
         '../Css/color_light_solarized',
         '../Css/color_dark_solarized',
         '../Css/color_dark_jason23',
     ];
     a_color.forEach(function (item, index) {
-        console.log(item, index);
+        console.log('Color: ', item, index);
         addStylesheet(div_color, item)
     });
   
@@ -80,9 +81,22 @@ function start() {
         '../Css/layout_solarized',
     ];
     a_layout.forEach(function (item, index) {
-        console.log(item, index);
+        console.log('Layout: ', item, index);
         addStylesheet(div_layout, item)
     });
+    
+    //Fill font
+    var div_font = document.getElementById('div_font');
+    var a_font = [
+       'Ubuntu', 
+       'Alegreya'
+    ];
+    a_font.forEach(function (item, index) {
+        item = "https://fonts.googleapis.com/css?family='" + item + "'&display=swap"
+        console.log('Font: ', item, index);
+        addStylesheet(div_font, item)
+    });
+    
   
 }
 
@@ -92,16 +106,21 @@ window.onload = start
 
 
 <div id='div_color' style='width:600px; float:left;'>
- Color
+ <h2>Color</h2>
 </div>
 
 <div id='div_layout' style='width:600px; float:left; overflow:hidden;'>
- Layout
+ <h2>Layout</h2>
 </div>
   
+<div id='div_font' style='width:600px; float:left; overflow:hidden;'>
+ <h2>Font</h2>
+</div>
+
 <div id='div_clear' style='clear:both;'> </div>
   
 
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en" />
 
 # Start test
 
@@ -153,6 +172,12 @@ This tutorial provides a brief information on all 32 keywords in C programming.
 [volatile](#volatile)
 [while](#do_while)
 
+
+### Colors 
+* Protanopia
+* Dueteranopia
+* Tritanopia
+* Achromatopsia
 
 ### []{#auto}auto
 

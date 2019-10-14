@@ -1,0 +1,64 @@
+/*
+https://www.awwwards.com/sites/we-are-bert
+
+#0B0C10 black
+#1F2833 grey dark
+#C5C6C7 clear
+#66FCF1 blue clear
+#45A29E blue grey
+
+#ECCBD9 pink queen
+#F7717D pink begonia
+#C4A77D beige french light
+#BA6B66 copper penny
+#6DBA66 green mantis
+
+Whites
+#F4EDDC beige
+#DCF4F4 white azureich
+#BEE0DF white columbia blue
+
+*/
+
+/* TODO */
+@import url('https://fonts.googleapis.com/css?family=Liu+Jian+Mao+Cao&display=swap');
+body{ font-family: 'Liu Jian Mao Cao', cursive; }
+
+
+
+/* Perso */
+body {
+  --col-bck:   #0B0C10;
+  --col-h1:    #66FCF1;
+  --col-h2:    #66FCF1;
+  --col-h3:    #45A29E;
+  --col-font:  #BEE0DF;
+
+  --col-link:  #BA6B66;
+  --col-link-visited: #6DBA66;
+  --col-link-hover:   #6DBA66;
+
+  --col-code-fg:  #DCF4F4;
+}
+
+
+/* Common TODO leave me in include_color.css */
+body {
+  background-color: var(--col-bck);
+  color: var(--col-font);
+}
+
+h1 { color: var(--col-h1); }
+h2 { color: var(--col-h2); }
+h4,
+h5,
+h6,
+h3 { color: var(--col-h3); }
+
+a { color: var(--col-link); }
+a:visited { color: var(--col-link-visited); }
+a:hover { color: var(--col-link-hover); }
+
+code {
+  color: var(--col-code-fg);
+}
