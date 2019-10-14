@@ -10,7 +10,8 @@ viewport: 'width=device-width, initial-scale=1'
 title: 'C Operators: Arithmetic, Logical, Conditional and more'
 category: C
 css: ../Css/solarized_dark.css
-css: ../Css/layout_grid.css
+aaacss: ../Css/layout_grid.css
+css: ../Css/layout_solarized.css
 ---
 
 

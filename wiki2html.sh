@@ -25,7 +25,6 @@ fi
 
 # Compile for unix (with pandoc & Perl)
 # TODO replace sed and comment
-# TODO all in one perl script
 # TODO if no css: yaml in file set a default (include.css)
 munix(){
   # Read `css:` in metadata
@@ -35,7 +34,6 @@ munix(){
   # Convertion pipeline
   cat "$INPUT" |
   # Add h3-section betewwen h3 headings and h3 end
-  # TODO close if at end
   perl -pe '$line=$_;
     # Open-Close if open
     $open and $line =~ s/^###[^#]/:::::::::\n::::::::: {.h3-section}\n$&/ ;
@@ -45,7 +43,7 @@ munix(){
     $open and $line =~ s/^##?#?[^#]/:::::::::\n$&/ and $open=0;
     $_ = $line; 
     END { $open and print "\n:::::::::\n" }
-    ' |
+  ' |
   # Surround h3 section by parent
   perl -0777 -pe 's/::::::::: \{.h3-section}/::: {.parent}\n$&/ ;
     s/^.*:::::::::\n/$&:::\n/s ;

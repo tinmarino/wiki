@@ -6,8 +6,6 @@
 * [BordelVim](BordelVim)
 * [Plugin](Plugin)
 * [Tips](Tips) : advanced commands
-* [Negative Regex](V-negative-regex)
-* [Script](V-Script)
 
 
 * where [[=c=]] is the equivalence class for the c character

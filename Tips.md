@@ -40,34 +40,6 @@
 	* `vim <(echo toto)` : process substitution command (BaSh)
 	* `:w !tee` : write to stdout
 
-* Random, Sort, Shuffle
-  	* Random shuffle
-		:10,20!shuf<CR>
-		func Random()
-			return reltimestr(reltime())[-2:]
-		endfunc
-		%s/^/\=Random() . ""/|sort n|%s/^\S*//
-
-* Remote 
-	vim --servername DEMO
-	vim --servername DEMO --remote file.txt
-	vim --servername DEMO  --remote-send ":3d<CR>"
-	:!vim --servername DEMO --remote-tab "%"   " Send current buffer to remote vim
-	
-* File format
-	* `:e ++ff=unix`
-	* `:w ++ff=dos`
-	* `%s/\r\n/`
-
-* Buffer
-	* `:b *.java<c-d>` : list buffer names matching regex
-
-* Pipeline
-	* `echo toto | vim -` : take arguments from stdin
-	* `echo foo | vim -e '+%print' '+q!' /dev/stdin` : exmode to not consume stdin and not clear output on quit
-	* `vim <(echo toto)` : process substitution command (BaSh)
-	* `:w !tee` : write to stdout
-
 * Script : Get filetype of a buffer
 	* `:let bufFiletype = getbufvar(bufNr, '&filetype')`
 
@@ -104,9 +76,6 @@
 	* `au BufWinEnter ?* silent loadview`
 
 
-Vim can browse tar and zip archives
-uppercase maps to jump between files
-Read vimcast of drew neil and tim pope
 
 
 # Advanced commands
