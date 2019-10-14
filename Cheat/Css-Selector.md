@@ -17,7 +17,7 @@ function disableAll () {
 }
 
 function onRadioClick(check, id) {
-    css = document.getElementById(id);
+    var css = document.getElementById(id);
     console.log(id, 'is ', check.checked);
     if (check.checked == true){
       css.disabled = false;
@@ -59,13 +59,14 @@ function addStylesheet(parent, id) {
   
 }
 
+// Fill radio button: Define lists
 function start() {
     // Fill color
     var div_color = document.getElementById('div_color');
     var a_color = [
+        '../Css/color_light_solarized',
         '../Css/color_dark_solarized',
-        '../Css/color_light_solarized.css',
-        '../Css/color_dark_jason23.css',
+        '../Css/color_dark_jason23',
     ];
     a_color.forEach(function (item, index) {
         console.log(item, index);
@@ -76,7 +77,7 @@ function start() {
     var div_layout = document.getElementById('div_layout');
     var a_layout = [
         '../Css/layout_grid',
-        '../Css/layout_solarized.css',
+        '../Css/layout_solarized',
     ];
     a_layout.forEach(function (item, index) {
         console.log(item, index);
