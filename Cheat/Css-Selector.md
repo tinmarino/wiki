@@ -10,47 +10,77 @@ css: ../Css/layout_radio.css
 
 
 <script>
-function disableAll () {
-    document
-      .querySelectorAll('link[rel=stylesheet].alternate')
-      .forEach(function (node) {node.disabled = true;} );
+
+a_color = [
+    '../Css/color_dark_blue_striking_and_simple',
+    '../Css/color_light_solarized',
+    '../Css/color_dark_solarized',
+    '../Css/color_dark_jason23',
+];
+
+a_layout = [
+    '../Css/layout_grid',
+    '../Css/layout_solarized',
+];
+
+a_font = [
+    'Ubuntu', 
+    'Arial',
+    'IBM Plex Serif',
+    'Source Sans Pro',
+    'EB Garamond',
+  
+    'Monotone',
+    'Alegreya',
+    'Tangerine',
+    'Liu Jian Mao Cao',
+    'Yatra One',
+];
+
+function disableAll (parent) {
+    Array.from(document.getElementsByClassName('class_' + parent.id))
+      .forEach(function (node) {
+          console.log('Disabling ' + node.value + ' from class_' + parent.id);
+          node.disabled = true;}
+      );
 }
 
 // If press css: color | layout button
-function onRadioCss(check, id) {
-    var style = document.createElement('link');
-    style.rel  = 'stylesheet';
-    style.type = 'text/css';
-    style.disabled = true;
-    style.class = 'alterante';
-    style.media = 'all';
-    style.id = id;
-    style.href = id + '.css';
-    document.body.appendChild(style);
-  
-    var css = document.getElementById(id);
-    console.log('Css ', id, 'is ', check.checked);
-    if (check.checked == true){
-      css.disabled = false;
-    } else {
-      css.disabled = true;
+function onRadioCss(parent, id) {
+    console.log('Css ', id, '<- ', parent.id);
+    
+    // Create link
+    if (!document.getElementById(id)){
+        console.log('Creating link');
+        var link = document.createElement('link');
+        link.rel  = 'stylesheet';
+        link.type = 'text/css';
+        link.disabled = true;
+        link.media = 'all';
+        link.id = id;
+        link.className = 'class_' + parent.id;
+        link.href = id + '.css';
+        document.head.appendChild(link);
     }
+  
+    // Disable others 
+    disableAll(parent);
+    
+    // Enable me
+    var css = document.getElementById(id);
+    css.disabled = false;
 }
 
 // If press font button
-function onRadioFont(check, id){
-    console.log('Font ', id, 'is ', check.checked);
-  
-    if (check.checked == false){
-      return;
-    }
-      
+function onRadioFont(parent, id){
+    console.log('Font ', id, '<- ', parent.id);
+
+    // Create link
     // TODO suffix by cursive
-    var font_url = "https://fonts.googleapis.com/css?family=";
-    font_url += id.replace(/ /g, "+") + "&display=swap";
-    console.log('Font url', font_url);
     var link = document.createElement('link');
     link.rel  = 'stylesheet';
+    var font_url = "https://fonts.googleapis.com/css?family=";
+    font_url += id.replace(/ /g, "+") + "&display=swap";
     link.href = font_url;
     document.head.appendChild(link);
   
@@ -69,8 +99,9 @@ function addStylesheet(parent, id, onRadioCallback) {
     // 2/ Input
     var input = document.createElement('input');
     input.type = 'radio' ;
-    input.name = 'radio' + parent.id ;
-    input.onchange = function () { onRadioCallback(this, id); };
+    input.name = 'radio_' + parent.id ;
+    input.value = id
+    input.onchange = function () { onRadioCallback(parent, id); };
     // 3 Span
     var span = document.createElement('span');
     span.className = 'checkmark';
@@ -87,12 +118,6 @@ function addStylesheet(parent, id, onRadioCallback) {
 function start() {
     // Fill color
     var div_color = document.getElementById('div_color');
-    var a_color = [
-        '../Css/color_dark_blue_striking_and_simple',
-        '../Css/color_light_solarized',
-        '../Css/color_dark_solarized',
-        '../Css/color_dark_jason23',
-    ];
     a_color.forEach(function (item, index) {
         console.log('Color: ', item, index);
         addStylesheet(div_color, item, onRadioCss);
@@ -100,10 +125,6 @@ function start() {
   
     // Fill layout
     var div_layout = document.getElementById('div_layout');
-    var a_layout = [
-        '../Css/layout_grid',
-        '../Css/layout_solarized',
-    ];
     a_layout.forEach(function (item, index) {
         console.log('Layout: ', item, index);
         addStylesheet(div_layout, item, onRadioCss);
@@ -111,19 +132,6 @@ function start() {
     
     //Fill font
     var div_font = document.getElementById('div_font');
-    var a_font = [
-        'Ubuntu', 
-        'Arial',
-        'IBM Plex Serif',
-        'Source Sans Pro',
-        'EB Garamond',
-      
-        'Monotone',
-        'Alegreya',
-        'Tangerine',
-        'Liu Jian Mao Cao',
-        'Yatra One',
-    ];
     a_font.forEach(function (item, index) {
         console.log('Font: ', item, index);
         addStylesheet(div_font, item, onRadioFont);
@@ -134,7 +142,6 @@ window.onload = start
 
 </script>
 
-  <link href="https://fonts.googleapis.com/css?family=Monoton&display=swap" rel="stylesheet"> 
 
 <div id='div_color' style='width:400px; float:left;'>
  <h2>Color</h2>
