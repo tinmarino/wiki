@@ -16,18 +16,8 @@ function disableAll () {
       .forEach(function (node) {node.disabled = true;} );
 }
 
-function onRadioClick(check, id) {
-    var css = document.getElementById(id);
-    console.log(id, 'is ', check.checked);
-    if (check.checked == true){
-      css.disabled = false;
-    } else {
-      css.disabled = true;
-    }
-}
-
-function addStylesheet(parent, id) {
-    // Create stylesheet
+// If press css: color | layout button
+function onRadioCss(check, id) {
     var style = document.createElement('link');
     style.rel  = 'stylesheet';
     style.type = 'text/css';
@@ -37,6 +27,43 @@ function addStylesheet(parent, id) {
     style.id = id;
     style.href = id + '.css';
     document.body.appendChild(style);
+  
+    var css = document.getElementById(id);
+    console.log('Css ', id, 'is ', check.checked);
+    if (check.checked == true){
+      css.disabled = false;
+    } else {
+      css.disabled = true;
+    }
+}
+
+// If press font button
+function onRadioFont(check, id){
+    console.log('Font ', id, 'is ', check.checked);
+  
+    if (check.checked == false){
+      return;
+    }
+      
+    // TODO suffix by cursive
+    var font_url = "https://fonts.googleapis.com/css?family=";
+    font_url += id.replace(/ /g, "+") + "&display=swap";
+    console.log('Font url', font_url);
+    var link = document.createElement('link');
+    link.rel  = 'stylesheet';
+    link.href = font_url;
+    document.head.appendChild(link);
+  
+    // Body choose font
+    document.body.style.fontFamily = id;
+}
+
+
+
+function addStylesheet(parent, id, onRadioCallback) {
+    // Create stylesheet
+    if (onRadioCallback == onRadioCss) {
+    }
     
     // Create clickable link
     // 1/ Label
@@ -46,7 +73,7 @@ function addStylesheet(parent, id) {
     // 2/ Input
     var input = document.createElement('input');
     input.type = 'checkbox';
-    input.onchange = function () { onRadioClick(this, id); };
+    input.onchange = function () { onRadioCallback(this, id); };
     // 3 Span
     var span = document.createElement('span');
     span.className = 'checkmark';
@@ -71,7 +98,7 @@ function start() {
     ];
     a_color.forEach(function (item, index) {
         console.log('Color: ', item, index);
-        addStylesheet(div_color, item)
+        addStylesheet(div_color, item, onRadioCss);
     });
   
     // Fill layout
@@ -82,45 +109,50 @@ function start() {
     ];
     a_layout.forEach(function (item, index) {
         console.log('Layout: ', item, index);
-        addStylesheet(div_layout, item)
+        addStylesheet(div_layout, item, onRadioCss);
     });
     
     //Fill font
     var div_font = document.getElementById('div_font');
     var a_font = [
        'Ubuntu', 
-       'Alegreya'
+       'Arial',
+      
+       'Monotone',
+       'Alegreya',
+       'Tangerine',
+       'Liu Jian Mao Cao',
+       'IBM Plex Serif',
+       'Yatra One',
+       'Source Sans Pro',
     ];
     a_font.forEach(function (item, index) {
-        item = "https://fonts.googleapis.com/css?family='" + item + "'&display=swap"
         console.log('Font: ', item, index);
-        addStylesheet(div_font, item)
+        addStylesheet(div_font, item, onRadioFont);
     });
-    
-  
 }
 
 window.onload = start
 
 </script>
 
+  <link href="https://fonts.googleapis.com/css?family=Monoton&display=swap" rel="stylesheet"> 
 
-<div id='div_color' style='width:600px; float:left;'>
+<div id='div_color' style='width:400px; float:left;'>
  <h2>Color</h2>
 </div>
 
-<div id='div_layout' style='width:600px; float:left; overflow:hidden;'>
+<div id='div_layout' style='width:400px; float:left; overflow:hidden;'>
  <h2>Layout</h2>
 </div>
   
-<div id='div_font' style='width:600px; float:left; overflow:hidden;'>
+<div id='div_font' style='width:400px; float:left; overflow:hidden;'>
  <h2>Font</h2>
 </div>
 
 <div id='div_clear' style='clear:both;'> </div>
   
 
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en" />
 
 # Start test
 
