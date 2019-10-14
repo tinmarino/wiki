@@ -1,8 +1,8 @@
 ---
 title: Vim Advanced cheatsheet
 category: Vim
-css: ../Css/prism_dark.css
-css: ../Css/solarized_dark.css
+css: ../Css/code_prism_dark.css
+css: ../Css/color_dark_solarized.css
 css: ../Css/layout_grid.css
 ---
 
@@ -36,12 +36,70 @@ css: ../Css/layout_grid.css
 | `normal @a`            | Execute register a in this line |
 | `g/{/_.+1,/-1 sort`    | Sort between { and } |
 
-### Ex one char
+## Ex one char
 
-|               |   |
-| ---           | --- |
-| `:t` | Copy line to |
-| `:m` | Move line |
+
+### Ex 1 char (1/3)
+
+|       |   |
+| ---   | --- |
+| `ab`  | abbrev |
+| `a`   | append |
+| `ar`  | args |
+| `c`   | change |
+| `co`  | copy |
+| `t`   | Copy line to |
+| `d`   | delete |
+| `e`   | edit |
+| `f`   | file |
+| `g`   | global |
+| `i`   | insert |
+| `j`   | join |
+| `l`   | list |
+| `maa` | map |
+| `ma`  | mark |
+
+### Ex 1 char (2/3)
+
+|       |   |
+| ---   | --- |
+| `m`   | move |
+| `n`   | next |
+| `nu`  | number |
+| `o`   | open |
+| `pre` | preserve |
+| `p`   | print |
+| `pu`  | put |
+| `q`   | quit |
+| `re`  | read |
+| `rec` | recover |
+| `rew` | rewind |
+| `se`  | set |
+| `sh`  | shell |
+| `so`  | source |
+| `st`  | stop |
+
+### Ex 1 char (3/3)
+
+|       |   |
+| ---   | --- |
+| `s`   | substitute |
+| `una` | unabbrev |
+| `u`   | undo |
+| `unm` | unmap |
+| `ve`  | version |
+| `vi`  | visual |
+| `w`   | write |
+| `x`   | xit |
+| `ya`  | yank |
+| `z`   | window |
+| `!`   | escape |
+| `CR`  | print next |
+| `&`   | resubst |
+| `>`   | rshift |
+| `^D`  | scroll |
+
+
 
 ### Search and Select
 

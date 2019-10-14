@@ -1,9 +1,108 @@
 ---
-title: C Keywords
-category: C
-css: ../Css/color_dark_solarized.css
-css: ../Css/layout_grid.css
+title: Css tests
+category: Css
+css: ../Css/layout_radio.css
 ---
+
+
+
+
+
+
+<script>
+function disableAll () {
+    document
+      .querySelectorAll('link[rel=stylesheet].alternate')
+      .forEach(function (node) {node.disabled = true;} );
+}
+
+function onRadioClick(check, id) {
+    css = document.getElementById(id);
+    console.log(id, 'is ', check.checked);
+    if (check.checked == true){
+      css.disabled = false;
+    } else {
+      css.disabled = true;
+    }
+}
+
+function addStylesheet(parent, id) {
+    // Create stylesheet
+    var style = document.createElement('link');
+    style.rel  = 'stylesheet';
+    style.type = 'text/css';
+    style.disabled = true;
+    style.class = 'alterante';
+    style.media = 'all';
+    style.id = id;
+    style.href = id + '.css';
+    document.body.appendChild(style);
+    
+    // Create clickable link
+    // 1/ Label
+    var label = document.createElement('label');
+    label.textContent = id;
+    label.className = "radio";
+    // 2/ Input
+    var input = document.createElement('input');
+    input.type = 'checkbox';
+    input.onchange = function () { onRadioClick(this, id); };
+    // 3 Span
+    var span = document.createElement('span');
+    span.className = 'checkmark';
+    
+    // Append
+    label.appendChild(input);
+    label.appendChild(span);
+    parent.appendChild(document.createElement("br"));
+    parent.appendChild(label)
+  
+}
+
+function start() {
+    // Fill color
+    var div_color = document.getElementById('div_color');
+    var a_color = [
+        '../Css/color_dark_solarized',
+        '../Css/color_light_solarized.css',
+        '../Css/color_dark_jason23.css',
+    ];
+    a_color.forEach(function (item, index) {
+        console.log(item, index);
+        addStylesheet(div_color, item)
+    });
+  
+    // Fill layout
+    var div_layout = document.getElementById('div_layout');
+    var a_layout = [
+        '../Css/layout_grid',
+        '../Css/layout_solarized.css',
+    ];
+    a_layout.forEach(function (item, index) {
+        console.log(item, index);
+        addStylesheet(div_layout, item)
+    });
+  
+}
+
+window.onload = start
+
+</script>
+
+
+<div id='div_color' style='width:600px; float:left;'>
+ Color
+</div>
+
+<div id='div_layout' style='width:600px; float:left; overflow:hidden;'>
+ Layout
+</div>
+  
+<div id='div_clear' style='clear:both;'> </div>
+  
+
+
+# Start test
 
 This tutorial provides a brief information on all 32 keywords in C programming.  
 

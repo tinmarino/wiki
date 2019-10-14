@@ -48,7 +48,7 @@ and variables).
 
 ### Example \#1: Arithmetic Operators
 
-```C
+```c
     // C Program to demonstrate the working of arithmetic operators
     #include <stdio.h>
     int main()
@@ -116,7 +116,7 @@ operate on a single operand.
 
 ### Example \#2: Increment and Decrement Operators
 
-```C
+```c
     // C Program to demonstrate the working of increment and decrement operators
     #include <stdio.h>
     int main()
@@ -166,7 +166,7 @@ most common assignment operator is =
 
 #### Example \#3: Assignment Operators
 
-```C
+```c
     // C Program to demonstrate the working of assignment operators
     #include <stdio.h>
     int main()
@@ -227,7 +227,7 @@ making](/c-programming/c-if-else-statement "C if else") and
 
 ### Example \#4: Relational Operators
 
-```C
+```c
     // C Program to demonstrate the working of arithmetic operators
     #include <stdio.h>
     int main()
@@ -293,7 +293,7 @@ programming](/c-programming/c-if-else-statement "C if else").
 
 ### Example \#5: Logical Operators
 
-```C
+```c
     // C Program to demonstrate the working of logical operators
 
     #include <stdio.h>
@@ -377,7 +377,7 @@ more.
 Comma operators are used to link related expressions together. For
 example:
 
-```C
+```c
     int a, c = 5, d;
 ```
 
@@ -388,7 +388,7 @@ The `sizeof` is an unary operator which returns the size of data
 
 #### Example \#6: sizeof Operator
 
-```C
+```c
     #include <stdio.h>
     int main()
     {
@@ -434,7 +434,7 @@ The conditional operator works as follows:
 
 #### Example \#7: C conditional Operator
 
-```C
+```c
     #include <stdio.h>
     int main(){
        char February;
