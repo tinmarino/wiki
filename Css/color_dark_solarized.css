@@ -21,14 +21,17 @@ section,
 html {
   font-family: sans-serif;
 }
-
+html {
+  background-color: #073642;
+  color: #839496;
+}
+body {
+  background-color: #002b36;
+  margin: 8px;
+}
 h1 {
   font-size: 2em;
 }
-abbr[title] {
-  border-bottom: 1px dotted;
-}
-b,
 strong {
   font-weight: bold;
 }
@@ -79,13 +82,6 @@ h5,
 h6 {
   font-family: 'PT Sans Narrow', sans-serif;
   font-weight: 700;
-}
-html {
-  background-color: #073642;
-  color: #839496;
-}
-body {
-  background-color: #002b36;
 }
 code {
   background-color: #073642;

@@ -39,10 +39,10 @@ a_font = [
 
 function disableAll (parent) {
     Array.from(document.getElementsByClassName('class_' + parent.id))
-      .forEach(function (node) {
-          console.log('Disabling ' + node.value + ' from class_' + parent.id);
-          node.disabled = true;}
-      );
+        .forEach(function (node) {
+            console.log('Disabling ' + node.value + ' from class_' + parent.id);
+            node.disabled = true;}
+        );
 }
 
 // If press css: color | layout button
