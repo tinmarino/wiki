@@ -48,3 +48,9 @@ h2:after {
 h3, h4, h5, h6 {
   margin: 0px;
 }
+
+/* Wrap code (in pre/a) */
+a, pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}

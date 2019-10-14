@@ -27,6 +27,8 @@ fi
 # TODO replace sed and comment
 # TODO if no css: yaml in file set a default (include.css)
 munix(){
+  # TODO remove me
+  cp ~/wiki/wiki/Css/* ~/wiki/wiki_html/Css/
   # Read `css:` in metadata
   export CSS_EMBED=$(perl -0777 -ne '$_ =~ /^ *---(.+?)---/s ; $meta=$1; while ($meta =~ /^css:(.+)$/mg) {$css .= " -c " . $1}; print substr $css, 4' "$INPUT")
   [ "$CSS_EMBED" ] && export CSSFILENAME=$CSS_EMBED && echo Css files are: $CSSFILENAME

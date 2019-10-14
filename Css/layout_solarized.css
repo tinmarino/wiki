@@ -52,7 +52,7 @@ img {
 svg:not(:root) {
   overflow: hidden;
 }
-pre {
+a, pre {
   white-space: pre-wrap;
   word-wrap: break-word;
 }
