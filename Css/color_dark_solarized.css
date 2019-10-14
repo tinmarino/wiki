@@ -18,7 +18,6 @@ header,
 hgroup,
 nav,
 section,
-
 html {
   font-family: sans-serif;
 }
@@ -60,6 +59,14 @@ sup {
   position: relative;
   vertical-align: baseline;
 }
+a:focus {
+  outline: thin dotted;
+}
+a:active,
+a:hover {
+  outline: 0;
+}
+
 pre,
 code {
   font-family: 'Inconsolata', sans-serif;

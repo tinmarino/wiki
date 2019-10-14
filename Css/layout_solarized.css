@@ -1,5 +1,15 @@
 /* Layout to get the one column (from solarized.css */
 
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section,
 summary {
   display: block;
 }
@@ -33,12 +43,15 @@ body {
   border: 1pt solid #586e75;
   padding: 1em;
 }
-a:focus {
-  outline: thin dotted;
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
 }
-a:active,
-a:hover {
-  outline: 0;
+sup {
+  top: -0.5em;
 }
 sup {
   top: -0.5em;
