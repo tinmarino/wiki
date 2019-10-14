@@ -13,9 +13,6 @@ a:active,
 a:hover {
   outline: 0;
 }
-h1 {
-  font-size: 2em;
-}
 abbr[title] {
   border-bottom: 1px dotted;
 }
@@ -34,7 +31,6 @@ kbd,
 pre,
 samp {
   font-family: monospace, serif;
-  font-size: 1em;
 }
 q {
   quotes: "\201C" "\201D" "\2018" "\2019";
@@ -95,24 +91,6 @@ pre {
 }
 pre code {
   background-color: #fdf6e3;
-}
-h1 {
-  font-size: 2.8em;
-}
-h2 {
-  font-size: 2.4em;
-}
-h3 {
-  font-size: 1.8em;
-}
-h4 {
-  font-size: 1.4em;
-}
-h5 {
-  font-size: 1.3em;
-}
-h6 {
-  font-size: 1.15em;
 }
 .tag {
   background-color: #eee8d5;
