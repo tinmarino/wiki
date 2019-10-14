@@ -61,18 +61,15 @@ function onRadioFont(check, id){
 
 
 function addStylesheet(parent, id, onRadioCallback) {
-    // Create stylesheet
-    if (onRadioCallback == onRadioCss) {
-    }
-    
     // Create clickable link
     // 1/ Label
     var label = document.createElement('label');
     label.textContent = id;
-    label.className = "radio";
+    label.className = "container";
     // 2/ Input
     var input = document.createElement('input');
-    input.type = 'checkbox';
+    input.type = 'radio' ;
+    input.name = 'radio' + parent.id ;
     input.onchange = function () { onRadioCallback(this, id); };
     // 3 Span
     var span = document.createElement('span');
@@ -115,16 +112,17 @@ function start() {
     //Fill font
     var div_font = document.getElementById('div_font');
     var a_font = [
-       'Ubuntu', 
-       'Arial',
+        'Ubuntu', 
+        'Arial',
+        'IBM Plex Serif',
+        'Source Sans Pro',
+        'EB Garamond',
       
-       'Monotone',
-       'Alegreya',
-       'Tangerine',
-       'Liu Jian Mao Cao',
-       'IBM Plex Serif',
-       'Yatra One',
-       'Source Sans Pro',
+        'Monotone',
+        'Alegreya',
+        'Tangerine',
+        'Liu Jian Mao Cao',
+        'Yatra One',
     ];
     a_font.forEach(function (item, index) {
         console.log('Font: ', item, index);
