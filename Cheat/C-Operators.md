@@ -76,11 +76,13 @@ and variables).
 
 **Output**
 
+```
     a+b = 13
     a-b = 5
     a*b = 36
     a/b = 2
     Remainder when a divided by b=1
+```
 
 The operators +, - and \* computes addition, subtraction and
 multiplication respectively as you might have expected.
@@ -136,10 +138,12 @@ operate on a single operand.
 
 **Output**
 
+```
     ++a = 11
     --b = 99
     ++c = 11.500000
     ++d = 99.500000
+```
 
 Here, the operators ++ and -- are used as prefix. These two operators
 can also be used as postfix like `a++` and `a--`. Visit this page to
@@ -193,12 +197,14 @@ most common assignment operator is =
 
 **Output**
 
+```
     c = 5 
     c = 10 
     c = 5 
     c = 25 
     c = 5 
     c = 0
+```
 
 ### []{#relational}C Relational Operators
 
@@ -257,6 +263,7 @@ making](/c-programming/c-if-else-statement "C if else") and
 
 **Output**
 
+```
     5 == 5 = 1
     5 == 10 = 0
     5 > 5 = 0
@@ -269,6 +276,7 @@ making](/c-programming/c-if-else-statement "C if else") and
     5 >= 10 = 0
     5 <= 5 = 1
     5 <= 10 = 1 
+```
 
 ### []{#logical}C Logical Operators
 
@@ -317,12 +325,14 @@ programming](/c-programming/c-if-else-statement "C if else").
 
 **Output**
 
+```
     (a == b) && (c > b) equals to 1 
     (a == b) && (c < b) equals to 0 
     (a == b) || (c < b) equals to 1 
     (a != b) || (c < b) equals to 0 
     !(a != b) equals to 1 
     !(a == b) equals to 0 
+```
 
 **Explanation of logical operator program**
 
@@ -397,11 +407,13 @@ The `sizeof` is an unary operator which returns the size of data
 
 **Output**
 
+```
     Size of int = 4 bytes
     Size of float = 4 bytes
     Size of double = 8 bytes
     Size of char = 1 byte
     Size of integer type array having 10 elements = 40 bytes
+```
 
 ### []{#conditional} C Ternary Operator (?:)
 
@@ -440,8 +452,10 @@ The conditional operator works as follows:
 ```
 **Output**
 
+```
     If this year is leap year, enter 1. If not enter any integer: 1
     Number of days in February = 29
+```
 
 Other operators such as & (reference operator), \* (dereference
 operator) and -&gt; (member selection) operator will be discussed in [C
