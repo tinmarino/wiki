@@ -1,0 +1,61 @@
+/*
+#121212 dark grey (recommended by meterial design)
+
+
+#212121 grey 900
+#F5F5F5 grey 100
+#DEDEDE grey FF - 21
+
+#9575CD Purple deep 300
+#B39DDB Deep Purple 200 
+#D1C4E9 Deep Purple 100 
+#EDE7F6 Deep purple 50
+
+Deep purple 50 #EDE7F6
+#FF8A65 Orange deep 300
+#4DB6AC Tell 300 (blue green)
+#FFF176 Yellow 300 
+#FF8A65 Oranfge deep 300
+
+
+
+*/
+
+
+/* Perso */
+body {
+  --col-bck:   #212121;
+  --col-font:  #DEDEDE;
+
+  --col-h1:    #9575CD;
+  --col-h2:    #FF8A65;
+  --col-h3:    #4DB6AC;
+
+  --col-link:  #FFF176;
+  --col-link-visited: #FF8A65;
+  --col-link-hover:   #FF8A65;
+
+  --col-code-fg:  #EDE7F6;
+}
+
+
+/* Common TODO leave me in include_color.css */
+body {
+  background-color: var(--col-bck);
+  color: var(--col-font);
+}
+
+h1 { color: var(--col-h1); }
+h2 { color: var(--col-h2); }
+h4,
+h5,
+h6,
+h3 { color: var(--col-h3); }
+
+a { color: var(--col-link); }
+a:visited { color: var(--col-link-visited); }
+a:hover { color: var(--col-link-hover); }
+
+code {
+  color: var(--col-code-fg);
+}
