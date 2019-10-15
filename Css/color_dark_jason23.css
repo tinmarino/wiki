@@ -1,41 +1,26 @@
-/* https://github.com/mixu/markdown-styles/blob/master/layouts/jasonm23-dark/assets/style.css */
+/* https://github.com/mixu/markdown-styles/blob/master/layouts/jasonm23-dark/assets/style.css 
+
+#eabebe pink spanish
+#c3beea soap
+#c2eabd tea green 
+ 
+ */
 @charset "UTF-8";
 body{
     background: #000;
-    font-family: Georgia, Palatino, serif;
     color: #EEE;
     line-height: 1;
-    padding: 30px;
-    margin:auto;
-    max-width:42em;
 }
+
+h1 { color:#eabebe}  
+h2 { color:#c3beea}  
+h3 { color:#c2eabd} 
+
 h1, h2, h3, h4 {
     font-weight: 400;
 }
-h1, h2, h3, h4, h5, p {
-    margin-bottom: 24px;
-    padding: 0;
-}
-h1 {
-    font-size: 48px;
-}
-h2 {
-    font-size: 36px;
-    margin: 24px 0 6px;
-}
-h3 {
-    font-size: 24px;
-}
-h4 {
-    font-size: 21px;
-}
-h5 {
-    font-size: 18px;
-}
 a {
     color: #61BFC1;
-    margin: 0;
-    padding: 0;
     text-decoration: none;
     vertical-align: baseline;
 }
@@ -45,44 +30,24 @@ a:hover {
 a:visited {
     color: #466B6C;
 }
-ul, ol {
-    padding: 0;
-    margin: 0;
-}
 li {
     line-height: 24px;
 }
 li ul, li ul {
     margin-left: 24px;
 }
-p, ul, ol {
-    font-size: 16px;
-    line-height: 24px;
-    max-width: 540px;
-}
 pre {
-    padding: 0px 24px;
-    max-width: 800px;
     white-space: pre-wrap;
 }
 code {
     font-family: Consolas, Monaco, Andale Mono, monospace;
     line-height: 1.5;
-    font-size: 13px;
 }
 aside {
     display: block;
     float: right;
-    width: 390px;
-}
-blockquote {
-    border-left:.5em solid #eee;
-    padding: 0 2em;
-    margin-left:0;
-    max-width: 476px;
 }
 blockquote  cite {
-    font-size:14px;
     line-height:20px;
     color:#bfbfbf;
 }
@@ -92,12 +57,9 @@ blockquote cite:before {
 
 blockquote p {
     color: #666;
-    max-width: 460px;
 }
 hr {
-    width: 540px;
     text-align: left;
-    margin: 0 auto 0 0;
     color: #999;
 }
 
@@ -107,18 +69,12 @@ button,
 input,
 select,
 textarea {
-  font-size: 100%;
-  margin: 0;
   vertical-align: baseline;
   *vertical-align: middle;
 }
 button, input {
   line-height: normal;
   *overflow: visible;
-}
-button::-moz-focus-inner, input::-moz-focus-inner {
-  border: 0;
-  padding: 0;
 }
 button,
 input[type="button"],
@@ -150,39 +106,22 @@ label,
 input,
 select,
 textarea {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 13px;
   font-weight: normal;
   line-height: normal;
-  margin-bottom: 18px;
 }
 input[type=checkbox], input[type=radio] {
   cursor: pointer;
-  margin-bottom: 0;
 }
 input[type=text],
 input[type=password],
 textarea,
 select {
-  display: inline-block;
-  width: 210px;
-  padding: 4px;
-  font-size: 13px;
   font-weight: normal;
-  line-height: 18px;
-  height: 18px;
   color: #808080;
   border: 1px solid #ccc;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-}
-select, input[type=file] {
-  height: 27px;
-  line-height: 27px;
-}
-textarea {
-  height: auto;
 }
 
 /* grey out placeholders */
