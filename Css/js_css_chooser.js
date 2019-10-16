@@ -49,11 +49,17 @@ a_font_cursive_soft = [
     'Cookie',
 ];
 
+a_font_solarized = [
+    'Inconsolata',
+    'PT Sans',
+    'PT Sans Narrow:400,700',
+];
+
 // Disable all radio button vith a certain class name
 function disableAll (parent) {
-    Array.from(document.getElementsByClassName('class_' + parent.id.slice(0, 4)))
+    Array.from(document.getElementsByClassName('class_' + parent.id.slice(0, 8)))
         .forEach(function (node) {
-            console.log('Disabling ' + node.value + ' from class_' + parent.id.slice(0, 4));
+            console.log('Disabling ' + node.value + ' from class_' + parent.id.slice(0, 8));
             node.disabled = true;}
         );
 }
@@ -71,7 +77,7 @@ function onRadioCss(parent, id) {
         link.disabled = true;
         link.media = 'all';
         link.id = id;
-        link.className = 'class_' + parent.id.slice(0, 4);
+        link.className = 'class_' + parent.id.slice(0, 8);
         link.href = id + '.css';
         document.head.appendChild(link);
     }
@@ -112,7 +118,7 @@ function addStylesheet(parent, id, onRadioCallback) {
     // 2/ Input
     var input = document.createElement('input');
     input.type = 'radio' ;
-    input.name = 'radio_' + parent.id.slice(0, 4);
+    input.name = 'radio_' + parent.id.slice(0, 8);
     input.value = id
     input.onchange = function () { onRadioCallback(parent, id); };
     // 3 Span
@@ -163,14 +169,15 @@ function prependDiv(name) {
 
 // Fill radio button (prepending)
 function main() {
-
+    // Break
     var h1 = document.createElement('h1');
-    h1.innerText = 'Example';
+    h1.innerText = 'End of js_css_chooser.js';
     h1.style = 'clear: both;';
     document.body.prepend(h1);
 
     // Font
     prependDiv('font_test');
+    prependDiv('font_solarized');
     prependDiv('font_cursive_hard');
     prependDiv('font_cursive_soft');
     prependDiv('font_safe');
@@ -185,6 +192,12 @@ function main() {
     prependDiv('layout');
     prependDiv('color_light');
     prependDiv('color_dark');
+
+    // Break
+    var h1 = document.createElement('h1');
+    h1.innerText = 'Color';
+    h1.style = 'clear: both;';
+    document.body.prepend(h1);
 }
 
 window.onload = main;

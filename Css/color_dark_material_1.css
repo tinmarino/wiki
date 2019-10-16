@@ -26,6 +26,7 @@ Deep purple 50 #EDE7F6
 /* Perso */
 body {
   --col-bck:   #212121;
+  --col-bck2:  #333333;
   --col-font:  #DEDEDE;
 
   --col-h1:    #9575CD;

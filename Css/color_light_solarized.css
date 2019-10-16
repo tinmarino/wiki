@@ -1,7 +1,5 @@
 /* http://thomasf.github.io/solarized-css/solarized-light.css */
-@import url(http://fonts.googleapis.com/css?family=Inconsolata);
-@import url(http://fonts.googleapis.com/css?family=PT+Sans);
-@import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700);
+
 @charset "UTF-8";
 html {
   font-family: sans-serif;
@@ -21,6 +19,7 @@ th { color: #6c71c4 }
 tr:hover {background-color: #6c71c4;} 
 tr:nth-child(even) {background-color: #eee8d5;} 
 
+/* Link */
 a:focus {
   outline: thin dotted;
 }

@@ -3,6 +3,7 @@ body {
   color: var(--col-font);
 }
 
+/* Heading */
 h1 { color: var(--col-h1); }
 h2 { color: var(--col-h2); }
 h4,
@@ -10,6 +11,7 @@ h5,
 h6,
 h3 { color: var(--col-h3); }
 
+/* Link */
 a { color: var(--col-link); }
 a:visited { color: var(--col-link-visited); }
 a:hover { color: var(--col-link-hover); }
@@ -17,3 +19,18 @@ a:hover { color: var(--col-link-hover); }
 code {
   color: var(--col-code-fg);
 }
+
+/* Table */
+table {
+   border: 1px solid #657b83;
+}
+table, th, td {
+  border-collapse: collapse;
+}
+th, td {
+  border: none;
+}
+th { color: var(--col-h1) }
+tr:hover {background-color: var(--col-h1);} 
+tr:nth-child(even) {background-color: var(--col-bck2);} 
+
