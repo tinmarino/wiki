@@ -55,10 +55,8 @@ munix(){
   perl -0pe 's/((^|\n\S)[^\n]*)\n\t([^*])/\1\n\n\t\3/g;' |
   # Remove spaces in void lines
   perl -lpe 's/^\s*$//' |
-  # Compile
-  pandoc $MATH -s -f $SYNTAX -t html -T $FILE -c $CSSFILE >"$OUTPUT.html"
-  
-  echo "Css file is $CSSFILE"
+  # Compile: can add --self-contained and --include-header=<file>
+  pandoc $MATH --standalone -f $SYNTAX -t html -T $FILE -c $CSSFILE >"$OUTPUT.html"
 }
 
 
