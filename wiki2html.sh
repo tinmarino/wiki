@@ -58,8 +58,6 @@ munix(){
   perl -lpe 's/^\s*$//' |
   # Compile: can add --self-contained and --include-header=<file>
   pandoc $MATH --standalone -f $SYNTAX -t html -T $FILE -c $CSSFILE >"$OUTPUT.html"
-
-  echo pandoc $MATH --standalone -f $SYNTAX -t html -T $FILE -c $CSSFILE >> test.html
 }
 
 
