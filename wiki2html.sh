@@ -46,6 +46,8 @@ munix(){
     $_ = $line; 
     END { $open and print "\n:::::::::\n" }
   ' |
+  # Replace vim by language-vim for prism colro higlight
+  perl -pe's/```vim/```language-vim/;' |
   # Surround h3 section by parent
   perl -0777 -pe 's/::::::::: \{.h3-section}/::: {.parent}\n$&/ ;
     s/^.*:::::::::\n/$&:::\n/s ;
