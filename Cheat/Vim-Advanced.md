@@ -6,6 +6,7 @@ css: ../Css/color_dark_solarized.css
 css: ../Css/layout_grid.css
 ---
 
+
 ## Commands
 
 ### Edit
@@ -22,7 +23,6 @@ css: ../Css/layout_grid.css
 ### Move
 |                  |   |
 | ---              | --- |
-| `zl, zh, zL, zH` | Scrool horizontally |
 | `'.`             | Last edit location |
 | `g-`             | Last non blank character (Vs `_` or `^`) |
 | `gm`             | Middle of line |
@@ -30,17 +30,236 @@ css: ../Css/layout_grid.css
 | `ab` `aB`        | Select a block ( ), a block { } |
 | `-` `+`          | line up, down on first non-blank character |
 
-### Ex tips
+### Move cursor
 
-|               |   |
-| ---           | --- |
-| `:w !sudo tee %`       | Save as root |
-| `:set nrformat+=alpha` | `<C-A>` works with alphabet chars |
-| `:sort [u] [n]`        | Sort [Unique] [Numerals (so 100 after 20) |
-| `:echo 5e9x20`         | Simple Math |
-| `:q:`, `q/`            | Ex, Search Windows |
-| `normal @a`            | Execute register a in this line |
-| `g/{/_.+1,/-1 sort`    | Sort between { and } |
+|                  |   |
+| ---              | --- |
+| `zl, zh, zL, zH` | Scrool horizontally, one char or screen |
+| `zt`, `zz`, `zb` | Cursor top middle, bottom |
+| `<C-W>Z`         | `:pc[lose]`: Close previw window |
+| `1gt`            | Goto tab 1 |
+
+
+### Ex tips 1/2
+
+|                             |   |
+| ---                         | --- |
+| `:w !sudo tee %`            | Save as root |
+| `:set nrformat+=alpha`      | `<C-A>` works with alphabet chars |
+| `:sort [u] [n]`             | Sort [Unique] [Numerals (so 100 after 20) |
+| `:echo 5e9x20`              | Simple Math |
+| `:q:`, `q/`                 | Ex, Search Windows |
+| `normal @a`                 | Execute register a in this line |
+| `g/{/_.+1,/-1 sort`         | Sort between { and } |
+| `:sort n/\(\S\+\s\+\)\{2}/` | Sort by 2nd column |
+
+### Ex tips 2/2
+
+|                                     |   |
+| ---                                 | --- |
+| `:%s/^/\=printf('%-4d', line('.'))` | Prefix line by line number |
+| `:set fo+=t`                        | Autowrap (`h formatoption`) |
+| `:bro[wse] ol[dfiles][!]`           | Prompt which file to choose |
+| `:earlier 12h`                      | Change file to how it was 12h ago |
+| `:%! column -t`                     | align columns |
+*   `set cul!` if scrooling slow for a long line
+*   `set lazyredraw` can be usefull too
+*   h ttyfast
+
+
+### Ex tips 3/2
+
+Some usefull function
+* __Function:__ sort(list), put, getline(int), setlone(int, list) join(list), split(string), len(list), get, getpid()
+
+* __Command:__ :retab, 
+
+### Sort line accroding to line length
+
+```vim
+:%s/.*/\=printf("%03d", len(submatch(0)) . "|" . submatch(0)/ | sor n | %s/..../  
+```
+
+### Reverse line order
+```vim
+:%!tac
+:%!tail -r
+```
+*   g/^/m0
+
+### Man
+```vim
+runtime! ftplugin/man.vim
+:Man 3 printf
+```
+
+### Auto cd %
+```vim
+set autochdir  " auto chdir to current file
+:tabdo lcd /dir/
+```
+
+### Substitute without escaping the replcement
+```vim
+:%sno/search_string/replace_string/g
+:s/</\='&lt;'/g
+```
+
+### Delete everything except text
+  * `:%s/\(^\|\(text\)\@<=\).\{-}\($\|text\)\@=//g`
+    ```text
+    \(^\|\(text\)\@<=\)     # means start of line, or some point preceded by “text”
+    .\{-}                   # as few characters as possible
+    \($\|text\)\@=          # without globbing characters, checking that we reached either end of line or occurrence of “text”.
+    ```
+  * Another way to do it:
+    * Create a function that count matches of a pattern in a string (see :help match() to help you design that)
+    * Use: `:%s/.*/\=repeat('text', matchcount('text', submatch(0)))`
+
+
+### Select and Search
+
+|                                   |   |
+| ---                               | --- |
+| `vo`, `vO`                        | Goto other side of visual selection |
+| `gv`                              | Reselect las selection |
+| `g*`, `g#`                        | Search word under cursor but without delimiter |
+| `/.\{-}toto`                      | Non greedy, get first occurent of toto |
+| `:&`                              | Repeat las substitution |
+|                                   |   |
+
+```vim
+:hi visu ctermgg=Cyan
+:match visu /\%<13c/
+:h /\%
+```
+
+### Binary editing
+
+|         |   |
+| ---     | --- |
+| `222go` | Goto byte 222 |
+
+#### Xxd
+* `xxd` -r (reverse, from hex to string) -p (output in ps := raw) -c 8 (bytes per line) -g 1 (bytes per column)
+
+#### No newline at end of file
+*   `vim -b file` or `set binary`
+*   `:set noeol` or `set nofixendofline`
+
+
+### File encoding
+
+* set fileencoding=utf-8
+* set bomb
+* :w ++enc=utf-8 %
+* wchar encoding
+  :e ++enc=utf-16
+* args *
+
+### Ctags 
+  * `ctags -R -f ./.git/tags .`
+  * `:tag function_name`
+  * `C-}` : see all tags
+  * `C-]` : jump to tag
+  * `:tn | :tp` : jump to next | previous tag
+  * `:ts` : tag select : get a list
+
+## Search
+
+### Negative regex
+
+TODO
+
+### Search examples
+
+|            |   |
+| ---        | --- |
+| `/\%xYY`   | YY hex ord(ascii) |
+| `/\%uYYYY` | hex ord(unicode) |
+| `[[=a=]]   | Character (a) equivalentce class (so get à) |
+| `s/\%V`    | Substitute within selection |
+| `/\%<13c`  | Before 13 virtual column |
+
+* French accents `/^[a-zàâçéèêëîïôûùüÿñæœ .-]*$/i`
+
+## Vimscript
+
+### Get|Set (ou|in)tput from ex commands
+
+* `:!`: Get last output
+*
+
+```vim
+redir @a
+echo toto
+redir END
+```
+
+* `let @a=getcwd()`
+	
+* `:@"`: Execute what is yanked
+
+```vim
+"Examples: 
+":call Exec('buffers')
+"This will include the output of :buffers into the current buffer.
+"Also try: ":call Exec('ls')
+":call Exec('autocmd')
+funct! Exec(command)
+    redir =>output
+    silent exec a:command
+    redir END
+    let @o = output
+    execute "put o"
+endfunct! 
+```
+
+### Inspect, Debug
+
+TODO
+
+### Display environment
+
+To find the script file defining a map : `:verbose map <c-z>`.
+But `map` can ber replaced by:
+
+* `abbreviate`, `autocmd`, `command`, `function`, `let`, `set all`.
+* `jumps`, `marks`, `args`, `changes`
+
+* Find where root runtime is 
+  * `:echo $VIMRUNTIME` -> `/usr/share/vim/vim74`
+  
+* Source autoload file
+  * `:call example#BadFunction()`
+
+#### Get filetype of a buffer
+	* `:let bufFiletype = getbufvar(bufNr, '&filetype')`
+
+#### Show highlight sytnax type
+  * `:echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')`
+
+#### Get filetype of a buffer
+  * `:let bufFiletype = getbufvar(bufNr, '&filetype')`
+
+
+
+### Vimrc tips
+
+* `:au FileTypepyrhon setlocal formatprg=autopep8\ -`
+* `xnoremap p pgvy` : Copy without yanking selection in visual
+
+### Vimrc: GVim Remove useless bars
+
+```vim
+:set guioptions-=m " remove menu bar
+:set guioptions-=T " remove toobar
+:set guioptions-=r " remove right hand scrool bar 
+:set guioptions-=L " remove lefthand scrooll bar
+```
+
+
+
 
 ## Ex one char
 
@@ -106,58 +325,9 @@ css: ../Css/layout_grid.css
 | `^D`  | scroll |
 
 
-
-### Search and Select
-
-| `vo`, `vO`   | Goto other side of visual selection |
-| `gv`         | Reselect las selection |
-| `g*`, `g#`   | Search word under cursor but without delimiter |
-| `/.\{-}toto` | Non greedy, get first occurent of toto |
-| `:&`         | Repeat las substitution |
-|              |   |
-
-
-
-## Search
-
-### Negative regex
-
-TODO
-
-### Search examples
-
-/\%xYY					# YY hex ord(ascii)
-/\%uYYYY				# YYYYY hex ord(unicode)
-
-## Vimscript
-
-### Get output from ex commands
-
-* Command stdout redirection
-	:!		# get last output
-	redir @a
-	echo toto
-	redir END
-	let @a=getcwd() 
-	
-### Set input to ex
-
-:@"						# Execute what is yanked
-
-### Inspect, Debug
-
-
-
-### Display environment
-
-To find the script file defining a map : `:verbose map <c-z>` . But `map` can ber replaced by: `abbreviate`, `autocmd`, `command`, `function`, `let`, `set all`.
-
-* Script : Get filetype of a buffer
-	* `:let bufFiletype = getbufvar(bufNr, '&filetype')`
-
 ## Command line
 
-`vim -u NONE -N` # No (User) vimrc, Non-compatible
+* `vim -u NONE -N` # No (User) vimrc, Non-compatible
 
 * Pipeline
 	* `echo toto | vim -` : take arguments from stdin
@@ -166,15 +336,20 @@ To find the script file defining a map : `:verbose map <c-z>` . But `map` can be
 	* `:w !tee` : write to stdout
   * `:w !sh` : write to shell input
 
-| digraphs    | digraphs |
-| highlight   | highlight groups |
-| reg         | registers |
-| scriptnames | all scripts sourced so far |
-| spellinfo   | spellfiles used |
-| syntax      | syntax items |
+digraphs, highlight, reg, scriptnames, spellinfo, syntax    
 
 * Remote 
 	vim --servername DEMO
 	vim --servername DEMO --remote file.txt
 	vim --servername DEMO  --remote-send ":3d<CR>"
 	:!vim --servername DEMO --remote-tab "%"   " Send current buffer to remote vim
+
+* __Dos2Unix__: `for file in * ; do vi +':w ++ff=unix' +':q' $file`
+
+### C-s
+
+* Can lock the terminal : <c-q> to unlock
+* stty -ixon # for a permanent solution
+
+
+<script src="../Css/js_prism_vim.js"></script>

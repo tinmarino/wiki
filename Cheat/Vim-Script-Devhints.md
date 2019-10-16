@@ -6,7 +6,6 @@ css: ../Css/color_dark_solarized.css
 css: ../Css/layout_grid.css
 ---
 
-
 ### Start hacking
 
 ```language-vim
@@ -698,4 +697,5 @@ let g:loaded_myplugin = 1
 ```
 
 
-<script src="../Css/prism_vim_dark.js"></script>
+<script src="../Css/js_prism_vim.js"></script>
+
