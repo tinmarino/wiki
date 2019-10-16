@@ -8,21 +8,27 @@ css: ../Css/layout_grid.css
 
 ## Commands
 
-|               |   |
-| ---           | --- |
-| `T,c,`        | Delete between coma |
-| `:b#<bar>bd#` | delete buffer |
-| `C`           | = `c$`: Change to end of line |
-| `S`           | = `^C`: Change from first non blank to EOL |
-|               |   |
+### Edit
+|                  |   |
+| ---              | --- |
+| `T,c,`           | Delete between coma |
+| `:b#<bar>bd#`    | delete buffer |
+| `C`              | = `c$`: Change to end of line |
+| `S`              | = `^C`: Change from first non blank to EOL |
+| `gq`motion       | Filter format |
+| `g=`motion       | Filter indent |
+| `!<motion><cmd>` | Filter <Motion> by <cmd> |
 
+### Move
 |                  |   |
 | ---              | --- |
 | `zl, zh, zL, zH` | Scrool horizontally |
-| `'.`             | Goto last edit location |
-| `g-`             | Goto last non blank character (Vs `_` or `^`) |
-| `gq`motion       | Filter format |
-| `g=`motion       | Filter indent |
+| `'.`             | Last edit location |
+| `g-`             | Last non blank character (Vs `_` or `^`) |
+| `gm`             | Middle of line |
+| `n<bar>`         | Column n of current line |
+| `ab` `aB`        | Select a block ( ), a block { } |
+| `-` `+`          | line up, down on first non-blank character |
 
 ### Ex tips
 
