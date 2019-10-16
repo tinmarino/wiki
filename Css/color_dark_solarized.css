@@ -25,7 +25,7 @@ html {
 
 /* Table */
 table {
-   border: 1px solid #839496;
+  border: 1px solid #839496;
 }
 table, th, td {
   border-collapse: collapse;
@@ -35,7 +35,7 @@ th, td {
 }
 th { color: #6c71c4 }
 tr:hover {background-color: #6c71c4;} 
-tr:nth-child(even) {background-color: #586e75;} 
+tr:nth-child(even) {background-color: #073642;} 
 
 
 html {

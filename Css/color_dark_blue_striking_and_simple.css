@@ -20,6 +20,7 @@ Whites
 
 */
 
+@import 'include_color_use_custom_var.css';
 
 /* Perso */
 body {
@@ -34,26 +35,4 @@ body {
   --col-link-hover:   #6DBA66;
 
   --col-code-fg:  #DCF4F4;
-}
-
-
-/* Common TODO leave me in include_color.css */
-body {
-  background-color: var(--col-bck);
-  color: var(--col-font);
-}
-
-h1 { color: var(--col-h1); }
-h2 { color: var(--col-h2); }
-h4,
-h5,
-h6,
-h3 { color: var(--col-h3); }
-
-a { color: var(--col-link); }
-a:visited { color: var(--col-link-visited); }
-a:hover { color: var(--col-link-hover); }
-
-code {
-  color: var(--col-code-fg);
 }
