@@ -1,13 +1,16 @@
 
 // Define gGlobal array definitions
 
-a_color = [
-    '../Css/color_dark_material_1',
-    '../Css/color_dark_blue_striking_and_simple',
-    '../Css/color_dark_solarized',
-    '../Css/color_dark_jason23',
+a_color_light = [
     '../Css/color_light_material_1',
     '../Css/color_light_solarized',
+];
+
+a_color_dark = [
+    '../Css/color_dark_material_1',
+    '../Css/color_dark_solarized',
+    '../Css/color_dark_blue_striking_and_simple',
+    '../Css/color_dark_jason23',
 ];
 
 a_layout = [
@@ -48,9 +51,9 @@ a_font_cursive_soft = [
 
 // Disable all radio button vith a certain class name
 function disableAll (parent) {
-    Array.from(document.getElementsByClassName('class_' + parent.id))
+    Array.from(document.getElementsByClassName('class_' + parent.id.slice(0, 4)))
         .forEach(function (node) {
-            console.log('Disabling ' + node.value + ' from class_' + parent.id);
+            console.log('Disabling ' + node.value + ' from class_' + parent.id.slice(0, 4));
             node.disabled = true;}
         );
 }
@@ -68,7 +71,7 @@ function onRadioCss(parent, id) {
         link.disabled = true;
         link.media = 'all';
         link.id = id;
-        link.className = 'class_' + parent.id;
+        link.className = 'class_' + parent.id.slice(0, 4);
         link.href = id + '.css';
         document.head.appendChild(link);
     }
@@ -109,7 +112,7 @@ function addStylesheet(parent, id, onRadioCallback) {
     // 2/ Input
     var input = document.createElement('input');
     input.type = 'radio' ;
-    input.name = 'radio_' + parent.id ;
+    input.name = 'radio_' + parent.id.slice(0, 4);
     input.value = id
     input.onchange = function () { onRadioCallback(parent, id); };
     // 3 Span
@@ -132,7 +135,7 @@ function prependDiv(name) {
     div.id = 'div_' + name;
     var base_style = 'width:400px; float:left;';
     div.style = base_style;
-    if (name != 'color' && name != 'font_safe') {
+    if (name != 'color_dark' && name != 'font_safe') {
         div.style = base_style + 'overflow:hidden;';
     }
     
@@ -180,7 +183,8 @@ function main() {
 
     // Css
     prependDiv('layout');
-    prependDiv('color');
+    prependDiv('color_light');
+    prependDiv('color_dark');
 }
 
 window.onload = main;

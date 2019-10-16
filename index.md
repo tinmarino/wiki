@@ -47,6 +47,7 @@
   * [Text](Text)
   * [Regles Expeditionnaire](Regles-Expeditionnaire)
   * [Cheats](Cheats)
+  * [AsciiArts](AsciiArt/AsciiArts)
   * [KeyBinding Custom](KeyBinding-Custom)
 
 * [Test](Test)

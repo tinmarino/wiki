@@ -6,6 +6,21 @@
 html {
   font-family: sans-serif;
 }
+
+/* Table */
+table {
+   border: 1px solid #657b83;
+}
+table, th, td {
+  border-collapse: collapse;
+}
+th, td {
+  border: none;
+}
+th { color: #6c71c4 }
+tr:hover {background-color: #6c71c4;} 
+tr:nth-child(even) {background-color: #eee8d5;} 
+
 a:focus {
   outline: thin dotted;
 }

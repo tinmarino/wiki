@@ -11,7 +11,6 @@ FILENAME=$(basename "$INPUT" .$EXTENSION)
 FILEPATH=${INPUT%$FILE}
 OUTDIR=${OUTPUTDIR%$FILEPATH*}
 OUTPUT="$OUTDIR"/$FILENAME
-CSSFILENAME=$(basename "$6")
 
 
 # Define $MATH
@@ -31,7 +30,7 @@ munix(){
   cp ~/wiki/wiki/Css/* ~/wiki/wiki_html/Css/
   # Read `css:` in metadata
   export CSS_EMBED=$(perl -0777 -ne '$_ =~ /^ *---(.+?)---/s ; $meta=$1; while ($meta =~ /^css:(.+)$/mg) {$css .= " -c " . $1}; print substr $css, 4' "$INPUT")
-  [ "$CSS_EMBED" ] && export CSSFILENAME=$CSS_EMBED && echo Css files are: $CSSFILENAME
+  [ "$CSS_EMBED" ] && export CSSFILE=$CSS_EMBED && echo Css files are: $CSSFILE
 
   # Convertion pipeline
   cat "$INPUT" |
@@ -57,7 +56,9 @@ munix(){
   # Remove spaces in void lines
   perl -lpe 's/^\s*$//' |
   # Compile
-  pandoc $MATH -s -f $SYNTAX -t html -T $FILE -c $CSSFILENAME >"$OUTPUT.html"
+  pandoc $MATH -s -f $SYNTAX -t html -T $FILE -c $CSSFILE >"$OUTPUT.html"
+  
+  echo "Css file is $CSSFILE"
 }
 
 

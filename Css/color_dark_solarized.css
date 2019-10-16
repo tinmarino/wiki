@@ -8,6 +8,7 @@
 @import url(http://fonts.googleapis.com/css?family=PT+Sans);
 @import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700);
 @charset "UTF-8";
+
 article,
 aside,
 details,
@@ -21,6 +22,22 @@ section,
 html {
   font-family: sans-serif;
 }
+
+/* Table */
+table {
+   border: 1px solid #839496;
+}
+table, th, td {
+  border-collapse: collapse;
+}
+th, td {
+  border: none;
+}
+th { color: #6c71c4 }
+tr:hover {background-color: #6c71c4;} 
+tr:nth-child(even) {background-color: #586e75;} 
+
+
 html {
   background-color: #073642;
   color: #839496;
