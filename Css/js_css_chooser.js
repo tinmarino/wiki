@@ -14,6 +14,7 @@ a_color_dark = [
 ];
 
 a_layout = [
+    '../Css/js_masonry_desandro.js',
     '../Css/layout_3_column_flex',
     '../Css/layout_grid',
     '../Css/layout_solarized',
@@ -65,8 +66,32 @@ function disableAll (parent) {
         );
 }
 
+function onRadioJs(parent, id) {
+    console.log('Js ', id, '<- ', parent.id);
+    
+    // Disable others 
+    disableAll(parent);
+
+    // Create link
+    if (!document.getElementById(id)){
+        console.log('Creating link');
+        var script = document.createElement('script');
+        script.className = 'class_' + parent.id.slice(0, 8);
+        script.type = "text/javascript";
+        script.src = id;
+        script.onreadystatechange = function () {console.log("JS ready");};
+        document.head.appendChild(script);
+    }
+}
+
 // If press css: color | layout button
 function onRadioCss(parent, id) {
+    // Catch
+    if (id.endsWith('.js')) {
+      return onRadioJs(parent, id);
+    }
+
+    // Hi
     console.log('Css ', id, '<- ', parent.id);
     
     // Create link

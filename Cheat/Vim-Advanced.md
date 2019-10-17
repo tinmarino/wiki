@@ -69,6 +69,12 @@ css: ../Css/layout_grid.css
 
 ### Ex tips 3/2
 
+|               |   |
+| ---           | --- |
+| `:v/./,/./-j` | Compress multiple blank lines into on |
+
+### Ex tips 4/2
+
 Some usefull function
 * __Function:__ sort(list), put, getline(int), setlone(int, list) join(list), split(string), len(list), get, getpid()
 
@@ -115,6 +121,11 @@ set autochdir  " auto chdir to current file
   * Another way to do it:
     * Create a function that count matches of a pattern in a string (see :help match() to help you design that)
     * Use: `:%s/.*/\=repeat('text', matchcount('text', submatch(0)))`
+
+### Remove duplicate lines 
+```vim
+:g/\v^([^ -=]+)\n\_.*%(^\1$)/d
+```
 
 
 ### Select and Search
@@ -178,6 +189,7 @@ TODO
 | `/\%xYY`   | YY hex ord(ascii) |
 | `/\%uYYYY` | hex ord(unicode) |
 | `[[=a=]]   | Character (a) equivalentce class (so get à) |
+| `/\I`      | Match letters in latin see `:echo &isident` |
 | `s/\%V`    | Substitute within selection |
 | `/\%<13c`  | Before 13 virtual column |
 

@@ -12,7 +12,7 @@ css: ../Css/layout_radio.css
 
 
 
-### TOC
+### 1 TOC
 
 This tutorial provides a brief information on all 32 keywords in C programming.  
 
@@ -62,7 +62,7 @@ This tutorial provides a brief information on all 32 keywords in C programming.
 [volatile](#volatile)
 [while](#do_while)
 
-### Solarized table
+### 2 Solarized table
 
 
 | SOLARIZED | HEX     | 16/8 | TERMCOL   | XTERM | HEX     | L  | A   | B   | R | G   | B   | H   | S   | B  |
@@ -86,7 +86,7 @@ This tutorial provides a brief information on all 32 keywords in C programming.
 
 
 
-### []{#auto}auto
+### 3 []{#auto}auto
 
 The auto keyword declares automatic variables. For example:
 
@@ -106,7 +106,7 @@ class](/c-programming/c-storage-class "C storage class").
 
 ------------------------------------------------------------------------
 
-### []{#break_continue}break and continue
+### 4 []{#break_continue}break and continue
 
 The break statement makes program jump out of the innermost enclosing
 loop (while, do, for or switch statements) explicitly.
@@ -159,7 +159,7 @@ statement](/c-programming/c-break-continue-statement)
 
 ------------------------------------------------------------------------
 
-### []{#switch_case_default}switch, case and default
+### 5 []{#switch_case_default}switch, case and default
 
 The switch and case statement is used when a block of statements has to
 be executed among many blocks. For example:
@@ -184,7 +184,7 @@ to learn more.
 
 ------------------------------------------------------------------------
 
-### []{#char}char
+### 7 []{#char}char
 
 The char keyword declares a character variable. For example:
 
@@ -199,7 +199,7 @@ types](/c-programming/c-data-types "C data types").
 
 ------------------------------------------------------------------------
 
-### []{#const}const
+### 8 []{#const}const
 
 An identifier can be declared constant by using const keyword.
 
@@ -210,7 +210,7 @@ constants](/c-programming/c-variables-constants "C programming variables and con
 
 ------------------------------------------------------------------------
 
-### []{#do_while}do...while
+### 9 []{#do_while}do...while
 
     int i;
     do 
@@ -225,7 +225,7 @@ loop](/c-programming/c-do-while-loops "C do while loop")
 
 ------------------------------------------------------------------------
 
-### []{#double_float}double and float
+### 10 []{#double_float}double and float
 
 Keywords double and float are used for declaring floating type
 variables. For example:
@@ -243,7 +243,7 @@ types](/c-programming/c-data-types "C data types").
 
 ------------------------------------------------------------------------
 
-### []{#if_else}if and else
+### 11 []{#if_else}if and else
 
 In C programming, if and else are used to make decisions.
 
@@ -261,7 +261,7 @@ statement](/c-programming/c-if-else-statement "C if else").
 
 ------------------------------------------------------------------------
 
-### []{#enum}enum
+### 12 []{#enum}enum
 
 Enumeration types are declared in C programming using keyword enum. For
 example:
@@ -283,7 +283,7 @@ To learn more, visit [C enum](/c-programming/c-enumeration "C enum").
 
 ------------------------------------------------------------------------
 
-### []{#extern}extern
+### 13 []{#extern}extern
 
 The extern keyword declares that a variable or a function has external
 linkage outside of the file it is declared.
@@ -293,7 +293,7 @@ type](/c-programming/c-storage-class "C storage type").
 
 ------------------------------------------------------------------------
 
-### []{#for}for
+### 14 []{#for}for
 
 There are three types of loops in C programming. The for loop is written
 in C programming using keyword for. For example:
@@ -312,7 +312,7 @@ loop](/c-programming/c-for-loop "C for loop").
 
 ------------------------------------------------------------------------
 
-### []{#goto}goto
+### 15 []{#goto}goto
 
 The goto keyword is used for unconditional jump to a labeled statement
 inside a function. For example:
@@ -334,7 +334,7 @@ To learn more, visit [C goto](/c-programming/c-goto-statement "C goto").
 
 ------------------------------------------------------------------------
 
-### []{#int}int
+### 16 []{#int}int
 
 The int keyword declares integer type variable. For example:
 
@@ -347,7 +347,7 @@ types](/c-programming/c-data-types "C data types").
 
 ------------------------------------------------------------------------
 
-### []{#short_long_signed_unsigned}short, long, signed and unsigned
+### 17 []{#short_long_signed_unsigned}short, long, signed and unsigned
 
 The short, long, signed and unsigned keywodrs are type modifiers that
 alters the meaning of a base data type to yield a new type.
@@ -366,7 +366,7 @@ alters the meaning of a base data type to yield a new type.
 
   : Range of int type data types
 
-### []{#return}return
+### 18 []{#return}return
 
 The return keyword terminates the function and returns the value.
 
@@ -384,7 +384,7 @@ functions](/c-programming/c-user-defined-functions "C user defined functions").
 
 ------------------------------------------------------------------------
 
-### []{#sizeof}sizeof
+### 19 []{#sizeof}sizeof
 
 The sizeof keyword evaluates the size of data (a variable or a
 constant).
@@ -404,7 +404,7 @@ operators](/c-programming/c-operators "C operators").
 
 ------------------------------------------------------------------------
 
-### []{#register}register
+### 20 []{#register}register
 
 The register keyword creates register variables which are much faster
 than normal variables.
@@ -415,7 +415,7 @@ register int var1;
 
 ------------------------------------------------------------------------
 
-### []{#static}static
+### 21 []{#static}static
 
 The static keyword creates static variable. The value of the static
 variables persists until the end of the program. For example:
@@ -426,7 +426,7 @@ static int var;
 
 ------------------------------------------------------------------------
 
-### []{#struct}struct
+### 22 []{#struct}struct
 
 The struct keyword is used for declaring a structure. A structure can
 hold variables of different types under a single name.
@@ -444,7 +444,7 @@ structures](/c-programming/c-structures "C structures").
 
 ------------------------------------------------------------------------
 
-### []{#typedef}typedef
+### 23 []{#typedef}typedef
 
 The typedef keyword is used to explicitly associate a type with an
 identifier.
@@ -456,7 +456,7 @@ kg bear, tiger;
 
 ------------------------------------------------------------------------
 
-### []{#union}union
+### 24 []{#union}union
 
 A Union is used for grouping different types of variable under a single
 name.
@@ -474,7 +474,7 @@ To learn more, visit [C unions](/c-programming/c-unions "C unions").
 
 ------------------------------------------------------------------------
 
-### []{#void}void
+### 25 []{#void}void
 
 The void keyword indicates that a function doesn't return any value.
 
@@ -490,7 +490,7 @@ return type is void.
 
 ------------------------------------------------------------------------
 
-### []{#volatile}volatile
+### 26 []{#volatile}volatile
 
 The volatile keyword is used for creating volatile objects. A volatile
 object can be modified in an unspecified way by the hardware.
@@ -502,9 +502,23 @@ Here, number is a volatile object.
 Since, number is a constant variable, the program cannot change it.
 However, hardware can change it since it is a volatile object.
 
+### 27 Vim test
+
+
+
+* French accents `/^[a-zàâçéèêëîïôûùüÿñæœ .-]*$/i`
+
+duplicate
+azeaze
+azeazea
+
+duplicate
+
+azeaz
+duplicate
+duplicate
+duplicate
+g/\v^([^ -=]+)\n\_.*%(^\1$)/d
+
 --------------------------------------------------------------------------------
 Donloaded from : https://www.programiz.com/c-programming/list-all-keywords-c-language  
-  
-  <span class="item break"></span>
-  <span class="item break"></span>
-  <span class="item break"></span>
