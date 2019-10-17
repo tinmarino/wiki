@@ -504,3 +504,7 @@ However, hardware can change it since it is a volatile object.
 
 --------------------------------------------------------------------------------
 Donloaded from : https://www.programiz.com/c-programming/list-all-keywords-c-language  
+  
+  <span class="item break"></span>
+  <span class="item break"></span>
+  <span class="item break"></span>

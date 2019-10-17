@@ -1,0 +1,49 @@
+/*
+Flex between 1 and 3 columns
+*/
+
+
+@import 'include_layout.css';
+
+.h3-section:nth-of-type(n) { order: 1; }
+@media (min-width: calc(400 * 2px)) {
+  .h3-section:nth-of-type(2n) { order: 1; }
+  .h3-section:nth-of-type(2n+1) { order: 2; }
+}
+@media (min-width: calc(400 * 3px)) {
+  .h3-section:nth-of-type(3n) { order: 1; }
+  .h3-section:nth-of-type(3n+1) { order: 2; }
+  .h3-section:nth-of-type(3n+2) { order: 3; }
+}
+
+.parent {
+  display: flex;
+  align-content: start;
+
+  flex-flow: column wrap;
+  flex-direction: row; 
+  flex-wrap: wrap; 
+
+  height: 1000px;
+  width: 100%;
+}
+
+.h3-section {
+  width: 33.33%;
+}
+
+/* Force new columns */
+.break {
+  flex-basis: 100%;
+  width: 0;
+  border: 1px solid #ddd;
+  margin: 0;
+  content: "";
+  padding: 0;
+}
+
+
+/* OLD
+  flex: 1;
+  flex: 0 1 auto;
+*/

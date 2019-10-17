@@ -2,7 +2,7 @@
 GRID betwenn 1 and 3
 */
 
-
+@import 'include_layout.css';
 
 .parent {
   --repeat: auto-fit;
@@ -21,7 +21,7 @@ GRID betwenn 1 and 3
 .parent {
   display: grid;
 
-  grid-gap: 0.3cm;
+  grid-gap: 0;
   grid-auto-rows auto;
   grid-auto-flow: row dense;
 
@@ -30,7 +30,6 @@ GRID betwenn 1 and 3
   justify-items: start;
   align-items: start;
 }
-
 
 /* Expand right h2 */
 h2 {
@@ -49,18 +48,4 @@ h2:after {
 /* Reduce header margins: just pad */
 h3, h4, h5, h6 {
   margin: 0px;
-}
-
-/* Wrap code (in pre/a) */
-a, pre {
-  white-space: pre-wrap;
-  word-wrap: break-word;
-}
-
-/* Table wrap */
-table {
-  word-break: break-all;
-  table-layout:fixed;
-  width:100%;
-  text-align: left;
 }

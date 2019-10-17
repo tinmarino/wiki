@@ -14,6 +14,7 @@ a_color_dark = [
 ];
 
 a_layout = [
+    '../Css/layout_3_column_flex',
     '../Css/layout_grid',
     '../Css/layout_solarized',
 ];

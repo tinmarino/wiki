@@ -241,8 +241,8 @@ command! -nargs=? Save call script#foo(<args>)
 | `-nargs=*` | 0+ arguments, space separated |
 | `-nargs=+` | 1+ arguments, space reparated |
 
-Flow
-----
+
+## Control Flow
 
 ### Conditionals
 
@@ -454,7 +454,7 @@ Prefixes (`s:`, `g:`, `l:`, etc) are actually dictionaries.
 let extend(s:fruits, { ... })
 ```
 
-## Casting
+### Casting
 
 ```language-vim
 str2float("2.3")
