@@ -238,6 +238,7 @@ But `map` can ber replaced by:
 
 * `abbreviate`, `autocmd`, `command`, `function`, `let`, `set all`.
 * `jumps`, `marks`, `args`, `changes`
+* `digraphs`, `highlight`, `reg`, `scriptnames`, `spellinfo`, `synta`x    
 
 * Find where root runtime is 
   * `:echo $VIMRUNTIME` -> `/usr/share/vim/vim74`
@@ -341,22 +342,24 @@ But `map` can ber replaced by:
 
 * `vim -u NONE -N` # No (User) vimrc, Non-compatible
 
-* Pipeline
-	* `echo toto | vim -` : take arguments from stdin
-	* `echo foo | vim -e '+%print' '+q!' /dev/stdin` : exmode to not consume stdin and not clear output on quit
-	* `vim <(echo toto)` : process substitution command (BaSh)
-	* `:w !tee` : write to stdout
-  * `:w !sh` : write to shell input
+### Pipe
 
-digraphs, highlight, reg, scriptnames, spellinfo, syntax    
+* `echo toto | vim -` : take arguments from stdin
+* `echo foo | vim -e '+%print' '+q!' /dev/stdin` : exmode to not consume stdin and not clear output on quit
+* `vim <(echo toto)` : process substitution command (BaSh)
+* `:w !tee` : write to stdout
+* `:w !sh` : write to shell input
 
-* Remote 
-	vim --servername DEMO
-	vim --servername DEMO --remote file.txt
-	vim --servername DEMO  --remote-send ":3d<CR>"
-	:!vim --servername DEMO --remote-tab "%"   " Send current buffer to remote vim
 
-* __Dos2Unix__: `for file in * ; do vi +':w ++ff=unix' +':q' $file`
+### Remote 
+```bash
+vim --servername DEMO
+vim --servername DEMO --remote file.txt
+vim --servername DEMO  --remote-send ":3d<CR>"
+:!vim --servername DEMO --remote-tab "%"   " Send current buffer to remote vim
+```
+
+__Dos2Unix__: `for file in * ; do vi +':w ++ff=unix' +':q' $file`  
 
 ### C-s
 

@@ -68,14 +68,16 @@ table {
   text-align: left;
 }
 
-/* h2-section bettermargin */
+/* h2-section bettermargin: it was hidden by grid */
 .h2-section {
   margin-top: 60px;
 }
-
 h2 {
   margin-top: -30px;
   float: left;
+}
+h2:after {
+  text-align: left;
 }
 
 
