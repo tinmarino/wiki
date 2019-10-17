@@ -225,6 +225,8 @@ loop](/c-programming/c-do-while-loops "C do while loop")
 
 ------------------------------------------------------------------------
 
+
+
 ### 10 []{#double_float}double and float
 
 Keywords double and float are used for declaring floating type
@@ -242,6 +244,8 @@ To learn more, visit [C data
 types](/c-programming/c-data-types "C data types").
 
 ------------------------------------------------------------------------
+
+## Here a break 1
 
 ### 11 []{#if_else}if and else
 
@@ -346,6 +350,8 @@ To learn more, visit [C data
 types](/c-programming/c-data-types "C data types").
 
 ------------------------------------------------------------------------
+
+## Here a break 2
 
 ### 17 []{#short_long_signed_unsigned}short, long, signed and unsigned
 

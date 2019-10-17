@@ -12,8 +12,6 @@
 
 
 var style = `
-@import 'include_layout.css';
-
 /* Step 1: start with resetting some defaults */
 * {
   margin: 0 auto;
@@ -42,20 +40,64 @@ var style = `
 /* Step 4: Add media queries (subjective) to make the whole grid resposive. */
 .h3-section {
   width: 100%;
+  padding: 1%;
 }
 @media (min-width: calc(400 * 2px)) {
   .h3-section {
-    width: 45%;
+    width: 50%;
   }
 }
 @media (min-width: calc(400 * 3px)) {
   .h3-section {
-    width: 30%;
+    width: 33%;
   }
 }
+
+/* Step 0, my way */
+/* Wrap code (in pre/a) */
+a, pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Table wrap */
+table {
+  word-break: break-all;
+  table-layout: fixed;
+  width: 100%;
+  text-align: left;
+}
+
+/* h2-section bettermargin */
+.h2-section {
+  margin-top: 60px;
+}
+
+h2 {
+  margin-top: -30px;
+  float: left;
+}
+
+
+/* Expand right h2 */
+h2 {
+  grid-column: 1/-1;
+  width: 100%;
+  text-align: left;
+}
+h2:after {
+    content: ' ';
+    display: block;
+    border: 2px solid;
+    border-radius: 4px;
+		max-width: 83%;
+}
+
 `
 
-function masonry_main() {
+
+
+function mainMasonry() {
 
     // Add css above
     var styleSheet = document.createElement("style");
@@ -64,13 +106,14 @@ function masonry_main() {
     document.head.appendChild(styleSheet);
 
     // init with elemene masonry
-    var grid = document.querySelector('.parent');
-    var msnry = new Masonry( grid, {
-      itemSelector: '.h3-section',
-      columnWidth: 400
+    var nodes = Array.from(document.getElementsByClassName('h2-section'));
+    nodes.forEach( function (node) {
+        var msnry = new Masonry( node, {
+          itemSelector: '.h3-section'
+        });
     });
 }
 
 
-masonry_main();
+window.onload = mainMasonry;
 

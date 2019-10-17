@@ -46,11 +46,22 @@ munix(){
     $_ = $line; 
     END { $open and print "\n:::::::::\n" }
   ' |
-  # Replace vim by language-vim for prism colro higlight
+  # Add h2-section betewwen h2 headings and h2 end
+  perl -pe '$line=$_;
+    # Open-Close if open
+    $open and $line =~ s/^##[^#]/::::::\n:::::: {.h2-section}\n$&/ ;
+    # Open if can
+    !$open and $line =~ s/^##[^#]/:::::: {.h2-section}\n$&/ and $open=1;
+    # close if open and can
+    $open and $line =~ s/^##?[^#]/::::::\n$&/ and $open=0;
+    $_ = $line; 
+    END { $open and print "\n::::::\n" }
+  ' |
+  # Replace vim by language-vim for prism color higlight
   perl -pe's/```vim/```language-vim/;' |
-  # Surround h3 section by parent
-  perl -0777 -pe 's/::::::::: \{.h3-section}/::: {.parent}\n$&/ ;
-    s/^.*:::::::::\n/$&:::\n/s ;
+  # Surround h2 section by parent
+  perl -0777 -pe 's/:::::: \{.h2-section}/::: {.parent}\n$&/ ;
+    s/^.*::::::\n/$&:::\n/s ;
   ' |
   # Change links: add html
   sed -r 's/(\[.+\])\(([^#)]+)\)/\1(\2.html)/g' |
@@ -58,6 +69,8 @@ munix(){
   perl -0pe 's/((^|\n\S)[^\n]*)\n\t([^*])/\1\n\n\t\3/g;' |
   # Remove spaces in void lines
   perl -lpe 's/^\s*$//' |
+  # Debug
+  # tee test.md |
   # Compile: can add --self-contained and --include-header=<file>
   pandoc $MATH --standalone -f $SYNTAX -t html -T $FILE -c $CSSFILE >"$OUTPUT.html"
 }
