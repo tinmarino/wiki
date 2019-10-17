@@ -1,7 +1,7 @@
 /*
 GRID betwenn 1 and 3
-
 */
+
 
 
 .parent {
@@ -23,12 +23,14 @@ GRID betwenn 1 and 3
 
   grid-gap: 0.3cm;
   grid-auto-rows auto;
+  grid-auto-flow: row dense;
 
   grid-template-columns: repeat(var(--repeat), minmax(400px, 1fr));
 
   justify-items: start;
   align-items: start;
 }
+
 
 /* Expand right h2 */
 h2 {
@@ -54,3 +56,13 @@ a, pre {
   white-space: pre-wrap;
   word-wrap: break-word;
 }
+
+
+
+/* OLD
+.h3-section {
+    width:400px;
+    float:left;
+    overflow:hidden;
+}
+*/
