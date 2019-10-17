@@ -57,12 +57,10 @@ a, pre {
   word-wrap: break-word;
 }
 
-
-
-/* OLD
-.h3-section {
-    width:400px;
-    float:left;
-    overflow:hidden;
+/* Table wrap */
+table {
+  word-break: break-all;
+  table-layout:fixed;
+  width:100%;
+  text-align: left;
 }
-*/
