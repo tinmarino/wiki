@@ -68,15 +68,7 @@ table {
   text-align: left;
 }
 
-/* h2-section bettermargin: it was hidden by grid */
 .h2-section {
-  margin-top: 60px;
-}
-h2 {
-  margin-top: -30px;
-  float: left;
-}
-h2:after {
   text-align: left;
 }
 
@@ -108,7 +100,7 @@ function mainMasonry() {
     document.head.appendChild(styleSheet);
 
     // init with elemene masonry
-    var nodes = Array.from(document.getElementsByClassName('h2-section'));
+    var nodes = Array.from(document.getElementsByClassName('h3-parent'));
     nodes.forEach( function (node) {
         var msnry = new Masonry( node, {
           itemSelector: '.h3-section'

@@ -35,27 +35,58 @@ munix(){
 
   # Convertion pipeline
   cat "$INPUT" |
-  # Add h3-section betewwen h3 headings and h3 end
-  perl -pe '$line=$_;
+  # Add h3-section betewwen h3/h2 headings and end
+  # ::::::::: h3
+  # :::::::: h3-parent
+  # :::::: h2
+  perl -pe 'BEGIN { my $open2 = 0; my $open3 = 0; my $open_parent = 0 }
+    my $line=$_; my $worked = 0;
+
     # Open-Close if open
-    $open and $line =~ s/^###[^#]/:::::::::\n::::::::: {.h3-section}\n$&/ ;
+    if ($open3 and $line =~ s/^###[^#]/:::::::::\n::::::::: {.h3-section}\n$&/) { goto FINISH; }
+    if ($open2 and $line =~ s/^##[^#]/::::::\n:::::: {.h2-section}\n$&/) {
+      if ($open_parent) {
+        $line = "::::::::\n$line"; $open_parent = 0;
+      }
+      if ($open3) {
+        $line = ":::::::::\n$line"; $open3 = 0;
+      }
+      goto FINISH;
+    }
+
     # Open if can
-    !$open and $line =~ s/^###[^#]/::::::::: {.h3-section}\n$&/ and $open=1;
-    # close if open and can
-    $open and $line =~ s/^##?#?[^#]/:::::::::\n$&/ and $open=0;
+    if ( !$open3 and $line =~ /^###[^#]/ ) {
+      $line = "::::::::: {.h3-section}\n$line";
+      $open3 = 1;
+      if ( !$open_parent ) {
+        $line = ":::::::: {.h3-parent}\n$line";
+        $open_parent = 1;
+        goto FINISH;
+      }
+    }
+    if (!$open2 and $line =~ s/^##[^#]/:::::: {.h2-section}\n$&/m){
+      $open2 = 1;
+      goto FINISH;
+    }
+
+    # Close if open and can
+    if ($open3) {
+      $line =~ s/^##?#?[^#]/:::::::::\n$&/m and $open3=0;
+    }
+    if ($open2) {
+      $line =~ s/^##?[^#]/::::::\n$&/m and $open2=0
+      and $open_parent and $line = "::::::::\n$line" and $open_parent=0;
+    }
+
+    # Finish
+    FINISH:
+    $worked = 0;
     $_ = $line; 
-    END { $open and print "\n:::::::::\n" }
-  ' |
-  # Add h2-section betewwen h2 headings and h2 end
-  perl -pe '$line=$_;
-    # Open-Close if open
-    $open and $line =~ s/^##[^#]/::::::\n:::::: {.h2-section}\n$&/ ;
-    # Open if can
-    !$open and $line =~ s/^##[^#]/:::::: {.h2-section}\n$&/ and $open=1;
-    # close if open and can
-    $open and $line =~ s/^##?[^#]/::::::\n$&/ and $open=0;
-    $_ = $line; 
-    END { $open and print "\n::::::\n" }
+    END {
+      $open3 and print "\n:::::::::\n";
+      $open_parent and print "\n::::::::\n";
+      $open2 and print "\n::::::\n";
+    }
   ' |
   # Replace vim by language-vim for prism color higlight
   perl -pe's/```vim/```language-vim/;' |
