@@ -25,9 +25,14 @@ fi
 # Compile for unix (with pandoc & Perl)
 # TODO replace sed and comment
 # TODO if no css: yaml in file set a default (include.css)
+# TODO css, if on one line, separe by comma filenames
 munix(){
   # TODO remove me
   cp -r ~/wiki/wiki/Css/* ~/wiki/wiki_html/Css/
+  # TODO clean me too
+  echo v2
+  vim -e -c'VimwikiIndex 1' -c'let a=vimwiki#base#get_globlinks_escaped()'  -c'let b=join(split(a, "\n"))' -c'call writefile([b], expand("$HOME/wiki/wiki/Src/links.txt"))'  -c'q' || echo "vim failed: $?"
+  vim -e -c'VimwikiIndex 2' -c'let a=vimwiki#base#get_globlinks_escaped()'  -c'let b=join(split(a, "\n"))' -c'call writefile([b], expand("$HOME/wiki/todo/Src/links.txt"))'  -c'q'
   # Read `css:` in metadata
   CSSFILE=$(realpath --relative-to=$OUTDIR $HOME/wiki/wiki_html/Css/include.css)
   export CSS_EMBED=$(perl -0777 -ne '$_ =~ /^ *---(.+?)---/s ; $meta=$1; while ($meta =~ /^css:(.+)$/mg) {$css .= " -c " . $1}; print substr $css, 4' "$INPUT")
@@ -89,9 +94,10 @@ munix(){
     }
   ' |
   # Replace vim by language-vim for prism color higlight
-  perl -pe's/```vim/```language-vim/;' |
+  perl -pe' s/```vim/```language-vim/;' |
   # Surround h2 section by parent
-  perl -0777 -pe 's/:::::: \{.h2-section}/::: {.parent}\n$&/ ;
+  perl -0777 -pe '
+    s/:::::: \{.h2-section}/::: {.parent}\n$&/ ;
     s/^.*::::::\n/$&:::\n/s ;
   ' |
   # Change links: add html
@@ -99,7 +105,7 @@ munix(){
   # Double the new line before code
   perl -0pe 's/((^|\n\S)[^\n]*)\n\t([^*])/\1\n\n\t\3/g;' |
   # Remove spaces in void lines
-  perl -lpe 's/^\s*$//' |
+  perl -lpe ' s/^\s*$//' |
   # Debug
   # tee test.md |
   # Compile: can add --self-contained and --include-header=<file>
