@@ -2,7 +2,8 @@
 
 [Tmux Conf](Tmux-Conf)
 
-
+# Clipboard 
+tmux save-buffer -  | xclip -i 
 
 # Get help
     tmux list-keys

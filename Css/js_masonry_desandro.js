@@ -89,6 +89,7 @@ h2:after {
 
 `
 
+var msnrys = [];
 
 
 function mainMasonry() {
@@ -103,8 +104,15 @@ function mainMasonry() {
     var nodes = Array.from(document.getElementsByClassName('h3-parent'));
     nodes.forEach( function (node) {
         var msnry = new Masonry( node, {
-          itemSelector: '.h3-section'
+          itemSelector: '.h3-section',
         });
+        msnrys.push(msnry);
+    });
+}
+
+function stopMasonry() {
+    msnrys.forEach( function ( msnry ) {
+      msnry.destroy();
     });
 }
 

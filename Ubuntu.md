@@ -1,4 +1,8 @@
 
+# Mouse
+
+modprobe -r psmouse
+
 # Restart
 
 * gnome-shell --replace

@@ -2,6 +2,7 @@
 
 [Bash Rc](Bash-Rc)
 
+* `type find` , `type vi` : see if command is alias or function or binary
 * `current_script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"`
 
 # Commpletion

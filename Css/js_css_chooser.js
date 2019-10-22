@@ -59,6 +59,11 @@ a_font_solarized = [
 
 // Disable all radio button vith a certain class name
 function disableAll (parent) {
+    // Disable js masonry
+    if (typeof stopMasonry !== "undefined") { 
+        stopMasonry();
+    }
+    // Disable all radio button script
     Array.from(document.getElementsByClassName('class_' + parent.id.slice(0, 8)))
         .forEach(function (node) {
             console.log('Disabling ' + node.value + ' from class_' + parent.id.slice(0, 8));

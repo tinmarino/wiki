@@ -62,9 +62,10 @@ header-includes: <script type="text/javascript" src="../Css/js_masonry_desandro.
 | `:bro[wse] ol[dfiles][!]`           | Prompt which file to choose |
 | `:earlier 12h`                      | Change file to how it was 12h ago |
 | `:%! column -t`                     | align columns |
-*   `set cul!` if scrooling slow for a long line
-*   `set lazyredraw` can be usefull too
-*   h ttyfast
+| `:syntax sync fromstart`            | Reload syntax |
+| `set cul!`                          | if scrooling slow for a long line |
+| `set lazyredraw`                    | can be usefull too |
+| `h ttyfast`                         |   |
 
 
 ### Ex tips 3/2
@@ -230,6 +231,12 @@ endfunct!
 ### Inspect, Debug
 
 TODO
+### Inspect syntax highlight [(link)](https://vim.fandom.com/wiki/Identify_the_syntax_highlighting_group_used_at_the_cursor)
+```vim
+map K :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+```
+
+
 
 ### Display environment
 
@@ -238,7 +245,7 @@ But `map` can ber replaced by:
 
 * `abbreviate`, `autocmd`, `command`, `function`, `let`, `set all`.
 * `jumps`, `marks`, `args`, `changes`
-* `digraphs`, `highlight`, `reg`, `scriptnames`, `spellinfo`, `synta`x    
+* `digraphs`, `highlight`, `reg`, `scriptnames`, `spellinfo`, `syntax
 
 * Find where root runtime is 
   * `:echo $VIMRUNTIME` -> `/usr/share/vim/vim74`
