@@ -29,7 +29,7 @@ var style = `
 
 
 /* Step 3: how big should the gap be between grid items? remember that the total gap between two items would be double what you set here since both would have that amount set as their individual padding. Also add box-sizing:border-box to make sure the padding doesn't affect the total widh of the item */
-.h3-section {
+.level3 {
   padding: 5px;
   box-sizing: border-box;
 	display:inline;
@@ -38,17 +38,17 @@ var style = `
 
 
 /* Step 4: Add media queries (subjective) to make the whole grid resposive. */
-.h3-section {
+.level3 {
   width: 100%;
   padding: 1%;
 }
 @media (min-width: calc(400 * 2px)) {
-  .h3-section {
+  .level3 {
     width: 50%;
   }
 }
 @media (min-width: calc(400 * 3px)) {
-  .h3-section {
+  .level3 {
     width: 33%;
   }
 }
@@ -68,7 +68,7 @@ table {
   text-align: left;
 }
 
-.h2-section {
+.level2 {
   text-align: left;
 }
 
@@ -100,11 +100,11 @@ function mainMasonry() {
     styleSheet.innerText = style;
     document.head.appendChild(styleSheet);
 
-    // Init masonry for each h3-parent
-    var nodes = Array.from(document.getElementsByClassName('h3-parent'));
+    // Init masonry for each level2
+    var nodes = Array.from(document.getElementsByClassName('level2'));
     nodes.forEach( function (node) {
         var msnry = new Masonry( node, {
-          itemSelector: '.h3-section',
+          itemSelector: '.level3',
         });
         msnrys.push(msnry);
     });
