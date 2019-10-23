@@ -90,6 +90,7 @@ title: $title
 category: Perl
 wiki_css: ../Css/color_dark_solarized.css
 header-includes: <script type="text/javascript" src="../Css/js_masonry_desandro.js"></script>
+wiki_pandoc: --toc
 ---
 
 <section class="level2">

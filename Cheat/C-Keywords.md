@@ -1,7 +1,7 @@
 ---
 title: C Keywords
 category: C
-wiki_css: ../Css/color_dark_solarized.css, ../Css/layout_grid.css
+wiki_css: ../Css/color_dark_solarized.css
 header-includes: <script type="text/javascript" src="../Css/js_masonry_desandro.js"></script>
 ---
 
