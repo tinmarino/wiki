@@ -1,17 +1,13 @@
 ---
-title: Perl <- StackOverflow top 100 v1
+title: Perl <- StackOverflow top 100
 category: Perl
-wiki_css: ../Css/code_prism_dark.css, ../Css/color_dark_solarized.css, ../Css/layout_toc.css
-TODOheader-includes: <script type="text/javascript" src="../Css/js_masonry_desandro.js"></script>
-wiki_pandoc: --toc
+wiki_css: ../Css/color_dark_solarized.css
+header-includes: <script type="text/javascript" src="../Css/js_masonry_desandro.js"></script>
 ---
-
-
-</b> </em> </i> </small> </strong> </sub> </sup>
-
 
 <section class="level2">
 
+</b> </em> </i> </small> </strong> </sub> </sup>
 
 ### 1: Find size of an array in Perl (score [559516](https://stackoverflow.com/q/7406807) in 2015)
 
@@ -8458,5 +8454,5 @@ else {
 ```
 
 (Other people: I'm pretty sure John Doe here isn't actually hardcoding passwords; he's just using it as an example.)  
-
 </section>
+
