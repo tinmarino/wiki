@@ -4,28 +4,28 @@ GRID betwenn 1 and 3
 
 @import 'include_layout.css';
 
-.parent {
+.level2 {
   --repeat: auto-fit;
 }
 @media (min-width: calc(400 * 2px)) {
-  .parent {
+  .level2 {
     --repeat: 2;
   }
 }
 @media (min-width: calc(400 * 3px)) {
-  .parent {
+  .level2 {
     --repeat: 3;
   }
 }
 
-.parent {
+.level2 {
   display: grid;
 
   grid-gap: 0;
   grid-auto-rows auto;
   grid-auto-flow: row dense;
 
-  grid-template-columns: repeat(var(--repeat), minmax(400px, 1fr));
+  grid-template-columns: repeat(var(--repeat), min(400px));
 
   justify-items: start;
   align-items: start;

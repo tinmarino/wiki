@@ -21,7 +21,7 @@ var style = `
 
 
 /* Step 2: center things inside the grid and clear some space around it by setting a device based max-width and margin*/
-.parent {
+.level2 {
   text-align: center;
   max-width: 95vw;
   margin: 2.5vw auto;
