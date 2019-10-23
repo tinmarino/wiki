@@ -1,8 +1,7 @@
 ---
 title: Vim Advanced cheatsheet
 category: Vim
-css: ../Css/code_prism_dark.css
-css: ../Css/color_dark_solarized.css
+wiki_css: ../Css/code_prism_dark.css, ../Css/color_dark_solarized.css
 header-includes: <script type="text/javascript" src="../Css/js_masonry_desandro.js"></script>
 ---
 

@@ -33,12 +33,11 @@ Include path (print)
 
 
 ### Random
-	```c
-	#include <time.h>
-	srand(time(NULL)); 	# Set seed
-	rand();				# Get Random
-
-	```
+```c
+#include <time.h>
+srand(time(NULL)); 	# Set seed
+rand();				# Get Random
+```
 
 ## Calling conventions, function prototype
 * `typedef int(__cdecl callback_t)(HANDLE h_process);`

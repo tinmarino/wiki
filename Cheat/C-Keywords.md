@@ -1,8 +1,8 @@
 ---
 title: C Keywords
 category: C
-css: ../Css/color_dark_solarized.css
-css: ../Css/layout_grid.css
+wiki_css: ../Css/color_dark_solarized.css, ../Css/layout_grid.css
+header-includes: <script type="text/javascript" src="../Css/js_masonry_desandro.js"></script>
 ---
 
 This tutorial provides a brief information on all 32 keywords in C programming.  
@@ -53,6 +53,8 @@ This tutorial provides a brief information on all 32 keywords in C programming.
 [volatile](#volatile)
 [while](#do_while)
 
+
+## Start
 
 ### []{#auto}auto
 
@@ -471,4 +473,9 @@ Since, number is a constant variable, the program cannot change it.
 However, hardware can change it since it is a volatile object.
 
 --------------------------------------------------------------------------------
+</section>
+
+
+## End
+
 Donloaded from : https://www.programiz.com/c-programming/list-all-keywords-c-language  

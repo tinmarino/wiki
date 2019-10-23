@@ -59,7 +59,7 @@ munix(){
   # Debug
   # tee test.md |
   # Compile: can add  --standalone --self-contained and --include-header=<file>
-  pandoc $MATH $PANDOC --section-divs -f $SYNTAX -t html -T $FILE -c $CSSFILE >"$OUTPUT.html"
+  pandoc $MATH $PANDOC   --highlight-style breezedark --section-divs -f $SYNTAX -t html -T $FILE -c $CSSFILE > "$OUTPUT.html"
   echo -e "Css: $CSSFILE \nPandoc: $PANDOC \nMeta: $meta"
 }
 

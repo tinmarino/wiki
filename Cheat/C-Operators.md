@@ -9,8 +9,7 @@ msvalidate.01: AC4EA77B0980B7169F9EEC142ADCC15B
 viewport: 'width=device-width, initial-scale=1'
 title: 'C Operators: Arithmetic, Logical, Conditional and more'
 category: C
-css: ../Css/solarized_dark.css
-css: ../Css/layout_grid.css
+wiki_css: ../Css/solarized_dark.css, ../Css/layout_grid.css
 ---
 
 

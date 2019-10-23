@@ -1,7 +1,7 @@
 ---
 title: Css tests (title)
 category: Css
-css: ../Css/layout_radio.css
+wiki_css: ../Css/layout_radio.css
 ---
 
 
@@ -203,7 +203,10 @@ types](/c-programming/c-data-types "C data types").
 
 An identifier can be declared constant by using const keyword.
 
-    const int a = 5;
+```C
+const int a = 5;
+```
+
 
 To learn more, visit[C variables and
 constants](/c-programming/c-variables-constants "C programming variables and constants").
@@ -212,13 +215,15 @@ constants](/c-programming/c-variables-constants "C programming variables and con
 
 ### 9 []{#do_while}do...while
 
-    int i;
-    do 
-    {
-       print("%d ",i);
-       i++;
-    }
-    while (i<10)
+```C
+int i;
+do 
+{
+   print("%d ",i);
+   i++;
+}
+while (i<10)
+```
 
 To learn more, visit [C do...while
 loop](/c-programming/c-do-while-loops "C do while loop")
@@ -395,11 +400,13 @@ functions](/c-programming/c-user-defined-functions "C user defined functions").
 The sizeof keyword evaluates the size of data (a variable or a
 constant).
 
-    #include <stdio.h>
-    int main()
-    {
-        printf("%u bytes.",sizeof(char));
-    }
+```C
+#include <stdio.h>
+int main()
+{
+    printf("%u bytes.",sizeof(char));
+}
+```
 
 To learn more, visit [C
 operators](/c-programming/c-operators "C operators").

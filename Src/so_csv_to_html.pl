@@ -14,6 +14,7 @@ TODO: get language in a variable
 use strict; use warnings; use v5.26;
 use Text::CSV;
 
+my $tag="perl";
 
 sub arg_to_str {
     # Garde foux pour terminer les font formating si line dropped by a mal interpreted \
@@ -53,8 +54,8 @@ sub treat {
     # In
     my $post = shift;
 
-    # Code perl as variable
-    $post =~ s|<pre[^>]*><code>|```perl\n|g;
+    # Code tag as variable
+    $post =~ s|<pre[^>]*><code>|```$tag\n|g;
     $post =~ s|</code></pre>|```|g;
     $post =~ s|<code>(.*?)</code>|`$1`|g;
 
@@ -82,13 +83,12 @@ sub dump_md {
     open my $fh, ">:encoding(utf8)", $path or die "Write faile: $path: $!";
 
     # Add header (as a post)
-    my $title = "Perl SO ${\(scalar @$posts)} most viewed";
+    my $title = "@{[ ucfirst 'perl' ]} <- StackOverflow top ${\(scalar @$posts)}";
     my $header = <<"END_HEADER";
 ---
 title: $title
 category: Perl
-css: ../Css/code_prism_dark.css
-css: ../Css/color_dark_solarized.css
+wiki_css: ../Css/color_dark_solarized.css
 header-includes: <script type="text/javascript" src="../Css/js_masonry_desandro.js"></script>
 ---
 
@@ -110,6 +110,16 @@ END_FOOTER
 }
 
 
+# Not used
+sub pandoc_html {
+    my $md_path = shift; 
+    my $html_path = $md_path =~ s/.md$/.html/r;
+    system "pandoc $md_path 
+        -t html
+        -f markdown-auto_identifiers
+        -o $html_path"
+        =~ s/\n/ /gr;
+}
 
 sub main {
     say 'Read cvs';
@@ -124,16 +134,9 @@ sub main {
 
     say 'Write md';
     my $md_path = $ARGV[0] =~ s/\.[^.]*/.md/r;
-    my $html_path = $ARGV[0] =~ s/\.[^.]*/.html/r;
     my $title = dump_md(\@out, $md_path);
     $title = substr $title, 1;
 
-    say 'Pandoc html';
-    system "pandoc $md_path 
-        -t html
-        -f markdown-auto_identifiers
-        -o $html_path"
-        =~ s/\n/ /gr;
 
     return;
 }
