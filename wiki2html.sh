@@ -35,16 +35,23 @@ copy_src(){
 # TODO css, if on one line, separe by comma filenames
 # TODO if there is no level2 afeter level1 ?
 munix(){
-  # Read `css:` in metadata
+  # Read metadata
+  meta=$(perl -0777 -ne '$_ =~ /^ *---(.+?)---/s ; $res .= $1; END { print $res; }' "$INPUT");
+
+  # Read `wiki_css:` in metadata
   CSSFILE=$(realpath --relative-to=$OUTDIR $HOME/wiki/wiki_html/Css/include.css)
-  export CSS_EMBED=$(perl -0777 -ne '$_ =~ /^ *---(.+?)---/s ; $meta=$1; while ($meta =~ /^css:(.+)$/mg) {$css .= " -c " . $1}; print substr $css, 4' "$INPUT")
-  [ "$CSS_EMBED" ] && export CSSFILE=$CSS_EMBED && echo Css files are: $CSSFILE
+  export CSS_EMBED=$(echo -e "$meta" | perl -0777 -ne 'while ($_ =~ /^wiki_css:(.+)$/mg) {$res .= " -c " . ($1 =~ s/,/ -c /gr)}; print substr $res, 4')
+  [ "$CSS_EMBED" ] && export CSSFILE="$CSS_EMBED"
+
+  # Read `wiki_pandoc:` in metadata
+  PANDOC=""
+  export PANDOC=$(echo -e "$meta" | perl -0777 -ne 'while ($_ =~ /^wiki_pandoc:(.+)$/mg) {print $1}')
 
   # Convertion pipeline
   cat "$INPUT" |
   # Add h3-section betewwen h3/h2 headings and end
   # Replace vim by language-vim for prism color higlight
-  perl -pe' s/```vim/```language-vim/;' |
+  perl -pe ' s/```vim/```language-vim/; ' |
   # Change links: add html
   sed -r 's/(\[.+\])\(([^#)]+)\)/\1(\2.html)/g' |
   # Double the new line before code
@@ -54,7 +61,8 @@ munix(){
   # Debug
   # tee test.md |
   # Compile: can add --self-contained and --include-header=<file>
-  pandoc $MATH --standalone --section-divs -f $SYNTAX -t html -T $FILE -c $CSSFILE >"$OUTPUT.html"
+  pandoc $MATH $PANDOC --standalone --section-divs -f $SYNTAX -t html -T $FILE -c $CSSFILE >"$OUTPUT.html"
+  echo -e "Css: $CSSFILE \nPandoc: $PANDOC \nMeta: $meta"
 }
 
 
