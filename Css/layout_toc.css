@@ -33,5 +33,5 @@ GRID betwenn 1 and 3
 
 /* Counter masonry.js auto margin and then centering */
 #TOC li {
-  margin: 0 0 0 0;
+  margin: 0 10px 0 10px;
 }

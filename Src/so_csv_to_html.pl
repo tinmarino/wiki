@@ -8,20 +8,29 @@ CSV (use in $row->[0]):
 
 Ex: pl csv_to_md.pl so_perl_top_1000.csv
 
-TODO: get language in a variable
 =cut
 
 use strict; use warnings; use v5.26;
 use Text::CSV;
+use Getopt::Long;
 
-my $tag="perl";
+# Get option
+GetOptions(
+    'in=s' => \my $sf_csv,
+    'out=s' => \my $sf_md,
+    'tag=s' => \my $tag
+);
 
+# Go
+main();
+
+# Read CSV to array of md
 sub arg_to_str {
     # Garde foux pour terminer les font formating si line dropped by a mal interpreted \
     my $row_suffix = "</b> </em> </i> </small> </strong> </sub> </sup>";
 
     # Open
-    open my $fh, "<:encoding(utf8)", $ARGV[0] or die "Usage: $0: $!";
+    open my $fh, "<:encoding(utf8)", $sf_csv or die "Usage: $0: $!";
 
     # Init
     my $csv = Text::CSV->new ( { binary => 1 } )  # should set binary attribute.
@@ -134,7 +143,7 @@ sub main {
     }
 
     say 'Write md';
-    my $md_path = $ARGV[0] =~ s/\.[^.]*/.md/r;
+    my $md_path = $sf_md || $sf_csv =~ s/\.[^.]*/.md/r;
     my $title = dump_md(\@out, $md_path);
     $title = substr $title, 1;
 
@@ -142,5 +151,3 @@ sub main {
     return;
 }
 
-# Go
-main();
