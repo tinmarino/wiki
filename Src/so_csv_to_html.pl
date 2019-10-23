@@ -1,27 +1,30 @@
 #!/usr/bin/perl
-=content
-So: Convert cvs <- sql to md -> html
-
-CSV (use in $row->[0]):
-    0ID, 1Title, 2Score, 3,4,5question,score,date
-    6,7,8answer1,score,date 9,10,11answser2, 12,13,14answer3
-
-Ex: pl csv_to_md.pl so_perl_top_1000.csv
-
-=cut
 
 use strict; use warnings; use v5.26;
 use Text::CSV;
-use Getopt::Long;
+use Getopt::Long qw/GetOptions/;
+use Pod::Usage qw/pod2usage/;
+
+
+sub usage() {
+    pod2usage(
+        -message => "Error: csv_to_md, not enought argument",
+        -exitval  => 1,
+        -verbose => 2);
+}
 
 # Get option
 GetOptions(
     'in=s' => \my $sf_csv,
     'out=s' => \my $sf_md,
-    'tag=s' => \my $tag
-);
+    'tag=s' => \my $tag,
+    'help|?' => \my $help
+) or usage();
+$sf_csv or usage();
+$help and usage();
 
 # Go
+say "---> Csv to MD";
 main();
 
 # Read CSV to array of md
@@ -151,3 +154,31 @@ sub main {
     return;
 }
 
+__END__
+=head1 Name
+So_csv_to_md: Convert:
+from: cvs <- (from StackOverflow sql query)
+to: md -> html
+
+=head1 Option
+=over 8
+=item B<-help>
+    print me
+=item B<-in>
+    filepath_in.csv
+=item B<-out>
+    -filepath_out.md
+=item B<-tag>
+    tag I selected first in the sql query (template next to this script)
+=back
+
+=head1 Example
+Ex: pl csv_to_md.pl -i so_perl_top_1000.csv -o ~/Test/so_perl100.md -t perl
+
+=head1 Comment
+CSV (use in $row->[0]):
+    0ID, 1Title, 2Score, 3,4,5question,score,date
+    6,7,8answer1,score,date 9,10,11answser2, 12,13,14answer3
+
+
+=cut
