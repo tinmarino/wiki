@@ -31,8 +31,6 @@ copy_src(){
 
 # Compile for unix (with pandoc & Perl)
 # TODO replace sed and comment
-# TODO if no css: yaml in file set a default (include.css)
-# TODO css, if on one line, separe by comma filenames
 # TODO if there is no level2 afeter level1 ?
 munix(){
   # Read metadata
@@ -53,9 +51,9 @@ munix(){
   # Replace vim by language-vim for prism color higlight
   perl -pe ' s/```vim/```language-vim/; ' |
   # Change links: add html
-  sed -r 's/(\[.+\])\(([^#)]+)\)/\1(\2.html)/g' |
+  perl -pe  ' s/(\[.+\])\(([^#)]+)\)/\1(\2.html)/g' |
   # Double the new line before code
-  perl -0pe 's/((^|\n\S)[^\n]*)\n\t([^*])/\1\n\n\t\3/g;' |
+  perl -0pe ' s/((^|\n\S)[^\n]*)\n\t([^*])/\1\n\n\t\3/g;' |
   # Remove spaces in void lines
   perl -lpe ' s/^\s*$//' |
   # Debug
@@ -68,8 +66,9 @@ munix(){
 
 # Obsolete ?
 mtermux(){
-sed -r 's/(\[.+\])\(([^)]+)\)/\1(\2.html)/g' <"$INPUT" | \
-	python -m markdown | \
+  cat "$INPUT" |
+  perl -pe  ' s/(\[.+\])\(([^#)]+)\)/\1(\2.html)/g' |
+	python -m markdown |
 	sed -r 's/<li>(.*)\[ \]/<li class="todo done0">\1/g; s/<li>(.*)\[X\]/<li class="todo done4">\1/g' >"$OUTPUT.html"
 	# pandoc $MATH -s -f $SYNTAX -t html -c $CSSFILENAME | \
 }
