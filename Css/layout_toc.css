@@ -29,3 +29,9 @@ GRID betwenn 1 and 3
 
   width: 90vw;
 }
+
+
+/* Counter masonry.js auto margin and then centering */
+#TOC li {
+  margin: 0 0 0 0;
+}
