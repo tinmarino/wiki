@@ -67,7 +67,12 @@ sub treat {
     my $post = shift;
 
     # Code tag as variable
-    $post =~ s|<pre(?![^>]*lang-html)[^>]*><code>([\S\s]*?)</code></pre>|```$tag\n$1```|g;
+    $post =~ s|
+        <pre
+        (?![^>]*lang-html)
+        [^>]*><code>
+        ([\S\s]*?)
+        </code></pre>|```$tag\n$1```|gx;
     # If ``` is not at BOL or followed
     $post =~ s|(.)```|$1\n```|g;
     $post =~ s|```(?!$tag)(.)|```\n$1|g;
@@ -89,7 +94,10 @@ sub treat {
     $post =~ s|\\u|\\\\u|g;
 
     # Escape < in headings (see So/Css) 
-    $post =~ s/(^#.*?)<(a|abbr|address|area|article|aside|audio|b|base|bdi|bdo|blockquote|body|br|button|canvas|caption|cite|code|col|colgroup|data|datalist|dd|del|details|dfn|dialog|div|dl|dt|em|embed|fieldset|figure|footer|form|h1|h2|h3|h4|h5|h6|head|header|hgroup|hr|html|i|iframe|img|input|ins|kbd|keygen|label|legend|li|link|main|map|mark|menu|menuitem|meta|meter|nav|noscript|object|ol|optgroup|option|output|p|param|pre|progress|q|rb|rp|rt|rtc|ruby|s|samp|script|section|select|small|source|span|strong|style|sub|summary|sup|table|tbody|td|template|textarea|tfoot|th|thead|time|title|tr|track|u|ul|var|video|wbr)>/$1\\<$2>/gm;
+    $post =~ s/
+    (^\#.*?)<
+    (a|abbr|address|area|article|aside|audio|b|base|bdi|bdo|blockquote|body|br|button|canvas|caption|cite|code|col|colgroup|data|datalist|dd|del|details|dfn|dialog|div|dl|dt|em|embed|fieldset|figure|footer|form|h1|h2|h3|h4|h5|h6|head|header|hgroup|hr|html|i|iframe|img|input|ins|kbd|keygen|label|legend|li|link|main|map|mark|menu|menuitem|meta|meter|nav|noscript|object|ol|optgroup|option|output|p|param|pre|progress|q|rb|rp|rt|rtc|ruby|s|samp|script|section|select|small|source|span|strong|style|sub|summary|sup|table|tbody|td|template|textarea|tfoot|th|thead|time|title|tr|track|u|ul|var|video|wbr)
+    >/$1\\<$2>/gmx;
 
     # Characters
     ## TODO Avoid some windows path to cut end of line then make all it

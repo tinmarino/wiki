@@ -199,6 +199,7 @@ cpan reload cpan
 | s       | Include newlines in . |
 | m       | Include newlines in ^ and $ |
 | r       | Non destructive |
+| x       | Pretty print regex: ignore space, newline, comment |
 
 
 # Links (maybe to parse and add)
