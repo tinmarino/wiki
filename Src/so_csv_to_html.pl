@@ -67,8 +67,13 @@ sub treat {
     my $post = shift;
 
     # Code tag as variable
-    $post =~ s|<pre[^>]*><code>|```$tag\n|g;
-    $post =~ s|</code></pre>|```|g;
+    # TODO (?![^>]*lang-html)
+    $post =~ s|<pre(?![^>]*lang-html)[^>]*><code>([\S\s]*?)</code></pre>|```$tag\n$1```|g;
+    #$post =~ s|</code></pre>|```|g;
+    # If ``` is not at BOL or followed
+    $post =~ s|(.)```|$1\n```|g;
+    $post =~ s|```(.)|```\n$1|g;
+    # Inline code
     $post =~ s|<code>(.*?)</code>|`$1`|g;
 
     # Remove windows line ending
