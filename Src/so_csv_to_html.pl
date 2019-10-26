@@ -71,6 +71,9 @@ sub treat {
     $post =~ s|</code></pre>|```|g;
     $post =~ s|<code>(.*?)</code>|`$1`|g;
 
+    # Remove windows line ending
+    $post =~ s/\r//g;
+
     # Paragraph
     $post =~ s|^(\s*)<p>(.*?)</p>|$1$2  |mg;
     $post =~ s|^</?p>$||mg;
