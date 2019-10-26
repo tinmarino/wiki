@@ -82,6 +82,9 @@ sub treat {
     $post =~ s|<h[1234]>|<h5>|g;
     $post =~ s|<h/[1234]>|</h5>|g;
 
+    # Escape \u000C
+    $post =~ s|\\u|\\\\u|g;
+
     # Characters
     ## TODO Avoid some windows path to cut end of line then make all it
     ## but not in code blocks
