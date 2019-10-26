@@ -1,6 +1,6 @@
 -- Send me here: https://data.stackexchange.com/stackoverflow/query/new
 
-SELECT TOP 10
+SELECT TOP 100
 -- Meta
 p.Id                 AS "id",
 min(p.Title)         AS "title",
@@ -62,8 +62,9 @@ inner join posttags pt on pt.postid = p.id
 inner join tags t on pt.tagid = t.id
 
 WHERE 
-t.tagname in ('perl')  -- tag
+t.tagname in ('python')  -- tag
 AND p.PostTypeId = 1   -- select questions
+-- AND p.Score > 1000  -- if slow (java, js)
 
 
 GROUP BY p.ID, p.ViewCount

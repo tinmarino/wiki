@@ -95,11 +95,11 @@ sub dump_md {
     open my $fh, ">:encoding(utf8)", $path or die "Write faile: $path: $!";
 
     # Add header (as a post)
-    my $title = "@{[ ucfirst 'perl' ]} <- StackOverflow top ${\(scalar @$posts)}";
+    my $title = "@{[ ucfirst $tag ]} <- StackOverflow top ${\(scalar @$posts)}";
     my $header = <<"END_HEADER";
 ---
 title: $title
-category: Perl
+category: $tag
 wiki_css: ../Css/color_dark_solarized.css, ../Css/layout_toc.css
 header-includes: <script type="text/javascript" src="../Css/js_masonry_desandro.js"></script>
 wiki_pandoc: --toc
@@ -108,6 +108,7 @@ wiki_pandoc: --toc
 <section class="level2">
 END_HEADER
     my $footer = <<"END_FOOTER";
+
 </section>
 END_FOOTER
     unshift @$posts, $header;

@@ -40,12 +40,12 @@ var style = `
   width: 100%;
   padding: 1%;
 }
-@media (min-width: calc(400 * 2px)) {
+@media (min-width: calc(550 * 2px)) {
   .level3 {
     width: 50%;
   }
 }
-@media (min-width: calc(400 * 3px)) {
+@media (min-width: calc(550 * 3px)) {
   .level3 {
     width: 33%;
   }
