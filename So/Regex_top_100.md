@@ -17,7 +17,7 @@ I know it's possible to match a word and then reverse the matches using other to
 
 <h5>Input:</h3>
 
-```perl
+```regex
 hoho
 hihi
 haha
@@ -26,13 +26,13 @@ hede
 
 <h5>Code:</h3>
 
-```perl
+```regex
 grep "&lt;Regex for 'doesn't contain hede'&gt;" input
 ```
 
 <h5>Desired output:</h3>
 
-```perl
+```regex
 hoho
 hihi
 haha
@@ -41,7 +41,7 @@ haha
 #### Answer accepted (score 5569)
 The notion that regex doesn't support inverse matching is not entirely true. You can mimic this behavior by using negative look-arounds:  
 
-```perl
+```regex
 ^((?!hede).)*$
 ```
 
@@ -49,13 +49,13 @@ The regex above will match any string, or line without a line break, <strong>not
 
 And if you need to match line break chars as well, use the <a href="http://perldoc.perl.org/perlre.html#Modifiers" rel="noreferrer">DOT-ALL modifier</a> (the trailing `s` in the following pattern):  
 
-```perl
+```regex
 /^((?!hede).)*$/s
 ```
 
 or use it inline:  
 
-```perl
+```regex
 /(?s)^((?!hede).)*$/
 ```
 
@@ -63,7 +63,7 @@ or use it inline:
 
 If the DOT-ALL modifier is not available, you can mimic the same behavior with the character class `[\s\S]`:  
 
-```perl
+```regex
 /^((?!hede)[\s\S])*$/
 ```
 
@@ -71,7 +71,7 @@ If the DOT-ALL modifier is not available, you can mimic the same behavior with t
 
 A string is just a list of `n` characters. Before, and after each character, there's an empty string. So a list of `n` characters will have `n+1` empty strings. Consider the string `"ABhedeCD"`:  
 
-```perl
+```regex
     ┌──┬───┬──┬───┬──┬───┬──┬───┬──┬───┬──┬───┬──┬───┬──┬───┬──┐
 S = │e1│ A │e2│ B │e3│ h │e4│ e │e5│ d │e6│ e │e7│ C │e8│ D │e9│
     └──┴───┴──┴───┴──┴───┴──┴───┴──┴───┴──┴───┴──┴───┴──┴───┴──┘
@@ -88,13 +88,13 @@ As you can see, the input `"ABhedeCD"` will fail because on `e3`, the regex `(?!
 #### Answer 2 (score 697)
 Note that the solution to <strong>does not <em>start with</em> “hede”</strong>:  
 
-```perl
+```regex
 ^(?!hede).*$
 ```
 
 is generally much more efficient than the solution to <strong>does not <em>contain</em> “hede”</strong>:  
 
-```perl
+```regex
 ^((?!hede).)*$
 ```
 
@@ -115,7 +115,7 @@ How can an email address be validated in JavaScript?
 #### Answer accepted (score 4568)
 Using <a href="http://en.wikipedia.org/wiki/Regular_expression" rel="noreferrer">regular expressions</a> is probably the best way. You can see a bunch of tests <a href="http://jsfiddle.net/ghvj4gy9/embedded/result,js/" rel="noreferrer">here</a> (taken from <a href="https://cs.chromium.org/chromium/src/third_party/blink/web_tests/fast/forms/resources/ValidityState-typeMismatch-email.js?q=ValidityState-typeMismatch-email.js&amp;sq=package:chromium&amp;dr" rel="noreferrer">chromium</a>)  
 
-```perl
+```regex
 function validateEmail(email) {
     var re = /^(([^&lt;&gt;()\[\]\\.,;:\s@"]+(\.[^&lt;&gt;()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
@@ -124,7 +124,7 @@ function validateEmail(email) {
 
 Here's the example of regular expresion that accepts unicode:  
 
-```perl
+```regex
 var re = /^(([^&lt;&gt;()\[\]\.,;:\s@\"]+(\.[^&lt;&gt;()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^&lt;&gt;()[\]\.,;:\s@\"]+\.)+[^&lt;&gt;()[\]\.,;:\s@\"]{2,})$/i;
 ```
 
@@ -134,7 +134,7 @@ Here's an example of the above in action:
 
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="true" data-babel="false">
 <div class="snippet-code">
-```perl
+```regex
 function validateEmail(email) {
   var re = /^(([^&lt;&gt;()[\]\\.,;:\s@\"]+(\.[^&lt;&gt;()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(email);
@@ -155,9 +155,9 @@ function validate() {
   return false;
 }
 
-$("#validate").on("click", validate);```
-```perl
-&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"&gt;&lt;/script&gt;
+$("#validate").on("click", validate);
+```
+<pre class="snippet-code-html lang-html prettyprint-override"><code>&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"&gt;&lt;/script&gt;
 
 &lt;form&gt;
   &lt;p&gt;Enter an email address:&lt;/p&gt;
@@ -165,7 +165,7 @@ $("#validate").on("click", validate);```
   &lt;button type='submit' id='validate'&gt;Validate!&lt;/button&gt;
 &lt;/form&gt;
 
-&lt;h2 id='result'&gt;&lt;/h2&gt;```
+&lt;h2 id='result'&gt;&lt;/h2&gt;</code></pre>
 </div>
 </div>
 
@@ -198,13 +198,13 @@ anystring@anystring.anystring
 
 The regular expression:  
 
-```perl
+```regex
 /\S+@\S+\.\S+/
 ```
 
 Example JavaScript function:  
 
-```perl
+```regex
 function validateEmail(email) 
 {
     var re = /\S+@\S+\.\S+/;
@@ -219,21 +219,21 @@ function validateEmail(email)
 #### Question
 I need to match all of these opening tags:  
 
-```perl
+```regex
 &lt;p&gt;
 &lt;a href="foo"&gt;
 ```
 
 But not these:  
 
-```perl
+```regex
 &lt;br /&gt;
 &lt;hr class="foo" /&gt;
 ```
 
 I came up with this and wanted to make sure I've got it right. I am only capturing the `a-z`.  
 
-```perl
+```regex
 &lt;([a-z]+) *[^/]*?&gt;
 ```
 
@@ -289,7 +289,7 @@ I want a regular expression to check that
 
 And here is my validation expression which is for eight characters including one uppercase letter, one lowercase letter, and one number or special character.  
 
-```perl
+```regex
 (?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
 ```
 
@@ -314,7 +314,7 @@ Seeing your comment, this is how I would go about it:
 Take a look at <a href="http://www.regular-expressions.info/reference.html" rel="noreferrer">this</a> tutorial for more information.  
 
 #### Answer 2 (score 101)
-```perl
+```regex
 (                   # Start of group
     (?=.*\d)        #   must contain at least one digit
     (?=.*[A-Z])     #   must contain at least one uppercase character
@@ -326,7 +326,7 @@ Take a look at <a href="http://www.regular-expressions.info/reference.html" rel=
 
 In one line:  
 
-```perl
+```regex
 ((?=.*\d)(?=.*[A-Z])(?=.*\W).{8,8})
 ```
 
@@ -334,7 +334,7 @@ In one line:
 
 You need to match entire input string. So, you can enclose the regex between `^` and `$` to prevent accidentally assuming partial matches as matching entire input:  
 
-```perl
+```regex
 ^((?=.*\d)(?=.*[A-Z])(?=.*\W).{8,8})$
 ```
 
@@ -356,7 +356,7 @@ anything with less than 8 characters <strong>OR</strong> anything with no number
 
 So:  
 
-```perl
+```regex
 ^(.{0,7}|[^0-9]*|[^A-Z]*|[a-zA-Z0-9]*)$
 ```
 
@@ -371,13 +371,13 @@ What would be the best regular expression for this scenario?
 
 Given this URL:  
 
-```perl
+```regex
 http://php.net/manual/en/function.preg-match.php
 ```
 
 How should I go about selecting everything between (but not including) `http://php.net` and `.php`:  
 
-```perl
+```regex
 /manual/en/function.preg-match
 ```
 
@@ -386,7 +386,7 @@ This is for an <a href="http://en.wikipedia.org/wiki/Nginx" rel="nofollow">Nginx
 #### Answer accepted (score 8)
 Like this:  
 
-```perl
+```regex
 if (preg_match('/(?&lt;=net).*(?=\.php)/', $subject, $regs)) {
     $result = $regs[0];
 }
@@ -394,7 +394,7 @@ if (preg_match('/(?&lt;=net).*(?=\.php)/', $subject, $regs)) {
 
 Explanation:  
 
-```perl
+```regex
 "
 (?&lt;=      # Assert that the regex below can be matched, with the match ending at this position (positive lookbehind)
    net       # Match the characters “net” literally
@@ -413,7 +413,7 @@ A regular expression might not be the most effective tool for this job.
 
 Try using <a href="http://php.net/parse_url" rel="noreferrer">`parse_url()`</a>, combined with <a href="http://php.net/pathinfo" rel="noreferrer">`pathinfo()`</a>:  
 
-```perl
+```regex
 $url      = 'http://php.net/manual/en/function.preg-match.php';
 $path     = parse_url($url, PHP_URL_PATH);
 $pathinfo = pathinfo($path);
@@ -486,7 +486,7 @@ You should not use regular expressions to validate email addresses.
 
 Instead, use the <a href="http://msdn.microsoft.com/en-us/library/system.net.mail.mailaddress.aspx" rel="noreferrer">MailAddress</a> class, like this:  
 
-```perl
+```regex
 try {
     address = new MailAddress(address).Address;
 } catch(FormatException) {
@@ -603,7 +603,7 @@ I would like to have a regular expression that checks if a string contains only 
 #### Answer 2 (score 869)
 To match a string that contains <em>only</em> those characters (or an empty string), try  
 
-```perl
+```regex
 "^[a-zA-Z0-9_]*$"
 ```
 
@@ -611,7 +611,7 @@ This works for .NET regular expressions, and probably a lot of other languages a
 
 Breaking it down:  
 
-```perl
+```regex
 ^ : start of string
 [ : beginning of character group
 a-z : any lowercase letter
@@ -630,7 +630,7 @@ If you don't want to allow empty strings, use + instead of *.
 #### Answer 3 (score 318)
 There's a lot of verbosity in here, and I'm deeply against it, so, my conclusive answer would be:  
 
-```perl
+```regex
 /^\w+$/
 ```
 
@@ -662,7 +662,7 @@ Better option... just strip all non-digit characters on input (except 'x' and le
 
 Then, you end up with values like:  
 
-```perl
+```regex
  12345678901
  12345678901x1234
  345678901x1234
@@ -676,7 +676,7 @@ Then, you end up with values like:
 
 Then when you display, reformat to your hearts content. e.g.  
 
-```perl
+```regex
   1 (234) 567-8901
   1 (234) 567-8901 x1234
 ```
@@ -688,12 +688,12 @@ You need to specify exactly what you want. What are legal delimiters? Spaces, da
 
 Here's a regex for a 7 or 10 digit number, with extensions allowed, delimiters are spaces, dashes, or periods:  
 
-```perl
+```regex
 ^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$
 ```
 
 #### Answer 3 (score 293)
-```perl
+```regex
 .*
 ```
 
@@ -701,7 +701,7 @@ If the user wants to give you his phone number, then trust him to get it right. 
 
 I would also consider any of the following as valid entries on a web site:  
 
-```perl
+```regex
 "123 456 7890 until 6pm, then 098 765 4321"  
 "123 456 7890 or try my mobile on 098 765 4321"  
 "ex-directory - mind your own business"
@@ -833,7 +833,7 @@ To use in Excel follow these steps :
 
 <em>Precedence table:</em>  
 
-```perl
+```regex
 Order  Name                Representation
 1      Parentheses         ( )
 2      Multipliers         ? + * {m,n} {m, n}?
@@ -845,7 +845,7 @@ Order  Name                Representation
 
 <em>Predefined Character Abbreviations:</em>  
 
-```perl
+```regex
 abr    same as       meaning
 \d     [0-9]         Any single digit
 \D     [^0-9]        Any single character that's not a digit
@@ -862,7 +862,7 @@ abr    same as       meaning
 
 The following example macro looks at the value in cell `A1` to see if the first 1 or 2 characters are digits.  If so, they are removed and the rest of the string is displayed.  If not, then a box appears telling you that no match is found.  Cell `A1` values of `12abc` will return `abc`, value of `1abc` will return `abc`, value of `abc123` will return "Not Matched" because the digits were not at the start of the string.  
 
-```perl
+```regex
 Private Sub simpleRegex()
     Dim strPattern As String: strPattern = "^[0-9]{1,2}"
     Dim strReplace As String: strReplace = ""
@@ -897,7 +897,7 @@ End Sub
 
 This example is the same as example 1 but is setup to run as an in-cell function. To use, change the code to this:  
 
-```perl
+```regex
 Function simpleCellRegex(Myrange As Range) As String
     Dim regEx As New RegExp
     Dim strPattern As String
@@ -938,7 +938,7 @@ Place your strings ("12abc") in cell `A1`.  Enter this formula `=simpleCellRegex
 
 This example is the same as example 1 but loops through a range of cells.  
 
-```perl
+```regex
 Private Sub simpleRegex()
     Dim strPattern As String: strPattern = "^[0-9]{1,2}"
     Dim strReplace As String: strReplace = ""
@@ -975,7 +975,7 @@ End Sub
 
 This example loops through a range (`A1`, `A2` &amp; `A3`) and looks for a string starting with three digits followed by a single alpha character and then 4 numeric digits.  The output splits apart the pattern matches into adjacent cells by using the `()`.  `$1` represents the first pattern matched within the first set of `()`.  
 
-```perl
+```regex
 Private Sub splitUpRegexPattern()
     Dim regEx As New RegExp
     Dim strPattern As String
@@ -1017,7 +1017,7 @@ Results:
 
 <strong>Additional Pattern Examples</strong>  
 
-```perl
+```regex
 String   Regex Pattern                  Explanation
 a1aaa    [a-zA-Z][0-9][a-zA-Z]{3}       Single alpha, single digit, three alpha characters
 a1aaa    [a-zA-Z]?[0-9][a-zA-Z]{3}      May or may not have preceeding alpha character
@@ -1044,7 +1044,7 @@ It takes 2-3 parameters.
 
 Extracting an email address:  
 
-```perl
+```regex
 =regex("Peter Gordon: some@email.com, 47", "\w+@\w+\.\w+")
 =regex("Peter Gordon: some@email.com, 47", "\w+@\w+\.\w+", "$0")
 ```
@@ -1053,7 +1053,7 @@ Results in: `some@email.com`
 
 Extracting several substrings:  
 
-```perl
+```regex
 =regex("Peter Gordon: some@email.com, 47", "^(.+): (.+), (\d+)$", "E-Mail: $2, Name: $1")
 ```
 
@@ -1061,7 +1061,7 @@ Results in: `E-Mail: some@email.com, Name: Peter Gordon`
 
 To take apart a combined string in a single cell into its components in multiple cells:  
 
-```perl
+```regex
 =regex("Peter Gordon: some@email.com, 47", "^(.+): (.+), (\d+)$", "$" &amp; 1)
 =regex("Peter Gordon: some@email.com, 47", "^(.+): (.+), (\d+)$", "$" &amp; 2)
 ```
@@ -1087,7 +1087,7 @@ To use this UDF do the following (roughly based on <a href="https://support.offi
 <img src="https://i.stack.imgur.com/nlTpn.png" alt="Second icon in the icon row -&gt; Module">  </li>
 <li><p>In the big text window in the middle insert the following:</p>
 
-```perl
+```regex
 Function regex(strInput As String, matchPattern As String, Optional ByVal outputPattern As String = "$0") As Variant
     Dim inputRegexObj As New VBScript_RegExp_55.RegExp, outputRegexObj As New VBScript_RegExp_55.RegExp, outReplaceRegexObj As New VBScript_RegExp_55.RegExp
     Dim inputMatches As Object, replaceMatches As Object, replaceMatch As Object
@@ -1155,7 +1155,7 @@ Expanding on <a href="https://stackoverflow.com/users/1975049/patszim">patszim</
 <a href="https://i.stack.imgur.com/DFJ7F.png" rel="noreferrer"><img src="https://i.stack.imgur.com/DFJ7F.png" alt="![Excel VBA insert code into module"></a></li>
 <li><p>add the following code:  </p>
 
-```perl
+```regex
 Function RegxFunc(strInput As String, regexPattern As String) As String
     Dim regEx As New RegExp
     With regEx
@@ -1188,20 +1188,20 @@ I would extract all the numbers contained in a string. Which is the better suite
 
 Example:  
 
-```perl
+```regex
 line = "hello 12 hi 89"
 ```
 
 Result:  
 
-```perl
+```regex
 [12, 89]
 ```
 
 #### Answer accepted (score 423)
 If you only want to extract only positive integers, try the following:  
 
-```perl
+```regex
 &gt;&gt;&gt; str = "h3110 23 cat 444.4 rabbit 11 2 dog"
 &gt;&gt;&gt; [int(s) for s in str.split() if s.isdigit()]
 [23, 11, 2]
@@ -1209,7 +1209,7 @@ If you only want to extract only positive integers, try the following:
 
 I would argue that this is better than the regex example for three reasons.  First,  you don't need another module; secondly, it's more readable because you don't need to parse the regex mini-language; and third, it is faster (and thus likely more pythonic):  
 
-```perl
+```regex
 python -m timeit -s "str = 'h3110 23 cat 444.4 rabbit 11 2 dog' * 1000" "[s for s in str.split() if s.isdigit()]"
 100 loops, best of 3: 2.84 msec per loop
 
@@ -1222,7 +1222,7 @@ This will not recognize floats, negative integers, or integers in hexadecimal fo
 #### Answer 2 (score 393)
 I'd use a regexp :  
 
-```perl
+```regex
 &gt;&gt;&gt; import re
 &gt;&gt;&gt; re.findall(r'\d+', 'hello 42 I\'m a 32 string 30')
 ['42', '32', '30']
@@ -1230,14 +1230,14 @@ I'd use a regexp :
 
 This would also match 42 from `bla42bla`. If you only want numbers delimited by word boundaries (space, period, comma), you can use \b :  
 
-```perl
+```regex
 &gt;&gt;&gt; re.findall(r'\b\d+\b', 'he33llo 42 I\'m a 32 string 30')
 ['42', '32', '30']
 ```
 
 To end up with a list of numbers instead of a list of strings:  
 
-```perl
+```regex
 &gt;&gt;&gt; [int(s) for s in re.findall(r'\b\d+\b', 'he33llo 42 I\'m a 32 string 30')]
 [42, 32, 30]
 ```
@@ -1245,7 +1245,7 @@ To end up with a list of numbers instead of a list of strings:
 #### Answer 3 (score 81)
 This is more than a bit late, but you can extend the regex expression to account for scientific notation too.  
 
-```perl
+```regex
 import re
 
 # Format is [(&lt;string&gt;, &lt;expected output&gt;), ...]
@@ -1297,7 +1297,7 @@ How would this be done? I've heard a lot about regular expressions (regex) being
 #### Answer accepted (score 614)
 Easy peasy:  
 
-```perl
+```regex
 function clean($string) {
    $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
 
@@ -1307,7 +1307,7 @@ function clean($string) {
 
 <b>Usage:</b>  
 
-```perl
+```regex
 echo clean('a|"bc!@£de^&amp;$f g');
 ```
 
@@ -1319,7 +1319,7 @@ Will output: `abcdef-g`
   Hey, just a quick question, how can I prevent multiple hyphens from being next to each other? and have them replaced with just 1?  
 </blockquote>
 
-```perl
+```regex
 function clean($string) {
    $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
    $string = preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
@@ -1333,7 +1333,7 @@ function clean($string) {
 
 The solution below has a "SEO friendlier" version:  
 
-```perl
+```regex
 function hyphenize($string) {
     $dict = array(
         "I'm"      =&gt; "I am",
@@ -1393,7 +1393,7 @@ In order to both keep UTF8 characters and replace some misspellings, the faster 
 
 A simple approach:  
 
-```perl
+```regex
 // Remove all characters except A-Z, a-z, 0-9, dots, hyphens and spaces
 // Note that the hyphen must go last not to be confused with a range (A-Z)
 // and the dot, NOT being special (I know. My life was a lie), is NOT escaped
@@ -1417,7 +1417,7 @@ Note that you might have to first `urldecode()` the URL, since %20 and + both ar
 
 So the finished function along with test cases:  
 
-```perl
+```regex
 function hyphenize($string) {
     return 
     ## strtolower(
@@ -1455,7 +1455,7 @@ The function above also implements converting to lowercase - but that's a taste.
 #### Answer 3 (score 36)
 Here, check out this function:  
 
-```perl
+```regex
 function seo_friendly_url($string){
     $string = str_replace(array('[\', \']'), '', $string);
     $string = preg_replace('/\[.*\]/U', '', $string);
@@ -1474,7 +1474,7 @@ function seo_friendly_url($string){
 #### Question
 I haven't used regular expressions at all, so I'm having difficulty troubleshooting. I want the regex to match only when the contained string is all numbers; but with the two examples below it is matching a string that contains all numbers plus an equals sign like "1234=4321". I'm sure there's a way to change this behavior, but as I said, I've never really done much with regular expressions.  
 
-```perl
+```regex
 string compare = "1234=4321";
 Regex regex = new Regex(@"[\d]");
 
@@ -1496,7 +1496,7 @@ In case it matters, I'm using C# and .NET2.0.
 #### Answer accepted (score 449)
 Use the beginning and end anchors.  
 
-```perl
+```regex
 Regex regex = new Regex(@"^\d$");
 ```
 
@@ -1513,7 +1513,7 @@ If you need to include any numeric representations other than just digits (like 
 #### Answer 2 (score 99)
 Your regex will match anything that contains a number, you want to use anchors to match the whole string and then match one or more numbers:  
 
-```perl
+```regex
 regex = new Regex("^[0-9]+$");
 ```
 
@@ -1522,7 +1522,7 @@ The `^` will anchor the beginning of the string, the `$` will anchor the end of 
 #### Answer 3 (score 37)
 If you need to tolerate decimal point and thousand marker  
 
-```perl
+```regex
 var regex = new Regex(@"^-?[0-9][0-9,\.]+$");
 ```
 
@@ -1535,7 +1535,7 @@ You will need a "-", if the number can go negative.
 #### Question
 The following should be matched:  
 
-```perl
+```regex
 AAA123
 ABCDEFGH123
 XXXX123
@@ -1557,7 +1557,7 @@ Yes, you can. That should work.
 #### Answer 2 (score 52)
 Yes that will work, though note that `.` will not match newlines unless you pass the <a href="http://java.sun.com/javase/7/docs/api/java/util/regex/Pattern.html#DOTALL" rel="noreferrer">DOTALL</a> flag when compiling the expression:  
 
-```perl
+```regex
 Pattern pattern = Pattern.compile(".*123", Pattern.DOTALL);
 Matcher matcher = pattern.matcher(inputStr);
 boolean matchFound = matcher.matches();
@@ -1573,7 +1573,7 @@ Use the pattern `.` to match any character once, `.*` to match any character zer
 #### Question
 I want to match a portion of a string using a <a href="http://en.wikipedia.org/wiki/Regular_expression" rel="noreferrer">regular expression</a> and then access that parenthesized substring:  
 
-```perl
+```regex
 var myString = "something format_abc"; // I want "abc"
 
 var arr = /(?:^|\s)format_(.*?)(?:\s|$)/.exec(myString);
@@ -1589,7 +1589,7 @@ What am I doing wrong?
 
 I've discovered that there was nothing wrong with the regular expression code above: the actual string which I was testing against was this:  
 
-```perl
+```regex
 "date format_%A"
 ```
 
@@ -1604,11 +1604,12 @@ You can access capturing groups like this:
 
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="true" data-babel="false">
 <div class="snippet-code">
-```perl
+```regex
 var myString = "something format_abc";
 var myRegexp = /(?:^|\s)format_(.*?)(?:\s|$)/g;
 var match = myRegexp.exec(myString);
-console.log(match[1]); // abc```
+console.log(match[1]); // abc
+```
 </div>
 </div>
 
@@ -1617,7 +1618,7 @@ And if there are multiple matches you can iterate over them:
 
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="true" data-babel="false">
 <div class="snippet-code">
-```perl
+```regex
 var myString = "something format_abc";
 var myRegexp = /(?:^|\s)format_(.*?)(?:\s|$)/g;
 match = myRegexp.exec(myString);
@@ -1627,7 +1628,8 @@ while (match != null) {
   // capturing group n: match[n]
   console.log(match[0])
   match = myRegexp.exec(myString);
-}```
+}
+```
 </div>
 </div>
 
@@ -1640,7 +1642,7 @@ The method returns an iterator and is used as follows:
 
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="true" data-babel="false">
 <div class="snippet-code">
-```perl
+```regex
 const string = "something format_abc";
 const regexp = /(?:^|\s)format_(.*?)(?:\s|$)/g;
 const matches = string.matchAll(regexp);
@@ -1648,14 +1650,15 @@ const matches = string.matchAll(regexp);
 for (const match of matches) {
   console.log(match);
   console.log(match.index)
-}```
+}
+```
 </div>
 </div>
 
 
 As it returns an iterator, we can say it's lazy, this is useful when handling particularly large numbers of capturing groups, or very large strings. But if you need, the result can be easily transformed into an Array by using the <em>spread syntax</em> or the `Array.from` method:  
 
-```perl
+```regex
 function getFirstGroup(regexp, str) {
   const array = [...str.matchAll(regexp)];
   return array.map(m =&gt; m[1]);
@@ -1671,7 +1674,7 @@ In the meantime, while this proposal gets more wide support, you can use the <a 
 
 Also, the internal workings of the method are simple. An equivalent implementation using a generator function would be as follows:  
 
-```perl
+```regex
 function* matchAll(str, regexp) {
   const flags = regexp.global ? regexp.flags : regexp.flags + "g";
   const re = new RegExp(regexp, flags);
@@ -1693,7 +1696,7 @@ Here’s a method you can use to get the <em>n</em>​th capturing group for eac
 
 <p><div class="snippet" data-lang="js" data-hide="false">
 <div class="snippet-code">
-```perl
+```regex
 function getMatches(string, regex, index) {
   index || (index = 1); // default to the first capturing group
   var matches = [];
@@ -1714,7 +1717,8 @@ var matches = getMatches(myString, myRegEx, 1);
 
 // Log results
 document.write(matches.length + ' matches found: ' + JSON.stringify(matches))
-console.log(matches);```
+console.log(matches);
+```
 </div>
 </div>
 
@@ -1722,10 +1726,11 @@ console.log(matches);```
 #### Answer 3 (score 55)
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="true" data-babel="false">
 <div class="snippet-code">
-```perl
+```regex
 var myString = "something format_abc";
 var arr = myString.match(/\bformat_(.*?)\b/);
-console.log(arr[0] + " " + arr[1]);```
+console.log(arr[0] + " " + arr[1]);
+```
 </div>
 </div>
 
@@ -1739,7 +1744,7 @@ The `\b` isn't exactly the same thing. (It works on `--format_foo/`, but doesn't
 #### Question
 I want to use JavaScript (can be with jQuery) to do some client-side validation to check whether a string matches the regex:  
 
-```perl
+```regex
 ^([a-z0-9]{5,})$
 ```
 
@@ -1752,12 +1757,13 @@ Use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/G
 
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="true" data-babel="false">
 <div class="snippet-code">
-```perl
+```regex
 console.log(/^([a-z0-9]{5,})$/.test('abc1')); // false
 
 console.log(/^([a-z0-9]{5,})$/.test('abc12')); // true
 
-console.log(/^([a-z0-9]{5,})$/.test('abc123')); // true```
+console.log(/^([a-z0-9]{5,})$/.test('abc123')); // true
+```
 </div>
 </div>
 
@@ -1767,7 +1773,7 @@ console.log(/^([a-z0-9]{5,})$/.test('abc123')); // true```
 #### Answer 2 (score 160)
 Use `test()` method :   
 
-```perl
+```regex
 var term = "sample1";
 var re = new RegExp("^([a-z0-9]{5,})$");
 if (re.test(term)) {
@@ -1780,7 +1786,7 @@ if (re.test(term)) {
 #### Answer 3 (score 83)
 You can use `match()` as well:  
 
-```perl
+```regex
 if (str.match(/^([a-z0-9]{5,})$/)) {
     alert("match!");
 }
@@ -1792,7 +1798,7 @@ But `test()` seems to be faster as you can read <a href="https://stackoverflow.c
 
 `match()` works only with strings, but `test()` works also with integers.  
 
-```perl
+```regex
 12345.match(/^([a-z0-9]{5,})$/); // ERROR
 /^([a-z0-9]{5,})$/.test(12345);  // true
 /^([a-z0-9]{5,})$/.test(null);   // false
@@ -1808,7 +1814,7 @@ But `test()` seems to be faster as you can read <a href="https://stackoverflow.c
 #### Question
 I have a parameter file of the form:  
 
-```perl
+```regex
 parameter-name parameter-value
 ```
 
@@ -1818,7 +1824,7 @@ I am using a line replace function <a href="https://stackoverflow.com/questions/
 
 Here is the regular expression that I'm using:  
 
-```perl
+```regex
 line.replace("^.*interfaceOpDataFile.*$/i", "interfaceOpDataFile %s" % (fileIn))
 ```
 
@@ -1833,7 +1839,7 @@ To perform a substitution using a regular expression, use `re.sub()` <sup><a hre
 
 For example:  
 
-```perl
+```regex
 import re
 
 line = re.sub(
@@ -1845,7 +1851,7 @@ line = re.sub(
 
 In a loop, it would be better to compile the regular expression first:  
 
-```perl
+```regex
 import re
 
 regex = re.compile(r"^.*interfaceOpDataFile.*$", re.IGNORECASE)
@@ -1857,7 +1863,7 @@ for line in some_file:
 #### Answer 2 (score 340)
 You are looking for the <a href="http://docs.python.org/2/library/re.html#re.sub" rel="noreferrer">re.sub</a> function.  
 
-```perl
+```regex
 import re
 s = "Example String"
 replaced = re.sub('[ES]', 'a', s)
@@ -1869,7 +1875,7 @@ will print `axample atring`
 #### Answer 3 (score 14)
 As a summary   
 
-```perl
+```regex
 import sys
 import re
 
@@ -1891,13 +1897,13 @@ I need a regex that will accept only digits from 0-9 and nothing else. No letter
 
 I thought this would work:  
 
-```perl
+```regex
 ^[0-9]
 ```
 
 or even   
 
-```perl
+```regex
 \d+
 ```
 
@@ -1909,7 +1915,7 @@ EDIT:
 
 This is exactly what I am doing:  
 
-```perl
+```regex
  private void OnTextChanged(object sender, EventArgs e)
     {
 
@@ -1925,7 +1931,7 @@ This is allowing the characters I mentioned above.
 #### Answer accepted (score 332)
 Your regex `^[0-9]` matches anything <em>beginning</em> with a digit, including strings like "1A". To avoid a partial match, append a `$` to the end:  
 
-```perl
+```regex
 ^[0-9]*$
 ```
 
@@ -1933,7 +1939,7 @@ This accepts any number of digits, including none. To accept one or more digits,
 
 <strong>UPDATE:</strong> You mixed up the arguments to `IsMatch`. The pattern should be the second argument, not the first:  
 
-```perl
+```regex
 if (!System.Text.RegularExpressions.Regex.IsMatch(textbox.Text, "^[0-9]*$"))
 ```
 
@@ -1966,7 +1972,7 @@ You can even add capture groups inside the non-consuming expressions if you need
 #### Answer 3 (score 317)
 You need to use lookahead as some of the other responders have said, but the lookahead has to account for other characters between its target word and the current match position.  For example:  
 
-```perl
+```regex
 (?=.*word1)(?=.*word2)(?=.*word3)
 ```
 
@@ -1974,7 +1980,7 @@ The `.*` in the first lookahead lets it match however many characters it needs t
 
 In order to match a whole paragraph, you need to anchor the regex at both ends and add a final `.*` to consume the remaining characters.  Using Perl-style notation, that would be:  
 
-```perl
+```regex
 /^(?=.*word1)(?=.*word2)(?=.*word3).*$/m
 ```
 
@@ -1982,7 +1988,7 @@ The 'm' modifier is for multline mode; it lets the `^` and `$` match at paragrap
 
 Finally, you want to make sure you're matching whole words and not just fragments of longer words, so you need to add word boundaries:  
 
-```perl
+```regex
 /^(?=.*\bword1\b)(?=.*\bword2\b)(?=.*\bword3\b).*$/m
 ```
 
@@ -1993,14 +1999,14 @@ Finally, you want to make sure you're matching whole words and not just fragment
 #### Question
 I need something like:  
 
-```perl
+```regex
 grep ^"unwanted_word"XXXXXXXX
 ```
 
 #### Answer accepted (score 730)
 You can also do it using `-v` (for `--invert-match`) option of grep as:  
 
-```perl
+```regex
 grep -v "unwanted_word" file | grep XXXXXXXX
 ```
 
@@ -2010,14 +2016,14 @@ grep -v "unwanted_word" file | grep XXXXXXXX
 
 From your comment it looks like you want to list all lines without the `unwanted_word`. In that case all you need is:  
 
-```perl
+```regex
 grep -v 'unwanted_word' file
 ```
 
 #### Answer 2 (score 79)
 I understood the question as "How do I match a word but exclude another", for which one solution is two greps in series: First grep finding the wanted "word1", second grep excluding "word2":  
 
-```perl
+```regex
 grep "word1" | grep -v "word2"
 ```
 
@@ -2028,13 +2034,13 @@ Hope this helps.
 #### Answer 3 (score 33)
 If your `grep` supports Perl regular expression with `-P` option you can do (if bash; if tcsh you'll need to escape the `!`):  
 
-```perl
+```regex
 grep -P '(?!.*unwanted_word)keyword' file
 ```
 
 Demo:  
 
-```perl
+```regex
 $ cat file
 foo1
 foo2
@@ -2046,7 +2052,7 @@ baz
 
 Let us now list all `foo` except `foo3`  
 
-```perl
+```regex
 $ grep -P '(?!.*foo3)foo' file
 foo1
 foo2
@@ -2063,7 +2069,7 @@ I need to match a space character in a PHP regular expression. Anyone got any id
 
 I mean like "gavin schulz", the space in between the two words. I am using a regular expression to make sure that I only allow letters, number and a space. But I'm not sure how to find the space. This is what I have right now:  
 
-```perl
+```regex
 $newtag = preg_replace("/[^a-zA-Z0-9s|]/", "", $tag);
 ```
 
@@ -2082,14 +2088,14 @@ For PHP specifically, <a href="http://www.wellho.net/regex/php.html" rel="norefe
 
 From your edit, it appears you want to remove all non valid characters The start of this is (note the space inside the regex):  
 
-```perl
+```regex
 $newtag = preg_replace ("/[^a-zA-Z0-9 ]/", "", $tag);
 #                                    ^ space here
 ```
 
 If you also want trickery to ensure there's only one space between each word and none at the start or end, that's a little more complicated (and probably another question) but the basic idea would be:  
 
-```perl
+```regex
 $newtag = preg_replace ("/ +/", " ", $tag); # convert all multispaces to space
 $newtag = preg_replace ("/^ /", "", $tag);  # remove space from start
 $newtag = preg_replace ("/ $/", "", $tag);  # and end
@@ -2122,13 +2128,13 @@ Here is a everything you need to know about whitespace in regular expressions:
 #### Question
 I would like to create a `String.replaceAll()` method in JavaScript and I'm thinking that using a regex would be most terse way to do it.  However, I can't figure out how to pass a variable in to a regex.  I can do this already which will replace all the instances of `"B"` with `"A"`.  
 
-```perl
+```regex
 "ABABAB".replace(/B/g, "A");
 ```
 
 But I want to do something like this:  
 
-```perl
+```regex
 String.prototype.replaceAll = function(replaceThis, withThis) {
     this.replace(/replaceThis/g, withThis);
 };
@@ -2139,21 +2145,21 @@ But obviously this will only replace the text `"replaceThis"`...so how do I pass
 #### Answer accepted (score 1682)
 Instead of using the `/regex/g` syntax, you can construct a new <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Guide/Regular_Expressions" rel="noreferrer">RegExp</a> object:  
 
-```perl
+```regex
 var replace = "regex";
 var re = new RegExp(replace,"g");
 ```
 
 You can dynamically create regex objects this way. Then you will do:  
 
-```perl
+```regex
 "mystring".replace(re, "newstring");
 ```
 
 #### Answer 2 (score 196)
 As Eric Wendelin mentioned, you can do something like this:  
 
-```perl
+```regex
 str1 = "pattern"
 var re = new RegExp(str1, "g");
 "pattern matching .".replace(re, "regex");
@@ -2161,13 +2167,13 @@ var re = new RegExp(str1, "g");
 
 This yields `"regex matching ."`. However, it will fail if str1 is `"."`. You'd expect the result to be `"pattern matching regex"`, replacing the period with `"regex"`, but it'll turn out to be...  
 
-```perl
+```regex
 regexregexregexregexregexregexregexregexregexregexregexregexregexregexregexregexregexregex
 ```
 
 This is because, although `"."` is a String, in the RegExp constructor it's still interpreted as a regular expression, meaning any non-line-break character, meaning every character in the string. For this purpose, the following function may be useful:  
 
-```perl
+```regex
  RegExp.quote = function(str) {
      return str.replace(/([.?*+^$[\]\\(){}|-])/g, "\\$1");
  };
@@ -2175,7 +2181,7 @@ This is because, although `"."` is a String, in the RegExp constructor it's stil
 
 Then you can do:  
 
-```perl
+```regex
 str1 = "."
 var re = new RegExp(RegExp.quote(str1), "g");
 "pattern matching .".replace(re, "regex");
@@ -2190,7 +2196,7 @@ yielding `"pattern matching regex"`.
 
 As always: don't use regex unless you have to. For a simple string replace, the idiom is:  
 
-```perl
+```regex
 'ABABAB'.split('B').join('A')
 ```
 
@@ -2208,20 +2214,20 @@ Let me try to explain this with an example.
 
 Consider the following text:  
 
-```perl
+```regex
 http://stackoverflow.com/
 https://stackoverflow.com/questions/tagged/regex
 ```
 
 Now, if I apply the regex below over it...  
 
-```perl
+```regex
 (https?|ftp)://([^/\r\n]+)(/[^\r\n]*)?
 ```
 
 ... I would get the following result:  
 
-```perl
+```regex
 Match "http://stackoverflow.com/"
      Group 1: "http"
      Group 2: "stackoverflow.com"
@@ -2235,13 +2241,13 @@ Match "https://stackoverflow.com/questions/tagged/regex"
 
 But I don't care about the protocol -- I just want the host and path of the URL. So, I change the regex to include the non-capturing group `(?:)`.  
 
-```perl
+```regex
 (?:https?|ftp)://([^/\r\n]+)(/[^\r\n]*)?
 ```
 
 Now, my result looks like this:  
 
-```perl
+```regex
 Match "http://stackoverflow.com/"
      Group 1: "stackoverflow.com"
      Group 2: "/"
@@ -2263,7 +2269,7 @@ Well, groups serve many purposes. They can help you to extract exact information
 
 Ok, imagine you have some kind of XML or HTML (be aware that <a href="https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags">regex may not be the best tool for the job</a>, but it is nice as an example). You want to parse the tags, so you could do something like this (I have added spaces to make it easier to understand):  
 
-```perl
+```regex
    \&lt;(?&lt;TAG&gt;.+?)\&gt; [^&lt;]*? \&lt;/\k&lt;TAG&gt;\&gt;
 or
    \&lt;(.+?)\&gt; [^&lt;]*? \&lt;/\1\&gt;
@@ -2273,19 +2279,19 @@ The first regex has a named group (TAG), while the second one uses a common grou
 
 Let's try some substitutions now. Consider the following text:  
 
-```perl
+```regex
 Lorem ipsum dolor sit amet consectetuer feugiat fames malesuada pretium egestas.
 ```
 
 Now, let's use this dumb regex over it:  
 
-```perl
+```regex
 \b(\S)(\S)(\S)(\S*)\b
 ```
 
 This regex matches words with at least 3 characters, and uses groups to separate the first three letters. The result is this:  
 
-```perl
+```regex
 Match "Lorem"
      Group 1: "L"
      Group 2: "o"
@@ -2308,13 +2314,13 @@ Match "consectetuer"
 
 So, if we apply the substitution string:  
 
-```perl
+```regex
 $1_$3$2_$4
 ```
 
 ... over it, we are trying to use the first group, add an underscore, use the third group, then the second group, add another underscore, and then the fourth group. The resulting string would be like the one below.  
 
-```perl
+```regex
 L_ro_em i_sp_um d_lo_or s_ti_ a_em_t c_no_sectetuer f_ue_giat f_ma_es m_la_esuada p_er_tium e_eg_stas.
 ```
 
@@ -2327,7 +2333,7 @@ You can use capturing groups to organize and parse an expression.  A non-capturi
 
 Say you want to match numeric text, but some numbers could be written as 1st, 2nd, 3rd, 4th,...  If you want to capture the numeric part, but not the (optional) suffix you can use a non-capturing group.  
 
-```perl
+```regex
 ([0-9]+)(?:st|nd|rd|th)?
 ```
 
@@ -2338,7 +2344,7 @@ That will match numbers in the form 1, 2, 3... or in the form 1st, 2nd, 3rd,... 
 
 An example would be something to match an IP address:  
 
-```perl
+```regex
 /(?:\d{1,3}\.){3}\d{1,3}/
 ```
 
@@ -2352,7 +2358,7 @@ Note that I don't care about saving the first 3 octets, but the `(?:...)` groupi
 <p>I have got a price field to display which sometimes can be either 100 or 100.99 or 100.9, What I want is to display the price in 2 decimal places only if the decimals are entered for that price , for instance if its 100 so it should only show 100 not 100.00 and if the price is 100.2 it should display 100.20 similarly for 100.22 should be same .
 I googled and came across some examples but they didn't match exactly what i wanted :</p>
 
-```perl
+```regex
 // just two decimal places
 String.Format("{0:0.00}", 123.4567);      // "123.46"
 String.Format("{0:0.00}", 123.4);         // "123.40"
@@ -2362,13 +2368,13 @@ String.Format("{0:0.00}", 123.0);         // "123.00"
 #### Answer accepted (score 140)
 An inelegant way would be:  
 
-```perl
+```regex
 var my = DoFormat(123.0);
 ```
 
 With `DoFormat` being something like:  
 
-```perl
+```regex
 public static string DoFormat( double myNumber )
 {
     var s = string.Format("{0:0.00}", myNumber);
@@ -2393,7 +2399,7 @@ In formatting numbers you can use `0` as a mandatory place and `#` as an optiona
 
 <strong>So:</strong>  
 
-```perl
+```regex
 // just two decimal places
 String.Format("{0:0.##}", 123.4567);      // "123.46"
 String.Format("{0:0.##}", 123.4);         // "123.4"
@@ -2402,7 +2408,7 @@ String.Format("{0:0.##}", 123.0);         // "123"
 
 You can also combine `0` with `#`.  
 
-```perl
+```regex
 String.Format("{0:0.0#}", 123.4567)       // "123.46"
 String.Format("{0:0.0#}", 123.4)          // "123.4"
 String.Format("{0:0.0#}", 123.0)          // "123.0"
@@ -2414,7 +2420,7 @@ For this formating method is always used `CurrentCulture`. For some Cultures `.`
 
 The simpliest solution comes from @Andrew (<a href="https://stackoverflow.com/questions/6951335#33180829">here</a>). So I personally would use something like this:  
 
-```perl
+```regex
 var number = 123.46;
 String.Format(number % 1 == 0 ? "{0:0}" : "{0:0.00}", number)
 ```
@@ -2429,7 +2435,7 @@ You'll have to use <strong>`0.##`</strong> pattern even it looks a little verbos
 
 A complete code example:  
 
-```perl
+```regex
 double a = 123.4567;
 double b = 123.40;
 double c = 123.00;
@@ -2452,7 +2458,7 @@ I want to match every character between "This is" and "sentence". Line breaks sh
 #### Answer accepted (score 541)
 For example  
 
-```perl
+```regex
 (?&lt;=This is)(.*)(?=sentence)
 ```
 
@@ -2468,7 +2474,7 @@ The next thing is if you use `.*` or `.*?`. The first one is greedy and will mat
 
 <a href="http://gskinner.com/RegExr/?2tr2n" rel="noreferrer">Regexr</a>  
 
-```perl
+```regex
 This is(?s)(.*)sentence
 ```
 
@@ -2476,7 +2482,7 @@ Where the (?s) turns on the dotall modifier, making the `.` matching the newline
 
 <strong>Update 2:</strong>  
 
-```perl
+```regex
 (?&lt;=is \()(.*?)(?=\s*\))
 ```
 
@@ -2487,7 +2493,7 @@ is matching your example "This is (a simple) sentence". See here on <a href="htt
 
 Resurrecting this question because the regex in the accepted answer doesn't seem quite correct to me. Why? Because  
 
-```perl
+```regex
 (?&lt;=This is)(.*)(?=sentence)
 ```
 
@@ -2499,7 +2505,7 @@ You need a lazy quantifier between the two lookarounds. Adding a `?` makes the s
 
 This matches what you want:  
 
-```perl
+```regex
 (?&lt;=This is).*?(?=sentence)
 ```
 
@@ -2509,7 +2515,7 @@ This matches what you want:
 
 Note that in the demo the "dot matches line breaks mode" (a.k.a.) dot-all is set (see <a href="http://www.rexegg.com/regex-modifiers.html#dotall">how to turn on DOTALL in various languages</a>). In many regex flavors, you can set it with the online modifier `(?s)`, turning the expression into:  
 
-```perl
+```regex
 (?s)(?&lt;=This is).*?(?=sentence)
 ```
 
@@ -2530,7 +2536,7 @@ Try `This is[\s\S]*sentence`, works in javascript
 ### 25: Regex to check whether a string contains only numbers (score [633360](https://stackoverflow.com/q/9011524) in 2018)
 
 #### Question
-```perl
+```regex
 hash = window.location.hash.substr(1);
 var reg = new RegExp('^[0-9]$');
 console.log(reg.test(hash));
@@ -2539,7 +2545,7 @@ console.log(reg.test(hash));
 I get false on both `"123"` and `"123f"`. I would like to check if the hash only contains numbers. Did I miss something?  
 
 #### Answer accepted (score 452)
-```perl
+```regex
 var reg = /^\d+$/;
 ```
 
@@ -2548,13 +2554,13 @@ should do it.  The original matches anything that consists of exactly one digit.
 #### Answer 2 (score 92)
 As you said, you want hash to contain only numbers.  
 
-```perl
+```regex
 var reg = new RegExp('^[0-9]+$');
 ```
 
 or   
 
-```perl
+```regex
 var reg = new RegExp('^\\d+$');
 ```
 
@@ -2564,13 +2570,13 @@ The + used means that search for one or more occurring of [0-9].</p>
 #### Answer 3 (score 64)
 This one will allow also for signed and float numbers or empty string:  
 
-```perl
+```regex
 var reg = /^-?\d*\.?\d*$/
 ```
 
 If you don't want allow to empty string use this one:  
 
-```perl
+```regex
 var reg = /^-?\d+\.?\d*$/
 ```
 
@@ -2584,7 +2590,7 @@ I know that I can negate group of chars as in `[^bar]` but I need a regular expr
 #### Answer accepted (score 641)
 A great way to do this is to use <a href="http://www.regular-expressions.info/lookaround.html" rel="noreferrer">negative lookahead</a>:  
 
-```perl
+```regex
 ^(?!.*bar).*$
 ```
 
@@ -2600,7 +2606,7 @@ Regular expressions usually mean you're doing scripting or some sort of low-perf
 #### Answer 3 (score 44)
 The following regex will do what you want (as long as negative lookbehinds and lookaheads are supported), matching things properly; the only problem is that it matches individual characters (i.e. each match is a single character rather than all characters between two consecutive "bar"s), possibly resulting in a potential for high overhead if you're working with very long strings.  
 
-```perl
+```regex
 b(?!ar)|(?&lt;!b)a|a(?!r)|(?&lt;!ba)r|[^bar]
 ```
 
@@ -2626,7 +2632,7 @@ If you want to match other letters than A–Z, you can either add them to the ch
 #### Question
 I'm looking for the Python equivalent of   
 
-```perl
+```regex
 String str = "many   fancy word \nhello    \thi";
 String whiteSpaceRegex = "\\s";
 String[] words = str.split(whiteSpaceRegex);
@@ -2637,13 +2643,13 @@ String[] words = str.split(whiteSpaceRegex);
 #### Answer accepted (score 745)
 The `str.split()` method without an argument splits on whitespace:  
 
-```perl
+```regex
 &gt;&gt;&gt; "many   fancy word \nhello    \thi".split()
 ['many', 'fancy', 'word', 'hello', 'hi']
 ```
 
 #### Answer 2 (score 63)
-```perl
+```regex
 import re
 s = "many   fancy word \nhello    \thi"
 re.split('\s+', s)
@@ -2652,7 +2658,7 @@ re.split('\s+', s)
 #### Answer 3 (score 14)
 Another method through `re` module. It does the reverse operation of matching all the words instead of spitting the whole sentence by space.  
 
-```perl
+```regex
 &gt;&gt;&gt; import re
 &gt;&gt;&gt; s = "many   fancy word \nhello    \thi"
 &gt;&gt;&gt; re.findall(r'\S+', s)
@@ -2670,7 +2676,7 @@ What is the regular expression for a decimal with a precision of 2?
 
 <em>Valid examples</em>:  
 
-```perl
+```regex
 123.12
 2
 56754
@@ -2681,7 +2687,7 @@ What is the regular expression for a decimal with a precision of 2?
 
 <em>Invalid examples:</em>  
 
-```perl
+```regex
 12.1232
 2.23332
 e666.76
@@ -2692,13 +2698,13 @@ The decimal point may be optional, and integers may also be included.
 #### Answer accepted (score 376)
 Valid regex tokens vary by implementation.  The most generic form that I know of would be:  
 
-```perl
+```regex
 [0-9]+(\.[0-9][0-9]?)?
 ```
 
 The most compact:  
 
-```perl
+```regex
 \d+(\.\d{1,2})?
 ```
 
@@ -2706,7 +2712,7 @@ Both assume that you must have both at least one digit before and one after the 
 
 To require that the whole string is a number of this form, wrap the expression in start and end tags such as (in Perl's form):  
 
-```perl
+```regex
 ^\d+(\.\d{1,2})?$
 ```
 
@@ -2716,13 +2722,13 @@ To require that the whole string is a number of this form, wrap the expression i
 Use this format `^\d{1,6}(\.\d{1,2})?$` to stop repetition and give a restriction to whole part of the decimal value.</p>
 
 #### Answer 2 (score 262)
-```perl
+```regex
 ^[0-9]+(\.[0-9]{1,2})?$
 ```
 
 And since regular expressions are horrible to read, much less understand, here is the verbose equivalent:  
 
-```perl
+```regex
 ^                         # Start of string
  [0-9]+                   # Require one or more numbers
        (                  # Begin optional group
@@ -2736,7 +2742,7 @@ You can replace `[0-9]` with `\d` in most regular expression implementations (in
 
 Also, here is the simple Python script I used to check it:  
 
-```perl
+```regex
 import re
 deci_num_checker = re.compile(r"""^[0-9]+(\.[0-9]{1,2})?$""")
 
@@ -2750,7 +2756,7 @@ assert [deci_num_checker.match(x) == None for x in invalid].count(False) == 0
 #### Answer 3 (score 20)
 To include an optional minus sign and to disallow numbers like `015` (which can be mistaken for octal numbers) write:  
 
-```perl
+```regex
 -?(0|([1-9]\d*))(\.\d+)?
 ```
 
@@ -2764,7 +2770,7 @@ The correct solution for the word would be "part1, part2".
 The user should be able to enter either "part1" (answer 1), "part2" (answer 2) or "part1, part2" (answer 3). 
 I now try to match the string given by the user with the following, automatically created, regex expression:</p>
 
-```perl
+```regex
 ^(part1|part2)$
 ```
 
@@ -2775,13 +2781,13 @@ May anyone help me solve this problem?
 #### Answer accepted (score 260)
 I'm going to assume you want to build a the regex dynamically to contain other words than part1 and part2, and that you want order not to matter. If so you can use something like this:  
 
-```perl
+```regex
 ((^|, )(part1|part2|part3))+$
 ```
 
 Positive matches:  
 
-```perl
+```regex
 part1
 part2, part1
 part1, part2, part3
@@ -2789,14 +2795,14 @@ part1, part2, part3
 
 Negative matches:  
 
-```perl
+```regex
 part1,           //with and without trailing spaces.
 part3, part2, 
 otherpart1
 ```
 
 #### Answer 2 (score 25)
-```perl
+```regex
 '^(part1|part2|part1,part2)$'
 ```
 
@@ -2805,13 +2811,13 @@ does it work?
 #### Answer 3 (score 5)
 Does this work without alternation?  
 
-```perl
+```regex
 ^((part)1(, \22)?)?(part2)?$
 ```
 
 or why not this?  
 
-```perl
+```regex
 ^((part)1(, (\22))?)?(\4)?$
 ```
 
@@ -2836,7 +2842,7 @@ But what if I wanted the matching string to be `"qwerty qwerty whatever "`
 <p>You didn't  specify which flavor  of regex  you're using, but  this will
 work in any of the most popular ones that can be considered "complete".</p>
 
-```perl
+```regex
 /.+?(?=abc)/
 ```
 
@@ -2854,7 +2860,7 @@ step until the  subsequent part of the regex is  matched (again if any).
 This  is  the <strong>un-greedy</strong>,  meaning  match  <strong>the fewest  possible  to
 satisfy</strong>.</p>
 
-```perl
+```regex
 /.+X/  ~ "abcXabcXabcX"        /.+/  ~ "abcXabcXabcX"
           ^^^^^^^^^^^^                  ^^^^^^^^^^^^
 
@@ -2877,7 +2883,7 @@ Thus, in other terms the regex `/.+?(?=abc)/` means:
 #### Answer 2 (score 104)
 If you're looking to capture everything up to "abc":  
 
-```perl
+```regex
 /^(.*?)abc/
 ```
 
@@ -2891,7 +2897,7 @@ Explanation:
 
 [1] The reason why this is needed is that otherwise, in the following string:  
 
-```perl
+```regex
 whatever whatever something abc something abc
 ```
 
@@ -2913,20 +2919,20 @@ I have a string that has two single quotes in it, the `'` character. In between 
 
 How can I write a regex to extract "the data i want" from the following text?  
 
-```perl
+```regex
 mydata = "some string with 'the data i want' inside";
 ```
 
 #### Answer accepted (score 511)
 Assuming you want the part between single quotes, use this regular expression with a <a href="http://download.oracle.com/javase/6/docs/api/java/util/regex/Matcher.html" rel="noreferrer">`Matcher`</a>:  
 
-```perl
+```regex
 "'(.*?)'"
 ```
 
 Example:  
 
-```perl
+```regex
 String mydata = "some string with 'the data i want' inside";
 Pattern pattern = Pattern.compile("'(.*?)'");
 Matcher matcher = pattern.matcher(mydata);
@@ -2947,12 +2953,12 @@ You don't need regex for this.
 
 Add apache commons lang to your project (<a href="http://commons.apache.org/proper/commons-lang/" rel="noreferrer">http://commons.apache.org/proper/commons-lang/</a>), then use:  
 
-```perl
+```regex
 String dataYouWant = StringUtils.substringBetween(mydata, "'");
 ```
 
 #### Answer 3 (score 11)
-```perl
+```regex
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -2977,14 +2983,14 @@ public class Test {
 #### Question
 How can I make the following regex ignore case sensitivity? It should match all the correct characters but ignore whether they are lower or uppercase.  
 
-```perl
+```regex
 G[a-b].*
 ```
 
 #### Answer accepted (score 363)
 Assuming you want the <strong>whole</strong> regex to ignore case, you should look for the <a href="http://www.regular-expressions.info/modifiers.html">`i` flag</a>. Nearly all regex engines support it:  
 
-```perl
+```regex
 /G[a-b].*/i
 
 string.match("G[a-b].*", "i")
@@ -2997,12 +3003,12 @@ If you want only <strong>part</strong> of the regex to be case insensitive (as m
 <ol>
 <li><p>Use the `(?i)` and [optionally] `(?-i)` mode modifiers:</p>
 
-```perl
+```regex
 (?i)G[a-b](?-i).*
 ```</li>
 <li><p>Put all the variations (i.e. lowercase and uppercase) in the regex - useful if mode modifiers are not supported:</p>
 
-```perl
+```regex
 [gG][a-bA-B].*
 ```</li>
 </ol>
@@ -3013,13 +3019,13 @@ One last note: if you're dealing with Unicode characters besides ASCII, check wh
 <p>Depends on implementation
 but I would use</p>
 
-```perl
+```regex
 (?i)G[a-b].
 ```
 
 <strong>VARIATIONS:</strong>   
 
-```perl
+```regex
 (?i) case-insensitive mode ON    
 (?-i) case-insensitive mode OFF
 ```
@@ -3032,7 +3038,7 @@ Modern regex flavors allow you to apply modifiers to only part of the regular ex
 #### Answer 3 (score 46)
 regular expression for validate 'abc' ignoring case sensitive   
 
-```perl
+```regex
 (?i)(abc)
 ```
 
@@ -3167,7 +3173,7 @@ Currently I have an input box which will detect the URL and parse the data.
 
 So right now, I am using:  
 
-```perl
+```regex
 var urlR = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)
            (?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/;
 var url= content.match(urlR);
@@ -3180,13 +3186,13 @@ I am not very fluent in regular expressions. Can anyone help me?
 #### Answer 2 (score 492)
 Regex if you want to ensure URL starts with HTTP/HTTPS:  
 
-```perl
+```regex
 https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&amp;//=]*)
 ```
 
 If you do not require HTTP protocol:  
 
-```perl
+```regex
 [-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&amp;//=]*)
 ```
 
@@ -3196,7 +3202,7 @@ Example JavaScript implementation:
 
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="true" data-babel="false">
 <div class="snippet-code">
-```perl
+```regex
 var expression = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&amp;//=]*)?/gi;
 var regex = new RegExp(expression);
 var t = 'www.google.com';
@@ -3205,13 +3211,14 @@ if (t.match(regex)) {
   alert("Successful match");
 } else {
   alert("No match");
-}```
+}
+```
 </div>
 </div>
 
 
 #### Answer 3 (score 169)
-```perl
+```regex
 (https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})
 ```
 
@@ -3249,7 +3256,7 @@ Will NOT match the following
 
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="true" data-babel="false">
 <div class="snippet-code">
-```perl
+```regex
 var expression = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
 var regex = new RegExp(expression);
 
@@ -3284,10 +3291,10 @@ check.forEach(function(entry) {
   } else {
     $("#output").append( "&lt;div&gt;Fail: " + entry + "&lt;/div&gt;" );
   }
-});```
-```perl
-&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"&gt;&lt;/script&gt;
-&lt;div id="output"&gt;&lt;/div&gt;```
+});
+```
+<pre class="snippet-code-html lang-html prettyprint-override"><code>&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"&gt;&lt;/script&gt;
+&lt;div id="output"&gt;&lt;/div&gt;</code></pre>
 </div>
 </div>
 
@@ -3305,7 +3312,7 @@ I need to validate a date string for the format `dd/mm/yyyy` with a regular expr
 
 This regex validates `dd/mm/yyyy`, but not the invalid dates like `31/02/4500`:  
 
-```perl
+```regex
 ^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$
 ```
 
@@ -3324,7 +3331,7 @@ Edit February 14th 2019: I've removed a comma that was in the regex which allowe
 #### Answer 2 (score 240)
 I have extended the regex given by @Ofir Luzon for the formats dd-mmm-YYYY, dd/mmm/YYYY, dd.mmm.YYYY as per my requirement. Anyone else with same requirement can refer this  
 
-```perl
+```regex
 ^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]|(?:Jan|Mar|May|Jul|Aug|Oct|Dec)))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2]|(?:Jan|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec))\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)(?:0?2|(?:Feb))\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9]|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep))|(?:1[0-2]|(?:Oct|Nov|Dec)))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$
 ```
 
@@ -3347,7 +3354,7 @@ dd/MM/yyyy:
 <p>Checks if leap year.
 Years from 1900 to 9999 are valid. Only dd/MM/yyyy</p>
 
-```perl
+```regex
 (^(((0[1-9]|1[0-9]|2[0-8])[\/](0[1-9]|1[012]))|((29|30|31)[\/](0[13578]|1[02]))|((29|30)[\/](0[4,6,9]|11)))[\/](19|[2-9][0-9])\d\d$)|(^29[\/]02[\/](19|[2-9][0-9])(00|04|08|12|16|20|24|28|32|36|40|44|48|52|56|60|64|68|72|76|80|84|88|92|96)$)
 ```
 
@@ -3360,13 +3367,13 @@ I would like to remove specific characters from strings within a vector, similar
 
 Here are the data I start with:  
 
-```perl
+```regex
 group &lt;- data.frame(c("12357e", "12575e", "197e18", "e18947")
 ```
 
 I start with just the first column; I want to produce the second column by removing the `e`'s:  
 
-```perl
+```regex
 group       group.no.e
 12357e      12357
 12575e      12575
@@ -3377,7 +3384,7 @@ e18947      18947
 #### Answer accepted (score 376)
 With a regular expression and the function `gsub()`:  
 
-```perl
+```regex
 group &lt;- c("12357e", "12575e", "197e18", "e18947")
 group
 [1] "12357e" "12575e" "197e18" "e18947"
@@ -3395,7 +3402,7 @@ See `?regexp` or `gsub` for more help.
 #### Answer 2 (score 45)
 Regular expressions are your friends:  
 
-```perl
+```regex
 R&gt; ## also adds missing ')' and sets column name
 R&gt; group&lt;-data.frame(group=c("12357e", "12575e", "197e18", "e18947"))  )
 R&gt; group
@@ -3408,7 +3415,7 @@ R&gt; group
 
 Now use `gsub()` with the simplest possible replacement pattern: empty string:  
 
-```perl
+```regex
 R&gt; group$groupNoE &lt;- gsub("e", "", group$group)
 R&gt; group
    group groupNoE
@@ -3422,25 +3429,25 @@ R&gt;
 #### Answer 3 (score 23)
 Summarizing 2 ways to replace strings:  
 
-```perl
+```regex
 group&lt;-data.frame(group=c("12357e", "12575e", "197e18", "e18947"))
 ```
 
 1) Use `gsub`  
 
-```perl
+```regex
 group$group.no.e &lt;- gsub("e", "", group$group)
 ```
 
 2) Use the `stringr` package  
 
-```perl
+```regex
 group$group.no.e &lt;- str_replace_all(group$group, "e", "")
 ```
 
 Both will produce the desire output:  
 
-```perl
+```regex
    group group.no.e
 1 12357e      12357
 2 12575e      12575
@@ -3455,19 +3462,19 @@ Both will produce the desire output:
 #### Question
 For example, this regex  
 
-```perl
+```regex
 (.*)&lt;FooBar&gt;
 ```
 
 will match:  
 
-```perl
+```regex
 abcde&lt;FooBar&gt;
 ```
 
 But how do I get it to match across multiple lines?  
 
-```perl
+```regex
 abcde
 fghij&lt;FooBar&gt;
 ```
@@ -3475,7 +3482,7 @@ fghij&lt;FooBar&gt;
 #### Answer accepted (score 215)
 It depends on the language, but there should be a modifier that you can add to the regex pattern. In PHP it is:  
 
-```perl
+```regex
 /(.*)&lt;FooBar&gt;/s
 ```
 
@@ -3484,7 +3491,7 @@ The <strong>s</strong> at the end causes the dot to match <em>all</em> character
 #### Answer 2 (score 308)
 Try this:    
 
-```perl
+```regex
 ((.|\n)*)&lt;FooBar&gt;
 ```
 
@@ -3559,13 +3566,13 @@ In POSIX, `[\s\S]` is not matching any char (as in JavaScript or any non-POSIX e
 #### Question
 My regex pattern looks something like  
 
-```perl
+```regex
 &lt;xxxx location="file path/level1/level2" xxxx some="xxx"&gt;
 ```
 
 I am only interested in the part in quotes assigned to location. Shouldn't it be as easy as below without the greedy switch?   
 
-```perl
+```regex
 /.*location="(.*)".*/
 ```
 
@@ -3576,7 +3583,7 @@ You need to make your regular expression non-greedy, because by default, `"(.*)"
 
 Instead you can make your dot-star non-greedy, which will make it match as few characters as possible:  
 
-```perl
+```regex
 /location="(.*?)"/
 ```
 
@@ -3588,7 +3595,7 @@ Adding a `?` on a quantifier (`?`, `*` or `+`) makes it non-greedy.
 #### Answer 3 (score 29)
 How about  
 
-```perl
+```regex
 .*location="([^"]*)".*
 ```
 
@@ -3601,7 +3608,7 @@ This avoids the unlimited search with .* and will match exactly to the first quo
 #### Question
 I have a regular expression as follows:  
 
-```perl
+```regex
 ^/[a-z0-9]+$
 ```
 
@@ -3613,7 +3620,7 @@ I've tried a few variants but can't seem to get any to work!
 
 My latest feeble attempt was   
 
-```perl
+```regex
 ^/(((?!ignoreme)|(?!ignoreme2))[a-z0-9])+$
 ```
 
@@ -3622,7 +3629,7 @@ Any help would be gratefully appreciated :-)
 #### Answer accepted (score 328)
 Here's yet another way (using a <a href="http://www.regular-expressions.info/lookaround.html" rel="noreferrer">negative look-ahead</a>):   
 
-```perl
+```regex
 ^/(?!ignoreme|ignoreme2|ignoremeN)([a-z0-9]+)$ 
 ```
 
@@ -3631,13 +3638,13 @@ Note: There's only one capturing expression: `([a-z0-9]+)`.
 #### Answer 2 (score 39)
 This should do it:  
 
-```perl
+```regex
 ^/\b([a-z0-9]+)\b(?&lt;!ignoreme|ignoreme2|ignoreme3)
 ```
 
 You can add as much ignored words as you like, here is a simple PHP implementation:  
 
-```perl
+```regex
 $ignoredWords = array('ignoreme', 'ignoreme2', 'ignoreme...');
 
 preg_match('~^/\b([a-z0-9]+)\b(?&lt;!' . implode('|', array_map('preg_quote', $ignoredWords)) . ')~i', $string);
@@ -3646,7 +3653,7 @@ preg_match('~^/\b([a-z0-9]+)\b(?&lt;!' . implode('|', array_map('preg_quote', $i
 #### Answer 3 (score 17)
 As you want to exclude both words, you need a conjuction:  
 
-```perl
+```regex
 ^/(?!ignoreme$)(?!ignoreme2$)[a-z0-9]+$
 ```
 
@@ -3665,7 +3672,7 @@ It cannot be your old password or contain your username, `"password"`, or `"webs
 
 And here is my validation expression which is for eight characters including one uppercase letter, one lowercase letter, and one number or special character.  
 
-```perl
+```regex
 (?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
 ```
 
@@ -3674,38 +3681,38 @@ How can I write it for <strong>a password must be eight characters including one
 #### Answer 2 (score 965)
 Minimum eight characters, at least one letter and one number:  
 
-```perl
+```regex
 "^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
 ```
 
 Minimum eight characters, at least one letter, one number and one special character:  
 
-```perl
+```regex
 "^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&amp;])[A-Za-z\d@$!%*#?&amp;]{8,}$"
 ```
 
 Minimum eight characters, at least one uppercase letter, one lowercase letter and one number:  
 
-```perl
+```regex
 "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
 ```
 
 Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character:  
 
-```perl
+```regex
 "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&amp;])[A-Za-z\d@$!%*?&amp;]{8,}$"
 ```
 
 Minimum eight and maximum 10 characters, at least one uppercase letter, one lowercase letter, one number and one special character:  
 
-```perl
+```regex
 "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&amp;])[A-Za-z\d@$!%*?&amp;]{8,10}$"
 ```
 
 #### Answer 3 (score 330)
 You may use this regex with multiple <a href="https://www.regular-expressions.info/lookaround.html" rel="noreferrer">lookahead assertions (conditions)</a>:  
 
-```perl
+```regex
 ^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&amp;*-]).{8,}$
 ```
 
@@ -3735,13 +3742,13 @@ This is probably a FAQ.  Anyhow, line breaks (better: newlines) can be one of Ca
 
 Therefore, the most efficient `RegExp` literal to match all variants is  
 
-```perl
+```regex
 /\r?\n|\r/
 ```
 
 If you want to match all newlines in a string, use a global match,  
 
-```perl
+```regex
 /\r?\n|\r/g
 ```
 
@@ -3752,7 +3759,7 @@ How you'd find a line break varies between operating system encodings. Windows w
 
 I found this in <a href="http://www.textfixer.com/tutorials/javascript-line-breaks.php" rel="noreferrer">JavaScript line breaks</a>:  
 
-```perl
+```regex
 someText = someText.replace(/(\r\n|\n|\r)/gm, "");
 ```
 
@@ -3761,7 +3768,7 @@ That should remove all kinds of line breaks.
 #### Answer 3 (score 97)
 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim" rel="noreferrer">`String.trim()`</a> removes whitespace from the beginning and end of strings... including newlines.  
 
-```perl
+```regex
 const myString = "   \n \n\n Hey! \n I'm a string!!!         \n\n";
 const trimmedString = myString.trim();
 
@@ -3782,7 +3789,7 @@ I have a requirement to find and extract a number contained within a string.
 
 For example, from these strings:  
 
-```perl
+```regex
 string test = "1 test"
 string test1 = " 1 test"
 string test2 = "test 99"
@@ -3793,7 +3800,7 @@ How can I do this?
 #### Answer 2 (score 500)
 `\d+` is the regex for an integer number. So   
 
-```perl
+```regex
 //System.Text.RegularExpressions.Regex
 resultString = Regex.Match(subjectString, @"\d+").Value;
 ```
@@ -3805,7 +3812,7 @@ returns a string containing the first occurrence of a number in `subjectString`.
 #### Answer 3 (score 154)
 Here's how I cleanse phone numbers to get the digits only:  
 
-```perl
+```regex
 string numericPhone = new String(phone.Where(Char.IsDigit).ToArray());
 ```
 
@@ -3816,13 +3823,13 @@ string numericPhone = new String(phone.Where(Char.IsDigit).ToArray());
 #### Question
 Simple regex question. I have a string on the following format:  
 
-```perl
+```regex
 this is a [sample] string with [some] special words. [another one]
 ```
 
 What is the regular expression to extract the words within the square brackets, ie.  
 
-```perl
+```regex
 sample
 some
 another one
@@ -3833,7 +3840,7 @@ Note: In my use case, brackets cannot be nested.
 #### Answer accepted (score 664)
 You can use the following regex <strong>globally</strong>:  
 
-```perl
+```regex
 \[(.*?)\]
 ```
 
@@ -3846,7 +3853,7 @@ Explanation:
 </ul>
 
 #### Answer 2 (score 88)
-```perl
+```regex
 (?&lt;=\[).+?(?=\])
 ```
 
@@ -3860,14 +3867,14 @@ Will capture content without brackets
 
 EDIT: for nested brackets the below regex should work:  
 
-```perl
+```regex
 (\[(?:\[??[^\[]*?\]))
 ```
 
 #### Answer 3 (score 84)
 This should work out ok:  
 
-```perl
+```regex
 \[([^]]+)\]
 ```
 
@@ -3883,13 +3890,13 @@ I couldn't make the expression. How do I do it?
 #### Answer accepted (score 146)
 if you have a the input password in a variable and you want to match exactly 123456 then anchors will help you:  
 
-```perl
+```regex
 /^123456$/
 ```
 
 in perl the test for matching the password would be something like  
 
-```perl
+```regex
 print "MATCH_OK" if ($input_pass=~/^123456$/);
 ```
 
@@ -3908,7 +3915,7 @@ as a second thought, you may want to consider a safer authentication mechanism :
 </blockquote>
 
 #### Answer 3 (score 26)
-```perl
+```regex
 (?&lt;![\w\d])abc(?![\w\d])
 ```
 
@@ -3924,7 +3931,7 @@ so it will match "abc" in "abc", "abc.", "abc ", but not "4abc", nor "abcde"
 <p>I'm trying to split text in a `JTextArea` using a regex to split the String by `\n` However, this does not work and I also tried by `\r\n|\r|n` and many other combination of regexes.
 Code:</p>
 
-```perl
+```regex
 public void insertUpdate(DocumentEvent e) {
     String split[], docStr = null;
     Document textAreaDoc = (Document)e.getDocument();
@@ -3943,7 +3950,7 @@ public void insertUpdate(DocumentEvent e) {
 #### Answer accepted (score 687)
 This should cover you:  
 
-```perl
+```regex
 String lines[] = string.split("\\r?\\n");
 ```
 
@@ -3952,7 +3959,7 @@ There's only really two newlines (UNIX and Windows) that you need to worry about
 #### Answer 2 (score 126)
 If you don’t want empty lines:  
 
-```perl
+```regex
 String.split("[\\r\\n]+")
 ```
 
@@ -3969,13 +3976,13 @@ So we can use it to match:
 
 <ul>
 <li>`\u000D\000A` -> `\r\n` pair  </li>
-<li><a href="http://www.fileformat.info/info/unicode/char/000a/index.htm" rel="noreferrer">\u000A</a> -> line feed (`\n`)</li>
-<li><a href="http://www.fileformat.info/info/unicode/char/000b/index.htm" rel="noreferrer">\u000B</a> -> line tabulation (DO NOT confuse with <a href="http://www.fileformat.info/info/unicode/char/0009/index.htm" rel="noreferrer">character tabulation `\t` which is `\u0009`</a>)</li>
-<li><a href="http://www.fileformat.info/info/unicode/char/000c/index.htm" rel="noreferrer">\u000C</a> -> form feed (`\f`)</li>
-<li><a href="http://www.fileformat.info/info/unicode/char/000d/index.htm" rel="noreferrer">\u000D</a> -> carriage return (`\r`)</li>
-<li><a href="http://www.fileformat.info/info/unicode/char/0085/index.htm" rel="noreferrer">\u0085</a> -> next line (NEL)</li>
-<li><a href="http://www.fileformat.info/info/unicode/char/2028/index.htm" rel="noreferrer">\u2028</a> -> line separator</li>
-<li><a href="http://www.fileformat.info/info/unicode/char/2029/index.htm" rel="noreferrer">\u2029</a> -> paragraph separator</li>
+<li><a href="http://www.fileformat.info/info/unicode/char/000a/index.htm" rel="noreferrer">\\u000A</a> -> line feed (`\n`)</li>
+<li><a href="http://www.fileformat.info/info/unicode/char/000b/index.htm" rel="noreferrer">\\u000B</a> -> line tabulation (DO NOT confuse with <a href="http://www.fileformat.info/info/unicode/char/0009/index.htm" rel="noreferrer">character tabulation `\t` which is `\\u0009`</a>)</li>
+<li><a href="http://www.fileformat.info/info/unicode/char/000c/index.htm" rel="noreferrer">\\u000C</a> -> form feed (`\f`)</li>
+<li><a href="http://www.fileformat.info/info/unicode/char/000d/index.htm" rel="noreferrer">\\u000D</a> -> carriage return (`\r`)</li>
+<li><a href="http://www.fileformat.info/info/unicode/char/0085/index.htm" rel="noreferrer">\\u0085</a> -> next line (NEL)</li>
+<li><a href="http://www.fileformat.info/info/unicode/char/2028/index.htm" rel="noreferrer">\\u2028</a> -> line separator</li>
+<li><a href="http://www.fileformat.info/info/unicode/char/2029/index.htm" rel="noreferrer">\\u2029</a> -> paragraph separator</li>
 </ul>
 
 As you see `\r\n` is placed at start of regex which ensures that regex will try to match this <em>pair</em> first, and only if that match fails it will try to match <em>single character</em> line separators.  
@@ -4016,7 +4023,7 @@ There is a plugin that adds a menu entitled `TextFX`.  This menu, which houses a
 
 <strong>Do the following:</strong>   
 
-```perl
+```regex
 TextFX &gt; TextFX Edit &gt; Delete Blank Lines
 TextFX &gt; TextFX Edit &gt; Delete Surplus Blank Lines
 ```
@@ -4057,7 +4064,7 @@ I often need to kill a process during programming.
 
 The way I do it now is:  
 
-```perl
+```regex
 [~]$ ps aux | grep 'python csp_build.py'
 user    5124  1.0  0.3 214588 13852 pts/4    Sl+  11:19   0:00 python csp_build.py
 user    5373  0.0  0.0   8096   960 pts/6    S+   11:20   0:00 grep python csp_build.py
@@ -4068,14 +4075,14 @@ How can I extract the process id automatically and kill it in the same line?
 
 Like this:  
 
-```perl
+```regex
 [~]$ ps aux | grep 'python csp_build.py' | kill &lt;regex that returns the pid&gt;
 ```
 
 #### Answer accepted (score 1287)
 In `bash`, you should be able to do:  
 
-```perl
+```regex
 kill $(ps aux | grep '[p]ython csp_build.py' | awk '{print $2}')
 ```
 
@@ -4090,7 +4097,7 @@ Details on its workings are as follows:
 
 Here's a transcript showing it in action:  
 
-```perl
+```regex
 pax&gt; sleep 3600 &amp;
 [1] 2225
 pax&gt; sleep 3600 &amp;
@@ -4131,7 +4138,7 @@ When I was shown this (by someone here on SO), I immediately started using it be
 #### Answer 2 (score 125)
 if you have pkill,   
 
-```perl
+```regex
 pkill -f csp_build.py
 ```
 
@@ -4166,7 +4173,7 @@ If you only want to grep against the process name (instead of the full argument 
 
 <em>bash_profile code:</em>  
 
-```perl
+```regex
 # FIND PROCESS
 function p(){
         ps aux | grep -i $1 | grep -v grep
@@ -4185,7 +4192,7 @@ function p(){
 
 <em>bash_profile code:</em>  
 
-```perl
+```regex
 # KILL ALL
 function ka(){
 
@@ -4215,7 +4222,7 @@ I am looking for a pattern that matches everything <strong>until</strong> the fi
 
 I wrote this:  
 
-```perl
+```regex
 /^(.*);/
 ```
 
@@ -4224,7 +4231,7 @@ But it actually matches everything (including the semicolon) until the last occu
 #### Answer accepted (score 443)
 You need  
 
-```perl
+```regex
 /[^;]*/
 ```
 
@@ -4241,7 +4248,7 @@ This should work in most regex dialects.
 #### Answer 2 (score 266)
 Would;  
 
-```perl
+```regex
 /^(.*?);/
 ```
 
@@ -4265,7 +4272,7 @@ Uppercase letter, number(s), uppercase letter, number(s)...
 
 Example, These would match:  
 
-```perl
+```regex
 A1B2
 B10L1
 C1N200J1
@@ -4273,7 +4280,7 @@ C1N200J1
 
 These wouldn't ('^' points to problem)  
 
-```perl
+```regex
 a1B2
 ^
 A10B
@@ -4283,7 +4290,7 @@ AB400
 ```
 
 #### Answer accepted (score 396)
-```perl
+```regex
 import re
 pattern = re.compile("^([A-Z][0-9]+)+$")
 pattern.match(string)
@@ -4294,7 +4301,7 @@ Edit: As noted in the comments `match` checks only for matches at the beginning 
 #### Answer 2 (score 132)
 <strong>One-liner: `re.match(r"pattern", string) # No need to compile`</strong>  
 
-```perl
+```regex
 import re
 &gt;&gt;&gt; if re.match(r"hello[0-9]+", 'hello1'):
 ...     print('Yes')
@@ -4304,7 +4311,7 @@ Yes
 
 You can evalute it as `bool` if needed  
 
-```perl
+```regex
 &gt;&gt;&gt; bool(re.match(r"hello[0-9]+", 'hello1'))
 True
 ```
@@ -4312,7 +4319,7 @@ True
 #### Answer 3 (score 32)
 Please try the following:  
 
-```perl
+```regex
 import re
 
 name = ["A1B1", "djdd", "B2C4", "C2H2", "jdoi","1A4V"]
@@ -4334,7 +4341,7 @@ How do I split a string with multiple separators in JavaScript?  I'm trying to s
 #### Answer accepted (score 639)
 Pass in a regexp as the parameter:  
 
-```perl
+```regex
 js&gt; "Hello awesome, world!".split(/[\s,]+/)
 Hello,awesome,world!
 ```
@@ -4343,7 +4350,7 @@ Hello,awesome,world!
 
 You can get the last element by selecting the length of the array minus 1:  
 
-```perl
+```regex
 &gt;&gt;&gt; bits = "Hello awesome, world!".split(/[\s,]+/)
 ["Hello", "awesome", "world!"]
 &gt;&gt;&gt; bit = bits[bits.length - 1]
@@ -4352,7 +4359,7 @@ You can get the last element by selecting the length of the array minus 1:
 
 ... and if the pattern doesn't match:  
 
-```perl
+```regex
 &gt;&gt;&gt; bits = "Hello awesome, world!".split(/foo/)
 ["Hello awesome, world!"]
 &gt;&gt;&gt; bits[bits.length - 1]
@@ -4362,14 +4369,14 @@ You can get the last element by selecting the length of the array minus 1:
 #### Answer 2 (score 168)
 You can pass a regex into <a href="https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Objects/String/split" rel="noreferrer">Javascript's split operator</a>. For example:  
 
-```perl
+```regex
 "1,2 3".split(/,| /) 
 ["1", "2", "3"]
 ```
 
 Or, if you want to allow multiple separators together to act as one only:  
 
-```perl
+```regex
 "1, 2, , 3".split(/(?:,| )+/) 
 ["1", "2", "3"]
 ```
@@ -4381,7 +4388,7 @@ Or, if you want to allow multiple separators together to act as one only:
 #### Answer 3 (score 48)
 Another simple but effective method is to use split + join repeatedly.  
 
-```perl
+```regex
 "a=b,c:d".split('=').join(',').split(':').join(',').split(',')
 ```
 
@@ -4389,13 +4396,13 @@ Essentially doing a split followed by a join is like a global replace so this re
 
 The result of the above expression is:  
 
-```perl
+```regex
 ['a', 'b', 'c', 'd']
 ```
 
 Expanding on this you could also place it in a function:  
 
-```perl
+```regex
 function splitMulti(str, tokens){
         var tempChar = tokens[0]; // We can use the first token as a temporary join character
         for(var i = 1; i &lt; tokens.length; i++){
@@ -4408,7 +4415,7 @@ function splitMulti(str, tokens){
 
 Usage:   
 
-```perl
+```regex
 splitMulti('a=b,c:d', ['=', ',', ':']) // ["a", "b", "c", "d"]
 ```
 
@@ -4416,7 +4423,7 @@ If you use this functionality a lot it might even be worth considering wrapping 
 
 Be sure to include the `splitMulti` function if using this approach to the below simply  wraps it :). Also worth noting that some people frown on extending built-ins (as many people do it wrong and conflicts can occur) so if in doubt speak to someone more senior before using this or ask on SO :)   
 
-```perl
+```regex
     var splitOrig = String.prototype.split; // Maintain a reference to inbuilt fn
     String.prototype.split = function (){
         if(arguments[0].length &gt; 0){
@@ -4430,7 +4437,7 @@ Be sure to include the `splitMulti` function if using this approach to the below
 
 Usage:  
 
-```perl
+```regex
 var a = "a=b,c:d";
     a.split(['=', ',', ':']); // ["a", "b", "c", "d"]
 
@@ -4447,7 +4454,7 @@ Enjoy!
 #### Question
 How can I count the number of times a particular string occurs in another string. For example, this is what I am trying to do in Javascript:  
 
-```perl
+```regex
 var temp = "This is a string.";
 alert(temp.count("is")); //should output '2'
 ```
@@ -4457,10 +4464,11 @@ The `g` in the regular expression (short for <em>global</em>) says to search the
 
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="true" data-babel="false">
 <div class="snippet-code">
-```perl
+```regex
 var temp = "This is a string.";
 var count = (temp.match(/is/g) || []).length;
-console.log(count);```
+console.log(count);
+```
 </div>
 </div>
 
@@ -4469,16 +4477,17 @@ And, if there are no matches, it returns `0`:
 
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="true" data-babel="false">
 <div class="snippet-code">
-```perl
+```regex
 var temp = "Hello World!";
 var count = (temp.match(/is/g) || []).length;
-console.log(count);```
+console.log(count);
+```
 </div>
 </div>
 
 
 #### Answer 2 (score 224)
-```perl
+```regex
 /** Function that count occurrences of a substring in a string;
  * @param {String} string               The string
  * @param {String} subString            The sub string to search for
@@ -4511,7 +4520,7 @@ function occurrences(string, subString, allowOverlapping) {
 
 <h5>Usage</h2>
 
-```perl
+```regex
 occurrences("foofoofoo", "bar"); //0
 
 occurrences("foofoofoo", "foo"); //3
@@ -4521,13 +4530,13 @@ occurrences("foofoofoo", "foofoo"); //1
 
 <h5>allowOverlapping</h3>
 
-```perl
+```regex
 occurrences("foofoofoo", "foofoo", true); //2
 ```
 
 Matches:  
 
-```perl
+```regex
   foofoofoo
 1 `----´
 2    `----´
@@ -4578,7 +4587,7 @@ Gist
 </ul>
 
 #### Answer 3 (score 99)
-```perl
+```regex
 function countInstances(string, word) {
    return string.split(word).length - 1;
 }
@@ -4591,7 +4600,7 @@ function countInstances(string, word) {
 #### Question
 I want a regular expression that prevents symbols and only allows letters and numbers. The regex below works great, but it doesn't allow for spaces between words.  
 
-```perl
+```regex
 ^[a-zA-Z0-9_]*$
 ```
 
@@ -4604,7 +4613,7 @@ How can I tweak it to allow spaces?
 
 Just add a space in your <a href="http://www.regular-expressions.info/charclass.html" rel="noreferrer">character class</a>.  
 
-```perl
+```regex
 ^[a-zA-Z0-9_ ]*$
 ```
 
@@ -4629,7 +4638,7 @@ Originally I didn't think such details were worth going into, as OP was asking s
 
 Which, in my flavor (without using `\w`) translates to:  
 
-```perl
+```regex
 ^[a-zA-Z0-9_]+( [a-zA-Z0-9_]+)*$
 ```
 
@@ -4640,12 +4649,12 @@ Some things to note about this (and @stema's) answer:
 <ul>
 <li><p>If you want to allow <em>multiple</em> spaces between words (say, if you'd like to allow accidental double-spaces, or if you're working with copy-pasted text from a PDF), then add a `+` after the space:</p>
 
-```perl
+```regex
 ^\w+( +\w+)*$
 ```</li>
 <li><p>If you want to allow tabs and newlines (whitespace characters), then replace the space with a `\s+`:</p>
 
-```perl
+```regex
 ^\w+(\s+\w+)*$
 ```
 
@@ -4669,7 +4678,7 @@ The other possibility is to define a pattern:
 
 I will use `\w` this is in most regex flavours the same than `[a-zA-Z0-9_]` (in some it is Unicode based)  
 
-```perl
+```regex
 ^\w+( \w+)*$
 ```
 
@@ -4686,7 +4695,7 @@ This will allow a series of at least one word and the words are divided by space
 #### Answer 3 (score 21)
 This one worked for me   
 
-```perl
+```regex
 ([\w ]+)
 ```
 
@@ -4697,13 +4706,13 @@ This one worked for me
 #### Question
 I'm not too sure how to do this.  I need to validate email addresses using regex with something like this:  
 
-```perl
+```regex
 [a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)
 ```
 
 Then I need to run this in a jQuery function like this:     
 
-```perl
+```regex
 $j("#fld_emailaddress").live('change',function() { 
 var emailaddress = $j("#fld_emailaddress").val();
 
@@ -4752,7 +4761,7 @@ Where does the validation go and what is the expression?
 
 <hr>
 
-```perl
+```regex
 function isValidEmailAddress(emailAddress) {
     var pattern = /^([a-z\d!#$%&amp;'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&amp;'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
     return pattern.test(emailAddress);
@@ -4761,7 +4770,7 @@ function isValidEmailAddress(emailAddress) {
 
 <hr>
 
-```perl
+```regex
 if( !isValidEmailAddress( emailaddress ) ) { /* do stuff here */ }
 ```
 
@@ -4772,7 +4781,7 @@ if( !isValidEmailAddress( emailaddress ) ) { /* do stuff here */ }
 #### Answer 2 (score 28)
 This is my solution:  
 
-```perl
+```regex
 function isValidEmailAddress(emailAddress) {
     var pattern = new RegExp(/^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i);
     // alert( pattern.test(emailAddress) );
@@ -4783,7 +4792,7 @@ function isValidEmailAddress(emailAddress) {
 <strike>Found that RegExp over here: <a href="http://mdskinner.com/code/email-regex-and-validation-jquery" rel="noreferrer">http://mdskinner.com/code/email-regex-and-validation-jquery</a></strike>  
 
 #### Answer 3 (score 14)
-```perl
+```regex
 $(document).ready(function() {
 
 $('#emailid').focusout(function(){
@@ -4806,7 +4815,7 @@ $('#emailid').focusout(function(){
 ### 56: Remove new lines from string and replace with one empty space (score [421794](https://stackoverflow.com/q/3760816) in 2019)
 
 #### Question
-```perl
+```regex
 $string = "
 put returns between paragraphs
 
@@ -4819,20 +4828,20 @@ Want to remove all new lines from string.
 
 I've this regex, it can catch all of them, the problem is I don't know with which function should I use it.  
 
-```perl
+```regex
 /\r\n|\r|\n/
 ```
 
 `$string` should become:  
 
-```perl
+```regex
 $string = "put returns between paragraphs for linebreak add 2 spaces at end ";
 ```
 
 #### Answer accepted (score 540)
 You have to be cautious of double line breaks, which would cause double spaces. Use this really efficient regular expression:  
 
-```perl
+```regex
 $string = trim(preg_replace('/\s\s+/', ' ', $string));
 ```
 
@@ -4840,7 +4849,7 @@ Multiple spaces and newlines are replaced with a single space.
 
 <strong>Edit:</strong> As others have pointed out, this solution has issues matching single newlines in between words. This is not present in the example, but one can easily see how that situation could occur. An alternative is to do the following:  
 
-```perl
+```regex
 $string = trim(preg_replace('/\s+/', ' ', $string));
 ```
 
@@ -4853,20 +4862,20 @@ Also, if you want to remove whitespace first and last in the string, add `trim`.
 
 With these modifications, the code would be:  
 
-```perl
+```regex
 $string = preg_replace('/\s+/', ' ', trim($string));
 ```
 
 #### Answer 3 (score 72)
 Just use <a href="http://php.net/manual/en/function.preg-replace.php" rel="noreferrer">`preg_replace()`</a>  
 
-```perl
+```regex
 $string = preg_replace('~[\r\n]+~', '', $string);
 ```
 
 You could get away with <a href="http://php.net/manual/en/function.str-replace.php" rel="noreferrer">`str_replace()`</a> on this one, although the code doesn't look as clean:  
 
-```perl
+```regex
 $string = str_replace(array("\n", "\r"), '', $string);
 ```
 
@@ -4883,7 +4892,7 @@ I'm trying to strip out various strange characters out of the filename - thought
 
 Now, <strong>is there a function in MySQL that lets you replace through a regular expression</strong>? I'm looking for a similar functionality to REPLACE() function - simplified example follows:  
 
-```perl
+```regex
 SELECT REPLACE('stackowerflow', 'ower', 'over');
 
 Output: "stackoverflow"
@@ -4917,7 +4926,7 @@ and <a href="https://dev.mysql.com/doc/refman/8.0/en/mysql-nutshell.html" rel="n
   Regular expression support has been reimplemented using International Components for Unicode (ICU), which provides full Unicode support and is multibyte safe. The REGEXP_LIKE() function performs regular expression matching in the manner of the REGEXP and RLIKE operators, which now are synonyms for that function. <strong>In addition, the REGEXP_INSTR(), REGEXP_REPLACE(), and REGEXP_SUBSTR() functions are available to find match positions and perform substring substitution and extraction, respectively.</strong>  
 </blockquote>
 
-```perl
+```regex
 SELECT REGEXP_REPLACE('Stackoverflow','[A-Zf]','-',1,0,'c'); 
 -- Output:
 -tackover-low
@@ -4935,7 +4944,7 @@ But if you have access to your server, you could use a user defined function (UD
 #### Answer 3 (score 122)
 Use MariaDB instead. It has a function  
 
-```perl
+```regex
 REGEXP_REPLACE(col, regexp, replace)
 ```
 
@@ -4943,13 +4952,13 @@ See <a href="https://mariadb.com/kb/en/mariadb/documentation/functions-and-opera
 
 Note that you can use regexp grouping as well (I found that very useful):  
 
-```perl
+```regex
 SELECT REGEXP_REPLACE("stackoverflow", "(stack)(over)(flow)", '\\2 - \\1 - \\3')
 ```
 
 returns  
 
-```perl
+```regex
 over - stack - flow
 ```
 
@@ -4963,7 +4972,7 @@ I need to remove all special characters, punctuation and spaces from a string so
 #### Answer accepted (score 301)
 This can be done without regex:  
 
-```perl
+```regex
 &gt;&gt;&gt; string = "Special $#! characters   spaces 888323"
 &gt;&gt;&gt; ''.join(e for e in string if e.isalnum())
 'Specialcharactersspaces888323'
@@ -4972,7 +4981,7 @@ This can be done without regex:
 You can use <a href="https://docs.python.org/library/stdtypes.html#str.isalnum" rel="noreferrer">`str.isalnum`</a>:  
 
 <blockquote>
-```perl
+```regex
 S.isalnum() -&gt; bool
 
 Return True if all characters in S are alphanumeric
@@ -4985,20 +4994,20 @@ If you insist on using regex, other solutions will do fine. However note that if
 #### Answer 2 (score 183)
 Here is a regex to match a string of characters that are not a letters or numbers:  
 
-```perl
+```regex
 [^A-Za-z0-9]+
 ```
 
 Here is the Python command to do a regex substitution:  
 
-```perl
+```regex
 re.sub('[^A-Za-z0-9]+', '', mystring)
 ```
 
 #### Answer 3 (score 39)
 Shorter way  :  
 
-```perl
+```regex
 import re
 cleanString = re.sub('\W+','', string )
 ```
@@ -5016,19 +5025,19 @@ I <em>only</em> want to print the word matched with the pattern.
 
 So if in the line, I have:  
 
-```perl
+```regex
 xxx yyy zzz
 ```
 
 And pattern:  
 
-```perl
+```regex
 /yyy/
 ```
 
 I want to only get:  
 
-```perl
+```regex
 yyy
 ```
 
@@ -5037,7 +5046,7 @@ yyy
 <p>EDIT:
 thanks to <strong>kurumi</strong> i managed to write something like this:</p>
 
-```perl
+```regex
 awk '{
         for(i=1; i&lt;=NF; i++) {
                 tmp=match($i, /[0-9]..?.?[^A-Za-z0-9]/)
@@ -5053,7 +5062,7 @@ and this is what i needed :) thanks a lot!
 #### Answer accepted (score 133)
 This is the very basic  
 
-```perl
+```regex
 awk '/pattern/{ print $0 }' file
 ```
 
@@ -5061,14 +5070,14 @@ ask `awk` to search for `pattern` using `//`, then print out the line, which by 
 
 If you only want to get print out the matched word.   
 
-```perl
+```regex
 awk '{for(i=1;i&lt;=NF;i++){ if($i=="yyy"){print $i} } }' file
 ```
 
 #### Answer 2 (score 102)
 It sounds like you are trying to emulate GNU's `grep -o` behaviour. This will do that providing you only want the first match on each line:  
 
-```perl
+```regex
 awk 'match($0, /regex/) {
     print substr($0, RSTART, RLENGTH)
 }
@@ -5077,7 +5086,7 @@ awk 'match($0, /regex/) {
 
 Here's an example:  
 
-```perl
+```regex
 % awk 'match($0, /a.t/) {
     print substr($0, RSTART, RLENGTH)
 }
@@ -5101,7 +5110,7 @@ After that you may wish to extend this to deal with multiple matches on the same
 #### Answer 3 (score 30)
 <strong><em>gawk</em></strong> can get the matching part of every line using this as action:  
 
-```perl
+```regex
 { if (match($0,/your regexp/,m)) print m[0] }
 ```
 
@@ -5122,7 +5131,7 @@ After that you may wish to extend this to deal with multiple matches on the same
 #### Question
 I want to remove special characters like:  
 
-```perl
+```regex
 - + ^ . : ,
 ```
 
@@ -5131,7 +5140,7 @@ from an String using Java.
 #### Answer accepted (score 236)
 That depends on what you define as special characters, but try `replaceAll(...)`:  
 
-```perl
+```regex
 String result = yourString.replaceAll("[-+.^:,]","");
 ```
 
@@ -5141,7 +5150,7 @@ Another note: the `-` character needs to be the first or last one on the list, o
 
 So, in order to keep consistency and not depend on character positioning, you might want to escape all those characters that have a special meaning in regular expressions (the following list is not complete, so be aware of other characters like `(`, `{`, `$`  etc.):  
 
-```perl
+```regex
 String result = yourString.replaceAll("[\\-\\+\\.\\^:,]","");
 ```
 
@@ -5150,7 +5159,7 @@ If you want to get rid of all punctuation and symbols, try this regex: `\p{P}\p{
 
 A third way could be something like this, if you can exactly define what should be left in your string:  
 
-```perl
+```regex
 String  result = yourString.replaceAll("[^\\w\\s]","");
 ```
 
@@ -5160,7 +5169,7 @@ Edit: please note that there are a couple of other patterns that might prove hel
 
 Here's less restrictive alternative to the "define allowed characters" approach, as suggested by Ray:  
 
-```perl
+```regex
 String  result = yourString.replaceAll("[^\\p{L}\\p{Z}]","");
 ```
 
@@ -5178,7 +5187,7 @@ Some unicode characters seem to cause problems due to different possible ways to
   Patterns are compiled regular expressions. In many cases, convenience methods such as `String.matches`, `String.replaceAll` and `String.split` will be preferable, but if you need to do a lot of work with the same regular expression, it may be more efficient to compile it once and reuse it. The Pattern class and its companion, Matcher, also offer more functionality than the small amount exposed by String.  
 </blockquote>
 
-```perl
+```regex
 public class RegularExpressionTest {
 
 public static void main(String[] args) {
@@ -5203,7 +5212,7 @@ public static void main(String[] args) {
 
 Result  
 
-```perl
+```regex
 String is = one
 Number is = 9196390097
 ```
@@ -5216,7 +5225,7 @@ Number is = 9196390097
   Patterns are compiled regular expressions. In many cases, convenience methods such as `String.matches`, `String.replaceAll` and `String.split` will be preferable, but if you need to do a lot of work with the same regular expression, it may be more efficient to compile it once and reuse it. The Pattern class and its companion, Matcher, also offer more functionality than the small amount exposed by String.  
 </blockquote>
 
-```perl
+```regex
 public class RegularExpressionTest {
 
 public static void main(String[] args) {
@@ -5241,7 +5250,7 @@ public static void main(String[] args) {
 
 Result  
 
-```perl
+```regex
 String is = one
 Number is = 9196390097
 ```
@@ -5255,7 +5264,7 @@ I'm trying to set a regexp which will check the start of a string, and if it con
 
 How can I do that? I'm trying the following which isn't working:  
 
-```perl
+```regex
 ^[(http)(https)]://
 ```
 
@@ -5264,27 +5273,27 @@ Your use of `[]` is incorrect -- note that `[]` denotes a <em>character class</e
 
 Try this:  
 
-```perl
+```regex
 ^https?://
 ```
 
 If you really want to use alternation, use this syntax instead:  
 
-```perl
+```regex
 ^(http|https)://
 ```
 
 #### Answer 2 (score 37)
 Case insensitive:  
 
-```perl
+```regex
 var re = new RegExp("^(http|https)://", "i");
 var str = "My String";
 var match = re.test(str);
 ```
 
 #### Answer 3 (score 25)
-```perl
+```regex
 ^https?://
 ```
 
@@ -5297,7 +5306,7 @@ You might have to escape the forward slashes though, depending on context.
 #### Question
 I use this  
 
-```perl
+```regex
 @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"
 ```
 
@@ -5321,7 +5330,7 @@ TLD's like <a href="http://en.wikipedia.org/wiki/.museum" rel="noreferrer">.muse
   MailAddress.MailAddress(String) class constructor.</p>
 </blockquote>
 
-```perl
+```regex
 public bool IsValid(string emailaddress)
 {
     try
@@ -5343,7 +5352,7 @@ This saves you a lot af headaches because you don't have to write (or try to und
 <p>I think `@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"` should work.<br>
 You need to write it like</p>
 
-```perl
+```regex
 string email = txtemail.Text;
 Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
 Match match = regex.Match(email);
@@ -5365,7 +5374,7 @@ I have an expression for checking email addresses that I use.
 
 Since none of the above were as short or as accurate as mine, I thought I would post it here.  
 
-```perl
+```regex
 @"^[\w!#$%&amp;'*+\-/=?\^_`{|}~]+(\.[\w!#$%&amp;'*+\-/=?\^_`{|}~]+)*"
 + "@"
 + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$";
@@ -5393,13 +5402,13 @@ James Padolsey created a <a href="http://james.padolsey.com/javascript/regex-sel
 
 Say you have the following `div`:  
 
-```perl
+```regex
 &lt;div class="asdf"&gt;
 ```
 
 Padolsey's `:regex` filter can select it like so:  
 
-```perl
+```regex
 $("div:regex(class, .*sd.*)")
 ```
 
@@ -5412,19 +5421,19 @@ Here's an example which would just match the first three divs:
 
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="true" data-babel="false">
 <div class="snippet-code">
-```perl
+```regex
 $('div')
   .filter(function() {
     return this.id.match(/abc+d/);
   })
-  .html("Matched!");```
-```perl
-&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"&gt;&lt;/script&gt;
+  .html("Matched!");
+```
+<pre class="snippet-code-html lang-html prettyprint-override"><code>&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"&gt;&lt;/script&gt;
 
 &lt;div id="abcd"&gt;Not matched&lt;/div&gt;
 &lt;div id="abccd"&gt;Not matched&lt;/div&gt;
 &lt;div id="abcccd"&gt;Not matched&lt;/div&gt;
-&lt;div id="abd"&gt;Not matched&lt;/div&gt;```
+&lt;div id="abd"&gt;Not matched&lt;/div&gt;</code></pre>
 </div>
 </div>
 
@@ -5434,7 +5443,7 @@ These can be helpful.
 
 If you're finding by <strong>Contains</strong> then it'll be like this  
 
-```perl
+```regex
     $("input[id*='DiscountType']").each(function (i, el) {
          //It'll be an array of elements
      });
@@ -5442,7 +5451,7 @@ If you're finding by <strong>Contains</strong> then it'll be like this
 
 If you're finding by <strong>Starts With</strong> then it'll be like this  
 
-```perl
+```regex
     $("input[id^='DiscountType']").each(function (i, el) {
          //It'll be an array of elements
      });
@@ -5450,7 +5459,7 @@ If you're finding by <strong>Starts With</strong> then it'll be like this
 
 If you're finding by <strong>Ends With</strong> then it'll be like this  
 
-```perl
+```regex
      $("input[id$='DiscountType']").each(function (i, el) {
          //It'll be an array of elements
      });
@@ -5458,7 +5467,7 @@ If you're finding by <strong>Ends With</strong> then it'll be like this
 
 If you want to select elements which <strong>id is not a given string</strong>  
 
-```perl
+```regex
     $("input[id!='DiscountType']").each(function (i, el) {
          //It'll be an array of elements
      });
@@ -5466,7 +5475,7 @@ If you want to select elements which <strong>id is not a given string</strong>
 
 If you want to select elements which <strong>name contains a given word, delimited by spaces</strong>  
 
-```perl
+```regex
      $("input[name~='DiscountType']").each(function (i, el) {
          //It'll be an array of elements
      });
@@ -5474,7 +5483,7 @@ If you want to select elements which <strong>name contains a given word, delimit
 
 If you want to select elements which <strong>id is equal to a given string or starting with that string followed by a hyphen</strong>  
 
-```perl
+```regex
      $("input[id|='DiscountType']").each(function (i, el) {
          //It'll be an array of elements
      });
@@ -5487,7 +5496,7 @@ If you want to select elements which <strong>id is equal to a given string or st
 #### Question
 I would like a RegExp that will remove all special characters from a string. I am trying something like this but it doesn’t work in IE7, though it works in Firefox.  
 
-```perl
+```regex
 var specialChars = "!@#$^&amp;%*()+=-[]\/{}|:&lt;&gt;?,.";
 
 for (var i = 0; i &lt; specialChars.length; i++) {
@@ -5498,7 +5507,7 @@ for (var i = 0; i &lt; specialChars.length; i++) {
 A detailed description of the RegExp would be helpful as well.  
 
 #### Answer accepted (score 569)
-```perl
+```regex
 var desired = stringToReplace.replace(/[^\w\s]/gi, '')
 ```
 
@@ -5509,7 +5518,7 @@ The caret (`^`) character is the negation of the set `[...]`, `gi` say global an
 #### Answer 2 (score 91)
 Note that if you still want to exclude a set, including things like slashes and special characters you can do the following:  
 
-```perl
+```regex
 var outString = sourceString.replace(/[`~!@#$%^&amp;*()_|+\-=?;:'",.&lt;&gt;\{\}\[\]\\\/]/gi, '');
 ```
 
@@ -5529,16 +5538,16 @@ You really don't want remove these letters together with all the special charact
 
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="true" data-babel="false">
 <div class="snippet-code">
-```perl
+```regex
 var str = "Їжак::: résd,$%&amp; adùf"
 var search = XRegExp('([^?&lt;first&gt;\\pL ]+)');
 var res = XRegExp.replace(str, search, '',"all");
 
 console.log(res); // returns "Їжак::: resd,adf"
 console.log(str.replace(/[^\w\s]/gi, '') ); // returns " rsd adf"
-console.log(str.replace(/[^\wèéòàùì\s]/gi, '') ); // returns " résd adùf"```
-```perl
-&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/xregexp/3.1.1/xregexp-all.js"&gt;&lt;/script&gt;```
+console.log(str.replace(/[^\wèéòàùì\s]/gi, '') ); // returns " résd adùf"
+```
+<pre class="snippet-code-html lang-html prettyprint-override">`&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/xregexp/3.1.1/xregexp-all.js"&gt;&lt;/script&gt;`</pre>
 </div>
 </div>
 
@@ -5567,7 +5576,7 @@ Is it possible to do it?
 #### Answer accepted (score 389)
 Easy done:  
 
-```perl
+```regex
 (?&lt;=\[)(.*?)(?=\])
 ```
 
@@ -5581,7 +5590,7 @@ Technically that's using lookaheads and lookbehinds. See <a href="http://www.reg
 
 Alternatively you can just capture what's between the square brackets:  
 
-```perl
+```regex
 \[(.*?)\]
 ```
 
@@ -5594,7 +5603,7 @@ However, the second solution works well, but you need to get the second matched 
 
 Example:  
 
-```perl
+```regex
 var regex = /\[(.*?)\]/;
 var strToMatch = "This is a test string [more or less]";
 var matched = regex.exec(strToMatch);
@@ -5602,32 +5611,32 @@ var matched = regex.exec(strToMatch);
 
 It will return:  
 
-```perl
+```regex
 ["[more or less]", "more or less"]
 ```
 
 So, what you need is the second value. Use:  
 
-```perl
+```regex
 var matched = regex.exec(strToMatch)[1];
 ```
 
 To return:  
 
-```perl
+```regex
 "more or less"
 ```
 
 #### Answer 3 (score 18)
 You just need to 'capture' the bit between the brackets.  
 
-```perl
+```regex
 \[(.*?)\]
 ```
 
 To capture you put it inside parentheses.  You do not say which language this is using.  In Perl for example, you would access this using the $1 variable.  
 
-```perl
+```regex
 my $string ='This is the match [more or less]';
 $string =~ /\[(.*?)\]/;
 print "match:$1\n";
@@ -5642,13 +5651,13 @@ Other languages will have different mechanisms. C#, for example, uses the <a hre
 #### Question
 As part of a project for school, I need to replace a string from the form:  
 
-```perl
+```regex
 5 * x^3 - 6 * x^1 + 1
 ```
 
 to something like:  
 
-```perl
+```regex
 5x&lt;sup&gt;3&lt;/sup&gt; - 6x&lt;sup&gt;1&lt;/sup&gt; + 1
 ```
 
@@ -5659,12 +5668,12 @@ Can you lend me a hand?
 P.S. The actual assignment is to implement a Polynomial Processing Java application, and I'm using this to pass polynomial.toString() from the model to the view, and I want do display it using html tags in a pretty way.  
 
 #### Answer 2 (score 157)
-```perl
+```regex
 str.replaceAll("\\^([0-9]+)", "&lt;sup&gt;$1&lt;/sup&gt;");
 ```
 
 #### Answer 3 (score 33)
-```perl
+```regex
 private String removeScript(String content) {
     Pattern p = Pattern.compile("&lt;script[^&gt;]*&gt;(.*?)&lt;/script&gt;",
             Pattern.DOTALL | Pattern.CASE_INSENSITIVE);
@@ -5679,14 +5688,14 @@ private String removeScript(String content) {
 #### Question
 Why does the second line of this code throw `ArrayIndexOutOfBoundsException`?  
 
-```perl
+```regex
 String filename = "D:/some folder/001.docx";
 String extensionRemoved = filename.split(".")[0];
 ```
 
 While this works:  
 
-```perl
+```regex
 String driveLetter = filename.split("/")[0];
 ```
 
@@ -5695,7 +5704,7 @@ I use Java 7.
 #### Answer 2 (score 678)
 You need to escape the dot if you want to split on a <em>literal</em> dot:  
 
-```perl
+```regex
 String extensionRemoved = filename.split("\\.")[0];
 ```
 
@@ -5708,7 +5717,7 @@ You're getting an `ArrayIndexOutOfBoundsException` because your input string is 
 
 To avoid getting an `ArrayIndexOutOfBoundsException` for this edge case, use the overloaded version of <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#split-java.lang.String-int-">`split(regex, limit)`</a>, which has a second parameter that is the size limit for the resulting array. When `limit` is <em>negative</em>, the behaviour of removing trailing blanks from the resulting array is disabled:  
 
-```perl
+```regex
 ".".split("\\.", -1) // returns an array of two blanks, ie ["", ""]
 ```
 
@@ -5717,7 +5726,7 @@ ie, when `filename` is just a dot `"."`, calling `filename.split("\\.", -1)[0]` 
 #### Answer 3 (score 93)
 "." is a special character in java regex engine, so you have to use "\\." to escape this character:  
 
-```perl
+```regex
 final String extensionRemoved = filename.split("\\.")[0];
 ```
 
@@ -5730,13 +5739,13 @@ I hope this helps
 #### Question
 I am trying to write a <a href="http://en.wikipedia.org/wiki/Regular_expression" rel="noreferrer">regular expression</a> that will only allow lowercase letters and up to 10 characters. What I have so far looks like this:  
 
-```perl
+```regex
 pattern: /^[a-z]{0,10}+$/ 
 ```
 
 This does not work or compile. I had a working one that would just allow lowercase letters which was this:  
 
-```perl
+```regex
 pattern: /^[a-z]+$/ 
 ```
 
@@ -5745,7 +5754,7 @@ But I need to limit the number of characters to 10.
 #### Answer 2 (score 326)
 You can use curly braces to control the number of occurrences. For example, this means 0 to 10:  
 
-```perl
+```regex
 /^[a-z]{0,10}$/
 ```
 
@@ -5781,7 +5790,7 @@ If you want to check for it as <em>part of the word</em>, it's just `Test`, agai
 #### Answer 2 (score 91)
 Just don't anchor your pattern:  
 
-```perl
+```regex
 /Test/
 ```
 
@@ -5790,7 +5799,7 @@ The above regex will check for the literal string "Test" being found somewhere w
 #### Answer 3 (score 1)
 I have hashed together different elements to get the validation we needed for student emails. I hope this is going to work I haven't tested fully.  
 
-```perl
+```regex
 ^[a-zA-Z0-9._%+-]+@\{ac|org|stu|student|stud|studmail|edu|uni}
 ```
 
@@ -5812,20 +5821,20 @@ Goal:
 #### Answer accepted (score 817)
 Given that you also want to cover tabs, newlines, etc, just replace `\s\s+` with `' '`:   
 
-```perl
+```regex
 string = string.replace(/\s\s+/g, ' ');
 ```
 
 If you really want to cover only spaces (and thus not tabs, newlines, etc), do so:  
 
-```perl
+```regex
 string = string.replace(/  +/g, ' ');
 ```
 
 #### Answer 2 (score 152)
 Since you seem to be interested in performance, I profiled these with firebug.  Here are the results I got:  
 
-```perl
+```regex
 str.replace( /  +/g, ' ' )       -&gt;  380ms
 str.replace( /\s\s+/g, ' ' )     -&gt;  390ms
 str.replace( / {2,}/g, ' ' )     -&gt;  470ms
@@ -5840,7 +5849,7 @@ I encourage you to do your own profiling tests with firebug, if you think perfor
 (Also, note that IE 8's developer toolbar also has a profiler built in -- it might be worth checking what the performance is like in IE.)   
 
 #### Answer 3 (score 43)
-```perl
+```regex
 var str = "The      dog        has a long tail,      and it is RED!";
 str = str.replace(/ {2,}/g,' ');
 ```
@@ -5848,7 +5857,7 @@ str = str.replace(/ {2,}/g,' ');
 <p><strong>EDIT:</strong>
 If you wish to replace all kind of whitespace characters the most efficient way would be like that:</p>
 
-```perl
+```regex
 str = str.replace(/\s{2,}/g,' ');
 ```
 
@@ -5859,14 +5868,14 @@ str = str.replace(/\s{2,}/g,' ');
 #### Question
 I'm trying to determine if a string is a subset of another string.  For example:  
 
-```perl
+```regex
 chars &lt;- "test"
 value &lt;- "es"
 ```
 
 I want to return TRUE if "value" appears as part of the string "chars".  In the following scenario, I would want to return false:  
 
-```perl
+```regex
 chars &lt;- "test"
 value &lt;- "et"
 ```
@@ -5874,7 +5883,7 @@ value &lt;- "et"
 #### Answer accepted (score 338)
 Use the  `grepl` function  
 
-```perl
+```regex
 grepl(value, chars)
 # TRUE
 ```
@@ -5884,7 +5893,7 @@ grepl(value, chars)
 
 Sigh, it took me 45 minutes to find the answer to this simple question. The answer is: `grepl(needle, haystack, fixed=TRUE)`  
 
-```perl
+```regex
 # Correct
 &gt; grepl("1+2", "1+2", fixed=TRUE)
 [1] TRUE
@@ -5921,7 +5930,7 @@ The better your code is, the less history you have to know to make sense of it. 
 #### Answer 3 (score 31)
 You want `grepl`:  
 
-```perl
+```regex
 &gt; chars &lt;- "test"
 &gt; value &lt;- "es"
 &gt; grepl(value, chars)
@@ -5943,7 +5952,7 @@ I'm wondering whether there is something like `string.find_all()` which can retu
 
 For example:  
 
-```perl
+```regex
 string = "test test test test"
 
 print string.find('test') # 0
@@ -5956,7 +5965,7 @@ print string.find_all('test') # [0,5,10,15]
 #### Answer accepted (score 465)
 There is no simple built-in string function that does what you're looking for, but you could use the more powerful <a href="http://www.regular-expressions.info/" rel="noreferrer">regular expressions</a>:  
 
-```perl
+```regex
 import re
 [m.start() for m in re.finditer('test', 'test test test test')]
 #[0, 5, 10, 15]
@@ -5964,14 +5973,14 @@ import re
 
 If you want to find overlapping matches, <a href="http://www.regular-expressions.info/lookaround.html" rel="noreferrer">lookahead</a> will do that:  
 
-```perl
+```regex
 [m.start() for m in re.finditer('(?=tt)', 'ttt')]
 #[0, 1]
 ```
 
 If you want a reverse find-all without overlaps, you can combine positive and negative lookahead into an expression like this:  
 
-```perl
+```regex
 search = 'tt'
 [m.start() for m in re.finditer('(?=%s)(?!.{1,%d}%s)' % (search, len(search)-1, search), 'ttt')]
 #[1]
@@ -5980,7 +5989,7 @@ search = 'tt'
 <a href="http://docs.python.org/library/re.html#re.finditer" rel="noreferrer">`re.finditer`</a> returns a <a href="http://wiki.python.org/moin/Generators" rel="noreferrer">generator</a>, so you could change the `[]` in the above to `()` to get a generator instead of a list which will be more efficient if you're only iterating through the results once.  
 
 #### Answer 2 (score 94)
-```perl
+```regex
 &gt;&gt;&gt; help(str.find)
 Help on method_descriptor:
 
@@ -5990,7 +5999,7 @@ find(...)
 
 Thus, we can build it ourselves:  
 
-```perl
+```regex
 def find_all(a_str, sub):
     start = 0
     while True:
@@ -6007,7 +6016,7 @@ No temporary strings or regexes required.
 #### Answer 3 (score 43)
 Here's a (very inefficient) way to get <em>all</em> (i.e. even overlapping) matches:  
 
-```perl
+```regex
 &gt;&gt;&gt; string = "test test test test"
 &gt;&gt;&gt; [i for i in range(len(string)) if string.startswith('test', i)]
 [0, 5, 10, 15]
@@ -6027,19 +6036,19 @@ I wrote my URL (actually IRI, internationalized) pattern to comply with RFC 3987
 
 For absolute IRIs (internationalized):  
 
-```perl
+```regex
 /^[a-z](?:[-a-z0-9\+\.])*:(?:\/\/(?:(?:%[0-9a-f][0-9a-f]|[-a-z0-9\._~\x{A0}-\x{D7FF}\x{F900}-\x{FDCF}\x{FDF0}-\x{FFEF}\x{10000}-\x{1FFFD}\x{20000}-\x{2FFFD}\x{30000}-\x{3FFFD}\x{40000}-\x{4FFFD}\x{50000}-\x{5FFFD}\x{60000}-\x{6FFFD}\x{70000}-\x{7FFFD}\x{80000}-\x{8FFFD}\x{90000}-\x{9FFFD}\x{A0000}-\x{AFFFD}\x{B0000}-\x{BFFFD}\x{C0000}-\x{CFFFD}\x{D0000}-\x{DFFFD}\x{E1000}-\x{EFFFD}!\$&amp;'\(\)\*\+,;=:])*@)?(?:\[(?:(?:(?:[0-9a-f]{1,4}:){6}(?:[0-9a-f]{1,4}:[0-9a-f]{1,4}|(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(?:\.(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3})|::(?:[0-9a-f]{1,4}:){5}(?:[0-9a-f]{1,4}:[0-9a-f]{1,4}|(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(?:\.(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3})|(?:[0-9a-f]{1,4})?::(?:[0-9a-f]{1,4}:){4}(?:[0-9a-f]{1,4}:[0-9a-f]{1,4}|(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(?:\.(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3})|(?:(?:[0-9a-f]{1,4}:){0,1}[0-9a-f]{1,4})?::(?:[0-9a-f]{1,4}:){3}(?:[0-9a-f]{1,4}:[0-9a-f]{1,4}|(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(?:\.(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3})|(?:(?:[0-9a-f]{1,4}:){0,2}[0-9a-f]{1,4})?::(?:[0-9a-f]{1,4}:){2}(?:[0-9a-f]{1,4}:[0-9a-f]{1,4}|(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(?:\.(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3})|(?:(?:[0-9a-f]{1,4}:){0,3}[0-9a-f]{1,4})?::[0-9a-f]{1,4}:(?:[0-9a-f]{1,4}:[0-9a-f]{1,4}|(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(?:\.(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3})|(?:(?:[0-9a-f]{1,4}:){0,4}[0-9a-f]{1,4})?::(?:[0-9a-f]{1,4}:[0-9a-f]{1,4}|(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(?:\.(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3})|(?:(?:[0-9a-f]{1,4}:){0,5}[0-9a-f]{1,4})?::[0-9a-f]{1,4}|(?:(?:[0-9a-f]{1,4}:){0,6}[0-9a-f]{1,4})?::)|v[0-9a-f]+\.[-a-z0-9\._~!\$&amp;'\(\)\*\+,;=:]+)\]|(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(?:\.(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3}|(?:%[0-9a-f][0-9a-f]|[-a-z0-9\._~\x{A0}-\x{D7FF}\x{F900}-\x{FDCF}\x{FDF0}-\x{FFEF}\x{10000}-\x{1FFFD}\x{20000}-\x{2FFFD}\x{30000}-\x{3FFFD}\x{40000}-\x{4FFFD}\x{50000}-\x{5FFFD}\x{60000}-\x{6FFFD}\x{70000}-\x{7FFFD}\x{80000}-\x{8FFFD}\x{90000}-\x{9FFFD}\x{A0000}-\x{AFFFD}\x{B0000}-\x{BFFFD}\x{C0000}-\x{CFFFD}\x{D0000}-\x{DFFFD}\x{E1000}-\x{EFFFD}!\$&amp;'\(\)\*\+,;=])*)(?::[0-9]*)?(?:\/(?:(?:%[0-9a-f][0-9a-f]|[-a-z0-9\._~\x{A0}-\x{D7FF}\x{F900}-\x{FDCF}\x{FDF0}-\x{FFEF}\x{10000}-\x{1FFFD}\x{20000}-\x{2FFFD}\x{30000}-\x{3FFFD}\x{40000}-\x{4FFFD}\x{50000}-\x{5FFFD}\x{60000}-\x{6FFFD}\x{70000}-\x{7FFFD}\x{80000}-\x{8FFFD}\x{90000}-\x{9FFFD}\x{A0000}-\x{AFFFD}\x{B0000}-\x{BFFFD}\x{C0000}-\x{CFFFD}\x{D0000}-\x{DFFFD}\x{E1000}-\x{EFFFD}!\$&amp;'\(\)\*\+,;=:@]))*)*|\/(?:(?:(?:(?:%[0-9a-f][0-9a-f]|[-a-z0-9\._~\x{A0}-\x{D7FF}\x{F900}-\x{FDCF}\x{FDF0}-\x{FFEF}\x{10000}-\x{1FFFD}\x{20000}-\x{2FFFD}\x{30000}-\x{3FFFD}\x{40000}-\x{4FFFD}\x{50000}-\x{5FFFD}\x{60000}-\x{6FFFD}\x{70000}-\x{7FFFD}\x{80000}-\x{8FFFD}\x{90000}-\x{9FFFD}\x{A0000}-\x{AFFFD}\x{B0000}-\x{BFFFD}\x{C0000}-\x{CFFFD}\x{D0000}-\x{DFFFD}\x{E1000}-\x{EFFFD}!\$&amp;'\(\)\*\+,;=:@]))+)(?:\/(?:(?:%[0-9a-f][0-9a-f]|[-a-z0-9\._~\x{A0}-\x{D7FF}\x{F900}-\x{FDCF}\x{FDF0}-\x{FFEF}\x{10000}-\x{1FFFD}\x{20000}-\x{2FFFD}\x{30000}-\x{3FFFD}\x{40000}-\x{4FFFD}\x{50000}-\x{5FFFD}\x{60000}-\x{6FFFD}\x{70000}-\x{7FFFD}\x{80000}-\x{8FFFD}\x{90000}-\x{9FFFD}\x{A0000}-\x{AFFFD}\x{B0000}-\x{BFFFD}\x{C0000}-\x{CFFFD}\x{D0000}-\x{DFFFD}\x{E1000}-\x{EFFFD}!\$&amp;'\(\)\*\+,;=:@]))*)*)?|(?:(?:(?:%[0-9a-f][0-9a-f]|[-a-z0-9\._~\x{A0}-\x{D7FF}\x{F900}-\x{FDCF}\x{FDF0}-\x{FFEF}\x{10000}-\x{1FFFD}\x{20000}-\x{2FFFD}\x{30000}-\x{3FFFD}\x{40000}-\x{4FFFD}\x{50000}-\x{5FFFD}\x{60000}-\x{6FFFD}\x{70000}-\x{7FFFD}\x{80000}-\x{8FFFD}\x{90000}-\x{9FFFD}\x{A0000}-\x{AFFFD}\x{B0000}-\x{BFFFD}\x{C0000}-\x{CFFFD}\x{D0000}-\x{DFFFD}\x{E1000}-\x{EFFFD}!\$&amp;'\(\)\*\+,;=:@]))+)(?:\/(?:(?:%[0-9a-f][0-9a-f]|[-a-z0-9\._~\x{A0}-\x{D7FF}\x{F900}-\x{FDCF}\x{FDF0}-\x{FFEF}\x{10000}-\x{1FFFD}\x{20000}-\x{2FFFD}\x{30000}-\x{3FFFD}\x{40000}-\x{4FFFD}\x{50000}-\x{5FFFD}\x{60000}-\x{6FFFD}\x{70000}-\x{7FFFD}\x{80000}-\x{8FFFD}\x{90000}-\x{9FFFD}\x{A0000}-\x{AFFFD}\x{B0000}-\x{BFFFD}\x{C0000}-\x{CFFFD}\x{D0000}-\x{DFFFD}\x{E1000}-\x{EFFFD}!\$&amp;'\(\)\*\+,;=:@]))*)*|(?!(?:%[0-9a-f][0-9a-f]|[-a-z0-9\._~\x{A0}-\x{D7FF}\x{F900}-\x{FDCF}\x{FDF0}-\x{FFEF}\x{10000}-\x{1FFFD}\x{20000}-\x{2FFFD}\x{30000}-\x{3FFFD}\x{40000}-\x{4FFFD}\x{50000}-\x{5FFFD}\x{60000}-\x{6FFFD}\x{70000}-\x{7FFFD}\x{80000}-\x{8FFFD}\x{90000}-\x{9FFFD}\x{A0000}-\x{AFFFD}\x{B0000}-\x{BFFFD}\x{C0000}-\x{CFFFD}\x{D0000}-\x{DFFFD}\x{E1000}-\x{EFFFD}!\$&amp;'\(\)\*\+,;=:@])))(?:\?(?:(?:%[0-9a-f][0-9a-f]|[-a-z0-9\._~\x{A0}-\x{D7FF}\x{F900}-\x{FDCF}\x{FDF0}-\x{FFEF}\x{10000}-\x{1FFFD}\x{20000}-\x{2FFFD}\x{30000}-\x{3FFFD}\x{40000}-\x{4FFFD}\x{50000}-\x{5FFFD}\x{60000}-\x{6FFFD}\x{70000}-\x{7FFFD}\x{80000}-\x{8FFFD}\x{90000}-\x{9FFFD}\x{A0000}-\x{AFFFD}\x{B0000}-\x{BFFFD}\x{C0000}-\x{CFFFD}\x{D0000}-\x{DFFFD}\x{E1000}-\x{EFFFD}!\$&amp;'\(\)\*\+,;=:@])|[\x{E000}-\x{F8FF}\x{F0000}-\x{FFFFD}\x{100000}-\x{10FFFD}\/\?])*)?(?:\#(?:(?:%[0-9a-f][0-9a-f]|[-a-z0-9\._~\x{A0}-\x{D7FF}\x{F900}-\x{FDCF}\x{FDF0}-\x{FFEF}\x{10000}-\x{1FFFD}\x{20000}-\x{2FFFD}\x{30000}-\x{3FFFD}\x{40000}-\x{4FFFD}\x{50000}-\x{5FFFD}\x{60000}-\x{6FFFD}\x{70000}-\x{7FFFD}\x{80000}-\x{8FFFD}\x{90000}-\x{9FFFD}\x{A0000}-\x{AFFFD}\x{B0000}-\x{BFFFD}\x{C0000}-\x{CFFFD}\x{D0000}-\x{DFFFD}\x{E1000}-\x{EFFFD}!\$&amp;'\(\)\*\+,;=:@])|[\/\?])*)?$/i
 ```
 
 To also allow relative IRIs:  
 
-```perl
+```regex
 /^(?:[a-z](?:[-a-z0-9\+\.])*:(?:\/\/(?:(?:%[0-9a-f][0-9a-f]|[-a-z0-9\._~\x{A0}-\x{D7FF}\x{F900}-\x{FDCF}\x{FDF0}-\x{FFEF}\x{10000}-\x{1FFFD}\x{20000}-\x{2FFFD}\x{30000}-\x{3FFFD}\x{40000}-\x{4FFFD}\x{50000}-\x{5FFFD}\x{60000}-\x{6FFFD}\x{70000}-\x{7FFFD}\x{80000}-\x{8FFFD}\x{90000}-\x{9FFFD}\x{A0000}-\x{AFFFD}\x{B0000}-\x{BFFFD}\x{C0000}-\x{CFFFD}\x{D0000}-\x{DFFFD}\x{E1000}-\x{EFFFD}!\$&amp;'\(\)\*\+,;=:])*@)?(?:\[(?:(?:(?:[0-9a-f]{1,4}:){6}(?:[0-9a-f]{1,4}:[0-9a-f]{1,4}|(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(?:\.(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3})|::(?:[0-9a-f]{1,4}:){5}(?:[0-9a-f]{1,4}:[0-9a-f]{1,4}|(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(?:\.(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3})|(?:[0-9a-f]{1,4})?::(?:[0-9a-f]{1,4}:){4}(?:[0-9a-f]{1,4}:[0-9a-f]{1,4}|(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(?:\.(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3})|(?:(?:[0-9a-f]{1,4}:){0,1}[0-9a-f]{1,4})?::(?:[0-9a-f]{1,4}:){3}(?:[0-9a-f]{1,4}:[0-9a-f]{1,4}|(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(?:\.(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3})|(?:(?:[0-9a-f]{1,4}:){0,2}[0-9a-f]{1,4})?::(?:[0-9a-f]{1,4}:){2}(?:[0-9a-f]{1,4}:[0-9a-f]{1,4}|(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(?:\.(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3})|(?:(?:[0-9a-f]{1,4}:){0,3}[0-9a-f]{1,4})?::[0-9a-f]{1,4}:(?:[0-9a-f]{1,4}:[0-9a-f]{1,4}|(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(?:\.(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3})|(?:(?:[0-9a-f]{1,4}:){0,4}[0-9a-f]{1,4})?::(?:[0-9a-f]{1,4}:[0-9a-f]{1,4}|(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(?:\.(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3})|(?:(?:[0-9a-f]{1,4}:){0,5}[0-9a-f]{1,4})?::[0-9a-f]{1,4}|(?:(?:[0-9a-f]{1,4}:){0,6}[0-9a-f]{1,4})?::)|v[0-9a-f]+\.[-a-z0-9\._~!\$&amp;'\(\)\*\+,;=:]+)\]|(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(?:\.(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3}|(?:%[0-9a-f][0-9a-f]|[-a-z0-9\._~\x{A0}-\x{D7FF}\x{F900}-\x{FDCF}\x{FDF0}-\x{FFEF}\x{10000}-\x{1FFFD}\x{20000}-\x{2FFFD}\x{30000}-\x{3FFFD}\x{40000}-\x{4FFFD}\x{50000}-\x{5FFFD}\x{60000}-\x{6FFFD}\x{70000}-\x{7FFFD}\x{80000}-\x{8FFFD}\x{90000}-\x{9FFFD}\x{A0000}-\x{AFFFD}\x{B0000}-\x{BFFFD}\x{C0000}-\x{CFFFD}\x{D0000}-\x{DFFFD}\x{E1000}-\x{EFFFD}!\$&amp;'\(\)\*\+,;=])*)(?::[0-9]*)?(?:\/(?:(?:%[0-9a-f][0-9a-f]|[-a-z0-9\._~\x{A0}-\x{D7FF}\x{F900}-\x{FDCF}\x{FDF0}-\x{FFEF}\x{10000}-\x{1FFFD}\x{20000}-\x{2FFFD}\x{30000}-\x{3FFFD}\x{40000}-\x{4FFFD}\x{50000}-\x{5FFFD}\x{60000}-\x{6FFFD}\x{70000}-\x{7FFFD}\x{80000}-\x{8FFFD}\x{90000}-\x{9FFFD}\x{A0000}-\x{AFFFD}\x{B0000}-\x{BFFFD}\x{C0000}-\x{CFFFD}\x{D0000}-\x{DFFFD}\x{E1000}-\x{EFFFD}!\$&amp;'\(\)\*\+,;=:@]))*)*|\/(?:(?:(?:(?:%[0-9a-f][0-9a-f]|[-a-z0-9\._~\x{A0}-\x{D7FF}\x{F900}-\x{FDCF}\x{FDF0}-\x{FFEF}\x{10000}-\x{1FFFD}\x{20000}-\x{2FFFD}\x{30000}-\x{3FFFD}\x{40000}-\x{4FFFD}\x{50000}-\x{5FFFD}\x{60000}-\x{6FFFD}\x{70000}-\x{7FFFD}\x{80000}-\x{8FFFD}\x{90000}-\x{9FFFD}\x{A0000}-\x{AFFFD}\x{B0000}-\x{BFFFD}\x{C0000}-\x{CFFFD}\x{D0000}-\x{DFFFD}\x{E1000}-\x{EFFFD}!\$&amp;'\(\)\*\+,;=:@]))+)(?:\/(?:(?:%[0-9a-f][0-9a-f]|[-a-z0-9\._~\x{A0}-\x{D7FF}\x{F900}-\x{FDCF}\x{FDF0}-\x{FFEF}\x{10000}-\x{1FFFD}\x{20000}-\x{2FFFD}\x{30000}-\x{3FFFD}\x{40000}-\x{4FFFD}\x{50000}-\x{5FFFD}\x{60000}-\x{6FFFD}\x{70000}-\x{7FFFD}\x{80000}-\x{8FFFD}\x{90000}-\x{9FFFD}\x{A0000}-\x{AFFFD}\x{B0000}-\x{BFFFD}\x{C0000}-\x{CFFFD}\x{D0000}-\x{DFFFD}\x{E1000}-\x{EFFFD}!\$&amp;'\(\)\*\+,;=:@]))*)*)?|(?:(?:(?:%[0-9a-f][0-9a-f]|[-a-z0-9\._~\x{A0}-\x{D7FF}\x{F900}-\x{FDCF}\x{FDF0}-\x{FFEF}\x{10000}-\x{1FFFD}\x{20000}-\x{2FFFD}\x{30000}-\x{3FFFD}\x{40000}-\x{4FFFD}\x{50000}-\x{5FFFD}\x{60000}-\x{6FFFD}\x{70000}-\x{7FFFD}\x{80000}-\x{8FFFD}\x{90000}-\x{9FFFD}\x{A0000}-\x{AFFFD}\x{B0000}-\x{BFFFD}\x{C0000}-\x{CFFFD}\x{D0000}-\x{DFFFD}\x{E1000}-\x{EFFFD}!\$&amp;'\(\)\*\+,;=:@]))+)(?:\/(?:(?:%[0-9a-f][0-9a-f]|[-a-z0-9\._~\x{A0}-\x{D7FF}\x{F900}-\x{FDCF}\x{FDF0}-\x{FFEF}\x{10000}-\x{1FFFD}\x{20000}-\x{2FFFD}\x{30000}-\x{3FFFD}\x{40000}-\x{4FFFD}\x{50000}-\x{5FFFD}\x{60000}-\x{6FFFD}\x{70000}-\x{7FFFD}\x{80000}-\x{8FFFD}\x{90000}-\x{9FFFD}\x{A0000}-\x{AFFFD}\x{B0000}-\x{BFFFD}\x{C0000}-\x{CFFFD}\x{D0000}-\x{DFFFD}\x{E1000}-\x{EFFFD}!\$&amp;'\(\)\*\+,;=:@]))*)*|(?!(?:%[0-9a-f][0-9a-f]|[-a-z0-9\._~\x{A0}-\x{D7FF}\x{F900}-\x{FDCF}\x{FDF0}-\x{FFEF}\x{10000}-\x{1FFFD}\x{20000}-\x{2FFFD}\x{30000}-\x{3FFFD}\x{40000}-\x{4FFFD}\x{50000}-\x{5FFFD}\x{60000}-\x{6FFFD}\x{70000}-\x{7FFFD}\x{80000}-\x{8FFFD}\x{90000}-\x{9FFFD}\x{A0000}-\x{AFFFD}\x{B0000}-\x{BFFFD}\x{C0000}-\x{CFFFD}\x{D0000}-\x{DFFFD}\x{E1000}-\x{EFFFD}!\$&amp;'\(\)\*\+,;=:@])))(?:\?(?:(?:%[0-9a-f][0-9a-f]|[-a-z0-9\._~\x{A0}-\x{D7FF}\x{F900}-\x{FDCF}\x{FDF0}-\x{FFEF}\x{10000}-\x{1FFFD}\x{20000}-\x{2FFFD}\x{30000}-\x{3FFFD}\x{40000}-\x{4FFFD}\x{50000}-\x{5FFFD}\x{60000}-\x{6FFFD}\x{70000}-\x{7FFFD}\x{80000}-\x{8FFFD}\x{90000}-\x{9FFFD}\x{A0000}-\x{AFFFD}\x{B0000}-\x{BFFFD}\x{C0000}-\x{CFFFD}\x{D0000}-\x{DFFFD}\x{E1000}-\x{EFFFD}!\$&amp;'\(\)\*\+,;=:@])|[\x{E000}-\x{F8FF}\x{F0000}-\x{FFFFD}\x{100000}-\x{10FFFD}\/\?])*)?(?:\#(?:(?:%[0-9a-f][0-9a-f]|[-a-z0-9\._~\x{A0}-\x{D7FF}\x{F900}-\x{FDCF}\x{FDF0}-\x{FFEF}\x{10000}-\x{1FFFD}\x{20000}-\x{2FFFD}\x{30000}-\x{3FFFD}\x{40000}-\x{4FFFD}\x{50000}-\x{5FFFD}\x{60000}-\x{6FFFD}\x{70000}-\x{7FFFD}\x{80000}-\x{8FFFD}\x{90000}-\x{9FFFD}\x{A0000}-\x{AFFFD}\x{B0000}-\x{BFFFD}\x{C0000}-\x{CFFFD}\x{D0000}-\x{DFFFD}\x{E1000}-\x{EFFFD}!\$&amp;'\(\)\*\+,;=:@])|[\/\?])*)?|(?:\/\/(?:(?:%[0-9a-f][0-9a-f]|[-a-z0-9\._~\x{A0}-\x{D7FF}\x{F900}-\x{FDCF}\x{FDF0}-\x{FFEF}\x{10000}-\x{1FFFD}\x{20000}-\x{2FFFD}\x{30000}-\x{3FFFD}\x{40000}-\x{4FFFD}\x{50000}-\x{5FFFD}\x{60000}-\x{6FFFD}\x{70000}-\x{7FFFD}\x{80000}-\x{8FFFD}\x{90000}-\x{9FFFD}\x{A0000}-\x{AFFFD}\x{B0000}-\x{BFFFD}\x{C0000}-\x{CFFFD}\x{D0000}-\x{DFFFD}\x{E1000}-\x{EFFFD}!\$&amp;'\(\)\*\+,;=:])*@)?(?:\[(?:(?:(?:[0-9a-f]{1,4}:){6}(?:[0-9a-f]{1,4}:[0-9a-f]{1,4}|(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(?:\.(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3})|::(?:[0-9a-f]{1,4}:){5}(?:[0-9a-f]{1,4}:[0-9a-f]{1,4}|(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(?:\.(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3})|(?:[0-9a-f]{1,4})?::(?:[0-9a-f]{1,4}:){4}(?:[0-9a-f]{1,4}:[0-9a-f]{1,4}|(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(?:\.(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3})|(?:(?:[0-9a-f]{1,4}:){0,1}[0-9a-f]{1,4})?::(?:[0-9a-f]{1,4}:){3}(?:[0-9a-f]{1,4}:[0-9a-f]{1,4}|(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(?:\.(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3})|(?:(?:[0-9a-f]{1,4}:){0,2}[0-9a-f]{1,4})?::(?:[0-9a-f]{1,4}:){2}(?:[0-9a-f]{1,4}:[0-9a-f]{1,4}|(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(?:\.(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3})|(?:(?:[0-9a-f]{1,4}:){0,3}[0-9a-f]{1,4})?::[0-9a-f]{1,4}:(?:[0-9a-f]{1,4}:[0-9a-f]{1,4}|(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(?:\.(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3})|(?:(?:[0-9a-f]{1,4}:){0,4}[0-9a-f]{1,4})?::(?:[0-9a-f]{1,4}:[0-9a-f]{1,4}|(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(?:\.(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3})|(?:(?:[0-9a-f]{1,4}:){0,5}[0-9a-f]{1,4})?::[0-9a-f]{1,4}|(?:(?:[0-9a-f]{1,4}:){0,6}[0-9a-f]{1,4})?::)|v[0-9a-f]+\.[-a-z0-9\._~!\$&amp;'\(\)\*\+,;=:]+)\]|(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(?:\.(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3}|(?:%[0-9a-f][0-9a-f]|[-a-z0-9\._~\x{A0}-\x{D7FF}\x{F900}-\x{FDCF}\x{FDF0}-\x{FFEF}\x{10000}-\x{1FFFD}\x{20000}-\x{2FFFD}\x{30000}-\x{3FFFD}\x{40000}-\x{4FFFD}\x{50000}-\x{5FFFD}\x{60000}-\x{6FFFD}\x{70000}-\x{7FFFD}\x{80000}-\x{8FFFD}\x{90000}-\x{9FFFD}\x{A0000}-\x{AFFFD}\x{B0000}-\x{BFFFD}\x{C0000}-\x{CFFFD}\x{D0000}-\x{DFFFD}\x{E1000}-\x{EFFFD}!\$&amp;'\(\)\*\+,;=])*)(?::[0-9]*)?(?:\/(?:(?:%[0-9a-f][0-9a-f]|[-a-z0-9\._~\x{A0}-\x{D7FF}\x{F900}-\x{FDCF}\x{FDF0}-\x{FFEF}\x{10000}-\x{1FFFD}\x{20000}-\x{2FFFD}\x{30000}-\x{3FFFD}\x{40000}-\x{4FFFD}\x{50000}-\x{5FFFD}\x{60000}-\x{6FFFD}\x{70000}-\x{7FFFD}\x{80000}-\x{8FFFD}\x{90000}-\x{9FFFD}\x{A0000}-\x{AFFFD}\x{B0000}-\x{BFFFD}\x{C0000}-\x{CFFFD}\x{D0000}-\x{DFFFD}\x{E1000}-\x{EFFFD}!\$&amp;'\(\)\*\+,;=:@]))*)*|\/(?:(?:(?:(?:%[0-9a-f][0-9a-f]|[-a-z0-9\._~\x{A0}-\x{D7FF}\x{F900}-\x{FDCF}\x{FDF0}-\x{FFEF}\x{10000}-\x{1FFFD}\x{20000}-\x{2FFFD}\x{30000}-\x{3FFFD}\x{40000}-\x{4FFFD}\x{50000}-\x{5FFFD}\x{60000}-\x{6FFFD}\x{70000}-\x{7FFFD}\x{80000}-\x{8FFFD}\x{90000}-\x{9FFFD}\x{A0000}-\x{AFFFD}\x{B0000}-\x{BFFFD}\x{C0000}-\x{CFFFD}\x{D0000}-\x{DFFFD}\x{E1000}-\x{EFFFD}!\$&amp;'\(\)\*\+,;=:@]))+)(?:\/(?:(?:%[0-9a-f][0-9a-f]|[-a-z0-9\._~\x{A0}-\x{D7FF}\x{F900}-\x{FDCF}\x{FDF0}-\x{FFEF}\x{10000}-\x{1FFFD}\x{20000}-\x{2FFFD}\x{30000}-\x{3FFFD}\x{40000}-\x{4FFFD}\x{50000}-\x{5FFFD}\x{60000}-\x{6FFFD}\x{70000}-\x{7FFFD}\x{80000}-\x{8FFFD}\x{90000}-\x{9FFFD}\x{A0000}-\x{AFFFD}\x{B0000}-\x{BFFFD}\x{C0000}-\x{CFFFD}\x{D0000}-\x{DFFFD}\x{E1000}-\x{EFFFD}!\$&amp;'\(\)\*\+,;=:@]))*)*)?|(?:(?:%[0-9a-f][0-9a-f]|[-a-z0-9\._~\x{A0}-\x{D7FF}\x{F900}-\x{FDCF}\x{FDF0}-\x{FFEF}\x{10000}-\x{1FFFD}\x{20000}-\x{2FFFD}\x{30000}-\x{3FFFD}\x{40000}-\x{4FFFD}\x{50000}-\x{5FFFD}\x{60000}-\x{6FFFD}\x{70000}-\x{7FFFD}\x{80000}-\x{8FFFD}\x{90000}-\x{9FFFD}\x{A0000}-\x{AFFFD}\x{B0000}-\x{BFFFD}\x{C0000}-\x{CFFFD}\x{D0000}-\x{DFFFD}\x{E1000}-\x{EFFFD}!\$&amp;'\(\)\*\+,;=@])+)(?:\/(?:(?:%[0-9a-f][0-9a-f]|[-a-z0-9\._~\x{A0}-\x{D7FF}\x{F900}-\x{FDCF}\x{FDF0}-\x{FFEF}\x{10000}-\x{1FFFD}\x{20000}-\x{2FFFD}\x{30000}-\x{3FFFD}\x{40000}-\x{4FFFD}\x{50000}-\x{5FFFD}\x{60000}-\x{6FFFD}\x{70000}-\x{7FFFD}\x{80000}-\x{8FFFD}\x{90000}-\x{9FFFD}\x{A0000}-\x{AFFFD}\x{B0000}-\x{BFFFD}\x{C0000}-\x{CFFFD}\x{D0000}-\x{DFFFD}\x{E1000}-\x{EFFFD}!\$&amp;'\(\)\*\+,;=:@]))*)*|(?!(?:%[0-9a-f][0-9a-f]|[-a-z0-9\._~\x{A0}-\x{D7FF}\x{F900}-\x{FDCF}\x{FDF0}-\x{FFEF}\x{10000}-\x{1FFFD}\x{20000}-\x{2FFFD}\x{30000}-\x{3FFFD}\x{40000}-\x{4FFFD}\x{50000}-\x{5FFFD}\x{60000}-\x{6FFFD}\x{70000}-\x{7FFFD}\x{80000}-\x{8FFFD}\x{90000}-\x{9FFFD}\x{A0000}-\x{AFFFD}\x{B0000}-\x{BFFFD}\x{C0000}-\x{CFFFD}\x{D0000}-\x{DFFFD}\x{E1000}-\x{EFFFD}!\$&amp;'\(\)\*\+,;=:@])))(?:\?(?:(?:%[0-9a-f][0-9a-f]|[-a-z0-9\._~\x{A0}-\x{D7FF}\x{F900}-\x{FDCF}\x{FDF0}-\x{FFEF}\x{10000}-\x{1FFFD}\x{20000}-\x{2FFFD}\x{30000}-\x{3FFFD}\x{40000}-\x{4FFFD}\x{50000}-\x{5FFFD}\x{60000}-\x{6FFFD}\x{70000}-\x{7FFFD}\x{80000}-\x{8FFFD}\x{90000}-\x{9FFFD}\x{A0000}-\x{AFFFD}\x{B0000}-\x{BFFFD}\x{C0000}-\x{CFFFD}\x{D0000}-\x{DFFFD}\x{E1000}-\x{EFFFD}!\$&amp;'\(\)\*\+,;=:@])|[\x{E000}-\x{F8FF}\x{F0000}-\x{FFFFD}\x{100000}-\x{10FFFD}\/\?])*)?(?:\#(?:(?:%[0-9a-f][0-9a-f]|[-a-z0-9\._~\x{A0}-\x{D7FF}\x{F900}-\x{FDCF}\x{FDF0}-\x{FFEF}\x{10000}-\x{1FFFD}\x{20000}-\x{2FFFD}\x{30000}-\x{3FFFD}\x{40000}-\x{4FFFD}\x{50000}-\x{5FFFD}\x{60000}-\x{6FFFD}\x{70000}-\x{7FFFD}\x{80000}-\x{8FFFD}\x{90000}-\x{9FFFD}\x{A0000}-\x{AFFFD}\x{B0000}-\x{BFFFD}\x{C0000}-\x{CFFFD}\x{D0000}-\x{DFFFD}\x{E1000}-\x{EFFFD}!\$&amp;'\(\)\*\+,;=:@])|[\/\?])*)?)$/i
 ```
 
 How they were compiled (in PHP):  
 
-```perl
+```regex
 &lt;?php
 
 /* Regex convenience functions (character class, non-capturing group) */
@@ -6164,7 +6173,7 @@ $IRI_reference = ncg($IRI . '|' . $irelative_ref);
 
 Edit 7 March 2011: Because of the way PHP handles backslashes in quoted strings, these are unusable by default. You'll need to double-escape backslashes except where the backslash has a special meaning in regex. You can do that this way:  
 
-```perl
+```regex
 $escape_backslash = '/(?&lt;!\\)\\(?![\[\]\\\^\$\.\|\*\+\(\)QEnrtaefvdwsDWSbAZzB1-9GX]|x\{[0-9a-f]{1,4}\}|\c[A-Z]|)/';
 $absolute_IRI = preg_replace($escape_backslash, '\\\\', $absolute_IRI);
 $IRI = preg_replace($escape_backslash, '\\\\', $IRI);
@@ -6184,7 +6193,7 @@ I've just written up a blog post for a great solution for recognizing URLs in mo
 
 The regular expression used is:  
 
-```perl
+```regex
 /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&amp;=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&amp;=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&amp;;%@.\w_]*)#?(?:[\w]*))?)/
 ```
 
@@ -6195,13 +6204,13 @@ The regular expression used is:
 #### Question
 Is there any way to tell `sed` to output only captured groups? For example given the input:  
 
-```perl
+```regex
 This is a sample 123 text and some 987 numbers
 ```
 
 and pattern:  
 
-```perl
+```regex
 /([\d]+)/
 ```
 
@@ -6210,7 +6219,7 @@ Could I get only 123 and 987 output in the way formatted by back references?
 #### Answer accepted (score 298)
 The key to getting this to work is to tell `sed` to exclude what you don't want to be output as well as specifying what you do want.  
 
-```perl
+```regex
 string='This is a sample 123 text and some 987 numbers'
 echo "$string" | sed -rn 's/[^[:digit:]]*([[:digit:]]+)[^[:digit:]]+([[:digit:]]+)[^[:digit:]]*/\1 \2/p'
 ```
@@ -6229,19 +6238,19 @@ This says:
 
 In general, in `sed` you capture groups using parentheses and output what you capture using a back reference:  
 
-```perl
+```regex
 echo "foobarbaz" | sed 's/^foo\(.*\)baz$/\1/'
 ```
 
 will output "bar". If you use `-r` (`-E` for OS X) for extended regex, you don't need to escape the parentheses:  
 
-```perl
+```regex
 echo "foobarbaz" | sed -r 's/^foo(.*)baz$/\1/'
 ```
 
 There can be up to 9 capture groups and their back references. The back references are numbered in the order the groups appear, but they can be used in any order and can be repeated:  
 
-```perl
+```regex
 echo "foobarbaz" | sed -r 's/^foo(.*)b(.)z$/\2 \1 \2/'
 ```
 
@@ -6249,13 +6258,13 @@ outputs "a bar a".
 
 If you have GNU `grep` (it may also work in BSD, including OS X):  
 
-```perl
+```regex
 echo "$string" | grep -Po '\d+'
 ```
 
 or variations such as:  
 
-```perl
+```regex
 echo "$string" | grep -Po '(?&lt;=\D )(\d+)'
 ```
 
@@ -6270,7 +6279,7 @@ See <a href="http://www.grymoire.com/Unix/Sed.html#uh-4" rel="noreferrer">here</
 #### Answer 3 (score 30)
 you can use grep  
 
-```perl
+```regex
 grep -Eow "[0-9]+" file
 ```
 
@@ -6281,7 +6290,7 @@ grep -Eow "[0-9]+" file
 #### Question
 I'm looking how to replace/encode text using RegEx based on RegEx settings/params below:  
 
-```perl
+```regex
 RegEx.IgnoreCase = True     
 RegEx.Global = True     
 RegEx.Pattern = "[^a-z\d\s.]+"   
@@ -6292,7 +6301,7 @@ I have seen some examples on RegEx, but confused as to how to apply it the same 
 #### Answer accepted (score 91)
 You do not need to interact with managed code, as you can use <a href="http://msdn.microsoft.com/en-us/library/ms179859.aspx" rel="noreferrer">LIKE</a>:  
 
-```perl
+```regex
 CREATE TABLE #Sample(Field varchar(50), Result varchar(50))
 GO
 INSERT INTO #Sample (Field, Result) VALUES ('ABC123 ', 'Do not match')
@@ -6312,7 +6321,7 @@ You will have to build a CLR procedure that provides regex functionality, as <a 
 
 Their example function uses VB.NET:  
 
-```perl
+```regex
 Imports System
 Imports System.Data.Sql
 Imports Microsoft.SqlServer.Server
@@ -6343,7 +6352,7 @@ End Namespace
 
 ...and is installed in SQL Server using the following SQL (replacing '%'-delimted variables by their actual equivalents:  
 
-```perl
+```regex
 sp_configure 'clr enabled', 1
 RECONFIGURE WITH OVERRIDE
 
@@ -6391,7 +6400,7 @@ SELECT  dbo.RegExIsMatch (@pattern, '1298-673-4192',1),
 #### Answer 3 (score 6)
 Slightly modified version of <a href="https://www.simple-talk.com/sql/t-sql-programming/tsql-regular-expression-workbench/" rel="noreferrer">Julio's answer.</a>  
 
-```perl
+```regex
 -- MS SQL using VBScript Regex
 -- select dbo.RegexReplace('aa bb cc','($1) ($2) ($3)','([^\s]*)\s*([^\s]*)\s*([^\s]*)')
 -- $$ dollar sign, $1 - $9 back references, $&amp; whole match
@@ -6429,7 +6438,7 @@ END
 
 You'll need Ole Automation Procedures turned on in SQL:  
 
-```perl
+```regex
 exec sp_configure 'show advanced options',1; 
 go
 reconfigure; 
@@ -6453,7 +6462,7 @@ I want to match a regular expression on a whole word.
 
 In the following example I am trying to match `s` or `season` but what I have matches `s`, `e`, `a`, `o` and `n`.    
 
-```perl
+```regex
 [s|season]
 ```
 
@@ -6464,13 +6473,13 @@ Square brackets are meant for character class, and you're actually trying to mat
 
 Use parentheses instead for grouping:  
 
-```perl
+```regex
 (s|season)
 ```
 
 or non-capturing group:  
 
-```perl
+```regex
 (?:s|season)
 ```
 
@@ -6491,7 +6500,7 @@ I'll be using the <a href="http://www.phpsh.org/" rel="noreferrer">phpsh interac
 
 Start phpsh, put some content into a variable, match on word.  
 
-```perl
+```regex
 el@apollo:~/foo$ phpsh
 
 php&gt; $content1 = 'badger'
@@ -6514,7 +6523,7 @@ $content1 and $content2 contain at least one word, $content3 does not.
 
 <h5>Match a specific words on the commandline without word bountaries</h2>
 
-```perl
+```regex
 el@apollo:~/foo$ phpsh
 
 php&gt; $gun1 = 'dart gun';
@@ -6544,7 +6553,7 @@ Variables `gun1` and `gun2` contain the string `dart` or `fart` which is correct
 
 Regex Visual Image acquired from <a href="http://jex.im/regulex" rel="noreferrer">http://jex.im/regulex</a> and <a href="https://github.com/JexCheng/regulex" rel="noreferrer">https://github.com/JexCheng/regulex</a>  Example:  
 
-```perl
+```regex
 el@apollo:~/foo$ phpsh
 
 php&gt; $gun1 = 'dart gun';
@@ -6571,7 +6580,7 @@ The `\b` asserts that we have a word boundary, making sure " dart " is matched, 
 <p>I test examples in js. 
 Simplest solution - just add word u need inside / /:</p>
 
-```perl
+```regex
 var reg = /cat/;
 reg.test('some cat here');//1 test
 true // result
@@ -6583,7 +6592,7 @@ true // result
 
 Now if u need this specific word with boundaries, not inside any other signs-letters. We use <strong>b</strong> marker:  
 
-```perl
+```regex
 var reg = /\bcat\b/
 reg.test('acatb');//1 test 
 false // result
@@ -6593,21 +6602,21 @@ true // result
 
 We have also exec() method in js, whichone returns object-result. It helps f.g. to get info about place/index of our word.  
 
-```perl
+```regex
 var matchResult = /\bcat\b/.exec("good cat good");
 console.log(matchResult.index); // 5
 ```
 
 If we need get all matched words in string/sentence/text, we can use g modifier (global match):  
 
-```perl
+```regex
 "cat good cat good cat".match(/\bcat\b/g).length
 // 3 
 ```
 
 Now the last one - i need not 1 specific word, but some of them. We use | sign, it means choice/or.  
 
-```perl
+```regex
 "bad dog bad".match(/\bcat|dog\b/g).length
 // 1
 ```
@@ -6619,7 +6628,7 @@ Now the last one - i need not 1 specific word, but some of them. We use | sign, 
 #### Question
 I am trying to use `grep` to match lines that contain two different strings. I have tried the following but this matches lines that contain either <em>string1</em> <strong>or</strong> <em>string2</em> which not what I want.  
 
-```perl
+```regex
 grep 'string1\|string2' filename
 ```
 
@@ -6633,13 +6642,13 @@ Or, `grep 'string1.*string2\|string2.*string1' filename`
 #### Answer 2 (score 197)
 I think this is what you were looking for:  
 
-```perl
+```regex
 grep -E "string1|string2" filename
 ```
 
 I think that answers like this:  
 
-```perl
+```regex
 grep 'string1.*string2\|string2.*string1' filename
 ```
 
@@ -6648,7 +6657,7 @@ only match the case where both are present, not one or the other or both.
 #### Answer 3 (score 26)
 To search for files containing all the words in any order anywhere:  
 
-```perl
+```regex
 grep -ril \'action\' | xargs grep -il \'model\' | xargs grep -il \'view_type\'
 ```
 
@@ -6755,7 +6764,7 @@ Regex: match everything <strong>but</strong>:
 #### Answer 3 (score 243)
 You can put a `^` in the beginning of a character set to match anything but those characters.  
 
-```perl
+```regex
 [^=]*
 ```
 
@@ -6772,7 +6781,7 @@ If either &lt; or > are in the string then it must return false.
 
 I had a partial success with this but only if my &lt; > are at the beginning or end:  
 
-```perl
+```regex
 (?!&lt;|&gt;).*$
 ```
 
@@ -6781,7 +6790,7 @@ I am using .Net if that makes a difference.
 Thanks for the help.  
 
 #### Answer accepted (score 368)
-```perl
+```regex
 ^[^&lt;&gt;]+$
 ```
 
@@ -6790,7 +6799,7 @@ The caret in the character class (`[^`) means match anything but, so this means,
 #### Answer 2 (score 52)
 Here you go:  
 
-```perl
+```regex
 ^[^&lt;&gt;]*$
 ```
 
@@ -6798,7 +6807,7 @@ This will test for string that has no `&lt;` and no `&gt;`
 
 If you want to test for a string that may have `&lt;` and `&gt;`, but must also have something other you should use just  
 
-```perl
+```regex
 [^&lt;&gt;] (or ^.*[^&lt;&gt;].*$)
 ```
 
@@ -6813,7 +6822,7 @@ And of course the mandatory <a href="http://www.regular-expressions.info/referen
 #### Question
 The Java API for <a href="http://download.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html">regular expressions</a> states that `\s` will match whitespace. So the regex `\\s\\s` should match two spaces.  
 
-```perl
+```regex
 Pattern whitespace = Pattern.compile("\\s\\s");
 matcher = whitespace.matcher(modLine);
 while (matcher.find()) matcher.replaceAll(" ");
@@ -6826,7 +6835,7 @@ Am I having a grave misunderstanding of regexes or the term "whitespace"?
 #### Answer accepted (score 41)
 Yeah, you need to grab the result of matcher.replaceAll():  
 
-```perl
+```regex
 String result = matcher.replaceAll(" ");
 System.out.println(result);
 ```
@@ -6838,7 +6847,7 @@ Unicode defines 26 code points as `\p{White_Space}`: 20 of them are various sort
 
 White space is a pretty stable property, and those same ones have been around virtually forever. Even so,  Java has no property that conforms to The Unicode Standard for these, so you instead have to use code like this:  
 
-```perl
+```regex
 String whitespace_chars =  ""       /* dummy empty string for homogeneity */
                         + "\\u0009" // CHARACTER TABULATION
                         + "\\u000A" // LINE FEED (LF)
@@ -6888,7 +6897,7 @@ If you don’t want to do that but still want to stick with Java, I have a front
 #### Answer 3 (score 13)
 For Java (not php, not javascript, not anyother):  
 
-```perl
+```regex
 txt.replaceAll("\\p{javaSpaceChar}{2,}"," ")
 ```
 
@@ -6899,14 +6908,14 @@ txt.replaceAll("\\p{javaSpaceChar}{2,}"," ")
 #### Question
 I have some images named with generated uuid1 string. For example 81397018-b84a-11e0-9d2a-001b77dc0bed.jpg. I want to find out all these images using "find" command:  
 
-```perl
+```regex
 find . -regex "[a-f0-9\-]\{36\}\.jpg".
 ```
 
 But it doesn't work. Something wrong with the regex? Could someone help me with this?  
 
 #### Answer accepted (score 311)
-```perl
+```regex
 find . -regextype sed -regex ".*/[a-f0-9\-]\{36\}\.jpg"
 ```
 
@@ -6914,7 +6923,7 @@ Note that you need to specify `.*/` in the beginning because `find` matches the 
 
 Example:  
 
-```perl
+```regex
 susam@nifty:~/so$ find . -name "*.jpg"
 ./foo-111.jpg
 ./test/81397018-b84a-11e0-9d2a-001b77dc0bed.jpg
@@ -6927,7 +6936,7 @@ susam@nifty:~/so$ find . -regextype sed -regex ".*/[a-f0-9\-]\{36\}\.jpg"
 
 My version of find:  
 
-```perl
+```regex
 $ find --version
 find (GNU findutils) 4.4.2
 Copyright (C) 2007 Free Software Foundation, Inc.
@@ -6950,13 +6959,13 @@ Also, these are `emacs` regular expressions, which have other escaping rules tha
 
 If these are all directly in the current directory, then   
 
-```perl
+```regex
 find . -regex '\./[a-f0-9\-]\{36\}\.jpg'
 ```
 
 should work. (I'm not really sure - I can't get the counted repetition to work here.) You can switch to egrep expressions by `-regextype posix-egrep`:  
 
-```perl
+```regex
 find . -regextype posix-egrep -regex '\./[a-f0-9\-]{36}\.jpg'
 ```
 
@@ -6988,7 +6997,7 @@ What would be the most efficient way to check whether a string contains a "." or
 I know you can do this in many different ways like with <a href="http://en.wikipedia.org/wiki/Regular_expression" rel="noreferrer">regular expressions</a> or loop through the string to see if it contains a dot (".").  
 
 #### Answer accepted (score 488)
-```perl
+```regex
 if (strpos($str, '.') !== FALSE)
 {
  echo 'Found it';
@@ -7028,7 +7037,7 @@ You can use  `stristr()` or `strpos()`. Both <em>return false</em> if nothing is
 #### Question
 I'm looking for a regular expression to match every new line character (`\n`) inside a XML tag which is `&lt;content&gt;`, or inside any tag which is inside that `&lt;content&gt;` tag, for example :  
 
-```perl
+```regex
 &lt;blog&gt;
 &lt;text&gt;
 (Do NOT match new lines here)
@@ -7048,7 +7057,7 @@ I'm looking for a regular expression to match every new line character (`\n`) in
 #### Answer accepted (score 73)
 Actually... you can't use a simple regex here, at least not one. You probably need to worry about comments! Someone may write:  
 
-```perl
+```regex
 &lt;!-- &lt;content&gt; blah &lt;/content&gt; --&gt;
 ```
 
@@ -7063,13 +7072,13 @@ Be careful.
 
 I am also not so sure you can match all new lines at once. @Quartz suggested this one:  
 
-```perl
+```regex
 &lt;content&gt;([^\n]*\n+)+&lt;/content&gt;
 ```
 
 This will match any content tags that have a newline character RIGHT BEFORE the closing tag... but I'm not sure what you mean by matching <em>all</em> newlines. Do you want to be able to access all the matched newline characters? If so, your best bet is to grab all content tags, and then search for all the newline chars that are nested in between. Something more like this:  
 
-```perl
+```regex
 &lt;content&gt;.*&lt;/content&gt;
 ```
 
@@ -7092,7 +7101,7 @@ Notice the "?" suppresses the .* to make it non-greedy.</p>
 
 Also, You may be able to try this out, and access each newline character with the match objects groups():  
 
-```perl
+```regex
 &lt;content&gt;(.*?(\n))+.*?&lt;/content&gt;
 ```
 
@@ -7102,7 +7111,7 @@ I know my escaping is off, but it captures the idea. This last example probably 
 
 So here is python code that ought to work. I am still unsure what you mean by "find" all newlines. Do you want the entire lines? Or just to count how many newlines. To get the actual lines, try:  
 
-```perl
+```regex
 #!/usr/bin/python
 
 import re
@@ -7149,7 +7158,7 @@ This is not found
 
 This program prints the result:  
 
-```perl
+```regex
  ['', '&lt;p&gt;', '  haha!', '&lt;/p&gt;', '']
 ```
 
@@ -7160,7 +7169,7 @@ Hope this helps :-).
 PS - I didn't have much luck trying out my regex from my first update to capture all the newlines... let me know if you do.  
 
 #### Answer 2 (score 4)
-```perl
+```regex
 &lt;content&gt;(?:[^\n]*(\n+))+&lt;/content&gt;
 ```
 
@@ -7172,7 +7181,7 @@ PS - I didn't have much luck trying out my regex from my first update to capture
 I need to find a reg ex that only allows alphanumeric. So far, everyone I try only works if the string is alphanumeric, meaning contains both a letter and a number. I just want one what would allow either and not require both.  
 
 #### Answer accepted (score 450)
-```perl
+```regex
 /^[a-z0-9]+$/i
 
 ^         Start of string
@@ -7185,7 +7194,7 @@ $         end of string
 #### Answer 2 (score 137)
 If you wanted to return a replaced result, then this would work:  
 
-```perl
+```regex
 var a = 'Test123*** TEST';
 var b = a.replace(/[^a-z0-9]/gi,'');
 console.log(b);
@@ -7193,7 +7202,7 @@ console.log(b);
 
 This would return:  
 
-```perl
+```regex
 Test123TEST
 ```
 
@@ -7204,7 +7213,7 @@ WARNING: Alphanumeric is great if that's exactly what you want. But if you're us
 #### Answer 3 (score 77)
 Use the word character class. The following is equivalent to a `^[a-zA-Z0-9_]+$`:  
 
-```perl
+```regex
 ^\w+$
 ```
 
@@ -7230,7 +7239,7 @@ The problem is that my client (I don't know why, maybe client stuffs) wants to a
 
 I'm using this regular expression,  
 
-```perl
+```regex
 /^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/
 ```
 
@@ -7250,7 +7259,7 @@ Finally, I get the feeling you're validating user input in a web browser.  Remem
 #### Answer 2 (score 119)
 My regex of choice is:  
 
-```perl
+```regex
 /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im
 ```
 
@@ -7267,7 +7276,7 @@ Valid formats:
 #### Answer 3 (score 58)
 If you are looking for 10 and only 10 digits, ignore everything but the digits-  
 
-```perl
+```regex
    return value.match(/\d/g).length===10;
 ```
 
@@ -7278,7 +7287,7 @@ If you are looking for 10 and only 10 digits, ignore everything but the digits-
 #### Question
 This code is always alerting out `"null"`, which means that the string does not match the expression.  
 
-```perl
+```regex
 var pattern = "^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"; 
 
 function isEmailAddress(str) {
@@ -7296,7 +7305,7 @@ If you define your regular expression as a string then all backslashes need to b
 
 Alternatively, define it as a regular expression:  
 
-```perl
+```regex
 var pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/; 
 ```
 
@@ -7316,7 +7325,7 @@ this is the one i am using on my page.
 #### Answer 3 (score 14)
 I've been using this function for a while. it returns a boolean value.  
 
-```perl
+```regex
 // Validates email address of course.
 function validEmail(e) {
     var filter = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
@@ -7334,7 +7343,7 @@ How do I remove all non alphanumeric characters from a string except dash and sp
 #### Answer accepted (score 808)
 Replace `[^a-zA-Z0-9 -]` with an empty string.  
 
-```perl
+```regex
 Regex rgx = new Regex("[^a-zA-Z0-9 -]");
 str = rgx.Replace(str, "");
 ```
@@ -7342,7 +7351,7 @@ str = rgx.Replace(str, "");
 #### Answer 2 (score 338)
 I could have used RegEx, they can provide elegant solution but they can cause performane issues. Here is one solution  
 
-```perl
+```regex
 char[] arr = str.ToCharArray();
 
 arr = Array.FindAll&lt;char&gt;(arr, (c =&gt; (char.IsLetterOrDigit(c) 
@@ -7357,7 +7366,7 @@ When using the compact framework (which doesn't have FindAll)
 
 Replace FindAll with<sup>1</sup>  
 
-```perl
+```regex
 char[] arr = str.Where(c =&gt; (char.IsLetterOrDigit(c) || 
                              char.IsWhiteSpace(c) || 
                              c == '-')).ToArray(); 
@@ -7372,7 +7381,7 @@ str = new string(arr);
 #### Answer 3 (score 43)
 You can try:  
 
-```perl
+```regex
    string s1= Regex.Replace(s,"[^A-Za-z0-9 _]","");
 ```
 
@@ -7387,7 +7396,7 @@ How do I create a regular expression to match a word at the beginning of a strin
 
 For example the expression should match:  
 
-```perl
+```regex
 stop
 stop random
 stopping
@@ -7398,31 +7407,31 @@ Thanks.
 #### Answer 2 (score 158)
 If you wish to match only lines beginning with stop use  
 
-```perl
+```regex
 ^stop
 ```
 
 If you wish to match lines beginning with the word stop followed by a space  
 
-```perl
+```regex
 ^stop\s
 ```
 
 Or, if you wish to match lines beginning with the word stop but followed by either a space or any other non word character you can use (your regex flavor permitting)  
 
-```perl
+```regex
 ^stop\W
 ```
 
 On the other hand, what follows matches a word at the beginning of a string on most regex flavors (in these flavors \w matches the opposite of \W)  
 
-```perl
+```regex
 ^\w
 ```
 
 If your flavor does not have the \w shortcut, you can use  
 
-```perl
+```regex
 ^[a-zA-Z0-9]+
 ```
 
@@ -7433,7 +7442,7 @@ Check your regex flavor manual to know what shortcuts are allowed and what exact
 #### Answer 3 (score 70)
 Try this:  
 
-```perl
+```regex
 /^stop.*$/
 ```
 
@@ -7448,7 +7457,7 @@ Explanation:
 
 If you would like to enforce that stop be followed by a whitespace, you could modify the RegEx like so:  
 
-```perl
+```regex
 /^stop\s+.*$/
 ```
 
@@ -7469,7 +7478,7 @@ I was wondering If i could get a regular expression which will match a string th
 #### Answer accepted (score 161)
 You may use any of these 2 variants:  
 
-```perl
+```regex
 /^[A-Z]+$/i
 /^[A-Za-z]+$/
 ```
@@ -7483,14 +7492,14 @@ to match an input string of ASCII alphabets.
 
 <strong>Code:</strong>  
 
-```perl
+```regex
 preg_match('/^[A-Z]+$/i', "abcAbc^Xyz", $m);
 var_dump($m);
 ```
 
 <strong>Output:</strong>  
 
-```perl
+```regex
 array(0) {
 }
 ```
@@ -7499,14 +7508,14 @@ array(0) {
 
 <strong>Note:</strong> Please note that above answer <em>only matches ASCII alphabets</em> and doesn't match Unicode characters. If you want to match unicode letters then use:  
 
-```perl
+```regex
 /^\p{L}+$/u
 ```
 
 #### Answer 2 (score 49)
 If you need to include non-ASCII alphabetic characters, and if your regex flavor supports Unicode, then  
 
-```perl
+```regex
 \A\pL+\z
 ```
 
@@ -7514,7 +7523,7 @@ would be the correct regex.
 
 Some regex engines don't support this Unicode syntax but allow the `\w` alphanumeric shorthand to also match non-ASCII characters. In that case, you can get all alphabetics by subtracting digits and underscores from `\w` like this:  
 
-```perl
+```regex
 \A[^\W\d_]+\z
 ```
 
@@ -7523,19 +7532,19 @@ Some regex engines don't support this Unicode syntax but allow the `\w` alphanum
 #### Answer 3 (score 21)
 This will match one or more alphabetical characters:  
 
-```perl
+```regex
 /^[a-z]+$/
 ```
 
 You can make it case insensitive using:  
 
-```perl
+```regex
 /^[a-z]+$/i
 ```
 
 or:  
 
-```perl
+```regex
 /^[a-zA-Z]+$/
 ```
 
@@ -7551,7 +7560,7 @@ It's easy to write one that works 95% of the time, but I'm hoping to get somethi
 #### Answer accepted (score 518)
 You can use the following regular expressions separately or by combining them in a joint OR expression.  
 
-```perl
+```regex
 ValidIpAddressRegex = "^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$";
 
 ValidHostnameRegex = "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$";
@@ -7578,7 +7587,7 @@ ValidHostnameRegex = "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([
   with digits.</p>
 </blockquote>
 
-```perl
+```regex
 Valid952HostnameRegex = "^(([a-zA-Z]|[a-zA-Z][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z]|[A-Za-z][A-Za-z0-9\-]*[A-Za-z0-9])$";
 ```
 
@@ -7599,13 +7608,13 @@ You should also check separately that <strong>the total length of the hostname m
 #### Answer 3 (score 31)
 To match a valid <strong>IP address</strong> use the following regex:  
 
-```perl
+```regex
 (25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}
 ```
 
 instead of:  
 
-```perl
+```regex
 ([01]?[0-9][0-9]?|2[0-4][0-9]|25[0-5])(\.([01]?[0-9][0-9]?|2[0-4][0-9]|25[0-5])){3}
 ```
 
@@ -7613,7 +7622,7 @@ instead of:
 
 Many regex engine match the first possibility in the `OR` sequence. For instance, try the following regex:   
 
-```perl
+```regex
 10.48.0.200
 ```
 
@@ -7631,27 +7640,27 @@ Is it possible to define a regex which will match every character except a certa
 Basically, I wanted to split a string by either comma (,) or semi-colon (;). So I was thinking of doing it with a regex which would match everything until it encountered a comma or a semi-colon.  
 
 #### Answer accepted (score 418)
-```perl
+```regex
 [^,;]+         
 ```
 
 You haven't specified the regex implementation you are using. Most of them have a `Split` method that takes delimiters and split by them. You might want to use that one with a "normal" (without `^`) character class:  
 
-```perl
+```regex
 [,;]+
 ```
 
 #### Answer 2 (score 73)
 Use character classes. A character class beginning with caret will match anything not in the class.  
 
-```perl
+```regex
 [^,;]
 ```
 
 #### Answer 3 (score 38)
 use a <a href="https://www.regular-expressions.info/charclass.html#negated" rel="noreferrer">negative character class</a>:  
 
-```perl
+```regex
 [^,;]+
 ```
 
@@ -7666,7 +7675,7 @@ I need to escape the regular expression special characters using java script.How
 
 Thanks for your quick reply.But i need to escape all the special characters of regular expression.I have try by this code,But i can't achieve the result.  
 
-```perl
+```regex
 RegExp.escape=function(str)
             {
                 if (!arguments.callee.sRE) {
@@ -7697,7 +7706,7 @@ Use the `\` character to escape a character that has special meaning inside a re
 
 To automate it, you could use this:  
 
-```perl
+```regex
 function escapeRegExp(text) {
   return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&amp;');
 }
@@ -7710,7 +7719,7 @@ function escapeRegExp(text) {
 #### Answer 3 (score 14)
 Use the backslash to escape a character. For example:  
 
-```perl
+```regex
 /\\d/
 ```
 
@@ -7737,7 +7746,7 @@ would return
 
 Here is the expression I have pieced together so far:  
 
-```perl
+```regex
 (?=cow).*(?=milk)
 ```
 
@@ -7750,7 +7759,7 @@ You want a regular match here, to consume the `cow` portion. To capture the port
 
 
 
-```perl
+```regex
 cow(.*)milk
 ```
 
@@ -7767,7 +7776,7 @@ The most complete solution that will work in the vast majority of cases is using
 
 In JavaScript environments supporting <em>ECMAScript 2018</em>, `s` modifier allows `.` to match any char including line break chars, and the regex engine supports lookbehinds of variable length. So, you may use a regex like  
 
-```perl
+```regex
 var result = s.match(/(?&lt;=cow\s+).*?(?=\s+milk)/gs); // Returns multiple matches if any
 // Or
 var result = s.match(/(?&lt;=cow\s*).*?(?=\s*milk)/gs); // Same but whitespaces are optional
@@ -7779,7 +7788,7 @@ In both cases, the current position is checked for `cow` with any 1/0 or more wh
 
 <strong><em>This and all other scenarios below are supported by all JavaScript environments. See usage examples at the bottom of the answer.</em></strong>  
 
-```perl
+```regex
 cow (.*?) milk
 ```
 
@@ -7787,7 +7796,7 @@ cow (.*?) milk
 
 <h5>Scenario 2: Multiline input</h2>
 
-```perl
+```regex
 cow ([\s\S]*?) milk
 ```
 
@@ -7797,7 +7806,7 @@ Here, `cow` and a space are matched first, then any 0+ chars as few as possible 
 
 If you have  a string like `&gt;&gt;&gt;15 text&gt;&gt;&gt;67 text2&gt;&gt;&gt;` and you need to get 2 matches in-between `&gt;&gt;&gt;`+`number`+`whitespace` and `&gt;&gt;&gt;`, you can't use <a href="https://regex101.com/r/Vtw7W1/2" rel="nofollow noreferrer">`/&gt;&gt;&gt;\d+\s(.*?)&gt;&gt;&gt;/g`</a> as this will only find 1 match due to the fact the `&gt;&gt;&gt;` before `67` is already <em>consumed</em> upon finding the first match. You may use a <a href="http://www.regular-expressions.info/lookaround.html" rel="nofollow noreferrer"><strong>positive lookahead</strong></a> to check for the text presence without actually "gobbling" it (i.e. appending to the match):  
 
-```perl
+```regex
 /&gt;&gt;&gt;\d+\s(.*?)(?=&gt;&gt;&gt;)/g
 ```
 
@@ -7809,7 +7818,7 @@ Also see <a href="https://stackoverflow.com/questions/18029487/how-to-get-all-po
 
 Lazy dot matching pattern (`.*?`) inside regex patterns may slow down script execution if very long input is given. In many cases, <a href="http://www.softec.lu/site/RegularExpressions/UnrollingTheLoop" rel="nofollow noreferrer"><em>unroll-the-loop technique</em></a> helps to a greater extent. Trying to grab all between `cow` and `milk` from `"Their\ncow\ngives\nmore\nmilk"`, we see that we just need to match all lines that do not start with `milk`, thus, instead of <a href="https://regex101.com/r/e1W8DA/1" rel="nofollow noreferrer">`cow\n([\s\S]*?)\nmilk`</a> we can use:  
 
-```perl
+```regex
 /cow\n(.*(?:\n(?!milk$).*)*)\nmilk/gm
 ```
 
@@ -7820,7 +7829,7 @@ See the <a href="https://regex101.com/r/4xWB0S/2" rel="nofollow noreferrer">rege
   
   <p><div class="snippet" data-lang="js" data-hide="false" data-console="true" data-babel="false">
 <div class="snippet-code">
-```perl
+```regex
 //Single/First match expected: use no global modifier and access match[1]
 console.log("My cow always gives milk".match(/cow (.*?) milk/)[1]);
 // Multiple matches: get multiple matches with a global modifier and
@@ -7832,7 +7841,8 @@ var result = [], m, rx = /cow (.*?) milk/g;
 while ((m=rx.exec(s)) !== null) {
   result.push(m[1]);
 }
-console.log(result);```
+console.log(result);
+```
 </div>
 </div>
 
@@ -7841,7 +7851,7 @@ console.log(result);```
 #### Answer 3 (score 50)
 Here's a regex which will grab what's between cow and milk (without leading/trailing space):  
 
-```perl
+```regex
 srctext = "My cow always gives milk.";
 var re = /(.*cow\s+)(.*)(\s+milk.*)/;
 var newtext = srctext.replace(re, "$2");
@@ -7858,7 +7868,7 @@ I need to split a string base on delimiter `-` and `.`. Below are my desired out
 
 `AA.BB-CC-DD.zip` ->   
 
-```perl
+```regex
 AA
 BB
 CC
@@ -7868,7 +7878,7 @@ zip
 
 but my following code does not work.  
 
-```perl
+```regex
 private void getId(String pdfName){
     String[]tokens = pdfName.split("-\\.");
 }
@@ -7877,7 +7887,7 @@ private void getId(String pdfName){
 #### Answer accepted (score 296)
 I think you need to include the regex <strong>OR operator</strong>:  
 
-```perl
+```regex
 String[]tokens = pdfName.split("-|\\.");
 ```
 
@@ -7892,7 +7902,7 @@ Try this regex `"[-.]+"`. The + after treats consecutive delimiter chars as one.
 #### Answer 3 (score 25)
 You can use the regex "\W".This matches any non-word character.The required line would be:  
 
-```perl
+```regex
 String[] tokens=pdfName.split("\\W");
 ```
 
@@ -7915,7 +7925,7 @@ But there is a simple algorithm to do this, which I described <a href="https://s
 #### Answer 2 (score 108)
 You can use <a href="http://www.regular-expressions.info/recurse.html#balanced" rel="noreferrer">regex recursion</a>:  
 
-```perl
+```regex
 \(([^()]|(?R))*\)
 ```
 
@@ -7926,7 +7936,7 @@ I want to add this answer for quickreference. Feel free to update.
 
 <strong>.NET Regex</strong> using <a href="http://www.regular-expressions.info/balancing.html" rel="noreferrer">balancing groups</a>.  
 
-```perl
+```regex
 \((?&gt;\((?&lt;c&gt;)|[^()]+|\)(?&lt;-c&gt;))*(?(c)(?!))\)
 ```
 
@@ -7944,19 +7954,19 @@ Where `c` is used as the depth counter.
 
 <strong>PCRE</strong> using a <a href="http://php.net/manual/en/regexp.reference.recursive.php" rel="noreferrer">recursive pattern</a>.  
 
-```perl
+```regex
 \((?:[^)(]+|(?R))*+\)
 ```
 
 <a href="https://regex101.com/r/eBtSTM/1" rel="noreferrer">Demo at regex101</a>; Or without alternation:  
 
-```perl
+```regex
 \((?:[^)(]*(?R)?)*+\)
 ```
 
 <a href="https://regex101.com/r/eBtSTM/2" rel="noreferrer">Demo at regex101</a>; Or <a href="http://www.softec.lu/site/RegularExpressions/UnrollingTheLoop" rel="noreferrer">unrolled</a> for performance:  
 
-```perl
+```regex
 \([^)(]*+(?:(?R)[^)(]*)*+\)
 ```
 
@@ -7970,13 +7980,13 @@ Where `c` is used as the depth counter.
 
 With Ruby 2.0 `\g&lt;0&gt;` can be used to call full pattern.  
 
-```perl
+```regex
 \((?&gt;[^)(]+|\g&lt;0&gt;)*\)
 ```
 
 <a href="http://rubular.com/r/RUDsEv7SBZ" rel="noreferrer">Demo at Rubular</a>; Ruby 1.9 only supports <a href="http://www.regular-expressions.info/subroutine.html" rel="noreferrer">capturing group recursion</a>:  
 
-```perl
+```regex
 (\((?&gt;[^)(]+|\g&lt;1&gt;)*\))
 ```
 
@@ -7986,13 +7996,13 @@ With Ruby 2.0 `\g&lt;0&gt;` can be used to call full pattern.
 
 <strong>JavaScript</strong> &nbsp;<a href="http://xregexp.com/api/#matchRecursive" rel="noreferrer">API :: XRegExp.matchRecursive</a>  
 
-```perl
+```regex
 XRegExp.matchRecursive(str, '\\(', '\\)', 'g');
 ```
 
 JS, Java and other regex flavors without recursion up to 2 levels of nesting:  
 
-```perl
+```regex
 \((?:[^)(]+|\((?:[^)(]+|\([^)(]*\))*\))*\)
 ```
 
@@ -8019,7 +8029,7 @@ To fail faster on unbalanced parenthesis <a href="https://regex101.com/r/cU7uG9/
 #### Question
 I have a value like this:  
 
-```perl
+```regex
 "Foo Bar" "Another Value" something else
 ```
 
@@ -8028,7 +8038,7 @@ What regex will return the values enclosed in the quotation marks (e.g. `Foo Bar
 #### Answer accepted (score 315)
 I've been using the following with great success:  
 
-```perl
+```regex
 (["'])(?:(?=(\\?))\2.)*?\1
 ```
 
@@ -8043,7 +8053,7 @@ For those who want a deeper explanation of how this works, here's an explanation
 #### Answer 2 (score 291)
 In general, the following regular expression fragment is what you are looking for:  
 
-```perl
+```regex
 "(.*?)"
 ```
 
@@ -8051,7 +8061,7 @@ This uses the non-greedy *? operator to capture everything up to but not includi
 
 In Python, you could do:  
 
-```perl
+```regex
 &gt;&gt;&gt; import re
 &gt;&gt;&gt; string = '"Foo Bar" "Another Value"'
 &gt;&gt;&gt; print re.findall(r'"(.*?)"', string)
@@ -8061,7 +8071,7 @@ In Python, you could do:
 #### Answer 3 (score 80)
 I would go for:  
 
-```perl
+```regex
 "([^"]*)"
 ```
 
@@ -8080,7 +8090,7 @@ I suspect sub-string but I can't work out how to read until the closing bracket,
 #### Answer 2 (score 419)
 A very simple way to do it is by using regular expressions:  
 
-```perl
+```regex
 Regex.Match("User name (sales)", @"\(([^)]*)\)").Groups[1].Value
 ```
 
@@ -8088,7 +8098,7 @@ Regex.Match("User name (sales)", @"\(([^)]*)\)").Groups[1].Value
 
 As a response to the (very funny) comment, here's the same Regex with some explanation:  
 
-```perl
+```regex
 \(             # Escaped parenthesis, means "starts with a '(' character"
     (          # Parentheses in a regex mean "put (capture) the stuff 
                #     in between into the Groups array" 
@@ -8101,7 +8111,7 @@ As a response to the (very funny) comment, here's the same Regex with some expla
 #### Answer 3 (score 415)
 If you wish to stay away from regular expressions, the simplest way I can think of is:  
 
-```perl
+```regex
 string input = "User name (sales)";
 string output = input.Split('(', ')')[1];
 ```
@@ -8113,7 +8123,7 @@ string output = input.Split('(', ')')[1];
 #### Question
 I am using the <strong><a href="http://en.wikipedia.org/wiki/JQuery" rel="noreferrer">jQuery</a> validation plugin</strong>. Great stuff! I want to migrate my existing ASP.NET solution to use jQuery instead of the ASP.NET validators. I am missing a replacement for the <strong>regular expression</strong> validator. I want to be able to do something like this:  
 
-```perl
+```regex
 $("Textbox").rules("add", { regularExpression: "^[a-zA-Z'.\s]{1,40}$" })
 ```
 
@@ -8122,7 +8132,7 @@ How do I <strong>add a custom rule</strong> to achieve this?
 #### Answer accepted (score 317)
 Thanks to the answer of redsquare I added a method like this:  
 
-```perl
+```regex
 $.validator.addMethod(
         "regex",
         function(value, element, regexp) {
@@ -8135,7 +8145,7 @@ $.validator.addMethod(
 
 now all you need to do to validate against any regex is this:  
 
-```perl
+```regex
 $("#Textbox").rules("add", { regex: "^[a-zA-Z'.\\s]{1,40}$" })
 ```
 
@@ -8150,7 +8160,7 @@ You can use the addMethod()
 
 e.g   
 
-```perl
+```regex
 $.validator.addMethod('postalCode', function (value) { 
     return /^((\d{5}-\d{4})|(\d{5})|([A-Z]\d[A-Z]\s\d[A-Z]\d))$/.test(value); 
 }, 'Please enter a valid US or Canadian postal code.');
@@ -8161,7 +8171,7 @@ good article here <a href="https://web.archive.org/web/20130609222116/http://www
 #### Answer 3 (score 43)
 I had some trouble putting together all the pieces for doing a jQuery regular expression validator, but I got it to work... Here is a complete working example. It uses the 'Validation' plugin which can be found in <em><a href="http://bassistance.de/jquery-plugins/jquery-plugin-validation/" rel="noreferrer">jQuery Validation Plugin</a></em>  
 
-```perl
+```regex
 &lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;
 &lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
 &lt;head&gt;
@@ -8222,13 +8232,13 @@ I had some trouble putting together all the pieces for doing a jQuery regular ex
 #### Question
 I am trying to write a regular expression which returns a string which is between parentheses. For example: I want to get the string which resides between the strings "(" and ")"  
 
-```perl
+```regex
 I expect five hundred dollars ($500).
 ```
 
 would return  
 
-```perl
+```regex
 $500
 ```
 
@@ -8241,12 +8251,13 @@ You need to create a set of escaped (with `\`) parentheses (that match the paren
 
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="true" data-babel="false">
 <div class="snippet-code">
-```perl
+```regex
 var regExp = /\(([^)]+)\)/;
 var matches = regExp.exec("I expect five hundred dollars ($500).");
 
 //matches[1] contains the value between the parentheses
-console.log(matches[1]);```
+console.log(matches[1]);
+```
 </div>
 </div>
 
@@ -8266,7 +8277,7 @@ Here is a visual explanation on <a href="http://www.regexplained.co.uk/?pattern=
 #### Answer 2 (score 31)
 Try string manipulation:  
 
-```perl
+```regex
 var txt = "I expect five hundred dollars ($500). and new brackets ($600)";
 var newTxt = txt.split('(');
 for (var i = 1; i &lt; newTxt.length; i++) {
@@ -8276,7 +8287,7 @@ for (var i = 1; i &lt; newTxt.length; i++) {
 
 or regex (<em>which is somewhat <a href="http://jsperf.com/stringvsregex/">slow compare to the above</a></em>)  
 
-```perl
+```regex
 var txt = "I expect five hundred dollars ($500). and new brackets ($600)";
 var regExp = /\(([^)]+)\)/g;
 var matches = txt.match(regExp);
@@ -8289,7 +8300,7 @@ for (var i = 0; i &lt; matches.length; i++) {
 #### Answer 3 (score 9)
 Ported <a href="https://stackoverflow.com/a/17780281/942767">Mr_Green's answer</a> to a functional programming style to avoid use of temporary global variables.  
 
-```perl
+```regex
 var matches = string2.split('[')
   .filter(function(v){ return v.indexOf(']') &gt; -1})
   .map( function(value) { 
@@ -8306,8 +8317,9 @@ I would like to create a page where all images which reside on my website are li
 
 I already wrote me a little program to find and load all HTML files, but now I am stuck at how to extract `src`, `title` and `alt` from this HTML:  
 
-```perl
-&lt;img <b>src</b>="/image/fluffybunny.jpg" <b>title</b>="Harvey the bunny" <b>alt</b>="a cute little fluffy bunny" />```
+```regex
+&lt;img <b>src</b>="/image/fluffybunny.jpg" <b>title</b>="Harvey the bunny" <b>alt</b>="a cute little fluffy bunny" />
+```
 
 I guess this should be done with some regex, but since the order of the tags may vary, and I need all of them, I don't really know how to parse this in an elegant way (I could do it the hard char by char way, but that's painful).  
 
@@ -8327,7 +8339,7 @@ In that case it's better to split the process into two parts :
 
 I will assume your doc is not xHTML strict so you can't use an XML parser. E.G. with this web page source code :  
 
-```perl
+```regex
 /* preg_match_all match the regexp in all the $html string and output everything as 
 an array in $result. "i" option is used to make it case insensitive */
 
@@ -8352,7 +8364,7 @@ Array
 
 Then we get all the img tag attributes with a loop :  
 
-```perl
+```regex
 $img = array();
 foreach( $result as $img_tag)
 {
@@ -8471,13 +8483,13 @@ First, we use <a href="http://fr2.php.net/manual/fr/function.preg-match-all.php"
 
 The regexps :  
 
-```perl
+```regex
 &lt;img[^&gt;]+&gt;
 ```
 
 We apply it on all html web pages. It can be read as <em>every string that starts with "`&lt;img`", contains non ">" char and ends with a ></em>.  
 
-```perl
+```regex
 (alt|title|src)=("[^"]*")
 ```
 
@@ -8494,7 +8506,7 @@ Well, if you use only ', just replace all the " by '.
 If you mix both. First you should slap yourself :-), then try to use ("|') instead or " and [^ø] to replace [^"].  
 
 #### Answer 2 (score 243)
-```perl
+```regex
 $url="http://example.com";
 
 $html = file_get_contents($url);
@@ -8512,7 +8524,7 @@ foreach ($tags as $tag) {
 #### Answer 3 (score 64)
 Just to give a small example of using PHP's XML functionality for the task:  
 
-```perl
+```regex
 $doc=new DOMDocument();
 $doc-&gt;loadHTML("&lt;html&gt;&lt;body&gt;Test&lt;br&gt;&lt;img src=\"myimage.jpg\" title=\"title\" alt=\"alt\"&gt;&lt;/body&gt;&lt;/html&gt;");
 $xml=simplexml_import_dom($doc); // just to make xpath more simple

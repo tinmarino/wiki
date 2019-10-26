@@ -1385,7 +1385,7 @@ public static string Reverse( string s )
 ```
 
 #### Answer 2 (score 170)
-Here a solution that properly reverses the string `"Les Mise\u0301rables"` as `"selbare\u0301siM seL"`. This should render just like `selbarésiM seL`, not `selbaŕesiM seL` (note the position of the accent), as would the result of most implementations based on code units (`Array.Reverse`, etc) or even code points (reversing with special care for surrogate pairs).  
+Here a solution that properly reverses the string `"Les Mise\\u0301rables"` as `"selbare\\u0301siM seL"`. This should render just like `selbarésiM seL`, not `selbaŕesiM seL` (note the position of the accent), as would the result of most implementations based on code units (`Array.Reverse`, etc) or even code points (reversing with special care for surrogate pairs).  
 
 ```c
 using System;
@@ -1407,7 +1407,7 @@ public static class Test
 
     public static void Main()
     {
-        var s = "Les Mise\u0301rables";
+        var s = "Les Mise\\u0301rables";
         var r = s.ReverseGraphemeClusters();
         Console.WriteLine(r);
     }
@@ -6017,7 +6017,7 @@ Here is the context:
 Can someone explain the meaning of ∀?  
 
 #### Answer accepted (score 108)
-That's the "forall" (for all) symbol, as seen in <a href="http://en.wikipedia.org/wiki/Table_of_mathematical_symbols" rel="noreferrer">Wikipedia's table of mathematical symbols</a> or the <a href="http://www.fileformat.info/info/unicode/char/2200/index.htm" rel="noreferrer">Unicode forall character</a> (`\u2200`, ∀).  
+That's the "forall" (for all) symbol, as seen in <a href="http://en.wikipedia.org/wiki/Table_of_mathematical_symbols" rel="noreferrer">Wikipedia's table of mathematical symbols</a> or the <a href="http://www.fileformat.info/info/unicode/char/2200/index.htm" rel="noreferrer">Unicode forall character</a> (`\\u2200`, ∀).  
 
 #### Answer 2 (score 51)
 The upside-down <em>A</em> symbol is the <em>universal quantifier</em> from <a href="http://en.wikipedia.org/wiki/Predicate_logic" rel="noreferrer">predicate logic</a>. (Also see the more complete discussion of the <a href="http://en.wikipedia.org/wiki/First-order_logic" rel="noreferrer">first-order predicate calculus</a>.) As others noted, it means that the stated assertions holds "for all instances" of the given variable (here, <em>s</em>). You'll soon run into its sibling, the backwards capital <em>E</em>, which is the <em>existential quantifier</em>, meaning "there exists at least one" of the given variable conforming to the related assertion.  
@@ -6027,7 +6027,7 @@ If you're interested in logic, you might enjoy the book <a href="http://www.apre
 #### Answer 3 (score 12)
 In math, ∀ means FOR ALL.  
 
-Unicode character (\u2200, ∀).  
+Unicode character (\\u2200, ∀).  
 
 </b> </em> </i> </small> </strong> </sub> </sup>
 
@@ -6619,7 +6619,8 @@ bool rectOverlap(rect A, rect B)
                     valueInRange(B.y, A.y, A.y + A.height);
 
     return xOverlap && yOverlap;
-}```
+}
+```
 
 #### Answer 3 (score 26)
 ```c
@@ -7882,12 +7883,14 @@ QuickSelect(A, k)
 What is the running time of this algorithm?  If the adversary flips coins for us, we may find that the pivot is always the largest element and `k` is always 1, giving a running time of   
 
 ```c
-T(n) = Theta(n) + T(n-1) = Theta(n<sup>2</sup>)```
+T(n) = Theta(n) + T(n-1) = Theta(n<sup>2</sup>)
+```
 
 But if the choices are indeed random, the expected running time is given by  
 
 ```c
-T(n) &lt;= Theta(n) + (1/n) ∑<sub>i=1 to n</sub>T(max(i, n-i-1))```
+T(n) &lt;= Theta(n) + (1/n) ∑<sub>i=1 to n</sub>T(max(i, n-i-1))
+```
 
 where we are making the not entirely reasonable assumption that the recursion always lands in the larger of `A1` or `A2`.  
 
@@ -7898,7 +7901,8 @@ T(n)
  &lt;= cn + (1/n) ∑<sub>i=1 to n</sub>T(max(i-1, n-i))
  = cn + (1/n) ∑<sub>i=1 to floor(n/2)</sub> T(n-i) + (1/n) ∑<sub>i=floor(n/2)+1 to n</sub> T(i)
  &lt;= cn + 2 (1/n) ∑<sub>i=floor(n/2) to n</sub> T(i)
- &lt;= cn + 2 (1/n) ∑<sub>i=floor(n/2) to n</sub> ai```
+ &lt;= cn + 2 (1/n) ∑<sub>i=floor(n/2) to n</sub> ai
+```
 
 and now somehow we have to get the horrendous sum on the right of the plus sign to absorb the `cn` on the left.  If we just bound it as `2(1/n) ∑<sub>i=n/2 to n</sub> an`, we get roughly `2(1/n)(n/2)an = an`.  But this is too big - there's no room to squeeze in an extra `cn`.  So let's expand the sum using the arithmetic series formula:  
 
@@ -7907,7 +7911,8 @@ and now somehow we have to get the horrendous sum on the right of the plus sign 
  = ∑<sub>i=1 to n</sub> i - ∑<sub>i=1 to floor(n/2)</sub> i  
  = n(n+1)/2 - floor(n/2)(floor(n/2)+1)/2  
  &lt;= n<sup>2</sup>/2 - (n/4)<sup>2</sup>/2  
- = (15/32)n<sup>2</sup>```
+ = (15/32)n<sup>2</sup>
+```
 
 where we take advantage of n being "sufficiently large" to replace the ugly `floor(n/2)` factors with the much cleaner (and smaller) `n/4`.  Now we can continue with  
 
@@ -7915,7 +7920,8 @@ where we take advantage of n being "sufficiently large" to replace the ugly `flo
 cn + 2 (1/n) ∑<sub>i=floor(n/2) to n</sub> ai,
  &lt;= cn + (2a/n) (15/32) n<sup>2</sup>
  = n (c + (15/16)a)
- &lt;= an```
+ &lt;= an
+```
 
 provided `a &gt; 16c`.  
 
@@ -10563,13 +10569,13 @@ Working with content and attr in CSS:
 ```c
 .cryptedmail:after {
   content: attr(data-name) "@" attr(data-domain) "." attr(data-tld); 
-}```
-```c
-&lt;a href="#" class="cryptedmail"
+}
+```
+<pre class="snippet-code-html lang-html prettyprint-override"><code>&lt;a href="#" class="cryptedmail"
    data-name="info"
    data-domain="example"
    data-tld="org"
-   onclick="window.location.href = 'mailto:' + this.dataset.name + '@' + this.dataset.domain + '.' + this.dataset.tld; return false;"&gt;&lt;/a&gt;```
+   onclick="window.location.href = 'mailto:' + this.dataset.name + '@' + this.dataset.domain + '.' + this.dataset.tld; return false;"&gt;&lt;/a&gt;</code></pre>
 </div>
 </div>
 

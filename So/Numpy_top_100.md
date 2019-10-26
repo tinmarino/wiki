@@ -17,7 +17,8 @@ I can't figure out how to use an array or matrix in the way that I would normall
 
 At the moment the only way I can find to do this is like:  
 
-```python
+```
+numpy
 mat = None
 for col in columns:
     if mat is None:
@@ -28,7 +29,8 @@ for col in columns:
 
 Whereas if it were a list, I'd do something like this:  
 
-```python
+```
+numpy
 list = []
 for item in data:
     list.append(item)
@@ -41,7 +43,8 @@ You have the wrong mental model for using NumPy efficiently. NumPy arrays are st
 
 In the case of adding rows, your best bet is to create an array that is as big as your data set will eventually be, and then add data to it row-by-row:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; import numpy
 &gt;&gt;&gt; a = numpy.zeros(shape=(5,2))
 &gt;&gt;&gt; a
@@ -65,7 +68,8 @@ A NumPy array is a very different data structure from a list and is designed to 
 
 e.g.  
 
-```python
+```
+numpy
 
 mylist = []
 for item in data:
@@ -77,7 +81,8 @@ mat = numpy.array(mylist)
 as each `item` has the same number of elements.<br>
 In this particular case (`data` is some iterable holding the matrix columns) you can simply use</p>
 
-```python
+```
+numpy
 
 mat = numpy.array(data)
 ```
@@ -93,7 +98,8 @@ To create an empty multidimensional array in NumPy (e.g. a 2D array `m*n` to sto
 
 This way you can use for example (here `m = 5` which we assume we didn't know when creating the empty matrix, and `n = 2`):  
 
-```python
+```
+numpy
 import numpy as np
 
 n = 2
@@ -108,7 +114,8 @@ print X
 
 which will give you:  
 
-```python
+```
+numpy
 [[ 0.  0.]
  [ 0.  1.]
  [ 1.  0.]
@@ -130,7 +137,8 @@ I am interested in knowing how to convert a pandas dataframe into a NumPy array.
 
 dataframe:  
 
-```python
+```
+numpy
 import numpy as np
 import pandas as pd
 
@@ -144,7 +152,8 @@ df = df.rename_axis('ID')
 
 gives  
 
-```python
+```
+numpy
 label   A    B    C
 ID                                 
 1   NaN  0.2  NaN
@@ -158,7 +167,8 @@ ID
 
 I would like to convert this to a NumPy array, as so:  
 
-```python
+```
+numpy
 array([[ nan,  0.2,  nan],
        [ nan,  nan,  0.5],
        [ nan,  0.2,  0.5],
@@ -174,7 +184,8 @@ How can I do this?
 
 As a bonus, is it possible to preserve the dtypes, like this?  
 
-```python
+```
+numpy
 array([[ 1, nan,  0.2,  nan],
        [ 2, nan,  nan,  0.5],
        [ 3, nan,  0.2,  0.5],
@@ -190,7 +201,8 @@ or similar?
 #### Answer 2 (score 329)
 To convert a pandas dataframe (df) to a numpy ndarray, use this code:  
 
-```python
+```
+numpy
 df.values
 
 array([[nan, 0.2, nan],
@@ -226,7 +238,8 @@ See <a href="https://pandas-docs.github.io/pandas-docs-travis/whatsnew/v0.24.0.h
 
 In the spirit of better consistency throughout the API, a new method `to_numpy` has been introduced to extract the underlying NumPy array from DataFrames.  
 
-```python
+```
+numpy
 # Setup.
 df = pd.DataFrame({'A': [1, 2, 3], 'B': [4, 5, 6]}, index=['a', 'b', 'c'])
 df
@@ -239,7 +252,8 @@ c  3  6
 
   
 
-```python
+```
+numpy
 df.to_numpy()
 array([[1, 4],
        [2, 5],
@@ -248,7 +262,8 @@ array([[1, 4],
 
 As mentioned above, this method is also defined on `Index` and `Series` objects (see <a href="https://stackoverflow.com/a/54324513/4909087">here</a>).  
 
-```python
+```
+numpy
 df.index.to_numpy()
 # array(['a', 'b', 'c'], dtype=object)
 
@@ -258,7 +273,8 @@ df['A'].to_numpy()
 
 By default, a view is returned, so any modifications made will affect the original.  
 
-```python
+```
+numpy
 v = df.to_numpy()
 v[0, 0] = -1
 
@@ -271,7 +287,8 @@ c  3  6
 
 If you need a copy instead, use `to_numpy(copy=True`);  
 
-```python
+```
+numpy
 v = df.to_numpy(copy=True)
 v[0, 0] = -123
 
@@ -285,7 +302,8 @@ c  3  6
 <p><strong>If you need to Preserve the `dtypes`...</strong><br>
 As shown in another answer, <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_records.html#pandas-dataframe-to-records" rel="noreferrer">`DataFrame.to_records`</a> is a good way to do this.</p>
 
-```python
+```
+numpy
 df.to_records()
 # rec.array([('a', -1, 4), ('b',  2, 5), ('c',  3, 6)],
 #           dtype=[('index', 'O'), ('A', '&lt;i8'), ('B', '&lt;i8')])
@@ -293,7 +311,8 @@ df.to_records()
 
 This cannot be done with `to_numpy`, unfortunately. However, as an alternative, you can use `np.rec.fromrecords`:  
 
-```python
+```
+numpy
 v = df.reset_index()
 np.rec.fromrecords(v, names=v.columns.tolist())
 # rec.array([('a', -1, 4), ('b',  2, 5), ('c',  3, 6)],
@@ -302,7 +321,8 @@ np.rec.fromrecords(v, names=v.columns.tolist())
 
 Performance wise, it's nearly the same (actually, using `rec.fromrecords` is a bit faster).  
 
-```python
+```
+numpy
 df2 = pd.concat([df] * 10000)
 
 %timeit df2.to_records()
@@ -348,7 +368,8 @@ Specifically, the docs mention the rationale:
 #### Question
 <strong>This Python code:</strong>  
 
-```python
+```
+numpy
 import numpy as p
 
 def firstfunction():
@@ -380,7 +401,8 @@ firstfunction()
 
 <strong>Throws this error message:</strong>  
 
-```python
+```
+numpy
 File "mypath\mypythonscript.py", line 3484, in secondfunction
 RRDuringArray = p.array(UnFilteredDuringExSummaryOfMeansArray,dtype=p.float64)[1:,3]
 ValueError: setting an array element with a sequence.
@@ -395,7 +417,8 @@ I did a print command to get the contents of the matrix, and this is what it pri
 
 UnFilteredDuringExSummaryOfMeansArray is:    
 
-```python
+```
+numpy
 [['TestID', 'ConditionName', 'FilterType', 'RRMean', 'HRMean', 'dZdtMaxVoltageMean', 'BZMean', 'ZXMean', 'LVETMean', 'Z0Mean', 'StrokeVolumeMean', 'CardiacOutputMean', 'VelocityIndexMean'],
 [u'HF101710', 'PreEx10SecondsBEFORE', 'UnfilteredBefore', 0.90670000000000006, 66.257731979420001, 1.8305673000000002, 0.11750000000000001, 0.15120546389880002, 0.26870546389879996, 27.628261216480002, 86.944190346160013, 5.767261352345999, 0.066259118585869997],
 [u'HF101710', '25W10SecondsBEFORE', 'UnfilteredBefore', 0.68478571428571422, 87.727887206978565, 2.2965444125714285, 0.099642857142857144, 0.14952476549885715, 0.24916762264164286, 27.010483303721429, 103.5237336525, 9.0682762747642869, 0.085022572648242867],
@@ -413,25 +436,29 @@ Looks like a 5 row by 13 column matrix to me, though the number of rows is varia
 
 FYI, if I replace this problem line of code:  
 
-```python
+```
+numpy
     RRDuringArray = p.array(UnFilteredDuringExSummaryOfMeansArray,dtype=p.float64)[1:,3]
 ```
 
 with this instead:  
 
-```python
+```
+numpy
     RRDuringArray = p.array(UnFilteredDuringExSummaryOfMeansArray)[1:,3]
 ```
 
 Then that section of the script works fine without throwing an error, but then this line of code further down the line:  
 
-```python
+```
+numpy
 p.ylim(.5*RRDuringArray.min(),1.5*RRDuringArray.max())
 ```
 
 Throws this error:  
 
-```python
+```
+numpy
 File "mypath\mypythonscript.py", line 3631, in CreateSummaryGraphics
   p.ylim(.5*RRDuringArray.min(),1.5*RRDuringArray.max())
 TypeError: cannot perform reduce with flexible type
@@ -442,13 +469,15 @@ So you can see that I need to specify the data type in order to be able to use y
 #### Answer accepted (score 212)
 From the code you showed us, the only thing we can tell is that you are trying to create an array from a list that isn't shaped like a multi-dimensional array.  For example  
 
-```python
+```
+numpy
 numpy.array([[1,2], [2, 3, 4]])
 ```
 
 or  
 
-```python
+```
+numpy
 numpy.array([[1,2], [2, [3, 4]]])
 ```
 
@@ -456,13 +485,15 @@ will yield this error message, because the shape of the input list isn't a (gene
 
 <strong>Edit</strong>: Another possible cause for this error message is trying to use a string as an element in an array of type `float`:  
 
-```python
+```
+numpy
 numpy.array([1.2, "abc"], dtype=float)
 ```
 
 That is what you are trying according to your edit.  If you really want to have a NumPy array containing both strings and floats, you could use the dtype `object`, which enables the array to hold arbitrary Python objects:  
 
-```python
+```
+numpy
 numpy.array([1.2, "abc"], dtype=object)
 ```
 
@@ -471,7 +502,8 @@ Without knowing what your code shall accomplish, I can't judge if this is what y
 #### Answer 2 (score 39)
 <strong>The Python ValueError:</strong>   
 
-```python
+```
+numpy
 ValueError: setting an array element with a sequence.
 ```
 
@@ -479,7 +511,8 @@ Means exactly what it says, you're trying to cram a sequence of numbers into a s
 
 <strong>1.  When you pass a python tuple or list to be interpreted as a numpy array element:</strong>  
 
-```python
+```
+numpy
 import numpy
 
 numpy.array([1,2,3])               #good
@@ -507,7 +540,8 @@ numpy.array([2, foo()])            #Fail, can't convert a list into a numpy
 
 <strong>2.  By trying to cram a numpy array length > 1 into a numpy array element:</strong>  
 
-```python
+```
+numpy
 x = np.array([1,2,3])
 x[0] = np.array([4])         #good
 
@@ -525,7 +559,8 @@ In my case , I got this Error in Tensorflow , Reason was i was trying to feed a 
 
 example :  
 
-```python
+```
+numpy
 import tensorflow as tf
 
 input_x = tf.placeholder(tf.int32,[None,None])
@@ -545,19 +580,22 @@ with tf.Session() as tt:
 
 And if my array is :  
 
-```python
+```
+numpy
 example_array = [[1,2,3],[1,2]]
 ```
 
 Then i will get error :  
 
-```python
+```
+numpy
 ValueError: setting an array element with a sequence.
 ```
 
 but if i do padding then :  
 
-```python
+```
+numpy
 example_array = [[1,2,3],[1,2,0]]
 ```
 
@@ -570,7 +608,8 @@ Now it's working.
 #### Question
 I'm currently trying to learn Numpy and Python. Given the following array:  
 
-```python
+```
+numpy
 import numpy as np
 a = np.array([[1,2],[1,2]])
 ```
@@ -589,7 +628,8 @@ It is <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray
 
 Thus:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; a.shape
 (2, 2)
 ```
@@ -599,7 +639,8 @@ Thus:
 
 By convention, in Python world, the shortcut for `numpy` is `np`, so:  
 
-```python
+```
+numpy
 In [1]: import numpy as np
 
 In [2]: a = np.array([[1,2],[3,4]])
@@ -617,7 +658,8 @@ In <em>Mathematics/Physics</em>, dimension or dimensionality is informally defin
   In Numpy dimensions are called axes. The number of axes is rank.  
 </blockquote>
 
-```python
+```
+numpy
 In [3]: a.ndim  # num of dimensions/axes, *Mathematics definition of dimension*
 Out[3]: 2
 ```
@@ -626,7 +668,8 @@ Out[3]: 2
 
 the <em>nth</em> coordinate to index an `array` in Numpy. And multidimensional arrays can have one index per axis.  
 
-```python
+```
+numpy
 In [4]: a[1,0]  # to index `a`, we specific 1 at the first axis and 0 at the second axis.
 Out[4]: 3  # which results in 3 (locate at the row 1 and column 0, 0-based index)
 ```
@@ -635,13 +678,15 @@ Out[4]: 3  # which results in 3 (locate at the row 1 and column 0, 0-based index
 
 describes how many data (or the range) along each available axis.  
 
-```python
+```
+numpy
 In [5]: a.shape
 Out[5]: (2, 2)  # both the first and second axis have 2 (columns/rows/pages/blocks/...) data
 ```
 
 #### Answer 3 (score 44)
-```python
+```
+numpy
 import numpy as np   
 &gt;&gt;&gt; np.shape(a)
 (2,2)
@@ -649,7 +694,8 @@ import numpy as np
 
 Also works if the input is not a numpy array but a list of lists  
 
-```python
+```
+numpy
 &gt;&gt;&gt; a = [[1,2],[1,2]]
 &gt;&gt;&gt; np.shape(a)
 (2,2)
@@ -657,7 +703,8 @@ Also works if the input is not a numpy array but a list of lists
 
 Or a tuple of tuples  
 
-```python
+```
+numpy
 &gt;&gt;&gt; a = ((1,2),(1,2))
 &gt;&gt;&gt; np.shape(a)
 (2,2)
@@ -670,20 +717,23 @@ Or a tuple of tuples
 #### Question
 I have two points in 3D:  
 
-```python
+```
+numpy
 (xa, ya, za)
 (xb, yb, zb)
 ```
 
 And I want to calculate the distance:  
 
-```python
+```
+numpy
 dist = sqrt((xa-xb)^2 + (ya-yb)^2 + (za-zb)^2)
 ```
 
 What's the best way to do this with NumPy, or with Python in general? I have:  
 
-```python
+```
+numpy
 a = numpy.array((xa ,ya, za))
 b = numpy.array((xb, yb, zb))
 ```
@@ -691,7 +741,8 @@ b = numpy.array((xb, yb, zb))
 #### Answer accepted (score 765)
 Use <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.linalg.norm.html" rel="noreferrer">`numpy.linalg.norm`</a>:  
 
-```python
+```
+numpy
 dist = numpy.linalg.norm(a-b)
 ```
 
@@ -706,7 +757,8 @@ There's a function for that in SciPy. It's called <a href="http://docs.scipy.org
 
 Example:  
 
-```python
+```
+numpy
 from scipy.spatial import distance
 a = (1, 2, 3)
 b = (4, 5, 6)
@@ -718,7 +770,8 @@ For anyone interested in computing multiple distances at once, I've done a littl
 
 The first advice is to organize your data such that the arrays have dimension `(3, n)` (and are C-contiguous obviously). If adding happens in the contiguous first dimension, things are faster, and it doesn't matter too much if you use `sqrt-sum` with `axis=0`, `linalg.norm` with `axis=0`, or  
 
-```python
+```
+numpy
 a_min_b = a - b
 numpy.sqrt(numpy.einsum('ij,ij-&gt;j', a_min_b, a_min_b))
 ```
@@ -733,7 +786,8 @@ The variants where you sum up over the second axis, `axis=1`, are all substantia
 
 Code to reproduce the plot:  
 
-```python
+```
+numpy
 import numpy
 import perfplot
 from scipy.spatial import distance
@@ -815,7 +869,8 @@ Or is the best way to use <a href="https://stackoverflow.com/questions/2859404/r
 #### Answer accepted (score 562)
 You can use Numpy's `genfromtxt()` method to do so, by setting the `delimiter` kwarg to a comma.  
 
-```python
+```
+numpy
 from numpy import genfromtxt
 my_data = genfromtxt('my_file.csv', delimiter=',')
 ```
@@ -825,7 +880,8 @@ More information on the function can be found at its respective <a href="http://
 #### Answer 2 (score 160)
 I would recommend the <a href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.io.parsers.read_csv.html" rel="noreferrer">`read_csv`</a> function from the `pandas` library:  
 
-```python
+```
+numpy
 import pandas as pd
 df=pd.read_csv('myfile.csv', sep=',',header=None)
 df.values
@@ -847,7 +903,8 @@ I would also recommend `genfromtxt`. However, since the question asks for a <a h
 
 Given an input file, `myfile.csv`:  
 
-```python
+```
+numpy
 1.0, 2, 3
 4, 5.5, 6
 
@@ -857,20 +914,23 @@ np.genfromtxt('myfile.csv',delimiter=',')
 
 gives an array:  
 
-```python
+```
+numpy
 array([[ 1. ,  2. ,  3. ],
        [ 4. ,  5.5,  6. ]])
 ```
 
 and   
 
-```python
+```
+numpy
 np.genfromtxt('myfile.csv',delimiter=',',dtype=None)
 ```
 
 gives a record array:  
 
-```python
+```
+numpy
 array([(1.0, 2.0, 3), (4.0, 5.5, 6)], 
       dtype=[('f0', '&lt;f8'), ('f1', '&lt;f8'), ('f2', '&lt;i4')])
 ```
@@ -887,21 +947,24 @@ You can also try `recfromcsv()` which can guess data types and return a properly
 #### Question
 Suppose I have:  
 
-```python
+```
+numpy
 test = numpy.array([[1, 2], [3, 4], [5, 6]])
 ```
 
 `test[i]` gets me <em>ith</em> line of the array (eg `[1, 2]`). How can I access the <em>ith</em> column? (eg `[1, 3, 5]`). Also, would this be an expensive operation?  
 
 #### Answer accepted (score 595)
-```python
+```
+numpy
 &gt;&gt;&gt; test[:,0]
 array([1, 3, 5])
 ```
 
 Similarly,   
 
-```python
+```
+numpy
 &gt;&gt;&gt; test[1,:]
 array([3, 4])
 ```
@@ -911,7 +974,8 @@ lets you access rows.  This is covered in Section 1.4 (Indexing) of the <a href=
 #### Answer 2 (score 62)
 And if you want to access more than one column at a time you could do:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; test = np.arange(9).reshape((3,3))
 &gt;&gt;&gt; test
 array([[0, 1, 2],
@@ -924,7 +988,8 @@ array([[0, 2],
 ```
 
 #### Answer 3 (score 53)
-```python
+```
+numpy
 &gt;&gt;&gt; test[:,0]
 array([1, 3, 5])
 ```
@@ -935,7 +1000,8 @@ ValueError: all the input arrays must have same number of dimensions
 
 while  
 
-```python
+```
+numpy
 &gt;&gt;&gt; test[:,[0]]
 array([[1],
        [3],
@@ -946,7 +1012,8 @@ gives you a column vector, so that you can do concatenate or hstack operation.
 
 e.g.  
 
-```python
+```
+numpy
 &gt;&gt;&gt; np.hstack((test, test[:,[0]]))
 array([[1, 2, 1],
        [3, 4, 3],
@@ -962,7 +1029,8 @@ I have a very similar question to <a href="https://stackoverflow.com/questions/1
 
 I installed numpy following this <a href="http://sourceforge.net/projects/numpy/files/NumPy/1.3.0/numpy-1.3.0.win-amd64-py2.6.msi/download?use_mirror=ufpr" rel="noreferrer">link</a> - as suggested in the question. The installation went fine but when I execute   
 
-```python
+```
+numpy
 import numpy
 ```
 
@@ -982,13 +1050,15 @@ Thanks
 #### Answer 2 (score 212)
 You can simply use   
 
-```python
+```
+numpy
 pip install numpy
 ```
 
 Or for python3, use  
 
-```python
+```
+numpy
 pip3 install numpy
 ```
 
@@ -1010,7 +1080,8 @@ Here are my steps to solve this problem.</p>
 #### Question
 I have a Numpy array consisting of a list of lists, representing a two-dimensional array with row labels and column names as shown below:  
 
-```python
+```
+numpy
 data = array([['','Col1','Col2'],['Row1',1,2],['Row2',3,4]])
 ```
 
@@ -1018,7 +1089,8 @@ I'd like the resulting DataFrame to have Row1 and Row2 as index values, and Col1
 
 I can specify the index as follows:  
 
-```python
+```
+numpy
 df = pd.DataFrame(data,index=data[:,0]),
 ```
 
@@ -1027,7 +1099,8 @@ however I am unsure how to best assign column headers.
 #### Answer accepted (score 258)
 You need to specify `data`, `index` and `columns` to <a href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html#pandas.DataFrame" rel="noreferrer">`DataFrame`</a> constructor, as in:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; pd.DataFrame(data=data[1:,1:],    # values
 ...              index=data[1:,0],    # 1st column as index
 ...              columns=data[0,1:])  # 1st row as the column names
@@ -1038,7 +1111,8 @@ You need to specify `data`, `index` and `columns` to <a href="http://pandas.pyda
 #### Answer 2 (score 53)
 Here is an easy to understand solution  
 
-```python
+```
+numpy
 import numpy as np
 import pandas as pd
 
@@ -1060,7 +1134,8 @@ array([[5.8, 2.8],
 #### Answer 3 (score 23)
 I agree with Joris; it seems like you should be doing this differently, like with <a href="http://docs.scipy.org/doc/numpy-1.10.1/user/basics.rec.html" rel="noreferrer">numpy record arrays</a>. Modifying "option 2" from <a href="https://stackoverflow.com/a/21647198/943773">this great answer</a>, you could do it like this:  
 
-```python
+```
+numpy
 import pandas
 import numpy
 
@@ -1081,19 +1156,22 @@ I have a 20 x 4000 dataframe in python using pandas. Two of these columns are na
 Can anyone help with that?  
 
 #### Answer 2 (score 368)
-```python
+```
+numpy
 dataframe["period"] = dataframe["Year"].map(str) + dataframe["quarter"]
 ```
 
 #### Answer 3 (score 234)
-```python
+```
+numpy
 df = pd.DataFrame({'Year': ['2014', '2015'], 'quarter': ['q1', 'q2']})
 df['period'] = df[['Year', 'quarter']].apply(lambda x: ''.join(x), axis=1)
 ```
 
 Yields this dataframe  
 
-```python
+```
+numpy
    Year quarter  period
 0  2014      q1  2014q1
 1  2015      q2  2015q2
@@ -1110,7 +1188,8 @@ You can check more information about apply() method <a href="http://pandas.pydat
 #### Question
 I know there is a method for a Python list to return the first index of something:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; l = [1, 2, 3]
 &gt;&gt;&gt; l.index(2)
 1
@@ -1121,7 +1200,8 @@ Is there something like that for NumPy arrays?
 #### Answer accepted (score 483)
 Yes, here is the answer given a NumPy array, `array`, and a value, `item`, to search for:  
 
-```python
+```
+numpy
 itemindex = numpy.where(array==item)
 ```
 
@@ -1129,13 +1209,15 @@ The result is a tuple with first all the row indices, then all the column indice
 
 For example, if an array is two dimensions and it contained your item at two locations then  
 
-```python
+```
+numpy
 array[itemindex[0][0]][itemindex[1][0]]
 ```
 
 would be equal to your item and so would  
 
-```python
+```
+numpy
 array[itemindex[0][1]][itemindex[1][1]]
 ```
 
@@ -1144,7 +1226,8 @@ array[itemindex[0][1]][itemindex[1][1]]
 #### Answer 2 (score 63)
 If you need the index of the first occurrence of <strong>only one value</strong>, you can use `nonzero` (or `where`, which amounts to the same thing in this case):  
 
-```python
+```
+numpy
 &gt;&gt;&gt; t = array([1, 1, 1, 2, 2, 3, 8, 3, 8, 8])
 &gt;&gt;&gt; nonzero(t == 8)
 (array([6, 8, 9]),)
@@ -1154,7 +1237,8 @@ If you need the index of the first occurrence of <strong>only one value</strong>
 
 If you need the first index of each of <strong>many values</strong>, you could obviously do the same as above repeatedly, but there is a trick that may be faster.  The following finds the indices of the first element of each <em>subsequence</em>:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; nonzero(r_[1, diff(t)[:-1]])
 (array([0, 3, 5, 6, 7, 8]),)
 ```
@@ -1165,7 +1249,8 @@ Notice that it finds the beginning of both subsequence of 3s and both subsequenc
 
 So it's slightly different than finding the first <em>occurrence</em> of each value.  In your program, you may be able to work with a sorted version of `t` to get what you want:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; st = sorted(t)
 &gt;&gt;&gt; nonzero(r_[1, diff(st)[:-1]])
 (array([0, 3, 5, 7]),)
@@ -1174,7 +1259,8 @@ So it's slightly different than finding the first <em>occurrence</em> of each va
 #### Answer 3 (score 42)
 You can also convert a NumPy array to list in the air and get its index. For example,  
 
-```python
+```
+numpy
 l = [1,2,3,4,5] # Python list
 a = numpy.array(l) # NumPy array
 i = a.tolist().index(2) # i will return index of 2
@@ -1193,7 +1279,8 @@ I have a list in python and I want to convert it to an array to be able to use `
 #### Answer accepted (score 215)
 Use <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.asarray.html" rel="noreferrer">`numpy.asarray`</a>:  
 
-```python
+```
+numpy
 import numpy as np
 myarray = np.asarray(mylist)
 ```
@@ -1201,7 +1288,8 @@ myarray = np.asarray(mylist)
 #### Answer 2 (score 6)
 <h5>create an int array and a list</h1>
 
-```python
+```
+numpy
 from array import array
 listA = list(range(0,50))
 for item in listA:
@@ -1214,7 +1302,8 @@ for item in arrayA:
 #### Answer 3 (score 5)
 I wanted a way to do this without using an extra module. First turn list to string, then append to an array:  
 
-```python
+```
+numpy
 dataset_list = ''.join(input_list)
 dataset_array = []
 for item in dataset_list.split(';'): # comma, or other
@@ -1231,7 +1320,8 @@ Is there a way to dump a NumPy array into a CSV file? I have a 2D NumPy array an
 #### Answer accepted (score 746)
 <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.savetxt.html" rel="noreferrer">`numpy.savetxt`</a> saves an array to a text file.  
 
-```python
+```
+numpy
 import numpy
 a = numpy.asarray([ [1,2,3], [4,5,6], [7,8,9] ])
 numpy.savetxt("foo.csv", a, delimiter=",")
@@ -1240,7 +1330,8 @@ numpy.savetxt("foo.csv", a, delimiter=",")
 #### Answer 2 (score 109)
 You can use `pandas`. It does take some extra memory so it's not always possible, but it's very fast and easy to use.  
 
-```python
+```
+numpy
 import pandas as pd 
 pd.DataFrame(np_array).to_csv("path/to/file.csv")
 ```
@@ -1250,7 +1341,8 @@ if you don't want a header or index, use `to_csv("/path/to/file.csv", header=Non
 #### Answer 3 (score 39)
 <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.tofile.html" rel="noreferrer">`tofile`</a> is a convenient function to do this:  
 
-```python
+```
+numpy
 import numpy as np
 a = np.asarray([ [1,2,3], [4,5,6], [7,8,9] ])
 a.tofile('foo.csv',sep=',',format='%10.5f')
@@ -1280,7 +1372,8 @@ And then I want to append it into another NumPy array (just like we create a lis
 
 I tried to do the following without any luck  
 
-```python
+```
+numpy
 &gt;&gt;&gt; M = np.array([])
 &gt;&gt;&gt; M
 array([], dtype=float64)
@@ -1293,7 +1386,8 @@ array([1, 2, 3])
 ```
 
 #### Answer accepted (score 159)
-```python
+```
+numpy
 In [1]: import numpy as np
 
 In [2]: a = np.array([[1, 2, 3], [4, 5, 6]])
@@ -1310,7 +1404,8 @@ array([[1, 2, 3],
 
 or this:  
 
-```python
+```
+numpy
 In [1]: a = np.array([1, 2, 3])
 
 In [2]: b = np.array([4, 5, 6])
@@ -1324,7 +1419,8 @@ array([[1, 2, 3],
 #### Answer 2 (score 53)
 Well, the error message says it all:  NumPy arrays do not have an `append()` method.  There's a free function <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.append.html">`numpy.append()`</a> however:  
 
-```python
+```
+numpy
 numpy.append(M, a)
 ```
 
@@ -1333,7 +1429,8 @@ This will create a new array instead of mutating `M` in place.  Note that using 
 #### Answer 3 (score 22)
 You may use `numpy.append()`...   
 
-```python
+```
+numpy
 import numpy
 
 B = numpy.array([3])
@@ -1356,7 +1453,8 @@ I just discovered a logical bug in my code which was causing all sorts of proble
 
 I changed the code from:  
 
-```python
+```
+numpy
 r = mlab.csv2rec(datafile, delimiter=',', names=COL_HEADERS)
 mask = ((r["dt"] &gt;= startdate) &amp; (r["dt"] &lt;= enddate))
 selected = r[mask]
@@ -1364,7 +1462,8 @@ selected = r[mask]
 
 TO:  
 
-```python
+```
+numpy
 r = mlab.csv2rec(datafile, delimiter=',', names=COL_HEADERS)
 mask = ((r["dt"] &gt;= startdate) and (r["dt"] &lt;= enddate))
 selected = r[mask]
@@ -1396,7 +1495,8 @@ calling `__bool__` in Python3 or `__nonzero__` in Python2).</p>
 
 Your original code   
 
-```python
+```
+numpy
 mask = ((r["dt"] &gt;= startdate) &amp; (r["dt"] &lt;= enddate))
 selected = r[mask]
 ```
@@ -1410,7 +1510,8 @@ Alternatively I found another solution which works perfectly for my desired func
 
 Instead of using suggested code above, simply using a `numpy.logical_and(a,b)` would work. Here you may want to rewrite the code as   
 
-```python
+```
+numpy
 selected  = r[numpy.logical_and(r["dt"] &gt;= startdate, r["dt"] &lt;= enddate)]
 ```
 
@@ -1419,7 +1520,8 @@ The reason for the exception is that `and` implicitly calls `bool`. First on the
 
 However the `bool` on a `numpy.ndarray` (if it contains more than one element) will throw the exception you have seen:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; import numpy as np
 &gt;&gt;&gt; arr = np.array([1, 2, 3])
 &gt;&gt;&gt; bool(arr)
@@ -1428,7 +1530,8 @@ ValueError: The truth value of an array with more than one element is ambiguous.
 
 The `bool()` call is implicit in `and`, but also in `if`, `while`, `or`, so any of the following examples will also fail:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; arr and arr
 ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
 
@@ -1448,7 +1551,8 @@ The <strong>element-wise</strong> equivalent for `and` would be the <a href="htt
 
 For boolean arrays - and comparisons like `&lt;`, `&lt;=`, `==`, `!=`, `&gt;=` and `&gt;` on NumPy arrays return boolean NumPy arrays - you can also use the <strong>element-wise bitwise</strong> functions (and operators): <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.bitwise_and.html" rel="noreferrer">`np.bitwise_and`</a> (`&amp;` operator)  
 
-```python
+```
+numpy
 &gt;&gt;&gt; np.logical_and(arr &gt; 1, arr &lt; 3)
 array([False,  True, False], dtype=bool)
 
@@ -1461,7 +1565,8 @@ array([False,  True, False], dtype=bool)
 
 and <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.bitwise_or.html#numpy.bitwise_or" rel="noreferrer">`bitwise_or`</a> (`|` operator):  
 
-```python
+```
+numpy
 &gt;&gt;&gt; np.logical_or(arr &lt;= 1, arr &gt;= 3)
 array([ True, False,  True], dtype=bool)
 
@@ -1490,7 +1595,8 @@ Is there any way to do this?
 
 <strong>Examples:</strong>  
 
-```python
+```
+numpy
 &gt;&gt;&gt; numpy.arange(10000)
 array([   0,    1,    2, ..., 9997, 9998, 9999])
 
@@ -1507,14 +1613,16 @@ array([[   0,    1,    2, ...,   37,   38,   39],
 #### Answer accepted (score 513)
 Use <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.set_printoptions.html" rel="noreferrer">`numpy.set_printoptions`</a>:  
 
-```python
+```
+numpy
 import sys
 import numpy
 numpy.set_printoptions(threshold=sys.maxsize)
 ```
 
 #### Answer 2 (score 201)
-```python
+```
+numpy
 import numpy as np
 np.set_printoptions(threshold=np.inf)
 ```
@@ -1524,7 +1632,8 @@ I suggest using `np.inf` instead of `np.nan` which is suggested by others. They 
 #### Answer 3 (score 69)
 The previous answers are the correct ones, but as a weaker alternative you can transform into a list:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; numpy.arange(100).reshape(25,4).tolist()
 
 [[0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11], [12, 13, 14, 15], [16, 17, 18, 19], [20, 21,
@@ -1542,20 +1651,23 @@ The previous answers are the correct ones, but as a weaker alternative you can t
 <p>I am using Python 3.2.1 and I can't import the `StringIO` module. I use 
 `io.StringIO` and it works, but I can't use it with `numpy`'s `genfromtxt` like this:</p>
 
-```python
+```
+numpy
 x="1 3\n 4.5 8"        
 numpy.genfromtxt(io.StringIO(x))
 ```
 
 I get the following error:  
 
-```python
+```
+numpy
 TypeError: Can't convert 'bytes' object to str implicitly  
 ```
 
 and when I write `import StringIO` it says  
 
-```python
+```
+numpy
 ImportError: No module named 'StringIO'
 ```
 
@@ -1578,7 +1690,8 @@ From <a href="http://docs.python.org/3.0/whatsnew/3.0.html" rel="noreferrer">Wha
 
 A possibly useful method of fixing some Python 2 code to also work in Python 3 (caveat emptor):  
 
-```python
+```
+numpy
 try:
     from StringIO import StringIO ## for Python 2
 except ImportError:
@@ -1592,7 +1705,8 @@ except ImportError:
 #### Answer 3 (score 114)
 In my case I have used:  
 
-```python
+```
+numpy
 from io import StringIO
 ```
 
@@ -1603,7 +1717,8 @@ from io import StringIO
 #### Question
 For a numpy matrix in python  
 
-```python
+```
+numpy
 from numpy import matrix
 A = matrix([[1,2],[3,4]])
 ```
@@ -1612,7 +1727,8 @@ How can I find the length of a row (or column) of this matrix? Equivalently, how
 
 So far, the only solution I've found is:  
 
-```python
+```
+numpy
 len(A)
 len(A[:,1])
 len(A[1,:])
@@ -1625,7 +1741,8 @@ So, is there a more intuitive way to find the size of a matrix, or is this the b
 #### Answer accepted (score 223)
 `shape` is a property of both numpy ndarray's and matrices.  
 
-```python
+```
+numpy
 A.shape
 ```
 
@@ -1643,7 +1760,8 @@ In fact, the numpy `matrix` object is built on top of the `ndarray` object, one 
 #### Question
 I would like to have the norm of one NumPy array. More specifically, I am looking for an equivalent version of this function  
 
-```python
+```
+numpy
 def normalize(v):
     norm = np.linalg.norm(v)
     if norm == 0: 
@@ -1658,7 +1776,8 @@ This function works in a situation where `v` is the 0 vector.
 #### Answer accepted (score 122)
 If you're using scikit-learn you can use <a href="http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.normalize.html#sklearn.preprocessing.normalize" rel="noreferrer">`sklearn.preprocessing.normalize`</a>:  
 
-```python
+```
+numpy
 import numpy as np
 from sklearn.preprocessing import normalize
 
@@ -1672,7 +1791,8 @@ print np.all(norm1 == norm2)
 #### Answer 2 (score 37)
 I would agree that it were nice if such a function was part of the included batteries. But it isn't, as far as I know. Here is a version for arbitrary axes, and giving optimal performance.  
 
-```python
+```
+numpy
 import numpy as np
 
 def normalized(a, axis=-1, order=2):
@@ -1693,7 +1813,8 @@ print(normalized(np.arange(3)))
 <p>You can specify ord to get the L1 norm.
 To avoid zero division I use eps, but that's maybe not great.</p>
 
-```python
+```
+numpy
 def normalize(v):
     norm=np.linalg.norm(v, ord=1)
     if norm==0:
@@ -1714,14 +1835,16 @@ You can use <a href="https://github.com/drj11/pypng/" rel="noreferrer">PyPNG</a>
 #### Answer 2 (score 246)
 This uses PIL, but maybe some might find it useful:  
 
-```python
+```
+numpy
 import scipy.misc
 scipy.misc.imsave('outfile.jpg', image_array)
 ```
 
 <strong>EDIT</strong>: The current `scipy` version started to normalize all images so that min(data) become black and max(data) become white. This is unwanted if the data should be exact grey levels or exact RGB channels. The solution:  
 
-```python
+```
+numpy
 import scipy.misc
 scipy.misc.toimage(image_array, cmin=0.0, cmax=...).save('outfile.jpg')
 ```
@@ -1731,7 +1854,8 @@ An answer using <a href="http://www.pythonware.com/products/pil/" rel="noreferre
 
 given a numpy array "A":  
 
-```python
+```
+numpy
 from PIL import Image
 im = Image.fromarray(A)
 im.save("your_file.jpeg")
@@ -1758,7 +1882,8 @@ But when I type `y.count(0)` or `y.count(1)`, it says
 What should I do?   
 
 #### Answer accepted (score 469)
-```python
+```
+numpy
 &gt;&gt;&gt; a = numpy.array([0, 3, 0, 1, 0, 1, 2, 1, 0, 0, 0, 0, 1, 3, 4])
 &gt;&gt;&gt; unique, counts = numpy.unique(a, return_counts=True)
 &gt;&gt;&gt; dict(zip(unique, counts))
@@ -1769,7 +1894,8 @@ What should I do?
 
 Use <a href="https://docs.python.org/2/library/collections.html#collections.Counter" rel="noreferrer">`collections.Counter`</a>;  
 
-```python
+```
+numpy
 &gt;&gt; import collections, numpy
 
 &gt;&gt;&gt; a = numpy.array([0, 3, 0, 1, 0, 1, 2, 1, 0, 0, 0, 0, 1, 3, 4])
@@ -1780,7 +1906,8 @@ Counter({0: 7, 1: 4, 3: 2, 2: 1, 4: 1})
 #### Answer 2 (score 204)
 What about using <a href="https://docs.scipy.org/doc/numpy-1.13.0/reference/generated/numpy.count_nonzero.html" rel="noreferrer">`numpy.count_nonzero`</a>, something like   
 
-```python
+```
+numpy
 &gt;&gt;&gt; import numpy as np
 &gt;&gt;&gt; y = np.array([1, 2, 2, 2, 2, 0, 2, 3, 3, 3, 0, 0, 2, 2, 0])
 
@@ -1798,7 +1925,8 @@ What about using <a href="https://docs.scipy.org/doc/numpy-1.13.0/reference/gene
 
 E.g.  
 
-```python
+```
+numpy
 import numpy as np
 y = np.array([0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1])
 num_zeros = (y == 0).sum()
@@ -1814,13 +1942,15 @@ I load some machine learning data from a CSV file. The first 2 columns are obser
 
 Currently, I do the following:  
 
-```python
+```
+numpy
 data = pandas.read_csv('mydata.csv')
 ```
 
 which gives something like:  
 
-```python
+```
+numpy
 data = pandas.DataFrame(np.random.rand(10,5), columns = list('abcde'))
 ```
 
@@ -1828,7 +1958,8 @@ I'd like to slice this dataframe in two dataframes: one containing the columns `
 
 It is not possible to write something like   
 
-```python
+```
+numpy
 observations = data[:'c']
 features = data['c':]
 ```
@@ -1850,7 +1981,8 @@ See the <a href="https://pandas.pydata.org/pandas-docs/stable/indexing.html#ix-i
   `foo`, `bar`, `quz`, `ant`, `cat`, `sat`, `dat`.</p>
 </blockquote>
 
-```python
+```
+numpy
 # selects all rows and all columns beginning at 'foo' up to and including 'sat'
 df.loc[:, 'foo':'sat']
 # foo bar quz ant cat sat
@@ -1858,7 +1990,8 @@ df.loc[:, 'foo':'sat']
 
 `.loc` accepts the same slice notation that Python lists do for both row and columns. Slice notation being `start:stop:step`  
 
-```python
+```
+numpy
 # slice from 'foo' to 'cat' by every 2nd column
 df.loc[:, 'foo':'cat':2]
 # foo quz cat
@@ -1892,7 +2025,8 @@ df.loc[:, ['foo','bar','dat']]
 
 You can slice by rows and columns. For instance, if you have 5 rows with labels `v`, `w`, `x`, `y`, `z`  
 
-```python
+```
+numpy
 # slice from 'w' to 'y' and 'foo' to 'ant' by 3
 df.loc['w':'y', 'foo':'ant':3]
 #    foo ant
@@ -1904,7 +2038,8 @@ df.loc['w':'y', 'foo':'ant':3]
 #### Answer 2 (score 148)
 The DataFrame.ix index is what you want to be accessing. It's a little confusing (I agree that Pandas indexing is perplexing at times!), but the following seems to do what you want:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; df = DataFrame(np.random.rand(4,5), columns = list('abcde'))
 &gt;&gt;&gt; df.ix[:,'b':]
       b         c         d         e
@@ -1921,7 +2056,8 @@ where .ix[row slice, column slice] is what is being interpreted. More on Pandas 
 #### Answer 3 (score 70)
 Lets use the titanic dataset from the seaborn package as an example  
 
-```python
+```
+numpy
 # Load dataset (pip install seaborn)
 &gt;&gt; import seaborn.apionly as sns
 &gt;&gt; titanic = sns.load_dataset('titanic')
@@ -1931,7 +2067,8 @@ Lets use the titanic dataset from the seaborn package as an example
   <h5>using the column names</h1>
 </blockquote>
 
-```python
+```
+numpy
 &gt;&gt; titanic.loc[:,['sex','age','fare']]
 ```
 
@@ -1939,7 +2076,8 @@ Lets use the titanic dataset from the seaborn package as an example
   <h5>using the column indices</h1>
 </blockquote>
 
-```python
+```
+numpy
 &gt;&gt; titanic.iloc[:,[2,3,6]]
 ```
 
@@ -1947,13 +2085,15 @@ Lets use the titanic dataset from the seaborn package as an example
   <h5>using ix (Older than Pandas &lt;.20 version)</h1>
 </blockquote>
 
-```python
+```
+numpy
 &gt;&gt; titanic.ix[:,[‘sex’,’age’,’fare’]]
 ```
 
 or  
 
-```python
+```
+numpy
 &gt;&gt; titanic.ix[:,[2,3,6]]
 ```
 
@@ -1961,7 +2101,8 @@ or
   <h5>using the reindex method</h1>
 </blockquote>
 
-```python
+```
+numpy
 &gt;&gt; titanic.reindex(columns=['sex','age','fare'])
 ```
 
@@ -1972,7 +2113,8 @@ or
 #### Question
 How can I remove some specific elements from a numpy array? Say I have  
 
-```python
+```
+numpy
 import numpy as np
 
 a = np.array([1,2,3,4,5,6,7,8,9])
@@ -1983,13 +2125,15 @@ I then want to remove `3,4,7` from `a`. All I know is the index of the values (`
 #### Answer accepted (score 237)
 Use <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.delete.html" rel="noreferrer">numpy.delete()</a> - returns a <em>new</em> array with sub-arrays along an axis deleted  
 
-```python
+```
+numpy
 numpy.delete(a, index)
 ```
 
 For your specific question:  
 
-```python
+```
+numpy
 import numpy as np
 
 a = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9])
@@ -2012,7 +2156,8 @@ If the code I post has output, it is the result of running the code.
 #### Answer 2 (score 48)
 There is a numpy built-in function to help with that.  
 
-```python
+```
+numpy
 import numpy as np
 &gt;&gt;&gt; a = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9])
 &gt;&gt;&gt; b = np.array([3,4,7])
@@ -2024,7 +2169,8 @@ array([1, 2, 5, 6, 8, 9])
 #### Answer 3 (score 31)
 A Numpy array is <a href="http://en.wikipedia.org/wiki/Immutable_object">immutable</a>, meaning you technically cannot delete an item from it. However, you can construct a <em>new</em> array without the values you don't want, like this:  
 
-```python
+```
+numpy
 b = np.delete(a, [2,3,6])
 ```
 
@@ -2035,7 +2181,8 @@ b = np.delete(a, [2,3,6])
 #### Question
 Is there way to initialize a numpy array of a shape and add to it? I will explain what I need with a list example. If I want to create a list of objects generated in a loop, I can do:  
 
-```python
+```
+numpy
 a = []
 for i in range(5):
     a.append(i)
@@ -2043,7 +2190,8 @@ for i in range(5):
 
 I want to do something similar with a numpy array. I know about vstack, concatenate etc. However, it seems these require two numpy arrays as inputs. What I need is:  
 
-```python
+```
+numpy
 big_array # Initially empty. This is where I don't know what to specify
 for i in range(5):
     array i of shape = (2,4) created.
@@ -2091,7 +2239,8 @@ However, the mentality in which we construct an array by appending elements to a
 #### Answer 2 (score 37)
 The way I usually do that is by creating a regular list, then append my stuff into it, and finally transform the list to a numpy array as follows :  
 
-```python
+```
+numpy
 import numpy as np
 big_array = [] #  empty regular list
 for i in range(5):
@@ -2113,7 +2262,8 @@ Introduced in numpy 1.8:
 
 Examples:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; import numpy as np
 &gt;&gt;&gt; np.full((2, 2), np.inf)
 array([[ inf,  inf],
@@ -2133,7 +2283,8 @@ How do I convert a <a href="http://en.wikipedia.org/wiki/NumPy" rel="noreferrer"
 #### Answer accepted (score 369)
 Use <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.tolist.html" rel="noreferrer">`tolist()`</a>:  
 
-```python
+```
+numpy
 import numpy as np
 &gt;&gt;&gt; np.array([[1,2,3],[4,5,6]]).tolist()
 [[1, 2, 3], [4, 5, 6]]
@@ -2146,7 +2297,8 @@ The numpy .tolist method produces nested arrays if the numpy array shape is 2D.
 
 if flat lists are desired, the method below works.  
 
-```python
+```
+numpy
 import numpy as np
 from itertools import chain
 
@@ -2163,7 +2315,8 @@ print type(a), len(a), a`
 #### Answer 3 (score 2)
 `tolist()` works fine even if encountered a nested array, say a pandas `DataFrame`;  
 
-```python
+```
+numpy
 my_list = [0,1,2,3,4,5,4,3,2,1,0]
 my_dt = pd.DataFrame(my_list)
 new_list = [i[0] for i in my_dt.values.tolist()]
@@ -2180,7 +2333,8 @@ Let’s say I have a NumPy array, `a`:
 
 
 
-```python
+```
+numpy
 a = np.array([
     [1, 2, 3],
     [2, 3, 4]
@@ -2191,7 +2345,8 @@ And I would like to add a column of zeros to get an array, `b`:
 
 
 
-```python
+```
+numpy
 b = np.array([
     [1, 2, 3, 0],
     [2, 3, 4, 0]
@@ -2203,7 +2358,8 @@ How can I do this easily in NumPy?
 #### Answer accepted (score 158)
 I think a more straightforward solution and faster to boot is to do the following:  
 
-```python
+```
+numpy
 import numpy as np
 N = 10
 a = np.random.rand(N,N)
@@ -2213,7 +2369,8 @@ b[:,:-1] = a
 
 And timings:  
 
-```python
+```
+numpy
 In [23]: N = 10
 
 In [24]: a = np.random.rand(N,N)
@@ -2231,7 +2388,8 @@ are useful alternatives to `vstack` and `hstack`,
 with square brackets [] instead of round ().<br>
 A couple of examples:</p>
 
-```python
+```
+numpy
 : import numpy as np
 : N = 3
 : A = np.eye(N)
@@ -2273,7 +2431,8 @@ the wonders of overloading.)</p>
 #### Answer 3 (score 135)
 Use `numpy.append`:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; a = np.array([[1,2,3],[2,3,4]])
 &gt;&gt;&gt; a
 array([[1, 2, 3],
@@ -2298,13 +2457,15 @@ In numpy, I have two "arrays", `X` is `(m,n)` and `y` is a vector `(n,1)`
 
 using   
 
-```python
+```
+numpy
 X*y
 ```
 
 I am getting the error  
 
-```python
+```
+numpy
 ValueError: operands could not be broadcast together with shapes (97,2) (2,1) 
 ```
 
@@ -2326,7 +2487,8 @@ We have two arrays:
 
 With Numpy arrays, the operation  
 
-```python
+```
+numpy
 X * y
 ```
 
@@ -2334,7 +2496,8 @@ is done element-wise, but one or both of the values can be expanded in one or mo
 
 In the example above the dimensions are incompatible, because:  
 
-```python
+```
+numpy
 97   2
  2   1
 ```
@@ -2347,13 +2510,15 @@ For more information on broadcasting rules: <a href="http://docs.scipy.org/doc/n
 
 Your arrays should be fine with `numpy.dot`; if you get an error on `numpy.dot`, you must have some other bug. If the shapes are wrong for `numpy.dot`, you get a different exception:  
 
-```python
+```
+numpy
 ValueError: matrices are not aligned
 ```
 
 If you still get this error, please post a minimal example of the problem. An example multiplication with arrays shaped like yours succeeds:  
 
-```python
+```
+numpy
 In [1]: import numpy
 
 In [2]: numpy.dot(numpy.ones([97, 2]), numpy.ones([2, 1])).shape
@@ -2371,7 +2536,8 @@ In other words, if you are trying to multiply two matrices (in the linear algebr
 
 <strong>Example:</strong>  
 
-```python
+```
+numpy
 &gt;&gt;&gt; import numpy as np
 &gt;&gt;&gt;
 &gt;&gt;&gt; X = np.arange(8).reshape(4, 2)
@@ -2394,7 +2560,8 @@ The thing is that I don't want to implement it manually to preserve the speed of
 
 Example code is shown below:  
 
-```python
+```
+numpy
 a = np.array([[ 5, 1 ,3], [ 1, 1 ,1], [ 1, 2 ,1]])
 b = np.array([1, 2, 3])
 
@@ -2407,7 +2574,8 @@ print a*b
 
 What i want is:  
 
-```python
+```
+numpy
 print a*b
    &gt;&gt;
    [16 6 8]
@@ -2418,7 +2586,8 @@ print a*b
 
 Use `numpy.dot` or `a.dot(b)`. See the documentation <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.dot.html" rel="noreferrer">here</a>.  
 
-```python
+```
+numpy
 &gt;&gt;&gt; a = np.array([[ 5, 1 ,3], 
                   [ 1, 1 ,1], 
                   [ 1, 2 ,1]])
@@ -2438,25 +2607,32 @@ Also know there are other options:
 <ul>
 <li><p>As noted below, if using python3.5+ the `@` operator works as you'd expect:</p>
 
-```python
+```
+numpy
 &gt;&gt;&gt; print(a @ b)
 array([16, 6, 8])
-```</li>
+```
+</li>
 <li><p>If you want overkill, you can use <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.einsum.html#numpy.einsum" rel="noreferrer">`numpy.einsum`</a>.  The documentation will give you a flavor for how it works, but honestly, I didn't fully understand how to use it until reading <a href="https://stackoverflow.com/a/33641428/1634191">this answer</a> and just playing around with it on my own.</p>
 
-```python
+```
+numpy
 &gt;&gt;&gt; np.einsum('ji,i-&gt;j', a, b)
 array([16, 6, 8])
-```</li>
+```
+</li>
 <li><p>As of mid 2016 (numpy 1.10.1), you can try the experimental <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.matmul.html#numpy-matmul" rel="noreferrer">`numpy.matmul`</a>, which works like `numpy.dot` with two major exceptions: no scalar multiplication but it works with stacks of matrices. </p>
 
-```python
+```
+numpy
 &gt;&gt;&gt; np.matmul(a, b)
 array([16, 6, 8])
-```</li>
+```
+</li>
 <li><p><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.inner.html" rel="noreferrer">`numpy.inner`</a> functions the same way as `numpy.dot` <strong>for matrix-vector multiplication but behaves differently</strong> for matrix-matrix and tensor multiplication (see Wikipedia regarding the differences between <a href="https://en.wikipedia.org/wiki/Inner_product_space" rel="noreferrer">the inner product and dot product</a> in general or <a href="https://stackoverflow.com/questions/11033573/difference-between-numpy-dot-and-inner">see this SO answer</a> regarding numpy's implementations).</p>
 
-```python
+```
+numpy
 &gt;&gt;&gt; np.inner(a, b)
 array([16, 6, 8])
 
@@ -2470,7 +2646,8 @@ array([[35,  9, 10],
 array([[29, 12, 19],
        [ 7,  4,  5],
        [ 8,  5,  6]])
-```</li>
+```
+</li>
 </ul>
 
 <hr>
@@ -2480,10 +2657,12 @@ array([[29, 12, 19],
 <ul>
 <li><p>If you have tensors (arrays of dimension greater than or equal to one), you can use <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.tensordot.html#numpy.tensordot" rel="noreferrer">`numpy.tensordot`</a> with the optional argument `axes=1`:</p>
 
-```python
+```
+numpy
 &gt;&gt;&gt; np.tensordot(a, b, axes=1)
 array([16,  6,  8])
-```</li>
+```
+</li>
 <li><p><strong>Don't use <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.vdot.html#numpy.vdot" rel="noreferrer">`numpy.vdot`</a></strong> if you have a matrix of complex numbers, as the matrix will be flattened to a 1D array, then it will try to find the complex conjugate dot product between your flattened matrix and vector (which will fail due to a size mismatch `n*m` vs `n`).</p></li>
 </ul>
 
@@ -2496,7 +2675,8 @@ How does one add rows to a numpy array?
 
 I have an array A:  
 
-```python
+```
+numpy
 A = array([[0, 1, 2], [0, 2, 0]])
 ```
 
@@ -2506,7 +2686,8 @@ Numpy arrays do not have a method 'append' like that of lists, or so it seems.
 
 If A and X were lists I would merely do:  
 
-```python
+```
+numpy
 for i in X:
     if i[0] &lt; 3:
         A.append(i)
@@ -2522,14 +2703,16 @@ What is `X`? If it is a 2D-array, how can you then compare its row to a number: 
 
 EDIT after OP's comment:  
 
-```python
+```
+numpy
 A = array([[0, 1, 2], [0, 2, 0]])
 X = array([[0, 1, 2], [1, 2, 0], [2, 1, 2], [3, 2, 0]])
 ```
 
 add to `A` all rows from `X` where the first element `&lt; 3`:  
 
-```python
+```
+numpy
 A = vstack((A, X[X[:,0] &lt; 3]))
 
 # returns: 
@@ -2543,7 +2726,8 @@ array([[0, 1, 2],
 #### Answer 2 (score 149)
 well u can do this :  
 
-```python
+```
+numpy
   newrow = [1,2,3]
   A = numpy.vstack([A, newrow])
 ```
@@ -2553,20 +2737,23 @@ As this question is been 7 years before, in the latest version which I am using 
 
 In here I am adding on matrix A  
 
-```python
+```
+numpy
 1 2 3
 4 5 6
 ```
 
 with a row   
 
-```python
+```
+numpy
 7 8 9
 ```
 
 same usage in `np.r_`  
 
-```python
+```
+numpy
 A= [[1, 2, 3], [4, 5, 6]]
 np.append(A, [[7, 8, 9]], axis=0)
 
@@ -2583,7 +2770,8 @@ Just to someone's intersted, if you would like to add a column,
 
 following what we did before on matrix A, adding a column to it  
 
-```python
+```
+numpy
 np.c_[A, [2,8]]
 
 &gt;&gt; array([[1, 2, 3, 2],
@@ -2605,7 +2793,8 @@ From the dataframe below I need to calculate a new column based on the following
 
 =========================  CRITERIA  ===============================  
 
-```python
+```
+numpy
 IF [ERI_Hispanic] = 1 THEN RETURN “Hispanic”
 ELSE IF SUM([ERI_AmerInd_AKNatv] + [ERI_Asian] + [ERI_Black_Afr.Amer] + [ERI_HI_PacIsl] + [ERI_White]) &gt; 1 THEN RETURN “Two or More”
 ELSE IF [ERI_AmerInd_AKNatv] = 1 THEN RETURN “A/I AK Native”
@@ -2621,7 +2810,8 @@ Comment: If more than 1 non-Hispanic ERI Flag is true, return “Two or More”
 
 ======================  DATAFRAME ===========================  
 
-```python
+```
+numpy
      lname          fname       rno_cd  eri_afr_amer    eri_asian   eri_hawaiian    eri_hispanic    eri_nat_amer    eri_white   rno_defined
 0    MOST           JEFF        E       0               0           0               0               0               1           White
 1    CRUISE         TOM         E       0               0           0               1               0               0           White
@@ -2638,7 +2828,8 @@ Comment: If more than 1 non-Hispanic ERI Flag is true, return “Two or More”
 #### Answer accepted (score 301)
 OK, two steps to this - first is to write a function that does the translation you want - I've put an example together based on your pseudo-code:  
 
-```python
+```
+numpy
 def label_race (row):
    if row['eri_hispanic'] == 1 :
       return 'Hispanic'
@@ -2661,13 +2852,15 @@ You may want to go over this, but it seems to do the trick - notice that the par
 
 Next, use the apply function in pandas to apply the function - e.g.  
 
-```python
+```
+numpy
 df.apply (lambda row: label_race(row), axis=1)
 ```
 
 Note the axis=1 specifier, that means that the application is done at a row, rather than a column level. The results are here:  
 
-```python
+```
+numpy
 0           White
 1        Hispanic
 2           White
@@ -2682,13 +2875,15 @@ Note the axis=1 specifier, that means that the application is done at a row, rat
 
 If you're happy with those results, then run it again, saving the results into a new column in your original dataframe.  
 
-```python
+```
+numpy
 df['race_label'] = df.apply (lambda row: label_race(row), axis=1)
 ```
 
 The resultant dataframe looks like this (scroll to the right to see the new column):  
 
-```python
+```
+numpy
       lname   fname rno_cd  eri_afr_amer  eri_asian  eri_hawaiian   eri_hispanic  eri_nat_amer  eri_white rno_defined    race_label
 0      MOST    JEFF      E             0          0             0              0             0          1       White         White
 1    CRUISE     TOM      E             0          0             0              1             0          0       White      Hispanic
@@ -2705,7 +2900,8 @@ The resultant dataframe looks like this (scroll to the right to see the new colu
 #### Answer 2 (score 161)
 Since this is the first Google result for 'pandas new column from others', here's a simple example:  
 
-```python
+```
+numpy
 import pandas as pd
 
 # make a simple dataframe
@@ -2732,7 +2928,8 @@ df
 
 If you get the `SettingWithCopyWarning` you can do it this way also:  
 
-```python
+```
+numpy
 fn = lambda row: row.a + row.b # define a function for the new column
 col = df.apply(fn, axis=1) # get column data with an index
 df = df.assign(c=col.values) # assign values to column 'c'
@@ -2742,7 +2939,8 @@ Source: <a href="https://stackoverflow.com/a/12555510/243392">https://stackoverf
 
 And if your column name includes spaces you can use syntax like this:  
 
-```python
+```
+numpy
 df = df.assign(**{'some column name': col.values})
 ```
 
@@ -2757,7 +2955,8 @@ The answers above are perfectly valid, but a vectorized solution exists, in the 
 
 First, define conditions:  
 
-```python
+```
+numpy
 conditions = [
     df['eri_hispanic'] == 1,
     df[['eri_afr_amer', 'eri_asian', 'eri_hawaiian', 'eri_nat_amer', 'eri_white']].sum(1).gt(1),
@@ -2771,7 +2970,8 @@ conditions = [
 
 Now, define the corresponding outputs:  
 
-```python
+```
+numpy
 outputs = [
     'Hispanic', 'Two Or More', 'A/I AK Native', 'Asian', 'Black/AA', 'Haw/Pac Isl.', 'White'
 ]
@@ -2779,14 +2979,16 @@ outputs = [
 
 Finally, using `numpy.select`:  
 
-```python
+```
+numpy
 res = np.select(conditions, outputs, 'Other')
 pd.Series(res)
 ```
 
   
 
-```python
+```
+numpy
 0           White
 1        Hispanic
 2           White
@@ -2804,7 +3006,8 @@ dtype: object
 
 Why should `numpy.select` be used over `apply`? Here are some performance checks:  
 
-```python
+```
+numpy
 df = pd.concat([df]*1000)
 
 In [42]: %timeit df.apply(lambda row: label_race(row), axis=1)
@@ -2840,7 +3043,8 @@ Using `numpy.select` gives us <em>vastly</em> improved performance, and the disc
 #### Question
 Believe it or not, after profiling my current code, the repetitive operation of numpy array reversion ate a giant chunk of the running time. What I have right now is the common view-based method:  
 
-```python
+```
+numpy
 reversed_arr = arr[::-1]
 ```
 
@@ -2851,7 +3055,8 @@ When you create `reversed_arr` you are creating a view into the original array. 
 
 Are you re-creating the view more often than you need to?  You should be able to do something like this:  
 
-```python
+```
+numpy
 arr = np.array(some_sequence)
 reversed_arr = arr[::-1]
 
@@ -2876,7 +3081,8 @@ As mentioned above, `a[::-1]` really only creates a view, so it's a constant-tim
 
 Code to generate the plot:  
 
-```python
+```
+numpy
 import numpy
 import perfplot
 
@@ -2901,7 +3107,8 @@ perfplot.show(
 
 Note that for 1d arrays, you need to trick it a bit:   
 
-```python
+```
+numpy
 arr1d = np.array(some_sequence)
 reversed_arr = np.fliplr([arr1d])[0]
 ```
@@ -2915,7 +3122,8 @@ How do I convert a `numpy.datetime64` object to a `datetime.datetime` (or `Times
 
 In the following code, I create a datetime, timestamp and datetime64 objects.  
 
-```python
+```
+numpy
 import datetime
 import numpy as np
 import pandas as pd
@@ -2936,7 +3144,8 @@ Out[9]: numpy.datetime64('2012-05-01T01:00:00.000000+0100')
 
 <em>Note: it's easy to get the datetime from the Timestamp:</em>  
 
-```python
+```
+numpy
 In [10]: ts.to_datetime()
 Out[10]: datetime.datetime(2012, 5, 1, 0, 0)
 ```
@@ -2947,7 +3156,8 @@ But how do we extract the `datetime` or `Timestamp` from a `numpy.datetime64` (`
 
 Update: a somewhat nasty example in my dataset (perhaps the motivating example) seems to be:  
 
-```python
+```
+numpy
 dt64 = numpy.datetime64('2002-06-28T01:00:00.000000000+0100')
 ```
 
@@ -2956,7 +3166,8 @@ which should be `datetime.datetime(2002, 6, 28, 1, 0)`, and not a long (!) (`102
 #### Answer accepted (score 112)
 To convert `numpy.datetime64` to datetime object that represents time in UTC on `numpy-1.8`:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; from datetime import datetime
 &gt;&gt;&gt; import numpy as np
 &gt;&gt;&gt; dt = datetime.utcnow()
@@ -2978,7 +3189,8 @@ The above example assumes that a naive datetime object is interpreted by `np.dat
 
 To convert datetime to np.datetime64 and back (`numpy-1.6`):  
 
-```python
+```
+numpy
 &gt;&gt;&gt; np.datetime64(datetime.utcnow()).astype(datetime)
 datetime.datetime(2012, 12, 4, 13, 34, 52, 827542)
 ```
@@ -2989,7 +3201,8 @@ Think of np.datetime64 the same way you would about np.int8, np.int16, etc and a
 
 Your "nasty example" works correctly:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; from datetime import datetime
 &gt;&gt;&gt; import numpy 
 &gt;&gt;&gt; numpy.datetime64('2002-06-28T01:00:00.000000000+0100').astype(datetime)
@@ -3000,13 +3213,15 @@ datetime.datetime(2002, 6, 28, 0, 0)
 
 I can reproduce the `long` value on `numpy-1.8.0` installed as:  
 
-```python
+```
+numpy
 pip install git+https://github.com/numpy/numpy.git#egg=numpy-dev
 ```
 
 The same example:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; from datetime import datetime
 &gt;&gt;&gt; import numpy
 &gt;&gt;&gt; numpy.datetime64('2002-06-28T01:00:00.000000000+0100').astype(datetime)
@@ -3019,7 +3234,8 @@ It returns `long` because for `numpy.datetime64` type `.astype(datetime)` is equ
 
 To get datetime object you could:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; dt64.dtype
 dtype('&lt;M8[ns]')
 &gt;&gt;&gt; ns = 1e-9 # number of seconds in a nanosecond
@@ -3029,7 +3245,8 @@ datetime.datetime(2002, 6, 28, 0, 0)
 
 To get datetime64 that uses seconds directly:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; dt64 = numpy.datetime64('2002-06-28T01:00:00.000000000+0100', 's')
 &gt;&gt;&gt; dt64.dtype
 dtype('&lt;M8[s]')
@@ -3049,20 +3266,23 @@ Welcome to hell.
 
 You can just pass a datetime64 object to `pandas.Timestamp`:  
 
-```python
+```
+numpy
 In [16]: Timestamp(numpy.datetime64('2012-05-01T01:00:00.000000'))
 Out[16]: &lt;Timestamp: 2012-05-01 01:00:00&gt;
 ```
 
 I noticed that this doesn't work right though in NumPy 1.6.1:  
 
-```python
+```
+numpy
 numpy.datetime64('2012-05-01T01:00:00.000000+0100')
 ```
 
 Also, `pandas.to_datetime` can be used (this is off of the dev version, haven't checked v0.9.1):  
 
-```python
+```
+numpy
 In [24]: pandas.to_datetime('2012-05-01T01:00:00.000000+0100')
 Out[24]: datetime.datetime(2012, 5, 1, 1, 0, tzinfo=tzoffset(None, 3600))
 ```
@@ -3104,13 +3324,15 @@ Copy the file to <strong>C:\Python27\Scripts</strong>
 
 Run cmd from the above location and type  
 
-```python
+```
+numpy
 pip install numpy-1.9.2+mkl-cp27-none-win32.whl
 ```
 
 You will hopefully get the below output:  
 
-```python
+```
+numpy
 Processing c:\python27\scripts\numpy-1.9.2+mkl-cp27-none-win32.whl
 Installing collected packages: numpy
 Successfully installed numpy-1.9.2
@@ -3123,7 +3345,8 @@ Adding @oneleggedmule 's suggestion:</p>
 
 You can also run the following command in the cmd:  
 
-```python
+```
+numpy
 pip2.7 install numpy-1.9.2+mkl-cp27-none-win_amd64.whl
 ```
 
@@ -3139,7 +3362,8 @@ I am looking for a function that takes as input two lists, and returns the <a hr
 #### Answer 2 (score 194)
 You can have a look at <a href="http://docs.scipy.org/doc/scipy/reference/stats.html" rel="noreferrer">`scipy.stats`</a>:  
 
-```python
+```
+numpy
 from pydoc import help
 from scipy.stats.stats import pearsonr
 help(pearsonr)
@@ -3182,7 +3406,8 @@ pearsonr(x, y)
 #### Answer 3 (score 105)
 The Pearson correlation can be calculated with numpy's <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.corrcoef.html" rel="noreferrer">`corrcoef`</a>.  
 
-```python
+```
+numpy
 import numpy
 numpy.corrcoef(list1, list2)[0, 1]
 ```
@@ -3194,7 +3419,8 @@ numpy.corrcoef(list1, list2)[0, 1]
 #### Question
 I have created an array thusly:  
 
-```python
+```
+numpy
 import numpy as np
 data = np.zeros( (512,512,3), dtype=np.uint8)
 data[256,256] = [255,0,0]
@@ -3205,7 +3431,8 @@ What I want this to do is display a single red dot in the center of a 512x512 im
 #### Answer accepted (score 180)
 You could use PIL to create (and display) an image:  
 
-```python
+```
+numpy
 from PIL import Image
 import numpy as np
 
@@ -3220,7 +3447,8 @@ img.show()
 #### Answer 2 (score 239)
 The following should work:  
 
-```python
+```
+numpy
 from matplotlib import pyplot as plt
 plt.imshow(data, interpolation='nearest')
 plt.show()
@@ -3228,14 +3456,16 @@ plt.show()
 
 If you are using Jupyter notebook/lab, use this inline command before importing matplotlib:  
 
-```python
+```
+numpy
 %matplotlib inline 
 ```
 
 #### Answer 3 (score 50)
 Shortest path is to use `scipy`, like this:  
 
-```python
+```
+numpy
 from scipy.misc import toimage
 toimage(data).show()
 ```
@@ -3244,7 +3474,8 @@ This requires PIL or Pillow to be installed as well.
 
 A similar approach also requiring PIL or Pillow but which <em>may invoke a different viewer</em> is:  
 
-```python
+```
+numpy
 from scipy.misc import imshow
 imshow(data)
 ```
@@ -3256,7 +3487,8 @@ imshow(data)
 #### Question
 I use Python and NumPy and have some problems with "transpose":  
 
-```python
+```
+numpy
 import numpy as np
 a = np.array([5,4])
 print(a)
@@ -3270,7 +3502,8 @@ It's working exactly as it's supposed to. The transpose of a <em>1D</em> array i
 
 If you want to turn your 1D vector into a 2D array and then transpose it, just slice it with `np.newaxis` (or `None`, they're the same, `newaxis` is just more readable).  
 
-```python
+```
+numpy
 import numpy as np
 a = np.array([5,4])[np.newaxis]
 print(a)
@@ -3282,7 +3515,8 @@ Generally speaking though, you don't ever need to worry about this. Adding the e
 #### Answer 2 (score 121)
 Use two bracket pairs instead of one. This creates a 2D array, which can be transposed, unlike the 1D array you create if you use one bracket pair.  
 
-```python
+```
+numpy
 import numpy as np    
 a = np.array([[5, 4]])
 a.T
@@ -3290,7 +3524,8 @@ a.T
 
 More thorough example:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; a = [3,6,9]
 &gt;&gt;&gt; b = np.array(a)
 &gt;&gt;&gt; b.T
@@ -3304,7 +3539,8 @@ array([[3],              #Here it did transpose because a is 2 dimensional
 
 Use numpy's `shape` method to see what is going on here:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; b = np.array([10,20,30])
 &gt;&gt;&gt; b.shape
 (3,)
@@ -3316,7 +3552,8 @@ Use numpy's `shape` method to see what is going on here:
 #### Answer 3 (score 68)
 <strong>For 1D arrays</strong>:  
 
-```python
+```
+numpy
 a = np.array([1, 2, 3, 4])
 a = a.reshape((-1, 1)) # &lt;--- THIS IS IT
 
@@ -3336,7 +3573,8 @@ Once you understand that -1 here means "as many rows as needed", I find this to 
 #### Question
 Alright, I'm toying around with converting a PIL image object back and forth to a numpy array so I can do some faster pixel by pixel transformations than PIL's `PixelAccess` object would allow.  I've figured out how to place the pixel information in a useful 3D numpy array by way of:  
 
-```python
+```
+numpy
 pic = Image.open("foo.jpg")
 pix = numpy.array(pic.getdata()).reshape(pic.size[0], pic.size[1], 3)
 ```
@@ -3346,7 +3584,8 @@ But I can't seem to figure out how to load it back into the PIL object after I'v
 #### Answer accepted (score 240)
 You're not saying how exactly `putdata()` is not behaving. I'm assuming you're doing   
 
-```python
+```
+numpy
 &gt;&gt;&gt; pic.putdata(a)
 Traceback (most recent call last):
   File "...blablabla.../PIL/Image.py", line 1185, in putdata
@@ -3356,7 +3595,8 @@ SystemError: new style getargs format but argument is not a tuple
 
 This is because `putdata` expects a sequence of tuples and you're giving it a numpy array. This  
 
-```python
+```
+numpy
 &gt;&gt;&gt; data = list(tuple(pixel) for pixel in pix)
 &gt;&gt;&gt; pic.putdata(data)
 ```
@@ -3365,7 +3605,8 @@ will work but it is very slow.
 
 As of PIL 1.1.6, the <a href="http://effbot.org/zone/pil-changes-116.htm" rel="noreferrer">"proper" way to convert between images and numpy arrays</a> is simply  
 
-```python
+```
+numpy
 &gt;&gt;&gt; pix = numpy.array(pic)
 ```
 
@@ -3376,13 +3617,15 @@ Then, after you make your changes to the array, you should be able to do either 
 #### Answer 2 (score 161)
 Open `I` as an array:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; I = numpy.asarray(PIL.Image.open('test.jpg'))
 ```
 
 Do some stuff to `I`, then, convert it back to an image:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; im = PIL.Image.fromarray(numpy.uint8(I))
 ```
 
@@ -3393,7 +3636,8 @@ If you want to do it explicitly for some reason, there are pil2array() and array
 #### Answer 3 (score 51)
 I am using Pillow 4.1.1 (the successor of PIL) in Python 3.5. The conversion between Pillow and numpy is straightforward.    
 
-```python
+```
+numpy
 from PIL import Image
 import numpy as np
 im = Image.open('1.jpg')
@@ -3412,7 +3656,8 @@ We should take care of the HxWxC data format when processing the transformed num
 #### Question
 I have the following DataFrame from a SQL query:  
 
-```python
+```
+numpy
 (Pdb) pp total_rows
      ColumnID  RespondentCount
 0          -1                2
@@ -3422,7 +3667,8 @@ I have the following DataFrame from a SQL query:
 
 and I want to pivot it like this:  
 
-```python
+```
+numpy
 total_data = total_rows.pivot_table(cols=['ColumnID'])
 
 (Pdb) pp total_data
@@ -3439,20 +3685,23 @@ total_rows.pivot_table(cols=['ColumnID']).to_dict('records')[0]
 
 but I want to make sure the 303 columns are casted as strings instead of integers so that I get this:  
 
-```python
+```
+numpy
 {'3030096843': 1, '3030096845': 1, -1: 2}
 ```
 
 #### Answer accepted (score 254)
 One way to convert to string is to use <a href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.astype.html" rel="noreferrer">astype</a>:  
 
-```python
+```
+numpy
 total_rows['ColumnID'] = total_rows['ColumnID'].astype(str)
 ```
 
 However, perhaps you are looking for the <a href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.to_json.html" rel="noreferrer">`to_json`</a> function, which will convert keys to valid json (and therefore your keys to strings):  
 
-```python
+```
+numpy
 In [11]: df = pd.DataFrame([['A', 2], ['A', 4], ['B', 6]])
 
 In [12]: df.to_json()
@@ -3467,7 +3716,8 @@ Out[13]: '{"0":"A","1":"A","2":"B"}'
 #### Answer 2 (score 23)
 Here's the other one, <strong>particularly useful to</strong> <strong>convert the multiple columns to string</strong> instead of just single column:  
 
-```python
+```
+numpy
 In [76]: import numpy as np
 In [77]: import pandas as pd
 In [78]: df = pd.DataFrame({
@@ -3497,13 +3747,15 @@ dtype: object
 #### Answer 3 (score 20)
 If you need to convert ALL columns to strings, you can simply use:  
 
-```python
+```
+numpy
 df = df.astype(str)
 ```
 
 This is useful if you need everything except a few columns to be strings/objects, then go back and convert the other ones to whatever you need (integer in this case):  
 
-```python
+```
+numpy
  df[["D", "E"]] = df[["D", "E"]].astype(int) 
 ```
 
@@ -3514,7 +3766,8 @@ This is useful if you need everything except a few columns to be strings/objects
 #### Question
 I'm curious, whether there is any way to print formatted `numpy.arrays`, e.g., in a way similar to this:  
 
-```python
+```
+numpy
 x = 1.23456
 print '%.3f' % x
 ```
@@ -3524,7 +3777,8 @@ If I want to print the `numpy.array` of floats, it prints several decimals, ofte
 #### Answer accepted (score 483)
 You can use `set_printoptions` to set the precision of the output:  
 
-```python
+```
+numpy
 import numpy as np
 x=np.random.random(10)
 print(x)
@@ -3538,7 +3792,8 @@ print(x)
 
 And `suppress` suppresses the use of scientific notation for small numbers:  
 
-```python
+```
+numpy
 y=np.array([1.5e-10,1.5,1500])
 print(y)
 # [  1.500e-10   1.500e+00   1.500e+03]
@@ -3554,7 +3809,8 @@ See the <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.set_p
 <p><strong>To apply print options locally</strong>, using NumPy 1.15.0 or later, you could use the <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.printoptions.html" rel="noreferrer">numpy.printoptions</a> context manager. 
 For example, inside the `with-suite` `precision=3` and `suppress=True` are set:</p>
 
-```python
+```
+numpy
 x = np.random.random(10)
 with np.printoptions(precision=3, suppress=True):
     print(x)
@@ -3563,7 +3819,8 @@ with np.printoptions(precision=3, suppress=True):
 
 But outside the `with-suite` the print options are back to default settings:  
 
-```python
+```
+numpy
 print(x)    
 # [ 0.07334334  0.46132615  0.68935231  0.75379645  0.62424021  0.90115836
 #   0.04879837  0.58207504  0.55694118  0.34768638]
@@ -3572,7 +3829,8 @@ print(x)
 <p>If you are using an earlier version of NumPy, you can create the context manager
 yourself. For example,</p>
 
-```python
+```
+numpy
 import numpy as np
 import contextlib
 
@@ -3597,27 +3855,31 @@ with printoptions(precision=3, suppress=True):
 
 `np.set_printoptions` now has a `formatter` parameter which allows you to specify a format function for each type.  
 
-```python
+```
+numpy
 np.set_printoptions(formatter={'float': '{: 0.3f}'.format})
 print(x)
 ```
 
 which prints  
 
-```python
+```
+numpy
 [ 0.078  0.480  0.413  0.830  0.776  0.102  0.513  0.462  0.335  0.712]
 ```
 
 instead of   
 
-```python
+```
+numpy
 [ 0.078  0.48   0.413  0.83   0.776  0.102  0.513  0.462  0.335  0.712]
 ```
 
 #### Answer 2 (score 37)
 Unutbu gave a really complete answer (they got a +1 from me too), but here is a lo-tech alternative:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; x=np.random.randn(5)
 &gt;&gt;&gt; x
 array([ 0.25276524,  2.28334499, -1.88221637,  0.69949927,  1.0285625 ])
@@ -3627,14 +3889,16 @@ array([ 0.25276524,  2.28334499, -1.88221637,  0.69949927,  1.0285625 ])
 
 As a function (using the `format()` syntax for formatting):  
 
-```python
+```
+numpy
 def ndprint(a, format_string ='{0:.2f}'):
     print [format_string.format(v,i) for i,v in enumerate(a)]
 ```
 
 Usage:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; ndprint(x)
 ['0.25', '2.28', '-1.88', '0.70', '1.03']
 
@@ -3647,7 +3911,8 @@ Usage:
 
 The index of the array is accessible in the format string:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; ndprint(x, 'Element[{1:d}]={0:.2f}')
 ['Element[0]=0.25', 'Element[1]=2.28', 'Element[2]=-1.88', 'Element[3]=0.70', 'Element[4]=1.03']
 ```
@@ -3659,7 +3924,8 @@ You can get a subset of the `np.set_printoptions` functionality from the `np.arr
 
 For example:  
 
-```python
+```
+numpy
 In [27]: x = np.array([[1.1, 0.9, 1e-6]]*3)
 
 In [28]: print x
@@ -3689,7 +3955,8 @@ Tried using map directly to array but it did not work.</p>
 #### Answer accepted (score 351)
 Use the <a href="https://docs.scipy.org/doc/numpy-1.14.0/reference/generated/numpy.ndarray.astype.html" rel="noreferrer">`astype`</a> method.  
 
-```python
+```
+numpy
 &gt;&gt;&gt; x = np.array([[1.0, 2.3], [1.3, 2.9]])
 &gt;&gt;&gt; x
 array([[ 1. ,  2.3],
@@ -3702,7 +3969,8 @@ array([[1, 2],
 #### Answer 2 (score 58)
 Some numpy functions for how to control the rounding: <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.rint.html#numpy.rint" rel="noreferrer">rint</a>, <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.floor.html#numpy.floor" rel="noreferrer">floor</a>,<a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.trunc.html#numpy.trunc" rel="noreferrer">trunc</a>, <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ceil.html" rel="noreferrer">ceil</a>. depending how  u wish to round the floats, up, down, or to the nearest int.   
 
-```python
+```
+numpy
 &gt;&gt;&gt; x = np.array([[1.0,2.3],[1.3,2.9]])
 &gt;&gt;&gt; x
 array([[ 1. ,  2.3],
@@ -3727,7 +3995,8 @@ array([[ 1.,  2.],
 
 To make one of this in to int, or one of the  other types in numpy, <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.astype.html" rel="noreferrer">astype</a> (as answered by BrenBern):   
 
-```python
+```
+numpy
 a.astype(int)
 array([[1, 2],
        [1, 3]])
@@ -3740,7 +4009,8 @@ array([[1, 2],
 #### Answer 3 (score 12)
 you can use `np.int_`:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; x = np.array([[1.0, 2.3], [1.3, 2.9]])
 &gt;&gt;&gt; x
 array([[ 1. ,  2.3],
@@ -3757,7 +4027,8 @@ array([[1, 2],
 #### Question
 I have a dataframe along the lines of the below:  
 
-```python
+```
+numpy
     Type       Set
 1    A          Z
 2    B          Z           
@@ -3772,7 +4043,8 @@ What's the best way to do this?
 #### Answer accepted (score 568)
 <strong>If you only have two choices to select from:</strong>  
 
-```python
+```
+numpy
 df['color'] = np.where(df['Set']=='Z', 'green', 'red')
 ```
 
@@ -3780,7 +4052,8 @@ df['color'] = np.where(df['Set']=='Z', 'green', 'red')
 
 For example,  
 
-```python
+```
+numpy
 import pandas as pd
 import numpy as np
 
@@ -3791,7 +4064,8 @@ print(df)
 
 yields  
 
-```python
+```
+numpy
   Set Type  color
 0   Z    A  green
 1   Z    B  green
@@ -3812,7 +4086,8 @@ yields
 
 then use  
 
-```python
+```
+numpy
 df = pd.DataFrame({'Type':list('ABBC'), 'Set':list('ZZXY')})
 conditions = [
     (df['Set'] == 'Z') &amp; (df['Type'] == 'A'),
@@ -3825,7 +4100,8 @@ print(df)
 
 which yields  
 
-```python
+```
+numpy
   Set Type   color
 0   Z    A  yellow
 1   Z    B    blue
@@ -3838,13 +4114,15 @@ List comprehension is another way to create another column conditionally. If you
 
 Example list comprehension:  
 
-```python
+```
+numpy
 df['color'] = ['red' if x == 'Z' else 'green' for x in df['Set']]
 ```
 
 <strong>%timeit tests:</strong>  
 
-```python
+```
+numpy
 import pandas as pd
 import numpy as np
 
@@ -3861,7 +4139,8 @@ df = pd.DataFrame({'Type':list('ABBC'), 'Set':list('ZZXY')})
 #### Answer 3 (score 18)
 Here's yet another way to skin this cat, using a dictionary to map new values onto the keys in the list:  
 
-```python
+```
+numpy
 def map_values(row, values_dict):
     return values_dict[row]
 
@@ -3874,7 +4153,8 @@ df['NEW_VALUE'] = df['INDICATOR'].apply(map_values, args = (values_dict,))
 
 What's it look like:  
 
-```python
+```
+numpy
 df
 Out[2]: 
   INDICATOR  VALUE  NEW_VALUE
@@ -3888,7 +4168,8 @@ This approach can be very powerful when you have many `ifelse`-type statements t
 
 And of course you could always do this:  
 
-```python
+```
+numpy
 df['NEW_VALUE'] = df['INDICATOR'].map(values_dict)
 ```
 
@@ -3896,7 +4177,8 @@ But that approach is more than three times as slow as the `apply` approach from 
 
 And you could also do this, using `dict.get`:  
 
-```python
+```
+numpy
 df['NEW_VALUE'] = [values_dict.get(v, None) for v in df['INDICATOR']]
 ```
 
@@ -3910,13 +4192,15 @@ How can I check which version of NumPy I'm using?
 (FYI this question has been edited because both the question and answer are not platform specific.)  
 
 #### Answer accepted (score 345)
-```python
+```
+numpy
 import numpy
 numpy.version.version
 ```
 
 #### Answer 2 (score 210)
-```python
+```
+numpy
 &gt;&gt; import numpy
 &gt;&gt; print numpy.__version__
 ```
@@ -3924,13 +4208,15 @@ numpy.version.version
 #### Answer 3 (score 47)
 From the command line, you can simply issue:  
 
-```python
+```
+numpy
 python -c "import numpy; print(numpy.version.version)"
 ```
 
 Or:  
 
-```python
+```
+numpy
 python -c "import numpy; print(numpy.__version__)"
 ```
 
@@ -3941,7 +4227,8 @@ python -c "import numpy; print(numpy.__version__)"
 #### Question
 I have a 2D NumPy array and would like to replace all values in it greater than or equal to a threshold T with 255.0. To my knowledge, the most fundamental way would be:  
 
-```python
+```
+numpy
 shape = arr.shape
 result = np.zeros(shape)
 for x in range(0, shape[0]):
@@ -3960,13 +4247,15 @@ This will be part of a window/level adjustment subroutine for MRI scans of the h
 #### Answer accepted (score 281)
 I think both the fastest and most concise way to do this is to use NumPy's built-in Fancy indexing. If you have an `ndarray` named `arr`, you can replace all elements `&gt;255` with a value `x` as follows:  
 
-```python
+```
+numpy
 arr[arr &gt; 255] = x
 ```
 
 I ran this on my machine with a 500 x 500 random matrix, replacing all values >0.5 with 5, and it took an average of 7.59ms.  
 
-```python
+```
+numpy
 In [1]: import numpy as np
 In [2]: A = np.random.rand(500, 500)
 In [3]: timeit A[A &gt; 0.5] = 5
@@ -3978,19 +4267,22 @@ In [3]: timeit A[A &gt; 0.5] = 5
 
 Since you actually want a different array which is `arr` where `arr &lt; 255`, and `255` otherwise, this can be done simply:  
 
-```python
+```
+numpy
 result = np.minimum(arr, 255)
 ```
 
 More generally, for a lower and/or upper bound:  
 
-```python
+```
+numpy
 result = np.clip(arr, 0, 255)
 ```
 
 If you just want to access the values over 255, or something more complicated, @mtitan8's answer is more general, but `np.clip` and `np.minimum` (or `np.maximum`) are nicer and much faster for your case:  
 
-```python
+```
+numpy
 In [292]: timeit np.minimum(a, 255)
 100000 loops, best of 3: 19.6 µs per loop
 
@@ -4003,13 +4295,15 @@ In [293]: %%timeit
 
 If you want to do it in-place (i.e., modify `arr` instead of creating `result`) you can use the `out` parameter of `np.minimum`:  
 
-```python
+```
+numpy
 np.minimum(arr, 255, out=arr)
 ```
 
 or  
 
-```python
+```
+numpy
 np.clip(arr, 0, 255, arr)
 ```
 
@@ -4017,7 +4311,8 @@ np.clip(arr, 0, 255, arr)
 
 For in-place modification, the boolean indexing speeds up a lot (without having to make and then modify the copy separately), but is still not as fast as `minimum`:  
 
-```python
+```
+numpy
 In [328]: %%timeit
    .....: a = np.random.randint(0, 300, (100,100))
    .....: np.minimum(a, 255, a)
@@ -4033,14 +4328,16 @@ In [329]: %%timeit
 
 For comparison, if you wanted to restrict your values with a minimum as well as a maximum, without `clip` you would have to do this twice, with something like  
 
-```python
+```
+numpy
 np.minimum(a, 255, a)
 np.maximum(a, 0, a)
 ```
 
 or,   
 
-```python
+```
+numpy
 a[a&gt;255] = 255
 a[a&lt;0] = 0
 ```
@@ -4050,7 +4347,8 @@ I think you can achieve this the quickest by using the `where` function:
 
 For example looking for items greater than 0.2 in a numpy array and replacing those with 0:  
 
-```python
+```
+numpy
 import numpy as np
 
 nums = np.random.rand(4,3)
@@ -4065,7 +4363,8 @@ print np.where(nums &gt; 0.2, 0, nums)
 #### Question
 What is the most efficient way to map a function over a numpy array? The way I've been doing it in my current project is as follows:  
 
-```python
+```
+numpy
 import numpy as np 
 
 x = np.array([1, 2, 3, 4, 5])
@@ -4098,7 +4397,8 @@ If you actually need vectorization, it doesn't really matter much which variant 
 
 Code to reproduce the plots:  
 
-```python
+```
+numpy
 import numpy as np
 import perfplot
 import math
@@ -4148,7 +4448,8 @@ perfplot.show(
 #### Answer 3 (score 115)
 How about using <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.vectorize.html" rel="noreferrer">`numpy.vectorize`</a>.  
 
-```python
+```
+numpy
 import numpy as np
 x = np.array([1, 2, 3, 4, 5])
 squarer = lambda t: t ** 2
@@ -4171,7 +4472,8 @@ For instance, if I have an array, `[1, 3, 2, 4, 5]`, `function(array, n=3)` woul
 #### Answer accepted (score 285)
 The simplest I've been able to come up with is:  
 
-```python
+```
+numpy
 In [1]: import numpy as np
 
 In [2]: arr = np.array([1, 3, 2, 4, 5])
@@ -4187,7 +4489,8 @@ If this solution turns out to be too slow (especially for small `n`), it may be 
 #### Answer 2 (score 509)
 Newer NumPy versions (1.8 and up) have a function called <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.argpartition.html" rel="noreferrer">`argpartition`</a> for this. To get the indices of the four largest elements, do  
 
-```python
+```
+numpy
 &gt;&gt;&gt; a = np.array([9, 4, 4, 3, 3, 9, 0, 4, 6, 0])
 &gt;&gt;&gt; a
 array([9, 4, 4, 3, 3, 9, 0, 4, 6, 0])
@@ -4200,7 +4503,8 @@ array([4, 9, 6, 9])
 
 Unlike `argsort`, this function runs in linear time in the worst case, but the returned indices are not sorted, as can be seen from the result of evaluating `a[ind]`. If you need that too, sort them afterwards:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; ind[np.argsort(a[ind])]
 array([1, 8, 5, 0])
 ```
@@ -4210,7 +4514,8 @@ To get the top-<em>k</em> elements in sorted order in this way takes O(<em>n</em
 #### Answer 3 (score 43)
 Simpler yet:  
 
-```python
+```
+numpy
 idx = (-arr).argsort()[:n]
 ```
 
@@ -4223,7 +4528,8 @@ where <em>n</em> is the number of maximum values.
 #### Question
 I want to figure out how to remove nan values from my array. My array looks something like this:   
 
-```python
+```
+numpy
 x = [1400, 1500, 1600, nan, nan, nan ,1700] #Not in this exact configuration
 ```
 
@@ -4232,13 +4538,15 @@ How can I remove the `nan` values from `x`?
 #### Answer accepted (score 303)
 If you're using numpy for your arrays, you can also use  
 
-```python
+```
+numpy
 x = x[numpy.logical_not(numpy.isnan(x))]
 ```
 
 Equivalently   
 
-```python
+```
+numpy
 x = x[~numpy.isnan(x)]
 ```
 
@@ -4251,7 +4559,8 @@ The inner function, `numpy.isnan` returns a boolean/logical array which has the 
 Lastly we use this logical array to index into the original array `x`, to retrieve just the non-NaN values.  
 
 #### Answer 2 (score 43)
-```python
+```
+numpy
 filter(lambda v: v==v, x)
 ```
 
@@ -4261,7 +4570,8 @@ since v!=v only for NaN</p>
 #### Answer 3 (score 32)
 Try this:  
 
-```python
+```
+numpy
 import math
 print [value for value in x if not math.isnan(value)]
 ```
@@ -4275,7 +4585,8 @@ For more, read on <a href="http://docs.python.org/tutorial/datastructures.html#l
 #### Question
 I want to install numpy using `pip install numpy` command but i get follwing error:  
 
-```python
+```
+numpy
 RuntimeError: Broken toolchain: cannot link a simple C program
 ```
 
@@ -4299,19 +4610,22 @@ Two options:
 #### Answer 2 (score 29)
 Check installation of python 2.7 than install/reinstall pip which described <a href="http://www.toptechboy.com/tutorial/python-with-arduino-lesson-6-installing-pip-on-windows/">here</a> than open command line and write   
 
-```python
+```
+numpy
 pip install numpy
 ```
 
 or   
 
-```python
+```
+numpy
 pip install scipy
 ```
 
 if already installed try this  
 
-```python
+```
+numpy
 pip install -U numpy
 ```
 
@@ -4334,7 +4648,8 @@ What is the simplest way to compare two numpy arrays for equality (where equalit
 
 Simply using `==` gives me a boolean array:  
 
-```python
+```
+numpy
  &gt;&gt;&gt; numpy.array([1,1,1]) == numpy.array([1,1,1])
 
 array([ True,  True,  True], dtype=bool)
@@ -4343,7 +4658,8 @@ array([ True,  True,  True], dtype=bool)
 Do I have to `and` the elements of this array to determine if the arrays are equal, or is there a simpler way to compare?  
 
 #### Answer accepted (score 294)
-```python
+```
+numpy
 (A==B).all()
 ```
 
@@ -4360,7 +4676,8 @@ It should be noted that:
 
 In conclusion, the solution I proposed is the standard one, I think, but if you have a doubt about `A` and `B` shape or simply want to be safe: use one of the specialized functions:  
 
-```python
+```
+numpy
 np.array_equal(A,B)  # test if same shape, same elements values
 np.array_equiv(A,B)  # test if broadcastable shape, same elements values
 np.allclose(A,B,...) # test if same shape, elements have close enough values
@@ -4374,7 +4691,8 @@ The `(A==B).all()` solution is very neat, but there are some built-in functions 
 #### Answer 3 (score 14)
 Let's measure the performance by using the following piece of code.  
 
-```python
+```
+numpy
 import numpy as np
 import time
 
@@ -4412,7 +4730,8 @@ print 'Method: np.array_equiv(A,B),', np.mean(exec_time2)
 
 <strong>Output</strong>  
 
-```python
+```
+numpy
 Method: (A==B).all(),        0.03031857
 Method: np.array_equal(A,B), 0.030025185
 Method: np.array_equiv(A,B), 0.030141515
@@ -4430,7 +4749,8 @@ Is there a scipy function or numpy function or module for python that calculates
 #### Answer accepted (score 19)
 For a short, fast solution that does the whole thing in one loop, without dependencies, the code below works great.  
 
-```python
+```
+numpy
 mylist = [1, 2, 3, 4, 5, 6, 7]
 N = 3
 cumsum, moving_aves = [0], []
@@ -4450,7 +4770,8 @@ for i, x in enumerate(mylist, 1):
 
 You can use <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.convolve.html" rel="noreferrer">`np.convolve`</a> for that:    
 
-```python
+```
+numpy
 np.convolve(x, np.ones((N,))/N, mode='valid')
 ```
 
@@ -4462,7 +4783,8 @@ The running mean is a case of the mathematical operation of <a href="https://en.
 
 The `mode` argument of `np.convolve` specifies how to handle the edges. I chose the `valid` mode here because I think that's how most people expect the running mean to work, but you may have other priorities. Here is a plot that illustrates the difference between the modes:  
 
-```python
+```
+numpy
 import numpy as np
 import matplotlib.pyplot as plt
 modes = ['full', 'same', 'valid']
@@ -4480,7 +4802,8 @@ plt.show()
 
 Convolution is much better than straightforward approach, but (I guess) it uses FFT and thus quite slow. However specially for computing the running mean the following approach works fine  
 
-```python
+```
+numpy
 def running_mean(x, N):
     cumsum = numpy.cumsum(numpy.insert(x, 0, 0)) 
     return (cumsum[N:] - cumsum[:-N]) / float(N)
@@ -4488,7 +4811,8 @@ def running_mean(x, N):
 
 The code to check  
 
-```python
+```
+numpy
 In[3]: x = numpy.random.random(100000)
 In[4]: N = 1000
 In[5]: %timeit result1 = numpy.convolve(x, numpy.ones((N,))/N, mode='valid')
@@ -4533,7 +4857,8 @@ Automatic derivatives are very cool, aren't prone to numeric errors, but do requ
 
 Here is an example using SymPy  
 
-```python
+```
+numpy
 In [1]: from sympy import *
 In [2]: import numpy as np
 In [3]: x = Symbol('x')
@@ -4550,7 +4875,8 @@ Out[8]: [ 2.  2.  2.  2.  2.]
 #### Answer 2 (score 33)
 The most straight-forward way I can think of is using <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.gradient.html">numpy's gradient function</a>:  
 
-```python
+```
+numpy
 x = numpy.linspace(0,10,1000)
 dx = x[1]-x[0]
 y = x**2 + 1
@@ -4562,7 +4888,8 @@ This way, dydx will be computed using central differences and will have the same
 #### Answer 3 (score 26)
 NumPy does not provide general functionality to compute derivatives.  It can handles the simple special case of polynomials however:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; p = numpy.poly1d([1, 0, 1])
 &gt;&gt;&gt; print p
    2
@@ -4576,7 +4903,8 @@ NumPy does not provide general functionality to compute derivatives.  It can han
 
 If you want to compute the derivative numerically, you can get away with using central difference quotients for the vast majority of applications.  For the derivative in a single point, the formula would be something like  
 
-```python
+```
+numpy
 x = 5.0
 eps = numpy.sqrt(numpy.finfo(float).eps) * (1.0 + x)
 print (p(x + eps) - p(x - eps)) / (2.0 * eps * x)
@@ -4584,7 +4912,8 @@ print (p(x + eps) - p(x - eps)) / (2.0 * eps * x)
 
 if you have an array `x` of abscissae with a corresponding array `y` of function values, you can comput approximations of derivatives with  
 
-```python
+```
+numpy
 numpy.diff(y) / numpy.diff(x)
 ```
 
@@ -4602,7 +4931,8 @@ How can I find the position of where the min or max is located, so I can find th
 
 Here is my attempt:   
 
-```python
+```
+numpy
 def coldest_location(data):
 
 coldest_temp= numpy.min(mean_temp)
@@ -4618,7 +4948,8 @@ coldest_temp= numpy.min(mean_temp)
 
 I saved each of the columns of my CSV into variables, so they are all individual lists.  
 
-```python
+```
+numpy
 lat          = [row[0] for row in weather_data]  # latitude
 long         = [row[1] for row in weather_data]  # longitude
 mean_temp    = [row[2] for row in weather_data]  # mean temperature 
@@ -4626,7 +4957,8 @@ mean_temp    = [row[2] for row in weather_data]  # mean temperature
 
 I have resolved the problem as per the suggestion list.index(x)  
 
-```python
+```
+numpy
 mean_temp.index(coldest_temp) 
 
 coldest_location=[long[5],lat[5]] 
@@ -4640,7 +4972,8 @@ Have you thought about using Python list's <a href="https://docs.python.org/2/tu
 #### Answer 2 (score 13)
 Without actually seeing your data it is difficult to say how to find location of max and min in your particular case, but in general, you can search for the locations as follows. This is just a simple example below:  
 
-```python
+```
+numpy
 In [9]: a=np.array([5,1,2,3,10,4])
 
 In [10]: np.where(a == a.min())
@@ -4652,7 +4985,8 @@ Out[11]: (array([4]),)
 
 Alternatively, you can also do as follows:  
 
-```python
+```
+numpy
 In [19]: a=np.array([5,1,2,3,10,4])
 
 In [20]: a.argmin()
@@ -4665,14 +4999,16 @@ Out[21]: 4
 #### Answer 3 (score 8)
 As Aaron states, you can use `.index(value)`, but because that will throw an exception if `value` is not present, you should handle that case, even if you're sure it will never happen. A couple options are by checking its presence first, such as:  
 
-```python
+```
+numpy
 if value in my_list:
     value_index = my_list.index(value)
 ```
 
 or by catching the exception as in:  
 
-```python
+```
+numpy
 try:
     value_index = my_list.index(value)
 except:
@@ -4690,7 +5026,8 @@ I need to create a NumPy array of length `n`, each element of which is `v`.
 
 Is there anything better than:  
 
-```python
+```
+numpy
 a = empty(n)
 for i in range(n):
     a[i] = v
@@ -4701,7 +5038,8 @@ I know `zeros` and `ones` would work for v = 0, 1. I could use `v * ones(n)`, bu
 #### Answer accepted (score 260)
 NumPy 1.8 introduced <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.full.html">`np.full()`</a>, which is a more direct method than `empty()` followed by `fill()` for creating an array filled with a certain value:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; np.full((3, 5), 7)
 array([[ 7.,  7.,  7.,  7.,  7.],
        [ 7.,  7.,  7.,  7.,  7.],
@@ -4722,7 +5060,8 @@ This is arguably <em>the</em> way of creating an array filled with certain value
 
 In descending speed order:  
 
-```python
+```
+numpy
 %timeit a=np.empty(1e4); a.fill(5)
 100000 loops, best of 3: 5.85 us per loop
 
@@ -4742,7 +5081,8 @@ In descending speed order:
 #### Answer 3 (score 63)
 I believe <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.fill.html">`fill`</a> is the fastest way to do this.  
 
-```python
+```
+numpy
 a = np.empty(10)
 a.fill(7)
 ```
@@ -4762,7 +5102,8 @@ I have two simple one-dimensional arrays in <a href="http://en.wikipedia.org/wik
 
 <h5>Code</h3>
 
-```python
+```
+numpy
 import numpy
 a = numpy.array([1, 2, 3])
 b = numpy.array([5, 6])
@@ -4774,7 +5115,8 @@ Why?
 #### Answer accepted (score 313)
 The line should be:  
 
-```python
+```
+numpy
 numpy.concatenate([a,b])
 ```
 
@@ -4793,14 +5135,16 @@ It was trying to interpret your `b` as the axis parameter, which is why it compl
 #### Answer 2 (score 31)
 The first parameter to `concatenate` should itself be a <em>sequence of arrays</em> to concatenate:   
 
-```python
+```
+numpy
 numpy.concatenate((a,b)) # Note the extra parentheses.
 ```
 
 #### Answer 3 (score 23)
 There are several possibilities for concatenating 1D arrays, e.g.,  
 
-```python
+```
+numpy
 numpy.r_[a, a],
 numpy.stack([a, a]).reshape(-1),
 numpy.hstack([a, a]),
@@ -4813,7 +5157,8 @@ All those options are equally fast for large arrays; for small ones, `concatenat
 
 The plot was created with <a href="https://github.com/nschloe/perfplot" rel="nofollow noreferrer">perfplot</a>:  
 
-```python
+```
+numpy
 import numpy
 import perfplot
 
@@ -4841,7 +5186,8 @@ perfplot.save(
 #### Question
 I'm trying to break down a program line by line. `Y` is a matrix of data but I can't find any concrete data on what `.shape[0]` does exactly.  
 
-```python
+```
+numpy
 for i in range(Y.shape[0]):
     if Y[i] == -1:
 ```
@@ -4851,7 +5197,8 @@ This program uses numpy, scipy, matplotlib.pyplot, and cvxopt.
 #### Answer 2 (score 95)
 The `shape` attribute for numpy arrays returns the dimensions of the array. If `Y` has `n` rows and `m` columns, then `Y.shape` is `(n,m)`. So `Y.shape[0]` is `n`.  
 
-```python
+```
+numpy
 In [46]: Y = np.arange(12).reshape(3,4)
 
 In [47]: Y
@@ -4870,7 +5217,8 @@ Out[49]: 3
 #### Answer 3 (score 32)
 shape is a tuple that gives dimensions of the array..   
 
-```python
+```
+numpy
 &gt;&gt;&gt; c = arange(20).reshape(5,4)
 &gt;&gt;&gt; c
 array([[ 0,  1,  2,  3],
@@ -4885,7 +5233,8 @@ c.shape[0]
 
 Gives the number of rows  
 
-```python
+```
+numpy
 c.shape[1] 
 4
 ```
@@ -4901,7 +5250,8 @@ How can I sort an array in NumPy by the nth column?
 
 For example,  
 
-```python
+```
+numpy
 a = array([[9, 2, 3],
            [4, 5, 6],
            [7, 0, 5]])
@@ -4909,7 +5259,8 @@ a = array([[9, 2, 3],
 
 I'd like to sort rows by the second column, such that I get back:  
 
-```python
+```
+numpy
 array([[7, 0, 5],
        [9, 2, 3],
        [4, 5, 6]])
@@ -4926,7 +5277,8 @@ The "correct" way is quite ugly if you didn't initially define your array with f
 
 As a quick example, to sort it and return a copy:  
 
-```python
+```
+numpy
 In [1]: import numpy as np
 
 In [2]: a = np.array([[1,2,3],[4,5,6],[0,0,1]])
@@ -4940,7 +5292,8 @@ array([[0, 0, 1],
 
 To sort it in-place:  
 
-```python
+```
+numpy
 In [6]: a.view('i8,i8,i8').sort(order=['f1'], axis=0) #&lt;-- returns None
 
 In [7]: a
@@ -4962,7 +5315,8 @@ This indicates the second column of `a` and sort it based on it accordingly.
 #### Answer 3 (score 27)
 You can sort on multiple columns as per Steve Tjoa's method by using a stable sort like mergesort and sorting the indices from the least significant to the most significant columns:  
 
-```python
+```
+numpy
 a = a[a[:,2].argsort()] # First sort doesn't need to be stable.
 a = a[a[:,1].argsort(kind='mergesort')]
 a = a[a[:,0].argsort(kind='mergesort')]
@@ -4977,7 +5331,8 @@ This sorts by column 0, then 1, then 2.
 #### Question
 In keeping with the "There's only one obvious way to do it", how do you get the magnitude of a vector (1D array) in Numpy?  
 
-```python
+```
+numpy
 def mag(x): 
     return math.sqrt(sum(i**2 for i in x))
 ```
@@ -4987,7 +5342,8 @@ The above works, but I <em>cannot believe</em> that I must specify such a trivia
 #### Answer accepted (score 177)
 The function you're after is <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.linalg.norm.html" rel="noreferrer">`numpy.linalg.norm`</a>. (I reckon it should be in base numpy as a property of an array -- say `x.norm()` -- but oh well).  
 
-```python
+```
+numpy
 import numpy as np
 x = np.array([1,2,3,4,5])
 np.linalg.norm(x)
@@ -4995,7 +5351,8 @@ np.linalg.norm(x)
 
 You can also feed in an optional `ord` for the nth order norm you want. Say you wanted the 1-norm:  
 
-```python
+```
+numpy
 np.linalg.norm(x,ord=1)
 ```
 
@@ -5004,13 +5361,15 @@ And so on.
 #### Answer 2 (score 84)
 If you are worried at all about speed, you should instead use:  
 
-```python
+```
+numpy
 mag = np.sqrt(x.dot(x))
 ```
 
 Here are some benchmarks:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; import timeit
 &gt;&gt;&gt; timeit.timeit('np.linalg.norm(x)', setup='import numpy as np; x = np.arange(100)', number=1000)
 0.0450878
@@ -5020,7 +5379,8 @@ Here are some benchmarks:
 
 EDIT: The real speed improvement comes when you have to take the norm of many vectors. Using pure numpy functions doesn't require any for loops. For example:  
 
-```python
+```
+numpy
 In [1]: import numpy as np
 
 In [2]: a = np.arange(1200.0).reshape((-1,3))
@@ -5038,7 +5398,8 @@ Out[5]: True
 #### Answer 3 (score 16)
 Yet another alternative is to use the `einsum` function in numpy for either arrays:  
 
-```python
+```
+numpy
 In [1]: import numpy as np
 
 In [2]: a = np.arange(1200.0).reshape((-1,3))
@@ -5055,7 +5416,8 @@ In [5]: %timeit np.sqrt(np.einsum('ij,ij-&gt;i',a,a))
 
 or vectors:  
 
-```python
+```
+numpy
 In [5]: a = np.arange(100000)
 
 In [6]: %timeit np.sqrt(a.dot(a))
@@ -5067,7 +5429,8 @@ In [7]: %timeit np.sqrt(np.einsum('i,i', a, a))
 
 There does, however, seem to be some overhead associated with calling it that may make it slower with small inputs:  
 
-```python
+```
+numpy
 In [2]: a = np.arange(100)
 
 In [3]: %timeit np.sqrt(a.dot(a))
@@ -5091,14 +5454,16 @@ If you look here, it might tell you what you need to know.
 
 Basically, you can create an array from a sequence.  
 
-```python
+```
+numpy
 from numpy import array
 a = array( [2,3,4] )
 ```
 
 Or from a sequence of sequences.  
 
-```python
+```
+numpy
 from numpy import array
 a = array( [[2,3,4], [3,4,5]] )
 ```
@@ -5106,7 +5471,8 @@ a = array( [[2,3,4], [3,4,5]] )
 #### Answer 2 (score 35)
 you mean something like this ?  
 
-```python
+```
+numpy
 from numpy  import array
 a = array( your_list )
 ```
@@ -5114,7 +5480,8 @@ a = array( your_list )
 #### Answer 3 (score 17)
 <a href="http://www.scipy.org/Tentative_NumPy_Tutorial#head-d3f8e5fe9b903f3c3b2a5c0dfceb60d71602cf93" rel="noreferrer">Yes it is:</a>  
 
-```python
+```
+numpy
 a = numpy.array([1,2,3])
 ```
 
@@ -5125,13 +5492,15 @@ a = numpy.array([1,2,3])
 #### Question
 How to convert  
 
-```python
+```
+numpy
 ["1.1", "2.2", "3.2"]
 ```
 
 to  
 
-```python
+```
+numpy
 [1.1, 2.2, 3.2]
 ```
 
@@ -5142,7 +5511,8 @@ Well, if you're reading the data in as a list, just do `np.array(map(float, list
 
 However, if it's already a numpy array of strings, there's a better way.  Use `astype()`.  
 
-```python
+```
+numpy
 import numpy as np
 x = np.array(['1.1', '2.2', '3.3'])
 y = x.astype(np.float)
@@ -5151,7 +5521,8 @@ y = x.astype(np.float)
 #### Answer 2 (score 4)
 You can use this as well   
 
-```python
+```
+numpy
 import numpy as np
 x=np.array(['1.1', '2.2', '3.3'])
 x=np.asfarray(x,float)
@@ -5160,7 +5531,8 @@ x=np.asfarray(x,float)
 #### Answer 3 (score 2)
 Another option might be <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.asarray.html" rel="nofollow noreferrer">numpy.asarray</a>:  
 
-```python
+```
+numpy
 import numpy as np
 a = ["1.1", "2.2", "3.2"]
 b = np.asarray(a, dtype=np.float64, order='C')
@@ -5168,14 +5540,16 @@ b = np.asarray(a, dtype=np.float64, order='C')
 
 For Python 2*:  
 
-```python
+```
+numpy
 print a, type(a), type(a[0])
 print b, type(b), type(b[0])
 ```
 
 resulting in:  
 
-```python
+```
+numpy
 ['1.1', '2.2', '3.2'] &lt;type 'list'&gt; &lt;type 'str'&gt;
 [1.1 2.2 3.2] &lt;type 'numpy.ndarray'&gt; &lt;type 'numpy.float64'&gt;
 ```
@@ -5193,7 +5567,8 @@ This array consist of four 11 x 14 arrays, so I should format it with a nice new
 
 <strong>Edit</strong>: So I've tried the numpy.savetxt function. Strangely, it gives the following error:  
 
-```python
+```
+numpy
 TypeError: float argument required, not numpy.ndarray
 ```
 
@@ -5210,7 +5585,8 @@ I just realized that `numpy.savetxt` chokes on ndarrays with more than 2 dimensi
 
 E.g. This (a 2D array) works fine  
 
-```python
+```
+numpy
 import numpy as np
 x = np.arange(20).reshape((4,5))
 np.savetxt('test.txt', x)
@@ -5218,7 +5594,8 @@ np.savetxt('test.txt', x)
 
 While the same thing would fail (with a rather uninformative error: `TypeError: float argument required, not numpy.ndarray`) for a 3D array:  
 
-```python
+```
+numpy
 import numpy as np
 x = np.arange(200).reshape((4,5,10))
 np.savetxt('test.txt', x)
@@ -5226,7 +5603,8 @@ np.savetxt('test.txt', x)
 
 One workaround is just to break the 3D (or greater) array into 2D slices. E.g.  
 
-```python
+```
+numpy
 x = np.arange(200).reshape((4,5,10))
 with file('test.txt', 'w') as outfile:
     for slice_2d in x:
@@ -5235,7 +5613,8 @@ with file('test.txt', 'w') as outfile:
 
 However, our goal is to be clearly human readable, while still being easily read back in with `numpy.loadtxt`. Therefore, we can be a bit more verbose, and differentiate the slices using commented out lines. By default, `numpy.loadtxt` will ignore any lines that start with `#` (or whichever character is specified by the `comments` kwarg).  (This looks more verbose than it actually is...)  
 
-```python
+```
+numpy
 import numpy as np
 
 # Generate some test data
@@ -5262,7 +5641,8 @@ with open('test.txt', 'w') as outfile:
 
 This yields:  
 
-```python
+```
+numpy
 # Array shape: (4, 5, 10)
 0.00    1.00    2.00    3.00    4.00    5.00    6.00    7.00    8.00    9.00   
 10.00   11.00   12.00   13.00   14.00   15.00   16.00   17.00   18.00   19.00  
@@ -5292,7 +5672,8 @@ This yields:
 
 Reading it back in is very easy, as long as we know the shape of the original array. We can just do `numpy.loadtxt('test.txt').reshape((4,5,10))`.  As an example (You can do this in one line, I'm just being verbose to clarify things):  
 
-```python
+```
+numpy
 # Read the array from disk
 new_data = np.loadtxt('test.txt')
 
@@ -5312,7 +5693,8 @@ I am not certain if this meets your requirements, given I think you are interest
 
 To save it:  
 
-```python
+```
+numpy
 import pickle
 
 my_data = {'a': [1, 2.0, 3, 4+6j],
@@ -5325,7 +5707,8 @@ output.close()
 
 To read it back:  
 
-```python
+```
+numpy
 import pprint, pickle
 
 pkl_file = open('data.pkl', 'rb')
@@ -5343,7 +5726,8 @@ Unlike Joe Kington's answer, the benefit of this is that you <strong>don't need 
 
 Here is an example:  
 
-```python
+```
+numpy
 import numpy as np
 import scipy.io
 
@@ -5370,7 +5754,8 @@ assert np.all(x == matdata['out'])
 
 If you forget the key that the array is named in the `.mat` file, you can always do:  
 
-```python
+```
+numpy
 print matdata.keys()
 ```
 
@@ -5389,7 +5774,8 @@ and also this tutorial page: <a href="http://docs.scipy.org/doc/scipy/reference/
 #### Question
 I have an RGB image. I want to convert it to numpy array. I did the following  
 
-```python
+```
+numpy
 im = cv.LoadImage("abc.tiff")
 a = numpy.asarray(im)
 ```
@@ -5399,7 +5785,8 @@ It creates an array with no shape. I assume it is a iplimage object.
 #### Answer accepted (score 109)
 You can use newer OpenCV python interface (if I'm not mistaken it is available since OpenCV 2.2). It natively uses numpy arrays:  
 
-```python
+```
+numpy
 import cv2
 im = cv2.imread("abc.tiff",mode='RGB')
 print type(im)
@@ -5407,7 +5794,8 @@ print type(im)
 
 result:  
 
-```python
+```
+numpy
 &lt;type 'numpy.ndarray'&gt;
 ```
 
@@ -5416,7 +5804,8 @@ PIL (Python Imaging Library) and Numpy work well together.
 
 I use the following functions.  
 
-```python
+```
+numpy
 from PIL import Image
 import numpy as np
 
@@ -5435,7 +5824,8 @@ The 'Image.fromarray' is a little ugly because I clip incoming data to [0,255], 
 
 An RGB image would be something like:  
 
-```python
+```
+numpy
  outimg = Image.fromarray( ycc_uint8, "RGB" )
  outimg.save( "ycc.tif" )
 ```
@@ -5443,7 +5833,8 @@ An RGB image would be something like:
 #### Answer 3 (score 37)
 You can also use <a href="https://matplotlib.org" rel="noreferrer">matplotlib</a> for this.  
 
-```python
+```
+numpy
 from matplotlib.image import imread
 
 img = imread('abc.tiff')
@@ -5463,14 +5854,16 @@ How to convert a tensor into a numpy array when using Tensorflow with Python bin
 #### Answer accepted (score 120)
 Any tensor returned by `Session.run` or `eval` is a NumPy array.  
 
-```python
+```
+numpy
 &gt;&gt;&gt; print(type(tf.Session().run(tf.constant([1,2,3]))))
 &lt;class 'numpy.ndarray'&gt;
 ```
 
 Or:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; sess = tf.InteractiveSession()
 &gt;&gt;&gt; print(type(tf.constant([1,2,3]).eval()))
 &lt;class 'numpy.ndarray'&gt;
@@ -5478,7 +5871,8 @@ Or:
 
 Or, equivalently:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; sess = tf.Session()
 &gt;&gt;&gt; with sess.as_default():
 &gt;&gt;&gt;    print(type(tf.constant([1,2,3]).eval()))
@@ -5487,7 +5881,8 @@ Or, equivalently:
 
 <strong>EDIT:</strong> Not <em>any</em> tensor returned by `Session.run` or `eval()` is a NumPy array. Sparse Tensors for example are returned as SparseTensorValue:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; print(type(tf.Session().run(tf.SparseTensor([[0, 0]],[1],[1,2]))))
 &lt;class 'tensorflow.python.framework.sparse_tensor.SparseTensorValue'&gt;
 ```
@@ -5500,7 +5895,8 @@ To convert back from tensor to numpy array you can simply run `.eval()` on the t
 
 <a href="https://www.tensorflow.org/guide/eager" rel="nofollow noreferrer">Eager Execution</a> is enabled by default, so just call <a href="https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/framework/ops.py#L752-L770" rel="nofollow noreferrer"><strong>`.numpy()`</strong></a> on the Tensor object.  
 
-```python
+```
+numpy
 import tensorflow as tf
 
 a = tf.constant([[1, 2], [3, 4]])                 
@@ -5531,14 +5927,16 @@ Bold emphasis mine. A copy may or may not be returned, and this is an implementa
 
 If Eager Execution is disabled, you can build a graph and then run it through `tf.compat.v1.Session`:  
 
-```python
+```
+numpy
 a = tf.constant([[1, 2], [3, 4]])                 
 b = tf.add(a, 1)
 out = tf.multiply(a, b)
 
 out.eval(session=<b>tf.compat.v1.Session()</b>)    
 # array([[ 2,  6],
-#        [12, 20]], dtype=int32)```
+#        [12, 20]], dtype=int32)
+```
 
 See also <a href="https://docs.google.com/spreadsheets/d/1FLFJLzg7WNP6JHODX5q8BDgptKafq_slHpnHVbJIteQ/edit#gid=0" rel="nofollow noreferrer">TF 2.0 Symbols Map</a> for a mapping of the old API to the new one.  
 
@@ -5554,7 +5952,8 @@ How can I do this?
 #### Answer 2 (score 147)
 The <a href="https://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.imshow" rel="noreferrer">`imshow()`</a> function with parameters `interpolation='nearest'` and `cmap='hot'` should do what you want.  
 
-```python
+```
+numpy
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -5568,7 +5967,8 @@ plt.show()
 #### Answer 3 (score 38)
 <a href="https://seaborn.pydata.org/generated/seaborn.heatmap.html" rel="noreferrer">Seaborn</a> takes care of a lot of the manual work and automatically plots a gradient at the side of the chart etc.  
 
-```python
+```
+numpy
 import numpy as np
 import seaborn as sns
 import matplotlib.pylab as plt
@@ -5582,7 +5982,8 @@ plt.show()
 
 Or, you can even plot upper / lower left / right triangles of square matrices, for example a correlation matrix which is square and is symmetric, so plotting all values would be redundant anyway.  
 
-```python
+```
+numpy
 corr = np.corrcoef(np.random.randn(10, 200))
 mask = np.zeros_like(corr)
 mask[np.triu_indices_from(mask)] = True
@@ -5600,13 +6001,15 @@ with sns.axes_style("white"):
 #### Question
 I am trying to install python and a series of packages onto a 64bit windows 7 desktop. I have installed Python 3.4, have Microsoft Visual Studio C++ installed, and have successfully installed numpy, pandas and a few others. I am getting the following error when trying to install scipy;  
 
-```python
+```
+numpy
 numpy.distutils.system_info.NotFoundError: no lapack/blas resources found
 ```
 
 I am using pip install offline, the install command I am using is;  
 
-```python
+```
+numpy
 pip install --no-index --find-links="S:\python\scipy 0.15.0" scipy
 ```
 
@@ -5642,7 +6045,8 @@ Source: <a href="http://www.lfd.uci.edu/~gohlke/pythonlibs/#scipy" rel="noreferr
 
 Command:   
 
-```python
+```
+numpy
  pip install [Local File Location]\[Your specific file such as scipy-0.16.0-cp27-none-win_amd64.whl]
 ```
 
@@ -5685,13 +6089,15 @@ Specify the keyword args `linestyle` and/or `marker` in your call to `plot`.
 
 For example, using a dashed line and blue circle markers:   
 
-```python
+```
+numpy
 plt.plot(range(10), linestyle='--', marker='o', color='b')
 ```
 
 A shortcut call for the same thing:  
 
-```python
+```
+numpy
 plt.plot(range(10), '--bo')
 ```
 
@@ -5699,7 +6105,8 @@ plt.plot(range(10), '--bo')
 
 Here is a list of the possible line and marker styles:   
 
-```python
+```
+numpy
 ================    ===============================
 character           description
 ================    ===============================
@@ -5736,7 +6143,8 @@ character           description
 
 <em>edit:</em>  with an example of marking an arbitrary subset of points, as requested in the comments:  
 
-```python
+```
+numpy
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -5754,7 +6162,8 @@ This last example using the `markevery` kwarg is possible in since 1.4+, due to 
 #### Answer 2 (score 45)
 There is a picture show all markers' name and description, i hope it will help you.  
 
-```python
+```
+numpy
 import matplotlib.pylab as plt
 markers=['.',',','o','v','^','&lt;','&gt;','1','2','3','4','8','s','p','P','*','h','H','+','x','X','D','d','|','_']
 descriptions=['point', 'pixel', 'circle', 'triangle_down', 'triangle_up','triangle_left', 'triangle_right', 'tri_down', 'tri_up', 'tri_left','tri_right', 'octagon', 'square', 'pentagon', 'plus (filled)','star', 'hexagon1', 'hexagon2', 'plus', 'x', 'x (filled)','diamond', 'thin_diamond', 'vline', 'hline']
@@ -5786,7 +6195,8 @@ For future reference - the `Line2D` artist returned by `plot()` also has a `set_
 #### Question
 Say I have an array `a`:  
 
-```python
+```
+numpy
 a = np.array([[1,2,3], [4,5,6]])
 
 array([[1, 2, 3],
@@ -5795,25 +6205,29 @@ array([[1, 2, 3],
 
 I would like to convert it to a 1D array (i.e. a column vector):  
 
-```python
+```
+numpy
 b = np.reshape(a, (1,np.product(a.shape)))
 ```
 
 but this returns  
 
-```python
+```
+numpy
 array([[1, 2, 3, 4, 5, 6]])
 ```
 
 which is not the same as:  
 
-```python
+```
+numpy
 array([1, 2, 3, 4, 5, 6])
 ```
 
 I can take the first element of this array to manually convert it to a 1D array:  
 
-```python
+```
+numpy
 b = np.reshape(a, (1,np.product(a.shape)))[0]
 ```
 
@@ -5824,7 +6238,8 @@ Is there a dimensions-independent way of getting a column/row vector from an arb
 #### Answer accepted (score 235)
 Use <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ravel.html#numpy-ravel" rel="noreferrer">np.ravel</a> (for a 1D view) or <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.flatten.html" rel="noreferrer">np.flatten</a> (for a 1D copy) or <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.flat.html#numpy-ndarray-flat" rel="noreferrer">np.flat</a> (for an 1D iterator):  
 
-```python
+```
+numpy
 In [12]: a = np.array([[1,2,3], [4,5,6]])
 
 In [13]: b = a.ravel()
@@ -5837,13 +6252,15 @@ Note that `ravel()` returns a `view` of `a` when possible. So modifying `b` also
 
 If you want a copy rather than a view, use  
 
-```python
+```
+numpy
 In [15]: c = a.flatten()
 ```
 
 If you just want an iterator, use `np.flat`:  
 
-```python
+```
+numpy
 In [20]: d = a.flat
 
 In [21]: d
@@ -5854,7 +6271,8 @@ Out[22]: [1, 2, 3, 4, 5, 6]
 ```
 
 #### Answer 2 (score 22)
-```python
+```
+numpy
 In [14]: b = np.reshape(a, (np.product(a.shape),))
 
 In [15]: b
@@ -5863,7 +6281,8 @@ Out[15]: array([1, 2, 3, 4, 5, 6])
 
 or, simply:  
 
-```python
+```
+numpy
 In [16]: a.flatten()
 Out[16]: array([1, 2, 3, 4, 5, 6])
 ```
@@ -5871,7 +6290,8 @@ Out[16]: array([1, 2, 3, 4, 5, 6])
 #### Answer 3 (score 4)
 <h5>For list of array with different size use following:</h3>
 
-```python
+```
+numpy
 import numpy as np
 
 # ND array list with different size
@@ -5903,7 +6323,8 @@ You might be interested in the <a href="http://docs.scipy.org/doc/scipy/referenc
 
 `percentile()` <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.percentile.html" rel="noreferrer">is available</a> in `numpy` too.  
 
-```python
+```
+numpy
 import numpy as np
 a = np.array([1,2,3,4,5])
 p = np.percentile(a, 50) # return 50th percentile, e.g median.
@@ -5916,7 +6337,8 @@ print p
 #### Answer 2 (score 67)
 By the way, there is <a href="http://code.activestate.com/recipes/511478-finding-the-percentile-of-the-values/" rel="noreferrer">a pure-Python implementation of percentile function</a>, in case one doesn't want to depend on scipy.  The function is copied below:  
 
-```python
+```
+numpy
 ## {{{ http://code.activestate.com/recipes/511478/ (r1)
 import math
 import functools
@@ -5948,7 +6370,8 @@ median = functools.partial(percentile, percent=0.5)
 ```
 
 #### Answer 3 (score 25)
-```python
+```
+numpy
 import numpy as np
 a = [154, 400, 1124, 82, 94, 108]
 print np.percentile(a,95) # gives the 95th percentile
@@ -5970,7 +6393,8 @@ For arrays (prior to Python 3.5), use <a href="http://docs.scipy.org/doc/numpy/r
 
 E.g.  
 
-```python
+```
+numpy
 import numpy as np
 x = np.arange(9).reshape((3,3))
 y = np.arange(3)
@@ -5995,7 +6419,8 @@ the key things to know for operations on <strong>NumPy</strong> <em>arrays</em> 
 
 some code snippets to illustrate:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; from numpy import linalg as LA
 &gt;&gt;&gt; import numpy as NP
 
@@ -6032,7 +6457,8 @@ matrix([[127,  84,  85,  89],
 
 but this operations fails if these two NumPy matrices are converted to arrays:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; a1 = NP.array(a1)
 &gt;&gt;&gt; a2t = NP.array(a2t)
 
@@ -6045,7 +6471,8 @@ Traceback (most recent call last):
 
 though using the <strong><em>NP.dot</em></strong> syntax works with <em>arrays</em>; this operations works like matrix multiplication:  
 
-```python
+```
+numpy
 &gt;&gt; NP.dot(a1, a2t)
 array([[127,  84,  85,  89],
        [218, 139, 142, 173],
@@ -6063,7 +6490,8 @@ below are snippets in which i have called a pure linear algebra operation (in fa
 
 <strong><em>determinant</em></strong> of an array:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; m = NP.random.randint(0, 10, 16).reshape(4, 4)
 &gt;&gt;&gt; m
 array([[6, 2, 5, 2],
@@ -6081,7 +6509,8 @@ array([[6, 2, 5, 2],
 
 <strong><em>eigenvectors/eigenvalue</em></strong> pairs:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; LA.eig(m)
 (array([ 19.703+0.j   ,   0.097+4.198j,   0.097-4.198j,   5.103+0.j   ]), 
 array([[-0.374+0.j   , -0.091+0.278j, -0.091-0.278j, -0.574+0.j   ],
@@ -6092,14 +6521,16 @@ array([[-0.374+0.j   , -0.091+0.278j, -0.091-0.278j, -0.574+0.j   ],
 
 matrix <strong><em>norm</em></strong>:  
 
-```python
+```
+numpy
 &gt;&gt;&gt;&gt; LA.norm(m)
 22.0227
 ```
 
 <strong><em>qr factorization</em></strong>:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; LA.qr(a1)
 (array([[ 0.5,  0.5,  0.5],
         [ 0.5,  0.5, -0.5],
@@ -6112,7 +6543,8 @@ matrix <strong><em>norm</em></strong>:
 
 matrix <strong><em>rank</em></strong>:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; m = NP.random.rand(40).reshape(8, 5)
 &gt;&gt;&gt; m
 array([[ 0.545,  0.459,  0.601,  0.34 ,  0.778],
@@ -6129,7 +6561,8 @@ array([[ 0.545,  0.459,  0.601,  0.34 ,  0.778],
 
 matrix <strong><em>condition</em></strong>:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; a1 = NP.random.randint(1, 10, 12).reshape(4, 3)
 &gt;&gt;&gt; LA.cond(a1)
 5.7093446189400954
@@ -6137,7 +6570,8 @@ matrix <strong><em>condition</em></strong>:
 
 <strong><em>inversion</em></strong> requires a NumPy <em>matrix</em> though:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; a1 = NP.matrix(a1)
 &gt;&gt;&gt; type(a1)
 &lt;class 'numpy.matrixlib.defmatrix.matrix'&gt;
@@ -6157,7 +6591,8 @@ Traceback (most recent call last):
 
 but the <strong><em>Moore-Penrose pseudoinverse</em></strong> seems to works just fine  
 
-```python
+```
+numpy
 &gt;&gt;&gt; LA.pinv(m)
 matrix([[ 0.314,  0.407, -1.008, -0.553,  0.131,  0.373,  0.217,  0.785],
         [ 1.393,  0.084, -0.605,  1.777, -0.054, -1.658,  0.069, -1.203],
@@ -6182,7 +6617,8 @@ array([[ 0.314,  0.407, -1.008, -0.553,  0.131,  0.373,  0.217,  0.785],
 #### Question
 I have tried importing NumPy in Python, but it did not succeed:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; import numpy as np
     x=np.array([[7,8,5],[3,5,7]],np.int32)
 
@@ -6204,19 +6640,22 @@ The message is fairly self-explanatory; your working directory should not be the
 #### Answer 2 (score 1)
 On <a href="http://en.wikipedia.org/wiki/Debian" rel="nofollow noreferrer">Debian</a>/Ubuntu:  
 
-```python
+```
+numpy
 aptitude install python-numpy
 ```
 
 On Windows, download the installer:  
 
-```python
+```
+numpy
 http://sourceforge.net/projects/numpy/files/NumPy/
 ```
 
 On other systems, download the tar.gz and run the following:  
 
-```python
+```
+numpy
 $ tar xfz numpy-n.m.tar.gz
 $ cd numpy-n.m
 $ python setup.py install
@@ -6229,7 +6668,8 @@ $ python setup.py install
 #### Question
 I'm trying to run this program   
 
-```python
+```
+numpy
 import cv2
 import time
 
@@ -6257,7 +6697,8 @@ The problem I keep getting is this error report:</p>
   
     
 
-```python
+```
+numpy
 import cv2
 ```
   
@@ -6270,7 +6711,8 @@ I have numpy-1.6.1-py2.7 in the psychopy folder, I'm just confused as to what is
 
 The following command   
 
-```python
+```
+numpy
 pip install -U numpy 
 ```
 
@@ -6279,14 +6721,16 @@ helps solving the problem: `could not load numpy.core.multiarray.`
 #### Answer 2 (score 117)
 I was getting the same error and was able to solve it by updating my numpy installation to 1.8.0:  
 
-```python
+```
+numpy
 pip install -U numpy
 ```
 
 #### Answer 3 (score 20)
 In the case that  
 
-```python
+```
+numpy
 pip install -U numpy 
 ```
 
@@ -6294,7 +6738,8 @@ doesn't work (even with sudo), you may want to make sure you're using the right 
 
 I found the bad numpy version by using the following command in my Mac terminal:  
 
-```python
+```
+numpy
 python -c "import numpy;print numpy.__version__;print numpy.__file__";
 ```
 
@@ -6311,12 +6756,14 @@ Is there a numpy-thonic way, e.g. function, to find the <em>nearest value</em> i
 
 Example:  
 
-```python
+```
+numpy
 np.find_nearest( array, value )
 ```
 
 #### Answer accepted (score 462)
-```python
+```
+numpy
 import numpy as np
 def find_nearest(array, value):
     array = np.asarray(array)
@@ -6337,7 +6784,8 @@ print(find_nearest(array, value))
 #### Answer 2 (score 71)
 <em>IF</em> your array is sorted and is very large, this is a much faster solution:  
 
-```python
+```
+numpy
 def find_nearest(array,value):
     idx = np.searchsorted(array, value, side="left")
     if idx &gt; 0 and (idx == len(array) or math.fabs(value - array[idx-1]) &lt; math.fabs(value - array[idx])):
@@ -6351,7 +6799,8 @@ This scales to very large arrays. You can easily modify the above to sort in the
 #### Answer 3 (score 48)
 With slight modification, the answer above works with arrays of arbitrary dimension (1d, 2d, 3d, ...):  
 
-```python
+```
+numpy
 def find_nearest(a, a0):
     "Element in nd array `a` closest to the scalar value `a0`"
     idx = np.abs(a - a0).argmin()
@@ -6360,7 +6809,8 @@ def find_nearest(a, a0):
 
 Or, written as a single line:  
 
-```python
+```
+numpy
 a.flat[np.abs(a - a0).argmin()]
 ```
 
@@ -6373,7 +6823,8 @@ In <strong>`numpy`</strong> / <strong>`scipy`</strong>, is there an <strong>effi
 
 Something along these lines:  
 
-```python
+```
+numpy
 x = array( [1,1,1,2,2,2,5,25,1,1] )
 y = freq_count( x )
 print y
@@ -6388,7 +6839,8 @@ Take a look at `np.bincount`:
 
 <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.bincount.html" rel="noreferrer">http://docs.scipy.org/doc/numpy/reference/generated/numpy.bincount.html</a>  
 
-```python
+```
+numpy
 import numpy as np
 x = np.array([1,1,1,2,2,2,5,25,1,1])
 y = np.bincount(x)
@@ -6397,14 +6849,16 @@ ii = np.nonzero(y)[0]
 
 And then:  
 
-```python
+```
+numpy
 zip(ii,y[ii]) 
 # [(1, 5), (2, 3), (5, 1), (25, 1)]
 ```
 
 or:  
 
-```python
+```
+numpy
 np.vstack((ii,y[ii])).T
 # array([[ 1,  5],
          [ 2,  3],
@@ -6417,7 +6871,8 @@ or however you want to combine the counts and the unique values.
 #### Answer 2 (score 432)
 As of Numpy 1.9, the easiest and fastest method is to simply use <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.unique.html">`numpy.unique`</a>, which now has a `return_counts` keyword argument:  
 
-```python
+```
+numpy
 import numpy as np
 
 x = np.array([1,1,1,2,2,2,5,25,1,1])
@@ -6428,7 +6883,8 @@ print np.asarray((unique, counts)).T
 
 Which gives:  
 
-```python
+```
+numpy
  [[ 1  5]
   [ 2  3]
   [ 5  1]
@@ -6437,7 +6893,8 @@ Which gives:
 
 A quick comparison with `scipy.stats.itemfreq`:  
 
-```python
+```
+numpy
 In [4]: x = np.random.random_integers(0,100,1e6)
 
 In [5]: %timeit unique, counts = np.unique(x, return_counts=True)
@@ -6450,7 +6907,8 @@ In [6]: %timeit scipy.stats.itemfreq(x)
 #### Answer 3 (score 124)
 Update: The method mentioned in the original answer is deprecated, we should use the new way instead:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; import numpy as np
 &gt;&gt;&gt; x = [1,1,1,2,2,2,5,25,1,1]
 &gt;&gt;&gt; np.array(np.unique(x, return_counts=True)).T
@@ -6466,7 +6924,8 @@ Original answer:
 
 you can use <a href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.itemfreq.html" rel="noreferrer">scipy.stats.itemfreq</a>  
 
-```python
+```
+numpy
 &gt;&gt;&gt; from scipy.stats import itemfreq
 &gt;&gt;&gt; x = [1,1,1,2,2,2,5,25,1,1]
 &gt;&gt;&gt; itemfreq(x)
@@ -6485,7 +6944,8 @@ array([[  1.,   5.],
 <p>I'm trying to create required libraries in a package I'm distributing. It requires both the <a href="http://en.wikipedia.org/wiki/SciPy">SciPy</a> and <a href="http://en.wikipedia.org/wiki/NumPy">NumPy</a> libraries.
 While developing, I installed both using</p>
 
-```python
+```
+numpy
 apt-get install scipy
 ```
 
@@ -6495,7 +6955,8 @@ I would like to do the same using `pip install` - in order to be able to specify
 
 The problem is, when I try:  
 
-```python
+```
+numpy
 pip install 'numpy==1.5.1'
 ```
 
@@ -6503,13 +6964,15 @@ it works fine.
 
 But then  
 
-```python
+```
+numpy
 pip install 'scipy==0.9.0'
 ```
 
 fails miserably, with  
 
-```python
+```
+numpy
 raise self.notfounderror(self.notfounderror.__doc__)
 
 numpy.distutils.system_info.BlasNotFoundError:
@@ -6539,7 +7002,8 @@ Oh, yes and lastly, you may need to <strong>yum install gcc-gfortran</strong> as
 #### Answer 2 (score 322)
 This worked for me on Ubuntu 14.04:  
 
-```python
+```
+numpy
 sudo apt-get install libblas-dev liblapack-dev libatlas-base-dev gfortran
 pip install scipy
 ```
@@ -6547,7 +7011,8 @@ pip install scipy
 #### Answer 3 (score 72)
 you need the libblas and liblapack dev packages if you are using Ubuntu.  
 
-```python
+```
+numpy
 aptitude install libblas-dev liblapack-dev
 pip install scipy
 ```
@@ -6557,7 +7022,8 @@ pip install scipy
 ### 73: Use a.any() or a.all() (score [224789](https://stackoverflow.com/q/34472814) in 2015)
 
 #### Question
-```python
+```
+numpy
 x = np.arange(0,2,0.5)
 valeur = 2*x
 
@@ -6569,7 +7035,8 @@ else:
 
 here is the error I get:  
 
-```python
+```
+numpy
 if valeur &lt;= 0.6:
 ValueError: The truth value of an array with more than one element is ambiguous. Use a.any() or a.all()
 ```
@@ -6579,7 +7046,8 @@ I have read several posts about a.any() or a.all() but still can't find a way th
 #### Answer 2 (score 68)
 If you take a look at the result of `valeur &lt;= 0.6`, you can see what’s causing this ambiguity:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; valeur &lt;= 0.6
 array([ True, False, False, False], dtype=bool)
 ```
@@ -6588,7 +7056,8 @@ So the result is another array that has in this case 4 boolean values. Now what 
 
 That’s exactly what `numpy.any` and `numpy.all` do. The former requires at least one true value, the latter requires that all values are true:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; np.any(valeur &lt;= 0.6)
 True
 &gt;&gt;&gt; np.all(valeur &lt;= 0.6)
@@ -6604,7 +7073,8 @@ You comment:
 
 If you are interested in each term, then write the code so it deals with each.  For example.  
 
-```python
+```
+numpy
 for b in valeur&lt;=0.6:
     if b:
         print ("this works")
@@ -6618,7 +7088,8 @@ The error is produced by `numpy` code when you try to use it a context that expe
 
 You could also cast that iteration as list comprehension, e.g.  
 
-```python
+```
+numpy
 ['yes' if b else 'no' for b in np.array([True, False, True])]
 ```
 
@@ -6629,7 +7100,8 @@ You could also cast that iteration as list comprehension, e.g.
 #### Question
 how to create an array to numpy array?  
 
-```python
+```
+numpy
 def test(X, N):
     [n,T] = X.shape
     print "n : ", n
@@ -6646,7 +7118,8 @@ if __name__=="__main__":
 
 I am getting error as   
 
-```python
+```
+numpy
 AttributeError: 'list' object has no attribute 'shape'
 ```
 
@@ -6655,7 +7128,8 @@ So, I think I need to convert my X to numpy array?
 #### Answer accepted (score 54)
 Use <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html">`numpy.array`</a> to use `shape` attribute.  
 
-```python
+```
+numpy
 &gt;&gt;&gt; import numpy as np
 &gt;&gt;&gt; X = np.array([
 ...     [[-9.035250067710876], [7.453250169754028], [33.34074878692627]],
@@ -6680,7 +7154,8 @@ For instance:
 and `np.shape(a)` will give an output of `(3,)`  
 
 #### Answer 3 (score 12)
-```python
+```
+numpy
 import numpy
 X = numpy.array(the_big_nested_list_you_had)
 ```
@@ -6694,7 +7169,8 @@ It's still not going to do what you want; you have more bugs, like trying to unp
 #### Question
 When calling  
 
-```python
+```
+numpy
 df = pd.read_csv('somefile.csv')
 ```
 
@@ -6727,7 +7203,8 @@ Since pandas cannot know it is only numbers, it will probably keep it as the ori
 
 adding  
 
-```python
+```
+numpy
 dtype={'user_id': int}
 ```
 
@@ -6737,7 +7214,8 @@ Also worth noting is that if the last line in the file would have `"foobar"` wri
 
 <h5>Example of broken data that breaks when dtypes are defined</h3>
 
-```python
+```
+numpy
 import pandas as pd
 try:
     from StringIO import StringIO
@@ -6762,7 +7240,8 @@ ValueError: invalid literal for long() with base 10: 'foobar'
 
 These are the numpy dtypes that are also accepted in pandas  
 
-```python
+```
+numpy
 [numpy.generic,
  [[numpy.number,
    [[numpy.integer,
@@ -6811,7 +7290,8 @@ CSV files can be processed line by line and thus can be processed by multiple co
 #### Answer 2 (score 41)
 Try:  
 
-```python
+```
+numpy
 dashboard_df = pd.read_csv(p_file, sep=',', error_bad_lines=False, index_col=False, dtype='unicode')
 ```
 
@@ -6824,7 +7304,8 @@ According to the pandas documentation:
 As for low_memory, it's True <a href="http://pandas.pydata.org/pandas-docs/dev/generated/pandas.io.parsers.read_csv.html">by default</a> and isn't yet documented. I don't think its relevant though. The error message is generic, so you shouldn't need to mess with low_memory anyway. Hope this helps and let me know if you have further problems  
 
 #### Answer 3 (score 30)
-```python
+```
+numpy
 df = pd.read_csv('somefile.csv', low_memory=False)
 ```
 
@@ -6838,7 +7319,8 @@ This should solve the issue. I got exactly the same error, when reading 1.8M row
 <p>This is an easy question but say I have an MxN matrix. All I want to do is extract specific columns and store them in another numpy array but I get invalid syntax errors.
 Here is the code:</p>
 
-```python
+```
+numpy
 extractedData = data[[:,1],[:,9]]. 
 ```
 
@@ -6847,13 +7329,15 @@ It seems like the above line should suffice but I guess not. I looked around but
 #### Answer accepted (score 238)
 I assume you wanted columns `1` and `9`? That's  
 
-```python
+```
+numpy
 data[:, [1, 9]]
 ```
 
 Or with names:  
 
-```python
+```
+numpy
 data[:, ['Column Name1','Column Name2']]
 ```
 
@@ -6862,21 +7346,24 @@ You can get the names from `data.dtype.names`…
 #### Answer 2 (score 26)
 Assuming you want to get columns 1 and 9 with that code snippet, it should be:  
 
-```python
+```
+numpy
 extractedData = data[:,[1,9]]
 ```
 
 #### Answer 3 (score 10)
 if you want to extract only some columns:  
 
-```python
+```
+numpy
 idx_IN_columns = [1, 9]
 extractedData = data[:,idx_IN_columns]
 ```
 
 if you want to exclude specific columns:  
 
-```python
+```
+numpy
 idx_OUT_columns = [1, 9]
 idx_IN_columns = [i for i in xrange(np.shape(data)[1]) if i not in idx_OUT_columns]
 extractedData = data[:,idx_IN_columns]
@@ -6889,7 +7376,8 @@ extractedData = data[:,idx_IN_columns]
 #### Question
 After doing some processing on an audio or image array, it needs to be normalized within a range before it can be written back to a file.  This can be done like so:  
 
-```python
+```
+numpy
 # Normalize audio channels to between -1.0 and +1.0
 audio[:,0] = audio[:,0]/abs(audio[:,0]).max()
 audio[:,1] = audio[:,1]/abs(audio[:,1]).max()
@@ -6901,20 +7389,23 @@ image = image/(image.max()/255.0)
 Is there a less verbose, convenience function way to do this? `matplotlib.colors.Normalize()` doesn't seem to be related.  
 
 #### Answer accepted (score 121)
-```python
+```
+numpy
 audio /= np.max(np.abs(audio),axis=0)
 image *= (255.0/image.max())
 ```
 
 Using `/=` and `*=` allows you to eliminate an intermediate temporary array, thus saving some memory.  Multiplication is less expensive than division, so   
 
-```python
+```
+numpy
 image *= 255.0/image.max()    # Uses 1 division and image.size multiplications
 ```
 
 is marginally faster than   
 
-```python
+```
+numpy
 image /= image.max()/255.0    # Uses 1+image.size divisions
 ```
 
@@ -6925,14 +7416,16 @@ Since we are using basic numpy methods here, I think this is about as efficient 
 <p>In-place operations do not change the dtype of the container array. Since the desired normalized values are floats, the `audio` and `image` arrays need to have floating-point point dtype before the in-place operations are performed.
 If they are not already of floating-point dtype, you'll need to convert them using `astype`. For example,</p>
 
-```python
+```
+numpy
 image = image.astype('float64')
 ```
 
 #### Answer 2 (score 50)
 If the array contains both positive and negative data, I'd go with:  
 
-```python
+```
+numpy
 import numpy as np
 
 a = np.random.rand(3,2)
@@ -6949,14 +7442,16 @@ d = 2.*(a - np.min(a))/np.ptp(a)-1
 
 also, worth mentioning even if it's not OP's question, <a href="https://en.wikipedia.org/wiki/Standard_score" rel="noreferrer">standardization</a>:  
 
-```python
+```
+numpy
 e = (a - np.mean(a)) / np.std(a)
 ```
 
 #### Answer 3 (score 36)
 You can also rescale using `sklearn`. The advantages are that you can adjust normalize the standard deviation, in addition to mean-centering the data, and that you can do this on either axis, by features, or by records.  
 
-```python
+```
+numpy
 from sklearn.preprocessing import scale
 X = scale( X, axis=0, with_mean=True, with_std=True, copy=True )
 ```
@@ -6979,7 +7474,8 @@ Attempt 1:
 
 Attempt 2:  
 
-```python
+```
+numpy
 percentile_list = pd.DataFrame({'lst1Tite' : [lst1],
                                 'lst2Tite' : [lst2],
                                 'lst3Tite' : [lst3] }, 
@@ -6995,7 +7491,8 @@ How do I get a 100 row (length of each independent list) by 3 column (three list
 #### Answer accepted (score 235)
 I think you're almost there, try removing the extra square brackets around the `lst`'s (Also you don't need to specify the column names when you're creating a dataframe from a dict like this):  
 
-```python
+```
+numpy
 import pandas as pd
 lst1 = range(100)
 lst2 = range(100)
@@ -7020,7 +7517,8 @@ percentile_list
 
 If you need a more performant solution you can use `np.column_stack` rather than `zip` as in your first attempt, this has around a 2x speedup on the example here, however comes at bit of a cost of readability in my opinion:  
 
-```python
+```
+numpy
 import numpy as np
 percentile_list = pd.DataFrame(np.column_stack([lst1, lst2, lst3]), 
                                columns=['lst1Title', 'lst2Title', 'lst3Title'])
@@ -7029,13 +7527,15 @@ percentile_list = pd.DataFrame(np.column_stack([lst1, lst2, lst3]),
 #### Answer 2 (score 40)
 Adding to <a href="https://stackoverflow.com/users/2784184/">Aditya Guru</a>'s answer here. There is no need of using map. You can do it simply by:  
 
-```python
+```
+numpy
 pd.DataFrame(list(zip(lst1, lst2, lst3)))
 ```
 
 This will set the column's names as 0,1,2. To set your own column names, you can pass the keyword argument `columns` to the method above.  
 
-```python
+```
+numpy
 pd.DataFrame(list(zip(lst1, lst2, lst3)),
               columns=['lst1_title','lst2_title', 'lst3_title'])
 ```
@@ -7043,7 +7543,8 @@ pd.DataFrame(list(zip(lst1, lst2, lst3)),
 #### Answer 3 (score 9)
 Just adding that using the first approach it can be done as -  
 
-```python
+```
+numpy
 pd.DataFrame(list(map(list, zip(lst1,lst2,lst3))))
 ```
 
@@ -7060,7 +7561,8 @@ I have looked up examples, but they all rely on creating a set of fake data with
 
 I have tried the following example:  
 
-```python
+```
+numpy
 from scipy.fftpack import fft
 # Number of samplepoints
 N = 600
@@ -7087,7 +7589,8 @@ When i do an fft on the whole thing it just has a huge spike at zero and nothing
 
 Here is my code:  
 
-```python
+```
+numpy
 ## Perform FFT WITH SCIPY
 signalFFT = fft(yInterp)
 
@@ -7113,7 +7616,8 @@ spacing is just equal to `xInterp[1]-xInterp[0]`
 #### Answer accepted (score 78)
 So I run a functionally equivalent form of your code in an IPython notebook:  
 
-```python
+```
+numpy
 %matplotlib inline
 import numpy as np
 import matplotlib.pyplot as plt
@@ -7143,7 +7647,8 @@ It's been longer than I care to admit since I was in engineering school thinking
 
 The problem here is that you don't have periodic data. You should always inspect the data that you feed into <em>any</em> algorithm to make sure that it's appropriate.  
 
-```python
+```
+numpy
 import pandas
 import matplotlib.pyplot as plt
 #import seaborn
@@ -7172,7 +7677,8 @@ If fitting is not an option, you can directly use some form of interpolation to 
 
 When you have uniform samples, you will only have to wory about the time delta (`t[1] - t[0]`) of your samples. In this case, you can directly use the fft functions  
 
-```python
+```
+numpy
 Y    = numpy.fft.fft(y)
 freq = numpy.fft.fftfreq(len(y), t[1] - t[0])
 
@@ -7190,7 +7696,8 @@ The high spike that you have is due to the DC (non-varying, i.e. freq = 0) porti
 
 Modifying the example given above by @PaulH  
 
-```python
+```
+numpy
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.fftpack
@@ -7217,7 +7724,8 @@ Another way, is to visualize the data in log scale:
 
 Using:  
 
-```python
+```
+numpy
 plt.semilogy(xf, 2.0/N * np.abs(yf[0:N/2]))
 ```
 
@@ -7231,13 +7739,15 @@ plt.semilogy(xf, 2.0/N * np.abs(yf[0:N/2]))
 #### Question
 I have a numpy array containing:  
 
-```python
+```
+numpy
 [1, 2, 3]
 ```
 
 I want to create an array containing:  
 
-```python
+```
+numpy
 [1, 2, 3, 1]
 ```
 
@@ -7245,7 +7755,8 @@ That is, I want to add the first element on to the end of the array.
 
 I have tried the obvious:  
 
-```python
+```
+numpy
 np.concatenate((a, a[0]))
 ```
 
@@ -7258,7 +7769,8 @@ I don't understand this - the arrays are both just 1d arrays.
 
 I think it's more normal to use the proper method for adding an element:  
 
-```python
+```
+numpy
 a = numpy.append(a, a[0])
 ```
 
@@ -7270,7 +7782,8 @@ Try using `a[0:1]` instead, which will return the first element of `a` inside a 
 #### Answer 3 (score 9)
 Try this:  
 
-```python
+```
+numpy
 np.concatenate((a, np.array([a[0]])))
 ```
 
@@ -7290,7 +7803,8 @@ How can I do the installation?
 #### Answer accepted (score 285)
 In most situations the best solution is to rely on the so-called "user site" location (see the <a href="http://www.python.org/dev/peps/pep-0370/" rel="noreferrer">PEP</a> for details) by running:  
 
-```python
+```
+numpy
 pip install --user package_name
 ```
 
@@ -7300,13 +7814,15 @@ Below is a more "manual" way from my original answer, you do not need to read it
 
 With easy_install you can do:  
 
-```python
+```
+numpy
 easy_install --prefix=$HOME/local package_name
 ```
 
 which will install into   
 
-```python
+```
+numpy
 $HOME/local/lib/pythonX.Y/site-packages
 ```
 
@@ -7314,7 +7830,8 @@ $HOME/local/lib/pythonX.Y/site-packages
 
 You will need to manually create   
 
-```python
+```
+numpy
 $HOME/local/lib/pythonX.Y/site-packages
 ```
 
@@ -7324,7 +7841,8 @@ If you are not using `easy_install`, look for a prefix option, most install scri
 
 With pip you can use:  
 
-```python
+```
+numpy
 pip install --install-option="--prefix=$HOME/local" package_name
 ```
 
@@ -7335,7 +7853,8 @@ Then, you can create a python `virtualenv` (<a href="https://pypi.python.org/pyp
 
 Executing 4 commands in the shell will be enough (insert current release like 16.1.0 for X.X.X):  
 
-```python
+```
+numpy
 $ curl --location --output virtualenv-X.X.X.tar.gz https://github.com/pypa/virtualenv/tarball/X.X.X
 $ tar xvfz virtualenv-X.X.X.tar.gz
 $ python pypa-virtualenv-YYYYYY/src/virtualenv.py my_new_env
@@ -7350,7 +7869,8 @@ You can run easy_install to install python packages in your home directory even 
 
 To do this, create a .pydistutils.cfg in your home directory:  
 
-```python
+```
+numpy
 cat &gt; $HOME/.pydistutils.cfg &lt;&lt;EOF
 [install]
 user=1
@@ -7359,13 +7879,15 @@ EOF
 
 Now you can run easy_install without root privileges:  
 
-```python
+```
+numpy
 easy_install boto
 ```
 
 Alternatively, this also lets you run pip without root access:  
 
-```python
+```
+numpy
 pip install boto
 ```
 
@@ -7438,7 +7960,8 @@ It requires GNU Octave, which is highly compatible with MATLAB.
 #### Question
 In matlab I use  
 
-```python
+```
+numpy
 a=[1,4,6]
 b=[1,2,3]
 corr(a,b)
@@ -7449,7 +7972,8 @@ which returns .9934. I've tried `numpy.correlate` but it returns something compl
 #### Answer 2 (score 139)
 The docs indicate that <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.correlate.html">`numpy.correlate`</a> is not what you are looking for:  
 
-```python
+```
+numpy
 numpy.correlate(a, v, mode='valid', old_behavior=False)[source]
   Cross-correlation of two 1-dimensional sequences.
   This function computes the correlation as generally defined in signal processing texts:
@@ -7459,7 +7983,8 @@ numpy.correlate(a, v, mode='valid', old_behavior=False)[source]
 
 Instead, as the other comments suggested, you are looking for a <a href="http://en.wikipedia.org/wiki/Pearson_product-moment_correlation_coefficient">Pearson correlation coefficient</a>. To do this with scipy try:  
 
-```python
+```
+numpy
 from scipy.stats.stats import pearsonr   
 a = [1,4,6]
 b = [1,2,3]   
@@ -7468,20 +7993,23 @@ print pearsonr(a,b)
 
 This gives  
 
-```python
+```
+numpy
 (0.99339926779878274, 0.073186395040328034)
 ```
 
 You can also use `numpy.corrcoef`:  
 
-```python
+```
+numpy
 import numpy
 print numpy.corrcoef(a,b)
 ```
 
 This gives:  
 
-```python
+```
+numpy
 [[ 1.          0.99339927]
  [ 0.99339927  1.        ]]
 ```
@@ -7497,13 +8025,15 @@ I want to calculate the column wise mean of a data frame.
 
 This is easy:   
 
-```python
+```
+numpy
 df.apply(average) 
 ```
 
 then the column wise range max(col) - min(col). This is easy again:   
 
-```python
+```
+numpy
 df.apply(max) - df.apply(min)
 ```
 
@@ -7512,7 +8042,8 @@ Now for each element I want to subtract its column's mean and divide by its colu
 Any help/pointers are much appreciated.   
 
 #### Answer accepted (score 214)
-```python
+```
+numpy
 In [92]: df
 Out[92]:
            a         b          c         d
@@ -7549,7 +8080,8 @@ d    1
 #### Answer 2 (score 68)
 If you don't mind importing the `sklearn` library, I would recommend the method talked on <a href="https://web.archive.org/web/20160520170701/http://chrisalbon.com:80/python/pandas_normalize_column.html" rel="nofollow noreferrer">this</a> blog.  
 
-```python
+```
+numpy
 import pandas as pd
 from sklearn import preprocessing
 
@@ -7567,7 +8099,8 @@ df_normalized
 #### Answer 3 (score 32)
 You can use `apply` for this, and it's a bit neater:  
 
-```python
+```
+numpy
 import numpy as np
 import pandas as pd
 
@@ -7592,7 +8125,8 @@ df.apply(lambda x: (x - np.mean(x)) / (np.max(x) - np.min(x)))
 
 Also, it works nicely with `groupby`, if you select the relevant columns:  
 
-```python
+```
+numpy
 df['grp'] = ['A', 'A', 'B', 'B']
 
           0         1         2         3 grp
@@ -7627,26 +8161,30 @@ Thanks!
 #### Answer accepted (score 176)
 If you'd like something a bit more readable, you can do this:  
 
-```python
+```
+numpy
 A = np.squeeze(np.asarray(M))
 ```
 
 Equivalently, you could also do: `A = np.asarray(M).reshape(-1)`, but that's a bit less easy to read.  
 
 #### Answer 2 (score 117)
-```python
+```
+numpy
 result = M.A1
 ```
 
 <a href="https://docs.scipy.org/doc/numpy-1.14.0/reference/generated/numpy.matrix.A1.html" rel="noreferrer">https://docs.scipy.org/doc/numpy-1.14.0/reference/generated/numpy.matrix.A1.html</a>  
 
-```python
+```
+numpy
 matrix.A1
 1-d base array
 ```
 
 #### Answer 3 (score 13)
-```python
+```
+numpy
 A, = np.array(M.T)
 ```
 
@@ -7661,13 +8199,15 @@ I need to accomplish the following task:
 
 from:  
 
-```python
+```
+numpy
 a = array([[1,3,4],[1,2,3]...[1,2,1]])
 ```
 
 (add one element to each row) to:  
 
-```python
+```
+numpy
 a = array([[1,3,4,x],[1,2,3,x]...[1,2,1,x]])
 ```
 
@@ -7704,7 +8244,8 @@ for N-D arrays:
 </ul>
 
 #### Answer 2 (score 13)
-```python
+```
+numpy
 import numpy as np
 a = np.array([[1,3,4],[1,2,3],[1,2,1]])
 b = np.array([10,20,30])
@@ -7713,7 +8254,8 @@ c = np.hstack((a, np.atleast_2d(b).T))
 
 returns `c`:  
 
-```python
+```
+numpy
 array([[ 1,  3,  4, 10],
        [ 1,  2,  3, 20],
        [ 1,  2,  1, 30]])
@@ -7722,7 +8264,8 @@ array([[ 1,  3,  4, 10],
 #### Answer 3 (score 7)
 One way to do it (may not be the best) is to create another array with the new elements and do column_stack. i.e.  
 
-```python
+```
+numpy
 &gt;&gt;&gt;a = array([[1,3,4],[1,2,3]...[1,2,1]])
 [[1 3 4]
  [1 2 3]
@@ -7742,7 +8285,8 @@ array([[1, 3, 4, 1],
 #### Question
 What does np.random.seed do in the below code from a Scikit-Learn tutorial? I'm not very familiar with NumPy's random state generator stuff, so I'd really appreciate a layman's terms explanation of this.  
 
-```python
+```
+numpy
 np.random.seed(0)
 indices = np.random.permutation(len(iris_X))
 ```
@@ -7750,7 +8294,8 @@ indices = np.random.permutation(len(iris_X))
 #### Answer accepted (score 433)
 `np.random.seed(0)` makes the random numbers predictable  
 
-```python
+```
+numpy
 &gt;&gt;&gt; numpy.random.seed(0) ; numpy.random.rand(4)
 array([ 0.55,  0.72,  0.6 ,  0.54])
 &gt;&gt;&gt; numpy.random.seed(0) ; numpy.random.rand(4)
@@ -7761,7 +8306,8 @@ With the seed reset (every time), the <em>same</em> set of numbers will appear e
 
 If the random seed is not reset, <em>different</em> numbers appear with every invocation:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; numpy.random.rand(4)
 array([ 0.42,  0.65,  0.44,  0.89])
 &gt;&gt;&gt; numpy.random.rand(4)
@@ -7777,7 +8323,8 @@ To get the most random numbers for each run, call `numpy.random.seed()`.  <a hre
 #### Answer 2 (score 30)
 If you set the `np.random.seed(a_fixed_number)` every time you call the numpy's other random function, the result will be the same:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; import numpy as np
 &gt;&gt;&gt; np.random.seed(0) 
 &gt;&gt;&gt; perm = np.random.permutation(10) 
@@ -7802,7 +8349,8 @@ If you set the `np.random.seed(a_fixed_number)` every time you call the numpy's 
 
 However, if you just call it once and use various random functions, the results will still be different:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; import numpy as np
 &gt;&gt;&gt; np.random.seed(0) 
 &gt;&gt;&gt; perm = np.random.permutation(10)
@@ -7843,7 +8391,8 @@ from <a href="https://stackoverflow.com/questions/7029993/differences-between-nu
 
 example of how to go about this:   
 
-```python
+```
+numpy
 from numpy.random import RandomState
 prng = RandomState()
 print prng.permutation(10)
@@ -7876,7 +8425,8 @@ Lastly, note that there might be cases where initializing to 0 (as opposed to a 
 #### Question
 I have an array that might look like this:  
 
-```python
+```
+numpy
 ANOVAInputMatrixValuesArray = [[ 0.96488889, 0.73641667, 0.67521429, 0.592875, 
 0.53172222], [ 0.78008333, 0.5938125, 0.481, 0.39883333, 0.]]
 ```
@@ -7887,7 +8437,8 @@ But the array will have different numbers of rows every time it is populated, an
 
 I get the number of non-zero elements in each row with the following line of code:  
 
-```python
+```
+numpy
 NumNonzeroElementsInRows    = (ANOVAInputMatrixValuesArray != 0).sum(1)
 ```
 
@@ -7897,7 +8448,8 @@ The five indicates that all possible values in row 0 are nonzero, while the four
 
 Therefore, I am trying to use the following lines of code to find and delete rows that contain zero values.  
 
-```python
+```
+numpy
 for q in range(len(NumNonzeroElementsInRows)):
     if NumNonzeroElementsInRows[q] &lt; NumNonzeroElementsInRows.max():
         p.delete(ANOVAInputMatrixValuesArray, q, axis=0)
@@ -7914,7 +8466,8 @@ The simplest way to delete rows and columns from arrays is the `numpy.delete` me
 
 Suppose I have the following array `x`:  
 
-```python
+```
+numpy
 x = array([[1,2,3],
         [4,5,6],
         [7,8,9]])
@@ -7922,13 +8475,15 @@ x = array([[1,2,3],
 
 To delete the first row, do this:  
 
-```python
+```
+numpy
 x = numpy.delete(x, (0), axis=0)
 ```
 
 To delete the third column, do this:  
 
-```python
+```
+numpy
 x = numpy.delete(x,(2), axis=1)
 ```
 
@@ -7937,7 +8492,8 @@ So you could find the indices of the rows which have a 0 in them, put them in a 
 #### Answer 3 (score 13)
 Here's a one liner (yes, it is similar to user333700's, but a little more straightforward):  
 
-```python
+```
+numpy
 &gt;&gt;&gt; import numpy as np
 &gt;&gt;&gt; arr = np.array([[ 0.96488889, 0.73641667, 0.67521429, 0.592875, 0.53172222], 
                 [ 0.78008333, 0.5938125, 0.481, 0.39883333, 0.]])
@@ -7962,7 +8518,8 @@ There is a sample `letter_recog.py` that comes with OpenCV sample. But I still c
 
 Later on searching a little bit, I could find a letter_recognition.data in cpp samples. I used it and made a code for cv2.KNearest in the model of letter_recog.py (just for testing):  
 
-```python
+```
+numpy
 import numpy as np
 import cv2
 
@@ -8022,7 +8579,8 @@ At the end of manual classification of digits, all the digits in the train data(
 
 Below is the code I used for above purpose ( of course, not so clean):  
 
-```python
+```
+numpy
 import sys
 
 import numpy as np
@@ -8096,7 +8654,8 @@ For testing part I used below image, which has same type of letters I used to tr
 
 I included last two steps ( training and testing) in single code below:  
 
-```python
+```
+numpy
 import cv2
 import numpy as np
 
@@ -8155,7 +8714,8 @@ The procedure is same as above but, the contour finding uses only first hierarch
 
 <h5>Code for creating sample and Label data</h2>
 
-```python
+```
+numpy
 //Process image to extract contour
 Mat thr,gray,con;
 Mat src=imread("digit.png",1);
@@ -8206,7 +8766,8 @@ waitKey();
 
 <h5>Code for training and testing</h2>
 
-```python
+```
+numpy
 Mat thr,gray,con;
 Mat src=imread("dig.png",1);
 cvtColor(src,gray,CV_BGR2GRAY);
@@ -8276,7 +8837,8 @@ A numpy matrix can be reshaped into a vector using reshape function with paramet
 
 For example:   
 
-```python
+```
+numpy
 a = numpy.matrix([[1, 2, 3, 4], [5, 6, 7, 8]])
 b = numpy.reshape(a, -1)
 ```
@@ -8293,7 +8855,8 @@ numpy allow us to give one of new shape parameter as -1 (eg: (2,-1) or (-1,3) bu
 
 Now see the example.  
 
-```python
+```
+numpy
 z = np.array([[1, 2, 3, 4],
          [5, 6, 7, 8],
          [9, 10, 11, 12]])
@@ -8303,14 +8866,16 @@ z.shape
 
 Now trying to reshape with (-1) . Result new shape is (12,) and is compatible with original shape (3,4)   
 
-```python
+```
+numpy
 z.reshape(-1)
 array([ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12])
 ```
 
 Now trying to reshape with (-1, 1) . We have provided column as 1 but rows as unknown . So we get result new shape as (12, 1).again compatible with original shape(3,4)   
 
-```python
+```
+numpy
 z.reshape(-1,1)
 array([[ 1],
    [ 2],
@@ -8334,7 +8899,8 @@ The above is consistent with `numpy` advice/error message, to use `reshape(-1,1)
 
 New shape as (-1, 2). row unknown, column 2. we get result new shape as (6, 2)  
 
-```python
+```
+numpy
 z.reshape(-1, 2)
 array([[ 1,  2],
    [ 3,  4],
@@ -8346,7 +8912,8 @@ array([[ 1,  2],
 
 Now trying to keep column as unknown. New shape as (1,-1). i.e, row is 1, column unknown. we get result new shape as (1, 12)  
 
-```python
+```
+numpy
 z.reshape(1,-1)
 array([[ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12]])
 ```
@@ -8359,7 +8926,8 @@ The above is consistent with `numpy` advice/error message, to use `reshape(1,-1)
 
 New shape (2, -1). Row 2, column unknown. we get result new shape as (2,6)  
 
-```python
+```
+numpy
 z.reshape(2, -1)
 array([[ 1,  2,  3,  4,  5,  6],
    [ 7,  8,  9, 10, 11, 12]])
@@ -8367,7 +8935,8 @@ array([[ 1,  2,  3,  4,  5,  6],
 
 New shape as (3, -1). Row 3, column unknown. we get result new shape as (3,4)  
 
-```python
+```
+numpy
 z.reshape(3, -1)
 array([[ 1,  2,  3,  4],
    [ 5,  6,  7,  8],
@@ -8376,7 +8945,8 @@ array([[ 1,  2,  3,  4],
 
 And finally, if we try to provide both dimension as unknown i.e new shape as (-1,-1). It will throw an error  
 
-```python
+```
+numpy
 z.reshape(-1, -1)
 ValueError: can only specify one unknown dimension
 ```
@@ -8386,13 +8956,15 @@ Used to reshape an array.
 
 Say we have a 3 dimensional array of dimensions 2 x 10 x 10:  
 
-```python
+```
+numpy
 r = numpy.random.rand(2, 10, 10) 
 ```
 
 Now we want to reshape to 5 X 5 x 8:  
 
-```python
+```
+numpy
 numpy.reshape(r, shape=(5, 5, 8)) 
 ```
 
@@ -8400,7 +8972,8 @@ will do the job.
 
 Note that, once you fix first dim = 5 and second dim = 5, you don't need to determine third dimension. To assist your laziness, python gives the option of -1:  
 
-```python
+```
+numpy
 numpy.reshape(r, shape=(5, 5, -1)) 
 ```
 
@@ -8408,7 +8981,8 @@ will give you an array of shape = (5, 5, 8).
 
 Likewise,   
 
-```python
+```
+numpy
 numpy.reshape(r, shape=(50, -1)) 
 ```
 
@@ -8427,7 +9001,8 @@ Following on, how best can I use my list of integers as inputs to the `polyfit`?
 
 here is the polyfit example I am following:  
 
-```python
+```
+numpy
 from pylab import * 
 
 x = arange(data) 
@@ -8444,7 +9019,8 @@ show()
 
 
 
-```python
+```
+numpy
 &gt;&gt;&gt; x = [1,2,3,4]
 &gt;&gt;&gt; y = [3,5,7,9] 
 &gt;&gt;&gt; 
@@ -8457,7 +9033,8 @@ show()
 
 I should add that I tend to use `poly1d` here rather than write out "m*x+b" and the higher-order equivalents, so my version of your code would look something like this:  
 
-```python
+```
+numpy
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -8478,7 +9055,8 @@ plt.ylim(0, 12)
 #### Answer 2 (score 35)
 This code:  
 
-```python
+```
+numpy
 from scipy.stats import linregress
 
 linregress(x,y) #x and y are arrays or lists.
@@ -8502,7 +9080,8 @@ gives out a list with the following:
 <a href="http://docs.scipy.org/doc/scipy-0.14.0/reference/generated/scipy.stats.linregress.html">Source</a>  
 
 #### Answer 3 (score 2)
-```python
+```
+numpy
 import numpy as np
 import matplotlib.pyplot as plt 
 from scipy import stats
@@ -8528,7 +9107,8 @@ plt.show()
 #### Question
 I want to convert a 1-dimensional array into a 2-dimensional array by specifying the number of columns in the 2D array. Something that would work like this:  
 
-```python
+```
+numpy
 &gt; import numpy as np
 &gt; A = np.array([1,2,3,4,5,6])
 &gt; B = vec2matrix(A,ncol=2)
@@ -8543,7 +9123,8 @@ Does numpy have a function that works like my made-up function "vec2matrix"? (I 
 #### Answer accepted (score 128)
 You want to <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.reshape.html" rel="noreferrer">`reshape`</a> the array.  
 
-```python
+```
+numpy
 B = np.reshape(A, (-1, 2))
 ```
 
@@ -8553,14 +9134,16 @@ You have two options:
 <ul>
 <li><p>If you no longer want the original shape, the easiest is just to assign a new shape to the array</p>
 
-```python
+```
+numpy
 a.shape = (a.size//ncols, ncols)
 ```
 
 You can switch the `a.size//ncols` by `-1` to compute the proper shape automatically. Make sure that `a.shape[0]*a.shape[1]=a.size`, else you'll run into some problem.  </li>
 <li><p>You can get a new array with the `np.reshape` function, that works mostly like the version presented above</p>
 
-```python
+```
+numpy
 new = np.reshape(a, (-1, ncols))
 ```
 
@@ -8569,7 +9152,8 @@ When it's possible, `new` will be just a view of the initial array `a`, meaning 
 
 If you can't respect the requirement `a.shape[0]*a.shape[1]=a.size`, you're stuck with having to create a new array. You can use the `np.resize` function and mixing it with `np.reshape`, such as  
 
-```python
+```
+numpy
 &gt;&gt;&gt; a =np.arange(9)
 &gt;&gt;&gt; np.resize(a, 10).reshape(5,2)
 ```
@@ -8577,7 +9161,8 @@ If you can't respect the requirement `a.shape[0]*a.shape[1]=a.size`, you're stuc
 #### Answer 3 (score 5)
 Try something like:  
 
-```python
+```
+numpy
 B = np.reshape(A,(-1,ncols))
 ```
 
@@ -8590,7 +9175,8 @@ You'll need to make sure that you can divide the number of elements in your arra
 #### Question
 Lets assume we have a dataset which might be given approximately by  
 
-```python
+```
+numpy
 import numpy as np
 x = np.linspace(0,2*np.pi,100)
 y = np.sin(x) + np.random.random(100) * 0.2
@@ -8608,7 +9194,8 @@ I prefer a <a href="http://en.wikipedia.org/wiki/Savitzky%E2%80%93Golay_filter_f
 
 Here is a <a href="http://wiki.scipy.org/Cookbook/SavitzkyGolay" rel="noreferrer">thorough cookbook example</a>. See my code below to get an idea of how easy it is to use. Note: I left out the code for defining the `savitzky_golay()` function because you can literally copy/paste it from the cookbook example I linked above.  
 
-```python
+```
+numpy
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -8626,7 +9213,8 @@ plt.show()
 <p><strong>UPDATE:</strong> It has come to my attention that the cookbook example I linked to has been taken down. Fortunately, the Savitzky-Golay filter has been incorporated <a href="http://docs.scipy.org/doc/scipy-dev/reference/generated/scipy.signal.savgol_filter.html#scipy.signal.savgol_filter" rel="noreferrer">into the SciPy library</a>, as pointed out by <a href="https://stackoverflow.com/users/2068580/dodohjk">@dodohjk</a>.
 To adapt the above code by using SciPy source, type:</p>
 
-```python
+```
+numpy
 from scipy.signal import savgol_filter
 yhat = savgol_filter(y, 51, 3) # window size 51, polynomial order 3
 ```
@@ -8634,7 +9222,8 @@ yhat = savgol_filter(y, 51, 3) # window size 51, polynomial order 3
 #### Answer 3 (score 111)
 A quick and dirty way to smooth data I use, based on a moving average box (by convolution):  
 
-```python
+```
+numpy
 x = np.linspace(0,2*np.pi,100)
 y = np.sin(x) + np.random.random(100) * 0.8
 
@@ -8668,7 +9257,8 @@ The Numpy `histogram` function doesn't draw the histogram, but it computes the o
 
 In this example:  
 
-```python
+```
+numpy
  np.histogram([1, 2, 1], bins=[0, 1, 2, 3])
 ```
 
@@ -8688,7 +9278,8 @@ Since the bins here are of equal width, you can use the number of occurrences fo
 
 You can plot this directly with Matplotlib (its `hist` function also returns the bins and the values):  
 
-```python
+```
+numpy
 &gt;&gt;&gt; import matplotlib.pyplot as plt
 &gt;&gt;&gt; plt.hist([1, 2, 1], bins=[0, 1, 2, 3])
 (array([0, 2, 1]), array([0, 1, 2, 3]), &lt;a list of 3 Patch objects&gt;)
@@ -8698,14 +9289,16 @@ You can plot this directly with Matplotlib (its `hist` function also returns the
 <img src="https://i.stack.imgur.com/AhBUY.png" alt="enter image description here">  
 
 #### Answer 2 (score 61)
-```python
+```
+numpy
 import numpy as np    
 hist, bin_edges = np.histogram([1, 1, 2, 2, 2, 2, 3], bins = range(5))
 ```
 
 Below, `hist` indicates that there are 0 items in bin #0, 2 in bin #1, 4 in bin #3, 1 in bin #4.  
 
-```python
+```
+numpy
 print(hist)
 # array([0, 2, 4, 1])   
 ```
@@ -8713,7 +9306,8 @@ print(hist)
 <p>`bin_edges` indicates that bin #0 is the interval [0,1), bin #1 is [1,2), ...,
 bin #3 is [3,4).</p>
 
-```python
+```
+numpy
 print (bin_edges)
 # array([0, 1, 2, 3, 4]))  
 ```
@@ -8724,7 +9318,8 @@ Play with the above code, change the input to `np.histogram` and see how it work
 
 But a picture is worth a thousand words:  
 
-```python
+```
+numpy
 import matplotlib.pyplot as plt
 plt.bar(bin_edges[:-1], hist, width = 1)
 plt.xlim(min(bin_edges), max(bin_edges))
@@ -8736,7 +9331,8 @@ plt.show()
 #### Answer 3 (score 4)
 Another useful thing to do with `numpy.histogram` is to plot the output as the x and y coordinates on a linegraph. For example:  
 
-```python
+```
+numpy
 arr = np.random.randint(1, 51, 500)
 y, x = np.histogram(arr, bins=np.arange(51))
 fig, ax = plt.subplots()
@@ -8758,7 +9354,8 @@ NumPy has the efficient function/method <a href="http://docs.scipy.org/doc/numpy
 #### Answer accepted (score 192)
 <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.where.html">numpy.where()</a> is my favorite.  
 
-```python
+```
+numpy
 &gt;&gt;&gt; x = numpy.array([1,0,2,0,3,0,4,5,6,7,8])
 &gt;&gt;&gt; numpy.where(x == 0)[0]
 array([1, 3, 5])
@@ -8767,7 +9364,8 @@ array([1, 3, 5])
 #### Answer 2 (score 25)
 There is <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.argwhere.html#numpy-argwhere" rel="noreferrer">`np.argwhere`</a>,  
 
-```python
+```
+numpy
 import numpy as np
 arr = np.array([[1,2,3], [0, 1, 0], [7, 0, 2]])
 np.argwhere(arr == 0)
@@ -8775,7 +9373,8 @@ np.argwhere(arr == 0)
 
 which returns all found indices as rows:  
 
-```python
+```
+numpy
 array([[1, 0],    # Indices of the first zero
        [1, 2],    # Indices of the second zero
        [2, 1]],   # Indices of the third zero
@@ -8785,7 +9384,8 @@ array([[1, 0],    # Indices of the first zero
 #### Answer 3 (score 23)
 You can search for any scalar condition with:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; a = np.asarray([0,1,2,3,4])
 &gt;&gt;&gt; a == 0 # or whatver
 array([ True, False, False, False, False], dtype=bool)
@@ -8798,14 +9398,16 @@ Which will give back the array as an boolean mask of the condition.
 ### 96: numpy array TypeError: only integer scalar arrays can be converted to a scalar index (score [190084](https://stackoverflow.com/q/46902367) in 2019)
 
 #### Question
-```python
+```
+numpy
 i=np.arange(1,4,dtype=np.int)
 a=np.arange(9).reshape(3,3)
 ```
 
 and  
 
-```python
+```
+numpy
 a
 &gt;&gt;&gt;array([[0, 1, 2],
           [3, 4, 5],
@@ -8826,13 +9428,15 @@ a[:,0:3]
 
 Now I want to vectorize the array to print them all together. I try  
 
-```python
+```
+numpy
 a[:,0:i]
 ```
 
 or  
 
-```python
+```
+numpy
 a[:,0:i[:,None]]
 ```
 
@@ -8841,7 +9445,8 @@ It gives TypeError: only integer scalar arrays can be converted to a scalar inde
 #### Answer 2 (score 21)
 Short answer:  
 
-```python
+```
+numpy
 [a[:,:j] for j in i]
 ```
 
@@ -8867,7 +9472,8 @@ The problem with your case is that the result of each individual operation has a
 
 What you're really looking for is just a single expression that computes all of them:  
 
-```python
+```
+numpy
 [a[:,:j] for j in i]
 ```
 
@@ -8876,7 +9482,8 @@ What you're really looking for is just a single expression that computes all of 
 #### Answer 3 (score 10)
 try the following to change your array to 1D  
 
-```python
+```
+numpy
 a.reshape((1, -1))
 ```
 
@@ -8887,7 +9494,8 @@ a.reshape((1, -1))
 #### Question
 I have installed Python 2.5.4, Numpy 1.5.0 win32, Matplotlib 1.0.0 win32, pywin32 218. Still not able to plot graphs in Python. Here is the error I am getting :  
 
-```python
+```
+numpy
       import pylab
    File "C:\Python25\lib\site-packages\pylab.py", line 1, in &lt;module&gt;
       from matplotlib.pylab import *
@@ -8938,7 +9546,8 @@ I want to slice a NumPy nxn array. I want to extract an <em>arbitrary</em> selec
 
 Here is our array:  
 
-```python
+```
+numpy
 from numpy import *
 x = range(16)
 x = reshape(x,(4,4))
@@ -8952,7 +9561,8 @@ print x
 
 The line and columns to remove are the same. The easiest case is when I want to extract a 2x2 submatrix that is at the beginning or at the end, i.e. :  
 
-```python
+```
+numpy
 In [33]: x[0:2,0:2]
 Out[33]: 
 array([[0, 1],
@@ -8966,14 +9576,16 @@ array([[10, 11],
 
 But what if I need to remove another mixture of rows/columns? What if I need to remove the first and third lines/rows, thus extracting the submatrix `[[5,7],[13,15]]`? There can be any composition of rows/lines. I read somewhere that I just need to index my array using arrays/lists of indices for both rows and columns, but that doesn't seem to work:  
 
-```python
+```
+numpy
 In [35]: x[[1,3],[1,3]]
 Out[35]: array([ 5, 15])
 ```
 
 I found one way, which is:   
 
-```python
+```
+numpy
     In [61]: x[[1,3]][:,[1,3]]
 Out[61]: 
 array([[ 5,  7],
@@ -8996,14 +9608,16 @@ If you extract a subarray by basic slicing like `y = x[0:2,0:2]`, the resulting 
 
 NumPy solves this problem by introducing <em>strides</em>.  When calculating the memory offset for accessing `x[i,j]`, what is actually calculated is `i*x.strides[0]+j*x.strides[1]` (and this already includes the factor for the size of an int):  
 
-```python
+```
+numpy
 x.strides
 (16, 4)
 ```
 
 When `y` is extracted like above, NumPy does not create a new buffer, but it <em>does</em> create a new array object referencing the same buffer (otherwise `y` would just be equal to `x`.)   The new array object will have a different shape then `x` and maybe a different starting offset into the buffer, but will share the strides with `x` (in this case at least):  
 
-```python
+```
+numpy
 y.shape
 (2,2)
 y.strides
@@ -9018,21 +9632,24 @@ This is covered in depth in <a href="http://docs.scipy.org/doc/numpy-1.5.x/refer
 
 Oh, and nearly forgot about your actual question:  Here is how to make the indexing with multiple lists work as expected:  
 
-```python
+```
+numpy
 x[[[1],[3]],[1,3]]
 ```
 
 <p>This is because the index arrays are <a href="http://docs.scipy.org/doc/numpy-1.5.x/reference/ufuncs.html#broadcasting" rel="noreferrer">broadcasted</a> to a common shape.
 Of course, for this particular example, you can also make do with basic slicing:</p>
 
-```python
+```
+numpy
 x[1::2, 1::2]
 ```
 
 #### Answer 3 (score 12)
 I don't think that `x[[1,3]][:,[1,3]]` is hardly readable. If you want to be more clear on your intent, you can do:  
 
-```python
+```
+numpy
 a[[1,3],:][:,[1,3]]
 ```
 
@@ -9051,14 +9668,16 @@ I am trying to dynamically get the first and last element from an array.
 
 So, let us suppose the array has 6 elements.   
 
-```python
+```
+numpy
 test = [1,23,4,6,7,8]
 ```
 
 <p>If I am trying to get the `first and last = 1,8`, `23,7` and `4,6`. Is there a way to get elements in this order? 
 I looked at a couple of questions <a href="https://stackoverflow.com/questions/12218796/python-slice-first-and-last-element-in-list">Link</a> <a href="https://stackoverflow.com/questions/930397/how-to-get-the-last-element-of-a-list">Link2</a>. I took help of these links and I came up with this prototype..</p>
 
-```python
+```
+numpy
 #!/usr/bin/env python
 
 import numpy
@@ -9083,7 +9702,8 @@ Thanks!
 #### Answer accepted (score 23)
 How about:  
 
-```python
+```
+numpy
 In [10]: arr = numpy.array([1,23,4,6,7,8])
 
 In [11]: [(arr[i], arr[-i-1]) for i in range(len(arr) // 2)]
@@ -9092,7 +9712,8 @@ Out[11]: [(1, 8), (23, 7), (4, 6)]
 
 Depending on the size of `arr`, writing the entire thing in NumPy may be more performant:  
 
-```python
+```
+numpy
 In [41]: arr = numpy.array([1,23,4,6,7,8]*100)
 
 In [42]: %timeit [(arr[i], arr[-i-1]) for i in range(len(arr) // 2)]
@@ -9105,7 +9726,8 @@ In [43]: %timeit numpy.vstack((arr, arr[::-1]))[:,:len(arr)//2]
 #### Answer 2 (score 114)
 I ended here, because I googled for "python first and last element of array", and found everything else but this. So here's the answer to the title question:  
 
-```python
+```
+numpy
 a = [1,2,3]
 a[0] # first element (returns 1)
 a[-1] # last element (returns 3)
@@ -9114,7 +9736,8 @@ a[-1] # last element (returns 3)
 #### Answer 3 (score 3)
 Using Numpy's fancy indexing:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; test
 array([ 1, 23,  4,  6,  7,  8])
 
@@ -9149,7 +9772,8 @@ Are there any? Or how to solve it otherwise?
 #### Answer accepted (score 172)
 For fitting <em>y</em> = <em>A</em> + <em>B</em> log <em>x</em>, just fit <em>y</em> against (log <em>x</em>).  
 
-```python
+```
+numpy
 &gt;&gt;&gt; x = numpy.array([1, 7, 20, 50, 79])
 &gt;&gt;&gt; y = numpy.array([10, 19, 30, 35, 51])
 &gt;&gt;&gt; numpy.polyfit(numpy.log(x), y, 1)
@@ -9165,7 +9789,8 @@ Note that fitting (log <em>y</em>) as if it is linear will emphasize small value
 
 This could be alleviated by giving each entry a "weight" proportional to <em>y</em>. `polyfit` supports weighted-least-squares via the `w` keyword argument.  
 
-```python
+```
+numpy
 &gt;&gt;&gt; x = numpy.array([10, 19, 30, 35, 51])
 &gt;&gt;&gt; y = numpy.array([1, 7, 20, 50, 79])
 &gt;&gt;&gt; numpy.polyfit(x, numpy.log(y), 1)
@@ -9186,7 +9811,8 @@ Now, if you can use scipy, you could use <a href="https://docs.scipy.org/doc/sci
 
 For <em>y</em> = <em>A</em> + <em>B</em> log <em>x</em> the result is the same as the transformation method:  
 
-```python
+```
+numpy
 &gt;&gt;&gt; x = numpy.array([1, 7, 20, 50, 79])
 &gt;&gt;&gt; y = numpy.array([10, 19, 30, 35, 51])
 &gt;&gt;&gt; scipy.optimize.curve_fit(lambda t,a,b: a+b*numpy.log(t),  x,  y)
@@ -9198,7 +9824,8 @@ For <em>y</em> = <em>A</em> + <em>B</em> log <em>x</em> the result is the same a
 
 For <em>y</em> = <em>Ae</em><sup><em>Bx</em></sup>, however, we can get a better fit since it computes Δ(log <em>y</em>) directly. But we need to provide an initialize guess so `curve_fit` can reach the desired local minimum.  
 
-```python
+```
+numpy
 &gt;&gt;&gt; x = numpy.array([10, 19, 30, 35, 51])
 &gt;&gt;&gt; y = numpy.array([1, 7, 20, 50, 79])
 &gt;&gt;&gt; scipy.optimize.curve_fit(lambda t,a,b: a*numpy.exp(b*t),  x,  y)
@@ -9218,7 +9845,8 @@ For <em>y</em> = <em>Ae</em><sup><em>Bx</em></sup>, however, we can get a better
 #### Answer 2 (score 93)
 You can also fit a set of a data to whatever function you like using `curve_fit` from `scipy.optimize`.  For example if you want to fit an exponential function (from the <a href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html">documentation</a>):  
 
-```python
+```
+numpy
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
@@ -9235,7 +9863,8 @@ popt, pcov = curve_fit(func, x, yn)
 
 And then if you want to plot, you could do:  
 
-```python
+```
+numpy
 plt.figure()
 plt.plot(x, yn, 'ko', label="Original Noised Data")
 plt.plot(x, func(x, *popt), 'r-', label="Fitted Curve")
@@ -9250,7 +9879,8 @@ I was having some trouble with this so let me be very explicit so noobs like me 
 
 Lets say that we have a data file or something like that   
 
-```python
+```
+numpy
 # -*- coding: utf-8 -*-
 
 import matplotlib.pyplot as plt

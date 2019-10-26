@@ -18,7 +18,7 @@ Is there a `QString` function which takes an <strong>int</strong> and outputs it
 #### Answer accepted (score 616)
 Use <a href="http://doc.qt.io/qt-5/qstring.html#number" rel="noreferrer">`QString::number()`</a>:  
 
-```qt
+```c
 int i = 42;
 QString s = QString::number(i);
 ```
@@ -27,7 +27,7 @@ QString s = QString::number(i);
 <p>And if you want to put it into string within some text context, forget about `+` operator. 
 Simply do:</p>
 
-```qt
+```c
 // Qt 5 + C++11
 auto i = 13;    
 auto printable = QStringLiteral("My magic number is %1. That's all!").arg(i);
@@ -45,13 +45,13 @@ QString printable = QString::fromLatin1("My magic number is %1. That's all!").ar
 <p>Moreover to convert whatever you want, you can use `QVariant`.
 For an `int` to a `QString` you get:</p>
 
-```qt
+```c
 QVariant(3).toString();
 ```
 
 A `float` to a `string` or a `string` to a `float`:  
 
-```qt
+```c
 QVariant(3.2).toString();
 QVariant("5.2").toFloat();
 ```
@@ -68,7 +68,7 @@ The best and recommended way is to use <a href="http://doc.qt.io/qt-5/stylesheet
 
 To change the text color and background color of a `QLabel`, here is what I would do :  
 
-```qt
+```c
 QLabel* pLabel = new QLabel;
 pLabel-&gt;setStyleSheet("QLabel { background-color : red; color : blue; }");
 ```
@@ -83,7 +83,7 @@ As Qt documentation states :
 
 But you could do something like this :  
 
-```qt
+```c
  QPalette palette = ui-&gt;pLabel-&gt;palette();
  palette.setColor(ui-&gt;pLabel-&gt;backgroundRole(), Qt::yellow);
  palette.setColor(ui-&gt;pLabel-&gt;foregroundRole(), Qt::yellow);
@@ -95,7 +95,7 @@ But as I said, I strongly suggest not to use the palette and go for Qt Style She
 #### Answer 2 (score 33)
 You can use QPalette, however you must set `setAutoFillBackground(true);` to enable background color  
 
-```qt
+```c
 QPalette sample_palette;
 sample_palette.setColor(QPalette::Window, Qt::white);
 sample_palette.setColor(QPalette::WindowText, Qt::blue);
@@ -128,7 +128,7 @@ Today, I've open up the `qt-assistant` and read the <a href="https://doc.qt.io/q
 
 Thats open up my mind in doing something like the code below, as an example:  
 
-```qt
+```c
 myLabel= QLabel()
 myLabel.setAutoFillBackground(True) # This is important!!
 color  = QtGui.QColor(233, 10, 150)
@@ -152,7 +152,7 @@ Regards,
 #### Question
 I am trying to do something like this:  
 
-```qt
+```c
 QString string;
 // do things...
 std::cout &lt;&lt; string &lt;&lt; std::endl;
@@ -166,7 +166,7 @@ One of the things you should remember when converting `QString` to `std::string`
 
 So the best would be either:  
 
-```qt
+```c
 QString qs;
 
 // Either this if you use UTF-8 anywhere
@@ -183,7 +183,7 @@ See: <a href="http://doc.qt.io/qt-5/qstring.html#toLatin1" rel="noreferrer">http
 #### Answer 2 (score 256)
 You can use:  
 
-```qt
+```c
 QString qs;
 // do things
 std::cout &lt;&lt; qs.toStdString() &lt;&lt; std::endl;
@@ -210,7 +210,7 @@ I'm using Qt4 and C++ for making some programs in computer graphics. I need to b
 #### Answer accepted (score 185)
 If it is good enough to print to `stderr`, you can use the following streams originally intended for debugging:  
 
-```qt
+```c
 #include&lt;QDebug&gt;
 
 //qInfo is qt5.5+ only.
@@ -234,7 +234,7 @@ Though as pointed out in the comments, bear in mind qDebug messages are removed 
 
 If you need stdout you could try something like this (as Kyle Strand has pointed out):  
 
-```qt
+```c
 QTextStream&amp; qStdOut()
 {
     static QTextStream ts( stdout );
@@ -244,14 +244,14 @@ QTextStream&amp; qStdOut()
 
 You could then call as follows:  
 
-```qt
+```c
 qStdOut() &lt;&lt; "std out!";
 ```
 
 #### Answer 2 (score 145)
 I found <a href="http://www.qtcentre.org/threads/33506-where-is-cout-in-Qt-Creator" rel="noreferrer">this</a> most useful:  
 
-```qt
+```c
 #include &lt;QTextStream&gt;
 
 QTextStream out(stdout);
@@ -264,13 +264,13 @@ foreach(QString x, strings)
 
 If you want something that, like `std::cout`, writes to your application's standard output, you can simply do <a href="http://www.qtcentre.org/threads/33506-where-is-cout-in-Qt-Creator" rel="noreferrer">the following</a> (<a href="https://stackoverflow.com/a/17649741/1858225">credit to CapelliC</a>):  
 
-```qt
+```c
 QTextStream(stdout) &lt;&lt; "string to print" &lt;&lt; endl;
 ```
 
 If you want to avoid creating a temporary `QTextStream` object, follow Yakk's suggestion in the comments below of creating a function to return a `static` handle for `stdout`:  
 
-```qt
+```c
 inline QTextStream&amp; qStdout()
 {
     static QTextStream r{stdout};
@@ -291,7 +291,7 @@ foreach(QString x, strings)
 
 Note that the above technique can also be used for other outputs. However, there are more readable ways to write to `stderr` (<a href="https://stackoverflow.com/a/3886128/1858225">credit to Goz</a> and the comments below his answer):  
 
-```qt
+```c
 qDebug() &lt;&lt; "Debug Message";    // CAN BE REMOVED AT COMPILE TIME!
 qWarning() &lt;&lt; "Warning Message";
 qCritical() &lt;&lt; "Critical Error Message";
@@ -338,7 +338,7 @@ However, when starting from the "release"-Folder, i get the following message:
 
 Folder structure looks like this:  
 
-```qt
+```c
 release
 + gui.exe
 + icudt51.dll
@@ -384,7 +384,7 @@ How can I add external library into a project built by Qt Creator RC1 (version 0
 #### Answer accepted (score 210)
 The proper way to do this is like this:  
 
-```qt
+```c
 LIBS += -L/path/to -lpsapi
 ```
 
@@ -392,14 +392,14 @@ This way it will work on all platforms supported by Qt. The idea is that you hav
 
 In case you want to store your lib files in the project directory, you can reference them with the `$$_PRO_FILE_PWD_` variable, e.g.:  
 
-```qt
+```c
 LIBS += -L"$$_PRO_FILE_PWD_/3rdparty/libs/" -lpsapi
 ```
 
 #### Answer 2 (score 22)
 Are you using `qmake` projects? If so, you can add an external library using the <a href="https://doc.qt.io/qt-5/qmake-variable-reference.html#libs" rel="nofollow noreferrer">`LIBS`</a> variable. E.g:  
 
-```qt
+```c
 win32:LIBS += path/to/Psapi.lib
 ```
 
@@ -423,7 +423,7 @@ If by string you mean `std::string` you can do it with this method:
 
 <a href="http://doc.qt.io/qt-4.8/qstring.html#fromStdString" rel="noreferrer">QString QString::fromStdString(const std::string &amp; str)</a>  
 
-```qt
+```c
 std::string str = "Hello world";
 QString qstr = QString::fromStdString(str);
 ```
@@ -434,7 +434,7 @@ If by string you mean Ascii encoded `const char *` then you can use this method:
 
 <a href="http://doc.qt.io/qt-4.8/qstring.html#fromAscii" rel="noreferrer">QString QString::fromAscii(const char * str, int size = -1)</a>  
 
-```qt
+```c
 const char* str = "Hello world";
 QString qstr = QString::fromAscii(str);
 ```
@@ -445,7 +445,7 @@ If you have `const char *` encoded with system encoding that can be read with <a
 
 <a href="http://doc.qt.io/qt-4.8/qstring.html#fromLocal8Bit" rel="noreferrer">QString QString::fromLocal8Bit(const char * str, int size = -1)</a>  
 
-```qt
+```c
 const char* str = "zażółć gęślą jaźń";      // latin2 source file and system encoding
 QString qstr = QString::fromLocal8Bit(str);
 ```
@@ -456,7 +456,7 @@ If you have `const char *` that's UTF8 encoded then you'll need to use this meth
 
 <a href="http://doc.qt.io/qt-4.8/qstring.html#fromUtf8" rel="noreferrer">QString QString::fromUtf8(const char * str, int size = -1)</a>  
 
-```qt
+```c
 const char* str = read_raw("hello.txt"); // assuming hello.txt is UTF8 encoded, and read_raw() reads bytes from file into memory and returns pointer to the first byte as const char*
 QString qstr = QString::fromUtf8(str);
 ```
@@ -467,7 +467,7 @@ There's also method for `const ushort *` containing UTF16 encoded string:
 
 <a href="http://doc.qt.io/qt-4.8/qstring.html#fromUtf16" rel="noreferrer">QString QString::fromUtf16(const ushort * unicode, int size = -1)</a>  
 
-```qt
+```c
 const ushort* str = read_raw("hello.txt"); // assuming hello.txt is UTF16 encoded, and read_raw() reads bytes from file into memory and returns pointer to the first byte as const ushort*
 QString qstr = QString::fromUtf16(str);
 ```
@@ -475,7 +475,7 @@ QString qstr = QString::fromUtf16(str);
 #### Answer 2 (score 242)
 If compiled with STL compatibility, `QString` has a <a href="http://doc.qt.io/qt-5/qstring.html#fromStdString" rel="noreferrer">static method</a> to convert a `std::string` to a `QString`:  
 
-```qt
+```c
 std::string str = "abc";
 QString qstr = QString::fromStdString(str);
 ```
@@ -483,7 +483,7 @@ QString qstr = QString::fromStdString(str);
 #### Answer 3 (score 13)
 Alternative way:  
 
-```qt
+```c
 std::string s = "This is an STL string";
 QString qs = QString::fromAscii(s.data(), s.size());
 ```
@@ -520,7 +520,7 @@ How can this happen? How can platform plugin be available but can't be loaded?
 #### Answer accepted (score 54)
 Use ldd (man ldd) to show shared library dependencies. Running this on libqxcb.so   
 
-```qt
+```c
 .../platforms$ ldd libqxcb.so
 ```
 
@@ -531,20 +531,20 @@ As was posted earlier, you need to make sure you install the platform plugins wh
 
 The first is to export the path to the directory through the QT_QPA_PLATFORM_PLUGIN_PATH variable.  
 
-```qt
+```c
 QT_QPA_PLATFORM_PLUGIN_PATH=path/to/plugins ./my_qt_app
 ```
 
 or  
 
-```qt
+```c
 export QT_QPA_PLATFORM_PLUGIN_PATH=path/to/plugins
 ./my_qt_app
 ```
 
 The other option, which I prefer is to create a qt.conf file in the same directory as your executable. The contents of which would be:  
 
-```qt
+```c
 [Paths]
 Plugins=/path/to/plugins
 ```
@@ -564,7 +564,7 @@ Then you may want to run your binary with `QT_DEBUG_PLUGINS=1` environment varia
 
 The command output may look like this:  
 
-```qt
+```c
 me@xerus:/media/sf_Qt/Package$ LD_LIBRARY_PATH=. QT_DEBUG_PLUGINS=1 ./Binary
 QFactoryLoader::QFactoryLoader() checking directory path "/media/sf_Qt/Package/platforms" ...
 QFactoryLoader::QFactoryLoader() looking at "/media/sf_Qt/Package/platforms/libqxcb.so"
@@ -610,7 +610,7 @@ I am basically just making a console application to test some class code which w
 #### Answer accepted (score 30)
 This <a href="https://stackoverflow.com/questions/3149356/qt-make-a-function-to-pause-at-some-moment-for-some-time">previous question</a> mentions using `qSleep()` which is in the `QtTest` module. To avoid the overhead linking in the `QtTest` module, looking at the source for that function you could just make your own copy and call it. It uses defines to call either Windows `Sleep()` or Linux `nanosleep()`.  
 
-```qt
+```c
 #ifdef Q_OS_WIN
 #include &lt;windows.h&gt; // for Sleep
 #endif
@@ -634,7 +634,7 @@ I would advise you to use this code rather than the sleep function as it won't l
 
 Here is the code:  
 
-```qt
+```c
 void delay()
 {
     QTime dieTime= QTime::currentTime().addSecs(1);
@@ -650,7 +650,7 @@ From Qt5 onwards we can also use
 
 <a href="http://doc.qt.io/qt-5/qthread.html#static-public-members" rel="noreferrer"><strong>Static Public Members of QThread</strong></a>  
 
-```qt
+```c
 void    msleep(unsigned long msecs)
 void    sleep(unsigned long secs)
 void    usleep(unsigned long usecs)
@@ -665,13 +665,13 @@ I have a software in ubuntu that requires me to run qmake  to generate the Makef
 
 However, running qmake gives back this error,  
 
-```qt
+```c
 qmake: could not find a Qt installation of ''
 ```
 
 I have installed what I thought to be the required packages using,  
 
-```qt
+```c
 sudo apt-get install qt4-qmake
 sudo apt-get install qt5-qmake
 ```
@@ -683,7 +683,7 @@ Any help on this would be gladly appreciated!
 #### Answer accepted (score 151)
 `sudo apt-get install qt5-default` works for me.  
 
-<p>```qt
+<p>```c
 $ aptitude show qt5-default</pre></code>
 tells that</p>
 
@@ -703,7 +703,7 @@ You could also use <a href="http://manpages.ubuntu.com/manpages/utopic/man1/qtch
 #### Answer 3 (score 12)
 For others in my situation, the solution was:  
 
-```qt
+```c
 qmake -qt=qt5
 ```
 
@@ -751,14 +751,14 @@ So I need to convert it to integer <strong>without "Kb".</strong> </p>
 
 I tried `Abcd.toInt()` but it does not work.  
 
-```qt
+```c
 QString Abcd = "123.5 Kb"
 ```
 
 #### Answer 2 (score 82)
 You don't have all digit characters in your string. So you have to split by space  
 
-```qt
+```c
 QString Abcd = "123.5 Kb";
 Abcd.split(" ")[0].toInt();    //convert the first part to Int
 Abcd.split(" ")[0].toDouble(); //convert the first part to double
@@ -767,7 +767,7 @@ Abcd.split(" ")[0].toFloat();  //convert the first part to float
 
 <strong>Update</strong>: I am updating an old answer. That was a straight forward answer to the specific question, with a strict assumption. However as noted by @DomTomCat in comments and @Mikhail in answer, In general one should always check whether the operation is successful or not. So using a boolean flag is necessary.  
 
-```qt
+```c
 bool flag;
 double v = Abcd.split(" ")[0].toDouble(&amp;flag); 
 if(flag){
@@ -777,13 +777,13 @@ if(flag){
 
 Also if you are taking that string as user input, then you should also be doubtful about whether the string is really splitable with space. If there is a possibility that the assumption may break then a regex verifier is more preferable. A regex like the following will extract the floating point value and the prefix character of 'b'. Then you can safely convert the captured strings to double.  
 
-```qt
+```c
 ([0-9]*\.?[0-9]+)\s+(\w[bB])
 ```
 
 You can have an utility function like the following  
 
-```qt
+```c
 QPair&lt;double, QString&gt; split_size_str(const QString&amp; str){
     QRegExp regex("([0-9]*\\.?[0-9]+)\\s+(\\w[bB])");
     int pos = regex.indexIn(str);
@@ -800,7 +800,7 @@ QPair&lt;double, QString&gt; split_size_str(const QString&amp; str){
 #### Answer 3 (score 8)
 Don't forget to check if the conversion was successful!  
 
-```qt
+```c
 bool ok;
 auto str= tr("1337");
 str.toDouble(&amp;ok); // returns 1337.0, ok set to true
@@ -817,7 +817,7 @@ I am trying to write into a file and if the file doesn't exist create it. I have
 
 My code looks currently like this:  
 
-```qt
+```c
 QString filename="Data.txt";
 QFile file( filename );
 if ( file.open(QIODevice::ReadWrite) )
@@ -844,7 +844,7 @@ and see if the file is created in `c:\`
 #### Answer 2 (score 24)
 That is weird, everything looks fine, are you sure it does not work for you? Because this `main` surely works for me, so I would look somewhere else for the source of your problem.  
 
-```qt
+```c
 #include &lt;QFile&gt;
 #include &lt;QTextStream&gt;
 
@@ -865,7 +865,7 @@ The code you provided is also almost the same as the one provided in <a href="ht
 Also note, that the file is not called `Data` but `Data.txt` and should be created/located in the directory from which the program was run (not necessarily the one where the executable is located).  
 
 #### Answer 3 (score 9)
-```qt
+```c
 #include &lt;QFile&gt;
 #include &lt;QCoreApplication&gt;
 #include &lt;QTextStream&gt;
@@ -896,7 +896,7 @@ int main(int argc, char *argv[])
 #### Question
 I was trying to convert a QString to char* type by the following methods, but they don't seem to work.  
 
-```qt
+```c
 //QLineEdit *line=new QLineEdit();{just to describe what is line here}
 
 QString temp=line-&gt;text();
@@ -910,7 +910,7 @@ Can you elaborate the possible flaw with this method, or give an alternative met
 #### Answer accepted (score 108)
 Well, the <a href="https://wiki.qt.io/Technical_FAQ#How_can_I_convert_a_QString_to_char.2A_and_vice_versa.3F" rel="noreferrer">Qt FAQ</a> says:  
 
-```qt
+```c
 int main(int argc, char **argv)
 {
  QApplication app(argc, argv);
@@ -931,7 +931,7 @@ Maybe
 
 or safer, as Federico points out:  
 
-```qt
+```c
 std::string str = my_qstring.toStdString();
 const char* p = str.c_str();
 ```
@@ -952,7 +952,7 @@ I want to display .jpg image in an Qt UI. I checked it online and found <a href=
 Thanks.  
 
 #### Answer accepted (score 39)
-```qt
+```c
 #include ...
 
 int main(int argc, char *argv[])
@@ -972,7 +972,7 @@ This should work. :) List of supported formats can be <a href="http://qt-project
 #### Answer 2 (score 42)
 You could attach the image (as a pixmap) to a label then add that to your layout...  
 
-```qt
+```c
 ...
 
 QPixmap image("blah.jpg");
@@ -1008,14 +1008,14 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 #### Question
 When I try installing the PyQt5 on Windows using the command   
 
-```qt
+```c
 python configure.py
 ```
 
 I get this error:  
 
 <blockquote>
-```qt
+```c
 Error: Make sure you have a working Qt qmake on your PATH.
 ```
 </blockquote>
@@ -1031,7 +1031,7 @@ How can I install PyQt5?
 I installed `Qt 5.0.2 for Windows 64-bit (VS 2012, 500 MB)` from the <a href="http://qt-project.org/downloads" rel="noreferrer">Qt Download page</a> and now I have this error:  
 
 <blockquote>
-```qt
+```c
 Querying qmake about your Qt installation...
 Determining the details of your Qt installation...
 Error: Failed to determine the detail of your Qt installation. Try again using
@@ -1042,7 +1042,7 @@ the --verbose flag to see more detail about the problem.
 And when I execute the command `python configure.py --verbose`:  
 
 <blockquote>
-```qt
+```c
 Querying qmake about your Qt installation...
 Determining the details of your Qt installation...
 C:\Qt\Qt5.0.2\5.0.2\msvc2012_64\bin\qmake.exe -spec win32-msvc2008 -o qtdetail.m
@@ -1058,7 +1058,7 @@ the --verbose flag to see more detail about the problem.
 I added `C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin` (contains `nmake.exe`) to PATH and I got this error:  
 
 <blockquote>
-```qt
+```c
 Querying qmake about your Qt installation...
 Determining the details of your Qt installation...
 C:\Qt\Qt5.0.2\5.0.2\msvc2012_64\bin\qmake.exe -spec win32-msvc2008 -o qtdetail.mk qtdetail.pro
@@ -1099,7 +1099,7 @@ If you do need to compile your own version of PyQt5, the steps (as you have foun
 #### Answer 2 (score 27)
 Mainly I use the following command under the `cmd`  
 
-```qt
+```c
 pip install pyqt5
 ```
 
@@ -1108,13 +1108,13 @@ And it works with no problem!
 #### Answer 3 (score 8)
 First try this in your Windows cmd window:  
 
-```qt
+```c
 pip3 install pyqt5
 ```
 
 If that is successful, it will look something like this:  
 
-```qt
+```c
 C:\Windows\System32&gt;pip3 install pyqt5
 Collecting pyqt5
   Downloading PyQt5-5.9-5.9.1-cp35.cp36.cp37-none-win_amd64.whl (77.2MB)
@@ -1138,7 +1138,7 @@ I'll open the <strong>PyQt-5.6</strong> directory in my case.</p>
 
 Here we notice some .exe files:  
 
-```qt
+```c
 PyQt-5.6
 |_PyQt5-5.6-gpl-Py3.5-Qt5.6.0-x32-2.exe
 |_PyQt5-5.6-gpl-Py3.5-Qt5.6.0-x64-2.exe
@@ -1152,7 +1152,7 @@ Note: if you try to install a version that's not compatible with your system, a 
 
 To test a successful install, in your Python interpreter, try to import:  
 
-```qt
+```c
 from PyQt5 import QtCore, QtGui, QtWidgets
 ```
 
@@ -1172,7 +1172,7 @@ You would use <a href="http://qt-project.org/doc/qt-5.0/qtwidgets/qmessagebox.ht
 
 Example in a hypothetical widget's slot:  
 
-```qt
+```c
 #include &lt;QApplication&gt;
 #include &lt;QMessageBox&gt;
 #include &lt;QDebug&gt;
@@ -1199,7 +1199,7 @@ See the <a href="http://qt-project.org/doc/qt-5.0/qtwidgets/qmessagebox.html#Sta
 #### Answer 2 (score 38)
 You can use the QMessage object to create a Message Box then add buttons :   
 
-```qt
+```c
 QMessageBox msgBox;
 msgBox.setWindowTitle("title");
 msgBox.setText("Question");
@@ -1216,7 +1216,7 @@ if(msgBox.exec() == QMessageBox::Yes){
 #### Answer 3 (score 17)
 QT can be as simple as that of Windows. The equivalent code is  
 
-```qt
+```c
 if (QMessageBox::Yes == QMessageBox(QMessageBox::Information, "title", "Question", QMessageBox::Yes|QMessageBox::No).exec()) 
 {
 
@@ -1230,7 +1230,7 @@ if (QMessageBox::Yes == QMessageBox(QMessageBox::Information, "title", "Question
 #### Question
 I have a table view with three columns; I have just passed to write into text file using this code  
 
-```qt
+```c
 QFile file("/home/hamad/lesson11.txt");
 if(!file.open(QIODevice::WriteOnly)) {
     QMessageBox::information(0,"error",file.errorString());
@@ -1249,7 +1249,7 @@ for(int row=0; row &lt; model-&gt;rowCount(); row++) {
 
 But I'm not succeed to read the same file again, I tried this code but I don't know where is the problem in it  
 
-```qt
+```c
 QFile file("/home/hamad/lesson11.txt");
 QTextStream in(&amp;file);
 QString line = in.readLine();
@@ -1267,13 +1267,13 @@ Any help please ?
 #### Answer 2 (score 87)
 You have to replace string line  
 
-```qt
+```c
 QString line = in.readLine();
 ```
 
 into <em>while</em>:  
 
-```qt
+```c
 QFile file("/home/hamad/lesson11.txt");
 if(!file.open(QIODevice::ReadOnly)) {
     QMessageBox::information(0, "error", file.errorString());
@@ -1302,7 +1302,7 @@ How can I find my current working directory?
 #### Answer accepted (score 3)
 Thank you RedX and Kaz for your answers. I don't get why by me it gives the path of the exe. I found an other way to do it :   
 
-```qt
+```c
 QString pwd("");
 char * PWD;
 PWD = getenv ("PWD");
@@ -1320,7 +1320,7 @@ And a symlink does not "exist". If you are executing an exe from that path you a
 #### Answer 3 (score 53)
 Have you tried <a href="http://doc.qt.io/qt-4.8/qcoreapplication.html#applicationDirPath" rel="noreferrer">QCoreApplication::applicationDirPath()</a><br>  
 
-```qt
+```c
 qDebug() &lt;&lt; "App path : " &lt;&lt; qApp-&gt;applicationDirPath();
 ```
 
@@ -1331,7 +1331,7 @@ qDebug() &lt;&lt; "App path : " &lt;&lt; qApp-&gt;applicationDirPath();
 #### Question
 The title is pretty self-descriptive. I've downloaded Qt Creator 2.7.0, and I am trying to compile some basic C++11 code:  
 
-```qt
+```c
 int my_array[5] = {1, 2, 3, 4, 5};
 for(int &amp;x : my_array)
 {
@@ -1341,7 +1341,7 @@ for(int &amp;x : my_array)
 
 I'm receiving the following error:  
 
-```qt
+```c
 range based for loops are not allowed in c++ 98 mode
 ```
 
@@ -1365,20 +1365,20 @@ also work with <strong>Qt 4.8 and gcc / clang.</strong>
 #### Answer 2 (score 32)
 Add this to your <strong>.pro file</strong>  
 
-```qt
+```c
 QMAKE_CXXFLAGS += -std=c++11
 ```
 
 or    
 
-```qt
+```c
 CONFIG += c++11
 ```
 
 #### Answer 3 (score 19)
 As an alternative for handling both cases addressed in Ali's excellent answer, I usually add   
 
-```qt
+```c
 # With C++11 support
 greaterThan(QT_MAJOR_VERSION, 4){    
 CONFIG += c++11
@@ -1408,14 +1408,14 @@ How to create it ?
 #### Answer 2 (score 101)
 If you do not need to modify the substring, then you can use `QStringRef`.  The `QStringRef` class is a read only wrapper around an existing `QString` that references a substring within the existing string.  This gives much better performance than creating a new `QString` object to contain the sub-string. E.g.  
 
-```qt
+```c
 QString myString("This is a string");
 QStringRef subString(&amp;myString, 5, 2); // subString contains "is"
 ```
 
 If you do need to modify the substring, then `left()`, `mid()` and `right()` will do what you need...  
 
-```qt
+```c
 QString myString("This is a string");
 QString subString = myString.mid(5,2); // subString contains "is"
 subString.append("n't"); // subString contains "isn't"
@@ -1424,7 +1424,7 @@ subString.append("n't"); // subString contains "isn't"
 #### Answer 3 (score 44)
 Use the `left` function:  
 
-```qt
+```c
 QString yourString = "This is a string";
 QString leftSide = yourString.left(5);
 qDebug() &lt;&lt; leftSide; // output "This "
@@ -1478,12 +1478,12 @@ If you already have a plain Command Prompt window open, you can run the batch fi
   installation, but a typical location is C:\Program Files
   (x86)\Microsoft Visual Studio version\VC.) For example, enter:</p>
 
-```qt
+```c
 cd "\Program Files (x86)\Microsoft Visual Studio 12.0\VC"
 ```</li>
   <li><p>To configure this Command Prompt window for 32-bit x86 command-line builds, at the command prompt, enter:</p>
 
-```qt
+```c
 vcvarsall x86
 ```</li>
   </ol>
@@ -1504,14 +1504,14 @@ From the article, the possible arguments are the following:
 <p>I had the same problem. 
 Try to make a bat-file to start the Qt Creator. Add something like this to the bat-file:</p>
 
-```qt
+```c
 call "C:\Program Files\Microsoft Visual Studio 9.0\VC\bin\vcvars32.bat"  
 "C:\QTsdk\qtcreator\bin\qtcreator" 
 ```
 
 Now I can compile and get:  
 
-```qt
+```c
 jom 1.0.8 - empower your cores
 11:10:08: The process "C:\QTsdk\qtcreator\bin\jom.exe" exited normally.
 ```
@@ -1544,7 +1544,7 @@ If you are using your own class derived from QComboBox, you can add a `currentDa
 #### Answer 2 (score 24)
 This one can get the text of current index:  
 
-```qt
+```c
 QString cb = cbChoice -&gt;currentText();
 ```
 
@@ -1553,7 +1553,7 @@ you can set QVariant data for all items, then you can get the value when you nee
 
 there is an example code for this situation:  
 
-```qt
+```c
 ui.comboBoxSheetSize-&gt;addItem("128 m", QVariant(128));
 ui.comboBoxSheetSize-&gt;addItem("256 m", QVariant(256));
 ui.comboBoxSheetSize-&gt;addItem("512 m", QVariant(512));
@@ -1600,13 +1600,13 @@ On Ubuntu this is solved by running:
 
 For Qt5:  
 
-```qt
+```c
 sudo apt-get install qt5-default
 ```
 
 For Qt4:  
 
-```qt
+```c
 sudo apt-get install qt4-dev-tools libqt4-dev libqt4-core libqt4-gui
 ```
 
@@ -1649,7 +1649,7 @@ If you application is a command line application, you might indeed want to retur
 #### Answer 3 (score 0)
 If you're using Qt Jambi, this should work:  
 
-```qt
+```c
 QApplication.closeAllWindows();
 ```
 
@@ -1662,7 +1662,7 @@ I'd like to format a string for Qt label, I'm programming in C++ on Qt.
 
 In ObjC I would write something like:   
 
-```qt
+```c
 NSString *format=[NSString stringWithFormat: ... ];
 ```
 
@@ -1671,7 +1671,7 @@ How to do something like that in Qt?
 #### Answer 2 (score 151)
 You can use QString.arg like this  
 
-```qt
+```c
 QString my_formatted_string = QString("%1/%2-%3.txt").arg("~", "Tom", "Jane");
 // You get "~/Tom-Jane.txt"
 ```
@@ -1680,14 +1680,14 @@ This method is preferred over sprintf because:
 
 Changing the position of the string without having to change the ordering of substitution, e.g.  
 
-```qt
+```c
 // To get "~/Jane-Tom.txt"
 QString my_formatted_string = QString("%1/%3-%2.txt").arg("~", "Tom", "Jane");
 ```
 
 Or, changing the type of the arguments doesn't require changing the format string, e.g.  
 
-```qt
+```c
 // To get "~/Tom-1.txt"
 QString my_formatted_string = QString("%1/%2-%3.txt").arg("~", "Tom", QString::number(1));
 ```
@@ -1703,7 +1703,7 @@ UPDATE: Examples are updated thanks to alexisdm.
 #### Answer 3 (score 28)
 You can use the `sprintf` method, however the `arg` method is preferred as it supports unicode.  
 
-```qt
+```c
 QString str;
 str.sprintf("%s %d", "string", 213);
 ```
@@ -1724,7 +1724,7 @@ To make sure the size of the button will be correct, you have to reisze the icon
 
 Something like this should work :  
 
-```qt
+```c
 QPixmap pixmap("image_path");
 QIcon ButtonIcon(pixmap);
 button-&gt;setIcon(ButtonIcon);
@@ -1732,7 +1732,7 @@ button-&gt;setIconSize(pixmap.rect().size());
 ```
 
 #### Answer 3 (score 40)
-```qt
+```c
 QPushButton *button = new QPushButton;
 button-&gt;setIcon(QIcon(":/icons/..."));
 button-&gt;setIconSize(QSize(65, 65));
@@ -1745,7 +1745,7 @@ button-&gt;setIconSize(QSize(65, 65));
 #### Question
 I have installed C++SDK that have Qt but when I try compiling a code linking QApplication it gives me the error:  
 
-```qt
+```c
 Error QApplication: no such file or directory
 ```
 
@@ -1758,7 +1758,7 @@ The `-I` flag (uppercase <strong>i</strong>) is used to specify the include (hea
 
 But you can <strong>use Qt to your advantage</strong>: Qt has a build system named <strong>qmake</strong> which makes things easier. For instance, when I want to compile <em>main.cpp</em> I create a <strong>main.pro</strong> file. For educational purposes, let's say this source code is a simple project that uses only `QApplication` and `QDeclarativeView`. An appropriate <em>.pro</em> file would be:  
 
-```qt
+```c
 TEMPLATE += app
 QT += gui declarative
 SOURCES += main.cpp
@@ -1768,7 +1768,7 @@ Then, execute the `qmake` inside that directory to create the Makefile that will
 
 On my system this `make` outputs:  
 
-```qt
+```c
 g++ -c -pipe -O2 -Wall -W -D_REENTRANT -DQT_NO_DEBUG -DQT_DECLARATIVE_LIB -DQT_GUI_LIB -DQT_CORE_LIB -DQT_SHARED -I/opt/qt_47x/mkspecs/linux-g++ -I. -I/opt/qt_47x/include/QtCore -I/opt/qt_47x/include/QtGui -I/opt/qt_47x/include/QtDeclarative -I/opt/qt_47x/include -I/usr/X11R6/include -I. -o main.o main.cpp
 g++ -Wl,-O1 -Wl,-rpath,/opt/qt_47x/lib -o main main.o -L/opt/qt_47x/lib -L/usr/X11R6/lib -lQtDeclarative -L/opt/qt_47x/lib -lQtScript -lQtSvg -L/usr/X11R6/lib -lQtSql -lQtXmlPatterns -lQtNetwork -lQtGui -lQtCore -lpthread
 ```
@@ -1782,7 +1782,7 @@ Add `QT += widgets` to the .pro file and solve this problem.
 #### Answer 2 (score 100)
 In Qt 5 you now have to add `widgets` to the `QT` qmake variable (in your `MyProject.pro` file).  
 
-```qt
+```c
  QT += widgets
 ```
 
@@ -1792,7 +1792,7 @@ In Qt 5 you now have to add `widgets` to the `QT` qmake variable (in your `MyPro
 <p><strong>Step1:</strong>
 `.pro` (in pro file, add these 2 lines)</p>
 
-```qt
+```c
 QT       += core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 ```
@@ -1800,13 +1800,13 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 <p><strong>Step2:</strong>
 In `main.cpp` replace code: </p>
 
-```qt
+```c
 #include &lt;QtGui/QApplication&gt; 
 ```
 
 with:   
 
-```qt
+```c
 #include &lt;QApplication&gt;
 ```
 
@@ -1821,20 +1821,20 @@ If it doesn't exist, how do I then create an empty folder?</p>
 #### Answer accepted (score 214)
 To check if a directory named "Folder" exists use:  
 
-```qt
+```c
 QDir("Folder").exists();
 ```
 
 To create a new folder named "MyFolder" use:  
 
-```qt
+```c
 QDir().mkdir("MyFolder");
 ```
 
 #### Answer 2 (score 137)
 To both check if it exists and create if it doesn't, including intermediaries:  
 
-```qt
+```c
 QDir dir("path/to/dir");
 if (!dir.exists())
     dir.mkpath(".");
@@ -1863,7 +1863,7 @@ In the main GUI window create using the drag drop GUI and create label (e.g. "my
 
 In the callback of the button (clicked) do the following using the (*ui) pointer to the user interface window:  
 
-```qt
+```c
 void MainWindow::on_pushButton_clicked()
 {
      QImage imageObject;
@@ -1880,7 +1880,7 @@ void MainWindow::on_pushButton_clicked()
 #### Answer 2 (score 68)
 Simple, but complete example showing how to display QImage might look like this:  
 
-```qt
+```c
 #include &lt;QtGui/QApplication&gt;
 #include &lt;QLabel&gt;
 
@@ -1903,14 +1903,14 @@ int main(int argc, char *argv[])
 #### Answer 3 (score 24)
 Drawing an image using a `QLabel` seems like a bit of a kludge to me. With newer versions of Qt you can use a `QGraphicsView` widget. In Qt Creator, drag a `Graphics View` widget onto your UI and name it something (it is named `mainImage` in the code below). In `mainwindow.h`, add something like the following as `private` variables to your `MainWindow` class:  
 
-```qt
+```c
 QGraphicsScene *scene;
 QPixmap image;
 ```
 
 Then just edit `mainwindow.cpp` and make the constructor something like this:  
 
-```qt
+```c
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), ui(new Ui::MainWindow)
 {
@@ -1932,7 +1932,7 @@ MainWindow::MainWindow(QWidget *parent) :
 #### Question
 What is the correct interpretation of the following segfault messages?  
 
-```qt
+```c
 segfault at 10 ip 00007f9bebcca90d sp 00007fffb62705f0 error 4 in libQtWebKit.so.4.5.2[7f9beb83a000+f6f000]
 segfault at 10 ip 00007fa44d78890d sp 00007fff43f6b720 error 4 in libQtWebKit.so.4.5.2[7fa44d2f8000+f6f000]
 segfault at 11 ip 00007f2b0022acee sp 00007fff368ea610 error 4 in libQtWebKit.so.4.5.2[7f2aff9f7000+f6f000]
@@ -1960,7 +1960,7 @@ Here's the breakdown of the fields:
 <li>`sp` - stack pointer</li>
 <li><p>`error` - An error code for page faults; see below for what this means on x86.</p>
 
-```qt
+```c
 /*
  * Page fault error code bits:
  *
@@ -1978,7 +1978,7 @@ Error 4 means "The cause was a user-mode read resulting in no page being found."
 
 Here's the definition from the kernel. Keep in mind that 4 means that bit 2 is set and no other bits are set. If you convert it to binary that becomes clear.  
 
-```qt
+```c
 /*
  * Page fault error code bits
  *      bit 0 == 0 means no page found, 1 means protection fault
@@ -2006,13 +2006,13 @@ Now then, "ip 00007f9bebcca90d" means the instruction pointer was at 0x00007f9be
 
 If you take the base address and subtract it from the ip, you get the offset into that object:  
 
-```qt
+```c
 0x00007f9bebcca90d - 0x7f9beb83a000 = 0x49090D
 ```
 
 Then you can run addr2line on it:  
 
-```qt
+```c
 addr2line -e /usr/lib64/qt45/lib/libQtWebKit.so.4.5.2 -fCi 0x49090D
 ??
 ??:0
@@ -2036,7 +2036,7 @@ I'm trying to get the current time as TimeStamp without success.
 
 I have this code:  
 
-```qt
+```c
 QDateTime setTime = QDateTime::fromString (QString("1970-07-18T14:15:09"), Qt::ISODate);
 QDateTime current = QDateTime::currentDateTime();
 uint msecs = setTime.time().msecsTo(current.time());
@@ -2046,7 +2046,7 @@ return  QString::number(msecs);
 
 The output is  
 
-```qt
+```c
 Sunday, January 25th 1970, 03:17:35 (GMT)
 ```
 
@@ -2083,7 +2083,7 @@ So if I go into QtDesigner and build a UI, it'll be saved as a .ui file.  How ca
 #### Answer accepted (score 58)
 Another way to use .ui in your code is:  
 
-```qt
+```c
 from PyQt4 import QtCore, QtGui, uic
 class MyWidget(QtGui.QWidget)
     ...
@@ -2093,7 +2093,7 @@ class MyWidget(QtGui.QWidget)
 
 both approaches are good. Do not forget, that if you use Qt resource files (extremely useful) for icons and so on, you must compile it too:  
 
-```qt
+```c
 pyrcc4.exe -o ui/images_rc.py ui/images/images.qrc
 ```
 
@@ -2104,7 +2104,7 @@ Combining <a href="https://stackoverflow.com/a/2500905/544059">Max's answer</a> 
 
 This is the code that loads it:  
 
-```qt
+```c
 import sys
 from PyQt4 import QtGui, uic
 
@@ -2123,13 +2123,13 @@ if __name__ == '__main__':
 #### Answer 3 (score 28)
 You need to generate a python file from your ui file with the pyuic tool (site-packages\pyqt4\bin)  
 
-```qt
+```c
 pyuic form1.ui &gt; form1.py
 ```
 
 with pyqt4  
 
-```qt
+```c
 pyuic4.bat form1.ui &gt; form1.py
 ```
 
@@ -2142,7 +2142,7 @@ Then you can import the form1 into your script.
 #### Question
 I have this function in my program that converts integers to strings:  
 
-```qt
+```c
     QString Stats_Manager::convertInt(int num)
     {
         stringstream ss;
@@ -2153,7 +2153,7 @@ I have this function in my program that converts integers to strings:
 
 But when ever i run this i get the error:  
 
-```qt
+```c
 aggregate 'std::stringstream ss' has incomplete type and cannot be defined
 ```
 
@@ -2162,7 +2162,7 @@ Im not really sure what that means. But if you know how to fix it or need any mo
 #### Answer accepted (score 137)
 You probably have a forward declaration of the class, but haven't included the header:  
 
-```qt
+```c
 #include &lt;sstream&gt;
 
 //...
@@ -2177,7 +2177,7 @@ QString Stats_Manager::convertInt(int num)
 #### Answer 2 (score 6)
 Like it's written up there, you forget to type `#include &lt;sstream&gt;`  
 
-```qt
+```c
 #include &lt;sstream&gt;
 using namespace std;
 
@@ -2191,7 +2191,7 @@ QString Stats_Manager::convertInt(int num)
 
 You can also use some other ways to convert `int` to `string`, like  
 
-```qt
+```c
 char numstr[21]; // enough to hold all numbers up to 64-bits
 sprintf(numstr, "%d", age);
 result = name + numstr;
@@ -2206,7 +2206,7 @@ check <a href="https://stackoverflow.com/questions/191757/c-concatenate-string-a
 #### Question
 I have a Qt GUI application running on Windows that allows command-line options to be passed and under some circumstances I want to output a message to the console and then quit, for example:  
 
-```qt
+```c
 int main(int argc, char *argv[])
 {
   QApplication a(argc, argv);
@@ -2231,7 +2231,7 @@ Windows does not really support dual mode applications.
 
 To see console output you need to create a console application  
 
-```qt
+```c
 CONFIG += console
 ```
 
@@ -2244,7 +2244,7 @@ Or you could put all the functionality in a DLL then create two versions of the 
 #### Answer 2 (score 12)
 Add:  
 
-```qt
+```c
 #ifdef _WIN32
 if (AttachConsole(ATTACH_PARENT_PROCESS)) {
     freopen("CONOUT$", "w", stdout);
@@ -2255,12 +2255,12 @@ if (AttachConsole(ATTACH_PARENT_PROCESS)) {
 
 at the top of `main()`. This will enable output to the console only if the program is started in a console, and won't pop up a console window in other situations. If you want to create a console window to display messages when you run the app outside a console you can change the condition to:  
 
-```qt
+```c
 if (AttachConsole(ATTACH_PARENT_PROCESS) || AllocConsole())
 ```
 
 #### Answer 3 (score 6)
-```qt
+```c
 void Console()
 {
     AllocConsole();
@@ -2291,7 +2291,7 @@ You can't use std::cout as others have said,my way is perfect even for some code
 #### Question
 I was trying to create a simple console application to try out Qt's XML parser. I started a project in VS2008 and got this template:  
 
-```qt
+```c
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
@@ -2307,7 +2307,7 @@ For the sake of curiosity however, I am wondering how could I make some generic 
 #### Answer accepted (score 99)
 Here is one simple way you could structure an application if you want an event loop running.  
 
-```qt
+```c
 // main.cpp
 #include &lt;QtCore&gt;
 
@@ -2353,7 +2353,7 @@ int main(int argc, char *argv[])
 #### Answer 2 (score 18)
 Don't forget to add the   
 
-```qt
+```c
 CONFIG += console 
 ```
 
@@ -2365,7 +2365,7 @@ One way I use it is to spawn processes cross-platform.</p>
 #### Answer 3 (score 4)
 You don't need the `QCoreApplication` at all, just include your Qt objects as you would other objects, for example:  
 
-```qt
+```c
 #include &lt;QtCore&gt;
 
 int main()
@@ -2392,7 +2392,7 @@ I have a Qt project and I would like to output compilation files outside the sou
 
 I currently have the following directory structure:  
 
-```qt
+```c
 /
 |_/build
 |_/mylib
@@ -2419,7 +2419,7 @@ It's not uncommon to have more than two build configurations, so you're unnecess
 #### Answer 2 (score 147)
 For my Qt project, I use this scheme in *.pro file:  
 
-```qt
+```c
 HEADERS += src/dialogs.h
 SOURCES += src/main.cpp \
            src/dialogs.cpp
@@ -2442,7 +2442,7 @@ It`s simple, but nice! :)
 #### Answer 3 (score 49)
 To change the directory for target dll/exe, use this in your pro file:  
 
-```qt
+```c
 CONFIG(debug, debug|release) {
     DESTDIR = build/debug
 } else {
@@ -2472,7 +2472,7 @@ Code example:
 
 <strong>MainWindow.h</strong>  
 
-```qt
+```c
 // ...
 include "newwindow.h"
 // ...
@@ -2487,7 +2487,7 @@ private:
 
 <strong>MainWindow.cpp</strong>  
 
-```qt
+```c
 // ...
    MainWindow::MainWindow()
    {
@@ -2519,7 +2519,7 @@ EDIT (to add this other option):</p>
 
 Another way to use it would be subclass QThread since it has protected *sleep methods.  
 
-```qt
+```c
 QThread::usleep(unsigned long microseconds);
 QThread::msleep(unsigned long milliseconds);
 QThread::sleep(unsigned long second);
@@ -2527,7 +2527,7 @@ QThread::sleep(unsigned long second);
 
 Here's the code to create your own *sleep method.  
 
-```qt
+```c
 #include &lt;QThread&gt;    
 
 class Sleeper : public QThread
@@ -2541,7 +2541,7 @@ public:
 
 and you call it by doing this:  
 
-```qt
+```c
 Sleeper::usleep(10);
 Sleeper::msleep(10);
 Sleeper::sleep(10);
@@ -2585,7 +2585,7 @@ If there isn't a slot for this, can anyone suggest me some other method by which
 #### Answer accepted (score 145)
 If you have a `QMainWindow` you can override `closeEvent` method.  
 
-```qt
+```c
 #include &lt;QCloseEvent&gt;
 void MainWindow::closeEvent (QCloseEvent *event)
 {
@@ -2603,7 +2603,7 @@ void MainWindow::closeEvent (QCloseEvent *event)
 
 <br>If you're subclassing a `QDialog`, the `closeEvent` will not be called and so you have to override `reject()`:  
 
-```qt
+```c
 void MyDialog::reject()
 {
     QMessageBox::StandardButton resBtn = QMessageBox::Yes;
@@ -2622,7 +2622,7 @@ void MyDialog::reject()
 #### Answer 2 (score 15)
 Well, I got it. One way is to override the <a href="http://doc.qt.io/qt-5/qwidget.html#closeEvent" rel="noreferrer">`QWidget::closeEvent`</a>`(QCloseEvent *event)` method in your class definition and add your code into that function. Example:  
 
-```qt
+```c
 class foo : public QMainWindow
 {
     Q_OBJECT
@@ -2642,7 +2642,7 @@ void foo::closeEvent(QCloseEvent *bar)
 #### Answer 3 (score 12)
 You can attach a SLOT to the  
 
-```qt
+```c
 void aboutToQuit();
 ```
 
@@ -2658,7 +2658,7 @@ I am writing a program in QT. I want to convert a `double` into a `Qstring` in C
 #### Answer accepted (score 82)
 Use QString's number method (docs are <a href="https://doc.qt.io/qt-5/qstring.html#number-2" rel="noreferrer">here</a>):  
 
-```qt
+```c
 double valueAsDouble = 1.2;
 QString valueAsString = QString::number(valueAsDouble);
 ```
@@ -2669,7 +2669,7 @@ Instead of `QString::number()` i would use <a href="https://doc.qt.io/qt-5/qloca
 #### Answer 3 (score 8)
 You can use arg(), as follow:  
 
-```qt
+```c
 double dbl = 0.25874601;
 QString str = QString("%1").arg(dbl);
 ```
@@ -2684,7 +2684,7 @@ This overcomes the problem of: "Fixed precision" at the other functions like: se
 How to change the title of the window in Qt? (Both for `QDialog` and `QMainWindow`.)  
 
 #### Answer accepted (score 102)
-```qt
+```c
 void    QWidget::setWindowTitle ( const QString &amp; )
 ```
 
@@ -2697,7 +2697,7 @@ Initially I tried to use `ui-&gt;setWindowTitle`, but that doesn't exist.  `ui` 
 
 The owner of the `ui` is the `QDialog` or `QMainWindow`, the `.ui` just describes how to lay it out. In that case, you would use:  
 
-```qt
+```c
 this-&gt;setWindowTitle("New Title");
 ```
 
@@ -2706,7 +2706,7 @@ I hope this helps someone else.
 #### Answer 3 (score 2)
 I know this is years later but I ran into the same problem. The solution I found was to change the window title in main.cpp. I guess once the `w.show();` is called the window title can no longer be changed. In my case I just wanted the title to reflect the current directory and it works.  
 
-```qt
+```c
 int main(int argc, char *argv[]) 
 {
 QApplication a(argc, argv);
@@ -2729,7 +2729,7 @@ I have just started my first qt GUI application. I used all the default settings
 
 Its just a simple form. It builds OK without any errors. But when I try and run the application. I get the following message:  
 
-```qt
+```c
 Starting /home/rob/projects/qt/test1/test1/test1...
 No protocol specified
 test1: cannot connect to X server :0.0
@@ -2744,7 +2744,7 @@ The general causes for this are as follows:
 <li><p>DISPLAY not set in the environment.<br>
 <strong>Solution</strong>:   </p>
 
-```qt
+```c
 export DISPLAY=:0.0
 ./myQtCmdHere
 ```
@@ -2753,7 +2753,7 @@ export DISPLAY=:0.0
 <li><p>Non-Authorised User trying to run the X Application<br>
 <strong>Solution</strong> ( as X owning user, ie: yourself )</p>
 
-```qt
+```c
 xhost +local:root   # where root is the local user you want to grant access to. 
 ```</li>
 </ol>
@@ -2776,7 +2776,7 @@ I solved the problem using <a href="http://manpages.ubuntu.com/manpages/lucid/ma
 
 The script that I wrote was:  
 
-```qt
+```c
 check_install_xvfb() { # check and install xvfb
     if hash xvfb-run 2&gt;/dev/null; then
         :
@@ -2808,13 +2808,13 @@ Hope it helps
 #### Question
 Which is better (or faster), a C++ `for` loop or the `foreach` operator provided by Qt? For example, the following condition  
 
-```qt
+```c
 QList&lt;QString&gt; listofstrings;
 ```
 
 Which is better?  
 
-```qt
+```c
 foreach(QString str, listofstrings)
 {
     //code
@@ -2823,7 +2823,7 @@ foreach(QString str, listofstrings)
 
 or  
 
-```qt
+```c
 int count = listofstrings.count();
 QString str = QString();
 for(int i=0;i&lt;count;i++)
@@ -2857,7 +2857,7 @@ The main lesson to take away from that is: use const references in read only loo
 #### Answer 3 (score 14)
 <strong>It really doesn't matter</strong>. Odds are if your program is slow, this isn't the problem. However, it should be noted that you aren't make a completely equal comparison. Qt's `foreach` is more similar to this (this example will use `QList&lt;QString&gt;`):  
 
-```qt
+```c
 for(QList&lt;QString&gt;::iterator it = Con.begin(); it != Con.end(); ++it) {
     QString &amp;str = *it;
     // your code here
@@ -2874,7 +2874,7 @@ That being said. It <strong>still</strong> doesn't matter. The timing difference
 
 <strong>EDIT:</strong> As a bonus, currently I strongly favor the C++11 version of container iteration, it is clean, concise and simple:  
 
-```qt
+```c
 for(QString &amp;s : Con) {
     // you code here
 }
@@ -2925,7 +2925,7 @@ Clear the text from the Search field.
 
 Now I have created a new console app in QtCreator.  
 
-```qt
+```c
 //cvHello.pro
 QT       += core
 QT       -= gui
@@ -2945,7 +2945,7 @@ OTHER_FILES += \
 
 And the main file:  
 
-```qt
+```c
 //main.cpp
 #include &lt;iostream&gt;
 #include "opencv2/core/core.hpp"
@@ -2974,7 +2974,7 @@ Finally I am starting to be happy. When adjusting this question I had to try all
 
 This is how it works finally:  
 
-```qt
+```c
 LIBS += -LC:\\Programs\\opencv24\\opencv_bin2\\bin \
     libopencv_core240d \
     libopencv_highgui240d \
@@ -3018,7 +3018,7 @@ I'm trying to compare this value to my specified value, but it fails, because in
 
 The code will explain everything:  
 
-```qt
+```c
 QByteArray Data; //contains unicode string "t\0 e\0 s\0 t\0 \0 \0"
 QString myValue = "test"; //value to compare.
 if(Data.contains(myValue))
@@ -3032,7 +3032,7 @@ In the debugger, it shows me that the variable `Data` has the value `"t\0 e\0 s\
 #### Answer accepted (score 26)
 You can use <a href="http://doc.qt.io/qt-5/qtextcodec.html#codecForMib">QTextCodec</a> to convert the bytearray to a string:  
 
-```qt
+```c
 QString DataAsString = QTextCodec::codecForMib(1015)-&gt;toUnicode(Data);
 ```
 
@@ -3043,7 +3043,7 @@ From your example we can see that the string `"test"` is encoded as  `"t\0 e\0 s
 #### Answer 2 (score 14)
 you can use `QString::fromAscii()`  
 
-```qt
+```c
 QByteArray data = entity-&gt;getData();
 QString s_data = QString::fromAscii(data.data());
 ```
@@ -3055,7 +3055,7 @@ for QT5, you should use `fromCString()` instead, as `fromAscii()` is deprecated,
 #### Answer 3 (score 11)
 You can use:  
 
-```qt
+```c
 QString::fromStdString(byteArray.toStdString())
 ```
 
@@ -3068,7 +3068,7 @@ How can I read a text file line by line in Qt?
 
 I'm looking for the Qt equivalent to:  
 
-```qt
+```c
 std::ifstream infile;
 std::string line;
 while (std::getline(infile, line))
@@ -3080,7 +3080,7 @@ while (std::getline(infile, line))
 #### Answer accepted (score 85)
 Use this code:  
 
-```qt
+```c
 QFile inputFile(fileName);
 if (inputFile.open(QIODevice::ReadOnly))
 {
@@ -3095,7 +3095,7 @@ if (inputFile.open(QIODevice::ReadOnly))
 ```
 
 #### Answer 2 (score 3)
-```qt
+```c
 QFile inputFile(QString("/path/to/file"));
 inputFile.open(QIODevice::ReadOnly);
 if (!inputFile.isOpen())
@@ -3113,7 +3113,7 @@ while (!line.isNull()) {
 #### Answer 3 (score 1)
 Since Qt 5.5 you can use `QTextStream::readLineInto`. It behaves similar to `std::getline` and is maybe faster as `QTextStream::readLine`, because it reuses the string:  
 
-```qt
+```c
 QIODevice* device;
 QTextStream in(&amp;device);
 
@@ -3130,7 +3130,7 @@ while (in.readLineInto(&amp;line)) {
 #### Question
 In Qt I'm trying to set a `QTimer` that calls a function called "update" every second. Here is my .cpp file:  
 
-```qt
+```c
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include &lt;QTimer&gt;
@@ -3160,7 +3160,7 @@ void MainWindow::update()
 
 and the main:  
 
-```qt
+```c
 #include &lt;QtGui/QApplication&gt;
 #include "mainwindow.h"
 
@@ -3189,7 +3189,7 @@ Other way is using of built-in method start timer &amp; event TimerEvent.
 
 Header:  
 
-```qt
+```c
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -3220,7 +3220,7 @@ protected:
 
 Source:  
 
-```qt
+```c
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include &lt;QDebug&gt;
@@ -3249,7 +3249,7 @@ void MainWindow::timerEvent(QTimerEvent *event)
 #### Answer 3 (score 0)
 mytimer.h:  
 
-```qt
+```c
     #ifndef MYTIMER_H
     #define MYTIMER_H
 
@@ -3271,7 +3271,7 @@ mytimer.h:
 
 mytimer.cpp:  
 
-```qt
+```c
 #include "mytimer.h"
 #include &lt;QDebug&gt;
 
@@ -3296,7 +3296,7 @@ void MyTimer::MyTimerSlot()
 
 main.cpp:  
 
-```qt
+```c
 #include &lt;QCoreApplication&gt;
 #include "mytimer.h"
 
@@ -3314,7 +3314,7 @@ int main(int argc, char *argv[])
 
 If we run the code:  
 
-```qt
+```c
 Timer...
 Timer...
 Timer...
@@ -3343,21 +3343,21 @@ And, change main() to WinMain().
 #### Answer 2 (score 109)
 In the project build linker options set  
 
-```qt
+```c
 /SUBSYSTEM:windows
 /ENTRY:mainCRTStartup
 ```
 
 Or use the following <em>#pragma</em> in the source file with the `int main(...)`  
 
-```qt
+```c
 #pragma comment(linker, "/SUBSYSTEM:windows /ENTRY:mainCRTStartup")
 ```
 
 #### Answer 3 (score 15)
 You can get rid of the console by calling:  
 
-```qt
+```c
 FreeConsole();
 ```
 
@@ -3373,7 +3373,7 @@ I want to know the code on creating a Json file in Qt5 and what "encapsulates" m
 #### Answer accepted (score 91)
 <strong>Example: Read json from file</strong>  
 
-```qt
+```c
 /* test.json */
 {
    "appDesc": {
@@ -3420,7 +3420,7 @@ void readJson()
 
 <strong>OUTPUT</strong>  
 
-```qt
+```c
 QJsonValue(object, QJsonObject({"description": "Home","imp": ["awesome","best","good"],"message": "YouTube"}) ) 
 "QJsonObject of description: " QJsonObject({"description": "Home","imp": ["awesome","best","good"],"message": "YouTube"}) 
 "QJsonObject[appName] of description: " QJsonValue(string, "Home") 
@@ -3435,7 +3435,7 @@ QJsonValue(object, QJsonObject({"description": "Home","imp": ["awesome","best","
 
 Assign json to string as below and use the `readJson()` function shown before:  
 
-```qt
+```c
 val =   
 '  {
        "appDesc": {
@@ -3454,7 +3454,7 @@ val =
 
 <strong>OUTPUT</strong>  
 
-```qt
+```c
 QJsonValue(object, QJsonObject({"description": "Home","imp": ["awesome","best","good"],"message": "YouTube"}) ) 
 "QJsonObject of description: " QJsonObject({"description": "Home","imp": ["awesome","best","good"],"message": "YouTube"}) 
 "QJsonObject[appName] of description: " QJsonValue(string, "Home") 
@@ -3468,7 +3468,7 @@ Sadly, many JSON C++ libraries have APIs that are non trivial to use, while JSON
 
 So I tried <a href="http://www.genivia.com/doc/xml-rpc-json/html/index.html" rel="nofollow">jsoncpp</a> from the <a href="http://www.genivia.com/tutorials.html" rel="nofollow">gSOAP tools</a> on the JSON doc shown in one of the answers above and this is the code generated with jsoncpp to construct a JSON object in C++ which is then written in JSON format to std::cout:  
 
-```qt
+```c
 value x(ctx);
 x["appDesc"]["description"] = "SomeDescription";
 x["appDesc"]["message"] = "SomeMessage";
@@ -3482,7 +3482,7 @@ std::cout &lt;&lt; x &lt;&lt; std::endl;
 
 and this is the code generated by jsoncpp to parse JSON from std::cin and extract its values (replace `USE_VAL` as needed):  
 
-```qt
+```c
 value x(ctx);
 std::cin &gt;&gt; x;
 if (x.soap-&gt;error)
@@ -3525,7 +3525,7 @@ I'm looking for the equivalent in Qt to `GetTickCount()`
 
 Something that will allow me to measure the time it takes for a segment of code to run as in:  
 
-```qt
+```c
 uint start = GetTickCount();
 // do something..
 uint timeItTook = GetTickCount() - start;
@@ -3536,7 +3536,7 @@ any suggestions?
 #### Answer accepted (score 90)
 How about <a href="http://doc.qt.io/qt-5/qtime.html" rel="noreferrer">`QTime`</a>?  Depending on your platform it should have 1 millisecond accuracy.  Code would look something like this:  
 
-```qt
+```c
 QTime myTimer;
 myTimer.start();
 // do something..
@@ -3548,7 +3548,7 @@ I think it's probably better to use <a href="http://doc.qt.io/qt-5/qelapsedtimer
 
 Example usage:  
 
-```qt
+```c
 #include &lt;QDebug&gt;
 #include &lt;QElapsedTimer&gt;
 ...
@@ -3564,7 +3564,7 @@ qDebug() &lt;&lt; timer.elapsed();
 <a href="http://doc.qt.io/qt-5/qelapsedtimer.html" rel="nofollow noreferrer">`QElapsedTimer`</a> can also be used to calculate the time in nanoseconds. <br/>
 Code example:</p>
 
-```qt
+```c
 QElapsedTimer timer;
 qint64 nanoSec;
 timer.start();
@@ -3586,7 +3586,7 @@ What would be the best way of selecting an item in a QT combo box out of a prede
 
 In the past I have become accustomed to .NET's style of selection where the item can be selected by setting the selected property to the item's value you wish to select:  
 
-```qt
+```c
 cboExample.SelectedValue = 2;
 ```
 
@@ -3595,7 +3595,7 @@ Is there anyway to do this with QT based on the item's data, if the data is a C+
 #### Answer accepted (score 97)
 You lookup the value of the data with `findData()` and then use `setCurrentIndex()`  
 
-```qt
+```c
 QComboBox* combo = new QComboBox;
 combo-&gt;addItem("100",100.0);    // 2nd parameter can be any Qt type
 combo-&gt;addItem .....
@@ -3613,7 +3613,7 @@ The advantage of using this method is that you don't need to set the second para
 
 Here is a little example :  
 
-```qt
+```c
 /* Create the comboBox */
 QComboBox   *_comboBox = new QComboBox;
 
@@ -3648,7 +3648,7 @@ layout-&gt;addWidget(label);
 #### Answer 3 (score 3)
 If you know the text in the combo box that you want to select, just use the setCurrentText() method to select that item.  
 
-```qt
+```c
 ui-&gt;comboBox-&gt;setCurrentText("choice 2");
 ```
 
@@ -3684,7 +3684,7 @@ In order to change the label size you can select an appropriate size policy for 
 
 You can scale the pixmap by keeping its aspect ratio every time it changes:  
 
-```qt
+```c
 QPixmap p; // load pixmap
 // get label dimensions
 int w = label-&gt;width();
@@ -3706,7 +3706,7 @@ I have polished this missing subclass of `QLabel`.  It is awesome and works well
 
 aspectratiopixmaplabel.h  
 
-```qt
+```c
 #ifndef ASPECTRATIOPIXMAPLABEL_H
 #define ASPECTRATIOPIXMAPLABEL_H
 
@@ -3734,7 +3734,7 @@ private:
 
 aspectratiopixmaplabel.cpp  
 
-```qt
+```c
 #include "aspectratiopixmaplabel.h"
 //#include &lt;QDebug&gt;
 
@@ -3780,7 +3780,7 @@ void AspectRatioPixmapLabel::resizeEvent(QResizeEvent * e)
 #### Answer 3 (score 12)
 I just use `contentsMargin` to fix the aspect ratio.  
 
-```qt
+```c
 #pragma once
 
 #include &lt;QLabel&gt;
@@ -3807,7 +3807,7 @@ private:
 
 
 
-```qt
+```c
 #include "AspectRatioLabel.h"
 
 AspectRatioLabel::AspectRatioLabel(QWidget* parent, Qt::WindowFlags f) : QLabel(parent, f)
@@ -3882,7 +3882,7 @@ I haven't specifically tried for a `QSpinBox`, but I guess it'll work the same !
 #### Answer 2 (score 42)
 fhe is generally correct, but doesn't account for the widgets (like spin boxes and buttons/comboboxes) that use a different background role in the palette.  A more general solution would be something like this:  
 
-```qt
+```c
 QPalette pal = widget.palette();
 pal.setColor(widget.backgroundRole(), Qt::blue);
 widget.setPalette(pal);
@@ -3899,7 +3899,7 @@ Actually, if you look at the Qt docs for QPalette in the case of a QComboBox the
 
 So here is the code I am using to set the background color of a combo box I am using to match the color of the widget it is on:  
 
-```qt
+```c
 QPalette pal = myComboBox-&gt;palette();
 pal.setColor(QPalette::Base, pal.color(QPalette::Window));
 myComboBox-&gt;setPalette(pal);
@@ -3945,13 +3945,13 @@ So is there a numbers-only setting for `QLineEdit`?
 #### Answer accepted (score 113)
 `QLineEdit::setValidator()`, for example:  
 
-```qt
+```c
 myLineEdit-&gt;setValidator( new QIntValidator(0, 100, this) );
 ```
 
 or  
 
-```qt
+```c
 myLineEdit-&gt;setValidator( new QDoubleValidator(0, 100, 2, this) );
 ```
 
@@ -3962,7 +3962,7 @@ The best is <a href="http://doc.qt.io/qt-4.8/qspinbox.html" rel="noreferrer">`QS
 
 And for a double value use <a href="http://doc.qt.io/qt-4.8/qdoublespinbox.html" rel="noreferrer">`QDoubleSpinBox`</a>.  
 
-```qt
+```c
 QSpinBox myInt;
 myInt.setMinimum(-5);
 myInt.setMaximum(5);
@@ -3975,7 +3975,7 @@ myInt.value();// Get the current value
 #### Answer 3 (score 7)
 Why don't you use a `QSpinBox` for this purpose ? You can set the up/down buttons invisible with the following line of codes:  
 
-```qt
+```c
 // ...
 QSpinBox* spinBox = new QSpinBox( this );
 spinBox-&gt;setButtonSymbols( QAbstractSpinBox::NoButtons ); // After this it looks just like a QLineEdit.
@@ -4000,7 +4000,7 @@ i was also having the same problem so what i did is
 
 <strong>For linux</strong>   
 
-```qt
+```c
 sudo apt-get install g++ 
 sudo apt-get install libgl1-mesa-dev libglu1-mesa-dev
 ```
@@ -4073,7 +4073,7 @@ Unfortunately, documentation do not specify that 'lives' stands for and no examp
 
 <strong>`main.h:`</strong>  
 
-```qt
+```c
 class CThread1 : public QThread
 {
 Q_OBJECT
@@ -4108,7 +4108,7 @@ public slots:
 
 <strong>`main.cpp:`</strong>  
 
-```qt
+```c
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
@@ -4126,7 +4126,7 @@ int main(int argc, char *argv[])
 
 Output is:  
 
-```qt
+```c
 thread 2 started
 thread 1 started
 ```
@@ -4144,7 +4144,7 @@ There are quite a few problems with your code :
 
 This code would most likely work (though I have not tested it) and I think it does what you want it to do :  
 
-```qt
+```c
 class MyObject : public QObject
 {
     Q_OBJECT
@@ -4229,7 +4229,7 @@ The key to getting slots to execute in a worker thread is to use the moveToThrea
 #### Answer 3 (score 0)
 you should emit the signal to start your thread function like   
 
-```qt
+```c
 emit operateCut(examId,examName_examTemplate[examName].studentIdRec,examName_examTemplate[examName].choiceRecA,examName_examTemplate[examName].choiceRecB,examName_examTemplate[examName].objectRecA,examName_examTemplate[examName].objectRecB);
 ```
 
@@ -4258,14 +4258,14 @@ You may also want to check out the BitRock installer, which is free for open sou
 <p>In short, it turns out to be a little more complex if you are using anything Qt thinks of as a plugin, such as support for most image types (JPEG, GIF) or databases.
 For example, if you want to include support for Oracle DBMS and GIF images for your icons, you add the following to your .PRO file:</p>
 
-```qt
+```c
 QTPLUGIN += qsqloci qgif
 CONFIG += static
 ```
 
 You will then need to:  
 
-```qt
+```c
 #include &lt;QtPlugin&gt;
 ```
 
@@ -4315,7 +4315,7 @@ Context: the <a href="http://bugs.calibre-ebook.com/ticket/7160" rel="noreferrer
 #### Answer 2 (score 90)
 You can try this one:  
 
-```qt
+```c
 QString QFileDialog::getExistingDirectory ( QWidget * parent = 0, const QString &amp; caption = QString(), const QString &amp; dir = QString(), Options options = ShowDirsOnly ) [static]
 ```
 
@@ -4323,7 +4323,7 @@ This one is used to choose a directory, and will popup a dialog like you show at
 
 Demo:  
 
-```qt
+```c
  QString dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"),
                                              "/home",
                                              QFileDialog::ShowDirsOnly
@@ -4377,13 +4377,13 @@ I was having the same problems too, and finally figured out how to solve this. S
 
 I should further mention that if you are running a 64-bit version of Windows and a 32-bit version of Qt Creator like I am, you need to make sure that you are pointing to the 32-bit versions of cdb (of which there are x86 and x64 <em>target</em> versions). So for the 32-bit target builds I run this:  
 
-```qt
+```c
 C:\Program Files (x86)\Windows Kits\8.0\Debuggers\x86\cdb.exe
 ```
 
 And for x64 builds I run this:  
 
-```qt
+```c
 C:\Program Files (x86)\Windows Kits\8.0\Debuggers\x64\cdb.exe
 ```
 
@@ -4446,7 +4446,7 @@ I'm using <a href="http://en.wikipedia.org/wiki/Code::Blocks" rel="noreferrer">C
 
 File AddressBook.h:  
 
-```qt
+```c
  #ifndef ADDRESSBOOK_H
  #define ADDRESSBOOK_H
 
@@ -4473,7 +4473,7 @@ File AddressBook.h:
 
 File AddressBook.cpp:  
 
-```qt
+```c
 #include &lt;QtGui&gt;
 #include "addressbook.h"
 
@@ -4504,7 +4504,7 @@ In order to automatically ensure that all moc cpp files are generated, you can g
 
 Run  
 
-```qt
+```c
 qmake -project
 ```
 
@@ -4527,13 +4527,13 @@ An alternative solution might be to remove the `Q_OBJECT` macro.  You probably d
 
 Also, I would note that your line:  
 
-```qt
+```c
 #include "addressbook.h"
 ```
 
 Should probably be:  
 
-```qt
+```c
 #include "AddressBook.h"
 ```
 
@@ -4549,7 +4549,7 @@ I want to "stringify" a number and add zero-padding, like how `printf("%05d")` w
 #### Answer accepted (score 163)
 Use this:  
 
-```qt
+```c
 QString number = QString("%1").arg(yourNumber, 5, 10, QChar('0'));
 ```
 
@@ -4558,7 +4558,7 @@ QString number = QString("%1").arg(yourNumber, 5, 10, QChar('0'));
 #### Answer 2 (score 31)
 QString QString::rightJustified ( int width, QChar fill = QLatin1Char( ' ' ), bool truncate = false ) const  
 
-```qt
+```c
 int myNumber = 99;
 QString result;
 result = QString::number(myNumber).rightJustified(5, '0');
@@ -4569,7 +4569,7 @@ result is now 00099
 #### Answer 3 (score 17)
 <strong>The Short Example:</strong>  
 
-```qt
+```c
 int myNumber = 9;
 
 //Arg1: the number
@@ -4588,7 +4588,7 @@ Output will be: 09
 #### Question
 I just reinstalled QtCreator, created new project (<em>Qt Application</em>) an got this after compilation:   
 
-```qt
+```c
 /usr/bin/ld: **cannot find -lGL**
 collect2: error: ld returned 1 exit status
 make: *** [untitled1] Error 1
@@ -4610,7 +4610,7 @@ How do I solve this problem?
 #### Answer accepted (score 142)
 You should install package "libgl1-mesa-dev":  
 
-```qt
+```c
 sudo apt install libgl1-mesa-dev
 ```
 
@@ -4625,7 +4625,7 @@ you don't need to install anything. `libGL` is already installed with Ubuntu, yo
 
 Here is how you could do this:  
 
-```qt
+```c
 $ locate libGL
 /usr/lib/i386-linux-gnu/mesa/libGL.so.1
 /usr/lib/i386-linux-gnu/mesa/libGL.so.1.2.0
@@ -4645,13 +4645,13 @@ $ sudo ln -s /usr/lib/x86_64-linux-gnu/mesa/libGL.so.1 /usr/lib/libGL.so
 #### Answer 3 (score 2)
 write:   
 
-```qt
+```c
 yum provides */libGL.so 
 ```
 
 after providing:   
 
-```qt
+```c
 yum install mesa-libGL-devel mesa-libGLU-devel
 ```
 
@@ -4665,7 +4665,7 @@ How do you set application icon for application made using Qt? Is there some eas
 #### Answer accepted (score 88)
 For <strong>Qt 5</strong>, this process is automated by qmake. Just add the following to the project file:  
 
-```qt
+```c
 win32:RC_ICONS += your_icon.ico
 ```
 
@@ -4673,13 +4673,13 @@ The automated resource file generation also uses the values of the following qma
 
 For <strong>Qt 4</strong>, you need to do it manually. On Windows, you need to create a .rc file and add it to your project (.pro). The RC file should look like this:  
 
-```qt
+```c
 IDI_ICON1 ICON DISCARDABLE "path_to_you_icon.ico"
 ```
 
 The .pro entry should also be win32 specific, e.g.:  
 
-```qt
+```c
 win32:RC_FILE += MyApplication.rc
 ```
 
@@ -4690,7 +4690,7 @@ One more way to do that. Verified in Linux (Qt 4.8.6) and Windows (Qt 5.6):
 
 2) In the main function call setWindowIcon() method. For example:  
 
-```qt
+```c
 QApplication a(argc, argv);
 a.setWindowIcon(QIcon("./images/icon.png"));
 ```
@@ -4698,7 +4698,7 @@ a.setWindowIcon(QIcon("./images/icon.png"));
 #### Answer 3 (score 2)
 To extend Rob's answer, you can set an application icon for macOS by adding and modifying the following line onto your `.pro` file.  
 
-```qt
+```c
 macx: ICON = &lt;app_icon&gt;.icns
 ```
 
@@ -4728,7 +4728,7 @@ This is my idea, please tell me if this will work:
 
 WRITING:  
 
-```qt
+```c
 void QPeer::sendData(QByteArray data)
 {
     // TODO: write data.size() as raw int of exactly 4 bytes to socket
@@ -4756,7 +4756,7 @@ I worked on a project that does what you expect, see here the solution that I de
 
 Client.h:  
 
-```qt
+```c
 #include &lt;QtCore&gt;
 #include &lt;QtNetwork&gt;
 
@@ -4777,7 +4777,7 @@ private:
 
 Client.cpp:  
 
-```qt
+```c
 #include "client.h"
 
 static inline QByteArray IntToArray(qint32 source);
@@ -4817,7 +4817,7 @@ QByteArray IntToArray(qint32 source) //Use qint32 to ensure that the number have
 
 Server.h:  
 
-```qt
+```c
 #include &lt;QtCore&gt;
 #include &lt;QtNetwork&gt;
 
@@ -4844,7 +4844,7 @@ private:
 
 Server.cpp:  
 
-```qt
+```c
 #include "server.h"
 
 static inline qint32 ArrayToInt(QByteArray source);
@@ -4925,7 +4925,7 @@ As you said, you need to wait that your header is entirely sent, before reading 
 
 Here an example (untested) :  
 
-```qt
+```c
 //header file
 
 class Peer {
@@ -5021,13 +5021,13 @@ Once within the command prompt, navigate to your extracted Qt folder using old-s
 
 Now it’s time for configure and build. For configuring a minimalist Qt, I'm using the following flags with `configure.exe`. Just copy and paste it into the command line. Look in the <a href="http://doc.qt.io/qt-4.8/configure-options.html" rel="noreferrer">Qt reference manual</a> for what flag to use or not to use.  
 
-```qt
+```c
 configure.exe -release -no-webkit -no-phonon -no-phonon-backend -no-script -no-scripttools -no-qt3support -no-multimedia -no-ltcg
 ```
 
 Once `configure.exe` has finished (it was 10 minutes for me), you'll need to start the build process. It will take about 20-30 minutes with the above flags. To start it, just type:  
 
-```qt
+```c
 nmake
 ```
 
@@ -5035,13 +5035,13 @@ nmake
 
 Basically, we are done. All you need to do is to set your environment variables (`QTDIR` and `PATH`), which tell programs where to find Qt. If you are on Windows 7, you can use the following command to set `QTDIR` to your installation dir.  
 
-```qt
+```c
 setx QTDIR e:\Qt
 ```
 
 For setting the `PATH`, I strongly recommend using <a href="https://patheditor2.codeplex.com/" rel="noreferrer">Path Editor</a>. Within Path Editor  
 
-```qt
+```c
 add the directory of Qt\bin to your PATH
 ```
 
@@ -5093,7 +5093,7 @@ From what I read, QT is event driven meaning that I'm basically creating a bunch
 
 How can I force the QLabel pixmap to refresh.  I've tried everything.  Below is all the code I have tried in my onClick signal event handler. (upButton is the name of the QLabel which is a pixmap)  
 
-```qt
+```c
 update();
 repaint();
 ui-&gt;upButton-&gt;setUpdatesEnabled(TRUE);
@@ -5125,7 +5125,7 @@ I managed to get the above to work.  I walked through the debugger and noticed t
 
 Just for everyone's knowledge, this is possible, it's not forbidden, and it's easy to do with the following:   
 
-```qt
+```c
 qApp-&gt;processEvents();
 ```
 
@@ -5151,7 +5151,7 @@ I created lots of <a href="http://qt-project.org/doc/qt-5.0/qtwidgets/qpushbutto
 <p>If I understood correctly you connected various `QPushButtons` to the same slot. Inside of the slot `deneme()` you want to know which of the buttons was `clicked`. 
 You can do something like:</p>
 
-```qt
+```c
   void deneme() {
     QPushButton * b = qobject_cast&lt;QPushButton *&gt;(sender());
     if (b) {
@@ -5173,7 +5173,7 @@ Why is setEnabled not working then? <a href="http://doc.trolltech.com/4.7/qwidge
 
 So a simple setEnabled(false); is enough.  
 
-```qt
+```c
 QPushButton* button = new QPushButton(someParent);
 button-&gt;setEnabled(false);
 ```
@@ -5184,7 +5184,7 @@ button-&gt;setEnabled(false);
 #### Answer 3 (score 2)
 You mean Button has to be disabled right after clicking on it? I guess in that case you probably want to do something like this:  
 
-```qt
+```c
 class MyWidget : public QWidget 
 {
 Q_OBJECT
@@ -5224,7 +5224,7 @@ How do I check whether a file exists in a given path or not in Qt?
 
 My current code is below:  
 
-```qt
+```c
 QFile Fout("/Users/Hans/Desktop/result.txt");
 
 if(!Fout.exists()) 
@@ -5256,13 +5256,13 @@ I would use the `QFileInfo`-class (<a href="http://qt-project.org/doc/qt-5/qfile
 
 This is the source code to check whether a file exists:  
 
-```qt
+```c
 #include &lt;QFileInfo&gt;
 ```
 
 <em>(don't forget to add the corresponding `#include`-statement)</em>  
 
-```qt
+```c
 bool fileExists(QString path) {
     QFileInfo check_file(path);
     // check if file exists and if yes: Is it really a file and no directory?
@@ -5296,7 +5296,7 @@ Also consider: Do you only want to check if the path exists (`exists()`) or do y
 
 <em>(with shorter version of the function above, saving a few lines of code)</em>  
 
-```qt
+```c
 #include &lt;QFileInfo&gt;
 
 bool fileExists(QString path) {
@@ -5310,7 +5310,7 @@ bool fileExists(QString path) {
 
 <em>(using `exists` as a `static` which was introduce in Qt 5.2; the docs say the static function is faster, though I'm not sure this is still the case when also using the `isFile()` method; at least this is a one-liner then)</em>  
 
-```qt
+```c
 #include &lt;QFileInfo&gt;
 
 // check if path exists and if yes: Is it a file and no directory?
@@ -5320,7 +5320,7 @@ bool fileExists = QFileInfo::exists(path) &amp;&amp; QFileInfo(path).isFile();
 #### Answer 3 (score 11)
 You can use the `QFileInfo::exists()` method:  
 
-```qt
+```c
 #include &lt;QFileInfo&gt;
 if(QFileInfo("C:\\exampleFile.txt").exists()){
     //The file exists
@@ -5334,7 +5334,7 @@ else{
 
 If you want it to return `true` only if the <em>file</em> exists and `false` if the path exists but is a folder, you can combine it with `QDir::exists()`:  
 
-```qt
+```c
 #include &lt;QFileInfo&gt;
 #include &lt;QDir&gt;
 QString path = "C:\\exampleFile.txt";
@@ -5417,13 +5417,13 @@ All in all, though, I would recommend Qt, particularly if you are learning.  It 
 #### Question
 I'm getting the error  
 
-```qt
+```c
 Symbol(s) not found for architecture x86_64
 ```
 
 Trying to compile a project on QtCreator. It happens when I try to create an instance of an user defined class, `Layer`. That class consists of a header, `layer.h`, and a implementation, `layer.cpp`. It was tested and works in another programs. On my project, it is included in `qtwidget.h` and the error happens when I try to use it on `qtwidget.cpp`. For example:  
 
-```qt
+```c
 Layer&lt;double&gt; text("pq.txt",0.5,0.5,0.5);
 ```
 
@@ -5434,7 +5434,7 @@ This is such a generic error that I'm clueless on how to isolate it any further,
 #### Answer 2 (score 46)
 In my opinion, the error message that Qt Creator displays is quite misleading until you understand it, but does not prevent splitting the template class into a header and implementation file. If you think about the message:  
 
-```qt
+```c
 Symbol(s) not found for architecture x86_64
 ```
 
@@ -5472,7 +5472,7 @@ I recently tried to use <a href="http://en.wikipedia.org/wiki/Qt_Creator" rel="n
 
 In my search for a solution, I came across the thread <em><a href="http://lists.trolltech.com/qt-interest/2004-05/thread00001-0.html" rel="noreferrer">qmake and compiler flags?</a></em>, and added the following to the .pro file:  
 
-```qt
+```c
 CXXFLAGS += -std=c++0x
 ```
 
@@ -5485,7 +5485,7 @@ It boils down to reading the <a href="http://qt-project.org/doc/qt-5/qmake-varia
 
 main.cpp:  
 
-```qt
+```c
 #include &lt;cinttypes&gt;
 
 int main() { return 0; }
@@ -5493,7 +5493,7 @@ int main() { return 0; }
 
 main.pro:  
 
-```qt
+```c
 SOURCES += main.cpp
 QMAKE_CXXFLAGS += -std=c++0x
 ```
@@ -5501,7 +5501,7 @@ QMAKE_CXXFLAGS += -std=c++0x
 #### Answer 2 (score 5)
 You should use  
 
-```qt
+```c
 CONFIG += c++11
 ```
 
@@ -5523,7 +5523,7 @@ You can <a href="http://doc.qt.io/qt-4.8/qmake-advanced-usage.html#adding-new-co
 
 Here is what I found on my system. CONFIG += <em>name</em> will enable the feature:  
 
-```qt
+```c
 ./android/android_deployment_settings.prf
 ./android/android.prf
 ./build_pass.prf
@@ -5664,7 +5664,7 @@ I tried connecting the buttons to `setResult()` and then, return the result valu
 Following is the code I have written. I think I am wrong in the exec/result part - but I am not sure how to fix it.</li>
 </ol>
 
-```qt
+```c
 class MyMessageBox : public QDialog {
     Q_OBJECT
 
@@ -5707,14 +5707,14 @@ information will flow.</li>
 
 You need to add this code before showing the dialog (`this` assume it is in a dialog method):  
 
-```qt
+```c
 QObject::connect(acceptButton, SIGNAL(clicked()), this, SLOT(accept()));
 QObject::connect(rejectButton, SIGNAL(clicked()), this, SLOT(reject()));
 ```
 
 In the caller object you have   
 
-```qt
+```c
 void someInitFunctionOrConstructor(){
    QObject::connect(mydialog, SIGNAL(finished (int)), this, SLOT(dialogIsFinished(int)));
 }
@@ -5731,7 +5731,7 @@ void dialogIsFinished(int){ //this is a slot
 #### Answer 2 (score 18)
 Another solution:     
 
-```qt
+```c
     // set signal and slot for "Buttons"
     connect(YesButton, SIGNAL(clicked()), dlg, SLOT(accept()));
     connect(NoButton, SIGNAL(clicked()), dlg, SLOT(reject()));
@@ -5749,7 +5749,7 @@ Another solution:
 
 For this you have to close the dialog on respective `SLOTS`, so Use   
 
-```qt
+```c
 void onOKButtonClicked(){ this-&gt;setResult(QDialog::Accepted); this-&gt;close();}
 void onCancelButtonClicked(){ this-&gt;setResult(QDialog::Rejected);this-&gt;close();}  
 ```
@@ -5769,7 +5769,7 @@ If it still persists, use your own private member function to resolve it.
 #### Question
 I inherited a class from QObject :   
 
-```qt
+```c
 class Parent: public QObject
 {
     Q_OBJECT
@@ -5791,13 +5791,13 @@ public:
 
 But when I write :  
 
-```qt
+```c
 Parent ev;
 ```
 
 I get the following error:  
 
-```qt
+```c
 main.obj:-1: error: LNK2001: unresolved external symbol "public: virtual struct QMetaObject const * __thiscall Parent::metaObject(void)const " (?metaObject@Parent@@UBEPBUQMetaObject@@XZ)
 
 main.obj:-1: error: LNK2001: unresolved external symbol "public: virtual void * __thiscall Parent::qt_metacast(char const *)" (?qt_metacast@Parent@@UAEPAXPBD@Z)
@@ -5839,7 +5839,7 @@ What is the property that i should set to disable the dialog/Widget resize.
 
 I also tried  
 
-```qt
+```c
 setSizePolicy(QSizePolicy::Fixed);
 ```
 
@@ -5864,20 +5864,20 @@ The compile error you get is because you try to pass a `QSizePolicy::Policy` to 
 
 `setFixedSize()` only works if you know the size of the dialog in advance (and usually you don't, what with changing font sizes and languages). You can do  
 
-```qt
+```c
 window()-&gt;setFixedSize( window()-&gt;sizeHint() );
 ```
 
 but it's much better to use  
 
-```qt
+```c
 window-&gt;layout()-&gt;setSizeConstraint( QLayout::SetFixedSize );
 ```
 
 That lets the layout determine the size of the dialog, but doesn't allow resizing, which I assume is what you were asking for.  
 
 #### Answer 3 (score 23)
-```qt
+```c
 this-&gt;setFixedSize(this-&gt;width(),this-&gt;height());
 ```
 
@@ -5890,13 +5890,13 @@ I have to compare two Qstrings in qt,
 
 say,  
 
-```qt
+```c
 Qstring str1="1005",str2="1006";
 ```
 
 I have tried using ,  
 
-```qt
+```c
 if(str1==str2){
    return true;
 }
@@ -5904,7 +5904,7 @@ if(str1==str2){
 
 &amp;  
 
-```qt
+```c
 if(str1.compare(str2)==0)
 {
     return true;
@@ -5919,14 +5919,14 @@ It worked after Rebuilding the Project , I think this is the problem with QT CRE
 #### Answer 2 (score 33)
 You can use :   
 
-```qt
+```c
 int x = QString::compare(str1, str2, Qt::CaseInsensitive);  // if strings are equal x should return 0
 ```
 
 #### Answer 3 (score 12)
 The code below works fine for me.  
 
-```qt
+```c
 int main(int argv, char **args)
  {
     QString str1="1005",str2="1006";
@@ -5939,7 +5939,7 @@ int main(int argv, char **args)
 
 Output:  
 
-```qt
+```c
 Everything Ok
 ```
 
@@ -5952,13 +5952,13 @@ I don't know, why your code is not working, when is should have been fine. Reche
 #### Question
 I'm a long time Java user learning C++ with Qt and I'm having a lot of trouble understanding how methods work. Right now, I'm trying to figure out databases, and tried to simplify my code with a header. Normally in Java I would just have a class called DatabaseControl with a void method that would execute whatever I wanted. For example, adding an employee to a database, as I'm doing now. I'd instantiate the class, by doing something like  
 
-```qt
+```c
 DatabaseControl myDBControl = new DatabaseControl();
 ```
 
 and then execute the method with  
 
-```qt
+```c
 myDBControl.addEmploye();
 ```
 
@@ -5966,7 +5966,7 @@ which would bring up the series of input boxes for the user to input the informa
 
 So, now over to C++. I have my header  
 
-```qt
+```c
 class DatabaseControl
 {
 public:
@@ -5980,7 +5980,7 @@ public:
 
 I don't have any parameters in my constructors because all I want to do is call the "addEmployee" method in my main as I've shown above. In the same header file I have this below my class declaration  
 
-```qt
+```c
 void DatabaseControl::addEmployee(){
 QSqlQuery qry;
 bool ok;
@@ -6015,7 +6015,7 @@ QString lastName = QInputDialog::getText(NULL, "QInputDialog::getText()",
 
 and then in my main I have this:  
 
-```qt
+```c
 void MainWindow::on_addEmployee_clicked()
 {
     DatabaseControl myDBControl();
@@ -6030,7 +6030,7 @@ I've looked at other instances of this error and don't really understand exactly
 #### Answer accepted (score 34)
 You made an error here:  
 
-```qt
+```c
 DatabaseControl myDBControl();
 ```
 
@@ -6038,7 +6038,7 @@ You declared a function called `myDBControl` taking no arguments and returning a
 
 Object declarations without any constructor arguments must omit the `()`:  
 
-```qt
+```c
 DatabaseControl myDBControl;
 ```
 
@@ -6047,7 +6047,7 @@ This is related to (but is not precisely) the "<a href="http://en.wikipedia.org/
 #### Answer 2 (score 1)
 You need to say this:  
 
-```qt
+```c
  DatabaseControl myDBControl;
  myDBControl.addEmployee();
 ```
@@ -6055,7 +6055,7 @@ You need to say this:
 #### Answer 3 (score 1)
 You need to say this:  
 
-```qt
+```c
  DatabaseControl myDBControl;
  myDBControl.addEmployee();
 ```
@@ -6095,7 +6095,7 @@ See <a href="http://developer.qt.nokia.com/faq/answer/how_can_i_convert_a_qstrin
   <p>See the following example for a
   demonstration:</p>
 
-```qt
+```c
 int main(int argc, char **argv)
 {
  QApplication app(argc, argv);
@@ -6111,7 +6111,7 @@ int main(int argc, char **argv)
   bytearray before you call data() on
   it, a call like the following</p>
 
-```qt
+```c
 const char *c_str2 = str2.toLatin1().data();
 ```
   
@@ -6123,7 +6123,7 @@ const char *c_str2 = str2.toLatin1().data();
   can use the QString constructor that
   takes a QLatin1String, e.g:</p>
 
-```qt
+```c
 QString string = QString(QLatin1String(c_str2)) ;
 ```
   
@@ -6134,7 +6134,7 @@ QString string = QString(QLatin1String(c_str2)) ;
 
 Of course, I discovered there is another way from this <a href="https://stackoverflow.com/questions/4214369/how-to-convert-qstring-to-stdstring/4644922#4644922">previous SO answer</a>:  
 
-```qt
+```c
 QString qs;
 
 // Either this if you use UTF-8 anywhere
@@ -6147,13 +6147,13 @@ std::string current_locale_text = qs.toLocal8Bit().constData();
 #### Answer 2 (score 2)
 You could use <a href="http://doc.qt.nokia.com/4.7/qfile.html" rel="nofollow">QFile</a> rather than std::fstream.  
 
-```qt
+```c
 QFile           file(qString);
 ```
 
 Alternatively convert the QString into a char* as follows:  
 
-```qt
+```c
 std::ifstream   file(qString.toLatin1().data());
 ```
 
@@ -6161,7 +6161,7 @@ The <a href="http://doc.qt.nokia.com/latest/qstring.html" rel="nofollow">QString
 
 As noted by @0A0D above: <strong>don't</strong> store the char* in a variable without also getting a local copy of the QByteArray.  
 
-```qt
+```c
 char const*      fileName = qString.toLatin1().data();
 std::ifstream    file(fileName);  // fileName not valid here.
 ```
@@ -6195,7 +6195,7 @@ Just use <a href="http://mxe.cc/" rel="noreferrer">M cross environment (MXE)</a>
 <ul>
 <li><p>Get it:</p>
 
-```qt
+```c
 $ git clone https://github.com/mxe/mxe.git
 ```</li>
 <li><p>Install <a href="http://mxe.cc/#requirements" rel="noreferrer">build dependencies</a></p></li>
@@ -6203,22 +6203,22 @@ $ git clone https://github.com/mxe/mxe.git
 this will take about an hour on a fast machine with decent internet access;
 the download is about 500MB:</p>
 
-```qt
+```c
 $ cd mxe &amp;&amp; make qt
 ```</li>
 <li><p>Go to the directory of your app and add the cross-build tools to the <strong>PATH</strong> environment variable:</p>
 
-```qt
+```c
 $ export PATH=&lt;mxe root&gt;/usr/bin:$PATH
 ```</li>
 <li><p>Run the Qt Makefile generator tool then build:</p>
 
-```qt
+```c
 $ &lt;mxe root&gt;/usr/i686-pc-mingw32/qt/bin/qmake &amp;&amp; make
 ```</li>
 <li><p>You should find the binary in the ./release directory:</p>
 
-```qt
+```c
 $ wine release/foo.exe
 ```</li>
 </ul>
@@ -6237,7 +6237,7 @@ $ wine release/foo.exe
 
 Rather than using `make qt` to build Qt, you can use `MXE_TARGETS` to control your target machine and toolchain (32- or 64-bit). MXE started using `.static` and `.shared` as a part of the target name to show which type of lib you want to build.  
 
-```qt
+```c
 # The following is the same as `make qt`, see explanation on default settings after the code block.
 make qt MXE_TARGETS=i686-w64-mingw32.static   # MinGW-w64, 32-bit, static libs
 
@@ -6257,13 +6257,13 @@ In @Tshepang's original answer, he did not specify an `MXE_TARGETS`, and the def
 
 As we changed the `MXE_TARGETS`, the `&lt;mxe root&gt;/usr/i686-pc-mingw32/qt/bin/qmake` command will no longer work. Now, what you need to do is:  
 
-```qt
+```c
 &lt;mxe root&gt;/usr/&lt;TARGET&gt;/qt/bin/qmake
 ```
 
 If you didn't specify `MXE_TARGETS`, do this:  
 
-```qt
+```c
 &lt;mxe root&gt;/usr/i686-w64-mingw32.static/qt/bin/qmake
 ```
 
@@ -6276,13 +6276,13 @@ Based in part on <a href="https://github.com/mxe/mxe/blob/master/src/qt.mk" rel=
 
 It appears that "initially" when you run configure (with -xtarget, etc.), it configures then runs your "hosts" gcc to build the local binary file ./bin/qmake  
 
-```qt
+```c
  ./configure -xplatform win32-g++ -device-option CROSS_COMPILE=$cross_prefix_here -nomake examples ...
 ```
 
 then you run normal "make" and it builds it for mingw  
 
-```qt
+```c
   make
   make install
 ```
@@ -6337,7 +6337,7 @@ It basically controls the signal-slot mechanism, and makes it understandable to 
 #### Question
 I'm using Qt5. I am trying to obtain values from a json object. Here is what the json object looks like that I am trying to get data from:  
 
-```qt
+```c
 {
     "success": true,
     "properties": [
@@ -6366,7 +6366,7 @@ Edit:
 
 Using `QScriptEngine` I tried this:  
 
-```qt
+```c
 QString data = (QString)reply-&gt;readAll();
 
 QScriptEngine engine;
@@ -6381,7 +6381,7 @@ Debug is saying "SyntaxError: Parse error"
 #### Answer accepted (score 55)
 I figured it out:  
 
-```qt
+```c
 QStringList propertyNames;
 QStringList propertyKeys;
 QString strReply = (QString)reply-&gt;readAll();
@@ -6400,7 +6400,7 @@ foreach (const QJsonValue &amp; value, jsonArray) {
 <p>Here is an example from 
 <a href="http://erickveil.github.io/2016/04/06/How-To-Manipulate-JSON-With-C++-and-Qt.html" rel="nofollow noreferrer">How To Manipulate JSON With C++ and Qt</a>.</p>
 
-```qt
+```c
 // reads a json file from disk to QVariantMap
 // originally from http://erickveil.github.io/2016/04/06/How-To-Manipulate-JSON-With-C++-and-Qt.html
 bool readJsonFile(std::string file_path, QVariantMap&amp; result)
@@ -6474,7 +6474,7 @@ Below is taken from the 4.7 Qthread documentation...
   To create your own threads, subclass QThread and reimplement run(). For example:   
 </blockquote>
 
-```qt
+```c
  class MyThread : public QThread
  {
  public:
@@ -6503,7 +6503,7 @@ Lets say I wanted to move a custom QObject class to a thread... what would be th
 
 Since this question gets so much attention, here is a copy and paste of the 4.8 documentation with the 'proper' way to implement a QThread.  
 
-```qt
+```c
 class Worker : public QObject
  {
      Q_OBJECT
@@ -6561,7 +6561,7 @@ Here's <a href="http://mayaposch.wordpress.com/2011/11/01/how-to-really-truly-us
 
 The basic idea is the same: I create a QThread instance that lives in my main thread, a worker class instance that lives in the new thread I created, and then I connect all the signals.  
 
-```qt
+```c
 void ChildProcesses::start()
 {
     QThread *childrenWatcherThread = new QThread();
@@ -6601,7 +6601,7 @@ The ChildProcesses class is a child process manager that starts new child proces
 
 The ChildrenWatcher class is defined as follows:  
 
-```qt
+```c
 class ChildrenWatcher: public QObject {
     Q_OBJECT
 private:
@@ -6631,7 +6631,7 @@ I connect QThread::started() to the ChildrenWatcher::watch() method so it is sta
 
 Then I connect the ChildProcesses::stopped() signal to the ChildrenWatcher::stop() slot using Qt::DirectConnection because I need to do it asynchronously. This is needed so my thread stops when the ChildProcesses manager is no longer needed. The stop() method looks like this:  
 
-```qt
+```c
 void ChildrenWatcher::stop()
 {
     mutex.lock();
@@ -6642,7 +6642,7 @@ void ChildrenWatcher::stop()
 
 And then ChildrenWatcher::watch():  
 
-```qt
+```c
 void ChildrenWatcher::watch()
 {
   while (!isStopped()) {
@@ -6656,7 +6656,7 @@ void ChildrenWatcher::watch()
 
 Oh, and the isStopped() method is just a convenient way to use a mutex in the while() condition:  
 
-```qt
+```c
 bool ChildrenWatcher::isStopped()
 {
     bool stopped;
@@ -6678,7 +6678,7 @@ Maya also mentions that you shouldn't allocate new QObjects in the worker's cons
 #### Answer 3 (score 3)
 Not to detract from @sergey-tachenov's excellent answer, but in Qt5 you can stop using SIGNAL and SLOT, simplify your code and have the advantage of compile time checking:  
 
-```qt
+```c
 void ChildProcesses::start()
 {
     QThread *childrenWatcherThread = new QThread();
@@ -6724,14 +6724,14 @@ Basically I spent an hour debugging some code and at least part of it was becaus
 #### Answer accepted (score 38)
 Check out <a href="http://qt-project.org/doc/qt-5/qdir.html#filePath">QDir</a> for that:  
 
-```qt
+```c
 QString path = QDir(dirPath).filePath(fileName);
 ```
 
 #### Answer 2 (score 94)
 Only as part of <a href="http://www.boost.org/doc/libs/release/libs/filesystem/index.html" rel="noreferrer">Boost.Filesystem</a> library. Here is an example:  
 
-```qt
+```c
 #include &lt;iostream&gt;
 #include &lt;boost/filesystem.hpp&gt;
 
@@ -6749,7 +6749,7 @@ int main ()
 
 Here is an example of compiling and running (platform specific):  
 
-```qt
+```c
 $ g++ ./test.cpp -o test -lboost_filesystem -lboost_system
 $ ./test 
 /tmp/foo.txt
@@ -6758,7 +6758,7 @@ $ ./test
 #### Answer 3 (score 19)
 Similar to <strong>@user405725</strong>'s answer (but not using boost), and mentioned by <strong>@ildjarn</strong> in a comment, this functionality is available as part of <a href="http://en.cppreference.com/w/cpp/experimental/fs/path/append" rel="noreferrer">std::experimental::filesystem</a>. The following code compiles using Microsoft Visual Studio 2015 Community Edition:  
 
-```qt
+```c
 #include &lt;iostream&gt;
 #include &lt;filesystem&gt;
 namespace fs = std::experimental::filesystem;
@@ -6783,7 +6783,7 @@ I already got it working without and primitive type parameters, although if I wa
 
 I connect in main.cpp   
 
-```qt
+```c
 QObject *contentView = rootObject-&gt;findChild&lt;QObject*&gt;(QString("contentView"));
 QObject::connect(&amp;myObj,      SIGNAL(finishedGatheringDataForItem(QString)), 
                  contentView, SLOT(updateViewWithItem(QString)));
@@ -6791,7 +6791,7 @@ QObject::connect(&amp;myObj,      SIGNAL(finishedGatheringDataForItem(QString)),
 
 the relavant part of my qml File  
 
-```qt
+```c
 Rectangle {
         objectName: "contentView"
         function updateViewWithItem(string) { console.log('got some Items'); }  // slot
@@ -6800,7 +6800,7 @@ Rectangle {
 
 Error:  
 
-```qt
+```c
 Object::connect: No such slot QDeclarativeRectangle_QML_2::updateViewWithItem(QString)
 ```
 
@@ -6832,17 +6832,17 @@ You should use <a href="http://doc.qt.io/qt-5/qml-qtqml-connections.html" rel="n
 <ol>
 <li><p>Put your object <strong>myObj</strong> to QML file by `setContextProperty`</p>
 
-```qt
+```c
 qmlVectorForm-&gt;rootContext()-&gt;setContextProperty("YourObject", myOb);
 ```</li>
 <li><p>Your signal is</p>
 
-```qt
+```c
 finishedGatheringDataForItem(QString signalString)
 ```</li>
 <li><p>In QML file, add Connectios likes below:</p>
 
-```qt
+```c
 Connections {
     target: YourObject 
     onFinishedGatheringDataForItem: {
@@ -6859,7 +6859,7 @@ Connections {
 #### Question
 I want to use switch-case in my program but the compiler gives me this error:  
 
-```qt
+```c
 switch expression of type 'QString' is illegal
 ```
 
@@ -6867,7 +6867,7 @@ How can I use the `switch` statement with a `QString`?
 
 My code is as follows:  
 
-```qt
+```c
 bool isStopWord( QString word )
 {
 bool flag = false ;
@@ -6911,7 +6911,7 @@ You can't. In C++ language `switch` statement can only be used with integral or 
 #### Answer 2 (score 25)
 You can, creating an QStringList before iteration, like this:  
 
-```qt
+```c
 QStringList myOptions;
 myOptions &lt;&lt; "goLogin" &lt;&lt; "goAway" &lt;&lt; "goRegister";
 
@@ -6924,7 +6924,7 @@ goRegister = 2
 
 Then:  
 
-```qt
+```c
 switch(myOptions.indexOf("goRegister")){
   case 0:
     // go to login...
@@ -6949,7 +6949,7 @@ It's not possible to switch directly on strings in C++. However it's possible in
 
 To do that, first <strong>declare an enum</strong> with the <em>strings to be used in switch cases</em> as enumerator name in your class declaration. Then add the enum to the metadata with `Q_ENUMS` in order for the program to search later.  
 
-```qt
+```c
 #include &lt;QMetaEnum&gt;
 
 class TestCase : public QObject
@@ -6974,7 +6974,7 @@ Then in the `.cpp` file implement the needed switch after converting the string 
 
 The comparison is case sensitive so if you want a case insensitive search, convert the input string to upper/lower case first. You can also do other transformations needed to the string. For example in case you need to switch strings with blank spaces or unallowed characters in C/C++ identifiers, you may convert/remove/replace those characters to make the string a valid identifier.  
 
-```qt
+```c
 void TestCase::SwitchString(QString word)
 {
     // get information about the enum named "Cases"
@@ -6995,7 +6995,7 @@ void TestCase::SwitchString(QString word)
 
 Then just use the class for switching the strings. For example:  
 
-```qt
+```c
 TestCase test;
 test.SwitchString("At");
 test.SwitchString("the");
@@ -7016,7 +7016,7 @@ I would simply use a Style Sheet for the whole window.
 
 For instance, if your window is inheriting from QWidget, here is what I'm doing :  
 
-```qt
+```c
 MainWindow::MainWindow(QWidget *parent) : QWidget(parent), ui(new Ui::MainWindow)
 {
     ui-&gt;setupUi(this);
@@ -7028,7 +7028,7 @@ On my Mac, my whole application window is black (except the title bar).
 
 EDIT : according to comment, here is a solution without using ui files and loading an external style sheet  
 
-```qt
+```c
 #include &lt;QtGui/QApplication&gt;
 #include &lt;QtGui/QMainWindow&gt;
 #include &lt;QtGui/QVBoxLayout&gt;
@@ -7059,7 +7059,7 @@ MyApp.exec();
 
 The style sheet file (default.qss) is as follow :  
 
-```qt
+```c
 QWidget {
   background-color: black;
 }
@@ -7067,7 +7067,7 @@ QWidget {
 
 This file is part of a resource file (stylesheet.qrc) :  
 
-```qt
+```c
 &lt;RCC&gt;
   &lt;qresource prefix="/qss"&gt;
     &lt;file&gt;default.qss&lt;/file&gt;
@@ -7077,7 +7077,7 @@ This file is part of a resource file (stylesheet.qrc) :
 
 And here is my project file :  
 
-```qt
+```c
 TARGET = StyleSheet
 TEMPLATE = app
 SOURCES += main.cpp
@@ -7087,7 +7087,7 @@ RESOURCES += stylesheet.qrc
 #### Answer 2 (score 13)
 This has worked for me:  
 
-```qt
+```c
 a = new QApplication(argc, argv);
 QPalette pal = a-&gt;palette();
 pal.setColor(QPalette::Window, Qt::white);
@@ -7097,7 +7097,7 @@ a-&gt;setPalette(pal);
 #### Answer 3 (score 4)
 Simply just add   
 
-```qt
+```c
 setStyleSheet("background-color: white;");
 ```
 
@@ -7110,7 +7110,7 @@ to your code, you can give any color directly.
 #### Question
 I've a `QMap` object and I am trying to write its content to a file.  
 
-```qt
+```c
 QMap&lt;QString, QString&gt; extensions;
 //.. 
 
@@ -7127,7 +7127,7 @@ Is `e` not of type `QPair`?
 #### Answer accepted (score 47)
 If you want the STL style with `first` and `second`, do this:  
 
-```qt
+```c
 for(auto e : extensions.toStdMap())
 {
   fout &lt;&lt; e.first &lt;&lt; "," &lt;&lt; e.second &lt;&lt; '\n';
@@ -7136,7 +7136,7 @@ for(auto e : extensions.toStdMap())
 
 If you want to use what Qt offers, do this:  
 
-```qt
+```c
 for(auto e : extensions.keys())
 {
   fout &lt;&lt; e &lt;&lt; "," &lt;&lt; extensions.value(e) &lt;&lt; '\n';
@@ -7157,7 +7157,7 @@ You should use one of the iterator methods described in the documentation but yo
 <p>and that wouldn't be very optimal.
 <hr>You could also use a wrapper to get `QMap::iterator` as the `auto` type:</p>
 
-```qt
+```c
 template&lt;class Map&gt;
 struct RangeWrapper {
     typedef typename Map::iterator MapIterator;
@@ -7219,7 +7219,7 @@ And I have compared it with summing integers of a QList/QVector
 
 Results :   
 
-```qt
+```c
 Reference vector :   244  ms
 Reference list :     1239  ms
 
@@ -7230,7 +7230,7 @@ STL style iterator :     2343  ms
 
 Code for those interested :   
 
-```qt
+```c
 #include &lt;QDateTime&gt;
 #include &lt;QMap&gt;
 #include &lt;QVector&gt;
@@ -7334,7 +7334,7 @@ void testQMap(){
 
 Edit July 2017 : I ran this code again on my new laptop (Qt 5.9, i7-7560U) and got some interesting changes  
 
-```qt
+```c
 Reference vector :   155  ms 
 Reference list :     157  ms
 QMap::values():      1874  ms 
@@ -7351,7 +7351,7 @@ STL style and Java style have very similar performances in this benchmark
 #### Question
 Is there any easy way to get the following work? I mean is there any helper class in `Qt` which prepares the string for `qDebug`?  
 
-```qt
+```c
 QString s = "value";
 qDebug("abc" + s + "def");
 ```
@@ -7359,14 +7359,14 @@ qDebug("abc" + s + "def");
 #### Answer accepted (score 21)
 No really easy way I am aware of. You can do:  
 
-```qt
+```c
 QByteArray s = "value";
 qDebug("abc" + s + "def");
 ```
 
 or  
 
-```qt
+```c
 QString s = "value";
 qDebug("abc" + s.toLatin1() + "def");
 ```
@@ -7374,7 +7374,7 @@ qDebug("abc" + s.toLatin1() + "def");
 #### Answer 2 (score 24)
 You can use the following:  
 
-```qt
+```c
 qDebug().nospace() &lt;&lt; "abc" &lt;&lt; qPrintable(s) &lt;&lt; "def";
 ```
 
@@ -7385,14 +7385,14 @@ According to <a href="http://doc.qt.io/qt-5/qtglobal.html#qUtf8Printable" rel="n
 
 You should do as follows:  
 
-```qt
+```c
 QString s = "some text";
 qDebug("%s", qUtf8Printable(s));
 ```
 
 or shorter:  
 
-```qt
+```c
 QString s = "some text";
 qDebug(qUtf8Printable(s));
 ```
@@ -7420,20 +7420,20 @@ But, why am I getting this message?
 #### Answer 2 (score 17)
 Depending on the Qt-version (5) QtGui was moved to QtWidgets; so it becomes   
 
-```qt
+```c
 #include &lt;QtWidgets/QApplication&gt;
 ```
 
 #### Answer 3 (score 14)
 You can try to add 'declarative' to the Project file:  
 
-```qt
+```c
 QT += gui declarative
 ```
 
 then  
 
-```qt
+```c
 #include &lt;QApplication&gt;
 ```
 
@@ -7484,7 +7484,7 @@ I want to write a single, bold red line in my application using Qt.
 
 As far as I understand, I would create a QLabel, set its textFormat to rich text and give it a rich text string to display:  
 
-```qt
+```c
 QLabel *warning = new QLabel;
 warning-&gt;setTextFormat(Qt::RichText);
 warning-&gt;setText("{\\rtf1\\ansi\\ansicpg1252 {\\fonttbl\\f0\\fswiss\\fcharset0 Helvetica;} {\\colortbl;\\red255\\green0\\blue0;} \\f0 \\cf0 this is bold red text}");
@@ -7504,7 +7504,7 @@ Qt Designer does it like this: `&lt;span style=" font-size:8pt; font-weight:600;
 #### Answer 2 (score 22)
 You can use <a href="http://doc.qt.io/qt-4.8/stylesheet.html" rel="noreferrer">Qt StyleSheets</a> and set the `styleSheet` property of `QLabel`  
 
-```qt
+```c
 warning-&gt;setStyleSheet("font-weight: bold; color: red");
 ```
 
@@ -7524,7 +7524,7 @@ I have HTML code in QString variables. In this code I want to insert data from a
 
 I get an error:  
 
-```qt
+```c
 E:\apprendreQt\gestionstock6\vente.cpp:117: error: invalid operands of types 
   'const char*' and 'const char [27]' to binary 'operator+'
 ```
@@ -7533,7 +7533,7 @@ How can I fix this?
 
 Here is my code:  
 
-```qt
+```c
 int num_bl = ui-&gt;numeroBLlineEdit-&gt;text().toInt() ;
 QString html;
 QString requette = "select num_facture,date,nom,prenom,code_fiscale,designation,qte_out, prix,(qte_out * prix ) as Montant, sum(qte_out * prix) as Total from ventes join produits_en_ventes join clients  join produits on ventes.vente_id = produits_en_ventes.vente_id and ventes.client_id = clients.client_id and produits_en_ventes.produit_id = produits.produit_id where ventes.client_id = :client_id ";
@@ -7582,20 +7582,20 @@ else{
 #### Answer accepted (score 11)
 If you use `operator+`, you need to provide QString as an argument, but you use integer values instead: `html += "&lt;tr&gt; &lt;td&gt;" + num_article`, where `num_article` is declared as integer. You can replace it with, for example: `QString::number(num_article)`. The same in this line:  
 
-```qt
+```c
 "&lt;td&gt;Total:"+ m_query-&gt;value(9).toInt()+"&lt;/td&gt;"
 ```
 
 should be replaced with  
 
-```qt
+```c
 "&lt;td&gt;Total:"+ m_query-&gt;value(9).toString()+"&lt;/td&gt;"
 ```
 
 #### Answer 2 (score 23)
 I'm not sure about your error. However, AFAIK a Qstring cannot be concatenated with an int as such.  
 
-```qt
+```c
 int myInt = 0;
 QString text = "someString" + myInt; // WRONG
 
@@ -7605,7 +7605,7 @@ QString text = "someString" + QString::number( myInt ); // CORRECT
 
 or  
 
-```qt
+```c
 int myInt = 0;
 QString text = "someString" % QString::number( myInt ); // CORRECT
 ```
@@ -7632,7 +7632,7 @@ You don't have to create a `QVBoxLayout` manually. Just select your central `QWi
 #### Answer 2 (score 68)
 If you want to do it with code instead of using `QtCreator`, you could set the layout in a `QWidget` and then set the `QWidget` as the central widget of the main window like this:  
 
-```qt
+```c
 #include &lt;QtGui&gt;
 #include &lt;QWidget&gt;
 #include &lt;QHBoxLayout&gt;
@@ -7668,7 +7668,7 @@ I've got an `std::string content` that I know contains UTF-8 data. I want to con
 #### Answer accepted (score 82)
 There's a `QString` function called <a href="http://doc.qt.io/qt-4.8/qstring.html#fromUtf8">`fromUtf8`</a> that takes a `const char*`:  
 
-```qt
+```c
 QString str = QString::fromUtf8(content.c_str());
 ```
 
@@ -7680,7 +7680,7 @@ Usually, the best way of doing the conversion is using the method <a href="http:
 
 In these cases, it's preferable to use <a href="http://doc.qt.io/qt-5/qstring.html#fromLocal8Bit" rel="noreferrer">fromLocal8Bit</a>. Example:  
 
-```qt
+```c
 std::string str = "ëxample";
 QString qs = QString::fromLocal8Bit(str.c_str());
 ```
@@ -7694,7 +7694,7 @@ After watching many threads about getting selected rows numbers, I am really con
 
 How do you get ROW numbers in `QTableView` using `QStandardItemModel` I used below selection model and behavior as  
 
-```qt
+```c
 setSelectionBehavior(QAbstractItemView::SelectRows);
 setSelectionMode(QAbstractItemView::SingleSelection);
 ```
@@ -7709,7 +7709,7 @@ You can use `QItemSelectionModel` class to check/change/other selection(s)
 
 Example:  
 
-```qt
+```c
 QItemSelectionModel *select = table-&gt;selectionModel();
 
 select-&gt;hasSelection() //check if has selection
@@ -7721,7 +7721,7 @@ select-&gt;selectedColumns() // return selected column(s)
 #### Answer 3 (score 13)
 Check <a href="http://doc.qt.io/qt-5/qitemselectionmodel.html#selectedRows" rel="noreferrer">`selectedRows`</a> method of the <a href="http://doc.qt.io/qt-5/qitemselectionmodel.html" rel="noreferrer">`QItemSelectionModel`</a> Class .  
 
-```qt
+```c
 QModelIndexList selection = yourTableView-&gt;selectionModel()-&gt;selectedRows();
 
 // Multiple rows can be selected
@@ -7747,7 +7747,7 @@ I find this a little more complicated than just using `layout.setAlignment()`.  
 
 Here is example code that does <em>not</em> top align the `QTextBrowser()` widget even though I call `layout.setAlignment(Qt.AlignTop)`.  Sorry that it is in Python, but it is pretty easy to translate to C++ (I have gone the other way many times).  
 
-```qt
+```c
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 
@@ -7798,7 +7798,7 @@ if __name__ == '__main__':
 
 The following explicitly calls `layout.setAlignment(info, Qt.AlignTop)` to get the expending text widget to work.  
 
-```qt
+```c
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 
@@ -7850,7 +7850,7 @@ if __name__ == '__main__':
 #### Answer 3 (score 20)
 If you have a `QVBoxLayout` and want your fixed size widgets to be stacked at the top, you can simply append a vertical stretch add the end:  
 
-```qt
+```c
 layout.addStretch()
 ```
 
@@ -7870,7 +7870,7 @@ Using the Qt Add-in and a custom built <strong>static</strong> distribution of <
 I am running into the dreaded `"Failed to load platform plugin windows"` error whenever I run the application.
 I have added the following to the linker input:</p>
 
-```qt
+```c
 imm32.lib
 winmm.lib
 Ws2_32.lib
@@ -7885,7 +7885,7 @@ At first I thought that maybe I should add "qwindowsd.lib" to that list as well 
 #### Answer accepted (score 25)
 I solved it. Thanks to <a href="http://qt-project.org/forums/viewthread/27037">this</a> I was able to get everything to work. I added the following libraries:  
 
-```qt
+```c
 opengl32.lib
 Qt5PlatformSupport.lib
 qwindows.lib
@@ -7893,7 +7893,7 @@ qwindows.lib
 
 I also added the following to my code:  
 
-```qt
+```c
 #include &lt;QtPlugin&gt;
 Q_IMPORT_PLUGIN (QWindowsIntegrationPlugin);
 ```
@@ -7901,7 +7901,7 @@ Q_IMPORT_PLUGIN (QWindowsIntegrationPlugin);
 #### Answer 2 (score 28)
 For dynamic build only: Make sure you move the qwindows.dll to the following directory:  
 
-```qt
+```c
 yourapp.exe
 Qt5Core.dll
 ...
@@ -7929,7 +7929,7 @@ I'm new to Qt, so I wonder whether there is a way to set the size of a `QMainWin
 #### Answer accepted (score 27)
 Thanks to Amir eas. The problem is solved. Here's the code for it:  
 
-```qt
+```c
 #include &lt;QDesktopWidget&gt;
 #include &lt;QMainWindow&gt;
 ...
@@ -7951,7 +7951,7 @@ This will resize the window to 70% of the available screen space.
 #### Answer 3 (score 4)
 You can use the `availableGeometry(QWidget*)` method in `QDesktopWidget`, this will give you the geometry of the screen that this widget is currently on. <br>For example:  
 
-```qt
+```c
 QRect screenSize = desktop.availableGeometry(this);
 this-&gt;setFixedSize(QSize(screenSize.width * 0.7f, screenSize.height * 0.7f));
 ```
