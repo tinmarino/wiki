@@ -30,7 +30,6 @@ copy_src(){
 
 
 # Compile for unix (with pandoc & Perl)
-# TODO replace sed and comment
 # TODO if there is no level2 afeter level1 ?
 munix(){
   # Read metadata
@@ -51,7 +50,7 @@ munix(){
   # Replace vim by language-vim for prism color higlight
   perl -pe ' s/```vim/```language-vim/; ' |
   # Change links: add html
-  perl -pe  ' s/(\[.+\])\(([^#)]+)\)/\1(\2.html)/g' |
+  perl -pe  ' s/(\[.+?\])\(([^#)]+?)\)/\1(\2.html)/g' |
   # Double the new line before code
   perl -0pe ' s/((^|\n\S)[^\n]*)\n\t([^*])/\1\n\n\t\3/g;' |
   # Remove spaces in void lines
@@ -59,7 +58,7 @@ munix(){
   # Debug
   # tee test.md |
   # Compile: can add  --standalone --self-contained and --include-header=<file>
-  pandoc $MATH  $PANDOC   --highlight-style breezedark --section-divs -f $SYNTAX -t html -T $FILE -c $CSSFILE > "$OUTPUT.html"
+  pandoc $MATH  $PANDOC --highlight-style breezedark --section-divs -f $SYNTAX -t html -T $FILE -c $CSSFILE > "$OUTPUT.html"
   echo -e "Css: $CSSFILE \nPandoc: $PANDOC \nMeta: $meta"
 }
 
