@@ -47,6 +47,7 @@
   * [Text](Text)
   * [Regles Expeditionnaire](Regles-Expeditionnaire)
   * [Cheats](Cheats)
+  * [StackOverflow Best](So/So)
   * [AsciiArts](AsciiArt/AsciiArts)
   * [KeyBinding Custom](KeyBinding-Custom)
 

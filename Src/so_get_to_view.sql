@@ -62,8 +62,8 @@ inner join posttags pt on pt.postid = p.id
 inner join tags t on pt.tagid = t.id
 
 WHERE 
-t.tagname in ('python')  -- tag
-AND p.PostTypeId = 1   -- select questions
+p.PostTypeId = 1   -- select questions
+-- AND t.tagname in ('python')  -- tag
 -- AND p.Score > 1000  -- if slow (java, js)
 
 

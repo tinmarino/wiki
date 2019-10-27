@@ -5,7 +5,7 @@ modprobe -r psmouse
 
 # Restart
 
-* gnome-shell --replace
+* DISPLAY=:0 gnome-shell --replace
 * alt f2 + r  or `restart`
 
 
