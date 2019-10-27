@@ -3222,6 +3222,7 @@ If you want a more authentic experience, you can also get rid of lines starting 
 sed "s/^\[^[8m.*$//gi"
 ```
 
+Also note that those `^[s` should be actual, literal `^[s`. You can type them by pressing `^V^[` in bash, that is <kbd>Ctrl</kbd> + <kbd>V</kbd>, <kbd>Ctrl</kbd> + <kbd>[</kbd>.   
 
 #### Answer 2 (score 83)
 I also use:  
