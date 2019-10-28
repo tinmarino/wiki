@@ -61,6 +61,18 @@ sub arg_to_str {
 }
 
 
+sub clean_code {
+    my $res = shift;
+    $res =~ s/&gt;/>/g;
+    $res =~ s/&lt;/</g;
+    $res =~ s/&nbsp;/ /g;
+    $res =~ s/&amp;/&/g;
+    $res =~ s/&quot;/"/g;
+    $res =~ s/&apos;/'/g;
+    return $res;
+}
+
+
 # Treat a single post in md
 sub treat {
     # In
@@ -72,12 +84,16 @@ sub treat {
         (?![^>]*lang-html)
         [^>]*><code>
         ([\S\s]*?)
-        </code></pre>|```$tag\n$1```|gx;
+        </code></pre>|
+        '```' .  $tag . "\n"
+        . clean_code($1)
+        . '```' |gxe;
     # If ``` is not at BOL or followed
     $post =~ s|(.)```|$1\n```|g;
     $post =~ s|```(?!$tag)(.)|```\n$1|g;
     # Inline code
-    $post =~ s|<code>(.*?)</code>|`$1`|g;
+    $post =~ s|<code>(.*?)</code>|
+        '`' . clean_code($1) . '`'|gxe;
 
     # Remove windows line ending
     $post =~ s/\r//g;
