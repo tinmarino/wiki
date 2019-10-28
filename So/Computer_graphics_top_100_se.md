@@ -1,5 +1,5 @@
 ---
-title: Computer_graphics <- StackOverflow top 100
+title: Computer_graphics <- StackExchange top 100
 category: computer_graphics
 wiki_css: ../Css/color_dark_solarized.css, ../Css/layout_toc.css
 header-includes: <script type="text/javascript" src="../Css/js_masonry_desandro.js"></script>

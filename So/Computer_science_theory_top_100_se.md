@@ -1,5 +1,5 @@
 ---
-title: Computer_science_theory <- StackOverflow top 100
+title: Computer_science_theory <- StackExchange top 100
 category: computer_science_theory
 wiki_css: ../Css/color_dark_solarized.css, ../Css/layout_toc.css
 header-includes: <script type="text/javascript" src="../Css/js_masonry_desandro.js"></script>

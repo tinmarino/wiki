@@ -1,5 +1,5 @@
 ---
-title: Tex <- StackOverflow top 100
+title: Tex <- StackExchange top 100
 category: tex
 wiki_css: ../Css/color_dark_solarized.css, ../Css/layout_toc.css
 header-includes: <script type="text/javascript" src="../Css/js_masonry_desandro.js"></script>

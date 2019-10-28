@@ -1,5 +1,5 @@
 ---
-title: Data_science <- StackOverflow top 100
+title: Data_science <- StackExchange top 100
 category: data_science
 wiki_css: ../Css/color_dark_solarized.css, ../Css/layout_toc.css
 header-includes: <script type="text/javascript" src="../Css/js_masonry_desandro.js"></script>

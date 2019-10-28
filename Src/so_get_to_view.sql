@@ -28,14 +28,24 @@ min(c.LastEditDate)  AS "date3"
 
 FROM Posts p
 
--- Join Accepted answer
-left outer JOIN Posts a ON p.AcceptedAnswerId = a.Id
+-- Join Accepted answer or Best
+left outer JOIN Posts a
+    ON p.Id = a.parentId 
+    AND (
+        p.AcceptedAnswerId = a.Id
+        OR a.Score =
+(
+    select max(n.Score) as maxscore
+    from Posts n
+    where n.ParentId = p.Id
+)
+        )   
 
 -- Join best not a
 left outer JOIN Posts b
     ON p.Id = b.ParentId 
     AND (a.Id is null or b.Id is null or  b.Id != a.Id)
-AND b.Score =
+    AND b.Score =
 (
     select max(n.Score) as maxscore
     from Posts n
