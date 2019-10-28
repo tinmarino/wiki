@@ -24,6 +24,7 @@ header-includes: <script type="text/javascript" src="../Css/js_masonry_desandro.
 * [Java](Java_top_100)
 
 ### Markup
+* [Tex](Tex_top_100)
 * [Css](Css_top_100)
 * [Html](Html_top_100)
 * [Sql](Sql_top_100)
