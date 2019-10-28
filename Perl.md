@@ -200,6 +200,7 @@ cpan reload cpan
 | m       | Include newlines in ^ and $ |
 | r       | Non destructive |
 | x       | Pretty print regex: ignore space, newline, comment |
+| e       | Execute replacement expression |
 
 
 # Links (maybe to parse and add)
