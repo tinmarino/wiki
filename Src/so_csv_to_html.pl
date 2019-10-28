@@ -85,7 +85,7 @@ sub treat {
         [^>]*><code>
         ([\S\s]*?)
         </code></pre>|
-        "```text\n"   # TODO do no delete.  $tag . "\n"
+        '```' .  $tag . "\n"
         . clean_code($1)
         . '```' |gxe;
     # If ``` is not at BOL or followed
@@ -131,7 +131,7 @@ sub dump_md {
     open my $fh, ">:encoding(utf8)", $path or die "Write faile: $path: $!";
 
     # Add header (as a post)
-    my $title = "@{[ ucfirst $tag ]} <- StackExchange top ${\(scalar @$posts)}";
+    my $title = "@{[ ucfirst $tag ]} <- StackOverflow top ${\(scalar @$posts)}";
     my $header = <<"END_HEADER";
 ---
 title: $title
