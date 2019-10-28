@@ -4,9 +4,9 @@ wiki_css: ../Css/color_dark_solarized.css, ../Css/layout_toc.css
 header-includes: <script type="text/javascript" src="../Css/js_masonry_desandro.js"></script>
 ---
 
-<img src='../res/img/stackoverflow_logo.svg'>
+<br/> <br/> <br/> <br/> <br/>
 
-##
+## <img src='../res/img/stackoverflow_logo.svg' style='max-width:45%; margin-top:-200px'>
 
 ### Interpreted                        
 * [Bash](Bash_top_100)               
@@ -38,13 +38,9 @@ header-includes: <script type="text/javascript" src="../Css/js_masonry_desandro.
 
 
 
+<br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/>
 
-
-
-
-<img src='../res/img/stackexchange_logo.svg'>
-
-##
+## <img src='../res/img/stackexchange_logo.svg' style='max-width:45%; margin-top:-200px'>
 
 ### Computing
 
