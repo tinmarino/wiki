@@ -24,7 +24,7 @@ And, copy a file from `System A` to `System B`?</p>
 Syntax:   
 
 ```sh
-scp &lt;source&gt; &lt;destination&gt;
+scp <source> <destination>
 ```
 
 To copy a file from `B` to `A` while logged into `B`:  
@@ -646,7 +646,7 @@ Bash can't check directly for regular files, a loop is needed (braces avoid sett
 ```sh
 ( shopt -s globstar dotglob;
     for file in **; do
-        if [[ -f $file ]] &amp;&amp; [[ -w $file ]]; then
+        if [[ -f $file ]] && [[ -w $file ]]; then
             sed -i -- 's/foo/bar/g' "$file"
         fi
     done
@@ -777,14 +777,14 @@ s/baz/zab/g
 ```sh
 while read -r pattern replacement; do   
     sed -i "s/$pattern/$replacement/" file
-done &lt; patterns.txt
+done < patterns.txt
 ```
 </li>
 <li><p>That will be quite slow for long lists of patterns and large data files so you might want to read the patterns and create a `sed` script from them instead. The following assumes a <em>&lt;space></em> delimiter separates a list of <em>MATCH&lt;space>REPLACE</em> pairs occurring one-per-line in the file <em>`patterns.txt`</em> :</p>
 
 ```sh
-sed 's| *\([^ ]*\) *\([^ ]*\).*|s/\1/\2/g|' &lt;patterns.txt |
-sed -f- ./editfile &gt;outfile
+sed 's| *\([^ ]*\) *\([^ ]*\).*|s/\1/\2/g|' <patterns.txt |
+sed -f- ./editfile >outfile
 ```
 
 The above format is largely arbitrary and, for example, doesn't allow for a <em>&lt;space></em> in either of <em>MATCH</em> or <em>REPLACE</em>. The method is very general though: basically, if you can create an output stream which looks like a `sed` script, then you can source that stream as a `sed` script by specifying `sed`'s script file as `-`stdin.   </li>
@@ -795,24 +795,24 @@ SOME_PIPELINE |
 sed -e'#some expression script'  \
     -f./script_file -f-          \
     -e'#more inline expressions' \
-./actual_edit_file &gt;./outfile
+./actual_edit_file >./outfile
 ```
 
 A POSIX `sed` will concatenate all scripts into one in the order they appear on the command-line. None of these need end in a `\n`ewline.  </li>
 <li><p>`grep` can work the same way:</p>
 
 ```sh
-sed -e'#generate a pattern list' &lt;in |
+sed -e'#generate a pattern list' <in |
 grep -f- ./grepped_file
 ```
 </li>
 <li><p>When working with fixed-strings as patterns, it is good practice to escape regular expression <em>metacharacters</em>. You can do this rather easily:</p>
 
 ```sh
-sed 's/[]$&amp;^*\./[]/\\&amp;/g
+sed 's/[]$&^*\./[]/\\&/g
      s| *\([^ ]*\) *\([^ ]*\).*|s/\1/\2/g|
-' &lt;patterns.txt |
-sed -f- ./editfile &gt;outfile
+' <patterns.txt |
+sed -f- ./editfile >outfile
 ```
 </li>
 </ul>
@@ -981,17 +981,17 @@ I always used egrep and needlessly parens, because I learned from examples. Now 
 Like TC1 said, `-F` seems to be usable option:  
 
 ```sh
-$&gt; cat text
+$> cat text
 some text
 foo
 another text
 bar
 end of file
 
-$&gt; patterns="foo
+$> patterns="foo
 bar" 
 
-$&gt; grep -F "${patterns}" text
+$> grep -F "${patterns}" text
 foo
 bar
 ```
@@ -1134,7 +1134,7 @@ This will tell `tar` to
 The `tar` command offers `gzip` support (via the `-z` flag) purely for your convenience. The `gzip` command/lib is completely separate. The command above is effectively the same as  
 
 ```sh
-tar -cv directory | gzip &gt; archive.tar.gz
+tar -cv directory | gzip > archive.tar.gz
 ```
 
 To decompress and unpack the archive into the current directory you would use  
@@ -1146,7 +1146,7 @@ tar -zxvf archive.tar.gz
 That command is effectively the same as  
 
 ```sh
-gunzip &lt; archive.tar.gz | tar -xv
+gunzip < archive.tar.gz | tar -xv
 ```
 
 `tar` has many, many, MANY other options and uses as well; I heartily recommend reading through its manpage sometime.  
@@ -1308,7 +1308,7 @@ The default GNOME Desktop of CentOS 7 starts with <em>classic mode</em> but if y
 <strong>Option A:</strong> If you start GNOME with `startx`, set like follows.   
 
 ```sh
-# echo "exec gnome-session" &gt;&gt; ~/.xinitrc
+# echo "exec gnome-session" >> ~/.xinitrc
 # startx 
 ```
 
@@ -1340,7 +1340,7 @@ The default GNOME Desktop of CentOS 7 starts with <em>classic mode</em> but if y
 <li><p>Input a command like below after finishing installation:</p>
 
 ```sh
-# echo "exec startkde" &gt;&gt; ~/.xinitrc
+# echo "exec startkde" >> ~/.xinitrc
 # startx
 ```
 </li>
@@ -1378,7 +1378,7 @@ The default GNOME Desktop of CentOS 7 starts with <em>classic mode</em> but if y
 <li><p>Input a command like below after finishing installation:</p>
 
 ```sh
-# echo "exec /usr/bin/cinnamon-session" &gt;&gt; ~/.xinitrc
+# echo "exec /usr/bin/cinnamon-session" >> ~/.xinitrc
 # startx 
 ```
 </li>
@@ -1407,7 +1407,7 @@ The default GNOME Desktop of CentOS 7 starts with <em>classic mode</em> but if y
 <li><p>Input a command like below after finishing installation:</p>
 
 ```sh
-# echo "exec /usr/bin/mate-session" &gt;&gt; ~/.xinitrc 
+# echo "exec /usr/bin/mate-session" >> ~/.xinitrc 
 # startx
 ```
 </li>
@@ -1429,7 +1429,7 @@ The default GNOME Desktop of CentOS 7 starts with <em>classic mode</em> but if y
 <li><p>Input a command like below after finishing installation:</p>
 
 ```sh
-# echo "exec /usr/bin/xfce4-session" &gt;&gt; ~/.xinitrc 
+# echo "exec /usr/bin/xfce4-session" >> ~/.xinitrc 
 # startx
 ```
 </li>
@@ -2224,13 +2224,13 @@ If you meant using the command line, then you are asking how to create a file us
 The basic way to create a file with the shell is with <a href="http://en.wikipedia.org/wiki/Redirection_(computing)" rel="noreferrer">output redirection</a>. For example, the following command creates a file called `foo.txt` containing the line `Hello, world.`  
 
 ```sh
-echo 'Hello, world.' &gt;foo.txt
+echo 'Hello, world.' >foo.txt
 ```
 
 If you want to write multiple lines, here are a few possibilities. You can use `printf`.  
 
 ```sh
-printf '%s\n' 'First line.' 'Second line.' 'Third line.' &gt;foo.txt
+printf '%s\n' 'First line.' 'Second line.' 'Third line.' >foo.txt
 ```
 
 You can use a string literal containing newlines.  
@@ -2238,13 +2238,13 @@ You can use a string literal containing newlines.
 ```sh
 echo 'First line.
 Second line.
-Third line.' &gt;foo.txt
+Third line.' >foo.txt
 ```
 
 or  
 
 ```sh
-echo $'First line.\nSecond line.\nThird line.' &gt;foo.txt
+echo $'First line.\nSecond line.\nThird line.' >foo.txt
 ```
 
 Another possibility is to group commands.  
@@ -2254,7 +2254,7 @@ Another possibility is to group commands.
   echo 'First line.'
   echo 'Second line.'
   echo 'Third line.'
-} &gt;foo.txt
+} >foo.txt
 ```
 
 On the command line, you can do this more directly with `cat`. Redirect its output to the file and type the input line by line on `cat`'s standard input. Press <kbd>Ctrl</kbd>+<kbd>D</kbd> at the beginning of the line to indicate the end of the input.  
@@ -2270,7 +2270,7 @@ $ <strong>cat &gt;foo.txt</strong>
 In a script you would use a <a href="http://en.wikipedia.org/wiki/Here_document" rel="noreferrer">here document</a> to achieve the same effect:  
 
 ```sh
-cat &lt;&lt;EOF &gt;foo.txt
+cat <<EOF >foo.txt
 First line.
 Second line.
 Third line.
@@ -2286,7 +2286,7 @@ touch foo.txt
 Equivalently:  
 
 ```sh
-&gt;&gt;foo.txt
+>>foo.txt
 ```
 
 i.e. open `foo.txt` for appending, but write 0 bytes to it — this creates the file but doesn't modify it. Unlike `touch`, this doesn't update the file's last-modified date if it already existed.  
@@ -2294,7 +2294,7 @@ i.e. open `foo.txt` for appending, but write 0 bytes to it — this creates the
 To create an empty file, and remove the file's content if the file already existed, you can use  
 
 ```sh
-&gt;foo.txt
+>foo.txt
 ```
 
 #### Answer 3 (score 13)
@@ -2307,7 +2307,7 @@ This will create an empty `txt` file.
 Or   
 
 ```sh
-echo "Hello" &gt; ~/Desktop/somethingelse.txt
+echo "Hello" > ~/Desktop/somethingelse.txt
 ```
 
 This will create a `txt` file saying "Hello".  
@@ -2549,27 +2549,27 @@ Host localhost
 I know you can do this:</p>
 
 ```sh
-cat temp.txt &gt;&gt; data.txt
+cat temp.txt >> data.txt
 ```
 
 But it seems weird since its two lines. Is there a way to append that in this format:  
 
 ```sh
-echo "hello" &gt;&gt; greetings.txt
+echo "hello" >> greetings.txt
 ```
 
 #### Answer accepted (score 533)
 ```sh
 # possibility 1:
-echo "line 1" &gt;&gt; greetings.txt
-echo "line 2" &gt;&gt; greetings.txt
+echo "line 1" >> greetings.txt
+echo "line 2" >> greetings.txt
 
 # possibility 2:
 echo "line 1
-line 2" &gt;&gt; greetings.txt
+line 2" >> greetings.txt
 
 # possibility 3:
-cat &lt;&lt;EOT &gt;&gt; greetings.txt
+cat <<EOT >> greetings.txt
 line 1
 line 2
 EOT
@@ -2579,10 +2579,10 @@ If sudo (other user privileges) is needed to write to the file, use this:
 
 ```sh
 # possibility 1:
-echo "line 1" | sudo tee -a greetings.txt &gt; /dev/null
+echo "line 1" | sudo tee -a greetings.txt > /dev/null
 
 # possibility 3:
-sudo tee -a greetings.txt &gt; /dev/null &lt;&lt;EOT
+sudo tee -a greetings.txt > /dev/null <<EOT
 line 1
 line 2
 EOT
@@ -2590,20 +2590,20 @@ EOT
 
 #### Answer 2 (score 60)
 ```sh
-printf '%s\n    %s\n' 'Host localhost' 'ForwardAgent yes' &gt;&gt; file.txt
+printf '%s\n    %s\n' 'Host localhost' 'ForwardAgent yes' >> file.txt
 ```
 
 Or, if it's a literal tab that you want (rather than the four spaces in your question):  
 
 ```sh
-printf '%s\n\t%s\n' 'Host localhost' 'ForwardAgent yes' &gt;&gt; file.txt
+printf '%s\n\t%s\n' 'Host localhost' 'ForwardAgent yes' >> file.txt
 ```
 
 You can achieve the same effect with `echo`, but exactly how varies from implementation to implementation, whereas `printf` is constant.  
 
 #### Answer 3 (score 33)
 ```sh
-echo -e "Hello \nWorld \n" &gt;&gt; greetings.txt
+echo -e "Hello \nWorld \n" >> greetings.txt
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -2739,7 +2739,7 @@ Note that this is mostly useful for benchmarking. Emptying the buffers and cache
 If you ever want to empty it you can use this chain of commands.  
 
 ```sh
-# free &amp;&amp; sync &amp;&amp; echo 3 &gt; /proc/sys/vm/drop_caches &amp;&amp; free
+# free && sync && echo 3 > /proc/sys/vm/drop_caches && free
 
              total       used       free     shared    buffers     cached
 Mem:       1018916     980832      38084          0      46924     355764
@@ -2757,19 +2757,19 @@ You can signal the Linux Kernel to drop various aspects of cached items by chang
 <li><p>To free pagecache:</p>
 
 ```sh
-# echo 1 &gt; /proc/sys/vm/drop_caches
+# echo 1 > /proc/sys/vm/drop_caches
 ```
 </li>
 <li><p>To free dentries and inodes:</p>
 
 ```sh
-# echo 2 &gt; /proc/sys/vm/drop_caches
+# echo 2 > /proc/sys/vm/drop_caches
 ```
 </li>
 <li><p>To free pagecache, dentries and inodes:</p>
 
 ```sh
-# echo 3 &gt; /proc/sys/vm/drop_caches
+# echo 3 > /proc/sys/vm/drop_caches
 ```
 </li>
 </ul>
@@ -2777,15 +2777,15 @@ You can signal the Linux Kernel to drop various aspects of cached items by chang
 The above are meant to be run as root. If you're trying to do them using `sudo` then you'll need to change the syntax slightly to something like these:  
 
 ```sh
-$ sudo sh -c 'echo 1 &gt;/proc/sys/vm/drop_caches'
-$ sudo sh -c 'echo 2 &gt;/proc/sys/vm/drop_caches'
-$ sudo sh -c 'echo 3 &gt;/proc/sys/vm/drop_caches'
+$ sudo sh -c 'echo 1 >/proc/sys/vm/drop_caches'
+$ sudo sh -c 'echo 2 >/proc/sys/vm/drop_caches'
+$ sudo sh -c 'echo 3 >/proc/sys/vm/drop_caches'
 ```
 
 <strong>NOTE:</strong> There's a more esoteric version of the above command if you're into that:  
 
 ```sh
-$ echo "echo 1 &gt; /proc/sys/vm/drop_caches" | sudo sh
+$ echo "echo 1 > /proc/sys/vm/drop_caches" | sudo sh
 ```
 
 Why the change in syntax? The `/bin/echo` program is running as root, because of `sudo`, but the shell that's redirecting echo's output to the root-only file is still running as you. Your current shell does the redirection <em>before</em> `sudo` starts.  
@@ -2946,9 +2946,9 @@ From cat's man page:</p>
 Now cat is fine for printing files but there are alternatives:  
 
 ```sh
-  echo "$(&lt;filename)"
+  echo "$(<filename)"
 or
-  printf "%s" "$(&lt;filename)"
+  printf "%s" "$(<filename)"
 ```
 
 The `( )` return the value of an expression, in this case the content of <em>filename</em> which then is expanded by `$` for `echo` or `printf`.  
@@ -2956,7 +2956,7 @@ The `( )` return the value of an expression, in this case the content of <em>fil
 Update:  
 
 ```sh
-&lt; filename
+< filename
 ```
 
 This does exactly what you want and is easy to remember.  
@@ -2969,7 +2969,7 @@ Here is an example that lets you select a file in a menu and then prints it.
 select fname in *;
 do
 # Don't forget the "" around the second part, else newlines won't be printed
-  printf "%s" "$(&lt;$fname)"
+  printf "%s" "$(<$fname)"
   break
 done
 ```
@@ -3269,7 +3269,7 @@ case $TERM in
     esac
 
 local UC=$COLOR_WHITE               # user's color
-[ $UID -eq "0" ] &amp;&amp; UC=$COLOR_RED   # root's color
+[ $UID -eq "0" ] && UC=$COLOR_RED   # root's color
 
 PS1="$TITLEBAR\n\[${UC}\]\\u \[${COLOR_LIGHT_BLUE}\]\${PWD} \[${COLOR_BLACK}\]\$(vcprompt) \n\[${COLOR_LIGHT_GREEN}\]→\[${COLOR_NC}\] "  
 ```
@@ -3482,13 +3482,13 @@ gunzip -k file.gz
 <li><p>Pass the file to `gunzip` as stdin</p>
 
 ```sh
-gunzip &lt; file.gz &gt; file
+gunzip < file.gz > file
 ```
 </li>
 <li><p>Use `zcat` (or, on older systems, `gzcat`)</p>
 
 ```sh
-zcat file.gz &gt; file
+zcat file.gz > file
 ```
 </li>
 </ul>
@@ -3497,7 +3497,7 @@ zcat file.gz &gt; file
 Without requiring a temporary file:  
 
 ```sh
- zcat somefile.gz &gt; somefile
+ zcat somefile.gz > somefile
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -3635,7 +3635,7 @@ The way to "double-click" on a file from the command line is `xdg-open`.
 If you're on Gnome (probably, if you're using Nautilus), you can use `eog` directly, or any other image program (`feh` is quite good).   
 
 ```sh
-feh &lt;image-name&gt;      
+feh <image-name>      
 ```
 
 If you want to consult `image-name` file easilly.  
@@ -3692,7 +3692,7 @@ curl -k -X GET https://wrong.host.badssl.com/
 You may use the following command to apply the changes for all connections:  
 
 ```sh
-$ echo insecure &gt;&gt; ~/.curlrc
+$ echo insecure >> ~/.curlrc
 ```
 
 On Windows just create `_curlrc` text file with 'insecure' text in it in your `%HOME%`, `%CURL_HOME%`, `%APPDATA%`, `%USERPROFILE%` or `%USERPROFILE%\Application Data` directory.  
@@ -3714,7 +3714,7 @@ I'm trying to compress a folder (`/var/www/`) to `~/www_backups/$time.tar` where
 This is what I have:  
 
 ```sh
-cd /var/www &amp;&amp; sudo tar -czf ~/www_backups $time"
+cd /var/www && sudo tar -czf ~/www_backups $time"
 ```
 
 I am completely lost and I've been at this for hours now. Not sure if `-czf` is correct. I simply want to copy all of the content in `/var/www` into a `$time.tar` file, and I want to maintain the file permissions for all of the files. Can anyone help me out?  
@@ -3731,7 +3731,7 @@ The `-` is optional. If you want to `tar` the current directory, use `.` to desi
 To construct your filename, use the `date` utility (look at its man page for the available format options). For example:  
 
 ```sh
-cd /var/www &amp;&amp; sudo tar czf ~/www_backups/$(date +%Y%m%d-%H%M%S).tar.gz .
+cd /var/www && sudo tar czf ~/www_backups/$(date +%Y%m%d-%H%M%S).tar.gz .
 ```
 
 This would have created a file named something like `20120902-185558.tar.gz`.  
@@ -3976,11 +3976,11 @@ This is how I do it in Ubuntu. Just replace `Asia/Tokyo` with your own timezone.
 There is a <a href="https://bugs.launchpad.net/ubuntu/+source/tzdata/+bug/772024">bug</a> in `tzdata`: certain values get normalized by `dpkg-reconfigure`:  
 
 ```sh
-echo 'US/Central' &gt;/etc/timezone
+echo 'US/Central' >/etc/timezone
 dpkg-reconfigure -f noninteractive tzdata
 # Current default time zone: 'America/Chicago'
 
-echo 'US/Eastern' &gt;/etc/timezone
+echo 'US/Eastern' >/etc/timezone
 apt-get install --reinstall tzdata
 # Current default time zone: 'America/New_York'
 ```
@@ -4033,7 +4033,7 @@ Inode  Owner  Mode    Size    Blocks   Time deleted
 <li><p>Run the command in debugfs</p>
 
 ```sh
-debugfs: logdump -i &lt;7536655&gt;
+debugfs: logdump -i <7536655>
 ```
 </li>
 <li><p>Determine files inode</p>
@@ -4090,13 +4090,13 @@ if [[ ! $1 ]]; then
     exit 1
 fi
 
-f=$(ls 2&gt;/dev/null -l /proc/*/fd/* | fgrep "$1 (deleted" | awk '{print $9}')
+f=$(ls 2>/dev/null -l /proc/*/fd/* | fgrep "$1 (deleted" | awk '{print $9}')
 
 if [[ $f ]]; then
     echo "fd $f found..."
     cp -v "$f" "$1"
 else
-    echo &gt;&amp;2 "No fd found..."
+    echo >&2 "No fd found..."
     exit 2
 fi
 ```
@@ -4137,7 +4137,7 @@ Before I install a package I'd like to know what version I would get. How do I c
 You can run a simulation to see what would happen if you upgrade/install a package:  
 
 ```sh
-apt-get -s install &lt;package&gt;
+apt-get -s install <package>
 ```
 
 To see all possible upgrades, run a `upgrade` in verbose mode and (to be safe) with simulation, press <kbd>n</kbd> to cancel:  
@@ -4151,7 +4151,7 @@ apt-get -V -s upgrade
 The option `policy` can show the installed and the remote version (install candidate) of a package.  
 
 ```sh
-apt-cache policy &lt;package&gt;
+apt-cache policy <package>
 ```
 
 <strong>apt-show-versions</strong>  
@@ -4159,7 +4159,7 @@ apt-cache policy &lt;package&gt;
 If installed, shows version information about one or more packages:  
 
 ```sh
-apt-show-versions &lt;package&gt;
+apt-show-versions <package>
 ```
 
 Passing the `-u` switch with or without a package name will only show upgradeable packages.  
@@ -4171,13 +4171,13 @@ The console GUI of `aptitude` can display upgradeable packages with new versions
 Or on the command-line:  
 
 ```sh
-aptitude versions &lt;package&gt;
+aptitude versions <package>
 ```
 
 Passing `-V` will show detailed information about versions, again to be safe with the simulation switch:  
 
 ```sh
-aptitude -V -s install &lt;package&gt;
+aptitude -V -s install <package>
 ```
 
 Substituting `install &lt;package&gt;` with `upgrade` will show the versions from all upgradeable packages.  
@@ -4186,14 +4186,14 @@ Substituting `install &lt;package&gt;` with `upgrade` will show the versions fro
 Another way using <strong>dpkg</strong> and <strong>grep</strong>:  
 
 ```sh
-dpkg -s &lt;package&gt; | grep Version
+dpkg -s <package> | grep Version
 ```
 
 #### Answer 3 (score 21)
 Another option, if you don't know the full name of the package, is formatting aptitude's search output:  
 
 ```sh
-aptitude search &lt;package&gt; -F "%c %p %d %V"
+aptitude search <package> -F "%c %p %d %V"
 ```
 
 <p>`%c` = status (package installed or not)<br>
@@ -4289,7 +4289,7 @@ dir=`pwd`
 I'm looking for something more elegant than:  
 
 ```sh
-perl -e '$_ = &lt;&gt;; print scalar ( () = m/needle/g ), "\n"'
+perl -e '$_ = <>; print scalar ( () = m/needle/g ), "\n"'
 ```
 
 #### Answer accepted (score 306)
@@ -4305,7 +4305,7 @@ Only single words:</p>
 ```sh
 grep -o '\bneedle\B' file | wc -l
 # or:
-grep -o '\&lt;needle\&gt;' file | wc -l
+grep -o '\<needle\>' file | wc -l
 ```
 
 #### Answer 2 (score 17)
@@ -4331,7 +4331,7 @@ Otherwise, there's no standard command to do this particular bit of text process
 ```sh
 awk '{while (match($0, /set/)) {++c; $0=substr($0, RSTART+RLENGTH)}}
      END {print c}'
-sed -n -e 's/set/\n&amp;\n/g' -e 's/^/\n/' -e 's/$/\n/' \
+sed -n -e 's/set/\n&\n/g' -e 's/^/\n/' -e 's/$/\n/' \
        -e 's/\n[^\n]*\n/\n/g' -e 's/^\n//' -e 's/\n$//' \
        -e '/./p' | wc -l
 ```
@@ -4339,7 +4339,7 @@ sed -n -e 's/set/\n&amp;\n/g' -e 's/^/\n/' -e 's/$/\n/' \
 Here's a simpler solution using `sed` and `grep`, which works for strings or even by-the-book regular expressions but fails in a few corner cases with anchored patterns (e.g. it finds two occurrences of `^needle` or `\bneedle` in `needleneedle`).  
 
 ```sh
-sed 's/needle/\n&amp;\n/g' | grep -cx 'needle'
+sed 's/needle/\n&\n/g' | grep -cx 'needle'
 ```
 
 Note that in the sed substitutions above, I used `\n` to mean a newline. This is standard in the pattern part, but in the replacement text, for portability, substitute backslash-newline for `\n`.  
@@ -4507,9 +4507,9 @@ One I like to try is
 
 ```sh
 # U.S.
-du -h &lt;dir&gt; | grep '[0-9\.]\+G'
+du -h <dir> | grep '[0-9\.]\+G'
 # Others
-du -h &lt;dir&gt; | grep '[0-9\,]\+G'
+du -h <dir> | grep '[0-9\,]\+G'
 ```
 
 because it prints sizes in "human readable form".  Unless you've got really small partitions, grepping for directories in the gigabytes is a pretty good filter for what you want.  This will take you some time, but unless you have quotas set up, I think that's just the way it's going to be.  
@@ -4570,7 +4570,7 @@ Homebrew, to me is the best package manager...</p>
 I'm currently studying <a href="https://en.wikipedia.org/wiki/Penetration_test">penetration testing</a> and Python programming. I just want to know how I would go about executing a Linux command in Python. The commands I want to execute are:  
 
 ```sh
-echo 1 &gt; /proc/sys/net/ipv4/ip_forward
+echo 1 > /proc/sys/net/ipv4/ip_forward
 iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 8080
 ```
 
@@ -4587,7 +4587,7 @@ os.system('ls')
 Or in your case:  
 
 ```sh
-os.system('echo 1 &gt; /proc/sys/net/ipv4/ip_forward')
+os.system('echo 1 > /proc/sys/net/ipv4/ip_forward')
 os.system('iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 8080')
 ```
 
@@ -4717,7 +4717,7 @@ httpd.x86_64                        2.4.10-1.fc20                        updates
 As far as installing a particular version? You can append the version info to the name of the package, removing the architecture name, like so:  
 
 ```sh
-$ sudo yum install &lt;package name&gt;-&lt;version info&gt;
+$ sudo yum install <package name>-<version info>
 ```
 
 For example in this case if I wanted to install the older version, 2.4.6-6 I'd do the following:  
@@ -4749,21 +4749,21 @@ httpd-0:2.4.10-1.fc20.x86_64
 You can also use one of the following options to download a particular RPM from the web, and then use `yum` to install it.  
 
 ```sh
-$ yum --downloadonly &lt;package&gt;
+$ yum --downloadonly <package>
 -or-
-$ yumdownloader &lt;package&gt;
+$ yumdownloader <package>
 ```
 
 And then install it like so:  
 
 ```sh
-$ sudo yum localinstall &lt;path to rpm&gt;
+$ sudo yum localinstall <path to rpm>
 ```
 
 What if I want to download everything that package X requires?  
 
 ```sh
-$ yumdownloader --resolve &lt;package&gt;
+$ yumdownloader --resolve <package>
 ```
 
 <h5>Example</h3>
@@ -4772,9 +4772,9 @@ $ yumdownloader --resolve &lt;package&gt;
 $ yumdownloader --resolve vim-X11
 Loaded plugins: langpacks, presto, refresh-packagekit
 Adding en_US to language list
---&gt; Running transaction check
----&gt; Package vim-X11.x86_64 2:7.3.315-1.fc14 set to be reinstalled
---&gt; Finished Dependency Resolution
+--> Running transaction check
+---> Package vim-X11.x86_64 2:7.3.315-1.fc14 set to be reinstalled
+--> Finished Dependency Resolution
 vim-X11-7.3.315-1.fc14.x86_64.rpm                              | 1.1 MB     00:01
 ```
 
@@ -4948,7 +4948,7 @@ If you're in the same shell from where you ran the job that's now backgrounded. 
 My fake job, `sleep`.  
 
 ```sh
-$ sleep 100 &amp;
+$ sleep 100 &
 [1] 4542
 ```
 
@@ -4956,7 +4956,7 @@ Find it's job number. <strong>NOTE:</strong> the number 4542 is the process ID.
 
 ```sh
 $ jobs
-[1]+  Running                 sleep 100 &amp;
+[1]+  Running                 sleep 100 &
 
 $ kill %1
 [1]+  Terminated              sleep 100
@@ -4971,7 +4971,7 @@ You can bring a backgrounded job back to the foreground using the `fg` command.
 Fake job, `sleep`.  
 
 ```sh
-$ sleep 100 &amp;
+$ sleep 100 &
 [1] 4650
 ```
 
@@ -4979,7 +4979,7 @@ Get the job's number.
 
 ```sh
 $ jobs
-[1]+  Running                 sleep 100 &amp;
+[1]+  Running                 sleep 100 &
 ```
 
 Bring job #1 back to the foreground, and then use <kbd>Ctrl</kbd>+<kbd>C</kbd>.  
@@ -5074,7 +5074,7 @@ What is the most common (or user-friendly way) of telling the CLI that I don't w
 Before running the command, you can append `&amp;` to the command line to run in the background:  
 
 ```sh
-long-running-command &amp;
+long-running-command &
 ```
 
 After starting a command, you can press <kbd>Ctrl</kbd><kbd>Z</kbd> to suspend it, and then `bg` to put it in the background:  
@@ -5089,7 +5089,7 @@ bg
 This is the favorite of all since apart of sending the process into the background you don't have to worry about the text output dirtying your terminal:  
 
 ```sh
-nohup command &amp;
+nohup command &
 ```
 
 This not only runs the process in background, also generates a log (called `nohup.out` in the current directory, if that's not possible, your home directory) and if you close/logout the current shell the process is not killed by preventing the child proccess from recieving the parent signals when killed (ie. logging out, by SIGHUP to the parent, or closing the current shell).  
@@ -5097,7 +5097,7 @@ This not only runs the process in background, also generates a log (called `nohu
 There's other called `disown` but that's rather a extension of other answers rather that a method in itself:  
 
 ```sh
-command &amp; # our program is in background
+command & # our program is in background
 disown # now it detached itself of the shell, you can do whatever you want
 ```
 
@@ -5494,7 +5494,7 @@ Adding information from comments: you <em>don't</em> need to use the `[` ... `]`
 For small things that you want to happen if a shell command works, you can use the `&amp;&amp;` construct:  
 
 ```sh
-rm -rf somedir &amp;&amp; trace_output "Removed the directory"
+rm -rf somedir && trace_output "Removed the directory"
 ```
 
 Similarly for small things that you want to happen when a shell command fails, you can use `||`:  
@@ -5506,7 +5506,7 @@ rm -rf somedir || exit_on_error "Failed to remove the directory"
 Or both  
 
 ```sh
-rm -rf somedir &amp;&amp; trace_output "Removed the directory" || exit_on_error "Failed to remove the directory"
+rm -rf somedir && trace_output "Removed the directory" || exit_on_error "Failed to remove the directory"
 ```
 
 It's probably unwise to do very much with these constructs, but they can on occasion make the flow of control a lot clearer.  
@@ -5628,8 +5628,8 @@ The above examples would then become:</p>
 Try the `watch` command.  
 
 ```sh
-Usage: watch [-dhntv] [--differences[=cumulative]] [--help] [--interval=&lt;n&gt;] 
-             [--no-title] [--version] &lt;command&gt;`
+Usage: watch [-dhntv] [--differences[=cumulative]] [--help] [--interval=<n>] 
+             [--no-title] [--version] <command>`
 ```
 
 So that:  
@@ -5778,7 +5778,7 @@ An alternative to issuing the `list-timers` command is to search for timer unit 
 $ find /usr/lib/systemd/ /etc/systemd -name '*.timer'
 $ find /home '(' -path '/home/*/.local/share/systemd/user/*' \
               -o -path '/home/*/.config/systemd/*' ')' \
-      -name '*.timer'  2&gt; /dev/null
+      -name '*.timer'  2> /dev/null
 ```
 
 (As with normal service units, a timer unit is enabled via creating a symbolic link in the right systemd config directory.)  
@@ -5821,7 +5821,7 @@ I finished installing CentOS 6, but when I tried running `yum update` I got:
 [root@centos6test ~]# yum update
 Loaded plugins: fastestmirror, refresh-packagekit
 Determining fastest mirrors
-Could not retrieve mirrorlist http://mirrorlist.centos.org/?release=6&amp;arch=i386&amp;repo=os
+Could not retrieve mirrorlist http://mirrorlist.centos.org/?release=6&arch=i386&repo=os
 error was 14: PYCURL ERROR 6 - "" Error: Cannot find a valid baseurl for repo: base
 ```
 
@@ -5837,7 +5837,7 @@ First you need to get connected, AFAIK CentOS 6 minimal set your network device 
 : </p>
 
 ```sh
-Could not retrieve mirrorlist http://mirrorlist.centos.org/?release=6&amp;arch=x86_64&amp;repo=os error was 14: PYCURL ERROR 6 - "Couldn't resolve host 'mirrorlist.centos.org'" Error: Cannot find a valid baseurl for repo: base
+Could not retrieve mirrorlist http://mirrorlist.centos.org/?release=6&arch=x86_64&repo=os error was 14: PYCURL ERROR 6 - "Couldn't resolve host 'mirrorlist.centos.org'" Error: Cannot find a valid baseurl for repo: base
 ```
 
 So, I fixed it by these steps:  
@@ -5893,13 +5893,13 @@ Is there a better way to clean the log file? I usually delete the old logfile an
 
 #### Answer accepted (score 335)
 ```sh
-&gt; logfile
+> logfile
 ```
 
 or  
 
 ```sh
-cat /dev/null &gt; logfile
+cat /dev/null > logfile
 ```
 
 or  
@@ -5943,7 +5943,7 @@ truncate -s 0 file1 file2 ...
 or  
 
 ```sh
-&gt; file1 &gt; file2 ...
+> file1 > file2 ...
 ```
 
 Some shells (`zsh`) also allow one to specify several redirection targets.  
@@ -5961,14 +5961,14 @@ done
 although it will be much slower due to the command being run separately for each file. That may be helped by using `find`:  
 
 ```sh
-find &lt;criteria matching required files&gt; \
-    -exec &lt;command capable of zeroing several files&gt; {} \+
+find <criteria matching required files> \
+    -exec <command capable of zeroing several files> {} \+
 ```
 
 or  
 
 ```sh
-find &lt;criteria matching required files&gt; -delete
+find <criteria matching required files> -delete
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -6030,17 +6030,17 @@ Say that you want to code an equivalent of `VAR=value; echo $VAR`. Note the diff
 <ol>
 <li>
 ```sh
-andcoz@...:~&gt; $( echo VAR=value )
+andcoz@...:~> $( echo VAR=value )
 bash: VAR=value: command not found
-andcoz@...:~&gt; echo $VAR
-&lt;empty line&gt;
+andcoz@...:~> echo $VAR
+<empty line>
 ```
 
 The shell tries to execute `echo` and `VAR=value` as two separate commands. It throws an error about the second string. The assignment remains ineffective.  </li>
 <li>
 ```sh
-andcoz@...:~&gt; eval $( echo VAR=value )
-andcoz@...:~&gt; echo $VAR
+andcoz@...:~> eval $( echo VAR=value )
+andcoz@...:~> echo $VAR
 value
 ```
 
@@ -6191,7 +6191,7 @@ For example:
 
 ```sh
 param=""
-[[ !  -z  $param  ]] &amp;&amp; echo "I am not zero"
+[[ !  -z  $param  ]] && echo "I am not zero"
 ```
 
 No output and its fine.  
@@ -6200,7 +6200,7 @@ But when `param` is empty except for one (or more) space characters, then the ca
 
 ```sh
 param=" " # one space
-[[ !  -z  $param  ]] &amp;&amp; echo "I am not zero"
+[[ !  -z  $param  ]] && echo "I am not zero"
 ```
 
 "I am not zero" is output.  
@@ -6902,7 +6902,7 @@ Copy the UUID of the SSID you want to connect to so you can paste it into the ne
 Next, run  
 
 ```sh
-nmcli c up uuid &lt;paste uuid here&gt;
+nmcli c up uuid <paste uuid here>
 ```
 
 and this will, using the same stuff as the 'standard Ubuntu tool' connect to your wifi!  
@@ -6917,7 +6917,7 @@ How can I delete all lines in a file using vi?
 At moment I do that using something like this to remove all lines in a file:  
 
 ```sh
-echo &gt; test.txt
+echo > test.txt
 ```
 
 How can I delete all lines using `vi`?  
@@ -6958,7 +6958,7 @@ where
 On the command line,  
 
 ```sh
-&gt; test.txt
+> test.txt
 ```
 
 will do also.  
@@ -6981,7 +6981,7 @@ where
 I'd recommend that you just do this (should work in any POSIX-compliant shell):  
 
 ```sh
-&gt; test.txt
+> test.txt
 ```
 
 If you really want to do it with vi, you can do:  
@@ -7190,7 +7190,7 @@ and
 
 ```sh
 $ ip address
-1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
        valid_lft forever preferred_lft forever
@@ -7206,7 +7206,7 @@ For that, add the option `-s` (`-stats`, `-statistics`):
 
 ```sh
 $ ip -s addr
-1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
        valid_lft forever preferred_lft forever
@@ -7222,7 +7222,7 @@ But what you actually want to see may be this:
 
 ```sh
 $ ip -stats -color -human addr
-1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
        valid_lft forever preferred_lft forever
@@ -7385,13 +7385,13 @@ $ wc -c somefile.txt
 If you would like to avoid chaining a full interpreted language or stream editor just to get a file size count, just redirect the input from the file so that `wc` never sees the filename:  
 
 ```sh
-wc -c &lt; "$filename"
+wc -c < "$filename"
 ```
 
 This last form can be used with command substitution to easily grab the value you were seeking as a shell variable, as mentioned by <a href="https://unix.stackexchange.com/users/885/gilles">Gilles</a> below.  
 
 ```sh
-size="$(wc -c &lt;"$filename")"
+size="$(wc -c <"$filename")"
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -7419,14 +7419,14 @@ How it is possible?
 
 #### Answer 2 (score 112)
 ```sh
-$&gt; cat ./deploymLog.sh 
+$> cat ./deploymLog.sh 
 #!/bin/bash
 
 name=$1
 log_file="Logone.txt"
 
 if [[ -n "$name" ]]; then
-    echo "$1=$( date +%s )" &gt;&gt; ${log_file}
+    echo "$1=$( date +%s )" >> ${log_file}
 else
     echo "argument error"
 fi
@@ -7436,14 +7436,14 @@ fi
 `date +%s` returns the current timestamp in Unix time. The `&gt;&gt;` operator is used to write to a file by appending to the existing data in the file.</p>
 
 ```sh
-$&gt; ./deploymLog.sh tt
+$> ./deploymLog.sh tt
 
-$&gt; cat Logone.txt 
+$> cat Logone.txt 
 tt=1329810941
 
-$&gt; ./deploymLog.sh rr
+$> ./deploymLog.sh rr
 
-$&gt; cat Logone.txt 
+$> cat Logone.txt 
 tt=1329810941
 rr=1329810953
 ```
@@ -7478,7 +7478,7 @@ So you can create your log file thus:
 
 ```sh
 logfile=/path/to/log/file/mylogfile.$now
-echo "[$name]=[$now]" &gt;&gt; $logfile
+echo "[$name]=[$now]" >> $logfile
 ```
 
 You are better off using a shell function to log your messages as it will be easier to use:  
@@ -7487,7 +7487,7 @@ You are better off using a shell function to log your messages as it will be eas
 function logit
 {
     now=$(date +%Y%m%d%H%M%S)
-    echo "$now: $*" &gt;&gt; $logfile
+    echo "$now: $*" >> $logfile
 }
 ```
 
@@ -7501,7 +7501,7 @@ So the initial script looks like this:
 function logit
 {
     now=$(date +%Y%m%d%H%M%S)
-    echo "$now: $*" &gt;&gt; $logfile
+    echo "$now: $*" >> $logfile
 }
 
 if [ $# -ne 1 ]; then
@@ -7571,15 +7571,15 @@ ${var: : -1}
 for removing the last `n` characters from a line that makes no use of `sed` OR `awk`:  
 
 ```sh
-&gt; echo lkj | rev | cut -c (n+1)- | rev
+> echo lkj | rev | cut -c (n+1)- | rev
 ```
 
 so for example you can delete the last character `one character` using this:  
 
 ```sh
-&gt; echo lkj | rev | cut -c 2- | rev
+> echo lkj | rev | cut -c 2- | rev
 
-&gt; lk
+> lk
 ```
 
 from `rev` manpage:  
@@ -7640,12 +7640,12 @@ If you also need your VM to have internet access, leave Adapter 1 as NAT and ena
 ```sh
 VM # ip addr show
 
-1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 16436 qdisc noqueue state UNKNOWN 
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 16436 qdisc noqueue state UNKNOWN 
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
     inet6 ::1/128 scope host 
        valid_lft forever preferred_lft forever
-2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP qlen 1000
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP qlen 1000
     link/ether 52:54:00:d9:16:b3 brd ff:ff:ff:ff:ff:ff
     inet 10.0.2.15/24 brd 10.0.2.1 scope global eth0
        valid_lft forever preferred_lft forever
@@ -7706,22 +7706,22 @@ I found it: <a href="http://www.linuxquestions.org/questions/linux-desktop-74/ap
 From the article:  
 
 ```sh
-chmod g+s &lt;directory&gt;  //set gid 
-setfacl -d -m g::rwx /&lt;directory&gt;  //set group to rwx default 
-setfacl -d -m o::rx /&lt;directory&gt;   //set other
+chmod g+s <directory>  //set gid 
+setfacl -d -m g::rwx /<directory>  //set group to rwx default 
+setfacl -d -m o::rx /<directory>   //set other
 ```
 
 Next we can verify:   
 
 ```sh
-getfacl /&lt;directory&gt;
+getfacl /<directory>
 ```
 
 Output:   
 
 ```sh
-# file: ../&lt;directory&gt;/
-# owner: &lt;user&gt;
+# file: ../<directory>/
+# owner: <user>
 # group: media
 # flags: -s-
 user::rwx
@@ -7738,22 +7738,22 @@ This is an addition to Chris' answer, it's based on my experience on my Arch Lin
 Using the default switch (-d) and the modify switch (-m) will only modify the the default permissions but leave the existing ones intact:  
 
 ```sh
-setfacl -d -m g::rwx /&lt;directory&gt;
+setfacl -d -m g::rwx /<directory>
 ```
 
 If you want to change folder's entire permission structure including the existing ones (you'll have to do an extra line and make it recursive -R:  
 
 ```sh
-setfacl -R -m g::rwx /&lt;directory&gt;
+setfacl -R -m g::rwx /<directory>
 ```
 
 eg.  
 
 ```sh
-setfacl -R -m g::rwx /home/limited.users/&lt;directory&gt; // gives group read,write,exec permissions for currently existing files and folders, recursively
-setfacl -R -m o::x /home/limited.users/&lt;directory&gt; //revokes read and write permission for everyone else in existing folder and subfolders 
-setfacl -R -d -m g::rwx /home/limited.users/&lt;directory&gt; // gives group rwx permissions by default, recursively
-setfacl -R -d -m o::--- /home/limited.users/&lt;directory&gt; //revokes read, write and execute permissions for everyone else. 
+setfacl -R -m g::rwx /home/limited.users/<directory> // gives group read,write,exec permissions for currently existing files and folders, recursively
+setfacl -R -m o::x /home/limited.users/<directory> //revokes read and write permission for everyone else in existing folder and subfolders 
+setfacl -R -d -m g::rwx /home/limited.users/<directory> // gives group rwx permissions by default, recursively
+setfacl -R -d -m o::--- /home/limited.users/<directory> //revokes read, write and execute permissions for everyone else. 
 ```
 
 (<strong>CREDIT</strong> to markdwite in comments for the synthax of the revoke all privileges line)  
@@ -7895,14 +7895,14 @@ Are there cleaner ways for this type of task?
 I guess you're looking for:  
 
 ```sh
-if [ "$PHONE_TYPE" != "NORTEL" ] &amp;&amp; [ "$PHONE_TYPE" != "NEC" ] &amp;&amp;
+if [ "$PHONE_TYPE" != "NORTEL" ] && [ "$PHONE_TYPE" != "NEC" ] &&
    [ "$PHONE_TYPE" != "CISCO" ]
 ```
 
 The rules for these equivalents are called <a href="https://en.wikipedia.org/wiki/De_Morgan%27s_laws" rel="noreferrer">De Morgan's laws</a> and in your case meant:  
 
 ```sh
-not(A || B || C) =&gt; not(A) &amp;&amp; not(B) &amp;&amp; not (C)
+not(A || B || C) => not(A) && not(B) && not (C)
 ```
 
 Note the change in the boolean operator or and and.  
@@ -7910,7 +7910,7 @@ Note the change in the boolean operator or and and.
 Whereas you tried to do:  
 
 ```sh
-not(A || B || C) =&gt; not(A) || not(B) || not(C)
+not(A || B || C) => not(A) || not(B) || not(C)
 ```
 
 Which obviously doesn't work.  
@@ -8098,7 +8098,7 @@ Description=Power-off gpu
 
 [Service]
 Type=oneshot
-ExecStart=/bin/sh -c "echo OFF &gt; /whatever/vga_pwr_gadget/switch"
+ExecStart=/bin/sh -c "echo OFF > /whatever/vga_pwr_gadget/switch"
 
 [Install]
 WantedBy=multi-user.target
@@ -8112,8 +8112,8 @@ Description=Power-off gpu
 
 [Service]
 Type=oneshot
-ExecStart=/bin/sh -c "echo OFF &gt; /whatever/vga_pwr_gadget/switch"
-ExecStop=/bin/sh -c "echo ON &gt; /whatever/vga_pwr_gadget/switch"
+ExecStart=/bin/sh -c "echo OFF > /whatever/vga_pwr_gadget/switch"
+ExecStop=/bin/sh -c "echo ON > /whatever/vga_pwr_gadget/switch"
 RemainAfterExit=yes
 
 [Install]
@@ -8327,25 +8327,25 @@ You can see mine here <a href="https://i.stack.imgur.com/DQnGN.png" rel="norefer
 
 ```sh
 HISTCONTROL=ignoreboth:erasedups HISTSIZE=100000 HISTFILESIZE=200000
-ls --color=al &gt; /dev/null 2&gt;&amp;1 &amp;&amp; alias ls='ls -F --color=al' || alias ls='ls -G'
-md () { [ $# = 1 ] &amp;&amp; mkdir -p "$@" &amp;&amp; cd "$@" || echo "Error - no directory passed!"; }
-git_branch () { git branch 2&gt; /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'; }
+ls --color=al > /dev/null 2>&1 && alias ls='ls -F --color=al' || alias ls='ls -G'
+md () { [ $# = 1 ] && mkdir -p "$@" && cd "$@" || echo "Error - no directory passed!"; }
+git_branch () { git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'; }
 HOST='\033[02;36m\]\h'; HOST=' '$HOST
 TIME='\033[01;31m\]\t \033[01;32m\]'
 LOCATION=' \033[01;34m\]`pwd | sed "s#\(/[^/]\{1,\}/[^/]\{1,\}/[^/]\{1,\}/\).*\(/[^/]\{1,\}/[^/]\{1,\}\)/\{0,1\}#\1_\2#g"`'
 BRANCH=' \033[00;33m\]$(git_branch)\[\033[00m\]\n\$ '
 PS1=$TIME$USER$HOST$LOCATION$BRANCH
-PS2='\[\033[01;36m\]&gt;'
+PS2='\[\033[01;36m\]>'
 set -o vi # vi at command line
 export EDITOR=vim
-test -f ~/.bash_aliases &amp;&amp; . $_
-test -f ~/.git-completion.bash &amp;&amp; . $_
-test -s ~/.autojump/etc/profile.d/autojump &amp;&amp; . $_
-[ ${BASH_VERSINFO[0]} -ge 4 ] &amp;&amp; shopt -s autocd
-[ -f /etc/bash_completion ] &amp;&amp; ! shopt -oq posix &amp;&amp; . /etc/bash_completion
-[ -z $TMUX ] &amp;&amp; export TERM=xterm-256color &amp;&amp; exec tmux
+test -f ~/.bash_aliases && . $_
+test -f ~/.git-completion.bash && . $_
+test -s ~/.autojump/etc/profile.d/autojump && . $_
+[ ${BASH_VERSINFO[0]} -ge 4 ] && shopt -s autocd
+[ -f /etc/bash_completion ] && ! shopt -oq posix && . /etc/bash_completion
+[ -z $TMUX ] && export TERM=xterm-256color && exec tmux
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] &amp;&amp; source "$home/.rvm/scripts/rvm"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$home/.rvm/scripts/rvm"
 ```
 
 Explanation:  
@@ -8460,7 +8460,7 @@ Last part of output of `dmesg` after I tried to list the content of the director
 [19114.243778] sd 6:0:0:0: [sdc] Assuming drive cache: write through
 [19114.252797] sd 6:0:0:0: [sdc] No Caching mode page present
 [19114.252807] sd 6:0:0:0: [sdc] Assuming drive cache: write through
-[19114.280407]  sdc: sdc1 &lt; sdc5 &gt;
+[19114.280407]  sdc: sdc1 < sdc5 >
 [19114.289774] sd 6:0:0:0: [sdc] No Caching mode page present
 [19114.289779] sd 6:0:0:0: [sdc] Assuming drive cache: write through
 [19114.289783] sd 6:0:0:0: [sdc] Attached SCSI disk
@@ -8486,7 +8486,7 @@ Of course you need to check if you receive the cron mails in your mailbox (which
 I created `/etc/cron.d/badblocks`:  
 
 ```sh
-30 4 * * 3 root [ -x /sbin/badblocks ] &amp;&amp; [ $(date +\%d) -le 7 ] &amp;&amp; /sbin/badblocks /dev/sda
+30 4 * * 3 root [ -x /sbin/badblocks ] && [ $(date +\%d) -le 7 ] && /sbin/badblocks /dev/sda
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -8513,7 +8513,7 @@ I find `screen` the most useful program for serial communication since I use it 
 The main reason why you need <em>any</em> program like `minicom` to communicate over a serial port is that the port needs to be <em>set up</em> prior to initiating a connection. If it weren't set up appropriately, the `cat` and `echo` commands would not do for you what you might have expected. Notice that once you run a program like `minicom`, the port is left with the settings that `minicom` used. You can query the communication settings using the `stty` program like this:  
 
 ```sh
-stty &lt; /dev/ttyS0
+stty < /dev/ttyS0
 ```
 
 If you have done it right; after booting the computer and before running any other program like `minicom,` the communication settings will be at their default settings. These are probably different than what you will need to make your connection. In this situation, sending the commands `cat` or `echo` to the port will either produce garbage or not work at all.   
