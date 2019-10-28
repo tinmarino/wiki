@@ -300,22 +300,22 @@ When you create a website and you embed images, videos, audio, javascript or oth
 For example you have this directory structure on your server, which resolves to the following accessible URLs (asuming your website is www.example.com):  
 
 ```text
-|-- /index.html                -&gt;  www.example.com/index.html
-|-- /images/                   -&gt;  www.example.com/images/
-|    |-- /banner.png           -&gt;  www.example.com/images/banner.png
-|    +-- /icons/               -&gt;  www.example.com/icons/
-|         +-- favicon.png      -&gt;  www.example.com/icons/favicon.png
-+-- /audio/                    -&gt;  www.example.com/audio/
-    |-- intro.mp3              -&gt;  www.example.com/audio/intro.mp3
-    +-- voice.flac             -&gt;  www.example.com/audio/voice.flac
+|-- /index.html                ->  www.example.com/index.html
+|-- /images/                   ->  www.example.com/images/
+|    |-- /banner.png           ->  www.example.com/images/banner.png
+|    +-- /icons/               ->  www.example.com/icons/
+|         +-- favicon.png      ->  www.example.com/icons/favicon.png
++-- /audio/                    ->  www.example.com/audio/
+    |-- intro.mp3              ->  www.example.com/audio/intro.mp3
+    +-- voice.flac             ->  www.example.com/audio/voice.flac
 ```
 
 When you access `index.html` your browser will look for all the other embedded URLs and will get them from the server too. You can use tools like <em>Firebug for Firefox</em> or the <em>Chrome Developer Console</em> to capture the requests. One of those requests should be the URL to the media file.  
 
-If you have an HTML `&lt;embed&gt;` tag (or a `&lt;img&gt;` tag), the URL to that media is specified by the `src` attribute, which can be also examined with tools like Firebug or the Chrome Developer Console. You can make a `rightclick-&gt;Inspect Element` anywhere on the page and examine the HTML.  
+If you have an HTML `<embed>` tag (or a `<img>` tag), the URL to that media is specified by the `src` attribute, which can be also examined with tools like Firebug or the Chrome Developer Console. You can make a `rightclick->Inspect Element` anywhere on the page and examine the HTML.  
 
 ```text
-&lt;embed src="/audio/intro.mp3"&gt;   -&gt; www.example.com/audio/intro.mp3
+<embed src="/audio/intro.mp3">   -> www.example.com/audio/intro.mp3
 ```
 
 #### Answer 2 (score 12)
@@ -549,7 +549,7 @@ if cryptid is 0, you can proceed on to the <em>Post Decryption</em> section. Oth
 <li>Install the IPA on an <em>authorized</em> device</li>
 <li>Run otool on the binary to get information such as the size of the encrypted payload</li>
 <li>Launch the app and suspend it immediately</li>
-<li>Use gdb to dump the payload (beginning from 0x2000) `gdb -p &lt;process id&gt;` then `dump output.bin 0x2000 0xNNNN` where NNNN is the sum of the beginning (0x2000) and the payload size</li>
+<li>Use gdb to dump the payload (beginning from 0x2000) `gdb -p <process id>` then `dump output.bin 0x2000 0xNNNN` where NNNN is the sum of the beginning (0x2000) and the payload size</li>
 <li>Create a new file, using the first 0x1000 bytes of the original binary, and appended with the dump file</li>
 <li>Use ldid to sign the new binary, and change the cryptid to 0 (so that iOS won't decrypt the decrypted app again)</li>
 </ol>
@@ -582,7 +582,7 @@ Some of the tools (gdb in my base) are not working reliably on the iPhone 5S / i
 Bishop Fox's <a href="https://github.com/BishopFox/bfdecrypt" rel="noreferrer">bfdecrypt</a>, used together with their <a href="https://github.com/BishopFox/bfinject" rel="noreferrer">bfinject</a> should work for iOS 11.  
 
 #### Answer 2 (score 22)
-After <a href="https://github.com/stefanesser/dumpdecrypted" rel="noreferrer">decrypting an IPA file on a jailbroken iDevice</a>, you can use a much more affordable alternative to IDA Pro called <strong>Hopper</strong> - the mult-platform disassembler for &lt; $100.  
+After <a href="https://github.com/stefanesser/dumpdecrypted" rel="noreferrer">decrypting an IPA file on a jailbroken iDevice</a>, you can use a much more affordable alternative to IDA Pro called <strong>Hopper</strong> - the mult-platform disassembler for < $100.  
 
 <a href="http://www.hopperapp.com/" rel="noreferrer">http://www.hopperapp.com/</a>  
 
@@ -834,7 +834,7 @@ Selector        tl  rpl
 so cs and  fs converted to binary will be   
 
 ```text
-kd&gt; r cs;r fs
+kd> r cs;r fs
 cs=00000008  = 0b 00001 0 00
 fs=00000030  = 0b 00110 0 00
 ```
@@ -854,25 +854,25 @@ the high 13 bits represent segment selector
  as can be noticed from dg command from windbg </p>
 
 ```text
-kd&gt; dg @cs  &lt;&lt;&lt;&lt;&lt;&lt;&lt;--- kernel 
+kd> dg @cs  <<<<<<<--- kernel 
                                   P Si Gr Pr Lo
 Sel    Base     Limit     Type    l ze an es ng Flags
 ---- -------- -------- ---------- - -- -- -- -- --------
 0008 00000000 ffffffff Code RE Ac 0 Bg Pg P  Nl 00000c9b
 
-0:000&gt; dg @cs &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;----user 
+0:000> dg @cs <<<<<<<<----user 
                                   P Si Gr Pr Lo
 Sel    Base     Limit     Type    l ze an es ng Flags
 ---- -------- -------- ---------- - -- -- -- -- --------
 001B 00000000 ffffffff Code RE Ac 3 Bg Pg P  Nl 00000cfb
 
-kd&gt; dg @fs &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;------- kernel
+kd> dg @fs <<<<<<<<------- kernel
                                   P Si Gr Pr Lo
 Sel    Base     Limit     Type    l ze an es ng Flags
 ---- -------- -------- ---------- - -- -- -- -- --------
 0030 82f6dc00 00003748 Data RW Ac 0 Bg By P  Nl 00000493
 
-0:000&gt; dg @fs
+0:000> dg @fs
                                   P Si Gr Pr Lo
 Sel    Base     Limit     Type    l ze an es ng Flags
 ---- -------- -------- ---------- - -- -- -- -- --------
@@ -888,7 +888,7 @@ to do that manually im using livekd here
 using windbg you can get the Descriptor and Task Gate Registers  
 
 ```text
-kd&gt; rM 100
+kd> rM 100
 gdtr=80b95000   gdtl=03ff idtr=80b95400   idtl=07ff tr=0028  ldtr=0000
 ```
 
@@ -897,11 +897,11 @@ each gdtr entry is 64 bits so you can have 7f gdtr entries as you can see gdtl i
 so gdtr entry @1,@2 are @gdtr+(0x1*0x8) @gdtr+(0x2*0x08=0x10) and so on  
 
 ```text
-kd&gt; dq @gdtr+8 l1    gdtr@1 = gdtr+0n1*0x8 =0n8  = 0x8    
+kd> dq @gdtr+8 l1    gdtr@1 = gdtr+0n1*0x8 =0n8  = 0x8    
 80b95008  00cf9b00`0000ffff = gdtr+0n6*0x8 =0n48 = 0x30    
-kd&gt; dq @gdtr+30 l1   
+kd> dq @gdtr+30 l1   
 80b95030  824093f6`dc003748   
-kd&gt; dq @gdtr+38 l1   
+kd> dq @gdtr+38 l1   
 80b95038  7f40f3fd`e0000fff   
 ```
 
@@ -1034,13 +1034,13 @@ After that, you are pretty much golden, but with only one view. The menus along 
 
 Usually by default, a breakpoint is set on program start, and you can then either navigate your code using the buttons at the top of the window, or if you have no code, you can customize your view to let you step through a disassembly of the binary you are looking at.  
 
-The buttons along the top of the window surrounded with "{}" are for code-level stepping, and the buttons with "&lt;>" in their icon are for instruction-level debugging. So you will probably want to focus on the left if you are doing normal code debugging, and focus more on the right if you are getting into the real nitty-gritty.  
+The buttons along the top of the window surrounded with "{}" are for code-level stepping, and the buttons with "<>" in their icon are for instruction-level debugging. So you will probably want to focus on the left if you are doing normal code debugging, and focus more on the right if you are getting into the real nitty-gritty.  
 
 Also, if you ever get lost, this icon:  
 
 <a href="https://i.stack.imgur.com/GxNUS.png" rel="noreferrer"><img src="https://i.stack.imgur.com/GxNUS.png" alt="GUD info"></a>  
 
-It is an entire book that can likely answer your questions. The only time it won't exist in Emacs is if you are on Debian (Ubuntu is fine) and installed Emacs from its repos. In which case you will need to install "`emacs&lt;vesrsion&gt;-common-non-dfsg`" to get the manuals. (With "`&lt;version&gt;`" being the non-decimal digits returned by `M-x version` in Emacs)  
+It is an entire book that can likely answer your questions. The only time it won't exist in Emacs is if you are on Debian (Ubuntu is fine) and installed Emacs from its repos. In which case you will need to install "`emacs<vesrsion>-common-non-dfsg`" to get the manuals. (With "`<version>`" being the non-decimal digits returned by `M-x version` in Emacs)  
 
 </b> </em> </i> </small> </strong> </sub> </sup>
 
@@ -1360,7 +1360,7 @@ If we `examine` (shorthand `x`) the code at which we are currently, we can see:
 ```text
 (gdb) x/5i $pc
 x/5i $pc
-=&gt; 0x40f961:    push   rbp
+=> 0x40f961:    push   rbp
    0x40f962:    mov    rbp,rsp
    0x40f965:    mov    eax,0x0
    0x40f96a:    call   0x40911f
@@ -1372,7 +1372,7 @@ Okay, the `call` is what we want to follow, so let's step inside of it using `si
 ```text
 (gdb) x/5i $pc
 x/5i $pc
-=&gt; 0x40911f:    call   0x400b8c
+=> 0x40911f:    call   0x400b8c
    0x409124:    push   rbp
    0x409125:    mov    rbp,rsp
    0x409128:    push   r10
@@ -1382,7 +1382,7 @@ x/5i $pc
 The `call` leads us to a function which calls <a href="http://linux.die.net/man/2/ptrace" rel="noreferrer">`ptrace(PTRACE_TRACEME, ...)`</a>, now why would it do that?  
 
 ```text
-0x400bab        call   0x4006b8 &lt;ptrace@plt&gt;
+0x400bab        call   0x4006b8 <ptrace@plt>
 ```
 
 Well, it's an old anti-debugger trick which Mellowcandle has described in another Q&amp;A here:  
@@ -1418,7 +1418,7 @@ and verify the patched location:
 ```text
 (gdb) x/10i $pc
 x/10i $pc
-=&gt; 0x40911f:    nop
+=> 0x40911f:    nop
    0x409120:    nop
    0x409121:    nop
    0x409122:    nop
@@ -1467,10 +1467,10 @@ define assemble
   # argument specified, assemble instructions into memory
   # at address specified.
   shell nasm -f bin -o /dev/stdout /dev/stdin \
-    &lt;&lt;&lt; "$( echo "BITS 32"; while read -ep '&gt;' r &amp;&amp; test "$r" != end; \
+    <<< "$( echo "BITS 32"; while read -ep '>' r && test "$r" != end; \
                 do echo -E "$r"; done )" | hexdump -ve \
         '1/1 "set *((unsigned char *) $arg0 + %#2_ax) = %#02x\n"' \
-            &gt; ~/.gdbassemble
+            > ~/.gdbassemble
   # load the file containing set instructions
   source ~/.gdbassemble
   # all done.
@@ -1478,7 +1478,7 @@ define assemble
  else
   # no argument, assemble instructions to stdout
   shell nasm -f bin -o /dev/stdout /dev/stdin \
-    &lt;&lt;&lt; "$( echo "BITS 32"; while read -ep '&gt;' r &amp;&amp; test "$r" != end; \
+    <<< "$( echo "BITS 32"; while read -ep '>' r && test "$r" != end; \
                 do echo -E "$r"; done )" | ndisasm -i -b32 /dev/stdin
  end
 end
@@ -1613,7 +1613,7 @@ As already said every obfuscation scheme is different. JSDetox does not try to d
 It has two main features: static analysis tries to optimize code that is "bloated up", e.g. statements like  
 
 ```text
-var x = -~-~'bp'[720094129.0.toString(2 &lt;&lt; 4) + ""] * 8 + 2;
+var x = -~-~'bp'[720094129.0.toString(2 << 4) + ""] * 8 + 2;
 ```
 
 can be solved to   
@@ -1630,7 +1630,7 @@ The second feature is the ability to execute JavaScript code with HTML DOM emula
 The HTML DOM emulation allows the execution of code that interacts with an HTML document, e.g.:</p>
 
 ```text
-document.write('&lt;div id="AU4Ae"&gt;212&lt;/div&gt;');
+document.write('<div id="AU4Ae">212</div>');
 var OoF2wUnZ = parseInt(document.getElementById("AU4Ae").innerHTML);
 if(OoF2wUnZ == 212) {
 ...
@@ -1750,7 +1750,7 @@ Entry point: 0x400400
     0x0000000000400370 - 0x0000000000400388 is .rela.dyn
     0x0000000000400388 - 0x00000000004003b8 is .rela.plt
     0x00000000004003b8 - 0x00000000004003c6 is .init
- =&gt; 0x00000000004003d0 - 0x0000000000400400 is .plt
+ => 0x00000000004003d0 - 0x0000000000400400 is .plt
     0x0000000000400400 - 0x00000000004005dc is .text
     0x00000000004005dc - 0x00000000004005e5 is .fini
     0x00000000004005e8 - 0x00000000004005fa is .rodata
@@ -1760,8 +1760,8 @@ Entry point: 0x400400
     0x0000000000600700 - 0x0000000000600708 is .fini_array
     0x0000000000600708 - 0x0000000000600710 is .jcr
     0x0000000000600710 - 0x00000000006008f0 is .dynamic
- =&gt; 0x00000000006008f0 - 0x00000000006008f8 is .got
- =&gt; 0x00000000006008f8 - 0x0000000000600920 is .got.plt
+ => 0x00000000006008f0 - 0x00000000006008f8 is .got
+ => 0x00000000006008f8 - 0x0000000000600920 is .got.plt
     0x0000000000600920 - 0x0000000000600930 is .data
     0x0000000000600930 - 0x0000000000600938 is .bss
 ```
@@ -1771,14 +1771,14 @@ And, then when disassembling (`puts@plt`):
 ```text
 (gdb) disas foo
 Dump of assembler code for function foo:
-   0x000000000040050c &lt;+0&gt;: push   %rbp
-   0x000000000040050d &lt;+1&gt;: mov    %rsp,%rbp
-   0x0000000000400510 &lt;+4&gt;: sub    $0x10,%rsp
-   0x0000000000400514 &lt;+8&gt;: mov    %edi,-0x4(%rbp)
-   0x0000000000400517 &lt;+11&gt;:    mov    $0x4005ec,%edi
-=&gt; 0x000000000040051c &lt;+16&gt;:    callq  0x4003e0 &lt;puts@plt&gt;
-   0x0000000000400521 &lt;+21&gt;:    leaveq
-   0x0000000000400522 &lt;+22&gt;:    retq
+   0x000000000040050c <+0>: push   %rbp
+   0x000000000040050d <+1>: mov    %rsp,%rbp
+   0x0000000000400510 <+4>: sub    $0x10,%rsp
+   0x0000000000400514 <+8>: mov    %edi,-0x4(%rbp)
+   0x0000000000400517 <+11>:    mov    $0x4005ec,%edi
+=> 0x000000000040051c <+16>:    callq  0x4003e0 <puts@plt>
+   0x0000000000400521 <+21>:    leaveq
+   0x0000000000400522 <+22>:    retq
 End of assembler dump.
 ```
 
@@ -1819,7 +1819,7 @@ After the program is launched, the dynamic linker checks the address of shared l
 <li><p>whenever a global variable of a shared library is accessed by your program, the compiler + linker emits instead two memory accesses:</p>
 
 ```text
-mov    0x200271(%rip),%rax        # 200828 &lt;_DYNAMIC+0x1a0&gt;
+mov    0x200271(%rip),%rax        # 200828 <_DYNAMIC+0x1a0>
 mov    (%rax),%eax
 ```
 
@@ -1906,7 +1906,7 @@ If you have no useful symbol, you first need to find the entrypoint of the execu
 <li><p>Using `readelf`</p>
 
 ```text
-$&gt; readelf -h /bin/ls
+$> readelf -h /bin/ls
 ELF Header:
 Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 
 Class:                             ELF64
@@ -1933,7 +1933,7 @@ So, the entrypoint address is `0x40489c`.  </li>
 <li><p>Using `objdump`</p>
 
 ```text
-$&gt; objdump -f /bin/ls
+$> objdump -f /bin/ls
 
 /bin/ls:     file format elf64-x86-64
 architecture: i386:x86-64, flags 0x00000112:
@@ -1945,7 +1945,7 @@ Again, the entrypoint is `0x000000000040489c`.  </li>
 <li><p>Using `gdb`</p>
 
 ```text
-$&gt; gdb /bin/ls
+$> gdb /bin/ls
 GNU gdb (GDB) 7.6.2 (Debian 7.6.2-1)
 ...
 Reading symbols from /bin/ls...(no debugging symbols found)...done.
@@ -1999,7 +1999,7 @@ Okay, so we stopped at the very beginning of the executable. At this time, nothi
 ```text
 (gdb) disas 0x40489c,+50
 Dump of assembler code from 0x40489c to 0x4048ce:
-=&gt; 0x000000000040489c:  xor    %ebp,%ebp
+=> 0x000000000040489c:  xor    %ebp,%ebp
    0x000000000040489e:  mov    %rdx,%r9
    0x00000000004048a1:  pop    %rsi
    0x00000000004048a2:  mov    %rsp,%rdx
@@ -2009,7 +2009,7 @@ Dump of assembler code from 0x40489c to 0x4048ce:
    0x00000000004048ab:  mov    $0x411ee0,%r8
    0x00000000004048b2:  mov    $0x411e50,%rcx
    0x00000000004048b9:  mov    $0x4028c0,%rdi
-   0x00000000004048c0:  callq  0x4024f0 &lt;__libc_start_main@plt&gt;
+   0x00000000004048c0:  callq  0x4024f0 <__libc_start_main@plt>
    0x00000000004048c5:  hlt    
    0x00000000004048c6:  nopw   %cs:0x0(%rax,%rax,1)
 End of assembler dump.
@@ -2126,7 +2126,7 @@ A first step will be to extract the name of all the functions that are present i
 First, run `readelf` on it to see a bit what you are on:  
 
 ```text
-#&gt; readelf -a /usr/lib/libao.so.4.0.0
+#> readelf -a /usr/lib/libao.so.4.0.0
 
 ELF Header:
 Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 
@@ -2163,7 +2163,7 @@ Looking at the rest of the output of `readelf -a`, the dynamic symbol table (`.d
 In fact, every function from this dynamic library is in this list and you can extract it simply like this:  
 
 ```text
-#&gt; readelf -a /usr/lib/libao.so.4.0.0 | grep LIBAO4_1.1.0 | grep FUNC
+#> readelf -a /usr/lib/libao.so.4.0.0 | grep LIBAO4_1.1.0 | grep FUNC
 
 43: 00000000000038e0  1302 FUNC    GLOBAL DEFAULT   13 ao_play@@LIBAO4_1.1.0
 44: 0000000000003670   177 FUNC    GLOBAL DEFAULT   13 ao_append_option@@LIBAO4_1.1.0
@@ -2186,7 +2186,7 @@ What you get here, is the names of the functions which are in the `.so` plus the
 Note that you can also get this information by using `objdump` like this:  
 
 ```text
-#&gt; objdump -T /usr/lib/libao.so.4.0.0 | grep LIBAO4_1.1.0 | grep DF
+#> objdump -T /usr/lib/libao.so.4.0.0 | grep LIBAO4_1.1.0 | grep DF
 00000000000038e0 g    DF .text  0000000000000516  LIBAO4_1.1.0 ao_play
 0000000000003670 g    DF .text  00000000000000b1  LIBAO4_1.1.0 ao_append_option
 00000000000040e0 g    DF .text  0000000000000046  LIBAO4_1.1.0 ao_driver_info
@@ -2214,35 +2214,35 @@ objdump -d /usr/lib/libao.so.4.0.0 --start-address=0x3730
 Note that, as `objdump` use linear sweep, the disassembly may not be exact (see the following example) and, you also will have to decide by yourself when it ends.  
 
 ```text
-#&gt; objdump -d /usr/lib/libao.so.4.0.0 --start-address=0x3730
+#> objdump -d /usr/lib/libao.so.4.0.0 --start-address=0x3730
 
 /usr/lib/libao.so.4.0.0:     file format elf64-x86-64
 
 Disassembly of section .text:
-0000000000003730 &lt;ao_append_global_option&gt;:
+0000000000003730 <ao_append_global_option>:
  3730:       48 89 f2                mov    %rsi,%rdx
  3733:       48 89 fe                mov    %rdi,%rsi
  3736:       48 8d 3d cb 52 20 00    lea    0x2052cb(%rip),%rdi
- 373d:       e9 4e e6 ff ff          jmpq   1d90 &lt;ao_append_option@plt&gt;
+ 373d:       e9 4e e6 ff ff          jmpq   1d90 <ao_append_option@plt>
  3742:       66 66 66 66 66 2e 0f    data32 data32 data32 data32 nopw %cs:0x0(%rax,%rax,1)
  3749:       1f 84 00 00 00 00 00 
 
-0000000000003750 &lt;ao_free_options&gt;:
+0000000000003750 <ao_free_options>:
  3750:       55                      push   %rbp
  3751:       53                      push   %rbx
  3752:       48 89 fb                mov    %rdi,%rbx
  3755:       48 83 ec 08             sub    $0x8,%rsp
  3759:       48 85 ff                test   %rdi,%rdi
- 375c:       74 27                   je     3785 &lt;ao_free_options+0x35&gt;
+ 375c:       74 27                   je     3785 <ao_free_options+0x35>
  375e:       66 90                   xchg   %ax,%ax
  3760:       48 8b 3b                mov    (%rbx),%rdi
  3763:       48 8b 6b 10             mov    0x10(%rbx),%rbp
- 3767:       e8 c4 e5 ff ff          callq  1d30 &lt;free@plt&gt;
+ 3767:       e8 c4 e5 ff ff          callq  1d30 <free@plt>
  376c:       48 8b 7b 08             mov    0x8(%rbx),%rdi
- 3770:       e8 bb e5 ff ff          callq  1d30 &lt;free@plt&gt;
+ 3770:       e8 bb e5 ff ff          callq  1d30 <free@plt>
  3775:       48 89 df                mov    %rbx,%rdi
  3778:       48 89 eb                mov    %rbp,%rbx
- 377b:       e8 b0 e5 ff ff          callq  1d30 &lt;free@plt&gt;
+ 377b:       e8 b0 e5 ff ff          callq  1d30 <free@plt>
  [... clip ...]
 ```
 
@@ -2284,12 +2284,12 @@ cp  ../..../lib/libc.so.6 /mnt//sharedwithvm
 ```text
 in the windows machine 
 
-C:\&gt;cd sharedwithvm
+C:\>cd sharedwithvm
 
-C:\sharedwithvm&gt;dir /b
+C:\sharedwithvm>dir /b
 libc.so.6
 
-C:\sharedwithvm&gt;f:\hteditor\2022\ht-2.0.22-win32.exe libc.so.6
+C:\sharedwithvm>f:\hteditor\2022\ht-2.0.22-win32.exe libc.so.6
 ```
 
 hteditor will open with hex view    
@@ -2305,7 +2305,7 @@ f8 symbols type fo
 double click to view the disassembly  
 
 ```text
-&lt;.text&gt; @00060490  push ebp
+<.text> @00060490  push ebp
 fopen+0
    ..... ! ;********************************************************
    ..... ! ; function fopen (global)
@@ -2954,7 +2954,7 @@ Aim: I want to take hex and ascii data (derived from a binary file using xxd) an
 Currently I can get the offsets and assembly code, but not text strings alongside.  
 
 <p>I used the following:
-`objdump -D -b binary -mi386 -Maddr16,data16 &lt;filename&gt;`</p>
+`objdump -D -b binary -mi386 -Maddr16,data16 <filename>`</p>
 
 Should I need to use the `-s` switch?  
 
@@ -2964,8 +2964,8 @@ It is assumed here that Linux ELF32 binaries are being analyzed.
 Code and data such as strings are stored in separate parts of ELF binaries.   
 
 <ul>
-<li>To disassemble the parts containing code, use `objdump -dj .text &lt;binary_name&gt;`.</li>
-<li>To examine hard-coded string data, use `readelf -x .rodata &lt;binary_name&gt;`</li>
+<li>To disassemble the parts containing code, use `objdump -dj .text <binary_name>`.</li>
+<li>To examine hard-coded string data, use `readelf -x .rodata <binary_name>`</li>
 </ul>
 
 <h5>Instructions and Data are located in separate areas within ELF binaries</h3>
@@ -2997,11 +2997,11 @@ $ objdump -sj .text /bin/date
 Contents of section .text:
  401af0 41574531 ff415645 31f64155 41544531  AWE1.AVE1.AUATE1
  401b00 e45589fd 534889f3 4881ecd8 00000048  .U..SH..H......H
- 401b10 8b3ee8f9 530000be a1c84000 bf060000  .&gt;..S.....@.....
+ 401b10 8b3ee8f9 530000be a1c84000 bf060000  .>..S.....@.....
  401b20 00e8bafe ffffbe87 944000bf 61944000  .........@..a.@.
  401b30 e83bfcff ffbf6194 4000e811 fcffffbf  .;....a.@.......
  401b40 102c4000 e8877800 00c64424 0f0048c7  .,@...x...D$..H.
- &lt; snip &gt;
+ < snip >
 ```
 
 In ELF binaries, the `.text` section holds the executable instructions of the program. The bytes the instructions are composed of are being treated as ASCII in this hexdump, so there are meaningless sequences of characters being printed.   
@@ -3030,14 +3030,14 @@ Here is an example using /bin/date:
 
 Disassembly of section .rodata:
 
-0000000000409400 &lt;.rodata&gt;:
+0000000000409400 <.rodata>:
   409400:       01 00                   add    %eax,(%rax)
   409402:       02 00                   add    (%rax),%al
-  409404:       74 69                   je     40946f &lt;__sprintf_chk@plt+0x798f&gt;
+  409404:       74 69                   je     40946f <__sprintf_chk@plt+0x798f>
   409406:       6d                      insl   (%dx),%es:(%rdi)
-  409407:       65 20 25 73 20 69 73    and    %ah,%gs:0x73692073(%rip)        # 73a9b481 &lt;stderr+0x7348d131&gt;
+  409407:       65 20 25 73 20 69 73    and    %ah,%gs:0x73692073(%rip)        # 73a9b481 <stderr+0x7348d131>
   40940e:       20 6f 75                and    %ch,0x75(%rdi)
-  409411:       74 20                   je     409433 &lt;__sprintf_chk@plt+0x7953&gt;
+  409411:       74 20                   je     409433 <__sprintf_chk@plt+0x7953>
   409413:       6f                      outsl  %ds:(%rsi),(%dx)
   409414:       66                      data16
   409415:       20 72 61                and    %dh,0x61(%rdx)
@@ -3045,8 +3045,8 @@ Disassembly of section .rodata:
   409419:       67 65 00 0a             add    %cl,%gs:(%edx)
   40941d:       52                      push   %rdx
   40941e:       65                      gs
-  40941f:       70 6f                   jo     409490 &lt;__sprintf_chk@plt+0x79b0&gt;
-  &lt; snip &gt;
+  40941f:       70 6f                   jo     409490 <__sprintf_chk@plt+0x79b0>
+  < snip >
 ```
 
 It looks like there are instructions being disassembled, when in reality is data being treated as code:  
@@ -3152,9 +3152,9 @@ If all these barcodes are accepted, they should produce different results which 
 If you want to play with some other bit combinations, here's the source to my bitflip program (it's not the cleanest code, and it will produce strange results if you throw anything but binary digits at it, but it will do the job):  
 
 ```text
-#include &lt;stdio.h&gt;
-#include &lt;string.h&gt;
-#include &lt;stdlib.h&gt;
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 int main(int argc, char **argv) {
     int pos, pos2, binval, checksum;
@@ -3165,12 +3165,12 @@ int main(int argc, char **argv) {
             fprintf(stderr, "Need a 16 bit binary value\n");
             exit(1);
     }
-    for (pos=0; pos&lt;16; pos++) {
+    for (pos=0; pos<16; pos++) {
             oldbit=argv[1][pos];
             argv[1][pos]=(oldbit == '1' ? '0' : '1');
             binval=0;
-            for (pos2=0; pos2&lt;16; pos2++) {
-                    binval=(binval&lt;&lt;1) | (argv[1][pos2]=='1');
+            for (pos2=0; pos2<16; pos2++) {
+                    binval=(binval<<1) | (argv[1][pos2]=='1');
             }
             sprintf(buf, "%05d", binval);
             checksum=
@@ -3234,9 +3234,9 @@ If all these barcodes are accepted, they should produce different results which 
 If you want to play with some other bit combinations, here's the source to my bitflip program (it's not the cleanest code, and it will produce strange results if you throw anything but binary digits at it, but it will do the job):  
 
 ```text
-#include &lt;stdio.h&gt;
-#include &lt;string.h&gt;
-#include &lt;stdlib.h&gt;
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 int main(int argc, char **argv) {
     int pos, pos2, binval, checksum;
@@ -3247,12 +3247,12 @@ int main(int argc, char **argv) {
             fprintf(stderr, "Need a 16 bit binary value\n");
             exit(1);
     }
-    for (pos=0; pos&lt;16; pos++) {
+    for (pos=0; pos<16; pos++) {
             oldbit=argv[1][pos];
             argv[1][pos]=(oldbit == '1' ? '0' : '1');
             binval=0;
-            for (pos2=0; pos2&lt;16; pos2++) {
-                    binval=(binval&lt;&lt;1) | (argv[1][pos2]=='1');
+            for (pos2=0; pos2<16; pos2++) {
+                    binval=(binval<<1) | (argv[1][pos2]=='1');
             }
             sprintf(buf, "%05d", binval);
             checksum=
@@ -3339,7 +3339,7 @@ I use `apktool` for this purpose, and a short little pair of shell scripts for d
 ```text
 #!/bin/bash -e
 if ! [ "$1" ]; then
-    echo "usage: $0 &lt;file.apk&gt;"
+    echo "usage: $0 <file.apk>"
     exit -1
 fi
 
@@ -3355,7 +3355,7 @@ echo "Done."
 ```text
 #!/bin/bash -e
 if ! [ "$1" ]; then
-    echo "usage: $0 &lt;original.apk&gt;"
+    echo "usage: $0 <original.apk>"
     exit -1
 fi
 
@@ -3405,7 +3405,7 @@ I'm trying to get the Video URL of ( <a href="https://twitter.com/i/videos/82364
 I tried going over the source code but it give the same URL link   
 
 ```text
-&lt;meta  property="og:video:url" content="https://twitter.com/i/videos/823649890379120640?embed_source=facebook"&gt;
+<meta  property="og:video:url" content="https://twitter.com/i/videos/823649890379120640?embed_source=facebook">
 ```
 
 Is there any trick to get the URL of the videos or their locations ?  
@@ -3838,74 +3838,74 @@ Where the number corresponding to the initial is 10*column number + row number. 
 The only thing I don't understand is how the names are mapped to the integer values.  I only have 5 examples for the last name mappings: (ignoring the first letter because it doesn't play into the mapping  
 
 ```text
-aab    -&gt; 0001
-ackson -&gt; 0062
-eals   -&gt; 2024
-eimel  -&gt; 2278
-ounds  -&gt; 6810
+aab    -> 0001
+ackson -> 0062
+eals   -> 2024
+eimel  -> 2278
+ounds  -> 6810
 ```
 
 For first names, I only have four:  
 
 ```text
-Alexander -&gt; 019
-Richard   -&gt; 655
-John      -&gt; 407
-Matthew   -&gt; 529
+Alexander -> 019
+Richard   -> 655
+John      -> 407
+Matthew   -> 529
 ```
 
-Does anyone have any ideas how the implementation is done, or even a general mapping function that will hash a max 25 length string to a four digit or three digit number while maintaining lexicographical order (&lt;=, not &lt;).  
+Does anyone have any ideas how the implementation is done, or even a general mapping function that will hash a max 25 length string to a four digit or three digit number while maintaining lexicographical order (<=, not <).  
 
 <strong>Things I've Tried</strong>  
 
 <em>Convert each letter to a number 1-26.</em>  Then, taking only the first four numbers, create the number by the rule 26^3 * first number + 26^2 * second number + 26 * third + fourth.  Then, divide this number by 26^4 + 26^3 + 26^2 + 26, and multiply by 10000 to map the decimal into 0-9999.  This produces the following mappings:  
 
 ```text
-aab -&gt; 0000
-ackson -&gt; 0035
-eals -&gt; 1547
-emiel -&gt; 1722
-ounds -&gt; 5695
+aab -> 0000
+ackson -> 0035
+eals -> 1547
+emiel -> 1722
+ounds -> 5695
 ```
 
 <em>Get a list of the top 10,000 most common surnames.</em>  Order by the second letter, and then check the index.  This produces the following mappings:  
 
 ```text
-aab -&gt; 0005
-ackson -&gt; 0128
-eals -&gt; 2813
-emiel -&gt; 3235
-ounds -&gt; 7588
+aab -> 0005
+ackson -> 0128
+eals -> 2813
+emiel -> 3235
+ounds -> 7588
 ```
 
 <em>Each letter subdivides the 10,000</em>.  The first number (according to 1-26) cuts it into one of 26 pieces.  The second cuts the piece into one of 26, and so on and so forth.  This produces the following mappings:  
 
 ```text
-aab -&gt; 0000
-ackson -&gt; 0028
-eals -&gt; 1536
-emiel -&gt; 1648
-ounds -&gt; 5656
+aab -> 0000
+ackson -> 0028
+eals -> 1536
+emiel -> 1648
+ounds -> 5656
 ```
 
 <em>Convert each of the first four letters to 1-26.</em>  Concatenate all of them, multiply the resulting number by 10,000, and divide by 26262626.  This produces the following mappings:  
 
 ```text
-aab -&gt; 0003
-ackson -&gt; 0392
-eals -&gt; 1908
-emiel -&gt; 1953
-ounds -&gt; 5792
+aab -> 0003
+ackson -> 0392
+eals -> 1908
+emiel -> 1953
+ounds -> 5792
 ```
 
 <em>Do the above with 0-25, divide by 25252525.</em>  This produces the following mappings:  
 
 ```text
-aab -&gt; 0000
-ackson -&gt; 0008
-eals -&gt; 1584
-emiel -&gt; 1631
-ounds -&gt; 5623
+aab -> 0000
+ackson -> 0008
+eals -> 1584
+emiel -> 1631
+ounds -> 5623
 ```
 
 <strong>Additional Samples</strong>  
@@ -3915,19 +3915,19 @@ While I believe all of the above samples are correct, I tried to track down more
 Last Names  
 
 ```text
-avis -&gt; 0921
-eals -&gt; 2024
-olff -&gt; 6247
-orello -&gt; 6581
+avis -> 0921
+eals -> 2024
+olff -> 6247
+orello -> 6581
 ```
 
 First Names  
 
 ```text
-Alexander -&gt; 019
-Andrew -&gt; 042
-Gabriel -&gt; 270
-Lena -&gt; 456
+Alexander -> 019
+Andrew -> 042
+Gabriel -> 270
+Lena -> 456
 ```
 
 #### Answer 2 (score 6)
@@ -4200,13 +4200,13 @@ There are only the very basics commands/tools on the emulator. I've read that gd
 root@debian-mips:~# gdb myelf 
 GNU gdb (GDB) 7.0.1-debian
 Copyright (C) 2009 Free Software Foundation, Inc.
-License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
 and "show warranty" for details.
 This GDB was configured as "mips-linux-gnu".
 For bug reporting instructions, please see:
-&lt;http://www.gnu.org/software/gdb/bugs/&gt;...
+<http://www.gnu.org/software/gdb/bugs/>...
 Reading symbols from /root/myelf...(no debugging symbols found)...done.
 ```
 
@@ -4288,7 +4288,7 @@ $ sudo apt-get install 'binfmt*'
 For a statically-linked MIPSEL binary, this is normally all that would be necessary.  However, the one you linked to relies on external libraries.  If it were statically linked, you could run it now.  You can create an example binary to demonstrate this:  
 
 ```text
-$ echo 'int main() {puts("Hello world!");}' &gt; hello.c
+$ echo 'int main() {puts("Hello world!");}' > hello.c
 $ mipsel-linux-gnu-gcc -xc -static -o mipsel-test hello.c
 $ file mipsel-test
 a.out: ELF 32-bit LSB executable, MIPS, MIPS-I version 1 (SYSV), statically linked, for GNU/Linux 2.6.18, BuildID[sha1]=2556cc80429de1ab3116278ac10832d72bd7ebab, not stripped
@@ -4316,7 +4316,7 @@ You can add both repositories to your Ubuntu or other Debian-based distro with t
 $ sudo apt-get install debian-keyring
 $ sudo apt-get install debian-archive-keyring
 $ sudo apt-get install emdebian-archive-keyring
-$ sudo tee /etc/apt/sources.list.d/emdebian.list &lt;&lt; EOF
+$ sudo tee /etc/apt/sources.list.d/emdebian.list << EOF
 deb http://mirrors.mit.edu/debian squeeze main
 deb http://www.emdebian.org/debian squeeze main
 EOF
@@ -4398,7 +4398,7 @@ Usage: ./crackme password
 In order to debug the binary with GDB, you need to launch `qemu-mips` so that it exposes a GDB stub, and connect from GDB.  
 
 ```text
-$ qemu-mipsel -g 12345 ./a.out &amp;
+$ qemu-mipsel -g 12345 ./a.out &
 $ gdb-multiarch ./a.out
 (gdb) set arch mips
 The target architecture is assumed to be mips
@@ -4408,7 +4408,7 @@ The target is assumed to be little endian
 Remote debugging using localhost:12345
 0x00400280 in _ftext ()
 (gdb) x/i $pc
-  =&gt; 0x767cb880    move   $t9, $ra
+  => 0x767cb880    move   $t9, $ra
 ```
 
 You can now debug as you normally would.  Note that since you're running inside of `qemu-user`, some commands my not work as expected.  In particular, `info proc maps` doesn't work.  You may want to take a look at my <a href="https://github.com/zachriggle/pwndbg" rel="noreferrer">pwndbg</a> project, which works around some of these limitations.  
@@ -4585,13 +4585,13 @@ With that said, you're best bet would be a hex to assembly translator/converter 
 Since you're dealing with an Atmel device you <em>could</em> try to use the avr specific gcc toolchain `avr-gcc`. Specifically, you'll need `avr-objdump` using the needed MCU type flag `-m atmega328` (avr5) architecture (<a href="http://www.nongnu.org/avr-libc/user-manual/using_tools.html">Full List of Available Architectures, MCU types</a>)  
 
 ```text
-avr-objdump -s -m atmega328 program.hex &gt; program.dump
+avr-objdump -s -m atmega328 program.hex > program.dump
 ```
 
 It is also possible, depending on your configuration, that providing the architecture type itself (avr5) would be sufficient:  
 
 ```text
-avr-objdump -s -m avr5 program.hex &gt; program.dump
+avr-objdump -s -m avr5 program.hex > program.dump
 ```
 
 #### Answer 2 (score 2)
@@ -4694,7 +4694,7 @@ avrdude2.exe done.  Thank you.
 and this is the resulting file:-  
 
 ```text
-C:\Program Files (x86)\Arduino\hardware\tools\avr\bin&gt;dir c:\keep\program.bin
+C:\Program Files (x86)\Arduino\hardware\tools\avr\bin>dir c:\keep\program.bin
  Volume in drive C has no label.
  Volume Serial Number is EE8C-DFB9
 
@@ -4727,12 +4727,12 @@ foreach(@ARGV){$_=qq("$_") if(/\s/)};   # DOS Wants quotes around space-embedded
 foreach(@ARGV){$_='-v' if($_ eq '-q');} # go verbose instead of silent
 
 my $parms=join(" ",@ARGV);
-open(OUT,"&gt;&gt;","C:\\keep\\avrdude.log") || warn "Cannot write: $!"; 
-print OUT "\n" . &amp;db_now() . " $0 $parms\n"; close(OUT);
+open(OUT,">>","C:\\keep\\avrdude.log") || warn "Cannot write: $!"; 
+print OUT "\n" . &db_now() . " $0 $parms\n"; close(OUT);
 
 my $rc=`avrdude2.exe $parms`;
 
-open(OUT,"&gt;&gt;","C:\\keep\\avrdude.log"); print OUT $rc; close(OUT);
+open(OUT,">>","C:\\keep\\avrdude.log"); print OUT $rc; close(OUT);
 print $rc;
 
 # Return "now()" in mysql default format.
@@ -4893,7 +4893,7 @@ bc *
 bp @eip ".if (poi(poi(esp+4)+4) == 0x202) {!hwnd poi(poi(esp+4));gc } .else {gc}"
 g
 
-windbg  -c "$$&gt;a&lt; ......\wtf.txt" calc
+windbg  -c "$$>a< ......\wtf.txt" calc
 
 Window    00600438
 Name      And
@@ -5763,7 +5763,7 @@ You have already figured out that `cl` holds a character, this means that `eax` 
 ```text
 l1:            ; l1:
 mov cl, [eax]  ;   cl = *p;
-cmp cl, ' '    ;   if ( cl &lt; ' ' )
+cmp cl, ' '    ;   if ( cl < ' ' )
 jb short l2    ;     goto l2
 cmp cl, ','    ;   if ( cl != ',' )
 jnz short l3   ;     goto l3
@@ -5783,7 +5783,7 @@ And cleaned up:
 ```text
 l1:               
   cl = *p;
-  if ( cl &lt; ' ' ) 
+  if ( cl < ' ' ) 
     goto l2;
   if ( cl != ',' )
     goto l3;       
@@ -5801,7 +5801,7 @@ Now, let's have a look at the second `if`. It has the following form:
 ```text
 if ( condition )
   goto end_of_if;
-  &lt;if body&gt;
+  <if body>
 end_of_if:
 ```
 
@@ -5810,7 +5810,7 @@ And here's how we can get rid of the `goto`:
 ```text
 if ( !condition )
 {
-  &lt;if body&gt;
+  <if body>
 }
 ```
 
@@ -5819,7 +5819,7 @@ Applying it to our snippet:
 ```text
 l1:               
   cl = *p;
-  if ( cl &lt; ' ' ) 
+  if ( cl < ' ' ) 
     goto l2;
   if ( cl == ',' )  {
 l2:       
@@ -5831,12 +5831,12 @@ l2:
     goto l1;
 ```
 
-Now, how we can get rid of `goto l2`? If you look at it carefully, you can see that the body at `l2` will get executed if <em>either</em> `cl &lt; ' '` <em>or</em> `cl == ','`. So we can just combine the two conditions with a logical OR (`||`):  
+Now, how we can get rid of `goto l2`? If you look at it carefully, you can see that the body at `l2` will get executed if <em>either</em> `cl < ' '` <em>or</em> `cl == ','`. So we can just combine the two conditions with a logical OR (`||`):  
 
 ```text
 l1:               
   cl = *p;
-  if ( cl &lt; ' ' || cl == ',' ) {
+  if ( cl < ' ' || cl == ',' ) {
     *p = ' ';
   }
   cl = *(p+1);
@@ -5850,7 +5850,7 @@ Now we have one `goto` left. We have: 1) label at the beginning of a statement b
 ```text
 do {
   cl = *p;
-  if ( cl &lt; ' ' || cl == ',' ) {
+  if ( cl < ' ' || cl == ',' ) {
     *p = ' ';
   }
   cl = *(p+1);
@@ -5862,7 +5862,7 @@ Now the code is almost nice and pretty, but we can compress it a bit more by sub
 
 ```text
 do {
-  if ( *p &lt; ' ' || *p == ',' )
+  if ( *p < ' ' || *p == ',' )
     *p = ' ';
   cl = *++p;
 } while ( cl != 0 )
@@ -5872,7 +5872,7 @@ And, finally, the last assignment can be moved into the condition:
 
 ```text
 do {
-  if ( *p &lt; ' ' || *p == ',' )
+  if ( *p < ' ' || *p == ',' )
     *p = ' ';
 } while ( *++p != 0 )
 ```
@@ -5888,8 +5888,8 @@ Here's what it would have looked like in the source. Fastcall being a replacemen
 ```text
 void __fastcall __forceinline RemoveControlChars(char* szInput) {
     int i;
-    for (i = 0; i &lt; 23 &amp;&amp; *szInput; ++i, ++szInput) {
-        if (*szInput &lt; ' ' || *szInput == ',')
+    for (i = 0; i < 23 && *szInput; ++i, ++szInput) {
+        if (*szInput < ' ' || *szInput == ',')
             *szInput = ' ';
     }
 }
@@ -6028,30 +6028,30 @@ Another part of my question, would also be about how to use these dynamic symbol
 ```text
 Disassembly of section .plt:
 
-0000000000400400 &lt;puts@plt-0x10&gt;:
+0000000000400400 <puts@plt-0x10>:
 400400:       ff 35 6a 05 20 00       pushq  0x20056a(%rip)
 400406:       ff 25 6c 05 20 00       jmpq   *0x20056c(%rip)
 40040c:       0f 1f 40 00             nopl   0x0(%rax)
 
-0000000000400410 &lt;puts@plt&gt;:
+0000000000400410 <puts@plt>:
 400410:       ff 25 6a 05 20 00       jmpq   *0x20056a(%rip)
 400416:       68 00 00 00 00          pushq  $0x0
-40041b:       e9 e0 ff ff ff          jmpq   400400 &lt;puts@plt-0x10&gt;
+40041b:       e9 e0 ff ff ff          jmpq   400400 <puts@plt-0x10>
 
-0000000000400420 &lt;__libc_start_main@plt&gt;:
+0000000000400420 <__libc_start_main@plt>:
 400420:       ff 25 62 05 20 00       jmpq   *0x200562(%rip)
 400426:       68 01 00 00 00          pushq  $0x1
-40042b:       e9 d0 ff ff ff          jmpq   400400 &lt;puts@plt-0x10&gt;
+40042b:       e9 d0 ff ff ff          jmpq   400400 <puts@plt-0x10>
 
-0000000000400430 &lt;__gmon_start__@plt&gt;:
+0000000000400430 <__gmon_start__@plt>:
 400430:       ff 25 5a 05 20 00       jmpq   *0x20055a(%rip)
 400436:       68 02 00 00 00          pushq  $0x2
-40043b:       e9 c0 ff ff ff          jmpq   400400 &lt;puts@plt-0x10&gt;
+40043b:       e9 c0 ff ff ff          jmpq   400400 <puts@plt-0x10>
 
-0000000000400440 &lt;perror@plt&gt;:
+0000000000400440 <perror@plt>:
 400440:       ff 25 52 05 20 00       jmpq   *0x200552(%rip)
 400446:       68 03 00 00 00          pushq  $0x3
-40044b:       e9 b0 ff ff ff          jmpq   400400 &lt;puts@plt-0x10&gt;
+40044b:       e9 b0 ff ff ff          jmpq   400400 <puts@plt-0x10>
 ```
 
 <strong>Edit</strong>: Thanks to Igor's comment, I found the different offsets allowing to rebuild the information in `.rela.plt` (but, what is `.rela.dyn` used for ?).  
@@ -6275,7 +6275,7 @@ in this case it's the location of `win64_remotex64` or remote debugger and `nh8s
 
 (3) Open 64-bit version of IDA Pro as admin. (File `"C:\Program Files (x86)\IDA 6.5\idaq64.exe"`)  
 
-(4) Pick `Go` to work on your own. Then in the blank IDA Pro window, in the menu go to `Debugger -&gt; Run -&gt; Remote Windows debugger`. Then in the `Application` pick your application with the `...` button. Specify debuggee parameters and directory, if needed. Then in the `Hostname` add `127.0.0.1`, port as `23946` and password as what you typed above in the batch file:  
+(4) Pick `Go` to work on your own. Then in the blank IDA Pro window, in the menu go to `Debugger -> Run -> Remote Windows debugger`. Then in the `Application` pick your application with the `...` button. Specify debuggee parameters and directory, if needed. Then in the `Hostname` add `127.0.0.1`, port as `23946` and password as what you typed above in the batch file:  
 
 <a href="https://i.stack.imgur.com/4EZU5.png" rel="noreferrer"><img src="https://i.stack.imgur.com/4EZU5.png" alt="enter image description here"></a>  
 
@@ -6305,16 +6305,16 @@ after that referenced for "Good job" are looked for.
 $ radare2 crackserial_linux
 
  -- How about a nice game of chess?
-[0x080488c4]&gt; /c ab2
+[0x080488c4]> /c ab2
 f hit_0 @ 0x08048841   # 5: push 0x8048ab2
-[0x080488c4]&gt;
+[0x080488c4]>
 ```
 
 I tried the same thing, but for me is not working:  
 
 ```text
 $ r2 crackserial_linux
-[0x080488d0]&gt; !!rabin2 -z crackserial_linux
+[0x080488d0]> !!rabin2 -z crackserial_linux
 [strings]
 addr=0x08048d80 off=0x00000d80 ordinal=000 sz=7 section=.rodata string=User:
 addr=0x08048d87 off=0x00000d87 ordinal=001 sz=9 section=.rodata string=Serial:
@@ -6322,8 +6322,8 @@ addr=0x08048d90 off=0x00000d90 ordinal=002 sz=10 section=.rodata string=Good job
 addr=0x08048d9a off=0x00000d9a ordinal=003 sz=10 section=.rodata string=Try again
 
 4 strings
-[0x080488d0]&gt; /c d90
-[0x080488d0]&gt; 
+[0x080488d0]> /c d90
+[0x080488d0]> 
 ```
 
 By the way, why are the strings in my case at different locations?  
@@ -6334,16 +6334,16 @@ Judging from the several posts you made recently it appears you do not have a pr
 The commend <em>per se</em> seems to work correctly for me here:  
 
 ```text
-radare2-w32-0.9.9&gt; cat xxx\helloworld.cpp
+radare2-w32-0.9.9> cat xxx\helloworld.cpp
 
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 int main (void) {
   printf("hello world\n");
   return 0;
 }
 
-radare2-w32-0.9.9&gt; radare2 xxx\helloworld.exe
-[0x00401347]&gt; iz~hello world  
+radare2-w32-0.9.9> radare2 xxx\helloworld.exe
+[0x00401347]> iz~hello world  
     vaddr=0x0041218c paddr=0x0001118c ordinal=000 sz=13 len=12 section=.rdata type=a string=hello world\n    
 ```
 
@@ -6352,14 +6352,14 @@ radare2-w32-0.9.9&gt; radare2 xxx\helloworld.exe
 Lets search for xrefs to the virtual address      
 
 ```text
-[0x00401347]&gt; /c 41218c
+[0x00401347]> /c 41218c
 0x00401003   # 5: push 0x41218c
 ```
 
 Disassemble around the hit  
 
 ```text
-[0x00401347]&gt; pd 5 @0x401000
+[0x00401347]> pd 5 @0x401000
            ;-- section..text:
            0x00401000    55             push ebp               ; 
            0x00401001    8bec           mov ebp, esp
@@ -6813,9 +6813,9 @@ Assume that the variables `f`, `g`, `h`, `i`, and `j` are assigned to registers 
 
 ```text
 sll $t0, $s0, 2      # $t0 = f * 4
-add $t0, $s6, $t0    # $t0 = &amp;A[f]
+add $t0, $s6, $t0    # $t0 = &A[f]
 sll $t1, $s1, 2      # $t1 = g * 4
-add $t1, $s7, $t1    # $t1 = &amp;B[g]
+add $t1, $s7, $t1    # $t1 = &B[g]
 lw $s0, 0($t0)       # f = A[f]
 addi $t2, $t0, 4 
 lw $t0, 0($t2)
@@ -6830,13 +6830,13 @@ Here is your code including my comments:
 
 ```text
 sll $t0, $s0, 2         # $t0 = f * 4
-add $t0, $s6, $t0       # $t0 = &amp;A[f]
+add $t0, $s6, $t0       # $t0 = &A[f]
 sll $t1, $s1, 2         # $t1 = g * 4
-add $t1, $s7, $t1       # $t1 = &amp;B[g]
+add $t1, $s7, $t1       # $t1 = &B[g]
 lw $s0, 0($t0)          # f = A[f]
-addi $t2, $t0, 4        # $t2=$t0+4 =&gt; $t2 points to A[f+1] now
+addi $t2, $t0, 4        # $t2=$t0+4 => $t2 points to A[f+1] now
 lw $t0, 0($t2)          # $t0 = A[f+1]
-add $t0, $t0, $s0       # $t0 = $t0 + $s0  =&gt; $t0 is now A[f] + A[f+1]
+add $t0, $t0, $s0       # $t0 = $t0 + $s0  => $t0 is now A[f] + A[f+1]
 sw $t0, 0($t1)          # store the result into B[g]
 ```
 
@@ -6873,27 +6873,27 @@ Pack the MS-Windows standard `calc.exe`, hexedit one byte and result is an undep
 <li><p>create a new folder `foolupx`:</p>
 
 ```text
-foolupx:\&gt;md foolupx
+foolupx:\>md foolupx
 ```
 </li>
 <li><p>copy `calc.exe` to the newly created folder: </p>
 
 ```text
-foolupx:\&gt;copy c:\WINDOWS\system32\calc.exe foolupx\\upxedcalc.exe
+foolupx:\>copy c:\WINDOWS\system32\calc.exe foolupx\\upxedcalc.exe
     1 file(s) copied.
 ```
 </li>
 <li><p>pack the renamed `calc.exe`: </p>
 
 ```text
-foolupx:\&gt;upx .\foolupx\\upxedcalc.exe
+foolupx:\>upx .\foolupx\\upxedcalc.exe
 Ultimate Packer for eXecutables
 Copyright (C) 1996 - 2011
-UPX 3.08w       Markus Oberhumer, Laszlo Molnar &amp; John Reiser   Dec 12th 2011
+UPX 3.08w       Markus Oberhumer, Laszlo Molnar & John Reiser   Dec 12th 2011
 
     File size         Ratio      Format      Name
    --------------------   ------   -----------   -----------
-     114688 -&gt;     56832   49.55%    win32/pe     upxedcalc.exe
+     114688 ->     56832   49.55%    win32/pe     upxedcalc.exe
 
 Packed 1 file.
 ```
@@ -6901,10 +6901,10 @@ Packed 1 file.
 <li><p>Create a duplicate of the packed `calc.exe` for hexediting and compare the files. The difference is 1 byte in the PE header section named `UPX0` chained to `BPX0`:</p>
 
 ```text
-foolupx:\&gt;copy .\foolupx\\upxedcalc.exe .\foolupx\modupxedcalc.exe
+foolupx:\>copy .\foolupx\\upxedcalc.exe .\foolupx\modupxedcalc.exe
     1 file(s) copied.
 
-foolupx:\&gt;fc .\foolupx\\upxedcalc.exe .\foolupx\modupxedcalc.exe
+foolupx:\>fc .\foolupx\\upxedcalc.exe .\foolupx\modupxedcalc.exe
 Comparing files .\FOOLUPX\\upxedcalc.exe and .\FOOLUPX\MODUPXEDCALC.EXE
 000001E8: 55 42
 ```
@@ -6912,10 +6912,10 @@ Comparing files .\FOOLUPX\\upxedcalc.exe and .\FOOLUPX\MODUPXEDCALC.EXE
 <li><p>Uncompress both files with the `-d` switch. One will be unpacked, the other will not be unpacked:</p>
 
 ```text
-foolupx:\&gt;upx -d .\foolupx\modupxedcalc.exe
+foolupx:\>upx -d .\foolupx\modupxedcalc.exe
 Ultimate Packer for eXecutables
 Copyright (C) 1996 - 2011
-UPX 3.08w       Markus Oberhumer, Laszlo Molnar &amp; John Reiser   Dec 12th 2011
+UPX 3.08w       Markus Oberhumer, Laszlo Molnar & John Reiser   Dec 12th 2011
 
     File size         Ratio      Format      Name
    --------------------   ------   -----------   -----------
@@ -6923,18 +6923,18 @@ UPX 3.08w       Markus Oberhumer, Laszlo Molnar &amp; John Reiser   Dec 12th 201
 
 Unpacked 0 files.
 
-foolupx:\&gt;upx -d .\foolupx\\upxedcalc.exe
+foolupx:\>upx -d .\foolupx\\upxedcalc.exe
 Ultimate Packer for eXecutables
 Copyright (C) 1996 - 2011
-UPX 3.08w       Markus Oberhumer, Laszlo Molnar &amp; John Reiser   Dec 12th 2011
+UPX 3.08w       Markus Oberhumer, Laszlo Molnar & John Reiser   Dec 12th 2011
 
       File size         Ratio      Format      Name
  --------------------   ------   -----------   -----------
- 114688 &lt;-     56832   49.55%    win32/pe     upxedcalc.exe
+ 114688 <-     56832   49.55%    win32/pe     upxedcalc.exe
 
 Unpacked 1 file.
 
-foolupx:\&gt;
+foolupx:\>
 ```
 </li>
 </ol>
@@ -7261,7 +7261,7 @@ o.close()
 
 #### Question
 <p>I have a piece a malware I was share with. (I do this for fun, anyways)
-Is a DLL according to the `IMAGE_FILE_HEADER-&gt;Characteristics`. I was trying to do some dynamic analysis on it. I have done the following:</p>
+Is a DLL according to the `IMAGE_FILE_HEADER->Characteristics`. I was trying to do some dynamic analysis on it. I have done the following:</p>
 
 <ul>
 <li>Run it with `rundll32.exe`, by calling its exports. Nothing.</li>
@@ -7383,30 +7383,30 @@ int main() {
 This generates the following assembly (with Debian gcc 4.7.2-4 `gcc -m32 -g test.c`, snipped):  
 
 ```text
-080483dc &lt;foo&gt;:
+080483dc <foo>:
  80483dc:   55                      push   %ebp
  80483dd:   89 e5                   mov    %esp,%ebp
  80483df:   83 ec 08                sub    $0x8,%esp
- 80483e2:   e8 02 00 00 00          call   80483e9 &lt;bar&gt;
+ 80483e2:   e8 02 00 00 00          call   80483e9 <bar>
  80483e7:   c9                      leave  
  80483e8:   c3                      ret    
 
-080483e9 &lt;bar&gt;:
+080483e9 <bar>:
  80483e9:   55                      push   %ebp
  80483ea:   89 e5                   mov    %esp,%ebp
  80483ec:   83 ec 08                sub    $0x8,%esp
- 80483ef:   e8 07 00 00 00          call   80483fb &lt;baz&gt;
- 80483f4:   e8 07 00 00 00          call   8048400 &lt;quux&gt;
+ 80483ef:   e8 07 00 00 00          call   80483fb <baz>
+ 80483f4:   e8 07 00 00 00          call   8048400 <quux>
  80483f9:   c9                      leave  
  80483fa:   c3                      ret    
 
-080483fb &lt;baz&gt;:
+080483fb <baz>:
  80483fb:   55                      push   %ebp
  80483fc:   89 e5                   mov    %esp,%ebp
  80483fe:   5d                      pop    %ebp
  80483ff:   c3                      ret    
 
-08048400 &lt;quux&gt;:
+08048400 <quux>:
  8048400:   55                      push   %ebp
  8048401:   89 e5                   mov    %esp,%ebp
  8048403:   b8 00 00 00 00          mov    $0x0,%eax
@@ -7414,11 +7414,11 @@ This generates the following assembly (with Debian gcc 4.7.2-4 `gcc -m32 -g test
  804840e:   5d                      pop    %ebp
  804840f:   c3                      ret    
 
-08048410 &lt;main&gt;:
+08048410 <main>:
  8048410:   55                      push   %ebp
  8048411:   89 e5                   mov    %esp,%ebp
  8048413:   83 e4 f0                and    $0xfffffff0,%esp
- 8048416:   e8 c1 ff ff ff          call   80483dc &lt;foo&gt;
+ 8048416:   e8 c1 ff ff ff          call   80483dc <foo>
  804841b:   b8 00 00 00 00          mov    $0x0,%eax
  8048420:   c9                      leave  
  8048421:   c3                      ret    
@@ -7669,7 +7669,7 @@ Partition 3 is a mirror of partition 2, verified through md5sum.  Partitions 5 a
 All of the magic is inside the initrd filesystem image.  Peering into that we get:  
 
 ```text
-# gunzip -c /mnt/ts2/boot/initrd.boot &gt;/tmp/initrd.boot.img
+# gunzip -c /mnt/ts2/boot/initrd.boot >/tmp/initrd.boot.img
 # mkdir /mnt/tsinitrd
 # mount -r /tmp/initrd.boot.img /mnt/tsinitrd -o loop
 # ls -la /mnt/tsinitrd
@@ -7678,13 +7678,13 @@ drwxr-xr-x  5 root root 13312 2012-06-27 22:11 dev
 drwxr-xr-x 22 root root  2048 2012-06-27 22:15 etc
 drwxr-xr-x  3 root root  3072 2012-06-27 22:05 lib
 drwxr-xr-x  2 root root  1024 2010-11-03 04:53 lib64
-lrwxrwxrwx  1 root root    11 2012-06-27 22:16 linuxrc -&gt; bin/busybox
+lrwxrwxrwx  1 root root    11 2012-06-27 22:16 linuxrc -> bin/busybox
 drwx------  2 root root 12288 2012-06-27 22:16 lost+found
 drwxr-xr-x  4 root root  1024 2012-06-27 22:04 mnt
 drwxr-sr-x  2 root root  1024 2012-06-27 22:16 opt
-lrwxrwxrwx  1 root root    19 2012-06-27 22:16 php.ini -&gt; /etc/config/php.ini
+lrwxrwxrwx  1 root root    19 2012-06-27 22:16 php.ini -> /etc/config/php.ini
 drwxr-sr-x  2 root root  1024 1999-11-02 18:54 proc
-lrwxrwxrwx  1 root root    18 2012-06-27 22:16 Qmultimedia -&gt; /share/Qmultimedia
+lrwxrwxrwx  1 root root    18 2012-06-27 22:16 Qmultimedia -> /share/Qmultimedia
 drwxr-xr-x  3 root root  1024 2007-07-18 05:24 root
 drwxr-xr-x  2 root root  5120 2012-06-27 22:15 sbin
 drwxrwxr-x 29 root root  1024 2006-02-28 00:57 share
@@ -7707,8 +7707,8 @@ Since this NAS firmware image is x86 based, and I'm in an x86 VM, might as well 
 
 ```text
 # /mnt/tsinitrd/sbin/PC1
-Usage: pc1 e|d "key" sourcefile &lt;targetfile&gt;
-where: e - encrypt, d - decrypt &amp; "key" is the encryption key.
+Usage: pc1 e|d "key" sourcefile <targetfile>
+where: e - encrypt, d - decrypt & "key" is the encryption key.
 The length of the key will determine strength of encryption
 If no targetfile, output file name is equal to sourfile name
 ie: 5 characters is 40-bit encryption.

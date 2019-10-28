@@ -981,7 +981,7 @@ The implementation is now integrated to Tensorflow Hub and can easily be used. H
 </blockquote>
 
 ```text
-#Requirements: Tensorflow&gt;=1.7 tensorflow-hub numpy
+#Requirements: Tensorflow>=1.7 tensorflow-hub numpy
 
 import tensorflow as tf
 import tensorflow_hub as hub
@@ -1085,9 +1085,9 @@ Optimization occurs to apply higher probabilistic weights to the best PCREs in a
 The output is an arbitrary directed graph in memory, which is similar to a dump of an object oriented database.  
 
 ```text
-قنبلة -&gt; dangereux -&gt; 4anlyss
-bomba -&gt; dangereux
-ambiguïté -&gt; 4anlyss -&gt; préemption -&gt; قنبلة
+قنبلة -> dangereux -> 4anlyss
+bomba -> dangereux
+ambiguïté -> 4anlyss -> préemption -> قنبلة
 ```
 
 Although a re-entrant algorithm for a reinforcement version is stubbed out and the wellness signal is already available, other work preempted furthering the adaptive parser or working toward the next step to use the work for natural language: Matching the directed graphs to persisted directed graph filters representing ideas, which would mimic the idea recollection aspect of language comprehension.  
@@ -2224,13 +2224,13 @@ You don't usually calculate weights for bottleneck layers directly, the training
 Imagine, you want to re-compute the last layer of a pre-trained model :   
 
 ```text
-Input-&gt;[Freezed-Layers]-&gt;[Last-Layer-To-Re-Compute]-&gt;Output
+Input->[Freezed-Layers]->[Last-Layer-To-Re-Compute]->Output
 ```
 
 To train <em>[Last-Layer-To-Re-Compute]</em>, you need to evaluate outputs of <em>[Freezed-Layers]</em> multiple times for a given input data. In order to save time, you can compute these ouputs <strong>only once</strong>.  
 
 ```text
-Input#1-&gt;[Freezed-Layers]-&gt;Bottleneck-Features-Of-Input#1
+Input#1->[Freezed-Layers]->Bottleneck-Features-Of-Input#1
 ```
 
 Then, you store all <em>Bottleneck-Features-Of-Input#i</em> and directly use them to train [Last-Layer-To-Re-Compute].  

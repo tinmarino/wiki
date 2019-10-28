@@ -143,7 +143,7 @@ summary(aov1)
 Output is   
 
 ```python
-            Df Sum Sq Mean Sq F value  Pr(&gt;F)   
+            Df Sum Sq Mean Sq F value  Pr(>F)   
 fac          3   1636   545.5   5.406 0.00688 **
 Residuals   20   2018   100.9                   
 ---
@@ -224,10 +224,10 @@ I think one way to get a really basic level intuition behind convolution is that
 Another way to approach understanding deconv would be to examine the deconvolution layer implementation in Caffe, see the following relevant bits of code:  
 
 ```python
-DeconvolutionLayer&lt;Dtype&gt;::Forward_gpu
-ConvolutionLayer&lt;Dtype&gt;::Backward_gpu
-CuDNNConvolutionLayer&lt;Dtype&gt;::Backward_gpu
-BaseConvolutionLayer&lt;Dtype&gt;::backward_cpu_gemm
+DeconvolutionLayer<Dtype>::Forward_gpu
+ConvolutionLayer<Dtype>::Backward_gpu
+CuDNNConvolutionLayer<Dtype>::Backward_gpu
+BaseConvolutionLayer<Dtype>::backward_cpu_gemm
 ```
 
 You can see that it's implemented in Caffe exactly as backprop for a regular forward convolutional layer (to me it was more obvious after i compared the implementation of backprop in cuDNN conv layer vs ConvolutionLayer::Backward_gpu implemented using GEMM). So if you work through how backpropagation is done for regular convolution you will understand what happens on a mechanical computation level. The way this computation works matches the intuition described in the first paragraph of this blurb.  
@@ -259,13 +259,13 @@ import tensorflow as tf
 import numpy as np
 
 def test_conv2d_transpose():
-    # input batch shape = (1, 2, 2, 1) -&gt; (batch_size, height, width, channels) - 2x2x1 image in batch of 1
+    # input batch shape = (1, 2, 2, 1) -> (batch_size, height, width, channels) - 2x2x1 image in batch of 1
     x = tf.constant(np.array([[
         [[1], [2]], 
         [[3], [4]]
     ]]), tf.float32)
 
-    # shape = (3, 3, 1, 1) -&gt; (height, width, input_channels, output_channels) - 3x3x1 filter
+    # shape = (3, 3, 1, 1) -> (height, width, input_channels, output_channels) - 3x3x1 filter
     f = tf.constant(np.array([
         [[[1]], [[1]], [[1]]], 
         [[[1]], [[1]], [[1]]], 
@@ -412,7 +412,7 @@ def create_class_weight(labels_dict,mu=0.15):
 
     for key in keys:
         score = math.log(mu*total/float(labels_dict[key]))
-        class_weight[key] = score if score &gt; 1.0 else 1.0
+        class_weight[key] = score if score > 1.0 else 1.0
 
     return class_weight
 
@@ -1204,14 +1204,14 @@ I wrote some latex code to draw Deep networks for one of my reports. You can fin
 I have a factor variable in my data frame with  values where in the original CSV "NA" was intended to mean simply "None", not missing data. Hence I want replace every  value in the given column with "None" factor value. I tried this:  
 
 ```python
-DF$col[is.na(DF$col)] &lt;- "None"
+DF$col[is.na(DF$col)] <- "None"
 ```
 
 but this throws the following error:  
 
 ```python
 Warning message:
-In `[&lt;-.factor`(`*tmp*`, is.na(DF$col), value = c(NA, NA,  :
+In `[<-.factor`(`*tmp*`, is.na(DF$col), value = c(NA, NA,  :
   invalid factor level, NA generated
 ```
 
@@ -1223,21 +1223,21 @@ I guess this is because originally there is no "None" factor level in the column
 You need to add "None" to the factor level and refactor the column DF$col. I added an example script using the iris dataset.   
 
 ```python
-df &lt;- iris
+df <- iris
 
 # set 20 Species to NA
 set.seed(1234)
-s &lt;- sample(nrow(df), 20)
-df$Species[s] &lt;- NA
+s <- sample(nrow(df), 20)
+df$Species[s] <- NA
 
 # Get levels and add "None"
-levels &lt;- levels(df$Species)
-levels[length(levels) + 1] &lt;- "None"
+levels <- levels(df$Species)
+levels[length(levels) + 1] <- "None"
 
 # refactor Species to include "None" as a factor level
 # and replace NA with "None"
-df$Species &lt;- factor(df$Species, levels = levels)
-df$Species[is.na(df$Species)] &lt;- "None"
+df$Species <- factor(df$Species, levels = levels)
+df$Species[is.na(df$Species)] <- "None"
 ```
 
 #### Answer 2 (score 9)
@@ -1257,7 +1257,7 @@ It can be used within the mutate function and piped to edit DF directly:
 ```python
 library(tidyverse) # for tidy data packages, automatically loads dplyr
 library(magrittr) # for piping
-DF %&lt;&gt;% mutate(cols = fct_explicit_na(col, na_level = "None"))
+DF %<>% mutate(cols = fct_explicit_na(col, na_level = "None"))
 ```
 
 Note that "col" needs to be a factor for this to work.  
@@ -1267,10 +1267,10 @@ Your original approach was right, and your intuition about the missing level too
 
 ```python
 #Create a factor for the example
-x&lt;-factor(c("S",NA,"M","S","S","S",NA,NA,"S","M","S",NA,"M","S",NA,"S","S",NA,"M","S",NA,"M"))
+x<-factor(c("S",NA,"M","S","S","S",NA,NA,"S","M","S",NA,"M","S",NA,"S","S",NA,"M","S",NA,"M"))
 
-levels(x)&lt;-c(levels(x),"None")  #Add the extra level to your factor
-x[is.na(x)] &lt;- "None"           #Change NA to "None"
+levels(x)<-c(levels(x),"None")  #Add the extra level to your factor
+x[is.na(x)] <- "None"           #Change NA to "None"
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -1313,18 +1313,18 @@ Most often you will find yourself not splitting it once but in a first step you 
 I have a dataset like the one below. I want to remove all characters after the character ©. How can I do that in R?  
 
 ```python
-data_clean_phrase &lt;- c("Copyright © The Society of Geomagnetism and Earth", 
+data_clean_phrase <- c("Copyright © The Society of Geomagnetism and Earth", 
 "© 2013 Chinese National Committee ")
 
-data_clean_df &lt;- as.data.frame(data_clean_phrase)
+data_clean_df <- as.data.frame(data_clean_phrase)
 ```
 
 #### Answer accepted (score 17)
 For instance:  
 
 ```python
- rs&lt;-c("copyright @ The Society of mo","I want you to meet me @ the coffeshop")
- s&lt;-gsub("@.*","",rs)
+ rs<-c("copyright @ The Society of mo","I want you to meet me @ the coffeshop")
+ s<-gsub("@.*","",rs)
  s
  [1] "copyright "             "I want you to meet me "
 ```
@@ -1332,7 +1332,7 @@ For instance:
 Or, if you want to keep the @ character:  
 
 ```python
- s&lt;-gsub("(@).*","\\1",rs)
+ s<-gsub("(@).*","\\1",rs)
  s
  [1] "copyright @"             "I want you to meet me @"
 ```
@@ -1340,8 +1340,8 @@ Or, if you want to keep the @ character:
 EDIT: If what you want is to remove everything from the last @ on you just have to follow this previous example with the appropriate regex. Example:  
 
 ```python
-rs&lt;-c("copyright @ The Society of mo located @ my house","I want you to meet me @ the coffeshop")
-s&lt;-gsub("(.*)@.*","\\1",rs)
+rs<-c("copyright @ The Society of mo located @ my house","I want you to meet me @ the coffeshop")
+s<-gsub("(.*)@.*","\\1",rs)
 s
 [1] "copyright @ The Society of mo located " "I want you to meet me "
 ```
@@ -1664,11 +1664,11 @@ Fairly new to Python but building out my first RF model based on some classifica
 Here is what my arrays look like:  
 
 ```python
-&gt;&gt;&gt; X = np.array([[df.tran_cityname, df.tran_signupos, df.tran_signupchannel, df.tran_vmake, df.tran_vmodel, df.tran_vyear]])
+>>> X = np.array([[df.tran_cityname, df.tran_signupos, df.tran_signupchannel, df.tran_vmake, df.tran_vmodel, df.tran_vyear]])
 
-&gt;&gt;&gt; Y = np.array(df['completed_trip_status'].values.tolist())
+>>> Y = np.array(df['completed_trip_status'].values.tolist())
 
-&gt;&gt;&gt; X
+>>> X
 array([[[   1,    1,    2,    3,    1,    1,    1,    1,    1,    3,    1,
             3,    1,    1,    1,    1,    2,    1,    3,    1,    3,    3,
             2,    3,    3,    1,    1,    1,    1],
@@ -1688,20 +1688,20 @@ array([[[   1,    1,    2,    3,    1,    1,    1,    1,    1,    3,    1,
             0, 2015,    0,    0, 2015,    0,    0,    0,    0, 2015,    0,
             0,    0,    0,    0, 2016, 2016, 2010]]])
 
-&gt;&gt;&gt; Y
+>>> Y
 array(['NO', 'NO', 'NO', 'YES', 'NO', 'NO', 'YES', 'NO', 'NO', 'NO', 'NO',
        'NO', 'YES', 'NO', 'NO', 'YES', 'NO', 'NO', 'NO', 'NO', 'NO', 'NO',
        'NO', 'NO', 'NO', 'NO', 'NO', 'NO', 'NO'], 
       dtype='|S3')
 
-&gt;&gt;&gt; X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.3)
+>>> X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.3)
 ```
 
 <blockquote>
   Traceback (most recent call last):  
 
 ```python
-  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+  File "<stdin>", line 1, in <module>
   File "/Library/Python/2.7/site-packages/sklearn/cross_validation.py", line
 ```
   
@@ -1723,9 +1723,9 @@ ValueError: Found input variables with inconsistent numbers of samples: [1, 29]
 You are running into that error because your `X` and `Y` don't have the same length (which is what `train_test_split` requires), i.e., `X.shape[0] != Y.shape[0]`. Given your current code:  
 
 ```python
-&gt;&gt;&gt; X.shape
+>>> X.shape
 (1, 6, 29)
-&gt;&gt;&gt; Y.shape
+>>> Y.shape
 (29,)
 ```
 
@@ -1857,7 +1857,7 @@ STD = np.std(MOV)
 events= []
 ind = []
 for ii in range(len(TimeSEries)):
-    if TimeSEries[ii] &gt; MOV[ii]+STD:
+    if TimeSEries[ii] > MOV[ii]+STD:
         events.append(TimeSEries[ii])
 ```
 
@@ -1889,7 +1889,7 @@ def anomaly(ip, port):
     predictors = range(0,784)
     resp = 784
 
-    # unsupervised -&gt; drop the response column (digit: 0-9)
+    # unsupervised -> drop the response column (digit: 0-9)
     train = train[predictors]
     test = test[predictors]
 
@@ -2216,7 +2216,7 @@ How about using recursion?
 
 ```python
 def union_all(dfs):
-    if len(dfs) &gt; 1:
+    if len(dfs) > 1:
         return dfs[0].unionAll(union_all(dfs[1:]))
     else:
         return dfs[0]
@@ -2273,18 +2273,18 @@ myrdd = sc.textFile("yourfile.csv").map(lambda line: line.split(","))
 Then transform your data so that every item is in the correct format for the schema (i.e. Ints, Strings, Floats, etc.). You'll want to then use   
 
 ```python
-&gt;&gt;&gt; from pyspark.sql import Row
-&gt;&gt;&gt; Person = Row('name', 'age')
-&gt;&gt;&gt; person = rdd.map(lambda r: Person(*r))
-&gt;&gt;&gt; df2 = sqlContext.createDataFrame(person)
-&gt;&gt;&gt; df2.collect()
+>>> from pyspark.sql import Row
+>>> Person = Row('name', 'age')
+>>> person = rdd.map(lambda r: Person(*r))
+>>> df2 = sqlContext.createDataFrame(person)
+>>> df2.collect()
 [Row(name=u'Alice', age=1)]
-&gt;&gt;&gt; from pyspark.sql.types import *
-&gt;&gt;&gt; schema = StructType([
+>>> from pyspark.sql.types import *
+>>> schema = StructType([
 ...    StructField("name", StringType(), True),
 ...    StructField("age", IntegerType(), True)])
-&gt;&gt;&gt; df3 = sqlContext.createDataFrame(rdd, schema)
-&gt;&gt;&gt; df3.collect()
+>>> df3 = sqlContext.createDataFrame(rdd, schema)
+>>> df3.collect()
 [Row(name=u'Alice', age=1)]
 ```
 
@@ -2298,7 +2298,7 @@ Following worked well for me:
 ```python
 from pyspark.sql.types import *
 schema = StructType([StructField("name", StringType(), True),StructField("age", StringType(), True)]
-pd_df = pd.read_csv("&lt;inputcsvfile&gt;")
+pd_df = pd.read_csv("<inputcsvfile>")
 sp_df = spark.createDataFrame(pd_df, schema=schema)
 ```
 
@@ -2881,8 +2881,8 @@ The output should be as below:
 I am trying to do this in R. I tried the below function, but my R session is not producing any result and it is terminating.  
 
 ```python
-  df %&gt;%
-  group_by(country, gender) %&gt;%
+  df %>%
+  group_by(country, gender) %>%
   summarise_each(funs(sum))
 ```
 
@@ -2892,10 +2892,10 @@ Could someone help me in achieving this output? I think this can be achieved usi
 ```python
 library(dplyr)
 library(tidyr)     
-df %&gt;% group_by(country, gender) %&gt;% 
-       summarise(total_loan_amount =sum(loan_amount)) %&gt;% 
-       spread(gender, total_loan_amount) %&gt;% 
-       ungroup() %&gt;%
+df %>% group_by(country, gender) %>% 
+       summarise(total_loan_amount =sum(loan_amount)) %>% 
+       spread(gender, total_loan_amount) %>% 
+       ungroup() %>%
        transmute(country = country,  female_percent = F / (F+M), male_percent = M /(F+M))
 ```
 
@@ -2914,12 +2914,12 @@ I am sure there are better ways of doing it. Below is my simplistic take.
 
 ```python
 library(dplyr); library(reshape2)
-Summary &lt;- df %&gt;%
-  group_by(country, gender) %&gt;%
+Summary <- df %>%
+  group_by(country, gender) %>%
   summarise(Net = sum(loan_amount))
 
-  final &lt;- recast(Summary, country~gender, id.var = c("country", "gender"))
-  final &lt;- mutate(final, F_percent = final$F/(final$F+final$M), M_percent = final$M/(final$F+final$M) )
+  final <- recast(Summary, country~gender, id.var = c("country", "gender"))
+  final <- mutate(final, F_percent = final$F/(final$F+final$M), M_percent = final$M/(final$F+final$M) )
 ```
 
 Naming the columns with better names and retaining or dropping certain columns should now be easy.  
@@ -3171,11 +3171,11 @@ def stepwise_selection(X, y,
         X - pandas.DataFrame with candidate features
         y - list-like with the target
         initial_list - list of features to start with (column names of X)
-        threshold_in - include a feature if its p-value &lt; threshold_in
-        threshold_out - exclude a feature if its p-value &gt; threshold_out
+        threshold_in - include a feature if its p-value < threshold_in
+        threshold_out - exclude a feature if its p-value > threshold_out
         verbose - whether to print the sequence of inclusions and exclusions
     Returns: list of selected features 
-    Always set threshold_in &lt; threshold_out to avoid infinite looping.
+    Always set threshold_in < threshold_out to avoid infinite looping.
     See https://en.wikipedia.org/wiki/Stepwise_regression for the details
     """
     included = list(initial_list)
@@ -3188,7 +3188,7 @@ def stepwise_selection(X, y,
             model = sm.OLS(y, sm.add_constant(pd.DataFrame(X[included+[new_column]]))).fit()
             new_pval[new_column] = model.pvalues[new_column]
         best_pval = new_pval.min()
-        if best_pval &lt; threshold_in:
+        if best_pval < threshold_in:
             best_feature = new_pval.argmin()
             included.append(best_feature)
             changed=True
@@ -3200,7 +3200,7 @@ def stepwise_selection(X, y,
         # use all coefs except intercept
         pvalues = model.pvalues.iloc[1:]
         worst_pval = pvalues.max() # null if pvalues is empty
-        if worst_pval &gt; threshold_out:
+        if worst_pval > threshold_out:
             changed=True
             worst_feature = pvalues.argmax()
             included.remove(worst_feature)
@@ -3250,7 +3250,7 @@ First of all this is a Python/Anaconda question and should probably be asked in 
 As for the question itself - you can export your Anaconda environment using:  
 
 ```python
-conda env export &gt; environment.yml
+conda env export > environment.yml
 ```
 
 And recreate it using:  
@@ -3288,13 +3288,13 @@ A container image is a lightweight, stand-alone, executable package of a piece o
 First export environment configuration of your current conda environment using:  
 
 ```python
-conda-env  export -n your_env_name &gt; your_env_name.yml
+conda-env  export -n your_env_name > your_env_name.yml
 ```
 
 example:  
 
 ```python
-conda-env  export -n base&gt; base.yml
+conda-env  export -n base> base.yml
 ```
 
 After running above command their should be yml configuration file in your current directory which contain information of your conda environment  
@@ -3353,7 +3353,7 @@ If it's a csv file and you do not need to access all of the data at once when tr
 
 ```python
 import pandas as pd
-for chunk in pd.read_csv(&lt;filepath&gt;, chunksize=&lt;your_chunksize_here&gt;)
+for chunk in pd.read_csv(<filepath>, chunksize=<your_chunksize_here>)
     do_processing()
     train_algorithm()
 ```
@@ -3486,10 +3486,10 @@ I hope to generate value for missing value based rule that first product second 
 
 ```python
 1 2 3
-4 5 20 &lt;--4*5
+4 5 20 <--4*5
 7 8 9
-3 2 6 &lt;-- 3*2
-5 6 30 &lt;-- 5*6
+3 2 6 <-- 3*2
+5 6 30 <-- 5*6
 ```
 
 How can I do it use data frame? Thanks.  
@@ -3501,10 +3501,10 @@ else 3rd = 1st + 2nd</code></p>
 
 ```python
 1 2 3
-4 5 20 &lt;-- 4*5 because 4%2==0
+4 5 20 <-- 4*5 because 4%2==0
 7 8 9
-3 2 5 &lt;-- 3+2 because 3%2==1
-5 6 11 &lt;-- 5+6 because 5%2==1
+3 2 5 <-- 3+2 because 3%2==1
+5 6 11 <-- 5+6 because 5%2==1
 ```
 
 #### Answer accepted (score 16)
@@ -3785,7 +3785,7 @@ I used this notebook as a tutorial</p>
 I'm not able to convert the pandas dataframe created, into a 1d array. And the kde_scipy doesn't work with a nd-array. I tried converting the dataframe into a 1d array using .as_matrix() but this is the error I am receiving.  
 
 ```python
-Degrees of freedom &lt;= 0 for slice
+Degrees of freedom <= 0 for slice
 ```
 
 How can I convert this CSV file (with 3 columns of data) imported as a dataframe into individual columns of data? Or can I directly import each column of data into a 1d array and use it in the function kde_scipy?  
@@ -3949,7 +3949,7 @@ print(X_train)
 Here comes the error :  
 
 ```python
-  File "predict01.py", line 14, in &lt;module&gt;
+  File "predict01.py", line 14, in <module>
     nb_predict_train.predict(X_train)
 AttributeError: 'numpy.ndarray' object has no attribute 'predict'
 ```
@@ -3998,7 +3998,7 @@ Edit: I tried a new approach, but I'm now encountering an error message that I d
 KeyError                                  Traceback (most recent call last)
 C:\get_loc(self, key, method, tolerance)
    2133             try:
--&gt; 2134                 return self._engine.get_loc(key)
+-> 2134                 return self._engine.get_loc(key)
    2135             except KeyError:
 
 pandas\index.pyx in pandas.index.IndexEngine.get_loc (pandas\index.c:4433)()
@@ -4014,42 +4014,42 @@ KeyError: 'id'
 During handling of the above exception, another exception occurred:
 
 KeyError                                  Traceback (most recent call last)
-&lt;ipython-input-50-dce34398f1e1&gt; in &lt;module&gt;()
+<ipython-input-50-dce34398f1e1> in <module>()
       1 for id in unique_bank_id:
-----&gt; 2     new_df = df[df['id'] == id]
+----> 2     new_df = df[df['id'] == id]
 
 C:\ in __getitem__(self, key)
    2057             return self._getitem_multilevel(key)
    2058         else:
--&gt; 2059             return self._getitem_column(key)
+-> 2059             return self._getitem_column(key)
    2060 
    2061     def _getitem_column(self, key):
 
 C:\ in _getitem_column(self, key)
    2064         # get column
    2065         if self.columns.is_unique:
--&gt; 2066             return self._get_item_cache(key)
+-> 2066             return self._get_item_cache(key)
    2067 
-   2068         # duplicate columns &amp; possible reduce dimensionality
+   2068         # duplicate columns & possible reduce dimensionality
 
 C:\ in _get_item_cache(self, item)
    1384         res = cache.get(item)
    1385         if res is None:
--&gt; 1386             values = self._data.get(item)
+-> 1386             values = self._data.get(item)
    1387             res = self._box_item_values(item, values)
    1388             cache[item] = res
 
 C:\ in get(self, item, fastpath)
    3541 
    3542             if not isnull(item):
--&gt; 3543                 loc = self.items.get_loc(item)
+-> 3543                 loc = self.items.get_loc(item)
    3544             else:
    3545                 indexer = np.arange(len(self.items))[isnull(self.items)]
 
 C:\ in get_loc(self, key, method, tolerance)
    2134                 return self._engine.get_loc(key)
    2135             except KeyError:
--&gt; 2136                 return self._engine.get_loc(self._maybe_cast_indexer(key))
+-> 2136                 return self._engine.get_loc(self._maybe_cast_indexer(key))
    2137 
    2138         indexer = self.get_indexer([key], method=method, tolerance=tolerance)
 
@@ -4477,11 +4477,11 @@ Using the `data.table` structure (see the <a href="https://github.com/Rdatatable
 
 ```python
 library(data.table)
-D &lt;- data.table(x = c(1155, 1156, 1157, 1158),
+D <- data.table(x = c(1155, 1156, 1157, 1158),
                 date = as.Date(c("2010-05-02", "2010-05-05", "2010-05-08", "2010-05-11")),
                 y = c(2.7200, 2.6000, 2.6700, 3.5700),
                 id = c(1, 3, 1, 2))
-counts &lt;- D[, .(rowCount = .N), by = id]
+counts <- D[, .(rowCount = .N), by = id]
 counts
 ```
 
@@ -4499,8 +4499,8 @@ counts
 Another way is simply with the "table" function.   
 
 ```python
-ids&lt;-c(1,3,1,2)
-counts&lt;-data.frame(table(ids))
+ids<-c(1,3,1,2)
+counts<-data.frame(table(ids))
 counts
 ```
 
@@ -4553,7 +4553,7 @@ def train_generator():
         y_train = x_train[:, :, 0]
         for i in range(1, 5):
             y_train[:, i:] += x_train[:, :-i, i]
-        y_train = to_categorical(y_train &gt; 2.5)
+        y_train = to_categorical(y_train > 2.5)
         yield x_train, y_train
 
 model.fit_generator(train_generator(), steps_per_epoch=30, epochs=10, verbose=1)
@@ -4794,8 +4794,8 @@ Thanks
 You may use `gsub` function  
 
 ```python
-&gt; c &lt;-  "ce7382"
-&gt; gsub("[a-zA-Z ]", "", c)
+> c <-  "ce7382"
+> gsub("[a-zA-Z ]", "", c)
 [1] "7382"
 ```
 
@@ -4808,16 +4808,16 @@ I'd just do it like so:
 library(roperators)
 
 # either 
-this_text &lt;- c('ce7380', 'ce5932', 'ce1234')
+this_text <- c('ce7380', 'ce5932', 'ce1234')
 
 # make a new text vector:
-new_text &lt;- this_text %-% '[a-z]'
+new_text <- this_text %-% '[a-z]'
 
 # or make an integer vector:
-new_number &lt;- int(this_text %-% '[a-z]')
+new_number <- int(this_text %-% '[a-z]')
 
 # OR change this_text in-place
-this_text &lt;- c('ce7380', 'ce5932', 'ce1234')
+this_text <- c('ce7380', 'ce5932', 'ce1234')
 
 this_text %-=% '[a-z]'
 ```
@@ -4830,10 +4830,10 @@ this_text %-=% '[a-z]'
 The below predict function is giving -ve values as well so it cannot be probabilities.   
 
 ```python
-param &lt;- list(max.depth = 5, eta = 0.01,  objective="binary:logistic",subsample=0.9)
-bst &lt;- xgboost(param, data = x_mat, label = y_mat,nround = 3000)
+param <- list(max.depth = 5, eta = 0.01,  objective="binary:logistic",subsample=0.9)
+bst <- xgboost(param, data = x_mat, label = y_mat,nround = 3000)
 
-pred_s &lt;- predict(bst, x_mat_s2)
+pred_s <- predict(bst, x_mat_s2)
 ```
 
 <p>I google &amp; tried `pred_s &lt;- predict(bst, x_mat_s2,type="response")`
@@ -4987,7 +4987,7 @@ def avg_sentence_vector(words, model, num_features, index2word_set):
             nwords = nwords+1
             featureVec = np.add(featureVec, model[word])
 
-    if nwords&gt;0:
+    if nwords>0:
         featureVec = np.divide(featureVec, nwords)
     return featureVec
 ```
@@ -5223,9 +5223,9 @@ It gives the following error:
 
 ```python
 Traceback (most recent call last):
-  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
-  File "C:/Users/Kshitiz/AppData/Local/Programs/Python/Python36-32/Lib/site-packages\cv2\__init__.py", line 7, in &lt;modul
-e&gt;
+  File "<stdin>", line 1, in <module>
+  File "C:/Users/Kshitiz/AppData/Local/Programs/Python/Python36-32/Lib/site-packages\cv2\__init__.py", line 7, in <modul
+e>
     from . import cv2
 ImportError: cannot import name 'cv2'
 ```
@@ -5524,7 +5524,7 @@ Appreciate any help!
 str(model) looks like this:  
 
 ```python
-&gt; str(model)
+> str(model)
     List of 13
      $ data            :List of 1
       ..$ : num [1:1000, 1:56] 1 1 1 1 0 1 1 0 1 1 ...
@@ -5565,7 +5565,7 @@ str(model) looks like this:
 Your data boils down to something like this structure:  
 
 ```python
-&gt; str(model)
+> str(model)
 List of 2
  $ data:List of 1
   ..$ : int [1:3, 1:4] 1 2 3 4 5 6 7 8 9 10 ...
@@ -5584,7 +5584,7 @@ The `$data` component is also a "List of 1" component.
 So `colnames(model$data)` is trying to get the `colnames` of a list, and failing:  
 
 ```python
-&gt; colnames(model$data)
+> colnames(model$data)
 NULL
 ```
 
@@ -5593,14 +5593,14 @@ Which you would have spotted if you'd tried running `colnames(model$data)` yours
 You want the `colnames` of the first element of the list `model$data`:  
 
 ```python
-&gt; colnames(model$data[[1]])
+> colnames(model$data[[1]])
 [1] "a" "b" "c" "d"
 ```
 
 and hence:  
 
 ```python
-&gt; sample(colnames(model$data[[1]]),1)
+> sample(colnames(model$data[[1]]),1)
 [1] "b"
 ```
 
@@ -5619,7 +5619,7 @@ And rename model$data to model
 str(model)  
 
 ```python
-&gt; str(model)
+> str(model)
 List of 13
  $ data            :List of 1
   ..$ : num [1:1000, 1:56] 1 1 1 1 0 1 1 0 1 1 ...
@@ -5777,7 +5777,7 @@ For example, compare the probabilities with the case that there are 1000 cats an
 from sklearn.metrics import confusion_matrix
 
 y_true = np.array([0] * 1000 + [1] * 1000)
-y_pred = probabilities &gt; 0.5
+y_pred = probabilities > 0.5
 
 confusion_matrix(y_true, y_pred)
 ```
@@ -6046,7 +6046,7 @@ XGBoost have been doing a great job, when it comes to dealing with both categori
 This is how I applied the parameters for a recent Kaggle problem:  
 
 ```python
-param &lt;- list(  objective           = "reg:linear", 
+param <- list(  objective           = "reg:linear", 
                 booster = "gbtree",
                 eta                 = 0.02, # 0.06, #0.01,
                 max_depth           = 10, #changed from default of 8
@@ -6058,7 +6058,7 @@ param &lt;- list(  objective           = "reg:linear",
 )
 
 
-clf &lt;- xgb.train(   params              = param, 
+clf <- xgb.train(   params              = param, 
                     data                = dtrain, 
                     nrounds             = 3000, #300, #280, #125, #250, # changed from 300
                     verbose             = 0,
@@ -6096,27 +6096,27 @@ I often begin with a few assumptions based on <a href="https://www.kaggle.com/ow
 Here you can see that you'll mostly need to tune row sampling, column sampling and maybe maximum tree depth. This is how I do a custom row sampling and column sampling search for a problem I am working on at the moment:  
 
 ```python
-searchGridSubCol &lt;- expand.grid(subsample = c(0.5, 0.75, 1), 
+searchGridSubCol <- expand.grid(subsample = c(0.5, 0.75, 1), 
                                 colsample_bytree = c(0.6, 0.8, 1))
-ntrees &lt;- 100
+ntrees <- 100
 
 #Build a xgb.DMatrix object
-DMMatrixTrain &lt;- xgb.DMatrix(data = yourMatrix, label = yourTarget)
+DMMatrixTrain <- xgb.DMatrix(data = yourMatrix, label = yourTarget)
 
-rmseErrorsHyperparameters &lt;- apply(searchGridSubCol, 1, function(parameterList){
+rmseErrorsHyperparameters <- apply(searchGridSubCol, 1, function(parameterList){
 
     #Extract Parameters to test
-    currentSubsampleRate &lt;- parameterList[["subsample"]]
-    currentColsampleRate &lt;- parameterList[["colsample_bytree"]]
+    currentSubsampleRate <- parameterList[["subsample"]]
+    currentColsampleRate <- parameterList[["colsample_bytree"]]
 
-    xgboostModelCV &lt;- xgb.cv(data =  DMMatrixTrain, nrounds = ntrees, nfold = 5, showsd = TRUE, 
+    xgboostModelCV <- xgb.cv(data =  DMMatrixTrain, nrounds = ntrees, nfold = 5, showsd = TRUE, 
                            metrics = "rmse", verbose = TRUE, "eval_metric" = "rmse",
                            "objective" = "reg:linear", "max.depth" = 15, "eta" = 2/ntrees,                               
                            "subsample" = currentSubsampleRate, "colsample_bytree" = currentColsampleRate)
 
-    xvalidationScores &lt;- as.data.frame(xgboostModelCV)
+    xvalidationScores <- as.data.frame(xgboostModelCV)
     #Save rmse of the last iteration
-    rmse &lt;- tail(xvalidationScores$test.rmse.mean, 1)
+    rmse <- tail(xvalidationScores$test.rmse.mean, 1)
 
     return(c(rmse, currentSubsampleRate, currentColsampleRate))
 
@@ -6824,9 +6824,9 @@ GraphViz's Executables not found
 
 ```python
 Traceback (most recent call last):
-  File "example.py", line 49, in &lt;module&gt;
+  File "example.py", line 49, in <module>
     Image(graph.create_png())
-  File "/home/philippe/.local/lib/python3.6/site-packages/pydotplus/graphviz.py", line 1797, in &lt;lambda&gt;
+  File "/home/philippe/.local/lib/python3.6/site-packages/pydotplus/graphviz.py", line 1797, in <lambda>
     lambda f=frmt, prog=self.prog: self.create(format=f, prog=prog)
   File "/home/philippe/.local/lib/python3.6/site-packages/pydotplus/graphviz.py", line 1960, in create
     'GraphViz\'s executables not found')

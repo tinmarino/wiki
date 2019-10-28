@@ -1265,7 +1265,7 @@ inPageLocation *= physicalTextureSize / virtualTextureSize;
 So the finished function is:  
 
 ```python
-float2 CalculatePhysicalTexUV(float2 virtTexUV, Texture2D&lt;float2&gt; lookupTable, uint2 physicalTexSize, uint2 virtualTexSize, uint2 numTiles) {
+float2 CalculatePhysicalTexUV(float2 virtTexUV, Texture2D<float2> lookupTable, uint2 physicalTexSize, uint2 virtualTexSize, uint2 numTiles) {
     float2 pageLocInPhysicalTex = lookupTable.Sample(virtTexUV, nearestNeighborSampler);
 
     float2 inPageLocation = virtTexUV * exp2(sqrt(numTiles));
@@ -1381,8 +1381,8 @@ void main()
 {
     vec3 diffuse = texture(screenTexture, TexCoords.st).rgb;
     mat3 I;
-    for (int i=0; i&lt;3; i++) {
-        for (int j=0; j&lt;3; j++) {
+    for (int i=0; i<3; i++) {
+        for (int j=0; j<3; j++) {
             vec3 sample  = texelFetch(screenTexture, ivec2(gl_FragCoord) + ivec2(i-1,j-1), 0 ).rgb;
             I[i][j] = length(sample); 
     }
@@ -2168,16 +2168,16 @@ void MouseUp(WPARAM buttonState, int x, int y) {
 }
 
 void MouseMove(WPARAM buttonState, int x, int y) {
-    if ((buttonState &amp; MK_LBUTTON) != 0) {
-        if (GetKeyState(VK_MENU) &amp; 0x8000) {
+    if ((buttonState & MK_LBUTTON) != 0) {
+        if (GetKeyState(VK_MENU) & 0x8000) {
             // Calculate the new phi and theta based on mouse position relative to where the user clicked
             float dPhi = ((float)(m_mouseLastPos.y - y) / 300);
             float dTheta = ((float)(m_mouseLastPos.x - x) / 300);
 
             m_camera.Rotate(-dTheta, dPhi);
         }
-    } else if ((buttonState &amp; MK_MBUTTON) != 0) {
-        if (GetKeyState(VK_MENU) &amp; 0x8000) {
+    } else if ((buttonState & MK_MBUTTON) != 0) {
+        if (GetKeyState(VK_MENU) & 0x8000) {
             float dx = ((float)(m_mouseLastPos.x - x));
             float dy = ((float)(m_mouseLastPos.y - y));
 
@@ -2354,9 +2354,9 @@ struct Ray
 
 RGBColor* image = CreateImageBuffer(width, height);
 
-for (int j=0; j &lt; height; ++i)
+for (int j=0; j < height; ++i)
 {
-    for (int i=0; i &lt; width; ++i)
+    for (int i=0; i < width; ++i)
     {
         float x = 2.0 * (float)i / (float)max(width, height) - 1.0;
         float y = 2.0 * (float)j / (float)max(width, height) - 1.0;
@@ -2379,15 +2379,15 @@ float jitterMatrix[4 * 2] = {
      1.0/4.0, -3.0/4.0,
 };
 
-for (int j=0; j &lt; height; ++i)
+for (int j=0; j < height; ++i)
 {
-    for (int i=0; i &lt; width; ++i)
+    for (int i=0; i < width; ++i)
     {
         // Init the pixel to 100% black (no light).
         image[width * j + i] = RGBColor(0.0);
 
         // Accumulate light for N samples.
-        for (int sample = 0; sample &lt; 4; ++sample)
+        for (int sample = 0; sample < 4; ++sample)
         {
             float x = 2.0 * (i + jitterMatrix[2*sample]) / (float)max(width, height) - 1.0;
             float y = 2.0 * (i + jitterMatrix[2*sample+1]) / (float)max(width, height) - 1.0;
@@ -3021,7 +3021,7 @@ You can certainly automatically deduce this by not including normals that are ou
 For vertex in faceVertex:
     normal = vertex.normal
     For adjVertex in adjacentVertices:
-        if anglebetween(vertex.normal, adjVertex.normal )  &lt; treshold:
+        if anglebetween(vertex.normal, adjVertex.normal )  < treshold:
             normal += adjVertex.normal
     normal = normalize(normal)
 ```
@@ -3054,8 +3054,8 @@ Moreover, in the above example, the length of the cross product is proportional 
 vec3 computeNormal(vertex a)
 {
     vec3 sum = vec3(0, 0, 0);
-    list&lt;vertex&gt; adjacentVertices = getAdjacentVertices(a);
-    for (int i = 1; i &lt; adjacentVertices; ++i)
+    list<vertex> adjacentVertices = getAdjacentVertices(a);
+    for (int i = 1; i < adjacentVertices; ++i)
     {
         vec3 b = adjacentVertices[i - 1];
         vec3 c = adjacentVertices[i];
@@ -3497,27 +3497,27 @@ For example splitting screen into four parts and rendering the same scene four t
 ```python
 bindFramebuffer();
 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-scene-&gt;setConstPerFrameUniforms();
+scene->setConstPerFrameUniforms();
 
 //left bottom
 glViewport(0, 0, WindowWidth*0.5, WindowHeight*0.5);
-scene-&gt;setVarPerFrameUniforms(1);
-scene-&gt;draw();
+scene->setVarPerFrameUniforms(1);
+scene->draw();
 
 //right bottom
 glViewport(WindowWidth*0.5, 0, WindowWidth*0.5, WindowHeight*0.5);
-scene-&gt;setVarPerFrameUniforms(2);
-scene-&gt;draw();
+scene->setVarPerFrameUniforms(2);
+scene->draw();
 
 //left top
 glViewport(0, WindowHeight*0.5, WindowWidth*0.5, WindowHeight*0.5);
-scene-&gt;setVarPerFrameUniforms(3);
-scene-&gt;draw();
+scene->setVarPerFrameUniforms(3);
+scene->draw();
 
 //right top
 glViewport(WindowWidth*0.5, WindowHeight*0.5, WindowWidth*0.5, WindowHeight*0.5);
-scene-&gt;setVarPerFrameUniforms(4);
-scene-&gt;draw();
+scene->setVarPerFrameUniforms(4);
+scene->draw();
 
 glViewport(0, 0, WindowWidth, WindowHeight); //restore default
 ```
@@ -3544,19 +3544,19 @@ This is a copy of @narthex's answer, except with only the viewports since that i
 ```python
 //left bottom
 glViewport(0, 0, WindowWidth*0.5, WindowHeight*0.5);
-scene-&gt;draw();
+scene->draw();
 
 //right bottom
 glViewport(WindowWidth*0.5, 0, WindowWidth*0.5, WindowHeight*0.5);
-scene-&gt;draw();
+scene->draw();
 
 //left top
 glViewport(0, WindowHeight*0.5, WindowWidth*0.5, WindowHeight*0.5);
-scene-&gt;draw();
+scene->draw();
 
 //right top
 glViewport(WindowWidth*0.5, WindowHeight*0.5, WindowWidth*0.5, WindowHeight*0.5);
-scene-&gt;draw();
+scene->draw();
 
 glViewport(0, 0, WindowWidth, WindowHeight); //restore default
 ```
@@ -3907,14 +3907,14 @@ Let's look at a basic backwards path tracer:
 
 ```python
 void RenderPixel(uint x, uint y, UniformSampler *sampler) {
-    Ray ray = m_scene-&gt;Camera.CalculateRayFromPixel(x, y, sampler);
+    Ray ray = m_scene->Camera.CalculateRayFromPixel(x, y, sampler);
 
     float3 color(0.0f);
     float3 throughput(1.0f);
 
     // Bounce the ray around the scene
-    for (uint bounces = 0; bounces &lt; 10; ++bounces) {
-        m_scene-&gt;Intersect(ray);
+    for (uint bounces = 0; bounces < 10; ++bounces) {
+        m_scene->Intersect(ray);
 
         // The ray missed. Return the background color
         if (ray.geomID == RTC_INVALID_GEOMETRY_ID) {
@@ -3925,14 +3925,14 @@ void RenderPixel(uint x, uint y, UniformSampler *sampler) {
         // We hit an object
 
         // Fetch the material
-        Material *material = m_scene-&gt;GetMaterial(ray.geomID);
+        Material *material = m_scene->GetMaterial(ray.geomID);
         // The object might be emissive. If so, it will have a corresponding light
         // Otherwise, GetLight will return nullptr
-        Light *light = m_scene-&gt;GetLight(ray.geomID);
+        Light *light = m_scene->GetLight(ray.geomID);
 
         // If we hit a light, add the emmisive light
         if (light != nullptr) {
-            color += throughput * light-&gt;Le();
+            color += throughput * light->Le();
         }
 
         float3 normal = normalize(ray.Ng);
@@ -3941,11 +3941,11 @@ void RenderPixel(uint x, uint y, UniformSampler *sampler) {
 
         // Get the new ray direction
         // Choose the direction based on the material
-        float3 wi = material-&gt;Sample(wo, normal, sampler);
-        float pdf = material-&gt;Pdf(wi, normal);
+        float3 wi = material->Sample(wo, normal, sampler);
+        float pdf = material->Pdf(wi, normal);
 
         // Accumulate the brdf attenuation
-        throughput = throughput * material-&gt;Eval(wi, wo, normal) / pdf;
+        throughput = throughput * material->Eval(wi, wo, normal) / pdf;
 
 
         // Shoot a new ray
@@ -3964,7 +3964,7 @@ void RenderPixel(uint x, uint y, UniformSampler *sampler) {
         ray.time = 0.0f;
     }
 
-    m_scene-&gt;Camera.FrameBuffer.SplatPixel(x, y, color);
+    m_scene->Camera.FrameBuffer.SplatPixel(x, y, color);
 }
 ```
 
@@ -3973,17 +3973,17 @@ IE. we bounce around the scene, accumulating color and light attenuation as we g
 ```python
 // Get the new ray direction
 // Choose the direction based on the material
-float3 wi = material-&gt;Sample(wo, normal, sampler);
-float pdf = material-&gt;Pdf(wi, normal);
+float3 wi = material->Sample(wo, normal, sampler);
+float pdf = material->Pdf(wi, normal);
 ```
 
 Which could be implemented as:  
 
 ```python
 void LambertBRDF::Sample(float3 outputDirection, float3 normal, UniformSampler *sampler) {
-    float rand = sampler-&gt;NextFloat();
+    float rand = sampler->NextFloat();
     float r = std::sqrtf(rand) * radius;
-    float theta = sampler-&gt;NextFloat() * 2.0f * M_PI;
+    float theta = sampler->NextFloat() * 2.0f * M_PI;
 
     float x = r * std::cosf(theta);
     float y = r * std::sinf(theta);
@@ -3994,12 +3994,12 @@ void LambertBRDF::Sample(float3 outputDirection, float3 normal, UniformSampler *
     return normalize(TransformToWorld(x, y, z, normal));
 }
 
-float3a TransformToWorld(float x, float y, float z, float3a &amp;normal) {
+float3a TransformToWorld(float x, float y, float z, float3a &normal) {
     // Find an axis that is not parallel to normal
     float3a majorAxis;
-    if (abs(normal.x) &lt; 0.57735026919f /* 1 / sqrt(3) */) {
+    if (abs(normal.x) < 0.57735026919f /* 1 / sqrt(3) */) {
         majorAxis = float3a(1, 0, 0);
-    } else if (abs(normal.y) &lt; 0.57735026919f /* 1 / sqrt(3) */) {
+    } else if (abs(normal.y) < 0.57735026919f /* 1 / sqrt(3) */) {
         majorAxis = float3a(0, 1, 0);
     } else {
         majorAxis = float3a(0, 0, 1);
@@ -4026,7 +4026,7 @@ After we sample the inputDirection ('wi' in the code), we use that to calculate 
 
 ```python
 // Accumulate the brdf attenuation
-throughput = throughput * material-&gt;Eval(wi, wo, normal) / pdf;
+throughput = throughput * material->Eval(wi, wo, normal) / pdf;
 ```
 
 Where <em>Eval()</em> is just the BRDF function itself (Lambert, Blinn-Phong, Cook-Torrance, etc.):  
@@ -4179,7 +4179,7 @@ Unless you are interested in a single direction, a good way to have a compact re
 ```python
   float luminance = dot(yourFinalColour,vec3(0.2126, 0.7152, 0.0722));
   float gradient = fwidth(luminance );
-  float isEdge = gradient &gt; threshold;
+  float isEdge = gradient > threshold;
 ```
 
 With an high threshold you will find coarser edges and you might miss some, conversely, with a low threshold you might detect false edges. You have to experiment to find the threshold that better suits your needs.   
@@ -4300,14 +4300,14 @@ In order to understand Russian Roulette, let's look at a very basic backward pat
 
 ```python
 void RenderPixel(uint x, uint y, UniformSampler *sampler) {
-    Ray ray = m_scene-&gt;Camera.CalculateRayFromPixel(x, y, sampler);
+    Ray ray = m_scene->Camera.CalculateRayFromPixel(x, y, sampler);
 
     float3 color(0.0f);
     float3 throughput(1.0f);
 
     // Bounce the ray around the scene
-    for (uint bounces = 0; bounces &lt; 10; ++bounces) {
-        m_scene-&gt;Intersect(ray);
+    for (uint bounces = 0; bounces < 10; ++bounces) {
+        m_scene->Intersect(ray);
 
         // The ray missed. Return the background color
         if (ray.geomID == RTC_INVALID_GEOMETRY_ID) {
@@ -4318,14 +4318,14 @@ void RenderPixel(uint x, uint y, UniformSampler *sampler) {
         // We hit an object
 
         // Fetch the material
-        Material *material = m_scene-&gt;GetMaterial(ray.geomID);
+        Material *material = m_scene->GetMaterial(ray.geomID);
         // The object might be emissive. If so, it will have a corresponding light
         // Otherwise, GetLight will return nullptr
-        Light *light = m_scene-&gt;GetLight(ray.geomID);
+        Light *light = m_scene->GetLight(ray.geomID);
 
         // If we hit a light, add the emmisive light
         if (light != nullptr) {
-            color += throughput * light-&gt;Le();
+            color += throughput * light->Le();
         }
 
         float3 normal = normalize(ray.Ng);
@@ -4334,11 +4334,11 @@ void RenderPixel(uint x, uint y, UniformSampler *sampler) {
 
         // Get the new ray direction
         // Choose the direction based on the material
-        float3 wi = material-&gt;Sample(wo, normal, sampler);
-        float pdf = material-&gt;Pdf(wi, normal);
+        float3 wi = material->Sample(wo, normal, sampler);
+        float pdf = material->Pdf(wi, normal);
 
         // Accumulate the brdf attenuation
-        throughput = throughput * material-&gt;Eval(wi, wo, normal) / pdf;
+        throughput = throughput * material->Eval(wi, wo, normal) / pdf;
 
 
         // Shoot a new ray
@@ -4357,7 +4357,7 @@ void RenderPixel(uint x, uint y, UniformSampler *sampler) {
         ray.time = 0.0f;
     }
 
-    m_scene-&gt;Camera.FrameBuffer.SplatPixel(x, y, color);
+    m_scene->Camera.FrameBuffer.SplatPixel(x, y, color);
 }
 ```
 
@@ -4379,14 +4379,14 @@ Russian Roulette attempts to solve these problems in an unbiased way. First, her
 
 ```python
 void RenderPixel(uint x, uint y, UniformSampler *sampler) {
-    Ray ray = m_scene-&gt;Camera.CalculateRayFromPixel(x, y, sampler);
+    Ray ray = m_scene->Camera.CalculateRayFromPixel(x, y, sampler);
 
     float3 color(0.0f);
     float3 throughput(1.0f);
 
     // Bounce the ray around the scene
-    for (uint bounces = 0; bounces &lt; 10; ++bounces) {
-        m_scene-&gt;Intersect(ray);
+    for (uint bounces = 0; bounces < 10; ++bounces) {
+        m_scene->Intersect(ray);
 
         // The ray missed. Return the background color
         if (ray.geomID == RTC_INVALID_GEOMETRY_ID) {
@@ -4397,14 +4397,14 @@ void RenderPixel(uint x, uint y, UniformSampler *sampler) {
         // We hit an object
 
         // Fetch the material
-        Material *material = m_scene-&gt;GetMaterial(ray.geomID);
+        Material *material = m_scene->GetMaterial(ray.geomID);
         // The object might be emissive. If so, it will have a corresponding light
         // Otherwise, GetLight will return nullptr
-        Light *light = m_scene-&gt;GetLight(ray.geomID);
+        Light *light = m_scene->GetLight(ray.geomID);
 
         // If we hit a light, add the emmisive light
         if (light != nullptr) {
-            color += throughput * light-&gt;Le();
+            color += throughput * light->Le();
         }
 
         float3 normal = normalize(ray.Ng);
@@ -4413,17 +4413,17 @@ void RenderPixel(uint x, uint y, UniformSampler *sampler) {
 
         // Get the new ray direction
         // Choose the direction based on the material
-        float3 wi = material-&gt;Sample(wo, normal, sampler);
-        float pdf = material-&gt;Pdf(wi, normal);
+        float3 wi = material->Sample(wo, normal, sampler);
+        float pdf = material->Pdf(wi, normal);
 
         // Accumulate the brdf attenuation
-        throughput = throughput * material-&gt;Eval(wi, wo, normal) / pdf;
+        throughput = throughput * material->Eval(wi, wo, normal) / pdf;
 
 
         // Russian Roulette
         // Randomly terminate a path with a probability inversely equal to the throughput
         float p = std::max(throughput.x, std::max(throughput.y, throughput.z));
-        if (sampler-&gt;NextFloat() &gt; p) {
+        if (sampler->NextFloat() > p) {
             break;
         }
 
@@ -4447,7 +4447,7 @@ void RenderPixel(uint x, uint y, UniformSampler *sampler) {
         ray.time = 0.0f;
     }
 
-    m_scene-&gt;Camera.FrameBuffer.SplatPixel(x, y, color);
+    m_scene->Camera.FrameBuffer.SplatPixel(x, y, color);
 }
 ```
 
@@ -4862,7 +4862,7 @@ int dy = 0;
 int x = 0;
 int y = 0;
 
-for (int i = 0; i &lt; maxPoints; i++)
+for (int i = 0; i < maxPoints; i++)
 {
     dx = sin(i * PI / 2);
     dy = cos(-i * PI / 2);
@@ -4896,7 +4896,7 @@ float angle = 0.0f;
 // Space between the spirals
 int a = 2, b = 2;
 
-for (int i = 0; i &lt; maxPoints; i++)
+for (int i = 0; i < maxPoints; i++)
 {
     angle = 0.1 * i;
     x = (a + b * angle) * cos(angle);
@@ -5237,7 +5237,7 @@ There are multiple areas in path tracing that can be importance sampled. In addi
 
 ```python
 void RenderPixel(uint x, uint y, UniformSampler *sampler) {
-    Ray ray = m_scene-&gt;Camera-&gt;CalculateRayFromPixel(x, y, sampler);
+    Ray ray = m_scene->Camera->CalculateRayFromPixel(x, y, sampler);
 
     float3 color(0.0f);
     float3 throughput(1.0f);
@@ -5245,38 +5245,38 @@ void RenderPixel(uint x, uint y, UniformSampler *sampler) {
 
     // Bounce the ray around the scene
     const uint maxBounces = 15;
-    for (uint bounces = 0; bounces &lt; maxBounces; ++bounces) {
-        m_scene-&gt;Intersect(ray);
+    for (uint bounces = 0; bounces < maxBounces; ++bounces) {
+        m_scene->Intersect(ray);
 
         // The ray missed. Return the background color
         if (ray.GeomID == INVALID_GEOMETRY_ID) {
-            color += throughput * m_scene-&gt;BackgroundColor;
+            color += throughput * m_scene->BackgroundColor;
             break;
         }
 
         // Fetch the material
-        Material *material = m_scene-&gt;GetMaterial(ray.GeomID);
+        Material *material = m_scene->GetMaterial(ray.GeomID);
         // The object might be emissive. If so, it will have a corresponding light
         // Otherwise, GetLight will return nullptr
-        Light *light = m_scene-&gt;GetLight(ray.GeomID);
+        Light *light = m_scene->GetLight(ray.GeomID);
 
         // If we hit a light, add the emission
         if (light != nullptr) {
-            color += throughput * light-&gt;Le();
+            color += throughput * light->Le();
         }
 
         interaction.Position = ray.Origin + ray.Direction * ray.TFar;
-        interaction.Normal = normalize(m_scene-&gt;InterpolateNormal(ray.GeomID, ray.PrimID, ray.U, ray.V));
+        interaction.Normal = normalize(m_scene->InterpolateNormal(ray.GeomID, ray.PrimID, ray.U, ray.V));
         interaction.OutputDirection = normalize(-ray.Direction);
 
 
         // Get the new ray direction
         // Choose the direction based on the bsdf        
-        material-&gt;bsdf-&gt;Sample(interaction, sampler);
-        float pdf = material-&gt;bsdf-&gt;Pdf(interaction);
+        material->bsdf->Sample(interaction, sampler);
+        float pdf = material->bsdf->Pdf(interaction);
 
         // Accumulate the weight
-        throughput = throughput * material-&gt;bsdf-&gt;Eval(interaction) / pdf;
+        throughput = throughput * material->bsdf->Eval(interaction) / pdf;
 
         // Shoot a new ray
 
@@ -5290,9 +5290,9 @@ void RenderPixel(uint x, uint y, UniformSampler *sampler) {
 
 
         // Russian Roulette
-        if (bounces &gt; 3) {
+        if (bounces > 3) {
             float p = std::max(throughput.x, std::max(throughput.y, throughput.z));
-            if (sampler-&gt;NextFloat() &gt; p) {
+            if (sampler->NextFloat() > p) {
                 break;
             }
 
@@ -5300,7 +5300,7 @@ void RenderPixel(uint x, uint y, UniformSampler *sampler) {
         }
     }
 
-    m_scene-&gt;Camera-&gt;FrameBufferData.SplatPixel(x, y, color);
+    m_scene->Camera->FrameBufferData.SplatPixel(x, y, color);
 }
 ```
 
@@ -5323,7 +5323,7 @@ To fix this, we sample the lights directly at every bounce. We have to do a few 
 
 ```python
 void RenderPixel(uint x, uint y, UniformSampler *sampler) {
-    Ray ray = m_scene-&gt;Camera-&gt;CalculateRayFromPixel(x, y, sampler);
+    Ray ray = m_scene->Camera->CalculateRayFromPixel(x, y, sampler);
 
     float3 color(0.0f);
     float3 throughput(1.0f);
@@ -5331,43 +5331,43 @@ void RenderPixel(uint x, uint y, UniformSampler *sampler) {
 
     // Bounce the ray around the scene
     const uint maxBounces = 15;
-    for (uint bounces = 0; bounces &lt; maxBounces; ++bounces) {
-        m_scene-&gt;Intersect(ray);
+    for (uint bounces = 0; bounces < maxBounces; ++bounces) {
+        m_scene->Intersect(ray);
 
         // The ray missed. Return the background color
         if (ray.GeomID == INVALID_GEOMETRY_ID) {
-            color += throughput * m_scene-&gt;BackgroundColor;
+            color += throughput * m_scene->BackgroundColor;
             break;
         }
 
         // Fetch the material
-        Material *material = m_scene-&gt;GetMaterial(ray.GeomID);
+        Material *material = m_scene->GetMaterial(ray.GeomID);
         // The object might be emissive. If so, it will have a corresponding light
         // Otherwise, GetLight will return nullptr
-        Light *light = m_scene-&gt;GetLight(ray.GeomID);
+        Light *light = m_scene->GetLight(ray.GeomID);
 
         // If this is the first bounce or if we just had a specular bounce,
         // we need to add the emmisive light
-        if ((bounces == 0 || (interaction.SampledLobe &amp; BSDFLobe::Specular) != 0) &amp;&amp; light != nullptr) {
-            color += throughput * light-&gt;Le();
+        if ((bounces == 0 || (interaction.SampledLobe & BSDFLobe::Specular) != 0) && light != nullptr) {
+            color += throughput * light->Le();
         }
 
         interaction.Position = ray.Origin + ray.Direction * ray.TFar;
-        interaction.Normal = normalize(m_scene-&gt;InterpolateNormal(ray.GeomID, ray.PrimID, ray.U, ray.V));
+        interaction.Normal = normalize(m_scene->InterpolateNormal(ray.GeomID, ray.PrimID, ray.U, ray.V));
         interaction.OutputDirection = normalize(-ray.Direction);
 
 
         // Calculate the direct lighting
-        color += throughput * SampleLights(sampler, interaction, material-&gt;bsdf, light);
+        color += throughput * SampleLights(sampler, interaction, material->bsdf, light);
 
 
         // Get the new ray direction
         // Choose the direction based on the bsdf        
-        material-&gt;bsdf-&gt;Sample(interaction, sampler);
-        float pdf = material-&gt;bsdf-&gt;Pdf(interaction);
+        material->bsdf->Sample(interaction, sampler);
+        float pdf = material->bsdf->Pdf(interaction);
 
         // Accumulate the weight
-        throughput = throughput * material-&gt;bsdf-&gt;Eval(interaction) / pdf;
+        throughput = throughput * material->bsdf->Eval(interaction) / pdf;
 
         // Shoot a new ray
 
@@ -5381,9 +5381,9 @@ void RenderPixel(uint x, uint y, UniformSampler *sampler) {
 
 
         // Russian Roulette
-        if (bounces &gt; 3) {
+        if (bounces > 3) {
             float p = std::max(throughput.x, std::max(throughput.y, throughput.z));
-            if (sampler-&gt;NextFloat() &gt; p) {
+            if (sampler->NextFloat() > p) {
                 break;
             }
 
@@ -5391,7 +5391,7 @@ void RenderPixel(uint x, uint y, UniformSampler *sampler) {
         }
     }
 
-    m_scene-&gt;Camera-&gt;FrameBufferData.SplatPixel(x, y, color);
+    m_scene->Camera->FrameBufferData.SplatPixel(x, y, color);
 }
 ```
 
@@ -5414,11 +5414,11 @@ Now, let's delve into SampleLights():
 
 ```python
 float3 SampleLights(UniformSampler *sampler, SurfaceInteraction interaction, BSDF *bsdf, Light *hitLight) const {
-    std::size_t numLights = m_scene-&gt;NumLights();
+    std::size_t numLights = m_scene->NumLights();
 
     float3 L(0.0f);
-    for (uint i = 0; i &lt; numLights; ++i) {
-        Light *light = &amp;m_scene-&gt;Lights[i];
+    for (uint i = 0; i < numLights; ++i) {
+        Light *light = &m_scene->Lights[i];
 
         // Don't let a light contribute light to itself
         if (light == hitLight) {
@@ -5450,31 +5450,31 @@ Finally, EstimateDirect() is just evaluating $BSDF(p, \omega_{\text{i}}, \omega_
 For punctual light sources, this is simple as:  
 
 ```python
-float3 EstimateDirect(Light *light, UniformSampler *sampler, SurfaceInteraction &amp;interaction, BSDF *bsdf) const {
+float3 EstimateDirect(Light *light, UniformSampler *sampler, SurfaceInteraction &interaction, BSDF *bsdf) const {
     // Only sample if the BRDF is non-specular 
-    if ((bsdf-&gt;SupportedLobes &amp; ~BSDFLobe::Specular) != 0) {
+    if ((bsdf->SupportedLobes & ~BSDFLobe::Specular) != 0) {
         return float3(0.0f);
     }
 
-    interaction.InputDirection = normalize(light-&gt;Origin - interaction.Position);
-    return bsdf-&gt;Eval(interaction) * light-&gt;Li;
+    interaction.InputDirection = normalize(light->Origin - interaction.Position);
+    return bsdf->Eval(interaction) * light->Li;
 }
 ```
 
 However, if we want lights to have area, we first need to sample a point on the light. Therefore, the full definition is:  
 
 ```python
-float3 EstimateDirect(Light *light, UniformSampler *sampler, SurfaceInteraction &amp;interaction, BSDF *bsdf) const {
+float3 EstimateDirect(Light *light, UniformSampler *sampler, SurfaceInteraction &interaction, BSDF *bsdf) const {
     float3 directLighting = float3(0.0f);
 
     // Only sample if the BRDF is non-specular 
-    if ((bsdf-&gt;SupportedLobes &amp; ~BSDFLobe::Specular) != 0) {
+    if ((bsdf->SupportedLobes & ~BSDFLobe::Specular) != 0) {
         float pdf;
-        float3 Li = light-&gt;SampleLi(sampler, m_scene, interaction, &amp;pdf);
+        float3 Li = light->SampleLi(sampler, m_scene, interaction, &pdf);
 
         // Make sure the pdf isn't zero and the radiance isn't black
-        if (pdf != 0.0f &amp;&amp; !all(Li)) {
-            directLighting += bsdf-&gt;Eval(interaction) * Li / pdf;
+        if (pdf != 0.0f && !all(Li)) {
+            directLighting += bsdf->Eval(interaction) * Li / pdf;
         }
     }
 
@@ -5489,7 +5489,7 @@ If the BRDF is highly view dependent, it may be better to choose a point based o
 Why not both? Enter Multiple Importance Sampling. In short, we evaluate $BSDF(p, \omega_{\text{i}}, \omega_{\text{o}}) L_{\text{i}}(p, \omega_{\text{i}})$ multiple times, using different sampling techniques, then average them together using weights based on their pdfs. In code this is:  
 
 ```python
-float3 EstimateDirect(Light *light, UniformSampler *sampler, SurfaceInteraction &amp;interaction, BSDF *bsdf) const {
+float3 EstimateDirect(Light *light, UniformSampler *sampler, SurfaceInteraction &interaction, BSDF *bsdf) const {
     float3 directLighting = float3(0.0f);
     float3 f;
     float lightPdf, scatteringPdf;
@@ -5497,16 +5497,16 @@ float3 EstimateDirect(Light *light, UniformSampler *sampler, SurfaceInteraction 
 
     // Sample lighting with multiple importance sampling
     // Only sample if the BRDF is non-specular 
-    if ((bsdf-&gt;SupportedLobes &amp; ~BSDFLobe::Specular) != 0) {
-        float3 Li = light-&gt;SampleLi(sampler, m_scene, interaction, &amp;lightPdf);
+    if ((bsdf->SupportedLobes & ~BSDFLobe::Specular) != 0) {
+        float3 Li = light->SampleLi(sampler, m_scene, interaction, &lightPdf);
 
         // Make sure the pdf isn't zero and the radiance isn't black
-        if (lightPdf != 0.0f &amp;&amp; !all(Li)) {
+        if (lightPdf != 0.0f && !all(Li)) {
             // Calculate the brdf value
-            f = bsdf-&gt;Eval(interaction);
-            scatteringPdf = bsdf-&gt;Pdf(interaction);
+            f = bsdf->Eval(interaction);
+            scatteringPdf = bsdf->Pdf(interaction);
 
-            if (scatteringPdf != 0.0f &amp;&amp; !all(f)) {
+            if (scatteringPdf != 0.0f && !all(f)) {
                 float weight = PowerHeuristic(1, lightPdf, 1, scatteringPdf);
                 directLighting += f * Li * weight / lightPdf;
             }
@@ -5515,18 +5515,18 @@ float3 EstimateDirect(Light *light, UniformSampler *sampler, SurfaceInteraction 
 
 
     // Sample brdf with multiple importance sampling
-    bsdf-&gt;Sample(interaction, sampler);
-    f = bsdf-&gt;Eval(interaction);
-    scatteringPdf = bsdf-&gt;Pdf(interaction);
-    if (scatteringPdf != 0.0f &amp;&amp; !all(f)) {
-        lightPdf = light-&gt;PdfLi(m_scene, interaction);
+    bsdf->Sample(interaction, sampler);
+    f = bsdf->Eval(interaction);
+    scatteringPdf = bsdf->Pdf(interaction);
+    if (scatteringPdf != 0.0f && !all(f)) {
+        lightPdf = light->PdfLi(m_scene, interaction);
         if (lightPdf == 0.0f) {
             // We didn't hit anything, so ignore the brdf sample
             return directLighting;
         }
 
         float weight = PowerHeuristic(1, scatteringPdf, 1, lightPdf);
-        float3 Li = light-&gt;Le();
+        float3 Li = light->Le();
         directLighting += f * Li * weight / scatteringPdf;
     }
 
@@ -5627,13 +5627,13 @@ We can apply this same principle to light sampling. Instead of sampling every li
 
 ```python
 float3 SampleOneLight(UniformSampler *sampler, SurfaceInteraction interaction, BSDF *bsdf, Light *hitLight) const {
-    std::size_t numLights = m_scene-&gt;NumLights();
+    std::size_t numLights = m_scene->NumLights();
 
     // Return black if there are no lights
     // And don't let a light contribute light to itself
     // Aka, if we hit a light
     // This is the special case where there is only 1 light
-    if (numLights == 0 || numLights == 1 &amp;&amp; hitLight != nullptr) {
+    if (numLights == 0 || numLights == 1 && hitLight != nullptr) {
         return float3(0.0f);
     }
 
@@ -5641,7 +5641,7 @@ float3 SampleOneLight(UniformSampler *sampler, SurfaceInteraction interaction, B
     // Choose another one
     Light *light;
     do {
-        light = m_scene-&gt;RandomOneLight(sampler);
+        light = m_scene->RandomOneLight(sampler);
     } while (light == hitLight);
 
     return numLights * EstimateDirect(light, sampler, interaction, bsdf);
@@ -5662,31 +5662,31 @@ To overcome this, we can apply the same principles we learned by sampling only o
 // Get the new ray direction
 
 // Randomly (uniform) choose whether to sample based on the BSDF or the Lights
-float p = sampler-&gt;NextFloat();
+float p = sampler->NextFloat();
 
-Light *light = m_scene-&gt;RandomLight();
+Light *light = m_scene->RandomLight();
 
-if (p &lt; 0.5f) {
+if (p < 0.5f) {
     // Choose the direction based on the bsdf 
-    material-&gt;bsdf-&gt;Sample(interaction, sampler);
-    float bsdfPdf = material-&gt;bsdf-&gt;Pdf(interaction);
+    material->bsdf->Sample(interaction, sampler);
+    float bsdfPdf = material->bsdf->Pdf(interaction);
 
-    float lightPdf = light-&gt;PdfLi(m_scene, interaction);
+    float lightPdf = light->PdfLi(m_scene, interaction);
     float weight = PowerHeuristic(1, bsdfPdf, 1, lightPdf);
 
     // Accumulate the throughput
-    throughput = throughput * weight * material-&gt;bsdf-&gt;Eval(interaction) / bsdfPdf;
+    throughput = throughput * weight * material->bsdf->Eval(interaction) / bsdfPdf;
 
 } else {
     // Choose the direction based on a light
     float lightPdf;
-    light-&gt;SampleLi(sampler, m_scene, interaction, &amp;lightPdf);
+    light->SampleLi(sampler, m_scene, interaction, &lightPdf);
 
-    float bsdfPdf = material-&gt;bsdf-&gt;Pdf(interaction);
+    float bsdfPdf = material->bsdf->Pdf(interaction);
     float weight = PowerHeuristic(1, lightPdf, 1, bsdfPdf);
 
     // Accumulate the throughput
-    throughput = throughput * weight * material-&gt;bsdf-&gt;Eval(interaction) / lightPdf;
+    throughput = throughput * weight * material->bsdf->Eval(interaction) / lightPdf;
 }
 ```
 
@@ -5926,7 +5926,7 @@ Here's an example,
 
 ```python
 unsigned int buffer = 0;
-glGenBuffers(1, &amp;buffer);
+glGenBuffers(1, &buffer);
 glBindBuffer(GL_ARRAY_BUFFER, buffer);
 glBufferData(GL_ARRAY_BUFFER, 8 * sizeof(float), vertices, GL_STATIC_DRAW); 
 ```
@@ -5935,17 +5935,17 @@ Now if I write it with `glGetError()`, it would look something like
 
 ```python
 unsigned int err = 0;
-glGenBuffers(1, &amp;buffer);
+glGenBuffers(1, &buffer);
 while( !(err = glGetError()) ){
-    std::cout &lt;&lt; err;
+    std::cout << err;
 }  
 glBindBuffer(GL_ARRAY_BUFFER, buffer);
 while( !(err = glGetError()) ){
-    std::cout &lt;&lt; err;
+    std::cout << err;
 }  
 glBufferData(GL_ARRAY_BUFFER, 8 * sizeof(float), vertices, GL_STATIC_DRAW); 
 while( !(err = glGetError()) ){
-    std::cout &lt;&lt; err;
+    std::cout << err;
 }  
 ```
 
@@ -5977,7 +5977,7 @@ void checkGLError()
 {
     GLenum err;
     while( !(err = glGetError()) ){
-        std::cout &lt;&lt; err;
+        std::cout << err;
     }  
 }
 ```
@@ -5986,7 +5986,7 @@ That reduces your code to:
 
 ```python
 unsigned int buffer = 0;
-glGenBuffers(1, &amp;buffer);
+glGenBuffers(1, &buffer);
 checkGLError();
 glBindBuffer(GL_ARRAY_BUFFER, buffer);
 checkGLError();
@@ -6120,8 +6120,8 @@ Quoting from the spec:
    1.  Fx is continuous and monotonically increasing in |du/dx| and |dv/dx|.
        Fy is continuous and monotonically increasing in |du/dy| and |dv/dy|.
 
-   2.  max(|du/dx|,|dv/dx|} &lt;= Fx &lt;= |du/dx| + |dv/dx|.
-       max(|du/dy|,|dv/dy|} &lt;= Fy &lt;= |du/dy| + |dv/dy|.
+   2.  max(|du/dx|,|dv/dx|} <= Fx <= |du/dx| + |dv/dx|.
+       max(|du/dy|,|dv/dy|} <= Fy <= |du/dy| + |dv/dy|.
 
  Instead of a single sample, Tau, at (u,v,Lamda), 'N' locations in the mipmap
  at LOD Lamda, are sampled within the texture footprint of the pixel.
@@ -6135,14 +6135,14 @@ Quoting from the spec:
 
                 i=N
                 ---
- TauAniso = 1/N \ Tau(u(x - 1/2 + i/(N+1), y), v(x - 1/2 + i/(N+1), y)),  Px &gt; Py
+ TauAniso = 1/N \ Tau(u(x - 1/2 + i/(N+1), y), v(x - 1/2 + i/(N+1), y)),  Px > Py
                 /
                 ---
                 i=1
 
                 i=N
                 ---
- TauAniso = 1/N \ Tau(u(x, y - 1/2 + i/(N+1)), v(x, y - 1/2 + i/(N+1))),  Py &gt;= Px
+ TauAniso = 1/N \ Tau(u(x, y - 1/2 + i/(N+1)), v(x, y - 1/2 + i/(N+1))),  Py >= Px
                 /
                 ---
                 i=1
@@ -6153,14 +6153,14 @@ Quoting from the spec:
 
                 i=N
                 ---
- TauAniso = 1/N \ Tau(u(x,y)+dudx(i/(N+1)-1/2), v(x,y)+dvdx(i/(N+1)-1/2)), Px &gt; Py
+ TauAniso = 1/N \ Tau(u(x,y)+dudx(i/(N+1)-1/2), v(x,y)+dvdx(i/(N+1)-1/2)), Px > Py
                 /
                 ---
                 i=1
 
                 i=N
                 ---
- TauAniso = 1/N \ Tau(u(x,y)+dudy(i/(N+1)-1/2), v(x,y)+dvdy(i/(N+1)-1/2)), Py &gt;= Px
+ TauAniso = 1/N \ Tau(u(x,y)+dudy(i/(N+1)-1/2), v(x,y)+dvdy(i/(N+1)-1/2)), Py >= Px
                 /
                 ---
                 i=1 
@@ -6402,8 +6402,8 @@ def quaternion_to_euler(x, y, z, w):
         X = math.degrees(math.atan2(t0, t1))
 
         t2 = +2.0 * (w * y - z * x)
-        t2 = +1.0 if t2 &gt; +1.0 else t2
-        t2 = -1.0 if t2 &lt; -1.0 else t2
+        t2 = +1.0 if t2 > +1.0 else t2
+        t2 = -1.0 if t2 < -1.0 else t2
         Y = math.degrees(math.asin(t2))
 
         t3 = +2.0 * (w * z + x * y)
@@ -6452,8 +6452,8 @@ def quaternion_to_euler(x, y, z, w):
     t1 = +1.0 - 2.0 * (x * x + y * y)
     roll = math.atan2(t0, t1)
     t2 = +2.0 * (w * y - z * x)
-    t2 = +1.0 if t2 &gt; +1.0 else t2
-    t2 = -1.0 if t2 &lt; -1.0 else t2
+    t2 = +1.0 if t2 > +1.0 else t2
+    t2 = -1.0 if t2 < -1.0 else t2
     pitch = math.asin(t2)
     t3 = +2.0 * (w * z + x * y)
     t4 = +1.0 - 2.0 * (y * y + z * z)
@@ -6499,7 +6499,7 @@ float default3DFbm(vec3 P, float frequency, float lacunarity, int octaves, float
     float t = 0.0f;
     float amplitude = 1.0;
     float amplitudeSum = 0.0;
-    for(int k = 0; k &lt; octaves; ++k)
+    for(int k = 0; k < octaves; ++k)
     {
         t += min(snoise(P * frequency)+addition, 1.0) * amplitude;
         amplitudeSum += amplitude;
@@ -6667,9 +6667,9 @@ I create my circle:
 const int NUM_POINTS = 20;
 uint32_t angle = 360/NUM_POINTS;
 Vertex vertex;
-std::vector&lt;Vertex&gt; vertices;
+std::vector<Vertex> vertices;
 
-for(uint32_t i=0; i &lt;= 360; i+=angle){
+for(uint32_t i=0; i <= 360; i+=angle){
   vertex.pos.x = cos(glm::radians(float(i)));
   vertex.pos.y = sin(glm::radians(float(i)));
   vertices.push_back(vertex);
@@ -6866,7 +6866,7 @@ ambient light
 for each light source
     direction of light = light point - point on the object
     test for an intersection starting at the point on the object, until you hit something
-    if (the intersection test returned a distance &gt; distance from point on object to light point)
+    if (the intersection test returned a distance > distance from point on object to light point)
     (do  diffuse and specular shading)
 ```
 
@@ -6884,17 +6884,17 @@ Here's the relevant part of my code:
 
 ```python
     //iterate through all lights
-    if (myLights.size() &gt; 0)
+    if (myLights.size() > 0)
     {
-        for (int i = 0; i &lt; myLights.size(); i++)
+        for (int i = 0; i < myLights.size(); i++)
         {
             //calculate the direction of the light
             glm::vec3 ldir = (myLights[i].position - surfacePoint);
             //this the length of the distance between the light and the surface
             float ldist= sqrt(pow(ldir.x, 2.0f) + pow(ldir.y, 2.0f) + pow(ldir.z, 2.0f)); 
 //check if the light can see the surface point
-            float intersections = myObjGroup-&gt;testIntersections(surfacePoint, normalize(ldir));
-            if (abs(intersections-ldist)  &gt; 0.0000001f)
+            float intersections = myObjGroup->testIntersections(surfacePoint, normalize(ldir));
+            if (abs(intersections-ldist)  > 0.0000001f)
             {
                 //diffuse and specular shading have been cut for brevity
             }
@@ -6909,7 +6909,7 @@ Here's the relevant part of my code:
 Your `if` condition makes me suspicious. You should include the diffuse and specular shading if the intersection test <strong>didn't</strong> hit an object; that is, if `intersections &gt; ldist`. So, your code should look as follows:  
 
 ```python
-if (intersections &gt; ldist)
+if (intersections > ldist)
 {
     colour += diffuse(...);
     colour += specular(...);
@@ -6921,7 +6921,7 @@ Your comparison with 0.0000001f suggests that you've also been having trouble wi
 ```python
 glm::vec3 direction = normalize(ldir);
 glm::vec3 start = surfacePoint + epsilon * direction;
-float intersections = myObjGroup-&gt;testIntersections(start, direction);
+float intersections = myObjGroup->testIntersections(start, direction);
 ```
 
 One more thing: don't forget to test that the light is in front of the surface that you're illuminating. You can do this with the dot product of `ldir` and the surface normal: if the dot product is positive, the light is on the correct side; if it's negative, the light is behind the surface and thus shadowed before you even cast a ray.  
@@ -6939,7 +6939,7 @@ uniform SceneLights lights[size];
 
 void main()
 {
-    for(int i = 0; i &lt; size; i++) {
+    for(int i = 0; i < size; i++) {
         /* Do Some Calculation */
     }
 }
@@ -6948,7 +6948,7 @@ void main()
 And this would be my C++ file:  
 
 ```python
-for (GLuint i = 0; i &lt; pointLights.size(); i++) {
+for (GLuint i = 0; i < pointLights.size(); i++) {
     glUniform3f(glGetUniformLocation(shader, ("pointLights[" + std::to_string(i) + "].position").c_str()), lights[i].someValue);
 }
 ```
@@ -6968,7 +6968,7 @@ uniform SceneLights lights[MAX_LIGHTS];
 
 void main()
 {
-    for(int i = 0; i &lt; size; i++) {
+    for(int i = 0; i < size; i++) {
         /* Do Some Calculation */
     }
 }
@@ -7394,12 +7394,12 @@ To my untrained eye this seems way closer to the desired result. But I have the 
 I use the following code as my geometry term:  
 
 ```python
-float RayTracer::GeometryGGX(const Vector3&amp; v, const Vector3&amp; l, const Vector3&amp; n, const Vector3&amp; h, float a)
+float RayTracer::GeometryGGX(const Vector3& v, const Vector3& l, const Vector3& n, const Vector3& h, float a)
 {
     return G1GGX(v, h, a) * G1GGX(l, h, a);
 }
 
-float RayTracer::G1GGX(const Vector3&amp; v, const Vector3&amp; h, float a)
+float RayTracer::G1GGX(const Vector3& v, const Vector3& h, float a)
 {
     float NoV = Util::Clamp01(cml::dot(v, h));
     float a2 = a * a;
@@ -7411,7 +7411,7 @@ float RayTracer::G1GGX(const Vector3&amp; v, const Vector3&amp; h, float a)
 And for reference, this is my normal distribution function:  
 
 ```python
-float RayTracer::DistributionGGX(const Vector3&amp; n, const Vector3&amp; h, float alpha)
+float RayTracer::DistributionGGX(const Vector3& n, const Vector3& h, float alpha)
 {
     float alpha2 = alpha * alpha;
     float NoH = Util::Clamp01(cml::dot(n, h));
@@ -7450,19 +7450,19 @@ If it is of any help, then this is my implementation of the $G1$ factor:
 
 ```python
 float SmithMaskingFunctionGgx(
-    const Vec3f &amp;aDir,  // the direction to compute masking for (either incoming or outgoing)
-    const Vec3f &amp;aMicrofacetNormal,
+    const Vec3f &aDir,  // the direction to compute masking for (either incoming or outgoing)
+    const Vec3f &aMicrofacetNormal,
     const float  aRoughnessAlpha)
 {
     PG3_ASSERT_VEC3F_NORMALIZED(aDir);
     PG3_ASSERT_VEC3F_NORMALIZED(aMicrofacetNormal);
     PG3_ASSERT_FLOAT_NONNEGATIVE(aRoughnessAlpha);
 
-    if (aMicrofacetNormal.z &lt;= 0)
+    if (aMicrofacetNormal.z <= 0)
         return 0.0f;
 
     const float cosThetaVM = Dot(aDir, aMicrofacetNormal);
-    if ((aDir.z * cosThetaVM) &lt; 0.0f)
+    if ((aDir.z * cosThetaVM) < 0.0f)
         return 0.0f; // up direction is below microfacet or vice versa
 
     const float roughnessAlphaSqr = aRoughnessAlpha * aRoughnessAlpha;

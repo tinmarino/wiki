@@ -83,10 +83,10 @@ A <a href="http://marc-stevens.nl/research/md5-1block-collision/">new result</a>
 
 <a href="http://marc-stevens.nl/research/md5-1block-collision/message2.bin">Message 2</a>  
 
-```text
-&gt; md5sum message1.bin message2.bin
-&gt; 008ee33a9d58b51cfeb425b0959121c9 message1.bin
-&gt; 008ee33a9d58b51cfeb425b0959121c9 message2.bin
+```cryptography
+> md5sum message1.bin message2.bin
+> 008ee33a9d58b51cfeb425b0959121c9 message1.bin
+> 008ee33a9d58b51cfeb425b0959121c9 message2.bin
 ```
 
 There is an earlier example of a single block collision but not technique for generating it was published.   
@@ -380,7 +380,7 @@ I was researching about how to encrypt with RSA. I understood everything but not
 
 In the phpseclib (RSA in PHP), you can import your private key (private.key format) and in the key file there is text like this:  
 
-```text
+```cryptography
 -----BEGIN RSA PRIVATE KEY-----
 MIIBOQIBAAJBAIOLepgdqXrM07O4dV/nJ5gSA12jcjBeBXK5mZO7Gc778HuvhJi+
 RvqhSi82EuN9sHPx1iQqaCuXuS1vpuqvYiUCAwEAAQJATRDbCuFd2EbFxGXNxhjL
@@ -410,7 +410,7 @@ Quoting <a href="https://stackoverflow.com/a/21289989/569976">I understand the m
   <p>The ASN.1 syntax for that DER-encoded string is described in
   <a href="https://tools.ietf.org/html/rfc3447#appendix-A.1" rel="nofollow noreferrer">RFC3447</a> (aka <a href="https://en.wikipedia.org/wiki/PKCS_1" rel="nofollow noreferrer">PKCS1</a>):</p>
 
-```text
+```cryptography
   Version ::= INTEGER { two-prime(0), multi(1) }
       (CONSTRAINED BY
       {-- version must be multi if otherPrimeInfos present --})
@@ -432,7 +432,7 @@ Quoting <a href="https://stackoverflow.com/a/21289989/569976">I understand the m
   <p>DER encoding uses a tag-length-value notation. So here's a sample
   private key:</p>
 
-```text
+```cryptography
 -----BEGIN RSA PRIVATE KEY-----
 MIICXAIBAAKBgQCqGKukO1De7zhZj6+H0qtjTkVxwTCpvKe4eCZ0FPqri0cb2JZfXJ/DgYSF6vUp
 wmJG8wVQZKjeGcjDOL5UlsuusFncCzWBQ7RKNUSesmQRMSGkVb1/3j+skZ6UtW+5u09lHNsj6tQ5
@@ -450,7 +450,7 @@ U9VQQSQzY1oZMVX8i1m5WUTLPz2yLJIBQVdXqhMCQBGoiuSoSjafUhV7i1cEGpb88h5NBYZzWXGZ
   
   Here's the hex encoding:  
 
-```text
+```cryptography
 3082025c02010002818100aa18aba43b50deef38598faf87d2ab634e4571c130a9bca7b878267414
 faab8b471bd8965f5c9fc3818485eaf529c26246f3055064a8de19c8c338be5496cbaeb059dc0b35
 8143b44a35449eb264113121a455bd7fde3fac919e94b56fb9bb4f651cdb23ead439d6cd523eb081
@@ -626,7 +626,7 @@ Easily missed rules when encoding to ASN.1 DER-TLV by induction from example:
 #### Answer 3 (score 9)
 To conclude the answers here's a note about the simplest way (on linux at least) to view the contents of such keys with openssl:  
 
-```text
+```cryptography
 $ openssl rsa -in test.key -text
 Private-Key: (512 bit)
 modulus:
@@ -1274,7 +1274,7 @@ Also important is this question:
 
 I think the <strong>short answer</strong> is best explained with a table:  
 
-```text
+```cryptography
 Cryptographic primitive | Hash |    MAC    | Digital
 Security Goal           |      |           | signature
 ------------------------+------+-----------+-------------
@@ -1347,7 +1347,7 @@ For AES-128, we need 11 round keys, each of which consisting of 128 bits, i.e. 4
 
 The key expansion works in a way that $k_i$ only depends directly on $k_{i-1}$ and $k_{i -N_k}$ (where $N_k$ is the number of columns in the key, i.e. 4 for AES-128). In most cases it is a simple $\oplus$, but after each $N_k$ key columns, a non-linear function $f_i$ is applied.  
 
-```text
+```cryptography
                               ┏━━━┓
    k_0    k_1    k_2    k_3 ─→┃f_1┃─╮
     │      │      │      │    ┗━━━┛ │
@@ -1383,7 +1383,7 @@ AES-192 looks almost the same, but with six columns in parallel (A similar diagr
 
 For AES-256 (and all variants of Rijndael with more than 192 bits of key), there is an additional non-linear transformation after the fourth column:  
 
-```text
+```cryptography
                                                              ┏━━━┓
   k_0    k_1    k_2    k_3       k_4    k_5    k_6    k_7 ──→┃f_1┃─╮
    │      │      │      │         │      │      │      │     ┗━━━┛ │
@@ -1469,7 +1469,7 @@ As far as primes for RSA goes, there are some <a href="http://en.wikipedia.org/w
 #### Question
 I am studying the RSA cryptosystem. The public key consists of $(n, e)$, the modulus (product of two large primes), and the encryption exponent. I want to separate the modulus $n$ and exponent $e$. A typical public key is expressed in base64, and is of the following type:  
 
-```text
+```cryptography
  -----BEGIN PUBLIC KEY-----
 
  MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCqGKukO1De7zhZj6+H0qtjTkVxwTCpvKe4eCZ0
@@ -1486,7 +1486,7 @@ RSA key formats are defined in at least <a href="http://www.ietf.org/rfc/rfc3447
 
 If you decode the base 64 encoded ASN.1, you will find some wrapping (like an object identifier) as well as an internal ASN.1 bitstring, which decodes as:  
 
-```text
+```cryptography
 (
     119445732379544598056145200053932732877863846799652384989588303737527328743970559883211146487286317168142202446955508902936035124709397221178664495721428029984726868375359168203283442617134197706515425366188396513684446494070223079865755643116690165578452542158755074958452695530623055205290232290667934914919, 
     65537
@@ -1506,7 +1506,7 @@ If you take your base64 string:
 
 You then decode it into hex:  
 
-```text
+```cryptography
 30 81 9F 30 0D 06 09 2A  86 48 86 F7 0D 01 01 01
 05 00 03 81 8D 00 30 81  89 02 81 81 00 AA 18 AB
 A4 3B 50 DE EF 38 59 8F  AF 87 D2 AB 63 4E 45 71
@@ -1522,7 +1522,7 @@ A7 41 9B 30 90 F2 47 87  BD 4F 4E 19 67 02 03 01
 
 So the question is: what is this? Well it's actually the DER variant of ASN.1 encoding. ASN.1 is a horrible monstrosity, but you can use <a href="https://lapo.it/asn1js/" rel="noreferrer">the web-based ASN.1 decoder</a> to find that the values are actually this:  
 
-```text
+```cryptography
 30 81 9F             ;30=SEQUENCE (0x9F = 159 bytes)
 |  30 0D             ;30=SEQUENCE (0x0D = 13 bytes)
 |  |  06 09          ;06=OBJECT_IDENTIFIER (0x09 = 9 bytes)
@@ -1563,7 +1563,7 @@ No need for OpenSSL and it's voodoo commands.
 #### Answer 3 (score 22)
 In practice, one can use `openssl` to extract the information:  
 
-```text
+```cryptography
 $ cat pubkey.txt
 -----BEGIN PUBLIC KEY-----
 MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCqGKukO1De7zhZj6+H0qtjTkVxwTCpvKe4eCZ0
@@ -1816,7 +1816,7 @@ Here's my work so far:
 
 First I use the Euclid algorithm to calculate:  
 
-```text
+```cryptography
 40 = 2(17) + 6 
 17 = 2(6) + 5
 6 = 1(5) + 1 = gcd
@@ -1824,7 +1824,7 @@ First I use the Euclid algorithm to calculate:
 
 So I know the GCD is 1. Applying the 'extended' section of the algorithm:  
 
-```text
+```cryptography
 6 = 40-2(17)
 5 = 17-2(6)
 1 = 6-1(5)
@@ -1964,11 +1964,11 @@ Here's a simple implementation in Python (which, conveniently, has arbitrary-pre
 
 
 
-```text
+```cryptography
 def modinv(e, phi):
     d_old = 0; r_old = phi
     d_new = 1; r_new = e
-    while r_new &gt; 0:
+    while r_new > 0:
         a = r_old // r_new
         (d_old, d_new) = (d_new, d_old - a * d_new)
         (r_old, r_new) = (r_new, r_old - a * r_new)
@@ -2047,9 +2047,9 @@ In general, knowledge of $m_1 \oplus m_2$ is not enough to uniquely determine $m
 
 However, in practice it <em>may</em> be possible to obtain fairly good guesses for $m_1$ and $m_2$; the typical methods are similar to those used for breaking classical ciphers, and rely on the fact that there's a lot of redundancy in English text (and in many other types of data).  
 
-For example, one might start by guessing that at least one of the messages is likely to contain the word "the", probably surrounded by spaces.  So one can take the five-character string "`&nbsp;the&nbsp;`", XOR it with every five-character substring of $m_1 \oplus m_2$ and look for results that look like English (either by eye or by computer using statistical analysis).  
+For example, one might start by guessing that at least one of the messages is likely to contain the word "the", probably surrounded by spaces.  So one can take the five-character string "` the `", XOR it with every five-character substring of $m_1 \oplus m_2$ and look for results that look like English (either by eye or by computer using statistical analysis).  
 
-Now, let's say that one of the five-character substrings thus obtained is, say, "`messa`".  Now we (or a computer) could guess that the next two characters are likely to be "`ge`" (or perhaps "`gi`").  We can now XOR that with the next two characters of $m_1 \oplus m_2$ and see if the result fits naturally after "`&nbsp;the&nbsp;`"; if the result is, say, "`la`", we might tentatively assume our guess to have been right; if it's "`q%`", we <em>probably</em> guessed wrong.  We can proceed in this manner to confirm and extend our guess further, and perhaps eventually to connect separate guessed fragments together until we have a reasonable guess of all, or at least most, of the content of the two messages.  
+Now, let's say that one of the five-character substrings thus obtained is, say, "`messa`".  Now we (or a computer) could guess that the next two characters are likely to be "`ge`" (or perhaps "`gi`").  We can now XOR that with the next two characters of $m_1 \oplus m_2$ and see if the result fits naturally after "` the `"; if the result is, say, "`la`", we might tentatively assume our guess to have been right; if it's "`q%`", we <em>probably</em> guessed wrong.  We can proceed in this manner to confirm and extend our guess further, and perhaps eventually to connect separate guessed fragments together until we have a reasonable guess of all, or at least most, of the content of the two messages.  
 
 #### Answer 3 (score 7)
 I just came across this question and was surprised that no one referenced the paper: <a href="https://www.cs.jhu.edu/~jason/papers/mason+al.ccs06.pdf" rel="noreferrer">A Natural Language Approach to Automated Cryptanalysis of Two-time Pads</a> by Mason et al. at ACM CCS 2006. This shows how to solve this problem in an automated and intelligent way.  
@@ -2273,7 +2273,7 @@ So question you ask shouldn't be "Is AES-256 secure and does it repel hackers?" 
 #### Question
 I used AES256-CBC to SSH to a remote server. Recently, it stopped working with the following message:  
 
-```text
+```cryptography
 no matching cipher found: client aes256-cbc server  
 aes128-ctr,aes256-ctr,arcfour256,arcfour,3des-cbc
 ```
@@ -2359,7 +2359,7 @@ First off, I know hashes are 1 way. There are an infinite number of inputs that 
 
 eg:  
 
-```text
+```cryptography
 string: "Hello World"
 hashed: a591a6d40bf420404a011733cfb7b190d62c65bf0bcda32b57b277d9ad9f146e 
 
@@ -2377,7 +2377,7 @@ Take a simple mathematical operation like addition. Addition takes 2 inputs and 
 
 But if you only know the output, how do you know what the two inputs are?  
 
-```text
+```cryptography
 928 = 119 + 809
 928 = 680 + 248
 928 = 1 + 927
@@ -2532,7 +2532,7 @@ Wikipedia also states:
 <li><p>Does both the Associated Tag (`cipher.auth_data`) and the Authentication Tag (`cipher.auth_tag`) need to be kept secret? Or can they be kept open like the IV? </p></li>
 <li><p>Finally, can someone explain further what is meant by the Associated Tag? The example in the answer that was given in OP's thread was that we can use a database id to ensure that the data belongs to a certain database user. Let's say that a user has the following database fields:</p>
 
-```text
+```cryptography
 User
 - primary_id
 - encrypted_email
@@ -2540,7 +2540,7 @@ User
 
 And we want to encrypt the User's email before insertion. With User `primary_id==10` (modifying OP's ruby code):  
 
-```text
+```cryptography
 cipher = OpenSSL::Cipher::AES.new(128, :GCM)
 cipher.encrypt
 key = cipher.random_key
@@ -3170,14 +3170,14 @@ Read many posts like this one online and tried to decrypt the '.enc' file: <a hr
 
 I tried the following command for decryption: openssl rsautl -decrypt -in public_key.pem -out key.bin. I got the this error:  
 
-```text
+```cryptography
  no keyfile specified
  unable to load Private Key
 ```
 
 Yes, but that's because private key is not provided to me. If I try to use the public_key.pem as infile, I get this error:  
 
-```text
+```cryptography
 unable to load Private Key
 139914348455592:error:0906D06C:PEM routines:PEM_read_bio:no start line:pem_lib.c:703:Expecting: ANY PRIVATE KEY
 ```
@@ -3199,8 +3199,8 @@ above.</li>
 </ul>
 
 #### Answer accepted (score 3)
-```text
-openssl rsa -pubin -inform PEM -text -noout &lt; public_key.pem
+```cryptography
+openssl rsa -pubin -inform PEM -text -noout < public_key.pem
 Public-Key: (64 bit)
 Modulus: 16513720463601767803 (0xe52c8544a915157b)
 Exponent: 65537 (0x10001)
@@ -3311,7 +3311,7 @@ My question is: is this logical or must there be something wrong with my test?
 #### Answer accepted (score 62)
 This isn't necessarily unexpected. 32-bit platforms vs 64-bit platforms can make a significant difference, as well as the amount of data you're hashing.  
 
-```text
+```cryptography
 $ uname -m
 x86_64
 
@@ -3352,7 +3352,7 @@ I would like to see also some real-life measurements here, so I hope you'll like
 <li><p>Memory: 16GiB DDR4 2400MHz (single-channel)</p></li>
 <li><p>CPU flags (`grep flags /proc/cpuinfo`):</p>
 
-```text
+```cryptography
 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb invpcid_single pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid mpx rdseed adx smap clflushopt intel_pt xsaveopt xsavec xgetbv1 xsaves dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp flush_l1d
 ```
 </li>
@@ -3364,7 +3364,7 @@ fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush 
 <li><p>Starting with rebooting the laptop.</p></li>
 <li><p>For speed measurement the `pv` utility (<a href="https://linux.die.net/man/1/pv" rel="noreferrer">man page</a>) has been used:</p>
 
-```text
+```cryptography
 pv --average-rate BigFile10GiBinRAM | sha512sum --binary
 pv --average-rate BigFile10GiBinRAM | sha256sum --binary
 ```
@@ -3394,7 +3394,7 @@ pv --average-rate BigFile10GiBinRAM | sha256sum --binary
 <li><p>Memory: 16GiB DDR3 1600MHz (dual-channel)</p></li>
 <li><p>CPU flags (`grep flags /proc/cpuinfo`): </p>
 
-```text
+```cryptography
 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm epb tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid xsaveopt dtherm ida arat pln pts
 ```
 </li>
@@ -3406,7 +3406,7 @@ fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush 
 <li><p>Starting with rebooting the laptop.</p></li>
 <li><p>For speed measurement the `pv` utility (<a href="https://linux.die.net/man/1/pv" rel="noreferrer">man page</a>) has been used:</p>
 
-```text
+```cryptography
 pv --average-rate BigFile103GiB | sha512sum --binary
 pv --average-rate BigFile103GiB | sha256sum --binary
 ```
@@ -3436,7 +3436,7 @@ pv --average-rate BigFile103GiB | sha256sum --binary
 <li><p>Memory: 32GiB DDR3 1600MHz (dual-channel) UDIMM <a href="https://en.wikipedia.org/wiki/ECC_memory" rel="noreferrer">ECC</a></p></li>
 <li><p>CPU flags (`grep flags /proc/cpuinfo`): </p>
 
-```text
+```cryptography
 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc aperfmperf eagerfpu pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm epb tpr_shadow vnmi flexpriority ept vpid fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid xsaveopt dtherm ida arat pln pts
 ```
 </li>
@@ -3448,7 +3448,7 @@ fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush 
 <li><p>Starting with rebooting the server.</p></li>
 <li><p>For speed measurement the `pv` utility (<a href="https://linux.die.net/man/1/pv" rel="noreferrer">man page</a>) has been used:</p>
 
-```text
+```cryptography
 pv --average-rate BigFile24GiBinRAM | sha512sum --binary
 pv --average-rate BigFile24GiBinRAM | sha256sum --binary
 ```
@@ -3584,7 +3584,7 @@ Let's see with a bit more technical details. In RSA, let $n$ be the public modul
 
 A <em>properly padded</em> message $M$ has the following format:  
 
-```text
+```cryptography
 0x00 0x02 [some non-zero bytes] 0x00 [here goes M]
 ```
 
@@ -3616,7 +3616,7 @@ One may note that the specific weakness of the PKCS#1 v1.5 padding (for encrypti
 #### Question
 I'm encrypting a file with sensitive information with   
 
-`cat secret | openssl aes-256-cbc -a -salt &gt; secret.enc`  
+`cat secret | openssl aes-256-cbc -a -salt > secret.enc`  
 
 I am choosing a random encryption password with `openssl rand -base64 32 | head -c [password-length]`  
 
@@ -3653,7 +3653,7 @@ Now all you need is:
 
 You can generate them using the command I found <a href="http://www.ibm.com/support/knowledgecenter/SSLVY3_9.7.0/com.ibm.einstall.doc/topics/t_einstall_GenerateAESkey.html" rel="nofollow noreferrer">here</a>:  
 
-```text
+```cryptography
 openssl enc -aes-256-cbc -k secret -P -md sha1
 ```
 
@@ -3943,7 +3943,7 @@ Thus, in order to configure PFS for your site, what you want to configure is you
   Forward Secrecy?</p>
 </blockquote>
 
-No. Perfect forward secrecy protects against the revelation of master keys. CAs do not have access to private (master) keys; a certificate from a CA is a signed <em>public key</em>. The CA is there to say "okay, client, I have verified that the public key here is indeed associated with `&lt;host&gt;`, it's safe." (Or, rather, the fact that it's signed by the CA says this.) Thus, your choice of CA will not impact PFS in any way.  
+No. Perfect forward secrecy protects against the revelation of master keys. CAs do not have access to private (master) keys; a certificate from a CA is a signed <em>public key</em>. The CA is there to say "okay, client, I have verified that the public key here is indeed associated with `<host>`, it's safe." (Or, rather, the fact that it's signed by the CA says this.) Thus, your choice of CA will not impact PFS in any way.  
 
 <blockquote>
   <p>How can I create the strongest certificate using ONLY Perfect Forward
@@ -3955,7 +3955,7 @@ As you can see, certificates are unconnected with the choice of ciphersuite (and
 
 Instead, the web server you use probably has a ciphersuite configuration in its SSL configuration. There are usually two relevant options: first, the ciphersuites that you want your server to use, and second, how the server picks the ciphersuite. Here is the relevant section in my nginx configuration:  
 
-```text
+```cryptography
 ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
 ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-RC4-SHA:ECDHE-RSA-AES128-SHA:RC4:HIGH:!MD5:!aNULL:!EDH;
 ssl_prefer_server_ciphers on;
@@ -3982,7 +3982,7 @@ Warning: it is widely believed that the ECC curves used for PFS have got NSA bac
 #### Question
 Can I remove new lines from the RSA public key file to get a one line string? So the question is if the key looks like this  
 
-```text
+```cryptography
 AAA
 BBB
 CCC
@@ -3990,13 +3990,13 @@ CCC
 
 or  
 
-```text
+```cryptography
 AAA\n\rBBB\n\rCCC\n\r
 ```
 
 is this the same as  
 
-```text
+```cryptography
 AAABBBCCC
 ```
 
@@ -4048,15 +4048,15 @@ I'm creating the X.509 cert with PHP 5.2. When I change the 'digest_alg' to 'md5
 
 Change to md5:  
 
-```text
+```cryptography
            $configs = array(
-                            'config'             =&gt; 'test.cnf',
-                            'digest_alg'         =&gt; 'md5',
-                            'x509_extensions'    =&gt; 'v3_ca',
-                            'req_extensions'     =&gt; 'v3_req',
-                            'private_key_bits'   =&gt; 2048,
-                            'private_key_type'   =&gt; OPENSSL_KEYTYPE_RSA,
-                            'encrypt_key'        =&gt;
+                            'config'             => 'test.cnf',
+                            'digest_alg'         => 'md5',
+                            'x509_extensions'    => 'v3_ca',
+                            'req_extensions'     => 'v3_req',
+                            'private_key_bits'   => 2048,
+                            'private_key_type'   => OPENSSL_KEYTYPE_RSA,
+                            'encrypt_key'        =>
                         );
 ```
 
@@ -4090,7 +4090,7 @@ The matrix used in AES is a rotational matrix based on the value `0x1F`, which i
 
 The bit indexes for the matrix are `76543210`, with `0` being the least significant bit and `7` being the most significant. Each column is the previous column rotated to the left by a single bit, as shown here:  
 
-```text
+```cryptography
 0  7  6  5  4  3  2  1
 1  0  7  6  5  4  3  2
 2  1  0  7  6  5  4  3
@@ -4103,7 +4103,7 @@ The bit indexes for the matrix are `76543210`, with `0` being the least signific
 
 For the AES 0x1F affine matrix, the bits are arranged in the following way:  
 
-```text
+```cryptography
 1  0  0  0  1  1  1  1
 1  1  0  0  0  1  1  1
 1  1  1  0  0  0  1  1
@@ -4118,7 +4118,7 @@ For an input of `0x53` in AES, we first find its inverse, which is `0xCA`, repre
 
 The affine transformation is as follows. The input bits are multiplied against the bits of a given row, with the first bit the LSB of the input. Input bit 0 is only multiplied by row bit 0, and so on. Only when both values are one (logical AND) is the result one. Finally, all bits are XORd against eachother within that row to generate the transformed bit for that row.  
 
-```text
+```cryptography
 Input = 0  1  0  1  0  0  1  1 (LSB First)
 Row 0 = 1  0  0  0  1  1  1  1
 Bit 0 = 0  0  0  0  0  0  1  1 = 0
@@ -4972,19 +4972,19 @@ Say you want to encrypt "Hello World!" with RSA.
 <p>The first important thing here is the encoding of that text. "Hello World!" as such cannot be encrypted since characters are a non-numerical concept.
 So an encoding is used convert the characters of that text to numeric values (e.g. the ASCII / Unicode table, but there are many others, especially for non-latin characters). Using Unicode-8, "Hello World" turns into this sequence of bytes (hex-notation):</p>
 
-```text
+```cryptography
 48 65 6C 6C 6F 20 57 6F 72 6C 64
 ```
 
 Such a sequence of bytes can then be interpreted as a number by assigning a most-significant and least-significant byte (e.g. the more left-sided, the more significant). That sequence would then equal the number  
 
-```text
+```cryptography
 0x48656C6C6F20576F726C64 or 87521618088882538408046480
 ```
 
 But since such a small number would not produce a secure ciphertext (as @SEJPM already said), a <a href="https://en.wikipedia.org/wiki/Padding_(cryptography)">padding</a> is applied. The sequence of bytes then might look something like this:  
 
-```text
+```cryptography
 01 48 65 6C 6C 6F 20 57 6F 72 6C 64 98 9C 38 83 E1 64 E7 0B BC F2 43 C0 6B
 26 D4 5E AC 9B C9 DC 2F 1B 87 46 3D 2E 6F 86 66 5E 1B CB 44 DA 5A 50 79 2F
 40 79 88 83 84 3E 16 9D 7F 1F 05 2C DF F2 9B 9B 07 11 F6 7A CB 1C 35 9B 76
@@ -5347,7 +5347,7 @@ Alternatively you could hash the password. Though a PBKDF can be used for this, 
 #### Question
 Why is Google using RC4 for their HTTPS/SSL?  
 
-```text
+```cryptography
 $ openssl s_client -connect www.google.com:443 | grep "Cipher is"
 New, TLSv1/SSLv3, Cipher is RC4-SHA
 ```
@@ -5425,7 +5425,7 @@ Now assume $n$ is 32. You can split that into 2 * 2 * 2 * 2 * 2. Now you only ha
 
 Possible Combinations here would be:  
 
-```text
+```cryptography
 0,32 / 2,16 / 4, 8 / 8,4 / 16,2 / 32,0
 ```
 
@@ -5587,7 +5587,7 @@ here is my illustration...
 
 this is the 128 bit key..  
 
-```text
+```cryptography
 [2b] [28] [ab] [09]
 [7e] [ae] [f7] [cf]
 [15] [d2] [15] [4f]
@@ -5596,7 +5596,7 @@ this is the 128 bit key..
 
 and then I will get this..  
 
-```text
+```cryptography
 [09]
 [cf]
 [4f]
@@ -5605,7 +5605,7 @@ and then I will get this..
 
 and then I will put down the first 8bit(1byte) where it is the 09:  
 
-```text
+```cryptography
 [cf]
 [4f]
 [3c]
@@ -5614,7 +5614,7 @@ and then I will put down the first 8bit(1byte) where it is the 09:
 
 after that I will change their value according to s-box..  
 
-```text
+```cryptography
 [8a]
 [84]
 [eb]
@@ -5623,18 +5623,18 @@ after that I will change their value according to s-box..
 
 and then I will xor that substituted 32 bit value to   
 
-```text
+```cryptography
 [2b]        [8a]        [01]
-[7e]  XOR   [84]  XOR   [00] &lt;--- that is a RCON(4)
+[7e]  XOR   [84]  XOR   [00] <--- that is a RCON(4)
 [15]        [eb]        [00]
 [16]        [01]        [00]
 ```
 
 My question is: How will I determine the RCON that I will use? Or will I only used this one?  
 
-```text
+```cryptography
 [01]
-[00] &lt;--- that is a RCON(4)
+[00] <--- that is a RCON(4)
 [00]
 [00]
 ```
@@ -5656,7 +5656,7 @@ As you see, $RCON[i]$ consists mainly of zeros, the only effective part is in th
 
 So, in your example, you have this column 3 of the original key:  
 
-```text
+```cryptography
 [09]
 [cf]
 [4f]
@@ -5665,7 +5665,7 @@ So, in your example, you have this column 3 of the original key:
 
 Now we rotate this by one:  
 
-```text
+```cryptography
 [cf]
 [4f]
 [3c]
@@ -5674,7 +5674,7 @@ Now we rotate this by one:
 
 Now we put this through the AES S-box (component wise):  
 
-```text
+```cryptography
 [8a]
 [84]
 [eb]
@@ -5683,7 +5683,7 @@ Now we put this through the AES S-box (component wise):
 
 And now the round step: This is round 1, thus we need $RCON[1] = [\mathtt{01}, \mathtt{00}, \mathtt{00}, \mathtt{00}]$:  
 
-```text
+```cryptography
 [8a ⊕ 01]   [8b]
 [84 ⊕ 00] = [84]
 [eb ⊕ 00]   [eb]
@@ -5692,7 +5692,7 @@ And now the round step: This is round 1, thus we need $RCON[1] = [\mathtt{01}, \
 
 This was $f_1$, and we'll now XOR this result with column 0 of the original key to obtain column 4 of the expanded key:  
 
-```text
+```cryptography
 [8b ⊕ 2b]   [a0]
 [84 ⊕ 7e] = [fa]
 [eb ⊕ 15]   [fe]
@@ -5703,7 +5703,7 @@ After three more simple XOR steps to get column 5-7 we would then apply $f_2$ (w
 
 The `Rcon`-array on Wikipedia contains the precomputed constants $x^{i-1}$ for $i$ from $0$ to $255$, so you would put $RCON[i] = [\mathtt{Rcon[i]}, \mathtt{00}, \mathtt{00}, \mathtt{00}]$. For AES-128, you only need the RCONs from $1$ to $10$ (as you need 44 columns of round key material), and here are these as a table (in hexadecimal form, as all constants in code font here):  
 
-```text
+```cryptography
    i        1     2     3     4     5     6     7     8     9    10
 --------------------------------------------------------------------
           [01]  [02]  [04]  [08]  [10]  [20]  [40]  [80]  [1b]  [36]
@@ -5716,11 +5716,11 @@ For AES-192 and AES-256 you need even less of these round constants, so putting 
 
 As mentioned by fgrieu in a comment, you can also <strong>calculate the $\mathtt{Rcon[i]}$ on the fly</strong>, as each of them is obtained from the previous by an doubling in $GF(2^8)$, which in the representation used in Rijndael is just a left-shift followed with a conditional XOR with a constant. In C-like syntax (using a twos-complement representation like every usual computer nowadays) this looks like this:  
 
-```text
-rcon = (rcon&lt;&lt;1) ^ (0x11b &amp; -(rcon&gt;&gt;7));
+```cryptography
+rcon = (rcon<<1) ^ (0x11b & -(rcon>>7));
 ```
 
-<sub>An explanation: `(rcon&lt;&lt;1)` is the pure doubling (multiplication by $x$ in $\mathbb{Z}_2[x]$). `rcon &gt;&gt; 7` is the first bit of `rcon`, i.e. either $\mathtt{0}$ or $\mathtt{1}$. `-(rcon&gt;&gt;7)` then is $\mathtt{0}$ or -1 (= $\mathtt{f...ff}$, i.e. all bits set). Thus `(0x11b &amp; -(rcon&gt;&gt;7))` is either $\mathtt{0}$ or $\mathtt{11b}$, and XORing with this just is reduction modulo the Rijndael polynomial $x^8 + x^4 + x^3 + x + 1$.</sub>  
+<sub>An explanation: `(rcon<<1)` is the pure doubling (multiplication by $x$ in $\mathbb{Z}_2[x]$). `rcon >> 7` is the first bit of `rcon`, i.e. either $\mathtt{0}$ or $\mathtt{1}$. `-(rcon>>7)` then is $\mathtt{0}$ or -1 (= $\mathtt{f...ff}$, i.e. all bits set). Thus `(0x11b & -(rcon>>7))` is either $\mathtt{0}$ or $\mathtt{11b}$, and XORing with this just is reduction modulo the Rijndael polynomial $x^8 + x^4 + x^3 + x + 1$.</sub>  
 
 <a href="https://crypto.stackexchange.com/a/2403/58">The same doubling operation is used in the MixColumns-step</a> of the actual encryption operation, so you need to implement it anyways.  
 
@@ -5833,13 +5833,13 @@ Some points regarding textbook RSA is given below:
 
 • private key: d Decrypt:   C^d = M (mod N)  
 
-```text
+```cryptography
                            (M Î ZN)
 ```
 
 3) Completely insecure cryptosystem:  
 
-```text
+```cryptography
  • Does not satisfy basic definitions of security.
  • Many attacks exist.
 ```
@@ -5853,7 +5853,7 @@ Some points regarding textbook RSA is given below:
 <ul>
 <li><p>Session-key K is 64 bits. View K {0,…,264}</p>
 
-```text
+```cryptography
            Eavesdropper sees: C = K^e(mod N) .
 ```
 </li>

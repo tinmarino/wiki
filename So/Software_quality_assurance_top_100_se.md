@@ -213,7 +213,7 @@ public class FileDownloader {
      * @param seleniumCookieSet
      * @return
      */
-    private HttpState mimicCookieState(Set&lt;org.openqa.selenium.Cookie&gt; seleniumCookieSet) {
+    private HttpState mimicCookieState(Set<org.openqa.selenium.Cookie> seleniumCookieSet) {
         HttpState mimicWebDriverCookieState = new HttpState();
         for (org.openqa.selenium.Cookie seleniumCookie : seleniumCookieSet) {
             Cookie httpClientCookie = new Cookie(seleniumCookie.getDomain(), seleniumCookie.getName(), seleniumCookie.getValue(), seleniumCookie.getPath(), seleniumCookie.getExpiry(), seleniumCookie.isSecure());
@@ -263,7 +263,7 @@ public class FileDownloader {
             int len = 4096;
             int bytes = 0;
             byte[] block = new byte[len];
-            while ((bytes = in.read(block, offset, len)) &gt; -1) {
+            while ((bytes = in.read(block, offset, len)) > -1) {
                 downloadedFile.getWritableFileOutputStream().write(block, 0, bytes);
             }
             downloadedFile.close();
@@ -286,9 +286,9 @@ public class FileDownloader {
 
 #### Question
 ```
-List&lt;WebElement&gt; allLinks = driver.findElements(By.xpath("//div[@class='datepicker']/div/table/tbody/tr/td/table/tbody[2]/tr/td[@class='' or @class='datepickerSaturday' or @class='datepickerSunday']/a/span"));
+List<WebElement> allLinks = driver.findElements(By.xpath("//div[@class='datepicker']/div/table/tbody/tr/td/table/tbody[2]/tr/td[@class='' or @class='datepickerSaturday' or @class='datepickerSunday']/a/span"));
 
-Iterator&lt;WebElement&gt; itr = allLinks.iterator();
+Iterator<WebElement> itr = allLinks.iterator();
 while(itr.hasNext()) {
     System.out.println(itr.next());
 }
@@ -316,7 +316,7 @@ Here is a good example of how I select from a dropdown menu:
 public Boolean selectByText( String text ) {
     WebElement dropDown = driver.findElement( By.xpath( ".//dropdown/path" ) );
     dropDown.click();
-    List&lt;WebElement&gt; allOptions = dropDown.findElements(By.xpath(".//option"));
+    List<WebElement> allOptions = dropDown.findElements(By.xpath(".//option"));
     for ( WebElement we: allOptions) { 
         dropDown.sendKeys( Keys.DOWN ); //simulate visual movement
         sleep(250);       
@@ -332,8 +332,8 @@ Below is the method to get data from the table. Hope this will help you.
 
 ```
 WebElement table = driver.findElement(By.xpath("your path"));
-List&lt;WebElement&gt; rows = table.findElements(By.tagName("your tagName"));
-java.util.Iterator&lt;WebElement&gt; i = rows.iterator();
+List<WebElement> rows = table.findElements(By.tagName("your tagName"));
+java.util.Iterator<WebElement> i = rows.iterator();
 while(i.hasNext()) {
     WebElement row = i.next();
     System.out.println(row.getText());
@@ -343,8 +343,8 @@ while(i.hasNext()) {
 For dropdown list iterate you can use below code.  
 
 ```
-List&lt;WebElement&gt; drop = driver.findElements(By.name("customerId"));
-java.util.Iterator&lt;WebElement&gt; i = drop.iterator();
+List<WebElement> drop = driver.findElements(By.name("customerId"));
+java.util.Iterator<WebElement> i = drop.iterator();
 while(i.hasNext()) {
     WebElement row = i.next();
     System.out.println(row.getText());
@@ -448,7 +448,7 @@ public static IWebElement FindByText(this IWebDriver driver, string text)
 {
     var list = driver.FindElement(By.CssSelector("#RiskAddressList"));
     var element = ((IJavaScriptExecutor)driver).ExecuteScript(string.Format(" var x = $(arguments[0]).find(\":contains('{0}')\"); return x;", text), list);
-    return ((System.Collections.ObjectModel.ReadOnlyCollection&lt;IWebElement&gt;)element)[0];
+    return ((System.Collections.ObjectModel.ReadOnlyCollection<IWebElement>)element)[0];
 }
 ```
 
@@ -574,11 +574,11 @@ Runtime.getRuntime().exec("Script.exe");
 ### 7: What is the correct way to select an \<option> using Selenium's Python WebDriver (score [151609](https://stackoverflow.com/q/1355) in 2012)
 
 #### Question
-I would like to select an `&lt;option&gt;` child of a `&lt;select&gt;` using the Python WebDriver.  
+I would like to select an `<option>` child of a `<select>` using the Python WebDriver.  
 
 I have a reference to the option `WebElement` I wish to select and have tried `select()` and `click()` methods but neither works.  
 
-What is the correct way to select an `&lt;option&gt;`?  
+What is the correct way to select an `<option>`?  
 
 #### Answer accepted (score 41)
 The easiest way that I have found was to do something along the lines of:  
@@ -656,7 +656,7 @@ Using this approach is also the fastest way. I wrote `fast_multiselect` as analo
 ```
 
 #### Answer 3 (score 8)
-Similar to Will's answer, but finds the `&lt;select&gt;` by its element name, and clicks based on the `&lt;option&gt;` text.  
+Similar to Will's answer, but finds the `<select>` by its element name, and clicks based on the `<option>` text.  
 
 ```
 from selenium import webdriver
@@ -735,9 +735,9 @@ objSSN.sendkeys("555-55-5555"); // To send the input values in ssn text field
 In my web page I'm having following two buttons:  
 
 ```
-&lt;button onclick="addToSelected('newApplicationForm');"&gt;Add Strategy&lt;/button&gt;
+<button onclick="addToSelected('newApplicationForm');">Add Strategy</button>
 
-&lt;button onclick="submitAddNewApplication('newApplicationForm');"&gt;Submit&lt;/button&gt;
+<button onclick="submitAddNewApplication('newApplicationForm');">Submit</button>
 ```
 
 How do I identify them using methods of the `By` class?  
@@ -783,10 +783,10 @@ How can I perform common tasks like iterating over the options in the dropdown o
 The big secret to working with dropdowns is that you don't want to work with them as WebElements, but instead create a Select element for them. The Select class (<a href="http://selenium.googlecode.com/svn/trunk/docs/api/java/org/openqa/selenium/support/ui/Select.html">java</a>  and <a href="http://selenium.googlecode.com/svn/trunk/docs/api/py/webdriver_support/selenium.webdriver.support.select.html">python</a> documentation) includes utility methods that allow you to perform common tasks. We will be working with the following html:  
 
 ```
-&lt;select id="mySelectID"&gt;
-    &lt;option value="Value"&gt;Option&lt;/option&gt;
-    &lt;option value="NotValue"&gt;Not Option&lt;/option&gt;
-&lt;/select&gt;
+<select id="mySelectID">
+    <option value="Value">Option</option>
+    <option value="NotValue">Not Option</option>
+</select>
 ```
 
 <h5>Select by option name</h2>
@@ -899,7 +899,7 @@ Java:
 ```
 WebElement mySelectElm = driver.findElement(By.id("mySelectID")); 
 Select mySelect= new Select(mySelectElm);
-List&lt;WebElement&gt; options = mySelect.getOptions();
+List<WebElement> options = mySelect.getOptions();
 for (WebElement option : options) {
     System.out.println(option.getText()); //Prints "Option", followed by "Not Option"
 }
@@ -931,10 +931,10 @@ Everything I listed in my other answer can, of course, be done with judicious us
 Again, the HTML:  
 
 ```
-&lt;select id="mySelectID"&gt;
-    &lt;option value="Value"&gt;Option&lt;/option&gt;
-    &lt;option value="NotValue"&gt;Not Option&lt;/option&gt;
-&lt;/select&gt;
+<select id="mySelectID">
+    <option value="Value">Option</option>
+    <option value="NotValue">Not Option</option>
+</select>
 ```
 
 <h5>Select by option name</h2>
@@ -957,7 +957,7 @@ In this example, we find all the options, iterate over them, and click the one w
 ```
 WebElement mySelectElm = driver.findElement(By.id("mySelectID")); 
 Select mySelect= new Select(mySelect);
-List&lt;WebElement&gt; options = mySelect.getOptions();
+List<WebElement> options = mySelect.getOptions();
 for (WebElement option : options) {
     if (option.getText().equalsIgnoreCase("Option") {
         option.click();
@@ -971,7 +971,7 @@ Same method as the previous answer, different language:
 
 ```
 mySelect=webdriver.find_element(:id,"mySelectID")
-options=mySelect.find_elements(:tag_name=&gt;"option")
+options=mySelect.find_elements(:tag_name=>"option")
 options.each do |g|
   if g.text == "Option"
   g.click
@@ -1052,7 +1052,7 @@ print option.text
 <strong>Java:</strong>  
 
 ```
-List&lt;WebElement&gt; options = driver.findElements(By.cssSelector("#mySelectID option"));
+List<WebElement> options = driver.findElements(By.cssSelector("#mySelectID option"));
 for (WebElement option : options) {
     System.out.println(option.getText()); //Prints "Option", followed by "Not Option"
 }
@@ -1062,7 +1062,7 @@ for (WebElement option : options) {
 
 ```
 mySelect=webdriver.find_element(:id,"mySelectID")
-options=mySelect.find_elements(:tag_name=&gt;"option")
+options=mySelect.find_elements(:tag_name=>"option")
 options.each do |g|
   print g.text #Prints "Option", followed by "Not Option"
 end
@@ -1164,7 +1164,7 @@ I am trying to check that if element is there or not and based on that I have pu
  long endtime = starttime + 60*1000; // 60 seconds * 1000 ms/sec;
 
 
-while(System.currentTimeMillis() &lt; endtime)
+while(System.currentTimeMillis() < endtime)
 {
 
     notcount = driver.findElement(By.id(AppConstants.notificationcount));
@@ -1196,7 +1196,7 @@ Use `findElement<strong>s</strong>` instead of `findElement`.
 To check that an element is present, you could try this  
 
 ```
-Boolean isPresent = driver.findElements(By.yourLocator).size() &gt; 0
+Boolean isPresent = driver.findElements(By.yourLocator).size() > 0
 ```
 
 This will return true if at least one element is found and false if it does not exist.  
@@ -1210,7 +1210,7 @@ What you are experiencing is a <strong>fast-fail</strong> type of behavior when 
 
 ```
 protected void checkElementPresence(final WebDriver driver,final By by,final String errorMsg){
-  new WebDriverWaitWithMessage(driver,10).failWith(errorMsg).until(new ExpectedCondition&lt;Boolean&gt;(){
+  new WebDriverWaitWithMessage(driver,10).failWith(errorMsg).until(new ExpectedCondition<Boolean>(){
     @Override public Boolean apply(    WebDriver webDriver){
       try {
         return driver.findElement(by).isDisplayed();
@@ -1246,7 +1246,7 @@ protected static class WebDriverWaitWithMessage extends WebDriverWait {
         }
 
         @Override
-        public &lt;V&gt; V until(Function&lt;? super WebDriver, V&gt; isTrue) {
+        public <V> V until(Function<? super WebDriver, V> isTrue) {
             if (message == null) {
                 return super.until(isTrue);
             } else {
@@ -1335,7 +1335,7 @@ Or using `findElements` code.
 You could instead do:  
 
 ```
-List&lt;WebElement&gt; selectElements= 
+List<WebElement> selectElements= 
 driver.findElements(By.cssSelector("input[name='checkboxes[]']"));
 
 selectElements.get(0).click();
@@ -1484,8 +1484,8 @@ There is also <a href="http://code.google.com/p/webkitdriver/" rel="nofollow">We
 This has been asked a million times on the web, but there's no clear cut answer. I tried "-browserSessionReuse" today without any luck; my tests keep spawning new browser windows.  
 
 ```
-X:\QA\Automation\SELENIUM_SERVER&gt;java -jar selenium-server-standalone-2.8.0.jar -log "log.txt" -browserSessionReuse -forcedBrowserMode "*googlechrome"
-&lt;snip&gt;
+X:\QA\Automation\SELENIUM_SERVER>java -jar selenium-server-standalone-2.8.0.jar -log "log.txt" -browserSessionReuse -forcedBrowserMode "*googlechrome"
+<snip>
 13:42:25.923 INFO - Will recycle browser sessions when possible.
 ```
 
@@ -1532,17 +1532,17 @@ When I changed it to `@BeforeTest` instead of `@BeforeMethod`, that worked for m
 ### 18: Trying to find span element by class and text with selenium c# (score [96035](https://stackoverflow.com/q/15690) in 2015)
 
 #### Question
-I want to click on Administration panel. The `&lt;span&gt;` contains a class attribute and inner text.  
+I want to click on Administration panel. The `<span>` contains a class attribute and inner text.  
 
 I get an error saying "unable to locate element". What am I doing wrong?  
 
 HTML:  
 
 ```
- &lt;div class="item-inner"&gt;
-      &lt;span class="title"&gt; Administration &lt;/span&gt;
-      &lt;i class="icon-arrow"&gt;&lt;/i&gt;
-  &lt;/div&gt;
+ <div class="item-inner">
+      <span class="title"> Administration </span>
+      <i class="icon-arrow"></i>
+  </div>
 ```
 
 C# code  
@@ -1581,7 +1581,7 @@ I have clicked an image in a slide show and it generates a new window. Once the 
 public void testCreateAccount() throws Exception{
 
 //OPEN manorama online  url
-driver.navigate().to("http://www.manoramaonline.com/cgi-bin/MMOnline.dll/portal/ep/home.do?tabId=0&amp;BV_ID=@@@");
+driver.navigate().to("http://www.manoramaonline.com/cgi-bin/MMOnline.dll/portal/ep/home.do?tabId=0&BV_ID=@@@");
 
 // to click a link inside a slide show
 
@@ -1605,7 +1605,7 @@ switchWindow(newwindowTitle);
 protected static boolean switchWindow(String title) throws IOException {
 
     String currentWindow = driver.getWindowHandle();
-    Set&lt;String&gt; availableWindows = driver.getWindowHandles();
+    Set<String> availableWindows = driver.getWindowHandles();
     if (!availableWindows.isEmpty()) {
     for (String windowId : availableWindows) {
     if (driver.switchTo().window(windowId).getTitle().equals(title)) {
@@ -1638,7 +1638,7 @@ If I understand you correctly, all that you want to do is iterate through the op
 protected static Boolean SwitchWindow(string title)
             {
                 var currentWindow = driver.CurrentWindowHandle;
-                var availableWindows = new List&lt;string&gt;(driver.WindowHandles);
+                var availableWindows = new List<string>(driver.WindowHandles);
 
                 foreach (string w in availableWindows)
                 {
@@ -1899,7 +1899,7 @@ Just I am trying to get entered text from the text field when value is empty.
 <strong>Below is my HTML:</strong>  
 
 ```
-&lt;input type="text" style="width: 203px" value="" maxlength="32" name="firstName"/&gt;
+<input type="text" style="width: 203px" value="" maxlength="32" name="firstName"/>
 ```
 
 I tried using getAttribute("value") but it didn't work. Please suggest how to do it using selenium webdriver with java.  
@@ -2019,7 +2019,7 @@ Here's another example much like the one from Ignacio, but in C#:
     //Displayed
     public static bool IsElementDisplayed(this IWebDriver driver, By element)
     {
-        if (driver.FindElements(element).Count &gt; 0)
+        if (driver.FindElements(element).Count > 0)
         {
             if (driver.FindElement(element).Displayed)
                 return true;
@@ -2035,7 +2035,7 @@ Here's another example much like the one from Ignacio, but in C#:
     //Enabled
     public static bool IsElementEnabled(this IWebDriver driver, By element)
     {
-        if (driver.FindElements(element).Count &gt; 0)
+        if (driver.FindElements(element).Count > 0)
         {
             if (driver.FindElement(element).Enabled)
                 return true;
@@ -2154,7 +2154,7 @@ Any other ways to get the element like matching the text value? Because the list
 As per given description, it seems that list of users will be maintained in HTML's List Item having common title=List of Users. So you can use something like below code to click on dynamic list items(here, users).  
 
 ```
-List&lt;WebElement&gt; Userlist = driver.findElements(By.cssSelector("a[title='List of Users']");
+List<WebElement> Userlist = driver.findElements(By.cssSelector("a[title='List of Users']");
 
 for(WebElement ulist : Userlist)
 {
@@ -2177,7 +2177,7 @@ To avoid the `li[1]`, just use this XPath. It will still work, even if one of th
 //*[@id='nav']/li/a[contains(@title,'List of Users')]
 ```
 
-If you only have one `&lt;a&gt;` element on the page, you could avoid the `li` part  
+If you only have one `<a>` element on the page, you could avoid the `li` part  
 
 ```
 //a[contains(@title,'List of Users')]
@@ -2188,41 +2188,41 @@ If you only have one `&lt;a&gt;` element on the page, you could avoid the `li` p
 ### 30: How to use Xpath 'contains()' function to locate a Web element in Selenium Webdriver? (score [69857](https://stackoverflow.com/q/12100) in )
 
 #### Question
-I am a beginner in learning Selenium WebDriver and XPath. I am trying to get the "`&lt;td&gt;`" Element of the Nested Table which Contains string '7-8-9.' Following is the HTML page code:  
+I am a beginner in learning Selenium WebDriver and XPath. I am trying to get the "`<td>`" Element of the Nested Table which Contains string '7-8-9.' Following is the HTML page code:  
 
 ```
- &lt;!DOCTYPE html&gt;
-    &lt;head&gt;
-    &lt;title&gt;Sample&lt;/title&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-    &lt;table border = "2"&gt;
-    &lt;tbody&gt;
-    &lt;tr&gt;
-    &lt;td&gt;one&lt;/td&gt;
-    &lt;td&gt;two&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-    &lt;td&gt;three&lt;/td&gt;
-    &lt;td&gt;
-    &lt;table border = 1"&gt;
-    &lt;tbody&gt;
-    &lt;tr&gt;
-    &lt;td&gt;1-2-3&lt;/td&gt;
-    &lt;td&gt;4-5-6&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-    &lt;td&gt;7-8-9&lt;/td&gt;
-    &lt;td&gt;10-11-12&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;/tbody&gt;
-    &lt;/table&gt;
-    &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;/tbody&gt;
-    &lt;/table&gt;
-    &lt;/body&gt;
-    &lt;/html&gt;
+ <!DOCTYPE html>
+    <head>
+    <title>Sample</title>
+    </head>
+    <body>
+    <table border = "2">
+    <tbody>
+    <tr>
+    <td>one</td>
+    <td>two</td>
+    </tr>
+    <tr>
+    <td>three</td>
+    <td>
+    <table border = 1">
+    <tbody>
+    <tr>
+    <td>1-2-3</td>
+    <td>4-5-6</td>
+    </tr>
+    <tr>
+    <td>7-8-9</td>
+    <td>10-11-12</td>
+    </tr>
+    </tbody>
+    </table>
+    </td>
+    </tr>
+    </tbody>
+    </table>
+    </body>
+    </html>
 ```
 
 this the test code :  
@@ -2285,7 +2285,7 @@ I am working on selenium, while running Java code I tried to access a text box f
 HTML code for text field :  
 
 ```
- &lt;input style="width: calc(99% - 20px);" class="edit-box eb-big" id="edit-box-big" name="title" placeholder="Job Title *" type="text"&gt;
+ <input style="width: calc(99% - 20px);" class="edit-box eb-big" id="edit-box-big" name="title" placeholder="Job Title *" type="text">
 ```
 
 JAVA Code to access text field :  
@@ -2323,49 +2323,49 @@ Additional html code.
     </p>
 
 ```
-&lt;!-- card body --&gt;
-&lt;div class="card-body inl-blck"&gt;&lt;/div&gt;
+<!-- card body -->
+<div class="card-body inl-blck"></div>
 
-&lt;div class="logo-card-content" name="logo-card-content"&gt;
+<div class="logo-card-content" name="logo-card-content">
 
-&lt;/div&gt;
+</div>
 
-&lt;div class="body-content" name="body-content"&gt;&lt;/div&gt;
+<div class="body-content" name="body-content"></div>
 
-&lt;input class="edit-box eb-big" id="edit-box-big" name="input-name" type="text" placeholder="Text Box" /&gt;
+<input class="edit-box eb-big" id="edit-box-big" name="input-name" type="text" placeholder="Text Box" />
 
-&lt;input class="edit-box" id="empty-edit-box" type="text" placeholder="Text Box" /&gt;
+<input class="edit-box" id="empty-edit-box" type="text" placeholder="Text Box" />
 
-&lt;a class="expand-but more-but" id="job-desc-more" name="more-button"&gt;More&lt;/a&gt;
-&lt;a class="expand-but less-but" id="job-desc-less" name="less-button"&gt;Less&lt;/a&gt;
+<a class="expand-but more-but" id="job-desc-more" name="more-button">More</a>
+<a class="expand-but less-but" id="job-desc-less" name="less-button">Less</a>
 
-&lt;div class="key-value" id="key-val-card"&gt;
-    &lt;div class="card-col-1" name="key"&gt;&lt;/div&gt;
-    &lt;div class="card-col-2" name="value"&gt;&lt;/div&gt;
-&lt;/div&gt;
+<div class="key-value" id="key-val-card">
+    <div class="card-col-1" name="key"></div>
+    <div class="card-col-2" name="value"></div>
+</div>
 
-&lt;div class="tags" name="tags"&gt;&lt;/div&gt;
+<div class="tags" name="tags"></div>
 
-&lt;div class="slider" id="slider"&gt;
-    &lt;div class="slider-name" name="slider-name"&gt;&lt;/div&gt;
-    &lt;div class="slider-align"&gt;
-        &lt;div class="slider-value"&gt;&lt;/div&gt;
-        &lt;div id="slider-type" name="slider-type"&gt;&lt;/div&gt;
-        &lt;div class="slider-value" id="experience-max"&gt;&lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
+<div class="slider" id="slider">
+    <div class="slider-name" name="slider-name"></div>
+    <div class="slider-align">
+        <div class="slider-value"></div>
+        <div id="slider-type" name="slider-type"></div>
+        <div class="slider-value" id="experience-max"></div>
+    </div>
+</div>
 
-&lt;div class="card-body-title"&gt;&lt;/div&gt;
+<div class="card-body-title"></div>
 
-&lt;div class="title-card-body" name="title-card-body"&gt;&lt;/div&gt;
+<div class="title-card-body" name="title-card-body"></div>
 
-&lt;div class="expandable-list" id="expandable_list"&gt;
-    &lt;ul class="el-ul"&gt;
-        &lt;li&gt;
-            &lt;div class="el-item" name="el-item"&gt;
-                &lt;h4 class="el-title" name="card-title"&gt;&lt;/h4&gt; &lt;h4 class="el-title" name="card-title2"&gt;&lt;/h4&gt;
-                &lt;!-- &lt;span class="el-date light-font" name="card-title-right"&gt;&lt;/span&gt; 
-                &lt;span class="el-date light-font" name="card-title-right_2"&gt;&lt;/span&gt; --&gt;
+<div class="expandable-list" id="expandable_list">
+    <ul class="el-ul">
+        <li>
+            <div class="el-item" name="el-item">
+                <h4 class="el-title" name="card-title"></h4> <h4 class="el-title" name="card-title2"></h4>
+                <!-- <span class="el-date light-font" name="card-title-right"></span> 
+                <span class="el-date light-font" name="card-title-right_2"></span> -->
 ```
 
 Inner Section on Div.  
@@ -2571,9 +2571,9 @@ or:
 ```
 FirefoxProfile profile = new FirefoxProfile();
 profile.setPreference("network.http.phishy-userpass-length", 255);
-profile.setPreference("network.automatic-ntlm-auth.trusted-uris", "&lt;host&gt;");
+profile.setPreference("network.automatic-ntlm-auth.trusted-uris", "<host>");
 driver = new FirefoxDriver();
-selenium = new WebDriverBackedSelenium(driver, "http://&lt;user&gt;:&lt;password&gt;@&lt;host&gt;");
+selenium = new WebDriverBackedSelenium(driver, "http://<user>:<password>@<host>");
 ```
 
 or:  
@@ -2691,9 +2691,9 @@ My approach would be something along the lines of:
 
 ```
 WebElement yourElement
-List&lt;WebElement&gt; Elements = driver.findElements(By.tagName("span"));
-for(int Counter = 0; Counter &lt; Elements.size(); Counter++){
-     if(Elements.get(Counter).getAttribute("class").contains("glyphicon") &amp;&amp;
+List<WebElement> Elements = driver.findElements(By.tagName("span"));
+for(int Counter = 0; Counter < Elements.size(); Counter++){
+     if(Elements.get(Counter).getAttribute("class").contains("glyphicon") &&
         Elements.get(Counter).getAttribute("aria-hidden").equals("true")){
           yourElement = Elements(Counter);
           break;
@@ -2750,12 +2750,12 @@ For each FluentWait instance, you can specify:</p>
 ```
 // Waiting 30 seconds for an element to be present on the page, checking
 // for its presence once every 5 seconds.
-Wait&lt;WebDriver&gt; wait = new FluentWait&lt;WebDriver&gt;(driver)
+Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
     .withTimeout(30, SECONDS)
     .pollingEvery(5, SECONDS)
     .ignoring(NoSuchElementException.class);
 
-WebElement foo = wait.until(new Function&lt;WebDriver, WebElement&gt;() 
+WebElement foo = wait.until(new Function<WebDriver, WebElement>() 
 {
   public WebElement apply(WebDriver driver) {
   return driver.findElement(By.id("foo"));
@@ -2784,7 +2784,7 @@ wait.until(ExpectedConditions.VisibilityofElementLocated(By.xpath(""//button[@va
 <strong>Fluent wait:</strong> Fluent wait is another type of Explicit wait and you can define polling and ignore the exception to continue with script execution in case element is not found.  
 
 ```
-new FluentWait&lt;WebDriver&gt;(driver).withTimeout(30, TimeUnit.SECONDS).pollingevery(10, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
+new FluentWait<WebDriver>(driver).withTimeout(30, TimeUnit.SECONDS).pollingevery(10, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -2806,10 +2806,10 @@ String[] exp = {"Month", "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG",
 WebElement dropdown = d.findElement(By.id("date_mon"));  
         Select select = new Select(dropdown);  
 
-        List&lt;WebElement&gt; options = select.getOptions();  
+        List<WebElement> options = select.getOptions();  
         for(WebElement we:options)  
         {  
-         for (int i=0; i&lt;exp.length; i++){
+         for (int i=0; i<exp.length; i++){
              if (we.getText().equals(exp[i])){
              System.out.println("Matched");
              } 
@@ -2838,20 +2838,20 @@ Mateched
 Html:  
 
 ```
-select id="date_mon" onfocus="validateSignupForm(3)" name="date_mon"&gt;
-&lt;option value=""&gt;Month&lt;/option&gt;
-&lt;option value="01"&gt;JAN&lt;/option&gt;
-&lt;option value="02"&gt;FEB&lt;/option&gt;
-&lt;option value="03"&gt;MAR&lt;/option&gt;
-&lt;option value="04"&gt;APR&lt;/option&gt;
-&lt;option value="05"&gt;MAY&lt;/option&gt;
-&lt;option value="06"&gt;JUN&lt;/option&gt;
-&lt;option value="07"&gt;JUL&lt;/option&gt;
-&lt;option value="08"&gt;AUG&lt;/option&gt;
-&lt;option value="09"&gt;SEP&lt;/option&gt;
-&lt;option value="10"&gt;OCT&lt;/option&gt;
-&lt;option value="11"&gt;NOV&lt;/option&gt;
-&lt;option value="12"&gt;DEC&lt;/option&gt;
+select id="date_mon" onfocus="validateSignupForm(3)" name="date_mon">
+<option value="">Month</option>
+<option value="01">JAN</option>
+<option value="02">FEB</option>
+<option value="03">MAR</option>
+<option value="04">APR</option>
+<option value="05">MAY</option>
+<option value="06">JUN</option>
+<option value="07">JUL</option>
+<option value="08">AUG</option>
+<option value="09">SEP</option>
+<option value="10">OCT</option>
+<option value="11">NOV</option>
+<option value="12">DEC</option>
 ```
 
 #### Answer accepted (score 9)
@@ -2872,9 +2872,9 @@ public void testUntitled() throws Exception {
     WebElement dropdown = d.findElement(By.id("date_mon"));
     Select select = new Select(dropdown);
 
-    List&lt;WebElement&gt; options = select.getOptions();
+    List<WebElement> options = select.getOptions();
     for (WebElement we : options) {
-        for (int i = 0; i &lt; exp.length; i++) {
+        for (int i = 0; i < exp.length; i++) {
             if (we.getText().equals(exp[i])) {
                 count++;
             }
@@ -2910,7 +2910,7 @@ if (count == exp.length) {
 Per the discussion in the comments, I created a function to perform this  
 
 ```
-public boolean compareElements(String a,List&lt;WebElement&gt; b) {
+public boolean compareElements(String a,List<WebElement> b) {
     for (WebElement we:b) {
         if (a.equalsIgnoreCase(we.getText())) {
             return true;
@@ -2945,11 +2945,11 @@ String[] exp = {"Month", "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG",
 WebElement dropdown = d.findElement(By.id("date_mon"));  
         Select select = new Select(dropdown);  
 
-        List&lt;WebElement&gt; options = select.getOptions();
+        List<WebElement> options = select.getOptions();
         loop:  
         for(WebElement we:options)  
         {  
-         for (int i=0; i&lt;exp.length; i++){
+         for (int i=0; i<exp.length; i++){
              if (we.getText().equals(exp[i])){
              System.out.println("Matched");
              break loop;
@@ -2968,7 +2968,7 @@ WebElement dropdown = d.findElement(By.id("date_mon"));
 The Scroll element in the page is actually a div with scroll bound to it. Here is the HTML snippet.  
 
 ```
-&lt;div class="slimScrollBar" style="background: none repeat scroll 0% 0%  rgb(137, 137, 137); width: 12px; position: absolute; border-radius: 0px; z-index: 99; right: 1px; top: -13px; opacity: 0.6; height: 224.835px; display: block;"/&gt; 
+<div class="slimScrollBar" style="background: none repeat scroll 0% 0%  rgb(137, 137, 137); width: 12px; position: absolute; border-radius: 0px; z-index: 99; right: 1px; top: -13px; opacity: 0.6; height: 224.835px; display: block;"/> 
 ```
 
 I have tried with the following code, but it didn't  work out  
@@ -3034,7 +3034,7 @@ public static boolean scroll_Page(WebElement webelement, int scrollPoints)
         Actions dragger = new Actions(driver);
         // drag downwards
         int numberOfPixelsToDragTheScrollbarDown = 10;
-        for (int i = 10; i &lt; scrollPoints; i = i + numberOfPixelsToDragTheScrollbarDown)
+        for (int i = 10; i < scrollPoints; i = i + numberOfPixelsToDragTheScrollbarDown)
         {
             dragger.moveToElement(webelement).clickAndHold().moveByOffset(0, numberOfPixelsToDragTheScrollbarDown).release(webelement).build().perform();
         }
@@ -3243,12 +3243,12 @@ The following timeouts are available:
     /**
      * Specifies the amount of time the driver should wait when searching for an element if it is
      * not immediately present.
-     * &lt;p/&gt;
+     * <p/>
      * When searching for a single element, the driver should poll the page until the element has
      * been found, or this timeout expires before throwing a {@link NoSuchElementException}. When
      * searching for multiple elements, the driver should poll the page until at least one element
      * has been found or this timeout has expired.
-     * &lt;p/&gt;
+     * <p/>
      * Increasing the implicit wait timeout should be used judiciously as it will have an adverse
      * effect on test run time, especially when used with slower location strategies like XPath.
      * 
@@ -3394,37 +3394,37 @@ I am using Chrome latest stable (14.0.835.202) and a Python script with a unitte
 Here's the debugging info:  
 
 ```
-&gt; Traceback (most recent call last):   File
-&gt; "\\server\QA\Automation\COMMON\product\common.py", line 35, in setUp
-&gt;     self.web.find_element_by_name("ezpz_hint_dummy_input").send_keys(self.user)
-&gt; File
-&gt; "C:\Python27\lib\site-packages\selenium-2.8.1-py2.7.egg\selenium\webdriver\remote\webelement.
-&gt; py", line 146, in send_keys
-&gt;     self._execute(Command.SEND_KEYS_TO_ELEMENT, {'value': typing})   File
-&gt; "C:\Python27\lib\site-packages\selenium-2.8.1-py2.7.egg\selenium\webdriver\remote\webelement.
-&gt; py", line 194, in _execute
-&gt;     return self._parent.execute(command, params)   File "C:\Python27\lib\site-packages\selenium-2.8.1-py2.7.egg\selenium\webdriver\remote\webdriver.p
-&gt; y", line 144, in execute
-&gt;     self.error_handler.check_response(response)   File "C:\Python27\lib\site-packages\selenium-2.8.1-py2.7.egg\selenium\webdriver\remote\errorhandle
-&gt; r.py", line 118, in check_response
-&gt;     raise exception_class(message, screen, stacktrace) WebDriverException: Message: 'Message: u\'focusElement execution
-&gt; failed;\\n Failed to send keys beca use cannot focus element\'
-&gt; \n-------------------- &gt;&gt; begin captured logging &lt;&lt;
-&gt; --------------------\ nselenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:51178/session {"sessionId ": null,
-&gt; "desiredCapabilities": {"platform": "ANY", "browserName": "chrome",
-&gt; "version": "", "javascr iptEnabled":
-&gt; true}}\nselenium.webdriver.remote.remote_connection: DEBUG: POST
-&gt; http://127.0.0.1:51178 /session/c85bcae35e0f07e805ea80c47ed9b75d/url
-&gt; {"url": "http://10.0.20.61/product", "sessionId": "c85bc
-&gt; ae35e0f07e805ea80c47ed9b75d"}\nselenium.webdriver.remote.remote_connection:
-&gt; DEBUG: POST http://127.0
-&gt; .0.1:51178/session/c85bcae35e0f07e805ea80c47ed9b75d/element {"using":
-&gt; "name", "sessionId": "c85bcae3 5e0f07e805ea80c47ed9b75d", "value":
-&gt; "ezpz_hint_dummy_input"}\nselenium.webdriver.remote.remote_conne
-&gt; ction: DEBUG: POST
-&gt; http://127.0.0.1:51178/session/c85bcae35e0f07e805ea80c47ed9b75d/element/:wdc:1319 220710066/value {"sessionId": "c85bcae35e0f07e805ea80c47ed9b75d",
-&gt; "id": ":wdc:1319220710066", "value ": ["send keys stuff here,
-&gt; redacted"]}\n--------------------- &gt;&gt; end captured logging &lt;&lt;
+> Traceback (most recent call last):   File
+> "\\server\QA\Automation\COMMON\product\common.py", line 35, in setUp
+>     self.web.find_element_by_name("ezpz_hint_dummy_input").send_keys(self.user)
+> File
+> "C:\Python27\lib\site-packages\selenium-2.8.1-py2.7.egg\selenium\webdriver\remote\webelement.
+> py", line 146, in send_keys
+>     self._execute(Command.SEND_KEYS_TO_ELEMENT, {'value': typing})   File
+> "C:\Python27\lib\site-packages\selenium-2.8.1-py2.7.egg\selenium\webdriver\remote\webelement.
+> py", line 194, in _execute
+>     return self._parent.execute(command, params)   File "C:\Python27\lib\site-packages\selenium-2.8.1-py2.7.egg\selenium\webdriver\remote\webdriver.p
+> y", line 144, in execute
+>     self.error_handler.check_response(response)   File "C:\Python27\lib\site-packages\selenium-2.8.1-py2.7.egg\selenium\webdriver\remote\errorhandle
+> r.py", line 118, in check_response
+>     raise exception_class(message, screen, stacktrace) WebDriverException: Message: 'Message: u\'focusElement execution
+> failed;\\n Failed to send keys beca use cannot focus element\'
+> \n-------------------- >> begin captured logging <<
+> --------------------\ nselenium.webdriver.remote.remote_connection: DEBUG: POST http://127.0.0.1:51178/session {"sessionId ": null,
+> "desiredCapabilities": {"platform": "ANY", "browserName": "chrome",
+> "version": "", "javascr iptEnabled":
+> true}}\nselenium.webdriver.remote.remote_connection: DEBUG: POST
+> http://127.0.0.1:51178 /session/c85bcae35e0f07e805ea80c47ed9b75d/url
+> {"url": "http://10.0.20.61/product", "sessionId": "c85bc
+> ae35e0f07e805ea80c47ed9b75d"}\nselenium.webdriver.remote.remote_connection:
+> DEBUG: POST http://127.0
+> .0.1:51178/session/c85bcae35e0f07e805ea80c47ed9b75d/element {"using":
+> "name", "sessionId": "c85bcae3 5e0f07e805ea80c47ed9b75d", "value":
+> "ezpz_hint_dummy_input"}\nselenium.webdriver.remote.remote_conne
+> ction: DEBUG: POST
+> http://127.0.0.1:51178/session/c85bcae35e0f07e805ea80c47ed9b75d/element/:wdc:1319 220710066/value {"sessionId": "c85bcae35e0f07e805ea80c47ed9b75d",
+> "id": ":wdc:1319220710066", "value ": ["send keys stuff here,
+> redacted"]}\n--------------------- >> end captured logging <<
 ```
 
 #### Answer 2 (score 1)
@@ -3907,10 +3907,10 @@ public static void main(String[] args) throws IOException {
             int noOfColumns = sheet.getRow(0).getLastCellNum();
             //System.out.println(noOfColumns);
             String[] Headers = new String[noOfColumns];
-            for (int j=0;j&lt;noOfColumns;j++){
+            for (int j=0;j<noOfColumns;j++){
                 Headers[j] = sheet.getRow(0).getCell(j).getStringCellValue();
             }
-                for (int a=0;a&lt;noOfColumns;a++){
+                for (int a=0;a<noOfColumns;a++){
                     if(Headers[a].equals("Address")){
                         driver.findElement(By.id("lst-ib")).sendKeys(sheet.getRow(1).getCell(a).getStringCellValue());
                         break;
@@ -4051,7 +4051,7 @@ public class FileDownloader {
      * @param seleniumCookieSet
      * @return
      */
-    private HttpState mimicCookieState(Set&lt;org.openqa.selenium.Cookie&gt; seleniumCookieSet) {
+    private HttpState mimicCookieState(Set<org.openqa.selenium.Cookie> seleniumCookieSet) {
         HttpState mimicWebDriverCookieState = new HttpState();
         for (org.openqa.selenium.Cookie seleniumCookie : seleniumCookieSet) {
             Cookie httpClientCookie = new Cookie(seleniumCookie.getDomain(), seleniumCookie.getName(), seleniumCookie.getValue(), seleniumCookie.getPath(), seleniumCookie.getExpiry(), seleniumCookie.isSecure());
@@ -4206,7 +4206,7 @@ class HomePage {
 
     // Find several elements
     @FindBy(className="menu-entry")
-    List&lt;WebElement&gt; menuEntries;
+    List<WebElement> menuEntries;
 
    // More actions and elements
 }
@@ -4802,11 +4802,11 @@ Selenium WebDriver might have sync issues with the AngularJS application, but th
 I have a drop down list box, and need to get the number of elements in the list box.</p>
 
 ```
-&lt;select id="id"&gt;
-&lt;option value="1"&gt;1&lt;/option&gt;
-&lt;option value="2"&gt;2&lt;/option&gt;
-&lt;option value="3"&gt;3&lt;/option&gt;
-&lt;/select&gt;
+<select id="id">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+</select>
 ```
 
 need to get the count, ie, 3..... thanks and in advance  
@@ -4815,14 +4815,14 @@ need to get the count, ie, 3..... thanks and in advance
 In watir, this can be accomplished in one line:  
 
 ```
-browser.select_list(:id=&gt; 'id').options.count
+browser.select_list(:id=> 'id').options.count
 ```
 
 #### Answer 2 (score 4)
 Try this , storing all the Web elements of Select list in a List and then getting its size.   
 
 ```
-List&lt;WebElement&gt; optionCount = driver.findElements(By.xpath("//select/option"));
+List<WebElement> optionCount = driver.findElements(By.xpath("//select/option"));
 System.out.println(optionCount.size());
 ```
 
@@ -4906,23 +4906,23 @@ And finally, <a href="http://ruoyusun.com/2013/08/10/implementing-pdiff-with-exi
 ### 69: How to get value of text wrapped in paragraph element \<p> with Selenium in Java (score [47877](https://stackoverflow.com/q/26962) in 2019)
 
 #### Question
-I have a button, clicking on it generates a number which is wrapped in paragraph text such as `&lt;p&gt;`random number `&lt;p&gt;` , I want to get that random number value and do operations based on number it generates.  
+I have a button, clicking on it generates a number which is wrapped in paragraph text such as `<p>`random number `<p>` , I want to get that random number value and do operations based on number it generates.  
 
 From below I need to get 34,756 number and store it in Java.  
 
 Here is the HTML code for it:  
 
 ```
-&lt;div class="form-group"&gt;
-&lt;div class="alert alert-count"&gt;
-  &lt;p&gt;
-  &lt;b&gt;
-&lt;!-- react-text: 531 --&gt;
-&lt;!-- /react-text --&gt;
-&lt;!-- react-text: 532 --&gt;
+<div class="form-group">
+<div class="alert alert-count">
+  <p>
+  <b>
+<!-- react-text: 531 -->
+<!-- /react-text -->
+<!-- react-text: 532 -->
  34,756
-&lt;!-- /react-text --&gt;
-&lt;/b&gt;
+<!-- /react-text -->
+</b>
 ```
 
   
@@ -4951,7 +4951,7 @@ Do you wait for the element, because I think the `findElement` returns no object
 Keep in mind findElement does not wait for the element, it just fails instantly.  
 
 #### Answer 3 (score 1)
-I think the there is a problem with the provided XPath, you are navigating to the paragraph tag `(&lt;p&gt; tag)` and fetching the text, I suggest you navigate to the bold tag `(&lt;b&gt;tag)` and fetch the respective value, like the following:  
+I think the there is a problem with the provided XPath, you are navigating to the paragraph tag `(<p> tag)` and fetching the text, I suggest you navigate to the bold tag `(<b>tag)` and fetch the respective value, like the following:  
 
 ```
 String count = driver.findElement(By.xpath("//div[@class='alert alert-count']/p/b")).getText();
@@ -5098,7 +5098,7 @@ Well, I believe you cannot prevent deletion of Session data once you close the b
 Before calling `driver.close(`) method in your test, make sure to save the cookies using following piece of code :  
 
 ```
-Set&lt;Cookie&gt; allCookies = driver.manage().getCookies();
+Set<Cookie> allCookies = driver.manage().getCookies();
 ```
 
 The above `allCookies` variable you can define global as you wish.  
@@ -5127,7 +5127,7 @@ public void useStoredSessionInNewWindow() {
  // add code to login in the website
 
  // store the current session
- Set&lt;Cookie&gt; cookiesInstance1 = _webDriver.manage().getCookies();
+ Set<Cookie> cookiesInstance1 = _webDriver.manage().getCookies();
  System.out.println("Coockies = "+cookiesInstance1);
 
  // close the web driver instance
@@ -5147,7 +5147,7 @@ public void useStoredSessionInNewWindow() {
  _webDriver.navigate().to("www.abc.com");
 
  // get the current session of new web driver instance
- Set&lt;Cookie&gt; cookiesInstance2 = _webDriver.manage().getCookies();
+ Set<Cookie> cookiesInstance2 = _webDriver.manage().getCookies();
  System.out.println("Coockies = "+cookiesInstance2);
 
  // notice that session of previous web driver instanse is achieved
@@ -5205,10 +5205,10 @@ public void rowSelection() throws Exception
     driver.get(testUrl);
 
     WebElement table = findElementById("tableSection:dataTableWrapped_data");
-    List&lt;WebElement&gt; allRows = table.findElements(By.tagName("tr"));
+    List<WebElement> allRows = table.findElements(By.tagName("tr"));
     for (WebElement row : allRows)
         {
-            List&lt;WebElement&gt; cells = row.findElements(By.tagName("td"));
+            List<WebElement> cells = row.findElements(By.tagName("td"));
             for (WebElement cell : cells)
             {
                 WebElement listName = cell.findElement(By.xpath("./* [text()='body_build']"));
@@ -5228,7 +5228,7 @@ You can count rows/columns in the table and use iterators in your loops. You wil
 
 ```
 WebElement table = findElementById("tableSection:dataTableWrapped_data");
-List&lt;WebElement&gt; allRows = table.findElements(By.tagName("tr"));
+List<WebElement> allRows = table.findElements(By.tagName("tr"));
 ```
 
 after   
@@ -5555,24 +5555,24 @@ Then you can run AllSmokeTests (which is the name of my test suite) with either 
 If your project is built with Maven, you can also execute the tests using maven itself. First, ensure that your pom.xml indicates which tests to run:  
 
 ```
-    &lt;plugin&gt;
-        &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
-        &lt;version&gt;2.12.4&lt;/version&gt;
-        &lt;executions&gt;
-          &lt;execution&gt;
-            &lt;id&gt;default-test&lt;/id&gt;
-            &lt;phase&gt;test&lt;/phase&gt;
-            &lt;goals&gt;
-              &lt;goal&gt;test&lt;/goal&gt;
-            &lt;/goals&gt;
-          &lt;/execution&gt;   
-        &lt;/executions&gt;
-        &lt;configuration&gt;
-          &lt;includes&gt;
-            &lt;include&gt;smokeTests/AllSmokeTests.java&lt;/include&gt;
-          &lt;/includes&gt;
-        &lt;/configuration&gt;
-      &lt;/plugin&gt;
+    <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.12.4</version>
+        <executions>
+          <execution>
+            <id>default-test</id>
+            <phase>test</phase>
+            <goals>
+              <goal>test</goal>
+            </goals>
+          </execution>   
+        </executions>
+        <configuration>
+          <includes>
+            <include>smokeTests/AllSmokeTests.java</include>
+          </includes>
+        </configuration>
+      </plugin>
 ```
 
 That "include" line tells it to run AllSmokeTests (the suite I made above) by default, and nothing else. You can have multiple includes here to run multiple files, or if you make a suite like I did, you can put the suite here. Or you can put multiple suites. The sky is the limit!  
@@ -5584,25 +5584,25 @@ Then, from the command line, inside the directory where your pom.xml is, just ru
 I always use Maven for my test projects, but ant should have similar capabilities using the jUnit task. I found the following <a href="https://stackoverflow.com/a/12906335/719165">on StackOverflow</a>:  
 
 ```
-&lt;property name="target.dir"   value="${basedir}/target"/&gt;
-&lt;property name="main.destdir" value="${target.dir}/classes"/&gt;
-&lt;property name="test.srcdir"  value="${basedir}/src/test/java"/&gt;
-&lt;property name="test.destdir" value="${target.dir}/test-classes"/&gt;
-&lt;!-- Execute all classfiles you've compiled in test-classes directory --&gt;
-&lt;junit fork="true"
+<property name="target.dir"   value="${basedir}/target"/>
+<property name="main.destdir" value="${target.dir}/classes"/>
+<property name="test.srcdir"  value="${basedir}/src/test/java"/>
+<property name="test.destdir" value="${target.dir}/test-classes"/>
+<!-- Execute all classfiles you've compiled in test-classes directory -->
+<junit fork="true"
     maxmemory="128m"
-    includeAntRuntime="true"&gt;
-    &lt;classpath&gt;
-        &lt;pathelement path="${main.destdir}"/&gt;
-        &lt;pathelement path="${test.destdir}"/&gt;
-    &lt;/classpath&gt;
-    &lt;classpath refid="test.classpath"/&gt;
-    &lt;formatter type="plain"/&gt;
-    &lt;batchtest
-        todir="${junit.batchtest.todir}"&gt;
-        &lt;fileset dir="${test.destdir}"/&gt;
-    &lt;/batchtest&gt;
-&lt;/junit&gt;
+    includeAntRuntime="true">
+    <classpath>
+        <pathelement path="${main.destdir}"/>
+        <pathelement path="${test.destdir}"/>
+    </classpath>
+    <classpath refid="test.classpath"/>
+    <formatter type="plain"/>
+    <batchtest
+        todir="${junit.batchtest.todir}">
+        <fileset dir="${test.destdir}"/>
+    </batchtest>
+</junit>
 ```
 
 This is set up to run every test class, which is a common setup; presumably, you could also target that to a specific test class and run that, or run multiple.   
@@ -5944,8 +5944,8 @@ public void campaign() throws Exception {
 
     driver.findElement(By.xpath("  .//*[@id='campnStartInput']")).click();
         WebElement   datepicker = driver.findElement(By.id("ui-datepicker-div"));  
-        List&lt;WebElement&gt; rows=  datepicker.findElements(By.tagName("tr"));  
-        List&lt;WebElement&gt; columns= datepicker.findElements(By.tagName("td"));  
+        List<WebElement> rows=  datepicker.findElements(By.tagName("tr"));  
+        List<WebElement> columns= datepicker.findElements(By.tagName("td"));  
 
                         for (WebElement cell: columns){  
                             //Select 20th Date   
@@ -5957,8 +5957,8 @@ public void campaign() throws Exception {
 
                         driver.findElement(By.xpath("   .//*[@id='campnEndInput']")).click();
                         WebElement   datepicker1 = driver.findElement(By.id("ui-datepicker-div"));  
-                        List&lt;WebElement&gt; rows1=  datepicker1.findElements(By.tagName("tr"));  
-                        List&lt;WebElement&gt; columns1= datepicker1.findElements(By.tagName("td"));  
+                        List<WebElement> rows1=  datepicker1.findElements(By.tagName("tr"));  
+                        List<WebElement> columns1= datepicker1.findElements(By.tagName("td"));  
                         for (WebElement cell: columns1){  
                         //Select 20th Date   
                             if (cell.getText().equals("29")){  
@@ -6027,15 +6027,15 @@ This code throws element not found/similar error when executed in WebDriver but 
 HTML of the element is:  
 
 ```
-&lt;a class="rpLink rpExpandable" title="MyServices" href="#"&gt;
-&lt;span class="rpOut"&gt;
-&lt;span class="rpExpandHandle"&gt;&lt;/span&gt;
-&lt;span class="rpText"&gt;
+<a class="rpLink rpExpandable" title="MyServices" href="#">
+<span class="rpOut">
+<span class="rpExpandHandle"></span>
+<span class="rpText">
 Issues Management
-&lt;span class="menuItemRole"&gt;Container menu item&lt;/span&gt;
-&lt;/span&gt;
-&lt;/span&gt;
-&lt;/a&gt;
+<span class="menuItemRole">Container menu item</span>
+</span>
+</span>
+</a>
 ```
 
 The complexity is there can be multiple elements with the same text 'Issues Management' on the page, but as far as I know they will be under a different section/class name.  
@@ -6246,16 +6246,16 @@ Cannot instantiate class TestCases.sortingTextKB
     at org.testng.internal.ClassHelper.createInstance(ClassHelper.java:299)
     at org.testng.internal.ClassImpl.getDefaultInstance(ClassImpl.java:110)
     at org.testng.internal.ClassImpl.getInstances(ClassImpl.java:186)
-    at org.testng.internal.TestNGClassFinder.&lt;init&gt;(TestNGClassFinder.java:120)
+    at org.testng.internal.TestNGClassFinder.<init>(TestNGClassFinder.java:120)
     at org.testng.TestRunner.initMethods(TestRunner.java:409)
     at org.testng.TestRunner.init(TestRunner.java:235)
     at org.testng.TestRunner.init(TestRunner.java:205)
-    at org.testng.TestRunner.&lt;init&gt;(TestRunner.java:160)
+    at org.testng.TestRunner.<init>(TestRunner.java:160)
     at org.testng.remote.RemoteTestNG$1.newTestRunner(RemoteTestNG.java:141)
     at org.testng.remote.RemoteTestNG$DelegatingTestRunnerFactory.newTestRunner(RemoteTestNG.java:271)
     at org.testng.SuiteRunner$ProxyTestRunnerFactory.newTestRunner(SuiteRunner.java:561)
     at org.testng.SuiteRunner.init(SuiteRunner.java:157)
-    at org.testng.SuiteRunner.&lt;init&gt;(SuiteRunner.java:111)
+    at org.testng.SuiteRunner.<init>(SuiteRunner.java:111)
     at org.testng.TestNG.createSuiteRunner(TestNG.java:1299)
     at org.testng.TestNG.createSuiteRunners(TestNG.java:1286)
     at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
@@ -6271,8 +6271,8 @@ Caused by: java.lang.reflect.InvocationTargetException
     at org.testng.internal.ObjectFactoryImpl.newInstance(ObjectFactoryImpl.java:29)
     ... 21 more
 Caused by: java.lang.NullPointerException
-    at Pages.KnowledgeBase.&lt;init&gt;(KnowledgeBase.java:22)
-    at TestCases.sortingTextKB.&lt;init&gt;(sortingTextKB.java:12)
+    at Pages.KnowledgeBase.<init>(KnowledgeBase.java:22)
+    at TestCases.sortingTextKB.<init>(sortingTextKB.java:12)
     ... 26 more
 ```
 
@@ -6458,7 +6458,7 @@ public static WebElement getElementByLocator( final By locator ) {
   driver.manage().timeouts().implicitlyWait( 15, TimeUnit.SECONDS );
   WebElement we = null;
   int tries = 0;
-  while ( tries &lt; 4 ) {
+  while ( tries < 4 ) {
     try {
       we = driver.findElement( locator );
       break;
@@ -6672,9 +6672,9 @@ I just applied below configuration and it worked for me.
 I've got this HTML code  
 
 ```
-&lt;input type="checkbox" value="abc" name="arr[]&gt;&lt;br&gt;
-&lt;input type="checkbox" value="abc1" name="arr[]&gt;&lt;br&gt;
-&lt;input type="checkbox" value="abc2" name="arr[]&gt;&lt;br&gt;
+<input type="checkbox" value="abc" name="arr[]><br>
+<input type="checkbox" value="abc1" name="arr[]><br>
+<input type="checkbox" value="abc2" name="arr[]><br>
 ```
 
 With this  
@@ -6906,10 +6906,10 @@ To switch between windows there are multiple ways to do it. This is what we are 
 
 ```
 public void switchToNewWindow(int windowNumber) {
-    Set &lt; String &gt; s = driver.getWindowHandles();   
-    Iterator &lt; String &gt; ite = s.iterator();
+    Set < String > s = driver.getWindowHandles();   
+    Iterator < String > ite = s.iterator();
     int i = 1;
-    while (ite.hasNext() &amp;&amp; i &lt; 10) {
+    while (ite.hasNext() && i < 10) {
         String popupHandle = ite.next().toString();
         driver.switchTo().window(popupHandle);
         System.out.println("Window title is : "+driver.getTitle());
@@ -6936,10 +6936,10 @@ To switch between windows there are multiple ways to do it. This is what we are 
 
 ```
 public void switchToNewWindow(int windowNumber) {
-    Set &lt; String &gt; s = driver.getWindowHandles();   
-    Iterator &lt; String &gt; ite = s.iterator();
+    Set < String > s = driver.getWindowHandles();   
+    Iterator < String > ite = s.iterator();
     int i = 1;
-    while (ite.hasNext() &amp;&amp; i &lt; 10) {
+    while (ite.hasNext() && i < 10) {
         String popupHandle = ite.next().toString();
         driver.switchTo().window(popupHandle);
         System.out.println("Window title is : "+driver.getTitle());
