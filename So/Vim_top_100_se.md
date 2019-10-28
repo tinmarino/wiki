@@ -1,6 +1,6 @@
 ---
-title: Vi <- StackEchange top 100
-category: vi
+title: Vim <- StackEchange top 100
+category: vim
 wiki_css: ../Css/code_prism_dark.css, ../Css/color_dark_solarized.css, ../Css/layout_toc.css
 header-includes: <script type="text/javascript" src="../Css/js_masonry_desandro.js"></script>
 wiki_pandoc: --toc
@@ -53,10 +53,10 @@ clipboard `*` with the `y` and `p` commands:</p>
 You could maybe use this as more convenient keybinds:  
 
 ```vim
-noremap &lt;Leader&gt;y "*y
-noremap &lt;Leader&gt;p "*p
-noremap &lt;Leader&gt;Y "+y
-noremap &lt;Leader&gt;P "+p
+noremap <Leader>y "*y
+noremap <Leader>p "*p
+noremap <Leader>Y "+y
+noremap <Leader>P "+p
 ```
 
 <p>If you want to "automatically" interface with the system's clipboard instead of
@@ -224,18 +224,18 @@ Taken from `:h hex-editing`:
 ```vim
 If one has a particular extension that one uses for binary files (such as exe,
 bin, etc), you may find it helpful to automate the process with the following
-bit of autocmds for your &lt;.vimrc&gt;.  Change that "*.bin" to whatever
+bit of autocmds for your <.vimrc>.  Change that "*.bin" to whatever
 comma-separated list of extension(s) you find yourself wanting to edit:
 
 " vim -b : edit binary using xxd-format!
 augroup Binary
   au!
-  au BufReadPre  *.bin let &amp;bin=1
-  au BufReadPost *.bin if &amp;bin | %!xxd
+  au BufReadPre  *.bin let &bin=1
+  au BufReadPost *.bin if &bin | %!xxd
   au BufReadPost *.bin set ft=xxd | endif
-  au BufWritePre *.bin if &amp;bin | %!xxd -r
+  au BufWritePre *.bin if &bin | %!xxd -r
   au BufWritePre *.bin endif
-  au BufWritePost *.bin if &amp;bin | %!xxd
+  au BufWritePost *.bin if &bin | %!xxd
   au BufWritePost *.bin set nomod | endif
 augroup END
 ```
@@ -405,7 +405,7 @@ Additionally are there easy ways to integrate vim into diff tools used by source
 vim has this functionality built in (with the correct command line flag).  
 
 ```vim
-vim -d &lt;file1&gt; &lt;file2&gt;
+vim -d <file1> <file2>
 ```
 
 <p>This opens each file in a view and highlights the differences.<br>
@@ -432,7 +432,7 @@ Some basic commands that are useful in `vimdiff`
 ```vim
 dp             diffput: puts changes under the cursor into the other file
                         making them identical (thus removing the diff).
-do             diffget: (o =&gt; obtain). The change under the cursor is replaced
+do             diffget: (o => obtain). The change under the cursor is replaced
                         by the content of the other file making them identical.
 
 
@@ -443,7 +443,7 @@ do             diffget: (o =&gt; obtain). The change under the cursor is replace
 Other vim settings I use to work with highliting with vimdiff  
 
 ```vim
-if &amp;diff
+if &diff
     highlight! link DiffText MatchParen
 endif
 ```
@@ -503,10 +503,10 @@ Yes, use listchars:
 
 ```vim
 set list
-set listchars=tab:&gt;-
+set listchars=tab:>-
 ```
 
-If you put these two lines in your .vimrc, tabs will be shown as `&gt;` for the start position and `-` through the rest of the tab.  
+If you put these two lines in your .vimrc, tabs will be shown as `>` for the start position and `-` through the rest of the tab.  
 
 (Sidenote: listchars can also show trailing spaces with `trail:x` (replace `x` with the character you want to use for a trailing space), which can be useful as well.)  
 
@@ -517,7 +517,7 @@ However, I recommend going beyond that.  Just `:set list` is problematic in that
 
 ```vim
 %.o: %.cpp
-^Ig++ -c $&lt;
+^Ig++ -c $<
 ```
 
 doesn't look good, especially when you expect the `g` of `g++` to appear under the first `p` of `cpp` (assuming `tabstop=8`).  
@@ -531,8 +531,8 @@ As explained in <a href="https://vimhelp.appspot.com/options.txt.html#%27listcha
 tab:xy        Two characters to be used to show a tab.  The first
               char is used once.  The second char is repeated to
               fill the space that the tab normally occupies.
-              "tab:&gt;-" will show a tab that takes four spaces as
-              "&gt;---".  When omitted, a tab is show as ^I.
+              "tab:>-" will show a tab that takes four spaces as
+              ">---".  When omitted, a tab is show as ^I.
 ```
 </blockquote>
 
@@ -540,7 +540,7 @@ The example above would appear on screen as:
 
 ```vim
 %.o: %.cpp
-␉·······g++ -c $&lt;
+␉·······g++ -c $<
 ```
 
 <hr>
@@ -593,7 +593,7 @@ Though the default behaviour may be surprising, the backspace "not working" can 
 <a href="http://vimhelp.appspot.com/options.txt.html#%27backspace%27" rel="noreferrer">`:help 'backspace'`</a> tells us:  
 
 ```vim
-Influences the working of `&lt;BS&gt;`, `&lt;Del&gt;`, `CTRL-W` and `CTRL-U` in Insert
+Influences the working of `<BS>`, `<Del>`, `CTRL-W` and `CTRL-U` in Insert
 mode.  This is a list of items, separated by commas.  Each item allows
 a way to backspace over something:
 
@@ -670,15 +670,15 @@ By default, the backspace will go to the previous line if at the start of a line
 You can also make backspace delete characters by mapping it to the `X` command:  
 
 ```vim
-nnoremap &lt;BS&gt; X
+nnoremap <BS> X
 ```
 
 #### Answer 2 (score 5)
-Just in case anyone is experience not explainable `&lt;BS&gt;` behavior using ConEmu on Windows, you may have to remap the `&lt;BS&gt;` key to:  
+Just in case anyone is experience not explainable `<BS>` behavior using ConEmu on Windows, you may have to remap the `<BS>` key to:  
 
 ```vim
-inoremap &lt;Char-0x07F&gt; &lt;BS&gt;
-nnoremap &lt;Char-0x07F&gt; &lt;BS&gt;
+inoremap <Char-0x07F> <BS>
+nnoremap <Char-0x07F> <BS>
 ```
 
 <a href="https://conemu.github.io/en/VimXterm.html#vim-bs-issue" rel="nofollow noreferrer">More information</a>  
@@ -724,16 +724,16 @@ Since some pages that I edit actually need trailing whitespaces (e.g. markdown) 
 
 ```vim
 "Remove all trailing whitespace by pressing F5
-nnoremap &lt;F5&gt; :let _s=@/&lt;Bar&gt;:%s/\s\+$//e&lt;Bar&gt;:let @/=_s&lt;Bar&gt;&lt;CR&gt;
+nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 ```
 
 <ul>
-<li>`nnoremap &lt;F5&gt;` does a nonrecursive mapping to the key `F5` in normal mode  </li>
+<li>`nnoremap <F5>` does a nonrecursive mapping to the key `F5` in normal mode  </li>
 <li>`:let _s=@/` stores the last search term (from the macro `@/`) in the variable `_s`</li>
-<li>`&lt;Bar&gt;` Functions as a pipe symbol `|` to separate commands, however `|` would end a command in this context, so `&lt;Bar&gt;` must be used instead.</li>
+<li>`<Bar>` Functions as a pipe symbol `|` to separate commands, however `|` would end a command in this context, so `<Bar>` must be used instead.</li>
 <li>`:%s/\s\+$//e` searches for trailing whitespace and deletes it everywhere in the buffer (see <a href="https://vi.stackexchange.com/a/456/1111">CarpetSmoker's answer</a> for a detailed breakdown of this expression)</li>
 <li>`let @/=_s` restores your last search term to the macro `@/`, so that it will be available the next time you hit `n`.</li>
-<li>`&lt;CR&gt;` ends the mapping</li>
+<li>`<CR>` ends the mapping</li>
 </ul>
 
 <hr>
@@ -743,7 +743,7 @@ nnoremap &lt;F5&gt; :let _s=@/&lt;Bar&gt;:%s/\s\+$//e&lt;Bar&gt;:let @/=_s&lt;Ba
 If you have cases in which you don't want to strip all of the trailing whitespace, you can use a pattern to be more selective. For example, the following code shows how I strip trailing whitespace only if it comes after a semicolon (here it's tied to <kbd>F8</kbd>).  
 
 ```vim
-nnoremap &lt;F8&gt; :let _s=@/&lt;Bar&gt;:%s/;\s\+$/;/e&lt;Bar&gt;:let @/=_s&lt;Bar&gt;&lt;CR&gt;
+nnoremap <F8> :let _s=@/<Bar>:%s/;\s\+$/;/e<Bar>:let @/=_s<Bar><CR>
 ```
 
 This is useful if, like me, you have some files with markdown-like <a href="https://en.wikipedia.org/wiki/Here_document" rel="noreferrer">heredocs</a> interspersed among semicolon-terminated programming statements.   
@@ -808,7 +808,7 @@ Which can be be used without the `:call`:
 And you can of course bind it to a key:  
 
 ```vim
-:noremap &lt;Leader&gt;w :call TrimWhitespace()&lt;CR&gt;
+:noremap <Leader>w :call TrimWhitespace()<CR>
 ```
 
 <hr>
@@ -819,7 +819,7 @@ Some people like to automatically do this before they write a file to disk, like
 autocmd BufWritePre * :call TrimWhitespace()
 ```
 
-I don't like it, as some formats require trailing whitespace (such as  Markdown), and on some other occasions you even want trailing whitespace in your code (such as formatting an email, and using the `--&lt;Space&gt;` marker to indicate the start of a signature).  
+I don't like it, as some formats require trailing whitespace (such as  Markdown), and on some other occasions you even want trailing whitespace in your code (such as formatting an email, and using the `--<Space>` marker to indicate the start of a signature).  
 
 <hr>
 
@@ -1054,7 +1054,7 @@ Cons:
 To install it download <a href="https://github.com/tpope/vim-pathogen/blob/master/autoload/pathogen.vim">`pathogen.vim`</a> to `~/.vim/autoload`:  
 
 ```vim
-mkdir -p ~/.vim/autoload ~/.vim/bundle &amp;&amp; \
+mkdir -p ~/.vim/autoload ~/.vim/bundle && \
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 ```
 
@@ -1222,7 +1222,7 @@ Simply replacing only works usefully when there are no leading characters.
 <a href="http://vimhelp.appspot.com/change.txt.html#%3Aretab">`:help :retab`</a></p>
 
 <blockquote>
-  <p>Replace all sequences of white-space containing a `&lt;Tab&gt;` with new strings of
+  <p>Replace all sequences of white-space containing a `<Tab>` with new strings of
   white-space using the new tabstop value given.  If you do not specify a new
   tabstop size or it is zero, Vim uses the current value of `'tabstop'`.
   [...]
@@ -1259,11 +1259,11 @@ So, I wrote a little function to change <em>only</em> tabs/spaces at the <em>sta
 ```vim
 " :retab changes *everything*, not just start of lines
 fun! Retab(expandtab)
-    let l:spaces = repeat(' ', &amp;tabstop)
+    let l:spaces = repeat(' ', &tabstop)
 
     " Replace tabs with spaces
     if a:expandtab
-        silent! execute '%substitute#^\%(' . l:spaces . '\)\+#\=repeat("\t", len(submatch(0)) / &amp;tabstop)#e'
+        silent! execute '%substitute#^\%(' . l:spaces . '\)\+#\=repeat("\t", len(submatch(0)) / &tabstop)#e'
     " Replace spaces with tabs
     else
         silent! execute '%substitute#^\%(\t\)\+#\=repeat("' . l:spaces . '", len(submatch(0)))#e'
@@ -1273,11 +1273,11 @@ endfun
 
 <p>With this version, you have to manually specify `expandtab` in the function call
 (ie. `:call Retab(1)` to change tabs to spaces), but you could also modify it
-to take the current value of `&amp;expandtab` (as it already does with `&amp;tabstop`)
+to take the current value of `&expandtab` (as it already does with `&tabstop`)
 just like `:retab` does. (I happen to prefer to specify it manually).</p>
 
 #### Answer 3 (score 11)
-Vim provides `!retab` command which will replace all sequences of `&lt;Tab&gt;` with new strings of white-space using the new tabstop (e.g. `:set tabstop=2`) value given, but <strong>all tabs inside of strings can be modified</strong> (e.g. in a C program, you should use `\t` to avoid this)!  
+Vim provides `!retab` command which will replace all sequences of `<Tab>` with new strings of white-space using the new tabstop (e.g. `:set tabstop=2`) value given, but <strong>all tabs inside of strings can be modified</strong> (e.g. in a C program, you should use `\t` to avoid this)!  
 
 So alternatively you can change all tabs into spaces using the following command:  
 
@@ -1308,9 +1308,9 @@ Then to correct indentation of the entire file, you may try: <kbd>gg=G</kbd>. Ch
 To use spaces by default instead of tabs, you need to add the following settings into your `.vimrc` file:  
 
 ```vim
-set tabstop=2     " (ts) width (in spaces) that a &lt;tab&gt; is displayed as
+set tabstop=2     " (ts) width (in spaces) that a <tab> is displayed as
 set expandtab     " (et) expand tabs to spaces (use :retab to redo entire file)
-set shiftwidth=2  " (sw) width (in spaces) used in each step of autoindent (aswell as &lt;&lt; and &gt;&gt;)
+set shiftwidth=2  " (sw) width (in spaces) used in each step of autoindent (aswell as << and >>)
 ```
 
 Alternative solution is to use `tidy`  
@@ -1371,15 +1371,15 @@ options will be changed (also when it already was on):
         'modeline'   will be off
         'expandtab'  will be off
 Also, 'fileformat' and 'fileformats' options will not be used, the
-file is read and written like 'fileformat' was "unix" (a single &lt;NL&gt;
+file is read and written like 'fileformat' was "unix" (a single <NL>
 separates lines).
 The 'fileencoding' and 'fileencodings' options will not be used, the
 file is read without conversion.
 
 [..]
 
-When writing a file the &lt;EOL&gt; for the last line is only written if
-there was one in the original file (normally Vim appends an &lt;EOL&gt; to
+When writing a file the <EOL> for the last line is only written if
+there was one in the original file (normally Vim appends an <EOL> to
 the last line if there is none; this would make the file longer).  See
 the 'endofline' option.
 ```
@@ -1399,7 +1399,7 @@ might prefer to <em>enable</em> it. YMMV.
 Another useful thing to do is `:set display=uhex`. From `:help 'display'`:</p>
 
 ```vim
-uhex            Show unprintable characters hexadecimal as &lt;xx&gt;
+uhex            Show unprintable characters hexadecimal as <xx>
                 instead of using ^C and ~C.
 ```
 
@@ -1432,7 +1432,7 @@ ignored on write.</p>
 To save it, use `xxd -r`:  
 
 ```vim
-:%!xxd -r &gt; new-ls
+:%!xxd -r > new-ls
 ```
 
 This will save the file to `new-ls`.  
@@ -1462,10 +1462,10 @@ Complementary keybinds to make this a bit easier:
 
 ```vim
 " Hex read
-nmap &lt;Leader&gt;hr :%!xxd&lt;CR&gt; :set filetype=xxd&lt;CR&gt;
+nmap <Leader>hr :%!xxd<CR> :set filetype=xxd<CR>
 
 " Hex write
-nmap &lt;Leader&gt;hw :%!xxd -r&lt;CR&gt; :set binary&lt;CR&gt; :set filetype=&lt;CR&gt;
+nmap <Leader>hw :%!xxd -r<CR> :set binary<CR> :set filetype=<CR>
 ```
 
 <p>This is also available from the menu if you're using gVim, under 'Tools ➙
@@ -1502,12 +1502,12 @@ you can add this to your vimrc to make the process automatic:</p>
 " for hex editing
 augroup Binary
   au!
-  au BufReadPre  *.bin let &amp;bin=1
-  au BufReadPost *.bin if &amp;bin | %!xxd
+  au BufReadPre  *.bin let &bin=1
+  au BufReadPost *.bin if &bin | %!xxd
   au BufReadPost *.bin set ft=xxd | endif
-  au BufWritePre *.bin if &amp;bin | %!xxd -r
+  au BufWritePre *.bin if &bin | %!xxd -r
   au BufWritePre *.bin endif
-  au BufWritePost *.bin if &amp;bin | %!xxd
+  au BufWritePost *.bin if &bin | %!xxd
   au BufWritePost *.bin set nomod | endif
 augroup END
 ```
@@ -1733,10 +1733,10 @@ I am working on split (using ^w+v, ^w+s) buffers, but sometimes I would like to 
 There are several window commands that allow you to do this:  
 
 <ul>
-<li><kbd>Ctrl+W</kbd> <kbd>+/-</kbd>: increase/decrease height (ex. `20&lt;C-w&gt;+`)</li>
-<li><kbd>Ctrl+W</kbd> <kbd>>/&lt;</kbd>: increase/decrease width (ex. `30&lt;C-w&gt;&lt;`)</li>
-<li><kbd>Ctrl+W</kbd> <kbd>_</kbd>: set height (ex. `50&lt;C-w&gt;_`)</li>
-<li><kbd>Ctrl+W</kbd> <kbd>|</kbd>: set width (ex. `50&lt;C-w&gt;|`)</li>
+<li><kbd>Ctrl+W</kbd> <kbd>+/-</kbd>: increase/decrease height (ex. `20<C-w>+`)</li>
+<li><kbd>Ctrl+W</kbd> <kbd>>/&lt;</kbd>: increase/decrease width (ex. `30<C-w><`)</li>
+<li><kbd>Ctrl+W</kbd> <kbd>_</kbd>: set height (ex. `50<C-w>_`)</li>
+<li><kbd>Ctrl+W</kbd> <kbd>|</kbd>: set width (ex. `50<C-w>|`)</li>
 <li><kbd>Ctrl+W</kbd> <kbd>=</kbd>: equalize width and height of all windows</li>
 </ul>
 
@@ -1798,27 +1798,27 @@ In these expressions, @ lets you refer to a register, and @/ is the register hol
 Simply type  
 
 ```vim
-:noh&lt;cr&gt;
+:noh<cr>
 ```
 
-(Where `&lt;cr&gt;` symbolizes a carriage return, i.e. Enter.)  The full non-abbreviated version of this command is `:nohlsearch`.  
+(Where `<cr>` symbolizes a carriage return, i.e. Enter.)  The full non-abbreviated version of this command is `:nohlsearch`.  
 
 For convenience, you can have a mapping such as  
 
 ```vim
-nnoremap &lt;Leader&gt;&lt;space&gt; :noh&lt;cr&gt;
+nnoremap <Leader><space> :noh<cr>
 ```
 
-in your `.vimrc`. Since my leader is Space, this allows me to clear highlighting simply by tapping space twice. (By default, `&lt;Leader&gt;` is set to `\`)  
+in your `.vimrc`. Since my leader is Space, this allows me to clear highlighting simply by tapping space twice. (By default, `<Leader>` is set to `\`)  
 
 Another popular option is to bind it to <kbd>Ctrl</kbd>+<kbd>L</kbd>, since this is more or less the default for 'redrawn terminal screen', which is <em>very roughly what you're</em> doing:  
 
 ```vim
-nnoremap &lt;silent&gt; &lt;C-L&gt; :nohlsearch&lt;CR&gt;&lt;C-L&gt;
+nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
 ```
 
 <p>This has the side-effect of <em>also</em> redrawing the terminal screen, which might be slow if your terminal connection is slow (which is very rare these days).<br>
-NOTE: If you're using <a href="http://github.com/tpope/vim-sensible" rel="noreferrer">tpope/vim-sensible</a> then it already offers the `&lt;C-l&gt;` mapping listed above.</p>
+NOTE: If you're using <a href="http://github.com/tpope/vim-sensible" rel="noreferrer">tpope/vim-sensible</a> then it already offers the `<C-l>` mapping listed above.</p>
 
 #### Answer 3 (score 21)
 
@@ -1846,7 +1846,7 @@ or `:nohlsearch` (clears until <kbd>n</kbd> or <kbd>N</kbd> is pressed or a fres
 <h5>Clear highlight on pressing <kbd>ESC</kbd></h2>
 
 ```vim
-nnoremap &lt;esc&gt; :noh&lt;return&gt;&lt;esc&gt;
+nnoremap <esc> :noh<return><esc>
 ```
 
 <hr>
@@ -1857,13 +1857,13 @@ nnoremap &lt;esc&gt; :noh&lt;return&gt;&lt;esc&gt;
 <li><p>Clear highlights on pressing <kbd>\</kbd> (backslash)</p>
 
 ```vim
-nnoremap \ :noh&lt;return&gt;
+nnoremap \ :noh<return>
 ```
 </li>
 <li><p>Clear highlights on hitting <kbd>ESC</kbd> twice</p>
 
 ```vim
-nnoremap &lt;esc&gt;&lt;esc&gt; :noh&lt;return&gt;
+nnoremap <esc><esc> :noh<return>
 ```
 </li>
 </ul>
@@ -1928,7 +1928,7 @@ How can I exit insert mode without having my hands leave the home row, and witho
 A common binding you'll see is <strong>jj</strong>, because it works well for QWERTY layouts if you use home row positioning.  
 
 ```vim
-inoremap jj &lt;ESC&gt;
+inoremap jj <ESC>
 ```
 
 In that case, to type a literal `jj` - you should wait for 1 sec (by default) between typing the second character. (see <a href="http://vimhelp.appspot.com/options.txt.html#%27timeout%27" rel="noreferrer">`:help 'timeout'`</a> for details)   
@@ -1938,7 +1938,7 @@ There is also `c-o` which will take you out of insert, letting you do <strong>on
 <a href="http://vim.wikia.com/wiki/Avoid_the_escape_key" rel="noreferrer">http://vim.wikia.com/wiki/Avoid_the_escape_key</a>  
 
 #### Answer 2 (score 38)
-<p>Beside the built-in alternatives `&lt;C-[&gt;` and `&lt;C-c&gt;` to `&lt;Esc&gt;` key cited by others, another popular solution is to remap `&lt;CapsLock&gt;` as an additional Escape. 
+<p>Beside the built-in alternatives `<C-[>` and `<C-c>` to `<Esc>` key cited by others, another popular solution is to remap `<CapsLock>` as an additional Escape. 
 This both on a Qwerty and Dvorak keyboard. </p>
 
 This way you can press Esc very easily with the left little finger, without removing hands from the HomeRow (incidentally, CapsLock is where Escape used to be on the keyboards when vi was invented).  
@@ -1980,8 +1980,8 @@ This can be done on Windows and Mac by properly setting/programming the correspo
 The mappings that I use are:  
 
 ```vim
-inoremap jk &lt;esc&gt;
-inoremap kj &lt;esc&gt;
+inoremap jk <esc>
+inoremap kj <esc>
 ```
 
 This way, you can simply hit <kbd>j</kbd> and <kbd>k</kbd> at the same time, without having to worry about which one you press first.  
@@ -2029,38 +2029,38 @@ I have the following in my .vimrc to change font size quickly without changing t
 ```vim
 if has("unix")
     function! FontSizePlus ()
-      let l:gf_size_whole = matchstr(&amp;guifont, '\( \)\@&lt;=\d\+$')
+      let l:gf_size_whole = matchstr(&guifont, '\( \)\@<=\d\+$')
       let l:gf_size_whole = l:gf_size_whole + 1
       let l:new_font_size = ' '.l:gf_size_whole
-      let &amp;guifont = substitute(&amp;guifont, ' \d\+$', l:new_font_size, '')
+      let &guifont = substitute(&guifont, ' \d\+$', l:new_font_size, '')
     endfunction
 
     function! FontSizeMinus ()
-      let l:gf_size_whole = matchstr(&amp;guifont, '\( \)\@&lt;=\d\+$')
+      let l:gf_size_whole = matchstr(&guifont, '\( \)\@<=\d\+$')
       let l:gf_size_whole = l:gf_size_whole - 1
       let l:new_font_size = ' '.l:gf_size_whole
-      let &amp;guifont = substitute(&amp;guifont, ' \d\+$', l:new_font_size, '')
+      let &guifont = substitute(&guifont, ' \d\+$', l:new_font_size, '')
     endfunction
 else
     function! FontSizePlus ()
-      let l:gf_size_whole = matchstr(&amp;guifont, '\(:h\)\@&lt;=\d\+$')
+      let l:gf_size_whole = matchstr(&guifont, '\(:h\)\@<=\d\+$')
       let l:gf_size_whole = l:gf_size_whole + 1
       let l:new_font_size = ':h'.l:gf_size_whole
-      let &amp;guifont = substitute(&amp;guifont, ':h\d\+$', l:new_font_size, '')
+      let &guifont = substitute(&guifont, ':h\d\+$', l:new_font_size, '')
     endfunction
 
     function! FontSizeMinus ()
-      let l:gf_size_whole = matchstr(&amp;guifont, '\(:h\)\@&lt;=\d\+$')
+      let l:gf_size_whole = matchstr(&guifont, '\(:h\)\@<=\d\+$')
       let l:gf_size_whole = l:gf_size_whole - 1
       let l:new_font_size = ':h'.l:gf_size_whole
-      let &amp;guifont = substitute(&amp;guifont, ':h\d\+$', l:new_font_size, '')
+      let &guifont = substitute(&guifont, ':h\d\+$', l:new_font_size, '')
     endfunction
 endif
 
 
 if has("gui_running")
-    nmap &lt;S-F12&gt; :call FontSizeMinus()&lt;CR&gt;
-    nmap &lt;F12&gt; :call FontSizePlus()&lt;CR&gt;
+    nmap <S-F12> :call FontSizeMinus()<CR>
+    nmap <F12> :call FontSizePlus()<CR>
 endif
 ```
 
@@ -2304,17 +2304,17 @@ The easiest is: `:m+` or `:m-2` which is abbreviation for `:move` as Ingo sugges
 
 Or using visual mode (<kbd>V</kbd>) by cutting the line (<kbd>d</kbd>/<kbd>x</kbd>) then paste it (<kbd>p</kbd> - below cursor, <kbd>P</kbd> above cursor) after you moved your cursor to the right place before pasting (so in summary it's <kbd>Vxp</kbd>/<kbd>Vdp</kbd>).  
 
-When moving multiple lines in visual mode, then you've to use `:m '&gt;+1` (to move one line down) or `:m '&lt;-2` (to move one line up).  
+When moving multiple lines in visual mode, then you've to use `:m '>+1` (to move one line down) or `:m '<-2` (to move one line up).  
 
 <hr>
 
 Here is sample useful mapping (<kbd>Shift+ ↑</kbd>/<kbd>Shift+↓</kbd>):  
 
 ```vim
-nnoremap &lt;S-Up&gt; :m-2&lt;CR&gt;
-nnoremap &lt;S-Down&gt; :m+&lt;CR&gt;
-inoremap &lt;S-Up&gt; &lt;Esc&gt;:m-2&lt;CR&gt;
-inoremap &lt;S-Down&gt; &lt;Esc&gt;:m+&lt;CR&gt;
+nnoremap <S-Up> :m-2<CR>
+nnoremap <S-Down> :m+<CR>
+inoremap <S-Up> <Esc>:m-2<CR>
+inoremap <S-Down> <Esc>:m+<CR>
 ```
 
 which is similar to Sublime Text (<a href="http://sublime-text-unofficial-documentation.readthedocs.org/en/latest/reference/keyboard_shortcuts_win.html" rel="noreferrer">Win</a> / <a href="http://sublime-text-unofficial-documentation.readthedocs.org/en/latest/reference/keyboard_shortcuts_osx.html" rel="noreferrer">OSX</a>).  
@@ -2322,12 +2322,12 @@ which is similar to Sublime Text (<a href="http://sublime-text-unofficial-docume
 Here are some suggested at <a href="http://vim.wikia.com/wiki/Moving_lines_up_or_down" rel="noreferrer">vim wikia</a>:  
 
 ```vim
-nnoremap &lt;A-j&gt; :m .+1&lt;CR&gt;==
-nnoremap &lt;A-k&gt; :m .-2&lt;CR&gt;==
-inoremap &lt;A-j&gt; &lt;Esc&gt;:m .+1&lt;CR&gt;==gi
-inoremap &lt;A-k&gt; &lt;Esc&gt;:m .-2&lt;CR&gt;==gi
-vnoremap &lt;A-j&gt; :m '&gt;+1&lt;CR&gt;gv=gv
-vnoremap &lt;A-k&gt; :m '&lt;-2&lt;CR&gt;gv=gv
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
 ```
 
 <blockquote>
@@ -2622,8 +2622,8 @@ Note that this will prevent Vim from noticing when there are multiple users tryi
 Vim has an Ex mode that can be entered by entering <kbd>Q</kbd>, and a command line mode that can be entered with <kbd>q</kbd><kbd>:</kbd>. A common complaint amongst new vim users is that they enter these modes accidentally when trying to quit vim. As such, I disable these keys in my `~/.vimrc` to stop myself hitting them accidentally (particularly <kbd>q</kbd><kbd>:</kbd>):  
 
 ```vim
-map q: &lt;Nop&gt;
-nnoremap Q &lt;nop&gt;
+map q: <Nop>
+nnoremap Q <nop>
 ```
 
 Although I've read the <a href="http://vimdoc.sourceforge.net/htmldoc/intro.html#Ex" rel="noreferrer">vim documentation on Ex</a>, am a moderately experienced Vim user, and understand the basic idea behind it, I still struggle to find any use for it in my daily vim use. In general it seems less useful than just entering a standard vim command-line command prefixed with <kbd>:</kbd>, as changes are not echoed straight away.  
@@ -2633,7 +2633,7 @@ Does Ex have any practical everyday use in modern Vim? Is there anything that's 
 #### Answer accepted (score 81)
 `Q` is, as you found, ex mode.  It's not entirely useful to use interactively, but it exists because Vim can be used to emulate the old `ex` binary.  In fact, many systems provide the `ex` command by simply symlinking it to `vim`.  
 
-`q:`, or `:&lt;C-f&gt;`, instead provides a way to browse your command-line history and edit it like a normal buffer.  This makes it easy to find a previous command you ran, edit it with normal Vim commands, and then run the modified command.  The `q/` and `q?` commands exist to provide the same functionality for the search history.  
+`q:`, or `:<C-f>`, instead provides a way to browse your command-line history and edit it like a normal buffer.  This makes it easy to find a previous command you ran, edit it with normal Vim commands, and then run the modified command.  The `q/` and `q?` commands exist to provide the same functionality for the search history.  
 
 #### Answer 2 (score 65)
 Vim in Ex mode is useful when:  
@@ -2670,10 +2670,10 @@ Other things which I find useful in Ex mode is to use it as a playground (simila
 For example:  
 
 ```vim
-let @d = '&lt;td&gt;&lt;/td&gt;'
-let @r = '&lt;tr&gt;' . repeat(@d, 5) . '&lt;/tr&gt;'
+let @d = '<td></td>'
+let @r = '<tr>' . repeat(@d, 5) . '</tr>'
 echo @r
-let @t = '&lt;table&gt;' . repeat(@r, 5) . '&lt;/table&gt;'
+let @t = '<table>' . repeat(@r, 5) . '</table>'
 reg
 ```
 
@@ -2747,14 +2747,14 @@ When I'm done making the edits, I go back to visual mode for a one-time screen u
 Some editors (such as visual studio on windows) do C++ autocompletion which understand C++. For example, given:  
 
 ```vim
-#include &lt;vector&gt;
+#include <vector>
 
 int main(void) {
-  std::vector&lt;int&gt; v;
+  std::vector<int> v;
   v.i
 ```
 
-In visual studio the auto-completion knows the only method on `std::vector&lt;int&gt;` that starts with an i is `insert`.  
+In visual studio the auto-completion knows the only method on `std::vector<int>` that starts with an i is `insert`.  
 
 Is it possible to get this kind of autocompletion in vim?  
 
@@ -2923,9 +2923,9 @@ If you're on a Debian based system, the easiest way is to download the vim-gnome
 If you'd prefer to compile Vim yourself, download the Vim repository and pass in `--enable-pythoninterp` like so:  
 
 ```vim
-cd /tmp &amp;&amp; git clone https://github.com/vim/vim.git &amp;&amp; cd vim
+cd /tmp && git clone https://github.com/vim/vim.git && cd vim
 ./configure --enable-pythoninterp --prefix=/usr
-make &amp;&amp; sudo make install
+make && sudo make install
 ```
 
 On Windows, you can get the Gvim package from <a href="https://github.com/vim/vim-win32-installer/releases/tag/v8.0.0003" rel="noreferrer">here</a> which includes Python support.  
@@ -2980,7 +2980,7 @@ sudo apt remove vim vim-runtime gvim
 <h5>configure and make</h1>
 
 ```vim
-cd /usr &amp;&amp; sudo git clone https://github.com/vim/vim.git &amp;&amp; cd vim  
+cd /usr && sudo git clone https://github.com/vim/vim.git && cd vim  
 
 sudo ./configure --with-features=huge \
 --enable-multibyte \
@@ -3001,7 +3001,7 @@ sudo make VIMRUNTIMEDIR=/usr/local/share/vim/vim81
 <li><p>And install that package   </p>
 
 ```vim
-cd /usr/vim &amp;&amp; sudo checkinstall
+cd /usr/vim && sudo checkinstall
 ```
 </li>
 <li><p>Or, if want to just create a package use `--install=no` option with checkinstall</p></li>
@@ -3237,13 +3237,13 @@ EDIT: I found this a `.vimrc` file on <a href="https://github.com/garybernhardt/
 function! RenameFile()
     let old_name = expand('%')
     let new_name = input('New file name: ', expand('%'), 'file')
-    if new_name != '' &amp;&amp; new_name != old_name
+    if new_name != '' && new_name != old_name
         exec ':saveas ' . new_name
         exec ':silent !rm ' . old_name
         redraw!
     endif
 endfunction
-map &lt;leader&gt;n :call RenameFile()&lt;cr&gt;
+map <leader>n :call RenameFile()<cr>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -3255,7 +3255,7 @@ When I am recording a macro with `q` and I am done, I can type:
 
 <ul>
 <li>`q` to stop recording if I am in normal or visual mode.</li>
-<li>`&lt;c-o&gt;q` to stop recording if I am in insert mode.</li>
+<li>`<c-o>q` to stop recording if I am in insert mode.</li>
 <li><p>..</p>
 
 How do I stop recording if my macro ends in command mode?   </li>
@@ -3271,10 +3271,10 @@ Another solution is when in command line mode, use `Ctrl-f`, and press `q` to st
 Therefore, after having added something like:  
 
 ```vim
-cnoremap &lt;c-q&gt; &lt;c-f&gt;i&lt;c-o&gt;q
+cnoremap <c-q> <c-f>i<c-o>q
 ```
 
-in your `.vimrc`, you can use `&lt;c-q&gt;` to stop recording a macro while in command mode.  
+in your `.vimrc`, you can use `<c-q>` to stop recording a macro while in command mode.  
 
 <hr>
 
@@ -3305,7 +3305,7 @@ Having read your comment about the use case, it looks like you could use a key m
 I have this line in my .vimrc (don't remember where I found it):  
 
 ```vim
-nnoremap &lt;Leader&gt;s :%s/\&lt;&lt;C-r&gt;&lt;C-w&gt;\&gt;//g&lt;Left&gt;&lt;Left&gt;
+nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 ```
 
 It has a similar effect to the use case you described, putting you on the command line so the only thing you have to do is type the replacement and press enter, but in this case, replacing all occurrences of the word that was under your cursor.  
@@ -3313,12 +3313,12 @@ It has a similar effect to the use case you described, putting you on the comman
 To just replace within the current block, I think something like the following should work:  
 
 ```vim
-nnoremap &lt;Leader&gt;s m'va{&lt;ESC&gt;``:'&lt;,'&gt;s/\&lt;&lt;C-r&gt;&lt;C-w&gt;\&gt;//g&lt;Left&gt;&lt;Left&gt;
+nnoremap <Leader>s m'va{<ESC>``:'<,'>s/\<<C-r><C-w>\>//g<Left><Left>
 ```
 
 Of course, you can map it to whatever key you want.  
 
-What the above does: mark the current position using the unnamed marker, visually select the current block, leave visual mode and return the cursor to the saved position (the visual selection markers are still set), enter command mode and type out the substitute command, inserting the word that was under the cursor with `&lt;C-r&gt;&lt;C-w&gt;`, and positioning your cursor to type out the replacement.  
+What the above does: mark the current position using the unnamed marker, visually select the current block, leave visual mode and return the cursor to the saved position (the visual selection markers are still set), enter command mode and type out the substitute command, inserting the word that was under the cursor with `<C-r><C-w>`, and positioning your cursor to type out the replacement.  
 
 </b> </em> </i> </small> </strong> </sub> </sup>
 
@@ -3487,7 +3487,7 @@ As with the other solutions presented, it only shows the indent guides on lines 
 ### 37: How to execute shell commands silently? (score [31968](https://stackoverflow.com/q/1942) in 2015)
 
 #### Question
-`:!&lt;command&gt;` can be used to execute a command in the shell. But this "takes over" my terminal and fills it with `stdout` of that particular command.   
+`:!<command>` can be used to execute a command in the shell. But this "takes over" my terminal and fills it with `stdout` of that particular command.   
 
 How do I execute a command in the background that only notifies me on a non-zero exit code?  
 
@@ -3518,7 +3518,7 @@ Then press <kbd>Ctrl</kbd>+<kbd>L</kbd> (or `:redraw!`) to refresh the screen wh
 To avoid need for refresh, you can define your own custom command, like:  
 
 ```vim
-:command! -nargs=1 Silent execute ':silent !'.&lt;q-args&gt; | execute ':redraw!'
+:command! -nargs=1 Silent execute ':silent !'.<q-args> | execute ':redraw!'
 ```
 
 Now, you can use the new Vim command to run a shell command (note: without <em>!</em> and with capital <em>S</em>):  
@@ -3581,7 +3581,7 @@ set expandtab
 " show existing tab with 2 spaces width
 set tabstop=2
 set softtabstop=2
-" when indenting with '&gt;', use 2 spaces width
+" when indenting with '>', use 2 spaces width
 set shiftwidth=2
 ```
 
@@ -3601,12 +3601,12 @@ One of the plugins I have installed (probably Supertab) provides a nice view of 
 
 <a href="https://i.stack.imgur.com/fVILE.png"><img src="https://i.stack.imgur.com/fVILE.png" alt="enter image description here"></a>  
 
-The (apparently) scratch buffer remains open even after I exit the completion (by pressing <kbd>Enter</kbd> or <kbd>Space</kbd>). Then, to quit it, I do `&lt;c-w&gt;↑:q`, but I find having to press <kbd>Ctrl</kbd> extremely annoying (one reason why I avoid splits).  
+The (apparently) scratch buffer remains open even after I exit the completion (by pressing <kbd>Enter</kbd> or <kbd>Space</kbd>). Then, to quit it, I do `<c-w>↑:q`, but I find having to press <kbd>Ctrl</kbd> extremely annoying (one reason why I avoid splits).  
 
 What's a quick way to close this scratch buffer? Is there a native way, or do I have to write a mapping?  
 
 #### Answer accepted (score 66)
-The top window is called the preview window. So any of `&lt;c-w&gt;z`, `&lt;c-w&gt;&lt;c-z&gt;` or `:pc[lose][!]` should work.  
+The top window is called the preview window. So any of `<c-w>z`, `<c-w><c-z>` or `:pc[lose][!]` should work.  
 
 The below is the help for `:help :pclose`  
 
@@ -3652,9 +3652,9 @@ triggered because there is no 'preview' string in 'completeopt', this option is
 irrelevant. See the |g:ycm_add_preview_to_completeopt| option for more details.
 
 Default: '0'
-&gt;
+>
   let g:ycm_autoclose_preview_window_after_completion = 0
-&lt;
+<
 -------------------------------------------------------------------------------
 The *g:ycm_autoclose_preview_window_after_insertion* option
 
@@ -3665,7 +3665,7 @@ window is triggered. See the |g:ycm_add_preview_to_completeopt| option for more
 details.
 
 Default: '0'
-&gt;
+>
   let g:ycm_autoclose_preview_window_after_insertion = 0
 ```
 
@@ -3918,24 +3918,24 @@ function package () {
 }
 (
 set_group ruby
-package https://github.com/tpope/vim-rails.git &amp;
-package https://github.com/tpope/vim-rake.git &amp;
-package https://github.com/tpope/vim-bundler.git &amp;
-package https://github.com/tpope/vim-endwise.git &amp;
+package https://github.com/tpope/vim-rails.git &
+package https://github.com/tpope/vim-rake.git &
+package https://github.com/tpope/vim-bundler.git &
+package https://github.com/tpope/vim-endwise.git &
 wait
-) &amp;
+) &
 (
 set_group syntax
-package https://github.com/kchmck/vim-coffee-script.git &amp;
-package https://github.com/tpope/vim-markdown.git &amp;
-package https://github.com/ap/vim-css-color.git &amp;
+package https://github.com/kchmck/vim-coffee-script.git &
+package https://github.com/tpope/vim-markdown.git &
+package https://github.com/ap/vim-css-color.git &
 wait
-) &amp;
+) &
 (
 set_group colorschemes
-package https://github.com/altercation/vim-colors-solarized.git &amp;
+package https://github.com/altercation/vim-colors-solarized.git &
 wait
-) &amp;
+) &
 wait
 ```
 
@@ -4079,7 +4079,7 @@ As an addendum to Kevin's answer, you can have multiple colorcolumns. When I cod
 I do this with  
 
 ```vim
-let &amp;colorcolumn="80,".join(range(120,999),",")
+let &colorcolumn="80,".join(range(120,999),",")
 ```
 
 Of course, this can be easily modified to other preferences.  
@@ -4089,9 +4089,9 @@ Vim 7.3 brings the `colorcolumn` option, as detailed very well in other answers.
 
 However, if you don't have version 7.3 for whatever reason, you can still achieve a visual indication that you are exceeding a particular column count using vim's `match` functionality (see `:help match` for details).  
 
-Essentially, the match commands allow you to create persistent highlights for text matching a given regular expression. `:match ColorColumn "\%80v."` will highlight text in column 80 with the "ColorColumn" group. You can of course substitute any highlight group, and any column value. If you want a strong visual indication, the expression `"\%&gt;79v.\+"` will highlight column 80 and beyond.  
+Essentially, the match commands allow you to create persistent highlights for text matching a given regular expression. `:match ColorColumn "\%80v."` will highlight text in column 80 with the "ColorColumn" group. You can of course substitute any highlight group, and any column value. If you want a strong visual indication, the expression `"\%>79v.\+"` will highlight column 80 and beyond.  
 
-(`\%80v` means "match in virtual column 80," and `\%&gt;79v` means "match <em>after</em> virtual column 79; see `:help /\%c` for more.)  
+(`\%80v` means "match in virtual column 80," and `\%>79v` means "match <em>after</em> virtual column 79; see `:help /\%c` for more.)  
 
 This approach will only highlight when there are actual characters present in the specified columns, however, which makes it visually less consistent than `colorcolumn`.  
 
@@ -4328,7 +4328,7 @@ Escape just doesn't seem to work.
 Any idea ?  
 
 #### Answer accepted (score 57)
-You are supposed to press `&lt;C-\&gt;&lt;C-n&gt;`.  
+You are supposed to press `<C-\><C-n>`.  
 
 See `:help terminal-emulator` for a mapping suggestion.  
 
@@ -4344,7 +4344,7 @@ Directly from the docs we get this note:
   map  to exit terminal mode:</p>
 
 ```vim
-:tnoremap &lt;Esc&gt; &lt;C-\&gt;&lt;C-n&gt;
+:tnoremap <Esc> <C-\><C-n>
 ```
 </blockquote>
 
@@ -4354,13 +4354,13 @@ With that knowledge you will most likely need to create some terminal mappings t
 <h5>Exit &amp; close</h1>
 
 ```vim
-tnoremap &lt;Esc&gt; &lt;C-\&gt;&lt;C-n&gt;:q!&lt;CR&gt;
+tnoremap <Esc> <C-\><C-n>:q!<CR>
 ```
 
 In Vim 8, this also works:  
 
 ```vim
-tnoremap &lt;ESC&gt; &lt;C-w&gt;:q!&lt;CR&gt;
+tnoremap <ESC> <C-w>:q!<CR>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -4383,17 +4383,17 @@ Along with SibiCoder's answer, if you have a clear idea of what you want to do y
 Where `X` is a command, for example:  
 
 ```vim
-:%d             -&gt; delete every line
-:%y             -&gt; yank every line
-:%normal! &gt;&gt;    -&gt; indent every line
+:%d             -> delete every line
+:%y             -> yank every line
+:%normal! >>    -> indent every line
 ```
 
 You have also the global command `:g` which, with the search pattern `^`, can do the same thing:  
 
 ```vim
-:g/^/d             -&gt; delete every line
-:g/^/y             -&gt; yank every line
-:g/^/normal! &gt;&gt;    -&gt; indent every line
+:g/^/d             -> delete every line
+:g/^/y             -> yank every line
+:g/^/normal! >>    -> indent every line
 ```
 
 If what you want is selecting the text, then `ggVG` is fine, but keep in mind these method, in the case you already know what is the next step. Note that it won't leave the cursor in visual mode.  
@@ -4405,7 +4405,7 @@ See: `:h :%` and `:h :g` for reference.
 Note that, even though the `C-A` mapping is used in vim (see `:h CTRL-A`), you can map it to do what other editors do:  
 
 ```vim
-nnoremap &lt;C-A&gt; ggVG
+nnoremap <C-A> ggVG
 ```
 
 #### Answer 3 (score 1)
@@ -4419,7 +4419,7 @@ Since you mention that you are using VsVim, you can change which keys are handle
 
 From there you can set Ctrl-a to be handled by Visual Studio, rather than VsVim.   
 
-Although I do not recommend this since you will not be able to use vim's `&lt;C-a&gt;`, which I find to be an essential feature. Though it's up to you.   
+Although I do not recommend this since you will not be able to use vim's `<C-a>`, which I find to be an essential feature. Though it's up to you.   
 
 </b> </em> </i> </small> </strong> </sub> </sup>
 
@@ -4429,8 +4429,8 @@ Although I do not recommend this since you will not be able to use vim's `&lt;C-
 I'm trying to map <kbd>Alt</kbd> key in the following way:  
 
 ```vim
-:map &lt;A-j&gt; j
-:map &lt;A-k&gt; k
+:map <A-j> j
+:map <A-k> k
 ```
 
 but it doesn't work (bell is rang on <kbd>Alt + j</kbd>/<kbd>Alt + k</kbd>).  
@@ -4459,8 +4459,8 @@ I replace `^[` with `\e` (because that's what is sent by my terminal when I pres
 Then I write it to my `.vimrc`:  
 
 ```vim
-execute "set &lt;M-j&gt;=\ej"
-nnoremap &lt;M-j&gt; j
+execute "set <M-j>=\ej"
+nnoremap <M-j> j
 ```
 
 And the mapping works.  
@@ -4489,8 +4489,8 @@ xrdb -l ~/.Xdefaults
 Then standard mappings with <kbd>Alt</kbd> key like:  
 
 ```vim
-:map &lt;A-j&gt; j
-:map &lt;A-k&gt; k
+:map <A-j> j
+:map <A-k> k
 ```
 
 works fine.  
@@ -4512,10 +4512,10 @@ then hitting <kbd>Ctrl</kbd> + <kbd>V</kbd> then the keystroke to record, e.g. <
 nnoremap ^[[1;3D
 ```
 
-but each `^[` is a single, literal escape character and syntax highlighting should show this. Replace the literal escape(s) with the text `&lt;Esc&gt;`, and append the command you wish to use:  
+but each `^[` is a single, literal escape character and syntax highlighting should show this. Replace the literal escape(s) with the text `<Esc>`, and append the command you wish to use:  
 
 ```vim
-nnoremap &lt;Esc&gt;[1;3D &lt;C-w&gt;h
+nnoremap <Esc>[1;3D <C-w>h
 ```
 
 <hr>
@@ -4587,13 +4587,13 @@ But how in the world do you simply copy a single character under the cursor?
 My motivation is that I'm programming in Perl 6 and some of the operators are Unicode characters. Right now I'm using <a href="https://github.com/tadzik/perl6-Config-INI/blob/master/lib/Config/INI.pm" rel="noreferrer">tadzik's Perl 6 Config::INI code</a> as a starting point for a custom parser, for example, and I would have liked to have copied just that one <a href="https://doc.perl6.org/language/operators#postfix_%C2%BB._%2F_postfix_%3E%3E." rel="noreferrer">French quote character (a hyper operator)</a> from <a href="https://github.com/tadzik/perl6-Config-INI/blob/master/lib/Config/INI.pm#L26" rel="noreferrer">this line</a>:  
 
 ```vim
-my %hash = $&lt;sections&gt;».ast;
+my %hash = $<sections>».ast;
 ```
 
-I could use the two character "Texas" version of the hyper operator `&gt;&gt;`, but I thought that `&gt;»` looked better and less ambiguous than `&gt;&gt;&gt;`:  
+I could use the two character "Texas" version of the hyper operator `>>`, but I thought that `>»` looked better and less ambiguous than `>>>`:  
 
 ```vim
-my %hash = $&lt;sections&gt;&gt;&gt;.ast;
+my %hash = $<sections>>>.ast;
 ```
 
 <p><a href="https://i.stack.imgur.com/4MoZx.jpg" rel="noreferrer"><img src="https://i.stack.imgur.com/4MoZx.jpg" alt="enter image description here"></a><br>
@@ -4621,15 +4621,15 @@ One way to select a buffer in vim could be to browse the buffers list, using sta
 
 Let's say I want to jump to a buffer directly, as fast as possible.  
 
-To traverse the buffer list in sequential mode, I now use `&lt;C-J&gt;` `&lt;C-K&gt;` shortcuts, having set in my .vimrc:  
+To traverse the buffer list in sequential mode, I now use `<C-J>` `<C-K>` shortcuts, having set in my .vimrc:  
 
 ```vim
 " move among buffers with CTRL
-map &lt;C-J&gt; :bnext&lt;CR&gt;
-map &lt;C-K&gt; :bprev&lt;CR&gt;
+map <C-J> :bnext<CR>
+map <C-K> :bprev<CR>
 ```
 
-Another way (direct access) could be <a href="http://vim.wikia.com/wiki/Easier_buffer_switching#Switching_by_number" rel="noreferrer">switching by number</a>: knowing the buffer number, it is possible to switch directly by entering the buffer number followed by `&lt;C-^&gt;`. So if I want to switch to buffer number 5, I would press `5&lt;C-^&gt;`.  
+Another way (direct access) could be <a href="http://vim.wikia.com/wiki/Easier_buffer_switching#Switching_by_number" rel="noreferrer">switching by number</a>: knowing the buffer number, it is possible to switch directly by entering the buffer number followed by `<C-^>`. So if I want to switch to buffer number 5, I would press `5<C-^>`.  
 
 But this seem not working for me (I use vim 7.4 on ubuntu box, from a Windows guest, with <em>Italian keyboard</em>). I suspect that's because the `^` character is in the upper case key `^ì` in the Italian keyboard, so in fact to got `^` I need to press `SHIFT-^`    
 
@@ -4670,7 +4670,7 @@ This command can also take a number, if you want to use that:
 This is what I use:  
 
 ```vim
-nnoremap &lt;Leader&gt;b :ls&lt;CR&gt;:b&lt;Space&gt;
+nnoremap <Leader>b :ls<CR>:b<Space>
 ```
 
 Now pressing `\b` will <strong>list the available buffers</strong> and prepare `:b` for you.  
@@ -4684,7 +4684,7 @@ Or you can type <strong>part of the filename</strong>, and hit Enter.  (However 
 In fact, I use a slightly tweaked version of the above:  
 
 ```vim
-nnoremap &lt;C-e&gt; :set nomore &lt;Bar&gt; :ls &lt;Bar&gt; :set more &lt;CR&gt;:b&lt;Space&gt;
+nnoremap <C-e> :set nomore <Bar> :ls <Bar> :set more <CR>:b<Space>
 ```
 
 This will prevent the `-- More --` prompt from appearing when you have more buffers than available lines to display them.  
@@ -4792,10 +4792,10 @@ Sometimes during my workflow, I might want to open/search for a file on the go. 
 In your `vimrc` add  
 
 ```vim
-nmap &lt;F6&gt; :NERDTreeToggle&lt;CR&gt;
+nmap <F6> :NERDTreeToggle<CR>
 ```
 
-where `&lt;F6&gt;` is the key you want to map.  
+where `<F6>` is the key you want to map.  
 
 #### Answer 2 (score 8)
 To open NerdTree :   
@@ -4830,10 +4830,10 @@ If you want to close NERDTree window make sure you are inside the NERDTree menu.
 ### 54: How can I find out what <Leader> is set to? And is it possible to remap <Leader>? (score [22707](https://stackoverflow.com/q/281) in 2015)
 
 #### Question
-How can I figure out which key is set as my `&lt;Leader&gt;`, and how do I remap it?  
+How can I figure out which key is set as my `<Leader>`, and how do I remap it?  
 
 #### Answer accepted (score 62)
-By default your `&lt;leader&gt;` is `\`, backslash. You can check it with:  
+By default your `<leader>` is `\`, backslash. You can check it with:  
 
 ```vim
 :echo mapleader
@@ -4844,26 +4844,26 @@ If this gives you an `E121: Undefined variable: mapleader`, it means it's set to
 You can easily remap it. I mapped it to the space-bar:  
 
 ```vim
-:let mapleader = "\&lt;Space&gt;"
+:let mapleader = "\<Space>"
 ```
 
 Note that the value of `mapleader` is used at the moment the mapping is defined. So this example:  
 
 ```vim
 let mapleader = ","
-nnoremap &lt;Leader&gt;a :echo "Hey there ,"&lt;CR&gt;
+nnoremap <Leader>a :echo "Hey there ,"<CR>
 
-let mapleader = "\&lt;Space&gt;"
-nnoremap &lt;Leader&gt;a :echo "Hey there space"&lt;CR&gt;
+let mapleader = "\<Space>"
+nnoremap <Leader>a :echo "Hey there space"<CR>
 ```
 
-Will produce <em>two</em> mappings: `,a` and `&lt;Space&gt;a`.  
+Will produce <em>two</em> mappings: `,a` and `<Space>a`.  
 
 This means that the <em>current</em> value of `mapleader` is not necessarily the value that was used to define your mappings!  
 
-In addition, there's the `maplocalleader`, which is the same as `mapleader`, except that it's used by `&lt;LocalLeader&gt;` and that it's local to the current buffer.  
+In addition, there's the `maplocalleader`, which is the same as `mapleader`, except that it's used by `<LocalLeader>` and that it's local to the current buffer.  
 
-More information about `&lt;Leader&gt;` can be found in Vim's help with <a href="http://vimhelp.appspot.com/map.txt.html#mapleader">`:help mapleader`</a>.  
+More information about `<Leader>` can be found in Vim's help with <a href="http://vimhelp.appspot.com/map.txt.html#mapleader">`:help mapleader`</a>.  
 
 #### Answer 2 (score 8)
 You can display the current leader key like this `:let mapleader`  
@@ -5021,7 +5021,7 @@ This works both in `vi` and  `vim`.</p>
 :set shiftwidth=2
 ```
 
-Now, the width shifted for each `&gt;&gt;` and `&lt;&lt;` will be 2.  
+Now, the width shifted for each `>>` and `<<` will be 2.  
 
 </b> </em> </i> </small> </strong> </sub> </sup>
 
@@ -5191,14 +5191,14 @@ You can toggle relative numbering on and off using:
 #### Answer 3 (score 5)
 ```vim
 function! NumberToggle()
-  if(&amp;relativenumber == 1)
+  if(&relativenumber == 1)
     set norelativenumber
   else
     set relativenumber
   endif
 endfunc
 
-nnoremap &lt;leader&gt;nt :call NumberToggle()&lt;cr&gt;
+nnoremap <leader>nt :call NumberToggle()<cr>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -5290,23 +5290,23 @@ See the example below,
 
 ```vim
 // Start vim without loading your vimrc. set only tabstop=8 softtabstop=4.
-// This makes &lt;Tab&gt; in insert mode equals to 4 &lt;Space&gt; length at max.
+// This makes <Tab> in insert mode equals to 4 <Space> length at max.
 
-// In insert mode, type 12, one &lt;Tab&gt;, 5. We get insertion below,
+// In insert mode, type 12, one <Tab>, 5. We get insertion below,
 12··5
-// Quit insert mode. Move cursor back, we find 2 &lt;Space&gt; inserted.
+// Quit insert mode. Move cursor back, we find 2 <Space> inserted.
 
-// In insert mode, type 12, two &lt;Tab&gt;, 9. We get insertion below,
+// In insert mode, type 12, two <Tab>, 9. We get insertion below,
 12······9
-// Quit insert mode. Move cursor back, you find a &lt;Tab&gt; inserted.
+// Quit insert mode. Move cursor back, you find a <Tab> inserted.
 
-// In insert mode, type 12, three &lt;Tab&gt;, 3. We get insertion below,
+// In insert mode, type 12, three <Tab>, 3. We get insertion below,
 12··········3
-// Move the cursor back, you find a &lt;Tab&gt; and 4 &lt;Space&gt; inserted.
+// Move the cursor back, you find a <Tab> and 4 <Space> inserted.
 
-// We can even set sotftabstop=12, but this time we only need type one &lt;Tab&gt;, then 3.
+// We can even set sotftabstop=12, but this time we only need type one <Tab>, then 3.
 12··········3
-// Move the cursor back, you find a &lt;Tab&gt; and 4 &lt;Sapce&gt; inserted.
+// Move the cursor back, you find a <Tab> and 4 <Sapce> inserted.
 ```
 
 So `tabstop` is about how wide a `Tab` is defined, while `softtabstop` is about how far cursor moves while <strong>typing</strong> `Tab`. When they are not set to be the same value, it means that if you hit the `Tab` keystroke, it does not imply trivially a `Tab`character. In whatever cases, It is vim who decide once you quit insert mode. Vim will first try to match the insertion by as many `tabstop` as it can; if at last it cannot make a full `tabstop`, vim simply compensates by `Space`.   
@@ -5350,10 +5350,10 @@ I have an approach with visual mode (Ctr-v, jjj, but need to do two replace comm
 <strong>Visual-block selection:</strong>  
 
 ```vim
-&lt;C-v&gt;
+<C-v>
 jjl
 c*
-&lt;Esc&gt;
+<Esc>
 ```
 
 <strong>`:normal`:</strong>  
@@ -5371,7 +5371,7 @@ c*
 <strong>Dot formula:</strong>  
 
 ```vim
-cE*&lt;Esc&gt;
+cE*<Esc>
 j.
 j.
 ```
@@ -5642,7 +5642,7 @@ See also: <a href="https://github.com/justinmk/molokai/commit/aa1cc201c743dd7d1b
 <ul>
 <li>In fact Neovim ignores all `t_*` options, see `:help t_xx`.</li>
 </ul></li>
-<li>Neovim doesn't allow `&amp;term` to be set because it is meaningless. Neovim uses <a href="https://github.com/mauke/unibilium" rel="nofollow noreferrer">unibilium</a> and other mechanisms to detect terminal capabilities.</li>
+<li>Neovim doesn't allow `&term` to be set because it is meaningless. Neovim uses <a href="https://github.com/mauke/unibilium" rel="nofollow noreferrer">unibilium</a> and other mechanisms to detect terminal capabilities.</li>
 </ul>
 
 #### Answer 3 (score 2)
@@ -5794,7 +5794,7 @@ There is <a href="http://www.vim.org/scripts/script.php?script_id=102" rel="nore
 Usage:  
 
 ```vim
-:DirDiff &lt;dir1&gt; &lt;dir2&gt;
+:DirDiff <dir1> <dir2>
 ```
 
 For more information / help: `:help dirdiff`  
@@ -5830,7 +5830,7 @@ It also doesn't report if a is only present in one of the directories...
 from __future__ import print_function
 import hashlib, os, subprocess, sys
 
-if len(sys.argv) &lt; 3:
+if len(sys.argv) < 3:
     print('Usage: {} dir1 dir2'.format(sys.argv[0]))
     sys.exit(1)
 
@@ -5843,7 +5843,7 @@ for root, dirs, files in os.walk(dir1):
         f2 = f1.replace(dir1, dir2, 1)
 
         # Don't diff files over 1MiB
-        if os.stat(f1).st_size &gt; 1048576 or os.stat(f2).st_size &gt; 1048576: continue
+        if os.stat(f1).st_size > 1048576 or os.stat(f2).st_size > 1048576: continue
 
         # Check if files are the same; in which case a diff is useless
         h1 = hashlib.sha256(open(f1, 'rb').read()).hexdigest()
@@ -5851,7 +5851,7 @@ for root, dirs, files in os.walk(dir1):
         if h1 == h2: continue
 
         # Don't diff binary files
-        if open(f1, 'rb').read().find(b'\000') &gt;= 0: continue
+        if open(f1, 'rb').read().find(b'\000') >= 0: continue
 
         subprocess.call(['vimdiff', f1, f2])
 ```
@@ -5875,7 +5875,7 @@ A caveat is that it's a Zsh script. It should be pretty simple to convert it to 
 ### 70: How to jump to function call? (score [15853](https://stackoverflow.com/q/4955) in )
 
 #### Question
-After generating a tags file with `exuberant-ctags` I can jump from a function call to its declaration with `&lt;C-]&gt;` which is pretty convenient.  
+After generating a tags file with `exuberant-ctags` I can jump from a function call to its declaration with `<C-]>` which is pretty convenient.  
 
 My question is how to do it in the other way? When my cursor is on the definition of a function, how can I go to the lines where the function is called?  
 
@@ -5925,7 +5925,7 @@ Note that the statement about the "defaults" is somewhat misleading, since many 
 
 ```vim
 " Set 'formatoptions' to break comment lines but not other lines,
-" and insert the comment leader when hitting &lt;CR&gt; or using "o".
+" and insert the comment leader when hitting <CR> or using "o".
 setlocal fo-=t fo+=croql
 ```
 
@@ -5948,7 +5948,7 @@ In this case, you want to remove the `r` flag, but perhaps also the `c` and `o` 
 
 ```vim
 r       Automatically insert the current comment leader after hitting
-        &lt;Enter&gt; in Insert mode.
+        <Enter> in Insert mode.
 c       Auto-wrap comments using textwidth, inserting the current comment
         leader automatically.
 o       Automatically insert the current comment leader after hitting 'o' or
@@ -6034,7 +6034,7 @@ Usually, the best way is to use `has("patch-7.4-399")`; this will return true if
 You can also use the form of `has('patch399')`, which is typically used like:  
 
 ```vim
-if v:version == 704 &amp;&amp; has('patch399')
+if v:version == 704 && has('patch399')
 ```
 
 But be aware; this will be <em>false</em> for Vim 7.5; use this only in very specific cases.  
@@ -6090,7 +6090,7 @@ file first.</p>
 alter quite a bit in Vim. If this fixes the problem, then try to find out
 <em>which</em> plugin by re-enabling them one-by-one. After you've found out which
 plugin exactly causes the problem, you can try &amp; fix it by reading this plugin's
-documentation, and/or by asking a question tagged with `plugin-&lt;name&gt;`.</p>
+documentation, and/or by asking a question tagged with `plugin-<name>`.</p>
 
 <p>If it's <em>not</em> a plugin, and you don't have <em>any</em> idea what's causing your
 problem, then it's a trial-and-error procedure. Comment out one or more lines in
@@ -6230,7 +6230,7 @@ Once you get used to vim and get better with the different available motions (<k
 #### Answer 2 (score 40)
 I don't know if this is really relevant any more, but I'm an old-timer so here's a bit of history.  
 
-<p>In the old days, VT100 terminals had arrow keys, but pressing one transmitted an escape sequence like `&lt;ESC&gt;[A` for up, `&lt;ESC&gt;[B` for down, etc.<br>
+<p>In the old days, VT100 terminals had arrow keys, but pressing one transmitted an escape sequence like `<ESC>[A` for up, `<ESC>[B` for down, etc.<br>
 Also, being a serial terminal communicating at 9600 baud, it was possible for the user to press the keys too fast to transmit the whole sequence which would cause one key press to interrupt the sequence of the previous key press and confuse vi.  </p>
 
 This would cause vi to inexplicably go into insert mode and insert [B[B[B[B[B[B into your file if you held down the down arrow.  I say inexplicably because there's nothing about this sequence that should enter insert mode and the fact that each sequence starts with an ESC character should have exited insert mode.  But still, it would insert garbage.  Not always - just when you were in a hurry.  
@@ -6303,7 +6303,7 @@ This is because the `d` operator doesn't accept a range, but only a motion :
 Alternatively you can select your text in visual mode and you can do :  
 
 ```vim
-:'&lt;,'&gt;normal d2w
+:'<,'>normal d2w
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -6333,7 +6333,7 @@ sudo apt-get build-dep vim
 Step 2: Clone Vim's source code:  
 
 ```vim
-cd /tmp &amp;&amp; git clone https://github.com/vim/vim.git &amp;&amp; cd vim
+cd /tmp && git clone https://github.com/vim/vim.git && cd vim
 ```
 
 Step 3: Configure, Make, Install  
@@ -6609,7 +6609,7 @@ I have a `~/.vimrc` that contains just this:
 function! NewFile()
         let filename = input("Filename:")
 endfunction
-command NewFile :call NewFile()&lt;cr&gt;
+command NewFile :call NewFile()<cr>
 ```
 
 (of course my real `.vimrc` is more complex, but I've recreated this small test case with no plugins etc.)  
@@ -6625,7 +6625,7 @@ E488: Trailing characters
 Why is that? What am I doing wrong?  
 
 #### Answer accepted (score 21)
-<p>Remove the trailing `&lt;cr&gt;`
+<p>Remove the trailing `<cr>`
 That is only needed for mappings, but not for commands.</p>
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -6683,7 +6683,7 @@ The below lines will add the existing paths and `~/.vimrc` file to your nvim set
 
 ```vim
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
-let &amp;packpath=&amp;runtimepath
+let &packpath=&runtimepath
 source ~/.vimrc
 ```
 
@@ -6701,7 +6701,7 @@ You can use `if has('nvim')`. Here are complete examples:
 
 ```vim
 if has('nvim')
-        tnoremap &lt;Esc&gt; &lt;C-\&gt;&lt;C-n&gt;
+        tnoremap <Esc> <C-\><C-n>
 endif
 ```
 
@@ -6781,7 +6781,7 @@ fun! JoinSpaceless()
 endfun
 
 " Map it to a key
-nnoremap &lt;Leader&gt;J :call JoinSpaceless()&lt;CR&gt;
+nnoremap <Leader>J :call JoinSpaceless()<CR>
 ```
 
 See also: `:help J`, `:help 'joinspaces'`  
@@ -6998,7 +6998,7 @@ This solution uses the `'runtimepath'` option to get all available syntax direct
 function! GetFiletypes()
     " Get a list of all the runtime directories by taking the value of that
     " option and splitting it using a comma as the separator.
-    let rtps = split(&amp;runtimepath, ",")
+    let rtps = split(&runtimepath, ",")
     " This will be the list of filetypes that the function returns
     let filetypes = []
 
@@ -7033,7 +7033,7 @@ Note that this probably can be compacted quite a bit, it is just like this for r
 <ul>
 <li>`:help 'runtimepath'`</li>
 <li>`:help :let`</li>
-<li>`:help :let-&amp;`</li>
+<li>`:help :let-&`</li>
 <li>`:help split()`</li>
 <li>`:help :for`</li>
 <li>`:help expr-.`</li>
@@ -7070,13 +7070,13 @@ You can also print all file types in the terminal by running the following 2 com
 1.  
 
 ```vim
-cd $(vim -e -T dumb --cmd 'exe "set t_cm=\&lt;C-M&gt;"|echo $VIMRUNTIME|quit' | tr -d '\015')
+cd $(vim -e -T dumb --cmd 'exe "set t_cm=\<C-M>"|echo $VIMRUNTIME|quit' | tr -d '\015')
 ```
 
 2.  
 
 ```vim
-cat &lt;(ls -1 ftplugin/*.vim) &lt;(ls -1 syntax/*.vim) | tr '\n' '\0' | xargs -0 -n 1 basename | sort | uniq | cut -f 1 -d '.'
+cat <(ls -1 ftplugin/*.vim) <(ls -1 syntax/*.vim) | tr '\n' '\0' | xargs -0 -n 1 basename | sort | uniq | cut -f 1 -d '.'
 ```
 
 First command simply navigates to your vim runtime path (for me it was <em>/usr/share/vim/vim80</em>).  
@@ -7230,7 +7230,7 @@ This will only turn hlsearch off until you search again. From `:help nohls`
 However, this solution isn't perfect, since you still have to type out `:nohls` which is pain to do after every search. You can get around this with a mapping, e.g.  
 
 ```vim
-nnoremap &lt;esc&gt;&lt;esc&gt; :silent! nohls&lt;cr&gt;
+nnoremap <esc><esc> :silent! nohls<cr>
 ```
 
 But there is an even <em>better</em> solution! <a href="https://github.com/haya14busa/incsearch.vim">haya14busa/incsearch.vim</a>. This is, at least in my opinion, an <em>essential</em> vim plugin. The main feature is that <strong>all</strong> search matches are highlighted in real time, as you are typing out your regex. For example:  
@@ -7242,12 +7242,12 @@ However, a secondary feature that is also provided is the option to <em>immediat
 ```vim
 set hlsearch
 let g:incsearch#auto_nohlsearch = 1
-map n  &lt;Plug&gt;(incsearch-nohl-n)
-map N  &lt;Plug&gt;(incsearch-nohl-N)
-map *  &lt;Plug&gt;(incsearch-nohl-*)
-map #  &lt;Plug&gt;(incsearch-nohl-#)
-map g* &lt;Plug&gt;(incsearch-nohl-g*)
-map g# &lt;Plug&gt;(incsearch-nohl-g#)
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
 ```
 
 to your `.vimrc`.  
@@ -7300,30 +7300,30 @@ I use a mapping for that:
 
 ```vim
 " Quickly insert an empty new line without entering insert mode
-    nnoremap &lt;Leader&gt;o o&lt;Esc&gt;
-    nnoremap &lt;Leader&gt;O O&lt;Esc&gt;
+    nnoremap <Leader>o o<Esc>
+    nnoremap <Leader>O O<Esc>
 ```
 
-This way you can insert a line under your cursor with `&lt;Leader&gt;o` and one on the previous line with `&lt;Leader&gt;O`.   
+This way you can insert a line under your cursor with `<Leader>o` and one on the previous line with `<Leader>O`.   
 
-<strong>Note:</strong> One could argue that it requires as many keystrokes as `o&lt;Esc&gt;` but hopefully you choosed your leader to make this kind of mapping easy. Also I'm really not sure there is a built-in way to do this.  
+<strong>Note:</strong> One could argue that it requires as many keystrokes as `o<Esc>` but hopefully you choosed your leader to make this kind of mapping easy. Also I'm really not sure there is a built-in way to do this.  
 
 #### Answer 2 (score 8)
 A solution that doesn't go through insert mode, doesn't move the cursor, and allows you to use a counter to append several lines at once (<kbd>3</kbd><kbd>\</kbd><kbd>o</kbd> etc.):  
 
 ```vim
-nnoremap &lt;silent&gt; &lt;leader&gt;o :&lt;C-u&gt;call append(line("."),   repeat([""], v:count1))&lt;CR&gt;
-nnoremap &lt;silent&gt; &lt;leader&gt;O :&lt;C-u&gt;call append(line(".")-1, repeat([""], v:count1))&lt;CR&gt;
+nnoremap <silent> <leader>o :<C-u>call append(line("."),   repeat([""], v:count1))<CR>
+nnoremap <silent> <leader>O :<C-u>call append(line(".")-1, repeat([""], v:count1))<CR>
 ```
 
 #### Answer 3 (score 4)
-I personally recommend using Tim Pope's <a href="https://github.com/tpope/vim-unimpaired" rel="nofollow">Unimpaired plugin</a>. It provides many mappings but the ones you will looking for are `[&lt;space&gt;` and `]&lt;space&gt;` which create blank lines above and below the current line respectively. Unimpaired also provides nice mappings for moving through the quickfix list, buffer list, option toggling, and many others. See `:h unimpaired` for more.  
+I personally recommend using Tim Pope's <a href="https://github.com/tpope/vim-unimpaired" rel="nofollow">Unimpaired plugin</a>. It provides many mappings but the ones you will looking for are `[<space>` and `]<space>` which create blank lines above and below the current line respectively. Unimpaired also provides nice mappings for moving through the quickfix list, buffer list, option toggling, and many others. See `:h unimpaired` for more.  
 
 If you do not want to use unimpaired plugin but like the mappings below are some quick mappings to put in your `~/.vimrc` file:  
 
 ```vim
-nnoremap &lt;silent&gt; [&lt;space&gt;  :&lt;c-u&gt;put!=repeat([''],v:count)&lt;bar&gt;']+1&lt;cr&gt;
-nnoremap &lt;silent&gt; ]&lt;space&gt;  :&lt;c-u&gt;put =repeat([''],v:count)&lt;bar&gt;'[-1&lt;cr&gt;
+nnoremap <silent> [<space>  :<c-u>put!=repeat([''],v:count)<bar>']+1<cr>
+nnoremap <silent> ]<space>  :<c-u>put =repeat([''],v:count)<bar>'[-1<cr>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -7368,20 +7368,20 @@ endif
 but I couldn't find the syntax. Same thing for 'OR'.  
 
 #### Answer accepted (score 30)
-As @lcd047 said in his comment, vimscript use C-like operators `&amp;&amp;` and `||`.  
+As @lcd047 said in his comment, vimscript use C-like operators `&&` and `||`.  
 
 You can find description of their usage on <a href="http://vimdoc.sourceforge.net/htmldoc/eval.html#expr2">`:h expr2`</a>. Some important points mentioned by the doc are the following  
 
-You'll find that the operators can be concatenated and `&amp;&amp;` takes precedence over `||`, so  
+You'll find that the operators can be concatenated and `&&` takes precedence over `||`, so  
 
 ```vim
-&amp;nu || &amp;list &amp;&amp; &amp;shell == "csh"
+&nu || &list && &shell == "csh"
 ```
 
 Is equivalent to  
 
 ```vim
-&amp;nu || (&amp;list &amp;&amp; &amp;shell == "csh")
+&nu || (&list && &shell == "csh")
 ```
 
 Also once the result is known, the expression "short-circuits", that is, further arguments are not evaluated.  This is like what happens in C.  
@@ -7427,12 +7427,12 @@ Say the following is the current structure of my window:
 
 The order of A and B is not quite natural. It would be better if B was on top.  
 
-However, if I go `&lt;C-w&gt;K`, B will be the very top of all windows, which is not what I want. How can I put B above A, but not above any other window that is already above A?  
+However, if I go `<C-w>K`, B will be the very top of all windows, which is not what I want. How can I put B above A, but not above any other window that is already above A?  
 
 And if two windows are vertically split, how can I change them to horizontally split?  
 
 #### Answer 2 (score 33)
-To swap the two parts of a split window simply do: `&lt;C-w&gt; &lt;C-r&gt;`  
+To swap the two parts of a split window simply do: `<C-w> <C-r>`  
 
 #### Answer 3 (score 6)
 <p>In order to swap `window` positions, the effect is equivalent to swapping buffers that those two windows show.<br>
@@ -7456,7 +7456,7 @@ function! WinBufSwap()
 endfunction
 
 command! Wswap :call WinBufSwap()
-map &lt;Leader&gt;bs &lt;C-c&gt;:call WinBufSwap()&lt;CR&gt;
+map <Leader>bs <C-c>:call WinBufSwap()<CR>
 ```
 
 <ol>
@@ -7639,16 +7639,16 @@ Another option is to use <a href="https://github.com/svermeulen/vim-easyclip" re
 I usually end up using <a href="https://linux.die.net/man/1/xsel" rel="nofollow noreferrer">xsel</a> to copy to/from the system clipboard:  
 
 ```vim
-vmap &lt;leader&gt;y !xsel -i -b &amp;&amp; xsel -b &lt;CR&gt;
-nmap &lt;leader&gt;p :r !xsel -b &lt;CR&gt;
+vmap <leader>y !xsel -i -b && xsel -b <CR>
+nmap <leader>p :r !xsel -b <CR>
 ```
 
 #### Answer 3 (score 1)
 I usually end up using <a href="https://linux.die.net/man/1/xsel" rel="nofollow noreferrer">xsel</a> to copy to/from the system clipboard:  
 
 ```vim
-vmap &lt;leader&gt;y !xsel -i -b &amp;&amp; xsel -b &lt;CR&gt;
-nmap &lt;leader&gt;p :r !xsel -b &lt;CR&gt;
+vmap <leader>y !xsel -i -b && xsel -b <CR>
+nmap <leader>p :r !xsel -b <CR>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -7752,7 +7752,7 @@ set formatoptions+=t
 If you want, you can set a mapping in your .vimrc to do the entire thing for you:  
 
 ```vim
-nnoremap &lt;C-j&gt; gggqG_j
+nnoremap <C-j> gggqG_j
 ```
 
 This moves to the beginning of the file (`gg`), wraps all the lines (`gq` until `G`), and then `_j`ustifies the text.  
