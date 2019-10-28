@@ -238,7 +238,7 @@ For me this was the best solution because I did not have to change any of the fo
 ### 4: How can I use BibTeX to cite a web page? (score [1021732](https://stackoverflow.com/q/3587) in )
 
 #### Question
-I'm looking to cite a number of web pages using bibtex and I was wondering if there was a specific template of the form `@&lt;template name here&gt;` for doing that. If you could use the following website as an example that would be great  
+I'm looking to cite a number of web pages using bibtex and I was wondering if there was a specific template of the form `@<template name here>` for doing that. If you could use the following website as an example that would be great  
 
 <a href="http://web.archive.org/web/20080207010024/http://www.808multimedia.com/winnt/kernel.htm">http://web.archive.org/web/20080207010024/http://www.808multimedia.com/winnt/kernel.htm</a>  
 
@@ -316,19 +316,19 @@ There are a number of horizontal spacing macros for LaTeX:
 <ol>
 <li>`\,` inserts a `\thinspace` (equivalent to `.16667em`) in text mode, or `\thinmuskip` (equivalent to `3mu`) in math mode;</li>
 <li>`\!` inserts a <em>negative</em> `\thinmuskip` in math mode;</li>
-<li>`\&gt;` inserts `\medmuskip` (equivalent to `4.0mu plus 2.0mu minus 4.0mu`) in math mode;</li>
+<li>`\>` inserts `\medmuskip` (equivalent to `4.0mu plus 2.0mu minus 4.0mu`) in math mode;</li>
 <li>`\;` inserts `\thickmuskip` (equivalent to `5.0mu plus 5.0mu`) in math mode;</li>
-<li>`\:` is equivalent to `\&gt;` (see above);</li>
+<li>`\:` is equivalent to `\>` (see above);</li>
 <li>`\enspace` inserts a space of `.5em` in text or math mode;</li>
 <li>`\quad` inserts a space of `1em` in text or math mode;</li>
 <li>`\qquad` inserts a space of `2em` in text or math mode;</li>
-<li>`\kern &lt;len&gt;` inserts a skip of `&lt;len&gt;` (may be negative) in text or math mode (a plain TeX skip);</li>
-<li>`\hskip &lt;len&gt;` (similar to `\kern`);</li>
-<li>`\hspace{&lt;len&gt;}` inserts a space of length `&lt;len&gt;` (may be negative) in math or text mode (a LaTeX `\hskip`);</li>
-<li>`\hphantom{&lt;stuff&gt;}` inserts space of length equivalent to `&lt;stuff&gt;` in math or text mode. Should be `\protect`ed when used in fragile commands (like `\caption` and sectional headings);</li>
+<li>`\kern <len>` inserts a skip of `<len>` (may be negative) in text or math mode (a plain TeX skip);</li>
+<li>`\hskip <len>` (similar to `\kern`);</li>
+<li>`\hspace{<len>}` inserts a space of length `<len>` (may be negative) in math or text mode (a LaTeX `\hskip`);</li>
+<li>`\hphantom{<stuff>}` inserts space of length equivalent to `<stuff>` in math or text mode. Should be `\protect`ed when used in fragile commands (like `\caption` and sectional headings);</li>
 <li>`\ `&nbsp;inserts what is called a "control space" (in text or math mode);</li>
 <li>` ` inserts an inter-word space in text mode (and is gobbled in math mode). Similarly for `\space` and `{ }`.</li>
-<li>`~`&nbsp;inserts an "unbreakable" space (similar to an HTML `&amp;nbsp;`) (in text or math mode);</li>
+<li>`~`&nbsp;inserts an "unbreakable" space (similar to an HTML `&nbsp;`) (in text or math mode);</li>
 <li>`\hfill` inserts a so-called "rubber length" or stretch between elements (in text or math mode). Note that you may need to provide a type of anchor to fill from/to; see <a href="https://tex.stackexchange.com/q/45948/5764">What is the difference between `\hspace*{\fill}` and `\hfill`?</a>; </li>
 </ol>
 
@@ -344,44 +344,44 @@ Your usage <em>should</em> work in <em>math mode</em>, so try `$\:$`.
 There are a number of horizontal spacing macros for LaTeX:
 
 \begin{tabular}{lp{5cm}}
-  \verb|a\,b|                    &amp; a\,b \\
-  \verb|$a\,b$|                  &amp; $a\,b$ \\
-  \verb|a\thinspace b|           &amp; a\thinspace b \\
-  \verb|$a\thinspace b$|         &amp; $a\thinspace b$ \\
-  \verb|$a\!b$|                  &amp; $a\!b$ \\
-  \verb|$a\mkern-\thinmuskip b$| &amp; $a\mkern-\thinmuskip b$ \\
-  \verb|$a\&gt;b$|                  &amp; $a\&gt;b$ \\
-  \verb|$a\mkern\medmuskip b$|   &amp; $a\mkern\medmuskip b$ \\
-  \verb|$a\;b$|                  &amp; $a\;b$ \\
-  \verb|$a\mkern\thickmuskip b$| &amp; $a\mkern\thickmuskip b$ \\
-  \verb|$a\:b$|                  &amp; $a\:b$ \\
-  \verb|$a\mkern\medmuskip b$|   &amp; $a\mkern\medmuskip b$ \\
-  \verb|a\enspace b|             &amp; a\enspace b \\
-  \verb|$a\enspace b$|           &amp; $a\enspace b$ \\
-  \verb|a\quad b|                &amp; a\quad b \\
-  \verb|$a\quad b$|              &amp; $a\quad b$ \\
-  \verb|a\qquad b|               &amp; a\qquad b \\
-  \verb|$a\qquad b$|             &amp; $a\qquad b$ \\
-  \verb|a\hskip 1em b|           &amp; a\hskip 1em b \\
-  \verb|$a\hskip 1em b$|         &amp; $a\hskip 1em b$ \\
-  \verb|a\kern 1pc b|            &amp; a\kern 1pc b \\
-  \verb|$a\kern 1pc b$|          &amp; $a\kern 1pc b$ \\
-  \verb|a\hspace{35pt}b|         &amp; a\hspace{35pt}b \\
-  \verb|$a\hspace{35pt}b$|       &amp; $a\hspace{35pt}b$ \\
-  \verb|axyzb|                   &amp; axyzb \\
-  \verb|a\hphantom{xyz}b|        &amp; a\hphantom{xyz}b \\
-  \verb|$axyzb$|                 &amp; $axyzb$ \\
-  \verb|$a\hphantom{xyz}b$|      &amp; $a\hphantom{xyz}b$ \\
-  \verb|a{ }b|                   &amp; a{ }b \\
-  \verb|$a{ }b$|                 &amp; $a{ }b$ \\
-  \verb|a\space b|               &amp; a\space b \\
-  \verb|$a\space b$|             &amp; $a\space b$ \\
-  \verb|a\ b|                    &amp; a\ b \\
-  \verb|$a\ b$|                  &amp; $a\ b$ \\
-  \verb|a~b|                     &amp; a~b \\
-  \verb|$a~b$|                   &amp; $a~b$ \\
-  \verb|a\hfill b|               &amp; a\hfill b \\
-  \verb|$a\hfill b$|             &amp; $a\hfill b$
+  \verb|a\,b|                    & a\,b \\
+  \verb|$a\,b$|                  & $a\,b$ \\
+  \verb|a\thinspace b|           & a\thinspace b \\
+  \verb|$a\thinspace b$|         & $a\thinspace b$ \\
+  \verb|$a\!b$|                  & $a\!b$ \\
+  \verb|$a\mkern-\thinmuskip b$| & $a\mkern-\thinmuskip b$ \\
+  \verb|$a\>b$|                  & $a\>b$ \\
+  \verb|$a\mkern\medmuskip b$|   & $a\mkern\medmuskip b$ \\
+  \verb|$a\;b$|                  & $a\;b$ \\
+  \verb|$a\mkern\thickmuskip b$| & $a\mkern\thickmuskip b$ \\
+  \verb|$a\:b$|                  & $a\:b$ \\
+  \verb|$a\mkern\medmuskip b$|   & $a\mkern\medmuskip b$ \\
+  \verb|a\enspace b|             & a\enspace b \\
+  \verb|$a\enspace b$|           & $a\enspace b$ \\
+  \verb|a\quad b|                & a\quad b \\
+  \verb|$a\quad b$|              & $a\quad b$ \\
+  \verb|a\qquad b|               & a\qquad b \\
+  \verb|$a\qquad b$|             & $a\qquad b$ \\
+  \verb|a\hskip 1em b|           & a\hskip 1em b \\
+  \verb|$a\hskip 1em b$|         & $a\hskip 1em b$ \\
+  \verb|a\kern 1pc b|            & a\kern 1pc b \\
+  \verb|$a\kern 1pc b$|          & $a\kern 1pc b$ \\
+  \verb|a\hspace{35pt}b|         & a\hspace{35pt}b \\
+  \verb|$a\hspace{35pt}b$|       & $a\hspace{35pt}b$ \\
+  \verb|axyzb|                   & axyzb \\
+  \verb|a\hphantom{xyz}b|        & a\hphantom{xyz}b \\
+  \verb|$axyzb$|                 & $axyzb$ \\
+  \verb|$a\hphantom{xyz}b$|      & $a\hphantom{xyz}b$ \\
+  \verb|a{ }b|                   & a{ }b \\
+  \verb|$a{ }b$|                 & $a{ }b$ \\
+  \verb|a\space b|               & a\space b \\
+  \verb|$a\space b$|             & $a\space b$ \\
+  \verb|a\ b|                    & a\ b \\
+  \verb|$a\ b$|                  & $a\ b$ \\
+  \verb|a~b|                     & a~b \\
+  \verb|$a~b$|                   & $a~b$ \\
+  \verb|a\hfill b|               & a\hfill b \\
+  \verb|$a\hfill b$|             & $a\hfill b$
 \end{tabular}
 
 \end{document}
@@ -405,7 +405,7 @@ In my experience, there is no single best way. Therefore Table 528 on page 225 o
 <a href="https://i.stack.imgur.com/CASHM.png" rel="noreferrer"><img src="https://i.stack.imgur.com/CASHM.png" alt="bold math sym"></a>  
 
 #### Answer 3 (score 54)
-With <a href="http://www.ctan.org/pkg/unicode-math">`unicode-math`</a> you can use `\symbf{&lt;characters&gt;}` which works for both Greek and Latin letters. (In versions of `unicode-math` older than 0.8 the `\symXXX` macros didn't exist, but you could `\mathbf{&lt;characters&gt;}` directly.)  
+With <a href="http://www.ctan.org/pkg/unicode-math">`unicode-math`</a> you can use `\symbf{<characters>}` which works for both Greek and Latin letters. (In versions of `unicode-math` older than 0.8 the `\symXXX` macros didn't exist, but you could `\mathbf{<characters>}` directly.)  
 
 Compile with `xelatex` or `lualatex`.  
 
@@ -521,7 +521,7 @@ Where the letters accompanying the elements are subscripts '11 12 13' etc. I tri
 ```tex
     $$
     \begin{bmatrix} 
-    x_{11}&amp;x_{12}&amp;x_{13}&amp;.&amp;.&amp;.&amp;.&amp;x_{1n}
+    x_{11}&x_{12}&x_{13}&.&.&.&.&x_{1n}
 ```
 
 And so on in similar fashion. I get errors when I use the above method and I know its amateurish. Can you please tell me how to get it done the right way? I even tried including '\' for the periods. Thanks in advance.  
@@ -535,17 +535,17 @@ You must read at least <a href="http://texdoc.net/texmf-dist/doc/latex/lshort-en
 \begin{document}
 \[
 \begin{bmatrix}
-    x_{11}       &amp; x_{12} &amp; x_{13} &amp; \dots &amp; x_{1n} \\
-    x_{21}       &amp; x_{22} &amp; x_{23} &amp; \dots &amp; x_{2n} \\
+    x_{11}       & x_{12} & x_{13} & \dots & x_{1n} \\
+    x_{21}       & x_{22} & x_{23} & \dots & x_{2n} \\
     \hdotsfor{5} \\
-    x_{d1}       &amp; x_{d2} &amp; x_{d3} &amp; \dots &amp; x_{dn}
+    x_{d1}       & x_{d2} & x_{d3} & \dots & x_{dn}
 \end{bmatrix}
 =
 \begin{bmatrix}
-    x_{11} &amp; x_{12} &amp; x_{13} &amp; \dots  &amp; x_{1n} \\
-    x_{21} &amp; x_{22} &amp; x_{23} &amp; \dots  &amp; x_{2n} \\
-    \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-    x_{d1} &amp; x_{d2} &amp; x_{d3} &amp; \dots  &amp; x_{dn}
+    x_{11} & x_{12} & x_{13} & \dots  & x_{1n} \\
+    x_{21} & x_{22} & x_{23} & \dots  & x_{2n} \\
+    \vdots & \vdots & \vdots & \ddots & \vdots \\
+    x_{d1} & x_{d2} & x_{d3} & \dots  & x_{dn}
 \end{bmatrix}
 \]
 \end{document}
@@ -676,13 +676,13 @@ The fourth, fifth, and sixth row in the following shows why the commands may dif
   \Huge
   \begin{tabular}{lll}
     \toprule
-    \verb|\textbf{fluff} hair|    &amp; \textbf{fluff} hair
-  \\\verb|{\bf fluff} hair|       &amp; {\bf fluff} hair
-  \\\verb|{\bfseries fluff} hair| &amp; {\bfseries fluff} hair
+    \verb|\textbf{fluff} hair|    & \textbf{fluff} hair
+  \\\verb|{\bf fluff} hair|       & {\bf fluff} hair
+  \\\verb|{\bfseries fluff} hair| & {\bfseries fluff} hair
   \\\midrule
-    \verb|\textit{fluff} hair|    &amp; \textit{fluff} hair
-  \\\verb|{\itshape fluff} hair|  &amp; {\itshape fluff} hair
-  \\\verb|{\it fluff} hair|       &amp; {\it fluff} hair
+    \verb|\textit{fluff} hair|    & \textit{fluff} hair
+  \\\verb|{\itshape fluff} hair|  & {\itshape fluff} hair
+  \\\verb|{\it fluff} hair|       & {\it fluff} hair
   \\\bottomrule
   \end{tabular}
 \end{document}
@@ -693,7 +693,7 @@ The fourth, fifth, and sixth row in the following shows why the commands may dif
 #### Answer 3 (score 51)
 First of all you should not use the obsolete `\bf` or `\it` macros from LaTeX2.0. They do not use the new font selection scheme (NFSS) of LaTeX2e. So `\bf` will do bold and bold only, but will not mix with an italic setting, which makes bold-italic impossible. Use the new `\bfseries` macro instead.  
 
-There is not much practical difference between `\textbf{&lt;content&gt;}` and `{\bfseries &lt;content&gt;}`. I would say most people use (for short texts) the first usage because it follows the common `\somemacro{&lt;content&gt;}` LaTeX style. The latter should be used if you want to make the rest of an environment/group bold, of course.  
+There is not much practical difference between `\textbf{<content>}` and `{\bfseries <content>}`. I would say most people use (for short texts) the first usage because it follows the common `\somemacro{<content>}` LaTeX style. The latter should be used if you want to make the rest of an environment/group bold, of course.  
 
 <p>You should note that `\textbf` uses `\bfseries` internal, so the latter is a more fundamental macro. 
 The definition of `\textbf` is:</p>
@@ -715,7 +715,7 @@ It also adds checks for italic correction before and after the content, which is
 
 One benefit of `\bfseries` is that it doesn't read the content as an argument, which would interfere with catcode changes required by verbatim content and other special code.  
 
-In summary I recommend `\textbf` for smaller texts, mainly because of the italic correction, and in math mode. `\bfseries` is IMHO more intended for environments and larger texts. One notable exception is if you have bold and italic (etc.) combinations, then you could write `\textit{\bfseries &lt;content&gt;}`, to avoid two sets of braces, but this is more a fashion choice. You should not use `\bf` in modern LaTeX documents.  
+In summary I recommend `\textbf` for smaller texts, mainly because of the italic correction, and in math mode. `\bfseries` is IMHO more intended for environments and larger texts. One notable exception is if you have bold and italic (etc.) combinations, then you could write `\textit{\bfseries <content>}`, to avoid two sets of braces, but this is more a fashion choice. You should not use `\bf` in modern LaTeX documents.  
 
 </b> </em> </i> </small> </strong> </sub> </sup>
 
@@ -793,8 +793,8 @@ The corresponding source code is as follows:
 (iii).Use \emph{split} to split equations with alignment
 \begin{equation}
 \begin{split}
-1+2+3+4+8x+7 &amp; =1+2+3+4+4x+35 \\
-&amp; \Rightarrow x=7
+1+2+3+4+8x+7 & =1+2+3+4+4x+35 \\
+& \Rightarrow x=7
 \end{split}
 \end{equation}
 ```
@@ -828,8 +828,8 @@ Is it possible to get a `\neq` but with a vertical bar instead of a slanted one?
 \\usepackage{amsmath}
 \begin{document}
 \begin{align*}
-a&amp;\gvertneqq b\\
-C&amp;\neq \varnothing
+a&\gvertneqq b\\
+C&\neq \varnothing
 \end{align*}
 \end{document}
 ```
@@ -867,7 +867,7 @@ Example file:
   % #2: symbol (=, ...)
   \sbox0{\raisebox{\depth}{$#1\neq$}}%
   \sbox2{\raisebox{\depth}{$#1|\m@th$}}%
-  \ifdim\ht2&gt;\ht0 %
+  \ifdim\ht2>\ht0 %
     \sbox2{\resizebox{\vneqxscale\width}{\vneqyscale\ht0}{\\unhbox2}}%
   \fi
   \sbox2{$\m@th#1\vcenter{\copy2}$}%
@@ -1011,9 +1011,9 @@ Yes:
 \newcommand\vneq{\mathrel{\ooalign{$=$\cr\hidewidth$|$\hidewidth\cr}}}
 \begin{document}
 \begin{align*}
-a&amp;\gvertneqq b\\
-C&amp;\neq \varnothing \\
-d&amp;\vneq f
+a&\gvertneqq b\\
+C&\neq \varnothing \\
+d&\vneq f
 \end{align*}
 \end{document}
 ```
@@ -1084,9 +1084,9 @@ Of course, this has to align with other syntactical TeX structures in you docume
 \drafttrue % or \draftfalse
 
 \ifdraft
-&lt;only shown in draft mode&gt;
+<only shown in draft mode>
 \else 
-&lt;only shown in non-draft mode&gt;
+<only shown in non-draft mode>
 \fi
 ```
 
@@ -1117,7 +1117,7 @@ example."</p>
 I need to display the symbol '^'  
 
 ```tex
-d &lt;- dist(fascores, method = "euclidean")^2
+d <- dist(fascores, method = "euclidean")^2
 ```
 
 How do I do that?  
@@ -1147,7 +1147,7 @@ How do I do that?
 <li><p>`\verb!^!`:</p>
 
 ```tex
-\verb!d &lt;- dist(fascores, method = "euclidean")^2!
+\verb!d <- dist(fascores, method = "euclidean")^2!
 ```
 </li>
 </ul></li>
@@ -1162,15 +1162,15 @@ How do I do that?
 \\usepackage{upquote}% getting the right grave ` (and not ‘)!
 \begin{document}
 \begin{tabular}{lcc}
-    Input                   &amp;       Text       &amp;                 Math                  \\ \hline
-    \verb|\string^|         &amp;     \string^     &amp;              $\string^$               \\
-    \verb|\char`\^|         &amp;     \char`\^     &amp;              $\char`\^$               \\
-    \verb|\verb!^!|         &amp;     \verb!^!     &amp;              $\verb!^!$               \\ \hline
-    \verb|\textasciicircum| &amp; \textasciicircum &amp;                  ---                  \\
-    \verb|\^{}|             &amp; \^{} (e.g. \^a)  &amp;                  ---                  \\ \hline
-    \verb|\hat{}|           &amp;       ---        &amp;       $\hat{}$ (e.g. $\hat a$)        \\
-    \verb|\wedge|           &amp;       ---        &amp;      $\wedge$ (e.g. $a\wedge b$)      \\
-    \verb|\widehat{}|       &amp;       ---        &amp; $\widehat{\ }$ (e.g. $\widehat{abc}$) \\
+    Input                   &       Text       &                 Math                  \\ \hline
+    \verb|\string^|         &     \string^     &              $\string^$               \\
+    \verb|\char`\^|         &     \char`\^     &              $\char`\^$               \\
+    \verb|\verb!^!|         &     \verb!^!     &              $\verb!^!$               \\ \hline
+    \verb|\textasciicircum| & \textasciicircum &                  ---                  \\
+    \verb|\^{}|             & \^{} (e.g. \^a)  &                  ---                  \\ \hline
+    \verb|\hat{}|           &       ---        &       $\hat{}$ (e.g. $\hat a$)        \\
+    \verb|\wedge|           &       ---        &      $\wedge$ (e.g. $a\wedge b$)      \\
+    \verb|\widehat{}|       &       ---        & $\widehat{\ }$ (e.g. $\widehat{abc}$) \\
 \end{tabular}
 \end{document}
 ```
@@ -1200,7 +1200,7 @@ I have some text in a table and I want to add a forced line break. I want to ins
 ```tex
 \begin{tabular}{|c|c|c|}
 \hline
-Foo bar &amp; Foo &lt;forced line break here&gt; bar &amp; Foo bar \\
+Foo bar & Foo <forced line break here> bar & Foo bar \\
 \hline
 \end{tabular}
 ```
@@ -1239,9 +1239,9 @@ So here is a demo:
   \begin{center}
     \begin{tabular}{ | c | c | c |}
       \hline
-      \thead{A Head} &amp; \thead{A Second \\ Head} &amp; \thead{A Third \\ Head} \\
+      \thead{A Head} & \thead{A Second \\ Head} & \thead{A Third \\ Head} \\
       \hline
-      Some text &amp;  \makecell{Some really \\ longer text}  &amp; Text text text  \\
+      Some text &  \makecell{Some really \\ longer text}  & Text text text  \\
       \hline
     \end{tabular}
   \end{center}
@@ -1257,7 +1257,7 @@ It's a quite old question, but I'll add my answer anyway, as the method I sugges
 ```tex
 \begin{tabular}{|c|c|c|}
 \hline
-Foo bar &amp; \begin{tabular}[x]{@{}c@{}}Foo\\bar\end{tabular} &amp; Foo bar \\
+Foo bar & \begin{tabular}[x]{@{}c@{}}Foo\\bar\end{tabular} & Foo bar \\
 \hline
 \end{tabular}
 ```
@@ -1274,9 +1274,9 @@ In case this is needed in more than a couple of places, it's better to define a 
 so the table line before can be one of  
 
 ```tex
-Foo bar &amp; \specialcell{Foo\\bar} &amp; Foo bar \\    % vertically centered
-Foo bar &amp; \specialcell[t]{Foo\\bar} &amp; Foo bar \\ % aligned with top rule
-Foo bar &amp; \specialcell[b]{Foo\\bar} &amp; Foo bar \\ % aligned with bottom rule
+Foo bar & \specialcell{Foo\\bar} & Foo bar \\    % vertically centered
+Foo bar & \specialcell[t]{Foo\\bar} & Foo bar \\ % aligned with top rule
+Foo bar & \specialcell[b]{Foo\\bar} & Foo bar \\ % aligned with bottom rule
 ```
 
 More variations are possible, for instance specifying also the horizontal alignment in the special cell.  
@@ -1290,8 +1290,8 @@ It really is no wonder why LaTeX is said to be complicated! Just look at your an
 \\usepackage{pbox}
 
 \begin{tabular}{|l|l|} \hline
-    \pbox{20cm}{This is the first \\ cell} &amp; second \\ \hline
-    3rd &amp; and the last cell \\ \hline
+    \pbox{20cm}{This is the first \\ cell} & second \\ \hline
+    3rd & and the last cell \\ \hline
 \end{tabular}
 ```
 
@@ -1488,9 +1488,9 @@ I want to break it to improve readability. How can I break it?</p>
 
 ```tex
 \begin{equation}
-F = \{F_{x} \in  F_{c} : (|S| &gt; |C|) \cap 
-(minPixels  &lt; |S| &lt; maxPixels) \cap 
-(|S_{conected}| &gt; |S| - \epsilon)
+F = \{F_{x} \in  F_{c} : (|S| > |C|) \cap 
+(minPixels  < |S| < maxPixels) \cap 
+(|S_{conected}| > |S| - \epsilon)
   \}
 \end{equation}
 ```
@@ -1503,9 +1503,9 @@ Use `split` environment provided by `amsmath` package.
 ```tex
 \begin{equation}
 \begin{split}
-F = \{F_{x} \in  F_{c} &amp;: (|S| &gt; |C|) \\
- &amp;\quad \cap (\text{minPixels}  &lt; |S| &lt; \text{maxPixels}) \\
- &amp;\quad \cap (|S_{\text{conected}}| &gt; |S| - \epsilon) \}
+F = \{F_{x} \in  F_{c} &: (|S| > |C|) \\
+ &\quad \cap (\text{minPixels}  < |S| < \text{maxPixels}) \\
+ &\quad \cap (|S_{\text{conected}}| > |S| - \epsilon) \}
 \end{split}
 \end{equation}
 ```
@@ -1515,9 +1515,9 @@ For simple multi-line equations without alignment, use the `multline` environmen
 
 ```tex
 \begin{multline}
-F = \{F_{x} \in  F_{c} : (|S| &gt; |C|) \cap 
-(minPixels  &lt; |S| &lt; maxPixels) \\ \cap 
-(|S_{conected}| &gt; |S| - \epsilon)
+F = \{F_{x} \in  F_{c} : (|S| > |C|) \cap 
+(minPixels  < |S| < maxPixels) \\ \cap 
+(|S_{conected}| > |S| - \epsilon)
   \}
 \end{multline}
 ```
@@ -1528,9 +1528,9 @@ The `aligned` environment from `amsmath` is also a good option:
 ```tex
 \begin{equation}
 \begin{aligned}
-F ={} &amp; \{F_{x} \in  F_{c} : (|S| &gt; |C|) \\
-      &amp; \cap (\mathrm{minPixels}  &lt; |S| &lt; \mathrm{maxPixels}) \\
-      &amp; \cap (|S_{\mathrm{conected}}| &gt; |S| - \epsilon)\}
+F ={} & \{F_{x} \in  F_{c} : (|S| > |C|) \\
+      & \cap (\mathrm{minPixels}  < |S| < \mathrm{maxPixels}) \\
+      & \cap (|S_{\mathrm{conected}}| > |S| - \epsilon)\}
 \end{aligned}
 \end{equation}
 ```
@@ -1658,7 +1658,7 @@ A fairly elementary way of stripping special meaning from things is to `\detoken
 \begin{document}
 \texttt{\detokenize{Samp_Dist_Corr}}
 
-\texttt{\detokenize{a@b\c_d&amp;e~f g}}
+\texttt{\detokenize{a@b\c_d&e~f g}}
 \end{document}
 ```
 
@@ -1687,7 +1687,7 @@ There are two different commands to incorporate another file into the source of 
 
 <h5>Long answer:</h3>
 
-The `\input{&lt;filename&gt;}` macro makes LaTeX to process the content of the given file basically the same way as if it would be written at the same place as `\input`. The LaTeX version of `\input` only does some sanity checks and then uses the TeX `\input` primitive which got renamed to `\@@input` by LaTeX.  
+The `\input{<filename>}` macro makes LaTeX to process the content of the given file basically the same way as if it would be written at the same place as `\input`. The LaTeX version of `\input` only does some sanity checks and then uses the TeX `\input` primitive which got renamed to `\@@input` by LaTeX.  
 
 Mentionable properties of `\input` are:  
 
@@ -1700,7 +1700,7 @@ You can use `\input` inside a file which is read using `\input`.</li>
 You don't have to worry about any side effects, but don't get any extra features.</li>
 </ul>
 
-The `\include{&lt;filename&gt;}` macro is bigger and is supposed to be used with bigger amounts of content, like chapters, which people might like to compile on their own during the editing process.  
+The `\include{<filename>}` macro is bigger and is supposed to be used with bigger amounts of content, like chapters, which people might like to compile on their own during the editing process.  
 
 `\include` does basically the following thing:  
 
@@ -2228,11 +2228,11 @@ I have the following table:
 \begin{tikzpicture}
 \node (table) [inner sep=0pt] {
 \begin{tabular}{ l | l }
-  {\bf Symptom} &amp; {\bf Metric} \\
+  {\bf Symptom} & {\bf Metric} \\
 \hline
-Class that has many accessor methods and accesses a lot of external data &amp; ATFD is more than a few\\
-Class that is large and complex &amp; WMC is high\\
-Class that has a lot of methods that only operate on a proper subset of the instance variable set &amp; TCC is low\\
+Class that has many accessor methods and accesses a lot of external data & ATFD is more than a few\\
+Class that is large and complex & WMC is high\\
+Class that has a lot of methods that only operate on a proper subset of the instance variable set & TCC is low\\
 \end{tabular}
 };
 \draw [rounded corners=.5em] (table.north west) rectangle (table.south east);
@@ -2253,15 +2253,15 @@ Example:
 \\usepackage{tabularx} % in the preamble
 % ....
 \begin{tabularx}{\textwidth}{X|l}
-  \textbf{Symptom} &amp; \textbf{Metric} \\
+  \textbf{Symptom} & \textbf{Metric} \\
 \hline
-Class that has many accessor methods and accesses a lot of external data &amp; ATFD is more than a few\\
-Class that is large and complex &amp; WMC is high\\
-Class that has a lot of methods that only operate on a proper subset of the instance variable set &amp; TCC is low\\
+Class that has many accessor methods and accesses a lot of external data & ATFD is more than a few\\
+Class that is large and complex & WMC is high\\
+Class that has a lot of methods that only operate on a proper subset of the instance variable set & TCC is low\\
 \end{tabularx}
 ```
 
-In general it is also possible to set the width of a column using `p{&lt;width&gt;}` instead of `l` as column type. Then it will be formatted as a paragraph and can include line breaks. Replace `&lt;width&gt;` with the required width.   
+In general it is also possible to set the width of a column using `p{<width>}` instead of `l` as column type. Then it will be formatted as a paragraph and can include line breaks. Replace `<width>` with the required width.   
 
 #### Answer 2 (score 123)
 Just to mention an additional method: the `tabular*` environment. Suppose you have a table with 6 center-aligned columns. You can force it to take up the full width of the textblock by setting it up as follows:  
@@ -2288,13 +2288,13 @@ One can use <a href="http://www.ctan.org/pkg/tabu" rel="nofollow noreferrer">`ta
 \begin{document}
 \begin{tabu} to \textwidth {XXXX}
    \toprule
-   xx &amp; 1 &amp; 2 &amp; 3 \\
+   xx & 1 & 2 & 3 \\
    \bottomrule
 \end{tabu}
 \end{document}
 ```
 
-`tabu` comes with the new column type `X` which sets its width automatically. It has an optional argument taking `l`, `r`, `c` to adjust the alignment inside the cell or a numer to set uneven widths of columns. For example two columns, the first on right, the second one left aligned and twice the width of the first one, will be `X[r]X[2]` (`l` and `1` will be set by default). The part between `to` and `{&lt;cols&gt;}` can be any width, and the full part can be omitted to, i.e. `\begin{tabu}{&lt;cols&gt;}`.  
+`tabu` comes with the new column type `X` which sets its width automatically. It has an optional argument taking `l`, `r`, `c` to adjust the alignment inside the cell or a numer to set uneven widths of columns. For example two columns, the first on right, the second one left aligned and twice the width of the first one, will be `X[r]X[2]` (`l` and `1` will be set by default). The part between `to` and `{<cols>}` can be any width, and the full part can be omitted to, i.e. `\begin{tabu}{<cols>}`.  
 
 `tabu` is compatible with `longtable` with the new environment `{longtabu}`.  
 
@@ -2317,7 +2317,7 @@ Adding <a href="http://www.ctan.org/pkg/showframe" rel="nofollow noreferrer">`sh
 \noindent
 \begin{tabu} to \textwidth {XXXX}
    \toprule
-   xx &amp; 1 &amp; 2 &amp; 3 \\
+   xx & 1 & 2 & 3 \\
    \bottomrule
 \end{tabu}
 \end{document}
@@ -2521,10 +2521,10 @@ I found that exporting the BibTeX file with character encoding as "Unicode (UTF-
 <a href="http://en.wikipedia.org/wiki/Interpunct#In_mathematics_and_science" rel="noreferrer">Wikipedia lists several dot characters in Unicode</a>.  These are the ones that are ambiguous to me:  
 
 <ul>
-<li>interpunct, middle dot (&middot;)   `&amp;middot;`   `&amp;#183;`   `U+00B7`   "midpoint (in typography)"</li>
-<li>dot operator (&sdot;)     `&amp;sdot;`    `&amp;#8901;`   `U+22C5`</li>
-<li>bullet operator (&#8729;)   `&amp;#8729;`   `U+2219`   "(mathematics)"</li>
-<li>bullet (&bull;)   `&amp;bull;`   `&amp;#8226;`   `U+2022`   "black small circle" "often used to mark list items"</li>
+<li>interpunct, middle dot (&middot;)   `&middot;`   `&#183;`   `U+00B7`   "midpoint (in typography)"</li>
+<li>dot operator (&sdot;)     `&sdot;`    `&#8901;`   `U+22C5`</li>
+<li>bullet operator (&#8729;)   `&#8729;`   `U+2219`   "(mathematics)"</li>
+<li>bullet (&bull;)   `&bull;`   `&#8226;`   `U+2022`   "black small circle" "often used to mark list items"</li>
 </ul>
 
 I'm mostly interested in the Unicode characters, but <a href="https://math.stackexchange.com/questions/39637/which-dot-character-to-use-in-which-context">Math.SE told me to try here</a>, and LaTeX likewise has:  
@@ -2550,7 +2550,7 @@ For example:
 <li>Wikipedia notates chemistry hydrates like "CuSO4 · 5H2O", which uses the "middle dot" character.</li>
 <li>Combined units can also be written with a dot, like "N·m".  Wikipedia uses a "middle dot" for this, not the "dot operator".</li>
 <li><a href="http://www.cs.tut.fi/~jkorpela/chars/si.html#mult" rel="noreferrer">Characters in SI notations</a> has a paragraph on combined units, seeming to say that dot operator is preferred for this, like "N⋅m".</li>
-<li><a href="http://www.wolframalpha.com/input/?i=%5Ccdot" rel="noreferrer">Wolfram Alpha considers</a> `\cdot` and `&amp;middot;` to be equivalent, as well as `\bullet` and `&amp;bull;`.  Valid?</li>
+<li><a href="http://www.wolframalpha.com/input/?i=%5Ccdot" rel="noreferrer">Wolfram Alpha considers</a> `\cdot` and `&middot;` to be equivalent, as well as `\bullet` and `&bull;`.  Valid?</li>
 </ul>
 
 Of course it's pedantic, they all look the same, and the meaning can always be assumed from context, but I'd like to know, once and for all, which Unicode/HTML and LaTeX characters are <em>semantically</em> correct in each application?  
@@ -2741,11 +2741,11 @@ I have a table that I would like to put the Title above and a caption below. Int
 \begin {table}[H]
 \caption {Table Title} \label{tab:title} 
 \begin{center}
-\begin{tabular}{ &gt;{\centering\arraybackslash}m{1.25in}  &gt;{\centering\arraybackslash}m{.85in} &gt;{\centering\arraybackslash}m{.75in} &gt;{\centering\arraybackslash}m{.75in} &gt;{\centering\arraybackslash}m{.75in} &gt;{\centering\arraybackslash}m{.75in}}
+\begin{tabular}{ >{\centering\arraybackslash}m{1.25in}  >{\centering\arraybackslash}m{.85in} >{\centering\arraybackslash}m{.75in} >{\centering\arraybackslash}m{.75in} >{\centering\arraybackslash}m{.75in} >{\centering\arraybackslash}m{.75in}}
 \toprule[1.5pt]
-{\bf Variable Name} &amp; {\bf Regression 1} &amp; {\bf Mean} &amp; {\bf Std. Dev} &amp; {\bf Min} &amp; {\bf Max}\\ 
+{\bf Variable Name} & {\bf Regression 1} & {\bf Mean} & {\bf Std. Dev} & {\bf Min} & {\bf Max}\\ 
 \midrule
-text        &amp;  text     &amp; text      &amp;  text     &amp;  text     &amp;text\\
+text        &  text     & text      &  text     &  text     &text\\
 
 \bottomrule[1.25pt]
 \end {tabular}
@@ -2776,7 +2776,7 @@ Use default text for the second "caption". However,you shouldn't use the table e
 \\usepackage[T1]{fontenc}
 \\usepackage[utf8]{inputenc}
 \\usepackage{tabularx,ragged2e,booktabs,caption}
-\newcolumntype{C}[1]{&gt;{\Centering}m{#1}}
+\newcolumntype{C}[1]{>{\Centering}m{#1}}
 \renewcommand\tabularxcolumn[1]{C{#1}}
 \begin{document}
 
@@ -2784,8 +2784,8 @@ Use default text for the second "caption". However,you shouldn't use the table e
 \centering
 \captionof{table}{Table Title} \label{tab:title} 
 \begin{tabular}{ C{1.25in} C{.85in} *4{C{.75in}}}\toprule[1.5pt]
-\bf Variable Name &amp; \bf Regression 1 &amp; \bf Mean &amp; \bf Std. Dev &amp; \bf Min &amp; \bf Max\\\midrule
-text        &amp;  text     &amp; text      &amp;  text     &amp;  text     &amp;text\\
+\bf Variable Name & \bf Regression 1 & \bf Mean & \bf Std. Dev & \bf Min & \bf Max\\\midrule
+text        &  text     & text      &  text     &  text     &text\\
 \bottomrule[1.25pt]
 \end {tabular}\par
 \bigskip
@@ -2797,8 +2797,8 @@ Should be a caption
 \centering
 \captionof{table}{Table Title} \label{tab:title2} 
 \begin{tabularx}{\linewidth}{@{} C{1in} C{.85in} *4X @{}}\toprule[1.5pt]
-\bf Variable Name &amp; \bf Regression 1 &amp; \bf Mean &amp; \bf Std. Dev &amp; \bf Min &amp; \bf Max\\\midrule
-text        &amp;  text     &amp; text      &amp;  text     &amp;  text     &amp;text\\
+\bf Variable Name & \bf Regression 1 & \bf Mean & \bf Std. Dev & \bf Min & \bf Max\\\midrule
+text        &  text     & text      &  text     &  text     &text\\
 \bottomrule[1.25pt]
 \end {tabularx}\par
 \bigskip
@@ -2831,11 +2831,11 @@ You can simply add text within the table environment to make it appear as a capt
 \begin {table}[H]
  \caption {Table Title} \label{tab:title} 
  \begin{center}
-  \begin{tabular}{ &gt;{\centering\arraybackslash}m{1.25in}  &gt;{\centering\arraybackslash}m{.85in} &gt;{\centering\arraybackslash}m{.75in} &gt;{\centering\arraybackslash}m{.75in} &gt;{\centering\arraybackslash}m{.75in} &gt;{\centering\arraybackslash}m{.75in}}
+  \begin{tabular}{ >{\centering\arraybackslash}m{1.25in}  >{\centering\arraybackslash}m{.85in} >{\centering\arraybackslash}m{.75in} >{\centering\arraybackslash}m{.75in} >{\centering\arraybackslash}m{.75in} >{\centering\arraybackslash}m{.75in}}
    \toprule[1.5pt]
-{\bf Variable Name} &amp; {\bf Regression 1} &amp; {\bf Mean} &amp; {\bf Std. Dev} &amp; {\bf Min} &amp; {\bf Max}\\ 
+{\bf Variable Name} & {\bf Regression 1} & {\bf Mean} & {\bf Std. Dev} & {\bf Min} & {\bf Max}\\ 
    \midrule
-   text        &amp;  text     &amp; text      &amp;  text     &amp;  text     &amp;text\\
+   text        &  text     & text      &  text     &  text     &text\\
   \bottomrule[1.25pt]
   \end {tabular}
   \\[1.5] %You can adjust how far below the table the text should appear
@@ -2947,7 +2947,7 @@ Emacs is one of the oldest programmable editors, which has basic support for TeX
 
 (In this screenshot, `visual-line-mode` is enabled. In this mode, lines that are wider than the window are broken between words. The line breaks are not added to the source file.)  
 
-<a href="http://www.gnu.org/software/auctex/reftex.html" rel="noreferrer">RefTeX</a> is another plugin to Emacs, independent from and complementary to AUCTeX, which aids you with the management of bibliographic sources.  It makes all your references as easy to find as a `C-c &lt;key&gt;`, for both BibTeX and `biblatex`, and also provides convenient shortcuts for navigating between sections in your document, bound by default to `C-c =`:  
+<a href="http://www.gnu.org/software/auctex/reftex.html" rel="noreferrer">RefTeX</a> is another plugin to Emacs, independent from and complementary to AUCTeX, which aids you with the management of bibliographic sources.  It makes all your references as easy to find as a `C-c <key>`, for both BibTeX and `biblatex`, and also provides convenient shortcuts for navigating between sections in your document, bound by default to `C-c =`:  
 
 <p><img src="https://i.stack.imgur.com/24Toa.png" alt="Screenshot featuring RefTeX&#39;s outliner">
 (Note that colour themes are completely customizable)</p>
@@ -3203,9 +3203,9 @@ I can compile this table separately but when I want to compile the whole file, i
 \begin{center}
 \begin{tabular}{|c|c|c|c|p{1cm}p{1cm}p{1cm}p{1cm}p{1cm}p{1cm}p{1cm}|}
 \hline
-A &amp; B &amp; C &amp; D &amp; \multicolumn{7}{|c|}{F}  \\ \hline
-\multirow{ 2}{}{1} &amp; 0 &amp; 6 &amp; 230 &amp; 35 &amp; 40 &amp; 55 &amp; 25 &amp; 40 &amp; 35 &amp; \\
-&amp; 1 &amp; 5 &amp; 195 &amp; 25 &amp; 50 &amp; 35 &amp; 40 &amp; 45 &amp;  &amp;  \\ \hline
+A & B & C & D & \multicolumn{7}{|c|}{F}  \\ \hline
+\multirow{ 2}{}{1} & 0 & 6 & 230 & 35 & 40 & 55 & 25 & 40 & 35 & \\
+& 1 & 5 & 195 & 25 & 50 & 35 & 40 & 45 &  &  \\ \hline
 \end{tabular}
 \end{center}
 \label{table2}
@@ -3225,9 +3225,9 @@ There are some errors in your code; you need to give a second argument to `\mult
 \centering
 \begin{tabular}{|c|c|c|c|p{1cm}p{1cm}p{1cm}p{1cm}p{1cm}p{1cm}p{1cm}|}
 \hline
-A &amp; B &amp; C &amp; D &amp; \multicolumn{7}{|c|}{F}  \\ \hline
-\multirow{ 2}{*}{1} &amp; 0 &amp; 6 &amp; 230 &amp; 35 &amp; 40 &amp; 55 &amp; 25 &amp; 40 &amp; 35 &amp; \\
-&amp; 1 &amp; 5 &amp; 195 &amp; 25 &amp; 50 &amp; 35 &amp; 40 &amp; 45 &amp;  &amp;  \\ \hline
+A & B & C & D & \multicolumn{7}{|c|}{F}  \\ \hline
+\multirow{ 2}{*}{1} & 0 & 6 & 230 & 35 & 40 & 55 & 25 & 40 & 35 & \\
+& 1 & 5 & 195 & 25 & 50 & 35 & 40 & 45 &  &  \\ \hline
 \end{tabular}
 \caption{A test caption}
 \label{table2}
@@ -3256,7 +3256,7 @@ The command `\tab` exists, but it produces quite a large space.  It also require
 
 Alternative options are `\quad` and `\qquad`; the space produced is probably more what you are looking to create.  These commands do not require extra packages and can be stacked (e.g. `Stuff Over Here \quad \quad \quad More Stuff Over Here`) if needed.    
 
-You might also want to try using either `$\&gt;$` or `$\-$`.  Neither command requires any extra packages, but both must be in math mode.  Although neither command by itself gives a large space like `\tab` does, the space produced is small.  However, you can stack the commands in order to get the spacing you want.    
+You might also want to try using either `$\>$` or `$\-$`.  Neither command requires any extra packages, but both must be in math mode.  Although neither command by itself gives a large space like `\tab` does, the space produced is small.  However, you can stack the commands in order to get the spacing you want.    
 
 Hope this helps.    
 
@@ -3372,7 +3372,7 @@ I am editing a LaTeX paper with Emacs. Sometimes I want to make a block of texts
 By the way, besides changing color, are there other ways to easily make a block of texts look less important?  
 
 #### Answer accepted (score 246)
-You can use the `xcolor` package. It provides `\textcolor{&lt;color&gt;}{&lt;text&gt;}` as well as `\color{&lt;color&gt;}` to switch the color for some give text or until the end of the group/environment. You can get different shades of gray by using `black!x` as a color where `x` is a number from 0 to 100, taken as a percentage.  
+You can use the `xcolor` package. It provides `\textcolor{<color>}{<text>}` as well as `\color{<color>}` to switch the color for some give text or until the end of the group/environment. You can get different shades of gray by using `black!x` as a color where `x` is a number from 0 to 100, taken as a percentage.  
 
 ```tex
 \\usepackage{xcolor}
@@ -3497,7 +3497,7 @@ Another option is to use the `\text{}` command provided by the `amsmath` package
 
 Having said that, I doubt that it's possible to have a single format that is "correct" for all possible requirements of leading and trailing spaces.  For instance, I think you'll find that your example looks better without the space before "number" but with the space after "Let."  
 
-If there's some reason that you really want to not have the space inside whatever text environment you choose, you can force a space in math mode using a single backslash followed by a space (i.e. `\&lt;space&gt;`).  For example,  
+If there's some reason that you really want to not have the space inside whatever text environment you choose, you can force a space in math mode using a single backslash followed by a space (i.e. `\<space>`).  For example,  
 
 ```tex
 \[ \text{Let}\ x=\text{number of cats}. \]
@@ -3621,7 +3621,7 @@ Using this, both images will be aligned on top:
 ### 44: Why do the less than symbol (<) and the greater than symbol (>) appear wrong as upside down exclamation (¡) or question mark (¿)? (score [481208](https://stackoverflow.com/q/2369) in 2013)
 
 #### Question
-When typing `&lt;` or `&gt;` in LaTeX and compiling with `pdflatex`, the less than and greater than symbols appear at upside down exclamation points. I'm not in math mode.   
+When typing `<` or `>` in LaTeX and compiling with `pdflatex`, the less than and greater than symbols appear at upside down exclamation points. I'm not in math mode.   
 
 #### Answer accepted (score 215)
 Geoffs tip with `\textless` and `\textgreater` will work well for you. However, you could type these symbols &lt; and > directly in your editor and they would be correctly printed if you use the recommended font encoding, Cork resp. T1:  
@@ -3646,7 +3646,7 @@ Or install the <a href="http://ctan.org/pkg/cm-super" rel="noreferrer">`cm-super
 Use `\textless` and `\textgreater`.  
 
 #### Answer 3 (score 18)
-What I usually do is just enter mathmode to type them, e.g. `This object is $&lt;$ that object`.  
+What I usually do is just enter mathmode to type them, e.g. `This object is $<$ that object`.  
 
 </b> </em> </i> </small> </strong> </sub> </sup>
 
@@ -3659,8 +3659,8 @@ I tried using the below code but it works only for 2⨉2 matrix.
  \[
    M=
   \left[ {\begin{array}{cc}
-   1 &amp; 2 \\
-   3 &amp; 4 \\
+   1 & 2 \\
+   3 & 4 \\
   \end{array} } \right]
 \]
 ```
@@ -3671,8 +3671,8 @@ Now the following doesn't work for me:
 \[
   M=
   \left[ {\begin{array}{cc}
-   1 &amp; 2 &amp; 3 &amp; 4 &amp; 5\\
-   3 &amp; 4 &amp; 5 &amp; 6 &amp; 7\\
+   1 & 2 & 3 & 4 & 5\\
+   3 & 4 & 5 & 6 & 7\\
   \end{array} } \right]
 \]
 ```
@@ -3703,8 +3703,8 @@ A better way to do it, as the TheHe meantioned, is with the `amsmath` package:
 \[
 M=
   \begin{bmatrix}
-    1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 \\
-    3 &amp; 4 &amp; 5 &amp; 6 &amp; 7
+    1 & 2 & 3 & 4 & 5 \\
+    3 & 4 & 5 & 6 & 7
   \end{bmatrix}
 \]
 
@@ -3714,7 +3714,7 @@ M=
 The `bmatrix` environment will give you `[]` braces. `()` braces are also very common. They are created with the `pmatrix` environment. To include a matrix inline, you can write:  
 
 ```tex
-$M = \left\[ \begin{smallmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{smallmatrix} \right\]$
+$M = \left\[ \begin{smallmatrix} 1 & 2 \\ 3 & 4 \end{smallmatrix} \right\]$
 ```
 
 #### Answer 3 (score 12)
@@ -3748,8 +3748,8 @@ How about this?
 \\usepackage{amssymb}
 \begin{document}
 \begin{tabular}{ll}
-Plain-\TeX{}:   &amp; ${\rm I\!R}$\\
-amssymb:        &amp; $\mathbb{R}$
+Plain-\TeX{}:   & ${\rm I\!R}$\\
+amssymb:        & $\mathbb{R}$
 \end{tabular}
 \end{document}
 ```
@@ -3838,9 +3838,9 @@ To clarify, I'm looking for a way to control both vertical and horizontal paddin
 ```tex
 \begin{tabular}{|l|l|}
     \hline
-    column 1 &amp; column 2 \\ 
+    column 1 & column 2 \\ 
     \hline
-    I really would like this less &amp; crammed\\
+    I really would like this less & crammed\\
     \hline
 \end{tabular}
 ```
@@ -3860,22 +3860,22 @@ right before and after the environment:</p>
 \egroup
 ```
 
-and also use column type `c` instead of  `l`, If you want more horizontal space between the columns then use `\setlength\tabcolsep{&lt;whatever length&gt;}`.  
+and also use column type `c` instead of  `l`, If you want more horizontal space between the columns then use `\setlength\tabcolsep{<whatever length>}`.  
 
 #### Answer 2 (score 271)
 <sub>The following suggestions are applicable to `tabular`- <em>and</em> `array`-like structures and for the most past applies to both text and math mode, including <a href="https://tex.stackexchange.com/q/26434/5764">`*matrix` environments</a>.</sub>  
 
 <h5>Vertical padding</h3>
 
-Vertical padding is possible in a global way using @Herbert's answer. That is, to redefine the array stretch factor `&lt;factor&gt;` using  
+Vertical padding is possible in a global way using @Herbert's answer. That is, to redefine the array stretch factor `<factor>` using  
 
 ```tex
-\renewcommand{\arraystretch}{&lt;factor&gt;}
+\renewcommand{\arraystretch}{<factor>}
 ```
 
 However, as the name suggests, this is a <em>factor</em> and not a <em>length</em>. So, it would be difficult to provide an adequate factor that would add (say) `15pt` above/below each row. There are other options available for this.   
 
-Vertical padding is also possible in a manual way or on a per-row basis using the optional parameter to end a `tabular` line; `\\[&lt;len&gt;]` where `&lt;len&gt;` is any familiar TeX length. A final alternative is to use the set the length `\extrarowheight` provided by the <a href="http://ctan.org/pkg/array" rel="noreferrer">`array` package</a>.  
+Vertical padding is also possible in a manual way or on a per-row basis using the optional parameter to end a `tabular` line; `\\[<len>]` where `<len>` is any familiar TeX length. A final alternative is to use the set the length `\extrarowheight` provided by the <a href="http://ctan.org/pkg/array" rel="noreferrer">`array` package</a>.  
 
 Here's an example showing the above three possibilities:  
 
@@ -3889,25 +3889,25 @@ Here's an example showing the above three possibilities:
 {\renewcommand{\arraystretch}{2}%
 \begin{tabular}{|l|l|}
   \hline
-  column 1 &amp; column 2 \\
+  column 1 & column 2 \\
   \hline
-  I really would like this less &amp; crammed \\
+  I really would like this less & crammed \\
   \hline
 \end{tabular}} \quad
 % =========== LENGTH approaches ===========
 \begin{tabular}{|l|l|}
   \hline
-  column 1 &amp; column 2 \\[4ex]
+  column 1 & column 2 \\[4ex]
   \hline
-  I really would like this less &amp; crammed \\[5pt]
+  I really would like this less & crammed \\[5pt]
   \hline
 \end{tabular} \quad
 {\setlength{\extrarowheight}{20pt}%
 \begin{tabular}{|l|l|}
   \hline
-  column 1 &amp; column 2 \\
+  column 1 & column 2 \\
   \hline
-  I really would like this less &amp; crammed \\
+  I really would like this less & crammed \\
   \hline
 \end{tabular}}
 \end{document}
@@ -3915,7 +3915,7 @@ Here's an example showing the above three possibilities:
 
 <img src="https://i.stack.imgur.com/gyhOk.png" alt="enter image description here">  
 
-Note how the "factor" approach is more evenly distributed than the "length" approaches. This is to be expected. However, these techniques can also be combined, if needed. Also, the use of `\\[&lt;len&gt;]` provides "bottom padding", while setting `\extrarowheight` adds "top padding". Finally, note the grouping within the example: `\renewcommand` and `\setlength` are made local by putting is inside `{...}`. That is, the value/length of `\arraystretch`/`\extrarowheight` revert back to the original value before resetting it at the end of the group.  
+Note how the "factor" approach is more evenly distributed than the "length" approaches. This is to be expected. However, these techniques can also be combined, if needed. Also, the use of `\\[<len>]` provides "bottom padding", while setting `\extrarowheight` adds "top padding". Finally, note the grouping within the example: `\renewcommand` and `\setlength` are made local by putting is inside `{...}`. That is, the value/length of `\arraystretch`/`\extrarowheight` revert back to the original value before resetting it at the end of the group.  
 
 <hr>
 
@@ -3933,7 +3933,7 @@ Similar approach to horizontal padding of columns exist. The use of <a href="htt
   accordingly.</p>
 </blockquote>
 
-A length-based approach could include a per-column addition of a separate length using the `@{...}` "column specifier". Also, modifying the length `\tabcolsep` (or `\arraycolsep` if you're working with an `array`) would do this for all columns, and is therefore more generic. Finally, the `array` package also provides a means for insert stuff before a column entry and after it using `&gt;{&lt;before&gt;}` and `&lt;{&lt;after&gt;}`. Here are some examples:  
+A length-based approach could include a per-column addition of a separate length using the `@{...}` "column specifier". Also, modifying the length `\tabcolsep` (or `\arraycolsep` if you're working with an `array`) would do this for all columns, and is therefore more generic. Finally, the `array` package also provides a means for insert stuff before a column entry and after it using `>{<before>}` and `<{<after>}`. Here are some examples:  
 
 ```tex
 \documentclass{article}
@@ -3943,9 +3943,9 @@ A length-based approach could include a per-column addition of a separate length
 % =========== FACTOR approach ===========
 \begin{tabular*}{500pt}{@{\extracolsep{\fill}}|l|l|}
   \hline
-  column 1 &amp; column 2 \\
+  column 1 & column 2 \\
   \hline
-  I really would like this less &amp; crammed \\
+  I really would like this less & crammed \\
   \hline
 \end{tabular*}
 
@@ -3954,27 +3954,27 @@ A length-based approach could include a per-column addition of a separate length
 % =========== LENGTH approaches ===========
 \begin{tabular}{|@{\hspace{2em}}l@{}|l@{\qquad}|}
   \hline
-  column 1 &amp; column 2 \\
+  column 1 & column 2 \\
   \hline
-  I really would like this less &amp; crammed \\
+  I really would like this less & crammed \\
   \hline
 \end{tabular} \quad
 {\setlength{\tabcolsep}{2em}
 \begin{tabular}{|l|l|}
   \hline
-  column 1 &amp; column 2 \\
+  column 1 & column 2 \\
   \hline
-  I really would like this less &amp; crammed \\
+  I really would like this less & crammed \\
   \hline
 \end{tabular}}
 
 \medskip
 
-\begin{tabular}{|&gt;{\hspace{1pc}}l|l&lt;{\hspace{-2pt}}|}
+\begin{tabular}{|>{\hspace{1pc}}l|l<{\hspace{-2pt}}|}
   \hline
-  column 1 &amp; column 2 \\
+  column 1 & column 2 \\
   \hline
-  I really would like this less &amp; crammed \\
+  I really would like this less & crammed \\
   \hline
 \end{tabular}
 \end{document}
@@ -3982,7 +3982,7 @@ A length-based approach could include a per-column addition of a separate length
 
 <img src="https://i.stack.imgur.com/nGqS9.png" alt="enter image description here">  
 
-Of course, if all columns should have the same specifier, using the "multiple column specifier" `*{&lt;num&gt;}{&lt;col spec&gt;}` is a better choice.  
+Of course, if all columns should have the same specifier, using the "multiple column specifier" `*{<num>}{<col spec>}` is a better choice.  
 
 In the above examples, <a href="http://ctan.org/pkg/geometry" rel="noreferrer">`geometry`</a> was loaded to adjust for a possibly wide display.  
 
@@ -4004,9 +4004,9 @@ Applying it on the example, it would be:
 {\renewcommand{\arraystretch}{1.2}% for the vertical padding
 \begin{tabular}{|l|l|}
     \hline
-    column 1 &amp; column 2 \\ 
+    column 1 & column 2 \\ 
     \hline
-    I really would like this less &amp; crammed\\
+    I really would like this less & crammed\\
     \hline
 \end{tabular}
 }
@@ -4061,16 +4061,16 @@ There are two parts to telling TeX about a new `.sty` file. First, you have to p
 
 <ul>
 <li>Windows 10 (and miktex) <br>
-`C:\Users\&lt;user name&gt;\Appdata\Local\MikTex\&lt;number&gt;\tex\latex\local\`</li>
-<li>Windows Vista/7 `C:\Users\&lt;user name&gt;\texmf\tex\latex\local\`</li>
-<li>Windows XP `C:\Documents and Settings\&lt;user name&gt;\texmf\tex\latex\local\`</li>
+`C:\Users\<user name>\Appdata\Local\MikTex\<number>\tex\latex\local\`</li>
+<li>Windows Vista/7 `C:\Users\<user name>\texmf\tex\latex\local\`</li>
+<li>Windows XP `C:\Documents and Settings\<user name>\texmf\tex\latex\local\`</li>
 <li>Linux `~/texmf/tex/latex/local/`</li>
-<li>Mac OS X `/Users/&lt;user name&gt;/Library/texmf/tex/latex/local/`</li>
+<li>Mac OS X `/Users/<user name>/Library/texmf/tex/latex/local/`</li>
 </ul>
 
 <em>Note: the</em> `local/` <em>folder might not exist; in this case, go ahead and create it.</em>  
 
-A few of notes on that. First, on Windows the 'Users' part of the location is language dependent. Second, I've represented your home/user folder as '`&lt;user name&gt;`': this will obviously be dependent on your system. The folder I've indicated may well not exist: you may just have the `texmf` part, bits within that or nothing at all. The file location is important, and although you could just put your file inside `texmf/tex/latex` is is usual to keep things organised by package. The `local` folder is reserved for stuff installed on individual machines.  
+A few of notes on that. First, on Windows the 'Users' part of the location is language dependent. Second, I've represented your home/user folder as '`<user name>`': this will obviously be dependent on your system. The folder I've indicated may well not exist: you may just have the `texmf` part, bits within that or nothing at all. The file location is important, and although you could just put your file inside `texmf/tex/latex` is is usual to keep things organised by package. The `local` folder is reserved for stuff installed on individual machines.  
 
 Letting TeX 'know' about the file means running a program that builds a database of file locations. There are graphical interfaces to do this, but the way that works on all operating systems is to use the Command Prompt/Terminal and type `texhash`. This will build the databases for your tree (the one that is in your home folder). Once the 'hash' is created TeX should be able to find your file. For recent TeXLive distributions, this step is not necessary for files in the local folder.  
 
@@ -4161,18 +4161,18 @@ In the example below, the new column types are based on (vertically centered) m-
 \documentclass{article}
 
 \\usepackage{array}
-\newcolumntype{L}[1]{&gt;{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{C}[1]{&gt;{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-\newcolumntype{R}[1]{&gt;{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
 \begin{document}
 
 \begin{tabular}{| c | L{3cm} | C{3cm} | R{3cm} |}
-foo &amp;
+foo &
 A cell with text that wraps around, is raggedright and allows \newline
-    manual line breaks &amp;
+    manual line breaks &
 A cell with text that wraps around, is centered and allows \newline
-    manual line breaks &amp;
+    manual line breaks &
 A cell with text that wraps around, is raggedleft and allows \newline
     manual line breaks \\
 \end{tabular}
@@ -4183,14 +4183,14 @@ A cell with text that wraps around, is raggedleft and allows \newline
 <img src="https://i.stack.imgur.com/QqxKT.jpg" alt="enter image description here">  
 
 #### Answer 2 (score 65)
-The 'm' column type only centers the text vertically; to get it also centered horizontally, you can use the `&gt;{cmd}` syntax, which adds a command before each cell in the specified column:  
+The 'm' column type only centers the text vertically; to get it also centered horizontally, you can use the `>{cmd}` syntax, which adds a command before each cell in the specified column:  
 
 ```tex
 \documentclass{article}
 \\usepackage{array}
 \begin{document}
-\begin{tabular}{| c | c | &gt;{\centering}m{5cm} |}
-Abc &amp; Bcd &amp; A long cell with text that wraps around and is centered
+\begin{tabular}{| c | c | >{\centering}m{5cm} |}
+Abc & Bcd & A long cell with text that wraps around and is centered
 \end{tabular}
 \end{document}
 ```
@@ -4200,7 +4200,7 @@ Abc &amp; Bcd &amp; A long cell with text that wraps around and is centered
 As Stefan Kottwitz pointed out in his comment, this can also be be wrapped in a new column type that you can define using    
 
 ```tex
-\newcolumntype{C}[1]{&gt;{\centering}m{#1}}
+\newcolumntype{C}[1]{>{\centering}m{#1}}
 ```
 
 Then you can define the above table using   
@@ -4223,7 +4223,7 @@ Here is an example document:
 \begin{document}
 {\RaggedRight
     \begin{tabular}{| c | m{3cm}}
-    foo &amp;
+    foo &
 A cell with text that wraps around, is raggedright and allows \newline
 manual line breaks \\ 
 \end{tabular}
@@ -4309,7 +4309,7 @@ Here is a command `\xoverline[width percent]{symb}` that will do it. Note that i
     \sbox\myboxB{$\m@th\overline{\copy\myboxB}$}%  Overlined phantom
     \setlength\mylenA{\the\wd\myboxA}%   calc width diff
     \addtolength\mylenA{-\the\wd\myboxB}%
-    \ifdim\wd\myboxB&lt;\wd\myboxA%
+    \ifdim\wd\myboxB<\wd\myboxA%
        \rlap{\hskip 0.5\mylenA\\usebox\myboxB}{\\usebox\myboxA}%
     \else
         \hskip -0.5\mylenA\rlap{\\usebox\myboxA}{\hskip 0.5\mylenA\\usebox\myboxB}%
@@ -4364,7 +4364,7 @@ I am trying to write pseudo code in my paper. Here is the snippet and image like
 \State $i\gets patlen$
 
 top:
- \eIf{i &gt; stringlen}{
+ \eIf{i > stringlen}{
    return false\;
    }
    {
@@ -4376,7 +4376,7 @@ loop:
    return j+1\;
    }
    {
-         \eIf{string(i) &gt; pat(j)}{
+         \eIf{string(i) > pat(j)}{
             \State $j\gets $j -1$
             \State $i\gets $i -1$
             \State goto loop
@@ -4424,7 +4424,7 @@ Code:
 \State $\textit{stringlen} \gets \text{length of }\textit{string}$
 \State $i \gets \textit{patlen}$
 \BState \emph{top}:
-\If {$i &gt; \textit{stringlen}$} \Return false
+\If {$i > \textit{stringlen}$} \Return false
 \EndIf
 \State $j \gets \textit{patlen}$
 \BState \emph{loop}:
@@ -4472,11 +4472,11 @@ I tried
 ```tex
 $
 \begin{array}{cc}
-  \{ &amp; 
+  \{ & 
     \begin{array}{cc}
-      0 &amp; x\leq 0 \\
-      \frac{100-x}{100} &amp; 0\leq x\leq 100 \\
-      0 &amp; 100\leq x
+      0 & x\leq 0 \\
+      \frac{100-x}{100} & 0\leq x\leq 100 \\
+      0 & 100\leq x
     \end{array}
 \end{array}
 $
@@ -4497,9 +4497,9 @@ in your preamble then you can wite
 
 ```tex
 \[ \begin{cases} 
-      0 &amp; x\leq 0 \\
-      \frac{100-x}{100} &amp; 0\leq x\leq 100 \\
-      0 &amp; 100\leq x 
+      0 & x\leq 0 \\
+      \frac{100-x}{100} & 0\leq x\leq 100 \\
+      0 & 100\leq x 
    \end{cases}
 \]
 ```
@@ -4520,10 +4520,10 @@ I generally prefer using the <strong>cases</strong> environment of the `amsmath`
 \begin{document}
 \[   \left\{
 \begin{array}{ll}
-      0 &amp; x\leq a \\
-      \frac{x-a}{b-a} &amp; a\leq x\leq b \\
-      \frac{c-x}{c-b} &amp; b\leq x\leq c \\
-      1 &amp; c\leq x \\
+      0 & x\leq a \\
+      \frac{x-a}{b-a} & a\leq x\leq b \\
+      \frac{c-x}{c-b} & b\leq x\leq c \\
+      1 & c\leq x \\
 \end{array} 
 \right. \]
 \end{document}
@@ -4551,10 +4551,10 @@ and then write
 ```tex
 \[
     \begin{dcases}
-        0 &amp; x\leq a \\
-        \frac{x-a}{b-a} &amp; a\leq x\leq b \\
-        \frac{c-x}{c-b} &amp; b\leq x\leq c \\
-        1 &amp; c\leq x \\
+        0 & x\leq a \\
+        \frac{x-a}{b-a} & a\leq x\leq b \\
+        \frac{c-x}{c-b} & b\leq x\leq c \\
+        1 & c\leq x \\
     \end{dcases}
 \]
 ```
@@ -4677,7 +4677,7 @@ Use `align` and the rest of the ams environments. See `texdoc amsldoc` (<a href=
 `align` is from `amsmath`, while `eqnarray` is from base LaTeX, so I would expect the former to be better. Some differences:  
 
 <ul>
-<li>`eqnarray` has two alignment points (it's basically just `array` with a default preamble); `align` has one. `x + y &amp;=&amp; z` versus `x + y &amp;= z`</li>
+<li>`eqnarray` has two alignment points (it's basically just `array` with a default preamble); `align` has one. `x + y &=& z` versus `x + y &= z`</li>
 <li>`eqnarray` changes the spacing at the alignment points depending on different factors; `align` keeps it fixed (which is generally what you want)</li>
 <li>`eqnarray` allows page breaks between lines; `align` doesn't</li>
 <li>`\\ *` is treated the same as `\\*` in `eqnarray`, but won't work in `align` (since `*` shows up commonly in equations)</li>
@@ -4691,9 +4691,9 @@ Besides the better spacing and the less ampersands to type, a big advantage of `
 ```tex
 \begin{proof} The proof is a follows: 
 \begin{align}
-(x+y)^3&amp;=(x+y)(x+y)^2\\
-       &amp;=(x+y)(x^2+2xy+y^2)\\
-       &amp;=x^3+3x^2y+3xy^3+x^3.\qedhere
+(x+y)^3&=(x+y)(x+y)^2\\
+       &=(x+y)(x^2+2xy+y^2)\\
+       &=x^3+3x^2y+3xy^3+x^3.\qedhere
 \end{align}
 \end{proof}
 ```
@@ -4725,11 +4725,11 @@ Here is what I wrote
 \label{multiprogram}
  \begin{tabular}{| c | c | c | c | c | c | c | c | c |}
   \cline{3-9}
-  \multicolumn{8}{}{}    &amp;   Sets  \\
+  \multicolumn{8}{}{}    &   Sets  \\
   \hline
-  \multicolumn{1}{}{}   &amp; 1 &amp; 2 &amp;  3 &amp; 4 &amp; 5 &amp;  6 &amp; 7  &amp; 8 \\
+  \multicolumn{1}{}{}   & 1 & 2 &  3 & 4 & 5 &  6 & 7  & 8 \\
   \hline
-   astar         &amp;  &amp; * &amp;  &amp; * &amp;  &amp;  &amp; * &amp;   \\
+   astar         &  & * &  & * &  &  & * &   \\
   \hline
  \end{tabular}
 \end{table}
@@ -4761,11 +4761,11 @@ Code:
         \label{multiprogram}
         \begin{tabular}{c|c|c|c|c|c|c|c|c|}
             \cline{2-9}
-             &amp; \multicolumn{8}{|c|}{Sets}\\
+             & \multicolumn{8}{|c|}{Sets}\\
             \cline{2-9}
-             &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 &amp; 7 &amp; 8\\
+             & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8\\
             \hline
-            \multicolumn{1}{|c|}{astar} &amp; &amp; * &amp;  &amp; * &amp;  &amp;  &amp; * &amp;\\
+            \multicolumn{1}{|c|}{astar} & & * &  & * &  &  & * &\\
             \hline
         \end{tabular}
     \end{table}
@@ -4951,7 +4951,7 @@ or
 
 In both instances it typesets a box of width `\textwidth`, while the contents may stretch outside this width (given by `width=\paperwidth`). Fixing it to `\textwidth` avoids `Overfull \hbox warnings`.  
 
-This works as expected within the `article` and `report` document class, while some horizontal re-adjustment is required in `book`. For completeness, and without resorting to page numbering issues that may occur at shipout if the image is placed near a page break, the following `\centerimg[&lt;options&gt;]{&lt;image&gt;}` command works for all standard document classes, including `book`:  
+This works as expected within the `article` and `report` document class, while some horizontal re-adjustment is required in `book`. For completeness, and without resorting to page numbering issues that may occur at shipout if the image is placed near a page break, the following `\centerimg[<options>]{<image>}` command works for all standard document classes, including `book`:  
 
 ```tex
 \documentclass{article}
@@ -4987,7 +4987,7 @@ This worked for me
 \begin{figure}[ht]
 \centering
      \includegraphics[width=1.0\textwidth]{Normal_Case_1_req_1_response}
-      \caption{Normal Case: 1 Request \&amp; 1 Response.}
+      \caption{Normal Case: 1 Request \& 1 Response.}
        \label{normal_case}
 \end{figure}
 ```
@@ -5136,14 +5136,14 @@ The DVI producing `latex` doesn't support reading the size of PNG, JPG or PDF im
 Compile with either  
 
 ```tex
-pdflatex &lt;file base&gt;
+pdflatex <file base>
 ```
 
 or   
 
 ```tex
-latex &lt;file base&gt;
-dvipdfm &lt;file base&gt;
+latex <file base>
+dvipdfm <file base>
 ```
 
 #### Answer 2 (score 29)
@@ -5368,7 +5368,7 @@ This is for within an equation (I got it off of another forum) and requires `ams
 I have two sections which I'd like to separate by an empty line. Every time I press <kbd>Enter</kbd>, LyX removes that empty line between paragraphs. How do I prevent this?  
 
 #### Answer 2 (score 115)
-This is LyX's way of staying true to LaTeX where successive blank lines are merged - a good thing when you're talking about consistent document layout/design. If you wish to insert a forced vertical skip, insert an ERT containing either `\smallskip`, `\medskip`, `\bigskip` or a fixed `\vspace{&lt;len&gt;}` where you specify <a href="https://tex.stackexchange.com/q/4239/5764">`&lt;len&gt;`</a>. For a fixed/hard, single blank line, use `\vspace{\baselineskip}` (roughly the same as `\bigskip`).  
+This is LyX's way of staying true to LaTeX where successive blank lines are merged - a good thing when you're talking about consistent document layout/design. If you wish to insert a forced vertical skip, insert an ERT containing either `\smallskip`, `\medskip`, `\bigskip` or a fixed `\vspace{<len>}` where you specify <a href="https://tex.stackexchange.com/q/4239/5764">`<len>`</a>. For a fixed/hard, single blank line, use `\vspace{\baselineskip}` (roughly the same as `\bigskip`).  
 
 <img src="https://i.stack.imgur.com/uTeic.png" alt="enter image description here">  
 
@@ -5673,14 +5673,14 @@ Every SVG file given by the command `\includesvg` will under the hood be convert
 
 ```tex
 @echo off
-&lt;path-to-inkscape&gt;\inkscape.exe %*
+<path-to-inkscape>\inkscape.exe %*
 ```
 
 `pdftops.cmd` <em>(it also <strong>must</strong> be named this way!), not needed for Users of TeX Live</em>:  
 
 ```tex
 @echo off
-&lt;path-to-Xpdf&gt;\pdftops.exe %*
+<path-to-Xpdf>\pdftops.exe %*
 ```
 
 <sub>Of course, adjust the paths to your local settings.</sub>  </li>
@@ -6227,7 +6227,7 @@ For example, should we use this one?
 ```tex
 {%
 \centering
-&lt;other contents&gt;
+<other contents>
 }
 ```
 
@@ -6235,7 +6235,7 @@ or this one?
 
 ```tex
 \begin{center}
-&lt;other contents&gt;
+<other contents>
 \end{center}
 ```
 
@@ -6407,16 +6407,16 @@ In the following test document, the proposed definitions or constructions will b
 \begin{document}
 
 \begin{align}
-&amp;\cs{argminA}  &amp; \argminA_x f(x) &amp;= \{x \mid f(x) = \min_{x'} f(x')\} \\
-&amp;\cs{argminB}  &amp; \argminB_x f(x) &amp;= \{x \mid f(x) = \min_{x'} f(x')\} \\
-&amp;\cs{argminC}  &amp; \argminC_x f(x) &amp;= \{x \mid f(x) = \min_{x'} f(x')\} \\
-&amp;\cs{argminD}  &amp; \argminD_x f(x) &amp;= \{x \mid f(x) = \min_{x'} f(x')\} \\
-&amp;\cs{argminE}  &amp; \argminE_x f(x) &amp;= \{x \mid f(x) = \min_{x'} f(x')\} \\
-&amp;\cs{argminF}  &amp; \argminF_x f(x) &amp;= \{x \mid f(x) = \min_{x'} f(x')\} \\
-&amp;\cs{underset} &amp; \\underset{x}{\mathrm{argmin}} f(x) &amp;= \{x \mid f(x) = \min_{x'} f(x')\}\\
-&amp;\cs{argminG}  &amp; \argminG_x f(x) &amp;= \{x \mid f(x) = \min_{x'} f(x')\} \\
-&amp;\cs{argminH}  &amp; \argminH_x f(x) &amp;= \{x \mid f(x) = \min_{x'} f(x')\} \\
-&amp;\cs{argminI}  &amp; \argminI_x f(x) &amp;= \{x \mid f(x) = \min_{x'} f(x')\}
+&\cs{argminA}  & \argminA_x f(x) &= \{x \mid f(x) = \min_{x'} f(x')\} \\
+&\cs{argminB}  & \argminB_x f(x) &= \{x \mid f(x) = \min_{x'} f(x')\} \\
+&\cs{argminC}  & \argminC_x f(x) &= \{x \mid f(x) = \min_{x'} f(x')\} \\
+&\cs{argminD}  & \argminD_x f(x) &= \{x \mid f(x) = \min_{x'} f(x')\} \\
+&\cs{argminE}  & \argminE_x f(x) &= \{x \mid f(x) = \min_{x'} f(x')\} \\
+&\cs{argminF}  & \argminF_x f(x) &= \{x \mid f(x) = \min_{x'} f(x')\} \\
+&\cs{underset} & \\underset{x}{\mathrm{argmin}} f(x) &= \{x \mid f(x) = \min_{x'} f(x')\}\\
+&\cs{argminG}  & \argminG_x f(x) &= \{x \mid f(x) = \min_{x'} f(x')\} \\
+&\cs{argminH}  & \argminH_x f(x) &= \{x \mid f(x) = \min_{x'} f(x')\} \\
+&\cs{argminI}  & \argminI_x f(x) &= \{x \mid f(x) = \min_{x'} f(x')\}
 \end{align}
 
 \end{document}
@@ -6474,9 +6474,9 @@ I appreciate any help.
 \begin{document}
   \[
     X(m,n) = \left\{\begin{array}{lr}
-        x(n), &amp; \text{for } 0\leq n\leq 1\\
-        x(n-1), &amp; \text{for } 0\leq n\leq 1\\
-        x(n-1), &amp; \text{for } 0\leq n\leq 1
+        x(n), & \text{for } 0\leq n\leq 1\\
+        x(n-1), & \text{for } 0\leq n\leq 1\\
+        x(n-1), & \text{for } 0\leq n\leq 1
         \end{array}\right\} = xy
   \]
 \end{document}
@@ -6494,10 +6494,10 @@ If you want two conditions on different lines, can use a `\multirow` for the fir
 \begin{document}
   \[
     X(m,n) = \left\{\begin{array}{@{}lr@{}}
-        \multirow{2}{*}{x(n),} &amp; \text{for }0\leq n\leq 1\\
-                               &amp; \text{or }0\leq n\leq 1\\
-        x(n-1), &amp; \text{for }0\leq n\leq 1\\
-        x(n-1), &amp; \text{for }0\leq n\leq 1
+        \multirow{2}{*}{x(n),} & \text{for }0\leq n\leq 1\\
+                               & \text{or }0\leq n\leq 1\\
+        x(n-1), & \text{for }0\leq n\leq 1\\
+        x(n-1), & \text{for }0\leq n\leq 1
         \end{array}\right\} = xy
   \]
 \end{document}
@@ -6512,9 +6512,9 @@ For the question as it was originally posed, we can still use `cases` very easil
 \[
   X(m, n) = \left.
   \begin{cases}
-    x(n), &amp; \text{for } 0 \leq n \leq 1 \\
-    x(n - 1), &amp; \text{for } 0 \leq n \leq 1 \\
-    x(n - 1), &amp; \text{for } 0 \leq n \leq 1
+    x(n), & \text{for } 0 \leq n \leq 1 \\
+    x(n - 1), & \text{for } 0 \leq n \leq 1 \\
+    x(n - 1), & \text{for } 0 \leq n \leq 1
   \end{cases}
   \right\} = xy
 \]
@@ -6536,9 +6536,9 @@ Essentially the same answer as Ignasi, but with the use of `\text` for the word 
     X(m,n)=
     \left\{
     \begin{array}{lr}
-      x(n),&amp; \for 0\leqslant n \leqslant 1 \\
-      x(n-1),&amp; \for 0\leqslant n \leqslant 1 \\
-      x(n-1),&amp; \for 0\leqslant n \leqslant 1
+      x(n),& \for 0\leqslant n \leqslant 1 \\
+      x(n-1),& \for 0\leqslant n \leqslant 1 \\
+      x(n-1),& \for 0\leqslant n \leqslant 1
     \end{array}
     \right\} = xy.
   \]
@@ -6558,13 +6558,13 @@ Essentially the same answer as Ignasi, but with the use of `\text` for the word 
     X(m,n)=
     \left\{
     \begin{array}{@{}lr@{}}
-      x(n),&amp; 
+      x(n),& 
       \begin{array}{r@{}}
         \for 0\leqslant n \leqslant 1\\ 
         \text{or } 0\leqslant x \leqslant 1
       \end{array}\\
-      x(n-1),&amp; \for 0\leqslant n \leqslant 1 \\
-      x(n-1),&amp; \for 0\leqslant n \leqslant 1
+      x(n-1),& \for 0\leqslant n \leqslant 1 \\
+      x(n-1),& \for 0\leqslant n \leqslant 1
     \end{array}
     \right\} = xy.
   \]
@@ -6590,8 +6590,8 @@ Here is my split equation:
 \begin{document}
 \begin{equation}
 \begin{split}
-a_{ijk} =&amp; \frac {Pr(M_{I} =2  \&amp;  M_J=1 \&amp; M_K =1 | I=i , J=j , K=k)}{Pr (M_I =1 \&amp; M_J =1 \&amp; M_K=1 | I=i , J=j)} \\
-            =&amp; \frac {\mu_{ijk211}}{\mu_{ijk111}}\\
+a_{ijk} =& \frac {Pr(M_{I} =2  \&  M_J=1 \& M_K =1 | I=i , J=j , K=k)}{Pr (M_I =1 \& M_J =1 \& M_K=1 | I=i , J=j)} \\
+            =& \frac {\mu_{ijk211}}{\mu_{ijk111}}\\
 \end{split}
 \end{equation}
 \end{document}
@@ -6608,8 +6608,8 @@ I would not use the equation environment; rather, I would use flalign as such:
 \begin{document}
 \noindent A \hfill Z
 \begin{flalign}
-a_{ijk} &amp;= \frac {Pr(M_{I} =2  \&amp;  M_J=1 \&amp; M_K =1 | I=i , J=j , K=k)}{Pr (M_I =1 \&amp; M_J =1 \&amp; M_K=1 | I=i , J=j)}&amp;&amp;\\\nonumber
-            &amp;= \frac {\mu_{ijk211}}{\mu_{ijk111}}&amp;&amp;
+a_{ijk} &= \frac {Pr(M_{I} =2  \&  M_J=1 \& M_K =1 | I=i , J=j , K=k)}{Pr (M_I =1 \& M_J =1 \& M_K=1 | I=i , J=j)}&&\\\nonumber
+            &= \frac {\mu_{ijk211}}{\mu_{ijk111}}&&
 \end{flalign}
 
 \noindent A \hfill Z
@@ -6627,8 +6627,8 @@ Another way to go is to set the `fleqn` option for the document class. However, 
 \noindent A \hfill Z
 \begin{equation}
 \begin{aligned}
-a_{ijk} &amp;= \frac {Pr(M_{I} =2  \&amp;  M_J=1 \&amp; M_K =1 | I=i , J=j , K=k)}{Pr (M_I =1 \&amp; M_J =1 \&amp; M_K=1 | I=i , J=j)}\\
-            &amp;= \frac {\mu_{ijk211}}{\mu_{ijk111}}\\
+a_{ijk} &= \frac {Pr(M_{I} =2  \&  M_J=1 \& M_K =1 | I=i , J=j , K=k)}{Pr (M_I =1 \& M_J =1 \& M_K=1 | I=i , J=j)}\\
+            &= \frac {\mu_{ijk211}}{\mu_{ijk111}}\\
 \end{aligned}
 \end{equation}
 \noindent A \hfill Z
@@ -6645,12 +6645,12 @@ If you later want to indent it back to its default value, you can use the same c
 #### Answer 2 (score 11)
 Note: This doesn't answer the question exactly. But still try this solution first as it is probably the simplest.   
 
-Use `align`, and put `&amp;` at the beginning of every line. Use `\\` to separate multiple equations.  
+Use `align`, and put `&` at the beginning of every line. Use `\\` to separate multiple equations.  
 
 ```tex
 \begin{align*}
-&amp; a_{ijk} = 2 \\
-&amp;(because ||V_1-V_2|| = \max_{i \in [d]}|V^i_1 - V^i_2|)
+& a_{ijk} = 2 \\
+&(because ||V_1-V_2|| = \max_{i \in [d]}|V^i_1 - V^i_2|)
 \end{align*}
 ```
 
@@ -6675,12 +6675,12 @@ I'm getting this error:
 
 ```tex
 ! Undefined control sequence.
-l.64 ...p(- \frac{E_j - E_i}{k_B T}) &amp; \quad \text
-                                                  {:  E_j &gt; E_i}\\
+l.64 ...p(- \frac{E_j - E_i}{k_B T}) & \quad \text
+                                                  {:  E_j > E_i}\\
 ? 
 ! Undefined control sequence.
-l.65     1 &amp; \quad \text
-                        {:  E_j&lt;E_i}\\
+l.65     1 & \quad \text
+                        {:  E_j<E_i}\\
 ? 
 ```
 
@@ -6690,8 +6690,8 @@ which is from this:
 \begin{equation}\label{eq:hop}
 w_{i,j}=w_0 exp(-2 \gamma R_{i,j})\left\{ 
   \begin{array}{l l}
-    exp(- \frac{E_j - E_i}{k_B T}) &amp; \quad \text{:  E_j &gt; E_i}\\
-    1 &amp; \quad \text{:  E_j&lt;E_i}\\
+    exp(- \frac{E_j - E_i}{k_B T}) & \quad \text{:  E_j > E_i}\\
+    1 & \quad \text{:  E_j<E_i}\\
   \end{array} \right.
 \end{equation}
 ```
@@ -6770,7 +6770,7 @@ You can crop your image with `graphicx`
 Use the `trim` option, which takes four space separated values.  
 
 ```tex
- trim={&lt;left&gt; &lt;lower&gt; &lt;right&gt; &lt;upper&gt;}
+ trim={<left> <lower> <right> <upper>}
 ```
 
 If you don’t give a unit, the package assumes `bp` i.e. big points to be the unit. After setting these values you must activate the cropping with `clip=true` or just `clip`.  
@@ -6823,7 +6823,7 @@ It is also possible to use an internal macro of `graphics/x` to calculate the  s
 
 \begin{document}
 
-\includegraphics[width=5cm]{example-image} %&lt;---- for comparison
+\includegraphics[width=5cm]{example-image} %<---- for comparison
 
 
 \begingroup
@@ -6912,7 +6912,7 @@ For general text you can use `\raggedright` and `\raggedleft` to align the mater
 
 <hr>
 
-For new documents, especially if many `adjustbox` keys are used, I recommend to use the `\adjustimage{&lt;keys&gt;}{&lt;filename&gt;}` macro instead of `\includegraphics`. The `export` option is then not required anymore. There is also the possibility to do the whole `figure` using one `\adjustimage` use by using the keys `caption`, `label` and `figure`.  
+For new documents, especially if many `adjustbox` keys are used, I recommend to use the `\adjustimage{<keys>}{<filename>}` macro instead of `\includegraphics`. The `export` option is then not required anymore. There is also the possibility to do the whole `figure` using one `\adjustimage` use by using the keys `caption`, `label` and `figure`.  
 
 ```tex
 \documentclass{article}
@@ -7500,13 +7500,13 @@ Here is a MWE. I would like all three equations to align on the equal sign.
 
 \begin{document}
 \begin{align}
-a &amp; =  b + c + d \nonumber \\
-  &amp; \qquad + e + f + g
+a & =  b + c + d \nonumber \\
+  & \qquad + e + f + g
 \label{eq:1}
 \end{align}
 \begin{align}
-k &amp; = l + m + n + m + n + m + n \nonumber \\
-  &amp; \qquad + o + p + q
+k & = l + m + n + m + n + m + n \nonumber \\
+  & \qquad + o + p + q
 \label{eq:2}
 \end{align}
 \begin{equation}
@@ -7531,13 +7531,13 @@ This example shows \verb|aligned| equations within
 an \verb|align| environment.
 \begin{align}
   \phantom{i + j + k}
-  &amp;\begin{aligned}
-    \mathllap{a} &amp;= b + c + d\\
-      &amp;\qquad + e + f + g + x + y + z
+  &\begin{aligned}
+    \mathllap{a} &= b + c + d\\
+      &\qquad + e + f + g + x + y + z
   \end{aligned}\\
-  &amp;\begin{aligned}
-    \mathllap{i + j + k} &amp;= l + m + n\\
-      &amp;\qquad + o + p + q
+  &\begin{aligned}
+    \mathllap{i + j + k} &= l + m + n\\
+      &\qquad + o + p + q
   \end{aligned}
 \end{align}
 \end{document}
@@ -7553,7 +7553,7 @@ only when the left-hand sides had the same length.  this modification
 overcomes that problem.</p>
 
 #### Answer 2 (score 64)
-You can also use the `split` environment inside the `align` environment, using an ampersand (`&amp;`) where you want the alignment to take place. Here is a MWE:  
+You can also use the `split` environment inside the `align` environment, using an ampersand (`&`) where you want the alignment to take place. Here is a MWE:  
 
 ```tex
 \documentclass{article}
@@ -7562,14 +7562,14 @@ You can also use the `split` environment inside the `align` environment, using a
 \begin{document}
 \begin{align}
 \begin{split}\label{eq:1}
-    a ={}&amp; b + c + d\\
-         &amp; + e + f + g
+    a ={}& b + c + d\\
+         & + e + f + g
 \end{split}\\
 \begin{split}\label{eq:2}
-    k ={}&amp; l + m + n + m + n + m + n\\
-         &amp; + o + p + q
+    k ={}& l + m + n + m + n + m + n\\
+         & + o + p + q
 \end{split}\\
-    r ={}&amp; s + t (u + v + w)\label{eq:3}
+    r ={}& s + t (u + v + w)\label{eq:3}
 \end{align}
 \end{document}
 ```
@@ -7592,13 +7592,13 @@ As an extension to barbara's answer, you could wrap only the right-hand side of 
 This example shows \verb|aligned| equations within
 an \verb|align| environment.
 \begin{align}
-  a &amp;= \begin{aligned}[t]
-      &amp;b + c + d +\\
-      &amp;c + e + f + g + h + i
+  a &= \begin{aligned}[t]
+      &b + c + d +\\
+      &c + e + f + g + h + i
        \end{aligned}\\
-  k &amp;= \begin{aligned}[t]
-      &amp;l + m + n\\
-      &amp;+ o + p + q
+  k &= \begin{aligned}[t]
+      &l + m + n\\
+      &+ o + p + q
        \end{aligned}
 \end{align}
 \end{document}
@@ -7640,10 +7640,10 @@ I have got a simple code to generate table in Latex.
 ```tex
 \begin{tabular}{ | c | c | c | }
   \hline
-  symbol &amp; value &amp; unit \\ \hline            
-  $z Na$ &amp; 11 &amp; - \\ \hline      
-  $z F$ &amp; 9 &amp; - \\ \hline      
-  $Emax Na$ &amp; 0.545 &amp; $[MeV]$ \\ \hline
+  symbol & value & unit \\ \hline            
+  $z Na$ & 11 & - \\ \hline      
+  $z F$ & 9 & - \\ \hline      
+  $Emax Na$ & 0.545 & $[MeV]$ \\ \hline
 \end{tabular}
 ```
 
@@ -7653,10 +7653,10 @@ This code is good, but I would like to add this table to my document in Latex an
 \{center}
 \begin{tabular}{ | c | c | c | }
   \hline
-  symbol &amp; value &amp; unit \\ \hline            
-  $z Na$ &amp; 11 &amp; - \\ \hline      
-  $z F$ &amp; 9 &amp; - \\ \hline      
-  $Emax Na$ &amp; 0.545 &amp; $[MeV]$ \\ \hline
+  symbol & value & unit \\ \hline            
+  $z Na$ & 11 & - \\ \hline      
+  $z F$ & 9 & - \\ \hline      
+  $Emax Na$ & 0.545 & $[MeV]$ \\ \hline
 \end{tabular}
 \{\center}
 ```
@@ -7695,10 +7695,10 @@ You can also use `\begin{center} ... \end{center}`. This works better with `beam
 \begin{center}
 \begin{tabular}{ | c | c | c | }
   \hline
-  symbol &amp; value &amp; unit \\ \hline
-  $z Na$ &amp; 11 &amp; - \\ \hline
-  $z F$ &amp; 9 &amp; - \\ \hline
-  $Emax Na$ &amp; 0.545 &amp; $[MeV]$ \\ \hline
+  symbol & value & unit \\ \hline
+  $z Na$ & 11 & - \\ \hline
+  $z F$ & 9 & - \\ \hline
+  $Emax Na$ & 0.545 & $[MeV]$ \\ \hline
 \end{tabular}
 \end{center}
 ```
@@ -7783,13 +7783,13 @@ In vertical mode `\vspace 1mm` is equivalent to `\vskip 1mm \vskip 0pt`</p>
 Full definition:  
 
 ```tex
-\vspace : -&gt; \@ifstar \@vspacer \@vspace 
+\vspace : -> \@ifstar \@vspacer \@vspace 
 ```
 
 Without `*` case (`\vspace 1mm`):  
 
 ```tex
-\@vspace: #1-&gt;\ifvmode \vskip #1 \vskip \z@skip \else \@bsphack \vadjust {\@restore
+\@vspace: #1->\ifvmode \vskip #1 \vskip \z@skip \else \@bsphack \vadjust {\@restore
 par \vskip #1 \vskip \z@skip }\@esphack \fi 
 ```
 
@@ -7799,7 +7799,7 @@ par \vskip #1 \vskip \z@skip }\@esphack \fi
 With `*` case (`\vspace* 1mm`):  
 
 ```tex
-\@vspacer:#1-&gt;\ifvmode \dimen@ \prevdepth \hrule \@height \z@ \nobreak \vskip #1 \v
+\@vspacer:#1->\ifvmode \dimen@ \prevdepth \hrule \@height \z@ \nobreak \vskip #1 \v
 skip \z@skip \prevdepth \dimen@ \else \@bsphack \vadjust {\@restorepar \hrule     @height \z@ \nobreak \vskip #1 \vskip \z@skip }\@esphack \fi 
 ```
 
@@ -7934,17 +7934,17 @@ I have a table that is just a little too wide for a 3.33" column. Is there a way
 \centering
 \begin{tabular}{r|lll}
 \multicolumn{1}{r}{}
-&amp; \multicolumn{1}{l}{Heading 1}
-&amp; \multicolumn{1}{l}{Heading 2}
-&amp; \multicolumn{1}{l}{Heading 3} \\ \cline{2-4}
-Row 1 &amp; Cell 1,1 &amp; Cell 1,2 &amp; Cell 1,3 \\
-Row 2 &amp; Cell 2,1 &amp; Cell 2,2 &amp; Cell 2,3
+& \multicolumn{1}{l}{Heading 1}
+& \multicolumn{1}{l}{Heading 2}
+& \multicolumn{1}{l}{Heading 3} \\ \cline{2-4}
+Row 1 & Cell 1,1 & Cell 1,2 & Cell 1,3 \\
+Row 2 & Cell 2,1 & Cell 2,2 & Cell 2,3
 \end{tabular}
 \end{table}
 ```
 
 #### Answer accepted (score 177)
-You can resize it using `\resizebox{&lt;width&gt;}{&lt;height&gt;}` from the `graphics` package. The column width is `\columnwidth` and you can select `!` for the height to make it scale along with the width.   
+You can resize it using `\resizebox{<width>}{<height>}` from the `graphics` package. The column width is `\columnwidth` and you can select `!` for the height to make it scale along with the width.   
 
 ```tex
 \\usepackage{graphics}
@@ -7955,11 +7955,11 @@ You can resize it using `\resizebox{&lt;width&gt;}{&lt;height&gt;}` from the `gr
 \resizebox{\columnwidth}{!}{%
 \begin{tabular}{r|lll}
 \multicolumn{1}{r}{}
-&amp; \multicolumn{1}{l}{Heading 1}
-&amp; \multicolumn{1}{l}{Heading 2}
-&amp; \multicolumn{1}{l}{Heading 3} \\ \cline{2-4}
-Row 1 &amp; Cell 1,1 &amp; Cell 1,2 &amp; Cell 1,3 \\
-Row 2 &amp; Cell 2,1 &amp; Cell 2,2 &amp; Cell 2,3
+& \multicolumn{1}{l}{Heading 1}
+& \multicolumn{1}{l}{Heading 2}
+& \multicolumn{1}{l}{Heading 3} \\ \cline{2-4}
+Row 1 & Cell 1,1 & Cell 1,2 & Cell 1,3 \\
+Row 2 & Cell 2,1 & Cell 2,2 & Cell 2,3
 \end{tabular}%
 }
 \end{table}
@@ -7980,11 +7980,11 @@ Solution with `adjustbox`:
 \begin{adjustbox}{width=\columnwidth,center}
 \begin{tabular}{r|lll}
 \multicolumn{1}{r}{}
-&amp; \multicolumn{1}{l}{Heading 1}
-&amp; \multicolumn{1}{l}{Heading 2}
-&amp; \multicolumn{1}{l}{Heading 3} \\ \cline{2-4}
-Row 1 &amp; Cell 1,1 &amp; Cell 1,2 &amp; Cell 1,3 \\
-Row 2 &amp; Cell 2,1 &amp; Cell 2,2 &amp; Cell 2,3
+& \multicolumn{1}{l}{Heading 1}
+& \multicolumn{1}{l}{Heading 2}
+& \multicolumn{1}{l}{Heading 3} \\ \cline{2-4}
+Row 1 & Cell 1,1 & Cell 1,2 & Cell 1,3 \\
+Row 2 & Cell 2,1 & Cell 2,2 & Cell 2,3
 \end{tabular}
 \end{adjustbox}
 \end{table}
@@ -8002,11 +8002,11 @@ You can scale the whole table using `\scalebox` from the `graphicx` package.
 \scalebox{0.9}{
 \begin{tabular}{r|lll}
 \multicolumn{1}{r}{}
-&amp; \multicolumn{1}{l}{Heading 1}
-&amp; \multicolumn{1}{l}{Heading 2}
-&amp; \multicolumn{1}{l}{Heading 3} \\ \cline{2-4}
-Row 1 &amp; Cell 1,1 &amp; Cell 1,2 &amp; Cell 1,3 \\
-Row 2 &amp; Cell 2,1 &amp; Cell 2,2 &amp; Cell 2,3
+& \multicolumn{1}{l}{Heading 1}
+& \multicolumn{1}{l}{Heading 2}
+& \multicolumn{1}{l}{Heading 3} \\ \cline{2-4}
+Row 1 & Cell 1,1 & Cell 1,2 & Cell 1,3 \\
+Row 2 & Cell 2,1 & Cell 2,2 & Cell 2,3
 \end{tabular}}
 \end{center}
 \end{table}
@@ -8026,11 +8026,11 @@ you can resize it to exactly the linewidth:
 \resizebox{\linewidth}{!}{%
 \begin{tabular}{r|lll}
 \multicolumn{1}{r}{}
-&amp; \multicolumn{1}{l}{Heading 1}
-&amp; \multicolumn{1}{l}{Heading 2}
-&amp; \multicolumn{1}{l}{Heading 3} \\ \cline{2-4}
-Row 1 &amp; Cell 1,1 &amp; Cell 1,2 &amp; Cell 1,3 \\
-Row 2 &amp; Cell 2,1 &amp; Cell 2,2 &amp; Cell 2,3
+& \multicolumn{1}{l}{Heading 1}
+& \multicolumn{1}{l}{Heading 2}
+& \multicolumn{1}{l}{Heading 3} \\ \cline{2-4}
+Row 1 & Cell 1,1 & Cell 1,2 & Cell 1,3 \\
+Row 2 & Cell 2,1 & Cell 2,2 & Cell 2,3
 \end{tabular}}
 
 \end{document}
@@ -8049,10 +8049,10 @@ Row 2 &amp; Cell 2,1 &amp; Cell 2,2 &amp; Cell 2,3
 
 
 
-In the `itemize` environment, how do I use the ampersand symbol `&amp;` without `LaTeX` trying to use it as a command?   
+In the `itemize` environment, how do I use the ampersand symbol `&` without `LaTeX` trying to use it as a command?   
 
 #### Answer 2 (score 99)
-How about `\&amp;`? I'm not sure about what you are asking, though...  
+How about `\&`? I'm not sure about what you are asking, though...  
 
 <hr>
 
@@ -8066,7 +8066,7 @@ For example, in XeLaTeX this code:</p>
 \\usepackage{fontspec}
 \setmainfont{Linux Libertine O}
 \begin{document}
-Testing... \&amp;
+Testing... \&
 \end{document}
 ```
 

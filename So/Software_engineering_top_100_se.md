@@ -354,7 +354,7 @@ int HashKeyFromGuid(Guid type4uuid)
    //A "4" is put somewhere in the GUID.
    //I can't remember exactly where, but it doesn't matter for
    //the illustrative purposes of this pseudocode
-   int guidVersion = ((type4uuid.D3 &amp; 0x0f00) &gt;&gt; 8);
+   int guidVersion = ((type4uuid.D3 & 0x0f00) >> 8);
    Assert(guidVersion == 4);
 
    return (int)GetFirstFourBytesOfGuid(type4uuid);
@@ -388,7 +388,7 @@ hash(unsigned char *str)
     int c;
 
     while (c = *str++)
-        hash = ((hash &lt;&lt; 5) + hash) + c; /* hash * 33 + c */
+        hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
 
     return hash;
 }
@@ -1019,7 +1019,7 @@ The idea here is that most of us should <em>already</em> know <em>most</em> of w
 <li>When using `#` for dynamic content change the `#` to `#!` and then on the server `$_REQUEST["_escaped_fragment_"]` is what googlebot uses instead of `#!`. In other words, `./#!page=1` becomes `./?_escaped_fragments_=page=1`. Also, for users that may be using FF.b4 or Chromium, `history.pushState({"foo":"bar"}, "About", "./?page=1");` Is a great command. So even though the address bar has changed the page does not reload. This allows you to use `?` instead of `#!` to keep dynamic content and also tell the server when you email the link that we are after this page, and the AJAX does not need to make another extra request.</li>
 <li>Don't use links that say <a href="https://ux.stackexchange.com/questions/12100/why-shouldnt-we-use-the-word-here-in-a-textlink">"click here"</a>. You're wasting an SEO opportunity and it makes things harder for people with screen readers.</li>
 <li>Have an <a href="http://www.sitemaps.org/" rel="noreferrer">XML sitemap</a>, preferably in the default location `/sitemap.xml`.</li>
-<li>Use <a href="http://googlewebmastercentral.blogspot.com/2009/02/specify-your-canonical.html" rel="noreferrer">`&lt;link rel="canonical" ... /&gt;`</a> when you have multiple URLs that point to the same content, this issue can also be addressed from <a href="http://www.google.com/webmasters/" rel="noreferrer">Google Webmaster Tools</a>.</li>
+<li>Use <a href="http://googlewebmastercentral.blogspot.com/2009/02/specify-your-canonical.html" rel="noreferrer">`<link rel="canonical" ... />`</a> when you have multiple URLs that point to the same content, this issue can also be addressed from <a href="http://www.google.com/webmasters/" rel="noreferrer">Google Webmaster Tools</a>.</li>
 <li>Use <a href="http://www.google.com/webmasters/" rel="noreferrer">Google Webmaster Tools</a> and <a href="http://www.bing.com/toolbox/webmaster" rel="noreferrer">Bing Webmaster Tools</a>.</li>
 <li>Install <a href="http://www.google.com/analytics/" rel="noreferrer">Google Analytics</a> right at the start (or an open source analysis tool like <a href="http://piwik.org/" rel="noreferrer">Piwik</a>).</li>
 <li>Know how <a href="https://en.wikipedia.org/wiki/Robots_exclusion_standard" rel="noreferrer">robots.txt</a> and search engine spiders work.</li>
@@ -1916,7 +1916,7 @@ You <em>could</em> combine these into one assert, but that's a different thing f
 e.g. The first one <em>could</em> be   
 
 ```
-Assert.IsTrue((10 &lt; value) &amp;&amp; (value &lt; 100), "Value out of range"); 
+Assert.IsTrue((10 < value) && (value < 100), "Value out of range"); 
 ```
 
 But this is not better - the error message out of it is less specific, and it has no other advantages. I'm sure you can think of other examples where combining two or three (or more) asserts into one big boolean condition makes it harder to read, harder to alter and harder to work out why it failed. Why do this just for the sake of a rule?  
@@ -1932,7 +1932,7 @@ I do it all the time:
 public void ToPredicateTest()
 {
     ResultField rf = new ResultField(ResultFieldType.Measurement, "name", 100);
-    Predicate&lt;ResultField&gt; p = (new ConditionBuilder()).LessThanConst(400)
+    Predicate<ResultField> p = (new ConditionBuilder()).LessThanConst(400)
                                                        .Or()
                                                        .OpenParenthesis()
                                                        .GreaterThanConst(500)
@@ -1948,7 +1948,7 @@ public void ToPredicateTest()
     Assert.IsFalse(p(ResultField.FillResult(rf, 666)));
     Assert.IsFalse(p(ResultField.FillResult(rf, 1001)));
 
-    Predicate&lt;ResultField&gt; p2 = (new ConditionBuilder()).EqualsConst(true).ToPredicate();
+    Predicate<ResultField> p2 = (new ConditionBuilder()).EqualsConst(true).ToPredicate();
 
     Assert.IsTrue(p2(new ResultField(ResultFieldType.Confirmation, "Is True", true)));
     Assert.IsFalse(p2(new ResultField(ResultFieldType.Confirmation, "Is False", false)));
@@ -2209,7 +2209,7 @@ but Qt is with no doubt a consistent and useful framework.
 Of all the things I don't like about Qt, the fact that it doesn't play well with templates bugs me the most.  You can't do this:  
 
 ```
-template &lt; typename T &gt;
+template < typename T >
 struct templated_widget : QWidget
 {
   Q_OBJECT;
@@ -2368,8 +2368,8 @@ Is this true, or is that just his (albeit an "elite member") opinion?
 Here is the original question:  
 
 ```
-#include &lt;stdio.h&gt;
-#include&lt;string.h&gt;
+#include <stdio.h>
+#include<string.h>
 main()
 {
     char string[] = "october";
@@ -2477,7 +2477,7 @@ but it's easier on the eyes to use string literals.
 In order to assign the <em>contents</em> of an array outside of a declaration, you would need to use either `strcpy/strncpy` (for 0-terminated strings) or `memcpy` (for any other type of array):  
 
 ```
-if (sizeof string &gt; strlen("october"))
+if (sizeof string > strlen("october"))
   strcpy(string, "october");
 ```
 
@@ -2506,7 +2506,7 @@ var3[0] = 'S'; // Modifying some memory - which may result in modifying... somet
 For example take this program:  
 
 ```
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 
 int main() {
   char *var1 = "september";
@@ -2567,7 +2567,7 @@ The former will do something like:
 
 ```
 memcpy(whopping_great, "foo", sizeof("foo"));
-memset(&amp;whopping_great[sizeof("foo")], 0, sizeof(whopping_great)-sizeof("foo"));
+memset(&whopping_great[sizeof("foo")], 0, sizeof(whopping_great)-sizeof("foo"));
 ```
 
 The latter only does the memcpy.  The C standard insists that if any part of an array is initialized, it all is.  So in this case, it's better to do it yourself.  I think that may have been what treuss was getting at.  
@@ -2594,7 +2594,7 @@ char whopping_big[8192] = "";
 p.s. For bonus points, you can do:  
 
 ```
-memcpy(whopping_great, "foo", (1/(sizeof("foo") &lt;= sizeof(whopping_great)))*sizeof("foo"));
+memcpy(whopping_great, "foo", (1/(sizeof("foo") <= sizeof(whopping_great)))*sizeof("foo"));
 ```
 
 to throw a compile time divide by zero error if you're about to overflow the array.  
@@ -3022,19 +3022,19 @@ Usually, people would just link to pages via the GET method, and issue <em>any</
 And because of that you couldn't treat one <em>resource</em> (URL) as a true resource in itself. You had to have separate URLs for deletion, insertion or update of the same resource. For example:  
 
 ```
-http://...com/posts/create- POST request  -&gt; Goes to posts.create() method in the server
-http://...com/posts/1/show- GET request  -&gt; Goes to posts.show(1) method in the server
-http://...com/posts/1/delete - POST request  -&gt; Goes to posts.delete(1) method in the server
-http://...com/posts/1/edit- POST request  -&gt; Goes to posts.edit(1) method in the server
+http://...com/posts/create- POST request  -> Goes to posts.create() method in the server
+http://...com/posts/1/show- GET request  -> Goes to posts.show(1) method in the server
+http://...com/posts/1/delete - POST request  -> Goes to posts.delete(1) method in the server
+http://...com/posts/1/edit- POST request  -> Goes to posts.edit(1) method in the server
 ```
 
 With REST, you create forms that are <em>smarter</em> because they use other HTTP methods aside of POST, and program your server to be able to distinguish between <em>methods</em>, not only URLS. So for example:  
 
 ```
-http://...com/posts - POST request  -&gt; Goes to posts.create() method in the server
-http://...com/posts/1 - GET request  -&gt; Goes to posts.show(1) method in the server
-http://...com/posts/1 - DELETE request  -&gt; Goes to posts.delete(1) method in the server
-http://...com/posts/1 - PUT request  -&gt; Goes to posts.edit(1) method in the server
+http://...com/posts - POST request  -> Goes to posts.create() method in the server
+http://...com/posts/1 - GET request  -> Goes to posts.show(1) method in the server
+http://...com/posts/1 - DELETE request  -> Goes to posts.delete(1) method in the server
+http://...com/posts/1 - PUT request  -> Goes to posts.edit(1) method in the server
 ```
 
 <p>Remember, a single URL describes a single resource. A single post is a single resource.
@@ -3823,7 +3823,7 @@ Modification of [L]GPL'd components <em>suggests</em> contribution back to the c
 I generally include JavaScript files using the script tag as below.  
 
 ```
-&lt;script type="text/javascript" src="somefile.js"&gt;&lt;/script&gt;
+<script type="text/javascript" src="somefile.js"></script>
 ```
 
 I have seen some people using the language attribute as well.   
@@ -3838,7 +3838,7 @@ Essentially the best way is to combine all your javascript into one file called 
 Typically in HTML5 you would do something like:  
 
 ```
-&lt;script src="js/all.min.js"&gt;&lt;/script&gt;
+<script src="js/all.min.js"></script>
 ```
 
 As you can see, <a href="http://dev.w3.org/html5/spec-author-view/the-script-element.html">you <strong>DO NOT</strong> need the type attribute in HTML5, but you do in other versions of HTML and XHTML</a>. The spec clarifies that if the content is other than "text/javascript" then you need to specify the type attribute, in HTML5.  
@@ -4813,7 +4813,7 @@ if( S_OK != hr )
 By the way, the Visual Studio MFC wizard creates a skeleton application with localized comments:  
 
 ```
-BOOL CMainFrame::PreCreateWindow(CREATESTRUCT&amp; cs)
+BOOL CMainFrame::PreCreateWindow(CREATESTRUCT& cs)
 {
     if( !CMDIFrameWndEx::PreCreateWindow(cs) )
         return FALSE;
@@ -4949,7 +4949,7 @@ First of all, this means that I have a type problem - what do I work with? Are m
           int steps = right.a.x - left.a.x;
           float dv = (right.a.ambientLight - left.a.ambientLight)/steps;
           float currentIntensity = left.a.ambientLight;
-          for (i=left.a.x; i&lt;right.a.x; i++) {
+          for (i=left.a.x; i<right.a.x; i++) {
               WorkOnPixelAmbient(i, dv);
               currentIntensity+=dv;
           }
@@ -4962,7 +4962,7 @@ First of all, this means that I have a type problem - what do I work with? Are m
           float currentRed = left.g.red;
           float currentGreen = left.g.green;
           float currentBlue = left.g.blue;
-          for (j=left.g.x; i&lt;right.g.x; j++) {
+          for (j=left.g.x; i<right.g.x; j++) {
               WorkOnPixelGouraud(j, currentRed, currentBlue, currentGreen);
               currentRed+=dred;
               currentGreen+=dgreen;
@@ -4999,7 +4999,7 @@ Now compare the above ugliness, with this set of C++ structs and a template func
       float nZ; // The normal vector interpolated per pixel
   };
 
-  template &lt;class PixelData&gt;
+  template <class PixelData>
   RasterizeTriangleScanline(
       PixelData left,
       PixelData right)
@@ -5008,8 +5008,8 @@ Now compare the above ugliness, with this set of C++ structs and a template func
       PixelData step = right;
       step -= left;
       step /= int(right.x - left.x); // divide by pixel span
-      for(int i=left.x; i&lt;right.x; i++) {
-          WorkOnPixel&lt;PixelData&gt;(interpolated);
+      for(int i=left.x; i<right.x; i++) {
+          WorkOnPixel<PixelData>(interpolated);
           interpolated += step;
       }
   }
@@ -5024,13 +5024,13 @@ The template performs the common work (the loop, increasing by "step" in each ti
 And do you see what we did with WorkOnPixel&lt;T>? We want to do different work per type? We simply call a template specialization:  
 
 ```
-void WorkOnPixel&lt;AmbientPixelData&gt;(AmbientPixelData&amp; p)
+void WorkOnPixel<AmbientPixelData>(AmbientPixelData& p)
 {
     // use the p.ambientLight field
 }
 
 
-void WorkOnPixel&lt;GouraudPixelData&gt;(GouraudPixelData&amp; p)
+void WorkOnPixel<GouraudPixelData>(GouraudPixelData& p)
 {
     // use the p.red/green/blue fields
 }
@@ -5153,7 +5153,7 @@ I think you've all missed the most obvious answer.  Most developers create mutab
       public ImmutablePersonList Add(ImmutablePerson newPerson){
           if(this.Contains(newPerson)) return this;
           ImmutablePerson[] newPeople = new ImmutablePerson[immutablePeople.Length];
-          for(var i=0;i&lt;immutablePeople.Length;i++)
+          for(var i=0;i<immutablePeople.Length;i++)
               newPeople[i] = this.immutablePeople[i];
           newPeople[immutablePeople.Length] = newPerson;
       }
@@ -5161,7 +5161,7 @@ I think you've all missed the most obvious answer.  Most developers create mutab
           if(immutablePeople.IndexOf(newPerson) != -1)
           ImmutablePerson[] newPeople = new ImmutablePerson[immutablePeople.Length-2];
           bool hasPassedRemoval = false;
-          for(var i=0;i&lt;immutablePeople.Length;i++)
+          for(var i=0;i<immutablePeople.Length;i++)
           {
              hasPassedRemoval = hasPassedRemoval || immutablePeople[i] == newPerson;
              newPeople[i] = this.immutablePeople[hasPassedRemoval ? i + 1 : i];
@@ -5181,7 +5181,7 @@ I think you've all missed the most obvious answer.  Most developers create mutab
       public ImmutableEventList Add(ImmutableEvent newEvent){
           if(this.Contains(newEvent)) return this;
           ImmutableEvent[] newEvents= new ImmutableEvent[immutableEvents.Length];
-          for(var i=0;i&lt;immutableEvents.Length;i++)
+          for(var i=0;i<immutableEvents.Length;i++)
               newEvents[i] = this.immutableEvents[i];
           newEvents[immutableEvents.Length] = newEvent;
       }
@@ -5189,7 +5189,7 @@ I think you've all missed the most obvious answer.  Most developers create mutab
           if(immutableEvents.IndexOf(newEvent) != -1)
           ImmutableEvent[] newEvents = new ImmutableEvent[immutableEvents.Length-2];
           bool hasPassedRemoval = false;
-          for(var i=0;i&lt;immutablePeople.Length;i++)
+          for(var i=0;i<immutablePeople.Length;i++)
           {
              hasPassedRemoval = hasPassedRemoval || immutableEvents[i] == newEvent;
              newEvents[i] = this.immutableEvents[hasPassedRemoval ? i + 1 : i];
@@ -5221,7 +5221,7 @@ According to <a href="https://www.youtube.com/watch?v=x7cQ3mrcKaY">this JSConf E
 <li>Enables modern HTML5 event stuff on IE 8</li>
 <li>Server-side rendering</li>
 <li>Testability</li>
-<li>Bindings to SVG, VML, and `&lt;canvas&gt;`</li>
+<li>Bindings to SVG, VML, and `<canvas>`</li>
 </ul></li>
 </ul>
 
@@ -5285,7 +5285,7 @@ One:
 var colored = {
   color: myColor
 };
-React.renderComponent(&lt;div style={colored}&gt;Hello World!&lt;/div&gt;, mountNode);
+React.renderComponent(<div style={colored}>Hello World!</div>, mountNode);
 ```
 
 Two:  
@@ -5296,7 +5296,7 @@ Two:
   color: $my-color;
 }
 // HTML:
-&lt;div class="colored"&gt;Hello World!&lt;/div&gt;
+<div class="colored">Hello World!</div>
 ```
 
 The first example uses what was described in the question as: "writing CSS in JavaScript. Not pretty." The second example uses Sass. While I agree that using JavaScript to write CSS may not be pretty (for some definitions of "pretty") but there is one advantage of doing it.  
@@ -5872,7 +5872,7 @@ On the one hand, single return statements make logging easier, as well as forms 
 ```
   int function() {
      if (bidi) { print("return 1"); return 1; }
-     for (int i = 0; i &lt; n; i++) {
+     for (int i = 0; i < n; i++) {
        if (vidi) { print("return 2"); return 2;}
      }
      print("return 3");
@@ -6380,12 +6380,12 @@ here for this.</em></p>
 
 ```
        +-----------------+      +-----------------+
-       |  A N A L Y Z E  +-----&gt;| I D E N T I F Y |
+       |  A N A L Y Z E  +----->| I D E N T I F Y |
        +-----------------+      +---------+-------+
                 ^                           |
                 |                           v
        +--------+--------+      +-----------------+
-       |    C L E A N    +&lt;-----|      F I X      |
+       |    C L E A N    +<-----|      F I X      |
        +-----------------+      +-----------------+
 ```
 
@@ -6635,13 +6635,13 @@ This is all a lot easier if the language has a sufficiently strong type system, 
 In modern web development I'm coming across this pattern ever more often. It looks like this:  
 
 ```
-&lt;div class="table"&gt;
-    &lt;div class="row"&gt;
-        &lt;div class="cell"&gt;&lt;/div&gt;
-        &lt;div class="cell"&gt;&lt;/div&gt;
-        &lt;div class="cell"&gt;&lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
+<div class="table">
+    <div class="row">
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+    </div>
+</div>
 ```
 
 And in CSS there is something like:  
@@ -6656,9 +6656,9 @@ And in CSS there is something like:
 
 I even recently tried doing this myself because... you know, everyone's doing it.  
 
-But I still don't get it. Why are we doing this? If you need a table, then just make a blasted `&lt;table&gt;` and be done with it. Yes, even if it's for layout. That's what tables are for - laying out stuff in tabular fashion.  
+But I still don't get it. Why are we doing this? If you need a table, then just make a blasted `<table>` and be done with it. Yes, even if it's for layout. That's what tables are for - laying out stuff in tabular fashion.  
 
-The best explanation that I have is that by now everyone has heard the mantra of "don't use tables for layout", so they follow it blindly. But they still <em>need</em> a table for layout (because nothing else has the expanding capabilities of a table), so they make a `&lt;div&gt;` (because it's <strong>not</strong> a table!) and then add CSS that makes it a table anyway.  
+The best explanation that I have is that by now everyone has heard the mantra of "don't use tables for layout", so they follow it blindly. But they still <em>need</em> a table for layout (because nothing else has the expanding capabilities of a table), so they make a `<div>` (because it's <strong>not</strong> a table!) and then add CSS that makes it a table anyway.  
 
 For all the world this looks to me like putting arbitrary unnecessary obstacles in your way and then doing extra work to circumvent them.  
 
@@ -6668,14 +6668,14 @@ In fact, the only way I see that tables could make a layout difficult to modify,
 
 So... in an attempt to change this from a rant into a coherent question: what am I missing? What are the <strong>actual</strong> benefits of using a "faux-table" over a real one?  
 
-<strong>About the duplicate link:</strong> This isn't a suggestion to use another tag or something. This is a question about using a `&lt;table&gt;` vs `display:table`.  
+<strong>About the duplicate link:</strong> This isn't a suggestion to use another tag or something. This is a question about using a `<table>` vs `display:table`.  
 
 #### Answer accepted (score 120)
 This is a common pattern for making responsive tables. Tabular data is tricky to display on mobiles since the page will either be zoomed in to read text, meaning tables go off the side of the page and the user has to scroll backwards and forwards to read the table, or the page will be zoomed out, usually meaning that the table is too small to be able to read.  
 
 Responsive tables change layout on smaller screens - sometimes some columns are hidden or columns are amalgamated, e.g. name and email address might be separate on large screens, but collapse down into one cell on small screens so the information is readable without having to scroll.  
 
-`&lt;div&gt;`s are used to create the tables instead of `&lt;table&gt;` tags for a couple of reasons. If `&lt;table&gt;` tags are used then you need to override the browser default styles and layout before adding your own code, so in this case `&lt;div&gt;` tags save on a lot of boilerplate CSS. Additionally, older versions of IE don't allow you to override default table styles, so using `&lt;div&gt;`s also smooths cross-browser development.  
+`<div>`s are used to create the tables instead of `<table>` tags for a couple of reasons. If `<table>` tags are used then you need to override the browser default styles and layout before adding your own code, so in this case `<div>` tags save on a lot of boilerplate CSS. Additionally, older versions of IE don't allow you to override default table styles, so using `<div>`s also smooths cross-browser development.  
 
 There's a pretty good <a href="https://css-tricks.com/responsive-data-tables/">overview of responsive tables on CSS-Tricks</a>.  
 
@@ -6684,17 +6684,17 @@ Edit: I should point out that I'm not advocating this pattern - it falls into th
 #### Answer 2 (score 153)
 The question is if the data is semantically a table (i.e. a set of data or units of information logically organized in two dimensions) or you just use the grid for visual layout, e.g. because you want a sidebar to expand or something like that.  
 
-If your information is semantically a table, you use a `&lt;table&gt;`-tag. If you just want a grid for layout purposes, you use some other appropriate html elements and use `display:table` in the style sheet.  
+If your information is semantically a table, you use a `<table>`-tag. If you just want a grid for layout purposes, you use some other appropriate html elements and use `display:table` in the style sheet.  
 
 <strong>When</strong> is data semantically a table? When the data is logically organized along two axes. If it makes sense with headers for the rows or columns, then you might have a semantic table. An example of something which is not semantically a table is presenting a text in columns like in a newspaper. This is not semantically a table, since you would still read it linearly, and no meaning would be lost if the presentation was removed.  
 
 <hr>
 
-OK, <strong>why</strong> not use `&lt;table&gt;` for everything rather than only for something that is semantically a table? Visually it is obviously the same (since the table element just have `display:element` in the default style sheet).   
+OK, <strong>why</strong> not use `<table>` for everything rather than only for something that is semantically a table? Visually it is obviously the same (since the table element just have `display:element` in the default style sheet).   
 
 The difference is that the semantic information can help alternative user agents. For example a screen reader might allow you to navigate in two dimensions in the table, and read the headers for a cell for both axes if you forget where you are. This would just be confusing if the table was not semantically a table but just used for visual layout.  
 
-<p>The `&lt;table&gt;` versus `display:table` discussion is just a case of the more general principle of using semantic markup. 
+<p>The `<table>` versus `display:table` discussion is just a case of the more general principle of using semantic markup. 
 See for example: <a href="https://softwareengineering.stackexchange.com/questions/164988/why-would-one-bother-marking-up-properly-and-semantically?lq=1">Why would one bother marking up properly and semantically?</a> or <a href="https://softwareengineering.stackexchange.com/questions/165618/why-is-semantic-markup-given-more-weight-for-search-engines?lq=1">Why is semantic markup given more weight for search engines?</a></p>
 
 In some places you might actually be legally required to use semantic markup for accessibility reasons, and in any case there is no reason to purposefully make your page less accessible.   
@@ -6705,36 +6705,36 @@ Even if you don't care for disabled users, having presentation separate from con
 Actually, I would say that the use of class names like "table" in your example demonstrates how people don't actually understand what they're doing when trying for semantic markup. They get marks for trying to show that the <a href="http://www.w3.org/html/wg/drafts/html/master/semantics.html#the-table-element">content is not tabular data</a>, but they lose marks for bad class names.  
 
 ```
-&lt;div class="table"&gt;
-  &lt;div class="row"&gt;
-    &lt;div class="cell"&gt;&lt;/div&gt;
-    &lt;div class="cell"&gt;&lt;/div&gt;
-    &lt;div class="cell"&gt;&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
+<div class="table">
+  <div class="row">
+    <div class="cell"></div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+  </div>
+</div>
 ```
 
-All that this developer has done is replicate the original `&lt;table&gt;` markup with CSS class names. This means as soon as this layout is not a table, the class names are at odds.  
+All that this developer has done is replicate the original `<table>` markup with CSS class names. This means as soon as this layout is not a table, the class names are at odds.  
 
 What this developer should have done is consider what information is in the table - is it a thumbnail gallery? Well, then:  
 
 ```
-&lt;div class="thumbnail-gallery"&gt;
-  &lt;div&gt;
-    &lt;div class="thumbnail"&gt;
-      &lt;img src="" /&gt;
-      &lt;p&gt;Some text&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div class="thumbnail"&gt;
-      &lt;img src="" /&gt;
-      &lt;p&gt;Some text&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div class="thumbnail"&gt;
-      &lt;img src="" /&gt;
-      &lt;p&gt;Some text&lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
+<div class="thumbnail-gallery">
+  <div>
+    <div class="thumbnail">
+      <img src="" />
+      Some text  
+    </div>
+    <div class="thumbnail">
+      <img src="" />
+      Some text  
+    </div>
+    <div class="thumbnail">
+      <img src="" />
+      Some text  
+    </div>
+  </div>
+</div>
 ```
 
 Now I can create some adaptive CSS:  
@@ -6747,7 +6747,7 @@ Now I can create some adaptive CSS:
     width: 100%;
   }
 
-  .thumbnail-gallery &gt; div {
+  .thumbnail-gallery > div {
     display: table-row;
   }
 
@@ -6760,7 +6760,7 @@ Now I can create some adaptive CSS:
 @media screen and (max-width: 640px) {
   /** reset all thumbnail gallery elements to display as block and fill screen **/
   .thumbnail-gallery,
-  .thumbnail-gallery &gt; div,
+  .thumbnail-gallery > div,
   .thumbnail-gallery .thumbnail {
     display: block;
     width: 100%;
@@ -6814,7 +6814,7 @@ Within the confines of the requirements and testing dictated by BDD, you will us
 Let's say I have three resources that are related like so:  
 
 ```
-Grandparent (collection) -&gt; Parent (collection) -&gt; and Child (collection)
+Grandparent (collection) -> Parent (collection) -> and Child (collection)
 ```
 
 The above depicts the relationship among these resources like so: Each grandparent can map to one or several parents. Each parent can map to one or several children. I want the ability to support searching against the child resource but with the filter criteria:  
@@ -6840,7 +6840,7 @@ for the above requirements, respectively.
 But I could also do something like this:  
 
 ```
-GET /myservice/api/v1/children?search={text}&amp;grandparentID={id}&amp;parentID=${id}
+GET /myservice/api/v1/children?search={text}&grandparentID={id}&parentID=${id}
 ```
 
 In this design, I could allow my client to pass me one or the other in the query string: either grandparentID or parentID, but not both.  
@@ -6877,7 +6877,7 @@ Before addressing your specific questions, your query parameter of "search" is p
 
 Your query string could be more appropriately defined as   
 
-`?first_name={firstName}&amp;last_name={lastName}&amp;birth_date={birthDate}` etc.  
+`?first_name={firstName}&last_name={lastName}&birth_date={birthDate}` etc.  
 
 <h5>To answer your specific questions</h2>
 
@@ -6978,11 +6978,11 @@ In a REST systems, client should never be bothered with IDs. The only resource i
 
 Think about how clients would interact with your system. Say the user starts browsing through a list of grandparents, he picked one of grandparent's child, that brings him to `/grandparent/123`. If the client should be able to search the children of `/grandparent/123`, then according to "HATEOAS", whatever returned when you do a query on `/grandparent/123` should return a URL to the search interface. This URL should already have whatever data is needed to filter by the current grandparent embedded in it.  
 
-Whether the link looks like `/grandparent/123?search={term}` or `/parent?grandparent=123&amp;search={term}` or `/parent?grandparentTerm=someterm&amp;someothergplocator=blah&amp;search={term}` are inconsequential according to REST. Notice how all of those URLs have the same number of parameters, which is `{term}`, even though they use different criterias. You can switch between any of those URLs or you can mix them up depending on the specific grandparents and the client wouldn't break, because the logical relationship between the resources are the same even though the underlying implementation might differ significantly.  
+Whether the link looks like `/grandparent/123?search={term}` or `/parent?grandparent=123&search={term}` or `/parent?grandparentTerm=someterm&someothergplocator=blah&search={term}` are inconsequential according to REST. Notice how all of those URLs have the same number of parameters, which is `{term}`, even though they use different criterias. You can switch between any of those URLs or you can mix them up depending on the specific grandparents and the client wouldn't break, because the logical relationship between the resources are the same even though the underlying implementation might differ significantly.  
 
-If you had instead created the service such that it requires `/grandparent/{grandparentID}?search={term}` when you go one way but `/children?parent={parentID}&amp;search={term}` a} when you go another way, that is too much coupling because the client would have to know to interpolate different things on different relations that are conceptually similar.  
+If you had instead created the service such that it requires `/grandparent/{grandparentID}?search={term}` when you go one way but `/children?parent={parentID}&search={term}` a} when you go another way, that is too much coupling because the client would have to know to interpolate different things on different relations that are conceptually similar.  
 
-Whether you actually go with `/grandparent/123?search={term}` or `/parent?grandparent=123&amp;search={term}` is a matter of taste and whichever implementation is easier for you right now. The important thing is to not require the client to be modified if you change your URL strategy or if you use different strategies on different parents-children relations.  
+Whether you actually go with `/grandparent/123?search={term}` or `/parent?grandparent=123&search={term}` is a matter of taste and whichever implementation is easier for you right now. The important thing is to not require the client to be modified if you change your URL strategy or if you use different strategies on different parents-children relations.  
 
 #### Answer 3 (score 10)
 I'm not sure why people think putting the ID values in the URL means its somehow a REST API, REST is about handling verbs, passing resources.   
@@ -7011,18 +7011,18 @@ So to my mind, reading the definition of REST, you're requesting a child resourc
 ### 71: Is it bad practice to use <?= tag in PHP? (score [169049](https://stackoverflow.com/q/151661) in 2018)
 
 #### Question
-I've come across this PHP tag `&lt;?=  ?&gt;` recently and I am reluctant to use it, but it itches so hard that I wanted to have your take on it. I know it is bad practice to use short tags `&lt;?  ?&gt;` and that we should use full tags `&lt;?php  ?&gt;` instead, but what about this one : `&lt;?=  ?&gt;`?  
+I've come across this PHP tag `<?=  ?>` recently and I am reluctant to use it, but it itches so hard that I wanted to have your take on it. I know it is bad practice to use short tags `<?  ?>` and that we should use full tags `<?php  ?>` instead, but what about this one : `<?=  ?>`?  
 
 It would save some typing and it would be better for code readability, IMO. So instead of this:  
 
 ```
-&lt;input name="someVar" value="&lt;?php echo $someVar; ?&gt;"&gt;
+<input name="someVar" value="<?php echo $someVar; ?>">
 ```
 
 I could write it like this, which is cleaner :  
 
 ```
-&lt;input name="someVar" value="&lt;?= $someVar ?&gt;"&gt;
+<input name="someVar" value="<?= $someVar ?>">
 ```
 
 Is using this operator frowned upon?  
@@ -7032,27 +7032,27 @@ Is using this operator frowned upon?
 
 Before the misinformation train goes too far out of the station, there are a bunch of things you need to understand about PHP short tags.  
 
-The primary issue with PHP's short tags is that PHP managed to choose a tag (`&lt;?`) that was used by another syntax, <strong>XML</strong>.  
+The primary issue with PHP's short tags is that PHP managed to choose a tag (`<?`) that was used by another syntax, <strong>XML</strong>.  
 
 With the option enabled, you weren't able to raw output the xml declaration without getting syntax errors:  
 
 ```
-&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+<?xml version="1.0" encoding="UTF-8" ?>
 ```
 
 This is a big issue when you consider how common XML parsing and management is.  
 
-<h5>What about `&lt;?=`?</h2>
+<h5>What about `<?=`?</h2>
 
-Although `&lt;?` causes conflicts with xml, `&lt;?=` <em>does not</em>. Unfortunately, the options to toggle it on and off were tied to <a href="http://www.php.net/manual/en/ini.core.php#ini.short-open-tag" rel="noreferrer">`short_open_tag`</a>, which meant that to get the benefit of the short echo tag (`&lt;?=`), you had to deal with the issues of the short open tag (`&lt;?`). The issues associated with the short open tag were much greater than the benefits from the short echo tag, so you'll find a million and a half recommendations to turn `short_open_tag` off, which you <em>should</em>.  
+Although `<?` causes conflicts with xml, `<?=` <em>does not</em>. Unfortunately, the options to toggle it on and off were tied to <a href="http://www.php.net/manual/en/ini.core.php#ini.short-open-tag" rel="noreferrer">`short_open_tag`</a>, which meant that to get the benefit of the short echo tag (`<?=`), you had to deal with the issues of the short open tag (`<?`). The issues associated with the short open tag were much greater than the benefits from the short echo tag, so you'll find a million and a half recommendations to turn `short_open_tag` off, which you <em>should</em>.  
 
-With PHP 5.4, however the short echo tag has been re-enabled separate from the `short_open_tag` option. I see this as a direct endorsement of the convenience of `&lt;?=`, as there's nothing fundamentally wrong with it in and of itself.  
+With PHP 5.4, however the short echo tag has been re-enabled separate from the `short_open_tag` option. I see this as a direct endorsement of the convenience of `<?=`, as there's nothing fundamentally wrong with it in and of itself.  
 
-The problem is that you can't guarantee that you'll have `&lt;?=` if you're trying to write code that could work in a wider range of PHP versions.  
+The problem is that you can't guarantee that you'll have `<?=` if you're trying to write code that could work in a wider range of PHP versions.  
 
 <sub>ok, so now that that's all out of the way</sub>  
 
-<h5>Should you use `&lt;?=`?</h1>
+<h5>Should you use `<?=`?</h1>
 
 <img src="https://i.stack.imgur.com/Bgkl8.png" alt="flowchart about whether or not to use the short echo tag">  
 
@@ -7061,12 +7061,12 @@ The problem is that you can't guarantee that you'll have `&lt;?=` if you're tryi
 #### Answer 2 (score 29)
 <em>Dusting off my PHP hat</em>  
 
-I'd definitely favor the use of `&lt;?= $someVar ?&gt;` over the more verbose `echo` (simply personal preference). The <em>only</em> downside AFAIK is for users who are running pre-5.4.0, in which case `short_open_tag` must be enabled in <a href="http://www.php.net/manual/en/ini.core.php#ini.short-open-tag">php.ini</a>.  
+I'd definitely favor the use of `<?= $someVar ?>` over the more verbose `echo` (simply personal preference). The <em>only</em> downside AFAIK is for users who are running pre-5.4.0, in which case `short_open_tag` must be enabled in <a href="http://www.php.net/manual/en/ini.core.php#ini.short-open-tag">php.ini</a>.  
 
 Now having said that, if your project isn't OS, then it's a moot point. If it is, I'd either document the fact that `short_open_tag`s must be enabled, or use the more portable of the two solutions.  
 
 #### Answer 3 (score 21)
-You should definitely try to avoid short form tags, whether it's `&lt;?` or `&lt;?=`.   
+You should definitely try to avoid short form tags, whether it's `<?` or `<?=`.   
 
 The main technical reason is portability, you can never be sure that the short form tags will work for every given setup, as they can be turned off, lookup the `short_open_tag` directive. But you can always be absolutely certain that the long form will work everywhere.  
 
@@ -7077,7 +7077,7 @@ The main technical reason is portability, you can never be sure that the short f
 That's also a bad habit. I can't really tell you what you find more readable, but I'm feverishly against using code readability as an excuse to save yourself a couple of keystrokes. If you are concerned about readability, you should go for a template engine, this:  
 
 ```
-&lt;input name="someVar" value="{someVar}"&gt;
+<input name="someVar" value="{someVar}">
 ```
 
 is far more readable from both your examples.   
@@ -7772,7 +7772,7 @@ public bool TryFindPerson(int personId, out Person result);
 Now I know people have said they <em>hate</em> the `Try...` pattern because having an output parameter breaks the ideas of a pure function, but it's really no different than:  
 
 ```
-class FindResult&lt;T&gt;
+class FindResult<T>
 {
    public FindResult(bool found, T result)
    {
@@ -7785,7 +7785,7 @@ class FindResult&lt;T&gt;
    public T Result { get; private set;
 }
 
-public FindResult&lt;Person&gt; FindPerson(int personId);
+public FindResult<Person> FindPerson(int personId);
 ```
 
 ...and to be honest you can assume that <em>every</em> .NET programmer knows about the `Try...` pattern because it's used internally by the .NET framework.  That means they <em>don't have to read the documentation</em> to understand what it does, which is more important to me than sticking to some purist's view of functions (understanding that `result` is an `out` parameter, not a `ref` parameter).  
@@ -8149,7 +8149,7 @@ It divides input array in two halves, calls itself for the two halves and then m
 
 ```
 MergeSort(arr[], l,  r)
-If r &gt; l
+If r > l
      1. Find the middle point to divide the array into two halves:  
              middle m = (l+r)/2
      2. Call mergeSort for first half:   
@@ -8172,9 +8172,9 @@ If we take a closer look at the diagram, we can see that the array is recursivel
 I am wondering why there is no markdown syntax for underline?  I know that basic html tags can be embedded to achieve this but I am trying to understand why `underline` got omitted when <strong>bold</strong> and <em>italics</em> exists  
 
 #### Answer accepted (score 125)
-There are no mention of "bold" or "italics" in <a href="http://daringfireball.net/projects/markdown/syntax">the markdown syntax document</a>. What there is, is <a href="http://daringfireball.net/projects/markdown/syntax#em">an <em>emphasis</em> section</a>, which describes how the use of underscore and asterix -marked spans (`*`, `_`, `**`, `__`) should produce code wrapped in `&lt;em&gt;` and `&lt;strong&gt;` tags.  
+There are no mention of "bold" or "italics" in <a href="http://daringfireball.net/projects/markdown/syntax">the markdown syntax document</a>. What there is, is <a href="http://daringfireball.net/projects/markdown/syntax#em">an <em>emphasis</em> section</a>, which describes how the use of underscore and asterix -marked spans (`*`, `_`, `**`, `__`) should produce code wrapped in `<em>` and `<strong>` tags.  
 
-The reason for this, I presume, is that markdown is a markup language, like html, and <a href="http://en.wikipedia.org/wiki/Separation_of_presentation_and_content">should not be concerned with how the text is presented</a> (that's the job of the styling/CSS), but to provide semantic meaning to the text. This is particularly useful for people who use non-graphical browsers, where the emphasis can be conveyed in other ways (Think about how a screen-reader could add emphasis when it encounters an `&lt;em&gt;` tag, or <em>really</em> add lots of emphasis in the case of the `&lt;strong&gt;` tag).  
+The reason for this, I presume, is that markdown is a markup language, like html, and <a href="http://en.wikipedia.org/wiki/Separation_of_presentation_and_content">should not be concerned with how the text is presented</a> (that's the job of the styling/CSS), but to provide semantic meaning to the text. This is particularly useful for people who use non-graphical browsers, where the emphasis can be conveyed in other ways (Think about how a screen-reader could add emphasis when it encounters an `<em>` tag, or <em>really</em> add lots of emphasis in the case of the `<strong>` tag).  
 
 I could well use CSS to style my emphasised text with underlines, rather than italics, but this is not the browser default in most cases.  
 
@@ -8472,7 +8472,7 @@ For example, consider the statements:
 
 Will the second statement alter the information stored in `myPeople`?  If `Person` is an exposed-field struct, it won't, <i>and the fact that it won't will be an obvious consequence of its being an exposed-field struct</i>; if `Person` is a struct and one wishes to update `myPeople`, one would clearly have to do something like `myPeople.UpdatePerson("123-45-6789", somePerson)`.  If `Person` is a class, however, it may be much harder to determine whether the above code would never update the contents of `MyPeople`, always update it, or sometimes update it.  
 
-With regard to the notion that structs should be "immutable", I disagree in general.  There are valid usage cases for "immutable" structs (where invariants are enforced in a constructor) but requiring that an entire struct must be rewritten any time any part of it changes is awkward, wasteful, and more apt to cause bugs than would simply exposing fields directly.  For example, consider a `PhoneNumber` struct whose fields, include among others, `AreaCode` and `Exchange`, and suppose one has a `List&lt;PhoneNumber&gt;`.  The effect of the following should be pretty clear:  
+With regard to the notion that structs should be "immutable", I disagree in general.  There are valid usage cases for "immutable" structs (where invariants are enforced in a constructor) but requiring that an entire struct must be rewritten any time any part of it changes is awkward, wasteful, and more apt to cause bugs than would simply exposing fields directly.  For example, consider a `PhoneNumber` struct whose fields, include among others, `AreaCode` and `Exchange`, and suppose one has a `List<PhoneNumber>`.  The effect of the following should be pretty clear:  
 
 <pre>
   for (int i=0; i &lt; myList.Count; i++)
@@ -8773,7 +8773,7 @@ Example code taken from the class android.widget.ListView:
 */
 private boolean showingTopFadingEdge() {
     final int listTop = mScrollY + mListPadding.top;
-    return (mFirstPosition &gt; 0) || (getChildAt(0).getTop() &gt; listTop);
+    return (mFirstPosition > 0) || (getChildAt(0).getTop() > listTop);
 }
 
 /**
@@ -8784,8 +8784,8 @@ private boolean showingBottomFadingEdge() {
     final int bottomOfBottomChild = getChildAt(childCount - 1).getBottom();
     final int lastVisiblePosition = mFirstPosition + childCount - 1;
     final int listBottom = mScrollY + getHeight() - mListPadding.bottom;
-    return (lastVisiblePosition &lt; mItemCount - 1)
-                     || (bottomOfBottomChild &lt; listBottom);
+    return (lastVisiblePosition < mItemCount - 1)
+                     || (bottomOfBottomChild < listBottom);
 }
 ```
 
@@ -8939,10 +8939,10 @@ cities['_found'] = find_city
 Then the following expressions are equivalent. You can call the function directly, or by referencing the dict element whose value is the function.  
 
 ```
-&gt;&gt;&gt; find_city (cities, 'New York')
+>>> find_city (cities, 'New York')
 NY
 
-&gt;&gt;&gt; cities['_found'](cities, 'New York')
+>>> cities['_found'](cities, 'New York')
 NY
 ```
 
@@ -8979,30 +8979,30 @@ Using a dispatch method is safer than other techniques, such as `eval()`, as it 
 The important thing to know is that you are <strong>NOT</strong> storing "the name of the function" in the dictionary. You are storing a reference to the function itself. You can see this using a `print` on the function.  
 
 ```
-&gt;&gt;&gt; def f():
+>>> def f():
 ...   print 1
 ... 
-&gt;&gt;&gt; print f
-&lt;function f at 0xb721c1b4&gt;
+>>> print f
+<function f at 0xb721c1b4>
 ```
 
 `f` is just a variable that references the function you defined. Using a dictionary allows you to group like things, but it isn't any different from assigning a function to a different variable.  
 
 ```
-&gt;&gt;&gt; a = f
-&gt;&gt;&gt; a
-&lt;function f at 0xb721c3ac&gt;
-&gt;&gt;&gt; a()
+>>> a = f
+>>> a
+<function f at 0xb721c3ac>
+>>> a()
 1
 ```
 
 Similarly, you can pass a function as an argument.  
 
 ```
-&gt;&gt;&gt; def c(func):
+>>> def c(func):
 ...   func()
 ... 
-&gt;&gt;&gt; c(f)
+>>> c(f)
 1
 ```
 
@@ -9151,7 +9151,7 @@ Example:</p>
 ```
 public class MyClass
 {
-     public Func&lt;int&gt; FunctionB { get; set; }
+     public Func<int> FunctionB { get; set; }
 
      public MyClass()
      {
@@ -9183,7 +9183,7 @@ public class MyClassTests
     [TestMethod]
     public void FunctionA_WhenNumberIsOdd_ReturnsTrue()
     {
-        _subject.FunctionB = () =&gt; 1;
+        _subject.FunctionB = () => 1;
 
         var result = _subject.FunctionA();
 
@@ -9212,7 +9212,7 @@ public class MyClass
 
 public class TestableMyClass
 {
-     public Func&lt;int&gt; FunctionBFunc { get; set; }
+     public Func<int> FunctionBFunc { get; set; }
 
      public MyClass()
      {
@@ -9239,7 +9239,7 @@ public class MyClassTests
     [TestMethod]
     public void FunctionA_WhenNumberIsOdd_ReturnsTrue()
     {
-        _subject.FunctionBFunc = () =&gt; 1;
+        _subject.FunctionBFunc = () => 1;
 
         var result = _subject.FunctionA();
 

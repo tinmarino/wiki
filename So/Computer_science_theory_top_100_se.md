@@ -1043,8 +1043,8 @@ Instead of an assembler-like instruction sequence, it is also common to write th
 
 ```
  input                .........
-    \--&gt; ( E ) ---&gt; (M:0)     v
-(N) ---&gt; (   ) ------------&gt; (X) ---&gt; output
+    \--> ( E ) ---> (M:0)     v
+(N) ---> (   ) ------------> (X) ---> output
 ```
 
 where full arrows are qubit dependencies and the dotted arrow is a 'signal' dependency.  
@@ -1059,14 +1059,14 @@ For example, I'm going to use my quantum co-processor to calculate a random bool
 
 ```
  qrand()       N 1; M 1 0;
- ==&gt;  | CPU | ------------&gt; | QPU |  ==&gt; { q1 } ,  []
+ ==>  | CPU | ------------> | QPU |  ==> { q1 } ,  []
                  start()
-      |     | ------------&gt; |     |  ==&gt; { } , [q1: 0]
+      |     | ------------> |     |  ==> { } , [q1: 0]
                  read(q1)         
-      |     | ------------&gt; |     |
+      |     | ------------> |     |
                   q1: 0 
- 0    |     | &lt;-----------  |     |
- &lt;==
+ 0    |     | <-----------  |     |
+ <==
 ```
 
 Where `{ ... }` is the QPU's quantum memory containing qubits and `[...]` is its classical (signal) memory containing booleans.    
@@ -1322,7 +1322,7 @@ func tournament_selection(pop, k):
     best = null
     for i=1 to k
         ind = pop[random(1, N)]
-        if (best == null) or fitness(ind) &gt; fitness(best)
+        if (best == null) or fitness(ind) > fitness(best)
             best = ind
     return best 
 ```
@@ -3670,15 +3670,15 @@ We have two queues: queue $first$ and queue $second$. $first$ will be our 'push 
 This could should be quite readable, even if you've never seen C# before. If you don't know what generics are, just replace all instances of 'T' by 'string' in your mind, for a stack of strings.  
 
 ```
-public class Stack&lt;T&gt; {
-    private Queue&lt;T&gt; first = new Queue&lt;T&gt;();
-    private Queue&lt;T&gt; second = new Queue&lt;T&gt;();
+public class Stack<T> {
+    private Queue<T> first = new Queue<T>();
+    private Queue<T> second = new Queue<T>();
     public void Push(T value) {
         first.Enqueue(value);
     }
     public T Pop() {
         if (first.Count == 0) {
-            if (second.Count &gt; 0)
+            if (second.Count > 0)
                 return second.Dequeue();
             else
                 throw new InvalidOperationException("Empty stack.");
@@ -3687,17 +3687,17 @@ public class Stack&lt;T&gt; {
             T[] reverser = new T[nrOfItemsInFirst];
 
             // Reverse first
-            for (int i = 0; i &lt; nrOfItemsInFirst; i++)
+            for (int i = 0; i < nrOfItemsInFirst; i++)
                 reverser[i] = first.Dequeue();    
-            for (int i = nrOfItemsInFirst - 1; i &gt;= 0; i--)
+            for (int i = nrOfItemsInFirst - 1; i >= 0; i--)
                 first.Enqueue(reverser[i]);
 
             // Append second to first
-            while (second.Count &gt; 0)
+            while (second.Count > 0)
                 first.Enqueue(second.Dequeue());
 
             // Swap first and second
-            Queue&lt;T&gt; temp = first; first = second; second = temp;
+            Queue<T> temp = first; first = second; second = temp;
 
             return second.Dequeue();
         }
@@ -3725,9 +3725,9 @@ This is an adapted version of the first algorithm, in which we don't immediately
 This could should be quite readable, even if you've never seen C# before. If you don't know what generics are, just replace all instances of 'T' by 'string' in your mind, for a stack of strings.  
 
 ```
-public class Stack&lt;T&gt; {
-    private Queue&lt;T&gt; first = new Queue&lt;T&gt;();
-    private Queue&lt;T&gt; second = new Queue&lt;T&gt;();
+public class Stack<T> {
+    private Queue<T> first = new Queue<T>();
+    private Queue<T> second = new Queue<T>();
     int unsortedPart = 0;
     public void Push(T value) {
         unsortedPart++;
@@ -3735,7 +3735,7 @@ public class Stack&lt;T&gt; {
     }
     public T Pop() {
         if (first.Count == 0) {
-            if (second.Count &gt; 0)
+            if (second.Count > 0)
                 return second.Dequeue();
             else
                 throw new InvalidOperationException("Empty stack.");
@@ -3743,23 +3743,23 @@ public class Stack&lt;T&gt; {
             int nrOfItemsInFirst = first.Count;
             T[] reverser = new T[nrOfItemsInFirst];
 
-            for (int i = nrOfItemsInFirst - unsortedPart - 1; i &gt;= 0; i--)
+            for (int i = nrOfItemsInFirst - unsortedPart - 1; i >= 0; i--)
                 reverser[i] = first.Dequeue();
 
-            for (int i = nrOfItemsInFirst - unsortedPart; i &lt; nrOfItemsInFirst; i++)
+            for (int i = nrOfItemsInFirst - unsortedPart; i < nrOfItemsInFirst; i++)
                 reverser[i] = first.Dequeue();
 
-            for (int i = nrOfItemsInFirst - 1; i &gt;= 0; i--)
+            for (int i = nrOfItemsInFirst - 1; i >= 0; i--)
                 first.Enqueue(reverser[i]);
 
             unsortedPart = 0;
-            if (first.Count * first.Count &lt; second.Count)
+            if (first.Count * first.Count < second.Count)
                 return first.Dequeue();
             else {
-                while (second.Count &gt; 0)
+                while (second.Count > 0)
                     first.Enqueue(second.Dequeue());
 
-                Queue&lt;T&gt; temp = first; first = second; second = temp;
+                Queue<T> temp = first; first = second; second = temp;
 
                 return second.Dequeue();
             }
@@ -3800,9 +3800,9 @@ We have two queues: queue $first$ and queue $second$. $first$ will be our 'cache
 This code should be quite readable, even if you've never seen C# before. If you don't know what generics are, just replace all instances of 'T' by 'string' in your mind, for a stack of strings.  
 
 ```
-public class Stack&lt;T&gt; {
-    private Queue&lt;T&gt; first = new Queue&lt;T&gt;();
-    private Queue&lt;T&gt; second = new Queue&lt;T&gt;();
+public class Stack<T> {
+    private Queue<T> first = new Queue<T>();
+    private Queue<T> second = new Queue<T>();
     public void Push(T value) {
         // I'll explain what's happening in these comments. Assume we pushed
         // integers onto the stack in increasing order: ie, we pushed 1 first,
@@ -3820,7 +3820,7 @@ public class Stack&lt;T&gt; {
         // second: in 1 2 3 4 out
 
         // We restore the stack order in first:
-        for (int i = 0; i &lt; first.Count - 1; i++)
+        for (int i = 0; i < first.Count - 1; i++)
             first.Enqueue(first.Dequeue());
         // first.Enqueue(first.Dequeue()); is executed twice for this example, the 
         // following happens:
@@ -3830,8 +3830,8 @@ public class Stack&lt;T&gt; {
         // second: in 1 2 3 4 out
 
         // first exeeded its capacity, so we merge first and second.
-        if (first.Count * first.Count &gt; second.Count) {
-            while (second.Count &gt; 0)
+        if (first.Count * first.Count > second.Count) {
+            while (second.Count > 0)
                 first.Enqueue(second.Dequeue());
             // first: in 4 5 6 7 out
             // second: in 1 2 3 out
@@ -3842,14 +3842,14 @@ public class Stack&lt;T&gt; {
             // first: in 1 2 3 4 5 6 7 out
             // second: in out
 
-            Queue&lt;T&gt; temp = first; first = second; second = temp;
+            Queue<T> temp = first; first = second; second = temp;
             // first: in out
             // second: in 1 2 3 4 5 6 7 out
         }
     }
     public T Pop() {
         if (first.Count == 0) {
-            if (second.Count &gt; 0)
+            if (second.Count > 0)
                 return second.Dequeue();
             else
                 throw new InvalidOperationException("Empty stack.");
