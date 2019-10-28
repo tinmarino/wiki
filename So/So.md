@@ -6,7 +6,7 @@ header-includes: <script type="text/javascript" src="../Css/js_masonry_desandro.
 
 <br/> <br/> <br/> <br/> <br/>
 
-## <img src='../res/img/stackoverflow_logo.svg' style='max-width:45%; margin-top:-200px'>
+## <img src='../res/img/stackoverflow_white_logo.svg' style='max-width:45%; margin-top:-200px'>
 
 ### Interpreted                        
 * [Bash](Bash_top_100)               
@@ -40,7 +40,7 @@ header-includes: <script type="text/javascript" src="../Css/js_masonry_desandro.
 
 <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/>
 
-## <img src='../res/img/stackexchange_logo.svg' style='max-width:45%; margin-top:-200px'>
+## <img src='../res/img/stackexchange_white_logo.svg' style='max-width:45%; margin-top:-200px; margin-bottom: -20px; margin-left: -40px; ' >
 
 ### Computing
 
