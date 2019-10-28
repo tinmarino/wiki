@@ -3708,9 +3708,11 @@ I follow Carnie (2012), just instead of a TP, a tense phrase, I used an IP, an i
 
 <img src="https://i.stack.imgur.com/J69u2.png" alt="">  
 
-<p>XX      To generate this tree:
+```
+XX      To generate this tree:
 [IP [NP [N' [N John]]] [I' [VP [V' [V says] [CP [C' [C that] [IP [NP [N' [N Mary]]] [I' [VP [V' [V believes] [CP [C' [C ∅] [IP
 [DP [DP [D' [D their] [NP [N' [N daughter]]]]][D' [D ’s] [NP [N' [AdjP [Adj' [Adj constant]]] [N' [N failing]] [PP [P' [P of] [DP [D' [D her] [NP [N' [N classes]]]]]]]]]]] [I' [VP [V' [V' [V surprises]][DP [D' [D her] [NP [N' [N teachers]]]]]][AdvP [Adv' [Adv very much]]</p>
+```
 
 #### Answer 2 (score 1)
 Below you can see how I would do it. I didn't use triangles to be clearer.  
@@ -3719,9 +3721,11 @@ I follow Carnie (2012), just instead of a TP, a tense phrase, I used an IP, an i
 
 <img src="https://i.stack.imgur.com/J69u2.png" alt="">  
 
-<p>XX      To generate this tree:
+```
+XX      To generate this tree:
 [IP [NP [N' [N John]]] [I' [VP [V' [V says] [CP [C' [C that] [IP [NP [N' [N Mary]]] [I' [VP [V' [V believes] [CP [C' [C ∅] [IP
-[DP [DP [D' [D their] [NP [N' [N daughter]]]]][D' [D ’s] [NP [N' [AdjP [Adj' [Adj constant]]] [N' [N failing]] [PP [P' [P of] [DP [D' [D her] [NP [N' [N classes]]]]]]]]]]] [I' [VP [V' [V' [V surprises]][DP [D' [D her] [NP [N' [N teachers]]]]]][AdvP [Adv' [Adv very much]]</p>
+[DP [DP [D' [D their] [NP [N' [N daughter]]]]][D' [D ’s] [NP [N' [AdjP [Adj' [Adj constant]]] [N' [N failing]] [PP [P' [P of] [DP [D' [D her] [NP [N' [N classes]]]]]]]]]]] [I' [VP [V' [V' [V surprises]][DP [D' [D her] [NP [N' [N teachers]]]]]][AdvP [Adv' [Adv very much]]
+```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
 
