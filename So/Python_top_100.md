@@ -98,17 +98,17 @@ Iterating over a `dict` iterates through its keys in no particular order, as you
 Edit: (This is <strong>no longer the case in <a href="https://stackoverflow.com/questions/39980323/dictionaries-are-ordered-in-python-3-6">Python3.6</a></strong>, but note that it's <strong>not guaranteed</strong> behaviour yet)  
 
 ```python
-&gt;&gt;&gt; d = {'x': 1, 'y': 2, 'z': 3} 
-&gt;&gt;&gt; list(d)
+>>> d = {'x': 1, 'y': 2, 'z': 3} 
+>>> list(d)
 ['y', 'x', 'z']
-&gt;&gt;&gt; d.keys()
+>>> d.keys()
 ['y', 'x', 'z']
 ```
 
 For your example, it is a better idea to use `dict.items()`:  
 
 ```python
-&gt;&gt;&gt; d.items()
+>>> d.items()
 [('y', 2), ('x', 1), ('z', 3)]
 ```
 
@@ -260,10 +260,10 @@ I just want to know how to parse a <em>float</em> `str` to a `float`, and (separ
 
 #### Answer accepted (score 2443)
 ```python
-&gt;&gt;&gt; a = "545.2222"
-&gt;&gt;&gt; float(a)
+>>> a = "545.2222"
+>>> float(a)
 545.22220000000004
-&gt;&gt;&gt; int(float(a))
+>>> int(float(a))
 545
 ```
 
@@ -388,7 +388,7 @@ For a list `["foo", "bar", "baz"]` and an item in the list `"bar"`, how do I get
 
 #### Answer accepted (score 4050)
 ```python
-&gt;&gt;&gt; ["foo", "bar", "baz"].index("bar")
+>>> ["foo", "bar", "baz"].index("bar")
 1
 ```
 
@@ -399,8 +399,8 @@ Reference: <a href="http://docs.python.org/2/tutorial/datastructures.html#more-o
 Note that while this is perhaps the cleanest way to answer the question <em>as asked</em>, `index` is a rather weak component of the `list` API, and I can't remember the last time I used it in anger. It's been pointed out to me in the comments that because this answer is heavily referenced, it should be made more complete. Some caveats about `list.index` follow. It is probably worth initially taking a look at the docstring for it:  
 
 ```python
-&gt;&gt;&gt; print(list.index.__doc__)
-L.index(value, [start, [stop]]) -&gt; integer -- return first index of value.
+>>> print(list.index.__doc__)
+L.index(value, [start, [stop]]) -> integer -- return first index of value.
 Raises ValueError if the value is not present.
 ```
 
@@ -409,10 +409,10 @@ Raises ValueError if the value is not present.
 An `index` call checks every element of the list in order, until it finds a match. If your list is long, and you don't know roughly where in the list it occurs, this search could become a bottleneck. In that case, you should consider a different data structure. Note that if you know roughly where to find the match, you can give `index` a hint. For instance, in this snippet, `l.index(999_999, 999_990, 1_000_000)` is roughly five orders of magnitude faster than straight `l.index(999_999)`, because the former only has to search 10 entries, while the latter searches a million:  
 
 ```python
-&gt;&gt;&gt; import timeit
-&gt;&gt;&gt; timeit.timeit('l.index(999_999)', setup='l = list(range(0, 1_000_000))', number=1000)
+>>> import timeit
+>>> timeit.timeit('l.index(999_999)', setup='l = list(range(0, 1_000_000))', number=1000)
 9.356267921015387
-&gt;&gt;&gt; timeit.timeit('l.index(999_999, 999_990, 1_000_000)', setup='l = list(range(0, 1_000_000))', number=1000)
+>>> timeit.timeit('l.index(999_999, 999_990, 1_000_000)', setup='l = list(range(0, 1_000_000))', number=1000)
 0.0004404920036904514
 ```
 
@@ -421,14 +421,14 @@ An `index` call checks every element of the list in order, until it finds a matc
 A call to `index` searches through the list in order until it finds a match, and <em>stops there.</em> If you expect to need indices of more matches, you should use a list comprehension, or generator expression.  
 
 ```python
-&gt;&gt;&gt; [1, 1].index(1)
+>>> [1, 1].index(1)
 0
-&gt;&gt;&gt; [i for i, e in enumerate([1, 2, 1]) if e == 1]
+>>> [i for i, e in enumerate([1, 2, 1]) if e == 1]
 [0, 2]
-&gt;&gt;&gt; g = (i for i, e in enumerate([1, 2, 1]) if e == 1)
-&gt;&gt;&gt; next(g)
+>>> g = (i for i, e in enumerate([1, 2, 1]) if e == 1)
+>>> next(g)
 0
-&gt;&gt;&gt; next(g)
+>>> next(g)
 2
 ```
 
@@ -439,9 +439,9 @@ Most places where I once would have used `index`, I now use a list comprehension
 A call to `index` results in a `ValueError` if the item's not present.  
 
 ```python
-&gt;&gt;&gt; [1, 1].index(2)
+>>> [1, 1].index(2)
 Traceback (most recent call last):
-  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+  File "<stdin>", line 1, in <module>
 ValueError: 2 is not in list
 ```
 
@@ -456,7 +456,7 @@ If the item might not be present in the list, you should either
 One thing that is really helpful in learning Python is to use the interactive help function:  
 
 ```python
-&gt;&gt;&gt; help(["foo", "bar", "baz"])
+>>> help(["foo", "bar", "baz"])
 Help on list object:
 
 class list(object)
@@ -464,7 +464,7 @@ class list(object)
 
  |
  |  index(...)
- |      L.index(value, [start, [stop]]) -&gt; integer -- return first index of value
+ |      L.index(value, [start, [stop]]) -> integer -- return first index of value
  |
 ```
 
@@ -575,7 +575,7 @@ Here's a summary of the ways to call external programs and the advantages and di
 <li><p>`os.system("some_command with args")` passes the command and arguments to your system's shell.  This is nice because you can actually run multiple commands at once in this manner and set up pipes and input/output redirection.  For example:  </p>
 
 ```python
-os.system("some_command &lt; input_file | another_command &gt; output_file")  
+os.system("some_command < input_file | another_command > output_file")  
 ```</li>
 </ol>
 
@@ -647,9 +647,9 @@ When I try to convert it to string, it's showing an error like `int` doesn't hav
 
 #### Answer accepted (score 1966)
 ```python
-&gt;&gt;&gt; str(10)
+>>> str(10)
 '10'
-&gt;&gt;&gt; int('10')
+>>> int('10')
 10
 ```
 
@@ -707,13 +707,13 @@ print(d)
 To add multiple keys simultaneously:  
 
 ```python
-&gt;&gt;&gt; x = {1:2}
-&gt;&gt;&gt; print x
+>>> x = {1:2}
+>>> print x
 {1: 2}
 
-&gt;&gt;&gt; d = {3:4, 5:6, 7:8}
-&gt;&gt;&gt; x.update(d)
-&gt;&gt;&gt; print x
+>>> d = {3:4, 5:6, 7:8}
+>>> x.update(d)
+>>> print x
 {1: 2, 3: 4, 5: 6, 7: 8}
 ```
 
@@ -770,7 +770,7 @@ data3.update(data2)  # Modifies data3, not data2
 
 ```python
 del data[key]  # Removes specific element in a dictionary
-data.pop(key)  # Removes the key &amp; returns the value
+data.pop(key)  # Removes the key & returns the value
 data.clear()  # Clears entire dictionary
 ```
 
@@ -880,8 +880,8 @@ You can test for the presence of a key in a dictionary, using the <b>in</b> keyw
 
 ```python
 d = {'a': 1, 'b': 2}
-'a' in d # &lt;== evaluates to True
-'c' in d # &lt;== evaluates to False
+'a' in d # <== evaluates to True
+'c' in d # <== evaluates to False
 ```
 
 A common use for checking the existence of a key in a dictionary before mutating it is to default-initialize the value (e.g. if your values are lists, for example, and you want to ensure that there is an empty list to which you can append when inserting the first value for a key). In cases such as those, you may find the <a href="https://docs.python.org/2/library/collections.html#collections.defaultdict" rel="noreferrer">`collections.defaultdict()`</a> type to be of interest.  
@@ -911,7 +911,7 @@ How do I get the number of elements in the list `items`?
 The `len()` function can be used with several different types in Python - both built-in types and library types. For example:  
 
 ```python
-&gt;&gt;&gt; len([1,2,3])
+>>> len([1,2,3])
 3
 ```
 
@@ -980,7 +980,7 @@ returns 3.
 And in fact we see we can get this information for all of the described types:  
 
 ```python
-&gt;&gt;&gt; all(hasattr(cls, '__len__') for cls in (str, bytes, tuple, list, 
+>>> all(hasattr(cls, '__len__') for cls in (str, bytes, tuple, list, 
                                             xrange, dict, set, frozenset))
 True
 ```
@@ -1032,10 +1032,10 @@ class slist(list):
 You can use it like so:  
 
 ```python
-&gt;&gt;&gt; l = slist(range(10))
-&gt;&gt;&gt; l.length
+>>> l = slist(range(10))
+>>> l.length
 10
-&gt;&gt;&gt; print l
+>>> print l
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
@@ -1151,21 +1151,21 @@ What is the module/method used to get the current time?
 Use:  
 
 ```python
-&gt;&gt;&gt; import datetime
-&gt;&gt;&gt; datetime.datetime.now()
+>>> import datetime
+>>> datetime.datetime.now()
 datetime.datetime(2009, 1, 6, 15, 8, 24, 78915)
 
-&gt;&gt;&gt; print(datetime.datetime.now())
+>>> print(datetime.datetime.now())
 2018-07-29 09:17:13.812189
 ```
 
 And just the time:  
 
 ```python
-&gt;&gt;&gt; datetime.datetime.now().time()
+>>> datetime.datetime.now().time()
 datetime.time(15, 8, 24, 78915)
 
-&gt;&gt;&gt; print(datetime.datetime.now().time())
+>>> print(datetime.datetime.now().time())
 09:17:51.914526
 ```
 
@@ -1174,7 +1174,7 @@ See <a href="https://docs.python.org/3/library/datetime.html" rel="noreferrer"><
 To save typing, you can import the `datetime` object from the `datetime` module:  
 
 ```python
-&gt;&gt;&gt; from datetime import datetime
+>>> from datetime import datetime
 ```
 
 Then remove the leading `datetime.` from all of the above.  
@@ -1183,8 +1183,8 @@ Then remove the leading `datetime.` from all of the above.
 You can use <a href="http://docs.python.org/3.3/library/time.html?highlight=time.strftime#time.strftime" rel="noreferrer">`time.strftime()`</a>:      
 
 ```python
-&gt;&gt;&gt; from time import gmtime, strftime
-&gt;&gt;&gt; strftime("%Y-%m-%d %H:%M:%S", gmtime())
+>>> from time import gmtime, strftime
+>>> strftime("%Y-%m-%d %H:%M:%S", gmtime())
 '2009-01-05 22:14:39'
 ```
 
@@ -1420,24 +1420,24 @@ gives you: `[1, 2, 3, 4, 5]`
 `append` adds an element to a list, and `extend` concatenates the first list with another list (or another iterable, not necessarily a list.)  
 
 ```python
-&gt;&gt;&gt; li = ['a', 'b', 'mpilgrim', 'z', 'example']
-&gt;&gt;&gt; li
+>>> li = ['a', 'b', 'mpilgrim', 'z', 'example']
+>>> li
 ['a', 'b', 'mpilgrim', 'z', 'example']
 
-&gt;&gt;&gt; li.append("new")
-&gt;&gt;&gt; li
+>>> li.append("new")
+>>> li
 ['a', 'b', 'mpilgrim', 'z', 'example', 'new']
 
-&gt;&gt;&gt; li.append(["new", 2])
-&gt;&gt;&gt; li
+>>> li.append(["new", 2])
+>>> li
 ['a', 'b', 'mpilgrim', 'z', 'example', 'new', ['new', 2]]
 
-&gt;&gt;&gt; li.insert(2, "new")
-&gt;&gt;&gt; li
+>>> li.insert(2, "new")
+>>> li
 ['a', 'b', 'new', 'mpilgrim', 'z', 'example', 'new', ['new', 2]]
 
-&gt;&gt;&gt; li.extend(["two", "elements"])
-&gt;&gt;&gt; li
+>>> li.extend(["two", "elements"])
+>>> li
 ['a', 'b', 'new', 'mpilgrim', 'z', 'example', 'new', ['new', 2], 'two', 'elements']
 ```
 
@@ -1462,19 +1462,19 @@ my_list.append(object)
 Whatever the object is, whether a number, a string, another list, or something else, it gets added onto the end of `my_list` as a single entry on the list.   
 
 ```python
-&gt;&gt;&gt; my_list
+>>> my_list
 ['foo', 'bar']
-&gt;&gt;&gt; my_list.append('baz')
-&gt;&gt;&gt; my_list
+>>> my_list.append('baz')
+>>> my_list
 ['foo', 'bar', 'baz']
 ```
 
 So keep in mind that a list is an object. If you append another list onto a list, the first list will be a single object at the end of the list (which may not be what you want):  
 
 ```python
-&gt;&gt;&gt; another_list = [1, 2, 3]
-&gt;&gt;&gt; my_list.append(another_list)
-&gt;&gt;&gt; my_list
+>>> another_list = [1, 2, 3]
+>>> my_list.append(another_list)
+>>> my_list
 ['foo', 'bar', 'baz', [1, 2, 3]]
                      #^^^^^^^^^--- single item at the end of the list.
 ```
@@ -1490,19 +1490,19 @@ my_list.extend(iterable)
 So with extend, each element of the iterable gets appended onto the list. For example:  
 
 ```python
-&gt;&gt;&gt; my_list
+>>> my_list
 ['foo', 'bar']
-&gt;&gt;&gt; another_list = [1, 2, 3]
-&gt;&gt;&gt; my_list.extend(another_list)
-&gt;&gt;&gt; my_list
+>>> another_list = [1, 2, 3]
+>>> my_list.extend(another_list)
+>>> my_list
 ['foo', 'bar', 1, 2, 3]
 ```
 
 Keep in mind that a string is an iterable, so if you extend a list with a string, you'll append each character as you iterate over the string (which may not be what you want):  
 
 ```python
-&gt;&gt;&gt; my_list.extend('baz')
-&gt;&gt;&gt; my_list
+>>> my_list.extend('baz')
+>>> my_list
 ['foo', 'bar', 1, 2, 3, 'b', 'a', 'z']
 ```
 
@@ -1542,9 +1542,9 @@ So let's time them:
 ```python
 import timeit
 
-&gt;&gt;&gt; min(timeit.repeat(lambda: append([], "abcdefghijklmnopqrstuvwxyz")))
+>>> min(timeit.repeat(lambda: append([], "abcdefghijklmnopqrstuvwxyz")))
 2.867846965789795
-&gt;&gt;&gt; min(timeit.repeat(lambda: extend([], "abcdefghijklmnopqrstuvwxyz")))
+>>> min(timeit.repeat(lambda: extend([], "abcdefghijklmnopqrstuvwxyz")))
 0.8060121536254883
 ```
 
@@ -1575,9 +1575,9 @@ import timeit
 And we see that going out of our way to create an iterable just to use extend is a (minor) waste of time:  
 
 ```python
-&gt;&gt;&gt; min(timeit.repeat(lambda: append_one([], 0)))
+>>> min(timeit.repeat(lambda: append_one([], 0)))
 0.2082819009956438
-&gt;&gt;&gt; min(timeit.repeat(lambda: extend_one([], 0)))
+>>> min(timeit.repeat(lambda: extend_one([], 0)))
 0.2397019260097295
 ```
 
@@ -1601,9 +1601,9 @@ If you only have a single element (not in an iterable) to add to the list, use `
 I want `a` to be rounded to <em>13.95</em>.  
 
 ```python
-&gt;&gt;&gt; a
+>>> a
 13.949999999999999
-&gt;&gt;&gt; round(a, 2)
+>>> round(a, 2)
 13.949999999999999
 ```
 
@@ -1619,26 +1619,26 @@ Double precision numbers have 53 bits (16 digits) of precision and regular float
 For example,  
 
 ```python
-  &gt;&gt;&gt; 125650429603636838/(2**53)
+  >>> 125650429603636838/(2**53)
   13.949999999999999
 
-  &gt;&gt;&gt; 234042163/(2**24)
+  >>> 234042163/(2**24)
   13.949999988079071
 
-  &gt;&gt;&gt; a=13.946
-  &gt;&gt;&gt; print(a)
+  >>> a=13.946
+  >>> print(a)
   13.946
-  &gt;&gt;&gt; print("%.2f" % a)
+  >>> print("%.2f" % a)
   13.95
-  &gt;&gt;&gt; round(a,2)
+  >>> round(a,2)
   13.949999999999999
-  &gt;&gt;&gt; print("%.2f" % round(a,2))
+  >>> print("%.2f" % round(a,2))
   13.95
-  &gt;&gt;&gt; print("{0:.2f}".format(a))
+  >>> print("{0:.2f}".format(a))
   13.95
-  &gt;&gt;&gt; print("{0:.2f}".format(round(a,2)))
+  >>> print("{0:.2f}".format(round(a,2)))
   13.95
-  &gt;&gt;&gt; print("{0:.15f}".format(round(a,2)))
+  >>> print("{0:.15f}".format(round(a,2)))
   13.949999999999999
 ```
 
@@ -1667,18 +1667,18 @@ float("{0:.2f}".format(13.949999999999999))
 <strong>Note</strong> that wrapping with `float()` doesn't change anything:  
 
 ```python
-&gt;&gt;&gt; x = 13.949999999999999999
-&gt;&gt;&gt; x
+>>> x = 13.949999999999999999
+>>> x
 13.95
-&gt;&gt;&gt; g = float("{0:.2f}".format(x))
-&gt;&gt;&gt; g
+>>> g = float("{0:.2f}".format(x))
+>>> g
 13.95
-&gt;&gt;&gt; x == g
+>>> x == g
 True
-&gt;&gt;&gt; h = round(x, 2)
-&gt;&gt;&gt; h
+>>> h = round(x, 2)
+>>> h
 13.95
-&gt;&gt;&gt; x == h
+>>> x == h
 True
 ```
 
@@ -1748,8 +1748,8 @@ Check out <a href="http://docs.python.org/3/library/time.html#time.strptime" rel
 
 ```python
 $ python
-&gt;&gt;&gt; import time
-&gt;&gt;&gt; time.strptime('Jun 1 2005  1:33PM', '%b %d %Y %I:%M%p')
+>>> import time
+>>> time.strptime('Jun 1 2005  1:33PM', '%b %d %Y %I:%M%p')
 time.struct_time(tm_year=2005, tm_mon=6, tm_mday=1,
                  tm_hour=13, tm_min=33, tm_sec=0,
                  tm_wday=2, tm_yday=152, tm_isdst=-1)
@@ -1768,16 +1768,16 @@ If leaving the second part means 'till the end', and if you leave the first part
 
 #### Answer accepted (score 2939)
 ```python
-&gt;&gt;&gt; x = "Hello World!"
-&gt;&gt;&gt; x[2:]
+>>> x = "Hello World!"
+>>> x[2:]
 'llo World!'
-&gt;&gt;&gt; x[:2]
+>>> x[:2]
 'He'
-&gt;&gt;&gt; x[:-2]
+>>> x[:-2]
 'Hello Worl'
-&gt;&gt;&gt; x[-2:]
+>>> x[-2:]
 'd!'
-&gt;&gt;&gt; x[2:-2]
+>>> x[2:-2]
 'llo Worl'
 ```
 
@@ -1880,7 +1880,7 @@ print(full_path + "\n")
 
 print("This file directory and name")
 path, filename = os.path.split(full_path)
-print(path + ' --&gt; ' + filename + "\n")
+print(path + ' --> ' + filename + "\n")
 
 print("This file directory only")
 print(os.path.dirname(full_path))
@@ -1931,7 +1931,7 @@ This program raises an exception, though:
 
 ```python
 Traceback (most recent call last):
-  File "&lt;pyshell#1&gt;", line 5, in &lt;module&gt;
+  File "<pyshell#1>", line 5, in <module>
     data = json.load(f)
   File "/usr/lib/python3.5/json/__init__.py", line 319, in loads
     return _default_decoder.decode(s)
@@ -2708,17 +2708,17 @@ I found the `list.remove` method, but say I want to remove the last element, how
 Use `del` and specify the index of the element you want to delete:  
 
 ```python
-&gt;&gt;&gt; a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-&gt;&gt;&gt; del a[-1]
-&gt;&gt;&gt; a
+>>> a = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> del a[-1]
+>>> a
 [0, 1, 2, 3, 4, 5, 6, 7, 8]
 ```
 
 Also supports slices:  
 
 ```python
-&gt;&gt;&gt; del a[2:4]
-&gt;&gt;&gt; a
+>>> del a[2:4]
+>>> a
 [0, 1, 4, 5, 6, 7, 8, 9]
 ```
 
@@ -2751,10 +2751,10 @@ Like others mentioned pop and del are <em>the</em> efficient ways to remove an i
 (Also this will be the least efficient method when working with Python list, but this could be useful (but not efficient, I reiterate) when working with user defined objects that do not support pop, yet do define a `__getitem__` ):  
 
 ```python
-&gt;&gt;&gt; a = [1, 2, 3, 4, 5, 6]
-&gt;&gt;&gt; index = 3 # Only positive index
+>>> a = [1, 2, 3, 4, 5, 6]
+>>> index = 3 # Only positive index
 
-&gt;&gt;&gt; a = a[:index] + a[index+1 :]
+>>> a = a[:index] + a[index+1 :]
 # a is now [1, 2, 3, 5, 6]
 ```
 
@@ -2904,9 +2904,9 @@ I have the edited column names stored it in a list, but I don't know how to repl
 Just assign it to the `.columns` attribute:  
 
 ```python
-&gt;&gt;&gt; df = pd.DataFrame({'$a':[1,2], '$b': [10,20]})
-&gt;&gt;&gt; df.columns = ['a', 'b']
-&gt;&gt;&gt; df
+>>> df = pd.DataFrame({'$a':[1,2], '$b': [10,20]})
+>>> df.columns = ['a', 'b']
+>>> df
    a   b
 0  1  10
 1  2  20
@@ -3022,20 +3022,20 @@ Python doesn't have the same types as C/C++, which appears to be your question.
 Try this:  
 
 ```python
-&gt;&gt;&gt; i = 123
-&gt;&gt;&gt; type(i)
-&lt;type 'int'&gt;
-&gt;&gt;&gt; type(i) is int
+>>> i = 123
+>>> type(i)
+<type 'int'>
+>>> type(i) is int
 True
-&gt;&gt;&gt; i = 123456789L
-&gt;&gt;&gt; type(i)
-&lt;type 'long'&gt;
-&gt;&gt;&gt; type(i) is long
+>>> i = 123456789L
+>>> type(i)
+<type 'long'>
+>>> type(i) is long
 True
-&gt;&gt;&gt; i = 123.456
-&gt;&gt;&gt; type(i)
-&lt;type 'float'&gt;
-&gt;&gt;&gt; type(i) is float
+>>> i = 123.456
+>>> type(i)
+<type 'float'>
+>>> type(i) is float
 True
 ```
 
@@ -3049,41 +3049,41 @@ See the examples below, but there's no "unsigned" type in Python just like Java.
 Positive integer:  
 
 ```python
-&gt;&gt;&gt; v = 10
-&gt;&gt;&gt; type(v)
-&lt;type 'int'&gt;
+>>> v = 10
+>>> type(v)
+<type 'int'>
 ```
 
 <em>Large</em> positive integer:  
 
 ```python
-&gt;&gt;&gt; v = 100000000000000
-&gt;&gt;&gt; type(v)
-&lt;type 'long'&gt;
+>>> v = 100000000000000
+>>> type(v)
+<type 'long'>
 ```
 
 Negative integer:  
 
 ```python
-&gt;&gt;&gt; v = -10
-&gt;&gt;&gt; type(v)
-&lt;type 'int'&gt;
+>>> v = -10
+>>> type(v)
+<type 'int'>
 ```
 
 Literal sequence of characters:  
 
 ```python
-&gt;&gt;&gt; v = 'hi'
-&gt;&gt;&gt; type(v)
-&lt;type 'str'&gt;
+>>> v = 'hi'
+>>> type(v)
+<type 'str'>
 ```
 
 Floating point integer:  
 
 ```python
-&gt;&gt;&gt; v = 3.14159
-&gt;&gt;&gt; type(v)
-&lt;type 'float'&gt;
+>>> v = 3.14159
+>>> type(v)
+<type 'float'>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -3118,29 +3118,29 @@ The official 3.x documentation is here: <a href="https://docs.python.org/3/libra
 The canonical Pythonic way of doing this is   
 
 ```python
-&gt;&gt;&gt; 'Kilometers'.lower()
+>>> 'Kilometers'.lower()
 'kilometers'
 ```
 
 However, if the purpose is to do case insensitive matching, you should use case-folding:  
 
 ```python
-&gt;&gt;&gt; 'Kilometers'.casefold()
+>>> 'Kilometers'.casefold()
 'kilometers'
 ```
 
 Here's why:  
 
 ```python
-&gt;&gt;&gt; "Maße".casefold()
+>>> "Maße".casefold()
 'masse'
-&gt;&gt;&gt; "Maße".lower()
+>>> "Maße".lower()
 'maße'
-&gt;&gt;&gt; "MASSE" == "Maße"
+>>> "MASSE" == "Maße"
 False
-&gt;&gt;&gt; "MASSE".lower() == "Maße".lower()
+>>> "MASSE".lower() == "Maße".lower()
 False
-&gt;&gt;&gt; "MASSE".casefold() == "Maße".casefold()
+>>> "MASSE".casefold() == "Maße".casefold()
 True
 ```
 
@@ -3151,10 +3151,10 @@ This is a str method in Python 3, but in Python 2, you'll want to look at the Py
 <a href="https://docs.python.org/3/howto/unicode.html" rel="noreferrer">Python 3</a> handles plain string literals as unicode:  
 
 ```python
-&gt;&gt;&gt; string = 'Километр'
-&gt;&gt;&gt; string
+>>> string = 'Километр'
+>>> string
 'Километр'
-&gt;&gt;&gt; string.lower()
+>>> string.lower()
 'километр'
 ```
 
@@ -3165,12 +3165,12 @@ In Python 2, the below, pasted into a shell, encodes the literal as a string of 
 And `lower` doesn't map any changes that bytes would be aware of, so we get the same string.   
 
 ```python
-&gt;&gt;&gt; string = 'Километр'
-&gt;&gt;&gt; string
+>>> string = 'Километр'
+>>> string
 '\xd0\x9a\xd0\xb8\xd0\xbb\xd0\xbe\xd0\xbc\xd0\xb5\xd1\x82\xd1\x80'
-&gt;&gt;&gt; string.lower()
+>>> string.lower()
 '\xd0\x9a\xd0\xb8\xd0\xbb\xd0\xbe\xd0\xbc\xd0\xb5\xd1\x82\xd1\x80'
-&gt;&gt;&gt; print string.lower()
+>>> print string.lower()
 Километр
 ```
 
@@ -3181,30 +3181,30 @@ In scripts, Python will object to non-ascii (as of Python 2.5, and warning in Py
 So we need a `unicode` string to handle this conversion, accomplished easily with a unicode string literal, which disambiguates with a `u` prefix (and note the `u` prefix also works in Python 3):  
 
 ```python
-&gt;&gt;&gt; unicode_literal = u'Километр'
-&gt;&gt;&gt; print(unicode_literal.lower())
+>>> unicode_literal = u'Километр'
+>>> print(unicode_literal.lower())
 километр
 ```
 
 Note that the bytes are completely different from the `str` bytes - the escape character is `'\u'` followed by the 2-byte width, or 16 bit representation of these `unicode` letters:  
 
 ```python
-&gt;&gt;&gt; unicode_literal
+>>> unicode_literal
 u'\u041a\u0438\u043b\u043e\u043c\u0435\u0442\u0440'
-&gt;&gt;&gt; unicode_literal.lower()
+>>> unicode_literal.lower()
 u'\u043a\u0438\u043b\u043e\u043c\u0435\u0442\u0440'
 ```
 
 Now if we only have it in the form of a `str`, we need to convert it to `unicode`. Python's Unicode type is a universal encoding format that has many <a href="https://en.wikipedia.org/wiki/UTF-8#Advantages_and_disadvantages" rel="noreferrer">advantages</a> relative to most other encodings. We can either use the `unicode` constructor or `str.decode` method with the codec to convert the `str` to `unicode`:  
 
 ```python
-&gt;&gt;&gt; unicode_from_string = unicode(string, 'utf-8') # "encoding" unicode from string
-&gt;&gt;&gt; print(unicode_from_string.lower())
+>>> unicode_from_string = unicode(string, 'utf-8') # "encoding" unicode from string
+>>> print(unicode_from_string.lower())
 километр
-&gt;&gt;&gt; string_to_unicode = string.decode('utf-8') 
-&gt;&gt;&gt; print(string_to_unicode.lower())
+>>> string_to_unicode = string.decode('utf-8') 
+>>> print(string_to_unicode.lower())
 километр
-&gt;&gt;&gt; unicode_from_string == string_to_unicode == unicode_literal
+>>> unicode_from_string == string_to_unicode == unicode_literal
 True
 ```
 
@@ -3223,17 +3223,17 @@ It is recommended that you always <a href="https://docs.python.org/2/howto/unico
 However, to get the lowercase back in type `str`, encode the python string to `utf-8` again:  
 
 ```python
-&gt;&gt;&gt; print string
+>>> print string
 Километр
-&gt;&gt;&gt; string
+>>> string
 '\xd0\x9a\xd0\xb8\xd0\xbb\xd0\xbe\xd0\xbc\xd0\xb5\xd1\x82\xd1\x80'
-&gt;&gt;&gt; string.decode('utf-8')
+>>> string.decode('utf-8')
 u'\u041a\u0438\u043b\u043e\u043c\u0435\u0442\u0440'
-&gt;&gt;&gt; string.decode('utf-8').lower()
+>>> string.decode('utf-8').lower()
 u'\u043a\u0438\u043b\u043e\u043c\u0435\u0442\u0440'
-&gt;&gt;&gt; string.decode('utf-8').lower().encode('utf-8')
+>>> string.decode('utf-8').lower().encode('utf-8')
 '\xd0\xba\xd0\xb8\xd0\xbb\xd0\xbe\xd0\xbc\xd0\xb5\xd1\x82\xd1\x80'
-&gt;&gt;&gt; print string.decode('utf-8').lower().encode('utf-8')
+>>> print string.decode('utf-8').lower().encode('utf-8')
 километр
 ```
 
@@ -3243,10 +3243,10 @@ So in Python 2, Unicode can encode into Python strings, and Python strings can d
 With Python 2, this doesn't work for non-English words in UTF-8. In this case `decode('utf-8')` can help:  
 
 ```python
-&gt;&gt;&gt; s='Километр'
-&gt;&gt;&gt; print s.lower()
+>>> s='Километр'
+>>> print s.lower()
 Километр
-&gt;&gt;&gt; print s.decode('utf-8').lower()
+>>> print s.decode('utf-8').lower()
 километр
 ```
 
@@ -3274,8 +3274,8 @@ str1 = ''.join(str(e) for e in list1)
 
 #### Answer 3 (score 255)
 ```python
-&gt;&gt;&gt; L = [1,2,3]       
-&gt;&gt;&gt; " ".join(str(x) for x in L)
+>>> L = [1,2,3]       
+>>> " ".join(str(x) for x in L)
 '1 2 3'
 ```
 
@@ -3312,19 +3312,19 @@ df.loc[df['column_name'].isin(some_values)]
 Combine multiple conditions with `&amp;`:   
 
 ```python
-df.loc[(df['column_name'] &gt;= A) &amp; (df['column_name'] &lt;= B)]
+df.loc[(df['column_name'] >= A) & (df['column_name'] <= B)]
 ```
 
 Note the parentheses. Due to Python's <a href="https://docs.python.org/3/reference/expressions.html#operator-precedence" rel="noreferrer">operator precedence rules</a>, `&amp;` binds more tightly than `&lt;=` and `&gt;=`. Thus, the parentheses in the last example are necessary. Without the parentheses   
 
 ```python
-df['column_name'] &gt;= A &amp; df['column_name'] &lt;= B
+df['column_name'] >= A & df['column_name'] <= B
 ```
 
 is parsed as   
 
 ```python
-df['column_name'] &gt;= (A &amp; df['column_name']) &lt;= B
+df['column_name'] >= (A & df['column_name']) <= B
 ```
 
 which results in a <a href="https://stackoverflow.com/questions/36921951/truth-value-of-a-series-is-ambiguous-use-a-empty-a-bool-a-item-a-any-o">Truth value of a Series is ambiguous error</a>.  
@@ -3942,7 +3942,7 @@ listtwo = [4, 5, 6]
 Expected outcome:  
 
 ```python
-&gt;&gt;&gt; joinedlist
+>>> joinedlist
 [1, 2, 3, 4, 5, 6]
 ```
 
@@ -3959,7 +3959,7 @@ joinedlist = listone + listtwo
 Output:  
 
 ```python
-&gt;&gt;&gt; joinedlist
+>>> joinedlist
 [1,2,3,4,5,6]
 ```
 
@@ -3990,9 +3990,9 @@ For example, I'm trying to understand this code<sup><strong>1</strong></sup>:
 
 ```python
 def _get_child_candidates(self, distance, min_dist, max_dist):
-    if self._leftchild and distance - max_dist &lt; self._median:
+    if self._leftchild and distance - max_dist < self._median:
         yield self._leftchild
-    if self._rightchild and distance + max_dist &gt;= self._median:
+    if self._rightchild and distance + max_dist >= self._median:
         yield self._rightchild  
 ```
 
@@ -4003,7 +4003,7 @@ result, candidates = [], [self]
 while candidates:
     node = candidates.pop()
     distance = node._get_dist(obj)
-    if distance &lt;= max_dist and distance &gt;= min_dist:
+    if distance <= max_dist and distance >= min_dist:
         result.extend(node._values)
     candidates.extend(node._get_child_candidates(distance, min_dist, max_dist))
 return result
@@ -4025,8 +4025,8 @@ To understand what `yield` does, you must understand what <em>generators</em> ar
 When you create a list, you can read its items one by one. Reading its items one by one is called iteration:  
 
 ```python
-&gt;&gt;&gt; mylist = [1, 2, 3]
-&gt;&gt;&gt; for i in mylist:
+>>> mylist = [1, 2, 3]
+>>> for i in mylist:
 ...    print(i)
 1
 2
@@ -4036,8 +4036,8 @@ When you create a list, you can read its items one by one. Reading its items one
 `mylist` is an <em>iterable</em>. When you use a list comprehension, you create a list, and so an iterable:  
 
 ```python
-&gt;&gt;&gt; mylist = [x*x for x in range(3)]
-&gt;&gt;&gt; for i in mylist:
+>>> mylist = [x*x for x in range(3)]
+>>> for i in mylist:
 ...    print(i)
 0
 1
@@ -4053,8 +4053,8 @@ These iterables are handy because you can read them as much as you wish, but you
 Generators are iterators, a kind of iterable <strong>you can only iterate over once</strong>. Generators do not store all the values in memory, <strong>they generate the values on the fly</strong>:  
 
 ```python
-&gt;&gt;&gt; mygenerator = (x*x for x in range(3))
-&gt;&gt;&gt; for i in mygenerator:
+>>> mygenerator = (x*x for x in range(3))
+>>> for i in mygenerator:
 ...    print(i)
 0
 1
@@ -4068,15 +4068,15 @@ It is just the same except you used `()` instead of `[]`. BUT, you <strong>canno
 `yield` is a keyword that is used like `return`, except the function will return a generator.  
 
 ```python
-&gt;&gt;&gt; def createGenerator():
+>>> def createGenerator():
 ...    mylist = range(3)
 ...    for i in mylist:
 ...        yield i*i
 ...
-&gt;&gt;&gt; mygenerator = createGenerator() # create a generator
-&gt;&gt;&gt; print(mygenerator) # mygenerator is an object!
-&lt;generator object createGenerator at 0xb7555c34&gt;
-&gt;&gt;&gt; for i in mygenerator:
+>>> mygenerator = createGenerator() # create a generator
+>>> print(mygenerator) # mygenerator is an object!
+<generator object createGenerator at 0xb7555c34>
+>>> for i in mygenerator:
 ...     print(i)
 0
 1
@@ -4109,12 +4109,12 @@ def _get_child_candidates(self, distance, min_dist, max_dist):
 
     # If there is still a child of the node object on its left
     # AND if the distance is ok, return the next child
-    if self._leftchild and distance - max_dist &lt; self._median:
+    if self._leftchild and distance - max_dist < self._median:
         yield self._leftchild
 
     # If there is still a child of the node object on its right
     # AND if the distance is ok, return the next child
-    if self._rightchild and distance + max_dist &gt;= self._median:
+    if self._rightchild and distance + max_dist >= self._median:
         yield self._rightchild
 
     # If the function arrives here, the generator will be considered empty
@@ -4137,7 +4137,7 @@ while candidates:
     distance = node._get_dist(obj)
 
     # If distance is ok, then you can fill the result
-    if distance &lt;= max_dist and distance &gt;= min_dist:
+    if distance <= max_dist and distance >= min_dist:
         result.extend(node._values)
 
     # Add the children of the candidate in the candidate's list
@@ -4158,10 +4158,10 @@ This code contains several smart parts:
 Usually we pass a list to it:  
 
 ```python
-&gt;&gt;&gt; a = [1, 2]
-&gt;&gt;&gt; b = [3, 4]
-&gt;&gt;&gt; a.extend(b)
-&gt;&gt;&gt; print(a)
+>>> a = [1, 2]
+>>> b = [3, 4]
+>>> a.extend(b)
+>>> print(a)
 [1, 2, 3, 4]
 ```
 
@@ -4179,30 +4179,30 @@ You can stop here, or read a little bit to see an advanced use of a generator:
 <h5>Controlling a generator exhaustion</h2>
 
 ```python
-&gt;&gt;&gt; class Bank(): # Let's create a bank, building ATMs
+>>> class Bank(): # Let's create a bank, building ATMs
 ...    crisis = False
 ...    def create_atm(self):
 ...        while not self.crisis:
 ...            yield "$100"
-&gt;&gt;&gt; hsbc = Bank() # When everything's ok the ATM gives you as much as you want
-&gt;&gt;&gt; corner_street_atm = hsbc.create_atm()
-&gt;&gt;&gt; print(corner_street_atm.next())
+>>> hsbc = Bank() # When everything's ok the ATM gives you as much as you want
+>>> corner_street_atm = hsbc.create_atm()
+>>> print(corner_street_atm.next())
 $100
-&gt;&gt;&gt; print(corner_street_atm.next())
+>>> print(corner_street_atm.next())
 $100
-&gt;&gt;&gt; print([corner_street_atm.next() for cash in range(5)])
+>>> print([corner_street_atm.next() for cash in range(5)])
 ['$100', '$100', '$100', '$100', '$100']
-&gt;&gt;&gt; hsbc.crisis = True # Crisis is coming, no more money!
-&gt;&gt;&gt; print(corner_street_atm.next())
-&lt;type 'exceptions.StopIteration'&gt;
-&gt;&gt;&gt; wall_street_atm = hsbc.create_atm() # It's even true for new ATMs
-&gt;&gt;&gt; print(wall_street_atm.next())
-&lt;type 'exceptions.StopIteration'&gt;
-&gt;&gt;&gt; hsbc.crisis = False # The trouble is, even post-crisis the ATM remains empty
-&gt;&gt;&gt; print(corner_street_atm.next())
-&lt;type 'exceptions.StopIteration'&gt;
-&gt;&gt;&gt; brand_new_atm = hsbc.create_atm() # Build a new one to get back in business
-&gt;&gt;&gt; for cash in brand_new_atm:
+>>> hsbc.crisis = True # Crisis is coming, no more money!
+>>> print(corner_street_atm.next())
+<type 'exceptions.StopIteration'>
+>>> wall_street_atm = hsbc.create_atm() # It's even true for new ATMs
+>>> print(wall_street_atm.next())
+<type 'exceptions.StopIteration'>
+>>> hsbc.crisis = False # The trouble is, even post-crisis the ATM remains empty
+>>> print(corner_street_atm.next())
+<type 'exceptions.StopIteration'>
+>>> brand_new_atm = hsbc.create_atm() # Build a new one to get back in business
+>>> for cash in brand_new_atm:
 ...    print cash
 $100
 $100
@@ -4230,11 +4230,11 @@ Then just `import itertools`.
 An example? Let's see the possible orders of arrival for a four-horse race:  
 
 ```python
-&gt;&gt;&gt; horses = [1, 2, 3, 4]
-&gt;&gt;&gt; races = itertools.permutations(horses)
-&gt;&gt;&gt; print(races)
-&lt;itertools.permutations object at 0xb754f1dc&gt;
-&gt;&gt;&gt; print(list(itertools.permutations(horses)))
+>>> horses = [1, 2, 3, 4]
+>>> races = itertools.permutations(horses)
+>>> print(races)
+<itertools.permutations object at 0xb754f1dc>
+>>> print(list(itertools.permutations(horses)))
 [(1, 2, 3, 4),
  (1, 2, 4, 3),
  (1, 3, 2, 4),
@@ -4371,7 +4371,7 @@ class it:
     # until it raises StopIteration.
     def next(self):
         self.count += 1
-        if self.count &lt; 4:
+        if self.count < 4:
             return self.count
         else:
             # A StopIteration exception is raised
@@ -4462,8 +4462,8 @@ Although you can name them as you wish, I look at it this way to avoid some conf
 If you really want a matrix, you might be better off using `numpy`. Matrix operations in `numpy` most often use an array type with two dimensions. There are many ways to create a new array; one of the most useful is the `zeros` function, which takes a shape parameter and returns an array of the given shape, with the values initialized to zero:  
 
 ```python
-&gt;&gt;&gt; import numpy
-&gt;&gt;&gt; numpy.zeros((5, 5))
+>>> import numpy
+>>> numpy.zeros((5, 5))
 array([[ 0.,  0.,  0.,  0.,  0.],
        [ 0.,  0.,  0.,  0.,  0.],
        [ 0.,  0.,  0.,  0.,  0.],
@@ -4474,7 +4474,7 @@ array([[ 0.,  0.,  0.,  0.,  0.],
 `numpy` provides a `matrix` type as well. It's less commonly used, and some people <a href="https://stackoverflow.com/a/3892639/577088">recommend against</a> using it. But it's useful for people coming to `numpy` from Matlab, and in some other contexts. I thought I'd include it since we're talking about matrices!  
 
 ```python
-&gt;&gt;&gt; numpy.matrix([[1, 2], [3, 4]])
+>>> numpy.matrix([[1, 2], [3, 4]])
 matrix([[1, 2],
         [3, 4]])
 ```
@@ -4501,11 +4501,11 @@ matrix = [[0]*5 for i in range(5)]
 Unfortunately shortening this to something like `5*[5*[0]]` doesn't really work because you end up with 5 copies of the same list, so when you modify one of them they all change, for example:  
 
 ```python
-&gt;&gt;&gt; matrix = 5*[5*[0]]
-&gt;&gt;&gt; matrix
+>>> matrix = 5*[5*[0]]
+>>> matrix
 [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]
-&gt;&gt;&gt; matrix[4][4] = 2
-&gt;&gt;&gt; matrix
+>>> matrix[4][4] = 2
+>>> matrix
 [[0, 0, 0, 0, 2], [0, 0, 0, 0, 2], [0, 0, 0, 0, 2], [0, 0, 0, 0, 2], [0, 0, 0, 0, 2]]
 ```
 
@@ -4618,21 +4618,21 @@ Another gif you said? Here ya go!
 I'm using this code to get standard output from an external program:  
 
 ```python
-&gt;&gt;&gt; from subprocess import *
-&gt;&gt;&gt; command_stdout = Popen(['ls', '-l'], stdout=PIPE).communicate()[0]
+>>> from subprocess import *
+>>> command_stdout = Popen(['ls', '-l'], stdout=PIPE).communicate()[0]
 ```
 
 The communicate() method returns an array of bytes:  
 
 ```python
-&gt;&gt;&gt; command_stdout
+>>> command_stdout
 b'total 0\n-rw-rw-r-- 1 thomas thomas 0 Mar  3 07:03 file1\n-rw-rw-r-- 1 thomas thomas 0 Mar  3 07:03 file2\n'
 ```
 
 However, I'd like to work with the output as a normal Python string. So that I could print it like this:  
 
 ```python
-&gt;&gt;&gt; print(command_stdout)
+>>> print(command_stdout)
 -rw-rw-r-- 1 thomas thomas 0 Mar  3 07:03 file1
 -rw-rw-r-- 1 thomas thomas 0 Mar  3 07:03 file2
 ```
@@ -4640,7 +4640,7 @@ However, I'd like to work with the output as a normal Python string. So that I c
 I thought that's what the <a href="http://docs.python.org/3.0/library/binascii.html?highlight=b2a#binascii.b2a_qp" rel="noreferrer">binascii.b2a_qp()</a> method is for, but when I tried it, I got the same byte array again:  
 
 ```python
-&gt;&gt;&gt; binascii.b2a_qp(command_stdout)
+>>> binascii.b2a_qp(command_stdout)
 b'total 0\n-rw-rw-r-- 1 thomas thomas 0 Mar  3 07:03 file1\n-rw-rw-r-- 1 thomas thomas 0 Mar  3 07:03 file2\n'
 ```
 
@@ -4650,12 +4650,12 @@ How do I convert the bytes value back to string? I mean, using the "batteries" i
 You need to decode the bytes object to produce a string:  
 
 ```python
-&gt;&gt;&gt; b"abcde"
+>>> b"abcde"
 b'abcde'
 
 # utf-8 is used here because it is a very common encoding, but you
 # need to use the encoding your data is actually in.
-&gt;&gt;&gt; b"abcde".decode("utf-8") 
+>>> b"abcde".decode("utf-8") 
 'abcde'
 ```
 
@@ -4694,7 +4694,7 @@ I think this way is easy:
 ```python
 bytes_data = [112, 52, 52]
 "".join(map(chr, bytes_data))
-&gt;&gt; p44
+>> p44
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -4853,7 +4853,7 @@ Or in languages that do not have a for-each loop:
 <blockquote>
 ```python
 index = 0
-while index &lt; len(items):
+while index < len(items):
     print(index, items[index])
     index += 1
 ```
@@ -4931,9 +4931,9 @@ index, item = iteration
 and when we inspect `index`, we find it refers to the first index, 0, and `item` refers to the first item, `'a'`.  
 
 ```python
-&gt;&gt;&gt; print(index)
+>>> print(index)
 0
-&gt;&gt;&gt; print(item)
+>>> print(item)
 a
 ```
 
@@ -5246,7 +5246,7 @@ Here's my code:
 ```python
 def front_back(a, b):
   # +++your code here+++
-  if len(a) % 2 == 0 &amp;&amp; len(b) % 2 == 0:
+  if len(a) % 2 == 0 && len(b) % 2 == 0:
     return a[:(len(a)/2)] + b[:(len(b)/2)] + a[(len(a)/2):] + b[(len(b)/2):] 
   else:
     #todo! Not yet done. :P
@@ -5291,10 +5291,10 @@ In fact, you can do much more with this syntax. The `some_list[-n]` syntax gets 
 You can also set list elements in this way. For instance:  
 
 ```python
-&gt;&gt;&gt; some_list = [1, 2, 3]
-&gt;&gt;&gt; some_list[-1] = 5 # Set the last element
-&gt;&gt;&gt; some_list[-2] = 3 # Set the second to last element
-&gt;&gt;&gt; some_list
+>>> some_list = [1, 2, 3]
+>>> some_list[-1] = 5 # Set the last element
+>>> some_list[-2] = 3 # Set the second to last element
+>>> some_list
 [1, 3, 5]
 ```
 
@@ -5364,31 +5364,31 @@ Some reported getting the `SettingWithCopyWarning` with this code.<br>
 However, the code still runs perfectly with the current pandas version 0.16.1.</p>
 
 ```python
-&gt;&gt;&gt; sLength = len(df1['a'])
-&gt;&gt;&gt; df1
+>>> sLength = len(df1['a'])
+>>> df1
           a         b         c         d
 6 -0.269221 -0.026476  0.997517  1.294385
 8  0.917438  0.847941  0.034235 -0.448948
 
-&gt;&gt;&gt; df1['e'] = pd.Series(np.random.randn(sLength), index=df1.index)
-&gt;&gt;&gt; df1
+>>> df1['e'] = pd.Series(np.random.randn(sLength), index=df1.index)
+>>> df1
           a         b         c         d         e
 6 -0.269221 -0.026476  0.997517  1.294385  1.757167
 8  0.917438  0.847941  0.034235 -0.448948  2.228131
 
-&gt;&gt;&gt; p.version.short_version
+>>> p.version.short_version
 '0.16.1'
 ```
 
 The `SettingWithCopyWarning` aims to inform of a possibly invalid assignment on a copy of the Dataframe. It doesn't necessarily say you did it wrong (it can trigger false positives) but from 0.13.0 it let you know there are more adequate methods for the same purpose. Then, if you get the warning, just follow its advise: <em>Try using .loc[row_index,col_indexer] = value instead</em>  
 
 ```python
-&gt;&gt;&gt; df1.loc[:,'f'] = pd.Series(np.random.randn(sLength), index=df1.index)
-&gt;&gt;&gt; df1
+>>> df1.loc[:,'f'] = pd.Series(np.random.randn(sLength), index=df1.index)
+>>> df1
           a         b         c         d         e         f
 6 -0.269221 -0.026476  0.997517  1.294385  1.757167 -0.050927
 8  0.917438  0.847941  0.034235 -0.448948  2.228131  0.006109
-&gt;&gt;&gt; 
+>>> 
 ```
 
 In fact, this is currently the more efficient method as <a href="http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy" rel="noreferrer">described in pandas docs</a>  
@@ -5431,7 +5431,7 @@ As per <a href="https://stackoverflow.com/questions/42101382/pandas-dataframe-as
 
 ```python
 df = pd.DataFrame({'a': [1, 2], 'b': [3, 4]})
-&gt;&gt;&gt; df.assign(mean_a=df.a.mean(), mean_b=df.b.mean())
+>>> df.assign(mean_a=df.a.mean(), mean_b=df.b.mean())
    a  b  mean_a  mean_b
 0  1  3     1.5     3.5
 1  2  4     1.5     3.5
@@ -5442,12 +5442,12 @@ In context with your example:
 ```python
 np.random.seed(0)
 df1 = pd.DataFrame(np.random.randn(10, 4), columns=['a', 'b', 'c', 'd'])
-mask = df1.applymap(lambda x: x &lt;-0.7)
+mask = df1.applymap(lambda x: x <-0.7)
 df1 = df1[-mask.any(axis=1)]
 sLength = len(df1['a'])
 e = pd.Series(np.random.randn(sLength))
 
-&gt;&gt;&gt; df1
+>>> df1
           a         b         c         d
 0  1.764052  0.400157  0.978738  2.240893
 2 -0.103219  0.410599  0.144044  1.454274
@@ -5455,7 +5455,7 @@ e = pd.Series(np.random.randn(sLength))
 7  1.532779  1.469359  0.154947  0.378163
 9  1.230291  1.202380 -0.387327 -0.302303
 
-&gt;&gt;&gt; e
+>>> e
 0   -1.048553
 1   -1.420018
 2   -1.706270
@@ -5465,7 +5465,7 @@ dtype: float64
 
 df1 = df1.assign(e=e.values)
 
-&gt;&gt;&gt; df1
+>>> df1
           a         b         c         d         e
 0  1.764052  0.400157  0.978738  2.240893 -1.048553
 2 -0.103219  0.410599  0.144044  1.454274 -1.420018
@@ -5504,14 +5504,14 @@ How to delete a file or folder in Python?
 
 ```python
 import os
-os.remove("/tmp/&lt;file_name&gt;.txt")
+os.remove("/tmp/<file_name>.txt")
 ```
 
 Or  
 
 ```python
 import os
-os.unlink("/tmp/&lt;file_name&gt;.txt")
+os.unlink("/tmp/<file_name>.txt")
 ```
 
 <h5>Best practice</h2>
@@ -5630,17 +5630,17 @@ This allows short-circuiting because when `condition` is true only `a` is evalua
 For example:  
 
 ```python
-&gt;&gt;&gt; 'true' if True else 'false'
+>>> 'true' if True else 'false'
 'true'
-&gt;&gt;&gt; 'true' if False else 'false'
+>>> 'true' if False else 'false'
 'false'
 ```
 
 Note that conditionals are an <em>expression</em>, not a <em>statement</em>. This means you can't use assignment statements or `pass` or other <strong>statements</strong> within a conditional <strong>expression</strong>:  
 
 ```python
-&gt;&gt;&gt; pass if False else x = 3
-  File "&lt;stdin&gt;", line 1
+>>> pass if False else x = 3
+  File "<stdin>", line 1
     pass if False else x = 3
           ^
 SyntaxError: invalid syntax
@@ -5692,7 +5692,7 @@ It might be safer to always implement it as:</p>
 or you can use the built-in <a href="https://docs.python.org/3.3/library/functions.html#bool" rel="noreferrer" title="bool">`bool()`</a> to assure a <a href="https://en.wikipedia.org/wiki/Boolean_data_type" rel="noreferrer" title="Boolean data type">Boolean</a> value:  
 
 ```python
-(falseValue, trueValue)[bool(&lt;expression&gt;)]
+(falseValue, trueValue)[bool(<expression>)]
 ```
 
 #### Answer 3 (score 303)
@@ -5728,8 +5728,8 @@ reduce(lambda x, y: x.extend(y), l)
 
 ```python
 Traceback (most recent call last):
-  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
-  File "&lt;stdin&gt;", line 1, in &lt;lambda&gt;
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 1, in <lambda>
 AttributeError: 'NoneType' object has no attribute 'extend'
 ```
 
@@ -5774,17 +5774,17 @@ The list comprehension just generates one list, once, and copies each item over 
 You can use <a href="http://docs.python.org/2/library/itertools.html#itertools.chain" rel="noreferrer">`itertools.chain()`</a>:  
 
 ```python
-&gt;&gt;&gt; import itertools
-&gt;&gt;&gt; list2d = [[1,2,3],[4,5,6], [7], [8,9]]
-&gt;&gt;&gt; merged = list(itertools.chain(*list2d))
+>>> import itertools
+>>> list2d = [[1,2,3],[4,5,6], [7], [8,9]]
+>>> merged = list(itertools.chain(*list2d))
 ```
 
 or, on Python >=2.6, use <a href="http://docs.python.org/2/library/itertools.html#itertools.chain.from_iterable" rel="noreferrer">`itertools.chain.from_iterable()`</a> which doesn't require unpacking the list:  
 
 ```python
-&gt;&gt;&gt; import itertools
-&gt;&gt;&gt; list2d = [[1,2,3],[4,5,6], [7], [8,9]]
-&gt;&gt;&gt; merged = list(itertools.chain.from_iterable(list2d))
+>>> import itertools
+>>> list2d = [[1,2,3],[4,5,6], [7], [8,9]]
+>>> merged = list(itertools.chain.from_iterable(list2d))
 ```
 
 This approach is arguably more readable than `[item for sublist in l for item in sublist]` and appears to be faster too:  
@@ -5806,7 +5806,7 @@ Python 2.7.3
 <strong>Note from the author</strong>: This is inefficient. But fun, because <a href="https://en.wikipedia.org/wiki/Monoid#Monoids_in_computer_science" rel="noreferrer">monoids</a> are awesome. It's not appropriate for production Python code.  
 
 ```python
-&gt;&gt;&gt; sum(l, [])
+>>> sum(l, [])
 [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
@@ -5828,11 +5828,11 @@ I'd like to do it in  <a href="/questions/tagged/python" class="post-tag" title=
 In C:  
 
 ```python
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 
 int main() {
     int i;
-    for (i=0; i&lt;10; i++) printf(".");
+    for (i=0; i<10; i++) printf(".");
     return 0;
 }
 ```
@@ -5846,7 +5846,7 @@ Output:
 In Python:  
 
 ```python
-&gt;&gt;&gt; for i in xrange(0,10): print '.'
+>>> for i in xrange(0,10): print '.'
 .
 .
 .
@@ -5857,7 +5857,7 @@ In Python:
 .
 .
 .
-&gt;&gt;&gt; for i in xrange(0,10): print '.',
+>>> for i in xrange(0,10): print '.',
 . . . . . . . . . .
 ```
 
@@ -5932,13 +5932,13 @@ this loop prints the numbers 0..9 on a line separated by spaces. Note
 the parameterless "print" that adds the final newline:</p>
 
 ```python
-&gt;&gt;&gt; for i in range(10):
+>>> for i in range(10):
 ...     print i,
 ... else:
 ...     print
 ...
 0 1 2 3 4 5 6 7 8 9
-&gt;&gt;&gt; 
+>>> 
 ```
 
 #### Answer 3 (score 164)
@@ -5947,9 +5947,9 @@ the parameterless "print" that adds the final newline:</p>
 Since people may come here looking for it based on the title, Python also supports printf-style substitution:  
 
 ```python
-&gt;&gt;&gt; strings = [ "one", "two", "three" ]
-&gt;&gt;&gt;
-&gt;&gt;&gt; for i in xrange(3):
+>>> strings = [ "one", "two", "three" ]
+>>>
+>>> for i in xrange(3):
 ...     print "Item %d: %s" % (i, strings[i])
 ...
 Item 0: one
@@ -5960,7 +5960,7 @@ Item 2: three
 And, you can handily multiply string values:  
 
 ```python
-&gt;&gt;&gt; print "." * 10
+>>> print "." * 10
 ..........
 ```
 
@@ -6158,10 +6158,10 @@ The words variable will be a `list` and contain the words from `text` split on t
 </blockquote>
 
 ```python
-&gt;&gt;&gt; line="a sentence with a few words"
-&gt;&gt;&gt; line.split()
+>>> line="a sentence with a few words"
+>>> line.split()
 ['a', 'sentence', 'with', 'a', 'few', 'words']
-&gt;&gt;&gt; 
+>>> 
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -6275,7 +6275,7 @@ def method_bisect(a,b,c):
     b.sort()
     for i,x in enumerate(a):
         index = bisect.bisect_left(b,x)
-        if index &lt; len(a):
+        if index < len(a):
             if x == b[index]:
                 c[i] = 1
     return(time.time()-start_time)
@@ -6327,12 +6327,12 @@ if 7 in s:
 I have two Python dictionaries, and I want to write a single expression that returns these two dictionaries, merged.  The `update()` method would be what I need, if it returned its result instead of modifying a dict in-place.  
 
 ```python
-&gt;&gt;&gt; x = {'a': 1, 'b': 2}
-&gt;&gt;&gt; y = {'b': 10, 'c': 11}
-&gt;&gt;&gt; z = x.update(y)
-&gt;&gt;&gt; print(z)
+>>> x = {'a': 1, 'b': 2}
+>>> y = {'b': 10, 'c': 11}
+>>> z = x.update(y)
+>>> print(z)
 None
-&gt;&gt;&gt; x
+>>> x
 {'a': 1, 'b': 10, 'c': 11}
 ```
 
@@ -6358,7 +6358,7 @@ z = {**x, **y}
 ```python
 def merge_two_dicts(x, y):
     z = x.copy()   # start with x's keys and values
-    z.update(y)    # modifies z with y's keys and values &amp; returns None
+    z.update(y)    # modifies z with y's keys and values & returns None
     return z
 ```
 
@@ -6381,7 +6381,7 @@ y = {'b': 3, 'c': 4}
 The desired result is to get a new dictionary (`z`) with the values merged, and the second dict's values overwriting those from the first.  
 
 ```python
-&gt;&gt;&gt; z
+>>> z
 {'a': 1, 'b': 3, 'c': 4}
 ```
 
@@ -6402,7 +6402,7 @@ z = {**x, 'foo': 1, 'bar': 2, **y}
 and now:   
 
 ```python
-&gt;&gt;&gt; z
+>>> z
 {'a': 1, 'b': 3, 'foo': 1, 'bar': 2, 'c': 4}
 ```
 
@@ -6468,9 +6468,9 @@ z = dict(x.items() + y.items())
 In Python 2, you create two lists in memory for each dict, create a third list in memory with length equal to the length of the first two put together, and then discard all three lists to create the dict. <strong>In Python 3, this will fail</strong> because you're adding two `dict_items` objects together, not two lists -   
 
 ```python
-&gt;&gt;&gt; c = dict(a.items() + b.items())
+>>> c = dict(a.items() + b.items())
 Traceback (most recent call last):
-  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+  File "<stdin>", line 1, in <module>
 TypeError: unsupported operand type(s) for +: 'dict_items' and 'dict_items'
 ```
 
@@ -6479,26 +6479,26 @@ and you would have to explicitly create them as lists, e.g. `z = dict(list(x.ite
 Similarly, taking the union of `items()` in Python 3 (`viewitems()` in Python 2.7) will also fail when values are unhashable objects (like lists, for example). Even if your values are hashable, <strong>since sets are semantically unordered, the behavior is undefined in regards to precedence. So don't do this:</strong>  
 
 ```python
-&gt;&gt;&gt; c = dict(a.items() | b.items())
+>>> c = dict(a.items() | b.items())
 ```
 
 This example demonstrates what happens when values are unhashable:  
 
 ```python
-&gt;&gt;&gt; x = {'a': []}
-&gt;&gt;&gt; y = {'b': []}
-&gt;&gt;&gt; dict(x.items() | y.items())
+>>> x = {'a': []}
+>>> y = {'b': []}
+>>> dict(x.items() | y.items())
 Traceback (most recent call last):
-  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+  File "<stdin>", line 1, in <module>
 TypeError: unhashable type: 'list'
 ```
 
 Here's an example where y should have precedence, but instead the value from x is retained due to the arbitrary order of sets:  
 
 ```python
-&gt;&gt;&gt; x = {'a': 2}
-&gt;&gt;&gt; y = {'a': 1}
-&gt;&gt;&gt; dict(x.items() | y.items())
+>>> x = {'a': 2}
+>>> y = {'a': 1}
+>>> dict(x.items() | y.items())
 {'a': 2}
 ```
 
@@ -6515,9 +6515,9 @@ Here's an example of the usage being <a href="https://code.djangoproject.com/att
 Dicts are intended to take hashable keys (e.g. frozensets or tuples), but <strong>this method fails in Python 3 when keys are not strings.</strong>  
 
 ```python
-&gt;&gt;&gt; c = dict(a, **b)
+>>> c = dict(a, **b)
 Traceback (most recent call last):
-  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+  File "<stdin>", line 1, in <module>
 TypeError: keyword arguments must be strings
 ```
 
@@ -6558,11 +6558,11 @@ instead of
 Again, it doesn't work for 3 when keys are non-strings. The implicit calling contract is that namespaces take ordinary dicts, while users must only pass keyword arguments that are strings. All other callables enforced it. `dict` broke this consistency in Python 2:  
 
 ```python
-&gt;&gt;&gt; foo(**{('a', 'b'): None})
+>>> foo(**{('a', 'b'): None})
 Traceback (most recent call last):
-  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+  File "<stdin>", line 1, in <module>
 TypeError: foo() keywords must be strings
-&gt;&gt;&gt; dict(**{('a', 'b'): None})
+>>> dict(**{('a', 'b'): None})
 {('a', 'b'): None}
 ```
 
@@ -6591,7 +6591,7 @@ from copy import deepcopy
 
 def dict_of_dicts_merge(x, y):
     z = {}
-    overlapping_keys = x.keys() &amp; y.keys()
+    overlapping_keys = x.keys() & y.keys()
     for key in overlapping_keys:
         z[key] = dict_of_dicts_merge(x[key], y[key])
     for key in x.keys() - overlapping_keys:
@@ -6604,9 +6604,9 @@ def dict_of_dicts_merge(x, y):
 Usage:  
 
 ```python
-&gt;&gt;&gt; x = {'a':{1:{}}, 'b': {2:{}}}
-&gt;&gt;&gt; y = {'b':{10:{}}, 'c': {11:{}}}
-&gt;&gt;&gt; dict_of_dicts_merge(x, y)
+>>> x = {'a':{1:{}}, 'b': {2:{}}}
+>>> y = {'b':{10:{}}, 'c': {11:{}}}
+>>> dict_of_dicts_merge(x, y)
 {'b': {2: {}, 10: {}}, 'a': {1: {}}, 'c': {11: {}}}
 ```
 
@@ -6649,28 +6649,28 @@ The following is done on Ubuntu 14.04
 In Python 2.7 (system Python):  
 
 ```python
-&gt;&gt;&gt; min(timeit.repeat(lambda: merge_two_dicts(x, y)))
+>>> min(timeit.repeat(lambda: merge_two_dicts(x, y)))
 0.5726828575134277
-&gt;&gt;&gt; min(timeit.repeat(lambda: {k: v for d in (x, y) for k, v in d.items()} ))
+>>> min(timeit.repeat(lambda: {k: v for d in (x, y) for k, v in d.items()} ))
 1.163769006729126
-&gt;&gt;&gt; min(timeit.repeat(lambda: dict(itertools.chain(x.iteritems(), y.iteritems()))))
+>>> min(timeit.repeat(lambda: dict(itertools.chain(x.iteritems(), y.iteritems()))))
 1.1614501476287842
-&gt;&gt;&gt; min(timeit.repeat(lambda: dict((k, v) for d in (x, y) for k, v in d.items())))
+>>> min(timeit.repeat(lambda: dict((k, v) for d in (x, y) for k, v in d.items())))
 2.2345519065856934
 ```
 
 In Python 3.5 (deadsnakes PPA):  
 
 ```python
-&gt;&gt;&gt; min(timeit.repeat(lambda: {**x, **y}))
+>>> min(timeit.repeat(lambda: {**x, **y}))
 0.4094954460160807
-&gt;&gt;&gt; min(timeit.repeat(lambda: merge_two_dicts(x, y)))
+>>> min(timeit.repeat(lambda: merge_two_dicts(x, y)))
 0.7881555100320838
-&gt;&gt;&gt; min(timeit.repeat(lambda: {k: v for d in (x, y) for k, v in d.items()} ))
+>>> min(timeit.repeat(lambda: {k: v for d in (x, y) for k, v in d.items()} ))
 1.4525277839857154
-&gt;&gt;&gt; min(timeit.repeat(lambda: dict(itertools.chain(x.items(), y.items()))))
+>>> min(timeit.repeat(lambda: dict(itertools.chain(x.items(), y.items()))))
 2.3143140770262107
-&gt;&gt;&gt; min(timeit.repeat(lambda: dict((k, v) for d in (x, y) for k, v in d.items())))
+>>> min(timeit.repeat(lambda: dict((k, v) for d in (x, y) for k, v in d.items())))
 3.2069112799945287
 ```
 
@@ -6695,18 +6695,18 @@ z = dict(x.items() + y.items())
 This will, as you want it, put the final dict in `z`, and make the value for key `b` be properly overridden by the second (`y`) dict's value:  
 
 ```python
-&gt;&gt;&gt; x = {'a':1, 'b': 2}
-&gt;&gt;&gt; y = {'b':10, 'c': 11}
-&gt;&gt;&gt; z = dict(x.items() + y.items())
-&gt;&gt;&gt; z
+>>> x = {'a':1, 'b': 2}
+>>> y = {'b':10, 'c': 11}
+>>> z = dict(x.items() + y.items())
+>>> z
 {'a': 1, 'c': 11, 'b': 10}
 ```
 
 If you use Python 3, it is only a little more complicated.  To create `z`:  
 
 ```python
-&gt;&gt;&gt; z = dict(list(x.items()) + list(y.items()))
-&gt;&gt;&gt; z
+>>> z = dict(list(x.items()) + list(y.items()))
+>>> z
 {'a': 1, 'c': 11, 'b': 10}
 ```
 
@@ -6729,56 +6729,56 @@ Is there a simple way to determine if a variable is a list, dictionary, or somet
 To get the type of an object, you can use the built-in <a href="http://docs.python.org/3/library/functions.html#type" rel="noreferrer">`type()`</a> function. Passing an object as the only parameter will return the type object of that object:  
 
 ```python
-&gt;&gt;&gt; type([]) is list
+>>> type([]) is list
 True
-&gt;&gt;&gt; type({}) is dict
+>>> type({}) is dict
 True
-&gt;&gt;&gt; type('') is str
+>>> type('') is str
 True
-&gt;&gt;&gt; type(0) is int
+>>> type(0) is int
 True
-&gt;&gt;&gt; type({})
-&lt;type 'dict'&gt;
-&gt;&gt;&gt; type([])
-&lt;type 'list'&gt;
+>>> type({})
+<type 'dict'>
+>>> type([])
+<type 'list'>
 ```
 
 This of course also works for custom types:  
 
 ```python
-&gt;&gt;&gt; class Test1 (object):
+>>> class Test1 (object):
         pass
-&gt;&gt;&gt; class Test2 (Test1):
+>>> class Test2 (Test1):
         pass
-&gt;&gt;&gt; a = Test1()
-&gt;&gt;&gt; b = Test2()
-&gt;&gt;&gt; type(a) is Test1
+>>> a = Test1()
+>>> b = Test2()
+>>> type(a) is Test1
 True
-&gt;&gt;&gt; type(b) is Test2
+>>> type(b) is Test2
 True
 ```
 
 Note that `type()` will only return the immediate type of the object, but won’t be able to tell you about type inheritance.  
 
 ```python
-&gt;&gt;&gt; type(b) is Test1
+>>> type(b) is Test1
 False
 ```
 
 To cover that, you should use the <a href="http://docs.python.org/3/library/functions.html#isinstance" rel="noreferrer">`isinstance`</a> function. This of course also works for built-in types:  
 
 ```python
-&gt;&gt;&gt; isinstance(b, Test1)
+>>> isinstance(b, Test1)
 True
-&gt;&gt;&gt; isinstance(b, Test2)
+>>> isinstance(b, Test2)
 True
-&gt;&gt;&gt; isinstance(a, Test1)
+>>> isinstance(a, Test1)
 True
-&gt;&gt;&gt; isinstance(a, Test2)
+>>> isinstance(a, Test2)
 False
-&gt;&gt;&gt; isinstance([], list)
+>>> isinstance([], list)
 True
-&gt;&gt;&gt; isinstance({}, dict)
+>>> isinstance({}, dict)
 True
 ```
 
@@ -6787,7 +6787,7 @@ True
 The second parameter of `isinstance()` also accepts a tuple of types, so it’s possible to check for multiple types at once. `isinstance` will then return true, if the object is of any of those types:  
 
 ```python
-&gt;&gt;&gt; isinstance([], (tuple, list, set))
+>>> isinstance([], (tuple, list, set))
 True
 ```
 
@@ -6795,12 +6795,12 @@ True
 You can do that using `type()`:  
 
 ```python
-&gt;&gt;&gt; a = []
-&gt;&gt;&gt; type(a)
-&lt;type 'list'&gt;
-&gt;&gt;&gt; f = ()
-&gt;&gt;&gt; type(f)
-&lt;type 'tuple'&gt;
+>>> a = []
+>>> type(a)
+<type 'list'>
+>>> f = ()
+>>> type(f)
+<type 'tuple'>
 ```
 
 #### Answer 3 (score 40)
@@ -6982,33 +6982,33 @@ What is the Python equivalent of Perl's `chomp` function, which removes the last
 Try the method `rstrip()` (see doc <a href="http://docs.python.org/2/library/stdtypes.html#str.rstrip" rel="noreferrer">Python 2</a> and <a href="https://docs.python.org/3/library/stdtypes.html#str.rstrip" rel="noreferrer">Python 3</a>)  
 
 ```python
-&gt;&gt;&gt; 'test string\n'.rstrip()
+>>> 'test string\n'.rstrip()
 'test string'
 ```
 
 Python's `rstrip()` method strips <em>all</em> kinds of trailing whitespace by default, not just one newline as Perl does with <a href="http://perldoc.perl.org/functions/chomp.html" rel="noreferrer">`chomp`</a>.  
 
 ```python
-&gt;&gt;&gt; 'test string \n \r\n\n\r \n\n'.rstrip()
+>>> 'test string \n \r\n\n\r \n\n'.rstrip()
 'test string'
 ```
 
 To strip only newlines:  
 
 ```python
-&gt;&gt;&gt; 'test string \n \r\n\n\r \n\n'.rstrip('\n')
+>>> 'test string \n \r\n\n\r \n\n'.rstrip('\n')
 'test string \n \r\n\n\r '
 ```
 
 There are also the methods `lstrip()` and `strip()`:  
 
 ```python
-&gt;&gt;&gt; s = "   \n\r\n  \n  abc   def \n\r\n  \n  "
-&gt;&gt;&gt; s.strip()
+>>> s = "   \n\r\n  \n  abc   def \n\r\n  \n  "
+>>> s.strip()
 'abc   def'
-&gt;&gt;&gt; s.lstrip()
+>>> s.lstrip()
 'abc   def \n\r\n  \n  '
-&gt;&gt;&gt; s.rstrip()
+>>> s.rstrip()
 '   \n\r\n  \n  abc   def'
 ```
 
@@ -7016,8 +7016,8 @@ There are also the methods `lstrip()` and `strip()`:
 And I would say the "pythonic" way to get lines without trailing newline characters is splitlines().  
 
 ```python
-&gt;&gt;&gt; text = "line 1\nline 2\r\nline 3\nline 4"
-&gt;&gt;&gt; text.splitlines()
+>>> text = "line 1\nline 2\r\nline 3\nline 4"
+>>> text.splitlines()
 ['line 1', 'line 2', 'line 3', 'line 4']
 ```
 
@@ -7104,7 +7104,7 @@ The above shows the following error:
 
 ```python
 Traceback (most recent call last):
-  File "D:\zjm_code\a.py", line 6, in &lt;module&gt;
+  File "D:\zjm_code\a.py", line 6, in <module>
     b = a.index(6)
 ValueError: list.index(x): x not in list
 ```
@@ -7129,18 +7129,18 @@ But is there not a simpler way to do this?
 To remove an element's first occurrence in a list, simply use `list.remove`:  
 
 ```python
-&gt;&gt;&gt; a = ['a', 'b', 'c', 'd']
-&gt;&gt;&gt; a.remove('b')
-&gt;&gt;&gt; print a
+>>> a = ['a', 'b', 'c', 'd']
+>>> a.remove('b')
+>>> print a
 ['a', 'c', 'd']
 ```
 
 Mind that it does not remove all occurrences of your element. Use a list comprehension for that.  
 
 ```python
-&gt;&gt;&gt; a = [10, 20, 30, 40, 20, 30, 40, 20, 70, 20]
-&gt;&gt;&gt; a = [x for x in a if x != 20]
-&gt;&gt;&gt; print a
+>>> a = [10, 20, 30, 40, 20, 30, 40, 20, 70, 20]
+>>> a = [x for x in a if x != 20]
+>>> print a
 [10, 30, 40, 30, 40, 70]
 ```
 
@@ -7208,7 +7208,7 @@ As for your second question: There's actually several possible ways if "finding"
 This is the use case you describe: Checking whether something is inside a list or not. As you know, you can use the `in` operator for that:  
 
 ```python
-3 in [1, 2, 3] # =&gt; True
+3 in [1, 2, 3] # => True
 ```
 
 <h5>Filtering a collection</h3>
@@ -7217,7 +7217,7 @@ That is, finding all elements in a sequence that meet a certain condition. You c
 
 ```python
 matches = [x for x in lst if fulfills_some_condition(x)]
-matches = (x for x in lst if x &gt; 6)
+matches = (x for x in lst if x > 6)
 ```
 
 The latter will return a <em>generator</em> which you can imagine as a sort of lazy list that will only be built as soon as you iterate through it. By the way, the first one is exactly equivalent to  
@@ -7247,20 +7247,20 @@ next((x for x in lst if ...), [default value])
 For lists, there's also the `index` method that can sometimes be useful if you want to know <em>where</em> a certain element is in the list:  
 
 ```python
-[1,2,3].index(2) # =&gt; 1
-[1,2,3].index(4) # =&gt; ValueError
+[1,2,3].index(2) # => 1
+[1,2,3].index(4) # => ValueError
 ```
 
 However, note that if you have duplicates, `.index` always returns the lowest index:......  
 
 ```python
-[1,2,3,2].index(2) # =&gt; 1
+[1,2,3,2].index(2) # => 1
 ```
 
 If there are duplicates and you want all the indexes then you can use `enumerate()` instead:  
 
 ```python
-[i for i,x in enumerate([1,2,3,2]) if x==2] # =&gt; [1, 3]
+[i for i,x in enumerate([1,2,3,2]) if x==2] # => [1, 3]
 ```
 
 #### Answer 2 (score 168)
@@ -7317,7 +7317,7 @@ def demo_bad_catch():
     except Exception as error:
         print('Caught this error: ' + repr(error))
 
-&gt;&gt;&gt; demo_bad_catch()
+>>> demo_bad_catch()
 Caught this error: ValueError('Represents a hidden bug, do not catch this',)
 ```
 
@@ -7333,10 +7333,10 @@ def demo_no_catch():
         print('we will not catch exception: Exception')
 
 
-&gt;&gt;&gt; demo_no_catch()
+>>> demo_no_catch()
 Traceback (most recent call last):
-  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
-  File "&lt;stdin&gt;", line 3, in demo_no_catch
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 3, in demo_no_catch
 Exception: general exceptions not caught by specific handling
 ```
 
@@ -7415,19 +7415,19 @@ def catch_error_modify_message():
         error()
     except ValueError:
         error_type, error_instance, traceback = sys.exc_info()
-        error_instance.args = (error_instance.args[0] + ' &lt;modification&gt;',)
+        error_instance.args = (error_instance.args[0] + ' <modification>',)
         raise error_type, error_instance, traceback
 ```
 
 And we have preserved the whole traceback while modifying the args. Note that this is <strong>not a best practice</strong> and it is <strong>invalid syntax</strong> in Python 3 (making keeping compatibility much harder to work around).  
 
 ```python
-&gt;&gt;&gt; catch_error_modify_message()
+>>> catch_error_modify_message()
 Traceback (most recent call last):
-  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
-  File "&lt;stdin&gt;", line 3, in catch_error_modify_message
-  File "&lt;stdin&gt;", line 2, in error
-ValueError: oops! &lt;modification&gt;
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 3, in catch_error_modify_message
+  File "<stdin>", line 2, in error
+ValueError: oops! <modification>
 ```
 
 In <a href="https://docs.python.org/3/reference/simple_stmts.html#the-raise-statement" rel="noreferrer">Python 3</a>:  
@@ -7536,7 +7536,7 @@ If you use `raise exception (args)`  to raise an exception then the   `args` wil
     try:
         raise ValueError("I have raised an Exception")
     except ValueError as exp:
-        print ("Error", exp)     # Output -&gt; Error I have raised an Exception 
+        print ("Error", exp)     # Output -> Error I have raised an Exception 
 
 
 
@@ -7544,7 +7544,7 @@ If you use `raise exception (args)`  to raise an exception then the   `args` wil
     try:
         raise ValueError
     except ValueError as exp:
-        print ("Error", exp)     # Output -&gt; Error 
+        print ("Error", exp)     # Output -> Error 
 ```
 
 <blockquote>
@@ -7566,10 +7566,10 @@ try:
     result=a/b
     print(result)
 
-except Exception:            #Output -&gt;
+except Exception:            #Output ->
     somefunction()           #some cleaning
     raise                    #Traceback (most recent call last):
-                             #File "python", line 8, in &lt;module&gt;
+                             #File "python", line 8, in <module>
                              #ZeroDivisionError: division by zero
 ```
 
@@ -7761,7 +7761,7 @@ class ChildB(Base):
     def __init__(self):
         mro = type(self).mro()             # Get the Method Resolution Order.
         check_next = mro.index(ChildB) + 1 # Start looking after *this* class.
-        while check_next &lt; len(mro):
+        while check_next < len(mro):
             next_class = mro[check_next]
             if '__init__' in next_class.__dict__:
                 next_class.__init__(self)
@@ -7841,22 +7841,22 @@ class UserB(ChildB, UserDependency):
 And `UserA` does not call the UserDependency method:  
 
 ```python
-&gt;&gt;&gt; UserA()
+>>> UserA()
 UserA init'ed
 ChildA init'ed
 Base init'ed
-&lt;__main__.UserA object at 0x0000000003403BA8&gt;
+<__main__.UserA object at 0x0000000003403BA8>
 ```
 
 But `UserB`, because `ChildB` uses `super`, does!:  
 
 ```python
-&gt;&gt;&gt; UserB()
+>>> UserB()
 UserB init'ed
 ChildB init'ed
 UserDependency init'ed
 Base init'ed
-&lt;__main__.UserB object at 0x0000000003403438&gt;
+<__main__.UserB object at 0x0000000003403438>
 ```
 
 <h5>Criticism for another answer</h3>
@@ -7878,22 +7878,22 @@ super(self.__class__, self).__init__()
 This is <em>completely</em> wrong. `super` lets us look up the next parent in the MRO (see the first section of this answer) for child classes. If you tell `super` we're in the child instance's method, it will then lookup the next method in line (probably this one) resulting in recursion, probably causing a logical failure (in the answerer's example, it does) or a `RuntimeError` when the recursion depth is exceeded.  
 
 ```python
-&gt;&gt;&gt; class Polygon(object):
+>>> class Polygon(object):
 ...     def __init__(self, id):
 ...         self.id = id
 ...
-&gt;&gt;&gt; class Rectangle(Polygon):
+>>> class Rectangle(Polygon):
 ...     def __init__(self, id, width, height):
 ...         super(self.__class__, self).__init__(id)
 ...         self.shape = (width, height)
 ...
-&gt;&gt;&gt; class Square(Rectangle):
+>>> class Square(Rectangle):
 ...     pass
 ...
-&gt;&gt;&gt; Square('a', 10, 10)
+>>> Square('a', 10, 10)
 Traceback (most recent call last):
-  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
-  File "&lt;stdin&gt;", line 3, in __init__
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 3, in __init__
 TypeError: __init__() missing 2 required positional arguments: 'width' and 'height'
 ```
 
@@ -8016,14 +8016,14 @@ The ASCII art diagram is helpful too for remembering how slices work:
 Enumerating the possibilities allowed by the grammar:  
 
 ```python
-&gt;&gt;&gt; seq[:]                # [seq[0],   seq[1],          ..., seq[-1]    ]
-&gt;&gt;&gt; seq[low:]             # [seq[low], seq[low+1],      ..., seq[-1]    ]
-&gt;&gt;&gt; seq[:high]            # [seq[0],   seq[1],          ..., seq[high-1]]
-&gt;&gt;&gt; seq[low:high]         # [seq[low], seq[low+1],      ..., seq[high-1]]
-&gt;&gt;&gt; seq[::stride]         # [seq[0],   seq[stride],     ..., seq[-1]    ]
-&gt;&gt;&gt; seq[low::stride]      # [seq[low], seq[low+stride], ..., seq[-1]    ]
-&gt;&gt;&gt; seq[:high:stride]     # [seq[0],   seq[stride],     ..., seq[high-1]]
-&gt;&gt;&gt; seq[low:high:stride]  # [seq[low], seq[low+stride], ..., seq[high-1]]
+>>> seq[:]                # [seq[0],   seq[1],          ..., seq[-1]    ]
+>>> seq[low:]             # [seq[low], seq[low+1],      ..., seq[-1]    ]
+>>> seq[:high]            # [seq[0],   seq[1],          ..., seq[high-1]]
+>>> seq[low:high]         # [seq[low], seq[low+1],      ..., seq[high-1]]
+>>> seq[::stride]         # [seq[0],   seq[stride],     ..., seq[-1]    ]
+>>> seq[low::stride]      # [seq[low], seq[low+stride], ..., seq[-1]    ]
+>>> seq[:high:stride]     # [seq[0],   seq[stride],     ..., seq[high-1]]
+>>> seq[low:high:stride]  # [seq[low], seq[low+stride], ..., seq[high-1]]
 ```
 
 Of course, if `(high-low)%stride != 0`, then the end point will be a little lower than `high-1`.  
@@ -8031,20 +8031,20 @@ Of course, if `(high-low)%stride != 0`, then the end point will be a little lowe
 If `stride` is negative, the ordering is changed a bit since we're counting down:  
 
 ```python
-&gt;&gt;&gt; seq[::-stride]        # [seq[-1],   seq[-1-stride],   ..., seq[0]    ]
-&gt;&gt;&gt; seq[high::-stride]    # [seq[high], seq[high-stride], ..., seq[0]    ]
-&gt;&gt;&gt; seq[:low:-stride]     # [seq[-1],   seq[-1-stride],   ..., seq[low+1]]
-&gt;&gt;&gt; seq[high:low:-stride] # [seq[high], seq[high-stride], ..., seq[low+1]]
+>>> seq[::-stride]        # [seq[-1],   seq[-1-stride],   ..., seq[0]    ]
+>>> seq[high::-stride]    # [seq[high], seq[high-stride], ..., seq[0]    ]
+>>> seq[:low:-stride]     # [seq[-1],   seq[-1-stride],   ..., seq[low+1]]
+>>> seq[high:low:-stride] # [seq[high], seq[high-stride], ..., seq[low+1]]
 ```
 
 Extended slicing (with commas and ellipses) are mostly used only by special data structures (like NumPy); the basic sequences don't support them.  
 
 ```python
-&gt;&gt;&gt; class slicee:
+>>> class slicee:
 ...     def __getitem__(self, item):
 ...         return repr(item)
 ...
-&gt;&gt;&gt; slicee()[0, 1:2, ::5, ...]
+>>> slicee()[0, 1:2, ::5, ...]
 '(0, slice(1, 2, None), slice(None, None, 5), Ellipsis)'
 ```
 
@@ -8058,7 +8058,7 @@ I want to get a list of the column headers from a pandas DataFrame.  The DataFra
 For example, if I'm given a DataFrame like this:  
 
 ```python
-&gt;&gt;&gt; my_dataframe
+>>> my_dataframe
     y  gdp  cap
 0   1    2    5
 1   2    3    9
@@ -8075,7 +8075,7 @@ For example, if I'm given a DataFrame like this:
 I would want to get a list like this:  
 
 ```python
-&gt;&gt;&gt; header_list
+>>> header_list
 ['y', 'gdp', 'cap']
 ```
 
@@ -8184,8 +8184,8 @@ for root, dirs, files in os.walk("/mydir"):
 Use <a href="http://docs.python.org/library/glob.html" rel="noreferrer">glob</a>.  
 
 ```python
-&gt;&gt;&gt; import glob
-&gt;&gt;&gt; glob.glob('./*.txt')
+>>> import glob
+>>> glob.glob('./*.txt')
 ['./outline.txt', './pip-log.txt', './test.txt', './testingvim.txt']
 ```
 
@@ -8220,7 +8220,7 @@ Here is a stack trace produced on SOME strings when the snippet above is run:
 
 ```python
 Traceback (most recent call last):
-  File "foobar.py", line 792, in &lt;module&gt;
+  File "foobar.py", line 792, in <module>
     p.agent_info = str(agent_contact + ' ' + agent_telno).strip()
 UnicodeEncodeError: 'ascii' codec can't encode character u'\xa0' in position 20: ordinal not in range(128)
 ```
@@ -8248,7 +8248,7 @@ This is a classic python unicode pain point! Consider the following:
 ```python
 a = u'bats\u00E0'
 print a
- =&gt; batsà
+ => batsà
 ```
 
 All good so far, but if we call str(a), let's see what happens:  
@@ -8256,7 +8256,7 @@ All good so far, but if we call str(a), let's see what happens:
 ```python
 str(a)
 Traceback (most recent call last):
-  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+  File "<stdin>", line 1, in <module>
 UnicodeEncodeError: 'ascii' codec can't encode character u'\xe0' in position 4: ordinal not in range(128)
 ```
 
@@ -8264,9 +8264,9 @@ Oh dip, that's not gonna do anyone any good! To fix the error, encode the bytes 
 
 ```python
 a.encode('utf-8')
- =&gt; 'bats\xc3\xa0'
+ => 'bats\xc3\xa0'
 print a.encode('utf-8')
- =&gt; batsà
+ => batsà
 ```
 
 Voil\u00E0!  
@@ -8285,7 +8285,7 @@ yourstring = yourstring.encode('ascii', 'ignore').decode('ascii')
 It's important to notice that using the ignore option is <strong>dangerous</strong> because it silently drops any unicode(and internationalization) support from the code that uses it, as seen here (convert unicode):  
 
 ```python
-&gt;&gt;&gt; u'City: Malmö'.encode('ascii', 'ignore').decode('ascii')
+>>> u'City: Malmö'.encode('ascii', 'ignore').decode('ascii')
 'City: Malm'
 ```
 
@@ -8350,7 +8350,7 @@ _PyBytes_Resize(PyObject **pv, Py_ssize_t newsize)
     register PyObject *v;
     register PyBytesObject *sv;
     v = *pv;
-    if (!PyBytes_Check(v) || Py_REFCNT(v) != 1 || newsize &lt; 0) {
+    if (!PyBytes_Check(v) || Py_REFCNT(v) != 1 || newsize < 0) {
         *pv = 0;
         Py_DECREF(v);
         PyErr_BadInternalCall();
@@ -8369,8 +8369,8 @@ _PyBytes_Resize(PyObject **pv, Py_ssize_t newsize)
     _Py_NewReference(*pv);
     sv = (PyBytesObject *) *pv;
     Py_SIZE(sv) = newsize;
-    sv-&gt;ob_sval[newsize] = '\0';
-    sv-&gt;ob_shash = -1;          /* invalidate cached hash value */
+    sv->ob_sval[newsize] = '\0';
+    sv->ob_shash = -1;          /* invalidate cached hash value */
     return 0;
 }
 ```
@@ -8543,7 +8543,7 @@ If you want to remove leading and ending spaces, use <a href="http://docs.python
 ```python
 sentence = ' hello  apple'
 sentence.strip()
-&gt;&gt;&gt; 'hello  apple'
+>>> 'hello  apple'
 ```
 
 If you want to remove all spaces, use <a href="http://docs.python.org/2/library/stdtypes.html#str.replace" rel="noreferrer">`str.replace()`</a>:  
@@ -8551,7 +8551,7 @@ If you want to remove all spaces, use <a href="http://docs.python.org/2/library/
 ```python
 sentence = ' hello  apple'
 sentence.replace(" ", "")
-&gt;&gt;&gt; 'helloapple'
+>>> 'helloapple'
 ```
 
 If you want to remove duplicated spaces, use <a href="http://docs.python.org/2/library/stdtypes.html#str.split" rel="noreferrer">`str.split()`</a>:  
@@ -8559,7 +8559,7 @@ If you want to remove duplicated spaces, use <a href="http://docs.python.org/2/l
 ```python
 sentence = ' hello  apple'
 " ".join(sentence.split())
-&gt;&gt;&gt; 'hello apple'
+>>> 'hello apple'
 ```
 
 #### Answer 2 (score 241)
@@ -8655,10 +8655,10 @@ Use `!=`. See <a href="http://docs.python.org/release/2.5.2/lib/comparisons.html
 e.g.  
 
 ```python
-1 == 1 #  -&gt; True
-1 != 1 #  -&gt; False
-[] is [] #-&gt; False (distinct objects)
-a = b = []; a is b # -&gt; True (same object)
+1 == 1 #  -> True
+1 != 1 #  -> False
+[] is [] #-> False (distinct objects)
+a = b = []; a is b # -> True (same object)
 ```
 
 #### Answer 2 (score 56)
@@ -8720,11 +8720,11 @@ When you open with "a" mode, the write position will <strong>always</strong> be 
 Example:  
 
 ```python
-&gt;&gt;&gt; with open('test1','wb') as f:
+>>> with open('test1','wb') as f:
         f.write('test')
-&gt;&gt;&gt; with open('test1','ab') as f:
+>>> with open('test1','ab') as f:
         f.write('koko')
-&gt;&gt;&gt; with open('test1','rb') as f:
+>>> with open('test1','rb') as f:
         f.read()
 'testkoko'
 ```
@@ -8736,15 +8736,15 @@ Example:
 A few more details about how the "a" mode operates (<em>tested on Linux only</em>). Even if you seek back, every write will append to the end of the file:  
 
 ```python
-&gt;&gt;&gt; f = open('test','a+') # Not using 'with' just to simplify the example REPL session
-&gt;&gt;&gt; f.write('hi')
-&gt;&gt;&gt; f.seek(0)
-&gt;&gt;&gt; f.read()
+>>> f = open('test','a+') # Not using 'with' just to simplify the example REPL session
+>>> f.write('hi')
+>>> f.seek(0)
+>>> f.read()
 'hi'
-&gt;&gt;&gt; f.seek(0)
-&gt;&gt;&gt; f.write('bye') # Will still append despite the seek(0)!
-&gt;&gt;&gt; f.seek(0)
-&gt;&gt;&gt; f.read()
+>>> f.seek(0)
+>>> f.write('bye') # Will still append despite the seek(0)!
+>>> f.seek(0)
+>>> f.read()
 'hibye'
 ```
 
@@ -8767,9 +8767,9 @@ fseek(stream, 0, SEEK_END);
 Example: (<em>in a real program <strong>use `with` to close the file</strong> - see <a href="http://docs.python.org/2/whatsnew/2.6.html#pep-343-the-with-statement" rel="noreferrer">the documentation</a></em>)  
 
 ```python
-&gt;&gt;&gt; open("test","wb").write("test")
-&gt;&gt;&gt; open("test","a+b").write("koko")
-&gt;&gt;&gt; open("test","rb").read()
+>>> open("test","wb").write("test")
+>>> open("test","a+b").write("koko")
+>>> open("test","rb").read()
 'testkoko'
 ```
 
@@ -8838,9 +8838,9 @@ I've got a Python program where two variables are set to the value `'public'`. I
 Now if I open my Python interpreter and do the same "is" comparison, it succeeds.  
 
 ```python
-&gt;&gt;&gt; s1 = 'public'
-&gt;&gt;&gt; s2 = 'public'
-&gt;&gt;&gt; s2 is s1
+>>> s1 = 'public'
+>>> s2 = 'public'
+>>> s2 is s1
 True
 ```
 
@@ -8850,11 +8850,11 @@ What am I missing here?
 `is` is identity testing, `==` is equality testing. what happens in your code would be emulated in the interpreter like this:  
 
 ```python
-&gt;&gt;&gt; a = 'pub'
-&gt;&gt;&gt; b = ''.join(['p', 'u', 'b'])
-&gt;&gt;&gt; a == b
+>>> a = 'pub'
+>>> b = ''.join(['p', 'u', 'b'])
+>>> a == b
 True
-&gt;&gt;&gt; a is b
+>>> a is b
 False
 ```
 
@@ -8914,7 +8914,7 @@ Given an item, how can I count its occurrences in a list in Python?
 If you only want one item's count, use the `count` method:  
 
 ```python
-&gt;&gt;&gt; [1, 2, 3, 4, 1, 4, 1].count(1)
+>>> [1, 2, 3, 4, 1, 4, 1].count(1)
 3
 ```
 
@@ -8924,9 +8924,9 @@ If you only want one item's count, use the `count` method:
 If you are using Python 2.7 or 3 and you want number of occurrences for each element:  
 
 ```python
-&gt;&gt;&gt; from collections import Counter
-&gt;&gt;&gt; z = ['blue', 'red', 'blue', 'yellow', 'blue', 'red']
-&gt;&gt;&gt; Counter(z)
+>>> from collections import Counter
+>>> z = ['blue', 'red', 'blue', 'yellow', 'blue', 'red']
+>>> Counter(z)
 Counter({'blue': 3, 'red': 2, 'yellow': 1})
 ```
 
@@ -8936,10 +8936,10 @@ Counter({'blue': 3, 'red': 2, 'yellow': 1})
 For counting the occurrences of just one list item you can use `count()`  
 
 ```python
-&gt;&gt;&gt; l = ["a","b","b"]
-&gt;&gt;&gt; l.count("a")
+>>> l = ["a","b","b"]
+>>> l.count("a")
 1
-&gt;&gt;&gt; l.count("b")
+>>> l.count("b")
 2
 ```
 
@@ -8958,10 +8958,10 @@ To count the occurrences of items in `l` one can simply use a list comprehension
 Example:   
 
 ```python
-&gt;&gt;&gt; l = ["a","b","b"]
-&gt;&gt;&gt; [[x,l.count(x)] for x in set(l)]
+>>> l = ["a","b","b"]
+>>> [[x,l.count(x)] for x in set(l)]
 [['a', 1], ['b', 2]]
-&gt;&gt;&gt; dict((x,l.count(x)) for x in set(l))
+>>> dict((x,l.count(x)) for x in set(l))
 {'a': 1, 'b': 2}
 ```
 
@@ -8976,9 +8976,9 @@ Counter(l)
 Example:  
 
 ```python
-&gt;&gt;&gt; l = ["a","b","b"]
-&gt;&gt;&gt; from collections import Counter
-&gt;&gt;&gt; Counter(l)
+>>> l = ["a","b","b"]
+>>> from collections import Counter
+>>> Counter(l)
 Counter({'b': 2, 'a': 1})
 ```
 
@@ -9546,7 +9546,7 @@ Please see the docs about <a href="http://docs.python.org/tutorial/datastructure
 It occurred to me that you may have actually be asking how to implement the `+` operator for dictionaries, the following seems to work:  
 
 ```python
-&gt;&gt;&gt; class Dict(dict):
+>>> class Dict(dict):
 ...     def __add__(self, other):
 ...         copy = self.copy()
 ...         copy.update(other)
@@ -9556,10 +9556,10 @@ It occurred to me that you may have actually be asking how to implement the `+` 
 ...         copy.update(self)
 ...         return copy
 ... 
-&gt;&gt;&gt; default_data = Dict({'item1': 1, 'item2': 2})
-&gt;&gt;&gt; default_data + {'item3': 3}
+>>> default_data = Dict({'item1': 1, 'item2': 2})
+>>> default_data + {'item3': 3}
 {'item2': 2, 'item3': 3, 'item1': 1}
-&gt;&gt;&gt; {'test1': 1} + Dict(test2=2)
+>>> {'test1': 1} + Dict(test2=2)
 {'test1': 1, 'test2': 2}
 ```
 
@@ -9681,11 +9681,11 @@ if not my_string:
 However, you may want to strip white space because:  
 
 ```python
- &gt;&gt;&gt; bool("")
+ >>> bool("")
  False
- &gt;&gt;&gt; bool("   ")
+ >>> bool("   ")
  True
- &gt;&gt;&gt; bool("   ".strip())
+ >>> bool("   ".strip())
  False
 ```
 
@@ -9697,20 +9697,20 @@ You should probably be a bit more explicit in this however, unless you know for 
 
 #### Question
 ```python
-&gt;&gt;&gt; a=[1,2,3]
-&gt;&gt;&gt; a.remove(2)
-&gt;&gt;&gt; a
+>>> a=[1,2,3]
+>>> a.remove(2)
+>>> a
 [1, 3]
-&gt;&gt;&gt; a=[1,2,3]
-&gt;&gt;&gt; del a[1]
-&gt;&gt;&gt; a
+>>> a=[1,2,3]
+>>> del a[1]
+>>> a
 [1, 3]
-&gt;&gt;&gt; a= [1,2,3]
-&gt;&gt;&gt; a.pop(1)
+>>> a= [1,2,3]
+>>> a.pop(1)
 2
-&gt;&gt;&gt; a
+>>> a
 [1, 3]
-&gt;&gt;&gt; 
+>>> 
 ```
 
 Is there any difference between the above three methods to remove an element from a list?  
@@ -9719,46 +9719,46 @@ Is there any difference between the above three methods to remove an element fro
 Yes, `remove` removes the <em>first</em> matching <em>value</em>, not a specific index:  
 
 ```python
-&gt;&gt;&gt; a = [0, 2, 3, 2]
-&gt;&gt;&gt; a.remove(2)
-&gt;&gt;&gt; a
+>>> a = [0, 2, 3, 2]
+>>> a.remove(2)
+>>> a
 [0, 3, 2]
 ```
 
 `del` removes the item at a specific index:  
 
 ```python
-&gt;&gt;&gt; a = [3, 2, 2, 1]
-&gt;&gt;&gt; del a[1]
-&gt;&gt;&gt; a
+>>> a = [3, 2, 2, 1]
+>>> del a[1]
+>>> a
 [3, 2, 1]
 ```
 
 and `pop` removes the item at a specific index and returns it.  
 
 ```python
-&gt;&gt;&gt; a = [4, 3, 5]
-&gt;&gt;&gt; a.pop(1)
+>>> a = [4, 3, 5]
+>>> a.pop(1)
 3
-&gt;&gt;&gt; a
+>>> a
 [4, 5]
 ```
 
 Their error modes are different too:  
 
 ```python
-&gt;&gt;&gt; a = [4, 5, 6]
-&gt;&gt;&gt; a.remove(7)
+>>> a = [4, 5, 6]
+>>> a.remove(7)
 Traceback (most recent call last):
-  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+  File "<stdin>", line 1, in <module>
 ValueError: list.remove(x): x not in list
-&gt;&gt;&gt; del a[7]
+>>> del a[7]
 Traceback (most recent call last):
-  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+  File "<stdin>", line 1, in <module>
 IndexError: list assignment index out of range
-&gt;&gt;&gt; a.pop(7)
+>>> a.pop(7)
 Traceback (most recent call last):
-  File "&lt;stdin&gt;", line 1, in &lt;module&gt;
+  File "<stdin>", line 1, in <module>
 IndexError: pop index out of range
 ```
 
@@ -9777,18 +9777,18 @@ remove  O(n)
 Since no-one else has mentioned it, note that `del` (unlike `pop`) allows the removal of a range of indexes because of list slicing:  
 
 ```python
-&gt;&gt;&gt; lst = [3, 2, 2, 1]
-&gt;&gt;&gt; del lst[1:]
-&gt;&gt;&gt; lst
+>>> lst = [3, 2, 2, 1]
+>>> del lst[1:]
+>>> lst
 [3]
 ```
 
 This also allows avoidance of an `IndexError` if the index is not in the list:  
 
 ```python
-&gt;&gt;&gt; lst = [3, 2, 2, 1]
-&gt;&gt;&gt; del lst[10:]
-&gt;&gt;&gt; lst
+>>> lst = [3, 2, 2, 1]
+>>> del lst[10:]
+>>> lst
 [3, 2, 2, 1]
 ```
 
@@ -9827,10 +9827,10 @@ Note that making a copy for every dict `del`/assignment/etc. means you're going 
 <a href="https://docs.python.org/library/stdtypes.html#dict.pop" rel="noreferrer">`pop`</a> mutates the dictionary.  
 
 ```python
- &gt;&gt;&gt;lol = {"hello":"gdbye"}
- &gt;&gt;&gt;lol.pop("hello")
+ >>>lol = {"hello":"gdbye"}
+ >>>lol.pop("hello")
     'gdbye'
- &gt;&gt;&gt; lol
+ >>> lol
      {}
 ```
 
@@ -9840,9 +9840,9 @@ If you want to keep the original you could just copy it.
 I think your solution is best way to do it. But if you want another solution, you can create a new dictionary with using the keys from old dictionary without including your specified key, like this:  
 
 ```python
-&gt;&gt;&gt; a
+>>> a
 {0: 'zero', 1: 'one', 2: 'two', 3: 'three'}
-&gt;&gt;&gt; {i:a[i] for i in a if i!=0}
+>>> {i:a[i] for i in a if i!=0}
 {1: 'one', 2: 'two', 3: 'three'}
 ```
 
@@ -9869,10 +9869,10 @@ if foo is None:
 There's no `null` in Python, instead there's `None`. As stated already the most accurate way to test that something has been given `None` as a value is to use the `is` identity operator, which tests that two variables refer to the same object.  
 
 ```python
-&gt;&gt;&gt; foo is None
+>>> foo is None
 True
-&gt;&gt;&gt; foo = 'bar' 
-&gt;&gt;&gt; foo is None
+>>> foo = 'bar' 
+>>> foo is None
 False
 ```
 
@@ -9885,27 +9885,27 @@ False
 Also, `None` is a built-in constant, as soon as you start Python it's available to use from everywhere, whether in module, class, or function. `NoneType` by contrast is not, you'd need to get a reference to it first by querying `None` for its class.  
 
 ```python
-&gt;&gt;&gt; NoneType
+>>> NoneType
 NameError: name 'NoneType' is not defined
-&gt;&gt;&gt; type(None)
+>>> type(None)
 NoneType
 ```
 
 You can check `None`'s uniqueness with Python's identity function `id()`. It returns the unique number assigned to an object, each object has one. If the id of two variables is the same, then they point in fact to the same object.  
 
 ```python
-&gt;&gt;&gt; NoneType = type(None)
-&gt;&gt;&gt; id(None)
+>>> NoneType = type(None)
+>>> id(None)
 10748000
-&gt;&gt;&gt; my_none = NoneType()
-&gt;&gt;&gt; id(my_none)
+>>> my_none = NoneType()
+>>> id(my_none)
 10748000
-&gt;&gt;&gt; another_none = NoneType()
-&gt;&gt;&gt; id(another_none)
+>>> another_none = NoneType()
+>>> id(another_none)
 10748000
-&gt;&gt;&gt; def function_that_does_nothing(): pass
-&gt;&gt;&gt; return_value = function_that_does_nothing()
-&gt;&gt;&gt; id(return_value)
+>>> def function_that_does_nothing(): pass
+>>> return_value = function_that_does_nothing()
+>>> id(return_value)
 10748000
 ```
 
@@ -9915,20 +9915,20 @@ In much older version of Python (before 2.4) it was possible to reassign `None`,
 
 ```python
 # In Python 2.7
-&gt;&gt;&gt; class SomeClass(object):
+>>> class SomeClass(object):
 ...     def my_fnc(self):
 ...             self.None = 'foo'
 SyntaxError: cannot assign to None
-&gt;&gt;&gt; def my_fnc():
+>>> def my_fnc():
         None = 'foo'
 SyntaxError: cannot assign to None
 
 # In Python 3.5
-&gt;&gt;&gt; class SomeClass:
+>>> class SomeClass:
 ...     def my_fnc(self):
 ...             self.None = 'foo'
 SyntaxError: invalid syntax
-&gt;&gt;&gt; def my_fnc():
+>>> def my_fnc():
         None = 'foo'
 SyntaxError: cannot assign to keyword
 ```
@@ -9982,8 +9982,8 @@ value.__eq__(None)
 if the value really is `None` then you'll get what you expected.  
 
 ```python
-&gt;&gt;&gt; nothing = function_that_does_nothing()
-&gt;&gt;&gt; nothing.__eq__(None)
+>>> nothing = function_that_does_nothing()
+>>> nothing.__eq__(None)
 True
 ```
 
@@ -9992,7 +9992,7 @@ In most common cases the outcome will be the same, but the `__eq__()` method ope
 Consider this class.  
 
 ```python
-&gt;&gt;&gt; class Empty(object):
+>>> class Empty(object):
 ...     def __eq__(self, other):
 ...         return not other
 ```
@@ -10000,24 +10000,24 @@ Consider this class.
 So you try it on `None` and it works  
 
 ```python
-&gt;&gt;&gt; empty = Empty()
-&gt;&gt;&gt; empty==None
+>>> empty = Empty()
+>>> empty==None
 True
 ```
 
 But then it also works on the empty string  
 
 ```python
-&gt;&gt;&gt; empty==''
+>>> empty==''
 True
 ```
 
 And yet  
 
 ```python
-&gt;&gt;&gt; ''==None
+>>> ''==None
 False
-&gt;&gt;&gt; empty is None
+>>> empty is None
 False
 ```
 
@@ -10046,23 +10046,23 @@ if not bool(value):
 `None` is a "falsey", meaning that if cast to a boolean it will return `False` and if applied the `not` operator it will return `True`. Note however that it's not a property unique to `None`. In addition to `False` itself, the property is shared by empty lists, tuples, sets, dicts, strings, as well as 0, and all objects from classes that implement the `__bool__()` magic method to return `False`.  
 
 ```python
-&gt;&gt;&gt; bool(None)
+>>> bool(None)
 False
-&gt;&gt;&gt; not None
+>>> not None
 True
 
-&gt;&gt;&gt; bool([])
+>>> bool([])
 False
-&gt;&gt;&gt; not []
+>>> not []
 True
 
-&gt;&gt;&gt; class MyFalsey(object):
+>>> class MyFalsey(object):
 ...     def __bool__(self):
 ...         return False
-&gt;&gt;&gt; f = MyFalsey()
-&gt;&gt;&gt; bool(f)
+>>> f = MyFalsey()
+>>> bool(f)
 False
-&gt;&gt;&gt; not f
+>>> not f
 True
 ```
 
@@ -10101,23 +10101,23 @@ if value is None:
 By default a dictionary's `get()` method returns `None` when trying to access a non-existing key:  
 
 ```python
-&gt;&gt;&gt; some_dict = {}
-&gt;&gt;&gt; value = some_dict.get('foo')
-&gt;&gt;&gt; value is None
+>>> some_dict = {}
+>>> value = some_dict.get('foo')
+>>> value is None
 True
 ```
 
 If you were to try to access it by using the subscript notation a `KeyError` would be raised  
 
 ```python
-&gt;&gt;&gt; value = some_dict['foo']
+>>> value = some_dict['foo']
 KeyError: 'foo'
 ```
 
 Likewise if you attempt to pop a non-existing item  
 
 ```python
-&gt;&gt;&gt; value = some_dict.pop('foo')
+>>> value = some_dict.pop('foo')
 KeyError: 'foo'
 ```
 
@@ -10317,7 +10317,7 @@ class Rectangle(Blob):
                  color='black', emphasis=None, highlight=0):
         if (width == 0 and height == 0 and
                 color == 'red' and emphasis == 'strong' or
-                highlight &gt; 100):
+                highlight > 100):
             raise ValueError("sorry, you lose")
         if width == 0 and height == 0 and (color == 'red' or
                                            emphasis is None):
@@ -10407,7 +10407,7 @@ However I've found that in certain cases <strong>the figure is always shown</str
 
 ```python
 import matplotlib.pyplot as plt
-fig, ax = plt.subplots( nrows=1, ncols=1 )  # create figure &amp; 1 axis
+fig, ax = plt.subplots( nrows=1, ncols=1 )  # create figure & 1 axis
 ax.plot([0,1,2], [10,20,3])
 fig.savefig('path/to/save/image/to.png')   # save the figure to file
 plt.close(fig)    # close the figure window
@@ -10433,13 +10433,13 @@ How can I check what version of the Python Interpreter is interpreting my script
 This information is available in the <a href="http://docs.python.org/2/library/sys.html#sys.version" rel="noreferrer">sys.version</a> string in the <a href="http://docs.python.org/2/library/sys.html" rel="noreferrer">sys</a> module:  
 
 ```python
-&gt;&gt;&gt; import sys
+>>> import sys
 ```
 
 Human readable:  
 
 ```python
-&gt;&gt;&gt; print(sys.version)  # parentheses necessary in python 3.       
+>>> print(sys.version)  # parentheses necessary in python 3.       
 2.5.2 (r252:60911, Jul 31 2008, 17:28:52) 
 [GCC 4.2.3 (Ubuntu 4.2.3-2ubuntu7)]
 ```
@@ -10447,17 +10447,17 @@ Human readable:
 For further processing:  
 
 ```python
-&gt;&gt;&gt; sys.version_info
+>>> sys.version_info
 (2, 5, 2, 'final', 0)
 # or
-&gt;&gt;&gt; sys.hexversion
+>>> sys.hexversion
 34014192
 ```
 
 To ensure a script runs with a minimal version requirement of the Python interpreter add this to your code:  
 
 ```python
-assert sys.version_info &gt;= (2, 5)
+assert sys.version_info >= (2, 5)
 ```
 
 This compares major and minor version information. Add micro (=`0`, `1`, etc) and even releaselevel (=`'alpha'`,`'final'`, etc) to the tuple as you like. Note however, that it is almost always better to "duck" check if a certain feature is there, and if not, workaround (or bail out). Sometimes features go away in newer releases, being replaced by others.  
@@ -10477,12 +10477,12 @@ I like `sys.hexversion` for stuff like this.
 <a href="http://docs.python.org/library/sys.html#sys.hexversion" rel="noreferrer">http://docs.python.org/library/sys.html#sys.hexversion</a>  
 
 ```python
-&gt;&gt;&gt; import sys
-&gt;&gt;&gt; sys.hexversion
+>>> import sys
+>>> sys.hexversion
 33883376
-&gt;&gt;&gt; '%x' % sys.hexversion
+>>> '%x' % sys.hexversion
 '20504f0'
-&gt;&gt;&gt; sys.hexversion &lt; 0x02060000
+>>> sys.hexversion < 0x02060000
 True
 ```
 
@@ -10513,7 +10513,7 @@ In Python 2, you can also use
 ```python
 with open('your_file.txt', 'w') as f:
     for item in my_list:
-        print &gt;&gt; f, item
+        print >> f, item
 ```
 
 If you're keen on a single function call, at least remove the square brackets `[]`, so that the strings to be printed get made one at a time (a genexp rather than a listcomp) -- no reason to take up all the memory required to materialize the whole list of strings.  
@@ -10790,10 +10790,10 @@ def what_does_the_fox_say():
 ```python
 el@apollo:/home/el/foo$ python
 Python 2.7.3 (default, Sep 26 2013, 20:03:06) 
-&gt;&gt;&gt; import fox
-&gt;&gt;&gt; fox.what_does_the_fox_say()
+>>> import fox
+>>> fox.what_does_the_fox_say()
 vixens cry
-&gt;&gt;&gt; 
+>>> 
 ```
 
 You imported fox through the python interpreter, invoked the python function `what_does_the_fox_say()` from within fox.py.    </li>
@@ -11001,7 +11001,7 @@ How can I do the following in Python?
 
 ```python
 array = [0, 10, 20, 40]
-for (i = array.length() - 1; i &gt;= 0; i--)
+for (i = array.length() - 1; i >= 0; i--)
 ```
 
 I need to have the elements of an array, but from the end to the beginning.  
@@ -11010,8 +11010,8 @@ I need to have the elements of an array, but from the end to the beginning.
 You can make use of the <a href="https://www.python.org/dev/peps/pep-0322/" rel="noreferrer">`reversed`</a> function for this as:  
 
 ```python
-&gt;&gt;&gt; array=[0,10,20,40]
-&gt;&gt;&gt; for i in reversed(array):
+>>> array=[0,10,20,40]
+>>> for i in reversed(array):
 ...     print(i)
 ```
 
@@ -11019,8 +11019,8 @@ Note that `reversed(...)` does not return a list. You can get a reversed list us
 
 #### Answer 2 (score 1175)
 ```python
-&gt;&gt;&gt; L = [0,10,20,40]
-&gt;&gt;&gt; L[::-1]
+>>> L = [0,10,20,40]
+>>> L[::-1]
 [40, 20, 10, 0]
 ```
 
@@ -11030,16 +11030,16 @@ By special request in a comment <a href="http://docs.python.org/library/function
 
 #### Answer 3 (score 346)
 ```python
-&gt;&gt;&gt; L = [0,10,20,40]
-&gt;&gt;&gt; L.reverse()
-&gt;&gt;&gt; L
+>>> L = [0,10,20,40]
+>>> L.reverse()
+>>> L
 [40, 20, 10, 0]
 ```
 
 Or   
 
 ```python
-&gt;&gt;&gt; L[::-1]
+>>> L[::-1]
 [40, 20, 10, 0]
 ```
 
@@ -11149,13 +11149,13 @@ The common approach to get a unique collection of items is to use a <a href="htt
 The following example should cover whatever you are trying to do:  
 
 ```python
-&gt;&gt;&gt; t = [1, 2, 3, 1, 2, 5, 6, 7, 8]
-&gt;&gt;&gt; t
+>>> t = [1, 2, 3, 1, 2, 5, 6, 7, 8]
+>>> t
 [1, 2, 3, 1, 2, 5, 6, 7, 8]
-&gt;&gt;&gt; list(set(t))
+>>> list(set(t))
 [1, 2, 3, 5, 6, 7, 8]
-&gt;&gt;&gt; s = [1, 2, 3]
-&gt;&gt;&gt; list(set(t) - set(s))
+>>> s = [1, 2, 3]
+>>> list(set(t) - set(s))
 [8, 5, 6, 7]
 ```
 
@@ -11166,15 +11166,15 @@ As you can see from the example result, <em>the original order is not maintained
 If order is important to you, then you will have to use a different mechanism. A very common solution for this is to rely on <a href="https://docs.python.org/3/library/collections.html#collections.OrderedDict" rel="noreferrer">`OrderedDict`</a> to keep the order of keys during insertion:  
 
 ```python
-&gt;&gt;&gt; from collections import OrderedDict
-&gt;&gt;&gt; list(OrderedDict.fromkeys(t))
+>>> from collections import OrderedDict
+>>> list(OrderedDict.fromkeys(t))
 [1, 2, 3, 5, 6, 7, 8]
 ```
 
 <a href="https://mail.python.org/pipermail/python-dev/2017-December/151283.html" rel="noreferrer">Starting with Python 3.7</a>, the built-in dictionary is guaranteed to maintain the insertion order as well, so you can also use that directly if you are on Python 3.7 or later (or CPython 3.6):  
 
 ```python
-&gt;&gt;&gt; list(dict.fromkeys(t))
+>>> list(dict.fromkeys(t))
 [1, 2, 3, 5, 6, 7, 8]
 ```
 
@@ -11188,8 +11188,8 @@ Finally note that both the `set` as well as the `OrderedDict`/`dict` solutions r
 <strong>In Python 2.7</strong>, the new way of removing duplicates from an iterable while keeping it in the original order is:  
 
 ```python
-&gt;&gt;&gt; from collections import OrderedDict
-&gt;&gt;&gt; list(OrderedDict.fromkeys('abracadabra'))
+>>> from collections import OrderedDict
+>>> list(OrderedDict.fromkeys('abracadabra'))
 ['a', 'b', 'r', 'c', 'd']
 ```
 
@@ -11198,14 +11198,14 @@ Finally note that both the `set` as well as the `OrderedDict`/`dict` solutions r
 <strong>In Python 3.6</strong>, the regular dict became both ordered and compact.  (This feature is holds for CPython and PyPy but may not present in other implementations).  That gives us a new fastest way of deduping while retaining order:  
 
 ```python
-&gt;&gt;&gt; list(dict.fromkeys('abracadabra'))
+>>> list(dict.fromkeys('abracadabra'))
 ['a', 'b', 'r', 'c', 'd']
 ```
 
 <strong>In Python 3.7</strong>, the regular dict is guaranteed to both ordered across all implementations.  <strong>So, the shortest and fastest solution is:</strong>  
 
 ```python
-&gt;&gt;&gt; list(dict.fromkeys('abracadabra'))
+>>> list(dict.fromkeys('abracadabra'))
 ['a', 'b', 'r', 'c', 'd']
 ```
 

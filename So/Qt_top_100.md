@@ -70,7 +70,7 @@ To change the text color and background color of a `QLabel`, here is what I woul
 
 ```c
 QLabel* pLabel = new QLabel;
-pLabel-&gt;setStyleSheet("QLabel { background-color : red; color : blue; }");
+pLabel->setStyleSheet("QLabel { background-color : red; color : blue; }");
 ```
 
 You could also avoid using Qt Style Sheets and change the `QPalette` colors of your `QLabel`, but you might get different results on different platforms and/or styles.  
@@ -84,10 +84,10 @@ As Qt documentation states :
 But you could do something like this :  
 
 ```c
- QPalette palette = ui-&gt;pLabel-&gt;palette();
- palette.setColor(ui-&gt;pLabel-&gt;backgroundRole(), Qt::yellow);
- palette.setColor(ui-&gt;pLabel-&gt;foregroundRole(), Qt::yellow);
- ui-&gt;pLabel-&gt;setPalette(palette);
+ QPalette palette = ui->pLabel->palette();
+ palette.setColor(ui->pLabel->backgroundRole(), Qt::yellow);
+ palette.setColor(ui->pLabel->foregroundRole(), Qt::yellow);
+ ui->pLabel->setPalette(palette);
 ```
 
 But as I said, I strongly suggest not to use the palette and go for Qt Style Sheet.  
@@ -100,9 +100,9 @@ QPalette sample_palette;
 sample_palette.setColor(QPalette::Window, Qt::white);
 sample_palette.setColor(QPalette::WindowText, Qt::blue);
 
-sample_label-&gt;setAutoFillBackground(true);
-sample_label-&gt;setPalette(sample_palette);
-sample_label-&gt;setText("What ever text");
+sample_label->setAutoFillBackground(true);
+sample_label->setPalette(sample_palette);
+sample_label->setText("What ever text");
 ```
 
 It works fine on Windows and Ubuntu, I haven't played with any other OS.  
@@ -155,7 +155,7 @@ I am trying to do something like this:
 ```c
 QString string;
 // do things...
-std::cout &lt;&lt; string &lt;&lt; std::endl;
+std::cout << string << std::endl;
 ```
 
 <p>but the code doesn't compile.
@@ -186,7 +186,7 @@ You can use:
 ```c
 QString qs;
 // do things
-std::cout &lt;&lt; qs.toStdString() &lt;&lt; std::endl;
+std::cout << qs.toStdString() << std::endl;
 ```
 
 <a href="http://doc.qt.io/qt-5/qstring.html#toStdString" rel="noreferrer">Here's</a> reference documentation for `QString`.  
@@ -211,19 +211,19 @@ I'm using Qt4 and C++ for making some programs in computer graphics. I need to b
 If it is good enough to print to `stderr`, you can use the following streams originally intended for debugging:  
 
 ```c
-#include&lt;QDebug&gt;
+#include<QDebug>
 
 //qInfo is qt5.5+ only.
-qInfo() &lt;&lt; "C++ Style Info Message";
+qInfo() << "C++ Style Info Message";
 qInfo( "C Style Info Message" );
 
-qDebug() &lt;&lt; "C++ Style Debug Message";
+qDebug() << "C++ Style Debug Message";
 qDebug( "C Style Debug Message" );
 
-qWarning() &lt;&lt; "C++ Style Warning Message";
+qWarning() << "C++ Style Warning Message";
 qWarning( "C Style Warning Message" );
 
-qCritical() &lt;&lt; "C++ Style Critical Error Message";
+qCritical() << "C++ Style Critical Error Message";
 qCritical( "C Style Critical Error Message" );
 
 // qFatal does not have a C++ style method.
@@ -235,7 +235,7 @@ Though as pointed out in the comments, bear in mind qDebug messages are removed 
 If you need stdout you could try something like this (as Kyle Strand has pointed out):  
 
 ```c
-QTextStream&amp; qStdOut()
+QTextStream& qStdOut()
 {
     static QTextStream ts( stdout );
     return ts;
@@ -245,18 +245,18 @@ QTextStream&amp; qStdOut()
 You could then call as follows:  
 
 ```c
-qStdOut() &lt;&lt; "std out!";
+qStdOut() << "std out!";
 ```
 
 #### Answer 2 (score 145)
 I found <a href="http://www.qtcentre.org/threads/33506-where-is-cout-in-Qt-Creator" rel="noreferrer">this</a> most useful:  
 
 ```c
-#include &lt;QTextStream&gt;
+#include <QTextStream>
 
 QTextStream out(stdout);
 foreach(QString x, strings)
-    out &lt;&lt; x &lt;&lt; endl;
+    out << x << endl;
 ```
 
 #### Answer 3 (score 33)
@@ -265,13 +265,13 @@ foreach(QString x, strings)
 If you want something that, like `std::cout`, writes to your application's standard output, you can simply do <a href="http://www.qtcentre.org/threads/33506-where-is-cout-in-Qt-Creator" rel="noreferrer">the following</a> (<a href="https://stackoverflow.com/a/17649741/1858225">credit to CapelliC</a>):  
 
 ```c
-QTextStream(stdout) &lt;&lt; "string to print" &lt;&lt; endl;
+QTextStream(stdout) << "string to print" << endl;
 ```
 
 If you want to avoid creating a temporary `QTextStream` object, follow Yakk's suggestion in the comments below of creating a function to return a `static` handle for `stdout`:  
 
 ```c
-inline QTextStream&amp; qStdout()
+inline QTextStream& qStdout()
 {
     static QTextStream r{stdout};
     return r;
@@ -280,7 +280,7 @@ inline QTextStream&amp; qStdout()
 ...
 
 foreach(QString x, strings)
-    qStdout() &lt;&lt; x &lt;&lt; endl;
+    qStdout() << x << endl;
 ```
 
 <hr>
@@ -292,9 +292,9 @@ foreach(QString x, strings)
 Note that the above technique can also be used for other outputs. However, there are more readable ways to write to `stderr` (<a href="https://stackoverflow.com/a/3886128/1858225">credit to Goz</a> and the comments below his answer):  
 
 ```c
-qDebug() &lt;&lt; "Debug Message";    // CAN BE REMOVED AT COMPILE TIME!
-qWarning() &lt;&lt; "Warning Message";
-qCritical() &lt;&lt; "Critical Error Message";
+qDebug() << "Debug Message";    // CAN BE REMOVED AT COMPILE TIME!
+qWarning() << "Warning Message";
+qCritical() << "Critical Error Message";
 qFatal("Fatal Error Message");  // WILL KILL THE PROGRAM!
 ```
 
@@ -612,17 +612,17 @@ This <a href="https://stackoverflow.com/questions/3149356/qt-make-a-function-to-
 
 ```c
 #ifdef Q_OS_WIN
-#include &lt;windows.h&gt; // for Sleep
+#include <windows.h> // for Sleep
 #endif
 void QTest::qSleep(int ms)
 {
-    QTEST_ASSERT(ms &gt; 0);
+    QTEST_ASSERT(ms > 0);
 
 #ifdef Q_OS_WIN
     Sleep(uint(ms));
 #else
     struct timespec ts = { ms / 1000, (ms % 1000) * 1000 * 1000 };
-    nanosleep(&amp;ts, NULL);
+    nanosleep(&ts, NULL);
 #endif
 }
 ```
@@ -638,7 +638,7 @@ Here is the code:
 void delay()
 {
     QTime dieTime= QTime::currentTime().addSecs(1);
-    while (QTime::currentTime() &lt; dieTime)
+    while (QTime::currentTime() < dieTime)
         QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 }
 ```
@@ -769,7 +769,7 @@ Abcd.split(" ")[0].toFloat();  //convert the first part to float
 
 ```c
 bool flag;
-double v = Abcd.split(" ")[0].toDouble(&amp;flag); 
+double v = Abcd.split(" ")[0].toDouble(&flag); 
 if(flag){
   // use v
 }
@@ -784,11 +784,11 @@ Also if you are taking that string as user input, then you should also be doubtf
 You can have an utility function like the following  
 
 ```c
-QPair&lt;double, QString&gt; split_size_str(const QString&amp; str){
+QPair<double, QString> split_size_str(const QString& str){
     QRegExp regex("([0-9]*\\.?[0-9]+)\\s+(\\w[bB])");
     int pos = regex.indexIn(str);
     QStringList captures = regex.capturedTexts();
-    if(captures.count() &gt; 1){
+    if(captures.count() > 1){
         double value = captures[1].toDouble(); // should succeed as regex matched
         QString unit = captures[2]; // should succeed as regex matched
         return qMakePair(value, unit);
@@ -803,9 +803,9 @@ Don't forget to check if the conversion was successful!
 ```c
 bool ok;
 auto str= tr("1337");
-str.toDouble(&amp;ok); // returns 1337.0, ok set to true
+str.toDouble(&ok); // returns 1337.0, ok set to true
 auto strr= tr("LEET");
-strr.toDouble(&amp;ok); // returns 0.0, ok set to false
+strr.toDouble(&ok); // returns 0.0, ok set to false
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -822,8 +822,8 @@ QString filename="Data.txt";
 QFile file( filename );
 if ( file.open(QIODevice::ReadWrite) )
 {
-    QTextStream stream( &amp;file );
-    stream &lt;&lt; "something" &lt;&lt; endl;
+    QTextStream stream( &file );
+    stream << "something" << endl;
 }
 ```
 
@@ -845,8 +845,8 @@ and see if the file is created in `c:\`
 That is weird, everything looks fine, are you sure it does not work for you? Because this `main` surely works for me, so I would look somewhere else for the source of your problem.  
 
 ```c
-#include &lt;QFile&gt;
-#include &lt;QTextStream&gt;
+#include <QFile>
+#include <QTextStream>
 
 
 int main()
@@ -854,8 +854,8 @@ int main()
     QString filename = "Data.txt";
     QFile file(filename);
     if (file.open(QIODevice::ReadWrite)) {
-        QTextStream stream(&amp;file);
-        stream &lt;&lt; "something" &lt;&lt; endl;
+        QTextStream stream(&file);
+        stream << "something" << endl;
     }
 }
 ```
@@ -866,17 +866,17 @@ Also note, that the file is not called `Data` but `Data.txt` and should be creat
 
 #### Answer 3 (score 9)
 ```c
-#include &lt;QFile&gt;
-#include &lt;QCoreApplication&gt;
-#include &lt;QTextStream&gt;
+#include <QFile>
+#include <QCoreApplication>
+#include <QTextStream>
 
 int main(int argc, char *argv[])
 {
     // Create a new file     
     QFile file("out.txt");
     file.open(QIODevice::WriteOnly | QIODevice::Text);
-    QTextStream out(&amp;file);
-    out &lt;&lt; "This file is generated by Qt\n";
+    QTextStream out(&file);
+    out << "This file is generated by Qt\n";
 
     // optional, as QFile destructor will already do it:
     file.close(); 
@@ -899,7 +899,7 @@ I was trying to convert a QString to char* type by the following methods, but th
 ```c
 //QLineEdit *line=new QLineEdit();{just to describe what is line here}
 
-QString temp=line-&gt;text();
+QString temp=line->text();
 char *str=(char *)malloc(10);
 QByteArray ba=temp.toLatin1();
 strcpy(str,ba.data());
@@ -959,9 +959,9 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     QGraphicsScene scene;
-    QGraphicsView view(&amp;scene);
+    QGraphicsView view(&scene);
     QGraphicsPixmapItem item(QPixmap("c:\\test.png"));
-    scene.addItem(&amp;item);
+    scene.addItem(&item);
     view.show();
     return a.exec();
 }
@@ -1115,11 +1115,11 @@ pip3 install pyqt5
 If that is successful, it will look something like this:  
 
 ```c
-C:\Windows\System32&gt;pip3 install pyqt5
+C:\Windows\System32>pip3 install pyqt5
 Collecting pyqt5
   Downloading PyQt5-5.9-5.9.1-cp35.cp36.cp37-none-win_amd64.whl (77.2MB)
     100% |################################| 77.2MB 13kB/s
-Collecting sip&lt;4.20,&gt;=4.19.3 (from pyqt5)
+Collecting sip<4.20,>=4.19.3 (from pyqt5)
   Downloading sip-4.19.3-cp35-none-win_amd64.whl (49kB)
     100% |################################| 51kB 984kB/s
 Installing collected packages: sip, pyqt5
@@ -1173,9 +1173,9 @@ You would use <a href="http://qt-project.org/doc/qt-5.0/qtwidgets/qmessagebox.ht
 Example in a hypothetical widget's slot:  
 
 ```c
-#include &lt;QApplication&gt;
-#include &lt;QMessageBox&gt;
-#include &lt;QDebug&gt;
+#include <QApplication>
+#include <QMessageBox>
+#include <QDebug>
 
 // ...
 
@@ -1184,10 +1184,10 @@ void MyWidget::someSlot() {
   reply = QMessageBox::question(this, "Test", "Quit?",
                                 QMessageBox::Yes|QMessageBox::No);
   if (reply == QMessageBox::Yes) {
-    qDebug() &lt;&lt; "Yes was clicked";
+    qDebug() << "Yes was clicked";
     QApplication::quit();
   } else {
-    qDebug() &lt;&lt; "Yes was *not* clicked";
+    qDebug() << "Yes was *not* clicked";
   }
 }
 ```
@@ -1237,13 +1237,13 @@ if(!file.open(QIODevice::WriteOnly)) {
 }
 QString dd;
 
-for(int row=0; row &lt; model-&gt;rowCount(); row++) {
-     dd = model-&gt;item(row,0)-&gt;text() +  ","
-                 + model-&gt;item(row,1)-&gt;text() +  ","
-                 + model-&gt;item(row,2)-&gt;text();
+for(int row=0; row < model->rowCount(); row++) {
+     dd = model->item(row,0)->text() +  ","
+                 + model->item(row,1)->text() +  ","
+                 + model->item(row,2)->text();
 
-     QTextStream out(&amp;file);
-     out &lt;&lt; dd &lt;&lt; endl;
+     QTextStream out(&file);
+     out << dd << endl;
  }
 ```
 
@@ -1251,13 +1251,13 @@ But I'm not succeed to read the same file again, I tried this code but I don't k
 
 ```c
 QFile file("/home/hamad/lesson11.txt");
-QTextStream in(&amp;file);
+QTextStream in(&file);
 QString line = in.readLine();
 while(!in.atEnd()) {
 
     QStringList  fields = line.split(",");
 
-    model-&gt;appendRow(fields);
+    model->appendRow(fields);
 
 }
 ```
@@ -1279,12 +1279,12 @@ if(!file.open(QIODevice::ReadOnly)) {
     QMessageBox::information(0, "error", file.errorString());
 }
 
-QTextStream in(&amp;file);
+QTextStream in(&file);
 
 while(!in.atEnd()) {
     QString line = in.readLine();    
     QStringList fields = line.split(",");    
-    model-&gt;appendRow(fields);    
+    model->appendRow(fields);    
 }
 
 file.close();
@@ -1307,7 +1307,7 @@ QString pwd("");
 char * PWD;
 PWD = getenv ("PWD");
 pwd.append(PWD);
-cout &lt;&lt; "Working directory : " &lt;&lt; pwd &lt;&lt; flush;
+cout << "Working directory : " << pwd << flush;
 ```
 
 It is less elegant than a single line... but it works for me.  
@@ -1321,7 +1321,7 @@ And a symlink does not "exist". If you are executing an exe from that path you a
 Have you tried <a href="http://doc.qt.io/qt-4.8/qcoreapplication.html#applicationDirPath" rel="noreferrer">QCoreApplication::applicationDirPath()</a><br>  
 
 ```c
-qDebug() &lt;&lt; "App path : " &lt;&lt; qApp-&gt;applicationDirPath();
+qDebug() << "App path : " << qApp->applicationDirPath();
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -1333,7 +1333,7 @@ The title is pretty self-descriptive. I've downloaded Qt Creator 2.7.0, and I am
 
 ```c
 int my_array[5] = {1, 2, 3, 4, 5};
-for(int &amp;x : my_array)
+for(int &x : my_array)
 {
   x *= 2;
 }
@@ -1410,7 +1410,7 @@ If you do not need to modify the substring, then you can use `QStringRef`.  The 
 
 ```c
 QString myString("This is a string");
-QStringRef subString(&amp;myString, 5, 2); // subString contains "is"
+QStringRef subString(&myString, 5, 2); // subString contains "is"
 ```
 
 If you do need to modify the substring, then `left()`, `mid()` and `right()` will do what you need...  
@@ -1427,7 +1427,7 @@ Use the `left` function:
 ```c
 QString yourString = "This is a string";
 QString leftSide = yourString.left(5);
-qDebug() &lt;&lt; leftSide; // output "This "
+qDebug() << leftSide; // output "This "
 ```
 
 Also have a look at `mid()` if you want more control.  
@@ -1545,7 +1545,7 @@ If you are using your own class derived from QComboBox, you can add a `currentDa
 This one can get the text of current index:  
 
 ```c
-QString cb = cbChoice -&gt;currentText();
+QString cb = cbChoice ->currentText();
 ```
 
 #### Answer 3 (score 20)
@@ -1554,16 +1554,16 @@ you can set QVariant data for all items, then you can get the value when you nee
 there is an example code for this situation:  
 
 ```c
-ui.comboBoxSheetSize-&gt;addItem("128 m", QVariant(128));
-ui.comboBoxSheetSize-&gt;addItem("256 m", QVariant(256));
-ui.comboBoxSheetSize-&gt;addItem("512 m", QVariant(512));
-ui.comboBoxSheetSize-&gt;addItem("1024 m", QVariant(1024));
+ui.comboBoxSheetSize->addItem("128 m", QVariant(128));
+ui.comboBoxSheetSize->addItem("256 m", QVariant(256));
+ui.comboBoxSheetSize->addItem("512 m", QVariant(512));
+ui.comboBoxSheetSize->addItem("1024 m", QVariant(1024));
 
 ...
 
 void Page::onComboSheetSizeChanged( int index )
 {
- int value = ui.comboBoxSheetSize-&gt;itemData(index).toInt();
+ int value = ui.comboBoxSheetSize->itemData(index).toInt();
 }
 ```
 
@@ -1727,15 +1727,15 @@ Something like this should work :
 ```c
 QPixmap pixmap("image_path");
 QIcon ButtonIcon(pixmap);
-button-&gt;setIcon(ButtonIcon);
-button-&gt;setIconSize(pixmap.rect().size());
+button->setIcon(ButtonIcon);
+button->setIconSize(pixmap.rect().size());
 ```
 
 #### Answer 3 (score 40)
 ```c
 QPushButton *button = new QPushButton;
-button-&gt;setIcon(QIcon(":/icons/..."));
-button-&gt;setIconSize(QSize(65, 65));
+button->setIcon(QIcon(":/icons/..."));
+button->setIconSize(QSize(65, 65));
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -1801,13 +1801,13 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 In `main.cpp` replace code: </p>
 
 ```c
-#include &lt;QtGui/QApplication&gt; 
+#include <QtGui/QApplication> 
 ```
 
 with:   
 
 ```c
-#include &lt;QApplication&gt;
+#include <QApplication>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -1868,12 +1868,12 @@ void MainWindow::on_pushButton_clicked()
 {
      QImage imageObject;
      imageObject.load(imagePath);
-     ui-&gt;myLabel-&gt;setPixmap(QPixmap::fromImage(imageObject));
+     ui->myLabel->setPixmap(QPixmap::fromImage(imageObject));
 
      //OR use the other way by setting the Pixmap directly
 
      QPixmap pixmapObject(imagePath");
-     ui-&gt;myLabel2-&gt;setPixmap(pixmapObject);
+     ui->myLabel2->setPixmap(pixmapObject);
 }
 ```
 
@@ -1881,8 +1881,8 @@ void MainWindow::on_pushButton_clicked()
 Simple, but complete example showing how to display QImage might look like this:  
 
 ```c
-#include &lt;QtGui/QApplication&gt;
-#include &lt;QLabel&gt;
+#include <QtGui/QApplication>
+#include <QLabel>
 
 int main(int argc, char *argv[])
 {
@@ -1914,14 +1914,14 @@ Then just edit `mainwindow.cpp` and make the constructor something like this:
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), ui(new Ui::MainWindow)
 {
-    ui-&gt;setupUi(this);
+    ui->setupUi(this);
 
     image.load("myimage.png");
     scene = new QGraphicsScene(this);
-    scene-&gt;addPixmap(image);
-    scene-&gt;setSceneRect(image.rect());
+    scene->addPixmap(image);
+    scene->setSceneRect(image.rect());
 
-    ui-&gt;mainImage-&gt;setScene(scene);
+    ui->mainImage->setScene(scene);
 }
 ```
 
@@ -1987,11 +1987,11 @@ Here's the definition from the kernel. Keep in mind that 4 means that bit 2 is s
  *      bit 3 == 1 means use of reserved bit detected
  *      bit 4 == 1 means fault was an instruction fetch
  */
-#define PF_PROT         (1&lt;&lt;0)
-#define PF_WRITE        (1&lt;&lt;1)
-#define PF_USER         (1&lt;&lt;2)
-#define PF_RSVD         (1&lt;&lt;3)
-#define PF_INSTR        (1&lt;&lt;4)
+#define PF_PROT         (1<<0)
+#define PF_WRITE        (1<<1)
+#define PF_USER         (1<<2)
+#define PF_RSVD         (1<<3)
+#define PF_INSTR        (1<<4)
 ```
 
 Now then, "ip 00007f9bebcca90d" means the instruction pointer was at 0x00007f9bebcca90d when the segfault happened.  
@@ -2124,13 +2124,13 @@ if __name__ == '__main__':
 You need to generate a python file from your ui file with the pyuic tool (site-packages\pyqt4\bin)  
 
 ```c
-pyuic form1.ui &gt; form1.py
+pyuic form1.ui > form1.py
 ```
 
 with pyqt4  
 
 ```c
-pyuic4.bat form1.ui &gt; form1.py
+pyuic4.bat form1.ui > form1.py
 ```
 
 Then you can import the form1 into your script.  
@@ -2146,7 +2146,7 @@ I have this function in my program that converts integers to strings:
     QString Stats_Manager::convertInt(int num)
     {
         stringstream ss;
-        ss &lt;&lt; num;
+        ss << num;
         return ss.str();
     }
 ```
@@ -2163,13 +2163,13 @@ Im not really sure what that means. But if you know how to fix it or need any mo
 You probably have a forward declaration of the class, but haven't included the header:  
 
 ```c
-#include &lt;sstream&gt;
+#include <sstream>
 
 //...
 QString Stats_Manager::convertInt(int num)
 {
-    std::stringstream ss;   // &lt;-- also note namespace qualification
-    ss &lt;&lt; num;
+    std::stringstream ss;   // <-- also note namespace qualification
+    ss << num;
     return ss.str();
 }
 ```
@@ -2178,13 +2178,13 @@ QString Stats_Manager::convertInt(int num)
 Like it's written up there, you forget to type `#include &lt;sstream&gt;`  
 
 ```c
-#include &lt;sstream&gt;
+#include <sstream>
 using namespace std;
 
 QString Stats_Manager::convertInt(int num)
 {
    stringstream ss;
-   ss &lt;&lt; num;
+   ss << num;
    return ss.str();
 }
 ```
@@ -2213,7 +2213,7 @@ int main(int argc, char *argv[])
 
   if (someCommandLineParam)
   {
-    std::cout &lt;&lt; "Hello, world!";
+    std::cout << "Hello, world!";
     return 0;
   }
 
@@ -2278,8 +2278,8 @@ void Console()
 int main(int argc, char *argv[])
 {
     Console();
-    std::cout&lt;&lt;"start@@";
-    qDebug()&lt;&lt;"start!";
+    std::cout<<"start@@";
+    qDebug()<<"start!";
 ```
 
 You can't use std::cout as others have said,my way is perfect even for some code can't include "qdebug" !  
@@ -2309,7 +2309,7 @@ Here is one simple way you could structure an application if you want an event l
 
 ```c
 // main.cpp
-#include &lt;QtCore&gt;
+#include <QtCore>
 
 class Task : public QObject
 {
@@ -2337,11 +2337,11 @@ int main(int argc, char *argv[])
 
     // Task parented to the application so that it
     // will be deleted by the application.
-    Task *task = new Task(&amp;a);
+    Task *task = new Task(&a);
 
     // This will cause the application to exit when
     // the task signals finished.    
-    QObject::connect(task, SIGNAL(finished()), &amp;a, SLOT(quit()));
+    QObject::connect(task, SIGNAL(finished()), &a, SLOT(quit()));
 
     // This will run the task from the application event loop.
     QTimer::singleShot(0, task, SLOT(run()));
@@ -2366,13 +2366,13 @@ One way I use it is to spawn processes cross-platform.</p>
 You don't need the `QCoreApplication` at all, just include your Qt objects as you would other objects, for example:  
 
 ```c
-#include &lt;QtCore&gt;
+#include <QtCore>
 
 int main()
 {
-    QVector&lt;int&gt; a; // Qt object
+    QVector<int> a; // Qt object
 
-    for (int i=0; i&lt;10; i++)
+    for (int i=0; i<10; i++)
     {
         a.append(i);
     }
@@ -2499,7 +2499,7 @@ private:
 void MainWindow::openNewWindow()
 {
    mMyNewWindow = new NewWindow(); // Be sure to destroy your window somewhere
-   mMyNewWindow-&gt;show();
+   mMyNewWindow->show();
    // ...
 }
 ```
@@ -2528,7 +2528,7 @@ QThread::sleep(unsigned long second);
 Here's the code to create your own *sleep method.  
 
 ```c
-#include &lt;QThread&gt;    
+#include <QThread>    
 
 class Sleeper : public QThread
 {
@@ -2586,7 +2586,7 @@ If there isn't a slot for this, can anyone suggest me some other method by which
 If you have a `QMainWindow` you can override `closeEvent` method.  
 
 ```c
-#include &lt;QCloseEvent&gt;
+#include <QCloseEvent>
 void MainWindow::closeEvent (QCloseEvent *event)
 {
     QMessageBox::StandardButton resBtn = QMessageBox::question( this, APP_NAME,
@@ -2594,9 +2594,9 @@ void MainWindow::closeEvent (QCloseEvent *event)
                                                                 QMessageBox::Cancel | QMessageBox::No | QMessageBox::Yes,
                                                                 QMessageBox::Yes);
     if (resBtn != QMessageBox::Yes) {
-        event-&gt;ignore();
+        event->ignore();
     } else {
-        event-&gt;accept();
+        event->accept();
     }
 }
 ```
@@ -2635,7 +2635,7 @@ private:
 void foo::closeEvent(QCloseEvent *bar)
 {
     // Do something
-    bar-&gt;accept();
+    bar->accept();
 }
 ```
 
@@ -2685,7 +2685,7 @@ How to change the title of the window in Qt? (Both for `QDialog` and `QMainWindo
 
 #### Answer accepted (score 102)
 ```c
-void    QWidget::setWindowTitle ( const QString &amp; )
+void    QWidget::setWindowTitle ( const QString & )
 ```
 
 EDIT: <strong>If you are using QtDesigner</strong>, on the property tab, there is an editable property called <strong><em>windowTitle</em></strong> which can be found under the QWidget section. The property tab can usually be found on the lower right part of the designer window.  
@@ -2698,7 +2698,7 @@ Initially I tried to use `ui-&gt;setWindowTitle`, but that doesn't exist.  `ui` 
 The owner of the `ui` is the `QDialog` or `QMainWindow`, the `.ui` just describes how to lay it out. In that case, you would use:  
 
 ```c
-this-&gt;setWindowTitle("New Title");
+this->setWindowTitle("New Title");
 ```
 
 I hope this helps someone else.  
@@ -2778,7 +2778,7 @@ The script that I wrote was:
 
 ```c
 check_install_xvfb() { # check and install xvfb
-    if hash xvfb-run 2&gt;/dev/null; then
+    if hash xvfb-run 2>/dev/null; then
         :
     else
         sudo apt-get update
@@ -2809,7 +2809,7 @@ Hope it helps
 Which is better (or faster), a C++ `for` loop or the `foreach` operator provided by Qt? For example, the following condition  
 
 ```c
-QList&lt;QString&gt; listofstrings;
+QList<QString> listofstrings;
 ```
 
 Which is better?  
@@ -2826,7 +2826,7 @@ or
 ```c
 int count = listofstrings.count();
 QString str = QString();
-for(int i=0;i&lt;count;i++)
+for(int i=0;i<count;i++)
 {
     str = listofstrings.at(i);
     //Code
@@ -2858,8 +2858,8 @@ The main lesson to take away from that is: use const references in read only loo
 <strong>It really doesn't matter</strong>. Odds are if your program is slow, this isn't the problem. However, it should be noted that you aren't make a completely equal comparison. Qt's `foreach` is more similar to this (this example will use `QList&lt;QString&gt;`):  
 
 ```c
-for(QList&lt;QString&gt;::iterator it = Con.begin(); it != Con.end(); ++it) {
-    QString &amp;str = *it;
+for(QList<QString>::iterator it = Con.begin(); it != Con.end(); ++it) {
+    QString &str = *it;
     // your code here
 }
 ```
@@ -2875,7 +2875,7 @@ That being said. It <strong>still</strong> doesn't matter. The timing difference
 <strong>EDIT:</strong> As a bonus, currently I strongly favor the C++11 version of container iteration, it is clean, concise and simple:  
 
 ```c
-for(QString &amp;s : Con) {
+for(QString &s : Con) {
     // you code here
 }
 ```
@@ -2947,7 +2947,7 @@ And the main file:
 
 ```c
 //main.cpp
-#include &lt;iostream&gt;
+#include <iostream>
 #include "opencv2/core/core.hpp"
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv/cv.h"
@@ -2956,7 +2956,7 @@ using namespace std;
 
 int main()
 {
-    cout &lt;&lt; "Hello World!" &lt;&lt; endl;
+    cout << "Hello World!" << endl;
 
     cv::Mat mat;
     mat = cv::imread("img.JPG");
@@ -3033,7 +3033,7 @@ In the debugger, it shows me that the variable `Data` has the value `"t\0 e\0 s\
 You can use <a href="http://doc.qt.io/qt-5/qtextcodec.html#codecForMib">QTextCodec</a> to convert the bytearray to a string:  
 
 ```c
-QString DataAsString = QTextCodec::codecForMib(1015)-&gt;toUnicode(Data);
+QString DataAsString = QTextCodec::codecForMib(1015)->toUnicode(Data);
 ```
 
 (1015 is UTF-16, 1014 UTF-16LE, 1013 UTF-16BE, 106 UTF-8)  
@@ -3044,7 +3044,7 @@ From your example we can see that the string `"test"` is encoded as  `"t\0 e\0 s
 you can use `QString::fromAscii()`  
 
 ```c
-QByteArray data = entity-&gt;getData();
+QByteArray data = entity->getData();
 QString s_data = QString::fromAscii(data.data());
 ```
 
@@ -3084,7 +3084,7 @@ Use this code:
 QFile inputFile(fileName);
 if (inputFile.open(QIODevice::ReadOnly))
 {
-   QTextStream in(&amp;inputFile);
+   QTextStream in(&inputFile);
    while (!in.atEnd())
    {
       QString line = in.readLine();
@@ -3101,7 +3101,7 @@ inputFile.open(QIODevice::ReadOnly);
 if (!inputFile.isOpen())
     return;
 
-QTextStream stream(&amp;inputFile);
+QTextStream stream(&inputFile);
 QString line = stream.readLine();
 while (!line.isNull()) {
     /* process information */
@@ -3115,10 +3115,10 @@ Since Qt 5.5 you can use `QTextStream::readLineInto`. It behaves similar to `std
 
 ```c
 QIODevice* device;
-QTextStream in(&amp;device);
+QTextStream in(&device);
 
 QString line;
-while (in.readLineInto(&amp;line)) {
+while (in.readLineInto(&line)) {
   // ...
 }
 ```
@@ -3133,18 +3133,18 @@ In Qt I'm trying to set a `QTimer` that calls a function called "update" every s
 ```c
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include &lt;QTimer&gt;
+#include <QTimer>
 #include "QDebug"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    ui-&gt;setupUi(this);
+    ui->setupUi(this);
 
     QTimer *timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(update()));
-    timer-&gt;start(1000);
+    timer->start(1000);
 }
 
 MainWindow::~MainWindow()
@@ -3154,14 +3154,14 @@ MainWindow::~MainWindow()
 
 void MainWindow::update()
 {
-    qDebug() &lt;&lt; "update";
+    qDebug() << "update";
 }
 ```
 
 and the main:  
 
 ```c
-#include &lt;QtGui/QApplication&gt;
+#include <QtGui/QApplication>
 #include "mainwindow.h"
 
 int main(int argc, char *argv[])
@@ -3193,7 +3193,7 @@ Header:
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include &lt;QMainWindow&gt;
+#include <QMainWindow>
 
 namespace Ui {
 class MainWindow;
@@ -3223,13 +3223,13 @@ Source:
 ```c
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include &lt;QDebug&gt;
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    ui-&gt;setupUi(this);
+    ui->setupUi(this);
 
     timerId = startTimer(1000);
 }
@@ -3242,7 +3242,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::timerEvent(QTimerEvent *event)
 {
-    qDebug() &lt;&lt; "Update...";
+    qDebug() << "Update...";
 }
 ```
 
@@ -3253,7 +3253,7 @@ mytimer.h:
     #ifndef MYTIMER_H
     #define MYTIMER_H
 
-    #include &lt;QTimer&gt;
+    #include <QTimer>
 
     class MyTimer : public QObject
     {
@@ -3273,7 +3273,7 @@ mytimer.cpp:
 
 ```c
 #include "mytimer.h"
-#include &lt;QDebug&gt;
+#include <QDebug>
 
 MyTimer::MyTimer()
 {
@@ -3285,19 +3285,19 @@ MyTimer::MyTimer()
           this, SLOT(MyTimerSlot()));
 
     // msec
-    timer-&gt;start(1000);
+    timer->start(1000);
 }
 
 void MyTimer::MyTimerSlot()
 {
-    qDebug() &lt;&lt; "Timer...";
+    qDebug() << "Timer...";
 }
 ```
 
 main.cpp:  
 
 ```c
-#include &lt;QCoreApplication&gt;
+#include <QCoreApplication>
 #include "mytimer.h"
 
 int main(int argc, char *argv[])
@@ -3396,23 +3396,23 @@ void readJson()
       file.open(QIODevice::ReadOnly | QIODevice::Text);
       val = file.readAll();
       file.close();
-      qWarning() &lt;&lt; val;
+      qWarning() << val;
       QJsonDocument d = QJsonDocument::fromJson(val.toUtf8());
       QJsonObject sett2 = d.object();
       QJsonValue value = sett2.value(QString("appName"));
-      qWarning() &lt;&lt; value;
+      qWarning() << value;
       QJsonObject item = value.toObject();
-      qWarning() &lt;&lt; tr("QJsonObject of description: ") &lt;&lt; item;
+      qWarning() << tr("QJsonObject of description: ") << item;
 
       /* in case of string value get value and convert into string*/
-      qWarning() &lt;&lt; tr("QJsonObject[appName] of description: ") &lt;&lt; item["description"];
+      qWarning() << tr("QJsonObject[appName] of description: ") << item["description"];
       QJsonValue subobj = item["description"];
-      qWarning() &lt;&lt; subobj.toString();
+      qWarning() << subobj.toString();
 
       /* in case of array get array and convert into string*/
-      qWarning() &lt;&lt; tr("QJsonObject[appName] of value: ") &lt;&lt; item["imp"];
+      qWarning() << tr("QJsonObject[appName] of value: ") << item["imp"];
       QJsonArray test = item["imp"].toArray();
-      qWarning() &lt;&lt; test[1].toString();
+      qWarning() << test[1].toString();
    }
 ```
 
@@ -3477,17 +3477,17 @@ x["appName"]["message"] = "Welcome";
 x["appName"]["imp"][0] = "awesome";
 x["appName"]["imp"][1] = "best";
 x["appName"]["imp"][2] = "good";
-std::cout &lt;&lt; x &lt;&lt; std::endl;
+std::cout << x << std::endl;
 ```
 
 and this is the code generated by jsoncpp to parse JSON from std::cin and extract its values (replace `USE_VAL` as needed):  
 
 ```c
 value x(ctx);
-std::cin &gt;&gt; x;
-if (x.soap-&gt;error)
+std::cin >> x;
+if (x.soap->error)
   exit(EXIT_FAILURE); // error parsing JSON
-#define USE_VAL(path, val) std::cout &lt;&lt; path &lt;&lt; " = " &lt;&lt; val &lt;&lt; std::endl
+#define USE_VAL(path, val) std::cout << path << " = " << val << std::endl
 if (x.has("appDesc"))
 {
   if (x["appDesc"].has("description"))
@@ -3503,7 +3503,7 @@ if (x.has("appName"))
     USE_VAL("$.appName.message", x["appName"]["message"]);
   if (x["appName"].has("imp"))
   {
-    for (int i2 = 0; i2 &lt; x["appName"]["imp"].size(); i2++)
+    for (int i2 = 0; i2 < x["appName"]["imp"].size(); i2++)
       USE_VAL("$.appName.imp[]", x["appName"]["imp"][i2]);
   }
 }
@@ -3549,14 +3549,14 @@ I think it's probably better to use <a href="http://doc.qt.io/qt-5/qelapsedtimer
 Example usage:  
 
 ```c
-#include &lt;QDebug&gt;
-#include &lt;QElapsedTimer&gt;
+#include <QDebug>
+#include <QElapsedTimer>
 ...
 ...
 QElapsedTimer timer;
 timer.start();
 slowOperation();  // we want to measure the time of this slowOperation()
-qDebug() &lt;&lt; timer.elapsed();
+qDebug() << timer.elapsed();
 ```
 
 #### Answer 3 (score 37)
@@ -3597,13 +3597,13 @@ You lookup the value of the data with `findData()` and then use `setCurrentIndex
 
 ```c
 QComboBox* combo = new QComboBox;
-combo-&gt;addItem("100",100.0);    // 2nd parameter can be any Qt type
-combo-&gt;addItem .....
+combo->addItem("100",100.0);    // 2nd parameter can be any Qt type
+combo->addItem .....
 
 float value=100.0;
-int index = combo-&gt;findData(value);
+int index = combo->findData(value);
 if ( index != -1 ) { // -1 for not found
-   combo-&gt;setCurrentIndex(index);
+   combo->setCurrentIndex(index);
 }
 ```
 
@@ -3618,7 +3618,7 @@ Here is a little example :
 QComboBox   *_comboBox = new QComboBox;
 
 /* Create the ComboBox elements list (here we use QString) */
-QList&lt;QString&gt; stringsList;
+QList<QString> stringsList;
 stringsList.append("Text1");
 stringsList.append("Text3");
 stringsList.append("Text4");
@@ -3626,30 +3626,30 @@ stringsList.append("Text2");
 stringsList.append("Text5");
 
 /* Populate the comboBox */
-_comboBox-&gt;addItems(stringsList);
+_comboBox->addItems(stringsList);
 
 /* Create the label */
 QLabel *label = new QLabel;
 
 /* Search for "Text2" text */
-int index = _comboBox-&gt;findText("Text2");
+int index = _comboBox->findText("Text2");
 if( index == -1 )
-    label-&gt;setText("Text2 not found !");
+    label->setText("Text2 not found !");
 else
-    label-&gt;setText(QString("Text2's index is ")
-                   .append(QString::number(_comboBox-&gt;findText("Text2"))));
+    label->setText(QString("Text2's index is ")
+                   .append(QString::number(_comboBox->findText("Text2"))));
 
 /* setup layout */
 QVBoxLayout *layout = new QVBoxLayout(this);
-layout-&gt;addWidget(_comboBox);
-layout-&gt;addWidget(label);
+layout->addWidget(_comboBox);
+layout->addWidget(label);
 ```
 
 #### Answer 3 (score 3)
 If you know the text in the combo box that you want to select, just use the setCurrentText() method to select that item.  
 
 ```c
-ui-&gt;comboBox-&gt;setCurrentText("choice 2");
+ui->comboBox->setCurrentText("choice 2");
 ```
 
 From the Qt 5.7 documentation  
@@ -3687,11 +3687,11 @@ You can scale the pixmap by keeping its aspect ratio every time it changes:
 ```c
 QPixmap p; // load pixmap
 // get label dimensions
-int w = label-&gt;width();
-int h = label-&gt;height();
+int w = label->width();
+int h = label->height();
 
 // set a scaled pixmap to a w x h window keeping its aspect ratio 
-label-&gt;setPixmap(p.scaled(w,h,Qt::KeepAspectRatio));
+label->setPixmap(p.scaled(w,h,Qt::KeepAspectRatio));
 ```
 
 There are two places where you should add this code:  
@@ -3710,9 +3710,9 @@ aspectratiopixmaplabel.h
 #ifndef ASPECTRATIOPIXMAPLABEL_H
 #define ASPECTRATIOPIXMAPLABEL_H
 
-#include &lt;QLabel&gt;
-#include &lt;QPixmap&gt;
-#include &lt;QResizeEvent&gt;
+#include <QLabel>
+#include <QPixmap>
+#include <QResizeEvent>
 
 class AspectRatioPixmapLabel : public QLabel
 {
@@ -3723,7 +3723,7 @@ public:
     virtual QSize sizeHint() const;
     QPixmap scaledPixmap() const;
 public slots:
-    void setPixmap ( const QPixmap &amp; );
+    void setPixmap ( const QPixmap & );
     void resizeEvent(QResizeEvent *);
 private:
     QPixmap pix;
@@ -3736,16 +3736,16 @@ aspectratiopixmaplabel.cpp
 
 ```c
 #include "aspectratiopixmaplabel.h"
-//#include &lt;QDebug&gt;
+//#include <QDebug>
 
 AspectRatioPixmapLabel::AspectRatioPixmapLabel(QWidget *parent) :
     QLabel(parent)
 {
-    this-&gt;setMinimumSize(1,1);
+    this->setMinimumSize(1,1);
     setScaledContents(false);
 }
 
-void AspectRatioPixmapLabel::setPixmap ( const QPixmap &amp; p)
+void AspectRatioPixmapLabel::setPixmap ( const QPixmap & p)
 {
     pix = p;
     QLabel::setPixmap(scaledPixmap());
@@ -3753,18 +3753,18 @@ void AspectRatioPixmapLabel::setPixmap ( const QPixmap &amp; p)
 
 int AspectRatioPixmapLabel::heightForWidth( int width ) const
 {
-    return pix.isNull() ? this-&gt;height() : ((qreal)pix.height()*width)/pix.width();
+    return pix.isNull() ? this->height() : ((qreal)pix.height()*width)/pix.width();
 }
 
 QSize AspectRatioPixmapLabel::sizeHint() const
 {
-    int w = this-&gt;width();
+    int w = this->width();
     return QSize( w, heightForWidth(w) );
 }
 
 QPixmap AspectRatioPixmapLabel::scaledPixmap() const
 {
-    return pix.scaled(this-&gt;size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    return pix.scaled(this->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation);
 }
 
 void AspectRatioPixmapLabel::resizeEvent(QResizeEvent * e)
@@ -3783,7 +3783,7 @@ I just use `contentsMargin` to fix the aspect ratio.
 ```c
 #pragma once
 
-#include &lt;QLabel&gt;
+#include <QLabel>
 
 class AspectRatioLabel : public QLabel
 {
@@ -3792,7 +3792,7 @@ public:
     ~AspectRatioLabel();
 
 public slots:
-    void setPixmap(const QPixmap&amp; pm);
+    void setPixmap(const QPixmap& pm);
 
 protected:
     void resizeEvent(QResizeEvent* event) override;
@@ -3818,7 +3818,7 @@ AspectRatioLabel::~AspectRatioLabel()
 {
 }
 
-void AspectRatioLabel::setPixmap(const QPixmap&amp; pm)
+void AspectRatioLabel::setPixmap(const QPixmap& pm)
 {
     pixmapWidth = pm.width();
     pixmapHeight = pm.height();
@@ -3835,16 +3835,16 @@ void AspectRatioLabel::resizeEvent(QResizeEvent* event)
 
 void AspectRatioLabel::updateMargins()
 {
-    if (pixmapWidth &lt;= 0 || pixmapHeight &lt;= 0)
+    if (pixmapWidth <= 0 || pixmapHeight <= 0)
         return;
 
-    int w = this-&gt;width();
-    int h = this-&gt;height();
+    int w = this->width();
+    int h = this->height();
 
-    if (w &lt;= 0 || h &lt;= 0)
+    if (w <= 0 || h <= 0)
         return;
 
-    if (w * pixmapHeight &gt; h * pixmapWidth)
+    if (w * pixmapHeight > h * pixmapWidth)
     {
         int m = (w - (pixmapWidth * h / pixmapHeight)) / 2;
         setContentsMargins(m, 0, m, 0);
@@ -3900,9 +3900,9 @@ Actually, if you look at the Qt docs for QPalette in the case of a QComboBox the
 So here is the code I am using to set the background color of a combo box I am using to match the color of the widget it is on:  
 
 ```c
-QPalette pal = myComboBox-&gt;palette();
+QPalette pal = myComboBox->palette();
 pal.setColor(QPalette::Base, pal.color(QPalette::Window));
-myComboBox-&gt;setPalette(pal);
+myComboBox->setPalette(pal);
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -3946,13 +3946,13 @@ So is there a numbers-only setting for `QLineEdit`?
 `QLineEdit::setValidator()`, for example:  
 
 ```c
-myLineEdit-&gt;setValidator( new QIntValidator(0, 100, this) );
+myLineEdit->setValidator( new QIntValidator(0, 100, this) );
 ```
 
 or  
 
 ```c
-myLineEdit-&gt;setValidator( new QDoubleValidator(0, 100, 2, this) );
+myLineEdit->setValidator( new QDoubleValidator(0, 100, 2, this) );
 ```
 
 See: <a href="http://doc.qt.io/qt-5/qintvalidator.html" rel="noreferrer">QIntValidator</a>, <a href="http://doc.qt.io/qt-5/qdoublevalidator.html" rel="noreferrer">QDoubleValidator</a>, <a href="http://doc.qt.io/qt-5/qlineedit.html#setValidator" rel="noreferrer">QLineEdit::setValidator</a>  
@@ -3966,10 +3966,10 @@ And for a double value use <a href="http://doc.qt.io/qt-4.8/qdoublespinbox.html"
 QSpinBox myInt;
 myInt.setMinimum(-5);
 myInt.setMaximum(5);
-myInt.setSingleStep(1);// Will increment the current value with 1 (if you use up arrow key) (if you use down arrow key =&gt; -1)
+myInt.setSingleStep(1);// Will increment the current value with 1 (if you use up arrow key) (if you use down arrow key => -1)
 myInt.setValue(2);// Default/begining value
 myInt.value();// Get the current value
-//connect(&amp;myInt, SIGNAL(valueChanged(int)), this, SLOT(myValueChanged(int)));
+//connect(&myInt, SIGNAL(valueChanged(int)), this, SLOT(myValueChanged(int)));
 ```
 
 #### Answer 3 (score 7)
@@ -3978,7 +3978,7 @@ Why don't you use a `QSpinBox` for this purpose ? You can set the up/down button
 ```c
 // ...
 QSpinBox* spinBox = new QSpinBox( this );
-spinBox-&gt;setButtonSymbols( QAbstractSpinBox::NoButtons ); // After this it looks just like a QLineEdit.
+spinBox->setButtonSymbols( QAbstractSpinBox::NoButtons ); // After this it looks just like a QLineEdit.
 //...
 ```
 
@@ -4081,7 +4081,7 @@ public:
     void run( void )
     {
         msleep( 200 );
-        std::cout &lt;&lt; "thread 1 started" &lt;&lt; std::endl;
+        std::cout << "thread 1 started" << std::endl;
         MySignal();
         exec();
     }
@@ -4095,13 +4095,13 @@ Q_OBJECT
 public:
     void run( void )
     {
-        std::cout &lt;&lt; "thread 2 started" &lt;&lt; std::endl;
+        std::cout << "thread 2 started" << std::endl;
         exec();
     }
 public slots:
     void MySlot( void )
     {
-        std::cout &lt;&lt; "slot called" &lt;&lt; std::endl;
+        std::cout << "slot called" << std::endl;
     }
 };
 ```
@@ -4114,8 +4114,8 @@ int main(int argc, char *argv[])
     QCoreApplication a(argc, argv);
     CThread1 oThread1;
     CThread2 oThread2;
-    QObject::connect( &amp; oThread1, SIGNAL( MySignal() ),
-        &amp; oThread2, SLOT( MySlot() ) );
+    QObject::connect( & oThread1, SIGNAL( MySignal() ),
+        & oThread2, SLOT( MySlot() ) );
     oThread1.start();
     oThread2.start();
     oThread1.wait();
@@ -4151,7 +4151,7 @@ class MyObject : public QObject
 public slots:
     void MySlot( void )
     {
-        std::cout &lt;&lt; "slot called" &lt;&lt; std::endl;
+        std::cout << "slot called" << std::endl;
     }
 };
 
@@ -4161,7 +4161,7 @@ class CThread1 : public QThread
 public:
     void run( void )
     {
-        std::cout &lt;&lt; "thread 1 started" &lt;&lt; std::endl;
+        std::cout << "thread 1 started" << std::endl;
         int i = 0;
         while(1)
         {
@@ -4181,7 +4181,7 @@ class CThread2 : public QThread
 public:
     void run( void )
     {
-        std::cout &lt;&lt; "thread 2 started" &lt;&lt; std::endl;
+        std::cout << "thread 2 started" << std::endl;
         exec();
     }
 };
@@ -4192,10 +4192,10 @@ int main(int argc, char *argv[])
     CThread1 oThread1;
     CThread2 oThread2;
     MyObject myObject;
-    QObject::connect( &amp; oThread1, SIGNAL( MySignal() ),
-        &amp; myObject, SLOT( MySlot() ) );
+    QObject::connect( & oThread1, SIGNAL( MySignal() ),
+        & myObject, SLOT( MySlot() ) );
     oThread2.start();
-    myObject.moveToThread(&amp;oThread2)
+    myObject.moveToThread(&oThread2)
     oThread1.start();
     return a.exec();
 }
@@ -4266,7 +4266,7 @@ CONFIG += static
 You will then need to:  
 
 ```c
-#include &lt;QtPlugin&gt;
+#include <QtPlugin>
 ```
 
 in your project, and import any plugins used. You need to change these settings back order to get it to compile with dynamic linking again (like when debugging or adding features), though this can be easily automated. There are also considerations when building the Qt libraries for use with static linking, though the Qt instructions will at least get you started.  
@@ -4316,7 +4316,7 @@ Context: the <a href="http://bugs.calibre-ebook.com/ticket/7160" rel="noreferrer
 You can try this one:  
 
 ```c
-QString QFileDialog::getExistingDirectory ( QWidget * parent = 0, const QString &amp; caption = QString(), const QString &amp; dir = QString(), Options options = ShowDirsOnly ) [static]
+QString QFileDialog::getExistingDirectory ( QWidget * parent = 0, const QString & caption = QString(), const QString & dir = QString(), Options options = ShowDirsOnly ) [static]
 ```
 
 This one is used to choose a directory, and will popup a dialog like you show at last.  
@@ -4450,7 +4450,7 @@ File AddressBook.h:
  #ifndef ADDRESSBOOK_H
  #define ADDRESSBOOK_H
 
- #include &lt;QWidget&gt;
+ #include <QWidget>
 
  class QLabel;
  class QLineEdit;
@@ -4474,7 +4474,7 @@ File AddressBook.h:
 File AddressBook.cpp:  
 
 ```c
-#include &lt;QtGui&gt;
+#include <QtGui>
 #include "addressbook.h"
 
 AddressBook::AddressBook(QWidget *parent)
@@ -4487,10 +4487,10 @@ AddressBook::AddressBook(QWidget *parent)
     addressText = new QTextEdit;
 
     QGridLayout *mainLayout = new QGridLayout;
-    mainLayout-&gt;addWidget(nameLabel, 0, 0);
-    mainLayout-&gt;addWidget(nameLine, 0, 1);
-    mainLayout-&gt;addWidget(addressLabel, 1, 0, Qt::AlignTop);
-    mainLayout-&gt;addWidget(addressText, 1, 1);
+    mainLayout->addWidget(nameLabel, 0, 0);
+    mainLayout->addWidget(nameLine, 0, 1);
+    mainLayout->addWidget(addressLabel, 1, 0, Qt::AlignTop);
+    mainLayout->addWidget(addressText, 1, 1);
 
     setLayout(mainLayout);
     setWindowTitle(tr("Simple Address Book"));
@@ -4699,7 +4699,7 @@ a.setWindowIcon(QIcon("./images/icon.png"));
 To extend Rob's answer, you can set an application icon for macOS by adding and modifying the following line onto your `.pro` file.  
 
 ```c
-macx: ICON = &lt;app_icon&gt;.icns
+macx: ICON = <app_icon>.icns
 ```
 
 Note that the <a href="https://doc.qt.io/qt-5/qmake-variable-reference.html#icon" rel="nofollow noreferrer">`ICON` qmake variable</a> is only meant to target macOS.  
@@ -4734,8 +4734,8 @@ void QPeer::sendData(QByteArray data)
     // TODO: write data.size() as raw int of exactly 4 bytes to socket
     const char *bytes = data.constData();
     int bytesWritten = 0;
-    while (bytesWritten &lt; data.size())
-        bytesWritten += _socket-&gt;write(bytes + bytesWritten);
+    while (bytesWritten < data.size())
+        bytesWritten += _socket->write(bytes + bytesWritten);
 }
 ```
 
@@ -4757,8 +4757,8 @@ I worked on a project that does what you expect, see here the solution that I de
 Client.h:  
 
 ```c
-#include &lt;QtCore&gt;
-#include &lt;QtNetwork&gt;
+#include <QtCore>
+#include <QtNetwork>
 
 class Client : public QObject
 {
@@ -4789,17 +4789,17 @@ Client::Client(QObject *parent) : QObject(parent)
 
 bool Client::connectToHost(QString host)
 {
-    socket-&gt;connectToHost(host, 1024);
-    return socket-&gt;waitForConnected();
+    socket->connectToHost(host, 1024);
+    return socket->waitForConnected();
 }
 
 bool Client::writeData(QByteArray data)
 {
-    if(socket-&gt;state() == QAbstractSocket::ConnectedState)
+    if(socket->state() == QAbstractSocket::ConnectedState)
     {
-        socket-&gt;write(IntToArray(data.size())); //write size of data
-        socket-&gt;write(data); //write the data itself
-        return socket-&gt;waitForBytesWritten();
+        socket->write(IntToArray(data.size())); //write size of data
+        socket->write(data); //write the data itself
+        return socket->waitForBytesWritten();
     }
     else
         return false;
@@ -4809,8 +4809,8 @@ QByteArray IntToArray(qint32 source) //Use qint32 to ensure that the number have
 {
     //Avoid use of cast, this is the Qt way to serialize objects
     QByteArray temp;
-    QDataStream data(&amp;temp, QIODevice::ReadWrite);
-    data &lt;&lt; source;
+    QDataStream data(&temp, QIODevice::ReadWrite);
+    data << source;
     return temp;
 }
 ```
@@ -4818,8 +4818,8 @@ QByteArray IntToArray(qint32 source) //Use qint32 to ensure that the number have
 Server.h:  
 
 ```c
-#include &lt;QtCore&gt;
-#include &lt;QtNetwork&gt;
+#include <QtCore>
+#include <QtNetwork>
 
 class Server : public QObject
 {
@@ -4837,8 +4837,8 @@ private slots:
 
 private:
     QTcpServer *server;
-    QHash&lt;QTcpSocket*, QByteArray*&gt; buffers; //We need a buffer to store data until block has completely received
-    QHash&lt;QTcpSocket*, qint32*&gt; sizes; //We need to store the size to verify if a block has received completely
+    QHash<QTcpSocket*, QByteArray*> buffers; //We need a buffer to store data until block has completely received
+    QHash<QTcpSocket*, qint32*> sizes; //We need to store the size to verify if a block has received completely
 };
 ```
 
@@ -4853,14 +4853,14 @@ Server::Server(QObject *parent) : QObject(parent)
 {
     server = new QTcpServer(this);
     connect(server, SIGNAL(newConnection()), SLOT(newConnection()));
-    qDebug() &lt;&lt; "Listening:" &lt;&lt; server-&gt;listen(QHostAddress::Any, 1024);
+    qDebug() << "Listening:" << server->listen(QHostAddress::Any, 1024);
 }
 
 void Server::newConnection()
 {
-    while (server-&gt;hasPendingConnections())
+    while (server->hasPendingConnections())
     {
-        QTcpSocket *socket = server-&gt;nextPendingConnection();
+        QTcpSocket *socket = server->nextPendingConnection();
         connect(socket, SIGNAL(readyRead()), SLOT(readyRead()));
         connect(socket, SIGNAL(disconnected()), SLOT(disconnected()));
         QByteArray *buffer = new QByteArray();
@@ -4872,35 +4872,35 @@ void Server::newConnection()
 
 void Server::disconnected()
 {
-    QTcpSocket *socket = static_cast&lt;QTcpSocket*&gt;(sender());
+    QTcpSocket *socket = static_cast<QTcpSocket*>(sender());
     QByteArray *buffer = buffers.value(socket);
     qint32 *s = sizes.value(socket);
-    socket-&gt;deleteLater();
+    socket->deleteLater();
     delete buffer;
     delete s;
 }
 
 void Server::readyRead()
 {
-    QTcpSocket *socket = static_cast&lt;QTcpSocket*&gt;(sender());
+    QTcpSocket *socket = static_cast<QTcpSocket*>(sender());
     QByteArray *buffer = buffers.value(socket);
     qint32 *s = sizes.value(socket);
     qint32 size = *s;
-    while (socket-&gt;bytesAvailable() &gt; 0)
+    while (socket->bytesAvailable() > 0)
     {
-        buffer-&gt;append(socket-&gt;readAll());
-        while ((size == 0 &amp;&amp; buffer-&gt;size() &gt;= 4) || (size &gt; 0 &amp;&amp; buffer-&gt;size() &gt;= size)) //While can process data, process it
+        buffer->append(socket->readAll());
+        while ((size == 0 && buffer->size() >= 4) || (size > 0 && buffer->size() >= size)) //While can process data, process it
         {
-            if (size == 0 &amp;&amp; buffer-&gt;size() &gt;= 4) //if size of data has received completely, then store it on our global variable
+            if (size == 0 && buffer->size() >= 4) //if size of data has received completely, then store it on our global variable
             {
-                size = ArrayToInt(buffer-&gt;mid(0, 4));
+                size = ArrayToInt(buffer->mid(0, 4));
                 *s = size;
-                buffer-&gt;remove(0, 4);
+                buffer->remove(0, 4);
             }
-            if (size &gt; 0 &amp;&amp; buffer-&gt;size() &gt;= size) // If data has received completely, then emit our SIGNAL with the data
+            if (size > 0 && buffer->size() >= size) // If data has received completely, then emit our SIGNAL with the data
             {
-                QByteArray data = buffer-&gt;mid(0, size);
-                buffer-&gt;remove(0, size);
+                QByteArray data = buffer->mid(0, size);
+                buffer->remove(0, size);
                 size = 0;
                 *s = size;
                 emit dataReceived(data);
@@ -4912,8 +4912,8 @@ void Server::readyRead()
 qint32 ArrayToInt(QByteArray source)
 {
     qint32 temp;
-    QDataStream data(&amp;source, QIODevice::ReadWrite);
-    data &gt;&gt; temp;
+    QDataStream data(&source, QIODevice::ReadWrite);
+    data >> temp;
     return temp;
 }
 ```
@@ -4940,21 +4940,21 @@ protected:
 void QPeer::sendData(QByteArray data)
 {
   int size = data.size();
-  _socket-&gt;write((const char*) &amp;size, sizeof(int);
+  _socket->write((const char*) &size, sizeof(int);
   //use directly QIODevice::write(QByteArray)
-  _socket-&gt;write(data);
+  _socket->write(data);
 }
 
 void QPeer::readData()
 {
-    int bytes = _socket-&gt;bytesAvailable();
+    int bytes = _socket->bytesAvailable();
     bool contains_enough_data = true;
 
     while (contains_enough_data) {
-       if (! m_headerRead &amp;&amp; _socket-&gt;bytesAvailable() &gt;= sizeof(int)) {
+       if (! m_headerRead && _socket->bytesAvailable() >= sizeof(int)) {
          //read header only and update m_size_of_data_to_read
          m_headerRead = true;
-        } else if (m_headerRead &amp;&amp; _socket-&gt;bytesAvailable &gt;= m_size_of_data_to_read) {
+        } else if (m_headerRead && _socket->bytesAvailable >= m_size_of_data_to_read) {
           //read data here
           m_headerRead = false;
           emit dataAvailable();
@@ -5096,19 +5096,19 @@ How can I force the QLabel pixmap to refresh.  I've tried everything.  Below is 
 ```c
 update();
 repaint();
-ui-&gt;upButton-&gt;setUpdatesEnabled(TRUE);
+ui->upButton->setUpdatesEnabled(TRUE);
 update();
 repaint();
-QPaintEvent paintevent(ui-&gt;upButton-&gt;childrenRegion());
-QPaintEvent * test = &amp;paintevent;
+QPaintEvent paintevent(ui->upButton->childrenRegion());
+QPaintEvent * test = &paintevent;
 paintEvent(test);
-this-&gt;changeEvent(test);
-ui-&gt;upButton-&gt;update();
-ui-&gt;upButton-&gt;repaint();
-ui-&gt;upButton-&gt;repaint(ui-&gt;upButton-&gt;childrenRegion());
+this->changeEvent(test);
+ui->upButton->update();
+ui->upButton->repaint();
+ui->upButton->repaint(ui->upButton->childrenRegion());
 repaint();
 QApplication::sendPostedEvents();
-this-&gt;parentWidget()-&gt;update();
+this->parentWidget()->update();
 usleep(100000);
 ```
 
@@ -5126,7 +5126,7 @@ I managed to get the above to work.  I walked through the debugger and noticed t
 Just for everyone's knowledge, this is possible, it's not forbidden, and it's easy to do with the following:   
 
 ```c
-qApp-&gt;processEvents();
+qApp->processEvents();
 ```
 
 qApp is a global external variable in the QApplication header.  
@@ -5153,7 +5153,7 @@ You can do something like:</p>
 
 ```c
   void deneme() {
-    QPushButton * b = qobject_cast&lt;QPushButton *&gt;(sender());
+    QPushButton * b = qobject_cast<QPushButton *>(sender());
     if (b) {
        if (b == button1) { //button1 clicked
            //doSomething();
@@ -5163,7 +5163,7 @@ You can do something like:</p>
              //doSomething();
           }
        }
-       b-&gt;setEnabled(false);
+       b->setEnabled(false);
     }
   }
 ```
@@ -5175,7 +5175,7 @@ So a simple setEnabled(false); is enough.
 
 ```c
 QPushButton* button = new QPushButton(someParent);
-button-&gt;setEnabled(false);
+button->setEnabled(false);
 ```
 
 <p>If the connecting a event handler on the click event of the button maybe you should look at the QT documentation:
@@ -5211,7 +5211,7 @@ connect(myButton, SIGNAL(clicked), this, SLOT(disableButton));
 
 void MyWidget::disableButton() 
 {
-myButton-&gt;setEnabled(false);
+myButton->setEnabled(false);
 }
 ```
 
@@ -5257,7 +5257,7 @@ I would use the `QFileInfo`-class (<a href="http://qt-project.org/doc/qt-5/qfile
 This is the source code to check whether a file exists:  
 
 ```c
-#include &lt;QFileInfo&gt;
+#include <QFileInfo>
 ```
 
 <em>(don't forget to add the corresponding `#include`-statement)</em>  
@@ -5266,7 +5266,7 @@ This is the source code to check whether a file exists:
 bool fileExists(QString path) {
     QFileInfo check_file(path);
     // check if file exists and if yes: Is it really a file and no directory?
-    if (check_file.exists() &amp;&amp; check_file.isFile()) {
+    if (check_file.exists() && check_file.isFile()) {
         return true;
     } else {
         return false;
@@ -5297,12 +5297,12 @@ Also consider: Do you only want to check if the path exists (`exists()`) or do y
 <em>(with shorter version of the function above, saving a few lines of code)</em>  
 
 ```c
-#include &lt;QFileInfo&gt;
+#include <QFileInfo>
 
 bool fileExists(QString path) {
     QFileInfo check_file(path);
     // check if path exists and if yes: Is it really a file and no directory?
-    return check_file.exists() &amp;&amp; check_file.isFile();
+    return check_file.exists() && check_file.isFile();
 }
 ```
 
@@ -5311,17 +5311,17 @@ bool fileExists(QString path) {
 <em>(using `exists` as a `static` which was introduce in Qt 5.2; the docs say the static function is faster, though I'm not sure this is still the case when also using the `isFile()` method; at least this is a one-liner then)</em>  
 
 ```c
-#include &lt;QFileInfo&gt;
+#include <QFileInfo>
 
 // check if path exists and if yes: Is it a file and no directory?
-bool fileExists = QFileInfo::exists(path) &amp;&amp; QFileInfo(path).isFile();
+bool fileExists = QFileInfo::exists(path) && QFileInfo(path).isFile();
 ```
 
 #### Answer 3 (score 11)
 You can use the `QFileInfo::exists()` method:  
 
 ```c
-#include &lt;QFileInfo&gt;
+#include <QFileInfo>
 if(QFileInfo("C:\\exampleFile.txt").exists()){
     //The file exists
 }
@@ -5335,10 +5335,10 @@ else{
 If you want it to return `true` only if the <em>file</em> exists and `false` if the path exists but is a folder, you can combine it with `QDir::exists()`:  
 
 ```c
-#include &lt;QFileInfo&gt;
-#include &lt;QDir&gt;
+#include <QFileInfo>
+#include <QDir>
 QString path = "C:\\exampleFile.txt";
-if(QFileInfo(path).exists() &amp;&amp; !QDir(path).exists()){
+if(QFileInfo(path).exists() && !QDir(path).exists()){
     //The file exists and is not a folder
 }
 else{
@@ -5424,7 +5424,7 @@ Symbol(s) not found for architecture x86_64
 Trying to compile a project on QtCreator. It happens when I try to create an instance of an user defined class, `Layer`. That class consists of a header, `layer.h`, and a implementation, `layer.cpp`. It was tested and works in another programs. On my project, it is included in `qtwidget.h` and the error happens when I try to use it on `qtwidget.cpp`. For example:  
 
 ```c
-Layer&lt;double&gt; text("pq.txt",0.5,0.5,0.5);
+Layer<double> text("pq.txt",0.5,0.5,0.5);
 ```
 
 Having this line on `qtwidget.cpp` is enough for the error to show up.  
@@ -5486,7 +5486,7 @@ It boils down to reading the <a href="http://qt-project.org/doc/qt-5/qmake-varia
 main.cpp:  
 
 ```c
-#include &lt;cinttypes&gt;
+#include <cinttypes>
 
 int main() { return 0; }
 ```
@@ -5670,21 +5670,21 @@ class MyMessageBox : public QDialog {
 
 private slots:
 
-    void onOKButtonClicked() { this-&gt;setResult(QDialog::Accepted); }
-    void onCancelButtonClicked() { this-&gt;setResult(QDialog::Rejected); }
+    void onOKButtonClicked() { this->setResult(QDialog::Accepted); }
+    void onCancelButtonClicked() { this->setResult(QDialog::Rejected); }
 
 public:
-    MyMessageBox(QMessageBox::Icon icon, const QString&amp; title,
-        const QString&amp; text, bool showCancelButton = true,
+    MyMessageBox(QMessageBox::Icon icon, const QString& title,
+        const QString& text, bool showCancelButton = true,
         QWidget* parent = 0);
 
     virtual void resizeEvent(QResizeEvent* e);
 
     QDialog::DialogCode showYourself()
     {
-        this-&gt;setWindowModality(Qt::ApplicationModal);
-        this-&gt;exec();
-        return static_cast&lt;QDialog::DialogCode&gt;(this-&gt;result());
+        this->setWindowModality(Qt::ApplicationModal);
+        this->exec();
+        return static_cast<QDialog::DialogCode>(this->result());
     }
 };
 ```
@@ -5737,7 +5737,7 @@ Another solution:
     connect(NoButton, SIGNAL(clicked()), dlg, SLOT(reject()));
 
     // show modal window event loop and wait for button clicks
-    int dialogCode = dlg-&gt;exec();
+    int dialogCode = dlg->exec();
 
     // act on dialog return code
     if(dialogCode == QDialog::Accepted) { // YesButton clicked }
@@ -5750,8 +5750,8 @@ Another solution:
 For this you have to close the dialog on respective `SLOTS`, so Use   
 
 ```c
-void onOKButtonClicked(){ this-&gt;setResult(QDialog::Accepted); this-&gt;close();}
-void onCancelButtonClicked(){ this-&gt;setResult(QDialog::Rejected);this-&gt;close();}  
+void onOKButtonClicked(){ this->setResult(QDialog::Accepted); this->close();}
+void onCancelButtonClicked(){ this->setResult(QDialog::Rejected);this->close();}  
 ```
 
 <em>Note: Only after you have clicked the Ok button or Cancel button in a standard QMessageBox,  setResult() function is triggered and the status is changed. It's not the same effect when done vice versa.</em>  
@@ -5865,20 +5865,20 @@ The compile error you get is because you try to pass a `QSizePolicy::Policy` to 
 `setFixedSize()` only works if you know the size of the dialog in advance (and usually you don't, what with changing font sizes and languages). You can do  
 
 ```c
-window()-&gt;setFixedSize( window()-&gt;sizeHint() );
+window()->setFixedSize( window()->sizeHint() );
 ```
 
 but it's much better to use  
 
 ```c
-window-&gt;layout()-&gt;setSizeConstraint( QLayout::SetFixedSize );
+window->layout()->setSizeConstraint( QLayout::SetFixedSize );
 ```
 
 That lets the layout determine the size of the dialog, but doesn't allow resizing, which I assume is what you were asking for.  
 
 #### Answer 3 (score 23)
 ```c
-this-&gt;setFixedSize(this-&gt;width(),this-&gt;height());
+this->setFixedSize(this->width(),this->height());
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -5931,8 +5931,8 @@ int main(int argv, char **args)
  {
     QString str1="1005",str2="1006";
     if(str1 == str2)
-        qDebug()&lt;&lt;"This should not print";
-    qDebug()&lt;&lt;"Everything Ok";
+        qDebug()<<"This should not print";
+    qDebug()<<"Everything Ok";
 
 }
 ```
@@ -5986,8 +5986,8 @@ QSqlQuery qry;
 bool ok;
 QString firstName = QInputDialog::getText(NULL, "QInputDialog::getText()",
                                      "Employee first name:", QLineEdit::Normal,
-                                     NULL, &amp;ok);
-if (ok &amp;&amp; !firstName.isEmpty()){}
+                                     NULL, &ok);
+if (ok && !firstName.isEmpty()){}
 else{
     QMessageBox msgBox;
     msgBox.setWindowTitle("Error");
@@ -5996,8 +5996,8 @@ else{
 }
 QString lastName = QInputDialog::getText(NULL, "QInputDialog::getText()",
                                      "Employee last name:", QLineEdit::Normal,
-                                     NULL, &amp;ok);
-     if (ok &amp;&amp; !lastName.isEmpty()){
+                                     NULL, &ok);
+     if (ok && !lastName.isEmpty()){
          qry.prepare("INSERT INTO employees (firstname, lastname)" "VALUES (:f1, :f2)");
          qry.bindValue(":f1", firstName);
          qry.bindValue(":f2", lastName);
@@ -6204,17 +6204,17 @@ this will take about an hour on a fast machine with decent internet access;
 the download is about 500MB:</p>
 
 ```c
-$ cd mxe &amp;&amp; make qt
+$ cd mxe && make qt
 ```</li>
 <li><p>Go to the directory of your app and add the cross-build tools to the <strong>PATH</strong> environment variable:</p>
 
 ```c
-$ export PATH=&lt;mxe root&gt;/usr/bin:$PATH
+$ export PATH=<mxe root>/usr/bin:$PATH
 ```</li>
 <li><p>Run the Qt Makefile generator tool then build:</p>
 
 ```c
-$ &lt;mxe root&gt;/usr/i686-pc-mingw32/qt/bin/qmake &amp;&amp; make
+$ <mxe root>/usr/i686-pc-mingw32/qt/bin/qmake && make
 ```</li>
 <li><p>You should find the binary in the ./release directory:</p>
 
@@ -6258,13 +6258,13 @@ In @Tshepang's original answer, he did not specify an `MXE_TARGETS`, and the def
 As we changed the `MXE_TARGETS`, the `&lt;mxe root&gt;/usr/i686-pc-mingw32/qt/bin/qmake` command will no longer work. Now, what you need to do is:  
 
 ```c
-&lt;mxe root&gt;/usr/&lt;TARGET&gt;/qt/bin/qmake
+<mxe root>/usr/<TARGET>/qt/bin/qmake
 ```
 
 If you didn't specify `MXE_TARGETS`, do this:  
 
 ```c
-&lt;mxe root&gt;/usr/i686-w64-mingw32.static/qt/bin/qmake
+<mxe root>/usr/i686-w64-mingw32.static/qt/bin/qmake
 ```
 
 <strong>Update:</strong> The new default is now `i686-w64-mingw32.static`  
@@ -6367,13 +6367,13 @@ Edit:
 Using `QScriptEngine` I tried this:  
 
 ```c
-QString data = (QString)reply-&gt;readAll();
+QString data = (QString)reply->readAll();
 
 QScriptEngine engine;
 
 QScriptValue result = engine.evaluate(data);
 
-qDebug() &lt;&lt; result.toString();
+qDebug() << result.toString();
 ```
 
 Debug is saying "SyntaxError: Parse error"  
@@ -6384,12 +6384,12 @@ I figured it out:
 ```c
 QStringList propertyNames;
 QStringList propertyKeys;
-QString strReply = (QString)reply-&gt;readAll();
+QString strReply = (QString)reply->readAll();
 QJsonDocument jsonResponse = QJsonDocument::fromJson(strReply.toUtf8());
 QJsonObject jsonObject = jsonResponse.object();
 QJsonArray jsonArray = jsonObject["properties"].toArray();
 
-foreach (const QJsonValue &amp; value, jsonArray) {
+foreach (const QJsonValue & value, jsonArray) {
     QJsonObject obj = value.toObject();
     propertyNames.append(obj["PropertyName"].toString());
     propertyKeys.append(obj["key"].toString());
@@ -6403,17 +6403,17 @@ foreach (const QJsonValue &amp; value, jsonArray) {
 ```c
 // reads a json file from disk to QVariantMap
 // originally from http://erickveil.github.io/2016/04/06/How-To-Manipulate-JSON-With-C++-and-Qt.html
-bool readJsonFile(std::string file_path, QVariantMap&amp; result)
+bool readJsonFile(std::string file_path, QVariantMap& result)
 {
     // step 1
     QFile file_obj(QString::fromStdString(file_path));
     if (!file_obj.open(QIODevice::ReadOnly)) {
-    std::cout &lt;&lt; "Failed to open " &lt;&lt; file_path &lt;&lt; std::endl;
+    std::cout << "Failed to open " << file_path << std::endl;
     exit(1);
     }
 
     // step 2
-    QTextStream file_text(&amp;file_obj);
+    QTextStream file_text(&file_obj);
     QString json_string;
     json_string = file_text.readAll();
     file_obj.close();
@@ -6423,18 +6423,18 @@ bool readJsonFile(std::string file_path, QVariantMap&amp; result)
     auto json_doc = QJsonDocument::fromJson(json_bytes);
 
     if (json_doc.isNull()) {
-        std::cout &lt;&lt; "Failed to create JSON doc." &lt;&lt; std::endl;
+        std::cout << "Failed to create JSON doc." << std::endl;
         return false;
     }
     if (!json_doc.isObject()) {
-        std::cout &lt;&lt; "JSON is not an object." &lt;&lt; std::endl;
+        std::cout << "JSON is not an object." << std::endl;
         return false;
     }
 
     QJsonObject json_obj = json_doc.object();
 
     if (json_obj.isEmpty()) {
-        std::cout &lt;&lt; "JSON object is empty." &lt;&lt; std::endl;
+        std::cout << "JSON object is empty." << std::endl;
         return false;
     }
 
@@ -6452,7 +6452,7 @@ bool writeJsonFile(QVariantMap point_map, std::string file_path)
 
     QFile save_file(QString::fromStdString(file_path));
     if (!save_file.open(QIODevice::WriteOnly)) {
-        std::cout &lt;&lt; "failed to open save file" &lt;&lt; std::endl;
+        std::cout << "failed to open save file" << std::endl;
         return false;
     }
     save_file.write(json_string.toLocal8Bit());
@@ -6510,13 +6510,13 @@ class Worker : public QObject
      QThread workerThread;
 
  public slots:
-     void doWork(const QString &amp;parameter) {
+     void doWork(const QString &parameter) {
          // ...
          emit resultReady(result);
      }
 
  signals:
-     void resultReady(const QString &amp;result);
+     void resultReady(const QString &result);
  };
 
  class Controller : public QObject
@@ -6526,7 +6526,7 @@ class Worker : public QObject
  public:
      Controller() {
          Worker *worker = new Worker;
-         worker-&gt;moveToThread(&amp;workerThread);
+         worker->moveToThread(&workerThread);
          connect(workerThread, SIGNAL(finished()), worker, SLOT(deleteLater()));
          connect(this, SIGNAL(operate(QString)), worker, SLOT(doWork(QString)));
          connect(worker, SIGNAL(resultReady(QString)), this, SLOT(handleResults(QString)));
@@ -6537,9 +6537,9 @@ class Worker : public QObject
          workerThread.wait();
      }
  public slots:
-     void handleResults(const QString &amp;);
+     void handleResults(const QString &);
  signals:
-     void operate(const QString &amp;);
+     void operate(const QString &);
  };
 ```
 
@@ -6566,7 +6566,7 @@ void ChildProcesses::start()
 {
     QThread *childrenWatcherThread = new QThread();
     ChildrenWatcher *childrenWatcher = new ChildrenWatcher();
-    childrenWatcher-&gt;moveToThread(childrenWatcherThread);
+    childrenWatcher->moveToThread(childrenWatcherThread);
     // These three signals carry the "outcome" of the worker job.
     connect(childrenWatcher, SIGNAL(exited(int, int)),
             SLOT(onChildExited(int, int)));
@@ -6591,7 +6591,7 @@ void ChildProcesses::start()
     // or rather, make the main thread delete it:
     connect(childrenWatcherThread, SIGNAL(finished()),
             childrenWatcherThread, SLOT(deleteLater()));
-    childrenWatcherThread-&gt;start();
+    childrenWatcherThread->start();
 }
 ```
 
@@ -6661,7 +6661,7 @@ bool ChildrenWatcher::isStopped()
 {
     bool stopped;
     mutex.lock();
-    stopped = this-&gt;stopped;
+    stopped = this->stopped;
     mutex.unlock();
     return stopped;
 }
@@ -6683,7 +6683,7 @@ void ChildProcesses::start()
 {
     QThread *childrenWatcherThread = new QThread();
     ChildrenWatcher *childrenWatcher = new ChildrenWatcher();
-    childrenWatcher-&gt;moveToThread(childrenWatcherThread);
+    childrenWatcher->moveToThread(childrenWatcherThread);
     // These three signals carry the "outcome" of the worker job.
     connect(childrenWatcher, ChildrenWatcher::exited,
             ChildProcesses::onChildExited);
@@ -6708,7 +6708,7 @@ void ChildProcesses::start()
     // or rather, make the main thread delete it:
     connect(childrenWatcherThread, QThread::finished,
             childrenWatcherThread, QThread::deleteLater);
-    childrenWatcherThread-&gt;start();
+    childrenWatcherThread->start();
 }
 ```
 
@@ -6732,8 +6732,8 @@ QString path = QDir(dirPath).filePath(fileName);
 Only as part of <a href="http://www.boost.org/doc/libs/release/libs/filesystem/index.html" rel="noreferrer">Boost.Filesystem</a> library. Here is an example:  
 
 ```c
-#include &lt;iostream&gt;
-#include &lt;boost/filesystem.hpp&gt;
+#include <iostream>
+#include <boost/filesystem.hpp>
 
 namespace fs = boost::filesystem;
 
@@ -6742,7 +6742,7 @@ int main ()
     fs::path dir ("/tmp");
     fs::path file ("foo.txt");
     fs::path full_path = dir / file;
-    std::cout &lt;&lt; full_path &lt;&lt; std::endl;
+    std::cout << full_path << std::endl;
     return 0;
 }
 ```
@@ -6759,8 +6759,8 @@ $ ./test
 Similar to <strong>@user405725</strong>'s answer (but not using boost), and mentioned by <strong>@ildjarn</strong> in a comment, this functionality is available as part of <a href="http://en.cppreference.com/w/cpp/experimental/fs/path/append" rel="noreferrer">std::experimental::filesystem</a>. The following code compiles using Microsoft Visual Studio 2015 Community Edition:  
 
 ```c
-#include &lt;iostream&gt;
-#include &lt;filesystem&gt;
+#include <iostream>
+#include <filesystem>
 namespace fs = std::experimental::filesystem;
 
 int main() 
@@ -6768,7 +6768,7 @@ int main()
     fs::path dir ("/tmp");
     fs::path file ("foo.txt");
     fs::path full_path = dir / file;
-    std::cout &lt;&lt; full_path &lt;&lt; std::endl;
+    std::cout << full_path << std::endl;
     return 0;
 }
 ```
@@ -6784,8 +6784,8 @@ I already got it working without and primitive type parameters, although if I wa
 I connect in main.cpp   
 
 ```c
-QObject *contentView = rootObject-&gt;findChild&lt;QObject*&gt;(QString("contentView"));
-QObject::connect(&amp;myObj,      SIGNAL(finishedGatheringDataForItem(QString)), 
+QObject *contentView = rootObject->findChild<QObject*>(QString("contentView"));
+QObject::connect(&myObj,      SIGNAL(finishedGatheringDataForItem(QString)), 
                  contentView, SLOT(updateViewWithItem(QString)));
 ```
 
@@ -6833,7 +6833,7 @@ You should use <a href="http://doc.qt.io/qt-5/qml-qtqml-connections.html" rel="n
 <li><p>Put your object <strong>myObj</strong> to QML file by `setContextProperty`</p>
 
 ```c
-qmlVectorForm-&gt;rootContext()-&gt;setContextProperty("YourObject", myOb);
+qmlVectorForm->rootContext()->setContextProperty("YourObject", myOb);
 ```</li>
 <li><p>Your signal is</p>
 
@@ -6913,7 +6913,7 @@ You can, creating an QStringList before iteration, like this:
 
 ```c
 QStringList myOptions;
-myOptions &lt;&lt; "goLogin" &lt;&lt; "goAway" &lt;&lt; "goRegister";
+myOptions << "goLogin" << "goAway" << "goRegister";
 
 /*
 goLogin = 0
@@ -6950,7 +6950,7 @@ It's not possible to switch directly on strings in C++. However it's possible in
 To do that, first <strong>declare an enum</strong> with the <em>strings to be used in switch cases</em> as enumerator name in your class declaration. Then add the enum to the metadata with `Q_ENUMS` in order for the program to search later.  
 
 ```c
-#include &lt;QMetaEnum&gt;
+#include <QMetaEnum>
 
 class TestCase : public QObject
 {
@@ -6962,7 +6962,7 @@ public:
 
     enum Cases
     {
-        THE, AT, IN, THIS // ... ==&gt; strings to search, case sensitive
+        THE, AT, IN, THIS // ... ==> strings to search, case sensitive
     };
 
 public slots:
@@ -6978,7 +6978,7 @@ The comparison is case sensitive so if you want a case insensitive search, conve
 void TestCase::SwitchString(QString word)
 {
     // get information about the enum named "Cases"
-    QMetaObject MetaObject = this-&gt;staticMetaObject;
+    QMetaObject MetaObject = this->staticMetaObject;
     QMetaEnum MetaEnum = MetaObject.enumerator(MetaObject.indexOfEnumerator("Cases"));
 
     switch (MetaEnum.keyToValue(word.toUpper().toLatin1()))
@@ -7019,8 +7019,8 @@ For instance, if your window is inheriting from QWidget, here is what I'm doing 
 ```c
 MainWindow::MainWindow(QWidget *parent) : QWidget(parent), ui(new Ui::MainWindow)
 {
-    ui-&gt;setupUi(this);
-    this-&gt;setStyleSheet("background-color: black;");
+    ui->setupUi(this);
+    this->setStyleSheet("background-color: black;");
 }
 ```
 
@@ -7029,11 +7029,11 @@ On my Mac, my whole application window is black (except the title bar).
 EDIT : according to comment, here is a solution without using ui files and loading an external style sheet  
 
 ```c
-#include &lt;QtGui/QApplication&gt;
-#include &lt;QtGui/QMainWindow&gt;
-#include &lt;QtGui/QVBoxLayout&gt;
-#include &lt;QtGui/QPushButton&gt;
-#include &lt;QtCore/QFile&gt;
+#include <QtGui/QApplication>
+#include <QtGui/QMainWindow>
+#include <QtGui/QVBoxLayout>
+#include <QtGui/QPushButton>
+#include <QtCore/QFile>
 
 int main(int ArgC, char* ArgV[])
 {
@@ -7041,18 +7041,18 @@ QApplication MyApp(ArgC, ArgV);
 
 QMainWindow* pWindow = new QMainWindow;
 QVBoxLayout* pLayout = new QVBoxLayout(pWindow);
-pWindow-&gt;setLayout(pLayout);
+pWindow->setLayout(pLayout);
 
 QPushButton* pButton = new QPushButton("Test", pWindow);
-pLayout-&gt;addWidget(pButton);
+pLayout->addWidget(pButton);
 
 QFile file(":/qss/default.qss");
 file.open(QFile::ReadOnly);
 QString styleSheet = QLatin1String(file.readAll());
 
-qApp-&gt;setStyleSheet(styleSheet);
+qApp->setStyleSheet(styleSheet);
 
-pWindow-&gt;setVisible(true);
+pWindow->setVisible(true);
 MyApp.exec();
 }
 ```
@@ -7068,11 +7068,11 @@ QWidget {
 This file is part of a resource file (stylesheet.qrc) :  
 
 ```c
-&lt;RCC&gt;
-  &lt;qresource prefix="/qss"&gt;
-    &lt;file&gt;default.qss&lt;/file&gt;
-  &lt;/qresource&gt;
-&lt;/RCC&gt;
+<RCC>
+  <qresource prefix="/qss">
+    <file>default.qss</file>
+  </qresource>
+</RCC>
 ```
 
 And here is my project file :  
@@ -7089,9 +7089,9 @@ This has worked for me:
 
 ```c
 a = new QApplication(argc, argv);
-QPalette pal = a-&gt;palette();
+QPalette pal = a->palette();
 pal.setColor(QPalette::Window, Qt::white);
-a-&gt;setPalette(pal);
+a->setPalette(pal);
 ```
 
 #### Answer 3 (score 4)
@@ -7111,12 +7111,12 @@ to your code, you can give any color directly.
 I've a `QMap` object and I am trying to write its content to a file.  
 
 ```c
-QMap&lt;QString, QString&gt; extensions;
+QMap<QString, QString> extensions;
 //.. 
 
 for(auto e : extensions)
 {
-  fout &lt;&lt; e.first &lt;&lt; "," &lt;&lt; e.second &lt;&lt; '\n';
+  fout << e.first << "," << e.second << '\n';
 }  
 ```
 
@@ -7130,7 +7130,7 @@ If you want the STL style with `first` and `second`, do this:
 ```c
 for(auto e : extensions.toStdMap())
 {
-  fout &lt;&lt; e.first &lt;&lt; "," &lt;&lt; e.second &lt;&lt; '\n';
+  fout << e.first << "," << e.second << '\n';
 }
 ```
 
@@ -7139,7 +7139,7 @@ If you want to use what Qt offers, do this:
 ```c
 for(auto e : extensions.keys())
 {
-  fout &lt;&lt; e &lt;&lt; "," &lt;&lt; extensions.value(e) &lt;&lt; '\n';
+  fout << e << "," << extensions.value(e) << '\n';
 }
 ```
 
@@ -7158,25 +7158,25 @@ You should use one of the iterator methods described in the documentation but yo
 <hr>You could also use a wrapper to get `QMap::iterator` as the `auto` type:</p>
 
 ```c
-template&lt;class Map&gt;
+template<class Map>
 struct RangeWrapper {
     typedef typename Map::iterator MapIterator;
-    Map &amp;map;
+    Map &map;
 
-    RangeWrapper(Map &amp; map_) : map(map_) {}
+    RangeWrapper(Map & map_) : map(map_) {}
 
     struct iterator {
         MapIterator mapIterator;
-        iterator(const MapIterator &amp;mapIterator_): mapIterator(mapIterator_) {}
+        iterator(const MapIterator &mapIterator_): mapIterator(mapIterator_) {}
         MapIterator operator*() {
             return mapIterator;
         }
-        iterator &amp; operator++() {
+        iterator & operator++() {
             ++mapIterator;
             return *this;
         }
-        bool operator!=(const iterator &amp; other) {
-            return this-&gt;mapIterator != other.mapIterator;
+        bool operator!=(const iterator & other) {
+            return this->mapIterator != other.mapIterator;
         }
     };
     iterator begin() {
@@ -7188,17 +7188,17 @@ struct RangeWrapper {
 };
 
 // Function to be able to use automatic template type deduction
-template&lt;class Map&gt;
-RangeWrapper&lt;Map&gt; toRange(Map &amp; map)
+template<class Map>
+RangeWrapper<Map> toRange(Map & map)
 {
-    return RangeWrapper&lt;Map&gt;(map);
+    return RangeWrapper<Map>(map);
 }
 
 // Usage code
-QMap&lt;QString, QString&gt; extensions;
+QMap<QString, QString> extensions;
 ...
 for(auto e : toRange(extensions)) {
-    fout &lt;&lt; e.key() &lt;&lt; "," &lt;&lt; e.value() &lt;&lt; '\n';
+    fout << e.key() << "," << e.value() << '\n';
 }
 ```
 
@@ -7231,22 +7231,22 @@ STL style iterator :     2343  ms
 Code for those interested :   
 
 ```c
-#include &lt;QDateTime&gt;
-#include &lt;QMap&gt;
-#include &lt;QVector&gt;
-#include &lt;QList&gt;
-#include &lt;QDebug&gt;
+#include <QDateTime>
+#include <QMap>
+#include <QVector>
+#include <QList>
+#include <QDebug>
 
 void testQMap(){
-    QMap&lt;int, int&gt; map;
-    QVector&lt;int&gt; vec;
-    QList&lt;int&gt; list;
+    QMap<int, int> map;
+    QVector<int> vec;
+    QList<int> list;
 
     int nbIterations = 100;
     int size = 1000000;
     volatile int sum = 0;
 
-    for(int i = 0; i&lt;size; ++i){
+    for(int i = 0; i<size; ++i){
         int randomInt = qrand()%128;
         map[i] = randomInt;
         vec.append(randomInt);
@@ -7256,57 +7256,57 @@ void testQMap(){
 
     // Rererence vector/list
     qint64 start = QDateTime::currentMSecsSinceEpoch();
-    for(int i = 0; i&lt;nbIterations; ++i){
+    for(int i = 0; i<nbIterations; ++i){
         sum = 0;
         for(int j : vec){
             sum += j;
         }
     }
     qint64 end = QDateTime::currentMSecsSinceEpoch();
-    qDebug() &lt;&lt; "Reference vector : \t" &lt;&lt; (end-start) &lt;&lt; " ms";
+    qDebug() << "Reference vector : \t" << (end-start) << " ms";
 
     qint64 startList = QDateTime::currentMSecsSinceEpoch();
-    for(int i = 0; i&lt;nbIterations; ++i){
+    for(int i = 0; i<nbIterations; ++i){
         sum = 0;
         for(int j : list){
             sum += j;
         }
     }
     qint64 endList = QDateTime::currentMSecsSinceEpoch();
-    qDebug() &lt;&lt; "Reference list : \t" &lt;&lt; (endList-startList) &lt;&lt; " ms";
+    qDebug() << "Reference list : \t" << (endList-startList) << " ms";
 
     // QMap::values()
     qint64 start0 = QDateTime::currentMSecsSinceEpoch();
-    for(int i = 0; i&lt;nbIterations; ++i){
+    for(int i = 0; i<nbIterations; ++i){
         sum = 0;
-        QList&lt;int&gt; values = map.values();
+        QList<int> values = map.values();
         for(int k : values){
             sum += k;
         }
     }
     qint64 end0 = QDateTime::currentMSecsSinceEpoch();
-    qDebug() &lt;&lt; "QMap::values() : \t" &lt;&lt; (end0-start0) &lt;&lt; " ms";
+    qDebug() << "QMap::values() : \t" << (end0-start0) << " ms";
 
 
     // Java style iterator
     qint64 start1 = QDateTime::currentMSecsSinceEpoch();
-    for(int i = 0; i&lt;nbIterations; ++i){
+    for(int i = 0; i<nbIterations; ++i){
         sum = 0;
-        QMapIterator&lt;int, int&gt; it(map);
+        QMapIterator<int, int> it(map);
         while (it.hasNext()) {
             it.next();
             sum += it.value();
         }
     }
     qint64 end1 = QDateTime::currentMSecsSinceEpoch();
-    qDebug() &lt;&lt; "Java style iterator : \t" &lt;&lt; (end1-start1) &lt;&lt; " ms";
+    qDebug() << "Java style iterator : \t" << (end1-start1) << " ms";
 
 
     // STL style iterator
     qint64 start2 = QDateTime::currentMSecsSinceEpoch();
-    for(int i = 0; i&lt;nbIterations; ++i){
+    for(int i = 0; i<nbIterations; ++i){
         sum = 0;
-        QMap&lt;int, int&gt;::const_iterator it = map.constBegin();
+        QMap<int, int>::const_iterator it = map.constBegin();
         auto end = map.constEnd();
         while (it != end) {
             sum += it.value();
@@ -7314,11 +7314,11 @@ void testQMap(){
         }
     }
     qint64 end2 = QDateTime::currentMSecsSinceEpoch();
-    qDebug() &lt;&lt; "STL style iterator : \t" &lt;&lt; (end2-start2) &lt;&lt; " ms";
+    qDebug() << "STL style iterator : \t" << (end2-start2) << " ms";
 
 
     qint64 start3 = QDateTime::currentMSecsSinceEpoch();
-    for(int i = 0; i&lt;nbIterations; ++i){
+    for(int i = 0; i<nbIterations; ++i){
         sum = 0;
         auto end = map.cend();
         for (auto it = map.cbegin(); it != end; ++it)
@@ -7328,7 +7328,7 @@ void testQMap(){
     }
     qint64 end3 = QDateTime::currentMSecsSinceEpoch();
 
-    qDebug() &lt;&lt; "STL style iterator v2 : \t" &lt;&lt; (end3-start3) &lt;&lt; " ms";
+    qDebug() << "STL style iterator v2 : \t" << (end3-start3) << " ms";
 }
 ```
 
@@ -7375,7 +7375,7 @@ qDebug("abc" + s.toLatin1() + "def");
 You can use the following:  
 
 ```c
-qDebug().nospace() &lt;&lt; "abc" &lt;&lt; qPrintable(s) &lt;&lt; "def";
+qDebug().nospace() << "abc" << qPrintable(s) << "def";
 ```
 
 The `nospace()` is to avoid printing out spaces after every argument (which is default for `qDebug()`).  
@@ -7421,7 +7421,7 @@ But, why am I getting this message?
 Depending on the Qt-version (5) QtGui was moved to QtWidgets; so it becomes   
 
 ```c
-#include &lt;QtWidgets/QApplication&gt;
+#include <QtWidgets/QApplication>
 ```
 
 #### Answer 3 (score 14)
@@ -7434,7 +7434,7 @@ QT += gui declarative
 then  
 
 ```c
-#include &lt;QApplication&gt;
+#include <QApplication>
 ```
 
 It helps me  
@@ -7486,8 +7486,8 @@ As far as I understand, I would create a QLabel, set its textFormat to rich text
 
 ```c
 QLabel *warning = new QLabel;
-warning-&gt;setTextFormat(Qt::RichText);
-warning-&gt;setText("{\\rtf1\\ansi\\ansicpg1252 {\\fonttbl\\f0\\fswiss\\fcharset0 Helvetica;} {\\colortbl;\\red255\\green0\\blue0;} \\f0 \\cf0 this is bold red text}");
+warning->setTextFormat(Qt::RichText);
+warning->setText("{\\rtf1\\ansi\\ansicpg1252 {\\fonttbl\\f0\\fswiss\\fcharset0 Helvetica;} {\\colortbl;\\red255\\green0\\blue0;} \\f0 \\cf0 this is bold red text}");
 ```
 
 I tested this rich text string in a rich text editor and it displays fine.  
@@ -7505,7 +7505,7 @@ Qt Designer does it like this: `&lt;span style=" font-size:8pt; font-weight:600;
 You can use <a href="http://doc.qt.io/qt-4.8/stylesheet.html" rel="noreferrer">Qt StyleSheets</a> and set the `styleSheet` property of `QLabel`  
 
 ```c
-warning-&gt;setStyleSheet("font-weight: bold; color: red");
+warning->setStyleSheet("font-weight: bold; color: red");
 ```
 
 Qt supports most CSS styles on its `QWidget`-derived classes. You don't need to set the text format to `Qt::RichText` for this to work.  
@@ -7534,44 +7534,44 @@ How can I fix this?
 Here is my code:  
 
 ```c
-int num_bl = ui-&gt;numeroBLlineEdit-&gt;text().toInt() ;
+int num_bl = ui->numeroBLlineEdit->text().toInt() ;
 QString html;
 QString requette = "select num_facture,date,nom,prenom,code_fiscale,designation,qte_out, prix,(qte_out * prix ) as Montant, sum(qte_out * prix) as Total from ventes join produits_en_ventes join clients  join produits on ventes.vente_id = produits_en_ventes.vente_id and ventes.client_id = clients.client_id and produits_en_ventes.produit_id = produits.produit_id where ventes.client_id = :client_id ";
 
-if(!m_db-&gt;isOpen())
-    QMessageBox::critical(this,tr("Inventoria Solution"),m_db-&gt;lastError().text()) ;
+if(!m_db->isOpen())
+    QMessageBox::critical(this,tr("Inventoria Solution"),m_db->lastError().text()) ;
 else{
-    m_query-&gt;clear();
-    m_query-&gt;prepare(requette);
-    m_query-&gt;bindValue(":client_id ", num_bl);
+    m_query->clear();
+    m_query->prepare(requette);
+    m_query->bindValue(":client_id ", num_bl);
 
-    if(!m_query-&gt;exec())
-        QMessageBox::critical(this,tr("Inventoria Solution"),m_query-&gt;lastError().text()) ;
+    if(!m_query->exec())
+        QMessageBox::critical(this,tr("Inventoria Solution"),m_query->lastError().text()) ;
     else{
-        html += "       &lt;table&gt;"
-                "&lt;thead&gt;"
-                "&lt;tr&gt;"
-                "&lt;th&gt;N°&lt;/th&gt;"
-                "&lt;th&gt;Désignation&lt;/th&gt;"
-                "&lt;th&gt;Qte&lt;/th&gt;"
-                "&lt;th&gt;Prix Unitaire&lt;/th&gt;"
-                "&lt;th&gt;Montant&lt;/th&gt;"
-                "   &lt;/tr&gt;"
-                "&lt;/thead&gt;";
-        while(m_query-&gt;next())
+        html += "       <table>"
+                "<thead>"
+                "<tr>"
+                "<th>N°</th>"
+                "<th>Désignation</th>"
+                "<th>Qte</th>"
+                "<th>Prix Unitaire</th>"
+                "<th>Montant</th>"
+                "   </tr>"
+                "</thead>";
+        while(m_query->next())
         {
             int num_article = 1;
 
-            html += "&lt;tr&gt; &lt;td&gt;" + num_article + "&lt;/td&gt; &lt;td&gt;"+m_query-&gt;value(5).toString()+"&lt;/td&gt; &lt;td&gt;"+m_query-&gt;value(6).toInt() + "&lt;/td&gt; &lt;td&gt;"+m_query-&gt;value(7).toInt() + "&lt;/td&gt; &lt;td&gt;" + m_query-&gt;value(8).toInt() + "&lt;/td&gt;&lt;/tr&gt;";
+            html += "<tr> <td>" + num_article + "</td> <td>"+m_query->value(5).toString()+"</td> <td>"+m_query->value(6).toInt() + "</td> <td>"+m_query->value(7).toInt() + "</td> <td>" + m_query->value(8).toInt() + "</td></tr>";
             num_article++;
 
         }
-            html += "&lt;tfoot&gt;"
-                "&lt;tr&gt;"
-                "&lt;td&gt;Total:"+ m_query-&gt;value(9).toInt()+"&lt;/td&gt;"
-                "&lt;/tr&gt;"
-                "&lt;/tfoot&gt;"
-                "&lt;/table&gt;";
+            html += "<tfoot>"
+                "<tr>"
+                "<td>Total:"+ m_query->value(9).toInt()+"</td>"
+                "</tr>"
+                "</tfoot>"
+                "</table>";
     }
     print_Html(html);
 
@@ -7583,13 +7583,13 @@ else{
 If you use `operator+`, you need to provide QString as an argument, but you use integer values instead: `html += "&lt;tr&gt; &lt;td&gt;" + num_article`, where `num_article` is declared as integer. You can replace it with, for example: `QString::number(num_article)`. The same in this line:  
 
 ```c
-"&lt;td&gt;Total:"+ m_query-&gt;value(9).toInt()+"&lt;/td&gt;"
+"<td>Total:"+ m_query->value(9).toInt()+"</td>"
 ```
 
 should be replaced with  
 
 ```c
-"&lt;td&gt;Total:"+ m_query-&gt;value(9).toString()+"&lt;/td&gt;"
+"<td>Total:"+ m_query->value(9).toString()+"</td>"
 ```
 
 #### Answer 2 (score 23)
@@ -7633,21 +7633,21 @@ You don't have to create a `QVBoxLayout` manually. Just select your central `QWi
 If you want to do it with code instead of using `QtCreator`, you could set the layout in a `QWidget` and then set the `QWidget` as the central widget of the main window like this:  
 
 ```c
-#include &lt;QtGui&gt;
-#include &lt;QWidget&gt;
-#include &lt;QHBoxLayout&gt;
+#include <QtGui>
+#include <QWidget>
+#include <QHBoxLayout>
 #include "mainwindow.h"
 
 MainWindow::MainWindow() {  
 
         // Set layout
         QHBoxLayout *layout = new QHBoxLayout;
-        layout-&gt;addWidget(myWidget1);
-        layout-&gt;addWidget(myWidget2);
+        layout->addWidget(myWidget1);
+        layout->addWidget(myWidget2);
 
         // Set layout in QWidget
         QWidget *window = new QWidget();
-        window-&gt;setLayout(layout);
+        window->setLayout(layout);
 
         // Set QWidget as the central layout of the main window
         setCentralWidget(window);
@@ -7710,11 +7710,11 @@ You can use `QItemSelectionModel` class to check/change/other selection(s)
 Example:  
 
 ```c
-QItemSelectionModel *select = table-&gt;selectionModel();
+QItemSelectionModel *select = table->selectionModel();
 
-select-&gt;hasSelection() //check if has selection
-select-&gt;selectedRows() // return selected row(s)
-select-&gt;selectedColumns() // return selected column(s)
+select->hasSelection() //check if has selection
+select->selectedRows() // return selected row(s)
+select->selectedColumns() // return selected column(s)
 ...
 ```
 
@@ -7722,13 +7722,13 @@ select-&gt;selectedColumns() // return selected column(s)
 Check <a href="http://doc.qt.io/qt-5/qitemselectionmodel.html#selectedRows" rel="noreferrer">`selectedRows`</a> method of the <a href="http://doc.qt.io/qt-5/qitemselectionmodel.html" rel="noreferrer">`QItemSelectionModel`</a> Class .  
 
 ```c
-QModelIndexList selection = yourTableView-&gt;selectionModel()-&gt;selectedRows();
+QModelIndexList selection = yourTableView->selectionModel()->selectedRows();
 
 // Multiple rows can be selected
-for(int i=0; i&lt; selection.count(); i++)
+for(int i=0; i< selection.count(); i++)
 {
     QModelIndex index = selection.at(i);
-    qDebug() &lt;&lt; index.row();
+    qDebug() << index.row();
 }
 ```
 
@@ -7894,7 +7894,7 @@ qwindows.lib
 I also added the following to my code:  
 
 ```c
-#include &lt;QtPlugin&gt;
+#include <QtPlugin>
 Q_IMPORT_PLUGIN (QWindowsIntegrationPlugin);
 ```
 
@@ -7930,8 +7930,8 @@ I'm new to Qt, so I wonder whether there is a way to set the size of a `QMainWin
 Thanks to Amir eas. The problem is solved. Here's the code for it:  
 
 ```c
-#include &lt;QDesktopWidget&gt;
-#include &lt;QMainWindow&gt;
+#include <QDesktopWidget>
+#include <QMainWindow>
 ...
 QDesktopWidget dw;
 MainWindow w;
@@ -7953,7 +7953,7 @@ You can use the `availableGeometry(QWidget*)` method in `QDesktopWidget`, this w
 
 ```c
 QRect screenSize = desktop.availableGeometry(this);
-this-&gt;setFixedSize(QSize(screenSize.width * 0.7f, screenSize.height * 0.7f));
+this->setFixedSize(QSize(screenSize.width * 0.7f, screenSize.height * 0.7f));
 ```
 
 <p>Where `this` is the MainWindow pointer.

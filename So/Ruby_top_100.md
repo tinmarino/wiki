@@ -45,8 +45,8 @@ Unlike `switch` statements in many other languages, Ruby’s `case` does not hav
 That operator works as expected with literals, but not with classes:  
 
 ```ruby
-1 === 1           # =&gt; true
-Fixnum === Fixnum # =&gt; false
+1 === 1           # => true
+Fixnum === Fixnum # => false
 ```
 
 This means that if you want to do a `case ... when` over an object's class, this will not work:  
@@ -68,7 +68,7 @@ Will print "It is not a string or number".
 Fortunately, this is easily solved. The `===` operator has been defined so that it returns `true` if you use it with a class and supply an instance of that class as the second operand:  
 
 ```ruby
-Fixnum === 1 # =&gt; true
+Fixnum === 1 # => true
 ```
 
 In short, the code above can be fixed by removing the `.class`:  
@@ -141,15 +141,15 @@ How do I check if it exists in the array without looping through it? Is there a 
 You're looking for <a href="http://ruby-doc.org/core-2.3.1/Array.html#method-i-include-3F" rel="noreferrer">`include?`</a>:  
 
 ```ruby
-&gt;&gt; ['Cat', 'Dog', 'Bird'].include? 'Dog'
-=&gt; true
+>> ['Cat', 'Dog', 'Bird'].include? 'Dog'
+=> true
 ```
 
 #### Answer 2 (score 240)
 There is an <a href="https://apidock.com/rails/Object/in%3F" rel="noreferrer">`in?` method</a> in `ActiveSupport` (part of Rails) since v3.1, as pointed out by @campaterson. So within Rails, or if you `require 'active_support'`, you can write:  
 
 ```ruby
-'Unicorn'.in?(['Cat', 'Dog', 'Bird']) # =&gt; false
+'Unicorn'.in?(['Cat', 'Dog', 'Bird']) # => false
 ```
 
 OTOH, there is no `in` operator or `#in?` method in Ruby itself, even though it has been proposed before, <a href="http://bugs.ruby-lang.org/issues/3845" rel="noreferrer">in particular by Yusuke Endoh</a> a top notch member of ruby-core.  
@@ -157,7 +157,7 @@ OTOH, there is no `in` operator or `#in?` method in Ruby itself, even though it 
 As pointed out by others, the reverse method <a href="http://www.ruby-doc.org/core-1.9.3/Array.html#method-i-include-3F" rel="noreferrer">`include?`</a> exists, for all `Enumerable`s including `Array`, `Hash`, `Set`, `Range`:  
 
 ```ruby
-['Cat', 'Dog', 'Bird'].include?('Unicorn') # =&gt; false
+['Cat', 'Dog', 'Bird'].include?('Unicorn') # => false
 ```
 
 <hr>
@@ -200,8 +200,8 @@ varMessage =
 
 
             "/my/name/is/balaji.so\n"
-            "call::myFunction(int const&amp;)\n"
-            "void::secondFunction(char const&amp;)\n"
+            "call::myFunction(int const&)\n"
+            "void::secondFunction(char const&)\n"
              .
              .
              .
@@ -215,7 +215,7 @@ in above string i have to find a sub string i.e.
 
 
 "/my/name/is/balaji.so\n"
-"call::myFunction(int const&amp;)\n"
+"call::myFunction(int const&)\n"
 ```
 
 How can I find it? I just need to determine whether the substring is present or not.  
@@ -253,7 +253,7 @@ else
   puts 'No "Hello" found'
 end
 
-# =&gt; 'It has "Hello"'
+# => 'It has "Hello"'
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -267,15 +267,15 @@ How do I take a string and convert it to lower or upper case in Ruby?
 Ruby has a few methods for changing the case of strings. To convert to lowercase, use `downcase`:  
 
 ```ruby
-"hello James!".downcase    #=&gt; "hello james!"
+"hello James!".downcase    #=> "hello james!"
 ```
 
 Similarly, `upcase` capitalizes every letter and `capitalize` capitalizes the first letter of the string but lowercases the rest:  
 
 ```ruby
-"hello James!".upcase      #=&gt; "HELLO JAMES!"
-"hello James!".capitalize  #=&gt; "Hello james!"
-"hello James!".titleize    #=&gt; "Hello James!"
+"hello James!".upcase      #=> "HELLO JAMES!"
+"hello James!".capitalize  #=> "Hello james!"
+"hello James!".titleize    #=> "Hello James!"
 ```
 
 If you want to modify a string in place, you can add an exclamation point to any of those methods:  
@@ -283,7 +283,7 @@ If you want to modify a string in place, you can add an exclamation point to any
 ```ruby
 string = "hello James!"
 string.downcase!
-string   #=&gt; "hello james!"
+string   #=> "hello james!"
 ```
 
 Refer to the <a href="http://www.ruby-doc.org/core/String.html" rel="noreferrer">documentation for String</a> for more information.  
@@ -309,10 +309,10 @@ Like @endeR mentioned, if internationalization is a concern, the unicode_utils g
 ```ruby
 $ gem install unicode_utils
 $ irb
-&gt; require 'unicode_utils'
-=&gt; true
-&gt; UnicodeUtils.downcase("FEN BİLİMLERİ", :tr)
-=&gt; "fen bilimleri"
+> require 'unicode_utils'
+=> true
+> UnicodeUtils.downcase("FEN BİLİMLERİ", :tr)
+=> "fen bilimleri"
 ```
 
 <hr>
@@ -363,7 +363,7 @@ I am looking for a more elegant way of concatenating strings in Ruby.
 I have the following line:  
 
 ```ruby
-source = "#{ROOT_DIR}/" &lt;&lt; project &lt;&lt; "/App.config"
+source = "#{ROOT_DIR}/" << project << "/App.config"
 ```
 
 Is there a nicer way of doing this?  
@@ -399,16 +399,16 @@ The `+` operator is the normal concatenation choice, and is probably the fastest
 The difference between `+` and `&lt;&lt;` is that `&lt;&lt;` changes the object on its left hand side, and `+` doesn't.  
 
 ```ruby
-irb(main):001:0&gt; s = 'a'
-=&gt; "a"
-irb(main):002:0&gt; s + 'b'
-=&gt; "ab"
-irb(main):003:0&gt; s
-=&gt; "a"
-irb(main):004:0&gt; s &lt;&lt; 'b'
-=&gt; "ab"
-irb(main):005:0&gt; s
-=&gt; "ab"
+irb(main):001:0> s = 'a'
+=> "a"
+irb(main):002:0> s + 'b'
+=> "ab"
+irb(main):003:0> s
+=> "a"
+irb(main):004:0> s << 'b'
+=> "ab"
+irb(main):005:0> s
+=> "ab"
 ```
 
 #### Answer 3 (score 77)
@@ -440,7 +440,7 @@ For buffered, non-stream formatted output (you get it all at once), use <a href=
 
 ```ruby
 const { exec } = require('child_process');
-exec('cat *.js bad_file | wc -l', (err, stdout, stderr) =&gt; {
+exec('cat *.js bad_file | wc -l', (err, stdout, stderr) => {
   if (err) {
     // node couldn't execute the command
     return;
@@ -473,14 +473,14 @@ const { spawn } = require('child_process');
 const child = spawn('ls', ['-lh', '/usr']);
 
 // use child.stdout.setEncoding('utf8'); if you want text chunks
-child.stdout.on('data', (chunk) =&gt; {
+child.stdout.on('data', (chunk) => {
   // data from standard output is here as buffers
 });
 
 // since these are streams, you can pipe them elsewhere
 child.stderr.pipe(dest);
 
-child.on('close', (code) =&gt; {
+child.on('close', (code) => {
   console.log(`child process exited with code ${code}`);
 });
 ```
@@ -563,15 +563,15 @@ As of <a href="https://nodejs.org/en/blog/release/v0.11.12/" rel="noreferrer">v0
 const { spawn } = require( 'child_process' );
 const ls = spawn( 'ls', [ '-lh', '/usr' ] );
 
-ls.stdout.on( 'data', data =&gt; {
+ls.stdout.on( 'data', data => {
     console.log( `stdout: ${data}` );
 } );
 
-ls.stderr.on( 'data', data =&gt; {
+ls.stderr.on( 'data', data => {
     console.log( `stderr: ${data}` );
 } );
 
-ls.on( 'close', code =&gt; {
+ls.on( 'close', code => {
     console.log( `child process exited with code ${code}` );
 } );
 ```
@@ -586,9 +586,9 @@ ls.on( 'close', code =&gt; {
 const { spawn } = require( 'child_process' );
 const dir = spawn( 'dir', [ '.' ] );
 
-dir.stdout.on( 'data', data =&gt; console.log( `stdout: ${data}` ) );
-dir.stderr.on( 'data', data =&gt; console.log( `stderr: ${data}` ) );
-dir.on( 'close', code =&gt; console.log( `child process exited with code ${code}` ) );
+dir.stdout.on( 'data', data => console.log( `stdout: ${data}` ) );
+dir.stderr.on( 'data', data => console.log( `stderr: ${data}` ) );
+dir.on( 'close', code => console.log( `child process exited with code ${code}` ) );
 ```
 
 <br/>  
@@ -635,7 +635,7 @@ For instance, in this <a href="http://www.eggheadcafe.com/software/aspnet/358174
 
 ```ruby
 10.times.map{ 20 + Random.rand(11) } 
-#=&gt; [26, 26, 22, 20, 30, 26, 23, 23, 25, 22]
+#=> [26, 26, 22, 20, 30, 26, 23, 23, 25, 22]
 ```
 
 Note:   
@@ -651,7 +651,7 @@ This is why the equivalent of `Random.new.rand(20..30)` would be `20 + Random.ra
 While you can use `rand(42-10) + 10` to get a random number between `10` and `42` (where 10 is inclusive and 42 exclusive), there's a better way since Ruby 1.9.3, where you are able to call:  
 
 ```ruby
-rand(10...42) # =&gt; 13
+rand(10...42) # => 13
 ```
 
 Available for all versions of Ruby by requiring my <a href="http://github.com/marcandre/backports" rel="noreferrer">`backports`</a> gem.  
@@ -660,14 +660,14 @@ Ruby 1.9.2 also introduced the `Random` class so you can create your own random 
 
 ```ruby
 r = Random.new
-r.rand(10...42) # =&gt; 22
-r.bytes(3) # =&gt; "rnd"
+r.rand(10...42) # => 22
+r.bytes(3) # => "rnd"
 ```
 
 The `Random` class itself acts as a random generator, so you call directly:  
 
 ```ruby
-Random.rand(10...42) # =&gt; same as rand(10...42)
+Random.rand(10...42) # => same as rand(10...42)
 ```
 
 <strong><em>Notes on `Random.new`</em></strong>  
@@ -690,13 +690,13 @@ If you're not only seeking for a number but also hex or uuid it's worth mentioni
 ```ruby
 require 'securerandom'
 
-p SecureRandom.random_number(100) #=&gt; 15
-p SecureRandom.random_number(100) #=&gt; 88
+p SecureRandom.random_number(100) #=> 15
+p SecureRandom.random_number(100) #=> 88
 
-p SecureRandom.random_number #=&gt; 0.596506046187744
-p SecureRandom.random_number #=&gt; 0.350621695741409
+p SecureRandom.random_number #=> 0.596506046187744
+p SecureRandom.random_number #=> 0.350621695741409
 
-p SecureRandom.hex #=&gt; "eb693ec8252cd630102fd0d0fb7c3485"
+p SecureRandom.hex #=> "eb693ec8252cd630102fd0d0fb7c3485"
 ```
 
 It's documented here: <a href="http://rubydoc.info/stdlib/securerandom/1.9.3/SecureRandom" rel="noreferrer">Ruby 1.9.3 - Module: SecureRandom (lib/securerandom.rb) </a>  
@@ -843,7 +843,7 @@ s = "   I have leading and trailing white space   ".strip
 PHP, for all its warts, is pretty good on this count. There's no difference between an array and a hash (maybe I'm naive, but this seems obviously right to me), and to iterate through either you just do  
 
 ```ruby
-foreach (array/hash as $key =&gt; $value)
+foreach (array/hash as $key => $value)
 ```
 
 In Ruby there are a bunch of ways to do this sort of thing:  
@@ -894,15 +894,15 @@ This will iterate through all the elements giving you the value and the index:
 
 ```ruby
 array = ["A", "B", "C"]
-array.each_with_index {|val, index| puts "#{val} =&gt; #{index}" }
+array.each_with_index {|val, index| puts "#{val} => #{index}" }
 ```
 
 Prints:  
 
 ```ruby
-A =&gt; 0
-B =&gt; 1
-C =&gt; 2
+A => 0
+B => 1
+C => 2
 ```
 
 I'm not quite sure from your question which one you are looking for.  
@@ -997,8 +997,8 @@ You could ultimately do
 ```ruby
 class Range
 
-  def each_reverse(&amp;block)
-    self.to_a.reverse.each(&amp;block)
+  def each_reverse(&block)
+    self.to_a.reverse.each(&block)
   end
 
 end
@@ -1147,7 +1147,7 @@ class Person
 end
 
 person = Person.new
-person.name # =&gt; no method error
+person.name # => no method error
 ```
 
 Obviously we never defined method `name`. Let's do that.  
@@ -1160,8 +1160,8 @@ class Person
 end
 
 person = Person.new
-person.name # =&gt; nil
-person.name = "Dennis" # =&gt; no method error
+person.name # => nil
+person.name = "Dennis" # => no method error
 ```
 
 Aha, we can read the name, but that doesn't mean we can assign the name. Those are two different methods. The former is called <em>reader</em> and latter is called <em>writer</em>. We didn't create the writer yet so let's do that.  
@@ -1179,7 +1179,7 @@ end
 
 person = Person.new
 person.name = 'Dennis'
-person.name # =&gt; "Dennis"
+person.name # => "Dennis"
 ```
 
 Awesome. Now we can write and read instance variable `@name` using reader and writer methods. Except, this is done so frequently, why waste time writing these methods every time? We can do it easier.  
@@ -1200,7 +1200,7 @@ end
 
 person = Person.new
 person.name = "Dennis"
-person.name # =&gt; "Dennis"
+person.name # => "Dennis"
 ```
 
 Works the same way! And guess what: the instance variable `@name` in our person object will be set just like when we did it manually, so you can use it in other methods.  
@@ -1216,7 +1216,7 @@ end
 
 person = Person.new
 person.name = "Dennis"
-person.greeting # =&gt; "Hello Dennis"
+person.greeting # => "Hello Dennis"
 ```
 
 That's it. In order to understand how `attr_reader`, `attr_writer`, and `attr_accessor` methods actually generate methods for you, read other answers, books, ruby docs.   
@@ -1283,9 +1283,9 @@ class Foo
 end
 
 f = Foo.new
-p f.bar     #=&gt; nil
+p f.bar     #=> nil
 f.bar = 42
-p f.bar     #=&gt; 42
+p f.bar     #=> 42
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -1385,7 +1385,7 @@ Have you tried <a href="http://www.aptana.com/" rel="nofollow noreferrer">Aptana
 I am using the following code to check if a variable is not nil and not zero  
 
 ```ruby
-if(discount != nil &amp;&amp; discount != 0) 
+if(discount != nil && discount != 0) 
   ...
 end
 ```
@@ -1472,9 +1472,9 @@ array.inject(0, :+)
 Note: the `0` base case is needed otherwise `nil` will be returned on empty arrays:  
 
 ```ruby
-&gt; [].inject(:+)
+> [].inject(:+)
 nil
-&gt; [].inject(0, :+)
+> [].inject(0, :+)
 0
 ```
 
@@ -1490,7 +1490,7 @@ While equivalent to `array.inject(0, :+)`, the term <strong>reduce</strong> is e
 To emphasize the map-reduce verbiage, here’s a version that is a little bit more forgiving on what ends up in that array.  
 
 ```ruby
-array.map(&amp;:to_i).reduce(0, :+)
+array.map(&:to_i).reduce(0, :+)
 ```
 
 Some additional relevant reading:  
@@ -1509,16 +1509,16 @@ Some additional relevant reading:
 I'll use python as an example of what I'm looking for (you can think of it as pseudocode if you don't know Python):  
 
 ```ruby
-&gt;&gt;&gt; a = 1
-&gt;&gt;&gt; type(a)
-&lt;type 'int'&gt;
+>>> a = 1
+>>> type(a)
+<type 'int'>
 ```
 
 I know in ruby I can do :  
 
 ```ruby
-1.9.3p194 :002 &gt; 1.class
- =&gt; Fixnum 
+1.9.3p194 :002 > 1.class
+ => Fixnum 
 ```
 
 But is this the proper way to determine the type of the object?  
@@ -1536,9 +1536,9 @@ For example, `object.is_a?(String)` is too rigid since another class might imple
 you could also try: <a href="http://ruby-doc.org/core-2.0/Object.html#method-i-instance_of-3F">`instance_of?`</a>  
 
 ```ruby
-p 1.instance_of? Fixnum    #=&gt; True
-p "1".instance_of? String  #=&gt; True
-p [1,2].instance_of? Array #=&gt; True
+p 1.instance_of? Fixnum    #=> True
+p "1".instance_of? String  #=> True
+p [1,2].instance_of? Array #=> True
 ```
 
 #### Answer 3 (score 40)
@@ -1558,13 +1558,13 @@ object.respond_to?(:to_i)
 I'm currently generating an 8-character pseudo-random uppercase string for "A" .. "Z":  
 
 ```ruby
-value = ""; 8.times{value  &lt;&lt; (65 + rand(25)).chr}
+value = ""; 8.times{value  << (65 + rand(25)).chr}
 ```
 
 but it doesn't look clean, and it can't be passed as an argument since it isn't a single statement.  To get a mixed-case string "a" .. "z" plus "A" .. "Z", I changed it to:  
 
 ```ruby
-value = ""; 8.times{value &lt;&lt; ((rand(2)==1?65:97) + rand(25)).chr}
+value = ""; 8.times{value << ((rand(2)==1?65:97) + rand(25)).chr}
 ```
 
 but it looks like trash.  
@@ -1585,7 +1585,7 @@ I spend too much time golfing.
 And a last one that's even more confusing, but more flexible and wastes fewer cycles:  
 
 ```ruby
-o = [('a'..'z'), ('A'..'Z')].map(&amp;:to_a).flatten
+o = [('a'..'z'), ('A'..'Z')].map(&:to_a).flatten
 string = (0...50).map { o[rand(o.length)] }.join
 ```
 
@@ -1631,7 +1631,7 @@ I was wondering if `ensure` was the Ruby equivalent of `finally` in C#? Should I
 file = File.open("myFile.txt", "w")
 
 begin
-  file &lt;&lt; "#{content} \n"
+  file << "#{content} \n"
 rescue
   #handle the error here
 ensure
@@ -1646,7 +1646,7 @@ or should I do this?
 file = File.open("myFile.txt", "w")
 
 begin
-  file &lt;&lt; "#{content} \n"
+  file << "#{content} \n"
   file.close
 rescue
   #handle the error here
@@ -1665,9 +1665,9 @@ The general flow of `begin`/`rescue`/`else`/`ensure`/`end` looks like this:
 ```ruby
 begin
   # something which might raise an exception
-rescue SomeExceptionClass =&gt; some_variable
+rescue SomeExceptionClass => some_variable
   # code that deals with some exception
-rescue SomeOtherException =&gt; some_other_variable
+rescue SomeOtherException => some_other_variable
   # code that deals with some other exception
 else
   # code that runs only if *no* exception was raised
@@ -1725,7 +1725,7 @@ end
 def File.open(filename, mode='r', perm=nil, opt=nil)
   yield filehandle = new(filename, mode, perm, opt)
 ensure
-  filehandle&amp;.close
+  filehandle&.close
 end
 ```
 
@@ -1740,7 +1740,7 @@ BTW: in modern C#, `using` is actually superfluous, because you can implement Ru
 ```ruby
 class File
 {
-    static T open&lt;T&gt;(string filename, string mode, Func&lt;File, T&gt; block)
+    static T open<T>(string filename, string mode, Func<File, T> block)
     {
         var handle = new File(filename, mode);
         try
@@ -1756,7 +1756,7 @@ class File
 
 // Usage:
 
-File.open("myFile.txt", "w", (file) =&gt;
+File.open("myFile.txt", "w", (file) =>
 {
     file.WriteLine(contents);
 });
@@ -1782,7 +1782,7 @@ If you want to ensure a file is closed you should use the block form of `File.op
 ```ruby
 File.open("myFile.txt", "w") do |file|
   begin
-    file &lt;&lt; "#{content} \n"
+    file << "#{content} \n"
   rescue
   #handle the error here
   end
@@ -1810,7 +1810,7 @@ it will be a syntax error.
 
 puts "Hello world!"
 
-&lt;&lt;-DOC
+<<-DOC
 Also, you could create a docstring.
 which...
 DOC
@@ -1882,7 +1882,7 @@ $ gem install rails -v 0.14.1
 You can also use version comparators like `&gt;=` or `~&gt;`  
 
 ```ruby
-$ gem install rails -v '~&gt; 0.14.0'
+$ gem install rails -v '~> 0.14.0'
 ```
 
 <hr>
@@ -1890,7 +1890,7 @@ $ gem install rails -v '~&gt; 0.14.0'
 Or with newer versions of <em>gem</em> even:  
 
 ```ruby
-$ gem install rails:0.14.4 rubyzip:'&lt; 1'
+$ gem install rails:0.14.4 rubyzip:'< 1'
 …
 Successfully installed rails-0.14.4
 Successfully installed rubyzip-0.9.9
@@ -1931,14 +1931,14 @@ In latest Ruby versions Hash instance has a <a href="http://ruby-doc.org/core-2.
 
 ```ruby
 {a: 1}.key?(:a)
-=&gt; true
+=> true
 ```
 
 Be sure to use the symbol key or a string key depending on what you have in your hash:  
 
 ```ruby
-{'a' =&gt; 2}.key?(:a)
-=&gt; false
+{'a' => 2}.key?(:a)
+=> false
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -1949,7 +1949,7 @@ Be sure to use the symbol key or a string key depending on what you have in your
 To add a new pair to Hash I do:  
 
 ```ruby
-{:a =&gt; 1, :b =&gt; 2}.merge!({:c =&gt; 3})   #=&gt; {:a =&gt; 1, :b =&gt; 2, :c =&gt; 3}
+{:a => 1, :b => 2}.merge!({:c => 3})   #=> {:a => 1, :b => 2, :c => 3}
 ```
 
 Is there a similar way to delete a key from Hash ?  
@@ -1957,13 +1957,13 @@ Is there a similar way to delete a key from Hash ?
 This works:  
 
 ```ruby
-{:a =&gt; 1, :b =&gt; 2}.reject! { |k| k == :a }   #=&gt; {:b =&gt; 2}
+{:a => 1, :b => 2}.reject! { |k| k == :a }   #=> {:b => 2}
 ```
 
 but I would expect to have something like:  
 
 ```ruby
-{:a =&gt; 1, :b =&gt; 2}.delete!(:a)   #=&gt; {:b =&gt; 2}
+{:a => 1, :b => 2}.delete!(:a)   #=> {:b => 2}
 ```
 
 It is important that the returning value will be the remaining hash, so I could do things like:  
@@ -1981,8 +1981,8 @@ in one line.
 class Hash
   # Returns a hash that includes everything but the given keys.
   #   hash = { a: true, b: false, c: nil}
-  #   hash.except(:c) # =&gt; { a: true, b: false}
-  #   hash # =&gt; { a: true, b: false, c: nil}
+  #   hash.except(:c) # => { a: true, b: false}
+  #   hash # => { a: true, b: false, c: nil}
   #
   # This is useful for limiting a set of parameters to everything but a few known toggles:
   #   @person.update(params[:person].except(:admin))
@@ -1992,8 +1992,8 @@ class Hash
 
   # Replaces the hash without the given keys.
   #   hash = { a: true, b: false, c: nil}
-  #   hash.except!(:c) # =&gt; { a: true, b: false}
-  #   hash # =&gt; { a: true, b: false }
+  #   hash.except!(:c) # => { a: true, b: false}
+  #   hash # => { a: true, b: false }
   def except!(*keys)
     keys.each { |key| delete(key) }
     self
@@ -2005,10 +2005,10 @@ end
 Oneliner plain ruby, it works only with ruby > 1.9.x:  
 
 ```ruby
-1.9.3p0 :002 &gt; h = {:a =&gt; 1, :b =&gt; 2}
- =&gt; {:a=&gt;1, :b=&gt;2} 
-1.9.3p0 :003 &gt; h.tap { |hs| hs.delete(:a) }
- =&gt; {:b=&gt;2} 
+1.9.3p0 :002 > h = {:a => 1, :b => 2}
+ => {:a=>1, :b=>2} 
+1.9.3p0 :003 > h.tap { |hs| hs.delete(:a) }
+ => {:b=>2} 
 ```
 
 <a href="http://blog.moertel.com/articles/2007/02/07/ruby-1-9-gets-handy-new-method-object-tap" rel="noreferrer">Tap</a> method always return the object on which is invoked...  
@@ -2017,22 +2017,22 @@ Otherwise if you have required `active_support/core_ext/hash` (which is automati
 
 ```ruby
 ➜  ~  irb
-1.9.3p125 :001 &gt; require 'active_support/core_ext/hash' =&gt; true 
-1.9.3p125 :002 &gt; h = {:a =&gt; 1, :b =&gt; 2, :c =&gt; 3}
- =&gt; {:a=&gt;1, :b=&gt;2, :c=&gt;3} 
-1.9.3p125 :003 &gt; h.except(:a)
- =&gt; {:b=&gt;2, :c=&gt;3} 
-1.9.3p125 :004 &gt; h.slice(:a)
- =&gt; {:a=&gt;1} 
+1.9.3p125 :001 > require 'active_support/core_ext/hash' => true 
+1.9.3p125 :002 > h = {:a => 1, :b => 2, :c => 3}
+ => {:a=>1, :b=>2, :c=>3} 
+1.9.3p125 :003 > h.except(:a)
+ => {:b=>2, :c=>3} 
+1.9.3p125 :004 > h.slice(:a)
+ => {:a=>1} 
 ```
 
 <a href="http://as.rubyonrails.org/classes/ActiveSupport/CoreExtensions/Hash/Except.html" rel="noreferrer">except</a> uses a blacklist approach, so it removes all the keys listed as args, while <a href="http://as.rubyonrails.org/classes/ActiveSupport/CoreExtensions/Hash/Slice.html" rel="noreferrer">slice</a> uses a whitelist approach, so it removes all keys that aren't listed as arguments. There also exist the bang version of those method (`except!` and `slice!`) which modify the given hash but their return value is different both of them return an hash. It represents the removed keys for `slice!` and the keys that are kept for the `except!`:  
 
 ```ruby
-1.9.3p125 :011 &gt; {:a =&gt; 1, :b =&gt; 2, :c =&gt; 3}.except!(:a)
- =&gt; {:b=&gt;2, :c=&gt;3} 
-1.9.3p125 :012 &gt; {:a =&gt; 1, :b =&gt; 2, :c =&gt; 3}.slice!(:a)
- =&gt; {:b=&gt;2, :c=&gt;3} 
+1.9.3p125 :011 > {:a => 1, :b => 2, :c => 3}.except!(:a)
+ => {:b=>2, :c=>3} 
+1.9.3p125 :012 > {:a => 1, :b => 2, :c => 3}.slice!(:a)
+ => {:b=>2, :c=>3} 
 ```
 
 #### Answer 3 (score 169)
@@ -2089,19 +2089,19 @@ a1.insert(a1.length, *a2)
 or <strong>append and flatten</strong>:  
 
 ```ruby
-(a1 &lt;&lt; a2).flatten!  # a call to #flatten instead would return a new array
+(a1 << a2).flatten!  # a call to #flatten instead would return a new array
 ```
 
 #### Answer 3 (score 199)
 You can just use the `+` operator!  
 
 ```ruby
-irb(main):001:0&gt; a = [1,2]
-=&gt; [1, 2]
-irb(main):002:0&gt; b = [3,4]
-=&gt; [3, 4]
-irb(main):003:0&gt; a + b
-=&gt; [1, 2, 3, 4]
+irb(main):001:0> a = [1,2]
+=> [1, 2]
+irb(main):002:0> b = [3,4]
+=> [3, 4]
+irb(main):003:0> a + b
+=> [1, 2, 3, 4]
 ```
 
 <p>You can read all about the array class here:
@@ -2474,7 +2474,7 @@ It drops the database, create it again, loads the schema, and initializes with t
 ```ruby
 namespace :schema do
   desc 'Creates a db/schema.rb file that is portable against any DB supported by Active Record'
-  task :dump =&gt; [:environment, :load_config] do
+  task :dump => [:environment, :load_config] do
     require 'active_record/schema_dumper'
     filename = ENV['SCHEMA'] || File.join(ActiveRecord::Tasks::DatabaseTasks.db_dir, 'schema.rb')
     File.open(filename, "w:utf-8") do |file|
@@ -2484,7 +2484,7 @@ namespace :schema do
   end
 
   desc 'Loads a schema.rb file into the database'
-  task :load =&gt; [:environment, :load_config, :check_protected_environments] do
+  task :load => [:environment, :load_config, :check_protected_environments] do
     ActiveRecord::Tasks::DatabaseTasks.load_schema_current(:ruby, ENV['SCHEMA'])
   end
 ```
@@ -2493,7 +2493,7 @@ namespace :schema do
 
 ```ruby
   # desc 'Drops and recreates the database from db/schema.rb for the current environment and loads the seeds.'
-  task :reset =&gt; [ 'db:drop', 'db:setup' ]
+  task :reset => [ 'db:drop', 'db:setup' ]
 ```
 
 <hr>
@@ -2501,7 +2501,7 @@ namespace :schema do
 ```ruby
 namespace :migrate do
   # desc  'Rollbacks the database one migration and re migrate up (options: STEP=x, VERSION=x).'
-  task :redo =&gt; [:environment, :load_config] do
+  task :redo => [:environment, :load_config] do
     if ENV['VERSION']
       db_namespace['migrate:down'].invoke
       db_namespace['migrate:up'].invoke
@@ -2525,7 +2525,7 @@ How is the conditional operator (`? :`) used in Ruby?
 For example, is this correct?  
 
 ```ruby
-&lt;% question = question.size &gt; 20 ? question.question.slice(0, 20)+"..." : question.question %&gt;
+<% question = question.size > 20 ? question.question.slice(0, 20)+"..." : question.question %>
 ```
 
 #### Answer accepted (score 480)
@@ -2540,12 +2540,12 @@ However, in Ruby, `if` is also an expression so: `if a then b else c end` === `a
 Examples:  
 
 ```ruby
-puts (if 1 then 2 else 3 end) # =&gt; 2
+puts (if 1 then 2 else 3 end) # => 2
 
-puts 1 ? 2 : 3                # =&gt; 2
+puts 1 ? 2 : 3                # => 2
 
 x = if 1 then 2 else 3 end
-puts x                        # =&gt; 2
+puts x                        # => 2
 ```
 
 Note that in the first case parenthesis are required (otherwise Ruby is confused because it thinks it is `puts if 1` with some extra junk after it), but they are not required in the last case as said issue does not arise.  
@@ -2553,7 +2553,7 @@ Note that in the first case parenthesis are required (otherwise Ruby is confused
 You can use the "long-if" form for readability on multiple lines:  
 
 ```ruby
-question = if question.size &gt; 20 then
+question = if question.size > 20 then
   question.slice(0, 20) + "..."
 else 
   question
@@ -2563,18 +2563,18 @@ end
 #### Answer 2 (score 34)
 ```ruby
 puts true ? "true" : "false"
-=&gt; "true"
+=> "true"
 
 
 puts false ? "true" : "false"
-=&gt; "false"
+=> "false"
 ```
 
 #### Answer 3 (score 26)
 Your use of ERB suggests that you are in Rails.  If so, then consider <a href="http://api.rubyonrails.org/classes/ActionView/Helpers/TextHelper.html#method-i-truncate" rel="noreferrer">`truncate`</a>, a built-in helper which will do the job for you:  
 
 ```ruby
-&lt;% question = truncate(question, :length=&gt;30) %&gt;
+<% question = truncate(question, :length=>30) %>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -2621,9 +2621,9 @@ There is also `%s` that allows you to create any symbols, for example:
 Since Ruby 2.0.0 you also have:  
 
 ```ruby
-%i( a b c )   # =&gt; [ :a, :b, :c ]
-%i[ a b c ]   # =&gt; [ :a, :b, :c ]
-%i_ a b c _   # =&gt; [ :a, :b, :c ]
+%i( a b c )   # => [ :a, :b, :c ]
+%i[ a b c ]   # => [ :a, :b, :c ]
+%i_ a b c _   # => [ :a, :b, :c ]
 # etc...
 ```
 
@@ -2638,26 +2638,26 @@ How can I check whether a variable is defined in Ruby?  Is there an `isset`-type
 Use the `defined?` keyword (<a href="http://ruby-doc.org/docs/keywords/1.9/Object.html#method-i-defined-3F" rel="noreferrer">documentation</a>). It will return a String with the kind of the item, or `nil` if it doesn’t exist.  
 
 ```ruby
-&gt;&gt; a = 1
- =&gt; 1
-&gt;&gt; defined? a
- =&gt; "local-variable"
-&gt;&gt; defined? b
- =&gt; nil
-&gt;&gt; defined? nil
- =&gt; "nil"
-&gt;&gt; defined? String
- =&gt; "constant"
-&gt;&gt; defined? 1
- =&gt; "expression"
+>> a = 1
+ => 1
+>> defined? a
+ => "local-variable"
+>> defined? b
+ => nil
+>> defined? nil
+ => "nil"
+>> defined? String
+ => "constant"
+>> defined? 1
+ => "expression"
 ```
 
 As skalee commented: "It is worth noting that variable which is set to nil is initialized."  
 
 ```ruby
-&gt;&gt; n = nil  
-&gt;&gt; defined? n
- =&gt; "local-variable"
+>> n = nil  
+>> defined? n
+ => "local-variable"
 ```
 
 #### Answer 2 (score 91)
@@ -2719,11 +2719,11 @@ Then
 
 ```ruby
 rake thing:work[1,2,3]
-=&gt; work: {:option=&gt;"1", :foo=&gt;"2", :bar=&gt;"3"}
+=> work: {:option=>"1", :foo=>"2", :bar=>"3"}
 
 rake thing:another[1,2,3]
-=&gt; another {:option=&gt;"1", :foo=&gt;"2", :bar=&gt;"3"}
-=&gt; work: {:option=&gt;"1", :foo=&gt;"2", :bar=&gt;"3"}
+=> another {:option=>"1", :foo=>"2", :bar=>"3"}
+=> work: {:option=>"1", :foo=>"2", :bar=>"3"}
 ```
 
 <blockquote>
@@ -2737,7 +2737,7 @@ rake thing:another[1,2,3]
 </blockquote>
 
 ```ruby
-  task :work, [:option, :foo, :bar] =&gt; [:environment] do |task, args|
+  task :work, [:option, :foo, :bar] => [:environment] do |task, args|
     puts "work", args
   end
 ```
@@ -2763,12 +2763,12 @@ end
 
 # a task with prerequisites passes its 
 # arguments to it prerequisites
-task :with_prerequisite, [:arg1, :arg2] =&gt; :my_task #&lt;- name of prerequisite task
+task :with_prerequisite, [:arg1, :arg2] => :my_task #<- name of prerequisite task
 
 # to specify default values, 
 # we take advantage of args being a Rake::TaskArguments object
 task :with_defaults, :arg1, :arg2 do |t, args|
-  args.with_defaults(:arg1 =&gt; :default_1, :arg2 =&gt; :default_2)
+  args.with_defaults(:arg1 => :default_1, :arg2 => :default_2)
   puts "Args with defaults were: #{args}"
 end
 ```
@@ -2816,7 +2816,7 @@ rake mytask var=foo
 and access those from your rake file as ENV variables like such:  
 
 ```ruby
-p ENV['var'] # =&gt; "foo"
+p ENV['var'] # => "foo"
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -2869,21 +2869,21 @@ If you're dealing with natural language text and need to replace a word, not jus
 
 ```ruby
 'mislocated cat, vindicating'.gsub('cat', 'dog')
-=&gt; "mislodoged dog, vindidoging"
+=> "mislodoged dog, vindidoging"
 ```
 
 Regular expressions have word boundaries, such as `\b` which matches start or end of a word. Thus,  
 
 ```ruby
 'mislocated cat, vindicating'.gsub(/\bcat\b/, 'dog')
-=&gt; "mislocated dog, vindicating"
+=> "mislocated dog, vindicating"
 ```
 
 In Ruby, unlike some other languages like Javascript, word boundaries are UTF-8-compatible, so you can use it for languages with non-Latin or extended Latin alphabets:  
 
 ```ruby
 'сіль у кисіль, для весіль'.gsub(/\bсіль\b/, 'цукор')
-=&gt; "цукор у кисіль, для весіль"
+=> "цукор у кисіль, для весіль"
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -2930,7 +2930,7 @@ a -= [3]
 which results in  
 
 ```ruby
-=&gt; [2, 4, 6, 8] 
+=> [2, 4, 6, 8] 
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -2956,18 +2956,18 @@ str = 'this is a multi-line string'\
   ' using implicit concatenation'\
   ' to prevent spare \n\'s'
 
-=&gt; "this is a multi-line string using implicit concatenation to eliminate spare
+=> "this is a multi-line string using implicit concatenation to eliminate spare
 \\n's"
 ```
 
 As a bonus, here's a version using funny HEREDOC syntax (via <a href="http://graysoftinc.com/ruby-voodoo/working-with-multiline-strings" rel="noreferrer">this link</a>):  
 
 ```ruby
-p &lt;&lt;END_SQL.gsub(/\s+/, " ").strip
+p <<END_SQL.gsub(/\s+/, " ").strip
 SELECT * FROM     users
          ORDER BY users.id DESC
 END_SQL
-# &gt;&gt; "SELECT * FROM users ORDER BY users.id DESC"
+# >> "SELECT * FROM users ORDER BY users.id DESC"
 ```
 
 The latter would mostly be for situations that required more flexibility in the processing. I personally don't like it, it puts the processing in a weird place w.r.t. the string (i.e., in front of it, but using instance methods that usually come afterward), but it's there. Note that if you are indenting the last `END_SQL` identifier (which is common, since this is probably inside a function or module), you will need to use the hyphenated syntax (that is, `p &lt;&lt;-END_SQL` instead of `p &lt;&lt;END_SQL`). Otherwise, the indenting whitespace causes the identifier to be interpreted as a continuation of the string.  
@@ -2981,7 +2981,7 @@ p %{
 SELECT * FROM     users
          ORDER BY users.id DESC
 }.gsub(/\s+/, " ").strip
-# &gt;&gt; "SELECT * FROM users ORDER BY users.id DESC"
+# >> "SELECT * FROM users ORDER BY users.id DESC"
 ```
 
 #### Answer 2 (score 165)
@@ -2996,7 +2996,7 @@ Yes, if you don't mind the extra newlines being inserted:
 Alternatively you can use a <a href="http://www.ruby-doc.org/docs/ruby-doc-bundle/Manual/man-1.4/syntax.html#here_doc" rel="noreferrer">heredoc</a>:  
 
 ```ruby
-conn.exec &lt;&lt;-eos
+conn.exec <<-eos
    select attr1, attr2, attr3, attr4, attr5, attr6, attr7
    from table1, table2, table3, etc, etc, etc, etc, etc,
    where etc etc etc etc etc etc etc etc etc etc etc etc etc
@@ -3115,7 +3115,7 @@ params = (0...param_count).map
 The `map` method takes an enumerable object and a block, and runs the block for each element, outputting each returned value from the block (the original object is unchanged unless you use `map!)`:  
 
 ```ruby
-[1, 2, 3].map { |n| n * n } #=&gt; [1, 4, 9]
+[1, 2, 3].map { |n| n * n } #=> [1, 4, 9]
 ```
 
 `Array` and `Range` are enumerable types. `map` with a block returns an Array.  `map!` mutates the original array.  
@@ -3145,7 +3145,7 @@ It allows you to run an operation on each of your array's objects and return the
 
 ```ruby
 [1,2,3].map {|x| x + 1 }
-#=&gt; [2,3,4]
+#=> [2,3,4]
 ```
 
 If you can run a single method on your array's elements you can do it in a shorthand-style like so:  
@@ -3159,14 +3159,14 @@ class Numeric
     self + 1
   end
 end
-[1,2,3].map(&amp;:plusone)
-#=&gt; [2,3,4]
+[1,2,3].map(&:plusone)
+#=> [2,3,4]
 ```</li>
 <li><p>To more simply use the ampersand shortcut technique, let's use a different example:</p>
 
 ```ruby
-["vanessa", "david", "thomas"].map(&amp;:upcase)
-#=&gt; ["VANESSA", "DAVID", "THOMAS"]
+["vanessa", "david", "thomas"].map(&:upcase)
+#=> ["VANESSA", "DAVID", "THOMAS"]
 ```</li>
 </ol>
 
@@ -3190,7 +3190,7 @@ end
 In the case of a Hash (also an `Enumerable` object, a Hash is simply an array of tuples with special instructions for the interpreter). The first "pipe parameter" is the key, the second is the value.  
 
 ```ruby
-{:make =&gt; "audi", :color =&gt; "black", :year =&gt; 2008}.each do |k,v|
+{:make => "audi", :color => "black", :year => 2008}.each do |k,v|
     puts "#{k} is #{v}"
 end
 #make is audi
@@ -3203,7 +3203,7 @@ end
 Assuming that `params` is a hash, this would be the best way to map through it: Use two block parameters instead of one to capture the key &amp; value pair for each interpreted tuple in the hash.  
 
 ```ruby
-params = {"one" =&gt; 1, "two" =&gt; 2, "three" =&gt; 3}
+params = {"one" => 1, "two" => 2, "three" => 3}
 params.each do |k,v|
   puts "#{k}=#{v}"
 end
@@ -3219,7 +3219,7 @@ Using ruby 2.4 you can do the same thing using `transform_values`, this feature 
 h = {a: 1, b: 2, c: 3}
 
 h.transform_values { |v| v * 10 }
- #=&gt; {a: 10, b: 20, c: 30}
+ #=> {a: 10, b: 20, c: 30}
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -3241,22 +3241,22 @@ How?
 
 #### Answer accepted (score 401)
 ```ruby
-&gt;&gt; "1,2,3,4".split(",")
-=&gt; ["1", "2", "3", "4"]
+>> "1,2,3,4".split(",")
+=> ["1", "2", "3", "4"]
 ```
 
 Or for integers:  
 
 ```ruby
-&gt;&gt; "1,2,3,4".split(",").map { |s| s.to_i }
-=&gt; [1, 2, 3, 4]
+>> "1,2,3,4".split(",").map { |s| s.to_i }
+=> [1, 2, 3, 4]
 ```
 
 Or for later versions of ruby (>= 1.9 - as pointed out by Alex):  
 
 ```ruby
-&gt;&gt; "1,2,3,4".split(",").map(&amp;:to_i)
-=&gt; [1, 2, 3, 4]
+>> "1,2,3,4".split(",").map(&:to_i)
+=> [1, 2, 3, 4]
 ```
 
 #### Answer 2 (score 31)
@@ -3290,7 +3290,7 @@ output: ["1","2","3","4","5"]
 ```ruby
 arr = "12345"
 
-arr.split('').map(&amp;:to_i)
+arr.split('').map(&:to_i)
 
 output: [1,2,3,4,5]
 ```
@@ -3337,12 +3337,12 @@ And here is `Foo#some_method`:
 
 ```ruby
 class Foo
-  def self.some_method(targets, &amp;block)
+  def self.some_method(targets, &block)
     targets.each do |target|
       begin
         r = yield(target)
       rescue 
-        failed &lt;&lt; target
+        failed << target
       end
     end
   end
@@ -3501,7 +3501,7 @@ Array gotcha: `blank?` will return `false` even if all <em>elements</em> of an a
 
 ```ruby
 [ nil, '' ].blank? == false
-[ nil, '' ].all? &amp;:blank? == true 
+[ nil, '' ].all? &:blank? == true 
 ```
 
 #### Answer 2 (score 657)
@@ -3653,8 +3653,8 @@ Be careful to give an argument. If you just run `sleep`, the process will sleep 
 I find `until` very useful with sleep. example:  
 
 ```ruby
-&gt; time = Time.now
-&gt; sleep 2.seconds until Time.now &gt; time + 10.seconds # breaks when true
+> time = Time.now
+> sleep 2.seconds until Time.now > time + 10.seconds # breaks when true
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -3910,7 +3910,7 @@ If you have a situation where you do want to rescue from `StandardError` and you
 ```ruby
 begin
   # iceberg!
-rescue =&gt; e
+rescue => e
   # lifeboats
 end
 ```
@@ -3920,7 +3920,7 @@ which is equivalent to:
 ```ruby
 begin
   # iceberg!
-rescue StandardError =&gt; e
+rescue StandardError => e
   # lifeboats
 end
 ```
@@ -3932,7 +3932,7 @@ One of the few common cases where it’s sane to rescue from `Exception` is for 
 ```ruby
 begin
   # iceberg?
-rescue Exception =&gt; e
+rescue Exception => e
   # do some logging
   raise e  # not enough lifeboats ;)
 end
@@ -3954,7 +3954,7 @@ while true do
   begin
     line = STDIN.gets
     # heavy processing
-  rescue Exception =&gt; e
+  rescue Exception => e
     puts "caught exception #{e}! ohnoes!"
   end
 end
@@ -3974,7 +3974,7 @@ Then this is perfectly acceptable in your connection handling thread:
 ```ruby
 begin
   # do stuff
-rescue Exception =&gt; e
+rescue Exception => e
   myLogger.error("uncaught #{e} exception while handling connection: #{e.message}")
     myLogger.error("Stack trace: #{backtrace.map {|l| "  #{l}\n"}.join}")
 end
@@ -4023,7 +4023,7 @@ This causes the program to respond to the normal termination signals by immediat
 ```ruby
 begin
   do_something
-rescue Exception =&gt; e
+rescue Exception => e
   critical_cleanup
   raise
 end
@@ -4064,7 +4064,7 @@ begin
   #...
   eval self.steering_wheel
   #...
-rescue Exception =&gt; e
+rescue Exception => e
   self.beep
   self.log "Caught #{e}.", :warn
   self.log "Logged Error - Continuing Process.", :info
@@ -4112,7 +4112,7 @@ Let's say you're that car, and you want to make sure the airbag inflates if the 
 ```ruby
  begin 
     # do driving stuff
- rescue Exception =&gt; e
+ rescue Exception => e
     self.airbags.inflate if self.exceeding_safe_stopping_momentum?
     raise
  end
@@ -4193,13 +4193,13 @@ compiling DynamicLibrary.c
 compiling ffi.c
 compiling Function.c
 Function.c:479:33: warning: incompatible pointer types passing 'VALUE (void *)' to parameter of type 'void *(*)(void *)' [-Wincompatible-pointer-types]
-        rb_thread_call_with_gvl(callback_with_gvl, &amp;cb);
+        rb_thread_call_with_gvl(callback_with_gvl, &cb);
                                 ^~~~~~~~~~~~~~~~~
 Function.c:102:46: note: passing argument to parameter 'func' here
 extern void *rb_thread_call_with_gvl(void *(*func)(void *), void *data1);
                                              ^
 Function.c:563:9: warning: implicit declaration of function 'rb_thread_call_without_gvl' is invalid in C99 [-Wimplicit-function-declaration]
-        rb_thread_call_without_gvl(async_cb_wait, &amp;w, async_cb_stop, &amp;w);
+        rb_thread_call_without_gvl(async_cb_wait, &w, async_cb_stop, &w);
         ^
 Function.c:738:1: warning: control reaches end of non-void function [-Wreturn-type]
 }
@@ -4278,10 +4278,10 @@ This is the Hash I want to iterate over:
 
 ```ruby
 hash = {
-  1 =&gt; ['a', 'b'], 
-  2 =&gt; ['c'], 
-  3 =&gt; ['d', 'e', 'f', 'g'], 
-  4 =&gt; ['h']
+  1 => ['a', 'b'], 
+  2 => ['c'], 
+  3 => ['d', 'e', 'f', 'g'], 
+  4 => ['h']
 }
 ```
 
@@ -4489,7 +4489,7 @@ I don't know what method to do on hash, could someone help me?
 Create the hash:  
 
 ```ruby
-hash = {:item1 =&gt; 1}
+hash = {:item1 => 1}
 ```
 
 Add a new item to it:  
@@ -4502,16 +4502,16 @@ hash[:item2] = 2
 If you want to add new items from another hash - use `merge` method:  
 
 ```ruby
-hash = {:item1 =&gt; 1}
-another_hash = {:item2 =&gt; 2, :item3 =&gt; 3}
-hash.merge(another_hash) # {:item1=&gt;1, :item2=&gt;2, :item3=&gt;3}
+hash = {:item1 => 1}
+another_hash = {:item2 => 2, :item3 => 3}
+hash.merge(another_hash) # {:item1=>1, :item2=>2, :item3=>3}
 ```
 
 In your specific case it could be:  
 
 ```ruby
-hash = {:item1 =&gt; 1}
-hash.merge({:item2 =&gt; 2}) # {:item1=&gt;1, :item2=&gt;2}
+hash = {:item1 => 1}
+hash.merge({:item2 => 2}) # {:item1=>1, :item2=>2}
 ```
 
 but it's not wise to use it when you should to add just one element more.  
@@ -4519,8 +4519,8 @@ but it's not wise to use it when you should to add just one element more.
 Pay attention that `merge` will replace the values with the existing keys:  
 
 ```ruby
-hash = {:item1 =&gt; 1}
-hash.merge({:item1 =&gt; 2}) # {:item1=&gt;2}
+hash = {:item1 => 1}
+hash.merge({:item1 => 2}) # {:item1=>2}
 ```
 
 exactly like `hash[:item1] = 2`  
@@ -4528,9 +4528,9 @@ exactly like `hash[:item1] = 2`
 Also you should pay attention that `merge` method (of course) doesn't effect the original value of hash variable - it returns a new merged hash. If you want to replace the value of the hash variable then use `merge!` instead:  
 
 ```ruby
-hash = {:item1 =&gt; 1}
-hash.merge!({:item2 =&gt; 2})
-# now hash == {:item1=&gt;1, :item2=&gt;2}
+hash = {:item1 => 1}
+hash.merge!({:item2 => 2})
+# now hash == {:item1=>1, :item2=>2}
 ```
 
 #### Answer 3 (score 27)
@@ -4539,9 +4539,9 @@ hash.merge!({:item2 =&gt; 2})
 <strong>Example:</strong>  
 
 ```ruby
-hash   #=&gt; {"a"=&gt;9, "b"=&gt;200, "c"=&gt;4}
-hash.store("d", 42) #=&gt; 42
-hash   #=&gt; {"a"=&gt;9, "b"=&gt;200, "c"=&gt;4, "d"=&gt;42}
+hash   #=> {"a"=>9, "b"=>200, "c"=>4}
+hash.store("d", 42) #=> 42
+hash   #=> {"a"=>9, "b"=>200, "c"=>4, "d"=>42}
 ```
 
 <kbd><a href="http://ruby-doc.org/core-2.3.0/Hash.html#method-i-store" rel="noreferrer">Documentation</a></kbd>  
@@ -4562,7 +4562,7 @@ Use the `pretty_generate()` function, built into later versions of JSON. For exa
 
 ```ruby
 require 'json'
-my_object = { :array =&gt; [1, 2, 3, { :sample =&gt; "hash"} ], :foo =&gt; "bar" }
+my_object = { :array => [1, 2, 3, { :sample => "hash"} ], :foo => "bar" }
 puts JSON.pretty_generate(my_object)
 ```
 
@@ -4619,9 +4619,9 @@ config.middleware.use PrettyJsonResponse
 The `&lt;pre&gt;` tag in HTML, used with `JSON.pretty_generate`, will render the JSON pretty in your view. I was so happy when my illustrious boss showed me this:  
 
 ```ruby
-&lt;% if @data.present? %&gt;
-   &lt;pre&gt;&lt;%= JSON.pretty_generate(@data) %&gt;&lt;/pre&gt;
-&lt;% end %&gt;
+<% if @data.present? %>
+   <pre><%= JSON.pretty_generate(@data) %></pre>
+<% end %>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -4634,7 +4634,7 @@ How to convert a ruby hash object to JSON? So I am trying this example below &am
 I was looking at the RubyDoc and obviously `Hash` object doesn't have a `to_json` method. But I am reading on blogs that Rails supports `active_record.to_json` and also supports `hash#to_json`. I can understand `ActiveRecord` is a Rails object, but `Hash` is not native to Rails, it's a pure Ruby object. So in Rails you can do a `hash.to_json`, but not in pure Ruby??  
 
 ```ruby
-car = {:make =&gt; "bmw", :year =&gt; "2003"}
+car = {:make => "bmw", :year => "2003"}
 car.to_json
 ```
 
@@ -4644,16 +4644,16 @@ One of the numerous niceties of Ruby is the possibility to extend existing class
 So, take a look here:  
 
 ```ruby
-car = {:make =&gt; "bmw", :year =&gt; "2003"}
-# =&gt; {:make=&gt;"bmw", :year=&gt;"2003"}
+car = {:make => "bmw", :year => "2003"}
+# => {:make=>"bmw", :year=>"2003"}
 car.to_json
-# NoMethodError: undefined method `to_json' for {:make=&gt;"bmw", :year=&gt;"2003"}:Hash
+# NoMethodError: undefined method `to_json' for {:make=>"bmw", :year=>"2003"}:Hash
 #   from (irb):11
-#   from /usr/bin/irb:12:in `&lt;main&gt;'
+#   from /usr/bin/irb:12:in `<main>'
 require 'json'
-# =&gt; true
+# => true
 car.to_json
-# =&gt; "{"make":"bmw","year":"2003"}"
+# => "{"make":"bmw","year":"2003"}"
 ```
 
 As you can see, requiring `json` has magically brought method `to_json` to our `Hash`.  
@@ -4672,7 +4672,7 @@ You can also use `JSON.generate`:
 require 'json'
 
 JSON.generate({ foo: "bar" })
-=&gt; "{\"foo\":\"bar\"}"
+=> "{\"foo\":\"bar\"}"
 ```
 
 Or its alias, `JSON.unparse`:  
@@ -4681,7 +4681,7 @@ Or its alias, `JSON.unparse`:
 require 'json'
 
 JSON.unparse({ foo: "bar" })
-=&gt; "{\"foo\":\"bar\"}"
+=> "{\"foo\":\"bar\"}"
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -4791,7 +4791,7 @@ gem uninstall rjb
 gem uninstall rjb --version 1.1.9
 
 # remove all versions less than 1.3.4
-gem uninstall rjb --version '&lt;1.3.4'
+gem uninstall rjb --version '<1.3.4'
 ```
 
 #### Answer 2 (score 248)
@@ -4907,12 +4907,12 @@ This will let you easily generate a YAML file:
 require 'yaml'
 
 yaml = {
-  'dest_name' =&gt; 'username@gmail.com',
-  'dest_host' =&gt; 'imap.gmail.com',
-  'dest_port' =&gt; 993,
-  'dest_ssl'  =&gt; true,
-  'dest_user' =&gt; 'username@gmail.com',
-  'dest_pass' =&gt; 'password'
+  'dest_name' => 'username@gmail.com',
+  'dest_host' => 'imap.gmail.com',
+  'dest_port' => 993,
+  'dest_ssl'  => true,
+  'dest_user' => 'username@gmail.com',
+  'dest_pass' => 'password'
 }
 
 puts YAML.dump(yaml)
@@ -4922,8 +4922,8 @@ puts YAML.dump(yaml)
 Unfortunately, Ruby does not support such passing mechanism as e.g. AWK:  
 
 ```ruby
-&gt; awk -v a=1 'BEGIN {print a}'
-&gt; 1
+> awk -v a=1 'BEGIN {print a}'
+> 1
 ```
 
 It means you cannot pass named values into your script directly.  
@@ -4931,12 +4931,12 @@ It means you cannot pass named values into your script directly.
 Using cmd options may help:  
 
 ```ruby
-&gt; ruby script.rb val_0 val_1 val_2
+> ruby script.rb val_0 val_1 val_2
 
 # script.rb
-puts ARGV[0] # =&gt; val_0
-puts ARGV[1] # =&gt; val_1
-puts ARGV[2] # =&gt; val_2
+puts ARGV[0] # => val_0
+puts ARGV[1] # => val_1
+puts ARGV[2] # => val_2
 ```
 
 Ruby stores all cmd arguments in the `ARGV` array, the scriptname itself can be captured using the `$PROGRAM_NAME` variable.  
@@ -4946,15 +4946,15 @@ The obvious disadvantage is that you depend on the order of values.
 If you need only Boolean switches use the option `-s` of the Ruby interpreter:  
 
 ```ruby
-&gt; ruby -s -e 'puts "So do I!" if $agreed' -- -agreed
-&gt; So do I!
+> ruby -s -e 'puts "So do I!" if $agreed' -- -agreed
+> So do I!
 ```
 
 Please note the `--` switch, otherwise Ruby will complain about a nonexistent option `-agreed`, so pass it as a switch to your cmd invokation. You don't need it in the following case:  
 
 ```ruby
-&gt; ruby -s script_with_switches.rb -agreed
-&gt; So do I!
+> ruby -s script_with_switches.rb -agreed
+> So do I!
 ```
 
 The disadvantage is that you mess with global variables and have only logical true/false values.  
@@ -4962,15 +4962,15 @@ The disadvantage is that you mess with global variables and have only logical tr
 You can access values from environment variables:  
 
 ```ruby
-&gt; FIRST_NAME='Andy Warhol' ruby -e 'puts ENV["FIRST_NAME"]'
-&gt; Andy Warhol
+> FIRST_NAME='Andy Warhol' ruby -e 'puts ENV["FIRST_NAME"]'
+> Andy Warhol
 ```
 
 Drawbacks are present here to, you have to set all the variables before the script invocation (only for your ruby process) or to export them (shells like BASH):  
 
 ```ruby
-&gt; export FIRST_NAME='Andy Warhol'
-&gt; ruby -e 'puts ENV["FIRST_NAME"]'
+> export FIRST_NAME='Andy Warhol'
+> ruby -e 'puts ENV["FIRST_NAME"]'
 ```
 
 In the latter case, your data will be readable for everybody in the same shell session and for all subprocesses, which can be a serious security implication.  
@@ -5019,25 +5019,25 @@ The `begin &lt;code&gt; end while &lt;condition&gt;` is rejected by Ruby's autho
 ```ruby
 loop do 
   # some code here
-  break if &lt;condition&gt;
+  break if <condition>
 end 
 ```
 
 Here's <a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/6745" rel="noreferrer">an email exchange</a> in 23 Nov 2005 where Matz states:  
 
 ```ruby
-|&gt; Don't use it please.  I'm regretting this feature, and I'd like to
-|&gt; remove it in the future if it's possible.
+|> Don't use it please.  I'm regretting this feature, and I'd like to
+|> remove it in the future if it's possible.
 |
 |I'm surprised.  What do you regret about it?
 
 Because it's hard for users to tell
 
-  begin &lt;code&gt; end while &lt;cond&gt;
+  begin <code> end while <cond>
 
 works differently from
 
-  &lt;code&gt; while &lt;cond&gt;
+  <code> while <cond>
 ```
 
 <a href="http://rosettacode.org/wiki/Loops/Do-while#Ruby" rel="noreferrer">RosettaCode wiki</a> has a similar story:  
@@ -5062,26 +5062,26 @@ end while @@cleanlist.include?(tmpname) or
   At first glance, I assumed the while modifier would be evaluated before the contents of begin...end, but that is not the case. Observe:  
 
 ```ruby
-&gt;&gt; begin
-?&gt;   puts "do {} while ()" 
-&gt;&gt; end while false
+>> begin
+?>   puts "do {} while ()" 
+>> end while false
 do {} while ()
-=&gt; nil
+=> nil
 ```
   
   As you would expect, the loop will continue to execute while the modifier is true.  
 
 ```ruby
-&gt;&gt; n = 3
-=&gt; 3
-&gt;&gt; begin
-?&gt;   puts n
-&gt;&gt;   n -= 1
-&gt;&gt; end while n &gt; 0
+>> n = 3
+=> 3
+>> begin
+?>   puts n
+>>   n -= 1
+>> end while n > 0
 3
 2
 1
-=&gt; nil
+=> nil
 ```
   
   While I would be happy to never see this idiom again, begin...end is quite powerful. The following is a common idiom to memoize a one-liner method with no params:  
@@ -5101,11 +5101,11 @@ def expensive
       n = 99
       buf = "" 
       begin
-        buf &lt;&lt; "#{n} bottles of beer on the wall\n" 
+        buf << "#{n} bottles of beer on the wall\n" 
         # ...
         n -= 1
-      end while n &gt; 0
-      buf &lt;&lt; "no more bottles of beer" 
+      end while n > 0
+      buf << "no more bottles of beer" 
     end
 end
 ```
@@ -5249,7 +5249,7 @@ rails generate scaffold city ID:integer Name:string CountryCode:string District:
 Edit the file c:\Sites\world\app\models\city.rb to look like this</p>
 
 ```ruby
-class City &lt; ActiveRecord::Base
+class City < ActiveRecord::Base
  set_table_name "city"
 end
 ```
@@ -5374,9 +5374,9 @@ Some string interpolation to add the first and last single quote :P
 
 #### Answer 2 (score 41)
 ```ruby
-&gt; a = ['12','34','35','231']
-&gt; a.map { |i| "'" + i.to_s + "'" }.join(",")
-=&gt; "'12','34','35','231'"
+> a = ['12','34','35','231']
+> a.map { |i| "'" + i.to_s + "'" }.join(",")
+=> "'12','34','35','231'"
 ```
 
 #### Answer 3 (score 29)
@@ -5404,7 +5404,7 @@ Is there something that is more readable / simpler to replace the second line? O
 Just use <a href="http://ruby-doc.org/core-1.9.3/Array.html#method-i-sample" rel="noreferrer">`Array#sample`</a>:  
 
 ```ruby
-[:foo, :bar].sample # =&gt; :foo, or :bar :-)
+[:foo, :bar].sample # => :foo, or :bar :-)
 ```
 
 It is available in Ruby 1.9.1+. To be also able to use it with an earlier version of Ruby, you could  <a href="https://github.com/marcandre/backports" rel="noreferrer">`require "backports/1.9.1/array/sample"`</a>.  
@@ -5433,9 +5433,9 @@ end
 my_array = ["one", "two", "three"]
 my_array.sample(1 + rand(my_array.count))
 
-=&gt; ["two", "three"]
-=&gt; ["one", "three", "two"]
-=&gt; ["two"]
+=> ["two", "three"]
+=> ["one", "three", "two"]
+=> ["two"]
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -5545,7 +5545,7 @@ response = open('http://example.com').read
 
 #### Question
 ```ruby
-&lt;%if @item.rigged %&gt;Yes&lt;%else%&gt;No&lt;%end%&gt;
+<%if @item.rigged %>Yes<%else%>No<%end%>
 ```
 
 I was thinking of something like this?  
@@ -5597,7 +5597,7 @@ It's simply hard to read with the multiple question marks that close to each oth
 One line if:  
 
 ```ruby
-&lt;statement&gt; if &lt;condition&gt;
+<statement> if <condition>
 ```
 
 Your case:  
@@ -5629,7 +5629,7 @@ gem: --no-document
 or you can add this line to the global gemrc config file. Here is how to find it (in Linux)  
 
 ```ruby
-strace gem source 2&gt;&amp;1 | grep gemrc
+strace gem source 2>&1 | grep gemrc
 ```
 
 #### Answer 2 (score 486)
@@ -5732,9 +5732,9 @@ I tried:
 
 ```ruby
 result.class
-# =&gt; User(id: integer, name: string ...)
+# => User(id: integer, name: string ...)
 result.to_s
-# =&gt; #&lt;User:0x3d07cdc&gt;"
+# => #<User:0x3d07cdc>"
 ```
 
 I need only the class name, in a string (`User` in this case). Is there a method for that?   
@@ -5796,7 +5796,7 @@ v2.4 introduces own `Array#min` and `Array#max`, which are way faster than Enume
 
 ```ruby
 [4, 5, 7, 10].minmax
-=&gt; [4, 10]
+=> [4, 10]
 ```
 
 #### Answer 2 (score 51)
@@ -5819,7 +5819,7 @@ All those results generate garbage in a zealous attempt to handle more than two 
 
 ```ruby
 def max (a,b)
-  a&gt;b ? a : b
+  a>b ? a : b
 end
 ```
 
@@ -5942,9 +5942,9 @@ This is the only difference:
 <strong>each:</strong>  
 
 ```ruby
-irb&gt; [1,2,3].each { |x| }
-  =&gt; [1, 2, 3]
-irb&gt; x
+irb> [1,2,3].each { |x| }
+  => [1, 2, 3]
+irb> x
 NameError: undefined local variable or method `x' for main:Object
     from (irb):2
     from :0
@@ -5953,10 +5953,10 @@ NameError: undefined local variable or method `x' for main:Object
 <strong>for:</strong>  
 
 ```ruby
-irb&gt; for x in [1,2,3]; end
-  =&gt; [1, 2, 3]
-irb&gt; x
-  =&gt; 3
+irb> for x in [1,2,3]; end
+  => [1, 2, 3]
+irb> x
+  => 3
 ```
 
 With the `for` loop, the iterator variable still lives after the block is done. With the `each` loop, it doesn't, unless it was already defined as a local variable before the loop started.  
@@ -5999,7 +5999,7 @@ Yes, it's called `next`.
 
 ```ruby
 for i in 0..5
-   if i &lt; 2
+   if i < 2
      next
    end
    puts "Value of local variable is #{i}"
@@ -6013,7 +6013,7 @@ Value of local variable is 2
 Value of local variable is 3
 Value of local variable is 4
 Value of local variable is 5
- =&gt; 0..5 
+ => 0..5 
 ```
 
 #### Answer 2 (score 105)
@@ -6026,7 +6026,7 @@ Writing <a href="https://stackoverflow.com/a/4010063/261542"><em>Ian Purton's</e
 
 ```ruby
 (1..5).each do |x|
-  next if x &lt; 2
+  next if x < 2
   puts x
 end
 ```
@@ -6146,12 +6146,12 @@ Is it bad to check if an array is <strong>not</strong> empty by using `any?` met
 a = [1,2,3]
 
 a.any?
-=&gt; true
+=> true
 
 a.clear
 
 a.any?
-=&gt; false
+=> false
 ```
 
 Or is it better to use `unless a.empty?` ?  
@@ -6160,10 +6160,10 @@ Or is it better to use `unless a.empty?` ?
 `any?` isn't the same as `not empty?` in some cases.  
 
 ```ruby
-&gt;&gt; [nil, 1].any?
-=&gt; true
-&gt;&gt; [nil, nil].any?
-=&gt; false
+>> [nil, 1].any?
+=> true
+>> [nil, nil].any?
+=> false
 ```
 
 From the documentation:  
@@ -6185,18 +6185,18 @@ From the documentation:
 Its used to check if the array contains something or not. This includes things that evaluate to false such as nil and false.   
 
 ```ruby
-&gt;&gt; a = []
-=&gt; []
-&gt;&gt; a.empty?
-=&gt; true
-&gt;&gt; a = [nil, false]
-=&gt; [nil, false]
-&gt;&gt; a.empty?
-=&gt; false
-&gt;&gt; a = [nil]
-=&gt; [nil]
-&gt;&gt; a.empty?
-=&gt; false
+>> a = []
+=> []
+>> a.empty?
+=> true
+>> a = [nil, false]
+=> [nil, false]
+>> a.empty?
+=> false
+>> a = [nil]
+=> [nil]
+>> a.empty?
+=> false
 ```
 
 <hr>
@@ -6210,46 +6210,46 @@ Similar methods to this are none? all? and one? where they all just check to see
 case 1  
 
 ```ruby
-&gt;&gt; a = []
-=&gt; []
-&gt;&gt; a.any?
-=&gt; false
-&gt;&gt; a.one?
-=&gt; false
-&gt;&gt; a.all?
-=&gt; true
-&gt;&gt; a.none?
-=&gt; true
+>> a = []
+=> []
+>> a.any?
+=> false
+>> a.one?
+=> false
+>> a.all?
+=> true
+>> a.none?
+=> true
 ```
 
 case 2  
 
 ```ruby
-&gt;&gt; a = [nil, true]
-=&gt; [nil, true]
-&gt;&gt; a.any?
-=&gt; true
-&gt;&gt; a.one?
-=&gt; true
-&gt;&gt; a.all?
-=&gt; false
-&gt;&gt; a.none?
-=&gt; false
+>> a = [nil, true]
+=> [nil, true]
+>> a.any?
+=> true
+>> a.one?
+=> true
+>> a.all?
+=> false
+>> a.none?
+=> false
 ```
 
 case 3  
 
 ```ruby
-&gt;&gt; a = [true, true]
-=&gt; [true, true]
-&gt;&gt; a.any?
-=&gt; true
-&gt;&gt; a.one?
-=&gt; false
-&gt;&gt; a.all?
-=&gt; true
-&gt;&gt; a.none?
-=&gt; false
+>> a = [true, true]
+=> [true, true]
+>> a.any?
+=> true
+>> a.one?
+=> false
+>> a.all?
+=> true
+>> a.none?
+=> false
 ```
 
 #### Answer 3 (score 29)
@@ -6258,7 +6258,7 @@ Prefixing the statement with an exclamation mark will let you know whether the a
 ```ruby
 a = [1,2,3]
 !a.empty?
-=&gt; true
+=> true
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -6377,9 +6377,9 @@ TCP/IP connections on port 5432?
  rack (1.5.2) lib/rack/handler/thin.rb:16:in `run'
  rack (1.5.2) lib/rack/server.rb:264:in `start'
  railties (4.0.0) lib/rails/commands/server.rb:84:in `start'
- railties (4.0.0) lib/rails/commands.rb:78:in `block in &lt;top (required)&gt;'
- railties (4.0.0) lib/rails/commands.rb:73:in `&lt;top (required)&gt;'
- bin/rails:4:in `&lt;main&gt;'
+ railties (4.0.0) lib/rails/commands.rb:78:in `block in <top (required)>'
+ railties (4.0.0) lib/rails/commands.rb:73:in `<top (required)>'
+ bin/rails:4:in `<main>'
 ```
 
 I'm running Mavericks OS X 10.9 so I don't know if that's the problem. I've tried everything I could but nothing seems to work. I've uninstalled and install both postgres and the pg gem multiple times now.   
@@ -6398,7 +6398,7 @@ development:
   host: localhost
   port: 5432
 
-test: &amp;test
+test: &test
   adapter: postgresql
   encoding: unicode
   database: metals-directory_test
@@ -6430,7 +6430,7 @@ production:
   host: localhost
 
 cucumber:
-  &lt;&lt;: *test
+  <<: *test
 ```
 
 #### Answer accepted (score 587)
@@ -6556,7 +6556,7 @@ To return a 404 header, just use the `:status` option for the render method.
 def action
   # here the code
 
-  render :status =&gt; 404
+  render :status => 404
 end
 ```
 
@@ -6565,7 +6565,7 @@ If you want to render the standard 404 page you can extract the feature in a met
 ```ruby
 def render_404
   respond_to do |format|
-    format.html { render :file =&gt; "#{Rails.root}/public/404", :layout =&gt; false, :status =&gt; :not_found }
+    format.html { render :file => "#{Rails.root}/public/404", :layout => false, :status => :not_found }
     format.xml  { head :not_found }
     format.any  { head :not_found }
   end
@@ -6626,7 +6626,7 @@ end
 The newly Selected answer submitted by Steven Soroka is close, but not complete.  The test itself hides the fact that this is not returning a true 404 - it's returning a status of 200 - "success".  The original answer was closer, but attempted to render the layout as if no failure had occurred.  This fixes everything:  
 
 ```ruby
-render :text =&gt; 'Not Found', :status =&gt; '404'
+render :text => 'Not Found', :status => '404'
 ```
 
 Here's a typical test set of mine for something I expect to return 404, using RSpec and Shoulda matchers:  
@@ -6634,7 +6634,7 @@ Here's a typical test set of mine for something I expect to return 404, using RS
 ```ruby
 describe "user view" do
   before do
-    get :show, :id =&gt; 'nonsense'
+    get :show, :id => 'nonsense'
   end
 
   it { should_not assign_to :user }
@@ -6679,9 +6679,9 @@ You can use the slice method:
 ```ruby
 a = "foobar"
 a.slice! "foo"
-=&gt; "foo"
+=> "foo"
 a
-=&gt; "bar"
+=> "bar"
 ```
 
 <p>there is a non '!' version as well. More info can be seen in the documentation about other versions as well:
@@ -6695,7 +6695,7 @@ Check out the <a href="http://www.ruby-doc.org/core/classes/String.html" rel="no
 If it is a the end of the string, you can also use <a href="http://ruby-doc.org/core-2.1.1/String.html#method-i-chomp" rel="noreferrer">`chomp`</a>:  
 
 ```ruby
-"hello".chomp("llo")     #=&gt; "he"
+"hello".chomp("llo")     #=> "he"
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -6722,11 +6722,11 @@ end
 If i try to run main.rb I get the following error:  
 
 ```ruby
-C:\Documents and Settings\my\src\folder&gt;ruby main.rb
+C:\Documents and Settings\my\src\folder>ruby main.rb
 
 C:/Ruby193/lib/ruby/1.9.1/rubygems/custom_require.rb:36:in `require': cannot load such file -- tokenizer.rb (LoadError)
         from C:/Ruby193/lib/ruby/1.9.1/rubygems/custom_require.rb:36:in `require '
-        from main.rb:1:in `&lt;main&gt;'
+        from main.rb:1:in `<main>'
 ```
 
 I just noticed that if I use `load` instead of `require` everything works fine. What may the problem be here?  
@@ -6782,11 +6782,11 @@ This is what I currently have:
 ```ruby
 # A simple example function, which returns a value or nil
 def transform(n)
-  rand &gt; 0.5 ? n * 10 : nil }
+  rand > 0.5 ? n * 10 : nil }
 end
 
-items.map! { |x| transform(x) } # [1, 2, 3, 4, 5] =&gt; [10, nil, 30, 40, nil]
-items.reject! { |x| x.nil? } # [10, nil, 30, 40, nil] =&gt; [10, 30, 40]
+items.map! { |x| transform(x) } # [1, 2, 3, 4, 5] => [10, nil, 30, 40, nil]
+items.reject! { |x| x.nil? } # [10, nil, 30, 40, nil] => [10, 30, 40]
 ```
 
 I'm aware I could just do a loop and conditionally collect in another array like this:  
@@ -6807,7 +6807,7 @@ You could use <a href="https://ruby-doc.org/core-1.9.3/Array.html#method-i-compa
 
 ```ruby
 [1, nil, 3, nil, nil].compact
-=&gt; [1, 3] 
+=> [1, 3] 
 ```
 
 <hr>
@@ -6822,7 +6822,7 @@ For instance, if you're doing something that does this:
     i
   end
 }
-# =&gt; [nil, 2, nil]
+# => [nil, 2, nil]
 ```
 
 Then don't. Instead, prior to the `map`, `reject` the stuff you don't want or `select` what you do want:  
@@ -6831,7 +6831,7 @@ Then don't. Instead, prior to the `map`, `reject` the stuff you don't want or `s
 [1,2,3].select{ |i| i % 2 == 0 }.map{ |i|
   i
 }
-# =&gt; [2]
+# => [2]
 ```
 
 I consider using `compact` to clean up a mess as a last-ditch effort to get rid of things we didn't handle correctly, usually because we didn't know what was coming at us. We should always know what sort of data is being thrown around in our program; Unexpected/unknown data is bad. Anytime I see nils in an array I'm working on, I dig into why they exist, and see if I can improve the code generating the array, rather than allow Ruby to waste time and memory generating nils then sifting through the array to remove them later.   
@@ -6846,7 +6846,7 @@ Try using `#reduce` or `#inject`!
 ```ruby
 [1, 2, 3].reduce([]) { |memo, i|
   if i % 2 == 0
-    memo &lt;&lt; i
+    memo << i
   end
 
   memo
@@ -6863,7 +6863,7 @@ Also, in English, you are trying to "reduce a set of integers into a set of even
 In your example:  
 
 ```ruby
-items.map! { |x| process_x url } # [1, 2, 3, 4, 5] =&gt; [1, nil, 3, nil, nil]
+items.map! { |x| process_x url } # [1, 2, 3, 4, 5] => [1, nil, 3, nil, nil]
 ```
 
 it does not look like the values have changed other than being replaced with `nil`. If that is the case, then:  
@@ -6883,10 +6883,10 @@ Given I have the below <strong>clients</strong> hash, is there a quick ruby way 
 
 ```ruby
 clients = {
-  "yellow"=&gt;{"client_id"=&gt;"2178"}, 
-  "orange"=&gt;{"client_id"=&gt;"2180"}, 
-  "red"=&gt;{"client_id"=&gt;"2179"}, 
-  "blue"=&gt;{"client_id"=&gt;"2181"}
+  "yellow"=>{"client_id"=>"2178"}, 
+  "orange"=>{"client_id"=>"2180"}, 
+  "red"=>{"client_id"=>"2179"}, 
+  "blue"=>{"client_id"=>"2181"}
 }
 ```
 
@@ -6895,7 +6895,7 @@ You could use <a href="http://rubydoc.info/docs/ruby-core/1.9.2/Enumerable:selec
 
 ```ruby
 clients.select{|key, hash| hash["client_id"] == "2180" }
-#=&gt; [["orange", {"client_id"=&gt;"2180"}]]
+#=> [["orange", {"client_id"=>"2180"}]]
 ```
 
 Note that the result will be an array of all the matching values, where each is an array of the key and value.  
@@ -6904,7 +6904,7 @@ Note that the result will be an array of all the matching values, where each is 
 <strong>Ruby 1.9</strong> and greater:  
 
 ```ruby
-hash.key(value) =&gt; key
+hash.key(value) => key
 ```
 
 <strong>Ruby 1.8</strong>:  
@@ -6925,7 +6925,7 @@ You could use <a href="http://ruby-doc.org/core/classes/Hash.html#M002855" rel="
 So to get `"orange"`, you could just use:  
 
 ```ruby
-clients.key({"client_id" =&gt; "2180"})
+clients.key({"client_id" => "2180"})
 ```
 
 #### Answer 3 (score 47)
@@ -6954,7 +6954,7 @@ Float#round can take a parameter in Ruby 1.9, not in Ruby 1.8. JRuby defaults to
 #### Answer 2 (score 270)
 ```ruby
 (5.65235534).round(2)
-#=&gt; 5.65
+#=> 5.65
 ```
 
 #### Answer 3 (score 183)
@@ -7022,7 +7022,7 @@ puts thing.inspect
 gives me   
 
 ```ruby
-{"javascripts"=&gt;[{"fo_global"=&gt;["lazyload-min", "holla-min"]}]}
+{"javascripts"=>[{"fo_global"=>["lazyload-min", "holla-min"]}]}
 ```
 
 #### Answer 2 (score 11)
@@ -7031,7 +7031,7 @@ I had the same problem but also wanted to get the content of the file (after the
 This is the best solution I have found:  
 
 ```ruby
-if (md = contents.match(/^(?&lt;metadata&gt;---\s*\n.*?\n?)^(---\s*$\n?)/m))
+if (md = contents.match(/^(?<metadata>---\s*\n.*?\n?)^(---\s*$\n?)/m))
   self.contents = md.post_match
   self.metadata = YAML.load(md[:metadata])
 end
@@ -7044,11 +7044,11 @@ Here is the one liner i use, from terminal, to test the content of yml file(s):
 
 ```ruby
 $ ruby  -r yaml -r pp  -e 'pp YAML.load_file("/Users/za/project/application.yml")'
-{"logging"=&gt;
-  {"path"=&gt;"/var/logs/",
-   "file"=&gt;"TacoCloud.log",
-   "level"=&gt;
-    {"root"=&gt;"WARN", "org"=&gt;{"springframework"=&gt;{"security"=&gt;"DEBUG"}}}}}
+{"logging"=>
+  {"path"=>"/var/logs/",
+   "file"=>"TacoCloud.log",
+   "level"=>
+    {"root"=>"WARN", "org"=>{"springframework"=>{"security"=>"DEBUG"}}}}}
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -7107,7 +7107,7 @@ anujm@test:~$ gem
 gem     gem1.8  gem1.9  
 anujm@test:~$ sudo gem1.8 install serve
 ERROR:  Error installing serve:
-        multi_json requires RubyGems version &gt;= 1.3.6
+        multi_json requires RubyGems version >= 1.3.6
 anujm@test:~$
 ```
 
@@ -7145,7 +7145,7 @@ I need an easy way to take a tar file and convert it into a string (and vice ver
 file = File.open("path-to-file.tar.gz")
 contents = ""
 file.each {|line|
-  contents &lt;&lt; line
+  contents << line
 }
 ```
 
@@ -7222,57 +7222,57 @@ $ date +%s
 
 $ irb
 
-ruby-1.9.2-p180 :001 &gt; require 'date'
- =&gt; true 
+ruby-1.9.2-p180 :001 > require 'date'
+ => true 
 
-ruby-1.9.2-p180 :002 &gt; Time.at(1318996912).to_datetime
- =&gt; #&lt;DateTime: 2011-10-18T23:01:52-05:00 (13261609807/5400,-5/24,2299161)&gt; 
+ruby-1.9.2-p180 :002 > Time.at(1318996912).to_datetime
+ => #<DateTime: 2011-10-18T23:01:52-05:00 (13261609807/5400,-5/24,2299161)> 
 ```
 
 <strong>Further update</strong> (for UTC):  
 
 ```ruby
-ruby-1.9.2-p180 :003 &gt; Time.at(1318996912).utc.to_datetime
- =&gt; #&lt;DateTime: 2011-10-19T04:01:52+00:00 (13261609807/5400,0/1,2299161)&gt;
+ruby-1.9.2-p180 :003 > Time.at(1318996912).utc.to_datetime
+ => #<DateTime: 2011-10-19T04:01:52+00:00 (13261609807/5400,0/1,2299161)>
 ```
 
 <strong>Recent Update</strong>: I benchmarked the top solutions in this thread while working on a HA service a week or two ago, and was surprised to find that `Time.at(..)` outperforms `DateTime.strptime(..)` (update: added more benchmarks).  
 
 ```ruby
 # ~ % ruby -v
-#  =&gt; ruby 2.1.5p273 (2014-11-13 revision 48405) [x86_64-darwin13.0]
+#  => ruby 2.1.5p273 (2014-11-13 revision 48405) [x86_64-darwin13.0]
 
-irb(main):038:0&gt; Benchmark.measure do
+irb(main):038:0> Benchmark.measure do
 irb(main):039:1*   ["1318996912", "1318496912"].each do |s|
 irb(main):040:2*     DateTime.strptime(s, '%s')
-irb(main):041:2&gt;   end
-irb(main):042:1&gt; end
+irb(main):041:2>   end
+irb(main):042:1> end
 
-=&gt; #&lt;Benchmark ... @real=2.9e-05 ... @total=0.0&gt;
+=> #<Benchmark ... @real=2.9e-05 ... @total=0.0>
 
-irb(main):044:0&gt; Benchmark.measure do
-irb(main):045:1&gt;   [1318996912, 1318496912].each do |i|
-irb(main):046:2&gt;     DateTime.strptime(i.to_s, '%s')
-irb(main):047:2&gt;   end
-irb(main):048:1&gt; end
+irb(main):044:0> Benchmark.measure do
+irb(main):045:1>   [1318996912, 1318496912].each do |i|
+irb(main):046:2>     DateTime.strptime(i.to_s, '%s')
+irb(main):047:2>   end
+irb(main):048:1> end
 
-=&gt; #&lt;Benchmark ... @real=2.0e-05 ... @total=0.0&gt;
+=> #<Benchmark ... @real=2.0e-05 ... @total=0.0>
 
 irb(main):050:0* Benchmark.measure do
 irb(main):051:1*   ["1318996912", "1318496912"].each do |s|
 irb(main):052:2*     Time.at(s.to_i).to_datetime
-irb(main):053:2&gt;   end
-irb(main):054:1&gt; end
+irb(main):053:2>   end
+irb(main):054:1> end
 
-=&gt; #&lt;Benchmark ... @real=1.5e-05 ... @total=0.0&gt;
+=> #<Benchmark ... @real=1.5e-05 ... @total=0.0>
 
 irb(main):056:0* Benchmark.measure do
 irb(main):057:1*   [1318996912, 1318496912].each do |i|
 irb(main):058:2*     Time.at(i).to_datetime
-irb(main):059:2&gt;   end
-irb(main):060:1&gt; end
+irb(main):059:2>   end
+irb(main):060:1> end
 
-=&gt; #&lt;Benchmark ... @real=2.0e-05 ... @total=0.0&gt;
+=> #<Benchmark ... @real=2.0e-05 ... @total=0.0>
 ```
 
 #### Answer 3 (score 61)
@@ -7281,13 +7281,13 @@ irb(main):060:1&gt; end
 I just want to clarify, even though this has been commented so future people don't miss this very important distinction.  
 
 ```ruby
-DateTime.strptime("1318996912",'%s') # =&gt; Wed, 19 Oct 2011 04:01:52 +0000
+DateTime.strptime("1318996912",'%s') # => Wed, 19 Oct 2011 04:01:52 +0000
 ```
 
 displays a return value in UTC and requires the seconds to be a String and outputs a UTC Time object, whereas  
 
 ```ruby
-Time.at(1318996912) # =&gt; 2011-10-19 00:01:52 -0400
+Time.at(1318996912) # => 2011-10-19 00:01:52 -0400
 ```
 
 displays a return value in the LOCAL time zone, normally requires a FixNum argument, but the Time object itself is still in UTC even though the display is not.   
@@ -7295,7 +7295,7 @@ displays a return value in the LOCAL time zone, normally requires a FixNum argum
 So even though I passed the same integer to both methods, I seemingly two different results because of how the class' `#to_s` method works. However, as @Eero had to remind me twice of:  
 
 ```ruby
-Time.at(1318996912) == DateTime.strptime("1318996912",'%s') # =&gt; true
+Time.at(1318996912) == DateTime.strptime("1318996912",'%s') # => true
 ```
 
 An equality comparison between the two return values still returns true. Again, this is because the values are basically the same (although different class's, the `#==` method takes care of this for you), but the `#to_s` method prints drastically different strings. Although, if we look at the strings, we can see they are indeed the same time, just printed in different time zones.  
@@ -7313,7 +7313,7 @@ you can't use a String argument, but you can use a Time argument into `Time.at` 
 
 ```ruby
 Time.at(Time.new(2007,11,1,15,25,0, "+09:00"))
-=&gt; 2007-11-01 15:25:00 +0900
+=> 2007-11-01 15:25:00 +0900
 ```
 
 <strong>Benchmarks</strong>  
@@ -7326,43 +7326,43 @@ Time.at(int).to_datetime ~ 2.8x faster
 09:10:58-watsw018:~$ ruby -v
 ruby 2.3.7p456 (2018-03-28 revision 63024) [universal.x86_64-darwin18]
 09:11:00-watsw018:~$ irb
-irb(main):001:0&gt; require 'benchmark'
-=&gt; true
-irb(main):002:0&gt; require 'date'
-=&gt; true
-irb(main):003:0&gt;
+irb(main):001:0> require 'benchmark'
+=> true
+irb(main):002:0> require 'date'
+=> true
+irb(main):003:0>
 irb(main):004:0* format = '%s'
-=&gt; "%s"
-irb(main):005:0&gt; times = ['1318996912', '1318496913']
-=&gt; ["1318996912", "1318496913"]
-irb(main):006:0&gt; int_times = times.map(&amp;:to_i)
-=&gt; [1318996912, 1318496913]
-irb(main):007:0&gt;
+=> "%s"
+irb(main):005:0> times = ['1318996912', '1318496913']
+=> ["1318996912", "1318496913"]
+irb(main):006:0> int_times = times.map(&:to_i)
+=> [1318996912, 1318496913]
+irb(main):007:0>
 irb(main):008:0* datetime_from_strptime = DateTime.strptime(times.first, format)
-=&gt; #&lt;DateTime: 2011-10-19T04:01:52+00:00 ((2455854j,14512s,0n),+0s,2299161j)&gt;
-irb(main):009:0&gt; datetime_from_time = Time.at(int_times.first).to_datetime
-=&gt; #&lt;DateTime: 2011-10-19T00:01:52-04:00 ((2455854j,14512s,0n),-14400s,2299161j)&gt;
-irb(main):010:0&gt;
+=> #<DateTime: 2011-10-19T04:01:52+00:00 ((2455854j,14512s,0n),+0s,2299161j)>
+irb(main):009:0> datetime_from_time = Time.at(int_times.first).to_datetime
+=> #<DateTime: 2011-10-19T00:01:52-04:00 ((2455854j,14512s,0n),-14400s,2299161j)>
+irb(main):010:0>
 irb(main):011:0* datetime_from_strptime === datetime_from_time
-=&gt; true
-irb(main):012:0&gt;
+=> true
+irb(main):012:0>
 irb(main):013:0* Benchmark.measure do
 irb(main):014:1*   100_000.times {
 irb(main):015:2*     times.each do |i|
 irb(main):016:3*       DateTime.strptime(i, format)
-irb(main):017:3&gt;     end
-irb(main):018:2&gt;   }
-irb(main):019:1&gt; end
-=&gt; #&lt;Benchmark::Tms:0x00007fbdc18f0d28 @label="", @real=0.8680500000045868, @cstime=0.0, @cutime=0.0, @stime=0.009999999999999998, @utime=0.86, @total=0.87&gt;
-irb(main):020:0&gt;
+irb(main):017:3>     end
+irb(main):018:2>   }
+irb(main):019:1> end
+=> #<Benchmark::Tms:0x00007fbdc18f0d28 @label="", @real=0.8680500000045868, @cstime=0.0, @cutime=0.0, @stime=0.009999999999999998, @utime=0.86, @total=0.87>
+irb(main):020:0>
 irb(main):021:0* Benchmark.measure do
 irb(main):022:1*   100_000.times {
 irb(main):023:2*     int_times.each do |i|
 irb(main):024:3*       Time.at(i).to_datetime
-irb(main):025:3&gt;     end
-irb(main):026:2&gt;   }
-irb(main):027:1&gt; end
-=&gt; #&lt;Benchmark::Tms:0x00007fbdc3108be0 @label="", @real=0.33059399999910966, @cstime=0.0, @cutime=0.0, @stime=0.0, @utime=0.32000000000000006, @total=0.32000000000000006&gt;
+irb(main):025:3>     end
+irb(main):026:2>   }
+irb(main):027:1> end
+=> #<Benchmark::Tms:0x00007fbdc3108be0 @label="", @real=0.33059399999910966, @cstime=0.0, @cutime=0.0, @stime=0.0, @utime=0.32000000000000006, @total=0.32000000000000006>
 ```
 
 ****edited to not be completely and totally incorrect in every way****  
@@ -7378,9 +7378,9 @@ I have an array of hashes like following
 
 ```ruby
 [
-  { :foo =&gt; 'foo', :bar =&gt; 2 },
-  { :foo =&gt; 'foo', :bar =&gt; 3 },
-  { :foo =&gt; 'foo', :bar =&gt; 5 },
+  { :foo => 'foo', :bar => 2 },
+  { :foo => 'foo', :bar => 3 },
+  { :foo => 'foo', :bar => 5 },
 ]
 ```
 
@@ -7466,30 +7466,30 @@ puts "Running Ruby #{RUBY_VERSION}"
 
 ary = []
 1000.times {
-  ary &lt;&lt; {:bar =&gt; rand(1000)}
+  ary << {:bar => rand(1000)}
 }
 
 n = 500
 
 puts "n=#{n}"
 Benchmark.bm(20) do |x|
-  x.report("sort")               { n.times { ary.dup.sort{ |a,b| b[:bar] &lt;=&gt; a[:bar] } } }
-  x.report("sort reverse")       { n.times { ary.dup.sort{ |a,b| a[:bar] &lt;=&gt; b[:bar] }.reverse } }
+  x.report("sort")               { n.times { ary.dup.sort{ |a,b| b[:bar] <=> a[:bar] } } }
+  x.report("sort reverse")       { n.times { ary.dup.sort{ |a,b| a[:bar] <=> b[:bar] }.reverse } }
   x.report("sort_by -a[:bar]")   { n.times { ary.dup.sort_by{ |a| -a[:bar] } } }
   x.report("sort_by a[:bar]*-1") { n.times { ary.dup.sort_by{ |a| a[:bar]*-1 } } }
   x.report("sort_by.reverse")    { n.times { ary.dup.sort_by{ |a| a[:bar] }.reverse } }
   x.report("sort_by.reverse!")   { n.times { ary.dup.sort_by{ |a| a[:bar] }.reverse! } }
 end
 
-# &gt;&gt; Running Ruby 2.1.1
-# &gt;&gt; n=500
-# &gt;&gt;                            user     system      total        real
-# &gt;&gt; sort                   0.670000   0.000000   0.670000 (  0.667754)
-# &gt;&gt; sort reverse           0.650000   0.000000   0.650000 (  0.655582)
-# &gt;&gt; sort_by -a[:bar]       0.260000   0.010000   0.270000 (  0.255919)
-# &gt;&gt; sort_by a[:bar]*-1     0.250000   0.000000   0.250000 (  0.258924)
-# &gt;&gt; sort_by.reverse        0.250000   0.000000   0.250000 (  0.245179)
-# &gt;&gt; sort_by.reverse!       0.240000   0.000000   0.240000 (  0.242340)
+# >> Running Ruby 2.1.1
+# >> n=500
+# >>                            user     system      total        real
+# >> sort                   0.670000   0.000000   0.670000 (  0.667754)
+# >> sort reverse           0.650000   0.000000   0.650000 (  0.655582)
+# >> sort_by -a[:bar]       0.260000   0.010000   0.270000 (  0.255919)
+# >> sort_by a[:bar]*-1     0.250000   0.000000   0.250000 (  0.258924)
+# >> sort_by.reverse        0.250000   0.000000   0.250000 (  0.245179)
+# >> sort_by.reverse!       0.240000   0.000000   0.240000 (  0.242340)
 ```
 
 <hr>
@@ -7528,7 +7528,7 @@ a.sort_by { |h| h[:bar] }.reverse!
 You could do:  
 
 ```ruby
-a.sort{|a,b| b[:bar] &lt;=&gt; a[:bar]}
+a.sort{|a,b| b[:bar] <=> a[:bar]}
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -7539,7 +7539,7 @@ a.sort{|a,b| b[:bar] &lt;=&gt; a[:bar]}
 For context, it on a remote server which has a firewall. I'm setting up my environment through a proxy. I have `ruby 1.8.7`. When I try to gem install..  
 
 ```ruby
-sudo gem install --http-proxy &lt;host address&gt;:&lt;port&gt; json
+sudo gem install --http-proxy <host address>:<port> json
 ```
 
 I get the following error:  
@@ -7645,8 +7645,8 @@ This is what I have now - which looks too verbose for the work it is doing.
 now the functions like strip! chomp! et. all return nil if the string was not modified</p>
 
 ```ruby
-"abc".strip!    # =&gt; nil
-" abc ".strip!  # =&gt; "abc"
+"abc".strip!    # => nil
+" abc ".strip!  # => "abc"
 ```
 
 What is the Ruby way to say trim it if it contains extra leading or trailing spaces without creating copies?  
@@ -7670,18 +7670,18 @@ Hope this helps.
 <strong>Update:</strong> This is output from `irb` to demonstrate:  
 
 ```ruby
-&gt;&gt; @title = "abc"
-=&gt; "abc"
-&gt;&gt; @title.strip!
-=&gt; nil
-&gt;&gt; @title
-=&gt; "abc"
-&gt;&gt; @title = " abc "
-=&gt; " abc "
-&gt;&gt; @title.strip!
-=&gt; "abc"
-&gt;&gt; @title
-=&gt; "abc"
+>> @title = "abc"
+=> "abc"
+>> @title.strip!
+=> nil
+>> @title
+=> "abc"
+>> @title = " abc "
+=> " abc "
+>> @title.strip!
+=> "abc"
+>> @title
+=> "abc"
 ```
 
 #### Answer 2 (score 50)
@@ -7755,7 +7755,7 @@ Giving one of:
 ```ruby
 @title = tokens[Title].strip_or_self! if tokens[Title]
 
-@title = tokens[Title] &amp;&amp; tokens[Title].strip_or_self!
+@title = tokens[Title] && tokens[Title].strip_or_self!
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -7785,10 +7785,10 @@ RubyGems Environment:
      - /Users/ttm/.rbenv/versions/2.0.0-p247/lib/ruby/gems/2.0.0
      - /Users/ttm/.gem/ruby/2.0.0
   - GEM CONFIGURATION:
-     - :update_sources =&gt; true
-     - :verbose =&gt; true
-     - :backtrace =&gt; false
-     - :bulk_threshold =&gt; 1000
+     - :update_sources => true
+     - :verbose => true
+     - :backtrace => false
+     - :bulk_threshold => 1000
   - REMOTE SOURCES:
      - https://rubygems.org/
   - SHELL PATH:
@@ -7836,7 +7836,7 @@ After installing the gems, if you want to know where a particular gem is. Try ty
 You will be able to see the list of gems you have installed. Now use `bundle show` and name the gem you  want to know the path for, like this:   
 
 ```ruby
- bundle show &lt;gemName&gt;
+ bundle show <gemName>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -7847,9 +7847,9 @@ You will be able to see the list of gems you have installed. Now use `bundle sho
 What is the right way to:  
 
 ```ruby
-is_array("something") # =&gt; false         (or 1)
+is_array("something") # => false         (or 1)
 
-is_array(["something", "else"]) # =&gt; true  (or &gt; 1)
+is_array(["something", "else"]) # => true  (or > 1)
 ```
 
 or to get the count of items in it?  
@@ -7858,14 +7858,14 @@ or to get the count of items in it?
 You probably want to use `kind_of?()`.  
 
 ```ruby
-&gt;&gt; s = "something"
-=&gt; "something"
-&gt;&gt; s.kind_of?(Array)
-=&gt; false
-&gt;&gt; s = ["something", "else"]
-=&gt; ["something", "else"]
-&gt;&gt; s.kind_of?(Array)
-=&gt; true
+>> s = "something"
+=> "something"
+>> s.kind_of?(Array)
+=> false
+>> s = ["something", "else"]
+=> ["something", "else"]
+>> s.kind_of?(Array)
+=> true
 ```
 
 #### Answer 2 (score 144)
@@ -7895,9 +7895,9 @@ def f x
   p Array(x).inspect
   p [*x].inspect
 end
-f 1         # =&gt; "[1]"
-f [1]       # =&gt; "[1]"
-f [1,2]     # =&gt; "[1, 2]"
+f 1         # => "[1]"
+f [1]       # => "[1]"
+f [1,2]     # => "[1, 2]"
 ```
 
 Or, you could use the <em>splat</em> in the parameter declaration and then `.flatten`, giving you a different sort of collector. (For that matter, you could call `.flatten` above, too.)  
@@ -7905,12 +7905,12 @@ Or, you could use the <em>splat</em> in the parameter declaration and then `.fla
 ```ruby
 def f *x
   p x.flatten.inspect
-end         # =&gt; nil
-f 1         # =&gt; "[1]"
-f 1,2       # =&gt; "[1, 2]"
-f [1]       # =&gt; "[1]"
-f [1,2]     # =&gt; "[1, 2]"
-f [1,2],3,4 # =&gt; "[1, 2, 3, 4]"
+end         # => nil
+f 1         # => "[1]"
+f 1,2       # => "[1, 2]"
+f [1]       # => "[1]"
+f [1,2]     # => "[1, 2]"
+f [1,2],3,4 # => "[1, 2, 3, 4]"
 ```
 
 And, thanks <a href="https://stackoverflow.com/users/365596/gregschlom">gregschlom</a>, it's sometimes faster to just use `Array(x)` because when it's already an `Array` it doesn't need to create a new object.  
@@ -7942,7 +7942,7 @@ You can also return the intersection.
 
 ```ruby
 a = [1,1,2,3]
-a &amp; a
+a & a
 ```
 
 This will also delete duplicates.  
@@ -7951,7 +7951,7 @@ This will also delete duplicates.
 You can remove the duplicate elements with the uniq method:  
 
 ```ruby
-array.uniq  # =&gt; [1, 2, 4, 5, 6, 7, 8]
+array.uniq  # => [1, 2, 4, 5, 6, 7, 8]
 ```
 
 What might also be useful to know is that the uniq method takes a block, so e.g if you a have an array of keys like this:  
@@ -7989,11 +7989,11 @@ I'm going to heavily quote <a href="http://ruby-doc.org/core/Object.html#method-
 class Object
   def all_equals(o)
     ops = [:==, :===, :eql?, :equal?]
-    Hash[ops.map(&amp;:to_s).zip(ops.map {|s| send(s, o) })]
+    Hash[ops.map(&:to_s).zip(ops.map {|s| send(s, o) })]
   end
 end
 
-"a".all_equals "a" # =&gt; {"=="=&gt;true, "==="=&gt;true, "eql?"=&gt;true, "equal?"=&gt;false}
+"a".all_equals "a" # => {"=="=>true, "==="=>true, "eql?"=>true, "equal?"=>false}
 ```
 
 <hr>
@@ -8041,8 +8041,8 @@ See <a href="https://stackoverflow.com/questions/1735717/help-refactoring-this-n
   The `eql?` method returns true if `obj` and `other` refer to the same hash key. This is used by `Hash` to test members for equality. <strong>For objects of class `Object`, `eql?` is synonymous with `==`.</strong> Subclasses normally continue this tradition by aliasing `eql?` to their overridden `==` method, but there are exceptions. `Numeric` types, for example, perform type conversion across `==`, but not across `eql?`, so:  
 
 ```ruby
-1 == 1.0     #=&gt; true
-1.eql? 1.0   #=&gt; false
+1 == 1.0     #=> true
+1.eql? 1.0   #=> false
 ```
 </blockquote>
 
@@ -8067,8 +8067,8 @@ As, in Ruby, all comparators (and most operators) are actually method-calls, you
 Ruby uses :== everywhere to compare the <strong>values</strong> of 2 objects, eg. Hash-values:</p>
 
 ```ruby
-{a: 'z'}  ==  {a: 'Z'}    # =&gt; false
-{a: 1}    ==  {a: 1.0}    # =&gt; true
+{a: 'z'}  ==  {a: 'Z'}    # => false
+{a: 1}    ==  {a: 1.0}    # => true
 ```
 
 <p><strong>`===` (case comparison)</strong><br>
@@ -8096,9 +8096,9 @@ class Equ
   def eql?(other)      self.hash == other.hash  end
 end
 
-h = {Equ.new(3) =&gt; 3,  Equ.new(8) =&gt; 8,  Equ.new(15) =&gt; 15}    #3 entries, but 2 are :eql?
-h.size            # =&gt; 2
-h[Equ.new(27)]    # =&gt; 15
+h = {Equ.new(3) => 3,  Equ.new(8) => 8,  Equ.new(15) => 15}    #3 entries, but 2 are :eql?
+h.size            # => 2
+h[Equ.new(27)]    # => 15
 ```
 
 Note: The commonly used Ruby-class Set also relies on Hash-key-comparison.  
@@ -8108,8 +8108,8 @@ Ruby uses :equal? to check if two objects are identical. This method (of class B
 
 ```ruby
 obj = obj2 = 'a'
-obj.equal? obj2       # =&gt; true
-obj.equal? obj.dup    # =&gt; false
+obj.equal? obj2       # => true
+obj.equal? obj.dup    # => false
 ```
 
 #### Answer 3 (score 31)
@@ -8118,13 +8118,13 @@ obj.equal? obj.dup    # =&gt; false
 The == operator, also known as equality or double equal, will return true if both objects are equal and false if they are not.  
 
 ```ruby
-"koan" == "koan" # Output: =&gt; true
+"koan" == "koan" # Output: => true
 ```
 
 The != operator, also known as inequality, is the opposite of ==. It will return true if both objects are not equal and false if they are equal.  
 
 ```ruby
-"koan" != "discursive thought" # Output: =&gt; true
+"koan" != "discursive thought" # Output: => true
 ```
 
 Note that two arrays with the same elements in a different order are not equal, uppercase and lowercase versions of the same letter are not equal and so on.   
@@ -8132,7 +8132,7 @@ Note that two arrays with the same elements in a different order are not equal, 
 When comparing numbers of different types (e.g., integer and float), if their numeric value is the same, == will return true.  
 
 ```ruby
-2 == 2.0 # Output: =&gt; true
+2 == 2.0 # Output: => true
 ```
 
 <h5>equal?</h2>
@@ -8144,10 +8144,10 @@ Unlike the == operator which tests if both operands are equal, the equal method 
     b = "zen"</p>
 
 ```ruby
-a.object_id  # Output: =&gt; 20139460
-b.object_id  # Output :=&gt; 19972120
+a.object_id  # Output: => 20139460
+b.object_id  # Output :=> 19972120
 
-a.equal? b  # Output: =&gt; false
+a.equal? b  # Output: => false
 ```
 
 In the example above, we have two strings with the same value. However, they are two distinct objects, with different object IDs. Hence, the equal? method will return false.  
@@ -8158,10 +8158,10 @@ Let's try again, only this time b will be a reference to a. Notice that the obje
 a = "zen"
 b = a
 
-a.object_id  # Output: =&gt; 18637360
-b.object_id  # Output: =&gt; 18637360
+a.object_id  # Output: => 18637360
+b.object_id  # Output: => 18637360
 
-a.equal? b  # Output: =&gt; true
+a.equal? b  # Output: => true
 ```
 
 <h5>eql?</h2>
@@ -8171,35 +8171,35 @@ In the Hash class, the eql? method it is used to test keys for equality. Some ba
 Ruby provides a built-in method called hash for generating hashcodes. In the example below, it takes a string and returns a hashcode. Notice how strings with the same value always have the same hashcode, even though they are distinct objects (with different object IDs).  
 
 ```ruby
-"meditation".hash  # Output: =&gt; 1396080688894079547
-"meditation".hash  # Output: =&gt; 1396080688894079547
-"meditation".hash  # Output: =&gt; 1396080688894079547
+"meditation".hash  # Output: => 1396080688894079547
+"meditation".hash  # Output: => 1396080688894079547
+"meditation".hash  # Output: => 1396080688894079547
 ```
 
 The hash method is implemented in the Kernel module, included in the Object class, which is the default root of all Ruby objects. Some classes such as Symbol and Integer use the default implementation, others like String and Hash provide their own implementations.   
 
 ```ruby
-Symbol.instance_method(:hash).owner  # Output: =&gt; Kernel
-Integer.instance_method(:hash).owner # Output: =&gt; Kernel
+Symbol.instance_method(:hash).owner  # Output: => Kernel
+Integer.instance_method(:hash).owner # Output: => Kernel
 
-String.instance_method(:hash).owner  # Output: =&gt; String
-Hash.instance_method(:hash).owner  # Output: =&gt; Hash
+String.instance_method(:hash).owner  # Output: => String
+Hash.instance_method(:hash).owner  # Output: => Hash
 ```
 
 In Ruby, when we store something in a hash (collection), the object provided as a key (e.g., string or symbol) is converted into and stored as a hashcode. Later, when retrieving an element from the hash (collection), we provide an object as a key, which is converted into a hashcode and compared to the existing keys. If there is a match, the value of the corresponding item is returned. The comparison is made using the eql? method under the hood.   
 
 ```ruby
-"zen".eql? "zen"    # Output: =&gt; true
+"zen".eql? "zen"    # Output: => true
 # is the same as
-"zen".hash == "zen".hash # Output: =&gt; true
+"zen".hash == "zen".hash # Output: => true
 ```
 
 In most cases, the eql? method behaves similarly to the == method. However, there are a few exceptions. For instance, eql? does not perform implicit type conversion when comparing an integer to a float.  
 
 ```ruby
-2 == 2.0    # Output: =&gt; true
-2.eql? 2.0    # Output: =&gt; false
-2.hash == 2.0.hash  # Output: =&gt; false
+2 == 2.0    # Output: => true
+2.eql? 2.0    # Output: => false
+2.hash == 2.0.hash  # Output: => false
 ```
 
 <h5>Case equality operator: ===</h2>
@@ -8209,18 +8209,18 @@ In most cases, the eql? method behaves similarly to the == method. However, ther
 Many of Ruby's built-in classes, such as String, Range, and Regexp, provide their own implementations of the === operator, also known as case-equality, triple equals or threequals. Because it's implemented differently in each class, it will behave differently depending on the type of object it was called on. Generally, it returns true if the object on the right "belongs to" or "is a member of" the object on the left. For instance, it can be used to test if an object is an instance of a class (or one of its subclasses).  
 
 ```ruby
-String === "zen"  # Output: =&gt; true
-Range === (1..2)   # Output: =&gt; true
-Array === [1,2,3]   # Output: =&gt; true
-Integer === 2   # Output: =&gt; true
+String === "zen"  # Output: => true
+Range === (1..2)   # Output: => true
+Array === [1,2,3]   # Output: => true
+Integer === 2   # Output: => true
 ```
 
 The same result can be achieved with other methods which are probably best suited for the job. It's usually better to write code that is easy to read by being as explicit as possible, without sacrificing efficiency and conciseness.   
 
 ```ruby
-2.is_a? Integer   # Output: =&gt; true
-2.kind_of? Integer  # Output: =&gt; true
-2.instance_of? Integer # Output: =&gt; false
+2.is_a? Integer   # Output: => true
+2.kind_of? Integer  # Output: => true
+2.instance_of? Integer # Output: => false
 ```
 
 Notice the last example returned false because integers such as 2 are instances of the Fixnum class, which is a subclass of the Integer class. The ===, is_a? and instance_of? methods return true if the object is an instance of the given class or any subclasses. The instance_of method is stricter and only returns true if the object is an instance of that exact class, not a subclass.   
@@ -8234,12 +8234,12 @@ Kernel.instance_method(:kind_of?) == Kernel.instance_method(:is_a?) # Output: =>
 When the === operator is called on a range object, it returns true if the value on the right falls within the range on the left.  
 
 ```ruby
-(1..4) === 3  # Output: =&gt; true
-(1..4) === 2.345 # Output: =&gt; true
-(1..4) === 6  # Output: =&gt; false
+(1..4) === 3  # Output: => true
+(1..4) === 2.345 # Output: => true
+(1..4) === 6  # Output: => false
 
-("a".."d") === "c" # Output: =&gt; true
-("a".."d") === "e" # Output: =&gt; false
+("a".."d") === "c" # Output: => true
+("a".."d") === "e" # Output: => false
 ```
 
 Remember that the === operator invokes the === method of the left-hand object. So (1..4) === 3 is equivalent to (1..4).=== 3. In other words, the class of the left-hand operand will define which implementation of the === method will be called, so the operand positions are not interchangeable.   
@@ -8287,25 +8287,25 @@ The =~ (equal-tilde) and !~ (bang-tilde) operators are used to match strings and
 The implementation of the =~ method in the String and Symbol classes expects a regular expression (an instance of the Regexp class) as an argument.   
 
 ```ruby
-"practice zazen" =~ /zen/   # Output: =&gt; 11
-"practice zazen" =~ /discursive thought/ # Output: =&gt; nil
+"practice zazen" =~ /zen/   # Output: => 11
+"practice zazen" =~ /discursive thought/ # Output: => nil
 
-:zazen =~ /zen/    # Output: =&gt; 2
-:zazen =~ /discursive thought/  # Output: =&gt; nil
+:zazen =~ /zen/    # Output: => 2
+:zazen =~ /discursive thought/  # Output: => nil
 ```
 
 The implementation in the Regexp class expects a string or a symbol as an argument.   
 
 ```ruby
-/zen/ =~ "practice zazen"  # Output: =&gt; 11
-/zen/ =~ "discursive thought" # Output: =&gt; nil
+/zen/ =~ "practice zazen"  # Output: => 11
+/zen/ =~ "discursive thought" # Output: => nil
 ```
 
 In all implementations, when the string or symbol matches the Regexp pattern, it returns an integer which is the position (index) of the match. If there is no match, it returns nil. Remember that, in Ruby, any integer value is "truthy" and nil is "falsy", so the =~ operator can be used in if statements and ternary operators.  
 
 ```ruby
-puts "yes" if "zazen" =~ /zen/ # Output: =&gt; yes
-"zazen" =~ /zen/?"yes":"no" # Output: =&gt; yes
+puts "yes" if "zazen" =~ /zen/ # Output: => yes
+"zazen" =~ /zen/?"yes":"no" # Output: => yes
 ```
 
 Pattern-matching operators are also useful for writing shorter if statements. Example:  
@@ -8375,7 +8375,7 @@ Now figure out how to embed this into your editor.
 This question is an old one, but it shows up at the top of Google when searching for how to run a single test.  I don't know if it's a recent addition, but to run a single test out of a spec you can do the following:  
 
 ```ruby
-rspec path/to/spec:&lt;line number&gt;
+rspec path/to/spec:<line number>
 ```
 
 where -line number- is a line number that contains part of your test.  For example, if you had a spec like:  
@@ -8435,7 +8435,7 @@ Ruby has <a href="http://ruby-doc.org/core-2.2.3/Enumerator.html#method-i-with_i
 
 ```ruby
 [:a, :b, :c].map.with_index(2).to_a
-#=&gt; [[:a, 2], [:b, 3], [:c, 4]]
+#=> [[:a, 2], [:b, 3], [:c, 4]]
 ```
 
 #### Answer 3 (score 111)

@@ -455,11 +455,11 @@ I have a `div` tag with `width` set to <strong>800 pixels</strong>. When the bro
 
 #### Answer accepted (score 1059)
 ```css
-&lt;body&gt;
-    &lt;div style="width:800px; margin:0 auto;"&gt;
+<body>
+    <div style="width:800px; margin:0 auto;">
         centered content
-    &lt;/div&gt;
-&lt;/body&gt;
+    </div>
+</body>
 ```
 
 #### Answer 2 (score 312)
@@ -491,9 +491,9 @@ Modern <a href="http://caniuse.com/#search=flexbox" rel="noreferrer"><strong>Fle
 <strong>HTML</strong>  
 
 ```css
-&lt;div class="container"&gt;
-  &lt;div class="center"&gt;Center&lt;/div&gt;
-&lt;/div&gt;
+<div class="container">
+  <div class="center">Center</div>
+</div>
 ```
 
 <strong>CSS</strong>  
@@ -604,7 +604,7 @@ Square Div
 It turns out there's another way to do this.  
 
 ```css
-&lt;img style='height: 100%; width: 100%; object-fit: contain'/&gt;
+<img style='height: 100%; width: 100%; object-fit: contain'/>
 ```
 
 will do the work. It's CSS&nbsp;3 stuff.  
@@ -796,9 +796,9 @@ The first approach uses Bootstrap's own offset classes so it requires no change 
 In markup this would look like:  
 
 ```css
-&lt;div class="row"&gt;
-    &lt;div class="col-md-2 col-md-offset-5"&gt;&lt;/div&gt;
-&lt;/div&gt;
+<div class="row">
+    <div class="col-md-2 col-md-offset-5"></div>
+</div>
 ```
 
 Now, there's an obvious drawback for this method. <strong>It only works for even column sizes</strong>, so only `.col-X-2`, `.col-X-4`, `col-X-6`, `col-X-8`, and `col-X-10` are supported.  
@@ -819,9 +819,9 @@ You can <strong>center any column size</strong> by using the proven `margin: 0 a
 Now you can add it to any column size at any screen size, and it will work seamlessly with Bootstrap's responsive layout:  
 
 ```css
-&lt;div class="row"&gt;
-    &lt;div class="col-lg-1 col-centered"&gt;&lt;/div&gt;
-&lt;/div&gt;
+<div class="row">
+    <div class="col-lg-1 col-centered"></div>
+</div>
 ```
 
 <strong>Note:</strong> With both techniques you could skip the `.row` element and have the column centered inside a `.container`, but you would notice a minimal difference in the actual column size because of the padding in the container class.  
@@ -871,22 +871,22 @@ Bootstrap 3 <a href="http://getbootstrap.com/css/#helper-classes-center">Helper 
 Please check <a href="http://jsfiddle.net/e7eSP/1/show/"><strong>this jsfiddle DEMO</strong></a>:  
 
 ```css
-&lt;div class="container"&gt;
-    &lt;div class="row"&gt;
-        &lt;div class="center-block"&gt;row center-block&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="row"&gt;
-        &lt;div class="col-md-6 brd"&gt;
-            &lt;div class="center-block"&gt;1 center-block&lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div class="col-md-6 brd"&gt;
-            &lt;div class="center-block"&gt;2 center-block&lt;/div&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="row"&gt;
-    &lt;div class="col-xs-2 col-center-block"&gt;row col-xs-2 col-center-block&lt;/div&gt;
-&lt;/div&gt;
+<div class="container">
+    <div class="row">
+        <div class="center-block">row center-block</div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 brd">
+            <div class="center-block">1 center-block</div>
+        </div>
+        <div class="col-md-6 brd">
+            <div class="center-block">2 center-block</div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-2 col-center-block">row col-xs-2 col-center-block</div>
+</div>
 ```
 
 <img src="https://i.stack.imgur.com/bHg4V.png" alt="Helper classes center">  
@@ -934,9 +934,9 @@ If you're using Bootstrap, it has an "unstyled" class:
 <h5>Bootstrap 2:</h3>
 
 ```css
-&lt;ul class="unstyled"&gt;
-   &lt;li&gt;...&lt;/li&gt;
-&lt;/ul&gt;
+<ul class="unstyled">
+   <li>...</li>
+</ul>
 ```
 
 <a href="http://twitter.github.io/bootstrap/base-css.html#typography" rel="noreferrer">http://twitter.github.io/bootstrap/base-css.html#typography</a>  
@@ -944,9 +944,9 @@ If you're using Bootstrap, it has an "unstyled" class:
 <h5>Bootstrap 3 and 4:</h3>
 
 ```css
-&lt;ul class="list-unstyled"&gt;
-   &lt;li&gt;...&lt;/li&gt;
-&lt;/ul&gt;
+<ul class="list-unstyled">
+   <li>...</li>
+</ul>
 ```
 
 Bootstrap 3: <a href="http://getbootstrap.com/css/#type-lists" rel="noreferrer">http://getbootstrap.com/css/#type-lists</a>  
@@ -957,9 +957,9 @@ Bootstrap 4: <a href="https://getbootstrap.com/docs/4.3/content/typography/#unst
 You need to use `list-style: none;`  
 
 ```css
-&lt;ul style="list-style: none;"&gt;
-    &lt;li&gt; ...&lt;/li&gt;
-&lt;/ul&gt;
+<ul style="list-style: none;">
+    <li> ...</li>
+</ul>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -970,10 +970,10 @@ You need to use `list-style: none;`
 I've got a list, and I have a click handler for its items:  
 
 ```css
-&lt;ul&gt;
-  &lt;li&gt;foo&lt;/li&gt;
-  &lt;li&gt;goo&lt;/li&gt;
-&lt;/ul&gt;
+<ul>
+  <li>foo</li>
+  <li>goo</li>
+</ul>
 ```
 
 How can I change the mouse pointer into a hand pointer (like when hovering over a button)? Right now the pointer turns into a text selection pointer when I hover over the list items.  
@@ -1034,7 +1034,7 @@ See more cursor properties with examples after running snippet option:
 .nesw-resize   { cursor: nesw-resize; }
 .nwse-resize   { cursor: nwse-resize; }
 
-.cursors &gt; div {
+.cursors > div {
     float: left;
     box-sizing: border-box;
     background: #f2f2f2;
@@ -1043,10 +1043,10 @@ See more cursor properties with examples after running snippet option:
     padding: 10px 2px;
     text-align: center;
     white-space: nowrap;
-    &amp;:nth-child(even) {
+    &:nth-child(even) {
        background: #eee;
     }
-    &amp;:hover {
+    &:hover {
        opacity: 0.25
     }
 }
@@ -1109,11 +1109,11 @@ And voilà! Handy.
 I am using something similar to the following code:   
 
 ```css
-&lt;div style="opacity:0.4; background-image:url(...);"&gt;
-    &lt;div style="opacity:1.0;"&gt;
+<div style="opacity:0.4; background-image:url(...);">
+    <div style="opacity:1.0;">
         Text
-    &lt;/div&gt;
-&lt;/div&gt;
+    </div>
+</div>
 ```
 
 I expected this to make the background have an opacity of 0.4 and the text to have 100% opacity. Instead they both have an opacity of 0.4.   
@@ -1140,9 +1140,9 @@ Example, 50% faded black background:
 You can use CSS 3 `:before` to have a semi-transparent background and you can do this with just one container. Use something like this  
 
 ```css
-&lt;article&gt;
+<article>
   Text.
-&lt;/article&gt;
+</article>
 ```
 
 Then apply some CSS  
@@ -1415,7 +1415,7 @@ How do I select the `&lt;li&gt;` element that is a direct parent of the anchor e
 As an example, my CSS would be something like this:  
 
 ```css
-li &lt; a.active {
+li < a.active {
     property: value;
 }
 ```
@@ -1445,7 +1445,7 @@ The <a href="https://dev.w3.org/csswg/selectors4/#relational" rel="noreferrer">S
 Using `:has()` the original question could be solved with this:  
 
 ```css
-li:has(&gt; a.active) { /* styles to apply to the li tag */ }
+li:has(> a.active) { /* styles to apply to the li tag */ }
 ```
 
 #### Answer 2 (score 146)
@@ -1457,19 +1457,19 @@ But as you already seem to have an `.active` class, it would be easier to move t
 You can use <a href="https://github.com/Idered/cssParentSelector" rel="nofollow noreferrer">this script</a>:  
 
 ```css
-*! &gt; input[type=text] { background: #000; }
+*! > input[type=text] { background: #000; }
 ```
 
 This will select any parent of a text input. But wait, there's still much more. If you want, you can select a specified parent:  
 
 ```css
-.input-wrap! &gt; input[type=text] { background: #000; }
+.input-wrap! > input[type=text] { background: #000; }
 ```
 
 Or select it when it's active:  
 
 ```css
-.input-wrap! &gt; input[type=text]:focus { background: #000; }
+.input-wrap! > input[type=text]:focus { background: #000; }
 ```
 
 Check out this HTML:  
@@ -1483,7 +1483,7 @@ Check out this HTML:
 You can select that `span.help` when the `input` is active and show it:  
 
 ```css
-.input-wrap! .help &gt; input[type=text]:focus { display: block; }
+.input-wrap! .help > input[type=text]:focus { display: block; }
 ```
 
 There are many more capabilities; just check out the documentation of the plugin.  
@@ -1563,7 +1563,7 @@ In most browsers, this can be achieved using proprietary variations on the CSS `
 For IE &lt; 10 and Opera &lt; 15, you will need to use the `unselectable` attribute of the element you wish to be unselectable. You can set this using an attribute in HTML:  
 
 ```css
-&lt;div id="foo" unselectable="on" class="unselectable"&gt;...&lt;/div&gt;
+<div id="foo" unselectable="on" class="unselectable">...</div>
 ```
 
 Sadly this property isn't inherited, meaning you have to put an attribute in the start tag of every element inside the `&lt;div&gt;`. If this is a problem, you could instead use JavaScript to do this recursively for an element's descendants:  
@@ -1894,9 +1894,9 @@ Using the <a href="https://stackoverflow.com/questions/376253/stretch-and-scale-
 <h5>HTML</h3>
 
 ```css
-&lt;div id="background"&gt;
-    &lt;img src="img.jpg" class="stretch" alt="" /&gt;
-&lt;/div&gt;
+<div id="background">
+    <img src="img.jpg" class="stretch" alt="" />
+</div>
 ```
 
 <h5>CSS</h3>
@@ -1933,10 +1933,10 @@ I need assistance with overlaying one individual `div` over another individual `
 My code looks like this:  
 
 ```css
-&lt;div class="navi"&gt;&lt;/div&gt;
-&lt;div id="infoi"&gt;
-    &lt;img src="info_icon2.png" height="20" width="32"/&gt;
-&lt;/div&gt;
+<div class="navi"></div>
+<div id="infoi">
+    <img src="info_icon2.png" height="20" width="32"/>
+</div>
 ```
 
 Unfortunately I cannot nest the `div#infoi` or the `img`, inside the first `div.navi`.  
@@ -2020,10 +2020,10 @@ For example, if a `&lt;div class="parent"&gt;` element is given `position: relat
 <strong>The other factor</strong> to be aware of is <strong>stack order</strong> - or how elements are stacked in the z-direction. The must-know here is the stack order of elements are, by default, defined by the reverse of their order in the HTML structure. Consider the following example:  
 
 ```css
-&lt;body&gt;
-  &lt;div&gt;Bottom&lt;/div&gt;
-  &lt;div&gt;Top&lt;/div&gt;
-&lt;/body&gt;
+<body>
+  <div>Bottom</div>
+  <div>Top</div>
+</body>
 ```
 
 In this example, if the two `&lt;div&gt;` elements were positioned in the same place on the page, the `&lt;div&gt;Top&lt;/div&gt;` element would cover the `&lt;div&gt;Bottom&lt;/div&gt;` element. Since `&lt;div&gt;Top&lt;/div&gt;` comes after `&lt;div&gt;Bottom&lt;/div&gt;` in the HTML structure it has a higher stacking order.  
@@ -2067,10 +2067,10 @@ So, back to the problem at hand - we'll use position context to solve this issue
 As stated above, our goal is to position the `#infoi` element so it appears within the `.navi` element. To do this, we'll wrap the `.navi` and `#infoi` elements in a new element `&lt;div class="wrapper"&gt;` so we can create a new position context.  
 
 ```css
-&lt;div class="wrapper"&gt;
-  &lt;div class="navi"&gt;&lt;/div&gt;
-  &lt;div id="infoi"&gt;&lt;/div&gt;
-&lt;/div&gt;
+<div class="wrapper">
+  <div class="navi"></div>
+  <div id="infoi"></div>
+</div>
 ```
 
 Then create a new position context by giving `.wrapper` a `position: relative`.  
@@ -2214,11 +2214,11 @@ Can CSS be used to hide the scroll bar? How would you do this?
 Set `overflow: hidden;` on the body tag like this:  
 
 ```css
-&lt;style type="text/css"&gt;
+<style type="text/css">
     body {
         overflow: hidden;
     }
-&lt;/style&gt;
+</style>
 ```
 
 The code above hides both the horizontal and vertical scrollbar.  
@@ -2226,21 +2226,21 @@ The code above hides both the horizontal and vertical scrollbar.
 If you want to hide <strong>only the vertical scrollbar</strong>, use `overflow-y`:  
 
 ```css
-&lt;style type="text/css"&gt;
+<style type="text/css">
     body {
         overflow-y: hidden;
     }
-&lt;/style&gt;
+</style>
 ```
 
 And if you want to hide <strong>only the horizontal scrollbar</strong>, use `overflow-x`:  
 
 ```css
-&lt;style type="text/css"&gt;
+<style type="text/css">
     body {
         overflow-x: hidden;
     }
-&lt;/style&gt;
+</style>
 ```
 
 <hr>
@@ -2681,7 +2681,7 @@ html, body {
     display: table;
     text-align: center;
 }
-.parent &gt; .child {
+.parent > .child {
     display: table-cell;
     vertical-align: middle;
 }
@@ -2706,7 +2706,7 @@ html, body, .container {
     position: relative;
     text-align: center;
 }
-.container &gt; p {
+.container > p {
     position: absolute;
     top: 50%;
     left: 0;
@@ -2734,7 +2734,7 @@ Though this solution will work in some cases, it's worth noting that it won't wo
     width: 400px;
     text-align: center;
 }
-.parent &gt; .child {
+.parent > .child {
     line-height: 200px;
 }
 ```
@@ -2749,9 +2749,9 @@ Methods 4 and 5 aren't the most reliable. Go with one of the first 3.
 Using flexbox/CSS:   
 
 ```css
-&lt;div class="box"&gt;
-    &lt;p&gt;&amp;#x0D05;&lt;/p&gt;
-&lt;/div&gt;
+<div class="box">
+    <p>&#x0D05;</p>
+</div>
 ```
 
 The CSS:  
@@ -3757,27 +3757,27 @@ This is from <em><a href="http://robertnyman.com/2010/01/11/css-background-trans
      </p>
 
 ```css
- &lt;head&gt;
-     &lt;meta http-equiv="X-UA-Compatible" content="IE=edge" &gt;
-    &lt;title&gt;An XHTML 1.0 Strict standard template&lt;/title&gt;
-     &lt;meta http-equiv="content-type" content="text/html;charset=utf-8" /&gt;
-    &lt;style type="text/css" media="all"&gt;
+ <head>
+     <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+    <title>An XHTML 1.0 Strict standard template</title>
+     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <style type="text/css" media="all">
          .transparent-background-with-text-and-images-on-top {
              background: rgb(0, 0, 0) transparent;   /* Fallback for web browsers that doesn't support RGBa */
             background: rgba(0, 0, 0, 0.6);   /* RGBa with 0.6 opacity */
              filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);  /* For IE 5.5 - 7*/
             -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";  /* For IE 8*/
          }
-     &lt;/style&gt;
- &lt;/head&gt;
+     </style>
+ </head>
 
- &lt;body&gt;
-     &lt;div class="transparent-background-with-text-and-images-on-top"&gt;
-         &lt;p&gt;Here some content (text AND images) "on top of the transparent background"&lt;/p&gt;
-        &lt;img src="http://i.imgur.com/LnnghmF.gif"&gt;
-     &lt;/div&gt;
- &lt;/body&gt;
- &lt;/html&gt;
+ <body>
+     <div class="transparent-background-with-text-and-images-on-top">
+         <p>Here some content (text AND images) "on top of the transparent background"</p>
+        <img src="http://i.imgur.com/LnnghmF.gif">
+     </div>
+ </body>
+ </html>
 ```
 
 <p><img src="https://i.stack.imgur.com/BgkgK.png" alt="Chrome-33">
@@ -3840,9 +3840,9 @@ How can you align an image inside of a containing `div`?
 In my example, I need to vertically center the `&lt;img&gt;` in the `&lt;div&gt;` with `class ="frame`":  
 
 ```css
-&lt;div class="frame" style="height: 25px;"&gt;
-    &lt;img src="http://jsfiddle.net/img/logo.png" /&gt;
-&lt;/div&gt;
+<div class="frame" style="height: 25px;">
+    <img src="http://jsfiddle.net/img/logo.png" />
+</div>
 ```
 
 `.frame`'s height is fixed and image's height is unknown. I can add new elements in `.frame` if that's the only solution. I'm trying to do this on Internet&nbsp;Explorer&nbsp;7  and later, WebKit, Gecko.  
@@ -4032,7 +4032,7 @@ img {
     list-style:none;
     behavior: expression(
         function(t){
-            t.insertAdjacentHTML('afterBegin','&lt;span class="frame_before"&gt;&lt;/span&gt;');
+            t.insertAdjacentHTML('afterBegin','<span class="frame_before"></span>');
             t.runtimeStyle.behavior = 'none';
         }(this)
     );
@@ -4104,9 +4104,9 @@ Demo: <a href="https://jsbin.com/lidebapomi/edit?html,css,output" rel="noreferre
 HTML:  
 
 ```css
-&lt;div class="frame"&gt;
-  &lt;img src="foo"/&gt;
-&lt;/div&gt;
+<div class="frame">
+  <img src="foo"/>
+</div>
 ```
 
 CSS:  
@@ -4471,9 +4471,9 @@ Control size and maintain proportion :
 I want to center a `div` vertically with CSS. I don't want tables or JavaScript, but only pure CSS. I found some solutions, but all of them are missing Internet Explorer 6 support.  
 
 ```css
-&lt;body&gt;
-    &lt;div&gt;Div to be aligned vertically&lt;/div&gt;
-&lt;/body&gt;
+<body>
+    <div>Div to be aligned vertically</div>
+</body>
 ```
 
 How can I center a `div` vertically in all major browsers, including Internet Explorer 6?  
@@ -4600,11 +4600,11 @@ The code below (also available as <a href="http://jsfiddle.net/9Y7Cm/3/" rel="no
 
 
 ```css
-&lt;div id="column-content"&gt;
-    &lt;img src="http://i.stack.imgur.com/12qzO.png"&gt;
-    &lt;strong&gt;1234&lt;/strong&gt;
+<div id="column-content">
+    <img src="http://i.stack.imgur.com/12qzO.png">
+    <strong>1234</strong>
     yet another text content that should be centered vertically
-&lt;/div&gt;
+</div>
 ```
 
 
@@ -4674,7 +4674,7 @@ Andres Ilich has it right. Just in case someone misses his comment...
 div
 {
   height: 200px;
-  line-height: 200px; /* &lt;-- this is what you must define */
+  line-height: 200px; /* <-- this is what you must define */
 }
 ```
 
@@ -4698,7 +4698,7 @@ span
 {
   display: inline-block;
   vertical-align: middle;
-  line-height: 18px; /* &lt;-- adjust this */
+  line-height: 18px; /* <-- adjust this */
 }
 ```
 
@@ -4713,20 +4713,20 @@ span
 Flexboxes should now be used to vertically (or even  horizontally) align items.  
 
 ```css
-&lt;div class="flex-container"&gt;
-    &lt;div class="flex-item"&gt;Item&lt;/div&gt;
-    &lt;div class="flex-item"&gt;Item&lt;/div&gt;
-    &lt;div class="flex-item"&gt;Item&lt;/div&gt;
-    &lt;div class="flex-item"&gt;Item&lt;/div&gt;
-&lt;/div&gt;
+<div class="flex-container">
+    <div class="flex-item">Item</div>
+    <div class="flex-item">Item</div>
+    <div class="flex-item">Item</div>
+    <div class="flex-item">Item</div>
+</div>
 
-&lt;style&gt;
+<style>
 .flex-container {
     display: flex;
     align-items: center; /* Vertical center alignment */
     justify-content: center; /* Horizontal center alignment */
 }
-&lt;/style&gt;
+</style>
 ```
 
 A good guide to flexbox can be read on <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" rel="noreferrer">CSS Tricks</a>. Thanks Ben (from comments) for pointing it out. I didn't have time to update.  
@@ -4835,14 +4835,14 @@ You still can use a custom class when you need it:
 Using `inline-block` adds extra space between blocks if you let a real space in your code (like `...&lt;/div&gt; &lt;/div&gt;...`). This extra space breaks our grid if column sizes add up to 12:  
 
 ```css
-&lt;div class="row"&gt;
-    &lt;div class="col-xs-6 col-md-4 col-lg-2 vcenter"&gt;
-        &lt;div style="height:10em;border:1px solid #000"&gt;Big&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="col-xs-6 col-md-8 col-lg-10 vcenter"&gt;
-        &lt;div style="height:3em;border:1px solid #F00"&gt;Small&lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
+<div class="row">
+    <div class="col-xs-6 col-md-4 col-lg-2 vcenter">
+        <div style="height:10em;border:1px solid #000">Big</div>
+    </div>
+    <div class="col-xs-6 col-md-8 col-lg-10 vcenter">
+        <div style="height:3em;border:1px solid #F00">Small</div>
+    </div>
+</div>
 ```
 
 Here, we've got extra spaces between `&lt;div class="[...] col-lg-2"&gt;` and `&lt;div class="[...] col-lg-10"&gt;` (a carriage return and 2 tabs/8 spaces). And so...  
@@ -4852,14 +4852,14 @@ Here, we've got extra spaces between `&lt;div class="[...] col-lg-2"&gt;` and `&
 Let's kick this extra space!!  
 
 ```css
-&lt;div class="row"&gt;
-    &lt;div class="col-xs-6 col-md-4 col-lg-2 vcenter"&gt;
-        &lt;div style="height:10em;border:1px solid #000"&gt;Big&lt;/div&gt;
-    &lt;/div&gt;&lt;!--
-    --&gt;&lt;div class="col-xs-6 col-md-8 col-lg-10 vcenter"&gt;
-        &lt;div style="height:3em;border:1px solid #F00"&gt;Small&lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
+<div class="row">
+    <div class="col-xs-6 col-md-4 col-lg-2 vcenter">
+        <div style="height:10em;border:1px solid #000">Big</div>
+    </div><!--
+    --><div class="col-xs-6 col-md-8 col-lg-10 vcenter">
+        <div style="height:3em;border:1px solid #F00">Small</div>
+    </div>
+</div>
 ```
 
 <img src="https://i.stack.imgur.com/XZTJj.png" alt="Enter image description here">  
@@ -4901,13 +4901,13 @@ Using Twitter Bootstrap we have `.row`s having some `.col-*`s. All we need to do
 <a href="http://codepen.io/hashem/pen/Lsprw?editors=110" rel="noreferrer"><strong>EXAMPLE HERE</strong></a> <em>(Please read the comments with care)</em>  
 
 ```css
-&lt;div class="container"&gt;
-    &lt;div class="row vertical-align"&gt; &lt;!--
-                    ^--  Additional class --&gt;
-        &lt;div class="col-xs-6"&gt; ... &lt;/div&gt;
-        &lt;div class="col-xs-6"&gt; ... &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
+<div class="container">
+    <div class="row vertical-align"> <!--
+                    ^--  Additional class -->
+        <div class="col-xs-6"> ... </div>
+        <div class="col-xs-6"> ... </div>
+    </div>
+</div>
 ```
 
 ```css
@@ -4991,8 +4991,8 @@ In order to fix that, you can add `display: flex;` to the columns as well:
   flex-direction: row;
 }
 
-.vertical-align &gt; [class^="col-"],
-.vertical-align &gt; [class*=" col-"] {
+.vertical-align > [class^="col-"],
+.vertical-align > [class*=" col-"] {
   display: flex;
   align-items: center;     /* Align the flex-items vertically */
   justify-content: center; /* Optional, to align inner flex-items
@@ -5044,10 +5044,10 @@ The below code worked for me:
 I'm using placeholders for text inputs which is working out just fine. But I'd like to use a placeholder for my selectboxes as well. Of course I can just use this code:  
 
 ```css
-&lt;select&gt;
-    &lt;option value=""&gt;Select your option&lt;/option&gt;
-    &lt;option value="hurr"&gt;Durr&lt;/option&gt;
-&lt;/select&gt;
+<select>
+    <option value="">Select your option</option>
+    <option value="hurr">Durr</option>
+</select>
 ```
 
 But the 'Select your option' is in black instead of lightgrey. So my solution could possibly be CSS-based. jQuery is fine too.  
@@ -5190,12 +5190,12 @@ You can concatenate two transitions or more, and `visibility` is what comes hand
 div {
   border: 1px solid #eee;
 }
-div &gt; ul {
+div > ul {
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s, opacity 0.5s linear;
 }
-div:hover &gt; ul {
+div:hover > ul {
   visibility: visible;
   opacity: 1;
 }
@@ -5374,10 +5374,10 @@ div:hover {
 I have a layout similar to:  
 
 ```css
-&lt;div&gt;
-    &lt;table&gt;
-    &lt;/table&gt;
-&lt;/div&gt;
+<div>
+    <table>
+    </table>
+</div>
 ```
 
 I would like for the `div` to only expand to as wide as my `table` becomes.  
@@ -5409,13 +5409,13 @@ Is there a set of classes in Twitter's Bootstrap framework that aligns text?
 For example, I have some tables with `$` totals that I want aligned to the right...  
 
 ```css
-&lt;th class="align-right"&gt;Total&lt;/th&gt;
+<th class="align-right">Total</th>
 ```
 
 and  
 
 ```css
-&lt;td class="align-right"&gt;$1,000,000.00&lt;/td&gt;
+<td class="align-right">$1,000,000.00</td>
 ```
 
 #### Answer accepted (score 1369)
@@ -5424,11 +5424,11 @@ and
 <a href="http://getbootstrap.com/css/#type-alignment" rel="noreferrer">v3 Text Alignment Docs</a>  
 
 ```css
-&lt;p class="text-left"&gt;Left aligned text.&lt;/p&gt;
-&lt;p class="text-center"&gt;Center aligned text.&lt;/p&gt;
-&lt;p class="text-right"&gt;Right aligned text.&lt;/p&gt;
-&lt;p class="text-justify"&gt;Justified text.&lt;/p&gt;
-&lt;p class="text-nowrap"&gt;No wrap text.&lt;/p&gt;
+<p class="text-left">Left aligned text.</p>
+<p class="text-center">Center aligned text.</p>
+<p class="text-right">Right aligned text.</p>
+<p class="text-justify">Justified text.</p>
+<p class="text-nowrap">No wrap text.</p>
 ```
 
 <a href="https://i.stack.imgur.com/DZHMg.png" rel="noreferrer"><img src="https://i.stack.imgur.com/DZHMg.png" alt="Bootstrap 3 text align example"></a>  
@@ -5438,14 +5438,14 @@ and
 <a href="http://v4-alpha.getbootstrap.com/utilities/typography/#text-alignment" rel="noreferrer">v4 Text Alignment Docs</a>  
 
 ```css
-&lt;p class="text-xs-left"&gt;Left aligned text on all viewport sizes.&lt;/p&gt;
-&lt;p class="text-xs-center"&gt;Center aligned text on all viewport sizes.&lt;/p&gt;
-&lt;p class="text-xs-right"&gt;Right aligned text on all viewport sizes.&lt;/p&gt;
+<p class="text-xs-left">Left aligned text on all viewport sizes.</p>
+<p class="text-xs-center">Center aligned text on all viewport sizes.</p>
+<p class="text-xs-right">Right aligned text on all viewport sizes.</p>
 
-&lt;p class="text-sm-left"&gt;Left aligned text on viewports sized SM (small) or wider.&lt;/p&gt;
-&lt;p class="text-md-left"&gt;Left aligned text on viewports sized MD (medium) or wider.&lt;/p&gt;
-&lt;p class="text-lg-left"&gt;Left aligned text on viewports sized LG (large) or wider.&lt;/p&gt;
-&lt;p class="text-xl-left"&gt;Left aligned text on viewports sized XL (extra-large) or wider.&lt;/p&gt;
+<p class="text-sm-left">Left aligned text on viewports sized SM (small) or wider.</p>
+<p class="text-md-left">Left aligned text on viewports sized MD (medium) or wider.</p>
+<p class="text-lg-left">Left aligned text on viewports sized LG (large) or wider.</p>
+<p class="text-xl-left">Left aligned text on viewports sized XL (extra-large) or wider.</p>
 ```
 
 <a href="https://i.stack.imgur.com/Qfi1K.png" rel="noreferrer"><img src="https://i.stack.imgur.com/Qfi1K.png" alt="Bootstrap 4 text align example"></a>  
@@ -5454,9 +5454,9 @@ and
 Using Bootstrap 3.x using `text-right` works perfectly:  
 
 ```css
-&lt;td class="text-right"&gt;
+<td class="text-right">
   text aligned
-&lt;/td&gt;
+</td>
 ```
 
 #### Answer 3 (score 46)
@@ -5469,16 +5469,16 @@ No, Bootstrap doesn't have a class for that, but this kind of class is considere
 In your case, by your question it looks like you wish to have certain text align on the right in your table, but not all of it. Semantically, it would be better to do something like (I'm just going to make up a few classes here, except for the default bootstrap class, .table):   
 
 ```css
-  &lt;table class="table price-table"&gt;
-    &lt;thead&gt;
-      &lt;th class="price-label"&gt;Total&lt;/th&gt;
-    &lt;/thead&gt;
-    &lt;tbody&gt;
-      &lt;tr&gt;
-        &lt;td class="price-value"&gt;$1,000,000.00&lt;/td&gt;
-      &lt;/tr&gt;
-    &lt;/tbody&gt;
-  &lt;/table&gt;
+  <table class="table price-table">
+    <thead>
+      <th class="price-label">Total</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="price-value">$1,000,000.00</td>
+      </tr>
+    </tbody>
+  </table>
 ```
 
 And just apply the `text-align: left` or `text-align: right` declarations to the price-value and price-label classes (or whatever classes work for you).   
@@ -5495,7 +5495,7 @@ One way to think of it is this: when you pose the question "What is this td for?
 Possible ways:  
 
 ```css
-&lt;pre&gt; ... &lt;/pre&gt;
+<pre> ... </pre>
 ```
 
 or  
@@ -5517,13 +5517,13 @@ In cases wherein the width/height of the space is beyond `&amp;nbsp;` I usually 
 For horizontal spacer:  
 
 ```css
-&lt;span style="display:inline-block; width: YOURWIDTH;"&gt;&lt;/span&gt;
+<span style="display:inline-block; width: YOURWIDTH;"></span>
 ```
 
 For vertical spacer:  
 
 ```css
-&lt;span style="display:block; height: YOURHEIGHT;"&gt;&lt;/span&gt;
+<span style="display:block; height: YOURHEIGHT;"></span>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -5610,14 +5610,14 @@ Another format feature is to <a href="http://www.codingforums.com/showthread.php
 <em>Basic HTML</em>  
 
 ```css
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;textarea style="overflow:auto;resize:none" rows="13" cols="20"&gt;&lt;/textarea&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <textarea style="overflow:auto;resize:none" rows="13" cols="20"></textarea>
+</body>
+</html>
 ```
 
 <em>Some browsers</em>  
@@ -5666,7 +5666,7 @@ var bodyRect = document.body.getBoundingClientRect(),
     elemRect = element.getBoundingClientRect(),
     offset   = elemRect.top - bodyRect.top;
 
-alert('Element is ' + offset + ' vertical pixels from &lt;body&gt;');
+alert('Element is ' + offset + ' vertical pixels from <body>');
 ```
 
 #### Answer 3 (score 307)
@@ -5677,7 +5677,7 @@ here's a simple function that does the job in every circumstances that I've trie
 function getOffset( el ) {
     var _x = 0;
     var _y = 0;
-    while( el &amp;&amp; !isNaN( el.offsetLeft ) &amp;&amp; !isNaN( el.offsetTop ) ) {
+    while( el && !isNaN( el.offsetLeft ) && !isNaN( el.offsetTop ) ) {
         _x += el.offsetLeft - el.scrollLeft;
         _y += el.offsetTop - el.scrollTop;
         el = el.offsetParent;
@@ -5699,11 +5699,11 @@ One of the images needs to be `absolute` positioned within the div.
 What is the CSS needed for this to work on all common browsers?  
 
 ```css
-&lt;div id="header"&gt;
-    &lt;img src=".." &gt;&lt;/img&gt;
-    &lt;h1&gt;testing...&lt;/h1&gt;
-    &lt;img src="..."&gt;&lt;/img&gt;
-&lt;/div&gt;
+<div id="header">
+    <img src=".." ></img>
+    <h1>testing...</h1>
+    <img src="..."></img>
+</div>
 ```
 
 #### Answer accepted (score 867)
@@ -5760,12 +5760,12 @@ I used this very simple code:
 HTML:  
 
 ```css
-&lt;div class="ext-box"&gt;
-    &lt;div class="int-box"&gt;
-        &lt;h2&gt;Some txt&lt;/h2&gt;
-        &lt;p&gt;bla bla bla&lt;/p&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
+<div class="ext-box">
+    <div class="int-box">
+        <h2>Some txt</h2>
+        <p>bla bla bla</p>
+    </div>
+</div>
 ```
 
 CSS:  
@@ -5914,10 +5914,10 @@ Here are some simple techniques for vertical-align:
 This one is easy: set the line-height of the text element to equal that of the container  
 
 ```css
-&lt;div&gt;
-  &lt;img style="width:30px; height:30px;"&gt;
-  &lt;span style="line-height:30px;"&gt;Doesn't work.&lt;/span&gt;
-&lt;/div&gt;
+<div>
+  <img style="width:30px; height:30px;">
+  <span style="line-height:30px;">Doesn't work.</span>
+</div>
 ```
 
 <h5>Multiple-lines vertical-align:bottom</h2>
@@ -5925,17 +5925,17 @@ This one is easy: set the line-height of the text element to equal that of the c
 Absolutely position an inner div relative to its container  
 
 ```css
-&lt;div style="position:relative;width:30px;height:60px;"&gt;
-  &lt;div style="position:absolute;bottom:0"&gt;This is positioned on the bottom&lt;/div&gt;
-&lt;/div&gt;
+<div style="position:relative;width:30px;height:60px;">
+  <div style="position:absolute;bottom:0">This is positioned on the bottom</div>
+</div>
 ```
 
 <h5>Multiple-lines vertical-align:middle</h2>
 
 ```css
-&lt;div style="display:table;width:30px;height:60px;"&gt;
-  &lt;div style="display:table-cell;height:30px;"&gt;This is positioned in the middle&lt;/div&gt;
-&lt;/div&gt;
+<div style="display:table;width:30px;height:60px;">
+  <div style="display:table-cell;height:30px;">This is positioned in the middle</div>
+</div>
 ```
 
 <h5>If you must support ancient versions of IE &lt;= 7</h2>
@@ -5943,13 +5943,13 @@ Absolutely position an inner div relative to its container
 In order to get this to work correctly across the board, you'll have to hack the CSS a bit. Luckily, there is an IE bug that works in our favor. Setting `top:50%` on the container and `top:-50%` on the inner div, you can achieve the same result. We can combine the two using another feature IE doesn't support: advanced CSS selectors.  
 
 ```css
-&lt;style type="text/css"&gt;
+<style type="text/css">
   #container {
     width: 30px;
     height: 60px;
     position: relative;
   }
-  #wrapper &gt; #container {
+  #wrapper > #container {
     display: table;
     position: static;
   }
@@ -5961,18 +5961,18 @@ In order to get this to work correctly across the board, you'll have to hack the
     position: relative;
     top: -50%;
   }
-  #container &gt; div {
+  #container > div {
     display: table-cell;
     vertical-align: middle;
     position: static;
   }
-&lt;/style&gt;
+</style>
 
-&lt;div id="wrapper"&gt;
-  &lt;div id="container"&gt;
-    &lt;div&gt;&lt;div&gt;&lt;p&gt;Works in everything!&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
+<div id="wrapper">
+  <div id="container">
+    <div><div><p>Works in everything!</p></div></div>
+  </div>
+</div>
 ```
 
 <h5>Variable container height vertical-align:middle</h2>
@@ -6134,38 +6134,38 @@ If you want to put some custom style, here's the CSS you need to change:
     color: #5E5E5E;
 }
 /* Link */
-.navbar-default .navbar-nav &gt; li &gt; a {
+.navbar-default .navbar-nav > li > a {
     color: #777;
 }
-.navbar-default .navbar-nav &gt; li &gt; a:hover,
-.navbar-default .navbar-nav &gt; li &gt; a:focus {
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
     color: #333;
 }
-.navbar-default .navbar-nav &gt; .active &gt; a,
-.navbar-default .navbar-nav &gt; .active &gt; a:hover,
-.navbar-default .navbar-nav &gt; .active &gt; a:focus {
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
     color: #555;
     background-color: #E7E7E7;
 }
-.navbar-default .navbar-nav &gt; .open &gt; a,
-.navbar-default .navbar-nav &gt; .open &gt; a:hover,
-.navbar-default .navbar-nav &gt; .open &gt; a:focus {
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
     color: #555;
     background-color: #D5D5D5;
 }
 /* Caret */
-.navbar-default .navbar-nav &gt; .dropdown &gt; a .caret {
+.navbar-default .navbar-nav > .dropdown > a .caret {
     border-top-color: #777;
     border-bottom-color: #777;
 }
-.navbar-default .navbar-nav &gt; .dropdown &gt; a:hover .caret,
-.navbar-default .navbar-nav &gt; .dropdown &gt; a:focus .caret {
+.navbar-default .navbar-nav > .dropdown > a:hover .caret,
+.navbar-default .navbar-nav > .dropdown > a:focus .caret {
     border-top-color: #333;
     border-bottom-color: #333;
 }
-.navbar-default .navbar-nav &gt; .open &gt; a .caret,
-.navbar-default .navbar-nav &gt; .open &gt; a:hover .caret,
-.navbar-default .navbar-nav &gt; .open &gt; a:focus .caret {
+.navbar-default .navbar-nav > .open > a .caret,
+.navbar-default .navbar-nav > .open > a:hover .caret,
+.navbar-default .navbar-nav > .open > a:focus .caret {
     border-top-color: #555;
     border-bottom-color: #555;
 }
@@ -6181,11 +6181,11 @@ If you want to put some custom style, here's the CSS you need to change:
     background-color: #CCC;
 }
 @media (max-width: 767px) {
-    .navbar-default .navbar-nav .open .dropdown-menu &gt; li &gt; a {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
         color: #777;
     }
-    .navbar-default .navbar-nav .open .dropdown-menu &gt; li &gt; a:hover,
-    .navbar-default .navbar-nav .open .dropdown-menu &gt; li &gt; a:focus {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
           color: #333;
     }
 }
@@ -6211,27 +6211,27 @@ $colHighlight: #ffbbbc;
   border-color: $bgHighlight;
   .navbar-brand {
     color: $colDefault;
-    &amp;:hover, &amp;:focus {
+    &:hover, &:focus {
       color: $colHighlight; }}
   .navbar-text {
     color: $colDefault; }
   .navbar-nav {
-    &gt; li {
-      &gt; a {
+    > li {
+      > a {
         color: $colDefault;
-        &amp;:hover,  &amp;:focus {
+        &:hover,  &:focus {
           color: $colHighlight; }}}
-    &gt; .active {
-      &gt; a, &gt; a:hover, &gt; a:focus {
+    > .active {
+      > a, > a:hover, > a:focus {
         color: $colHighlight;
         background-color: $bgHighlight; }}
-    &gt; .open {
-      &gt; a, &gt; a:hover, &gt; a:focus {
+    > .open {
+      > a, > a:hover, > a:focus {
         color: $colHighlight;
         background-color: $bgHighlight; }}}
   .navbar-toggle {
     border-color: $bgHighlight;
-    &amp;:hover, &amp;:focus {
+    &:hover, &:focus {
       background-color: $bgHighlight; }
     .icon-bar {
       background-color: $colDefault; }}
@@ -6240,16 +6240,16 @@ $colHighlight: #ffbbbc;
     border-color: $colDefault; }
   .navbar-link {
     color: $colDefault;
-    &amp;:hover {
+    &:hover {
       color: $colHighlight; }}}
 @media (max-width: 767px) {
   .navbar-default .navbar-nav .open .dropdown-menu {
-    &gt; li &gt; a {
+    > li > a {
       color: $colDefault;
-      &amp;:hover, &amp;:focus {
+      &:hover, &:focus {
         color: $colHighlight; }}
-    &gt; .active {
-      &gt; a, &gt; a:hover, &gt; a:focus, {
+    > .active {
+      > a, > a:hover, > a:focus, {
         color: $colHighlight;
         background-color: $bgHighlight; }}}
 }
@@ -6271,7 +6271,7 @@ $colHighlight: #ffbbbc;
 Changing the Navbar color is different (and a little easier) in Bootstrap 4. You can create a custom navbar class, and then reference it to change the navbar without impacting other Bootstrap navs..  
 
 ```css
-&lt;nav class="navbar navbar-custom"&gt;...&lt;/nav&gt;
+<nav class="navbar navbar-custom">...</nav>
 ```
 
 <hr>
@@ -6332,14 +6332,14 @@ Also see: <a href="https://stackoverflow.com/questions/42586729/">Bootstrap 4 Ch
 <strong>Bootstrap 3</strong>  
 
 ```css
-&lt;nav class="navbar navbar-custom"&gt;
-  &lt;div class="navbar-header"&gt;
-    &lt;button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"&gt;...
-    &lt;/button&gt;
-    &lt;a class="navbar-brand" href="#"&gt;Title&lt;/a&gt;
-  &lt;/div&gt;
+<nav class="navbar navbar-custom">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">...
+    </button>
+    <a class="navbar-brand" href="#">Title</a>
+  </div>
    ...
-&lt;/nav&gt;
+</nav>
 
 
 .navbar-custom {
@@ -6348,20 +6348,20 @@ Also see: <a href="https://stackoverflow.com/questions/42586729/">Bootstrap 4 Ch
     border-radius:0;
 }
 
-.navbar-custom .navbar-nav &gt; li &gt; a {
+.navbar-custom .navbar-nav > li > a {
     color:#fff;
 }
 
-.navbar-custom .navbar-nav &gt; .active &gt; a {
+.navbar-custom .navbar-nav > .active > a {
     color: #ffffff;
     background-color:transparent;
 }
 
-.navbar-custom .navbar-nav &gt; li &gt; a:hover,
-.navbar-custom .navbar-nav &gt; li &gt; a:focus,
-.navbar-custom .navbar-nav &gt; .active &gt; a:hover,
-.navbar-custom .navbar-nav &gt; .active &gt; a:focus,
-.navbar-custom .navbar-nav &gt; .open &gt;a {
+.navbar-custom .navbar-nav > li > a:hover,
+.navbar-custom .navbar-nav > li > a:focus,
+.navbar-custom .navbar-nav > .active > a:hover,
+.navbar-custom .navbar-nav > .active > a:focus,
+.navbar-custom .navbar-nav > .open >a {
     text-decoration: none;
     background-color: #33aa33;
 }
@@ -6388,10 +6388,10 @@ If the Navbar has dropdowns, add the following to change dropdown color(s):
 .navbar-custom .navbar-nav .dropdown-menu  { 
   background-color: #33aa33;
 }
-.navbar-custom .navbar-nav .dropdown-menu&gt;li&gt;a  { 
+.navbar-custom .navbar-nav .dropdown-menu>li>a  { 
   color: #fff;
 }
-.navbar-custom .navbar-nav .dropdown-menu&gt;li&gt;a:hover,.navbar-custom .navbar-nav .dropdown-menu&gt;li&gt;a:focus  { 
+.navbar-custom .navbar-nav .dropdown-menu>li>a:hover,.navbar-custom .navbar-nav .dropdown-menu>li>a:focus  { 
   color: #33aa33;
 }
 ```
@@ -6429,7 +6429,7 @@ There are two different things here: the style of the iframe block and the style
 The style of the page embedded in the iframe must be either set by including it in the child page:  
 
 ```css
-&lt;link type="text/css" rel="Stylesheet" href="Style/simple.css" /&gt;
+<link type="text/css" rel="Stylesheet" href="Style/simple.css" />
 ```
 
 Or it can be loaded from the parent page with Javascript:  
@@ -6449,13 +6449,13 @@ I met this issue with <strong>Google Calendar</strong>. I wanted to style it on 
 entire content from the page. Instead of calling the Google URL, it is possible to call a php file located on your server, ex. `google.php`, which will contain the original content with modifications:</p>
 
 ```css
-$content = file_get_contents('https://www.google.com/calendar/embed?src=%23contacts%40group.v.calendar.google.com&amp;ctz=America/Montreal');
+$content = file_get_contents('https://www.google.com/calendar/embed?src=%23contacts%40group.v.calendar.google.com&ctz=America/Montreal');
 ```
 
 Adding the path to your stylesheet:  
 
 ```css
-$content = str_replace('&lt;/head&gt;','&lt;link rel="stylesheet" href="http://www.yourwebsiteurl.com/google.css" /&gt;&lt;/head&gt;', $content);
+$content = str_replace('</head>','<link rel="stylesheet" href="http://www.yourwebsiteurl.com/google.css" /></head>', $content);
 ```
 
 (This will place your stylesheet last just before the `head` end tag.)  
@@ -6463,16 +6463,16 @@ $content = str_replace('&lt;/head&gt;','&lt;link rel="stylesheet" href="http://w
 Specify the base url form the original url in case css and js are called relatively:  
 
 ```css
-$content = str_replace('&lt;/title&gt;','&lt;/title&gt;&lt;base href="https://www.google.com/calendar/" /&gt;', $content);
+$content = str_replace('</title>','</title><base href="https://www.google.com/calendar/" />', $content);
 ```
 
 The final `google.php` file should look like this:  
 
 ```css
-&lt;?php
-$content = file_get_contents('https://www.google.com/calendar/embed?src=%23contacts%40group.v.calendar.google.com&amp;ctz=America/Montreal');
-$content = str_replace('&lt;/title&gt;','&lt;/title&gt;&lt;base href="https://www.google.com/calendar/" /&gt;', $content);
-$content = str_replace('&lt;/head&gt;','&lt;link rel="stylesheet" href="http://www.yourwebsiteurl.com/google.css" /&gt;&lt;/head&gt;', $content);
+<?php
+$content = file_get_contents('https://www.google.com/calendar/embed?src=%23contacts%40group.v.calendar.google.com&ctz=America/Montreal');
+$content = str_replace('</title>','</title><base href="https://www.google.com/calendar/" />', $content);
+$content = str_replace('</head>','<link rel="stylesheet" href="http://www.yourwebsiteurl.com/google.css" /></head>', $content);
 echo $content;
 ```
 
@@ -6510,7 +6510,7 @@ In the CSS code below, the greater-than sign means that the padding is only appl
 ```css
 /* Apply padding to td elements that are direct children of the tr elements with class spaceUnder. */
 
-tr.spaceUnder&gt;td {
+tr.spaceUnder>td {
   padding-bottom: 1em;
 }
 ```
@@ -6747,10 +6747,10 @@ If you are looking for a self-invoking transition then you should use <a href="h
     font-size: 21px;
     text-align: center;
 
-    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera &gt; 12.1 */
-       -moz-animation: fadein 2s; /* Firefox &lt; 16 */
+    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 2s; /* Firefox < 16 */
         -ms-animation: fadein 2s; /* Internet Explorer */
-         -o-animation: fadein 2s; /* Opera &lt; 12.1 */
+         -o-animation: fadein 2s; /* Opera < 12.1 */
             animation: fadein 2s;
 }
 
@@ -6759,13 +6759,13 @@ If you are looking for a self-invoking transition then you should use <a href="h
     to   { opacity: 1; }
 }
 
-/* Firefox &lt; 16 */
+/* Firefox < 16 */
 @-moz-keyframes fadein {
     from { opacity: 0; }
     to   { opacity: 1; }
 }
 
-/* Safari, Chrome and Opera &gt; 12.1 */
+/* Safari, Chrome and Opera > 12.1 */
 @-webkit-keyframes fadein {
     from { opacity: 0; }
     to   { opacity: 1; }
@@ -6777,7 +6777,7 @@ If you are looking for a self-invoking transition then you should use <a href="h
     to   { opacity: 1; }
 }
 
-/* Opera &lt; 12.1 */
+/* Opera < 12.1 */
 @-o-keyframes fadein {
     from { opacity: 0; }
     to   { opacity: 1; }
@@ -6886,11 +6886,11 @@ You can use the `onload=""` HTML attribute and use JavaScript to adjust the opac
 Leave your CSS as you proposed. Edit your HTML code to:  
 
 ```css
-&lt;body onload="document.getElementById(test).style.opacity='1'"&gt;
-    &lt;div id="test"&gt;
-        &lt;p&gt;​This is a test&lt;/p&gt;
-    &lt;/div&gt;
-&lt;/body&gt;
+<body onload="document.getElementById(test).style.opacity='1'">
+    <div id="test">
+        <p>​This is a test</p>
+    </div>
+</body>
 ```
 
 <strong>This also works to fade-in the complete page when finished loading:</strong>  
@@ -6898,8 +6898,8 @@ Leave your CSS as you proposed. Edit your HTML code to:
 HTML:  
 
 ```css
-&lt;body onload="document.body.style.opacity='1'"&gt;
-&lt;/body&gt;
+<body onload="document.body.style.opacity='1'">
+</body>
 ```
 
 CSS:  
@@ -6918,22 +6918,22 @@ Check the <a href="http://en.wikipedia.org/wiki/W3Schools" rel="nofollow norefer
 In response to @A.M.K's question about how to do transitions without jQuery. A very simple example I threw together. If I had time to think this through some more, I might be able to eliminate the JavaScript code altogether:  
 
 ```css
-&lt;style&gt;
+<style>
     body {
         background-color: red;
         transition: background-color 2s ease-in;
     }
-&lt;/style&gt;
+</style>
 
-&lt;script&gt;
+<script>
     window.onload = function() {
         document.body.style.backgroundColor = '#00f';
     }
-&lt;/script&gt;
+</script>
 
-&lt;body&gt;
-    &lt;p&gt;test&lt;/p&gt;
-&lt;/body&gt;
+<body>
+    <p>test</p>
+</body>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -7200,12 +7200,12 @@ With <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/calc" rel="nofoll
 Solution with SVG:  
 
 ```css
-&lt;div style="width: 60px;"&gt;  
-  &lt;svg width="100%" height="100%" viewBox="0 -200 1000 300"
-     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"&gt;
-    &lt;text font-size="300" fill="black"&gt;Text&lt;/text&gt;
-  &lt;/svg&gt;
-&lt;/div&gt;
+<div style="width: 60px;">  
+  <svg width="100%" height="100%" viewBox="0 -200 1000 300"
+     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <text font-size="300" fill="black">Text</text>
+  </svg>
+</div>
 ```
 
 <a href="https://jsfiddle.net/qc8ht5eb/" rel="noreferrer">https://jsfiddle.net/qc8ht5eb/</a>  
@@ -7215,13 +7215,13 @@ Solution with SVG:
 Solution with SVG and text-wrapping using `foreignObject`:  
 
 ```css
-&lt;svg viewBox="0 0 100 100"&gt;
-  &lt;foreignObject width="100%" height="100%"&gt;
-    &lt;h1&gt;heading&lt;/h1&gt;
+<svg viewBox="0 0 100 100">
+  <foreignObject width="100%" height="100%">
+    <h1>heading</h1>
 
     lorem ipsum dolor sit amet
-  &lt;/foreignObject&gt;
-&lt;/svg&gt; 
+  </foreignObject>
+</svg> 
 ```
 
 <a href="https://jsfiddle.net/2rp1q0sy/" rel="noreferrer">https://jsfiddle.net/2rp1q0sy/</a>  
@@ -7633,9 +7633,9 @@ See <a href="https://www.w3.org/TR/css3-selectors/#useraction-pseudos" rel="nore
 I have following div  
 
 ```css
-&lt;div id="over" style="position:absolute; width:100%; height:100%&gt;
- &lt;img src="img.png"&gt;
-&lt;/div&gt;
+<div id="over" style="position:absolute; width:100%; height:100%>
+ <img src="img.png">
+</div>
 ```
 
 How to align the image so as to be located in the middle and center of div ?  
@@ -7666,9 +7666,9 @@ body {
 
 #### Answer 3 (score 158)
 ```css
-&lt;div style="display:table-cell; vertical-align:middle; text-align:center"&gt;
-&lt;img src="img.png"&gt;
-&lt;/div&gt;
+<div style="display:table-cell; vertical-align:middle; text-align:center">
+<img src="img.png">
+</div>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -7745,7 +7745,7 @@ Style the border if you want 3D look:
       width: 0px; /* Use only border style */
       height: 100%;
       float: left; 
-      border: 1px inset; /* This is default border style for &lt;hr&gt; tag */
+      border: 1px inset; /* This is default border style for <hr> tag */
     }
 ```
 
@@ -7873,13 +7873,13 @@ See <em><a href="https://web.archive.org/web/20160104183713/http://www.hunlock.c
 Also, don't forget, you can add links to external stylesheets if that's an option. For example,  
 
 ```css
-&lt;script type="text/javascript"&gt;
+<script type="text/javascript">
   var link = document.createElement("link");
   link.setAttribute("rel","stylesheet");
   link.setAttribute("href","http://wherever.com/yourstylesheet.css");
   var head = document.getElementsByTagName("head")[0];
   head.appendChild(link);
-&lt;/script&gt;
+</script>
 ```
 
 Caution: the above assumes there is a <a href="https://en.wikipedia.org/wiki/HTML_element#Document_structure_elements" rel="noreferrer">head</a> section.   
@@ -7965,16 +7965,16 @@ After the table tag, use the col element. you don't need a closing tag.
 For example, if you had three columns:  
 
 ```css
-&lt;table&gt;
-  &lt;colgroup&gt;
-    &lt;col style="width:40%"&gt;
-    &lt;col style="width:30%"&gt;
-    &lt;col style="width:30%"&gt;
-  &lt;/colgroup&gt;  
-  &lt;tbody&gt;
+<table>
+  <colgroup>
+    <col style="width:40%">
+    <col style="width:30%">
+    <col style="width:30%">
+  </colgroup>  
+  <tbody>
     ...
-  &lt;/tbody&gt;
-&lt;/table&gt;
+  </tbody>
+</table>
 ```
 
 #### Answer 3 (score 121)
@@ -7984,7 +7984,7 @@ This will help you. Nothing else works.</p>
 eg.   
 
 ```css
-&lt;td&gt;&lt;div style="width: 50px" &gt;...............&lt;/div&gt;&lt;/td&gt;
+<td><div style="width: 50px" >...............</div></td>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -8362,13 +8362,13 @@ img {
 another way is to create a `table` with `valign`, of course. This would work regardless of you knowing the div's height or not.  
 
 ```css
-&lt;div&gt;
-   &lt;table width="100%" height="100%" align="center" valign="center"&gt;
-   &lt;tr&gt;&lt;td&gt;
-      &lt;img src="foo.jpg" alt="foo" /&gt;
-   &lt;/td&gt;&lt;/tr&gt;
-   &lt;/table&gt;
-&lt;/div&gt;
+<div>
+   <table width="100%" height="100%" align="center" valign="center">
+   <tr><td>
+      <img src="foo.jpg" alt="foo" />
+   </td></tr>
+   </table>
+</div>
 ```
 
 but you should always stick to just `css` whenever possible.  
@@ -8489,12 +8489,12 @@ You should use scaleY instead.
 HTML:  
 
 ```css
-&lt;p&gt;Here (scaleY(1))&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Coffee&lt;/li&gt;
-  &lt;li&gt;Tea&lt;/li&gt;
-  &lt;li&gt;Milk&lt;/li&gt;
-&lt;/ul&gt;
+<p>Here (scaleY(1))</p>
+<ul>
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Milk</li>
+</ul>
 ```
 
 CSS:  
@@ -8547,15 +8547,15 @@ function getCookie(){
 HTML code:  
 
 ```css
-&lt;form&gt;
-    Select your css layout:&lt;br&gt;
-    &lt;select id="myList"&gt;
-        &lt;option value="style-1.css"&gt;CSS1&lt;/option&gt;
-        &lt;option value="style-2.css"&gt;CSS2&lt;/option&gt;  
-        &lt;option value="style-3.css"&gt;CSS3&lt;/option&gt;
-        &lt;option value="style-4.css"&gt;CSS4&lt;/option&gt;
-    &lt;/select&gt;
-&lt;/form&gt;
+<form>
+    Select your css layout:<br>
+    <select id="myList">
+        <option value="style-1.css">CSS1</option>
+        <option value="style-2.css">CSS2</option>  
+        <option value="style-3.css">CSS3</option>
+        <option value="style-4.css">CSS4</option>
+    </select>
+</form>
 ```
 
 #### Answer 2 (score 721)
@@ -8574,7 +8574,7 @@ function setCookie(name,value,days) {
 function getCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
-    for(var i=0;i &lt; ca.length;i++) {
+    for(var i=0;i < ca.length;i++) {
         var c = ca[i];
         while (c.charAt(0)==' ') c = c.substring(1,c.length);
         if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
@@ -8636,9 +8636,9 @@ I have this `@media` setup:
 <strong>HTML</strong>:  
 
 ```css
-&lt;head&gt;
-  &lt;meta name="viewport" content="width=device-width, user-scalable=no" /&gt;
-&lt;/head&gt;
+<head>
+  <meta name="viewport" content="width=device-width, user-scalable=no" />
+</head>
 ```
 
 <strong>CSS</strong>:  
@@ -8665,7 +8665,7 @@ Is it because I already have `device` in the meta, and maybe have `max-width:480
 I've found the best method is to write your default CSS for the older browsers, as older browsers including i.e. 5.5, 6, 7 and 8. Can't read @media. When I use @media I use it like this:  
 
 ```css
-&lt;style type="text/css"&gt;
+<style type="text/css">
     /* default styles here for older browsers. 
        I tend to go for a 600px - 960px width max but using percentages
     */
@@ -8692,7 +8692,7 @@ I've found the best method is to write your default CSS for the older browsers, 
     @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
       /* For landscape layouts only */
     }
-&lt;/style&gt;
+</style>
 ```
 
 But you can do whatever you like with your @media, This is just an example of what I've found best for me when building styles for all browsers.  
@@ -8890,11 +8890,11 @@ A very simple approach which works great cross browser is this:
 <h5>HTML</h2>
 
 ```css
-&lt;div id="container"&gt;
-   &lt;div id="header"&gt;&lt;/div&gt;
-   &lt;div id="body"&gt;&lt;/div&gt;
-   &lt;div id="footer"&gt;&lt;/div&gt;
-&lt;/div&gt;
+<div id="container">
+   <div id="header"></div>
+   <div id="body"></div>
+   <div id="footer"></div>
+</div>
 ```
 
 <h5>CSS</h2>
@@ -8973,9 +8973,9 @@ NOTE: this was <a href="https://stackoverflow.com/questions/15265253/centering-t
 Pre-Bootstrap 3, you could use the CSS class `pagination-centered` like this:  
 
 ```css
-&lt;div class="span12 pagination-centered"&gt;
+<div class="span12 pagination-centered">
     Centered content.
-&lt;/div&gt;
+</div>
 ```
 
 Class `pagination-centered` is already in bootstrap.css (or bootstrap.min.css) and has the only one rule:  
@@ -8992,11 +8992,11 @@ I guess most of the people here are actually searching for the way to <em>center
 The second way (instead of using text-align:center) to center things in HTML is to have an element with a fixed width and auto margin (left and right). With Bootstrap, the style defining auto margins is the "container" class.  
 
 ```css
-&lt;div class="container"&gt;
-    &lt;div class="span12"&gt;
+<div class="container">
+    <div class="span12">
         "Centered stuff there"
-    &lt;/div&gt;
-&lt;/div&gt;
+    </div>
+</div>
 ```
 
 Take a look here for a fiddle: <a href="http://jsfiddle.net/D2RLR/7788/" rel="noreferrer">http://jsfiddle.net/D2RLR/7788/</a>  
@@ -9013,7 +9013,7 @@ hello <br> How are you
 <strong>code:</strong>  
 
 ```css
-&lt;p&gt;hello &lt;br&gt; How are you &lt;/p&gt;
+<p>hello <br> How are you </p>
 ```
 
 How to achieve same output without `&lt;br&gt;`?  
@@ -9041,13 +9041,13 @@ p span
 You can use `white-space: pre;` to make elements act like `&lt;pre&gt;`, which preserves newlines.  Example:  
 
 ```css
-&lt;style&gt;
+<style>
  p {
   white-space: pre;
  }
-&lt;/style&gt;
-&lt;p&gt;hello
-How are you&lt;/p&gt;
+</style>
+<p>hello
+How are you</p>
 ```
 
 Note that this doesn't work in IE6 or IE7.  I don't know about IE8.  
@@ -9060,10 +9060,10 @@ I would expect most people finding this question want to use css / responsive de
 While not immediately obvious, you can actually apply `display:none` to a `&lt;br/&gt;` tag to hide it, which enables the use of media queries in tandem with semantic BR tags.   
 
 ```css
- &lt;div&gt;
-   The quick brown fox&lt;br /&gt;
+ <div>
+   The quick brown fox<br />
    jumps over the lazy dog
- &lt;/div&gt;
+ </div>
 
  @media screen and (min-width: 20em) 
  {
@@ -9136,7 +9136,7 @@ Unfortunately, there is no similar `:first-of-class` pseudo-class for matching t
  * Select all .red children of .home, including the first one,
  * and give them a border.
  */
-.home &gt; .red {
+.home > .red {
     border: 1px solid red;
 }
 ```
@@ -9148,7 +9148,7 @@ Unfortunately, there is no similar `:first-of-class` pseudo-class for matching t
  * Select all but the first .red child of .home,
  * and remove the border from the previous rule.
  */
-.home &gt; .red ~ .red {
+.home > .red ~ .red {
     border: none;
 }
 ```
@@ -9183,12 +9183,12 @@ In fact, the fact that the sibling combinator is the only important component in
 <li><p>You can use this to work around `:first-of-type` in IE7 and IE8, by simply supplying a type selector instead of a class selector (again, more on its incorrect usage here in a later section):</p>
 
 ```css
-article &gt; p {
-    /* Apply styles to article &gt; p:first-of-type, which may or may not be :first-child */
+article > p {
+    /* Apply styles to article > p:first-of-type, which may or may not be :first-child */
 }
 
-article &gt; p ~ p {
-    /* Undo the above styles for every subsequent article &gt; p */
+article > p ~ p {
+    /* Undo the above styles for every subsequent article > p */
 }
 ```
 </li>
@@ -9203,13 +9203,13 @@ It's worth mentioning that Selectors 4 introduces <a href="http://dev.w3.org/css
 Keep in mind that this answer assumes that the question is looking for every first child element that has a given class. There is neither a pseudo-class nor even a generic CSS solution for the nth match of a complex selector <em>across the entire document</em> — whether a solution exists depends heavily on the document structure. jQuery provides `:eq()`, `:first`, `:last` and more for this purpose, but note again that <a href="https://stackoverflow.com/questions/9983297/difference-between-css-selector-and-jquery-filter/10835694#10835694">they function very differently from `:nth-child()` et al</a>. Using the Selectors API, you can either use `document.querySelector()` to obtain the very first match:  
 
 ```css
-var first = document.querySelector('.home &gt; .red');
+var first = document.querySelector('.home > .red');
 ```
 
 Or use `document.querySelectorAll()` with an indexer to pick any specific match:  
 
 ```css
-var redElements = document.querySelectorAll('.home &gt; .red');
+var redElements = document.querySelectorAll('.home > .red');
 var first = redElements[0];
 var second = redElements[1];
 // etc
@@ -9533,13 +9533,13 @@ Styling file inputs are notoriously difficult, as most browsers will not change 
 Even the size of the input will not respond to the likes of:  
 
 ```css
-&lt;input type="file" style="width:200px"&gt;
+<input type="file" style="width:200px">
 ```
 
 Instead, you will need to use the size attribute:  
 
 ```css
-&lt;input type="file" size="60" /&gt;
+<input type="file" size="60" />
 ```
 
 For any styling more sophisticated than that (e.g. changing the look of the browse button) you will need to look at the tricksy approach of overlaying a styled button and input box on top of the native file input. The article already mentioned by rm at <a href="http://www.quirksmode.org/dom/inputfile.html" rel="noreferrer">www.quirksmode.org/dom/inputfile.html</a> is the best one I've seen.  
@@ -9552,19 +9552,19 @@ For any styling more sophisticated than that (e.g. changing the look of the brow
 The best approach would be to have a custom label element with a `for` attribute attached to a <strong>hidden</strong> file input element. (The label's `for` attribute must match the file element's `id` in order for this to work).  
 
 ```css
-&lt;label for="file-upload" class="custom-file-upload"&gt;
+<label for="file-upload" class="custom-file-upload">
     Custom Upload
-&lt;/label&gt;
-&lt;input id="file-upload" type="file"/&gt;
+</label>
+<input id="file-upload" type="file"/>
 ```
 
 As an alternative, you could also just wrap the file input element with a label directly: <a href="http://jsfiddle.net/1pc9pcev/" rel="noreferrer"><strong>(example)</strong></a>  
 
 ```css
-&lt;label class="custom-file-upload"&gt;
-    &lt;input type="file"/&gt;
+<label class="custom-file-upload">
+    <input type="file"/>
     Custom Upload
-&lt;/label&gt;
+</label>
 ```
 
 In terms of styling, just hide<sup>1</sup> the input element using the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors" rel="noreferrer">attribute selector</a>.  
@@ -9899,17 +9899,17 @@ In both cases the height of the centered divs can be variable, undefined, unknow
 <strong>Here's the HTML for both:</strong>  
 
 ```css
-&lt;div id="container"&gt;&lt;!-- flex container --&gt;
+<div id="container"><!-- flex container -->
 
-    &lt;div class="box" id="bluebox"&gt;&lt;!-- flex item --&gt;
-        &lt;p&gt;DIV #1&lt;/p&gt;
-    &lt;/div&gt;
+    <div class="box" id="bluebox"><!-- flex item -->
+        <p>DIV #1</p>
+    </div>
 
-    &lt;div class="box" id="redbox"&gt;&lt;!-- flex item --&gt;
-        &lt;p&gt;DIV #2&lt;/p&gt;
-    &lt;/div&gt;
+    <div class="box" id="redbox"><!-- flex item -->
+        <p>DIV #2</p>
+    </div>
 
-&lt;/div&gt;
+</div>
 ```
 
 <hr>
@@ -9930,7 +9930,7 @@ In both cases the height of the centered divs can be variable, undefined, unknow
 .box {
     width: 300px;
     margin: 5px;
-    text-align: center;     /* will center text in &lt;p&gt;, which is not a flex item */
+    text-align: center;     /* will center text in <p>, which is not a flex item */
 }
 ```
 
@@ -10243,14 +10243,14 @@ More about outline: <a href="http://www.w3schools.com/cssref/pr_outline.asp" rel
 I have a site with the following structure:  
 
 ```css
-&lt;div id="header"&gt;&lt;/div&gt;
+<div id="header"></div>
 
-&lt;div id="main"&gt;
-  &lt;div id="navigation"&gt;&lt;/div&gt;
-  &lt;div id="content"&gt;&lt;/div&gt;
-&lt;/div&gt;
+<div id="main">
+  <div id="navigation"></div>
+  <div id="content"></div>
+</div>
 
-&lt;div id="footer"&gt;&lt;/div&gt;
+<div id="footer"></div>
 ```
 
 The navigation is on the left and the content div is on the right. The information for the content div is pulled in through PHP, so it's different every time.  
@@ -10409,7 +10409,7 @@ If you have to support older browsers, which don't support css3, then you should
 I have an image element that I want to change on click.  
 
 ```css
-&lt;img id="btnLeft"&gt;
+<img id="btnLeft">
 ```
 
 This works:  
@@ -10492,7 +10492,7 @@ Here I've positioned the label right after the input in my markup. This is so th
     display: none;
 }
 
-#btnControl:checked + label &gt; img {
+#btnControl:checked + label > img {
     width: 70px;
     height: 74px;
 }
@@ -10671,7 +10671,7 @@ Unfortunately, that's the best I've come up with.
 I am working with images, and I ran across a problem with aspect ratios.  
 
 ```css
-&lt;img src="big_image.jpg" width="900" height="600" alt="" /&gt;
+<img src="big_image.jpg" width="900" height="600" alt="" />
 ```
 
 As you can see, `height` and `width` are already specified. I added CSS rule for images:  
@@ -10816,7 +10816,7 @@ For example, I was working on some wedding website, and I was finding a lot of n
 This could be done via CSS:  
 
 ```css
-&lt;style type="text/css"&gt;
+<style type="text/css">
 @font-face {
     font-family: "My Custom Font";
     src: url(http://www.example.org/mycustomfont.ttf) format("truetype");
@@ -10824,8 +10824,8 @@ This could be done via CSS:
 p.customfont { 
     font-family: "My Custom Font", Verdana, Tahoma;
 }
-&lt;/style&gt;
-&lt;p class="customfont"&gt;Hello world!&lt;/p&gt;
+</style>
+<p class="customfont">Hello world!</p>
 ```
 
 It is <a href="http://www.w3schools.com/cssref/css3_pr_font-face_rule.asp" rel="noreferrer">supported for all of the regular browsers</a> if you use TrueType-Fonts (TTF) or the Web Open Font Format (WOFF).  
@@ -10840,7 +10840,7 @@ For example:
 In the `&lt;head&gt;` section:  
 
 ```css
- &lt;link href=' http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'&gt;
+ <link href=' http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
 ```
 
 Then in CSS:  
@@ -10922,7 +10922,7 @@ That's mainly what you need to know about implementing this feature. If you want
 Given this HTML:  
 
 ```css
-&lt;div&gt;foo&lt;/div&gt;&lt;div&gt;bar&lt;/div&gt;&lt;div&gt;baz&lt;/div&gt;
+<div>foo</div><div>bar</div><div>baz</div>
 ```
 
 How do you make them display inline like this:  
@@ -10961,9 +10961,9 @@ div.inline { float:left; }
 An inline div is a freak of the web &amp; should be beaten until it becomes a span (at least 9 times out of 10)...  
 
 ```css
-&lt;span&gt;foo&lt;/span&gt;
-&lt;span&gt;bar&lt;/span&gt;
-&lt;span&gt;baz&lt;/span&gt;
+<span>foo</span>
+<span>bar</span>
+<span>baz</span>
 ```
 
 ...answers the original question...  
@@ -10994,29 +10994,29 @@ In <strong>Bootstrap</strong>, what is the most platform-friendly way to create 
 Here is what I've tried so far, and it ends up being aligned so that Logo A is on the left, menu items next to the logo on the left and Logo B on the right.  
 
 ```css
-&lt;div class="navbar navbar-fixed-top navbar-custom "&gt;
-  &lt;div class="container" &gt;
-    &lt;div class="navbar-header"&gt;
-      &lt;button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"&gt;
-        &lt;span class="icon-bar"&gt;&lt;/span&gt;
-        &lt;span class="icon-bar"&gt;&lt;/span&gt;
-        &lt;span class="icon-bar"&gt;&lt;/span&gt;
-      &lt;/button&gt;
-      &lt;a class="navbar-brand" href="#"&gt;&lt;span class="navbar-logo"&gt;Logo_A&lt;/span&gt;&lt;/a&gt;
-    &lt;/div&gt;
-    &lt;div class="collapse navbar-collapse"&gt;
-      &lt;ul class="nav navbar-nav"&gt;
-        &lt;li class="active"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href="#about"&gt;Menu Item 1&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href="#contact"&gt;Menu Item 2&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href="#about"&gt;Menu Item 3&lt;/a&gt;&lt;/li&gt;
-      &lt;/ul&gt;
-      &lt;ul class="nav navbar-nav navbar-right"&gt;
-        &lt;li&gt;&lt;a href="#"&gt;&lt;img src="images/Logo_B.png" class="img-responsive"&gt;&lt;/a&gt;&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
+<div class="navbar navbar-fixed-top navbar-custom ">
+  <div class="container" >
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"><span class="navbar-logo">Logo_A</span></a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#about">Menu Item 1</a></li>
+        <li><a href="#contact">Menu Item 2</a></li>
+        <li><a href="#about">Menu Item 3</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><img src="images/Logo_B.png" class="img-responsive"></a></li>
+      </ul>
+    </div>
+  </div>
+</div>
 ```
 
 #### Answer 2 (score 654)
@@ -11035,43 +11035,43 @@ Here are various examples...
 <a href="https://i.stack.imgur.com/bYbLJ.png" rel="noreferrer"><img src="https://i.stack.imgur.com/bYbLJ.png" alt="enter image description here"></a>  
 
 ```css
-&lt;nav class="navbar navbar-expand-md navbar-dark bg-dark"&gt;
-    &lt;div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2"&gt;
-        &lt;ul class="navbar-nav mr-auto"&gt;
-            &lt;li class="nav-item active"&gt;
-                &lt;a class="nav-link" href="#"&gt;Left&lt;/a&gt;
-            &lt;/li&gt;
-            &lt;li class="nav-item"&gt;
-                &lt;a class="nav-link" href="//codeply.com"&gt;Codeply&lt;/a&gt;
-            &lt;/li&gt;
-            &lt;li class="nav-item"&gt;
-                &lt;a class="nav-link" href="#"&gt;Link&lt;/a&gt;
-            &lt;/li&gt;
-            &lt;li class="nav-item"&gt;
-                &lt;a class="nav-link" href="#"&gt;Link&lt;/a&gt;
-            &lt;/li&gt;
-            &lt;li class="nav-item"&gt;
-                &lt;a class="nav-link" href="#"&gt;Link&lt;/a&gt;
-            &lt;/li&gt;
-        &lt;/ul&gt;
-    &lt;/div&gt;
-    &lt;div class="mx-auto order-0"&gt;
-        &lt;a class="navbar-brand mx-auto" href="#"&gt;Navbar 2&lt;/a&gt;
-        &lt;button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2"&gt;
-            &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
-        &lt;/button&gt;
-    &lt;/div&gt;
-    &lt;div class="navbar-collapse collapse w-100 order-3 dual-collapse2"&gt;
-        &lt;ul class="navbar-nav ml-auto"&gt;
-            &lt;li class="nav-item"&gt;
-                &lt;a class="nav-link" href="#"&gt;Right&lt;/a&gt;
-            &lt;/li&gt;
-            &lt;li class="nav-item"&gt;
-                &lt;a class="nav-link" href="#"&gt;Link&lt;/a&gt;
-            &lt;/li&gt;
-        &lt;/ul&gt;
-    &lt;/div&gt;
-&lt;/nav&gt;
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Left</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="//codeply.com">Codeply</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+        </ul>
+    </div>
+    <div class="mx-auto order-0">
+        <a class="navbar-brand mx-auto" href="#">Navbar 2</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Right</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 ```
 
 <a href="http://www.codeply.com/go/qhaBrcWp3v" rel="noreferrer">http://www.codeply.com/go/qhaBrcWp3v</a>  
@@ -11083,30 +11083,30 @@ Another BS4 Navbar option with <a href="https://www.codeply.com/go/0xSGj0EsAu" r
 <a href="https://i.stack.imgur.com/VmMkS.png" rel="noreferrer"><img src="https://i.stack.imgur.com/VmMkS.png" alt="center links and overlay logo image"></a>  
 
 ```css
-&lt;nav class="navbar navbar-expand-lg navbar-dark bg-dark"&gt;
-    &lt;div class="navbar-collapse collapse w-100 dual-collapse2 order-1 order-md-0"&gt;
-        &lt;ul class="navbar-nav ml-auto text-center"&gt;
-            &lt;li class="nav-item active"&gt;
-                &lt;a class="nav-link" href="#"&gt;Link&lt;/a&gt;
-            &lt;/li&gt;
-        &lt;/ul&gt;
-    &lt;/div&gt;
-    &lt;div class="mx-auto my-2 order-0 order-md-1 position-relative"&gt;
-        &lt;a class="mx-auto" href="#"&gt;
-            &lt;img src="//placehold.it/120/ccff00" class="rounded-circle"&gt;
-        &lt;/a&gt;
-        &lt;button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2"&gt;
-            &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
-        &lt;/button&gt;
-    &lt;/div&gt;
-    &lt;div class="navbar-collapse collapse w-100 dual-collapse2 order-2 order-md-2"&gt;
-        &lt;ul class="navbar-nav mr-auto text-center"&gt;
-            &lt;li class="nav-item"&gt;
-                &lt;a class="nav-link" href="#"&gt;Link&lt;/a&gt;
-            &lt;/li&gt;
-        &lt;/ul&gt;
-    &lt;/div&gt;
-&lt;/nav&gt;
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="navbar-collapse collapse w-100 dual-collapse2 order-1 order-md-0">
+        <ul class="navbar-nav ml-auto text-center">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+        </ul>
+    </div>
+    <div class="mx-auto my-2 order-0 order-md-1 position-relative">
+        <a class="mx-auto" href="#">
+            <img src="//placehold.it/120/ccff00" class="rounded-circle">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+    <div class="navbar-collapse collapse w-100 dual-collapse2 order-2 order-md-2">
+        <ul class="navbar-nav mr-auto text-center">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 ```
 
 <br>  
@@ -11147,26 +11147,26 @@ Another BS4 Navbar option with <a href="https://www.codeply.com/go/0xSGj0EsAu" r
 <a href="https://i.stack.imgur.com/tHJHB.png" rel="noreferrer"><img src="https://i.stack.imgur.com/tHJHB.png" alt="enter image description here"></a>  
 
 ```css
-&lt;nav class="navbar navbar-default" role="navigation"&gt;
-  &lt;div class="navbar-header"&gt;
-    &lt;button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"&gt;
-      &lt;span class="icon-bar"&gt;&lt;/span&gt;
-      &lt;span class="icon-bar"&gt;&lt;/span&gt;
-      &lt;span class="icon-bar"&gt;&lt;/span&gt;
-    &lt;/button&gt;    
-  &lt;/div&gt;
-  &lt;a class="navbar-brand" href="#"&gt;Brand&lt;/a&gt;
-  &lt;div class="navbar-collapse collapse"&gt;
-    &lt;ul class="nav navbar-nav navbar-left"&gt;
-        &lt;li&gt;&lt;a href="#"&gt;Left&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href="#about"&gt;Left&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-    &lt;ul class="nav navbar-nav navbar-right"&gt;
-      &lt;li&gt;&lt;a href="#about"&gt;Right&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#contact"&gt;Right&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/div&gt;
-&lt;/nav&gt;
+<nav class="navbar navbar-default" role="navigation">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>    
+  </div>
+  <a class="navbar-brand" href="#">Brand</a>
+  <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav navbar-left">
+        <li><a href="#">Left</a></li>
+        <li><a href="#about">Left</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#about">Right</a></li>
+      <li><a href="#contact">Right</a></li>
+    </ul>
+  </div>
+</nav>
 
 .navbar-brand
 {
@@ -11190,28 +11190,28 @@ Another BS4 Navbar option with <a href="https://www.codeply.com/go/0xSGj0EsAu" r
 <a href="https://i.stack.imgur.com/fihdg.png" rel="noreferrer"><img src="https://i.stack.imgur.com/fihdg.png" alt="enter image description here"></a>  
 
 ```css
-&lt;nav class="navbar navbar-default" role="navigation"&gt;
-  &lt;div class="navbar-header"&gt;
-    &lt;button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"&gt;
-      &lt;span class="icon-bar"&gt;&lt;/span&gt;
-      &lt;span class="icon-bar"&gt;&lt;/span&gt;
-      &lt;span class="icon-bar"&gt;&lt;/span&gt;
-    &lt;/button&gt;    
-  &lt;/div&gt;
-  &lt;div class="navbar-collapse collapse"&gt;
-    &lt;ul class="nav navbar-nav"&gt;
-        &lt;li&gt;&lt;a href="#"&gt;Left&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-    &lt;ul class="nav navbar-nav navbar-center"&gt;
-        &lt;li&gt;&lt;a href="#"&gt;Center&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href="#"&gt;Center&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#"&gt;Center&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-    &lt;ul class="nav navbar-nav navbar-right"&gt;
-        &lt;li&gt;&lt;a href="#"&gt;Right&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/div&gt;
-&lt;/nav&gt;
+<nav class="navbar navbar-default" role="navigation">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>    
+  </div>
+  <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        <li><a href="#">Left</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-center">
+        <li><a href="#">Center</a></li>
+        <li><a href="#">Center</a></li>
+      <li><a href="#">Center</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Right</a></li>
+    </ul>
+  </div>
+</nav>
 
 @media (min-width: 768px) {
   .navbar-nav.navbar-center {
@@ -11263,26 +11263,26 @@ I needed something similar (left, center and right aligned items), but with abil
 <a href="http://www.bootply.com/CSI2KcCoEM">http://www.bootply.com/CSI2KcCoEM</a>  
 
 ```css
-&lt;nav class="navbar navbar-default" role="navigation"&gt;
-  &lt;div class="navbar-header"&gt;
-    &lt;button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"&gt;
-      &lt;span class="icon-bar"&gt;&lt;/span&gt;
-      &lt;span class="icon-bar"&gt;&lt;/span&gt;
-      &lt;span class="icon-bar"&gt;&lt;/span&gt;
-    &lt;/button&gt;    
-  &lt;/div&gt;
-  &lt;div class="navbar-collapse collapse"&gt;
-    &lt;ul class="nav navbar-nav"&gt;
-      &lt;li class="navbar-left"&gt;&lt;a href="#"&gt;Left 1&lt;/a&gt;&lt;/li&gt;
-      &lt;li class="navbar-left"&gt;&lt;a href="#"&gt;Left 2&lt;/a&gt;&lt;/li&gt;
-      &lt;li class="active"&gt;&lt;a href="#"&gt;Center 1&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#"&gt;Center 2&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href="#"&gt;Center 3&lt;/a&gt;&lt;/li&gt;
-      &lt;li class="navbar-right"&gt;&lt;a href="#"&gt;Right 1&lt;/a&gt;&lt;/li&gt;
-      &lt;li class="navbar-right"&gt;&lt;a href="#"&gt;Right 2&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/div&gt;
-&lt;/nav&gt;
+<nav class="navbar navbar-default" role="navigation">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>    
+  </div>
+  <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+      <li class="navbar-left"><a href="#">Left 1</a></li>
+      <li class="navbar-left"><a href="#">Left 2</a></li>
+      <li class="active"><a href="#">Center 1</a></li>
+      <li><a href="#">Center 2</a></li>
+      <li><a href="#">Center 3</a></li>
+      <li class="navbar-right"><a href="#">Right 1</a></li>
+      <li class="navbar-right"><a href="#">Right 2</a></li>
+    </ul>
+  </div>
+</nav>
 ```
 
 CSS:  
@@ -11293,11 +11293,11 @@ CSS:
     width: 100%;
     text-align: center;
   }
-  .navbar-nav &gt; li {
+  .navbar-nav > li {
     float: none;
     display: inline-block;
   }
-  .navbar-nav &gt; li.navbar-right {
+  .navbar-nav > li.navbar-right {
     float: right !important;
   }
 }
@@ -11331,14 +11331,14 @@ This is a pleasantly easy fix. Because `.img-responsive` from Bootstrap already 
 There is <a href="https://github.com/twbs/bootstrap/blob/v3.0.1/dist/css/bootstrap.css#L6556-L6560" rel="noreferrer">`.center-block`</a> class in Twitter Bootstrap 3 (<em>Since v3.0.1</em>), so use:  
 
 ```css
-&lt;img src="..." alt="..." class="img-responsive center-block" /&gt;
+<img src="..." alt="..." class="img-responsive center-block" />
 ```
 
 #### Answer 3 (score 103)
 Add only the class `center-block` to an image, this works with Bootstrap 4 as well:  
 
 ```css
-&lt;img src="..." alt="..." class="center-block" /&gt;
+<img src="..." alt="..." class="center-block" />
 ```
 
 Note: `center-block` works even when `img-responsive` is used  
@@ -11357,11 +11357,11 @@ While I only want to set the color of the square bullets. Is there an <strong>el
 <strong>HTML</strong>  
 
 ```css
-&lt;ul&gt;
-&lt;li&gt;Item 1&lt;/li&gt;
-&lt;li&gt;Item 2&lt;/li&gt;
-&lt;li&gt;Item 3&lt;/li&gt;
-&lt;ul&gt;
+<ul>
+<li>Item 1</li>
+<li>Item 2</li>
+<li>Item 3</li>
+<ul>
 ```
 
 <strong>CSS</strong>  
@@ -11436,7 +11436,7 @@ following the idea of @lea-verou on the other answer and applying this philosoph
 <blockquote>
 ```css
 i.e.:
-fa-angle-right [&amp;#xf105;]
+fa-angle-right [&#xf105;]
 ```
 </blockquote>
 
@@ -11586,22 +11586,22 @@ Given that they're simply fonts, then you should be able to style them as fonts:
 You can also just add style inline:  
 
 ```css
-&lt;i class="icon-ok-sign" style="color:green"&gt;&lt;/i&gt;
+<i class="icon-ok-sign" style="color:green"></i>
 
-&lt;i class="icon-warning-sign" style="color:red"&gt;&lt;/i&gt;
+<i class="icon-warning-sign" style="color:red"></i>
 ```
 
 #### Answer 3 (score 102)
 If you are using Bootstrap at the same time, you can use:  
 
 ```css
-&lt;i class="fa fa-check-circle-o fa-5x text-success" &gt;&lt;/i&gt;
+<i class="fa fa-check-circle-o fa-5x text-success" ></i>
 ```
 
 Otherwise:  
 
 ```css
-&lt;i class="fa fa-check-circle-o fa-5x" style="color:green"&gt;&lt;/i&gt;
+<i class="fa fa-check-circle-o fa-5x" style="color:green"></i>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -11612,7 +11612,7 @@ Otherwise:
 How would I remove the border from an iframe embedded in my web app? An example of the iframe is:  
 
 ```css
-&lt;iframe src="myURL" width="300" height="300"&gt;Browser not compatible.&lt;/iframe&gt;
+<iframe src="myURL" width="300" height="300">Browser not compatible.</iframe>
 ```
 
 I would like the transition from the content on my page to the contents of the iframe to be seamless, assuming the background colors are consistent. The target browser is IE6 only and unfortunately solutions for others will not help.  
@@ -11623,7 +11623,7 @@ Add the `frameBorder` attribute (note the <strong>capital ‘B’</strong>).
 So it would look like:  
 
 ```css
-&lt;iframe src="myURL" width="300" height="300" frameBorder="0"&gt;Browser not compatible.&lt;/iframe&gt;
+<iframe src="myURL" width="300" height="300" frameBorder="0">Browser not compatible.</iframe>
 ```
 
 #### Answer 2 (score 142)
@@ -11632,14 +11632,14 @@ After going mad trying to remove the border in IE7, I found that the frameBorder
 You have to set the frameBorder attribute with a capital <strong>B</strong>.  
 
 ```css
-&lt;iframe frameBorder="0" &gt;&lt;/iframe&gt;
+<iframe frameBorder="0" ></iframe>
 ```
 
 #### Answer 3 (score 71)
 As per <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe" rel="noreferrer">iframe</a> documentation, frameBorder is deprecated and using the "border" CSS attribute is preferred:  
 
 ```css
-&lt;iframe src="test.html" style="width: 100%; height: 400px; border: 0"&gt;&lt;/iframe&gt;
+<iframe src="test.html" style="width: 100%; height: 400px; border: 0"></iframe>
 ```
 
 <ul>
@@ -12030,19 +12030,19 @@ Is there any way to make an expression for something like <a href="https://docs.
 For example, I have tried the following:  
 
 ```css
-&lt;span ng-class="{test: 'obj.value1 == \'someothervalue\''}"&gt;test&lt;/span&gt;
+<span ng-class="{test: 'obj.value1 == \'someothervalue\''}">test</span>
 ```
 
 The issue with this code is that no matter what `obj.value1` is, the class test is always applied to the element. Doing this:  
 
 ```css
-&lt;span ng-class="{test: obj.value2}"&gt;test&lt;/span&gt;
+<span ng-class="{test: obj.value2}">test</span>
 ```
 
 As long as `obj.value2` does not equal a truthy value, the class in not applied.  Now I can work around the issue in the first example by doing this:  
 
 ```css
-&lt;span ng-class="{test: checkValue1()}"&gt;test&lt;/span&gt;
+<span ng-class="{test: checkValue1()}">test</span>
 ```
 
 Where the `checkValue1` function looks like this:  
@@ -12079,18 +12079,18 @@ ng-class="{'test': obj.value1 == 'someothervalue' || obj.value2 == 'somethingels
 Using ng-class inside ng-repeat  
 
 ```css
-&lt;table&gt;
-    &lt;tbody&gt;
-            &lt;tr ng-repeat="task in todos"
+<table>
+    <tbody>
+            <tr ng-repeat="task in todos"
                 ng-class="{'warning': task.status == 'Hold' , 'success': task.status == 'Completed',
-              'active': task.status == 'Started', 'danger': task.status == 'Pending' } "&gt;
-                &lt;td&gt;{{$index + 1}}&lt;/td&gt;
-                &lt;td&gt;{{task.name}}&lt;/td&gt;
-                &lt;td&gt;{{task.date|date:'yyyy-MM-dd'}}&lt;/td&gt;
-                &lt;td&gt;{{task.status}}&lt;/td&gt;
-            &lt;/tr&gt;
-    &lt;/tbody&gt;
-&lt;/table&gt;
+              'active': task.status == 'Started', 'danger': task.status == 'Pending' } ">
+                <td>{{$index + 1}}</td>
+                <td>{{task.name}}</td>
+                <td>{{task.date|date:'yyyy-MM-dd'}}</td>
+                <td>{{task.status}}</td>
+            </tr>
+    </tbody>
+</table>
 ```
 
 For each status in task.status a different class is used for the row.  
@@ -12101,7 +12101,7 @@ For each status in task.status a different class is used for the row.
 <h5>Type 1</h1>
 
 ```css
-&lt;div ng-class="{0:'one', 1:'two',2:'three'}[status]"&gt;&lt;/div&gt;
+<div ng-class="{0:'one', 1:'two',2:'three'}[status]"></div>
 ```
 
 In this code class will be apply according to value of <strong>status</strong> value  
@@ -12117,7 +12117,7 @@ if <strong>status</strong> value is <strong>2</strong> then apply class <strong>
 <h5>Type 2</h1>
 
 ```css
-&lt;div ng-class="{1:'test_yes', 0:'test_no'}[status]"&gt;&lt;/div&gt;
+<div ng-class="{1:'test_yes', 0:'test_no'}[status]"></div>
 ```
 
 In which class will be apply by value of <strong>status</strong>  
@@ -12395,7 +12395,7 @@ body {
 To get the menu to automatically drop on hover then this can achieved using basic CSS. You need to work out the selector to the hidden menu option and then set it to display as block when the appropriate `li` tag is hovered over. Taking the example from the twitter bootstrap page, the selector would be as follows:  
 
 ```css
-ul.nav li.dropdown:hover &gt; ul.dropdown-menu {
+ul.nav li.dropdown:hover > ul.dropdown-menu {
     display: block;    
 }
 ```
@@ -12404,7 +12404,7 @@ However, if you are using Bootstrap's responsive features, you will not want thi
 
 ```css
 @media (min-width: 979px) {
-  ul.nav li.dropdown:hover &gt; ul.dropdown-menu {
+  ul.nav li.dropdown:hover > ul.dropdown-menu {
     display: block;
   }
 }
@@ -12457,10 +12457,10 @@ There are 2 lingering issues:
 The solution to (1) is removing the "class" and "data-toggle" elements from the nav link  
 
 ```css
-&lt;a href="#"&gt;
+<a href="#">
      Dropdown
-     &lt;b class="caret"&gt;&lt;/b&gt;
-&lt;/a&gt;
+     <b class="caret"></b>
+</a>
 ```
 
 This also gives you the ability to create a link to your parent page - which wasn't possible with the default implementation. You can just replace the "#" with whatever page you want to send the user.  
@@ -12498,19 +12498,19 @@ You can even follow this with a navbar-brand item, which will appear to the righ
 
 #### Answer 3 (score 147)
 ```css
-&lt;div class="navbar-header"&gt;
-    &lt;button type="button" class="navbar-toggle" data-toggle="collapse" 
-            data-target=".navbar-ex1-collapse"&gt;
-        &lt;span class="sr-only"&gt;Toggle navigation&lt;/span&gt;
-        &lt;span class="icon-bar"&gt;&lt;/span&gt;
-        &lt;span class="icon-bar"&gt;&lt;/span&gt;
-        &lt;span class="icon-bar"&gt;&lt;/span&gt;
-    &lt;/button&gt;
-    &lt;a class="navbar-brand" rel="home" href="#" title="Buy Sell Rent Everyting"&gt;
-        &lt;img style="max-width:100px; margin-top: -7px;"
-             src="/img/transparent-white-logo.png"&gt;
-    &lt;/a&gt;
-&lt;/div&gt;
+<div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" 
+            data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" rel="home" href="#" title="Buy Sell Rent Everyting">
+        <img style="max-width:100px; margin-top: -7px;"
+             src="/img/transparent-white-logo.png">
+    </a>
+</div>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -12521,12 +12521,12 @@ You can even follow this with a navbar-brand item, which will appear to the righ
 Simple scheme:  
 
 ```css
-  &lt;tr class="something"&gt;
-    &lt;td&gt;A&lt;/td&gt;
-    &lt;td&gt;B&lt;/td&gt;
-    &lt;td&gt;C&lt;/td&gt;
-    &lt;td&gt;D&lt;/td&gt;
-  &lt;/tr&gt;
+  <tr class="something">
+    <td>A</td>
+    <td>B</td>
+    <td>C</td>
+    <td>D</td>
+  </tr>
 ```
 
 I need to set up a fixed width for `&lt;td&gt;`. I've tried:  
@@ -12550,13 +12550,13 @@ td.something {
 for   
 
 ```css
-&lt;td class="something"&gt;B&lt;/td&gt;
+<td class="something">B</td>
 ```
 
 And even  
 
 ```css
-&lt;td style="width: 90px;"&gt;B&lt;/td&gt;
+<td style="width: 90px;">B</td>
 ```
 
 But the width of `&lt;td&gt;` is still the same.  
@@ -12568,12 +12568,12 @@ But the width of `&lt;td&gt;` is still the same.
 You need to use <a href="https://stackoverflow.com/a/34987484/2256700">OhadR's answer</a>:</p>
 
 ```css
-&lt;tr&gt;
-  &lt;th style="width: 16.66%"&gt;Col 1&lt;/th&gt;
-  &lt;th style="width: 25%"&gt;Col 2&lt;/th&gt;
-  &lt;th style="width: 50%"&gt;Col 4&lt;/th&gt;
-  &lt;th style="width:  8.33%"&gt;Col 5&lt;/th&gt;
-&lt;/tr&gt;
+<tr>
+  <th style="width: 16.66%">Col 1</th>
+  <th style="width: 25%">Col 2</th>
+  <th style="width: 50%">Col 4</th>
+  <th style="width:  8.33%">Col 5</th>
+</tr>
 ```
 
 <h5>For Bootstrap 3.0:</h2>
@@ -12581,12 +12581,12 @@ You need to use <a href="https://stackoverflow.com/a/34987484/2256700">OhadR's a
 With twitter bootstrap 3 use: `class="col-md-*"` where * is a number of columns of width.  
 
 ```css
-&lt;tr class="something"&gt;
-    &lt;td class="col-md-2"&gt;A&lt;/td&gt;
-    &lt;td class="col-md-3"&gt;B&lt;/td&gt;
-    &lt;td class="col-md-6"&gt;C&lt;/td&gt;
-    &lt;td class="col-md-1"&gt;D&lt;/td&gt;
-&lt;/tr&gt;
+<tr class="something">
+    <td class="col-md-2">A</td>
+    <td class="col-md-3">B</td>
+    <td class="col-md-6">C</td>
+    <td class="col-md-1">D</td>
+</tr>
 ```
 
 <h5>For Bootstrap 2.0:</h2>
@@ -12594,12 +12594,12 @@ With twitter bootstrap 3 use: `class="col-md-*"` where * is a number of columns 
 With twitter bootstrap 2 use: `class="span*"` where * is a number of columns of width.  
 
 ```css
-&lt;tr class="something"&gt;
-    &lt;td class="span2"&gt;A&lt;/td&gt;
-    &lt;td class="span3"&gt;B&lt;/td&gt;
-    &lt;td class="span6"&gt;C&lt;/td&gt;
-    &lt;td class="span1"&gt;D&lt;/td&gt;
-&lt;/tr&gt;
+<tr class="something">
+    <td class="span2">A</td>
+    <td class="span3">B</td>
+    <td class="span6">C</td>
+    <td class="span1">D</td>
+</tr>
 ```
 
 ** If you have `&lt;th&gt;` elements set the width there and not on the `&lt;td&gt;` elements.  
@@ -12617,7 +12617,7 @@ table {
 Template:  
 
 ```css
-&lt;td style="width:10%"&gt;content&lt;/td&gt;
+<td style="width:10%">content</td>
 ```
 
 Please use CSS for structuring any layouts.  
@@ -12626,18 +12626,18 @@ Please use CSS for structuring any layouts.
 Instead of applying the `col-md-*` classes to each `td` in the row you can create a `colgroup` and apply the classes to the `col` tag.  
 
 ```css
-    &lt;table class="table table-striped"&gt;
-        &lt;colgroup&gt;
-            &lt;col class="col-md-4"&gt;
-            &lt;col class="col-md-7"&gt;
-        &lt;/colgroup&gt;
-        &lt;tbody&gt;
-        &lt;tr&gt;
-            &lt;td&gt;Title&lt;/td&gt;
-            &lt;td&gt;Long Value&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;/tbody&gt;
-    &lt;/table&gt;
+    <table class="table table-striped">
+        <colgroup>
+            <col class="col-md-4">
+            <col class="col-md-7">
+        </colgroup>
+        <tbody>
+        <tr>
+            <td>Title</td>
+            <td>Long Value</td>
+        </tr>
+        </tbody>
+    </table>
 ```
 
 Demo <a href="http://www.bootply.com/rNvsMxe7d8" rel="noreferrer">here</a>  
@@ -12684,20 +12684,20 @@ Bootstrap 4 uses Flexbox so there's need for extra CSS.
 <a href="http://jsfiddle.net/fs84o9q7/" rel="noreferrer">Demo</a>  
 
 ```css
-&lt;div class="container"&gt;
-    &lt;div class="row "&gt;
-        &lt;div class="col-md-4" style="background-color: red"&gt;
+<div class="container">
+    <div class="row ">
+        <div class="col-md-4" style="background-color: red">
           some content
-        &lt;/div&gt;
-        &lt;div class="col-md-4" style="background-color: yellow"&gt;
+        </div>
+        <div class="col-md-4" style="background-color: yellow">
           catz
-          &lt;img width="100" height="100" src="https://lorempixel.com/100/100/cats/"&gt;
-        &lt;/div&gt;
-        &lt;div class="col-md-4" style="background-color: green"&gt;
+          <img width="100" height="100" src="https://lorempixel.com/100/100/cats/">
+        </div>
+        <div class="col-md-4" style="background-color: green">
           some more content
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
+        </div>
+    </div>
+</div>
 ```
 
 <strong>Solution 1 using negative margins (doesn't break responsiveness)</strong>   
@@ -12743,7 +12743,7 @@ Bootstrap 4 uses Flexbox so there's need for extra CSS.
   display:         flex;
   flex-wrap: wrap;
 }
-.row &gt; [class*='col-'] {
+.row > [class*='col-'] {
   display: flex;
   flex-direction: column;
 }
@@ -12806,18 +12806,18 @@ Example:
 No JavaScript needed. Just add the class `.row-eq-height` to your existing `.row` just like this:  
 
 ```css
-&lt;div class="row row-eq-height"&gt;
-  &lt;div class="col-xs-12 col-sm-4 panel" style="background-color: red"&gt;
+<div class="row row-eq-height">
+  <div class="col-xs-12 col-sm-4 panel" style="background-color: red">
     some content
-  &lt;/div&gt;
-  &lt;div class="col-xs-6 col-sm-4 panel" style="background-color: yellow"&gt;
+  </div>
+  <div class="col-xs-6 col-sm-4 panel" style="background-color: yellow">
     kittenz
-  &lt;img src="http://placekitten.com/100/100"&gt;
-  &lt;/div&gt;
-  &lt;div class="col-xs-6 col-sm-4 panel" style="background-color: blue"&gt;
+  <img src="http://placekitten.com/100/100">
+  </div>
+  <div class="col-xs-6 col-sm-4 panel" style="background-color: blue">
     some more content
-  &lt;/div&gt;
-&lt;/div&gt;
+  </div>
+</div>
 ```
 
 Tip: if you have more than 12 columns in your row, the bootstrap grid will fail to wrap it. So add a new `div.row.row-eq-height` each 12 columns.  
@@ -12825,7 +12825,7 @@ Tip: if you have more than 12 columns in your row, the bootstrap grid will fail 
 Tip: you may need to add   
 
 ```css
-&lt;link rel="stylesheet" href="http://getbootstrap.com.vn/examples/equal-height-columns/equal-height-columns.css" /&gt;
+<link rel="stylesheet" href="http://getbootstrap.com.vn/examples/equal-height-columns/equal-height-columns.css" />
 ```
 
 to your html  
@@ -12912,8 +12912,8 @@ or if you float both, you'll need to encourage the wrapper div to contain both t
 Having two divs,  
 
 ```css
-&lt;div id="div1"&gt;The two divs are&lt;/div&gt;
-&lt;div id="div2"&gt;next to each other.&lt;/div&gt;
+<div id="div1">The two divs are</div>
+<div id="div2">next to each other.</div>
 ```
 
 you could also use the `display` property:  
@@ -12963,9 +12963,9 @@ To make a functional file input control that looks like a button, you only need 
 <strong>HTML</strong>  
 
 ```css
-&lt;label class="btn btn-default"&gt;
-    Browse &lt;input type="file" hidden&gt;
-&lt;/label&gt;
+<label class="btn btn-default">
+    Browse <input type="file" hidden>
+</label>
 ```
 
 This works in all modern browsers, including IE9+. If you need support for old IE as well, please use the legacy approach shown below.  
@@ -12987,9 +12987,9 @@ If you need support for IE8 and below, use the following HTML/CSS:
 <strong>HTML</strong>  
 
 ```css
-&lt;span class="btn btn-default btn-file"&gt;
-    Browse &lt;input type="file"&gt;
-&lt;/span&gt;
+<span class="btn btn-default btn-file">
+    Browse <input type="file">
+</span>
 ```
 
 <strong>CSS</strong>  
@@ -13037,10 +13037,10 @@ Im surprised there was no mention of the `&lt;label&gt;` element.
 <strong>Solution:</strong>  
 
 ```css
-&lt;label class="btn btn-primary" for="my-file-selector"&gt;
-    &lt;input id="my-file-selector" type="file" class="d-none"&gt;
+<label class="btn btn-primary" for="my-file-selector">
+    <input id="my-file-selector" type="file" class="d-none">
     Button Text Here
-&lt;/label&gt;
+</label>
 ```
 
 No need for any JS, or funky css...  
@@ -13048,12 +13048,12 @@ No need for any JS, or funky css...
 <strong>Solution for including the filename:</strong>  
 
 ```css
-&lt;label class="btn btn-primary" for="my-file-selector"&gt;
-    &lt;input id="my-file-selector" type="file" style="display:none" 
-    onchange="$('#upload-file-info').html(this.files[0].name)"&gt;
+<label class="btn btn-primary" for="my-file-selector">
+    <input id="my-file-selector" type="file" style="display:none" 
+    onchange="$('#upload-file-info').html(this.files[0].name)">
     Button Text Here
-&lt;/label&gt;
-&lt;span class='label label-info' id="upload-file-info"&gt;&lt;/span&gt;
+</label>
+<span class='label label-info' id="upload-file-info"></span>
 ```
 
 The solution above requires jQuery.  
@@ -13062,14 +13062,14 @@ The solution above requires jQuery.
 With no additional plugin required, this bootstrap solution works great for me:  
 
 ```css
-&lt;div style="position:relative;"&gt;
-        &lt;a class='btn btn-primary' href='javascript:;'&gt;
+<div style="position:relative;">
+        <a class='btn btn-primary' href='javascript:;'>
             Choose File...
-            &lt;input type="file" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="file_source" size="40"  onchange='$("#upload-file-info").html($(this).val());'&gt;
-        &lt;/a&gt;
-        &amp;nbsp;
-        &lt;span class='label label-info' id="upload-file-info"&gt;&lt;/span&gt;
-&lt;/div&gt;
+            <input type="file" style='position:absolute;z-index:2;top:0;left:0;filter: alpha(opacity=0);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";opacity:0;background-color:transparent;color:transparent;' name="file_source" size="40"  onchange='$("#upload-file-info").html($(this).val());'>
+        </a>
+        &nbsp;
+        <span class='label label-info' id="upload-file-info"></span>
+</div>
 ```
 
 demo:   

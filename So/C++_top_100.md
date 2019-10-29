@@ -28,7 +28,7 @@ string str = string(intStr);
 ```c++
 int a = 10;
 stringstream ss;
-ss &lt;&lt; a;
+ss << a;
 string str = ss.str();
 ```
 
@@ -36,7 +36,7 @@ string str = ss.str();
 C++11 introduces <a href="http://en.cppreference.com/w/cpp/string/basic_string/stol" rel="noreferrer">`std::stoi`</a> (and variants for each numeric type) and <a href="http://en.cppreference.com/w/cpp/string/basic_string/to_string" rel="noreferrer">`std::to_string`</a>, the counterparts of the C `atoi` and `itoa` but expressed in term of `std::string`.  
 
 ```c++
-#include &lt;string&gt; 
+#include <string> 
 
 std::string s = std::to_string(42);
 ```
@@ -54,12 +54,12 @@ Picking up a discussion with @v.oddou a couple of years later, C++17 has finally
 
 ```c++
 // variadic template
-template &lt; typename... Args &gt;
-std::string sstr( Args &amp;&amp;... args )
+template < typename... Args >
+std::string sstr( Args &&... args )
 {
     std::ostringstream sstr;
     // fold expression
-    ( sstr &lt;&lt; std::dec &lt;&lt; ... &lt;&lt; args );
+    ( sstr << std::dec << ... << args );
     return sstr.str();
 }
 ```
@@ -82,21 +82,21 @@ throw std::runtime_error( sstr( "Foo is '", x, "', i is ", i ) );
 Since "converting ... to string" is a recurring problem, I always define the <a href="http://rootdirectory.ddns.net/dokuwiki/doku.php?id=software:sstr" rel="noreferrer">SSTR()</a> macro in a central header of my C++ sources:  
 
 ```c++
-#include &lt;sstream&gt;
+#include <sstream>
 
-#define SSTR( x ) static_cast&lt; std::ostringstream &amp; &gt;( \
-        ( std::ostringstream() &lt;&lt; std::dec &lt;&lt; x ) ).str()
+#define SSTR( x ) static_cast< std::ostringstream & >( \
+        ( std::ostringstream() << std::dec << x ) ).str()
 ```
 
 Usage is as easy as could be:  
 
 ```c++
 int i = 42;
-std::string s = SSTR( "i is: " &lt;&lt; i );
+std::string s = SSTR( "i is: " << i );
 puts( SSTR( i ).c_str() );
 
 Foo x( 42 );
-throw std::runtime_error( SSTR( "Foo is '" &lt;&lt; x &lt;&lt; "', i is " &lt;&lt; i ) );
+throw std::runtime_error( SSTR( "Foo is '" << x << "', i is " << i ) );
 ```
 
 The above is C++98 compatible (if you cannot use C++11 `std::to_string`), and does not need any third-party includes (if you cannot use Boost `lexical_cast&lt;&gt;`); both these other solutions have a better performance though.  
@@ -105,13 +105,13 @@ The above is C++98 compatible (if you cannot use C++11 `std::to_string`), and do
 I usually use the following method:  
 
 ```c++
-#include &lt;sstream&gt;
+#include <sstream>
 
-template &lt;typename T&gt;
+template <typename T>
   std::string NumberToString ( T Number )
   {
      std::ostringstream ss;
-     ss &lt;&lt; Number;
+     ss << Number;
      return ss.str();
   }
 ```
@@ -245,9 +245,9 @@ Note that I'm not interested in C string functions or that kind of character man
 The best solution I have right now is:  
 
 ```c++
-#include &lt;iostream&gt;
-#include &lt;sstream&gt;
-#include &lt;string&gt;
+#include <iostream>
+#include <sstream>
+#include <string>
 
 using namespace std;
 
@@ -259,8 +259,8 @@ int main()
     do
     {
         string subs;
-        iss &gt;&gt; subs;
-        cout &lt;&lt; "Substring: " &lt;&lt; subs &lt;&lt; endl;
+        iss >> subs;
+        cout << "Substring: " << subs << endl;
     } while (iss);
 }
 ```
@@ -271,36 +271,36 @@ Is there a more elegant way to do this?
 For what it's worth, here's another way to extract tokens from an input string, relying only on standard library facilities. It's an example of the power and elegance behind the design of the STL.  
 
 ```c++
-#include &lt;iostream&gt;
-#include &lt;string&gt;
-#include &lt;sstream&gt;
-#include &lt;algorithm&gt;
-#include &lt;iterator&gt;
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <algorithm>
+#include <iterator>
 
 int main() {
     using namespace std;
     string sentence = "And I feel fine...";
     istringstream iss(sentence);
-    copy(istream_iterator&lt;string&gt;(iss),
-         istream_iterator&lt;string&gt;(),
-         ostream_iterator&lt;string&gt;(cout, "\n"));
+    copy(istream_iterator<string>(iss),
+         istream_iterator<string>(),
+         ostream_iterator<string>(cout, "\n"));
 }
 ```
 
 Instead of copying the extracted tokens to an output stream, one could insert them into a container, using the same generic <a href="https://en.cppreference.com/w/cpp/algorithm/copy" rel="noreferrer">`copy`</a> algorithm.  
 
 ```c++
-vector&lt;string&gt; tokens;
-copy(istream_iterator&lt;string&gt;(iss),
-     istream_iterator&lt;string&gt;(),
+vector<string> tokens;
+copy(istream_iterator<string>(iss),
+     istream_iterator<string>(),
      back_inserter(tokens));
 ```
 
 ... or create the `vector` directly:  
 
 ```c++
-vector&lt;string&gt; tokens{istream_iterator&lt;string&gt;{iss},
-                      istream_iterator&lt;string&gt;{}};
+vector<string> tokens{istream_iterator<string>{iss},
+                      istream_iterator<string>{}};
 ```
 
 #### Answer 2 (score 2391)
@@ -309,13 +309,13 @@ I use this to split string by a delimiter. The first puts the results in a pre-c
 
 
 ```c++
-#include &lt;string&gt;
-#include &lt;sstream&gt;
-#include &lt;vector&gt;
-#include &lt;iterator&gt;
+#include <string>
+#include <sstream>
+#include <vector>
+#include <iterator>
 
-template &lt;typename Out&gt;
-void split(const std::string &amp;s, char delim, Out result) {
+template <typename Out>
+void split(const std::string &s, char delim, Out result) {
     std::istringstream iss(s);
     std::string item;
     while (std::getline(iss, item, delim)) {
@@ -323,8 +323,8 @@ void split(const std::string &amp;s, char delim, Out result) {
     }
 }
 
-std::vector&lt;std::string&gt; split(const std::string &amp;s, char delim) {
-    std::vector&lt;std::string&gt; elems;
+std::vector<std::string> split(const std::string &s, char delim) {
+    std::vector<std::string> elems;
     split(s, delim, std::back_inserter(elems));
     return elems;
 }
@@ -335,15 +335,15 @@ std::vector&lt;std::string&gt; split(const std::string &amp;s, char delim) {
 Note that this solution does not skip empty tokens, so the following will find 4 items, one of which is empty:  
 
 ```c++
-std::vector&lt;std::string&gt; x = split("one:two::three", ':');
+std::vector<std::string> x = split("one:two::three", ':');
 ```
 
 #### Answer 3 (score 825)
 A possible solution using Boost might be:  
 
 ```c++
-#include &lt;boost/algorithm/string.hpp&gt;
-std::vector&lt;std::string&gt; strs;
+#include <boost/algorithm/string.hpp>
+std::vector<std::string> strs;
 boost::split(strs, "string to split", boost::is_any_of("\t "));
 ```
 
@@ -395,9 +395,9 @@ int x = (int)character - 48;
 Here is a piece of C++ code that shows some very peculiar behavior. For some strange reason, sorting the data miraculously makes the code almost six times faster:  
 
 ```c++
-#include &lt;algorithm&gt;
-#include &lt;ctime&gt;
-#include &lt;iostream&gt;
+#include <algorithm>
+#include <ctime>
+#include <iostream>
 
 int main()
 {
@@ -405,7 +405,7 @@ int main()
     const unsigned arraySize = 32768;
     int data[arraySize];
 
-    for (unsigned c = 0; c &lt; arraySize; ++c)
+    for (unsigned c = 0; c < arraySize; ++c)
         data[c] = std::rand() % 256;
 
     // !!! With this, the next loop runs faster.
@@ -415,20 +415,20 @@ int main()
     clock_t start = clock();
     long long sum = 0;
 
-    for (unsigned i = 0; i &lt; 100000; ++i)
+    for (unsigned i = 0; i < 100000; ++i)
     {
         // Primary loop
-        for (unsigned c = 0; c &lt; arraySize; ++c)
+        for (unsigned c = 0; c < arraySize; ++c)
         {
-            if (data[c] &gt;= 128)
+            if (data[c] >= 128)
                 sum += data[c];
         }
     }
 
-    double elapsedTime = static_cast&lt;double&gt;(clock() - start) / CLOCKS_PER_SEC;
+    double elapsedTime = static_cast<double>(clock() - start) / CLOCKS_PER_SEC;
 
-    std::cout &lt;&lt; elapsedTime &lt;&lt; std::endl;
-    std::cout &lt;&lt; "sum = " &lt;&lt; sum &lt;&lt; std::endl;
+    std::cout << elapsedTime << std::endl;
+    std::cout << "sum = " << sum << std::endl;
 }
 ```
 
@@ -454,7 +454,7 @@ public class Main
         int data[] = new int[arraySize];
 
         Random rnd = new Random(0);
-        for (int c = 0; c &lt; arraySize; ++c)
+        for (int c = 0; c < arraySize; ++c)
             data[c] = rnd.nextInt() % 256;
 
         // !!! With this, the next loop runs faster
@@ -464,12 +464,12 @@ public class Main
         long start = System.nanoTime();
         long sum = 0;
 
-        for (int i = 0; i &lt; 100000; ++i)
+        for (int i = 0; i < 100000; ++i)
         {
             // Primary loop
-            for (int c = 0; c &lt; arraySize; ++c)
+            for (int c = 0; c < arraySize; ++c)
             {
-                if (data[c] &gt;= 128)
+                if (data[c] >= 128)
                     sum += data[c];
             }
         }
@@ -558,7 +558,7 @@ Further reading: <a href="//en.wikipedia.org/wiki/Branch_predictor" rel="norefer
 <h5>As hinted from above, the culprit is this if-statement:</h2>
 
 ```c++
-if (data[c] &gt;= 128)
+if (data[c] >= 128)
     sum += data[c];
 ```
 
@@ -596,15 +596,15 @@ If the compiler isn't able to optimize the branch into a conditional move, you c
 Replace:  
 
 ```c++
-if (data[c] &gt;= 128)
+if (data[c] >= 128)
     sum += data[c];
 ```
 
 with:  
 
 ```c++
-int t = (data[c] - 128) &gt;&gt; 31;
-sum += ~t &amp; data[c];
+int t = (data[c] - 128) >> 31;
+sum += ~t & data[c];
 ```
 
 This eliminates the branch and replaces it with some bitwise operations.  
@@ -679,7 +679,7 @@ The reason why performance improves drastically when the data is sorted is that 
 Now, if we look at the code  
 
 ```c++
-if (data[c] &gt;= 128)
+if (data[c] >= 128)
     sum += data[c];
 ```
 
@@ -688,7 +688,7 @@ we can find that the meaning of this particular `if... else...` branch is to add
 In `C`, thus `C++`, the statement, which would compile directly (without any optimization) into the conditional move instruction in `x86`, is the ternary operator `... ? ... : ...`. So we rewrite the above statement into an equivalent one:  
 
 ```c++
-sum += data[c] &gt;=128 ? data[c] : 0;
+sum += data[c] >=128 ? data[c] : 0;
 ```
 
 While maintaining readability, we can check the speedup factor.  
@@ -735,7 +735,7 @@ Now let's look more closely by investigating the `x86` assembly they generate. F
 
 ```c++
 int max1(int a, int b) {
-    if (a &gt; b)
+    if (a > b)
         return a;
     else
         return b;
@@ -746,7 +746,7 @@ int max1(int a, int b) {
 
 ```c++
 int max2(int a, int b) {
-    return a &gt; b ? a : b;
+    return a > b ? a : b;
 }
 ```
 
@@ -806,14 +806,14 @@ If you mean a C-style array, then you can do something like:
 
 ```c++
 int a[7];
-std::cout &lt;&lt; "Length of array = " &lt;&lt; (sizeof(a)/sizeof(*a)) &lt;&lt; std::endl;
+std::cout << "Length of array = " << (sizeof(a)/sizeof(*a)) << std::endl;
 ```
 
 This doesn't work on pointers, though, i.e. it <strong>won't</strong> work for either of the following:  
 
 ```c++
 int *p = new int[7];
-std::cout &lt;&lt; "Length of array = " &lt;&lt; (sizeof(p)/sizeof(*p)) &lt;&lt; std::endl;
+std::cout << "Length of array = " << (sizeof(p)/sizeof(*p)) << std::endl;
 ```
 
 or:  
@@ -821,7 +821,7 @@ or:
 ```c++
 void func(int *p)
 {
-    std::cout &lt;&lt; "Length of array = " &lt;&lt; (sizeof(p)/sizeof(*p)) &lt;&lt; std::endl;
+    std::cout << "Length of array = " << (sizeof(p)/sizeof(*p)) << std::endl;
 }
 
 int a[7];
@@ -834,8 +834,8 @@ In C++, if you want this kind of behaviour, then you should be using a container
 As other's said you can use the `sizeof(arr)/sizeof(*arr)` but this will give you the wrong answer for pointer types that aren't arrays.  
 
 ```c++
-template&lt;class T, size_t N&gt;
-constexpr size_t size(T (&amp;)[N]) { return N; }
+template<class T, size_t N>
+constexpr size_t size(T (&)[N]) { return N; }
 ```
 
 This has the nice property of failing to compile for non array types (visual studio has <a href="http://msdn.microsoft.com/en-us/library/ms175773.aspx" rel="noreferrer">`_countof`</a> which does this). The <a href="http://en.cppreference.com/w/cpp/language/constexpr" rel="noreferrer">`constexpr`</a> makes this a compile time expression so it doesn't have any drawbacks over the macro (at least none I know of).  
@@ -886,7 +886,7 @@ see <a href="http://en.cppreference.com/w/cpp/string/basic_string/stol">http://e
 #### Answer 2 (score 58)
 ```c++
 std::istringstream ss(thestring);
-ss &gt;&gt; thevalue;
+ss >> thevalue;
 ```
 
 To be fully correct you'll want to check the error flags.  
@@ -933,7 +933,7 @@ myfile.open ("text.txt");
 First, make an `ifstream`:  
 
 ```c++
-#include &lt;fstream&gt;
+#include <fstream>
 std::ifstream infile("thefile.txt");
 ```
 
@@ -944,7 +944,7 @@ The two standard methods are:
 
 ```c++
 int a, b;
-while (infile &gt;&gt; a &gt;&gt; b)
+while (infile >> a >> b)
 {
     // process pair (a,b)
 }
@@ -952,15 +952,15 @@ while (infile &gt;&gt; a &gt;&gt; b)
 <li><p>Line-based parsing, using string streams:</p>
 
 ```c++
-#include &lt;sstream&gt;
-#include &lt;string&gt;
+#include <sstream>
+#include <string>
 
 std::string line;
 while (std::getline(infile, line))
 {
     std::istringstream iss(line);
     int a, b;
-    if (!(iss &gt;&gt; a &gt;&gt; b)) { break; } // error
+    if (!(iss >> a >> b)) { break; } // error
 
     // process pair (a,b)
 }
@@ -989,7 +989,7 @@ But you probably just need to extract coordinate pairs:
 
 ```c++
 int x, y;
-input &gt;&gt; x &gt;&gt; y;
+input >> x >> y;
 ```
 
 <strong>Update:</strong>  
@@ -1004,7 +1004,7 @@ Reading a file line by line in C++ can be done in some different ways.
 The simplest approach is to open an std::ifstream and loop using std::getline() calls. The code is clean and easy to understand.  
 
 ```c++
-#include &lt;fstream&gt;
+#include <fstream>
 
 std::ifstream file(FILENAME);
 if (file.is_open()) {
@@ -1022,17 +1022,17 @@ if (file.is_open()) {
 Another possibility is to use the Boost library, but the code gets a bit more verbose. The performance is quite similar to the code above (Loop with std::getline()).  
 
 ```c++
-#include &lt;boost/iostreams/device/file_descriptor.hpp&gt;
-#include &lt;boost/iostreams/stream.hpp&gt;
-#include &lt;fcntl.h&gt;
+#include <boost/iostreams/device/file_descriptor.hpp>
+#include <boost/iostreams/stream.hpp>
+#include <fcntl.h>
 
 namespace io = boost::iostreams;
 
 void readLineByLineBoost() {
     int fdr = open(FILENAME, O_RDONLY);
-    if (fdr &gt;= 0) {
+    if (fdr >= 0) {
         io::file_descriptor_source fdDevice(fdr, io::file_descriptor_flags::close_handle);
-        io::stream &lt;io::file_descriptor_source&gt; in(fdDevice);
+        io::stream <io::file_descriptor_source> in(fdDevice);
         if (fdDevice.is_open()) {
             std::string line;
             while (std::getline(in, line)) {
@@ -1056,7 +1056,7 @@ if (fp == NULL)
 
 char* line = NULL;
 size_t len = 0;
-while ((getline(&amp;line, &amp;len, fp)) != -1) {
+while ((getline(&line, &len, fp)) != -1) {
     // using printf() in all tests for consistency
     printf("%s", line);
 }
@@ -1152,7 +1152,7 @@ For example, this is how you will find maximum range for `int`:
 <strong>C:</strong>  
 
 ```c++
-#include &lt;limits.h&gt;
+#include <limits.h>
 const int min_int = INT_MIN;
 const int max_int = INT_MAX;
 ```
@@ -1160,9 +1160,9 @@ const int max_int = INT_MAX;
 <strong>C++</strong>:  
 
 ```c++
-#include &lt;limits&gt;
-const int min_int = std::numeric_limits&lt;int&gt;::min();
-const int max_int = std::numeric_limits&lt;int&gt;::max();
+#include <limits>
+const int min_int = std::numeric_limits<int>::min();
+const int max_int = std::numeric_limits<int>::max();
 ```
 
 #### Answer 3 (score 233)
@@ -1207,7 +1207,7 @@ I know the POSIX `sleep(x)` function makes the program sleep for x seconds. Is t
 Note that there is no standard C API for milliseconds, so (on Unix) you will have to settle for `usleep`, which accepts microseconds:  
 
 ```c++
-#include &lt;unistd.h&gt;
+#include <unistd.h>
 
 unsigned int microseconds;
 ...
@@ -1218,8 +1218,8 @@ usleep(microseconds);
 In C++11, you can do this with standard library facilities:  
 
 ```c++
-#include &lt;chrono&gt;
-#include &lt;thread&gt;
+#include <chrono>
+#include <thread>
 ```
 
 
@@ -1234,7 +1234,7 @@ Clear and readable, no more need to guess at what units the `sleep()` function t
 To stay portable you could use <a href="http://www.boost.org/doc/libs/1_44_0/doc/html/thread.html" rel="noreferrer">Boost::Thread</a> for sleeping:  
 
 ```c++
-#include &lt;boost/thread/thread.hpp&gt;
+#include <boost/thread/thread.hpp>
 
 int main()
 {
@@ -1261,7 +1261,7 @@ How do you set, clear, and toggle a bit?
 Use the bitwise OR operator (`|`) to set a bit.  
 
 ```c++
-number |= 1UL &lt;&lt; n;
+number |= 1UL << n;
 ```
 
 That will set the `n`th bit of `number`. `n` should be zero, if you want to set the `1`st bit and so on upto `n-1`, if you want to set the `n`th bit.  
@@ -1273,7 +1273,7 @@ Use `1ULL` if `number` is wider than `unsigned long`; promotion of `1UL &lt;&lt;
 Use the bitwise AND operator (`&amp;`) to clear a bit.  
 
 ```c++
-number &amp;= ~(1UL &lt;&lt; n);
+number &= ~(1UL << n);
 ```
 
 That will clear the `n`th bit of `number`. You must invert the bit string with the bitwise NOT operator (`~`), then AND it.  
@@ -1283,7 +1283,7 @@ That will clear the `n`th bit of `number`. You must invert the bit string with t
 The XOR operator (`^`) can be used to toggle a bit.  
 
 ```c++
-number ^= 1UL &lt;&lt; n;
+number ^= 1UL << n;
 ```
 
 That will toggle the `n`th bit of `number`.  
@@ -1295,7 +1295,7 @@ You didn't ask for this, but I might as well add it.
 To check a bit, shift the number n to the right, then bitwise AND it:  
 
 ```c++
-bit = (number &gt;&gt; n) &amp; 1U;
+bit = (number >> n) & 1U;
 ```
 
 That will put the value of the `n`th bit of `number` into the variable `bit`.  
@@ -1305,7 +1305,7 @@ That will put the value of the `n`th bit of `number` into the variable `bit`.
 Setting the `n`th bit to either `1` or `0` can be achieved with the following on a 2's complement C++ implementation:  
 
 ```c++
-number ^= (-x ^ number) &amp; (1UL &lt;&lt; n);
+number ^= (-x ^ number) & (1UL << n);
 ```
 
 Bit `n` will be set if `x` is `1`, and cleared if `x` is `0`.  If `x` has some other value, you get garbage.  `x = !!x` will booleanize it to 0 or 1.  
@@ -1313,14 +1313,14 @@ Bit `n` will be set if `x` is `1`, and cleared if `x` is `0`.  If `x` has some o
 To make this independent of 2's complement negation behaviour (where `-1` has all bits set, unlike on a 1's complement or sign/magnitude C++ implementation), use unsigned negation.  
 
 ```c++
-number ^= (-(unsigned long)x ^ number) &amp; (1UL &lt;&lt; n);
+number ^= (-(unsigned long)x ^ number) & (1UL << n);
 ```
 
 or  
 
 ```c++
 unsigned long newbit = !!x;    // Also booleanize to force 0 or 1
-number ^= (-newbit ^ number) &amp; (1UL &lt;&lt; n);
+number ^= (-newbit ^ number) & (1UL << n);
 ```
 
 It's generally a good idea to use unsigned types for portable bit manipulation.  
@@ -1328,7 +1328,7 @@ It's generally a good idea to use unsigned types for portable bit manipulation.
 or  
 
 ```c++
-number = (number &amp; ~(1UL &lt;&lt; n)) | (x &lt;&lt; n);
+number = (number & ~(1UL << n)) | (x << n);
 ```
 
 `(number &amp; ~(1UL &lt;&lt; n))` will clear the `n`th bit and `(x &lt;&lt; n)` will set the `n`th bit to `x`.  
@@ -1343,25 +1343,25 @@ Or the <a href="http://en.wikipedia.org/wiki/Boost_%28C%2B%2B_libraries%29" rel=
 There is no need to roll your own:  
 
 ```c++
-#include &lt;bitset&gt;
-#include &lt;iostream&gt;
+#include <bitset>
+#include <iostream>
 
 int main()
 {
-    std::bitset&lt;5&gt; x;
+    std::bitset<5> x;
 
     x[1] = 1;
     x[2] = 0;
     // Note x[0-4]  valid
 
-    std::cout &lt;&lt; x &lt;&lt; std::endl;
+    std::cout << x << std::endl;
 }
 ```
 
 <hr>
 
 ```c++
-[Alpha:] &gt; ./a.out
+[Alpha:] > ./a.out
 00010
 ```
 
@@ -1418,9 +1418,9 @@ In C++ 11 you can use <a href="http://en.cppreference.com/w/cpp/chrono/system_cl
 Example (copied from <a href="https://en.cppreference.com/w/cpp/chrono" rel="noreferrer">en.cppreference.com</a>):  
 
 ```c++
-#include &lt;iostream&gt;
-#include &lt;chrono&gt;
-#include &lt;ctime&gt;    
+#include <iostream>
+#include <chrono>
+#include <ctime>    
 
 int main()
 {
@@ -1428,11 +1428,11 @@ int main()
     // Some computation here
     auto end = std::chrono::system_clock::now();
 
-    std::chrono::duration&lt;double&gt; elapsed_seconds = end-start;
+    std::chrono::duration<double> elapsed_seconds = end-start;
     std::time_t end_time = std::chrono::system_clock::to_time_t(end);
 
-    std::cout &lt;&lt; "finished computation at " &lt;&lt; std::ctime(&amp;end_time)
-              &lt;&lt; "elapsed time: " &lt;&lt; elapsed_seconds.count() &lt;&lt; "s\n";
+    std::cout << "finished computation at " << std::ctime(&end_time)
+              << "elapsed time: " << elapsed_seconds.count() << "s\n";
 }
 ```
 
@@ -1447,16 +1447,16 @@ elapsed time: 1.88232s
 C++ shares its date/time functions with C. The <a href="http://en.cppreference.com/w/cpp/chrono/c/tm" rel="noreferrer">tm structure</a> is probably the easiest for a C++ programmer to work with - the following prints today's date:  
 
 ```c++
-#include &lt;ctime&gt;
-#include &lt;iostream&gt;
+#include <ctime>
+#include <iostream>
 
 int main() {
     std::time_t t = std::time(0);   // get time now
-    std::tm* now = std::localtime(&amp;t);
-    std::cout &lt;&lt; (now-&gt;tm_year + 1900) &lt;&lt; '-' 
-         &lt;&lt; (now-&gt;tm_mon + 1) &lt;&lt; '-'
-         &lt;&lt;  now-&gt;tm_mday
-         &lt;&lt; "\n";
+    std::tm* now = std::localtime(&t);
+    std::cout << (now->tm_year + 1900) << '-' 
+         << (now->tm_mon + 1) << '-'
+         <<  now->tm_mday
+         << "\n";
 }
 ```
 
@@ -1464,26 +1464,26 @@ int main() {
 You can try the following cross-platform code to get current date/time:  
 
 ```c++
-#include &lt;iostream&gt;
-#include &lt;string&gt;
-#include &lt;stdio.h&gt;
-#include &lt;time.h&gt;
+#include <iostream>
+#include <string>
+#include <stdio.h>
+#include <time.h>
 
 // Get current date/time, format is YYYY-MM-DD.HH:mm:ss
 const std::string currentDateTime() {
     time_t     now = time(0);
     struct tm  tstruct;
     char       buf[80];
-    tstruct = *localtime(&amp;now);
+    tstruct = *localtime(&now);
     // Visit http://en.cppreference.com/w/cpp/chrono/c/strftime
     // for more information about date/time format
-    strftime(buf, sizeof(buf), "%Y-%m-%d.%X", &amp;tstruct);
+    strftime(buf, sizeof(buf), "%Y-%m-%d.%X", &tstruct);
 
     return buf;
 }
 
 int main() {
-    std::cout &lt;&lt; "currentDateTime()=" &lt;&lt; currentDateTime() &lt;&lt; std::endl;
+    std::cout << "currentDateTime()=" << currentDateTime() << std::endl;
     getchar();  // wait for keyboard input
 }
 ```
@@ -1722,7 +1722,7 @@ On some (especially older) platforms (see the comments below) you might need to
 and then include the necessary header file:  
 
 ```c++
-#include &lt;math.h&gt;
+#include <math.h>
 ```
 
 and the value of pi can be accessed via:  
@@ -1764,7 +1764,7 @@ Pi can be calculated as `atan(1)*4`. You could calculate the value this way and 
 You could also use boost, which defines important math constants with maximum accuracy for the requested type (i.e. float vs double).    
 
 ```c++
-const double pi = boost::math::constants::pi&lt;double&gt;();
+const double pi = boost::math::constants::pi<double>();
 ```
 
 Check out the <a href="http://www.boost.org/doc/libs/1_37_0/libs/math/doc/sf_and_dist/html/math_toolkit/toolkit/internals1/constants.html" rel="noreferrer">boost documentation</a> for more examples.  
@@ -1791,7 +1791,7 @@ Parsing with a single char delimiter is fine. But what if I want to use a string
 Example: I want to split:  
 
 ```c++
-scott&gt;=tiger
+scott>=tiger
 ```
 
 with >= as delimiter so that I can get scott and tiger.     
@@ -1802,8 +1802,8 @@ You can use the <a href="http://en.cppreference.com/w/cpp/string/basic_string/fi
 Example:  
 
 ```c++
-std::string s = "scott&gt;=tiger";
-std::string delimiter = "&gt;=";
+std::string s = "scott>=tiger";
+std::string delimiter = ">=";
 std::string token = s.substr(0, s.find(delimiter)); // token is "scott"
 ```
 
@@ -1825,17 +1825,17 @@ This way you can easily loop to get each token.
 <h5> Complete Example </h2>
 
 ```c++
-std::string s = "scott&gt;=tiger&gt;=mushroom";
-std::string delimiter = "&gt;=";
+std::string s = "scott>=tiger>=mushroom";
+std::string delimiter = ">=";
 
 size_t pos = 0;
 std::string token;
 while ((pos = s.find(delimiter)) != std::string::npos) {
     token = s.substr(0, pos);
-    std::cout &lt;&lt; token &lt;&lt; std::endl;
+    std::cout << token << std::endl;
     s.erase(0, pos + delimiter.length());
 }
-std::cout &lt;&lt; s &lt;&lt; std::endl;
+std::cout << s << std::endl;
 ```
 
 Output:  
@@ -1850,24 +1850,24 @@ mushroom
 This method uses `std::string::find` without mutating the original string by remembering the beginning and end of the previous substring token.  
 
 ```c++
-#include &lt;iostream&gt;
-#include &lt;string&gt;
+#include <iostream>
+#include <string>
 
 int main()
 {
-    std::string s = "scott&gt;=tiger";
-    std::string delim = "&gt;=";
+    std::string s = "scott>=tiger";
+    std::string delim = ">=";
 
     auto start = 0U;
     auto end = s.find(delim);
     while (end != std::string::npos)
     {
-        std::cout &lt;&lt; s.substr(start, end - start) &lt;&lt; std::endl;
+        std::cout << s.substr(start, end - start) << std::endl;
         start = end + delim.length();
         end = s.find(delim, start);
     }
 
-    std::cout &lt;&lt; s.substr(start, end);
+    std::cout << s.substr(start, end);
 }
 ```
 
@@ -1875,9 +1875,9 @@ int main()
 You can use next function to split string:  
 
 ```c++
-vector&lt;string&gt; split(const string&amp; str, const string&amp; delim)
+vector<string> split(const string& str, const string& delim)
 {
-    vector&lt;string&gt; tokens;
+    vector<string> tokens;
     size_t prev = 0, pos = 0;
     do
     {
@@ -1887,7 +1887,7 @@ vector&lt;string&gt; split(const string&amp; str, const string&amp; delim)
         if (!token.empty()) tokens.push_back(token);
         prev = pos + delim.length();
     }
-    while (pos &lt; str.length() &amp;&amp; prev &lt; str.length());
+    while (pos < str.length() && prev < str.length());
     return tokens;
 }
 ```
@@ -1917,7 +1917,7 @@ This precision loss could lead to greater truncation errors being accumulated wh
 ```c++
 float a = 1.f / 81;
 float b = 0;
-for (int i = 0; i &lt; 729; ++ i)
+for (int i = 0; i < 729; ++ i)
     b += a;
 printf("%.7g\n", b); // prints 9.000023
 ```
@@ -1927,7 +1927,7 @@ while
 ```c++
 double a = 1.0 / 81;
 double b = 0;
-for (int i = 0; i &lt; 729; ++ i)
+for (int i = 0; i < 729; ++ i)
     b += a;
 printf("%.15g\n", b); // prints 8.99999999999996
 ```
@@ -1969,8 +1969,8 @@ Given a quadratic equation: <em>x</em><sup>2</sup>&nbsp;&minus;&nbsp;4.0000000&n
 Using `float` and `double`, we can write a test program:  
 
 ```c++
-#include &lt;stdio.h&gt;
-#include &lt;math.h&gt;
+#include <stdio.h>
+#include <math.h>
 
 void dbl_solve(double a, double b, double c)
 {
@@ -2043,7 +2043,7 @@ To clarify a misconception:
   references as pointers. That is, a declaration such as:</em></p>
 
 ```c++
-int &amp;ri = i;
+int &ri = i;
 ```
   
   <p><strong><em>if it's not optimized away entirely</em></strong>, <em>allocates the same amount of storage
@@ -2077,8 +2077,8 @@ Interesting read:
 int x = 5;
 int y = 6;
 int *p;
-p = &amp;x;
-p = &amp;y;
+p = &x;
+p = &y;
 *p = 10;
 assert(x == 5);
 assert(y == 10);
@@ -2089,15 +2089,15 @@ A reference cannot, and must be assigned at initialization:
 ```c++
 int x = 5;
 int y = 6;
-int &amp;r = x;
+int &r = x;
 ```</li>
 <li><p>A pointer has its own memory address and size on the stack (4 bytes on x86), whereas a reference shares the same memory address (with the original variable) but also takes up some space on the stack.  Since a reference has the same address as the original variable itself, it is safe to think of a reference as another name for the same variable.  Note: What a pointer points to can be on the stack or heap.  Ditto a reference. My claim in this statement is not that a pointer must point to the stack.  A pointer is just a variable that holds a memory address.  This variable is on the stack.  Since a reference has its own space on the stack, and since the address is the same as the variable it references.  More on <a href="https://stackoverflow.com/questions/79923/what-and-where-are-the-stack-and-heap#79936">stack vs heap</a>.  This implies that there is a real address of a reference that the compiler will not tell you. </p>
 
 ```c++
 int x = 0;
-int &amp;r = x;
-int *p = &amp;x;
-int *p2 = &amp;r;
+int &r = x;
+int *p = &x;
+int *p2 = &r;
 assert(p == p2);
 ```</li>
 <li><p>You can have pointers to pointers to pointers offering extra levels of indirection.  Whereas references only offer one level of indirection. </p>
@@ -2105,10 +2105,10 @@ assert(p == p2);
 ```c++
 int x = 0;
 int y = 0;
-int *p = &amp;x;
-int *q = &amp;y;
-int **pp = &amp;p;
-pp = &amp;q;//*pp = q
+int *p = &x;
+int *q = &y;
+int **pp = &p;
+pp = &q;//*pp = q
 **pp = 4;
 assert(y == 4);
 assert(x == 0);
@@ -2117,8 +2117,8 @@ assert(x == 0);
 
 ```c++
 int *p = nullptr;
-int &amp;r = nullptr; &lt;--- compiling error
-int &amp;r = *p;  &lt;--- likely no compiling error, especially if the nullptr is hidden behind a function call, yet it refers to a non-existent int at address 0
+int &r = nullptr; <--- compiling error
+int &r = *p;  <--- likely no compiling error, especially if the nullptr is hidden behind a function call, yet it refers to a non-existent int at address 0
 ```</li>
 <li><p>Pointers can iterate over an array, you can use `++` to go to the next item that a pointer is pointing to, and `+ 4` to go to the 5th element.  This is no matter what size the object is that the pointer points to.</p></li>
 <li><p>A pointer needs to be dereferenced with `*` to access the memory location it points to, whereas a reference can be used directly.  A pointer to a class/struct uses `-&gt;` to access it's members whereas a reference uses a `.`.</p></li>
@@ -2127,8 +2127,8 @@ int &amp;r = *p;  &lt;--- likely no compiling error, especially if the nullptr i
 <li><p>Const references can be bound to temporaries. Pointers cannot (not without some indirection):</p>
 
 ```c++
-const int &amp;x = int(12); //legal C++
-int *y = &amp;int(12); //illegal to dereference a temporary.
+const int &x = int(12); //legal C++
+int *y = &int(12); //illegal to dereference a temporary.
 ```
 
 This makes `const&amp;` safer for use in argument lists and so forth.  </li>
@@ -2198,7 +2198,7 @@ delete[] writable;
 
 ```c++
 std::string str;
-boost::scoped_array&lt;char&gt; writable(new char[str.size() + 1]);
+boost::scoped_array<char> writable(new char[str.size() + 1]);
 std::copy(str.begin(), str.end(), writable.get());
 writable[str.size()] = '\0'; // don't forget the terminating 0
 
@@ -2214,10 +2214,10 @@ This is the standard way (does not require any external library). You use <a hre
 
 ```c++
 std::string str;
-std::vector&lt;char&gt; writable(str.begin(), str.end());
+std::vector<char> writable(str.begin(), str.end());
 writable.push_back('\0');
 
-// get the char* using &amp;writable[0] or &amp;*writable.begin()
+// get the char* using &writable[0] or &*writable.begin()
 ```
 
 #### Answer 2 (score 186)
@@ -2237,9 +2237,9 @@ std::string x = "hello";
 const char* p_c_str = x.c_str();
 const char* p_data  = x.data();
 char* p_writable_data = x.data(); // for non-const x from C++17 
-const char* p_x0    = &amp;x[0];
+const char* p_x0    = &x[0];
 
-      char* p_x0_rw = &amp;x[0];  // compiles iff x is not const...
+      char* p_x0_rw = &x[0];  // compiles iff x is not const...
 ```
 
 All the above pointers will hold the <em>same value</em> - the address of the first character in the buffer.  Even an empty string has a "first character in the buffer", because C++11 guarantees to always keep an extra NUL/0 terminator character after the explicitly assigned string content (e.g. `std::string("this\0that", 9)` will have a buffer holding `"this\0that\0"`).  
@@ -2247,7 +2247,7 @@ All the above pointers will hold the <em>same value</em> - the address of the fi
 Given any of the above pointers:  
 
 ```c++
-char c = p[n];   // valid for n &lt;= x.size()
+char c = p[n];   // valid for n <= x.size()
                  // i.e. you can safely read the NUL at p[x.size()]
 ```
 
@@ -2255,7 +2255,7 @@ Only for the non-`const` pointer `p_writable_data` and from `&amp;x[0]`:
 
 ```c++
 p_writable_data[n] = c;
-p_x0_rw[n] = c;  // valid for n &lt;= x.size() - 1
+p_x0_rw[n] = c;  // valid for n <= x.size() - 1
                  // i.e. don't overwrite the implementation maintained NUL
 ```
 
@@ -2337,7 +2337,7 @@ To copy the text from `std::string x` into an independent character array:
 // USING ANOTHER STRING - AUTO MEMORY MANAGEMENT, EXCEPTION SAFE
 std::string old_x = x;
 // - old_x will not be affected by subsequent modifications to x...
-// - you can use `&amp;old_x[0]` to get a writable char* to old_x's textual content
+// - you can use `&old_x[0]` to get a writable char* to old_x's textual content
 // - you can use resize() to reduce/expand the string
 //   - resizing isn't possible from within a function passed only the char* address
 
@@ -2346,18 +2346,18 @@ std::string old_x = x.c_str(); // old_x will terminate early if x embeds NUL
 // find the NUL terminator indicating string length before allocating that amount
 // of memory to copy into, or more efficient if it ends up allocating/copying a
 // lot less content.
-// Example, x == "ab\0cd" -&gt; old_x == "ab".
+// Example, x == "ab\0cd" -> old_x == "ab".
 
 // USING A VECTOR OF CHAR - AUTO, EXCEPTION SAFE, HINTS AT BINARY CONTENT, GUARANTEED CONTIGUOUS EVEN IN C++03
-std::vector&lt;char&gt; old_x(x.data(), x.data() + x.size());       // without the NUL
-std::vector&lt;char&gt; old_x(x.c_str(), x.c_str() + x.size() + 1);  // with the NUL
+std::vector<char> old_x(x.data(), x.data() + x.size());       // without the NUL
+std::vector<char> old_x(x.c_str(), x.c_str() + x.size() + 1);  // with the NUL
 
 // USING STACK WHERE MAXIMUM SIZE OF x IS KNOWN TO BE COMPILE-TIME CONSTANT "N"
 // (a bit dangerous, as "known" things are sometimes wrong and often become wrong)
 char y[N + 1];
 strcpy(y, x.c_str());
 
-// USING STACK WHERE UNEXPECTEDLY LONG x IS TRUNCATED (e.g. Hello\0-&gt;Hel\0)
+// USING STACK WHERE UNEXPECTEDLY LONG x IS TRUNCATED (e.g. Hello\0->Hel\0)
 char y[N + 1];
 strncpy(y, x.c_str(), N);  // copy at most N, zero-padding if shorter
 y[N] = '\0';               // ensure NUL terminated
@@ -2451,7 +2451,7 @@ Most of the work in overloading operators is boiler-plate code. That is little w
 There's a lot to be said about assignment. However, most of it has already been said in <a href="https://stackoverflow.com/questions/3279543/what-is-the-copy-and-swap-idiom">GMan's famous Copy-And-Swap FAQ</a>, so I'll skip most of it here, only listing the perfect assignment operator for reference:  
 
 ```c++
-X&amp; X::operator=(X rhs)
+X& X::operator=(X rhs)
 {
   swap(rhs);
   return *this;
@@ -2467,14 +2467,14 @@ Since they change their left argument (they alter the stream’s state), they sh
 The canonical forms of the two are these:</p>
 
 ```c++
-std::ostream&amp; operator&lt;&lt;(std::ostream&amp; os, const T&amp; obj)
+std::ostream& operator<<(std::ostream& os, const T& obj)
 {
   // write obj to stream
 
   return os;
 }
 
-std::istream&amp; operator&gt;&gt;(std::istream&amp; is, T&amp; obj)
+std::istream& operator>>(std::istream& is, T& obj)
 {
   // read obj from stream
 
@@ -2497,7 +2497,7 @@ Here's an example of the syntax:
 class foo {
 public:
     // Overloaded call operator
-    int operator()(const std::string&amp; y) {
+    int operator()(const std::string& y) {
         // ...
     }
 };
@@ -2519,12 +2519,12 @@ The binary infix comparison operators should, according to the rules of thumb, b
 The standard library’s algorithms (e.g. `std::sort()`) and types (e.g. `std::map`) will always only expect `operator&lt;` to be present. However, the <em>users of your type will expect all the other operators to be present</em>, too, so if you define `operator&lt;`, be sure to follow the third fundamental rule of operator overloading and also define all the other boolean comparison operators. The canonical way to implement them is this:  
 
 ```c++
-inline bool operator==(const X&amp; lhs, const X&amp; rhs){ /* do actual comparison */ }
-inline bool operator!=(const X&amp; lhs, const X&amp; rhs){return !operator==(lhs,rhs);}
-inline bool operator&lt; (const X&amp; lhs, const X&amp; rhs){ /* do actual comparison */ }
-inline bool operator&gt; (const X&amp; lhs, const X&amp; rhs){return  operator&lt; (rhs,lhs);}
-inline bool operator&lt;=(const X&amp; lhs, const X&amp; rhs){return !operator&gt; (lhs,rhs);}
-inline bool operator&gt;=(const X&amp; lhs, const X&amp; rhs){return !operator&lt; (lhs,rhs);}
+inline bool operator==(const X& lhs, const X& rhs){ /* do actual comparison */ }
+inline bool operator!=(const X& lhs, const X& rhs){return !operator==(lhs,rhs);}
+inline bool operator< (const X& lhs, const X& rhs){ /* do actual comparison */ }
+inline bool operator> (const X& lhs, const X& rhs){return  operator< (rhs,lhs);}
+inline bool operator<=(const X& lhs, const X& rhs){return !operator> (lhs,rhs);}
+inline bool operator>=(const X& lhs, const X& rhs){return !operator< (lhs,rhs);}
 ```
 
 The important thing to note here is that only two of these operators actually do anything, the others are just forwarding their arguments to either of these two to do the actual work.  
@@ -2534,7 +2534,7 @@ The syntax for overloading the remaining binary boolean operators (`||`, `&amp;&
 <sup>1</sup> <sub>As with all rules of thumb, sometimes there might be reasons to break this one, too. If so, do not forget that the left-hand operand of the binary comparison operators, which for member functions will be `*this`, needs to be `const`, too. So a comparison operator implemented as a member function would have to have this signature:</sub>  
 
 ```c++
-bool operator&lt;(const X&amp; rhs) const { /* do actual comparison with *this */ }
+bool operator<(const X& rhs) const { /* do actual comparison with *this */ }
 ```
 
 <sub>(Note the `const` at the end.)</sub>  
@@ -2550,7 +2550,7 @@ Here is the canonical implementation of increment, decrement follows the same ru
 
 ```c++
 class X {
-  X&amp; operator++()
+  X& operator++()
   {
     // do actual increment
     return *this;
@@ -2578,13 +2578,13 @@ According to our rules of thumb, `+` and its companions should be non-members, w
 
 ```c++
 class X {
-  X&amp; operator+=(const X&amp; rhs)
+  X& operator+=(const X& rhs)
   {
     // actual addition of rhs to *this
     return *this;
   }
 };
-inline X operator+(X lhs, const X&amp; rhs)
+inline X operator+(X lhs, const X& rhs)
 {
   lhs += rhs;
   return lhs;
@@ -2605,8 +2605,8 @@ The canonical form of providing these is this:</p>
 
 ```c++
 class X {
-        value_type&amp; operator[](index_type idx);
-  const value_type&amp; operator[](index_type idx) const;
+        value_type& operator[](index_type idx);
+  const value_type& operator[](index_type idx) const;
   // ...
 };
 ```
@@ -2617,7 +2617,7 @@ If value_type is known to refer to a built-in type, the const variant of the ope
 
 ```c++
 class X {
-  value_type&amp; operator[](index_type idx);
+  value_type& operator[](index_type idx);
   value_type  operator[](index_type idx) const;
   // ...
 };
@@ -2629,10 +2629,10 @@ For defining your own iterators or smart pointers, you have to overload the unar
 
 ```c++
 class my_ptr {
-        value_type&amp; operator*();
-  const value_type&amp; operator*() const;
-        value_type* operator-&gt;();
-  const value_type* operator-&gt;() const;
+        value_type& operator*();
+  const value_type& operator*() const;
+        value_type* operator->();
+  const value_type* operator->() const;
 };
 ```
 
@@ -2683,8 +2683,8 @@ else
 You can use <a href="http://en.cppreference.com/w/cpp/algorithm/find" rel="noreferrer">`std::find`</a> from `&lt;algorithm&gt;`:  
 
 ```c++
-#include &lt;vector&gt;
-vector&lt;int&gt; vec; 
+#include <vector>
+vector<int> vec; 
 //can have other data types instead of int but must same datatype as item 
 std::find(vec.begin(), vec.end(), item) != vec.end()
 ```
@@ -2692,8 +2692,8 @@ std::find(vec.begin(), vec.end(), item) != vec.end()
 This returns a bool (`true` if present, `false` otherwise).  With your example:  
 
 ```c++
-#include &lt;algorithm&gt;
-#include &lt;vector&gt;
+#include <algorithm>
+#include <vector>
 
 if ( std::find(vec.begin(), vec.end(), item) != vec.end() )
    do_this();
@@ -2708,13 +2708,13 @@ As others have said, use the STL <a href="http://en.cppreference.com/w/cpp/algor
 Use find from the algorithm header of stl.I've illustrated its use with int type. You can use any type you like as long as you can compare for equality (overload == if you need to for your custom class).  
 
 ```c++
-#include &lt;algorithm&gt;
-#include &lt;vector&gt;
+#include <algorithm>
+#include <vector>
 
 using namespace std;
 int main()
 {   
-    typedef vector&lt;int&gt; IntContainer;
+    typedef vector<int> IntContainer;
     typedef IntContainer::iterator IntIterator;
 
     IntContainer vw;
@@ -2766,7 +2766,7 @@ A dynamic 2D array is basically an array of <em>pointers to arrays</em>. You can
 
 ```c++
 int** a = new int*[rowCount];
-for(int i = 0; i &lt; rowCount; ++i)
+for(int i = 0; i < rowCount; ++i)
     a[i] = new int[colCount];
 ```
 
@@ -2783,7 +2783,7 @@ should be:
 
 ```c++
 int **ary = new int*[sizeY];
-for(int i = 0; i &lt; sizeY; ++i) {
+for(int i = 0; i < sizeY; ++i) {
     ary[i] = new int[sizeX];
 }
 ```
@@ -2791,7 +2791,7 @@ for(int i = 0; i &lt; sizeY; ++i) {
 and then clean up would be:  
 
 ```c++
-for(int i = 0; i &lt; sizeY; ++i) {
+for(int i = 0; i < sizeY; ++i) {
     delete [] ary[i];
 }
 delete [] ary;
@@ -2876,7 +2876,7 @@ Sad, I know. But you'll get used to it. And your CPU will thank you.
 I'm trying to compile my program and it returns this error :  
 
 ```c++
-usr/bin/ld: cannot find -l&lt;nameOfTheLibrary&gt;
+usr/bin/ld: cannot find -l<nameOfTheLibrary>
 ```
 
 in my makefile I use the command `g++` and link to my library which is a symbolic link to my library located on an other directory.  
@@ -3014,7 +3014,7 @@ delete [] cstr;
 Or in modern C++:  
 
 ```c++
-std::vector&lt;char&gt; cstr(str.c_str(), str.c_str() + str.size() + 1);
+std::vector<char> cstr(str.c_str(), str.c_str() + str.size() + 1);
 ```
 
 #### Answer 2 (score 137)
@@ -3022,7 +3022,7 @@ std::vector&lt;char&gt; cstr(str.c_str(), str.c_str() + str.size() + 1);
 
 ```c++
 string str = "some string" ;
-char *cstr = &amp;str[0];
+char *cstr = &str[0];
 ```
 
 #### Answer 3 (score 38)
@@ -3054,9 +3054,9 @@ Is there an alternative which works 100% of the time?
 Adapted from <a href="http://notfaq.wordpress.com/2007/08/04/cc-convert-string-to-upperlower-case/" rel="noreferrer"><em>Not So Frequently Asked Questions</em></a>:  
 
 ```c++
-#include &lt;algorithm&gt;
-#include &lt;cctype&gt;
-#include &lt;string&gt;
+#include <algorithm>
+#include <cctype>
+#include <string>
 
 std::string data = "Abc";
 std::transform(data.begin(), data.end(), data.begin(),
@@ -3069,7 +3069,7 @@ If you really hate <a href="https://en.cppreference.com/w/cpp/string/byte/tolowe
 
 ```c++
 char asciitolower(char in) {
-    if (in &lt;= 'Z' &amp;&amp; in &gt;= 'A')
+    if (in <= 'Z' && in >= 'A')
         return in - ('Z' - 'z');
     return in;
 }
@@ -3083,7 +3083,7 @@ Be aware that `tolower()` can only do a per-single-byte-character substitution, 
 <a href="https://www.boost.org/doc/libs/1_70_0/doc/html/boost/algorithm/to_lower.html" rel="nofollow noreferrer">Boost provides a string algorithm for this</a>:  
 
 ```c++
-#include &lt;boost/algorithm/string.hpp&gt;
+#include <boost/algorithm/string.hpp>
 
 std::string str = "HELLO, WORLD!";
 boost::algorithm::to_lower(str); // modifies str
@@ -3092,7 +3092,7 @@ boost::algorithm::to_lower(str); // modifies str
 <a href="https://www.boost.org/doc/libs/1_70_0/doc/html/boost/algorithm/to_lower_copy.html" rel="nofollow noreferrer">Or, for non-in-place</a>:  
 
 ```c++
-#include &lt;boost/algorithm/string.hpp&gt;
+#include <boost/algorithm/string.hpp>
 
 const std::string str = "HELLO, WORLD!";
 const std::string lower_str = boost::algorithm::to_lower_copy(str);
@@ -3124,11 +3124,11 @@ And believe me, <em>getting</em> Boost to compile with ICU can be a real pain so
 So personally I would recommend getting full Unicode support straight from the horse's mouth and using the <a href="http://www.icu-project.org" rel="noreferrer">ICU</a> library directly:  
 
 ```c++
-#include &lt;unicode/unistr.h&gt;
-#include &lt;unicode/ustream.h&gt;
-#include &lt;unicode/locid.h&gt;
+#include <unicode/unistr.h>
+#include <unicode/ustream.h>
+#include <unicode/locid.h>
 
-#include &lt;iostream&gt;
+#include <iostream>
 
 int main()
 {
@@ -3136,8 +3136,8 @@ int main()
     icu::UnicodeString someUString( someString, "ISO-8859-1" );
     // Setting the locale explicitly here for completeness.
     // Usually you would use the user-specified system locale.
-    std::cout &lt;&lt; someUString.toLower( "de_DE" ) &lt;&lt; "\n";
-    std::cout &lt;&lt; someUString.toUpper( "de_DE" ) &lt;&lt; "\n";
+    std::cout << someUString.toLower( "de_DE" ) << "\n";
+    std::cout << someUString.toUpper( "de_DE" ) << "\n";
     return 0;
 }
 ```
@@ -3177,7 +3177,7 @@ struct dirent *ent;
 if ((dir = opendir ("c:\\src\\")) != NULL) {
   /* print all the files and directories within directory */
   while ((ent = readdir (dir)) != NULL) {
-    printf ("%s\n", ent-&gt;d_name);
+    printf ("%s\n", ent->d_name);
   }
   closedir (dir);
 } else {
@@ -3196,16 +3196,16 @@ The author of the windows compatibility layer is Toni Ronkko. In Unix, it is a s
 In C++17 there is now an official way to list files of your file system: `std::filesystem`. There is an excellent answer from <a href="https://stackoverflow.com/a/37494654/23264"><strong>Shreevardhan</strong></a> below with this source code:  
 
 ```c++
-#include &lt;string&gt;
-#include &lt;iostream&gt;
-#include &lt;filesystem&gt;
+#include <string>
+#include <iostream>
+#include <filesystem>
 namespace fs = std::filesystem;
 
 int main()
 {
     std::string path = "/path/to/directory";
-    for (const auto &amp; entry : fs::directory_iterator(path))
-        std::cout &lt;&lt; entry.path() &lt;&lt; std::endl;
+    for (const auto & entry : fs::directory_iterator(path))
+        std::cout << entry.path() << std::endl;
 }
 ```
 
@@ -3213,15 +3213,15 @@ int main()
 C++17 now has a <a href="http://en.cppreference.com/w/cpp/filesystem/directory_iterator" rel="noreferrer">`std::filesystem::directory_iterator`</a>, which can be used as  
 
 ```c++
-#include &lt;string&gt;
-#include &lt;iostream&gt;
-#include &lt;filesystem&gt;
+#include <string>
+#include <iostream>
+#include <filesystem>
 namespace fs = std::filesystem;
 
 int main() {
     std::string path = "/path/to/directory";
-    for (const auto &amp; entry : fs::directory_iterator(path))
-        std::cout &lt;&lt; entry.path() &lt;&lt; std::endl;
+    for (const auto & entry : fs::directory_iterator(path))
+        std::cout << entry.path() << std::endl;
 }
 ```
 
@@ -3238,9 +3238,9 @@ Since there is no cross platform way, the best cross platform way is to use a li
   The following function, given a directory path and a file name, recursively searches the directory and its sub-directories for the file name, returning a bool, and if successful, the path to the file that was found.   
 
 ```c++
-bool find_file(const path &amp; dir_path,         // in this directory,
-               const std::string &amp; file_name, // search for this name,
-               path &amp; path_found)             // placing path here if found
+bool find_file(const path & dir_path,         // in this directory,
+               const std::string & file_name, // search for this name,
+               path & path_found)             // placing path here if found
 {
     if (!exists(dir_path)) 
         return false;
@@ -3249,14 +3249,14 @@ bool find_file(const path &amp; dir_path,         // in this directory,
 
     for (directory_iterator itr(dir_path); itr != end_itr; ++itr)
     {
-        if (is_directory(itr-&gt;status()))
+        if (is_directory(itr->status()))
         {
-            if (find_file(itr-&gt;path(), file_name, path_found)) 
+            if (find_file(itr->path(), file_name, path_found)) 
                 return true;
         }
-        else if (itr-&gt;leaf() == file_name) // see below
+        else if (itr->leaf() == file_name) // see below
         {
-            path_found = itr-&gt;path();
+            path_found = itr->path();
             return true;
         }
     }
@@ -3278,7 +3278,7 @@ You can use <a href="http://www.manpagez.com/man/3/opendir/" rel="noreferrer">op
 len = strlen(name);
 dirp = opendir(".");
 while ((dp = readdir(dirp)) != NULL)
-        if (dp-&gt;d_namlen == len &amp;&amp; !strcmp(dp-&gt;d_name, name)) {
+        if (dp->d_namlen == len && !strcmp(dp->d_name, name)) {
                 (void)closedir(dirp);
                 return FOUND;
         }
@@ -3297,9 +3297,9 @@ You can use the Win32 API <a href="http://msdn.microsoft.com/en-us/library/aa364
   The following C++ example shows you a minimal use of FindFirstFile.  
 
 ```c++
-#include &lt;windows.h&gt;
-#include &lt;tchar.h&gt;
-#include &lt;stdio.h&gt;
+#include <windows.h>
+#include <tchar.h>
+#include <stdio.h>
 
 void _tmain(int argc, TCHAR *argv[])
 {
@@ -3313,7 +3313,7 @@ void _tmain(int argc, TCHAR *argv[])
    }
 
    _tprintf (TEXT("Target file is %s\n"), argv[1]);
-   hFind = FindFirstFile(argv[1], &amp;FindFileData);
+   hFind = FindFirstFile(argv[1], &FindFileData);
    if (hFind == INVALID_HANDLE_VALUE) 
    {
       printf ("FindFirstFile failed (%d)\n", GetLastError());
@@ -3362,12 +3362,12 @@ They can also be omitted entirely, yielding `int main()`, if you do not intend t
 Try the following program:  
 
 ```c++
-#include &lt;iostream&gt;
+#include <iostream>
 
 int main(int argc, char** argv) {
-    std::cout &lt;&lt; "Have " &lt;&lt; argc &lt;&lt; " arguments:" &lt;&lt; std::endl;
-    for (int i = 0; i &lt; argc; ++i) {
-        std::cout &lt;&lt; argv[i] &lt;&lt; std::endl;
+    std::cout << "Have " << argc << " arguments:" << std::endl;
+    for (int i = 0; i < argc; ++i) {
+        std::cout << argv[i] << std::endl;
     }
 }
 ```
@@ -3388,7 +3388,7 @@ c3
 You can loop through the arguments knowing the number of them like:  
 
 ```c++
-for(int i = 0; i &lt; argc; i++)
+for(int i = 0; i < argc; i++)
 {
     // argv[i] is the argument at index i
 }
@@ -3523,7 +3523,7 @@ class Buffer { explicit Buffer(int size); ... }
 That way,  
 
 ```c++
-void useBuffer(Buffer&amp; buf);
+void useBuffer(Buffer& buf);
 useBuffer(4);
 ```
 
@@ -3566,7 +3566,7 @@ Another solution might look like this,
 
 ```c++
 char arr[] = "mom";
-std::cout &lt;&lt; "hi " &lt;&lt; std::string(arr);
+std::cout << "hi " << std::string(arr);
 ```
 
 which avoids using an extra variable.  
@@ -3575,8 +3575,8 @@ which avoids using an extra variable.
 There is a small problem missed in top-voted answers. Namely, character array may contain 0. If we will use constructor with single parameter as pointed above we will lose some data. The possible solution is:  
 
 ```c++
-cout &lt;&lt; string("123\0 123") &lt;&lt; endl;
-cout &lt;&lt; string("123\0 123", 8) &lt;&lt; endl;
+cout << string("123\0 123") << endl;
+cout << string("123\0 123", 8) << endl;
 ```
 
 Output is:  
@@ -3602,7 +3602,7 @@ How do I create a `std::vector` and initialize it similarly elegant?
 The best way I know is:  
 
 ```c++
-std::vector&lt;int&gt; ints;
+std::vector<int> ints;
 
 ints.push_back(10);
 ints.push_back(20);
@@ -3616,14 +3616,14 @@ One method would be to use the array to initialize the vector
 
 ```c++
 static const int arr[] = {16,2,77,29};
-vector&lt;int&gt; vec (arr, arr + sizeof(arr) / sizeof(arr[0]) );
+vector<int> vec (arr, arr + sizeof(arr) / sizeof(arr[0]) );
 ```
 
 #### Answer 2 (score 602)
 If your compiler supports C++11, you can simply do:  
 
 ```c++
-std::vector&lt;int&gt; v = {1, 2, 3, 4};
+std::vector<int> v = {1, 2, 3, 4};
 ```
 
 This is available in GCC <a href="http://gcc.gnu.org/projects/cxx0x.html" rel="noreferrer">as of version 4.4</a>. Unfortunately, VC++ 2010 seems to be lagging behind in this respect.  
@@ -3631,18 +3631,18 @@ This is available in GCC <a href="http://gcc.gnu.org/projects/cxx0x.html" rel="n
 Alternatively, the <a href="http://www.boost.org/doc/libs/1_42_0/libs/assign/doc/index.html" rel="noreferrer">Boost.Assign</a> library uses non-macro magic to allow the following:  
 
 ```c++
-#include &lt;boost/assign/list_of.hpp&gt;
+#include <boost/assign/list_of.hpp>
 ...
-std::vector&lt;int&gt; v = boost::assign::list_of(1)(2)(3)(4);
+std::vector<int> v = boost::assign::list_of(1)(2)(3)(4);
 ```
 
 Or:  
 
 ```c++
-#include &lt;boost/assign/std/vector.hpp&gt;
+#include <boost/assign/std/vector.hpp>
 using namespace boost::assign;
 ...
-std::vector&lt;int&gt; v;
+std::vector<int> v;
 v += 1, 2, 3, 4;
 ```
 
@@ -3652,7 +3652,7 @@ But keep in mind that this has some overhead (basically, `list_of` constructs a 
 If you can, use the modern C++[11,14,17,...] way:  
 
 ```c++
-std::vector&lt;int&gt; vec = {10,20,30};
+std::vector<int> vec = {10,20,30};
 ```
 
 The old way of looping over a variable-length array or using `sizeof()` is truly terrible on the eyes and completely unnecessary in terms of mental overhead. Yuck.  
@@ -3718,12 +3718,12 @@ The FAQ suggests two alternatives:
 
 ```c++
 using std::cout; // a using-declaration lets you use cout without qualification
-cout &lt;&lt; "Values:";
+cout << "Values:";
 ```</li>
 <li><p>Just typing std::</p>
 
 ```c++
-std::cout &lt;&lt; "Values:";
+std::cout << "Values:";
 ```</li>
 </ul>
 
@@ -3747,7 +3747,7 @@ But I'm not sure why you wouldn't just use a string stream? I'm assuming you hav
 
 ```c++
   std::ostringstream stringStream;
-  stringStream &lt;&lt; "Hello";
+  stringStream << "Hello";
   std::string copyOfStr = stringStream.str();
 ```
 
@@ -3755,7 +3755,7 @@ But I'm not sure why you wouldn't just use a string stream? I'm assuming you hav
 C++11 solution that uses `vsnprintf()` internally:  
 
 ```c++
-#include &lt;stdarg.h&gt;  // For va_start, etc.
+#include <stdarg.h>  // For va_start, etc.
 
 std::string string_format(const std::string fmt, ...) {
     int size = ((int)fmt.size()) * 2 + 50;   // Use a rubric appropriate for your code
@@ -3766,11 +3766,11 @@ std::string string_format(const std::string fmt, ...) {
         va_start(ap, fmt);
         int n = vsnprintf((char *)str.data(), size, fmt.c_str(), ap);
         va_end(ap);
-        if (n &gt; -1 &amp;&amp; n &lt; size) {  // Everything worked
+        if (n > -1 && n < size) {  // Everything worked
             str.resize(n);
             return str;
         }
-        if (n &gt; -1)  // Needed size returned
+        if (n > -1)  // Needed size returned
             size = n + 1;   // For null char
         else
             size *= 2;      // Guess at a larger size (OS specific)
@@ -3782,20 +3782,20 @@ std::string string_format(const std::string fmt, ...) {
 A safer and more efficient (I tested it, and it is faster) approach:  
 
 ```c++
-#include &lt;stdarg.h&gt;  // For va_start, etc.
-#include &lt;memory&gt;    // For std::unique_ptr
+#include <stdarg.h>  // For va_start, etc.
+#include <memory>    // For std::unique_ptr
 
 std::string string_format(const std::string fmt_str, ...) {
     int final_n, n = ((int)fmt_str.size()) * 2; /* Reserve two times as much as the length of the fmt_str */
-    std::unique_ptr&lt;char[]&gt; formatted;
+    std::unique_ptr<char[]> formatted;
     va_list ap;
     while(1) {
         formatted.reset(new char[n]); /* Wrap the plain char array into the unique_ptr */
-        strcpy(&amp;formatted[0], fmt_str.c_str());
+        strcpy(&formatted[0], fmt_str.c_str());
         va_start(ap, fmt_str);
-        final_n = vsnprintf(&amp;formatted[0], n, fmt_str.c_str(), ap);
+        final_n = vsnprintf(&formatted[0], n, fmt_str.c_str(), ap);
         va_end(ap);
-        if (final_n &lt; 0 || final_n &gt;= n)
+        if (final_n < 0 || final_n >= n)
             n += abs(final_n - n + 1);
         else
             break;
@@ -3812,16 +3812,16 @@ NOTE: The "safer" and "faster" version doesn't work on some systems. Hence both 
 Utilising <a href="http://en.wikipedia.org/wiki/C%2B%2B11" rel="noreferrer">C++11</a> <a href="http://en.cppreference.com/w/cpp/io/c/fprintf" rel="noreferrer">`std::snprintf`</a>, this becomes a pretty easy and safe task. I see a lot of answers on this question that were apparently written before the time of C++11 which use fixed buffer lengths and vargs, something I would not recommend for safety, efficiency and clarity reasons.  
 
 ```c++
-#include &lt;memory&gt;
-#include &lt;iostream&gt;
-#include &lt;string&gt;
-#include &lt;cstdio&gt;
+#include <memory>
+#include <iostream>
+#include <string>
+#include <cstdio>
 
-template&lt;typename ... Args&gt;
-std::string string_format( const std::string&amp; format, Args ... args )
+template<typename ... Args>
+std::string string_format( const std::string& format, Args ... args )
 {
     size_t size = snprintf( nullptr, 0, format.c_str(), args ... ) + 1; // Extra space for '\0'
-    std::unique_ptr&lt;char[]&gt; buf( new char[ size ] ); 
+    std::unique_ptr<char[]> buf( new char[ size ] ); 
     snprintf( buf.get(), size, format.c_str(), args ... );
     return std::string( buf.get(), buf.get() + size - 1 ); // We don't want the '\0' inside
 }
@@ -3933,7 +3933,7 @@ class Sub : public Base
   try : Base(x), member(y)
   {
     // function body goes here
-  } catch(const ExceptionType &amp;e) {
+  } catch(const ExceptionType &e) {
     throw kaboom();
   }
   Type member;
@@ -3981,11 +3981,11 @@ After reading <a href="http://groups.google.com/group/comp.lang.c++.moderated/ms
 Here's the code:  
 
 ```c++
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 int main()
 {
     int x = 10;
-    while (x --&gt; 0) // x goes to 0
+    while (x --> 0) // x goes to 0
     {
         printf("%d ", x);
     }
@@ -4002,7 +4002,7 @@ The conditional's code decrements `x`, while returning `x`'s original (not decre
 <strong>To better understand, the statement could be written as follows:</strong>  
 
 ```c++
-while( (x--) &gt; 0 )
+while( (x--) > 0 )
 ```
 
 #### Answer 2 (score 2868)
@@ -4013,7 +4013,7 @@ while (x --\
             \
              \
               \
-               &gt; 0)
+               > 0)
      printf("%d ", x);
 ```
 
@@ -4034,7 +4034,7 @@ What is the correct way of iterating over a vector in C++?
 Consider these two code fragments, this one works fine:  
 
 ```c++
-for (unsigned i=0; i &lt; polygon.size(); i++) {
+for (unsigned i=0; i < polygon.size(); i++) {
     sum += polygon[i];
 }
 ```
@@ -4042,7 +4042,7 @@ for (unsigned i=0; i &lt; polygon.size(); i++) {
 and this one:  
 
 ```c++
-for (int i=0; i &lt; polygon.size(); i++) {
+for (int i=0; i < polygon.size(); i++) {
     sum += polygon[i];
 }
 ```
@@ -4065,8 +4065,8 @@ This is almost identical. Just change the iterators / swap decrement by incremen
 <h5>Using iterators</h3>
 
 ```c++
-for(std::vector&lt;T&gt;::iterator it = v.begin(); it != v.end(); ++it) {
-    /* std::cout &lt;&lt; *it; ... */
+for(std::vector<T>::iterator it = v.begin(); it != v.end(); ++it) {
+    /* std::cout << *it; ... */
 }
 ```
 
@@ -4075,15 +4075,15 @@ Important is, always use the prefix increment form for iterators whose definitio
 <h5>Using Range C++11</h3>
 
 ```c++
-for(auto const&amp; value: a) {
-     /* std::cout &lt;&lt; value; ... */
+for(auto const& value: a) {
+     /* std::cout << value; ... */
 ```
 
 <h5>Using indices</h3>
 
 ```c++
-for(std::vector&lt;int&gt;::size_type i = 0; i != v.size(); i++) {
-    /* std::cout &lt;&lt; v[i]; ... */
+for(std::vector<int>::size_type i = 0; i != v.size(); i++) {
+    /* std::cout << v[i]; ... */
 }
 ```
 
@@ -4093,22 +4093,22 @@ for(std::vector&lt;int&gt;::size_type i = 0; i != v.size(); i++) {
 
 ```c++
 for(element_type* it = a; it != (a + (sizeof a / sizeof *a)); it++) {
-    /* std::cout &lt;&lt; *it; ... */
+    /* std::cout << *it; ... */
 }
 ```
 
 <h5>Using Range C++11</h3>
 
 ```c++
-for(auto const&amp; value: a) {
-     /* std::cout &lt;&lt; value; ... */
+for(auto const& value: a) {
+     /* std::cout << value; ... */
 ```
 
 <h5>Using indices</h3>
 
 ```c++
 for(std::size_t i = 0; i != (sizeof a / sizeof *a); i++) {
-    /* std::cout &lt;&lt; a[i]; ... */
+    /* std::cout << a[i]; ... */
 }
 ```
 
@@ -4119,32 +4119,32 @@ Four years passed, <em>Google</em> gave me this answer. With the <a href="http:/
 
 ```c++
 for ( auto i = v.begin(); i != v.end(); i++ ) {
-    std::cout &lt;&lt; *i &lt;&lt; std::endl;
+    std::cout << *i << std::endl;
 }
 ```
 
 <em>C++11</em> goes even further and gives you a special syntax for iterating over collections like vectors. It removes the necessity of writing things that are always the same:  
 
 ```c++
-for ( auto &amp;i : v ) {
-    std::cout &lt;&lt; i &lt;&lt; std::endl;
+for ( auto &i : v ) {
+    std::cout << i << std::endl;
 }
 ```
 
 To see it in a working program, build a file `auto.cpp`:  
 
 ```c++
-#include &lt;vector&gt;
-#include &lt;iostream&gt;
+#include <vector>
+#include <iostream>
 
 int main(void) {
-    std::vector&lt;int&gt; v = std::vector&lt;int&gt;();
+    std::vector<int> v = std::vector<int>();
     v.push_back(17);
     v.push_back(12);
     v.push_back(23);
     v.push_back(42);
-    for ( auto &amp;i : v ) {
-        std::cout &lt;&lt; i &lt;&lt; std::endl;
+    for ( auto &i : v ) {
+        std::cout << i << std::endl;
     }
     return 0;
 }
@@ -4172,7 +4172,7 @@ $ ./auto
 In the specific case in your example, I'd use the STL algorithms to accomplish this.   
 
 ```c++
-#include &lt;numeric&gt; 
+#include <numeric> 
 
 sum = std::accumulate( polygon.begin(), polygon.end(), 0 );
 ```
@@ -4180,8 +4180,8 @@ sum = std::accumulate( polygon.begin(), polygon.end(), 0 );
 For a more general, but still fairly simple case, I'd go with:  
 
 ```c++
-#include &lt;boost/lambda/lambda.hpp&gt;
-#include &lt;boost/lambda/bind.hpp&gt;
+#include <boost/lambda/lambda.hpp>
+#include <boost/lambda/bind.hpp>
 
 using namespace boost::lambda;
 std::for_each( polygon.begin(), polygon.end(), sum += _1 );
@@ -4233,7 +4233,7 @@ int main()
 {
   int y[10];
   int *a = fillarr(y);
-  cout &lt;&lt; a[0] &lt;&lt; endl;
+  cout << a[0] << endl;
 }
 ```
 
@@ -4249,7 +4249,7 @@ int *fillarr( int arr[] ) { // arr "decays" to type int *
 You can improve it by using an array references for the argument and return, which prevents the decay:  
 
 ```c++
-int ( &amp;fillarr( int (&amp;arr)[5] ) )[5] { // no decay; argument must be size 5
+int ( &fillarr( int (&arr)[5] ) )[5] { // no decay; argument must be size 5
     return arr;
 }
 ```
@@ -4257,7 +4257,7 @@ int ( &amp;fillarr( int (&amp;arr)[5] ) )[5] { // no decay; argument must be siz
 With Boost or C++11, pass-by-reference is only optional and the syntax is less mind-bending:  
 
 ```c++
-array&lt; int, 5 &gt; &amp;fillarr( array&lt; int, 5 &gt; &amp;arr ) {
+array< int, 5 > &fillarr( array< int, 5 > &arr ) {
     return arr; // "array" being boost::array or std::array
 }
 ```
@@ -4270,7 +4270,7 @@ $8.3.5/8 states-
 "Functions shall not have a return type of type array or function, although they may have a return type of type pointer or reference to such things. There shall be no arrays of functions, although there can be arrays of pointers to functions."  
 
 ```c++
-int (&amp;fn1(int (&amp;arr)[5]))[5]{     // declare fn1 as returning refernce to array
+int (&fn1(int (&arr)[5]))[5]{     // declare fn1 as returning refernce to array
    return arr;
 }
 
@@ -4444,7 +4444,7 @@ extern "C" {
 
     // Templates.
     // error: template with C linkage
-    template &lt;class C&gt; void f(C i) { }
+    template <class C> void f(C i) { }
 }
 ```
 
@@ -4457,7 +4457,7 @@ Calling C from C++ is pretty easy: each C function only has one possible non-man
 main.cpp  
 
 ```c++
-#include &lt;cassert&gt;
+#include <cassert>
 
 #include "c.h"
 
@@ -4520,7 +4520,7 @@ Here we illustrate how to expose C++ function overloads to C.
 main.c  
 
 ```c++
-#include &lt;assert.h&gt;
+#include <assert.h>
 
 #include "cpp.h"
 
@@ -4604,7 +4604,7 @@ Tested in Ubuntu 18.04.
 I have a std::vector&lt;int>, and I want to delete the n'th element. How do I do that?  
 
 ```c++
-std::vector&lt;int&gt; vec;
+std::vector<int> vec;
 
 vec.push_back(6);
 vec.push_back(-17);
@@ -4617,7 +4617,7 @@ vec.erase(???);
 To delete a single element, you could do:  
 
 ```c++
-std::vector&lt;int&gt; vec;
+std::vector<int> vec;
 
 vec.push_back(6);
 vec.push_back(-17);
@@ -4645,10 +4645,10 @@ when you only want to erase a single element.
 
 #### Answer 3 (score 51)
 ```c++
-template &lt;typename T&gt;
-void remove(std::vector&lt;T&gt;&amp; vec, size_t pos)
+template <typename T>
+void remove(std::vector<T>& vec, size_t pos)
 {
-    std::vector&lt;T&gt;::iterator it = vec.begin();
+    std::vector<T>::iterator it = vec.begin();
     std::advance(it, pos);
     vec.erase(it);
 }
@@ -4665,12 +4665,12 @@ I have searched a bit and I have come to the conclusion that I have to use the f
 Here is the error that I get from the compiler when I attempt to use a library which is included in C++11 (i.e. array):  
 
 ```c++
-#include &lt;array&gt;
-#include &lt;iostream&gt;
+#include <array>
+#include <iostream>
 
 int main()
 {
-    std::array&lt;int, 3&gt; arr = {2, 3, 5};
+    std::array<int, 3> arr = {2, 3, 5};
     ...
 }
 ```
@@ -4744,8 +4744,8 @@ all over the place, but there seem to be two other types of casts, and I don't k
 
 ```c++
 MyClass *m = (MyClass *)ptr;
-MyClass *m = static_cast&lt;MyClass *&gt;(ptr);
-MyClass *m = dynamic_cast&lt;MyClass *&gt;(ptr);
+MyClass *m = static_cast<MyClass *>(ptr);
+MyClass *m = dynamic_cast<MyClass *>(ptr);
 ```
 
 #### Answer accepted (score 1533)
@@ -4755,14 +4755,14 @@ MyClass *m = dynamic_cast&lt;MyClass *&gt;(ptr);
 
 ```c++
 void func(void *data) {
-  // Conversion from MyClass* -&gt; void* is implicit
-  MyClass *c = static_cast&lt;MyClass*&gt;(data);
+  // Conversion from MyClass* -> void* is implicit
+  MyClass *c = static_cast<MyClass*>(data);
   ...
 }
 
 int main() {
   MyClass c;
-  start_thread(&amp;func, &amp;c)  // func(&amp;c) will be called
+  start_thread(&func, &c)  // func(&c) will be called
       .join();
 }
 ```
@@ -4774,9 +4774,9 @@ In this example, you know that you passed a `MyClass` object, and thus there isn
 `dynamic_cast` is useful when you don't know what the dynamic type of the object is. It returns a null pointer if the object referred to doesn't contain the type casted to as a base class (when you cast to a reference, a `bad_cast` exception is thrown in that case).  
 
 ```c++
-if (JumpStm *j = dynamic_cast&lt;JumpStm*&gt;(&amp;stm)) {
+if (JumpStm *j = dynamic_cast<JumpStm*>(&stm)) {
   ...
-} else if (ExprStm *e = dynamic_cast&lt;ExprStm*&gt;(&amp;stm)) {
+} else if (ExprStm *e = dynamic_cast<ExprStm*>(&stm)) {
   ...
 }
 ```
@@ -4787,8 +4787,8 @@ You cannot use `dynamic_cast` if you downcast (cast to a derived class) and the 
 struct Base { };
 struct Derived : Base { };
 int main() {
-  Derived d; Base *b = &amp;d;
-  dynamic_cast&lt;Derived*&gt;(b); // Invalid
+  Derived d; Base *b = &d;
+  dynamic_cast<Derived*>(b); // Invalid
 }
 ```
 
@@ -4809,7 +4809,7 @@ The static cast performs conversions between compatible types. It is similar to 
 
 ```c++
 char c = 10;       // 1 byte
-int *p = (int*)&amp;c; // 4 bytes
+int *p = (int*)&c; // 4 bytes
 ```
 
 Since this results in a 4-byte pointer pointing to 1 byte of allocated memory, writing to this pointer will either cause a run-time error or will overwrite some adjacent memory.  
@@ -4821,7 +4821,7 @@ Since this results in a 4-byte pointer pointing to 1 byte of allocated memory, w
 In contrast to the C-style cast, the static cast will allow the compiler to check that the pointer and pointee data types are compatible, which allows the programmer to catch this incorrect pointer assignment during compilation.  
 
 ```c++
-int *q = static_cast&lt;int*&gt;(&amp;c); // compile-time error
+int *q = static_cast<int*>(&c); // compile-time error
 ```
 
 <h5>Reinterpret cast</h2>
@@ -4829,7 +4829,7 @@ int *q = static_cast&lt;int*&gt;(&amp;c); // compile-time error
 To force the pointer conversion, in the same way as the C-style cast does in the background, the reinterpret cast would be used instead.  
 
 ```c++
-int *r = reinterpret_cast&lt;int*&gt;(&amp;c); // forced conversion
+int *r = reinterpret_cast<int*>(&c); // forced conversion
 ```
 
 This cast handles conversions between certain unrelated types, such as from one pointer type to another incompatible pointer type. It will simply perform a binary copy of the data without altering the underlying bit pattern. Note that the result of such a low-level operation is system-specific and therefore not portable. It should be used with caution if it cannot be avoided altogether.  
@@ -4855,7 +4855,7 @@ class MyChild : public MyBase {};
 int main()
 {
   MyChild *child = new MyChild();
-  MyBase  *base = dynamic_cast&lt;MyBase*&gt;(child); // ok
+  MyBase  *base = dynamic_cast<MyBase*>(child); // ok
 }
 ```
 
@@ -4863,25 +4863,25 @@ The next example attempts to convert a MyBase pointer to a MyChild pointer. Sinc
 
 ```c++
 MyBase  *base = new MyBase();
-MyChild *child = dynamic_cast&lt;MyChild*&gt;(base);
+MyChild *child = dynamic_cast<MyChild*>(base);
 
 
 if (child == 0) 
-std::cout &lt;&lt; "Null pointer returned";
+std::cout << "Null pointer returned";
 ```
 
 If a reference is converted instead of a pointer, the dynamic cast will then fail by throwing a bad_cast exception. This needs to be handled using a try-catch statement.  
 
 ```c++
-#include &lt;exception&gt;
+#include <exception>
 // …  
 try
 { 
-  MyChild &amp;child = dynamic_cast&lt;MyChild&amp;&gt;(*base);
+  MyChild &child = dynamic_cast<MyChild&>(*base);
 }
-catch(std::bad_cast &amp;e) 
+catch(std::bad_cast &e) 
 { 
-  std::cout &lt;&lt; e.what(); // bad dynamic_cast
+  std::cout << e.what(); // bad dynamic_cast
 }
 ```
 
@@ -4890,21 +4890,21 @@ catch(std::bad_cast &amp;e)
 The advantage of using a dynamic cast is that it allows the programmer to check whether or not a conversion has succeeded during run-time. The disadvantage is that there is a performance overhead associated with doing this check. For this reason using a static cast would have been preferable in the first example, because a derived-to-base conversion will never fail.  
 
 ```c++
-MyBase *base = static_cast&lt;MyBase*&gt;(child); // ok
+MyBase *base = static_cast<MyBase*>(child); // ok
 ```
 
 However, in the second example the conversion may either succeed or fail. It will fail if the MyBase object contains a MyBase instance and it will succeed if it contains a MyChild instance. In some situations this may not be known until run-time. When this is the case dynamic cast is a better choice than static cast.  
 
 ```c++
 // Succeeds for a MyChild object
-MyChild *child = dynamic_cast&lt;MyChild*&gt;(base);
+MyChild *child = dynamic_cast<MyChild*>(base);
 ```
 
 If the base-to-derived conversion had been performed using a static cast instead of a dynamic cast the conversion would not have failed. It would have returned a pointer that referred to an incomplete object. Dereferencing such a pointer can lead to run-time errors.  
 
 ```c++
 // Allowed, but invalid
-MyChild *child = static_cast&lt;MyChild*&gt;(base);
+MyChild *child = static_cast<MyChild*>(base);
 
 // Incomplete MyChild object dereferenced
 (*child);
@@ -4916,7 +4916,7 @@ This one is primarily used to add or remove the const modifier of a variable.
 
 ```c++
 const int myConst = 5;
-int *nonConst = const_cast&lt;int*&gt;(&amp;myConst); // removes const
+int *nonConst = const_cast<int*>(&myConst); // removes const
 ```
 
 Although const cast allows the value of a constant to be changed, doing so is still invalid code that may cause a run-time error. This could occur for example if the constant was located in a section of read-only memory.  
@@ -4930,14 +4930,14 @@ Const cast is instead used mainly when there is a function that takes a non-cons
 ```c++
 void print(int *p) 
 {
-   std::cout &lt;&lt; *p;
+   std::cout << *p;
 }
 ```
 
 The function can then be passed a constant variable by using a const cast.  
 
 ```c++
-print(&amp;myConst); // error: cannot convert 
+print(&myConst); // error: cannot convert 
                  // const int* to int*
 
 print(nonConst); // allowed
@@ -5054,7 +5054,7 @@ Create a function that you want the thread to execute, eg:
 ```c++
 void task1(std::string msg)
 {
-    std::cout &lt;&lt; "task1 says: " &lt;&lt; msg;
+    std::cout << "task1 says: " << msg;
 }
 ```
 
@@ -5081,16 +5081,16 @@ t1.join();
 <h5>The Code</h2>
 
 ```c++
-#include &lt;string&gt;
-#include &lt;iostream&gt;
-#include &lt;thread&gt;
+#include <string>
+#include <iostream>
+#include <thread>
 
 using namespace std;
 
 // The function we want to execute on the new thread.
 void task1(string msg)
 {
-    cout &lt;&lt; "task1 says: " &lt;&lt; msg;
+    cout << "task1 says: " << msg;
 }
 
 int main()
@@ -5126,7 +5126,7 @@ That said there are several cross-platform thread C++ libraries that work just f
 Using boost::thread you'd get something like:  
 
 ```c++
-#include &lt;boost/thread.hpp&gt;
+#include <boost/thread.hpp>
 
 void task1() { 
     // do stuff
@@ -5153,22 +5153,22 @@ int main (int argc, char ** argv) {
 <a href="http://en.wikipedia.org/wiki/POSIX" rel="nofollow noreferrer">Check</a> for compatability </p>
 
 ```c++
-#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;pthread.h&gt;
-#include &lt;iostream&gt;
+#include <stdio.h>
+#include <stdlib.h>
+#include <pthread.h>
+#include <iostream>
 
 void *task(void *argument){
       char* msg;
       msg = (char*)argument;
-      std::cout&lt;&lt;msg&lt;&lt;std::endl;
+      std::cout<<msg<<std::endl;
 }
 
 int main(){
     pthread_t thread1, thread2;
     int i1,i2;
-    i1 = pthread_create( &amp;thread1, NULL, task, (void*) "thread 1");
-    i2 = pthread_create( &amp;thread2, NULL, task, (void*) "thread 2");
+    i1 = pthread_create( &thread1, NULL, task, (void*) "thread 1");
+    i2 = pthread_create( &thread2, NULL, task, (void*) "thread 2");
 
     pthread_join(thread1,NULL);
     pthread_join(thread2,NULL);
@@ -5241,7 +5241,7 @@ You can learn more about virtuality and virtual base class destructor in <a href
 Let us experiment....</p>
 
 ```c++
-#include &lt;iostream&gt;
+#include <iostream>
 
 using namespace std;
 
@@ -5249,10 +5249,10 @@ class Base
 {
 public:
     Base(){
-        cout &lt;&lt; "Base Constructor Called\n";
+        cout << "Base Constructor Called\n";
     }
     ~Base(){
-        cout &lt;&lt; "Base Destructor called\n";
+        cout << "Base Destructor called\n";
     }
 };
 
@@ -5260,10 +5260,10 @@ class Derived1: public Base
 {
 public:
     Derived1(){
-        cout &lt;&lt; "Derived constructor called\n";
+        cout << "Derived constructor called\n";
     }
     ~Derived1(){
-        cout &lt;&lt; "Derived destructor called\n";
+        cout << "Derived destructor called\n";
     }
 };
 
@@ -5286,7 +5286,7 @@ Base Destructor called
 Now let see what happens in the following:</p>
 
 ```c++
-#include &lt;iostream&gt;
+#include <iostream>
 
 using namespace std;
 
@@ -5294,10 +5294,10 @@ class Base
 { 
 public:
     Base(){
-        cout &lt;&lt; "Base Constructor Called\n";
+        cout << "Base Constructor Called\n";
     }
     virtual ~Base(){
-        cout &lt;&lt; "Base Destructor called\n";
+        cout << "Base Destructor called\n";
     }
 };
 
@@ -5305,10 +5305,10 @@ class Derived1: public Base
 {
 public:
     Derived1(){
-        cout &lt;&lt; "Derived constructor called\n";
+        cout << "Derived constructor called\n";
     }
     ~Derived1(){
-        cout &lt;&lt; "Derived destructor called\n";
+        cout << "Derived destructor called\n";
     }
 };
 
@@ -5440,11 +5440,11 @@ struct empty_pair_impl : protected empty_class_1
 { non_empty_class_2 second; };
 
 struct pair : private empty_pair_impl {
-  non_empty_class_2 &amp;second() {
-    return this-&gt;second;
+  non_empty_class_2 &second() {
+    return this->second;
   }
 
-  empty_class_1 &amp;first() {
+  empty_class_1 &first() {
     return *this; // notice we return *this!
   }
 };
@@ -5457,7 +5457,7 @@ struct pair : private empty_pair_impl {
 <li><p>Implemented-in-terms-of. The usage of the base class is only for implementing the derived class. Useful with traits and if size matters (empty traits that only contain functions will make use of the empty base class optimization). Often <em>containment</em> is the better solution, though. The size for strings is critical, so it's an often seen usage here</p>
 
 ```c++
-template&lt;typename StorageModel&gt;
+template<typename StorageModel>
 struct string : private StorageModel {
 public:
   void realloc() {
@@ -5500,7 +5500,7 @@ public:
 ```c++
 class stack {
 protected:
-  vector&lt;element&gt; c;
+  vector<element> c;
 };
 
 class window {
@@ -5547,26 +5547,26 @@ Of course, answers with elegant alternatives and also left-trim solution are wel
 <strong>EDIT</strong> Since c++17, some parts of the standard library were removed. Fortunately, starting with c++11, we have lambdas which are a superior solution.  
 
 ```c++
-#include &lt;algorithm&gt; 
-#include &lt;cctype&gt;
-#include &lt;locale&gt;
+#include <algorithm> 
+#include <cctype>
+#include <locale>
 
 // trim from start (in place)
-static inline void ltrim(std::string &amp;s) {
+static inline void ltrim(std::string &s) {
     s.erase(s.begin(), std::find_if(s.begin(), s.end(), [](int ch) {
         return !std::isspace(ch);
     }));
 }
 
 // trim from end (in place)
-static inline void rtrim(std::string &amp;s) {
+static inline void rtrim(std::string &s) {
     s.erase(std::find_if(s.rbegin(), s.rend(), [](int ch) {
         return !std::isspace(ch);
     }).base(), s.end());
 }
 
 // trim from both ends (in place)
-static inline void trim(std::string &amp;s) {
+static inline void trim(std::string &s) {
     ltrim(s);
     rtrim(s);
 }
@@ -5597,27 +5597,27 @@ Thanks to <a href="https://stackoverflow.com/a/44973498/524503">https://stackove
 I tend to use one of these 3 for my trimming needs:  
 
 ```c++
-#include &lt;algorithm&gt; 
-#include &lt;functional&gt; 
-#include &lt;cctype&gt;
-#include &lt;locale&gt;
+#include <algorithm> 
+#include <functional> 
+#include <cctype>
+#include <locale>
 
 // trim from start
-static inline std::string &amp;ltrim(std::string &amp;s) {
+static inline std::string &ltrim(std::string &s) {
     s.erase(s.begin(), std::find_if(s.begin(), s.end(),
-            std::not1(std::ptr_fun&lt;int, int&gt;(std::isspace))));
+            std::not1(std::ptr_fun<int, int>(std::isspace))));
     return s;
 }
 
 // trim from end
-static inline std::string &amp;rtrim(std::string &amp;s) {
+static inline std::string &rtrim(std::string &s) {
     s.erase(std::find_if(s.rbegin(), s.rend(),
-            std::not1(std::ptr_fun&lt;int, int&gt;(std::isspace))).base(), s.end());
+            std::not1(std::ptr_fun<int, int>(std::isspace))).base(), s.end());
     return s;
 }
 
 // trim from both ends
-static inline std::string &amp;trim(std::string &amp;s) {
+static inline std::string &trim(std::string &s) {
     return ltrim(rtrim(s));
 }
 ```
@@ -5629,25 +5629,25 @@ They are fairly self explanatory and work very well.
 <strong>EDIT</strong>: To address some comments about accepting a parameter by reference, modifying and returning it. I Agree. An implementation that I would likely prefer would be two sets of functions, one for in place and one which makes a copy. A better set of examples would be:  
 
 ```c++
-#include &lt;algorithm&gt; 
-#include &lt;functional&gt; 
-#include &lt;cctype&gt;
-#include &lt;locale&gt;
+#include <algorithm> 
+#include <functional> 
+#include <cctype>
+#include <locale>
 
 // trim from start (in place)
-static inline void ltrim(std::string &amp;s) {
+static inline void ltrim(std::string &s) {
     s.erase(s.begin(), std::find_if(s.begin(), s.end(),
-            std::not1(std::ptr_fun&lt;int, int&gt;(std::isspace))));
+            std::not1(std::ptr_fun<int, int>(std::isspace))));
 }
 
 // trim from end (in place)
-static inline void rtrim(std::string &amp;s) {
+static inline void rtrim(std::string &s) {
     s.erase(std::find_if(s.rbegin(), s.rend(),
-            std::not1(std::ptr_fun&lt;int, int&gt;(std::isspace))).base(), s.end());
+            std::not1(std::ptr_fun<int, int>(std::isspace))).base(), s.end());
 }
 
 // trim from both ends (in place)
-static inline void trim(std::string &amp;s) {
+static inline void trim(std::string &s) {
     ltrim(s);
     rtrim(s);
 }
@@ -5677,7 +5677,7 @@ I am keeping the original answer above though for context and in the interest of
 Using <a href="http://www.boost.org/doc/libs/1_58_0/doc/html/string_algo/usage.html#idp424359600" rel="noreferrer">Boost's string algorithms</a> would be easiest:  
 
 ```c++
-#include &lt;boost/algorithm/string.hpp&gt;
+#include <boost/algorithm/string.hpp>
 
 std::string str("hello world! ");
 boost::trim_right(str);
@@ -5725,7 +5725,7 @@ Here is an updated C++11 implementation of the Singleton design pattern that is 
 class S
 {
     public:
-        static S&amp; getInstance()
+        static S& getInstance()
         {
             static S    instance; // Guaranteed to be destroyed.
                                   // Instantiated on first use.
@@ -5739,16 +5739,16 @@ class S
         // Don't forget to declare these two. You want to make sure they
         // are unacceptable otherwise you may accidentally get copies of
         // your singleton appearing.
-        S(S const&amp;);              // Don't Implement
-        void operator=(S const&amp;); // Don't implement
+        S(S const&);              // Don't Implement
+        void operator=(S const&); // Don't implement
 
         // C++ 11
         // =======
         // We can use the better technique of deleting the methods
         // we don't want.
     public:
-        S(S const&amp;)               = delete;
-        void operator=(S const&amp;)  = delete;
+        S(S const&)               = delete;
+        void operator=(S const&)  = delete;
 
         // Note: Scott Meyers mentions in his Effective Modern
         //       C++ book, that deleted functions should generally
@@ -5792,7 +5792,7 @@ private:
    Singleton();
 
 public:
-   static Singleton&amp; instance()
+   static Singleton& instance()
    {
       static Singleton INSTANCE;
       return INSTANCE;
@@ -5816,7 +5816,7 @@ Use <a href="http://en.cppreference.com/w/cpp/string/basic_string/find" rel="nor
 
 ```c++
 if (s1.find(s2) != std::string::npos) {
-    std::cout &lt;&lt; "found!" &lt;&lt; '\n';
+    std::cout << "found!" << '\n';
 }
 ```
 
@@ -5848,7 +5848,7 @@ int main(){
     string s("gengjiawen");
     string t("geng");
     bool b = contains(s, t);
-    cout &lt;&lt; b &lt;&lt; endl;
+    cout << b << endl;
     return 0;
 }
 ```
@@ -5876,13 +5876,13 @@ int vv[2] = {12, 43};
 But when I do it like this,  
 
 ```c++
-vector&lt;int&gt; v(2) = {34, 23};
+vector<int> v(2) = {34, 23};
 ```
 
 OR  
 
 ```c++
-vector&lt;int&gt; v(2);
+vector<int> v(2);
 v = {0, 9};
 ```
 
@@ -5904,15 +5904,15 @@ respectively.
 With the new C++ standard (may need special flags to be enabled on your compiler) you can simply do:  
 
 ```c++
-std::vector&lt;int&gt; v { 34,23 };
+std::vector<int> v { 34,23 };
 // or
-// std::vector&lt;int&gt; v = { 34,23 };
+// std::vector<int> v = { 34,23 };
 ```
 
 Or even:  
 
 ```c++
-std::vector&lt;int&gt; v(2);
+std::vector<int> v(2);
 v = { 34,23 };
 ```
 
@@ -5920,56 +5920,56 @@ On compilers that don't support this feature (initializer lists) yet you can emu
 
 ```c++
 int vv[2] = { 12,43 };
-std::vector&lt;int&gt; v(&amp;vv[0], &amp;vv[0]+2);
+std::vector<int> v(&vv[0], &vv[0]+2);
 ```
 
 Or, for the case of assignment to an existing vector:  
 
 ```c++
 int vv[2] = { 12,43 };
-v.assign(&amp;vv[0], &amp;vv[0]+2);
+v.assign(&vv[0], &vv[0]+2);
 ```
 
 Like James Kanze suggested, it's more robust to have functions that give you the beginning and end of an array:  
 
 ```c++
-template &lt;typename T, size_t N&gt;
-T* begin(T(&amp;arr)[N]) { return &amp;arr[0]; }
-template &lt;typename T, size_t N&gt;
-T* end(T(&amp;arr)[N]) { return &amp;arr[0]+N; }
+template <typename T, size_t N>
+T* begin(T(&arr)[N]) { return &arr[0]; }
+template <typename T, size_t N>
+T* end(T(&arr)[N]) { return &arr[0]+N; }
 ```
 
 And then you can do this without having to repeat the size all over:  
 
 ```c++
 int vv[] = { 12,43 };
-std::vector&lt;int&gt; v(begin(vv), end(vv));
+std::vector<int> v(begin(vv), end(vv));
 ```
 
 #### Answer 2 (score 29)
 You can also do like this:  
 
 ```c++
-template &lt;typename T&gt;
+template <typename T>
 class make_vector {
 public:
-  typedef make_vector&lt;T&gt; my_type;
-  my_type&amp; operator&lt;&lt; (const T&amp; val) {
+  typedef make_vector<T> my_type;
+  my_type& operator<< (const T& val) {
     data_.push_back(val);
     return *this;
   }
-  operator std::vector&lt;T&gt;() const {
+  operator std::vector<T>() const {
     return data_;
   }
 private:
-  std::vector&lt;T&gt; data_;
+  std::vector<T> data_;
 };
 ```
 
 And use it like this:  
 
 ```c++
-std::vector&lt;int&gt; v = make_vector&lt;int&gt;() &lt;&lt; 1 &lt;&lt; 2 &lt;&lt; 3;
+std::vector<int> v = make_vector<int>() << 1 << 2 << 3;
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -5980,21 +5980,21 @@ std::vector&lt;int&gt; v = make_vector&lt;int&gt;() &lt;&lt; 1 &lt;&lt; 2 &lt;&l
 I want to print out the contents of a vector in C++, here is what I have:  
 
 ```c++
-#include &lt;iostream&gt;
-#include &lt;fstream&gt;
-#include &lt;string&gt;
-#include &lt;cmath&gt;
-#include &lt;vector&gt;
-#include &lt;sstream&gt;
-#include &lt;cstdio&gt;
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <cmath>
+#include <vector>
+#include <sstream>
+#include <cstdio>
 using namespace std;
 
 int main()
 {
     ifstream file("maze.txt");
     if (file) {
-        vector&lt;char&gt; vec(istreambuf_iterator&lt;char&gt;(file), (istreambuf_iterator&lt;char&gt;()));
-        vector&lt;char&gt; path;
+        vector<char> vec(istreambuf_iterator<char>(file), (istreambuf_iterator<char>()));
+        vector<char> path;
         int x = 17;
         char entrance = vec.at(16);
         char firstsquare = vec.at(x);
@@ -6004,10 +6004,10 @@ int main()
         for (x = 17; isalpha(firstsquare); x++) {
             path.push_back(firstsquare);
         }
-        for (int i = 0; i &lt; path.size(); i++) {
-            cout &lt;&lt; path[i] &lt;&lt; " ";
+        for (int i = 0; i < path.size(); i++) {
+            cout << path[i] << " ";
         }
-        cout &lt;&lt; endl;
+        cout << endl;
         return 0;
     }
 }
@@ -6019,10 +6019,10 @@ How do I print the contents of the vector to the screen?
 Purely to answer your question, you can use an iterator:  
 
 ```c++
-std::vector&lt;char&gt; path;
+std::vector<char> path;
 // ...
-for (std::vector&lt;char&gt;::const_iterator i = path.begin(); i != path.end(); ++i)
-    std::cout &lt;&lt; *i &lt;&lt; ' ';
+for (std::vector<char>::const_iterator i = path.begin(); i != path.end(); ++i)
+    std::cout << *i << ' ';
 ```
 
 If you want to modify the vector's contents in the for loop, then use `iterator` rather than `const_iterator`.  
@@ -6035,7 +6035,7 @@ This is not another solution, but a supplement to the above `iterator` solution.
 
 ```c++
 for (auto i = path.begin(); i != path.end(); ++i)
-    std::cout &lt;&lt; *i &lt;&lt; ' ';
+    std::cout << *i << ' ';
 ```
 
 But the type of `i` will be non-const (i.e., the compiler will use `std::vector&lt;char&gt;::iterator` as the type of `i`).  
@@ -6043,11 +6043,11 @@ But the type of `i` will be non-const (i.e., the compiler will use `std::vector&
 In this case, you might as well just use a `typedef` (not restricted to C++11, and <strong>very</strong> useful to use anyway):  
 
 ```c++
-typedef std::vector&lt;char&gt; Path;
+typedef std::vector<char> Path;
 Path path;
 // ...
 for (Path::const_iterator i = path.begin(); i != path.end(); ++i)
-    std::cout &lt;&lt; *i &lt;&lt; ' ';
+    std::cout << *i << ' ';
 ```
 
 <h5>counter</h2>
@@ -6055,16 +6055,16 @@ for (Path::const_iterator i = path.begin(); i != path.end(); ++i)
 You can, of course, use a integer type to record your position in the `for` loop:  
 
 ```c++
-for(int i=0; i&lt;path.size(); ++i)
-  std::cout &lt;&lt; path[i] &lt;&lt; ' ';
+for(int i=0; i<path.size(); ++i)
+  std::cout << path[i] << ' ';
 ```
 
 If you are going to do this, it's better to use the container's member types, if they are available and appropriate. `std::vector` has a member type called `size_type` for this job: it is the type returned by the `size` method.  
 
 ```c++
-// Path typedef'd to std::vector&lt;char&gt;
-for( Path::size_type i=0; i&lt;path.size(); ++i)
-  std::cout &lt;&lt; path[i] &lt;&lt; ' ';
+// Path typedef'd to std::vector<char>
+for( Path::size_type i=0; i<path.size(); ++i)
+  std::cout << path[i] << ' ';
 ```
 
 Why not just use this over the `iterator` solution? For simple cases you might as well, but the point is that the `iterator` class is an object designed to do this job for more complicated objects where this solution is not going to be ideal.  
@@ -6075,28 +6075,28 @@ See <a href="https://stackoverflow.com/a/20507503/498730">Jefffrey's solution</a
 
 ```c++
 for (auto i: path)
-  std::cout &lt;&lt; i &lt;&lt; ' ';
+  std::cout << i << ' ';
 ```
 
 Since `path` is a vector of items (explicitly `std::vector&lt;char&gt;`), the object `i` is of type of the item of the vector (i.e., explicitly, it is of type `char`). The object `i` has a value that is a copy of the actual item in the `path` object. Thus, all changes to `i` in the loop are not preserved in `path` itself. Additionally, if you would like to enforce the fact that you don't want to be able to change the copied value of `i` in the loop, you can force the type of `i` to be `const char` like this:  
 
 ```c++
 for (const auto i: path)
-  std::cout &lt;&lt; i &lt;&lt; ' ';
+  std::cout << i << ' ';
 ```
 
 If you would like to modify the items in `path`, you can use a reference:  
 
 ```c++
-for (auto&amp; i: path)
-  std::cout &lt;&lt; i &lt;&lt; ' ';
+for (auto& i: path)
+  std::cout << i << ' ';
 ```
 
 and even if you don't want to modify `path`, if the copying of objects is expensive you should use a const reference instead of copying by value:  
 
 ```c++
-for (const auto&amp; i: path)
-  std::cout &lt;&lt; i &lt;&lt; ' ';
+for (const auto& i: path)
+  std::cout << i << ' ';
 ```
 
 <h5>std::copy</h2>
@@ -6112,12 +6112,12 @@ See <a href="https://stackoverflow.com/a/26363773/498730">Max's solution</a>. Us
 See <a href="https://stackoverflow.com/a/23397700/498730">Chris's answer</a>, this is more a complement to the other answers since you will still need to implement one of the solutions above in the overloading. In his example he used a counter in a `for` loop. For example, this is how you could quickly use <a href="https://stackoverflow.com/a/11335634/498730">Joshua's solution</a>:  
 
 ```c++
-template &lt;typename T&gt;
-std::ostream&amp; operator&lt;&lt; (std::ostream&amp; out, const std::vector&lt;T&gt;&amp; v) {
+template <typename T>
+std::ostream& operator<< (std::ostream& out, const std::vector<T>& v) {
   if ( !v.empty() ) {
-    out &lt;&lt; '[';
-    std::copy (v.begin(), v.end(), std::ostream_iterator&lt;T&gt;(out, ", "));
-    out &lt;&lt; "\b\b]";
+    out << '[';
+    std::copy (v.begin(), v.end(), std::ostream_iterator<T>(out, ", "));
+    out << "\b\b]";
   }
   return out;
 }
@@ -6137,19 +6137,19 @@ This is an expanded solution of an earlier one I posted. Since that post kept ge
 A much easier way to do this is with the standard <a href="http://en.cppreference.com/w/cpp/algorithm/copy">copy algorithm</a>:   
 
 ```c++
-#include &lt;iostream&gt;
-#include &lt;algorithm&gt; // for copy
-#include &lt;iterator&gt; // for ostream_iterator
-#include &lt;vector&gt;
+#include <iostream>
+#include <algorithm> // for copy
+#include <iterator> // for ostream_iterator
+#include <vector>
 
 int main() {
     /* Set up vector to hold chars a-z */
-    std::vector&lt;char&gt; path;
-    for (int ch = 'a'; ch &lt;= 'z'; ++ch)
+    std::vector<char> path;
+    for (int ch = 'a'; ch <= 'z'; ++ch)
         path.push_back(ch);
 
     /* Print path vector to console */
-    std::copy(path.begin(), path.end(), std::ostream_iterator&lt;char&gt;(std::cout, " "));
+    std::copy(path.begin(), path.end(), std::ostream_iterator<char>(std::cout, " "));
 
     return 0;
 }
@@ -6163,8 +6163,8 @@ This standard algorithm is powerful and so are many others. The power and flexib
 In C++11 you can now use a <a href="http://en.cppreference.com/w/cpp/language/range-for">range-based for loop</a>:  
 
 ```c++
-for (auto const&amp; c : path)
-    std::cout &lt;&lt; c &lt;&lt; ' ';
+for (auto const& c : path)
+    std::cout << c << ' ';
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -6190,7 +6190,7 @@ int age = 21;
 std::string result;
 
 // 1. with Boost
-result = name + boost::lexical_cast&lt;std::string&gt;(age);
+result = name + boost::lexical_cast<std::string>(age);
 
 // 2. with C++11
 result = name + std::to_string(age);
@@ -6206,7 +6206,7 @@ result = fmt::format("{}{}", name, age);
 
 // 6. with IOStreams
 std::stringstream sstm;
-sstm &lt;&lt; name &lt;&lt; age;
+sstm << name << age;
 result = sstm.str();
 
 // 7. with itoa
@@ -6443,7 +6443,7 @@ passFunc(array);
 
 ```c++
 int *array[10];
-for(int i = 0; i &lt; 10; i++)
+for(int i = 0; i < 10; i++)
     array[i] = new int[10];
 void passFunc(int *a[10]) //Array containing pointers
 {
@@ -6456,7 +6456,7 @@ passFunc(array);
 ```c++
 int **array;
 array = new int *[10];
-for(int i = 0; i &lt;10; i++)
+for(int i = 0; i <10; i++)
     array[i] = new int[10];
 void passFunc(int **a)
 {
@@ -6472,16 +6472,16 @@ passFunc(array);
 <strong>1. Pass by reference</strong>  
 
 ```c++
-template &lt;size_t rows, size_t cols&gt;
-void process_2d_array_template(int (&amp;array)[rows][cols])
+template <size_t rows, size_t cols>
+void process_2d_array_template(int (&array)[rows][cols])
 {
-    std::cout &lt;&lt; __func__ &lt;&lt; std::endl;
-    for (size_t i = 0; i &lt; rows; ++i)
+    std::cout << __func__ << std::endl;
+    for (size_t i = 0; i < rows; ++i)
     {
-        std::cout &lt;&lt; i &lt;&lt; ": ";
-        for (size_t j = 0; j &lt; cols; ++j)
-            std::cout &lt;&lt; array[i][j] &lt;&lt; '\t';
-        std::cout &lt;&lt; std::endl;
+        std::cout << i << ": ";
+        for (size_t j = 0; j < cols; ++j)
+            std::cout << array[i][j] << '\t';
+        std::cout << std::endl;
     }
 }
 ```
@@ -6493,13 +6493,13 @@ In C++ passing the array by reference without losing the dimension information i
 ```c++
 void process_2d_array_pointer(int (*array)[5][10])
 {
-    std::cout &lt;&lt; __func__ &lt;&lt; std::endl;
-    for (size_t i = 0; i &lt; 5; ++i)
+    std::cout << __func__ << std::endl;
+    for (size_t i = 0; i < 5; ++i)
     {
-        std::cout &lt;&lt; i &lt;&lt; ": ";
-        for (size_t j = 0; j &lt; 10; ++j)
-            std::cout &lt;&lt; (*array)[i][j] &lt;&lt; '\t';
-        std::cout &lt;&lt; std::endl;
+        std::cout << i << ": ";
+        for (size_t j = 0; j < 10; ++j)
+            std::cout << (*array)[i][j] << '\t';
+        std::cout << std::endl;
     }    
 }
 ```
@@ -6518,13 +6518,13 @@ It is to be remembered that there's no such thing as passing an array directly t
 // int array[][10] is just fancy notation for the same thing
 void process_2d_array(int (*array)[10], size_t rows)
 {
-    std::cout &lt;&lt; __func__ &lt;&lt; std::endl;
-    for (size_t i = 0; i &lt; rows; ++i)
+    std::cout << __func__ << std::endl;
+    for (size_t i = 0; i < rows; ++i)
     {
-        std::cout &lt;&lt; i &lt;&lt; ": ";
-        for (size_t j = 0; j &lt; 10; ++j)
-            std::cout &lt;&lt; array[i][j] &lt;&lt; '\t';
-        std::cout &lt;&lt; std::endl;
+        std::cout << i << ": ";
+        for (size_t j = 0; j < 10; ++j)
+            std::cout << array[i][j] << '\t';
+        std::cout << std::endl;
     }
 }
 ```
@@ -6537,13 +6537,13 @@ Although `int array[][10]` is allowed, I'd not recommend it over the above synta
 // int *array[10] is just fancy notation for the same thing
 void process_pointer_2_pointer(int **array, size_t rows, size_t cols)
 {
-    std::cout &lt;&lt; __func__ &lt;&lt; std::endl;
-    for (size_t i = 0; i &lt; rows; ++i)
+    std::cout << __func__ << std::endl;
+    for (size_t i = 0; i < rows; ++i)
     {
-        std::cout &lt;&lt; i &lt;&lt; ": ";
-        for (size_t j = 0; j &lt; cols; ++j)
-            std::cout &lt;&lt; array[i][j] &lt;&lt; '\t';
-        std::cout &lt;&lt; std::endl;
+        std::cout << i << ": ";
+        for (size_t j = 0; j < cols; ++j)
+            std::cout << array[i][j] << '\t';
+        std::cout << std::endl;
     }
 }
 ```
@@ -6555,7 +6555,7 @@ Again there's an alternative syntax of `int *array[10]` which is the same as `in
 Here's a driver program to test the above functions:  
 
 ```c++
-#include &lt;iostream&gt;
+#include <iostream>
 
 // copy above functions here
 
@@ -6563,18 +6563,18 @@ int main()
 {
     int a[5][10] = { { } };
     process_2d_array_template(a);
-    process_2d_array_pointer(&amp;a);    // &lt;-- notice the unusual usage of addressof (&amp;) operator on an array
+    process_2d_array_pointer(&a);    // <-- notice the unusual usage of addressof (&) operator on an array
     process_2d_array(a, 5);
     // works since a's first dimension decays into a pointer thereby becoming int (*)[10]
 
     int *b[5];  // surrogate
-    for (size_t i = 0; i &lt; 5; ++i)
+    for (size_t i = 0; i < 5; ++i)
     {
         b[i] = a[i];
     }
     // another popular way to define b: here the 2D arrays dims may be non-const, runtime var
     // int **b = new int*[5];
-    // for (size_t i = 0; i &lt; 5; ++i) b[i] = new int[10];
+    // for (size_t i = 0; i < 5; ++i) b[i] = new int[10];
     process_pointer_2_pointer(b, 5, 10);
     // process_2d_array(b, 5);
     // doesn't work since b's first dimension decays into a pointer thereby becoming int**
@@ -6585,10 +6585,10 @@ int main()
 A modification to shengy's first suggestion, you can use templates to make the function accept a multi-dimensional array variable (instead of storing an array of pointers that have to be managed and deleted):  
 
 ```c++
-template &lt;size_t size_x, size_t size_y&gt;
-void func(double (&amp;arr)[size_x][size_y])
+template <size_t size_x, size_t size_y>
+void func(double (&arr)[size_x][size_y])
 {
-    printf("%p\n", &amp;arr);
+    printf("%p\n", &arr);
 }
 
 int main()
@@ -6596,7 +6596,7 @@ int main()
     double a1[10][10];
     double a2[5][5];
 
-    printf("%p\n%p\n\n", &amp;a1, &amp;a2);
+    printf("%p\n%p\n\n", &a1, &a2);
     func(a1);
     func(a2);
 
@@ -6614,7 +6614,7 @@ The print statements are there to show that the arrays are getting passed by ref
 I would like to find the fastest way to check if a file exist in standard C++11, C++, or C. I have thousands of files and before doing something on them I need to check if all of them exist. What can I write instead of `/* SOMETHING */` in the following function?    
 
 ```c++
-inline bool exist(const std::string&amp; name)
+inline bool exist(const std::string& name)
 {
     /* SOMETHING */
 }
@@ -6624,17 +6624,17 @@ inline bool exist(const std::string&amp; name)
 Well I threw together a test program that ran each of these methods 100,000 times, half on files that existed and half on files that didn't.  
 
 ```c++
-#include &lt;sys/stat.h&gt;
-#include &lt;unistd.h&gt;
-#include &lt;string&gt;
-#include &lt;fstream&gt;
+#include <sys/stat.h>
+#include <unistd.h>
+#include <string>
+#include <fstream>
 
-inline bool exists_test0 (const std::string&amp; name) {
+inline bool exists_test0 (const std::string& name) {
     ifstream f(name.c_str());
     return f.good();
 }
 
-inline bool exists_test1 (const std::string&amp; name) {
+inline bool exists_test1 (const std::string& name) {
     if (FILE *file = fopen(name.c_str(), "r")) {
         fclose(file);
         return true;
@@ -6643,13 +6643,13 @@ inline bool exists_test1 (const std::string&amp; name) {
     }   
 }
 
-inline bool exists_test2 (const std::string&amp; name) {
+inline bool exists_test2 (const std::string& name) {
     return ( access( name.c_str(), F_OK ) != -1 );
 }
 
-inline bool exists_test3 (const std::string&amp; name) {
+inline bool exists_test3 (const std::string& name) {
   struct stat buffer;   
-  return (stat (name.c_str(), &amp;buffer) == 0); 
+  return (stat (name.c_str(), &buffer) == 0); 
 }
 ```
 
@@ -6718,7 +6718,7 @@ Dangling pointer points to a thing that does not exist any more, like here:
 char *p = NULL;
 {
     char c;
-    p = &amp;c;
+    p = &c;
 }
 // Now p is dangling
 ```
@@ -6837,7 +6837,7 @@ In <a href="http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf#page=182" 
   <li><p>A preprocessing directive of the form</p>
 
 ```c++
-#include &lt;h-char-sequence&gt; new-line
+#include <h-char-sequence> new-line
 ```
   
   searches a sequence of implementation-defined places for a <strong>header</strong> identified uniquely by the specified sequence between the `&lt;` and `&gt;` delimiters, and causes the replacement of that directive by the entire contents of the <strong>header</strong>. How the places are specified or the header identified is implementation-defined.  </li>
@@ -6850,7 +6850,7 @@ In <a href="http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf#page=182" 
   causes the replacement of that directive by the entire contents of the <strong>source file</strong> identified by the specified sequence between the `"` delimiters. The named <strong>source file</strong> is searched for in an implementation-defined manner. If this search is not supported, or if the search fails, the directive is reprocessed as if it read  
 
 ```c++
-#include &lt;h-char-sequence&gt; new-line
+#include <h-char-sequence> new-line
 ```
   
   <p>with the identical contained sequence (including `&gt;` characters, if any) from the original
@@ -6888,11 +6888,11 @@ This answer is rather old, and so describes what was 'good' at the time, which w
 <strong>It was deprecated in C++11 and removed in C++17</strong>, so you shouldn't use it.</p>
 
 ```c++
-std::auto_ptr&lt;MyObject&gt; p1 (new MyObject());
-std::auto_ptr&lt;MyObject&gt; p2 = p1; // Copy and transfer ownership. 
+std::auto_ptr<MyObject> p1 (new MyObject());
+std::auto_ptr<MyObject> p2 = p1; // Copy and transfer ownership. 
                                  // p1 gets set to empty!
-p2-&gt;DoSomething(); // Works.
-p1-&gt;DoSomething(); // Oh oh. Hopefully raises some NULL pointer exception.
+p2->DoSomething(); // Works.
+p1->DoSomething(); // Oh oh. Hopefully raises some NULL pointer exception.
 ```
 
 <hr>
@@ -6908,7 +6908,7 @@ With raw pointers, the programmer has to explicitly destroy the object when it i
 ```c++
 // Need to create the object to achieve some goal
 MyObject* ptr = new MyObject(); 
-ptr-&gt;DoSomething(); // Use the object in some way
+ptr->DoSomething(); // Use the object in some way
 delete ptr; // Destroy the object. Done with it.
 // Wait, what if DoSomething() raises an exception...?
 ```
@@ -6916,8 +6916,8 @@ delete ptr; // Destroy the object. Done with it.
 A smart pointer by comparison defines a policy as to when the object is destroyed. You still have to create the object, but you no longer have to worry about destroying it.  
 
 ```c++
-SomeSmartPtr&lt;MyObject&gt; ptr(new MyObject());
-ptr-&gt;DoSomething(); // Use the object in some way.
+SomeSmartPtr<MyObject> ptr(new MyObject());
+ptr->DoSomething(); // Use the object in some way.
 
 // Destruction of the object happens, depending 
 // on the policy the smart pointer class uses.
@@ -6932,12 +6932,12 @@ The simplest policy in use involves the scope of the smart pointer wrapper objec
 void f()
 {
     {
-       std::unique_ptr&lt;MyObject&gt; ptr(new MyObject());
-       ptr-&gt;DoSomethingUseful();
+       std::unique_ptr<MyObject> ptr(new MyObject());
+       ptr->DoSomethingUseful();
     } // ptr goes out of scope -- 
       // the MyObject is automatically destroyed.
 
-    // ptr-&gt;Oops(); // Compile error: "ptr" not defined
+    // ptr->Oops(); // Compile error: "ptr" not defined
                     // since it is no longer in scope.
 }
 ```
@@ -6951,7 +6951,7 @@ A more complex smart pointer policy involves reference counting the pointer. Thi
 ```c++
 void f()
 {
-    typedef std::shared_ptr&lt;MyObject&gt; MyObjectPtr; // nice short alias
+    typedef std::shared_ptr<MyObject> MyObjectPtr; // nice short alias
     MyObjectPtr p1; // Empty
 
     {
@@ -6979,13 +6979,13 @@ Another possibility is creating circular references:
 
 ```c++
 struct Owner {
-   std::shared_ptr&lt;Owner&gt; other;
+   std::shared_ptr<Owner> other;
 };
 
-std::shared_ptr&lt;Owner&gt; p1 (new Owner());
-std::shared_ptr&lt;Owner&gt; p2 (new Owner());
-p1-&gt;other = p2; // p1 references p2
-p2-&gt;other = p1; // p2 references p1
+std::shared_ptr<Owner> p1 (new Owner());
+std::shared_ptr<Owner> p2 (new Owner());
+p1->other = p2; // p1 references p2
+p2->other = p1; // p2 references p1
 
 // Oops, the reference count of of p1 and p2 never goes to zero!
 // The objects are never destroyed!
@@ -7058,10 +7058,10 @@ Your simple case can easily be built using the <a href="http://en.cppreference.c
 The <a href="http://www.boost.org/doc/libs/1_36_0/libs/tokenizer/index.html" rel="noreferrer">Boost tokenizer</a> class can make this sort of thing quite simple:  
 
 ```c++
-#include &lt;iostream&gt;
-#include &lt;string&gt;
-#include &lt;boost/foreach.hpp&gt;
-#include &lt;boost/tokenizer.hpp&gt;
+#include <iostream>
+#include <string>
+#include <boost/foreach.hpp>
+#include <boost/tokenizer.hpp>
 
 using namespace std;
 using namespace boost;
@@ -7070,10 +7070,10 @@ int main(int, char**)
 {
     string text = "token, test   string";
 
-    char_separator&lt;char&gt; sep(", ");
-    tokenizer&lt; char_separator&lt;char&gt; &gt; tokens(text, sep);
-    BOOST_FOREACH (const string&amp; t, tokens) {
-        cout &lt;&lt; t &lt;&lt; "." &lt;&lt; endl;
+    char_separator<char> sep(", ");
+    tokenizer< char_separator<char> > tokens(text, sep);
+    BOOST_FOREACH (const string& t, tokens) {
+        cout << t << "." << endl;
     }
 }
 ```
@@ -7081,9 +7081,9 @@ int main(int, char**)
 Updated for C++11:  
 
 ```c++
-#include &lt;iostream&gt;
-#include &lt;string&gt;
-#include &lt;boost/tokenizer.hpp&gt;
+#include <iostream>
+#include <string>
+#include <boost/tokenizer.hpp>
 
 using namespace std;
 using namespace boost;
@@ -7092,10 +7092,10 @@ int main(int, char**)
 {
     string text = "token, test   string";
 
-    char_separator&lt;char&gt; sep(", ");
-    tokenizer&lt;char_separator&lt;char&gt;&gt; tokens(text, sep);
-    for (const auto&amp; t : tokens) {
-        cout &lt;&lt; t &lt;&lt; "." &lt;&lt; endl;
+    char_separator<char> sep(", ");
+    tokenizer<char_separator<char>> tokens(text, sep);
+    for (const auto& t : tokens) {
+        cout << t << "." << endl;
     }
 }
 ```
@@ -7104,19 +7104,19 @@ int main(int, char**)
 Here's a real simple one:  
 
 ```c++
-#include &lt;vector&gt;
-#include &lt;string&gt;
+#include <vector>
+#include <string>
 using namespace std;
 
-vector&lt;string&gt; split(const char *str, char c = ' ')
+vector<string> split(const char *str, char c = ' ')
 {
-    vector&lt;string&gt; result;
+    vector<string> result;
 
     do
     {
         const char *begin = str;
 
-        while(*str != c &amp;&amp; *str)
+        while(*str != c && *str)
             str++;
 
         result.push_back(string(begin, str));
@@ -7194,7 +7194,7 @@ If you have some data that can be written to, then you can do things like this:
 
 ```c++
 int x = 2;
-int* p_x = &amp;x;  // Put the address of the x variable into the pointer p_x
+int* p_x = &x;  // Put the address of the x variable into the pointer p_x
 *p_x = 4;       // Change the memory at the address in p_x to be 4
 assert(x == 4); // Check x is now 4
 ```
@@ -7208,8 +7208,8 @@ In C, if you have a variable that is a pointer to a structure with data members,
 ```c++
 typedef struct X { int i_; double d_; } X;
 X x;
-X* p = &amp;x;
-p-&gt;d_ = 3.14159;  // Dereference and access data member x.d_
+X* p = &x;
+p->d_ = 3.14159;  // Dereference and access data member x.d_
 (*p).d_ *= -1;    // Another equivalent notation for accessing x.d_
 ```
 
@@ -7228,7 +7228,7 @@ assert(p[1] == 13.4);  // Actually looks at bytes from address p + 1 * sizeof(do
 assert(++p);           // Advance p by sizeof(double)
 assert(*p == 13.4);    // The double at memory beginning at address p has value 13.4
 *(p + 2) = 29.8;       // Change sizes[3] from 19.4 to 29.8
-                       // Note: earlier ++p and + 2 here =&gt; sizes[3]
+                       // Note: earlier ++p and + 2 here => sizes[3]
 ```
 
 <h5>Pointers to dynamically allocated memory</h2>
@@ -7289,7 +7289,7 @@ In C++, it's best practice to use <a href="http://en.wikipedia.org/wiki/Smart_po
 
 ```c++
 {
-    std::unique_ptr&lt;T&gt; p{new T(42, "meaning")};
+    std::unique_ptr<T> p{new T(42, "meaning")};
     call_a_function(p);
     // The function above might throw, so delete here is unreliable, but...
 } // p's destructor's guaranteed to run "here", calling delete
@@ -7299,7 +7299,7 @@ In C++, it's best practice to use <a href="http://en.wikipedia.org/wiki/Smart_po
 
 ```c++
 {
-    std::shared_ptr&lt;T&gt; p(new T(3.14, "pi"));
+    std::shared_ptr<T> p(new T(3.14, "pi"));
     number_storage.may_add(p); // Might copy p into its container
 } // p's destructor will only delete the T if number_storage didn't copy
 ```
@@ -7345,7 +7345,7 @@ Dereferencing a pointer means getting the value that is stored in the memory loc
 
 ```c++
 int a = 10;
-int* ptr = &amp;a;
+int* ptr = &a;
 
 printf("%d", *ptr); // With *ptr I'm dereferencing the pointer. 
                     // Which means, I am asking the value pointed at by the pointer.
@@ -7362,7 +7362,7 @@ A pointer is a "reference" to a value.. much like a library call number is a ref
 
 ```c++
 int a=4 ;
-int *pA = &amp;a ;
+int *pA = &a ;
 printf( "The REFERENCE/call number for the variable `a` is %p\n", pA ) ;
 
 // The * causes pA to DEREFERENCE...  `a` via "callnumber" `pA`.
@@ -7462,7 +7462,7 @@ OnEventData(void* pData)
   // has been static_casted as 
   // EventData* pointer 
 
-  EventData *evtdata = static_cast&lt;EventData*&gt;(pData);
+  EventData *evtdata = static_cast<EventData*>(pData);
   .....
 }
 ```
@@ -7475,10 +7475,10 @@ void DebugLog::OnMessage(Message *msg)
     static DebugMsgData *debug;
     static XYZMsgData *xyz;
 
-    if(debug = dynamic_cast&lt;DebugMsgData*&gt;(msg-&gt;pdata)){
+    if(debug = dynamic_cast<DebugMsgData*>(msg->pdata)){
         // debug message
     }
-    else if(xyz = dynamic_cast&lt;XYZMsgData*&gt;(msg-&gt;pdata)){
+    else if(xyz = dynamic_cast<XYZMsgData*>(msg->pdata)){
         // xyz message
     }
     else/* if( ... )*/{
@@ -7497,7 +7497,7 @@ const unsigned char *Passwd
 
 // on some situation it require to remove its constness
 
-const_cast&lt;unsigned char*&gt;(Passwd)
+const_cast<unsigned char*>(Passwd)
 ```
 
 <strong>reinterpret_cast :</strong>  
@@ -7507,8 +7507,8 @@ typedef unsigned short uint16;
 
 // Read Bytes returns that 2 bytes got read. 
 
-bool ByteBuffer::ReadUInt16(uint16&amp; val) {
-  return ReadBytes(reinterpret_cast&lt;char*&gt;(&amp;val), 2);
+bool ByteBuffer::ReadUInt16(uint16& val) {
+  return ReadBytes(reinterpret_cast<char*>(&val), 2);
 }
 ```
 
@@ -7534,13 +7534,13 @@ Let's say you have these two classes:
 class Animal
 {
     public:
-        void eat() { std::cout &lt;&lt; "I'm eating generic food."; }
+        void eat() { std::cout << "I'm eating generic food."; }
 };
 
 class Cat : public Animal
 {
     public:
-        void eat() { std::cout &lt;&lt; "I'm eating a rat."; }
+        void eat() { std::cout << "I'm eating a rat."; }
 };
 ```
 
@@ -7550,8 +7550,8 @@ In your main function:
 Animal *animal = new Animal;
 Cat *cat = new Cat;
 
-animal-&gt;eat(); // Outputs: "I'm eating generic food."
-cat-&gt;eat();    // Outputs: "I'm eating a rat."
+animal->eat(); // Outputs: "I'm eating generic food."
+cat->eat();    // Outputs: "I'm eating a rat."
 ```
 
 So far so good, right? Animals eat generic food, cats eat rats, all without `virtual`.  
@@ -7560,7 +7560,7 @@ Let's change it a little now so that `eat()` is called via an intermediate funct
 
 ```c++
 // This can go at the top of the main.cpp file
-void func(Animal *xyz) { xyz-&gt;eat(); }
+void func(Animal *xyz) { xyz->eat(); }
 ```
 
 Now our main function is:  
@@ -7581,13 +7581,13 @@ The solution is to make `eat()` from the `Animal` class a virtual function:
 class Animal
 {
     public:
-        virtual void eat() { std::cout &lt;&lt; "I'm eating generic food."; }
+        virtual void eat() { std::cout << "I'm eating generic food."; }
 };
 
 class Cat : public Animal
 {
     public:
-        void eat() { std::cout &lt;&lt; "I'm eating a rat."; }
+        void eat() { std::cout << "I'm eating a rat."; }
 };
 ```
 
@@ -7609,22 +7609,22 @@ With "virtual" you get "late binding". Which implementation of the method is use
 class Base
 {
   public:
-            void Method1 ()  {  std::cout &lt;&lt; "Base::Method1" &lt;&lt; std::endl;  }
-    virtual void Method2 ()  {  std::cout &lt;&lt; "Base::Method2" &lt;&lt; std::endl;  }
+            void Method1 ()  {  std::cout << "Base::Method1" << std::endl;  }
+    virtual void Method2 ()  {  std::cout << "Base::Method2" << std::endl;  }
 };
 
 class Derived : public Base
 {
   public:
-    void Method1 ()  {  std::cout &lt;&lt; "Derived::Method1" &lt;&lt; std::endl;  }
-    void Method2 ()  {  std::cout &lt;&lt; "Derived::Method2" &lt;&lt; std::endl;  }
+    void Method1 ()  {  std::cout << "Derived::Method1" << std::endl;  }
+    void Method2 ()  {  std::cout << "Derived::Method2" << std::endl;  }
 };
 
 Base* obj = new Derived ();
   //  Note - constructed as Derived, but pointer stored as Base*
 
-obj-&gt;Method1 ();  //  Prints "Base::Method1"
-obj-&gt;Method2 ();  //  Prints "Derived::Method2"
+obj->Method1 ();  //  Prints "Base::Method1"
+obj->Method2 ();  //  Prints "Derived::Method2"
 ```
 
 <strong>EDIT</strong> - see <a href="https://stackoverflow.com/questions/10580/what-are-early-and-late-binding">this question</a>.  
@@ -7653,8 +7653,8 @@ void test()
     Dog* d = new Dog();
     Animal* a = d;       // refer to Dog instance with Animal pointer
 
-    cout &lt;&lt; d-&gt;Says();   // always Woof
-    cout &lt;&lt; a-&gt;Says();   // Woof or ?, depends on virtual
+    cout << d->Says();   // always Woof
+    cout << a->Says();   // Woof or ?, depends on virtual
 }
 ```
 
@@ -7757,11 +7757,11 @@ collect2: ld returned 1 exit status
 and similar errors with <strong>Microsoft Visual Studio</strong>:  
 
 ```c++
-1&gt;test2.obj : error LNK2001: unresolved external symbol "void __cdecl foo(void)" (?foo@@YAXXZ)
-1&gt;test2.obj : error LNK2001: unresolved external symbol "int x" (?x@@3HA)
-1&gt;test2.obj : error LNK2001: unresolved external symbol "public: virtual __thiscall A::~A(void)" (??1A@@UAE@XZ)
-1&gt;test2.obj : error LNK2001: unresolved external symbol "public: virtual void __thiscall X::foo(void)" (?foo@X@@UAEXXZ)
-1&gt;...\test2.exe : fatal error LNK1120: 4 unresolved externals
+1>test2.obj : error LNK2001: unresolved external symbol "void __cdecl foo(void)" (?foo@@YAXXZ)
+1>test2.obj : error LNK2001: unresolved external symbol "int x" (?x@@3HA)
+1>test2.obj : error LNK2001: unresolved external symbol "public: virtual __thiscall A::~A(void)" (??1A@@UAE@XZ)
+1>test2.obj : error LNK2001: unresolved external symbol "public: virtual void __thiscall X::foo(void)" (?foo@X@@UAEXXZ)
+1>...\test2.exe : fatal error LNK1120: 4 unresolved externals
 ```
 
 Common causes include:  
@@ -7967,9 +7967,9 @@ struct TestStruct {
 I would like to convert `string` to `char` array but not `char*`. I know how to convert string to `char*` (by using `malloc` or the way I posted it in my code) - but that's not what I want. I simply want to convert `string` to `char[size]` array. Is it possible?  
 
 ```c++
-#include &lt;iostream&gt;
-#include &lt;string&gt;
-#include &lt;stdio.h&gt;
+#include <iostream>
+#include <string>
+#include <stdio.h>
 using namespace std;
 
 int main()
@@ -7981,12 +7981,12 @@ int main()
     tab[2] = 't';
     tab[3] = '\0';
     string tmp(tab);
-    cout &lt;&lt; tmp &lt;&lt; "\n";
+    cout << tmp << "\n";
 
     // string to char* - but thats not what I want
 
-    char *c = const_cast&lt;char*&gt;(tmp.c_str());
-    cout &lt;&lt; c &lt;&lt; "\n";
+    char *c = const_cast<char*>(tmp.c_str());
+    cout << c << "\n";
 
     //string to char
     char tab2[1024];
@@ -8034,7 +8034,7 @@ const char *array = tmp.c_str();
 <li><p>Or you <strong>need to modify</strong> the char array so constant is not ok, then just go with this </p>
 
 ```c++
-char *array = &amp;tmp[0];
+char *array = &tmp[0];
 ```</li>
 </ol>
 
@@ -8154,8 +8154,8 @@ $ ./lab21
 Assuming I have 2 standard vectors:  
 
 ```c++
-vector&lt;int&gt; a;
-vector&lt;int&gt; b;
+vector<int> a;
+vector<int> b;
 ```
 
 Let's also say the both have around 30 elements.  
@@ -8356,7 +8356,7 @@ p = foo();
   subsequent output statement</p>
 
 ```c++
-cout &lt;&lt; p &lt;&lt; '\n';
+cout << p << '\n';
 ```
   
   <p>should display class foo, but it
@@ -8429,11 +8429,11 @@ Without the `typedef`, in some cases you can just add a forward declaration of `
 I'm trying to check if a given key is in a map and somewhat can't do it:  
 
 ```c++
-typedef map&lt;string,string&gt;::iterator mi;
-map&lt;string, string&gt; m;
+typedef map<string,string>::iterator mi;
+map<string, string> m;
 m.insert(make_pair("f","++--"));
-pair&lt;mi,mi&gt; p = m.equal_range("f");//I'm not sure if equal_range does what I want
-cout &lt;&lt; p.first;//I'm getting error here
+pair<mi,mi> p = m.equal_range("f");//I'm not sure if equal_range does what I want
+cout << p.first;//I'm getting error here
 ```
 
 so how can I print what is in p?  
@@ -8453,7 +8453,7 @@ if ( m.find("f") == m.end() ) {
 To check if a particular key in the map exists, use the `count` member function in one of the following ways:  
 
 ```c++
-m.count(key) &gt; 0
+m.count(key) > 0
 m.count(key) == 1
 m.count(key) != 0
 ```
@@ -8474,10 +8474,10 @@ Unlike <a href="http://www.cplusplus.com/reference/map/map/operator%5B%5D/" rel=
 You can use `.find()`:  
 
 ```c++
-map&lt;string,string&gt;::iterator i = m.find("f");
+map<string,string>::iterator i = m.find("f");
 
 if (i == m.end()) { /* Not found */ }
-else { /* Found, i-&gt;first is f, i-&gt;second is ++-- */ }
+else { /* Found, i->first is f, i->second is ++-- */ }
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -8526,7 +8526,7 @@ Then suppose we take just 2 stack samples, and we see instruction `I` on both sa
 
 ```c++
 Prior                                    
-P(f=x) x  P(o=2/2|f=x) P(o=2/2&amp;&amp;f=x)  P(o=2/2&amp;&amp;f &gt;= x)  P(f &gt;= x | o=2/2)
+P(f=x) x  P(o=2/2|f=x) P(o=2/2&&f=x)  P(o=2/2&&f >= x)  P(f >= x | o=2/2)
 
 0.1    1     1             0.1          0.1            0.25974026
 0.1    0.9   0.81          0.081        0.181          0.47012987
@@ -8548,7 +8548,7 @@ Suppose the prior assumptions are different. Suppose we assume P(f=0.1) is .991 
 
 ```c++
 Prior                                    
-P(f=x) x  P(o=2/2|f=x) P(o=2/2&amp;&amp; f=x)  P(o=2/2&amp;&amp;f &gt;= x)  P(f &gt;= x | o=2/2)
+P(f=x) x  P(o=2/2|f=x) P(o=2/2&& f=x)  P(o=2/2&&f >= x)  P(f >= x | o=2/2)
 
 0.001  1    1              0.001        0.001          0.072727273
 0.001  0.9  0.81           0.00081      0.00181        0.131636364
@@ -8659,13 +8659,13 @@ Any ideas?
 You can make a streambuf iterator out of the file and initialize the string with it:  
 
 ```c++
-#include &lt;string&gt;
-#include &lt;fstream&gt;
-#include &lt;streambuf&gt;
+#include <string>
+#include <fstream>
+#include <streambuf>
 
 std::ifstream t("file.txt");
-std::string str((std::istreambuf_iterator&lt;char&gt;(t)),
-                 std::istreambuf_iterator&lt;char&gt;());
+std::string str((std::istreambuf_iterator<char>(t)),
+                 std::istreambuf_iterator<char>());
 ```
 
 Not sure where you're getting the `t.open("file.txt", "r")` syntax from. As far as I know that's not a method that `std::ifstream` has. It looks like you've confused it with C's `fopen`.  
@@ -8675,9 +8675,9 @@ Not sure where you're getting the `t.open("file.txt", "r")` syntax from. As far 
 Following KeithB's point in the comments, here's a way to do it that allocates all the memory up front (rather than relying on the string class's automatic reallocation):  
 
 ```c++
-#include &lt;string&gt;
-#include &lt;fstream&gt;
-#include &lt;streambuf&gt;
+#include <string>
+#include <fstream>
+#include <streambuf>
 
 std::ifstream t("file.txt");
 std::string str;
@@ -8686,8 +8686,8 @@ t.seekg(0, std::ios::end);
 str.reserve(t.tellg());
 t.seekg(0, std::ios::beg);
 
-str.assign((std::istreambuf_iterator&lt;char&gt;(t)),
-            std::istreambuf_iterator&lt;char&gt;());
+str.assign((std::istreambuf_iterator<char>(t)),
+            std::istreambuf_iterator<char>());
 ```
 
 #### Answer 2 (score 751)
@@ -8696,7 +8696,7 @@ There are a couple of possibilities. One I like uses a stringstream as a go-betw
 ```c++
 std::ifstream t("file.txt");
 std::stringstream buffer;
-buffer &lt;&lt; t.rdbuf();
+buffer << t.rdbuf();
 ```
 
 Now the contents of "file.txt" are available in a string as `buffer.str()`.  
@@ -8709,7 +8709,7 @@ t.seekg(0, std::ios::end);
 size_t size = t.tellg();
 std::string buffer(size, ' ');
 t.seekg(0);
-t.read(&amp;buffer[0], size); 
+t.read(&buffer[0], size); 
 ```
 
 Officially, this isn't required to work under the C++98 or 03 standard (string isn't required to store data contiguously) but in fact it works with all known implementations, and C++11 and later do require contiguous storage, so it's guaranteed to work with them.  
@@ -8720,18 +8720,18 @@ As to why I don't like the latter as well: first, because it's longer and harder
 I think best way is to use string stream. simple and quick !!!  
 
 ```c++
-#include &lt;fstream&gt;
-#include &lt;iostream&gt;
-#include &lt;sstream&gt; //std::stringstream
+#include <fstream>
+#include <iostream>
+#include <sstream> //std::stringstream
 int main() {
     std::ifstream inFile;
     inFile.open("inFileName"); //open the input file
 
     std::stringstream strStream;
-    strStream &lt;&lt; inFile.rdbuf(); //read the file
+    strStream << inFile.rdbuf(); //read the file
     std::string str = strStream.str(); //str holds the content of the file
 
-    std::cout &lt;&lt; str &lt;&lt; "\n"; //you can do anything with the string!!!
+    std::cout << str << "\n"; //you can do anything with the string!!!
 }
 ```
 
@@ -8763,7 +8763,7 @@ Linux:
 char szTmp[32];
 sprintf(szTmp, "/proc/%d/exe", getpid());
 int bytes = MIN(readlink(szTmp, pBuf, len), len - 1);
-if(bytes &gt;= 0)
+if(bytes >= 0)
     pBuf[bytes] = '\0';
 return bytes;
 ```
@@ -8778,12 +8778,12 @@ Since you are creating a C program it will link with the default c run time libr
 On windows getcwd function has been deprecated in favour of _getcwd. I think you could use it in this fashion.  
 
 ```c++
-#include &lt;stdio.h&gt;  /* defines FILENAME_MAX */
+#include <stdio.h>  /* defines FILENAME_MAX */
 #ifdef WINDOWS
-    #include &lt;direct.h&gt;
+    #include <direct.h>
     #define GetCurrentDir _getcwd
 #else
-    #include &lt;unistd.h&gt;
+    #include <unistd.h>
     #define GetCurrentDir getcwd
  #endif
 
@@ -8805,8 +8805,8 @@ This is from the <a href="http://www.cplusplus.com/forum/general/11104/">cpluspl
 <strong>On windows:</strong>  
 
 ```c++
-#include &lt;string&gt;
-#include &lt;windows.h&gt;
+#include <string>
+#include <windows.h>
 
 std::string getexepath()
 {
@@ -8818,37 +8818,37 @@ std::string getexepath()
 <strong>On Linux:</strong>  
 
 ```c++
-#include &lt;string&gt;
-#include &lt;limits.h&gt;
-#include &lt;unistd.h&gt;
+#include <string>
+#include <limits.h>
+#include <unistd.h>
 
 std::string getexepath()
 {
   char result[ PATH_MAX ];
   ssize_t count = readlink( "/proc/self/exe", result, PATH_MAX );
-  return std::string( result, (count &gt; 0) ? count : 0 );
+  return std::string( result, (count > 0) ? count : 0 );
 }
 ```
 
 <strong>On HP-UX:</strong>  
 
 ```c++
-#include &lt;string&gt;
-#include &lt;limits.h&gt;
+#include <string>
+#include <limits.h>
 #define _PSTAT64
-#include &lt;sys/pstat.h&gt;
-#include &lt;sys/types.h&gt;
-#include &lt;unistd.h&gt;
+#include <sys/pstat.h>
+#include <sys/types.h>
+#include <unistd.h>
 
 std::string getexepath()
 {
   char result[ PATH_MAX ];
   struct pst_status ps;
 
-  if (pstat_getproc( &amp;ps, sizeof( ps ), 0, getpid() ) &lt; 0)
+  if (pstat_getproc( &ps, sizeof( ps ), 0, getpid() ) < 0)
     return std::string();
 
-  if (pstat_getpathname( result, PATH_MAX, &amp;ps.pst_fid_text ) &lt; 0)
+  if (pstat_getpathname( result, PATH_MAX, &ps.pst_fid_text ) < 0)
     return std::string();
 
   return std::string( result );
@@ -8878,14 +8878,14 @@ I have tried:
 ```c++
 struct timeval diff, startTV, endTV;
 
-gettimeofday(&amp;startTV, NULL); 
+gettimeofday(&startTV, NULL); 
 
 doSomething();
 doSomethingLong();
 
-gettimeofday(&amp;endTV, NULL); 
+gettimeofday(&endTV, NULL); 
 
-timersub(&amp;endTV, &amp;startTV, &amp;diff);
+timersub(&endTV, &startTV, &diff);
 
 printf("**time taken = %ld %ld\n", diff.tv_sec, diff.tv_usec);
 ```
@@ -8896,7 +8896,7 @@ What about `**time taken = 4 45025`, does that mean 4 seconds and 25 msec?
 
 #### Answer 2 (score 263)
 ```c++
-#include &lt;ctime&gt;
+#include <ctime>
 
 void f() {
   using namespace std;
@@ -8918,25 +8918,25 @@ You can <strong>abstract the time measuring mechanism</strong> and have each cal
 <sup><a href="https://stackoverflow.com/q/31253334/2567683">This</a> is why the forwarded function call.</sup></p>
 
 ```c++
-#include &lt;iostream&gt;
-#include &lt;chrono&gt;
+#include <iostream>
+#include <chrono>
 
-template&lt;typename TimeT = std::chrono::milliseconds&gt;
+template<typename TimeT = std::chrono::milliseconds>
 struct measure
 {
-    template&lt;typename F, typename ...Args&gt;
-    static typename TimeT::rep execution(F&amp;&amp; func, Args&amp;&amp;... args)
+    template<typename F, typename ...Args>
+    static typename TimeT::rep execution(F&& func, Args&&... args)
     {
         auto start = std::chrono::steady_clock::now();
-        std::forward&lt;decltype(func)&gt;(func)(std::forward&lt;Args&gt;(args)...);
-        auto duration = std::chrono::duration_cast&lt; TimeT&gt; 
+        std::forward<decltype(func)>(func)(std::forward<Args>(args)...);
+        auto duration = std::chrono::duration_cast< TimeT> 
                             (std::chrono::steady_clock::now() - start);
         return duration.count();
     }
 };
 
 int main() {
-    std::cout &lt;&lt; measure&lt;&gt;::execution(functor(dummy)) &lt;&lt; std::endl;
+    std::cout << measure<>::execution(functor(dummy)) << std::endl;
 }
 ```
 
@@ -8945,16 +8945,16 @@ int main() {
 According to the comment by <a href="https://stackoverflow.com/users/576911/howard-hinnant"><strong>Howard Hinnant</strong></a> it's best not to escape out of the chrono system until we have to. So the above class could give the user the choice to call `count` manually by providing an extra static method (shown in C++14)  
 
 ```c++
-template&lt;typename F, typename ...Args&gt;
-static auto duration(F&amp;&amp; func, Args&amp;&amp;... args)
+template<typename F, typename ...Args>
+static auto duration(F&& func, Args&&... args)
 {
     auto start = std::chrono::steady_clock::now();
-    std::forward&lt;decltype(func)&gt;(func)(std::forward&lt;Args&gt;(args)...);
-    return std::chrono::duration_cast&lt;TimeT&gt;(std::chrono::steady_clock::now()-start);
+    std::forward<decltype(func)>(func)(std::forward<Args>(args)...);
+    return std::chrono::duration_cast<TimeT>(std::chrono::steady_clock::now()-start);
 } 
 
 // call .count() manually later when needed (eg IO)
-auto avg = (measure&lt;&gt;::duration(func) + measure&lt;&gt;::duration(func)) / 2.0;
+auto avg = (measure<>::duration(func) + measure<>::duration(func)) / 2.0;
 ```
 
 and be most useful for clients that   
@@ -8972,7 +8972,7 @@ The complete <a href="https://github.com/picanumber/bureaucrat/blob/master/time_
 If C++17's <a href="http://en.cppreference.com/w/cpp/utility/functional/invoke" rel="noreferrer">`std::invoke`</a> is available, the invocation of the callable in `execution` could be done like this :   
 
 ```c++
-invoke(forward&lt;decltype(func)&gt;(func), forward&lt;Args&gt;(args)...);
+invoke(forward<decltype(func)>(func), forward<Args>(args)...);
 ```
 
 to provide for callables that are pointers to member functions.   
@@ -8988,20 +8988,20 @@ How could one convert a string to upper case. The examples I have found from goo
 Boost string algorithms:  
 
 ```c++
-#include &lt;boost/algorithm/string.hpp&gt;
-#include &lt;string&gt;
+#include <boost/algorithm/string.hpp>
+#include <string>
 
 std::string str = "Hello World";
 
 boost::to_upper(str);
 
-std::string newstr = boost::to_upper_copy&lt;std::string&gt;("Hello World");
+std::string newstr = boost::to_upper_copy<std::string>("Hello World");
 ```
 
 #### Answer 2 (score 466)
 ```c++
-#include &lt;algorithm&gt;
-#include &lt;string&gt;
+#include <algorithm>
+#include <string>
 
 std::string str = "Hello World";
 std::transform(str.begin(), str.end(),str.begin(), ::toupper);
@@ -9011,7 +9011,7 @@ std::transform(str.begin(), str.end(),str.begin(), ::toupper);
 Short solution using C++11 and toupper().  
 
 ```c++
-for (auto &amp; c: str) c = toupper(c);
+for (auto & c: str) c = toupper(c);
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -9147,9 +9147,9 @@ This is what the standard has to say about `operator==`
   <strong>21.4.8.2 operator==</strong>  
 
 ```c++
-template&lt;class charT, class traits, class Allocator&gt;
-bool operator==(const basic_string&lt;charT,traits,Allocator&gt;&amp; lhs,
-                const basic_string&lt;charT,traits,Allocator&gt;&amp; rhs) noexcept;
+template<class charT, class traits, class Allocator>
+bool operator==(const basic_string<charT,traits,Allocator>& lhs,
+                const basic_string<charT,traits,Allocator>& rhs) noexcept;
 ```
   
   Returns: lhs.compare(rhs) == 0.  
@@ -9193,13 +9193,13 @@ and I've got no idea what to do. I don't know what's wrong.
 Could you please decipher me? Where should I be looking for what kind of errors?</p>
 
 ```c++
-1&gt;Form.obj : error LNK2019: unresolved external symbol "public: class Field * __thiscall Field::addField(class Field *)" (?addField@Field@@QAEPAV1@PAV1@@Z) referenced in function "public: void __thiscall Form::parse(class std::basic_stringstream&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt; &amp;)" (?parse@Form@@QAEXAAV?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
-1&gt;Form.obj : error LNK2019: unresolved external symbol "public: virtual void __thiscall Field::parse(class std::basic_stringstream&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt; &amp;)" (?parse@Field@@UAEXAAV?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) referenced in function "public: __thiscall InputField::InputField(class std::basic_stringstream&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt; &amp;)" (??0InputField@@QAE@AAV?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
-1&gt;Form.obj : error LNK2001: unresolved external symbol "public: virtual void __thiscall Field::prompt(void)" (?prompt@Field@@UAEXXZ)
-1&gt;Form.obj : error LNK2001: unresolved external symbol "public: virtual class std::basic_string&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt; __thiscall Field::getName(void)" (?getName@Field@@UAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ)
-1&gt;Form.obj : error LNK2001: unresolved external symbol "public: virtual class std::basic_string&lt;char,struct std::char_traits&lt;char&gt;,class std::allocator&lt;char&gt; &gt; __thiscall Field::getType(void)" (?getType@Field@@UAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ)
-1&gt;Form.obj : error LNK2001: unresolved external symbol "public: virtual void __thiscall Field::describe(void)" (?describe@Field@@UAEXXZ)
-1&gt;C:\Users\tomy\Documents\Visual Studio 2010\Projects\zapoctovkac++\Debug\zapoctovkac++.exe : fatal error LNK1120: 6 unresolved externals
+1>Form.obj : error LNK2019: unresolved external symbol "public: class Field * __thiscall Field::addField(class Field *)" (?addField@Field@@QAEPAV1@PAV1@@Z) referenced in function "public: void __thiscall Form::parse(class std::basic_stringstream<char,struct std::char_traits<char>,class std::allocator<char> > &)" (?parse@Form@@QAEXAAV?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+1>Form.obj : error LNK2019: unresolved external symbol "public: virtual void __thiscall Field::parse(class std::basic_stringstream<char,struct std::char_traits<char>,class std::allocator<char> > &)" (?parse@Field@@UAEXAAV?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) referenced in function "public: __thiscall InputField::InputField(class std::basic_stringstream<char,struct std::char_traits<char>,class std::allocator<char> > &)" (??0InputField@@QAE@AAV?$basic_stringstream@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+1>Form.obj : error LNK2001: unresolved external symbol "public: virtual void __thiscall Field::prompt(void)" (?prompt@Field@@UAEXXZ)
+1>Form.obj : error LNK2001: unresolved external symbol "public: virtual class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __thiscall Field::getName(void)" (?getName@Field@@UAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ)
+1>Form.obj : error LNK2001: unresolved external symbol "public: virtual class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __thiscall Field::getType(void)" (?getType@Field@@UAE?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ)
+1>Form.obj : error LNK2001: unresolved external symbol "public: virtual void __thiscall Field::describe(void)" (?describe@Field@@UAEXXZ)
+1>C:\Users\tomy\Documents\Visual Studio 2010\Projects\zapoctovkac++\Debug\zapoctovkac++.exe : fatal error LNK1120: 6 unresolved externals
 ```
 
 #### Answer accepted (score 286)
@@ -9360,7 +9360,7 @@ class CGameModule : public CDasherModule {
   CGameModule(Dasher::CEventHandler *pEventHandler, CSettingsStore *pSettingsStore, CDasherInterfaceBase *pInterface, ModuleID_t iID, const char *szName)
   : CDasherModule(pEventHandler, pSettingsStore, iID, 0, szName)
   { 
-      g_pLogger-&gt;Log("Inside game module constructor");   
+      g_pLogger->Log("Inside game module constructor");   
       m_pInterface = pInterface; 
   }
 
@@ -9371,7 +9371,7 @@ class CGameModule : public CDasherModule {
   std::string GetUntypedTarget();
 
   bool DecorateView(CDasherView *pView) {
-      //g_pLogger-&gt;Log("Decorating the view");
+      //g_pLogger->Log("Decorating the view");
       return false;
   }
 
@@ -9407,7 +9407,7 @@ Inherits from...
 
 ```c++
 class CDasherModule;
-typedef std::vector&lt;CDasherModule*&gt;::size_type ModuleID_t;
+typedef std::vector<CDasherModule*>::size_type ModuleID_t;
 
 /// \ingroup Core
 /// @{
@@ -9457,7 +9457,7 @@ class Dasher::CDasherComponent {
   void SetLongParameter(int iParameter, long lValue) const;
 
   std::string GetStringParameter(int iParameter) const;
-  void        SetStringParameter(int iParameter, const std::string &amp; sValue) const;
+  void        SetStringParameter(int iParameter, const std::string & sValue) const;
 
   ParameterType   GetParameterType(int iParameter) const;
   std::string     GetParameterName(int iParameter) const;
@@ -9630,7 +9630,7 @@ It is <em>not</em> necessary to put the implementation in the header file, see t
 Anyway, the reason your code is failing is that, when instantiating a template, the compiler creates a new class with the given template argument. For example:  
 
 ```c++
-template&lt;typename T&gt;
+template<typename T>
 struct Foo
 {
     T bar;
@@ -9638,7 +9638,7 @@ struct Foo
 };
 
 // somewhere in a .cpp
-Foo&lt;int&gt; f; 
+Foo<int> f; 
 ```
 
 When reading this line, the compiler will create a new class (let's call it `FooInt`), which is equivalent to the following:  
@@ -9657,7 +9657,7 @@ A common solution to this is to write the template declaration in a header file,
 
 ```c++
 // Foo.h
-template &lt;typename T&gt;
+template <typename T>
 struct Foo
 {
     void doSomething(T param);
@@ -9666,8 +9666,8 @@ struct Foo
 #include "Foo.tpp"
 
 // Foo.tpp
-template &lt;typename T&gt;
-void Foo&lt;T&gt;::doSomething(T param)
+template <typename T>
+void Foo<T>::doSomething(T param)
 {
     //implementation
 }
@@ -9681,7 +9681,7 @@ Another solution is to keep the implementation separated, and explicitly instant
 // Foo.h
 
 // no implementation
-template &lt;typename T&gt; struct Foo { ... };
+template <typename T> struct Foo { ... };
 
 //----------------------------------------    
 // Foo.cpp
@@ -9689,8 +9689,8 @@ template &lt;typename T&gt; struct Foo { ... };
 // implementation of Foo's methods
 
 // explicit instantiations
-template class Foo&lt;int&gt;;
-template class Foo&lt;float&gt;;
+template class Foo<int>;
+template class Foo<float>;
 // You will only be able to use Foo with int or float
 ```
 
@@ -9704,7 +9704,7 @@ If you, at the bottom of the implementation cpp file, do explicit instantiation 
 Edit: Adding example of explicit template instantiation. Used after the template has been defined, and all member functions has been defined.  
 
 ```c++
-template class vector&lt;int&gt;;
+template class vector<int>;
 ```
 
 This will instantiate (and thus make available to the linker) the class and all its member functions (only). Similar syntax works for template functions, so if you have non-member operator overloads you may need to do the same for those.  
@@ -9765,10 +9765,10 @@ Nobody likes (1), because whole-program-analysis compilation systems take <em>fo
 
 #### Question
 ```c++
-#include &lt;string&gt;
+#include <string>
 
 std::string input;
-std::cin &gt;&gt; input;
+std::cin >> input;
 ```
 
 The user wants to enter "Hello World". But `cin` fails at the space between the two words. How can I make `cin` take in the whole of `Hello World`?  
@@ -9806,13 +9806,13 @@ int main()
 {
    std::string name, title;
 
-   std::cout &lt;&lt; "Enter your name: ";
+   std::cout << "Enter your name: ";
    std::getline(std::cin, name);
 
-   std::cout &lt;&lt; "Enter your favourite movie: ";
+   std::cout << "Enter your favourite movie: ";
    std::getline(std::cin, title);
 
-   std::cout &lt;&lt; name &lt;&lt; "'s favourite movie is " &lt;&lt; title;
+   std::cout << name << "'s favourite movie is " << title;
 }
 ```
 
@@ -9834,7 +9834,7 @@ getline(cin, input);
 the function can be found in   
 
 ```c++
-#include &lt;string&gt;
+#include <string>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -9848,8 +9848,8 @@ What is the effective way to replace all occurrences of a character with another
 `std::string` doesn't contain such function but you could use stand-alone `replace` function from `algorithm` header.  
 
 ```c++
-#include &lt;algorithm&gt;
-#include &lt;string&gt;
+#include <algorithm>
+#include <string>
 
 void some_func() {
   std::string s = "example string";
@@ -9861,7 +9861,7 @@ void some_func() {
 I thought I'd toss in the <a href="http://www.boost.org/doc/libs/release/libs/algorithm/string">boost solution</a> as well:  
 
 ```c++
-#include &lt;boost/algorithm/string/replace.hpp&gt;
+#include <boost/algorithm/string/replace.hpp>
 
 // in place
 std::string in_place = "blah#blah";
@@ -9876,7 +9876,7 @@ std::string output = boost::replace_all_copy(input, "#", "@");
 The question is centered on `character` replacement, but, as I found this page very useful (especially <a href="https://stackoverflow.com/users/18664/konrad">Konrad</a>'s remark), I'd like to share this more generalized implementation, which allows to deal with `substrings` as well:  
 
 ```c++
-std::string ReplaceAll(std::string str, const std::string&amp; from, const std::string&amp; to) {
+std::string ReplaceAll(std::string str, const std::string& from, const std::string& to) {
     size_t start_pos = 0;
     while((start_pos = str.find(from, start_pos)) != std::string::npos) {
         str.replace(start_pos, from.length(), to);
@@ -9889,9 +9889,9 @@ std::string ReplaceAll(std::string str, const std::string&amp; from, const std::
 Usage:  
 
 ```c++
-std::cout &lt;&lt; ReplaceAll(string("Number Of Beans"), std::string(" "), std::string("_")) &lt;&lt; std::endl;
-std::cout &lt;&lt; ReplaceAll(string("ghghjghugtghty"), std::string("gh"), std::string("X")) &lt;&lt; std::endl;
-std::cout &lt;&lt; ReplaceAll(string("ghghjghugtghty"), std::string("gh"), std::string("h")) &lt;&lt; std::endl;
+std::cout << ReplaceAll(string("Number Of Beans"), std::string(" "), std::string("_")) << std::endl;
+std::cout << ReplaceAll(string("ghghjghugtghty"), std::string("gh"), std::string("X")) << std::endl;
+std::cout << ReplaceAll(string("ghghjghugtghty"), std::string("gh"), std::string("h")) << std::endl;
 ```
 
 Outputs:  
@@ -9913,7 +9913,7 @@ Outputs:
 <em>Code :</em>  
 
 ```c++
-static inline void ReplaceAll2(std::string &amp;str, const std::string&amp; from, const std::string&amp; to)
+static inline void ReplaceAll2(std::string &str, const std::string& from, const std::string& to)
 {
     // Same inner code...
     // No return statement
@@ -9939,8 +9939,8 @@ A few examples, and use cases would be useful.
 C++ includes useful generic functions like `std::for_each` and `std::transform`, which can be very handy. Unfortunately they can also be quite cumbersome to use, particularly if the <a href="https://stackoverflow.com/questions/356950/c-functors-and-their-uses">functor</a> you would like to apply is unique to the particular function.  
 
 ```c++
-#include &lt;algorithm&gt;
-#include &lt;vector&gt;
+#include <algorithm>
+#include <vector>
 
 namespace {
   struct f {
@@ -9950,7 +9950,7 @@ namespace {
   };
 }
 
-void func(std::vector&lt;int&gt;&amp; v) {
+void func(std::vector<int>& v) {
   f f;
   std::for_each(v.begin(), v.end(), f);
 }
@@ -9961,7 +9961,7 @@ If you only use `f` once and in that specific place it seems overkill to be writ
 In C++03 you might be tempted to write something like the following, to keep the functor local:  
 
 ```c++
-void func2(std::vector&lt;int&gt;&amp; v) {
+void func2(std::vector<int>& v) {
   struct {
     void operator()(int) {
        // do something
@@ -9978,7 +9978,7 @@ however this is not allowed, `f` cannot be passed to a <a href="https://en.cppre
 C++11 introduces lambdas allow you to write an inline, anonymous functor to replace the `struct f`. For small simple examples this can be cleaner to read (it keeps everything in one place) and potentially simpler to maintain, for example in the simplest form:  
 
 ```c++
-void func3(std::vector&lt;int&gt;&amp; v) {
+void func3(std::vector<int>& v) {
   std::for_each(v.begin(), v.end(), [](int) { /* do something here*/ });
 }
 ```
@@ -9990,9 +9990,9 @@ Lambda functions are just syntactic sugar for anonymous functors.
 In simple cases the return type of the lambda is deduced for you, e.g.:  
 
 ```c++
-void func4(std::vector&lt;double&gt;&amp; v) {
+void func4(std::vector<double>& v) {
   std::transform(v.begin(), v.end(), v.begin(),
-                 [](double d) { return d &lt; 0.00001 ? 0 : d; }
+                 [](double d) { return d < 0.00001 ? 0 : d; }
                  );
 }
 ```
@@ -10000,10 +10000,10 @@ void func4(std::vector&lt;double&gt;&amp; v) {
 however when you start to write more complex lambdas you will quickly encounter cases where the return type cannot be deduced by the compiler, e.g.:  
 
 ```c++
-void func4(std::vector&lt;double&gt;&amp; v) {
+void func4(std::vector<double>& v) {
     std::transform(v.begin(), v.end(), v.begin(),
         [](double d) {
-            if (d &lt; 0.0001) {
+            if (d < 0.0001) {
                 return 0;
             } else {
                 return d;
@@ -10015,10 +10015,10 @@ void func4(std::vector&lt;double&gt;&amp; v) {
 To resolve this you are allowed to explicitly specify a return type for a lambda function, using `-&gt; T`:  
 
 ```c++
-void func4(std::vector&lt;double&gt;&amp; v) {
+void func4(std::vector<double>& v) {
     std::transform(v.begin(), v.end(), v.begin(),
-        [](double d) -&gt; double {
-            if (d &lt; 0.0001) {
+        [](double d) -> double {
+            if (d < 0.0001) {
                 return 0;
             } else {
                 return d;
@@ -10032,10 +10032,10 @@ void func4(std::vector&lt;double&gt;&amp; v) {
 So far we've not used anything other than what was passed to the lambda within it, but we can also use other variables, within the lambda. If you want to access other variables you can use the capture clause (the `[]` of the expression), which has so far been unused in these examples, e.g.:  
 
 ```c++
-void func5(std::vector&lt;double&gt;&amp; v, const double&amp; epsilon) {
+void func5(std::vector<double>& v, const double& epsilon) {
     std::transform(v.begin(), v.end(), v.begin(),
-        [epsilon](double d) -&gt; double {
-            if (d &lt; epsilon) {
+        [epsilon](double d) -> double {
+            if (d < epsilon) {
                 return 0;
             } else {
                 return d;
@@ -10072,7 +10072,7 @@ In C++ a lambda function is defined like this
 or in all its glory  
 
 ```c++
-[]() mutable -&gt; T { } // T is the return type, still lacking throw()
+[]() mutable -> T { } // T is the return type, still lacking throw()
 ```
 
 `[]` is the capture list, `()` the argument list and `{}` the function body.  
@@ -10121,7 +10121,7 @@ An element of the capture list can now be initialized with `=`. This allows rena
 
 ```c++
 int x = 4;
-auto y = [&amp;r = x, x = x+1]()-&gt;int {
+auto y = [&r = x, x = x+1]()->int {
             r += 2;
             return x+2;
          }();  // Updates ::x to 6, and initializes y to 7.
@@ -10130,7 +10130,7 @@ auto y = [&amp;r = x, x = x+1]()-&gt;int {
 and one taken from Wikipedia showing how to capture with `std::move`:  
 
 ```c++
-auto ptr = std::make_unique&lt;int&gt;(10); // See below for std::make_unique
+auto ptr = std::make_unique<int>(10); // See below for std::make_unique
 auto lambda = [ptr = std::move(ptr)] {return *ptr;};
 ```
 
@@ -10151,7 +10151,7 @@ C++14 allows deduced return types for every function and does not restrict it to
 Lambda expressions are typically used to encapsulate algorithms so that they can be passed to another function.  However, <strong>it is possible to execute a lambda immediately upon definition</strong>:  
 
 ```c++
-[&amp;](){ ...your code... }(); // immediately executed lambda expression
+[&](){ ...your code... }(); // immediately executed lambda expression
 ```
 
 is functionally equivalent to  
@@ -10165,19 +10165,19 @@ This makes lambda expressions <strong>a powerful tool for refactoring complex fu
 Similarly, you can use lambda expressions to <strong>initialize variables based on the result of an algorithm</strong>...  
 
 ```c++
-int a = []( int b ){ int r=1; while (b&gt;0) r*=b--; return r; }(5); // 5!
+int a = []( int b ){ int r=1; while (b>0) r*=b--; return r; }(5); // 5!
 ```
 
 As <strong>a way of partitioning your program logic</strong>, you might even find it useful to pass a lambda expression as an argument to another lambda expression...  
 
 ```c++
-[&amp;]( std::function&lt;void()&gt; algorithm ) // wrapper section
+[&]( std::function<void()> algorithm ) // wrapper section
    {
    ...your wrapper code...
    algorithm();
    ...your wrapper code...
    }
-([&amp;]() // algorithm section
+([&]() // algorithm section
    {
    ...your algorithm code...
    });
@@ -10186,7 +10186,7 @@ As <strong>a way of partitioning your program logic</strong>, you might even fin
 Lambda expressions also let you create named <a href="http://en.wikipedia.org/wiki/Nested_function" rel="noreferrer"><strong>nested functions</strong></a>, which can be a convenient way of avoiding duplicate logic.  Using named lambdas also tends to be a little easier on the eyes (compared to anonymous inline lambdas) when passing a non-trivial function as a parameter to another function.  <em>Note: don't forget the semicolon after the closing curly brace.</em>  
 
 ```c++
-auto algorithm = [&amp;]( double x, double m, double b ) -&gt; double
+auto algorithm = [&]( double x, double m, double b ) -> double
    {
    return m*x+b;
    };
@@ -10311,9 +10311,9 @@ Please indicate whether the methods are Unicode-friendly and how portable they a
 Boost includes a handy algorithm for this:  
 
 ```c++
-#include &lt;boost/algorithm/string.hpp&gt;
+#include <boost/algorithm/string.hpp>
 // Or, for fewer header dependencies:
-//#include &lt;boost/algorithm/string/predicate.hpp&gt;
+//#include <boost/algorithm/string/predicate.hpp>
 
 std::string str1 = "hello, world!";
 std::string str2 = "HELLO, WORLD!";
@@ -10328,27 +10328,27 @@ if (boost::iequals(str1, str2))
 Take advantage of the standard `char_traits`. Recall that a `std::string` is in fact a typedef for `std::basic_string&lt;char&gt;`, or more explicitly, `std::basic_string&lt;char, std::char_traits&lt;char&gt; &gt;`. The `char_traits` type describes how characters compare, how they copy, how they cast etc. All you need to do is typedef a new string over `basic_string`, and provide it with your own custom `char_traits` that compare case insensitively.  
 
 ```c++
-struct ci_char_traits : public char_traits&lt;char&gt; {
+struct ci_char_traits : public char_traits<char> {
     static bool eq(char c1, char c2) { return toupper(c1) == toupper(c2); }
     static bool ne(char c1, char c2) { return toupper(c1) != toupper(c2); }
-    static bool lt(char c1, char c2) { return toupper(c1) &lt;  toupper(c2); }
+    static bool lt(char c1, char c2) { return toupper(c1) <  toupper(c2); }
     static int compare(const char* s1, const char* s2, size_t n) {
         while( n-- != 0 ) {
-            if( toupper(*s1) &lt; toupper(*s2) ) return -1;
-            if( toupper(*s1) &gt; toupper(*s2) ) return 1;
+            if( toupper(*s1) < toupper(*s2) ) return -1;
+            if( toupper(*s1) > toupper(*s2) ) return 1;
             ++s1; ++s2;
         }
         return 0;
     }
     static const char* find(const char* s, int n, char a) {
-        while( n-- &gt; 0 &amp;&amp; toupper(*s) != toupper(a) ) {
+        while( n-- > 0 && toupper(*s) != toupper(a) ) {
             ++s;
         }
         return s;
     }
 };
 
-typedef std::basic_string&lt;char, ci_char_traits&gt; ci_string;
+typedef std::basic_string<char, ci_char_traits> ci_string;
 ```
 
 The details are on <a href="http://www.gotw.ca/gotw/029.htm" rel="noreferrer">Guru of The Week number 29</a>.  
@@ -10361,12 +10361,12 @@ And using char_traits means <em>all</em> your comparisons are case insensitive, 
 This should suffice. It should be reasonably efficient. Doesn't handle unicode or anything though.  
 
 ```c++
-bool iequals(const string&amp; a, const string&amp; b)
+bool iequals(const string& a, const string& b)
 {
     unsigned int sz = a.size();
     if (b.size() != sz)
         return false;
-    for (unsigned int i = 0; i &lt; sz; ++i)
+    for (unsigned int i = 0; i < sz; ++i)
         if (tolower(a[i]) != tolower(b[i]))
             return false;
     return true;
@@ -10376,7 +10376,7 @@ bool iequals(const string&amp; a, const string&amp; b)
 Update: Bonus C++14 version (`#include &lt;algorithm&gt;`):  
 
 ```c++
-bool iequals(const string&amp; a, const string&amp; b)
+bool iequals(const string& a, const string& b)
 {
     return std::equal(a.begin(), a.end(),
                       b.begin(), b.end(),
@@ -10411,8 +10411,8 @@ add_x add42(42); // create an instance of the functor class
 int i = add42(8); // and "call" it
 assert(i == 50); // and it added 42 to its argument
 
-std::vector&lt;int&gt; in; // assume this contains a bunch of values)
-std::vector&lt;int&gt; out(in.size());
+std::vector<int> in; // assume this contains a bunch of values)
+std::vector<int> out(in.size());
 // Pass a functor to std::transform, which calls the functor on every element 
 // in the input sequence, and stores the result to the output sequence
 std::transform(in.begin(), in.end(), out.begin(), add_x(1)); 
@@ -10436,20 +10436,20 @@ public:
 };
 void Bar(int i) { printf("Bar %d", i); }
 Foo foo;
-boost::function&lt;void (int)&gt; f(foo);//wrap functor
+boost::function<void (int)> f(foo);//wrap functor
 f(1);//prints "Foo 1"
-boost::function&lt;void (int)&gt; b(&amp;Bar);//wrap normal function
+boost::function<void (int)> b(&Bar);//wrap normal function
 b(1);//prints "Bar 1"
 ```
 
 and you can use boost::bind to add state to this functor  
 
 ```c++
-boost::function&lt;void ()&gt; f1 = boost::bind(foo, 2);
+boost::function<void ()> f1 = boost::bind(foo, 2);
 f1();//no more argument, function argument stored in f1
 //and this print "Foo 2" (:
 //and normal function
-boost::function&lt;void ()&gt; b1 = boost::bind(&amp;Bar, 2);
+boost::function<void ()> b1 = boost::bind(&Bar, 2);
 b1();// print "Bar 2"
 ```
 
@@ -10464,12 +10464,12 @@ public:
 
     void method( std::string param )
     {
-        std::cout &lt;&lt; state_ &lt;&lt; param &lt;&lt; std::endl;
+        std::cout << state_ << param << std::endl;
     }
 };
 SomeClass *inst = new SomeClass("Hi, i am ");
-boost::function&lt; void (std::string) &gt; callback;
-callback = boost::bind(&amp;SomeClass::method, inst, _1);//create delegate
+boost::function< void (std::string) > callback;
+callback = boost::bind(&SomeClass::method, inst, _1);//create delegate
 //_1 is a placeholder it holds plase for parameter
 callback("useless");//prints "Hi, i am useless"
 ```
@@ -10477,13 +10477,13 @@ callback("useless");//prints "Hi, i am useless"
 You can create list or vector of functors  
 
 ```c++
-std::list&lt; boost::function&lt;void (EventArg e)&gt; &gt; events;
+std::list< boost::function<void (EventArg e)> > events;
 //add some events
 ....
 //call them
 std::for_each(
         events.begin(), events.end(), 
-        boost::bind( boost::apply&lt;void&gt;(), _1, e));
+        boost::bind( boost::apply<void>(), _1, e));
 ```
 
 There is one problem with all this stuff, compiler error messages is not human readable :)  
@@ -10635,7 +10635,7 @@ This is for an Android device, and I only want to use CMake, not `ndk-build`.
 For example - `first.cpp`  
 
 ```c++
-#include &lt;iostream&gt;
+#include <iostream>
 
 using namespace std;
 
@@ -10918,7 +10918,7 @@ This feature is part of <a href="https://en.wikipedia.org/wiki/C%2B%2B20" rel="n
 How can I loop through a `std::map` in C++? My map is defined as:  
 
 ```c++
-std::map&lt; std::string, std::map&lt;std::string, std::string&gt; &gt;
+std::map< std::string, std::map<std::string, std::string> >
 ```
 
 For example, the above container holds data like this:  
@@ -10938,11 +10938,11 @@ How can I loop through this map and access the various values?
 Old question but the remaining answers are outdated as of C++11 - you can use a <a href="http://en.cppreference.com/w/cpp/language/range-for" rel="noreferrer">ranged based for loop</a> and simply do:  
 
 ```c++
-std::map&lt;std::string, std::map&lt;std::string, std::string&gt;&gt; mymap;
+std::map<std::string, std::map<std::string, std::string>> mymap;
 
-for(auto const &amp;ent1 : mymap) {
+for(auto const &ent1 : mymap) {
   // ent1.first is the first key
-  for(auto const &amp;ent2 : ent1.second) {
+  for(auto const &ent2 : ent1.second) {
     // ent2.first is the second key
     // ent2.second is the data
   }
@@ -10954,12 +10954,12 @@ this should be much cleaner than the earlier versions, and avoids unnecessary co
 Some favour replacing the comments with explicit definitions of reference variables (which get optimised away if unused):  
 
 ```c++
-for(auto const &amp;ent1 : mymap) {
-  auto const &amp;outer_key = ent1.first;
-  auto const &amp;inner_map = ent1.second;
-  for(auto const &amp;ent2 : inner_map) {
-    auto const &amp;inner_key   = ent2.first;
-    auto const &amp;inner_value = ent2.second;
+for(auto const &ent1 : mymap) {
+  auto const &outer_key = ent1.first;
+  auto const &inner_map = ent1.second;
+  for(auto const &ent2 : inner_map) {
+    auto const &inner_key   = ent2.first;
+    auto const &inner_value = ent2.second;
   }
 }
 ```
@@ -10968,19 +10968,19 @@ for(auto const &amp;ent1 : mymap) {
 You can use an iterator.  
 
 ```c++
-typedef std::map&lt;std::string, std::map&lt;std::string, std::string&gt;&gt;::iterator it_type;
+typedef std::map<std::string, std::map<std::string, std::string>>::iterator it_type;
 for(it_type iterator = m.begin(); iterator != m.end(); iterator++) {
-    // iterator-&gt;first = key
-    // iterator-&gt;second = value
+    // iterator->first = key
+    // iterator->second = value
     // Repeat if you also want to iterate through the second map.
 }
 ```
 
 #### Answer 3 (score 59)
 ```c++
-for(std::map&lt;std::string, std::map&lt;std::string, std::string&gt; &gt;::iterator outer_iter=map.begin(); outer_iter!=map.end(); ++outer_iter) {
-    for(std::map&lt;std::string, std::string&gt;::iterator inner_iter=outer_iter-&gt;second.begin(); inner_iter!=outer_iter-&gt;second.end(); ++inner_iter) {
-        std::cout &lt;&lt; inner_iter-&gt;second &lt;&lt; std::endl;
+for(std::map<std::string, std::map<std::string, std::string> >::iterator outer_iter=map.begin(); outer_iter!=map.end(); ++outer_iter) {
+    for(std::map<std::string, std::string>::iterator inner_iter=outer_iter->second.begin(); inner_iter!=outer_iter->second.end(); ++inner_iter) {
+        std::cout << inner_iter->second << std::endl;
     }
 }
 ```
@@ -10989,8 +10989,8 @@ or nicer in C++0x:
 
 ```c++
 for(auto outer_iter=map.begin(); outer_iter!=map.end(); ++outer_iter) {
-    for(auto inner_iter=outer_iter-&gt;second.begin(); inner_iter!=outer_iter-&gt;second.end(); ++inner_iter) {
-        std::cout &lt;&lt; inner_iter-&gt;second &lt;&lt; std::endl;
+    for(auto inner_iter=outer_iter->second.begin(); inner_iter!=outer_iter->second.end(); ++inner_iter) {
+        std::cout << inner_iter->second << std::endl;
     }
 }
 ```
@@ -11066,8 +11066,8 @@ To get the content of an URL you do something like that (extracted from examples
 // Edit : rewritten for cURLpp 0.7.3
 // Note : namespace changed, was cURLpp in 0.7.2 ...
 
-#include &lt;curlpp/cURLpp.hpp&gt;
-#include &lt;curlpp/Options.hpp&gt;
+#include <curlpp/cURLpp.hpp>
+#include <curlpp/Options.hpp>
 
 // RAII cleanup
 
@@ -11077,7 +11077,7 @@ curlpp::Cleanup myCleanup;
 // Here I use a shortcut to get it in a string stream ...
 
 std::ostringstream os;
-os &lt;&lt; curlpp::options::Url(std::string("http://www.wikipedia.org"));
+os << curlpp::options::Url(std::string("http://www.wikipedia.org"));
 
 string asAskedInQuestion = os.str();
 ```
@@ -11090,13 +11090,13 @@ my 2 cents ...
 Windows code:  
 
 ```c++
-#include &lt;string.h&gt;
-#include &lt;winsock2.h&gt;
-#include &lt;windows.h&gt;
-#include &lt;iostream&gt;
-#include &lt;vector&gt;
-#include &lt;locale&gt;
-#include &lt;sstream&gt;
+#include <string.h>
+#include <winsock2.h>
+#include <windows.h>
+#include <iostream>
+#include <vector>
+#include <locale>
+#include <sstream>
 using namespace std;
 #pragma comment(lib,"ws2_32.lib")
 
@@ -11124,8 +11124,8 @@ string url = "www.google.com";
 string get_http = "GET / HTTP/1.1\r\nHost: " + url + "\r\nConnection: close\r\n\r\n";
 
 
-    if (WSAStartup(MAKEWORD(2,2), &amp;wsaData) != 0){
-        cout &lt;&lt; "WSAStartup failed.\n";
+    if (WSAStartup(MAKEWORD(2,2), &wsaData) != 0){
+        cout << "WSAStartup failed.\n";
         system("pause");
         //return 1;
     }
@@ -11135,10 +11135,10 @@ string get_http = "GET / HTTP/1.1\r\nHost: " + url + "\r\nConnection: close\r\n\
 
     SockAddr.sin_port=htons(80);
     SockAddr.sin_family=AF_INET;
-    SockAddr.sin_addr.s_addr = *((unsigned long*)host-&gt;h_addr);
+    SockAddr.sin_addr.s_addr = *((unsigned long*)host->h_addr);
 
-    if(connect(Socket,(SOCKADDR*)(&amp;SockAddr),sizeof(SockAddr)) != 0){
-        cout &lt;&lt; "Could not connect";
+    if(connect(Socket,(SOCKADDR*)(&SockAddr),sizeof(SockAddr)) != 0){
+        cout << "Could not connect";
         system("pause");
         //return 1;
     }
@@ -11147,9 +11147,9 @@ string get_http = "GET / HTTP/1.1\r\nHost: " + url + "\r\nConnection: close\r\n\
     send(Socket,get_http.c_str(), strlen(get_http.c_str()),0 );
 
     // recieve html
-    while ((nDataLength = recv(Socket,buffer,10000,0)) &gt; 0){        
+    while ((nDataLength = recv(Socket,buffer,10000,0)) > 0){        
         int i = 0;
-        while (buffer[i] &gt;= 32 || buffer[i] == '\n' || buffer[i] == '\r'){
+        while (buffer[i] >= 32 || buffer[i] == '\n' || buffer[i] == '\r'){
 
             website_HTML+=buffer[i];
             i += 1;
@@ -11160,10 +11160,10 @@ string get_http = "GET / HTTP/1.1\r\nHost: " + url + "\r\nConnection: close\r\n\
     WSACleanup();
 
     // Display HTML source 
-    cout&lt;&lt;website_HTML;
+    cout<<website_HTML;
 
     // pause
-    cout&lt;&lt;"\n\nPress ANY key to close.\n\n";
+    cout<<"\n\nPress ANY key to close.\n\n";
     cin.ignore(); cin.get(); 
 
 
@@ -11174,9 +11174,9 @@ string get_http = "GET / HTTP/1.1\r\nHost: " + url + "\r\nConnection: close\r\n\
 Here is a much better implementation:   
 
 ```c++
-#include &lt;windows.h&gt;
-#include &lt;string&gt;
-#include &lt;stdio.h&gt;
+#include <windows.h>
+#include <string>
+#include <stdio.h>
 
 using std::string;
 
@@ -11185,10 +11185,10 @@ using std::string;
 
 HINSTANCE hInst;
 WSADATA wsaData;
-void mParseUrl(char *mUrl, string &amp;serverName, string &amp;filepath, string &amp;filename);
+void mParseUrl(char *mUrl, string &serverName, string &filepath, string &filename);
 SOCKET connectToServer(char *szServerName, WORD portNum);
 int getHeaderLength(char *content);
-char *readUrl2(char *szUrl, long &amp;bytesReturnedOut, char **headerOut);
+char *readUrl2(char *szUrl, long &bytesReturnedOut, char **headerOut);
 
 
 int main()
@@ -11201,11 +11201,11 @@ int main()
 
     memBuffer = headerBuffer = NULL;
 
-    if ( WSAStartup(0x101, &amp;wsaData) != 0)
+    if ( WSAStartup(0x101, &wsaData) != 0)
         return -1;
 
 
-    memBuffer = readUrl2(szUrl, fileSize, &amp;headerBuffer);
+    memBuffer = readUrl2(szUrl, fileSize, &headerBuffer);
     printf("returned from readUrl\n");
     printf("data returned:\n%s", memBuffer);
     if (fileSize != 0)
@@ -11223,7 +11223,7 @@ int main()
 }
 
 
-void mParseUrl(char *mUrl, string &amp;serverName, string &amp;filepath, string &amp;filename)
+void mParseUrl(char *mUrl, string &serverName, string &filepath, string &filename)
 {
     string::size_type n;
     string url = mUrl;
@@ -11269,7 +11269,7 @@ SOCKET connectToServer(char *szServerName, WORD portNum)
     else
     {
         addr=inet_addr(szServerName);
-        hp=gethostbyaddr((char*)&amp;addr,sizeof(addr),AF_INET);
+        hp=gethostbyaddr((char*)&addr,sizeof(addr),AF_INET);
     }
 
     if(hp==NULL)
@@ -11278,10 +11278,10 @@ SOCKET connectToServer(char *szServerName, WORD portNum)
         return NULL;
     }
 
-    server.sin_addr.s_addr=*((unsigned long*)hp-&gt;h_addr);
+    server.sin_addr.s_addr=*((unsigned long*)hp->h_addr);
     server.sin_family=AF_INET;
     server.sin_port=htons(portNum);
-    if(connect(conn,(struct sockaddr*)&amp;server,sizeof(server)))
+    if(connect(conn,(struct sockaddr*)&server,sizeof(server)))
     {
         closesocket(conn);
         return NULL;
@@ -11314,7 +11314,7 @@ int getHeaderLength(char *content)
     return ofset;
 }
 
-char *readUrl2(char *szUrl, long &amp;bytesReturnedOut, char **headerOut)
+char *readUrl2(char *szUrl, long &bytesReturnedOut, char **headerOut)
 {
     const int bufSize = 512;
     char readBuffer[bufSize], sendBuffer[bufSize], tmpBuffer[bufSize];
@@ -11349,7 +11349,7 @@ char *readUrl2(char *szUrl, long &amp;bytesReturnedOut, char **headerOut)
         memset(readBuffer, 0, bufSize);
         thisReadSize = recv (conn, readBuffer, bufSize, 0);
 
-        if ( thisReadSize &lt;= 0 )
+        if ( thisReadSize <= 0 )
             break;
 
         tmpResult = (char*)realloc(tmpResult, thisReadSize+totalBytesRead);
@@ -11398,7 +11398,7 @@ Hope this helps someone... it took me three days to try all of these libraries o
 How do you create a static class in C++? I should be able to do something like:  
 
 ```c++
-cout &lt;&lt; "bit 5 is " &lt;&lt; BitParser::getBitAt(buffer, 5) &lt;&lt; endl;
+cout << "bit 5 is " << BitParser::getBitAt(buffer, 5) << endl;
 ```
 
 Assuming I created the `BitParser` class. What would the `BitParser` class definition look like?  
@@ -11631,7 +11631,7 @@ struct Beta
    static void bar() ;
 };
 
-template &lt;typename T&gt;
+template <typename T>
 struct Gamma
 {
    void foobar()
@@ -11641,8 +11641,8 @@ struct Gamma
    }
 };
 
-Gamma&lt;alpha&gt; ga ; // compilation error
-Gamma&lt;Beta&gt; gb ;  // ok
+Gamma<alpha> ga ; // compilation error
+Gamma<Beta> gb ;  // ok
 gb.foobar() ;     // ok !!!
 ```
 
@@ -11838,7 +11838,7 @@ Implicit rules are built in, and a few will be discussed below. Pattern rules ar
 
 ```c++
 %.o: %.c 
-    $(CC) $(CFLAGS) $(CPPFLAGS) -c $&lt;
+    $(CC) $(CFLAGS) $(CPPFLAGS) -c $<
 ```
 
 which means that object files are generated from c source files by running the command shown, where the "automatic" variable `$&lt;` expands to the name of the first dependency.  
@@ -11925,7 +11925,7 @@ depend: .depend
 
 .depend: $(SRCS)
     $(RM) ./.depend
-    $(CXX) $(CPPFLAGS) -MM $^&gt;&gt;./.depend;
+    $(CXX) $(CPPFLAGS) -MM $^>>./.depend;
 
 clean:
     $(RM) $(OBJS)
@@ -12029,7 +12029,7 @@ depend: .depend
 
 .depend: $(srcfiles)
     rm -f ./.depend
-    $(CXX) $(CXXFLAGS) -MM $^&gt;&gt;./.depend;
+    $(CXX) $(CXXFLAGS) -MM $^>>./.depend;
 
 clean:
     rm -f $(objects)

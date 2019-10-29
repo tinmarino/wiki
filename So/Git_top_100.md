@@ -23,7 +23,7 @@ I accidentally committed the wrong files to <a href="https://en.wikipedia.org/wi
 ```sh
 $ git commit -m "Something terribly misguided"             # (1)
 $ git reset HEAD~                                          # (2)
-&lt;&lt; edit files as necessary &gt;&gt;                              # (3)
+<< edit files as necessary >>                              # (3)
 $ git add ...                                              # (4)
 $ git commit -c ORIG_HEAD                                  # (5)
 ```
@@ -195,7 +195,7 @@ Everything up-to-date
 
 $ git pull
 From github.com:gituser/gitproject
-* [new branch] bugfix -&gt; origin/bugfix
+* [new branch] bugfix -> origin/bugfix
 Already up-to-date.
 ```
 
@@ -206,8 +206,8 @@ Already up-to-date.
 <h5>Executive Summary</h1>
 
 ```sh
-$ git push -d &lt;remote_name&gt; &lt;branch_name&gt;
-$ git branch -d &lt;branch_name&gt;
+$ git push -d <remote_name> <branch_name>
+$ git branch -d <branch_name>
 ```
 
 Note that in most cases the remote name is `origin`.  
@@ -228,13 +228,13 @@ $ git branch -D branch_name
 As of <a href="https://github.com/gitster/git/blob/master/Documentation/RelNotes/1.7.0.txt" rel="noreferrer">Git v1.7.0</a>, you can delete a <strong><em>remote</em></strong> branch using  
 
 ```sh
-$ git push &lt;remote_name&gt; --delete &lt;branch_name&gt;
+$ git push <remote_name> --delete <branch_name>
 ```
 
 which might be easier to remember than  
 
 ```sh
-$ git push &lt;remote_name&gt; :&lt;branch_name&gt;
+$ git push <remote_name> :<branch_name>
 ```
 
 which was added in <a href="https://github.com/gitster/git/blob/master/Documentation/RelNotes/1.5.0.txt" rel="noreferrer">Git v1.5.0</a> "to delete a remote branch or a tag."  
@@ -295,26 +295,26 @@ If you want more detailed explanations of the following commands, then see the l
 Deleting a remote branch:  
 
 ```sh
-git push origin --delete &lt;branch&gt;  # Git version 1.7.0 or newer
-git push origin :&lt;branch&gt;          # Git versions older than 1.7.0
+git push origin --delete <branch>  # Git version 1.7.0 or newer
+git push origin :<branch>          # Git versions older than 1.7.0
 ```
 
 Deleting a local branch:  
 
 ```sh
-git branch --delete &lt;branch&gt;
-git branch -d &lt;branch&gt; # Shorter version
-git branch -D &lt;branch&gt; # Force delete un-merged branches
+git branch --delete <branch>
+git branch -d <branch> # Shorter version
+git branch -D <branch> # Force delete un-merged branches
 ```
 
 Deleting a local remote-tracking branch:  
 
 ```sh
-git branch --delete --remotes &lt;remote&gt;/&lt;branch&gt;
-git branch -dr &lt;remote&gt;/&lt;branch&gt; # Shorter
+git branch --delete --remotes <remote>/<branch>
+git branch -dr <remote>/<branch> # Shorter
 
-git fetch &lt;remote&gt; --prune # Delete multiple obsolete tracking branches
-git fetch &lt;remote&gt; -p      # Shorter
+git fetch <remote> --prune # Delete multiple obsolete tracking branches
+git fetch <remote> -p      # Shorter
 ```
 
 <h5>The Long Answer: there are 3 different branches to delete!</h1>
@@ -417,25 +417,25 @@ If I do `git log`, then I get the following output:
 ```sh
 $ git log
 commit a867b4af366350be2e7c21b8de9cc6504678a61b`
-Author: Me &lt;me@me.com&gt;
+Author: Me <me@me.com>
 Date:   Thu Nov 4 18:59:41 2010 -0400
 
 blah blah blah...
 
 commit 25eee4caef46ae64aa08e8ab3f988bc917ee1ce4
-Author: Me &lt;me@me.com&gt;
+Author: Me <me@me.com>
 Date:   Thu Nov 4 05:13:39 2010 -0400
 
 more blah blah blah...
 
 commit 0766c053c0ea2035e90f504928f8df3c9363b8bd
-Author: Me &lt;me@me.com&gt;
+Author: Me <me@me.com>
 Date:   Thu Nov 4 00:55:06 2010 -0400
 
 And yet more blah blah...
 
 commit 0d1d7fc32e5a947fbd92ee598033d85bfc445a50
-Author: Me &lt;me@me.com&gt;
+Author: Me <me@me.com>
 Date:   Wed Nov 3 23:56:08 2010 -0400
 
 Yep, more blah blah.
@@ -498,7 +498,7 @@ git revert HEAD~2..HEAD
 git revert a867b4af..0766c053 
 
 # Reverting a merge commit
-git revert -m 1 &lt;merge_commit_sha&gt;
+git revert -m 1 <merge_commit_sha>
 
 # To get just one, you could use `rebase -i` to squash them afterwards
 # Or, you could do it manually (be sure to do this at top level of the repo)
@@ -597,13 +597,13 @@ git checkout test
 As user masukomi points out in a comment, `git checkout test` will NOT work in modern git if you have multiple remotes. In this case use  
 
 ```sh
-git checkout -b test &lt;name of remote&gt;/test
+git checkout -b test <name of remote>/test
 ```
 
 or the shorthand  
 
 ```sh
-git checkout -t &lt;name of remote&gt;/test
+git checkout -t <name of remote>/test
 ```
 
 <h5>Old Answer</h2>
@@ -701,7 +701,7 @@ git reset --hard origin/master
 OR If you are on some other branch:  
 
 ```sh
-git reset --hard origin/&lt;branch_name&gt;
+git reset --hard origin/<branch_name>
 ```
 
 <h5>Explanation:</h3>
@@ -803,13 +803,13 @@ I know about `--set-upstream` in Git 1.7, but that is a post-creation action. I 
 In Git 1.7.0 and later, you can checkout a new branch:  
 
 ```sh
-git checkout -b &lt;branch&gt;
+git checkout -b <branch>
 ```
 
 Edit files, add and commit. Then <a href="https://git-scm.com/docs/git-push" rel="noreferrer">push with the `-u` (short for `--set-upstream`)</a> option:  
 
 ```sh
-git push -u origin &lt;branch&gt;
+git push -u origin <branch>
 ```
 
 Git will set up the tracking information during the push.  
@@ -861,7 +861,7 @@ Is there any way to clone a specific branch by myself without switching branches
 
 #### Answer accepted (score 948)
 ```sh
-git clone --single-branch --branch &lt;branchname&gt; &lt;remote-repo&gt;
+git clone --single-branch --branch <branchname> <remote-repo>
 ```
 
 The `--single-branch` option is valid from version <a href="https://github.com/git/git/blob/master/Documentation/RelNotes/1.7.10.txt" rel="noreferrer">1.7.10</a> and later.  
@@ -884,7 +884,7 @@ git fetch
 
 #### Answer 2 (score 7485)
 ```sh
-git clone -b &lt;branch&gt; &lt;remote_repo&gt;
+git clone -b <branch> <remote_repo>
 ```
 
 Example:  
@@ -905,7 +905,7 @@ Here is a really simple way to do it :)
 Clone the repository  
 
 ```sh
-git clone &lt;repository_url&gt;
+git clone <repository_url>
 ```
 
 List all branches  
@@ -917,7 +917,7 @@ git branch -a
 Checkout the branch that you want  
 
 ```sh
-git checkout &lt;name_of_branch&gt;
+git checkout <name_of_branch>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -937,7 +937,7 @@ I have not yet run `git commit`. Is there a way to undo this, so these files won
 You can undo `git add` before commit with  
 
 ```sh
-git reset &lt;file&gt;
+git reset <file>
 ```
 
 which will remove it from the current index (the "about to be committed" list) without changing anything else.  
@@ -962,7 +962,7 @@ In old versions of Git, the above commands are equivalent to `git reset HEAD &lt
 You want:  
 
 ```sh
-git rm --cached &lt;added_file_to_undo&gt;
+git rm --cached <added_file_to_undo>
 ```
 
 Reasoning:  
@@ -1006,7 +1006,7 @@ And that the correct solution was right there in the Git status output (which, y
 ```sh
 ...
 # Changes to be committed:
-#   (use "git rm --cached &lt;file&gt;..." to unstage)
+#   (use "git rm --cached <file>..." to unstage)
 ...
 ```
 </blockquote>
@@ -1051,7 +1051,7 @@ git status
 git will tell you what is staged, etc, including instructions on how to unstage:  
 
 ```sh
-use "git reset HEAD &lt;file&gt;..." to unstage
+use "git reset HEAD <file>..." to unstage
 ```
 
 I find git does a pretty good job of nudging me to do the right thing in situations like this.  
@@ -1059,7 +1059,7 @@ I find git does a pretty good job of nudging me to do the right thing in situati
 <strong>Note: Recent git versions (1.8.4.x) have changed this message:</strong>  
 
 ```sh
-(use "git rm --cached &lt;file&gt;..." to unstage)
+(use "git rm --cached <file>..." to unstage)
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -1080,7 +1080,7 @@ But when I run a `git status`,
 ```sh
 On branch master
 Changes to be committed:
-  (use "git reset HEAD &lt;file&gt;..." to unstage)
+  (use "git reset HEAD <file>..." to unstage)
       modified:   java/com/mycompany/TestContacts.java
       modified:   java/com/mycompany/TestParser.java
 ```
@@ -1308,13 +1308,13 @@ How can I rename a local branch which hasn't been pushed to a remote branch?
 If you want to rename a branch while pointed to any branch, do:  
 
 ```sh
-git branch -m &lt;oldname&gt; &lt;newname&gt;
+git branch -m <oldname> <newname>
 ```
 
 If you want to rename the current branch, you can do:  
 
 ```sh
-git branch -m &lt;newname&gt;
+git branch -m <newname>
 ```
 
 A way to remember this is `-m` is for "move" (or `mv`), which is how you rename files.  
@@ -1322,7 +1322,7 @@ A way to remember this is `-m` is for "move" (or `mv`), which is how you rename 
 If you are on Windows or another case-insensitive filesystem, and there are any capitalization change in the name, you need to use `-M`, otherwise, git will throw <em><strong>branch already exists</strong></em> error:  
 
 ```sh
-git branch -M &lt;newname&gt;
+git branch -M <newname>
 ```
 
 #### Answer 2 (score 412)
@@ -1342,7 +1342,7 @@ For more details, see "<a href="http://madhan-tech-updates.blogspot.in/2013/01/h
 To rename your current branch:  
 
 ```sh
-git branch -m &lt;newname&gt;
+git branch -m <newname>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -1368,7 +1368,7 @@ git remote show origin
 When using `git clone` (from GitHub, or any source repository for that matter) the default name for the source of the clone is "origin". Using `git remote show` will display the information about this remote name. The first few lines should show:  
 
 ```sh
-C:\Users\jaredpar\VsVim&gt; git remote show origin
+C:\Users\jaredpar\VsVim> git remote show origin
 * remote origin
   Fetch URL: git@github.com:jaredpar/VsVim.git
   Push  URL: git@github.com:jaredpar/VsVim.git
@@ -1496,7 +1496,7 @@ git fetch origin
 git pull origin master
 
 From ssh://gitosis@example.com:22/projectname
- * branch            master     -&gt; FETCH_HEAD
+ * branch            master     -> FETCH_HEAD
 Updating a030c3a..ee25213
 error: Entry 'filename.c' not uptodate. Cannot merge.
 ```
@@ -1509,7 +1509,7 @@ git commit -m "made some wild and crazy changes"
 git pull origin master
 
 From ssh://gitosis@example.com:22/projectname
- * branch            master     -&gt; FETCH_HEAD
+ * branch            master     -> FETCH_HEAD
 Auto-merging filename.c
 CONFLICT (content): Merge conflict in filename.c
 Automatic merge failed; fix conflicts and then commit the result.
@@ -1536,7 +1536,7 @@ And then we try a final time
 git pull origin master
 
 From ssh://gitosis@example.com:22/projectname
- * branch            master     -&gt; FETCH_HEAD
+ * branch            master     -> FETCH_HEAD
 Already up-to-date.
 ```
 
@@ -1556,7 +1556,7 @@ The best thing I have found is to use the "diff3" merge conflict style:
 This produces conflict markers like this:  
 
 ```sh
-&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+<<<<<<<
 Changes made on the branch that is being merged into. In most cases,
 this is the branch that I have currently checked out (i.e. HEAD).
 |||||||
@@ -1564,7 +1564,7 @@ The common ancestor version.
 =======
 Changes made on the branch that is being merged in. This is often a 
 feature/topic branch.
-&gt;&gt;&gt;&gt;&gt;&gt;&gt;
+>>>>>>>
 ```
 
 The middle section is what the common ancestor looked like. This is useful because you can compare it to the top and bottom versions to get a better sense of what was changed on each branch, which gives you a better idea for what the purpose of each change was.  
@@ -1587,7 +1587,7 @@ This is not the same as using a merge tool, since a merge tool will include all 
 Somebody already mentioned this, but understanding the intention behind each diff hunk is generally very helpful for understanding where a conflict came from and how to handle it.  
 
 ```sh
-git log --merge -p &lt;name of file&gt;
+git log --merge -p <name of file>
 ```
 
 This shows all of the commits that touched that file in between the common ancestor and the two heads you are merging. (So it doesn't include commits that already exist in both branches before merging.) This helps you ignore diff hunks that clearly are not a factor in your current conflict.  
@@ -1649,9 +1649,9 @@ Make sure you don't have any working copy changes <em>staged</em> before doing t
 If you've already pushed your commit up to your remote branch, then you'll <a href="https://stackoverflow.com/questions/41003071/why-must-i-force-push-after-changing-a-commit-message">need to force push the commit</a> with:   
 
 ```sh
-git push &lt;remote&gt; &lt;branch&gt; --force
+git push <remote> <branch> --force
 # Or
-git push &lt;remote&gt; &lt;branch&gt; -f
+git push <remote> <branch> -f
 ```
 
 <strong>Warning: force-pushing will overwrite the remote branch with the state of your local one</strong>. If there are commits on the remote branch that you don't have in your local branch, you <em>will</em> lose those commits.  
@@ -1785,7 +1785,7 @@ Also, when I originally made the branch I did `-b checkout`. <strong><em>Not sur
 
 ```sh
 $ git branch -r
-origin/HEAD -&gt; origin/master
+origin/HEAD -> origin/master
 origin/daves_branch
 origin/discover
 origin/master
@@ -1828,8 +1828,8 @@ Full details here: <a href="http://git-scm.com/book/en/v2/Git-Branching-Remote-B
 I have used <a href="https://www.kernel.org/pub/software/scm/git/docs/git-fetch.html" rel="noreferrer">`fetch`</a> followed by <a href="https://www.kernel.org/pub/software/scm/git/docs/git-checkout.html" rel="noreferrer">`checkout`</a>...  
 
 ```sh
-git fetch &lt;remote&gt; &lt;rbranch&gt;:&lt;lbranch&gt; 
-git checkout &lt;lbranch&gt;
+git fetch <remote> <rbranch>:<lbranch> 
+git checkout <lbranch>
 ```
 
 ...where `&lt;rbranch&gt;` is the remote branch or <em>source ref</em> and `&lt;lbranch&gt;` is the as yet <strong>non-existent</strong> local branch or <em>destination ref</em> you want to track and which you probably want to name the same as the remote branch or source ref. This is explained under <a href="https://www.kernel.org/pub/software/scm/git/docs/git-fetch.html#_options" rel="noreferrer">options</a> in the explanation of `&lt;refspec&gt;`.  
@@ -1851,7 +1851,7 @@ If you are trying to "checkout" a new remote branch (that exists only on the rem
 
 ```sh
 git fetch origin
-git checkout --track origin/&lt;remote_branch_name&gt;
+git checkout --track origin/<remote_branch_name>
 ```
 
 This assumes you want to fetch from <em>origin</em>. If not, replace <em>origin</em> by your <em>remote</em> name.  
@@ -1993,7 +1993,7 @@ The `HEAD~1` means the commit before head.
 Or, you could look at the output of `git log`, find the commit id of the commit you want to back up to, and then do this:  
 
 ```sh
-git reset --hard &lt;sha1-commit-id&gt;
+git reset --hard <sha1-commit-id>
 ```
 
 <hr/>
@@ -2033,7 +2033,7 @@ Be careful with this though, because if you change something that you <em>have</
 Another possibility is one of my personal favorite commands:  
 
 ```sh
-git rebase -i &lt;commit&gt;~1
+git rebase -i <commit>~1
 ```
 
 This will start the rebase in interactive mode `-i` at the point just before the commit you want to whack. The editor will start up listing all of the commits since then. Delete the line containing the commit you want to obliterate and save the file. Rebase will do the rest of the work, deleting only that commit, and replaying all of the others back into the log.  
@@ -2090,13 +2090,13 @@ rm 'shop/mickey/mtt_flange_SCN.7z.003'
 [~/www]$ git status
 # On branch master
 # Changes to be committed:
-#   (use "git reset HEAD &lt;file&gt;..." to unstage)
+#   (use "git reset HEAD <file>..." to unstage)
 #
 #   deleted:    shop/mickey/mtt_flange_SCN.7z.003
 #
 # Changed but not updated:
-#   (use "git add &lt;file&gt;..." to update what will be committed)
-#   (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
 #
 #   modified:   shop/mickey/mtt_flange_SCN.7z.001
 #   modified:   shop/mickey/mtt_flange_SCN.7z.002
@@ -2113,7 +2113,7 @@ shop/mickey/mtt_flange_SCN.7z.001  shop/mickey/mtt_flange_SCN.7z.002
 [~/www]$ git status
 # On branch master
 # Changes to be committed:
-#   (use "git reset HEAD &lt;file&gt;..." to unstage)
+#   (use "git reset HEAD <file>..." to unstage)
 #
 #   deleted:    shop/mickey/mtt_flange_SCN.7z.002
 #   deleted:    shop/mickey/mtt_flange_SCN.7z.003
@@ -2217,13 +2217,13 @@ $ git config --global push.default current
 First, you create your branch locally:  
 
 ```sh
-git checkout -b &lt;branch-name&gt; # Create a new branch and check it out
+git checkout -b <branch-name> # Create a new branch and check it out
 ```
 
 The remote branch is automatically created when you push it to the remote server. So when you feel ready for it, you can just do:  
 
 ```sh
-git push &lt;remote-name&gt; &lt;branch-name&gt; 
+git push <remote-name> <branch-name> 
 ```
 
 Where `&lt;remote-name&gt;` is typically `origin`, the name which git gives to the remote you cloned from. Your colleagues would then just pull that branch, and it's automatically created locally.  
@@ -2231,7 +2231,7 @@ Where `&lt;remote-name&gt;` is typically `origin`, the name which git gives to t
 Note however that formally, the format is:  
 
 ```sh
-git push &lt;remote-name&gt; &lt;local-branch-name&gt;:&lt;remote-branch-name&gt;
+git push <remote-name> <local-branch-name>:<remote-branch-name>
 ```
 
 But when you omit one, it assumes both branch names are the same. Having said this, as a word of <strong>caution</strong>, do not make the critical mistake of specifying only `:&lt;remote-branch-name&gt;` (with the colon), or the remote branch will be deleted!  
@@ -2239,7 +2239,7 @@ But when you omit one, it assumes both branch names are the same. Having said th
 So that a subsequent `git pull` will know what to do, you might instead want to use:  
 
 ```sh
-git push --set-upstream &lt;remote-name&gt; &lt;local-branch-name&gt; 
+git push --set-upstream <remote-name> <local-branch-name> 
 ```
 
 As described below, the `--set-upstream` option sets up an upstream branch:  
@@ -2417,13 +2417,13 @@ As a side note, I've always been uncomfortable with this command because it's us
 You can quickly review the changes made to a file using the diff command:  
 
 ```sh
-git diff &lt;commit hash&gt; &lt;filename&gt;
+git diff <commit hash> <filename>
 ```
 
 Then to revert a specific file to that commit use the reset command:  
 
 ```sh
-git reset &lt;commit hash&gt; &lt;filename&gt;
+git reset <commit hash> <filename>
 ```
 
 You may need to use the `--hard` option if you have local modifications.  
@@ -2431,17 +2431,17 @@ You may need to use the `--hard` option if you have local modifications.
 A good workflow for managaging waypoints is to use tags to cleanly mark points in your timeline. I can't quite understand your last sentence but what you may want is diverge a branch from a previous point in time. To do this, use the handy checkout command:  
 
 ```sh
-git checkout &lt;commit hash&gt;
-git checkout -b &lt;new branch name&gt;
+git checkout <commit hash>
+git checkout -b <new branch name>
 ```
 
 You can then rebase that against your mainline when you are ready to merge those changes:  
 
 ```sh
-git checkout &lt;my branch&gt;
+git checkout <my branch>
 git rebase master
 git checkout master
-git merge &lt;my branch&gt;
+git merge <my branch>
 ```
 
 #### Answer 3 (score 347)
@@ -2571,7 +2571,7 @@ error: failed to push some refs to 'ssh://xxxxx.com/project.git'
 Maybe you just need to commit. I ran into this when I did:  
 
 ```sh
-mkdir repo &amp;&amp; cd repo
+mkdir repo && cd repo
 git remote add origin /path/to/origin.git
 git add .
 ```
@@ -2688,14 +2688,14 @@ You can test the differences out with something like this (note that for Git ver
 
 ```sh
 git init
-echo Change me &gt; change-me
-echo Delete me &gt; delete-me
+echo Change me > change-me
+echo Delete me > delete-me
 git add change-me delete-me
 git commit -m initial
 
-echo OK &gt;&gt; change-me
+echo OK >> change-me
 rm delete-me
-echo Add me &gt; add-me
+echo Add me > add-me
 
 git status
 # Changed but not updated:
@@ -2885,14 +2885,14 @@ You can do this fairly easily without `git rebase` or `git merge --squash`. In t
 If you want to write the new commit message from scratch, this suffices:  
 
 ```sh
-git reset --soft HEAD~3 &amp;&amp;
+git reset --soft HEAD~3 &&
 git commit
 ```
 
 If you want to start editing the new commit message with a concatenation of the existing commit messages (i.e. similar to what a pick/squash/squash/…/squash `git rebase -i` instruction list would start you with), then you need to extract those messages and pass them to `git commit`:  
 
 ```sh
-git reset --soft HEAD~3 &amp;&amp; 
+git reset --soft HEAD~3 && 
 git commit --edit -m"$(git log --format=%B --reverse HEAD..HEAD@{1})"
 ```
 
@@ -3214,7 +3214,7 @@ git reset
 If you want to revert a change that you have committed, do this:  
 
 ```sh
-git revert &lt;commit 1&gt; &lt;commit 2&gt;
+git revert <commit 1> <commit 2>
 ```
 
 If you want to remove untracked files (e.g., new files, generated files):  
@@ -3331,17 +3331,17 @@ git reset --hard
 mkdir project
 cd project
 git init
-echo '*.built' &gt; .gitignore
-echo 'CODE' &gt; a.sourceCode
+echo '*.built' > .gitignore
+echo 'CODE' > a.sourceCode
 mkdir b
-echo 'CODE' &gt; b/b.sourceCode
+echo 'CODE' > b/b.sourceCode
 cp -r b c
 git add .
 git commit -m 'Initial checkin'
-echo 'NEW FEATURE' &gt;&gt; a.sourceCode
+echo 'NEW FEATURE' >> a.sourceCode
 cp a.sourceCode a.built
 rm -rf c
-echo 'CODE' &gt; 'd.sourceCode'
+echo 'CODE' > 'd.sourceCode'
 ```
 
 <strong>See also</strong>  
@@ -3401,13 +3401,13 @@ javascript/ie6.js
 If you want to get list of changed files:  
 
 ```sh
-git diff-tree --no-commit-id --name-only -r &lt;commit-ish&gt;
+git diff-tree --no-commit-id --name-only -r <commit-ish>
 ```
 
 If you want to get list of all files in a commit, you can use  
 
 ```sh
-git ls-tree --name-only -r &lt;commit-ish&gt;
+git ls-tree --name-only -r <commit-ish>
 ```
 
 #### Answer 3 (score 208)
@@ -3444,13 +3444,13 @@ will give you the whole repository.
 After the clone, you can list the tags with `$ git tag -l` and then checkout a specific tag:  
 
 ```sh
-$ git checkout tags/&lt;tag_name&gt;
+$ git checkout tags/<tag_name>
 ```
 
 Even better, checkout and create a branch (otherwise you will be on a branch named after the revision number of tag):  
 
 ```sh
-$ git checkout tags/&lt;tag_name&gt; -b &lt;branch_name&gt;
+$ git checkout tags/<tag_name> -b <branch_name>
 ```
 
 #### Answer 2 (score 385)
@@ -3743,7 +3743,7 @@ git checkout master
 
 ```sh
 git reflog
-git cherry-pick &lt;hash1&gt; &lt;hash2&gt; &lt;hash3&gt; …
+git cherry-pick <hash1> <hash2> <hash3> …
 ```</li>
 </ol>
 
@@ -3837,13 +3837,13 @@ git pull --all
 However, this can be still insufficient. It will work only for your local branches which track remote branches. To track all remote branches execute this oneliner <strong>BEFORE</strong> `git pull --all`:  
 
 ```sh
-git branch -r | grep -v '\-&gt;' | while read remote; do git branch --track "${remote#origin/}" "$remote"; done
+git branch -r | grep -v '\->' | while read remote; do git branch --track "${remote#origin/}" "$remote"; done
 ```
 
 <h5>TL;DR version</h3>
 
 ```sh
-git branch -r | grep -v '\-&gt;' | while read remote; do git branch --track "${remote#origin/}" "$remote"; done
+git branch -r | grep -v '\->' | while read remote; do git branch --track "${remote#origin/}" "$remote"; done
 git fetch --all
 git pull --all
 ```
@@ -3885,7 +3885,7 @@ You will need to create local branches tracking remote branches.
 Assuming that you've got only one remote called `origin`, this snippet will create local branches for all remote tracking ones:  
 
 ```sh
-for b in `git branch -r | grep -v -- '-&gt;'`; do git branch --track ${b##origin/} $b; done
+for b in `git branch -r | grep -v -- '->'`; do git branch --track ${b##origin/} $b; done
 ```
 
 After that, `git fetch --all` will update all local copies of remote branches.  
@@ -3927,7 +3927,7 @@ How can I fix this issue?
 Just do:  
 
 ```sh
-git push origin &lt;your_branch_name&gt; --force
+git push origin <your_branch_name> --force
 ```
 
 or if you have a specific repo:  
@@ -3945,7 +3945,7 @@ It may not be proper, but if anyone stumbles upon this page, thought they might 
 Also note that `-f` is short for `--force`, so  
 
 ```sh
-git push origin &lt;your_branch_name&gt; -f
+git push origin <your_branch_name> -f
 ```
 
 will also work.  
@@ -4092,7 +4092,7 @@ $ git branch -a
 At this point, things are getting pretty crazy, so run `gitk` to see what's going on:  
 
 ```sh
-$ gitk --all &amp;
+$ gitk --all &
 ```
 
 #### Answer 2 (score 790)
@@ -4193,7 +4193,7 @@ If you want to remove unwanted files from an <strong><em>old</em></strong> commi
 Find the commit that you want the file to conform to.  
 
 ```sh
-git checkout &lt;commit_id&gt; &lt;path_to_file&gt;
+git checkout <commit_id> <path_to_file>
 ```
 
 you can do this multiple times if you want to remove many files.  
@@ -4394,7 +4394,7 @@ You could checkout 'master' with both directories;
 ```sh
 git rm -r one-of-the-directories
 git commit -m "Remove duplicated directory"
-git push origin &lt;your-git-branch&gt; (typically 'master', but not always)
+git push origin <your-git-branch> (typically 'master', but not always)
 ```
 
 <h5>Remove directory from git but NOT local</h1>
@@ -4462,13 +4462,13 @@ However, that file keeps showing up in `git status` after it's edited. How do yo
 To stop tracking a file you need to remove it from the index. This can be achieved with this command.  
 
 ```sh
-git rm --cached &lt;file&gt;
+git rm --cached <file>
 ```
 
 If you want to remove a whole folder, you need to remove all files in it recursively.  
 
 ```sh
-git rm -r --cached &lt;folder&gt;
+git rm -r --cached <folder>
 ```
 
 The removal of the file from the head revision will happen on the next commit.  
@@ -4495,7 +4495,7 @@ git commit -am "Remove ignored files"
 <strong>git update-index</strong> does the job for me:  
 
 ```sh
-git update-index --assume-unchanged &lt;file&gt;
+git update-index --assume-unchanged <file>
 ```
 
 <strong>Note:</strong> This solution is actually independent on `.gitignore` as gitignore is only for untracked files.  
@@ -4503,7 +4503,7 @@ git update-index --assume-unchanged &lt;file&gt;
 <strong>edit:</strong> Since this answer was posted, a new option has been created and that should be prefered.  You should use <strong>`--skip-worktree`</strong> which is for modified tracked files that the user don't want to commit anymore and keep `--assume-unchanged` for performance to prevent git to check status of big tracked files. See <a href="https://stackoverflow.com/a/13631525/717372">https://stackoverflow.com/a/13631525/717372</a> for more details...   
 
 ```sh
-git update-index --skip-worktree &lt;file&gt;
+git update-index --skip-worktree <file>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -4534,7 +4534,7 @@ $ git pull origin other-branch
 Git is basically doing this:  
 
 ```sh
-$ git fetch origin other-branch &amp;&amp; git merge other-branch
+$ git fetch origin other-branch && git merge other-branch
 ```
 
 That is, a `pull` is just a `fetch` followed by a `merge`. However, when `pull`-ing, Git will <em>only</em> merge `other-branch` <em>if</em> it can perform a <em>fast-forward</em> merge. A <em>fast-forward</em> merge is a merge in which the head of the branch you are trying to merge into is a <em>direct descendent</em> of the head of the branch you want to merge. For example, if you have this history tree, then merging `other-branch` would result in a fast-forward merge:  
@@ -4631,7 +4631,7 @@ If you can't find it, it's because it is hidden.
 <li><p>Open a Terminal (via Spotlight: press <kbd>CMD</kbd> + <kbd>SPACE</kbd>, type `terminal` and press <kbd>Enter</kbd>) and run:</p>
 
 ```sh
-defaults write com.apple.finder AppleShowAllFiles 1 &amp;&amp; killall Finder
+defaults write com.apple.finder AppleShowAllFiles 1 && killall Finder
 ```
 
 <p>Note: The keyboard shortcut to show hidden files in Finder is 
@@ -4678,7 +4678,7 @@ git init
 <li><p>Some modifications in the master take place and get committed.</p>
 
 ```sh
-echo "On Master" &gt; file
+echo "On Master" > file
 git commit -a -m "Initial commit"
 ```</li>
 <li><p>Feature1 branched off master and some work is done:</p>
@@ -4686,7 +4686,7 @@ git commit -a -m "Initial commit"
 ```sh
 git branch feature1
 git checkout feature1
-echo "Feature1" &gt; featureFile
+echo "Feature1" > featureFile
 git commit -a -m "Commit for feature1"
 ```</li>
 <li><p>Meanwhile, a bug is discovered in the master-code and a hotfix-branch is established</p>
@@ -4699,7 +4699,7 @@ git checkout hotfix1
 <li><p>The bug is fixed in the hotfix branch and merged back into the master (perhaps after a pull request/code review):</p>
 
 ```sh
-echo "Bugfix" &gt; bugfixFile
+echo "Bugfix" > bugfixFile
 git commit -a -m "Bugfix Commit"
 git checkout master
 git merge --no-ff hotfix1
@@ -5061,7 +5061,7 @@ touch .gitignore
 As @Wardy pointed out in the comments, `touch` works on Windows as well as long as you provide the full path. This might also explain why it does not work for some users on <em>Windows</em>: The `touch` command seems to not be in the `$PATH` on some Windows versions per default.  
 
 ```sh
-C:\&gt; "c:\program files (x86)\git\bin\touch.exe" .gitignore
+C:\> "c:\program files (x86)\git\bin\touch.exe" .gitignore
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -5074,54 +5074,54 @@ Sometimes git suggests `git rm --cached` to unstage a file, sometimes `git reset
 EDIT:  
 
 ```sh
-D:\code\gt2&gt;git init
+D:\code\gt2>git init
 Initialized empty Git repository in D:/code/gt2/.git/
-D:\code\gt2&gt;touch a
+D:\code\gt2>touch a
 
-D:\code\gt2&gt;git status
+D:\code\gt2>git status
 # On branch master
 #
 # Initial commit
 #
 # Untracked files:
-#   (use "git add &lt;file&gt;..." to include in what will be committed)
+#   (use "git add <file>..." to include in what will be committed)
 #
 #       a
 nothing added to commit but untracked files present (use "git add" to track)
 
-D:\code\gt2&gt;git add a
+D:\code\gt2>git add a
 
-D:\code\gt2&gt;git status
+D:\code\gt2>git status
 # On branch master
 #
 # Initial commit
 #
 # Changes to be committed:
-#   (use "git rm --cached &lt;file&gt;..." to unstage)
+#   (use "git rm --cached <file>..." to unstage)
 #
 #       new file:   a
 #
-D:\code\gt2&gt;git commit -m a
+D:\code\gt2>git commit -m a
 [master (root-commit) c271e05] a
  0 files changed, 0 insertions(+), 0 deletions(-)
  create mode 100644 a
 
-D:\code\gt2&gt;touch b
+D:\code\gt2>touch b
 
-D:\code\gt2&gt;git status
+D:\code\gt2>git status
 # On branch master
 # Untracked files:
-#   (use "git add &lt;file&gt;..." to include in what will be committed)
+#   (use "git add <file>..." to include in what will be committed)
 #
 #       b
 nothing added to commit but untracked files present (use "git add" to track)
 
-D:\code\gt2&gt;git add b
+D:\code\gt2>git add b
 
-D:\code\gt2&gt;git status
+D:\code\gt2>git status
 # On branch master
 # Changes to be committed:
-#   (use "git reset HEAD &lt;file&gt;..." to unstage)
+#   (use "git reset HEAD <file>..." to unstage)
 #
 #       new file:   b
 #
@@ -5215,7 +5215,7 @@ git config --global push.followTags true
 To push a <strong>single</strong> tag:  
 
 ```sh
-git push origin &lt;tag_name&gt;
+git push origin <tag_name>
 ```
 
 And the following command should push <strong>all</strong> tags (<strong>not recommended</strong>):  
@@ -5325,7 +5325,7 @@ git checkout master
 <li><p>Execute the following:</p>
 
 ```sh
-git cherry-pick &lt;commit-hash&gt;
+git cherry-pick <commit-hash>
 ```</li>
 </ol>
 
@@ -5335,14 +5335,14 @@ N.B.:
 <li><p>If you cherry-pick from a public branch, you should consider using </p>
 
 ```sh
-git cherry-pick -x &lt;commit-hash&gt;
+git cherry-pick -x <commit-hash>
 ```
 
 This will generate a standardized commit message. This way, you (and your co-workers) can still keep track of the origin of the commit and may avoid merge conflicts in the future.  </li>
 <li><p>If you have notes attached to the commit they do not follow the cherry-pick. To bring them over as well, You have to use:</p>
 
 ```sh
-git notes copy &lt;from&gt; &lt;to&gt;
+git notes copy <from> <to>
 ```</li>
 </ol>
 
@@ -5646,7 +5646,7 @@ Make sure that you use `https`, and you should be aware that if you do this, you
 An alternative approach is to put your username and password in your `~/.netrc` file, although, as with keeping the password in the remote URL, this means that your password will be stored on the disk in plain text and is thus less secure and not recommended. However, if you want to take this approach, add the following line to your `~/.netrc`:  
 
 ```sh
-machine &lt;hostname&gt; login &lt;username&gt; password &lt;password&gt;
+machine <hostname> login <username> password <password>
 ```
 
 ... replacing `&lt;hostname&gt;` with the server's hostname, and `&lt;username&gt;` and `&lt;password&gt;` with your username and password. Also remember to set restrictive file system permissions on that file:  
@@ -6005,7 +6005,7 @@ git - the base command to perform any git command
         update - Update the registered submodules to match what the superproject
         expects by cloning missing submodules and updating the working tree of the
         submodules. The "updating" can be done in several ways depending on command
-        line options and the value of submodule.&lt;name&gt;.update configuration variable.
+        line options and the value of submodule.<name>.update configuration variable.
             --init without the explicit init step if you do not intend to customize
             any submodule locations.
             --recursive is specified, this command will recurse into the registered
@@ -6054,19 +6054,19 @@ You asked me to pull without telling me which branch you
 want to merge with, and 'branch.my_branch.merge' in
 your configuration file does not tell me, either. Please
 specify which branch you want to use on the command line and
-try again (e.g. 'git pull &lt;repository&gt; &lt;refspec&gt;').
+try again (e.g. 'git pull <repository> <refspec>').
 See git-pull(1) for details.
 
 If you often merge with the same branch, you may want to
 use something like the following in your configuration file:
 
     [branch "my_branch"]
-    remote = &lt;nickname&gt;
-    merge = &lt;remote-ref&gt;
+    remote = <nickname>
+    merge = <remote-ref>
 
-    [remote "&lt;nickname&gt;"]
-    url = &lt;url&gt;
-    fetch = &lt;refspec&gt;
+    [remote "<nickname>"]
+    url = <url>
+    fetch = <refspec>
 
 See git-config(1) for details.
 ```
@@ -6164,13 +6164,13 @@ I'm hoping I don't have to manually browse my logs, checkout the entire project 
 Find the last commit that affected the given path. As the file isn't in the HEAD commit, this commit must have deleted it.  
 
 ```sh
-git rev-list -n 1 HEAD -- &lt;file_path&gt;
+git rev-list -n 1 HEAD -- <file_path>
 ```
 
 Then checkout the version at the commit before, using the caret (`^`) symbol:  
 
 ```sh
-git checkout &lt;deleting_commit&gt;^ -- &lt;file_path&gt;
+git checkout <deleting_commit>^ -- <file_path>
 ```
 
 Or in one command, if `$file` is the file in question.  
@@ -6673,13 +6673,13 @@ Add the path(s) to your file(s) which you would like to ignore to your .git/info
 In order to ignore changed files to being listed as modified, you can use the following git command:  
 
 ```sh
-git update-index --assume-unchanged &lt;file&gt;
+git update-index --assume-unchanged <file>
 ```
 
 To revert that ignorance use the following command:  
 
 ```sh
-git update-index --no-assume-unchanged &lt;file&gt;
+git update-index --no-assume-unchanged <file>
 ```
 
 #### Answer 3 (score 148)
@@ -6749,7 +6749,7 @@ See also "<a href="https://stackoverflow.com/a/18605496/6309">What does tree-ish
 You can also try this easy way:  
 
 ```sh
-git show &lt;COMMIT&gt;
+git show <COMMIT>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -7215,7 +7215,7 @@ Anybody seen this error and know what to do?
 I'm using the terminal, I'm in the root, the GitHub repository exists and I don't know what to do now.  
 
 ```sh
-&gt; git push -u origin master
+> git push -u origin master
 Permission denied (publickey).
 fatal: Could not read from remote repository.
 
@@ -7311,7 +7311,7 @@ using `git checkout filename`  </li>
 #### Answer 2 (score 66)
 ```sh
 git stash
-git pull &lt;remote name&gt; &lt;remote branch name&gt; (or) switch branch
+git pull <remote name> <remote branch name> (or) switch branch
 git stash apply --index
 ```
 
@@ -7614,15 +7614,15 @@ If you do that, you'll never need to use `core.fileMode`, except in very rare en
 undo mode change in working tree:  
 
 ```sh
-git diff --summary | grep --color 'mode change 100755 =&gt; 100644' | cut -d' ' -f7- | xargs -d'\n' chmod +x
-git diff --summary | grep --color 'mode change 100644 =&gt; 100755' | cut -d' ' -f7- | xargs -d'\n' chmod -x
+git diff --summary | grep --color 'mode change 100755 => 100644' | cut -d' ' -f7- | xargs -d'\n' chmod +x
+git diff --summary | grep --color 'mode change 100644 => 100755' | cut -d' ' -f7- | xargs -d'\n' chmod -x
 ```
 
 Or in mingw-git  
 
 ```sh
-git diff --summary | grep  'mode change 100755 =&gt; 100644' | cut -d' ' -f7- | xargs -e'\n' chmod +x
-git diff --summary | grep  'mode change 100644 =&gt; 100755' | cut -d' ' -f7- | xargs -e'\n' chmod -x
+git diff --summary | grep  'mode change 100755 => 100644' | cut -d' ' -f7- | xargs -e'\n' chmod +x
+git diff --summary | grep  'mode change 100644 => 100755' | cut -d' ' -f7- | xargs -e'\n' chmod -x
 ```
 
 #### Answer 3 (score 128)
@@ -7659,7 +7659,7 @@ But I am thinking about something, where I identify the commit by hash or short-
 Interactive rebase off of a point earlier in the history than the commit you need to modify (`git rebase -i &lt;earliercommit&gt;`). In the list of commits being rebased, change the text from `pick` to `edit` next to the hash of the one you want to modify. Then when git prompts you to change the commit, use this:  
 
 ```sh
-git commit --amend --author="Author Name &lt;email@address.com&gt;"
+git commit --amend --author="Author Name <email@address.com>"
 ```
 
 <hr>
@@ -7700,7 +7700,7 @@ git checkout 03f482d6
 <li><p>Make the author change.</p>
 
 ```sh
-git commit --amend --author "New Author Name &lt;New Author Email&gt;"
+git commit --amend --author "New Author Name <New Author Email>"
 ```
 
 Now we have a new commit with hash assumed to be `42627abe`.  </li>
@@ -7946,7 +7946,7 @@ Just to clarify, `the_submodule` is the relative path of the submodule inside th
 As pointed out correctly in the comments and <a href="https://stackoverflow.com/a/44863971/683218">other answers</a>, the two commands (although functionally sufficient to remove a submodule), do leave a trace in the `[submodule "the_submodule"]` section of `.git/config` (as of July 2017), which can be removed using a third command:  
 
 ```sh
-git config -f .git/config --remove-section submodule.the_submodule 2&gt; /dev/null
+git config -f .git/config --remove-section submodule.the_submodule 2> /dev/null
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -8026,7 +8026,7 @@ On branch master
 #   modified:   tmp/pids/server.pid
 #
 # Untracked files:
-#   (use "git add &lt;file&gt;..." to include in what will be committed)
+#   (use "git add <file>..." to include in what will be committed)
 #
 #   Coachbase/
 #   log/development.log.orig
@@ -8089,7 +8089,7 @@ ramon@ramon-desktop:~/source/unstilted$ git branch -a
   feature/user_controlled_menu
   feature/user_controlled_site_layouts
   master
-  remotes/origin/HEAD -&gt; origin/master
+  remotes/origin/HEAD -> origin/master
   remotes/origin/develop
   remotes/origin/feature/datts_right
   remotes/origin/master
@@ -8133,7 +8133,7 @@ $ cat .git/refs/heads/feature/user_controlled_site_layouts
 ```sh
 $ git show 3af84fcf1508c44013844dcd0998a14e61455034
 commit 3af84fcf1508c44013844dcd0998a14e61455034
-Author: Ramon Tayag &lt;xxx@xxxxx.xxx&gt;
+Author: Ramon Tayag <xxx@xxxxx.xxx>
 Date:   Thu May 12 19:00:03 2011 +0800
 
     Removed site layouts migration
@@ -8146,16 +8146,16 @@ index 1218fc8..2040b9f 100755
  #
  # It's strongly recommended to check this file into your version control system.
 
--ActiveRecord::Schema.define(:version =&gt; 20110511012647) do
-+ActiveRecord::Schema.define(:version =&gt; 20110503040056) do
+-ActiveRecord::Schema.define(:version => 20110511012647) do
++ActiveRecord::Schema.define(:version => 20110503040056) do
 
-   create_table "attachments", :force =&gt; true do |t|
+   create_table "attachments", :force => true do |t|
      t.string   "name"
-@@ -205,15 +205,6 @@ ActiveRecord::Schema.define(:version =&gt; 20110511012647) do
+@@ -205,15 +205,6 @@ ActiveRecord::Schema.define(:version => 20110511012647) do
      t.integer  "old_id"
    end
 
--  create_table "site_layouts", :force =&gt; true do |t|
+-  create_table "site_layouts", :force => true do |t|
 -    t.string   "name"
 -    t.text     "description"
 -    t.text     "content"
@@ -8164,7 +8164,7 @@ index 1218fc8..2040b9f 100755
 -    t.datetime "updated_at"
 -  end
 -
-   create_table "site_styles", :force =&gt; true do |t|
+   create_table "site_styles", :force => true do |t|
      t.text     "published"
      t.datetime "created_at"
 ```
@@ -8190,7 +8190,7 @@ When I tried `git checkout origin/&lt;BRANCH-NAME&gt;`, I got the detached HEAD:
 ```sh
 git remote update
 git fetch 
-git checkout --track origin/&lt;BRANCH-NAME&gt;
+git checkout --track origin/<BRANCH-NAME>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -8279,13 +8279,13 @@ fi
 You could do  
 
 ```sh
-git rebase -i -p &lt;some HEAD before all of your bad commits&gt;
+git rebase -i -p <some HEAD before all of your bad commits>
 ```
 
 Then mark all of your bad commits as "edit" in the rebase file. If you also want to change your first commit, you have to manually add it as first line in the rebase file (follow the format of the other lines). Then, when git asks you to amend each commit, do   
 
 ```sh
- git commit --amend --author "New Author Name &lt;email@address.com&gt;" 
+ git commit --amend --author "New Author Name <email@address.com>" 
 ```
 
 edit or just close the editor that opens, and then do  
@@ -8300,7 +8300,7 @@ to continue the rebase.
 so that the command will be:</p>
 
 ```sh
-git commit --amend --author "New Author Name &lt;email@address.com&gt;" --no-edit &amp;&amp; \
+git commit --amend --author "New Author Name <email@address.com>" --no-edit && \
 git rebase --continue
 ```
 
@@ -8309,7 +8309,7 @@ git rebase --continue
 As some of the commenters have noted, if you just want to change the most recent commit, the rebase command is not necessary. Just do   
 
 ```sh
- git commit --amend --author "New Author Name &lt;email@address.com&gt;"
+ git commit --amend --author "New Author Name <email@address.com>"
 ```
 
 This will change the author to the name specified, but the committer will be set to your configured user in `git config user.name` and `git config user.email`. If you want to set the committer to something you specify, this will set both the author and the committer:  
@@ -8329,12 +8329,12 @@ You can also do:
 
 ```sh
 git filter-branch --commit-filter '
-        if [ "$GIT_COMMITTER_NAME" = "&lt;Old Name&gt;" ];
+        if [ "$GIT_COMMITTER_NAME" = "<Old Name>" ];
         then
-                GIT_COMMITTER_NAME="&lt;New Name&gt;";
-                GIT_AUTHOR_NAME="&lt;New Name&gt;";
-                GIT_COMMITTER_EMAIL="&lt;New Email&gt;";
-                GIT_AUTHOR_EMAIL="&lt;New Email&gt;";
+                GIT_COMMITTER_NAME="<New Name>";
+                GIT_AUTHOR_NAME="<New Name>";
+                GIT_COMMITTER_EMAIL="<New Email>";
+                GIT_AUTHOR_EMAIL="<New Email>";
                 git commit-tree "$@";
         else
                 git commit-tree "$@";
@@ -8345,12 +8345,12 @@ Note, if you are using this command in the Windows command prompt, then you need
 
 ```sh
 git filter-branch --commit-filter "
-        if [ "$GIT_COMMITTER_NAME" = "&lt;Old Name&gt;" ];
+        if [ "$GIT_COMMITTER_NAME" = "<Old Name>" ];
         then
-                GIT_COMMITTER_NAME="&lt;New Name&gt;";
-                GIT_AUTHOR_NAME="&lt;New Name&gt;";
-                GIT_COMMITTER_EMAIL="&lt;New Email&gt;";
-                GIT_AUTHOR_EMAIL="&lt;New Email&gt;";
+                GIT_COMMITTER_NAME="<New Name>";
+                GIT_AUTHOR_NAME="<New Name>";
+                GIT_COMMITTER_EMAIL="<New Email>";
+                GIT_AUTHOR_EMAIL="<New Email>";
                 git commit-tree "$@";
         else
                 git commit-tree "$@";
@@ -8412,8 +8412,8 @@ git init
 or clone a repository  
 
 ```sh
-git clone &lt;remote-url&gt;
-cd &lt;repository&gt;
+git clone <remote-url>
+cd <repository>
 ```
 
 #### Answer 3 (score 24)
@@ -8424,7 +8424,7 @@ The problem was <strong>empty HEAD file</strong>.
 I was able to find actual branch name I've worked on in .git/refs/heads and then I did this:  
 
 ```sh
-echo 'ref: refs/heads/ML_#94_FILTER_TYPES_AND_SPECIAL_CHARS' &gt; .git/HEAD
+echo 'ref: refs/heads/ML_#94_FILTER_TYPES_AND_SPECIAL_CHARS' > .git/HEAD
 ```
 
 It worked.  
@@ -8439,7 +8439,7 @@ I'm new to <a href="http://en.wikipedia.org/wiki/GitHub">GitHub</a>. Today I met
 ```sh
 Pushing to git@github.com:519ebayproject/519ebayproject.git
 To git@github.com:519ebayproject/519ebayproject.git
- ! [rejected]        master -&gt; master (non-fast-forward)
+ ! [rejected]        master -> master (non-fast-forward)
 error: failed to push some refs to 'git@github.com:519ebayproject/519ebayproject.git'
 hint: Updates were rejected because the tip of your current branch is behind
 hint: its remote counterpart. Merge the remote changes (e.g. 'git pull')
@@ -8457,7 +8457,7 @@ I have not pushed anything in the repository yet, so why do I need to pull somet
 If you do not wish to merge the remote branch into your local branch (see differences with <a href="https://www.kernel.org/pub/software/scm/git/docs/git-diff.html">git diff</a>), and want to do a force push, use the <a href="https://www.kernel.org/pub/software/scm/git/docs/git-push.html">push command with -f</a>  
 
 ```sh
-git push -f origin &lt;branch&gt;
+git push -f origin <branch>
 ```
 
 where `origin` is the name of your <a href="https://www.kernel.org/pub/software/scm/git/docs/git-remote.html">remote</a> repo.  
@@ -8776,7 +8776,7 @@ git checkout origin/master -b master
 Try:  
 
 ```sh
-git reset --hard &lt;the sha1 hash&gt;
+git reset --hard <the sha1 hash>
 ```
 
 to reset your head to wherever you want to be. Use gitk to see which commit you want to be at. You can do reset within gitk as well.  
@@ -8789,7 +8789,7 @@ to reset your head to wherever you want to be. Use gitk to see which commit you 
 I was able to clone a copy of this repo over HTTPS authenticated. I've made some commits and want to push back out to the GitHub server. Using Cygwin on Windows 7 x64.  
 
 ```sh
-C:\cygwin\home\XPherior\Code\lunch_call&gt;git push
+C:\cygwin\home\XPherior\Code\lunch_call>git push
 Password:
 error: The requested URL returned error: 403 while accessing https://MichaelDrog
 alis@github.com/derekerdmann/lunch_call.git/info/refs
@@ -8800,9 +8800,9 @@ fatal: HTTP request failed
 Also set it up with verbose mode. I'm still pretty baffled.  
 
 ```sh
-C:\cygwin\home\XPherior\Code\lunch_call&gt;set GIT_CURL_VERBOSE=1
+C:\cygwin\home\XPherior\Code\lunch_call>set GIT_CURL_VERBOSE=1
 
-C:\cygwin\home\XPherior\Code\lunch_call&gt;git push
+C:\cygwin\home\XPherior\Code\lunch_call>git push
 Password:
 * Couldn't find host github.com in the _netrc file; using defaults
 * About to connect() to github.com port 443 (#0)
@@ -8822,20 +8822,20 @@ Password:
 *        issuer: C=US; O=DigiCert Inc; OU=www.digicert.com; CN=DigiCert High Ass
 urance EV CA-1
 *        SSL certificate verify ok.
-&gt; GET /derekerdmann/lunch_call.git/info/refs?service=git-receive-pack HTTP/1.1
+> GET /derekerdmann/lunch_call.git/info/refs?service=git-receive-pack HTTP/1.1
 User-Agent: git/1.7.4.3282.g844cb
 Host: github.com
 Accept: */*
 Pragma: no-cache
 
-&lt; HTTP/1.1 401 Authorization Required
-&lt; Server: nginx/1.0.4
-&lt; Date: Thu, 15 Sep 2011 22:44:41 GMT
-&lt; Content-Type: text/plain
-&lt; Connection: keep-alive
-&lt; Content-Length: 55
-&lt; WWW-Authenticate: Basic realm="GitHub"
-&lt;
+< HTTP/1.1 401 Authorization Required
+< Server: nginx/1.0.4
+< Date: Thu, 15 Sep 2011 22:44:41 GMT
+< Content-Type: text/plain
+< Connection: keep-alive
+< Content-Length: 55
+< WWW-Authenticate: Basic realm="GitHub"
+<
 * Ignoring the response-body
 * Expire cleared
 * Connection #0 to host github.com left intact
@@ -8846,21 +8846,21 @@ dmann/lunch_call.git/info/refs?service=git-receive-pack'
 * Connected to github.com (207.97.227.239) port 443 (#0)
 * 0x23cb740 is at send pipe head!
 * Server auth using Basic with user 'MichaelDrogalis'
-&gt; GET /derekerdmann/lunch_call.git/info/refs?service=git-receive-pack HTTP/1.1
+> GET /derekerdmann/lunch_call.git/info/refs?service=git-receive-pack HTTP/1.1
 Authorization: Basic XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 User-Agent: git/1.7.4.3282.g844cb
 Host: github.com
 Accept: */*
 Pragma: no-cache
 
-&lt; HTTP/1.1 401 Authorization Required
-&lt; Server: nginx/1.0.4
-&lt; Date: Thu, 15 Sep 2011 22:44:41 GMT
-&lt; Content-Type: text/plain
-&lt; Connection: keep-alive
-&lt; Content-Length: 55
+< HTTP/1.1 401 Authorization Required
+< Server: nginx/1.0.4
+< Date: Thu, 15 Sep 2011 22:44:41 GMT
+< Content-Type: text/plain
+< Connection: keep-alive
+< Content-Length: 55
 * Authentication problem. Ignoring this.
-&lt; WWW-Authenticate: Basic realm="GitHub"
+< WWW-Authenticate: Basic realm="GitHub"
 * The requested URL returned error: 401
 * Closing connection #0
 * Couldn't find host github.com in the _netrc file; using defaults
@@ -8884,7 +8884,7 @@ Pragma: no-cache
 urance EV CA-1
 *        SSL certificate verify ok.
 * Server auth using Basic with user 'MichaelDrogalis'
-&gt; GET /derekerdmann/lunch_call.git/info/refs HTTP/1.1
+> GET /derekerdmann/lunch_call.git/info/refs HTTP/1.1
 Authorization: Basic xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 User-Agent: git/1.7.4.3282.g844cb
 Host: github.com
@@ -8903,10 +8903,10 @@ fatal: HTTP request failed
 These are the versions of git and curl that I have:  
 
 ```sh
-C:\Users\XPherior&gt;git --version
+C:\Users\XPherior>git --version
 git version 1.7.4.msysgit.0
 
-C:\Users\XPherior&gt;curl --version
+C:\Users\XPherior>curl --version
 curl 7.21.7 (amd64-pc-win32) libcurl/7.21.7 OpenSSL/0.9.8r zlib/1.2.5
 Protocols: dict file ftp ftps gopher http https imap imaps ldap pop3 pop3s rtsp
 smtp smtps telnet tftp
@@ -9064,7 +9064,7 @@ You can list all the public keys you have by doing:
 Copy the key to your clipboard.  
 
 ```sh
-$ pbcopy &lt; ~/.ssh/id_rsa.pub
+$ pbcopy < ~/.ssh/id_rsa.pub
 # Copies the contents of the id_rsa.pub file to your clipboard
 ```
 
@@ -9282,7 +9282,7 @@ Since git is fundamentally about managing a all repository <em>content</em> and 
 Actually, since Git 2.13 (Q2 2017), you can stash individual files, with <a href="https://git-scm.com/docs/git-stash#git-stash-push-p--patch-k--no-keep-index-u--include-untracked-a--all-q--quiet-m--messageltmessagegt--ltpathspecgt82308203" rel="noreferrer">`git stash push`</a>:  
 
 ```sh
-git stash push [--] [&lt;pathspec&gt;...]
+git stash push [--] [<pathspec>...]
 ```
 
 <blockquote>
@@ -9295,20 +9295,20 @@ See "<a href="https://stackoverflow.com/a/42963606/6309">Stash changes to specif
 
 ```sh
 test_expect_success 'stash with multiple pathspec arguments' '
-    &gt;foo &amp;&amp;
-    &gt;bar &amp;&amp;
-    &gt;extra &amp;&amp;
-    git add foo bar extra &amp;&amp;
+    >foo &&
+    >bar &&
+    >extra &&
+    git add foo bar extra &&
 
-    git stash push -- foo bar &amp;&amp;   
+    git stash push -- foo bar &&   
 
-    test_path_is_missing bar &amp;&amp;
-    test_path_is_missing foo &amp;&amp;
-    test_path_is_file extra &amp;&amp;
+    test_path_is_missing bar &&
+    test_path_is_missing foo &&
+    test_path_is_file extra &&
 
-    git stash pop &amp;&amp;
-    test_path_is_file foo &amp;&amp;
-    test_path_is_file bar &amp;&amp;
+    git stash pop &&
+    test_path_is_file foo &&
+    test_path_is_file bar &&
     test_path_is_file extra
 ```
 

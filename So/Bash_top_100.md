@@ -29,7 +29,7 @@ How is this accomplished in Bash?
 foo="Hello"
 foo="${foo} World"
 echo "${foo}"
-&gt; Hello World
+> Hello World
 ```
 
 In general to concatenate two variables you can just write them one after another:  
@@ -39,7 +39,7 @@ a='Hello'
 b='World'
 c="${a} ${b}"
 echo "${c}"
-&gt; Hello World
+> Hello World
 ```
 
 #### Answer 2 (score 1067)
@@ -172,15 +172,15 @@ llo world!" [6]="hello world!")'
 One argument format string with many argument passed to:  
 
 ```sh
-printf -v a[0] '&lt;%s&gt;\n' "${a[@]}"
+printf -v a[0] '<%s>\n' "${a[@]}"
 echo "$a"
-&lt;36&gt;
-&lt;18&gt;
-&lt;one&gt;
-&lt;word&gt;
-&lt;hello world!&gt;
-&lt;hello world!&gt;
-&lt;hello world!&gt;
+<36>
+<18>
+<one>
+<word>
+<hello world!>
+<hello world!>
+<hello world!>
 ```
 
 <h5>Using the <em>Stack&nbsp;Overflow question</em> syntax:</h3>
@@ -381,15 +381,15 @@ mails=$(echo $IN | tr ";" "\n")
 
 for addr in $mails
 do
-    echo "&gt; [$addr]"
+    echo "> [$addr]"
 done
 ```
 
 Output:  
 
 ```sh
-&gt; [bla@some.com]
-&gt; [john@home.com]
+> [bla@some.com]
+> [john@home.com]
 ```
 
 There was a solution involving setting <a href="http://en.wikipedia.org/wiki/Internal_field_separator" rel="noreferrer">Internal_field_separator</a> (IFS) to `;`. I am not sure what happened with that answer, how do you reset `IFS` back to default?  
@@ -404,7 +404,7 @@ IFS=';'
 mails2=$IN
 for x in $mails2
 do
-    echo "&gt; [$x]"
+    echo "> [$x]"
 done
 
 IFS=$OIFS
@@ -422,7 +422,7 @@ I only got the first string when printing it in loop, without brackets around `$
 You can set the <a href="http://en.wikipedia.org/wiki/Internal_field_separator" rel="noreferrer">internal field separator</a> (IFS) variable, and then let it parse into an array. When this happens in a command, then the assignment to `IFS` only takes place to that single command's environment (to `read` ). It then parses the input according to the `IFS` variable value into an array, which we can then iterate over.  
 
 ```sh
-IFS=';' read -ra ADDR &lt;&lt;&lt; "$IN"
+IFS=';' read -ra ADDR <<< "$IN"
 for i in "${ADDR[@]}"; do
     # process "$i"
 done
@@ -435,7 +435,7 @@ It will parse one line of items separated by `;`, pushing it into an array. Stuf
       for i in "${ADDR[@]}"; do
           # process "$i"
       done
- done &lt;&lt;&lt; "$IN"
+ done <<< "$IN"
 ```
 
 #### Answer 2 (score 886)
@@ -673,8 +673,8 @@ Depending on what you want the file to contain:
 <li><p>`somecommand &gt; /path/to/file` for a file containing the output of some command.</p>
 
 ```sh
-  eg: grep --help &gt; randomtext.txt
-      echo "This is some text" &gt; randomtext.txt
+  eg: grep --help > randomtext.txt
+      echo "This is some text" > randomtext.txt
 ```</li>
 <li><p>`nano /path/to/file` or `vi /path/to/file` (or `any other editor emacs,gedit etc`)<br>
 It either opens the existing one for editing or creates &amp; opens the empty file to enter, if it doesn't exist</p></li>
@@ -713,7 +713,7 @@ For instance, let's say I want to use a Bash script as a launcher for another ap
 ```sh
 #!/bin/bash
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &gt;/dev/null 2&gt;&amp;1 &amp;&amp; pwd )"
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 ```
 
 is a useful one-liner which will give you the full directory name of the script no matter where it is being called from.  
@@ -725,11 +725,11 @@ It will work as long as the last component of the path used to find the script i
 
 SOURCE="${BASH_SOURCE[0]}"
 while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
-  DIR="$( cd -P "$( dirname "$SOURCE" )" &gt;/dev/null 2&gt;&amp;1 &amp;&amp; pwd )"
+  DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
   SOURCE="$(readlink "$SOURCE")"
-  [[ $SOURCE != /* ]] &amp;&amp; SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
 done
-DIR="$( cd -P "$( dirname "$SOURCE" )" &gt;/dev/null 2&gt;&amp;1 &amp;&amp; pwd )"
+DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
 ```
 
 This last one will work with any combination of aliases, `source`, `bash -c`, symlinks, etc.  
@@ -757,7 +757,7 @@ while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symli
 done
 echo "SOURCE is '$SOURCE'"
 RDIR="$( dirname "$SOURCE" )"
-DIR="$( cd -P "$( dirname "$SOURCE" )" &gt;/dev/null 2&gt;&amp;1 &amp;&amp; pwd )"
+DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
 if [ "$DIR" != "$RDIR" ]; then
   echo "DIR '$RDIR' resolves to '$DIR'"
 fi
@@ -827,7 +827,7 @@ echo "dirname/readlink: $(dirname $(readlink -f $0))"
 Running this script in my home dir, using a relative path:  
 
 ```sh
-&gt;&gt;&gt;$ ./whatdir.sh 
+>>>$ ./whatdir.sh 
 pwd: /Users/phatblat
 $0: ./whatdir.sh
 basename: whatdir.sh
@@ -838,7 +838,7 @@ dirname/readlink: /Users/phatblat
 Again, but using the full path to the script:  
 
 ```sh
-&gt;&gt;&gt;$ /Users/phatblat/whatdir.sh 
+>>>$ /Users/phatblat/whatdir.sh 
 pwd: /Users/phatblat
 $0: /Users/phatblat/whatdir.sh
 basename: whatdir.sh
@@ -849,8 +849,8 @@ dirname/readlink: /Users/phatblat
 Now changing directories:  
 
 ```sh
-&gt;&gt;&gt;$ cd /tmp
-&gt;&gt;&gt;$ ~/whatdir.sh 
+>>>$ cd /tmp
+>>>$ ~/whatdir.sh 
 pwd: /tmp
 $0: /Users/phatblat/whatdir.sh
 basename: whatdir.sh
@@ -861,8 +861,8 @@ dirname/readlink: /Users/phatblat
 And finally using a symbolic link to execute the script:  
 
 ```sh
-&gt;&gt;&gt;$ ln -s ~/whatdir.sh whatdirlink.sh
-&gt;&gt;&gt;$ ./whatdirlink.sh 
+>>>$ ln -s ~/whatdir.sh whatdirlink.sh
+>>>$ ./whatdirlink.sh 
 pwd: /tmp
 $0: ./whatdirlink.sh
 basename: whatdirlink.sh
@@ -900,7 +900,7 @@ The following reads a file passed as an argument line by line:
 #!/bin/bash
 while IFS= read -r line; do
     echo "Text read from file: $line"
-done &lt; "$1"
+done < "$1"
 ```
 
 This is the <a href="http://mywiki.wooledge.org/BashFAQ/001" rel="noreferrer">standard form</a> for reading lines from a file in a loop. Explanation:  
@@ -922,7 +922,7 @@ If the file isn’t a <a href="https://stackoverflow.com/a/729795/1968">standard
 ```sh
 while IFS= read -r line || [[ -n "$line" ]]; do
     echo "Text read from file: $line"
-done &lt; "$1"
+done < "$1"
 ```
 
 Here, `|| [[ -n $line ]]` prevents the last line from being ignored if it doesn't end with a `\n` (since `read` returns a non-zero exit code when it encounters EOF).  
@@ -932,7 +932,7 @@ If the commands inside the loop also read from standard input, the file descript
 ```sh
 while IFS= read -r -u3 line; do
     echo "Text read from file: $line"
-done 3&lt; "$1"
+done 3< "$1"
 ```
 
 (Non-Bash shells might not know `read -u3`; use `read &lt;&amp;3` instead.)  
@@ -957,7 +957,7 @@ filename="$1"
 while read -r line; do
     name="$line"
     echo "Name read from file - $name"
-done &lt; "$filename"
+done < "$filename"
 ```
 
 #### Answer 3 (score 126)
@@ -966,7 +966,7 @@ Using the following Bash template should allow you to read one value at a time f
 ```sh
 while read name; do
     # Do what you want to $name
-done &lt; filename
+done < filename
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -1020,7 +1020,7 @@ So you can just open up this file as root and add whatever you want.
 Run (try as normal user <em>and</em> root):</p>
 
 ```sh
-source /etc/environment &amp;&amp; export PATH
+source /etc/environment && export PATH
 ```
 
 <strong>UPDATE:</strong>  
@@ -1132,7 +1132,7 @@ One way to do it is:
 ```sh
 while read p; do
   echo "$p"
-done &lt;peptides.txt
+done <peptides.txt
 ```
 
 As pointed out in the comments, this has the side effects of trimming leading whitespace, interpretting backslash sequences, and skipping the trailing line if it's missing a terminating linefeed. If these are concerns, you can do:  
@@ -1141,7 +1141,7 @@ As pointed out in the comments, this has the side effects of trimming leading wh
 while IFS="" read -r p || [ -n "$p" ]
 do
   printf '%s\n' "$p"
-done &lt; peptides.txt
+done < peptides.txt
 ```
 
 <hr>
@@ -1151,7 +1151,7 @@ Exceptionally, if the <a href="https://unix.stackexchange.com/questions/107800/u
 ```sh
 while read -u 10 p; do
   ...
-done 10&lt;peptides.txt
+done 10<peptides.txt
 ```
 
 Here, 10 is just an arbitrary number (different from 0, 1, 2).  
@@ -1179,7 +1179,7 @@ filename='peptides.txt'
 echo Start
 while read p; do 
     echo $p
-done &lt; $filename
+done < $filename
 ```
 
 <p><strong>Option 1b:</strong> While loop:  Single line at a time:<br>
@@ -1188,7 +1188,7 @@ Open the file, read from a file descriptor (in this case file descriptor #4).  <
 ```sh
 #!/bin/bash
 filename='peptides.txt'
-exec 4&lt;$filename
+exec 4<$filename
 echo Start
 while read -u4 p ; do
     echo $p
@@ -1312,7 +1312,7 @@ Usage `demo-space-separated.sh -e conf -s /etc -l /usr/lib /etc/hosts`
 
 
 ```sh
-cat &gt;/tmp/demo-space-separated.sh &lt;&lt;'EOF'
+cat >/tmp/demo-space-separated.sh <<'EOF'
 #!/bin/bash
 
 POSITIONAL=()
@@ -1381,7 +1381,7 @@ Last line of file specified as non-opt/last argument:
 Usage `demo-equals-separated.sh -e=conf -s=/etc -l=/usr/lib /etc/hosts`  
 
 ```sh
-cat &gt;/tmp/demo-equals-separated.sh &lt;&lt;'EOF'
+cat >/tmp/demo-equals-separated.sh <<'EOF'
 #!/bin/bash
 
 for i in "$@"
@@ -1456,7 +1456,7 @@ Additionally, the POSIX shell (and others) offer `getopts` which doesn't have th
 Usage `demo-getopts.sh -vf /etc/hosts foo bar`  
 
 ```sh
-cat &gt;/tmp/demo-getopts.sh &lt;&lt;'EOF'
+cat >/tmp/demo-getopts.sh <<'EOF'
 #!/bin/sh
 
 # A POSIX variable
@@ -1481,7 +1481,7 @@ done
 
 shift $((OPTIND-1))
 
-[ "${1:-}" = "--" ] &amp;&amp; shift
+[ "${1:-}" = "--" ] && shift
 
 echo "verbose=$verbose, output_file='$output_file', Leftovers: $@"
 EOF
@@ -1553,7 +1553,7 @@ set -o errexit -o pipefail -o noclobber -o nounset
 
 # -allow a command to fail with !’s side effect on errexit
 # -use return value from ${PIPESTATUS[0]}, because ! hosed $?
-! getopt --test &gt; /dev/null 
+! getopt --test > /dev/null 
 if [[ ${PIPESTATUS[0]} -ne 4 ]]; then
     echo 'I’m sorry, `getopt --test` failed in this environment.'
     exit 1
@@ -1671,8 +1671,8 @@ As such:
 
 ```sh
 # put current date as yyyy-mm-dd in $date
-# -1 -&gt; explicit current date, bash &gt;=4.3 defaults to current time if not provided
-# -2 -&gt; start time for shell
+# -1 -> explicit current date, bash >=4.3 defaults to current time if not provided
+# -2 -> start time for shell
 printf -v date '%(%Y-%m-%d)T\n' -1 
 
 # put current date as yyyy-mm-dd HH:MM:SS in $date
@@ -1680,7 +1680,7 @@ printf -v date '%(%Y-%m-%d %H:%M:%S)T\n' -1
 
 # to print directly remove -v flag, as such:
 printf '%(%Y-%m-%d)T\n' -1
-# -&gt; current date printed to terminal
+# -> current date printed to terminal
 ```
 
 In bash (&lt;4.2):   
@@ -1735,7 +1735,7 @@ Is there a way to count them all using linux commands?
 Use `wc`:  
 
 ```sh
-wc -l &lt;filename&gt;
+wc -l <filename>
 ```
 
 This will output the number of lines in `&lt;filename&gt;`:  
@@ -1748,7 +1748,7 @@ $ wc -l /dir/file.txt
 Or, to omit the `&lt;filename&gt;` from the result use `wc -l &lt; &lt;filename&gt;`:  
 
 ```sh
-$ wc -l &lt; /dir/file.txt
+$ wc -l < /dir/file.txt
 3272485
 ```
 
@@ -1784,7 +1784,7 @@ See the grep man page to take a look at the -e,-i and -x args...
 
 #### Answer 3 (score 70)
 ```sh
-wc -l &lt;file.txt&gt;
+wc -l <file.txt>
 ```
 
 Or  
@@ -1827,9 +1827,9 @@ Let's define a variable containing leading, trailing, and intermediate whitespac
 ```sh
 FOO=' test test test '
 echo -e "FOO='${FOO}'"
-# &gt; FOO=' test test test '
+# > FOO=' test test test '
 echo -e "length(FOO)==${#FOO}"
-# &gt; length(FOO)==16
+# > length(FOO)==16
 ```
 
 <hr>
@@ -1840,9 +1840,9 @@ How to remove all whitespace (denoted by `[:space:]` in `tr`):
 FOO=' test test test '
 FOO_NO_WHITESPACE="$(echo -e "${FOO}" | tr -d '[:space:]')"
 echo -e "FOO_NO_WHITESPACE='${FOO_NO_WHITESPACE}'"
-# &gt; FOO_NO_WHITESPACE='testtesttest'
+# > FOO_NO_WHITESPACE='testtesttest'
 echo -e "length(FOO_NO_WHITESPACE)==${#FOO_NO_WHITESPACE}"
-# &gt; length(FOO_NO_WHITESPACE)==12
+# > length(FOO_NO_WHITESPACE)==12
 ```
 
 <hr>
@@ -1853,9 +1853,9 @@ How to remove leading whitespace only:
 FOO=' test test test '
 FOO_NO_LEAD_SPACE="$(echo -e "${FOO}" | sed -e 's/^[[:space:]]*//')"
 echo -e "FOO_NO_LEAD_SPACE='${FOO_NO_LEAD_SPACE}'"
-# &gt; FOO_NO_LEAD_SPACE='test test test '
+# > FOO_NO_LEAD_SPACE='test test test '
 echo -e "length(FOO_NO_LEAD_SPACE)==${#FOO_NO_LEAD_SPACE}"
-# &gt; length(FOO_NO_LEAD_SPACE)==15
+# > length(FOO_NO_LEAD_SPACE)==15
 ```
 
 <hr>
@@ -1866,9 +1866,9 @@ How to remove trailing whitespace only:
 FOO=' test test test '
 FOO_NO_TRAIL_SPACE="$(echo -e "${FOO}" | sed -e 's/[[:space:]]*$//')"
 echo -e "FOO_NO_TRAIL_SPACE='${FOO_NO_TRAIL_SPACE}'"
-# &gt; FOO_NO_TRAIL_SPACE=' test test test'
+# > FOO_NO_TRAIL_SPACE=' test test test'
 echo -e "length(FOO_NO_TRAIL_SPACE)==${#FOO_NO_TRAIL_SPACE}"
-# &gt; length(FOO_NO_TRAIL_SPACE)==15
+# > length(FOO_NO_TRAIL_SPACE)==15
 ```
 
 <hr>
@@ -1879,15 +1879,15 @@ How to remove both leading and trailing spaces--chain the `sed`s:
 FOO=' test test test '
 FOO_NO_EXTERNAL_SPACE="$(echo -e "${FOO}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')"
 echo -e "FOO_NO_EXTERNAL_SPACE='${FOO_NO_EXTERNAL_SPACE}'"
-# &gt; FOO_NO_EXTERNAL_SPACE='test test test'
+# > FOO_NO_EXTERNAL_SPACE='test test test'
 echo -e "length(FOO_NO_EXTERNAL_SPACE)==${#FOO_NO_EXTERNAL_SPACE}"
-# &gt; length(FOO_NO_EXTERNAL_SPACE)==14
+# > length(FOO_NO_EXTERNAL_SPACE)==14
 ```
 
 Alternatively, if your bash supports it, you can replace `echo -e "${FOO}" | sed ...` with `sed ... &lt;&lt;&lt;${FOO}`, like so (for trailing whitespace):  
 
 ```sh
-FOO_NO_TRAIL_SPACE="$(sed -e 's/[[:space:]]*$//' &lt;&lt;&lt;${FOO})"
+FOO_NO_TRAIL_SPACE="$(sed -e 's/[[:space:]]*$//' <<<${FOO})"
 ```
 
 #### Answer 3 (score 858)
@@ -2037,7 +2037,7 @@ if [ "$x" = "valid" ]; then
 Or, if you don't need else clause:  
 
 ```sh
-[ "$x" == "valid" ] &amp;&amp; echo "x has the value 'valid'"
+[ "$x" == "valid" ] && echo "x has the value 'valid'"
 ```
 
 #### Answer 3 (score 70)
@@ -2053,9 +2053,9 @@ else
 fi
 
 # Lexicographic (greater than, less than) comparison.
-if [ "$a" \&lt; "$b" ]; then
+if [ "$a" \< "$b" ]; then
     echo "$a is lexicographically smaller then $b"
-elif [ "$a" \&gt; "$b" ]; then
+elif [ "$a" \> "$b" ]; then
     echo "$b is lexicographically smaller than $a"
 else
     echo "Strings are equal"
@@ -2277,7 +2277,7 @@ declare -a array=("one" "two" "three")
 arraylength=${#array[@]}
 
 # use for loop to read all values and indexes
-for (( i=1; i&lt;${arraylength}+1; i++ ));
+for (( i=1; i<${arraylength}+1; i++ ));
 do
   echo $i " / " ${arraylength} " : " ${array[$i-1]}
 done
@@ -2299,13 +2299,13 @@ Output:
 In a Unix shell, if I want to combine `stderr` and `stdout` into the `stdout` stream for further manipulation, I can append the following on the end of my command:  
 
 ```sh
-2&gt;&amp;1
+2>&1
 ```
 
 So, if I want to use `head` on the output from `g++`, I can do something like this:  
 
 ```sh
-g++ lots_of_errors 2&gt;&amp;1 | head
+g++ lots_of_errors 2>&1 | head
 ```
 
 so I can see only the first few errors.   
@@ -2322,19 +2322,19 @@ Here is one way to remember this construct (although it is not entirely accurate
 
 #### Answer 2 (score 577)
 ```sh
-echo test &gt; afile.txt
+echo test > afile.txt
 ```
 
 redirects stdout to `afile.txt`. This is the same as doing  
 
 ```sh
-echo test 1&gt; afile.txt
+echo test 1> afile.txt
 ```
 
 To redirect stderr, you do:  
 
 ```sh
-echo test 2&gt; afile.txt
+echo test 2> afile.txt
 ```
 
 `&gt;&amp;` is the syntax to redirect a stream to another file descriptor - 0 is stdin, 1 is stdout, and 2 is stderr.  
@@ -2342,13 +2342,13 @@ echo test 2&gt; afile.txt
 You can redirect stdout to stderr by doing:  
 
 ```sh
-echo test 1&gt;&amp;2 # or echo test &gt;&amp;2
+echo test 1>&2 # or echo test >&2
 ```
 
 Or vice versa:  
 
 ```sh
-echo test 2&gt;&amp;1
+echo test 2>&1
 ```
 
 So, in short... `2&gt;` redirects stderr to an (unspecified) file, appending `&amp;1` redirects stderr to stdout.  
@@ -2380,10 +2380,10 @@ $ ls -ld /tmp /tnt
 ls: cannot access /tnt: No such file or directory
 drwxrwxrwt 118 root root 196608 Jan  7 11:49 /tmp
 
-$ ls -ld /tmp /tnt &gt;/dev/null
+$ ls -ld /tmp /tnt >/dev/null
 ls: cannot access /tnt: No such file or directory
 
-$ ls -ld /tmp /tnt 2&gt;/dev/null
+$ ls -ld /tmp /tnt 2>/dev/null
 drwxrwxrwt 118 root root 196608 Jan  7 11:49 /tmp
 ```
 
@@ -2392,12 +2392,12 @@ drwxrwxrwt 118 root root 196608 Jan  7 11:49 /tmp
 So, let's see:  
 
 ```sh
-$ ls -ld /tmp /tnt &gt;/dev/null
+$ ls -ld /tmp /tnt >/dev/null
 ls: cannot access /tnt: No such file or directory
 
-$ ls -ld /tmp /tnt &gt;/dev/null 2&gt;&amp;1
+$ ls -ld /tmp /tnt >/dev/null 2>&1
 
-$ ls -ld /tmp /tnt 2&gt;&amp;1 &gt;/dev/null
+$ ls -ld /tmp /tnt 2>&1 >/dev/null
 ls: cannot access /tnt: No such file or directory
 ```
 
@@ -2406,21 +2406,21 @@ The last command line dumps `STDERR` to the console, and it seem not to be the e
 If you want to make some <em>post filtering</em> about one output, the other or both:  
 
 ```sh
-$ ls -ld /tmp /tnt | sed 's/^.*$/&lt;-- &amp; ---&gt;/'
+$ ls -ld /tmp /tnt | sed 's/^.*$/<-- & --->/'
 ls: cannot access /tnt: No such file or directory
-&lt;-- drwxrwxrwt 118 root root 196608 Jan  7 12:02 /tmp ---&gt;
+<-- drwxrwxrwt 118 root root 196608 Jan  7 12:02 /tmp --->
 
-$ ls -ld /tmp /tnt 2&gt;&amp;1 | sed 's/^.*$/&lt;-- &amp; ---&gt;/'
-&lt;-- ls: cannot access /tnt: No such file or directory ---&gt;
-&lt;-- drwxrwxrwt 118 root root 196608 Jan  7 12:02 /tmp ---&gt;
+$ ls -ld /tmp /tnt 2>&1 | sed 's/^.*$/<-- & --->/'
+<-- ls: cannot access /tnt: No such file or directory --->
+<-- drwxrwxrwt 118 root root 196608 Jan  7 12:02 /tmp --->
 
-$ ls -ld /tmp /tnt &gt;/dev/null | sed 's/^.*$/&lt;-- &amp; ---&gt;/'
+$ ls -ld /tmp /tnt >/dev/null | sed 's/^.*$/<-- & --->/'
 ls: cannot access /tnt: No such file or directory
 
-$ ls -ld /tmp /tnt &gt;/dev/null 2&gt;&amp;1 | sed 's/^.*$/&lt;-- &amp; ---&gt;/'
+$ ls -ld /tmp /tnt >/dev/null 2>&1 | sed 's/^.*$/<-- & --->/'
 
-$ ls -ld /tmp /tnt 2&gt;&amp;1 &gt;/dev/null | sed 's/^.*$/&lt;-- &amp; ---&gt;/'
-&lt;-- ls: cannot access /tnt: No such file or directory ---&gt;
+$ ls -ld /tmp /tnt 2>&1 >/dev/null | sed 's/^.*$/<-- & --->/'
+<-- ls: cannot access /tnt: No such file or directory --->
 ```
 
 Notice that the last command line in this paragraph is exactly same as in previous paragraph, where I wrote <em>seem not to be the expected behaviour</em> (so, this could even be an expected behaviour).  
@@ -2429,7 +2429,7 @@ Notice that the last command line in this paragraph is exactly same as in previo
 <strong>doing different operation on both outputs</strong>:</p>
 
 ```sh
-$ ( ls -ld /tmp /tnt | sed 's/^/O: /' &gt;&amp;9 ) 9&gt;&amp;2  2&gt;&amp;1  | sed 's/^/E: /'
+$ ( ls -ld /tmp /tnt | sed 's/^/O: /' >&9 ) 9>&2  2>&1  | sed 's/^/E: /'
 O: drwxrwxrwt 118 root root 196608 Jan  7 12:13 /tmp
 E: ls: cannot access /tnt: No such file or directory
 ```
@@ -2439,7 +2439,7 @@ Nota: `&amp;9` descriptor would occur spontaneously because of `) 9&gt;&amp;2`.
 <strong>Addendum: nota!</strong> With the new version of <a href="/questions/tagged/bash" class="post-tag" title="show questions tagged &#39;bash&#39;" rel="tag">bash</a> (`&gt;4.0`) there is a new feature and more sexy syntax for doing this kind of things:  
 
 ```sh
-$ ls -ld /tmp /tnt 2&gt; &gt;(sed 's/^/E: /') &gt; &gt;(sed 's/^/O: /')
+$ ls -ld /tmp /tnt 2> >(sed 's/^/E: /') > >(sed 's/^/O: /')
 O: drwxrwxrwt 17 root root 28672 Nov  5 23:00 /tmp
 E: ls: cannot access /tnt: No such file or directory
 ```
@@ -2447,7 +2447,7 @@ E: ls: cannot access /tnt: No such file or directory
 And finally for such a cascading output formatting:  
 
 ```sh
-$ ((ls -ld /tmp /tnt |sed 's/^/O: /' &gt;&amp;9 ) 2&gt;&amp;1 |sed 's/^/E: /') 9&gt;&amp;1| cat -n
+$ ((ls -ld /tmp /tnt |sed 's/^/O: /' >&9 ) 2>&1 |sed 's/^/E: /') 9>&1| cat -n
      1  O: drwxrwxrwt 118 root root 196608 Jan  7 12:29 /tmp
      2  E: ls: cannot access /tnt: No such file or directory
 ```
@@ -2455,7 +2455,7 @@ $ ((ls -ld /tmp /tnt |sed 's/^/O: /' &gt;&amp;9 ) 2&gt;&amp;1 |sed 's/^/E: /') 9
 <strong>Addendum: nota!</strong> Same new syntax, in both ways:  
 
 ```sh
-$ cat -n &lt;(ls -ld /tmp /tnt 2&gt; &gt;(sed 's/^/E: /') &gt; &gt;(sed 's/^/O: /'))
+$ cat -n <(ls -ld /tmp /tnt 2> >(sed 's/^/E: /') > >(sed 's/^/O: /'))
      1  O: drwxrwxrwt 17 root root 28672 Nov  5 23:00 /tmp
      2  E: ls: cannot access /tnt: No such file or directory
 ```
@@ -2471,13 +2471,13 @@ While `set -o noclobber` instruct bash to <strong>not</strong> overwrite any exi
 ```sh
 $ testfile=$(mktemp /tmp/testNoClobberDate-XXXXXX)
 
-$ date &gt; $testfile ; cat $testfile
+$ date > $testfile ; cat $testfile
 Mon Jan  7 13:18:15 CET 2013
 
-$ date &gt; $testfile ; cat $testfile
+$ date > $testfile ; cat $testfile
 Mon Jan  7 13:18:19 CET 2013
 
-$ date &gt; $testfile ; cat $testfile
+$ date > $testfile ; cat $testfile
 Mon Jan  7 13:18:21 CET 2013
 ```
 
@@ -2486,11 +2486,11 @@ The file is overwritten each time, well now:
 ```sh
 $ set -o noclobber
 
-$ date &gt; $testfile ; cat $testfile
+$ date > $testfile ; cat $testfile
 bash: /tmp/testNoClobberDate-WW1xi9: cannot overwrite existing file
 Mon Jan  7 13:18:21 CET 2013
 
-$ date &gt; $testfile ; cat $testfile
+$ date > $testfile ; cat $testfile
 bash: /tmp/testNoClobberDate-WW1xi9: cannot overwrite existing file
 Mon Jan  7 13:18:21 CET 2013
 ```
@@ -2498,10 +2498,10 @@ Mon Jan  7 13:18:21 CET 2013
 Pass through with `&gt;|`:  
 
 ```sh
-$ date &gt;| $testfile ; cat $testfile
+$ date >| $testfile ; cat $testfile
 Mon Jan  7 13:18:58 CET 2013
 
-$ date &gt;| $testfile ; cat $testfile
+$ date >| $testfile ; cat $testfile
 Mon Jan  7 13:19:01 CET 2013
 ```
 
@@ -2516,7 +2516,7 @@ $ set +o noclobber
 $ set -o | grep noclobber
 noclobber           off
 
-$ date &gt; $testfile ; cat $testfile
+$ date > $testfile ; cat $testfile
 Mon Jan  7 13:24:27 CET 2013
 
 $ rm $testfile
@@ -2527,31 +2527,31 @@ $ rm $testfile
 For redirecting <strong>both</strong> output from a given command, we see that a right syntax could be:  
 
 ```sh
-$ ls -ld /tmp /tnt &gt;/dev/null 2&gt;&amp;1
+$ ls -ld /tmp /tnt >/dev/null 2>&1
 ```
 
 for this <em>special</em> case, there is a shortcut syntax: `&amp;&gt;` ... or `&gt;&amp;`  
 
 ```sh
-$ ls -ld /tmp /tnt &amp;&gt;/dev/null
+$ ls -ld /tmp /tnt &>/dev/null
 
-$ ls -ld /tmp /tnt &gt;&amp;/dev/null
+$ ls -ld /tmp /tnt >&/dev/null
 ```
 
 Nota: if <strong>`2&gt;&amp;1`</strong> exist, <strong>`1&gt;&amp;2`</strong> is a correct syntax too:  
 
 ```sh
-$ ls -ld /tmp /tnt 2&gt;/dev/null 1&gt;&amp;2
+$ ls -ld /tmp /tnt 2>/dev/null 1>&2
 ```
 
 <h5>4b- Now, I will let you think about:</h3>
 
 ```sh
-$ ls -ld /tmp /tnt 2&gt;&amp;1 1&gt;&amp;2  | sed -e s/^/++/
+$ ls -ld /tmp /tnt 2>&1 1>&2  | sed -e s/^/++/
 ++/bin/ls: cannot access /tnt: No such file or directory
 ++drwxrwxrwt 193 root root 196608 Feb  9 11:08 /tmp/
 
-$ ls -ld /tmp /tnt 1&gt;&amp;2 2&gt;&amp;1  | sed -e s/^/++/
+$ ls -ld /tmp /tnt 1>&2 2>&1  | sed -e s/^/++/
 /bin/ls: cannot access /tnt: No such file or directory
 drwxrwxrwt 193 root root 196608 Feb  9 11:08 /tmp/
 ```
@@ -2579,13 +2579,13 @@ Is there a way to redirect all output to file?
 That part is written to stderr, use `2&gt;` to redirect it. For example:  
 
 ```sh
-foo &gt; stdout.txt 2&gt; stderr.txt
+foo > stdout.txt 2> stderr.txt
 ```
 
 or if you want in same file:  
 
 ```sh
-foo &gt; allout.txt 2&gt;&amp;1
+foo > allout.txt 2>&1
 ```
 
 Note: this works in (ba)sh, check your shell for proper syntax  
@@ -2598,20 +2598,20 @@ All POSIX operating systems <a href="http://en.wikipedia.org/wiki/Standard_strea
 <strong>EDIT</strong>: thanks to Zack for pointing out that the above solution is not portable--use instead:      
 
 ```sh
-*command* &gt; file 2&gt;&amp;1 
+*command* > file 2>&1 
 ```
 
 If you want to silence the error, do:  
 
 ```sh
-*command* 2&gt; /dev/null
+*command* 2> /dev/null
 ```
 
 #### Answer 3 (score 84)
 To get the output on the console AND in a file `file.txt` for example.  
 
 ```sh
-make 2&gt;&amp;1 | tee file.txt
+make 2>&1 | tee file.txt
 ```
 
 Note: `&amp;` (in `2&gt;&amp;1`) specifies that `1` is not a file name but a file descriptor.  
@@ -2748,10 +2748,10 @@ The `seq` method is the simplest, but Bash has built-in arithmetic evaluation.
 
 ```sh
 END=5
-for ((i=1;i&lt;=END;i++)); do
+for ((i=1;i<=END;i++)); do
     echo $i
 done
-# ==&gt; outputs 1 2 3 4 5 on separate lines
+# ==> outputs 1 2 3 4 5 on separate lines
 ```
 
 The `for ((expr1;expr2;expr3));` construct works just like `for (expr1;expr2;expr3)` in C and similar languages, and like other `((expr))` cases, Bash treats them as arithmetic.  
@@ -2768,7 +2768,7 @@ This is an improved version of the Bash loop:
 ```sh
 typeset -i i END
 let END=5 i=1
-while ((i&lt;=END)); do
+while ((i<=END)); do
     echo $i
     …
     let i++
@@ -2783,7 +2783,7 @@ So,
 
 ```sh
 typeset -i i END # Let's be explicit
-for ((i=1;i&lt;=END;++i)); do echo $i; done
+for ((i=1;i<=END;++i)); do echo $i; done
 ```
 
 seems to be the most memory-efficient way (it won't be necessary to allocate memory to consume `seq`'s output, which could be a problem if END is very large), although probably not the “fastest”.  
@@ -2886,7 +2886,7 @@ Knowledge of high level programming languages (C/C++/Java/PHP/Python/Perl ...) w
 # $2 is the name of the tar and zipped file when all is done.
 function backupWebRoot ()
 {
-    tar -cvf - $1 | zip -n .jpg:.gif:.png $2 - 2&gt;&gt; $errorlog &amp;&amp;
+    tar -cvf - $1 | zip -n .jpg:.gif:.png $2 - 2>> $errorlog &&
         echo -e "\nTarball created!\n"
 }
 
@@ -2896,7 +2896,7 @@ function backupWebRoot ()
 # $2 is the name of the tar and zipped file when all is done.
 backupWebRoot ()
 {
-    tar -cvf - $1 | zip -n .jpg:.gif:.png $2 - 2&gt;&gt; $errorlog &amp;&amp;
+    tar -cvf - $1 | zip -n .jpg:.gif:.png $2 - 2>> $errorlog &&
         echo -e "\nTarball created!\n"
 }
 
@@ -2951,7 +2951,7 @@ function assignTrap {
     return
   fi
 
-  while [[ "${1-}" == "," || "${1-}" == "${initialCommand}" ]] || [[ "${#@}" -gt 0 &amp;&amp; "$paramIndex" -eq 0 ]]
+  while [[ "${1-}" == "," || "${1-}" == "${initialCommand}" ]] || [[ "${#@}" -gt 0 && "$paramIndex" -eq 0 ]]
   do
     shift # first colon ":" or next parameter's comma ","
     paramIndex+=1
@@ -2987,7 +2987,7 @@ function assignTrap {
       do
         case ${decorator} in
           @readonly) declaration+="r" ;;
-          @required) evalString+="[[ ! -z \$${paramIndex} ]] || echo \"Parameter '$nextName' ($nextType) is marked as required by '${FUNCNAME[1]}' function.\"; " &gt;&amp;2 ;;
+          @required) evalString+="[[ ! -z \$${paramIndex} ]] || echo \"Parameter '$nextName' ($nextType) is marked as required by '${FUNCNAME[1]}' function.\"; " >&2 ;;
           @global) declaration+="g" ;;
         esac
       done
@@ -3002,7 +3002,7 @@ function assignTrap {
         nextName="${nextName//\./}"
         if [[ "${#@}" -gt 1 ]]
         then
-          echo "Unexpected arguments after a rest array ($nextName) in '${FUNCNAME[1]}' function." &gt;&amp;2
+          echo "Unexpected arguments after a rest array ($nextName) in '${FUNCNAME[1]}' function." >&2
         fi
       elif [[ "$length" -gt 1 ]]
       then
@@ -3259,11 +3259,11 @@ fi
 Depending on your system, you may need to replace `whiptail` with another similiar tool:  
 
 ```sh
-dialog --yesno "Is this a good question" 20 60 &amp;&amp; echo Yes
+dialog --yesno "Is this a good question" 20 60 && echo Yes
 
-gdialog --yesno "Is this a good question" 20 60 &amp;&amp; echo Yes
+gdialog --yesno "Is this a good question" 20 60 && echo Yes
 
-kdialog --yesno "Is this a good question" 20 60 &amp;&amp; echo Yes
+kdialog --yesno "Is this a good question" 20 60 && echo Yes
 ```
 
 where `20` is height of dialog box in number of lines and `60` is width of  the dialog box. These tools all have <em>near same</em> syntax.  
@@ -3306,7 +3306,7 @@ Under bash, `read` command accepts a <em>timeout</em> parameter, which could be 
 
 ```sh
 read -t 3 -n 1 -p "Is this a good question (y/n)? " answer
-[ -z "$answer" ] &amp;&amp; answer="Yes"  # if 'yes' have to be default choice
+[ -z "$answer" ] && answer="Yes"  # if 'yes' have to be default choice
 ```
 
 <h5>Some tricks for <em>dedicated tools</em></h3>
@@ -3320,7 +3320,7 @@ dialog --menu "Is this a good question" 20 60 12 y Yes n No m Maybe
 Progress bar:  
 
 ```sh
-dialog --gauge "Filling the tank" 20 60 0 &lt; &lt;(
+dialog --gauge "Filling the tank" 20 60 0 < <(
     for i in {1..100};do
         printf "XXX\n%d\n%(%a %b %T)T progress: %d\nXXX\n" $i -1 $i
         sleep .033
@@ -3334,8 +3334,8 @@ Little demo:
 #!/bin/sh
 while true ;do
     [ -x "$(which ${DIALOG%% *})" ] || DIALOG=dialog
-    DIALOG=$($DIALOG --menu "Which tool for next run?" 20 60 12 2&gt;&amp;1 \
-            whiptail       "dialog boxes from shell scripts" &gt;/dev/tty \
+    DIALOG=$($DIALOG --menu "Which tool for next run?" 20 60 12 2>&1 \
+            whiptail       "dialog boxes from shell scripts" >/dev/tty \
             dialog         "dialog boxes from shell with ncurses" \
             gdialog        "dialog boxes from shell with Gtk" \
             kdialog        "dialog boxes from shell with Kde" ) || exit
@@ -3348,17 +3348,17 @@ while true ;do
     sleep 3
     if $DIALOG --yesno  "Do you like this demo?" 20 60 ;then
         AnsYesNo=Yes; else AnsYesNo=No; fi
-    AnsInput=$($DIALOG --inputbox "A text:" 20 60 "Text here..." 2&gt;&amp;1 &gt;/dev/tty)
-    AnsPass=$($DIALOG --passwordbox "A secret:" 20 60 "First..." 2&gt;&amp;1 &gt;/dev/tty)
+    AnsInput=$($DIALOG --inputbox "A text:" 20 60 "Text here..." 2>&1 >/dev/tty)
+    AnsPass=$($DIALOG --passwordbox "A secret:" 20 60 "First..." 2>&1 >/dev/tty)
     $DIALOG --textbox /etc/motd 20 60
     AnsCkLst=$($DIALOG --checklist "Check some..." 20 60 12 \
         Correct "This demo is useful"        off \
         Fun        "This demo is nice"        off \
-        Strong        "This demo is complex"        on 2&gt;&amp;1 &gt;/dev/tty)
+        Strong        "This demo is complex"        on 2>&1 >/dev/tty)
     AnsRadio=$($DIALOG --radiolist "I will:" 20 60 12 \
         " -1" "Downgrade this answer"        off \
         "  0" "Not do anything"                on \
-        " +1" "Upgrade this anser"        off 2&gt;&amp;1 &gt;/dev/tty)
+        " +1" "Upgrade this anser"        off 2>&1 >/dev/tty)
     out="Your answers:\nLike: $AnsYesNo\nInput: $AnsInput\nSecret: $AnsPass"
     $DIALOG --msgbox "$out\nAttribs: $AnsCkLst\nNote: $AnsRadio" 20 60
   done
@@ -3379,7 +3379,7 @@ history -c
 history -r
 
 myread() {
-    read -e -p '&gt; ' $1
+    read -e -p '> ' $1
     history -s ${!1}
 }
 trap 'history -a;exit' 0 1 2 3 6
@@ -3413,11 +3413,11 @@ If `$#` is equal to `0` or is greater than `1` then say hello.
 I have tried the following syntax with no success:  
 
 ```sh
-if [ "$#" == 0 -o "$#" &gt; 1 ] ; then
+if [ "$#" == 0 -o "$#" > 1 ] ; then
  echo "hello"
 fi
 
-if [ "$#" == 0 ] || [ "$#" &gt; 1 ] ; then
+if [ "$#" == 0 ] || [ "$#" > 1 ] ; then
  echo "hello"
 fi
 ```
@@ -3436,7 +3436,7 @@ fi
 I'm not sure if this is different in other shells but if you wish to use &lt;, >, you need to put them inside double parenthesis like so:   
 
 ```sh
-if (("$#" &gt; 1))
+if (("$#" > 1))
  ...
 ```
 
@@ -3766,7 +3766,7 @@ I'm trying to parse JSON returned from a curl request, like so:
 ```sh
 curl 'http://twitter.com/users/username.json' |
     sed -e 's/[{}]/''/g' | 
-    awk -v k="text" '{n=split($0,a,","); for (i=1; i&lt;=n; i++) print a[i]}'
+    awk -v k="text" '{n=split($0,a,","); for (i=1; i<=n; i++) print a[i]}'
 ```
 
 The above splits the JSON into fields, for example:  
@@ -3847,7 +3847,7 @@ To write maintainable code, I always use a real parsing library.  I haven't trie
 One last, wackier, solution: I wrote a script that uses Python `json` and extracts the keys you want, into tab-separated columns; then I pipe through a wrapper around `awk` that allows named access to columns.  <a href="https://github.com/brendano/tsvutils" rel="noreferrer">In here: the json2tsv and tsvawk scripts</a>.  So for this example it would be:  
 
 ```sh
-json2tsv id text &lt; tweets.json | tsvawk '{print "tweet " $id " is: " $text}'
+json2tsv id text < tweets.json | tsvawk '{print "tweet " $id " is: " $text}'
 ```
 
 This approach doesn't address #2, is more inefficient than a single Python script, and it's a little brittle: it forces normalization of newlines and tabs in string values, to play nice with awk's field/record-delimited view of the world.  But it does let you stay on the command line, with more correctness than `grep -o`.  
@@ -3876,7 +3876,7 @@ it to the variable in line 16?</p>
 num=0
 metab=0
 
-for ((i=1; i&lt;=2; i++)); do      
+for ((i=1; i<=2; i++)); do      
     for j in `ls output-$i-*`; do
         echo "$j"
 
@@ -4130,7 +4130,7 @@ In the following cases<sup>2</sup>, this condition will evaluate to <strong>true
 var=''  # Equivalent to var="".        Case 2
 var=    #                              Case 3
 unset var  #                           Case 4
-var='&lt;some valid command&gt;'  #          Case 5
+var='<some valid command>'  #          Case 5
 ```
 
 Typically you only want your condition to evaluate to true when your "boolean" variable, `var` in this example, is explicitly set to true. All the others cases are dangerously misleading!  
@@ -4339,7 +4339,7 @@ hi all
 $ echo "$a" | sed -e 's/\(.*\)/\L\1/'
 hi all
 # this also works:
-$ sed -e 's/\(.*\)/\L\1/' &lt;&lt;&lt; "$a"
+$ sed -e 's/\(.*\)/\L\1/' <<< "$a"
 hi all
 ```
 
@@ -4366,7 +4366,7 @@ lc(){
     esac
 }
 word="I Love Bash"
-for((i=0;i&lt;${#word};i++))
+for((i=0;i<${#word};i++))
 do
     ch="${word:$i:1}"
     lc "$ch"
@@ -4482,7 +4482,7 @@ I needed to write a script to enter multi-line input to a program (`psql`).
 After a bit of googling, I found the following syntax works:  
 
 ```sh
-cat &lt;&lt; EOF | psql ---params
+cat << EOF | psql ---params
 BEGIN;
 
 `pg_dump ----something`
@@ -4524,7 +4524,7 @@ From `man bash`:
   The format of here-documents is:  
 
 ```sh
-          &lt;&lt;[-]word
+          <<[-]word
                   here-document
           delimiter
 ```
@@ -4558,7 +4558,7 @@ The `cat &lt;&lt;EOF` syntax is very useful when working with multi-line text in
 
 
 ```sh
-$ sql=$(cat &lt;&lt;EOF
+$ sql=$(cat <<EOF
 SELECT foo, bar FROM db
 WHERE foo='baz'
 EOF
@@ -4570,7 +4570,7 @@ EOF
 <h5>2. Pass multi-line string to a file in Bash</h2>
 
 ```sh
-$ cat &lt;&lt;EOF &gt; print.sh
+$ cat <<EOF > print.sh
 #!/bin/bash
 echo \$PWD
 echo $PWD
@@ -4588,7 +4588,7 @@ echo /home/user
 <h5>3. Pass multi-line string to a pipe in Bash</h2>
 
 ```sh
-$ cat &lt;&lt;EOF | grep 'b' | tee b.txt
+$ cat <<EOF | grep 'b' | tee b.txt
 foo
 bar
 baz
@@ -4611,12 +4611,12 @@ Some rules about the Here tags:
 example:   
 
 ```sh
-$ cat &gt;&gt; test &lt;&lt;HERE
-&gt; Hello world HERE &lt;-- Not by itself on a separate line -&gt; not considered end of string
-&gt; This is a test
-&gt;  HERE &lt;-- Leading space, so not considered end of string
-&gt; and a new line
-&gt; HERE &lt;-- Now we have the end of the string
+$ cat >> test <<HERE
+> Hello world HERE <-- Not by itself on a separate line -> not considered end of string
+> This is a test
+>  HERE <-- Leading space, so not considered end of string
+> and a new line
+> HERE <-- Now we have the end of the string
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -4676,7 +4676,7 @@ I would like to use simple code, the command's speed doesn't matter. How can I d
 
 #### Answer accepted (score 984)
 ```sh
-IFS=', ' read -r -a array &lt;&lt;&lt; "$string"
+IFS=', ' read -r -a array <<< "$string"
 ```
 
 Note that the characters in `$IFS` are treated individually as separators so that in this case fields may be separated by <em>either</em> a comma or a space rather than the sequence of the two characters. Interestingly though, empty fields aren't created when comma-space appears in the input because the space is treated specially.  
@@ -4740,7 +4740,7 @@ All of the answers to this question are wrong in one way or another.
 <a href="https://stackoverflow.com/a/10586169/4272464"><strong><em>Wrong answer #1</em></strong></a>  
 
 ```sh
-IFS=', ' read -r -a array &lt;&lt;&lt; "$string"
+IFS=', ' read -r -a array <<< "$string"
 ```
 
 <strong>1:</strong> This is a misuse of `$IFS`. The value of the `$IFS` variable is <strong>not</strong> taken as a <em>single variable-length</em> string separator, rather it is taken as a <em>set</em> of <em>single-character</em> string separators, where each field that `read` splits off from the input line can be terminated by <em>any</em> character in the set (comma <strong>or</strong> space, in this example).  
@@ -4756,7 +4756,7 @@ Basically, for non-default non-null values of `$IFS`, fields can be separated wi
 For the OP, it's possible that the second separation mode I described in the previous paragraph is exactly what he wants for his input string, but we can be pretty confident that the first separation mode I described is not correct at all. For example, what if his input string was `'Los Angeles, United States, North America'`?  
 
 ```sh
-IFS=', ' read -ra a &lt;&lt;&lt;'Los Angeles, United States, North America'; declare -p a;
+IFS=', ' read -ra a <<<'Los Angeles, United States, North America'; declare -p a;
 ## declare -a a=([0]="Los" [1]="Angeles" [2]="United" [3]="States" [4]="North" [5]="America")
 ```
 
@@ -4767,7 +4767,7 @@ You could argue that this is unlikely to cause a problem, but still, it's a subt
 <strong>3:</strong> A non-obvious potential issue with this solution is that `read` always drops the trailing field if it is empty, although it preserves empty fields otherwise. Here's a demo:  
 
 ```sh
-string=', , a, , b, c, , , '; IFS=', ' read -ra a &lt;&lt;&lt;"$string"; declare -p a;
+string=', , a, , b, c, , , '; IFS=', ' read -ra a <<<"$string"; declare -p a;
 ## declare -a a=([0]="" [1]="" [2]="a" [3]="" [4]="b" [5]="c" [6]="" [7]="")
 ```
 
@@ -4960,7 +4960,7 @@ string='first line
         second line
         third line'
 
-while read -r line; do lines+=("$line"); done &lt;&lt;&lt;"$string"
+while read -r line; do lines+=("$line"); done <<<"$string"
 ```
 
 This is one of the best solutions. Notice that we're back to using `read`. Didn't I say earlier that `read` is inappropriate because it performs two levels of splitting, when we only need one? The trick here is that you can call `read` in such a way that it effectively only does one level of splitting, specifically by splitting off only one field per invocation, which necessitates the cost of having to call it repeatedly in a loop. It's a bit of a sleight of hand, but it works.  
@@ -4970,10 +4970,10 @@ But there are problems. First: When you provide at least one <em>NAME</em> argum
 ```sh
 string=$'  a  b  \n  c  d  \n  e  f  '; ## input string
 
-a=(); while read -r line; do a+=("$line"); done &lt;&lt;&lt;"$string"; declare -p a;
+a=(); while read -r line; do a+=("$line"); done <<<"$string"; declare -p a;
 ## declare -a a=([0]="a  b" [1]="c  d" [2]="e  f") ## read trimmed surrounding whitespace
 
-a=(); while read -r; do a+=("$REPLY"); done &lt;&lt;&lt;"$string"; declare -p a;
+a=(); while read -r; do a+=("$REPLY"); done <<<"$string"; declare -p a;
 ## declare -a a=([0]="  a  b  " [1]="  c  d  " [2]="  e  f  ") ## no trimming
 ```
 
@@ -4981,7 +4981,7 @@ The second issue with this solution is that it does not actually address the cas
 
 ```sh
 string='Paris, France, Europe';
-a=(); while read -rd,; do a+=("$REPLY"); done &lt;&lt;&lt;"$string"; declare -p a;
+a=(); while read -rd,; do a+=("$REPLY"); done <<<"$string"; declare -p a;
 ## declare -a a=([0]="Paris" [1]=" France")
 ```
 
@@ -4990,14 +4990,14 @@ Predictably, the unaccounted surrounding whitespace got pulled into the field va
 Technically this same error afflicted the previous examples as well; the difference there is that the field separator was taken to be LF, which is the default when you don't specify the `-d` option, and the `&lt;&lt;&lt;` ("here-string") mechanism automatically appends a LF to the string just before it feeds it as input to the command. Hence, in those cases, we sort of <em>accidentally</em> solved the problem of a dropped final field by unwittingly appending an additional dummy terminator to the input. Let's call this solution the "dummy-terminator" solution. We can apply the dummy-terminator solution manually for any custom delimiter by concatenating it against the input string ourselves when instantiating it in the here-string:  
 
 ```sh
-a=(); while read -rd,; do a+=("$REPLY"); done &lt;&lt;&lt;"$string,"; declare -p a;
+a=(); while read -rd,; do a+=("$REPLY"); done <<<"$string,"; declare -p a;
 declare -a a=([0]="Paris" [1]=" France" [2]=" Europe")
 ```
 
 There, problem solved. Another solution is to only break the while-loop if both (1) `read` returned failure and (2) `$REPLY` is empty, meaning `read` was not able to read any characters prior to hitting end-of-file. Demo:  
 
 ```sh
-a=(); while read -rd,|| [[ -n "$REPLY" ]]; do a+=("$REPLY"); done &lt;&lt;&lt;"$string"; declare -p a;
+a=(); while read -rd,|| [[ -n "$REPLY" ]]; do a+=("$REPLY"); done <<<"$string"; declare -p a;
 ## declare -a a=([0]="Paris" [1]=" France" [2]=$' Europe\n')
 ```
 
@@ -5014,7 +5014,7 @@ string='first line
         second line
         third line'
 
-readarray -t lines &lt;&lt;&lt;"$string"
+readarray -t lines <<<"$string"
 ```
 
 (This is actually from the same post as <strong>#7</strong>; the answerer provided two solutions in the same post.)  
@@ -5037,21 +5037,21 @@ Here's a naïve attempt to make <strong>#8</strong> work by just specifying the 
 
 ```sh
 string='Paris, France, Europe';
-readarray -td, a &lt;&lt;&lt;"$string"; declare -p a;
+readarray -td, a <<<"$string"; declare -p a;
 ## declare -a a=([0]="Paris" [1]=" France" [2]=$' Europe\n')
 ```
 
 We see the result is identical to the result we got from the double-conditional approach of the looping `read` solution discussed in <strong>#7</strong>. We can <em>almost</em> solve this with the manual dummy-terminator trick:  
 
 ```sh
-readarray -td, a &lt;&lt;&lt;"$string,"; declare -p a;
+readarray -td, a <<<"$string,"; declare -p a;
 ## declare -a a=([0]="Paris" [1]=" France" [2]=" Europe" [3]=$'\n')
 ```
 
 The problem here is that `readarray` preserved the trailing field, since the `&lt;&lt;&lt;` redirection operator appended the LF to the input string, and therefore the trailing field was <em>not</em> empty (otherwise it would've been dropped). We can take care of this by explicitly unsetting the final array element after-the-fact:  
 
 ```sh
-readarray -td, a &lt;&lt;&lt;"$string,"; unset 'a[-1]'; declare -p a;
+readarray -td, a <<<"$string,"; unset 'a[-1]'; declare -p a;
 ## declare -a a=([0]="Paris" [1]=" France" [2]=" Europe")
 ```
 
@@ -5062,7 +5062,7 @@ The whitespace could of course be trimmed afterward (for example, see <a href="h
 Unfortunately, there's no <em>direct</em> way to get a multicharacter delimiter to work. The best solution I've thought of is to preprocess the input string to replace the multicharacter delimiter with a single-character delimiter that will be guaranteed not to collide with the contents of the input string. The only character that has this guarantee is the <a href="https://en.wikipedia.org/wiki/Null_character" rel="noreferrer">NUL byte</a>. This is because, in bash (though not in zsh, incidentally), variables cannot contain the NUL byte. This preprocessing step can be done inline in a process substitution. Here's how to do it using <a href="https://www.gnu.org/software/gawk/" rel="noreferrer">awk</a>:  
 
 ```sh
-readarray -td '' a &lt; &lt;(awk '{ gsub(/, /,"\0"); print; }' &lt;&lt;&lt;"$string, "); unset 'a[-1]';
+readarray -td '' a < <(awk '{ gsub(/, /,"\0"); print; }' <<<"$string, "); unset 'a[-1]';
 declare -p a;
 ## declare -a a=([0]="Paris" [1]="France" [2]="Europe")
 ```
@@ -5080,7 +5080,7 @@ function mfcb { local val="$4"; "$1"; eval "$2[$3]=\$val;"; };
 function val_ltrim { if [[ "$val" =~ ^[[:space:]]+ ]]; then val="${val:${#BASH_REMATCH[0]}}"; fi; };
 function val_rtrim { if [[ "$val" =~ [[:space:]]+$ ]]; then val="${val:0:${#val}-${#BASH_REMATCH[0]}}"; fi; };
 function val_trim { val_ltrim; val_rtrim; };
-readarray -c1 -C 'mfcb val_trim a' -td, &lt;&lt;&lt;"$string,"; unset 'a[-1]'; declare -p a;
+readarray -c1 -C 'mfcb val_trim a' -td, <<<"$string,"; unset 'a[-1]'; declare -p a;
 ## declare -a a=([0]="Paris" [1]="France" [2]="Europe")
 ```
 
@@ -5093,7 +5093,7 @@ set -f                      # avoid globbing (expansion of *).
 array=(${string//:/ })
 for i in "${!array[@]}"
 do
-    echo "$i=&gt;${array[i]}"
+    echo "$i=>${array[i]}"
 done
 ```
 
@@ -5125,7 +5125,7 @@ read a b;
 echo "a=$a";
 echo "b=$b";
 
-if [ $a \&gt; $b ];
+if [ $a \> $b ];
 then 
     echo "a is greater than b";
 else
@@ -5141,7 +5141,7 @@ How can I convert the numbers into a type to do a true comparison?
 In bash, you should do your check in <a href="http://mywiki.wooledge.org/ArithmeticExpression">arithmetic context</a>:  
 
 ```sh
-if (( a &gt; b )); then
+if (( a > b )); then
     ...
 fi
 ```
@@ -5187,7 +5187,7 @@ Shortly, integers can only be compared with:
 There is also one nice thing some people might not know about:  
 
 ```sh
-echo $(( a &lt; b ? a : b ))
+echo $(( a < b ? a : b ))
 ```
 
 This code will print the smallest number out of `a` and `b`  
@@ -5330,7 +5330,7 @@ for g in 1 2 3
 do
     for c in 123 456 789
     do
-        if [[ ( "$g" -eq 1 &amp;&amp; "$c" = "123" ) || ( "$g" -eq 2 &amp;&amp; "$c" = "456" ) ]]
+        if [[ ( "$g" -eq 1 && "$c" = "123" ) || ( "$g" -eq 2 && "$c" = "456" ) ]]
         then echo "g = $g; c = $c; true"
         else echo "g = $g; c = $c; false"
         fi
@@ -5372,9 +5372,9 @@ fi
 Indeed, if you read the 'portable shell' guidelines for the `autoconf` tool or related packages, this notation — using '`||`' and '`&amp;&amp;`' — is what they recommend.  I suppose you could even go so far as:  
 
 ```sh
-if [ "$g" -eq 1 ] &amp;&amp; [ "$c" = "123" ]
+if [ "$g" -eq 1 ] && [ "$c" = "123" ]
 then echo abc
-elif [ "$g" -eq 2 ] &amp;&amp; [ "$c" = "456" ]
+elif [ "$g" -eq 2 ] && [ "$c" = "456" ]
 then echo abc
 else echo efg
 fi
@@ -5386,7 +5386,7 @@ Where the actions are as trivial as echoing, this isn't bad.  When the action bl
 In Bash:  
 
 ```sh
-if [[ ( $g == 1 &amp;&amp; $c == 123 ) || ( $g == 2 &amp;&amp; $c == 456 ) ]]
+if [[ ( $g == 1 && $c == 123 ) || ( $g == 2 && $c == 456 ) ]]
 ```
 
 #### Answer 3 (score 30)
@@ -5520,7 +5520,7 @@ first=${first//Suzy/$second}
 try this:  
 
 ```sh
- sed "s/Suzi/$secondString/g" &lt;&lt;&lt;"$firstString"
+ sed "s/Suzi/$secondString/g" <<<"$firstString"
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -5681,14 +5681,14 @@ It also has some other features like unquoted condition grouping, pattern matchi
 The following example checks if arguments are valid. It allows a single argument or two.  
 
 ```sh
-[[ ($# -eq 1 || ($# -eq 2 &amp;&amp; $2 == &lt;glob pattern&gt;)) &amp;&amp; $1 =~ &lt;regex pattern&gt; ]]
+[[ ($# -eq 1 || ($# -eq 2 && $2 == <glob pattern>)) && $1 =~ <regex pattern> ]]
 ```
 
 For pure arithmetic expressions, using `(( ))` to some may still be better, but they are still possible in `[[ ]]` with its arithmetic operators like `-eq`, `-ne`, `-lt`, `-le`, `-gt`, or `-ge` by placing the expression as a single string argument:  
 
 ```sh
 A=1
-[[ 'A + 1' -eq 2 ]] &amp;&amp; echo true  ## Prints true.
+[[ 'A + 1' -eq 2 ]] && echo true  ## Prints true.
 ```
 
 That should be helpful if you would need to combine it with other features of `[[ ]]` as well.  
@@ -5749,26 +5749,26 @@ if [ $# -eq 1 ]; then
 To redirect <em>stdout</em> to a truncated file in Bash, I know to use:  
 
 ```sh
-cmd &gt; file.txt
+cmd > file.txt
 ```
 
 To redirect <em>stdout</em> in Bash, appending to a file, I know to use:  
 
 ```sh
-cmd &gt;&gt; file.txt
+cmd >> file.txt
 ```
 
 To redirect both <em>stdout</em> and <em>stderr</em> to a truncated file, I know to use:  
 
 ```sh
-cmd &amp;&gt; file.txt
+cmd &> file.txt
 ```
 
 How do I redirect both <em>stdout</em> and <em>stderr</em> appending to a file? `cmd &amp;&gt;&gt; file.txt` did not work for me.  
 
 #### Answer accepted (score 1853)
 ```sh
-cmd &gt;&gt;file.txt 2&gt;&amp;1
+cmd >>file.txt 2>&1
 ```
 
 Bash executes the redirects from left to right as follows:  
@@ -5784,13 +5784,13 @@ There are two ways to do this, depending on your Bash version.
 The classic and portable (<strong>Bash pre-4</strong>) way is:  
 
 ```sh
-cmd &gt;&gt; outfile 2&gt;&amp;1
+cmd >> outfile 2>&1
 ```
 
 A nonportable way, starting with <strong>Bash 4</strong> is  
 
 ```sh
-cmd &amp;&gt;&gt; outfile
+cmd &>> outfile
 ```
 
 (analog to `&amp;&gt; outfile`)  
@@ -5813,13 +5813,13 @@ The syntax is (beside other redirection syntax) described here: <a href="http://
 In Bash you can also explicitly specify your redirects to different files:  
 
 ```sh
-cmd &gt;log.out 2&gt;log_error.out
+cmd >log.out 2>log_error.out
 ```
 
 Appending would be:  
 
 ```sh
-cmd &gt;&gt;log.out 2&gt;&gt;log_error.out
+cmd >>log.out 2>>log_error.out
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -5884,7 +5884,7 @@ A couple of notes first: when you use `Data/data1.txt` as an argument, should it
 ```sh
 #!/bin/bash
 for filename in /Data/*.txt; do
-    for ((i=0; i&lt;=3; i++)); do
+    for ((i=0; i<=3; i++)); do
         ./MyProgram.exe "$filename" "Logs/$(basename "$filename" .txt)_Log$i.txt"
     done
 done
@@ -5918,7 +5918,7 @@ Reference: <a href="http://mywiki.wooledge.org/BashPitfalls#line-57" rel="norefe
 ```sh
 for file in Data/*.txt
 do
-    for ((i = 0; i &lt; 3; i++))
+    for ((i = 0; i < 3; i++))
     do
         name=${file##*/}
         base=${name%.txt}
@@ -5942,14 +5942,14 @@ I want to redirect both stdout and stderr of a process to a single file. How do 
 Take a look <a href="http://tldp.org/LDP/abs/html/io-redirection.html" rel="noreferrer">here</a>. Should be:  
 
 ```sh
-yourcommand &amp;&gt;filename
+yourcommand &>filename
 ```
 
 (redirects both `stdout` and `stderr` to filename).  
 
 #### Answer 2 (score 437)
 ```sh
-do_something 2&gt;&amp;1 | tee -a some_file
+do_something 2>&1 | tee -a some_file
 ```
 
 This is going to redirect stderr to stdout and stdout to `some_file` <strong>and</strong> print it to stdout.  
@@ -5958,7 +5958,7 @@ This is going to redirect stderr to stdout and stdout to `some_file` <strong>and
 You can redirect <em>stderr</em> to <em>stdout</em> and the <em>stdout</em> into a file:  
 
 ```sh
-some_command &gt;file.log 2&gt;&amp;1 
+some_command >file.log 2>&1 
 ```
 
 See <a href="http://tldp.org/LDP/abs/html/io-redirection.html" rel="noreferrer">http://tldp.org/LDP/abs/html/io-redirection.html</a>  
@@ -6212,7 +6212,7 @@ If you really really want to use just bash, then the following can work:
 ```sh
 while read a; do
     echo ${a//abc/XYZ}
-done &lt; /tmp/file.txt &gt; /tmp/file.txt.t
+done < /tmp/file.txt > /tmp/file.txt.t
 mv /tmp/file.txt{.t,}
 ```
 
@@ -6259,14 +6259,14 @@ It seems like it should be easy, but it's been stumping me.
 POSIX compatible:  
 
 ```sh
-command -v &lt;the_command&gt;
+command -v <the_command>
 ```
 
 For `bash` specific environments:  
 
 ```sh
-hash &lt;the_command&gt; # For regular commands. Or...
-type &lt;the_command&gt; # To check built-ins and keywords
+hash <the_command> # For regular commands. Or...
+type <the_command> # To check built-ins and keywords
 ```
 
 <h5>Explanation</h2>
@@ -6283,9 +6283,9 @@ Why care?
 So, don't use `which`.  Instead use one of these:  
 
 ```sh
-$ command -v foo &gt;/dev/null 2&gt;&amp;1 || { echo &gt;&amp;2 "I require foo but it's not installed.  Aborting."; exit 1; }
-$ type foo &gt;/dev/null 2&gt;&amp;1 || { echo &gt;&amp;2 "I require foo but it's not installed.  Aborting."; exit 1; }
-$ hash foo 2&gt;/dev/null || { echo &gt;&amp;2 "I require foo but it's not installed.  Aborting."; exit 1; }
+$ command -v foo >/dev/null 2>&1 || { echo >&2 "I require foo but it's not installed.  Aborting."; exit 1; }
+$ type foo >/dev/null 2>&1 || { echo >&2 "I require foo but it's not installed.  Aborting."; exit 1; }
+$ hash foo 2>/dev/null || { echo >&2 "I require foo but it's not installed.  Aborting."; exit 1; }
 ```
 
 (Minor side-note: some will suggest `2&gt;&amp;-` is the same `2&gt;/dev/null` but shorter – <em>this is untrue</em>.  `2&gt;&amp;-` closes FD 2 which causes an <strong>error</strong> in the program when it tries to write to stderr, which is very different from successfully writing to it and discarding the output (and dangerous!))  
@@ -6298,7 +6298,7 @@ As a simple example, here's a function that runs `gdate` if it exists, otherwise
 
 ```sh
 gnudate() {
-    if hash gdate 2&gt;/dev/null; then
+    if hash gdate 2>/dev/null; then
         gdate "$@"
     else
         date "$@"
@@ -6317,7 +6317,7 @@ Example:
 
 ```sh
 if ! [ -x "$(command -v git)" ]; then
-  echo 'Error: git is not installed.' &gt;&amp;2
+  echo 'Error: git is not installed.' >&2
   exit 1
 fi
 ```
@@ -6332,7 +6332,7 @@ In addition, this will fail if the command you are looking for has been defined 
 I agree with lhunath to discourage use of `which`, and his solution is perfectly valid <em>for BASH users</em>. However, to be more portable, `command -v` shall be used instead:  
 
 ```sh
-$ command -v foo &gt;/dev/null 2&gt;&amp;1 || { echo "I require foo but it's not installed.  Aborting." &gt;&amp;2; exit 1; }
+$ command -v foo >/dev/null 2>&1 || { echo "I require foo but it's not installed.  Aborting." >&2; exit 1; }
 ```
 
 Command `command` is POSIX compliant, see here for its specification: <a href="http://pubs.opengroup.org/onlinepubs/9699919799/utilities/command.html" rel="noreferrer">http://pubs.opengroup.org/onlinepubs/9699919799/utilities/command.html</a>  
@@ -6363,15 +6363,15 @@ By the way, if you type it as a multiline (as you are showing) at the command pr
 
 ```sh
 $ while true
-&gt; do
-&gt;    echo "hello"
-&gt;    sleep 2
-&gt; done
+> do
+>    echo "hello"
+>    sleep 2
+> done
 hello
 hello
 hello
 ^C
-$ &lt;arrow up&gt; while true; do    echo "hello";    sleep 2; done
+$ <arrow up> while true; do    echo "hello";    sleep 2; done
 ```
 
 #### Answer 2 (score 159)
@@ -6433,7 +6433,7 @@ I just can't figure out how do I make sure an argument passed to my script is a 
 All I want to do is something like this:  
 
 ```sh
-test *isnumber* $1 &amp;&amp; VAR=$1 || echo "need a number"
+test *isnumber* $1 && VAR=$1 || echo "need a number"
 ```
 
 Any help?  
@@ -6444,7 +6444,7 @@ One approach is to use a regular expression, like so:
 ```sh
 re='^[0-9]+$'
 if ! [[ $yournumber =~ $re ]] ; then
-   echo "error: Not a number" &gt;&amp;2; exit 1
+   echo "error: Not a number" >&2; exit 1
 fi
 ```
 
@@ -6488,7 +6488,7 @@ as in:
 
 var=a
 
-if [ -n "$var" ] &amp;&amp; [ "$var" -eq "$var" ] 2&gt;/dev/null; then
+if [ -n "$var" ] && [ "$var" -eq "$var" ] 2>/dev/null; then
   echo number
 else
   echo not a number
@@ -6498,7 +6498,7 @@ fi
 You can can also test for $? the return code of the operation which is more explicit:  
 
 ```sh
-[ -n "$var" ] &amp;&amp; [ "$var" -eq "$var" ] 2&gt;/dev/null
+[ -n "$var" ] && [ "$var" -eq "$var" ] 2>/dev/null
 if [ $? -ne 0 ]; then
    echo $var is not number
 fi
@@ -6528,7 +6528,7 @@ I was able to open the file. However, I don't know how to write data to it.
 
 #### Answer accepted (score 338)
 ```sh
-echo "some data for the file" &gt;&gt; fileName
+echo "some data for the file" >> fileName
 ```
 
 #### Answer 2 (score 126)
@@ -6537,7 +6537,7 @@ echo "some data for the file" &gt;&gt; fileName
 
 FILE="/path/to/file"
 
-/bin/cat &lt;&lt;EOM &gt;$FILE
+/bin/cat <<EOM >$FILE
 text1
 text2 # This comment will be inside of the file.
 The keyword EOM can be any text, but it must start the line and be alone.
@@ -6551,19 +6551,19 @@ EOM
 You can redirect the output of a command to a file:  
 
 ```sh
-$ cat file &gt; copy_file
+$ cat file > copy_file
 ```
 
 or append to it  
 
 ```sh
-$ cat file &gt;&gt; copy_file
+$ cat file >> copy_file
 ```
 
 If you want to write directly the command is `echo 'text'`  
 
 ```sh
-$ echo 'Hello World' &gt; file
+$ echo 'Hello World' > file
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -6590,7 +6590,7 @@ If you decide to give sshpass a chance here is a working script snippet to do so
 
 ```sh
 export SSHPASS=your-password-here
-sshpass -e sftp -oBatchMode=no -b - sftp-user@remote-host &lt;&lt; !
+sshpass -e sftp -oBatchMode=no -b - sftp-user@remote-host << !
    cd incoming
    put your-log-file.log
    bye
@@ -6642,11 +6642,11 @@ Lets say you want to make a connection to  a sftp server and then upload a local
 spawn sftp username@hostname.com
 expect "password:"
 send "yourpasswordhere\n"
-expect "sftp&gt;"
+expect "sftp>"
 send "cd logdirectory\n"
-expect "sftp&gt;"
+expect "sftp>"
 send "put /var/log/file.log\n"
-expect "sftp&gt;"
+expect "sftp>"
 send "exit\n"
 interact
 ```
@@ -6729,7 +6729,7 @@ Any command that fails will cause the entire script to fail and return an exit s
 A bad-arse SysOps guy once taught me the Three-Fingered Claw technique:  
 
 ```sh
-yell() { echo "$0: $*" &gt;&amp;2; }
+yell() { echo "$0: $*" >&2; }
 die() { yell "$*"; exit 111; }
 try() { "$@" || die "cannot $*"; }
 ```
@@ -6841,7 +6841,7 @@ tools to assist. (Or you should use arrays, carefully: `"${array[@]}"` behaves a
     ./anotherdir:
     total 0
     -rw-r--r--   1 jleffler  staff  0 Nov  1 14:55 myfile
-    $ var='"./my dir" "./anotherdir"' &amp;&amp; echo $var
+    $ var='"./my dir" "./anotherdir"' && echo $var
     "./my dir" "./anotherdir"
     $ ls -Fltr $var
     ls: "./anotherdir": No such file or directory
@@ -6934,7 +6934,7 @@ do
     esac
 done
 
-eval delta "$dargs" &amp;&amp; eval get $eflag $sflag "$gargs"
+eval delta "$dargs" && eval get $eflag $sflag "$gargs"
 ```
 
 <p>(I would probably not use escape quite so thoroughly these days - it is
@@ -7040,7 +7040,7 @@ lastname at gmail dot com).
 The source code for `al` is incredibly simple:</p>
 
 ```sh
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 int main(int argc, char **argv)
 {
     while (*++argv != 0)
@@ -7054,7 +7054,7 @@ That's all.  It is equivalent to the `test.sh` script that Robert Gamble showed,
 Also note that you can write `al` as a simple shell script:  
 
 ```sh
-[ $# != 0 ] &amp;&amp; printf "%s\n" "$@"
+[ $# != 0 ] && printf "%s\n" "$@"
 ```
 
 The conditional is needed so that it produces no output when passed no arguments.  The `printf` command will produce a blank line with only the format string argument, but the C program produces nothing.  
@@ -7229,7 +7229,7 @@ ls -a | tee output.file
 If you want to include stderr, do:  
 
 ```sh
-program [arguments...] 2&gt;&amp;1 | tee outfile
+program [arguments...] 2>&1 | tee outfile
 ```
 
 `2&gt;&amp;1` redirects channel 2 (stderr/standard error) into channel 1 (stdout/standard output), such that both is written as stdout. It is also directed to the given output file as of the `tee` command.  
@@ -7237,12 +7237,12 @@ program [arguments...] 2&gt;&amp;1 | tee outfile
 Furthermore, if you want to <em>append</em> to the log file, use `tee -a` as:  
 
 ```sh
-program [arguments...] 2&gt;&amp;1 | tee -a outfile
+program [arguments...] 2>&1 | tee -a outfile
 ```
 
 #### Answer 2 (score 481)
 ```sh
-$ program [arguments...] 2&gt;&amp;1 | tee outfile
+$ program [arguments...] 2>&1 | tee outfile
 ```
 
 <p>`2&gt;&amp;1` dumps the stderr and stdout streams.
@@ -7257,14 +7257,14 @@ It's also bad if the program only outputs 1 or 2 lines every few minutes to repo
 Update: The program `unbuffer`, part of the `expect` package, will solve the buffering problem. This will cause stdout and stderr to write to the screen and file immediately and keep them in sync when being combined and redirected to `tee`. E.g.:  
 
 ```sh
-$ unbuffer program [arguments...] 2&gt;&amp;1 | tee outfile
+$ unbuffer program [arguments...] 2>&1 | tee outfile
 ```
 
 #### Answer 3 (score 117)
 Another way that works for me is,   
 
 ```sh
-&lt;command&gt; |&amp; tee  &lt;outputFile&gt;
+<command> |& tee  <outputFile>
 ```
 
 as shown in <a href="http://www.gnu.org/software/bash/manual/bashref.html#Pipelines" rel="noreferrer">gnu bash manual</a>  
@@ -7272,7 +7272,7 @@ as shown in <a href="http://www.gnu.org/software/bash/manual/bashref.html#Pipeli
 Example:  
 
 ```sh
-ls |&amp; tee files.txt
+ls |& tee files.txt
 ```
 
 <blockquote>
@@ -7307,7 +7307,7 @@ then
 echo yes 
 fi
 
-&gt; &gt; &gt; -bash: [: too many arguments
+> > > -bash: [: too many arguments
 ```
 
 How to do it correctly?  
@@ -7477,9 +7477,9 @@ If you really want to use `ls`, then format its output using awk:
 
 ```sh
 ls -R /path | awk '
-/:$/&amp;&amp;f{s=$0;f=0}
-/:$/&amp;&amp;!f{sub(/:$/,"");s=$0;f=1;next}
-NF&amp;&amp;f{ print s"/"$0 }'
+/:$/&&f{s=$0;f=0}
+/:$/&&!f{sub(/:$/,"");s=$0;f=1;next}
+NF&&f{ print s"/"$0 }'
 ```
 
 #### Answer 2 (score 527)
@@ -7641,7 +7641,7 @@ To suppress the normal output from `grep`, you can redirect it to `/dev/null`. N
 To handle the three cases, we can use a `case` statement:  
 
 ```sh
-case `grep -Fx "$FILENAME" "$LIST" &gt;/dev/null; echo $?` in
+case `grep -Fx "$FILENAME" "$LIST" >/dev/null; echo $?` in
   0)
     # code if found
     ;;
@@ -7904,7 +7904,7 @@ sh test.sh
 The most common way to run a <a href="http://en.wikipedia.org/wiki/Bourne_shell" rel="noreferrer"><strong>.sh</strong></a> file is using the <strong>sh</strong> command:  
 
 ```sh
-C:\&gt;sh my-script-test.sh 
+C:\>sh my-script-test.sh 
 ```
 
 other good option is installing <a href="https://www.cygwin.com/" rel="noreferrer"><strong>CygWin</strong></a>  
@@ -7982,7 +7982,7 @@ I know I can do `echo foo 1&gt;&amp;2` but it's kinda ugly and, I suspect, error
 You could do this, which facilitates reading:  
 
 ```sh
-&gt;&amp;2 echo "error"
+>&2 echo "error"
 ```
 
 `&gt;&amp;2` copies file descriptor #2 to file descriptor #1. Therefore, after this redirection is performed, both file descriptors will refer to the same file: the one file descriptor #2 was <strong>originally</strong> referring to. For more information see the <a href="http://wiki.bash-hackers.org/howto/redirection_tutorial" rel="noreferrer">Bash Hackers Illustrated Redirection Tutorial</a>.  
@@ -7991,7 +7991,7 @@ You could do this, which facilitates reading:
 You could define a function:  
 
 ```sh
-echoerr() { echo "$@" 1&gt;&amp;2; }
+echoerr() { echo "$@" 1>&2; }
 echoerr hello world
 ```
 
@@ -8000,13 +8000,13 @@ This would be faster than a script and have no dependencies.
 Camilo Martin's bash specific suggestion uses a "here string" and will print anything you pass to it, including arguments (-n) that echo would normally swallow:  
 
 ```sh
-echoerr() { cat &lt;&lt;&lt; "$@" 1&gt;&amp;2; }
+echoerr() { cat <<< "$@" 1>&2; }
 ```
 
 Glenn Jackman's solution also avoids the argument swallowing problem:  
 
 ```sh
-echoerr() { printf "%s\n" "$*" &gt;&amp;2; }
+echoerr() { printf "%s\n" "$*" >&2; }
 ```
 
 #### Answer 3 (score 230)
@@ -8029,7 +8029,7 @@ I'm trying to write a script that will check two error flags, and in case one fl
 my_error_flag=0
 my_error_flag_o=0
 do something.....
-if [[ "$my_error_flag"=="1" || "$my_error_flag_o"=="2" ] || [ "$my_error_flag"="1" &amp;&amp;     "$my_error_flag_o"="2" ]]; then
+if [[ "$my_error_flag"=="1" || "$my_error_flag_o"=="2" ] || [ "$my_error_flag"="1" &&     "$my_error_flag_o"="2" ]]; then
     echo "$my_error_flag"
 else
     echo "no flag"
@@ -8052,7 +8052,7 @@ The error I get is:
 ```sh
  line 26: conditional binary operator expected
  line 26: syntax error near `]'
- line 26: `if [[ "$my_error_flag"=="1" || "$my_error_flag_o"=="2" ] || [ "$my_error_flag"="1" &amp;&amp; "$my_error_flag_o"="2" ]]; then'
+ line 26: `if [[ "$my_error_flag"=="1" || "$my_error_flag_o"=="2" ] || [ "$my_error_flag"="1" && "$my_error_flag_o"="2" ]]; then'
 ```
 
 Are my brackets messed up?  
@@ -8069,7 +8069,7 @@ Actually you could still use `&amp;&amp;` and `||` with the `-eq` operation. So 
 ```sh
 my_error_flag=1
 my_error_flag_o=1
-if [ $my_error_flag -eq 1 ] ||  [ $my_error_flag_o -eq 2 ] || ([ $my_error_flag -eq 1 ] &amp;&amp; [ $my_error_flag_o -eq 2 ]); then
+if [ $my_error_flag -eq 1 ] ||  [ $my_error_flag_o -eq 2 ] || ([ $my_error_flag -eq 1 ] && [ $my_error_flag_o -eq 2 ]); then
       echo "$my_error_flag"
 else
     echo "no flag"
@@ -8096,7 +8096,7 @@ Using `[[` operator
 ```sh
 a=$1
 b=$2
-if [[ a -eq 1 || b -eq 2 ]] || [[ a -eq 3 &amp;&amp; b -eq 4 ]]
+if [[ a -eq 1 || b -eq 2 ]] || [[ a -eq 3 && b -eq 4 ]]
 then
      echo "Error"
 else
@@ -8109,7 +8109,7 @@ Using `((` operator
 ```sh
 a=$1
 b=$2
-if (( a == 1 || b == 2 )) || (( a == 3 &amp;&amp; b == 4 ))
+if (( a == 1 || b == 2 )) || (( a == 3 && b == 4 ))
 then
      echo "Error"
 else
@@ -8123,7 +8123,7 @@ Do not use `-a` or `-o` operators Since it is not Portable.
 Please try following  
 
 ```sh
-if ([ $dateR -ge 234 ] &amp;&amp; [ $dateR -lt 238 ]) || ([ $dateR -ge 834 ] &amp;&amp; [ $dateR -lt 838 ]) || ([ $dateR -ge 1434 ] &amp;&amp; [ $dateR -lt 1438 ]) || ([ $dateR -ge 2034 ] &amp;&amp; [ $dateR -lt 2038 ]) ;
+if ([ $dateR -ge 234 ] && [ $dateR -lt 238 ]) || ([ $dateR -ge 834 ] && [ $dateR -lt 838 ]) || ([ $dateR -ge 1434 ] && [ $dateR -lt 1438 ]) || ([ $dateR -ge 2034 ] && [ $dateR -lt 2038 ]) ;
 then
     echo "WORKING"
 else
@@ -8179,13 +8179,13 @@ awk 'BEGIN{FS=":"} {print $1}'
 All of them are equivalent and for an will return `1` for a sample input "1:2:3":  
 
 ```sh
-$ awk -F: '{print $1}' &lt;&lt;&lt; "1:2:3"
+$ awk -F: '{print $1}' <<< "1:2:3"
 1
-$ awk -v FS=: '{print $1}' &lt;&lt;&lt; "1:2:3"
+$ awk -v FS=: '{print $1}' <<< "1:2:3"
 1
-$ awk '{print $1}' FS=: &lt;&lt;&lt; "1:2:3"
+$ awk '{print $1}' FS=: <<< "1:2:3"
 1
-$ awk 'BEGIN{FS=":"} {print $1}' &lt;&lt;&lt; "1:2:3"
+$ awk 'BEGIN{FS=":"} {print $1}' <<< "1:2:3"
 1
 ```
 
@@ -8217,7 +8217,7 @@ Note: You may be tempted to use
 
 ```sh
 # THIS WILL GIVE YOU AN EMPTY FILE!
-tail -n +2 "$FILE" &gt; "$FILE"
+tail -n +2 "$FILE" > "$FILE"
 ```
 
 but this will give you an <strong>empty file</strong>. The reason is that the redirection (`&gt;`) happens before `tail` is invoked by the shell:  
@@ -8232,7 +8232,7 @@ but this will give you an <strong>empty file</strong>. The reason is that the re
 If you want to remove the first line inside the file, you should use:  
 
 ```sh
-tail -n +2 "$FILE" &gt; "$FILE.tmp" &amp;&amp; mv "$FILE.tmp" "$FILE"
+tail -n +2 "$FILE" > "$FILE.tmp" && mv "$FILE.tmp" "$FILE"
 ```
 
 The `&amp;&amp;` will make sure that the file doesn't get overwritten when there is a problem.  
@@ -8248,7 +8248,7 @@ sed -i '1d' filename
 For those who are on SunOS which is non-GNU, the following code will help:  
 
 ```sh
-sed '1d' test.dat &gt; tmp.dat 
+sed '1d' test.dat > tmp.dat 
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -8418,7 +8418,7 @@ How do I append the output of a command to the end of a text file?
 Use `&gt;&gt;` instead of `&gt;` when directing output to a file:  
 
 ```sh
-your_command &gt;&gt; file_to_append_to
+your_command >> file_to_append_to
 ```
 
 If `file_to_append_to` does not exist, it will be created.  
@@ -8426,8 +8426,8 @@ If `file_to_append_to` does not exist, it will be created.
 <strong>Example:</strong>  
 
 ```sh
-$ echo "hello" &gt; file
-$ echo "world" &gt;&gt; file
+$ echo "hello" > file
+$ echo "world" >> file
 $ cat file 
 hello
 world
@@ -8438,9 +8438,9 @@ To `append` a file use  `&gt;&gt;`
 
 <blockquote>
 ```sh
-echo "hello world"  &gt;&gt; read.txt   
+echo "hello world"  >> read.txt   
 cat read.txt     
-echo "hello siva" &gt;&gt; read.txt   
+echo "hello siva" >> read.txt   
 cat read.txt
 ```
   
@@ -8457,7 +8457,7 @@ To `overwrite` a file use  `&gt;`
 
 <blockquote>
 ```sh
-echo "hello tom" &gt; read.txt
+echo "hello tom" > read.txt
 cat read.txt  
 ```
   
@@ -8524,7 +8524,7 @@ I like to use `git diff --no-index dir1/ dir2/`, because it can show the differe
 I need to hide all <em>permission denied</em> messages from:  
 
 ```sh
-find . &gt; files_and_folders
+find . > files_and_folders
 ```
 
 I am experimenting when such message arises. I need to gather all folders and files, to which it does not arise.   
@@ -8541,7 +8541,7 @@ How can I hide the errors at the same time?
 If your <strong>shell is `bash` or `zsh`</strong>, there's <strong>a solution that is robust while being reasonably simple</strong>, using <strong>only POSIX-compliant `find` features</strong>; while `bash` itself is not part of POSIX, most modern Unix platforms come with it, making this solution widely portable:  
 
 ```sh
-find . &gt; files_and_folders 2&gt; &gt;(grep -v 'Permission denied' &gt;&amp;2)
+find . > files_and_folders 2> >(grep -v 'Permission denied' >&2)
 ```
 
 Note: There's a small chance that some of `grep`'s output may arrive <em>after</em> `find` completes, because the overall command doesn't wait for the command inside `&gt;(...)` to finish. In `bash`, you can prevent this by appending `| cat` to the command.</sup>  
@@ -8571,7 +8571,7 @@ Fully POSIX-compliant solutions either have limitations or require additional wo
 <strong>If `find`'s output is to be captured in a <em>file</em> anyway</strong> (or suppressed altogether), then the pipeline-based solution from <a href="https://stackoverflow.com/a/762360/45375">Jonathan Leffler's answer</a> is simple, robust, and POSIX-compliant:  
 
 ```sh
-find . 2&gt;&amp;1 &gt;files_and_folders | grep -v 'Permission denied' &gt;&amp;2
+find . 2>&1 >files_and_folders | grep -v 'Permission denied' >&2
 ```
 
 Note that the order of the redirections matters: `2&gt;&amp;1` must come <em>first</em>.  
@@ -8585,7 +8585,7 @@ However, the specific case of even only <em>some</em> of the input paths being i
 The following variation addresses that:  
 
 ```sh
-find . 2&gt;&amp;1 &gt;files_and_folders | { grep -v 'Permission denied' &gt;&amp;2; [ $? -eq 1 ]; }
+find . 2>&1 >files_and_folders | { grep -v 'Permission denied' >&2; [ $? -eq 1 ]; }
 ```
 
 <p>Now, the exit code indicates whether any errors <em>other than</em> `Permission denied` occurred: `1` if so, `0` otherwise.<br>
@@ -8597,7 +8597,7 @@ This is arguably even better than just passing `find`'s exit code through, as in
 <a href="https://stackoverflow.com/users/1815797/gniourf-gniourf">gniourf_gniourf</a> in the comments proposes a (still POSIX-compliant) <strong>generalization of this solution using sophisticated redirections</strong>, which <strong>works even with the default behavior of printing the file paths to <em>stdout</em></strong>:  
 
 ```sh
-{ find . 3&gt;&amp;2 2&gt;&amp;1 1&gt;&amp;3 | grep -v 'Permission denied' &gt;&amp;3; } 3&gt;&amp;2 2&gt;&amp;1
+{ find . 3>&2 2>&1 1>&3 | grep -v 'Permission denied' >&3; } 3>&2 2>&1
 ```
 
 In short: Custom file descriptor `3` is used to temporarily swap stdout (`1`) and stderr (`2`), so that error messages <em>alone</em> can be piped to `grep` via stdout.  
@@ -8634,7 +8634,7 @@ This, however, does <em>not</em> work as intended, because the trailing `-print`
 Use:  
 
 ```sh
-find . 2&gt;/dev/null &gt; files_and_folders
+find . 2>/dev/null > files_and_folders
 ```
 
 This hides not just the `Permission denied` errors, of course, but all error messages.  
@@ -8642,7 +8642,7 @@ This hides not just the `Permission denied` errors, of course, but all error mes
 If you really want to keep other possible errors, such as too many hops on a symlink, but not the permission denied ones, then you'd probably have to take a flying guess that you don't have many files called 'permission denied' and try:  
 
 ```sh
-find . 2&gt;&amp;1 | grep -v 'Permission denied' &gt; files_and_folders
+find . 2>&1 | grep -v 'Permission denied' > files_and_folders
 ```
 
 <hr>
@@ -8650,7 +8650,7 @@ find . 2&gt;&amp;1 | grep -v 'Permission denied' &gt; files_and_folders
 If you strictly want to filter just standard error, you can use the more elaborate construction:  
 
 ```sh
-find . 2&gt;&amp;1 &gt; files_and_folders | grep -v 'Permission denied' &gt;&amp;2
+find . 2>&1 > files_and_folders | grep -v 'Permission denied' >&2
 ```
 
 <p>The I/O redirection on the `find` command is: `2&gt;&amp;1 &gt; files_and_folders |`.
@@ -8670,7 +8670,7 @@ find . ! -readable -prune -o -print
 or more generally  
 
 ```sh
-find &lt;paths&gt; ! -readable -prune -o &lt;other conditions like -name&gt; -print
+find <paths> ! -readable -prune -o <other conditions like -name> -print
 ```
 
 <ul>
@@ -8703,7 +8703,7 @@ Simple script:
 ```sh
 #!/bin/bash
 for i in `seq 0 9`; do
-  doCalculations $i &amp;
+  doCalculations $i &
 done
 wait
 ```
@@ -8719,7 +8719,7 @@ Modify the loop to store the PID of each spawned sub-process into an array, and 
 ```sh
 # run processes and store pids in array
 for i in $n_procs; do
-    ./procs[${i}] &amp;
+    ./procs[${i}] &
     pids[${i}]=$!
 done
 
@@ -8739,10 +8739,10 @@ FAIL=0
 
 echo "starting"
 
-./sleeper 2 0 &amp;
-./sleeper 2 1 &amp;
-./sleeper 3 0 &amp;
-./sleeper 2 0 &amp;
+./sleeper 2 0 &
+./sleeper 2 1 &
+./sleeper 3 0 &
+./sleeper 2 0 &
 
 for job in `jobs -p`
 do
@@ -8888,7 +8888,7 @@ $ myfunction original.conf my.conf
 Refining the answer above, you can get 1-line syntax like you can for aliases, which is more convenient for ad-hoc definitions in a shell or .bashrc files:  
 
 ```sh
-bash$ myfunction() { mv "$1" "$1.bak" &amp;&amp; cp -i "$2" "$1"; }
+bash$ myfunction() { mv "$1" "$1.bak" && cp -i "$2" "$1"; }
 
 bash$ myfunction original.conf my.conf
 ```
@@ -9044,7 +9044,7 @@ also, file -s is inefficient ...
 
 ```sh
 file -s /dev/sdl1
-/dev/sdl1: sticky x86 boot sector, code offset 0x52, OEM-ID "NTFS    ", sectors/cluster 8, reserved sectors 0, Media descriptor 0xf8, heads 255, hidden sectors 8192, dos &lt; 4.0 BootSector (0x0)
+/dev/sdl1: sticky x86 boot sector, code offset 0x52, OEM-ID "NTFS    ", sectors/cluster 8, reserved sectors 0, Media descriptor 0xf8, heads 255, hidden sectors 8192, dos < 4.0 BootSector (0x0)
 ```
 
 that's nice ... BUT  
@@ -9323,7 +9323,7 @@ I am using Mac OS X 10.10.3
 I have tried:   
 
 ```sh
-&gt; touch ~/.bash_profile; open ~/.bash_profile
+> touch ~/.bash_profile; open ~/.bash_profile
 ```
 
 But the file editor opens with nothing inside.  
@@ -9336,7 +9336,7 @@ I misspelled it, but when I closed the terminal and went back it was gone, so I 
 
 <blockquote>
 ```sh
-export ANDROID_HOME=/&lt;installation location&gt;/android-sdk-macosx
+export ANDROID_HOME=/<installation location>/android-sdk-macosx
 export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 ```
 </blockquote>
@@ -9373,14 +9373,14 @@ But if you don't know how to use them, it's easier to use the `open` approach.
 Alternatively, you can rely on `pbpaste`. Copy  
 
 ```sh
-export ANDROID_HOME=/&lt;installation location&gt;/android-sdk-macosx
+export ANDROID_HOME=/<installation location>/android-sdk-macosx
 export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 ```
 
 in the system clipboard and then in a shell run  
 
 ```sh
-pbpaste &gt; ~/.bash_profile
+pbpaste > ~/.bash_profile
 ```
 
 <hr>
@@ -9388,7 +9388,7 @@ pbpaste &gt; ~/.bash_profile
 Or alternatively you can also use `cat`  
 
 ```sh
-cat &gt; ~/.bash_profile
+cat > ~/.bash_profile
 ```
 
 (now `cat` waits for input: paste the two export definitions and then hit ctrl-D).  
@@ -9545,7 +9545,7 @@ In Bash, what is the simplest way to test if an array contains a certain value?
 function contains() {
     local n=$#
     local value=${!n}
-    for ((i=1;i &lt; $#;i++)) {
+    for ((i=1;i < $#;i++)) {
         if [ "${!i}" == "${value}" ]; then
             echo "y"
             return 0
@@ -9612,7 +9612,7 @@ Below is a small function for achieving this. The search string is the first arg
 containsElement () {
   local e match="$1"
   shift
-  for e; do [[ "$e" == "$match" ]] &amp;&amp; return 0; done
+  for e; do [[ "$e" == "$match" ]] && return 0; done
   return 1
 }
 ```
@@ -9650,7 +9650,7 @@ How can I extract the process id automatically and kill it in the same line?
 Like this:  
 
 ```sh
-[~]$ ps aux | grep 'python csp_build.py' | kill &lt;regex that returns the pid&gt;
+[~]$ ps aux | grep 'python csp_build.py' | kill <regex that returns the pid>
 ```
 
 #### Answer accepted (score 1287)
@@ -9672,17 +9672,17 @@ Details on its workings are as follows:
 Here's a transcript showing it in action:  
 
 ```sh
-pax&gt; sleep 3600 &amp;
+pax> sleep 3600 &
 [1] 2225
-pax&gt; sleep 3600 &amp;
+pax> sleep 3600 &
 [2] 2226
-pax&gt; sleep 3600 &amp;
+pax> sleep 3600 &
 [3] 2227
-pax&gt; sleep 3600 &amp;
+pax> sleep 3600 &
 [4] 2228
-pax&gt; sleep 3600 &amp;
+pax> sleep 3600 &
 [5] 2229
-pax&gt; kill $(ps aux | grep '[s]leep' | awk '{print $2}')
+pax> kill $(ps aux | grep '[s]leep' | awk '{print $2}')
 [5]+  Terminated              sleep 3600
 [1]   Terminated              sleep 3600
 [2]   Terminated              sleep 3600
@@ -9852,7 +9852,7 @@ ps -p $$ -ocomm=
 On my local machine, I run a python script which contains this line  
 
 ```sh
-bashCommand = "cwm --rdf test.rdf --ntriples &gt; test.nt"
+bashCommand = "cwm --rdf test.rdf --ntriples > test.nt"
 os.system(bashCommand)
 ```
 
@@ -9863,7 +9863,7 @@ Then I run the same code on a server and I get the following error message
 ```sh
 'import site' failed; use -v for traceback
 Traceback (most recent call last):
-File "/usr/bin/cwm", line 48, in &lt;module&gt;
+File "/usr/bin/cwm", line 48, in <module>
 from swap import  diag
 ImportError: No module named swap
 ```
@@ -9880,7 +9880,7 @@ Don't use `os.system`. It has been deprecated in favor of <a href="http://docs.p
 Like in your case:  
 
 ```sh
-bashCommand = "cwm --rdf test.rdf --ntriples &gt; test.nt"
+bashCommand = "cwm --rdf test.rdf --ntriples > test.nt"
 import subprocess
 process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
 output, error = process.communicate()
@@ -10034,7 +10034,7 @@ To partially illustrate this, here is a typical but slightly silly example which
 ```sh
 cmd = '''while read -r x;
    do ping -c 3 "$x" | grep 'round-trip min/avg/max'
-   done &lt;hosts.txt'''
+   done <hosts.txt'''
 
 # Trivial but horrible
 results = subprocess.run(
@@ -10087,7 +10087,7 @@ pass in the path to the shell as `executable='/bin/bash'` (where of course if yo
 ```sh
 subprocess.run('''
     # This for loop syntax is Bash only
-    for((i=1;i&lt;=$#;i++)); do
+    for((i=1;i<=$#;i++)); do
         # Arrays are Bash-only
         array[i]+=123
     done''',
@@ -10149,7 +10149,7 @@ For example, if `/dev/clip` was a device linking to the clipboard we could do:
 
 ```sh
 cat /dev/clip        # Dump the contents of the clipboard
-cat foo &gt; /dev/clip  # Dump the contents of "foo" into the clipboard
+cat foo > /dev/clip  # Dump the contents of "foo" into the clipboard
 ```
 
 #### Answer accepted (score 793)
@@ -10332,7 +10332,7 @@ echo "input data" | awk 'BEGIN {print var}' var="${variable}"
 Variable can also be added to `awk` using a <a href="http://en.wikipedia.org/wiki/Here_document" rel="noreferrer">here-string</a> from shells that support them (including Bash):  
 
 ```sh
-awk '{print $0}' &lt;&lt;&lt; "$variable"
+awk '{print $0}' <<< "$variable"
 test
 ```
 
@@ -10397,7 +10397,7 @@ line two
 Here is an example of code injection:  
 
 ```sh
-variable='line one\nline two" ; for (i=1;i&lt;=1000;++i) print i"'
+variable='line one\nline two" ; for (i=1;i<=1000;++i) print i"'
 awk 'BEGIN {print "'"$variable"'"}'
 line one
 line two

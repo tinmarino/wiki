@@ -1,38 +1,39 @@
 # Custom shortcut / aliases
 
 
-|   | Cmd  | Vim        | Git    | File |
-| - | ---  | ---        | ---    | --- |
-| A |      |            | Add    | Aliases |
-| B |      | Backup %   | Branch | BashRc |
-| C |      |            | Commit |   |
-| D |      |            | Diff   | Done |
-| E |      | Edit $file |        |   |
-| F |      |            | Fetch  |   |
-| G | Git  |            |        | Gitconfig |
-| H |      |            | pusH   |   |
-| I |      |            |        |   |
-| J |      |            |        |   |
-| K |      | Kalendar   |        |   |
-| L |      | List       | Log    |   |
-| M |      |            |        |   |
-| N |      | NerdTree   |        |   |
-| O |      |            |        |   |
-| P |      |            |        |   |
-| Q |      |            |        |   |
-| R |      |            | Rebase |   |
-| S |      | Source %   | Status |   |
-| T | Todo | Todo       |        | .Tmux.conf |
-| U |      |            |        |   |
-| V | Vim  |            |        | .Vimrc |
-| W | Wiki | Wiki       |        |   |
-| X |      |            |        |   |
-| Y |      |            |        |   |
-| Z |      |            |        |   |
+|   | Cmd  | Vim        | Git    | File       | Dir |
+| - | ---  | ---        | ---    | ---        |   |
+| A |      |            | Add    | Aliases    |   |
+| B |      | Backup %   | Branch | BashRc     | ~/.vim/Bin |
+| C |      | Compile    | Commit |            |   |
+| D |      |            | Diff   | Done       |   |
+| E |      | Edit $file |        |            |   |
+| F |      |            | Fetch  |            |   |
+| G | Git  |            |        | Gitconfig  |   |
+| H |      |            | pusH   |            |   |
+| I |      |            |        |            |   |
+| J |      |            |        |            |   |
+| K |      | Kalendar   | gitK   |            |   |
+| L |      | List       | Log    |            |   |
+| M | Man  |            |        |            |   |
+| N |      | NerdTree   |        |            |   |
+| O |      |            |        |            |   |
+| P |      |            |        |            | ~/.vim/Pack/bundle/opt/ |
+| Q |      |            |        |            |   |
+| R |      |            | Rebase |            |   |
+| S |      | Source %   | Status |            |   |
+| T | Todo | Todo       |        | .Tmux.conf | ~/w/Todo |
+| U |      |            |        |            |   |
+| V | Vim  |            |        | .Vimrc     | ~/.Vim |
+| W | Wiki | Wiki       |        |            | ~/w/Wiki |
+| X |      |            |        |            |   |
+| Y |      |            |        |            |   |
+| Z |      |            |        |            |   |
 
 # See deeper
 
 * Cmd in .bash_aliases
 * Vim in .vimrc search alias
 * Git in .gitconfig
-* Dir in ... nowhere yet !
+* File in .vimrc
+* Dir in .bashrc

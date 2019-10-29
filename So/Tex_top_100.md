@@ -90,8 +90,8 @@ This will print a bunch of output, something like this:
 This is pdfeTeX, Version 3.141592-1.21a-2.2 (Web2C 7.5.4)
 entering extended mode
 (./test.tex
-LaTeX2e &lt;2003/12/01&gt;
-Babel &lt;v3.8d&gt; and hyphenation patterns for american, french, german, ngerman, b
+LaTeX2e <2003/12/01>
+Babel <v3.8d> and hyphenation patterns for american, french, german, ngerman, b
 ahasa, basque, bulgarian, catalan, croatian, czech, danish, dutch, esperanto, e
 stonian, finnish, greek, icelandic, irish, italian, latin, magyar, norsk, polis
 h, portuges, romanian, russian, serbian, slovak, slovene, spanish, swedish, tur

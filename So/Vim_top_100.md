@@ -16,7 +16,7 @@ wiki_pandoc: --toc
 I'm stuck and cannot escape. It says:  
 
 ```vim
-"type :quit&lt;Enter&gt; to quit VIM"
+"type :quit<Enter> to quit VIM"
 ```
 
 But when I type that it simply appears in the object body.  
@@ -218,7 +218,7 @@ Press enter to keep the current choice[*], or type selection number:
 I have a Ruby code file open in vi, there are lines commented out with `#`:  
 
 ```vim
-class Search &lt; ActiveRecord::Migration
+class Search < ActiveRecord::Migration
   def self.up
     # create_table :searches do |t|
     #   t.integer :user_id
@@ -326,7 +326,7 @@ As has been pointed out in a couple of answers below, the preferred method now i
 filetype plugin indent on
 " show existing tab with 4 spaces width
 set tabstop=4
-" when indenting with '&gt;', use 4 spaces width
+" when indenting with '>', use 4 spaces width
 set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
@@ -509,22 +509,22 @@ In the commands below, "re-indent" means "indent lines according to your <a href
 <strong>General Commands</strong>  
 
 ```vim
-&gt;&gt;   Indent line by shiftwidth spaces
-&lt;&lt;   De-indent line by shiftwidth spaces
-5&gt;&gt;  Indent 5 lines
+>>   Indent line by shiftwidth spaces
+<<   De-indent line by shiftwidth spaces
+5>>  Indent 5 lines
 5==  Re-indent 5 lines
 
-&gt;%   Increase indent of a braced or bracketed block (place cursor on brace first)
+>%   Increase indent of a braced or bracketed block (place cursor on brace first)
 =%   Reindent a braced or bracketed block (cursor on brace)
-&lt;%   Decrease indent of a braced or bracketed block (cursor on brace)
+<%   Decrease indent of a braced or bracketed block (cursor on brace)
 ]p   Paste text, aligning indentation with surroundings
 
 =i{  Re-indent the 'inner block', i.e. the contents of the block
 =a{  Re-indent 'a block', i.e. block and containing braces
 =2a{ Re-indent '2 blocks', i.e. this block and containing block
 
-&gt;i{  Increase inner block indent
-&lt;i{  Decrease inner block indent
+>i{  Increase inner block indent
+<i{  Decrease inner block indent
 ```
 
 You can replace `{` with `}` or `B`, e.g. `=iB` is a valid block indent command. Take a look at <a href="http://vim.wikia.com/wiki/Indent_a_code_block" rel="noreferrer">"Indent a Code Block"</a> for a nice example to try these commands out on.  
@@ -564,7 +564,7 @@ Or multiple buffers:
 <strong>In Visual Mode</strong>  
 
 ```vim
-Vjj&gt; Visually mark and then indent 3 lines
+Vjj> Visually mark and then indent 3 lines
 ```
 
 <strong>In insert mode</strong>  
@@ -583,8 +583,8 @@ CTRL-d   remove indent at start of line
 cursor.</p>
 
 ```vim
-:&lt; and :&gt; Given a range, apply indentation e.g.
-:4,8&gt;   indent lines 4 to 8, inclusive
+:< and :> Given a range, apply indentation e.g.
+:4,8>   indent lines 4 to 8, inclusive
 ```
 
 <strong>Indenting using markers</strong>  
@@ -598,7 +598,7 @@ ma     Mark top of block to indent as marker 'a'
 ...move cursor to end location  
 
 ```vim
-&gt;'a    Indent from marker 'a' to current location
+>'a    Indent from marker 'a' to current location
 ```
 
 <strong>Variables that govern indentation</strong>  
@@ -607,8 +607,8 @@ You can set these in your <a href="http://vimdoc.sourceforge.net/htmldoc/startin
 
 ```vim
 set expandtab       "Use softtabstop spaces instead of tab characters for indentation
-set shiftwidth=4    "Indent by 4 spaces when using &gt;&gt;, &lt;&lt;, == etc.
-set softtabstop=4   "Indent by 4 spaces when pressing &lt;TAB&gt;
+set shiftwidth=4    "Indent by 4 spaces when using >>, <<, == etc.
+set softtabstop=4   "Indent by 4 spaces when pressing <TAB>
 
 set autoindent      "Keep indentation from previous line
 set smartindent     "Automatically inserts indentation in some cases
@@ -902,7 +902,7 @@ By using very specific commands and movements, VIM can replay those exact action
 
 ```vim
 # reset to vim-defaults
-if &amp;compatible          # only if not set before:
+if &compatible          # only if not set before:
   set nocompatible      # use vim-defaults instead of vi-defaults (easier, more user friendly)
 endif
 
@@ -920,7 +920,7 @@ set wildmenu            # completion with menu
 set wildignore=*.o,*.obj,*.bak,*.exe,*.py[co],*.swp,*~,*.pyc,.svn
 set laststatus=2        # use 2 lines for the status bar
 set matchtime=2         # show matching bracket for 0.2 seconds
-set matchpairs+=&lt;:&gt;     # specially for html
+set matchpairs+=<:>     # specially for html
 
 # editor settings
 set esckeys             # map missed escape sequences (enables keypad keys)
@@ -949,18 +949,18 @@ set mouse=v             # use mouse in visual mode (not normal,insert,command,he
 
 
 # color settings (if terminal/gui supports it)
-if &amp;t_Co &gt; 2 || has("gui_running")
+if &t_Co > 2 || has("gui_running")
   syntax on          # enable colors
   set hlsearch       # highlight search (very useful!)
   set incsearch      # search incremently (search while typing)
 endif
 
 # paste mode toggle (needed when using autoindent/smartindent)
-map &lt;F10&gt; :set paste&lt;CR&gt;
-map &lt;F11&gt; :set nopaste&lt;CR&gt;
-imap &lt;F10&gt; &lt;C-O&gt;:set paste&lt;CR&gt;
-imap &lt;F11&gt; &lt;nop&gt;
-set pastetoggle=&lt;F11&gt;
+map <F10> :set paste<CR>
+map <F11> :set nopaste<CR>
+imap <F10> <C-O>:set paste<CR>
+imap <F11> <nop>
+set pastetoggle=<F11>
 
 # Use of the filetype plugins, auto completion and indentation support
 filetype plugin indent on
@@ -995,7 +995,7 @@ if has("autocmd")
     # formatoption:
     #   t - wrap text using textwidth
     #   c - wrap comments using textwidth (and auto insert comment leader)
-    #   r - auto insert comment leader when pressing &lt;return&gt; in insert mode
+    #   r - auto insert comment leader when pressing <return> in insert mode
     #   o - auto insert comment leader when pressing 'o' or 'O'.
     #   q - allow formatting of comments with "gq"
     #   a - auto formatting for paragraphs
@@ -1008,7 +1008,7 @@ if has("autocmd")
   # Don't do it when the position is invalid or when inside
   # an event handler (happens when dropping a file on gvim). 
   autocmd BufReadPost * 
-    \ if line("'\"") &gt; 0 &amp;&amp; line("'\"") &lt;= line("$") | 
+    \ if line("'\"") > 0 && line("'\"") <= line("$") | 
     \   exe "normal g`\"" | 
     \ endif 
 
@@ -1050,10 +1050,10 @@ Substituting by `\n` inserts a null character into the text. To get a newline, u
 `\n` matches an end of line (newline), whereas `\r` matches a carriage return. On the other hand, in substitutions `\n` inserts a null character whereas `\r` inserts a newline (more precisely, it’s treated as the input <kbd>&lt;CR&gt;</kbd>). Here’s a small, non-interactive example to illustrate this, using the Vim command line feature (in other words, you can copy and paste the following into a terminal to run it). `xxd` shows a hexdump of the resulting file.  
 
 ```vim
-echo bar &gt; test
-(echo 'Before:'; xxd test) &gt; output.txt
+echo bar > test
+(echo 'Before:'; xxd test) > output.txt
 vim test '+s/b/\n/' '+s/a/\r/' +wq
-(echo 'After:'; xxd test) &gt;&gt; output.txt
+(echo 'After:'; xxd test) >> output.txt
 more output.txt
 ```
 
@@ -1301,7 +1301,7 @@ which will, in combination with
 Now, there isn't an explicit option which you can use to <em>show</em> whitespace, but in listchars, you could set a character to show for everything BUT whitespace. For example, mine looks like this</p>
 
 ```vim
-:set listchars=eol:$,tab:&gt;-,trail:~,extends:&gt;,precedes:&lt;
+:set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 ```
 
 so, now, after you use  
@@ -1321,9 +1321,9 @@ As usual, to understand how `listchars` works, use the help. It provides great i
 It might be helpful to add a toggle to it so you can see the changes mid editing easily (source: <a href="https://stackoverflow.com/questions/12534313/vim-set-list-as-a-toggle-in-vimrc">VIM :set list! as a toggle in .vimrc</a>):  
 
 ```vim
-noremap &lt;F5&gt; :set list!&lt;CR&gt;
-inoremap &lt;F5&gt; &lt;C-o&gt;:set list!&lt;CR&gt;
-cnoremap &lt;F5&gt; &lt;C-c&gt;:set list!&lt;CR&gt;
+noremap <F5> :set list!<CR>
+inoremap <F5> <C-o>:set list!<CR>
+cnoremap <F5> <C-c>:set list!<CR>
 ```
 
 #### Answer 3 (score 247)
@@ -1699,7 +1699,7 @@ Or, to toggle it:
 ```vim
 set hlsearch!
 
-nnoremap &lt;F3&gt; :set hlsearch!&lt;CR&gt;
+nnoremap <F3> :set hlsearch!<CR>
 ```
 
 #### Answer 2 (score 668)
@@ -1914,7 +1914,7 @@ Found it at: <a href="http://vim.wikia.com/wiki/File_format" rel="noreferrer">ht
 <h5>Command</h1>
 
 ```vim
-:%s/&lt;Ctrl-V&gt;&lt;Ctrl-M&gt;/\r/g
+:%s/<Ctrl-V><Ctrl-M>/\r/g
 ```
 
 <p>Where `&lt;Ctrl-V&gt;&lt;Ctrl-M&gt;` means type <kbd>Ctrl</kbd>+<kbd>V</kbd> then <kbd>Ctrl</kbd>+<kbd>M</kbd>.
@@ -1930,7 +1930,7 @@ Found it at: <a href="http://vim.wikia.com/wiki/File_format" rel="noreferrer">ht
 substitute, % = all lines   
 
 ```vim
-&lt;Ctrl-V&gt;&lt;Ctrl-M&gt;
+<Ctrl-V><Ctrl-M>
 ```
 
 ^M characters (the Ctrl-V is a Vim way of writing the Ctrl ^ character and Ctrl-M writes the M after the regular expression, resulting to ^M special character)  
@@ -2009,7 +2009,7 @@ After you pasted your code, turn off the paste-mode, so that auto-indenting when
 However, I always found that cumbersome.  That's why I map `&lt;F3&gt;` such that it can switch between paste and nopaste modes <em>while editing the text!</em>  I add this to `.vimrc`  
 
 ```vim
-set pastetoggle=&lt;F3&gt;
+set pastetoggle=<F3>
 ```
 
 #### Answer 2 (score 256)
@@ -2110,7 +2110,7 @@ You can add this to your `.vimrc` to make this trick easy-to-use: just type `:w!
 
 ```vim
 " Allow saving of files as sudo when I forgot to start vim using sudo.
-cmap w!! w !sudo tee &gt; /dev/null %
+cmap w!! w !sudo tee > /dev/null %
 ```
 
 The `&gt; /dev/null` part <strong>explicitly</strong> throws away the standard output, since, as I said, we don't need to pass anything to another piped command.  
@@ -2127,14 +2127,14 @@ characters have a special meaning.
 As you've already found out, `:w !cmd` pipes the contents of the current buffer to another command. What <a href="https://en.wikipedia.org/wiki/Tee_(command)" rel="noreferrer">`tee`</a> does is copy standard input to one or more files, and also to standard output. Therefore, `:w !sudo tee % &gt; /dev/null` effectively writes the contents of the current buffer to the current file <strong>while being root</strong>. Another command that can be used for this is <a href="https://en.wikipedia.org/wiki/Dd_(Unix)" rel="noreferrer">`dd`</a>:  
 
 ```vim
-:w !sudo dd of=% &gt; /dev/null
+:w !sudo dd of=% > /dev/null
 ```
 
 As a shortcut, you can add this mapping to your `.vimrc`:  
 
 ```vim
 " Force saving files that require root permission 
-cnoremap w!! w !sudo tee &gt; /dev/null %
+cnoremap w!! w !sudo tee > /dev/null %
 ```
 
 With the above you can type `:w!!&lt;Enter&gt;` to save the file as root.  
@@ -2143,7 +2143,7 @@ With the above you can type `:w!!&lt;Enter&gt;` to save the file as root.
 This also works well:  
 
 ```vim
-:w !sudo sh -c "cat &gt; %"
+:w !sudo sh -c "cat > %"
 ```
 
 This is inspired by the comment of @Nathan Long.   
@@ -2233,7 +2233,7 @@ This replaces the beginning of <em>each line</em> with "//":
 This replaces the beginning of <em>each selected line</em> (use visual mode to select) with "//":  
 
 ```vim
-:'&lt;,'&gt;s!^!//!
+:'<,'>s!^!//!
 ```
 
 <strong>Note</strong> that `gv` (in normal mode) restores the last visual selection, this comes in handy from time to time.  
@@ -2332,7 +2332,7 @@ Use the variations of `d` like `dd` to cut.
 To write a range of lines to another file you can use:  
 
 ```vim
-:&lt;n&gt;,&lt;m&gt; w filename
+:<n>,<m> w filename
 ```
 
 Where `&lt;n&gt;` and `&lt;m&gt;` are numbers (or symbols) that designate a range of lines.  
@@ -2448,13 +2448,13 @@ Example: replace text from lines `6-10`, `14-18` but not from `11-13`.
 The `:&amp;&amp;` command repeats the last substitution with the same flags. You can supply the additional range(s) to it (and concatenate as many as you like):  
 
 ```vim
-:6,10s/&lt;search_string&gt;/&lt;replace_string&gt;/g | 14,18&amp;&amp;
+:6,10s/<search_string>/<replace_string>/g | 14,18&&
 ```
 
 If you have <strong>many ranges</strong> though, I'd rather use a loop:  
 
 ```vim
-:for range in split('6,10 14,18')| exe range 's/&lt;search_string&gt;/&lt;replace_string&gt;/g' | endfor
+:for range in split('6,10 14,18')| exe range 's/<search_string>/<replace_string>/g' | endfor
 ```
 
 #### Answer 2 (score 308)
@@ -2486,13 +2486,13 @@ As a side note, instead of having to type in the line numbers, just highlight th
 Once you selected the lines to replace, type your command:  
 
 ```vim
-:s/&lt;search_string&gt;/&lt;replace_string&gt;/g
+:s/<search_string>/<replace_string>/g
 ```
 
 You'll note that the range `'&lt;,'&gt;` will be inserted automatically for you:  
 
 ```vim
-:'&lt;,'&gt;s/&lt;search_string&gt;/&lt;replace_string&gt;/g
+:'<,'>s/<search_string>/<replace_string>/g
 ```
 
 Here `'&lt;` simply means <em>first highlighted line</em>, and `'&gt;` means <em>last highlighted line</em>.  
@@ -2500,14 +2500,14 @@ Here `'&lt;` simply means <em>first highlighted line</em>, and `'&gt;` means <em
 Note that the behaviour might be unexpected when in <strong>`NORMAL`</strong> mode: `'&lt;` and `'&gt;` point to the start and end of the last highlight done in one of the <strong>`VISUAL`</strong> modes. Instead, in <strong>`NORMAL`</strong> mode, the special line number `.` can be used, which simply means <em>current line</em>. Hence, you can find/replace only on the current line like this:  
 
 ```vim
-:.s/&lt;search_string&gt;/&lt;replace_string&gt;/g
+:.s/<search_string>/<replace_string>/g
 ```
 
 Another thing to note is that inserting a second `:` between the range and the find/replace command does no harm, in other words, these commands will still work:  
 
 ```vim
-:'&lt;,'&gt;:s/&lt;search_string&gt;/&lt;replace_string&gt;/g
-:.:s/&lt;search_string&gt;/&lt;replace_string&gt;/g
+:'<,'>:s/<search_string>/<replace_string>/g
+:.:s/<search_string>/<replace_string>/g
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -2856,7 +2856,7 @@ endif
 Almost forgot... Just as ctags - you have to generate (and periodically update) the database. I use the following script  
 
 ```vim
-select_files &gt; cscope.files
+select_files > cscope.files
 ctags -L cscope.files
 ctags -e -L cscope.files
 cscope -ub -i cscope.files
@@ -3054,7 +3054,7 @@ At this point you should be saying, "<strong>BUT WAIT, WHAT THE HECK DOES THIS H
 Excellent point. Let's investigate what is in the contents of the `m` register by typing `"mp`. We then get the following:  
 
 ```vim
-EEa%&lt;ESC&gt;j0
+EEa%<ESC>j0
 ```
 
 At first this looks like you accidentally opened a binary file in notepad, but upon second glance, <strong>it's the exact sequence  of characters in our macro!</strong>  
@@ -3062,7 +3062,7 @@ At first this looks like you accidentally opened a binary file in notepad, but u
 You are a curious person, so let's do something interesting and edit this line of text to insert a `!` instead of boring old `%`.   
 
 ```vim
-EEa!&lt;ESC&gt;j0
+EEa!<ESC>j0
 ```
 
 Then let's yank this into the `n` register by typing `B"nyE`. Then, just for kicks, let's run the `n` macro on a line of our data using `@n`....  
@@ -3092,17 +3092,17 @@ You asked for it :-)
 autocmd BufEnter * execute "chdir ".escape(expand("%:p:h"), ' ')
 
 " Remove any trailing whitespace that is in the file
-autocmd BufRead,BufWrite * if ! &amp;bin | silent! %s/\s\+$//ge | endif
+autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
 
 " Restore cursor position to where it was before
 augroup JumpCursorOnEdit
    au!
    autocmd BufReadPost *
-            \ if expand("&lt;afile&gt;:p:h") !=? $TEMP |
-            \   if line("'\"") &gt; 1 &amp;&amp; line("'\"") &lt;= line("$") |
+            \ if expand("<afile>:p:h") !=? $TEMP |
+            \   if line("'\"") > 1 && line("'\"") <= line("$") |
             \     let JumpCursorOnEdit_foo = line("'\"") |
             \     let b:doopenfold = 1 |
-            \     if (foldlevel(JumpCursorOnEdit_foo) &gt; foldlevel(JumpCursorOnEdit_foo - 1)) |
+            \     if (foldlevel(JumpCursorOnEdit_foo) > foldlevel(JumpCursorOnEdit_foo - 1)) |
             \        let JumpCursorOnEdit_foo = JumpCursorOnEdit_foo - 1 |
             \        let b:doopenfold = 2 |
             \     endif |
@@ -3113,7 +3113,7 @@ augroup JumpCursorOnEdit
    autocmd BufWinEnter *
             \ if exists("b:doopenfold") |
             \   exe "normal zv" |
-            \   if(b:doopenfold &gt; 1) |
+            \   if(b:doopenfold > 1) |
             \       exe  "+".1 |
             \   endif |
             \   unlet b:doopenfold |
@@ -3151,7 +3151,7 @@ set shiftwidth=3
 set softtabstop=3
 
 " Use english for spellchecking, but don't spellcheck by default
-if version &gt;= 700
+if version >= 700
    set spl=en spell
    set nospell
 endif
@@ -3179,9 +3179,9 @@ set ignorecase
 set smartcase
 
 " This is totally awesome - remap jj to escape in insert mode.  You'll never type jj anyway, so it's great!
-inoremap jj &lt;Esc&gt;
+inoremap jj <Esc>
 
-nnoremap JJJJ &lt;Nop&gt;
+nnoremap JJJJ <Nop>
 
 " Incremental searching is sexy
 set incsearch
@@ -3214,7 +3214,7 @@ endif
 
 "Status line gnarliness
 set laststatus=2
-set statusline=%F%m%r%h%w\ (%{&amp;ff}){%Y}\ [%l,%v][%p%%]
+set statusline=%F%m%r%h%w\ (%{&ff}){%Y}\ [%l,%v][%p%%]
 
 " }}}
 
@@ -3283,61 +3283,61 @@ endfunction
 "{{{ Mappings
 
 " Open Url on this line with the browser \w
-map &lt;Leader&gt;w :call Browser ()&lt;CR&gt;
+map <Leader>w :call Browser ()<CR>
 
-" Open the Project Plugin &lt;F2&gt;
-nnoremap &lt;silent&gt; &lt;F2&gt; :Project&lt;CR&gt;
+" Open the Project Plugin <F2>
+nnoremap <silent> <F2> :Project<CR>
 
 " Open the Project Plugin
-nnoremap &lt;silent&gt; &lt;Leader&gt;pal  :Project .vimproject&lt;CR&gt;
+nnoremap <silent> <Leader>pal  :Project .vimproject<CR>
 
 " TODO Mode
-nnoremap &lt;silent&gt; &lt;Leader&gt;todo :execute TodoListMode()&lt;CR&gt;
+nnoremap <silent> <Leader>todo :execute TodoListMode()<CR>
 
-" Open the TagList Plugin &lt;F3&gt;
-nnoremap &lt;silent&gt; &lt;F3&gt; :Tlist&lt;CR&gt;
+" Open the TagList Plugin <F3>
+nnoremap <silent> <F3> :Tlist<CR>
 
 " Next Tab
-nnoremap &lt;silent&gt; &lt;C-Right&gt; :tabnext&lt;CR&gt;
+nnoremap <silent> <C-Right> :tabnext<CR>
 
 " Previous Tab
-nnoremap &lt;silent&gt; &lt;C-Left&gt; :tabprevious&lt;CR&gt;
+nnoremap <silent> <C-Left> :tabprevious<CR>
 
 " New Tab
-nnoremap &lt;silent&gt; &lt;C-t&gt; :tabnew&lt;CR&gt;
+nnoremap <silent> <C-t> :tabnew<CR>
 
-" Rotate Color Scheme &lt;F8&gt;
-nnoremap &lt;silent&gt; &lt;F8&gt; :execute RotateColorTheme()&lt;CR&gt;
+" Rotate Color Scheme <F8>
+nnoremap <silent> <F8> :execute RotateColorTheme()<CR>
 
 " DOS is for fools.
-nnoremap &lt;silent&gt; &lt;F9&gt; :%s/$//g&lt;CR&gt;:%s// /g&lt;CR&gt;
+nnoremap <silent> <F9> :%s/$//g<CR>:%s// /g<CR>
 
-" Paste Mode!  Dang! &lt;F10&gt;
-nnoremap &lt;silent&gt; &lt;F10&gt; :call Paste_on_off()&lt;CR&gt;
-set pastetoggle=&lt;F10&gt;
+" Paste Mode!  Dang! <F10>
+nnoremap <silent> <F10> :call Paste_on_off()<CR>
+set pastetoggle=<F10>
 
 " Edit vimrc \ev
-nnoremap &lt;silent&gt; &lt;Leader&gt;ev :tabnew&lt;CR&gt;:e ~/.vimrc&lt;CR&gt;
+nnoremap <silent> <Leader>ev :tabnew<CR>:e ~/.vimrc<CR>
 
 " Edit gvimrc \gv
-nnoremap &lt;silent&gt; &lt;Leader&gt;gv :tabnew&lt;CR&gt;:e ~/.gvimrc&lt;CR&gt;
+nnoremap <silent> <Leader>gv :tabnew<CR>:e ~/.gvimrc<CR>
 
 " Up and down are more logical with g..
-nnoremap &lt;silent&gt; k gk
-nnoremap &lt;silent&gt; j gj
-inoremap &lt;silent&gt; &lt;Up&gt; &lt;Esc&gt;gka
-inoremap &lt;silent&gt; &lt;Down&gt; &lt;Esc&gt;gja
+nnoremap <silent> k gk
+nnoremap <silent> j gj
+inoremap <silent> <Up> <Esc>gka
+inoremap <silent> <Down> <Esc>gja
 
 " Good call Benjie (r for i)
-nnoremap &lt;silent&gt; &lt;Home&gt; i &lt;Esc&gt;r
-nnoremap &lt;silent&gt; &lt;End&gt; a &lt;Esc&gt;r
+nnoremap <silent> <Home> i <Esc>r
+nnoremap <silent> <End> a <Esc>r
 
 " Create Blank Newlines and stay in Normal mode
-nnoremap &lt;silent&gt; zj o&lt;Esc&gt;
-nnoremap &lt;silent&gt; zk O&lt;Esc&gt;
+nnoremap <silent> zj o<Esc>
+nnoremap <silent> zk O<Esc>
 
 " Space will toggle folds!
-nnoremap &lt;space&gt; za
+nnoremap <space> za
 
 " Search mappings: These will make it so that going to the next one in a
 " search will center on the line it's found in.
@@ -3347,16 +3347,16 @@ map n nzz
 " Testing
 set completeopt=longest,menuone,preview
 
-inoremap &lt;expr&gt; &lt;cr&gt; pumvisible() ? "\&lt;c-y&gt;" : "\&lt;c-g&gt;u\&lt;cr&gt;"
-inoremap &lt;expr&gt; &lt;c-n&gt; pumvisible() ? "\&lt;lt&gt;c-n&gt;" : "\&lt;lt&gt;c-n&gt;\&lt;lt&gt;c-r&gt;=pumvisible() ? \"\\&lt;lt&gt;down&gt;\" : \"\"\&lt;lt&gt;cr&gt;"
-inoremap &lt;expr&gt; &lt;m-;&gt; pumvisible() ? "\&lt;lt&gt;c-n&gt;" : "\&lt;lt&gt;c-x&gt;\&lt;lt&gt;c-o&gt;\&lt;lt&gt;c-n&gt;\&lt;lt&gt;c-p&gt;\&lt;lt&gt;c-r&gt;=pumvisible() ? \"\\&lt;lt&gt;down&gt;\" : \"\"\&lt;lt&gt;cr&gt;"
+inoremap <expr> <cr> pumvisible() ? "\<c-y>" : "\<c-g>u\<cr>"
+inoremap <expr> <c-n> pumvisible() ? "\<lt>c-n>" : "\<lt>c-n>\<lt>c-r>=pumvisible() ? \"\\<lt>down>\" : \"\"\<lt>cr>"
+inoremap <expr> <m-;> pumvisible() ? "\<lt>c-n>" : "\<lt>c-x>\<lt>c-o>\<lt>c-n>\<lt>c-p>\<lt>c-r>=pumvisible() ? \"\\<lt>down>\" : \"\"\<lt>cr>"
 
 " Swap ; and :  Convenient.
 nnoremap ; :
 nnoremap : ;
 
 " Fix email paragraphs
-nnoremap &lt;leader&gt;par :%s/^&gt;$//&lt;CR&gt;
+nnoremap <leader>par :%s/^>$//<CR>
 
 "ly$O#{{{ "lpjjj_%A#}}}jjzajj
 
@@ -3424,7 +3424,7 @@ Also:
 Also:  
 
 ```vim
-gg&lt;Ctrl-v&gt;G$A*&lt;Esc&gt;
+gg<Ctrl-v>G$A*<Esc>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -3457,7 +3457,7 @@ Since earlier versions do not support this, my `.vimrc` uses instead:
 if exists('+colorcolumn')
   set colorcolumn=80
 else
-  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%&gt;80v.\+', -1)
+  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
 ```
 
@@ -3467,7 +3467,7 @@ See also <a href="http://vimdoc.sourceforge.net/htmldoc/options.html#%27colorcol
 Shorter way:  
 
 ```vim
-match ErrorMsg '\%&gt;80v.\+'
+match ErrorMsg '\%>80v.\+'
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -3700,7 +3700,7 @@ While using vim to do it is perfectly possible, why don't you simply use iconv? 
 Just:  
 
 ```vim
-iconv -f utf-16 -t utf-8 file.xml &gt; file.utf8.xml
+iconv -f utf-16 -t utf-8 file.xml > file.utf8.xml
 ```
 
 And you're done.  
@@ -4100,7 +4100,7 @@ Is there a way to delete the newline at the end of a line in Vim, so that the ne
 For example:  
 
 ```vim
-Evaluator&lt;T&gt;():
+Evaluator<T>():
     _bestPos(){
 }
 ```
@@ -4110,7 +4110,7 @@ I'd like to put this all on one line without copying lines and pasting them into
 End result:  
 
 ```vim
-Evaluator&lt;T&gt;(): _bestPos(){ }
+Evaluator<T>(): _bestPos(){ }
 ```
 
 Is this possible in Vim?  
@@ -4390,8 +4390,8 @@ ab  a () block (with parenthesis)
 ib  inner () block                  
 aB  a {} block (with braces)            
 iB  inner {} block                  
-a&lt;  a &lt;&gt; block (with &lt;&gt;)                
-i&lt;  inner &lt;&gt; block                  
+a<  a <> block (with <>)                
+i<  inner <> block                  
 a[  a [] block (with [])                
 i[  inner [] block                  
 ```
@@ -4411,7 +4411,7 @@ I have very large files (more than 10Gb). I need only some lines from the top of
 But if this file is as large as you say, you may be better off reading the first few lines with `head` rather than editing and saving the file.  
 
 ```vim
-head hugefile &gt; firstlines
+head hugefile > firstlines
 ```
 
 (If you are on Windows you can use the Win32 port of `head`)  
@@ -4467,19 +4467,19 @@ git commit -m "This is the first commit"
 You need to return to <em>normal</em> mode and save the commit message with either  
 
 ```vim
-&lt;Esc&gt;:wq
+<Esc>:wq
 ```
 
 or  
 
 ```vim
-&lt;Esc&gt;:x
+<Esc>:x
 ```
 
 or  
 
 ```vim
-&lt;Esc&gt;ZZ
+<Esc>ZZ
 ```
 
 <p>The <kbd>Esc</kbd> key returns you from <em>insert</em> mode to <em>normal</em> mode.
@@ -4890,11 +4890,11 @@ The options I have for astyle, `-T4pb`, are just my preferences. You can look th
 Here's a demo. Before astyle:  
 
 ```vim
-int main(){if(x&lt;2){x=3;}}
+int main(){if(x<2){x=3;}}
 
 float test()
 {
-if(x&lt;2)
+if(x<2)
 x=3;
 }
 ```
@@ -4904,7 +4904,7 @@ After astyle (gggqG):
 ```vim
 int main()
 {
-    if (x &lt; 2)
+    if (x < 2)
     {
         x = 3;
     }
@@ -4912,7 +4912,7 @@ int main()
 
 float test()
 {
-    if (x &lt; 2)
+    if (x < 2)
         x = 3;
 }
 ```
@@ -4929,11 +4929,11 @@ Here is the difference:
 </blockquote>
 
 ```vim
-int main(){if(x&lt;2){x=3;}}
+int main(){if(x<2){x=3;}}
 
 float test()
 {
-if(x&lt;2)
+if(x<2)
 x=3;
 }
 ```
@@ -4943,11 +4943,11 @@ x=3;
 </blockquote>
 
 ```vim
-int main(){if(x&lt;2){x=3;}}
+int main(){if(x<2){x=3;}}
 
 float test()
 {
-    if(x&lt;2)
+    if(x<2)
         x=3;
 }
 ```
@@ -4959,7 +4959,7 @@ float test()
 ```vim
 int main()
 {
-    if (x &lt; 2)
+    if (x < 2)
     {
         x = 3;
     }
@@ -4967,7 +4967,7 @@ int main()
 
 float test()
 {
-    if (x &lt; 2)
+    if (x < 2)
         x = 3;
 }
 ```
@@ -5014,7 +5014,7 @@ I can search word in vim with `/word`. How can I search only for `word`, excludi
 like this:  
 
 ```vim
-/\&lt;word\&gt;
+/\<word\>
 ```
 
 `\&lt;` means beginning of a word, and `\&gt;` means the end of a word,  
@@ -5156,7 +5156,7 @@ I did some googling, but the only thing I can find was `^+W` to delete word BEFO
 What you should do is create an imap of a certain key to a series of commands, in this case the commands will drop you into normal mode, delete the current word and then put you back in insert:  
 
 ```vim
-:imap &lt;C-d&gt; &lt;C-[&gt;diwi
+:imap <C-d> <C-[>diwi
 ```
 
 #### Answer 2 (score 510)
@@ -5287,9 +5287,9 @@ Here's mine:
 ```vim
 set statusline=
 set statusline +=%1*\ %n\ %*            "buffer number
-set statusline +=%5*%{&amp;ff}%*            "file format
+set statusline +=%5*%{&ff}%*            "file format
 set statusline +=%3*%y%*                "file type
-set statusline +=%4*\ %&lt;%F%*            "full path
+set statusline +=%4*\ %<%F%*            "full path
 set statusline +=%2*%m%*                "modified flag
 set statusline +=%1*%=%5l%*             "current line
 set statusline +=%2*/%L%*               "total lines
@@ -5444,7 +5444,7 @@ set vimdiff to ignore case
 Having started vim diff with  
 
 ```vim
- gvim -d main.sql backup.sql &amp;
+ gvim -d main.sql backup.sql &
 ```
 
 I find that annoyingly one file has MySQL keywords in lowercase the other uppercase showing differences on practically every other line  
@@ -5550,7 +5550,7 @@ I recently decided to tweak my vim config and in the process wound up writing th
 require 'ftools'
 require 'fileutils'
 
-task :default =&gt; :install
+task :default => :install
 desc "Install a vim plugin the lazy way"
 task :install do
   vim_dir      = File.expand_path("~/.vim")
@@ -5593,14 +5593,14 @@ end
 def ln(src, dst)
     begin
         FileUtils.ln_s src, dst
-        puts "    Symlink #{nicename src}\t =&gt; #{nicename dst}"
+        puts "    Symlink #{nicename src}\t => #{nicename dst}"
     rescue Errno::EEXIST
         puts "  #{nicename dst} exists! Skipping."
     end
 end
 
 def cp(src, dst)
-  puts "    Copying #{nicename src}\t=&gt; #{nicename dst}"
+  puts "    Copying #{nicename src}\t=> #{nicename dst}"
   FileUtils.cp src, dst
 end
 
@@ -5688,7 +5688,7 @@ You can use `:sh` to exit to your default shell then typing `$ exit` at the shel
 You can switch to shell mode temporarily by:  
 
 ```vim
-:! &lt;command&gt;
+:! <command>
 ```
 
 such as  
@@ -5820,16 +5820,16 @@ Note that for large number of contiguous additions, the block approach or macro 
 So I've got a big text file which looks like the following:  
 
 ```vim
-&lt;option value value='1' &gt;A
-&lt;option value value='2' &gt;B
-&lt;option value value='3' &gt;C
-&lt;option value value='4' &gt;D
+<option value value='1' >A
+<option value value='2' >B
+<option value value='3' >C
+<option value value='4' >D
 ```
 
 It's several hundred lines long and I really don't want to do it manually. The expression that I'm trying to use is:  
 
 ```vim
-&lt;option value='.{1,}' &gt;
+<option value='.{1,}' >
 ```
 
 Which is working as intended when i run it through several online regular expression testers. I basically want to remove everything before A, B, C, etc. The issue is when I try to use that expression in Vim and Notepad++, it can't seem to find anything.  
@@ -5840,7 +5840,7 @@ Everything before the <strong>A</strong>, <strong>B</strong>, <strong>C</strong>
 That seems so simple I must be misinterpreting you. It's just  
 
 ```vim
-:%s/&lt;.*&gt;//
+:%s/<.*>//
 ```
 
 #### Answer 2 (score 63)
@@ -5852,13 +5852,13 @@ Hold down alt to allow you to select a rectangle of text across multiple rows at
 <strong>In Notepad++ :</strong>  
 
 ```vim
-&lt;option value value='1' &gt;A
-&lt;option value value='2' &gt;B
-&lt;option value value='3' &gt;C
-&lt;option value value='4' &gt;D
+<option value value='1' >A
+<option value value='2' >B
+<option value value='3' >C
+<option value value='4' >D
 
 
-Find what: (.*)(&gt;)(.)
+Find what: (.*)(>)(.)
 Replace with: \3
 
 Replace All
@@ -5935,7 +5935,7 @@ The `*` key will highlight all occurrences of the word that is under the cursor.
 " Highlight all instances of word under cursor, when idle.
 " Useful when studying strange source code.
 " Type z/ to toggle highlighting on/off.
-nnoremap z/ :if AutoHighlightToggle()&lt;Bar&gt;set hls&lt;Bar&gt;endif&lt;CR&gt;
+nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 function! AutoHighlightToggle()
    let @/ = ''
    if exists('#auto_highlight')
@@ -5947,7 +5947,7 @@ function! AutoHighlightToggle()
   else
     augroup auto_highlight
     au!
-    au CursorHold * let @/ = '\V\&lt;'.escape(expand('&lt;cword&gt;'), '\').'\&gt;'
+    au CursorHold * let @/ = '\V\<'.escape(expand('<cword>'), '\').'\>'
     augroup end
     setl updatetime=500
     echo 'Highlight current word: ON'
@@ -5979,7 +5979,7 @@ grep -n 'something' HUGEFILE | head -n 1
 <li><p>Extract that range of the file. Say the lines you want to edit are at line 4 and 5. Then do:</p>
 
 ```vim
-sed -n -e '4,5p' -e '5q' HUGEFILE &gt; SMALLPART
+sed -n -e '4,5p' -e '5q' HUGEFILE > SMALLPART
 ```
 
 <ul>
@@ -5991,7 +5991,7 @@ sed -n -e '4,5p' -e '5q' HUGEFILE &gt; SMALLPART
 <li><p>Combine the file:</p>
 
 ```vim
-(head -n 3 HUGEFILE; cat SMALLPART; sed -e '1,5d' HUGEFILE) &gt; HUGEFILE.new 
+(head -n 3 HUGEFILE; cat SMALLPART; sed -e '1,5d' HUGEFILE) > HUGEFILE.new 
 ```
 
 <ul>
@@ -6029,8 +6029,8 @@ Edit: Mykola's answer works for all lines, apart from those at the beginning and
 Put the following to your .vimrc to do the job  
 
 ```vim
-noremap &lt;c-s-up&gt; :call feedkeys( line('.')==1 ? '' : 'ddkP' )&lt;CR&gt;
-noremap &lt;c-s-down&gt; ddp
+noremap <c-s-up> :call feedkeys( line('.')==1 ? '' : 'ddkP' )<CR>
+noremap <c-s-down> ddp
 ```
 
 Disappearing of the line looks like a Vim bug. I put a hack to avoid it. Probably there is some more accurate solution.  
@@ -6069,8 +6069,8 @@ function! s:swap_down()
     exec n + 1
 endfunction
 
-noremap &lt;silent&gt; &lt;c-s-up&gt; :call &lt;SID&gt;swap_up()&lt;CR&gt;
-noremap &lt;silent&gt; &lt;c-s-down&gt; :call &lt;SID&gt;swap_down()&lt;CR&gt;
+noremap <silent> <c-s-up> :call <SID>swap_up()<CR>
+noremap <silent> <c-s-down> :call <SID>swap_down()<CR>
 ```
 
 #### Answer 2 (score 550)
@@ -6122,9 +6122,9 @@ I want to open a file in Vim like in Eclipse using <kbd>Ctrl</kbd> + <kbd>Shift<
 I know opening it normally like:  
 
 ```vim
-:tabe &lt;filepath&gt;
-:new &lt;filepath&gt;
-:edit &lt;filepath&gt;
+:tabe <filepath>
+:new <filepath>
+:edit <filepath>
 ```
 
 The problem here is that I have to specify the whole file path in these cases.  
@@ -6146,7 +6146,7 @@ I open vim from the root of my project and have the `path` set to there.
 Then, I can open files located anywhere in the tree using:  
 
 ```vim
-:find **/filena&lt; tab &gt;
+:find **/filena< tab >
 ```
 
 Tab will autocomplete through various matches. (`**` tells it to search recursively through the path).  
@@ -6171,8 +6171,8 @@ The answer, `u`, (and many others) is in `$ vimtutor`.
 This can be achieved by editing the `.vimrc` file. Add the following lines in the '.vimrc` file.</p>
 
 ```vim
-nnoremap &lt;c-z&gt; :u&lt;CR&gt;      " Avoid using this**
-inoremap &lt;c-z&gt; &lt;c-o&gt;:u&lt;CR&gt;
+nnoremap <c-z> :u<CR>      " Avoid using this**
+inoremap <c-z> <c-o>:u<CR>
 ```
 
 This may not the a preferred way, but can be used.  
@@ -6187,14 +6187,14 @@ This may not the a preferred way, but can be used.
 I have two lines in a text file like below:  
 
 ```vim
-S&lt;Switch_ID&gt;_F&lt;File type&gt;
-_ID&lt;ID number&gt;_T&lt;date+time&gt;_O&lt;Original File name&gt;.DAT
+S<Switch_ID>_F<File type>
+_ID<ID number>_T<date+time>_O<Original File name>.DAT
 ```
 
 I want to append the two lines in vi like below:  
 
 ```vim
-S&lt;Switch_ID&gt;_F&lt;File type&gt;_ID&lt;ID number&gt;_T&lt;date+time&gt;_O&lt;Original File name&gt;.DAT
+S<Switch_ID>_F<File type>_ID<ID number>_T<date+time>_O<Original File name>.DAT
 ```
 
 The second line got deleted and the contents of the second line was appended to the first line.  
@@ -6222,20 +6222,20 @@ gJ
 With 'gJ' you join lines as is -- without adding or removing whitespaces:  
 
 ```vim
-S&lt;Switch_ID&gt;_F&lt;File type&gt;
-_ID&lt;ID number&gt;_T&lt;date+time&gt;_O&lt;Original File name&gt;.DAT
+S<Switch_ID>_F<File type>
+_ID<ID number>_T<date+time>_O<Original File name>.DAT
 ```
 
 Result:  
 
 ```vim
-S&lt;Switch_ID&gt;_F&lt;File type&gt;_ID&lt;ID number&gt;_T&lt;date+time&gt;_O&lt;Original File name&gt;.DAT
+S<Switch_ID>_F<File type>_ID<ID number>_T<date+time>_O<Original File name>.DAT
 ```
 
 With 'J' command you will have:  
 
 ```vim
-S&lt;Switch_ID&gt;_F&lt;File type&gt; _ID&lt;ID number&gt;_T&lt;date+time&gt;_O&lt;Original File name&gt;.DAT
+S<Switch_ID>_F<File type> _ID<ID number>_T<date+time>_O<Original File name>.DAT
 ```
 
 Note space between `type&gt;` and `_ID`.  

@@ -142,7 +142,7 @@ Check the -R option
 In the future, you can save a lot of time by checking the man page first:  
 
 ```sh
-man &lt;command name&gt;
+man <command name>
 ```
 
 So in this case:  
@@ -371,8 +371,8 @@ Depending on what you want the file to contain:
 <li><p>`somecommand &gt; /path/to/file` for a file containing the output of some command.</p>
 
 ```sh
-  eg: grep --help &gt; randomtext.txt
-      echo "This is some text" &gt; randomtext.txt
+  eg: grep --help > randomtext.txt
+      echo "This is some text" > randomtext.txt
 ```</li>
 <li><p>`nano /path/to/file` or `vi /path/to/file` (or `any other editor emacs,gedit etc`)<br>
 It either opens the existing one for editing or creates &amp; opens the empty file to enter, if it doesn't exist</p></li>
@@ -447,7 +447,7 @@ So you can just open up this file as root and add whatever you want.
 Run (try as normal user <em>and</em> root):</p>
 
 ```sh
-source /etc/environment &amp;&amp; export PATH
+source /etc/environment && export PATH
 ```
 
 <strong>UPDATE:</strong>  
@@ -601,7 +601,7 @@ One way to do it is:
 ```sh
 while read p; do
   echo "$p"
-done &lt;peptides.txt
+done <peptides.txt
 ```
 
 As pointed out in the comments, this has the side effects of trimming leading whitespace, interpretting backslash sequences, and skipping the trailing line if it's missing a terminating linefeed. If these are concerns, you can do:  
@@ -610,7 +610,7 @@ As pointed out in the comments, this has the side effects of trimming leading wh
 while IFS="" read -r p || [ -n "$p" ]
 do
   printf '%s\n' "$p"
-done &lt; peptides.txt
+done < peptides.txt
 ```
 
 <hr>
@@ -620,7 +620,7 @@ Exceptionally, if the <a href="https://unix.stackexchange.com/questions/107800/u
 ```sh
 while read -u 10 p; do
   ...
-done 10&lt;peptides.txt
+done 10<peptides.txt
 ```
 
 Here, 10 is just an arbitrary number (different from 0, 1, 2).  
@@ -648,7 +648,7 @@ filename='peptides.txt'
 echo Start
 while read p; do 
     echo $p
-done &lt; $filename
+done < $filename
 ```
 
 <p><strong>Option 1b:</strong> While loop:  Single line at a time:<br>
@@ -657,7 +657,7 @@ Open the file, read from a file descriptor (in this case file descriptor #4).  <
 ```sh
 #!/bin/bash
 filename='peptides.txt'
-exec 4&lt;$filename
+exec 4<$filename
 echo Start
 while read -u4 p ; do
     echo $p
@@ -720,7 +720,7 @@ public class SpatialModel {
             throw new SpatialException("Model path ahs to be set with -D" + MODEL_PATH_PARAM);
         }
 
-        for (int i = 0; i &lt; VENSIM_CONTEXT_CREATION_MAX_FAILURE_COUNT &amp;&amp; vh == null; i++) {
+        for (int i = 0; i < VENSIM_CONTEXT_CREATION_MAX_FAILURE_COUNT && vh == null; i++) {
             try {
                 log.info("creating new vensim helper\n\tdll lib: " + libName + "\n\tmodel path: " + modelPath);
                 vh = new VensimHelper(libName, modelPath);
@@ -750,9 +750,9 @@ public class SpatialModel {
         System.setProperty(DLL_LIBNAME_PARAM, libName);
         System.setProperty(MODEL_PATH_PARAM, modelPath);
 
-        if (args.length &gt; 0 &amp;&amp; args[0].equals("info")) {
+        if (args.length > 0 && args[0].equals("info")) {
             System.out.println(new VensimHelper(libName, modelPath).getVensimInfo());
-        } else if (args.length &gt; 0 &amp;&amp; args[0].equals("vars")) {
+        } else if (args.length > 0 && args[0].equals("vars")) {
             VensimHelper helper = new VensimHelper(libName, modelPath);
             String[] vars = helper.getVariables();
             for (String var : vars) {
@@ -947,7 +947,7 @@ Is there a way to count them all using linux commands?
 Use `wc`:  
 
 ```sh
-wc -l &lt;filename&gt;
+wc -l <filename>
 ```
 
 This will output the number of lines in `&lt;filename&gt;`:  
@@ -960,7 +960,7 @@ $ wc -l /dir/file.txt
 Or, to omit the `&lt;filename&gt;` from the result use `wc -l &lt; &lt;filename&gt;`:  
 
 ```sh
-$ wc -l &lt; /dir/file.txt
+$ wc -l < /dir/file.txt
 3272485
 ```
 
@@ -996,7 +996,7 @@ See the grep man page to take a look at the -e,-i and -x args...
 
 #### Answer 3 (score 70)
 ```sh
-wc -l &lt;file.txt&gt;
+wc -l <file.txt>
 ```
 
 Or  
@@ -1056,13 +1056,13 @@ scp username1@hostname1:/path/to/file username2@hostname2:/path/to/other/file
 scp is certainly the way to go, but for completeness you can also do:  
 
 ```sh
-$ ssh host 'cat /path/on/remote' &gt; /path/on/local
+$ ssh host 'cat /path/on/remote' > /path/on/local
 ```
 
 or  
 
 ```sh
-$ cat /path/on/local | ssh host 'cat &gt; /path/on/remote'
+$ cat /path/on/local | ssh host 'cat > /path/on/remote'
 ```
 
 Note, this is UUOC, but `&lt; /path/on/local ssh host 'cat &gt; /path'` could cause unnecessary confusion.  
@@ -1070,7 +1070,7 @@ Note, this is UUOC, but `&lt; /path/on/local ssh host 'cat &gt; /path'` could ca
 And to proxy between two hosts:  
 
 ```sh
-$ ssh host1 'cat /path/on/host1' | ssh host2 'cat &gt; /path/on/host2'
+$ ssh host1 'cat /path/on/host1' | ssh host2 'cat > /path/on/host2'
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -1084,7 +1084,7 @@ I know the POSIX `sleep(x)` function makes the program sleep for x seconds. Is t
 Note that there is no standard C API for milliseconds, so (on Unix) you will have to settle for `usleep`, which accepts microseconds:  
 
 ```sh
-#include &lt;unistd.h&gt;
+#include <unistd.h>
 
 unsigned int microseconds;
 ...
@@ -1095,8 +1095,8 @@ usleep(microseconds);
 In C++11, you can do this with standard library facilities:  
 
 ```sh
-#include &lt;chrono&gt;
-#include &lt;thread&gt;
+#include <chrono>
+#include <thread>
 ```
 
 
@@ -1111,7 +1111,7 @@ Clear and readable, no more need to guess at what units the `sleep()` function t
 To stay portable you could use <a href="http://www.boost.org/doc/libs/1_44_0/doc/html/thread.html" rel="noreferrer">Boost::Thread</a> for sleeping:  
 
 ```sh
-#include &lt;boost/thread/thread.hpp&gt;
+#include <boost/thread/thread.hpp>
 
 int main()
 {
@@ -1159,7 +1159,7 @@ If you really want to know what amount of memory your application actually uses,
 As explained in the <a href="http://valgrind.org/docs/manual/ms-manual.html" rel="noreferrer">valgrind documentation</a>, you need to run the program through valgrind:  
 
 ```sh
-valgrind --tool=massif &lt;executable&gt; &lt;arguments&gt;
+valgrind --tool=massif <executable> <arguments>
 ```
 
 <p>Massif writes a dump of memory usage snapshots (e.g. `massif.out.12345`). These provide, (1) a timeline of memory usage, (2) for each snapshot, a record of where in your program memory was allocated.
@@ -1171,7 +1171,7 @@ To find memory leaks, use the (default) `memcheck` tool of valgrind.
 Try the <a href="http://linux.die.net/man/1/pmap" rel="noreferrer">pmap</a> command:  
 
 ```sh
-sudo pmap -x &lt;process pid&gt;
+sudo pmap -x <process pid>
 ```
 
 #### Answer 3 (score 188)
@@ -1236,7 +1236,7 @@ nonvoluntary_ctxt_switches: 7171
 My problem started off with me not being able to log in as root any more on my mysql install.  I was attempting to run mysql without passwords turned on... but whenever I ran the command   
 
 ```sh
-# mysqld_safe --skip-grant-tables &amp;
+# mysqld_safe --skip-grant-tables &
 ```
 
 I would never get the prompt back. I was trying to follow <a href="http://www.cyberciti.biz/tips/recover-mysql-root-password.html" rel="noreferrer">these instructions to recover the password</a>.  
@@ -1621,7 +1621,7 @@ Usually your package manager will take care of this when you install a new libra
 If that doesn't work, I would also check out <a href="https://stackoverflow.com/a/480786/22781">Paul's suggestion</a> and look for a "-dev" version of the library. Many libraries are split into dev and non-dev packages. You can use this command to look for it:  
 
 ```sh
-apt-cache search &lt;libraryname&gt;
+apt-cache search <libraryname>
 ```
 
 This can also help if you simply have the wrong version of the library installed. Some libraries are published in different versions simultaneously, for example, Python.  
@@ -1657,13 +1657,13 @@ Is there a way to redirect all output to file?
 That part is written to stderr, use `2&gt;` to redirect it. For example:  
 
 ```sh
-foo &gt; stdout.txt 2&gt; stderr.txt
+foo > stdout.txt 2> stderr.txt
 ```
 
 or if you want in same file:  
 
 ```sh
-foo &gt; allout.txt 2&gt;&amp;1
+foo > allout.txt 2>&1
 ```
 
 Note: this works in (ba)sh, check your shell for proper syntax  
@@ -1676,20 +1676,20 @@ All POSIX operating systems <a href="http://en.wikipedia.org/wiki/Standard_strea
 <strong>EDIT</strong>: thanks to Zack for pointing out that the above solution is not portable--use instead:      
 
 ```sh
-*command* &gt; file 2&gt;&amp;1 
+*command* > file 2>&1 
 ```
 
 If you want to silence the error, do:  
 
 ```sh
-*command* 2&gt; /dev/null
+*command* 2> /dev/null
 ```
 
 #### Answer 3 (score 84)
 To get the output on the console AND in a file `file.txt` for example.  
 
 ```sh
-make 2&gt;&amp;1 | tee file.txt
+make 2>&1 | tee file.txt
 ```
 
 Note: `&amp;` (in `2&gt;&amp;1`) specifies that `1` is not a file name but a file descriptor.  
@@ -2152,11 +2152,11 @@ fi
 Depending on your system, you may need to replace `whiptail` with another similiar tool:  
 
 ```sh
-dialog --yesno "Is this a good question" 20 60 &amp;&amp; echo Yes
+dialog --yesno "Is this a good question" 20 60 && echo Yes
 
-gdialog --yesno "Is this a good question" 20 60 &amp;&amp; echo Yes
+gdialog --yesno "Is this a good question" 20 60 && echo Yes
 
-kdialog --yesno "Is this a good question" 20 60 &amp;&amp; echo Yes
+kdialog --yesno "Is this a good question" 20 60 && echo Yes
 ```
 
 where `20` is height of dialog box in number of lines and `60` is width of  the dialog box. These tools all have <em>near same</em> syntax.  
@@ -2199,7 +2199,7 @@ Under bash, `read` command accepts a <em>timeout</em> parameter, which could be 
 
 ```sh
 read -t 3 -n 1 -p "Is this a good question (y/n)? " answer
-[ -z "$answer" ] &amp;&amp; answer="Yes"  # if 'yes' have to be default choice
+[ -z "$answer" ] && answer="Yes"  # if 'yes' have to be default choice
 ```
 
 <h5>Some tricks for <em>dedicated tools</em></h3>
@@ -2213,7 +2213,7 @@ dialog --menu "Is this a good question" 20 60 12 y Yes n No m Maybe
 Progress bar:  
 
 ```sh
-dialog --gauge "Filling the tank" 20 60 0 &lt; &lt;(
+dialog --gauge "Filling the tank" 20 60 0 < <(
     for i in {1..100};do
         printf "XXX\n%d\n%(%a %b %T)T progress: %d\nXXX\n" $i -1 $i
         sleep .033
@@ -2227,8 +2227,8 @@ Little demo:
 #!/bin/sh
 while true ;do
     [ -x "$(which ${DIALOG%% *})" ] || DIALOG=dialog
-    DIALOG=$($DIALOG --menu "Which tool for next run?" 20 60 12 2&gt;&amp;1 \
-            whiptail       "dialog boxes from shell scripts" &gt;/dev/tty \
+    DIALOG=$($DIALOG --menu "Which tool for next run?" 20 60 12 2>&1 \
+            whiptail       "dialog boxes from shell scripts" >/dev/tty \
             dialog         "dialog boxes from shell with ncurses" \
             gdialog        "dialog boxes from shell with Gtk" \
             kdialog        "dialog boxes from shell with Kde" ) || exit
@@ -2241,17 +2241,17 @@ while true ;do
     sleep 3
     if $DIALOG --yesno  "Do you like this demo?" 20 60 ;then
         AnsYesNo=Yes; else AnsYesNo=No; fi
-    AnsInput=$($DIALOG --inputbox "A text:" 20 60 "Text here..." 2&gt;&amp;1 &gt;/dev/tty)
-    AnsPass=$($DIALOG --passwordbox "A secret:" 20 60 "First..." 2&gt;&amp;1 &gt;/dev/tty)
+    AnsInput=$($DIALOG --inputbox "A text:" 20 60 "Text here..." 2>&1 >/dev/tty)
+    AnsPass=$($DIALOG --passwordbox "A secret:" 20 60 "First..." 2>&1 >/dev/tty)
     $DIALOG --textbox /etc/motd 20 60
     AnsCkLst=$($DIALOG --checklist "Check some..." 20 60 12 \
         Correct "This demo is useful"        off \
         Fun        "This demo is nice"        off \
-        Strong        "This demo is complex"        on 2&gt;&amp;1 &gt;/dev/tty)
+        Strong        "This demo is complex"        on 2>&1 >/dev/tty)
     AnsRadio=$($DIALOG --radiolist "I will:" 20 60 12 \
         " -1" "Downgrade this answer"        off \
         "  0" "Not do anything"                on \
-        " +1" "Upgrade this anser"        off 2&gt;&amp;1 &gt;/dev/tty)
+        " +1" "Upgrade this anser"        off 2>&1 >/dev/tty)
     out="Your answers:\nLike: $AnsYesNo\nInput: $AnsInput\nSecret: $AnsPass"
     $DIALOG --msgbox "$out\nAttribs: $AnsCkLst\nNote: $AnsRadio" 20 60
   done
@@ -2272,7 +2272,7 @@ history -c
 history -r
 
 myread() {
-    read -e -p '&gt; ' $1
+    read -e -p '> ' $1
     history -s ${!1}
 }
 trap 'history -a;exit' 0 1 2 3 6
@@ -2423,7 +2423,7 @@ rm should remove the symbolic link.
 skrall@skrall-desktop:~$ mkdir bar
 skrall@skrall-desktop:~$ ln -s bar foo
 skrall@skrall-desktop:~$ ls -l foo
-lrwxrwxrwx 1 skrall skrall 3 2008-10-16 16:22 foo -&gt; bar
+lrwxrwxrwx 1 skrall skrall 3 2008-10-16 16:22 foo -> bar
 skrall@skrall-desktop:~$ rm foo
 skrall@skrall-desktop:~$ ls -l foo
 ls: cannot access foo: No such file or directory
@@ -2463,7 +2463,7 @@ curl -H "Accept: application/xml" -H "Content-Type: application/xml" -X GET http
 <em>For posting data:</em>  
 
 ```sh
-curl --data "param1=value1&amp;param2=value2" http://hostname/resource
+curl --data "param1=value1&param2=value2" http://hostname/resource
 ```
 
 <em>For file upload:</em>  
@@ -2481,7 +2481,7 @@ curl -X POST -d @filename http://hostname/resource
 <em>For logging into a site (auth):</em>  
 
 ```sh
-curl -d "username=admin&amp;password=admin&amp;submit=Login" --dump-header headers http://localhost/Login
+curl -d "username=admin&password=admin&submit=Login" --dump-header headers http://localhost/Login
 curl -L -b headers http://localhost/
 ```
 
@@ -2574,7 +2574,7 @@ curl -H "Accept: application/xml" -H "Content-Type: application/xml" -X GET http
 <strong>Saving the curl response to a file</strong>  
 
 ```sh
-curl http://hostname/resource &gt;&gt; /path/to/your/file
+curl http://hostname/resource >> /path/to/your/file
 ```
 
 or  
@@ -2663,13 +2663,13 @@ after every startup it will run the test script.
 A simple approach is to add a line in `/etc/rc.local` :  
 
 ```sh
-/PATH/TO/MY_APP &amp;
+/PATH/TO/MY_APP &
 ```
 
 or if you want to run the command as a special user :  
 
 ```sh
-su - USER_FOOBAR -c /PATH/TO/MY_APP &amp;
+su - USER_FOOBAR -c /PATH/TO/MY_APP &
 ```
 
 (the trailing ampersand backgrounds the process and allows the rc.local to continue executing)  
@@ -2950,7 +2950,7 @@ sudo apt-get install ntp
 Then I do  
 
 ```sh
-me@ubuntu:~/Desktop/iPDC-v1.3.1/DBServer-1.1$ mysql -uroot -proot &lt;"Db.sql"
+me@ubuntu:~/Desktop/iPDC-v1.3.1/DBServer-1.1$ mysql -uroot -proot <"Db.sql"
 ```
 
 I ended up with the following error message.  
@@ -3017,13 +3017,13 @@ This will be an ongoing command until the process is finished so open another sh
 ```sh
 $ mysql -u root
 
-mysql&gt; UPDATE mysql.user SET Password=PASSWORD('password') WHERE User='root';
+mysql> UPDATE mysql.user SET Password=PASSWORD('password') WHERE User='root';
 ```
 
 As per @IberoMedia's comment, for newer versions of MySQL, the field is called `authentication_string`:  
 
 ```sh
-mysql&gt; UPDATE mysql.user SET authentication_string =PASSWORD('password') WHERE User='root';
+mysql> UPDATE mysql.user SET authentication_string =PASSWORD('password') WHERE User='root';
 ```
 
 Start MySQL using:  
@@ -3048,7 +3048,7 @@ your new password is 'password'.
 I'm trying to compile my program and it returns this error :  
 
 ```sh
-usr/bin/ld: cannot find -l&lt;nameOfTheLibrary&gt;
+usr/bin/ld: cannot find -l<nameOfTheLibrary>
 ```
 
 in my makefile I use the command `g++` and link to my library which is a symbolic link to my library located on an other directory.  
@@ -3270,7 +3270,7 @@ file.txt = /nfs/an/disks/jj/home/dir/file.txt
 The `&lt;command&gt;`   
 
 ```sh
-dir&gt; &lt;command&gt; file.txt  
+dir> <command> file.txt  
 ```
 
 should print  
@@ -3302,7 +3302,7 @@ As per @styrofoam-fly and @arch-standton comments, `realpath` alone doesn't chec
 The following usually does the trick:  
 
 ```sh
- echo $(cd $(dirname "$1") &amp;&amp; pwd -P)/$(basename "$1")
+ echo $(cd $(dirname "$1") && pwd -P)/$(basename "$1")
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -3333,7 +3333,7 @@ export https_proxy=https://your.proxy.server:port/
 From `man curl`:  
 
 ```sh
--x, --proxy &lt;[protocol://][user:password@]proxyhost[:port]&gt;
+-x, --proxy <[protocol://][user:password@]proxyhost[:port]>
 
      Use the specified HTTP proxy. 
      If the port number is not specified, it is assumed at port 1080.
@@ -3547,7 +3547,7 @@ I needed to write a script to enter multi-line input to a program (`psql`).
 After a bit of googling, I found the following syntax works:  
 
 ```sh
-cat &lt;&lt; EOF | psql ---params
+cat << EOF | psql ---params
 BEGIN;
 
 `pg_dump ----something`
@@ -3589,7 +3589,7 @@ From `man bash`:
   The format of here-documents is:  
 
 ```sh
-          &lt;&lt;[-]word
+          <<[-]word
                   here-document
           delimiter
 ```
@@ -3623,7 +3623,7 @@ The `cat &lt;&lt;EOF` syntax is very useful when working with multi-line text in
 
 
 ```sh
-$ sql=$(cat &lt;&lt;EOF
+$ sql=$(cat <<EOF
 SELECT foo, bar FROM db
 WHERE foo='baz'
 EOF
@@ -3635,7 +3635,7 @@ EOF
 <h5>2. Pass multi-line string to a file in Bash</h2>
 
 ```sh
-$ cat &lt;&lt;EOF &gt; print.sh
+$ cat <<EOF > print.sh
 #!/bin/bash
 echo \$PWD
 echo $PWD
@@ -3653,7 +3653,7 @@ echo /home/user
 <h5>3. Pass multi-line string to a pipe in Bash</h2>
 
 ```sh
-$ cat &lt;&lt;EOF | grep 'b' | tee b.txt
+$ cat <<EOF | grep 'b' | tee b.txt
 foo
 bar
 baz
@@ -3676,12 +3676,12 @@ Some rules about the Here tags:
 example:   
 
 ```sh
-$ cat &gt;&gt; test &lt;&lt;HERE
-&gt; Hello world HERE &lt;-- Not by itself on a separate line -&gt; not considered end of string
-&gt; This is a test
-&gt;  HERE &lt;-- Leading space, so not considered end of string
-&gt; and a new line
-&gt; HERE &lt;-- Now we have the end of the string
+$ cat >> test <<HERE
+> Hello world HERE <-- Not by itself on a separate line -> not considered end of string
+> This is a test
+>  HERE <-- Leading space, so not considered end of string
+> and a new line
+> HERE <-- Now we have the end of the string
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -3702,7 +3702,7 @@ I have to deal with PHP once every few years, so please enlighten me at a very b
 create a php file and add the following code:</p>
 
 ```sh
-&lt;?php phpinfo(); ?&gt;
+<?php phpinfo(); ?>
 ```
 
 and open it in browser, it will show the file which is actually being read!  
@@ -3750,7 +3750,7 @@ php -i | grep 'php.ini'
 You should see something like:  
 
 ```sh
-Loaded Configuration File =&gt; /usr/local/lib/php.ini
+Loaded Configuration File => /usr/local/lib/php.ini
 ```
 
 <p>p.s.
@@ -3878,7 +3878,7 @@ with open("file.dat","a+") as f:
 f.seek(pos [, (0|1|2)])
 pos .. position of the r/w pointer
 [] .. optionally
-() .. one of -&gt;
+() .. one of ->
   0 .. absolute position
   1 .. relative position to current
   2 .. relative position from end
@@ -3947,7 +3947,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/your/custom/path/
 You can add it to your ~/.bashrc:  
 
 ```sh
-echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/your/custom/path/' &gt;&gt; ~/.bashrc
+echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/your/custom/path/' >> ~/.bashrc
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -3958,7 +3958,7 @@ echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/your/custom/path/' &gt;&gt; ~/.ba
 I connect to the linux server via putty SSH. I tried to run it as a background process like this:  
 
 ```sh
-$ node server.js &amp;
+$ node server.js &
 ```
 
 However, after 2.5 hrs the terminal becomes inactive and the process dies.  Is there anyway I can keep the process alive even with the terminal disconnected?  
@@ -3981,7 +3981,7 @@ There is a `node.js` module, <a href="https://github.com/nodejitsu/forever" rel=
 <strong>Simple solution</strong> (if you are not interested in coming back to the process, just want it to keep running):   
 
 ```sh
-nohup node server.js &amp;
+nohup node server.js &
 ```
 
 <strong>Powerful solution</strong> (allows you to reconnect to the process if it is interactive):   
@@ -4130,26 +4130,26 @@ This will be displayed in human readable format.
 To redirect <em>stdout</em> to a truncated file in Bash, I know to use:  
 
 ```sh
-cmd &gt; file.txt
+cmd > file.txt
 ```
 
 To redirect <em>stdout</em> in Bash, appending to a file, I know to use:  
 
 ```sh
-cmd &gt;&gt; file.txt
+cmd >> file.txt
 ```
 
 To redirect both <em>stdout</em> and <em>stderr</em> to a truncated file, I know to use:  
 
 ```sh
-cmd &amp;&gt; file.txt
+cmd &> file.txt
 ```
 
 How do I redirect both <em>stdout</em> and <em>stderr</em> appending to a file? `cmd &amp;&gt;&gt; file.txt` did not work for me.  
 
 #### Answer accepted (score 1853)
 ```sh
-cmd &gt;&gt;file.txt 2&gt;&amp;1
+cmd >>file.txt 2>&1
 ```
 
 Bash executes the redirects from left to right as follows:  
@@ -4165,13 +4165,13 @@ There are two ways to do this, depending on your Bash version.
 The classic and portable (<strong>Bash pre-4</strong>) way is:  
 
 ```sh
-cmd &gt;&gt; outfile 2&gt;&amp;1
+cmd >> outfile 2>&1
 ```
 
 A nonportable way, starting with <strong>Bash 4</strong> is  
 
 ```sh
-cmd &amp;&gt;&gt; outfile
+cmd &>> outfile
 ```
 
 (analog to `&amp;&gt; outfile`)  
@@ -4194,13 +4194,13 @@ The syntax is (beside other redirection syntax) described here: <a href="http://
 In Bash you can also explicitly specify your redirects to different files:  
 
 ```sh
-cmd &gt;log.out 2&gt;log_error.out
+cmd >log.out 2>log_error.out
 ```
 
 Appending would be:  
 
 ```sh
-cmd &gt;&gt;log.out 2&gt;&gt;log_error.out
+cmd >>log.out 2>>log_error.out
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -4279,7 +4279,7 @@ You need to change the `DocumentRoot` setting in your `httpd.conf` file.  Chance
 Use your favourite editor (I recommend <a href="http://www.vim.org/" rel="noreferrer">Vim</a>) and look for the `DocumentRoot` and change it to `/users/spencer/projects`. Also look a little further down for a setting that looks like this:  
 
 ```sh
-&lt;Directory "/var/www"&gt;
+<Directory "/var/www">
 ```
 
 You will also want to change what is in the quotes to your new directory. This gives Apache access to read from that directory when a user makes a request that call on it.  
@@ -4318,11 +4318,11 @@ sudo nano /etc/apache2/apache2.conf
 and find this   
 
 ```sh
-&lt;Directory /var/www/html/&gt;
+<Directory /var/www/html/>
 Options Indexes FollowSymLinks
 AllowOverride None
 Require all granted
-&lt;/Directory&gt;
+</Directory>
 ```
 
 and change `/var/www/html` to your preferred directory  
@@ -4504,7 +4504,7 @@ gzip -c mysqldbbackup.sql | uuencode mysqldbbackup.sql.gz  | mail -s "MySQL DB" 
 Depending on your version of linux it may be called mail.  To quote @David above:  
 
 ```sh
-mail -s "Backup" -a mysqldbbackup.sql backup@email.com &lt; message.txt
+mail -s "Backup" -a mysqldbbackup.sql backup@email.com < message.txt
 ```
 
 or also:  
@@ -4536,7 +4536,7 @@ For my particular case the socket service was an MTA and thus I only expect to r
 
 ```sh
 EHLO example.com
-MAIL FROM: &lt;john.doe@example.com&gt;
+MAIL FROM: <john.doe@example.com>
 ...
 ```
 
@@ -4682,7 +4682,7 @@ I just can't figure out how do I make sure an argument passed to my script is a 
 All I want to do is something like this:  
 
 ```sh
-test *isnumber* $1 &amp;&amp; VAR=$1 || echo "need a number"
+test *isnumber* $1 && VAR=$1 || echo "need a number"
 ```
 
 Any help?  
@@ -4693,7 +4693,7 @@ One approach is to use a regular expression, like so:
 ```sh
 re='^[0-9]+$'
 if ! [[ $yournumber =~ $re ]] ; then
-   echo "error: Not a number" &gt;&amp;2; exit 1
+   echo "error: Not a number" >&2; exit 1
 fi
 ```
 
@@ -4737,7 +4737,7 @@ as in:
 
 var=a
 
-if [ -n "$var" ] &amp;&amp; [ "$var" -eq "$var" ] 2&gt;/dev/null; then
+if [ -n "$var" ] && [ "$var" -eq "$var" ] 2>/dev/null; then
   echo number
 else
   echo not a number
@@ -4747,7 +4747,7 @@ fi
 You can can also test for $? the return code of the operation which is more explicit:  
 
 ```sh
-[ -n "$var" ] &amp;&amp; [ "$var" -eq "$var" ] 2&gt;/dev/null
+[ -n "$var" ] && [ "$var" -eq "$var" ] 2>/dev/null
 if [ $? -ne 0 ]; then
    echo $var is not number
 fi
@@ -4825,7 +4825,7 @@ Hopefully this is a nudge in the right direction for anyone who could do with so
 If the remote server is using SNI (that is, sharing multiple SSL hosts on a single IP address) you will need to send the correct hostname in order to get the right certificate.  
 
 ```sh
-openssl s_client -showcerts -servername www.example.com -connect www.example.com:443 &lt;/dev/null
+openssl s_client -showcerts -servername www.example.com -connect www.example.com:443 </dev/null
 ```
 
 <h5>Without SNI</h1>
@@ -4833,7 +4833,7 @@ openssl s_client -showcerts -servername www.example.com -connect www.example.com
 If the remote server is not using SNI, then you can skip `-servername` parameter:  
 
 ```sh
-openssl s_client -showcerts -connect www.example.com:443 &lt;/dev/null
+openssl s_client -showcerts -connect www.example.com:443 </dev/null
 ```
 
 <br/>  
@@ -4842,7 +4842,7 @@ To view the full details of a site's cert you can use this chain of commands as 
 
 ```sh
 $ echo | \
-    openssl s_client -servername www.example.com -connect www.example.com:443 2&gt;/dev/null | \
+    openssl s_client -servername www.example.com -connect www.example.com:443 2>/dev/null | \
     openssl x509 -text
 ```
 
@@ -4850,7 +4850,7 @@ $ echo | \
 While I agree with Ari's answer (and upvoted it :), I needed to do an extra step to get it to work with Java on Windows (where it needed to be deployed):  
 
 ```sh
-openssl s_client -showcerts -connect www.example.com:443 &lt; /dev/null | openssl x509 -outform DER &gt; derp.der
+openssl s_client -showcerts -connect www.example.com:443 < /dev/null | openssl x509 -outform DER > derp.der
 ```
 
 Before adding the `openssl x509 -outform DER` conversion, I was getting an error from keytool on Windows complaining about the certificate's format.  Importing the .der file worked fine.  
@@ -4930,15 +4930,15 @@ $ locate libmagic.so
 /usr/lib/libmagic.so.1
 /usr/lib/libmagic.so.1.0.0
 $ ls -all /usr/lib/libmagic.so.1*
-lrwxrwxrwx 1 root root    17 2008-12-01 03:52 /usr/lib/libmagic.so.1 -&gt; libmagic.so.1.0.0
+lrwxrwxrwx 1 root root    17 2008-12-01 03:52 /usr/lib/libmagic.so.1 -> libmagic.so.1.0.0
 -rwxrwxrwx 1 root root 84664 2008-09-09 00:05 /usr/lib/libmagic.so.1.0.0
 $ ldd /usr/lib/libmagic.so.1.0.0 
-    linux-gate.so.1 =&gt;  (0xb7f85000)
-    libz.so.1 =&gt; /usr/lib/libz.so.1 (0xb7f51000)
-    libc.so.6 =&gt; /lib/i686/cmov/libc.so.6 (0xb7df6000)
+    linux-gate.so.1 =>  (0xb7f85000)
+    libz.so.1 => /usr/lib/libz.so.1 (0xb7f51000)
+    libc.so.6 => /lib/i686/cmov/libc.so.6 (0xb7df6000)
     /lib/ld-linux.so.2 (0xb7f86000)
 $ sudo ldconfig -v | grep "libmagic"
-    libmagic.so.1 -&gt; libmagic.so.1.0.0
+    libmagic.so.1 -> libmagic.so.1.0.0
 ```
 
 How do I diagnose this problem further, and what could be wrong? Am I doing something completely stupid?  
@@ -5223,7 +5223,7 @@ ls -a | tee output.file
 If you want to include stderr, do:  
 
 ```sh
-program [arguments...] 2&gt;&amp;1 | tee outfile
+program [arguments...] 2>&1 | tee outfile
 ```
 
 `2&gt;&amp;1` redirects channel 2 (stderr/standard error) into channel 1 (stdout/standard output), such that both is written as stdout. It is also directed to the given output file as of the `tee` command.  
@@ -5231,12 +5231,12 @@ program [arguments...] 2&gt;&amp;1 | tee outfile
 Furthermore, if you want to <em>append</em> to the log file, use `tee -a` as:  
 
 ```sh
-program [arguments...] 2&gt;&amp;1 | tee -a outfile
+program [arguments...] 2>&1 | tee -a outfile
 ```
 
 #### Answer 2 (score 481)
 ```sh
-$ program [arguments...] 2&gt;&amp;1 | tee outfile
+$ program [arguments...] 2>&1 | tee outfile
 ```
 
 <p>`2&gt;&amp;1` dumps the stderr and stdout streams.
@@ -5251,14 +5251,14 @@ It's also bad if the program only outputs 1 or 2 lines every few minutes to repo
 Update: The program `unbuffer`, part of the `expect` package, will solve the buffering problem. This will cause stdout and stderr to write to the screen and file immediately and keep them in sync when being combined and redirected to `tee`. E.g.:  
 
 ```sh
-$ unbuffer program [arguments...] 2&gt;&amp;1 | tee outfile
+$ unbuffer program [arguments...] 2>&1 | tee outfile
 ```
 
 #### Answer 3 (score 117)
 Another way that works for me is,   
 
 ```sh
-&lt;command&gt; |&amp; tee  &lt;outputFile&gt;
+<command> |& tee  <outputFile>
 ```
 
 as shown in <a href="http://www.gnu.org/software/bash/manual/bashref.html#Pipelines" rel="noreferrer">gnu bash manual</a>  
@@ -5266,7 +5266,7 @@ as shown in <a href="http://www.gnu.org/software/bash/manual/bashref.html#Pipeli
 Example:  
 
 ```sh
-ls |&amp; tee files.txt
+ls |& tee files.txt
 ```
 
 <blockquote>
@@ -5296,9 +5296,9 @@ Edit: Added a piece of my code.
     f = fopen("contacts.pcl", "a");
 
     printf("\nNew contact name: ");
-    scanf("%s", &amp;name);
+    scanf("%s", &name);
     printf("New contact number: ");
-    scanf("%i", &amp;number);
+    scanf("%i", &number);
 
 
     fprintf(f, "%c\n[ %d ]\n\n", name, number);
@@ -5526,8 +5526,8 @@ find . -name '*.h' -o -name '*.cpp' -exec grep "CP_Image" {} \; -print
 I picked up the following demo off the web from <a href="https://computing.llnl.gov/tutorials/pthreads/" rel="noreferrer">https://computing.llnl.gov/tutorials/pthreads/</a>  
 
 ```sh
-#include &lt;pthread.h&gt;
-#include &lt;stdio.h&gt;
+#include <pthread.h>
+#include <stdio.h>
 #define NUM_THREADS     5
 
 void *PrintHello(void *threadid)
@@ -5543,9 +5543,9 @@ int main (int argc, char *argv[])
    pthread_t threads[NUM_THREADS];
    int rc;
    long t;
-   for(t=0; t&lt;NUM_THREADS; t++){
+   for(t=0; t<NUM_THREADS; t++){
       printf("In main: creating thread %ld\n", t);
-      rc = pthread_create(&amp;threads[t], NULL, PrintHello, (void *)t);
+      rc = pthread_create(&threads[t], NULL, PrintHello, (void *)t);
       if (rc){
          printf("ERROR; return code from pthread_create() is %d\n", rc);
          exit(-1);
@@ -6044,8 +6044,8 @@ This is useful when writing `configure` scripts, for example: what architecture 
 Try <a href="http://linuxmanpages.net/manpages/fedora16/man1/uname.1.html" rel="noreferrer">`uname -m`</a>. Which is short of `uname --machine` and it outputs:   
 
 ```sh
-x86_64 ==&gt; 64-bit kernel
-i686   ==&gt; 32-bit kernel
+x86_64 ==> 64-bit kernel
+i686   ==> 32-bit kernel
 ```
 
 <hr>
@@ -6066,7 +6066,7 @@ grep flags /proc/cpuinfo
 Among them, one is named `lm`: `Long Mode` (<a href="http://en.wikipedia.org/wiki/X86-64" rel="noreferrer">x86-64</a>: amd64, also known as Intel 64, i.e. 64-bit capable)</p>
 
 ```sh
-lm ==&gt; 64-bit processor
+lm ==> 64-bit processor
 ```
 
 Or <a href="http://linux.die.net/man/1/lshw" rel="noreferrer">using `lshw`</a> (as mentioned <a href="https://stackoverflow.com/a/32717681/6309">below</a> by <a href="https://stackoverflow.com/users/4637585/rolf-of-saxony">Rolf of Saxony</a>), without `sudo` (just for grepping the cpu width):  
@@ -6572,7 +6572,7 @@ su - webuser
 append <strong>.bashrc and .bash_profile</strong> file by running  
 
 ```sh
-echo "ulimit -n 64000" &gt;&gt; .bashrc ; echo "ulimit -n 64000" &gt;&gt; .bash_profile
+echo "ulimit -n 64000" >> .bashrc ; echo "ulimit -n 64000" >> .bash_profile
 ```
 
 3) Log out, then log back in and verify that the changes have been made correctly:  
@@ -6843,7 +6843,7 @@ mvn compile package install
 If you want to execute each command only if the previous one succeeded, then combine them using the `&amp;&amp;` operator:  
 
 ```sh
-cd /my_folder &amp;&amp; rm *.jar &amp;&amp; svn co path to repo &amp;&amp; mvn compile package install
+cd /my_folder && rm *.jar && svn co path to repo && mvn compile package install
 ```
 
 If one of the commands fails, then all other commands following it won't be executed.  
@@ -6861,9 +6861,9 @@ You can also put all commands in a script and execute that instead:
 ```sh
 #! /bin/sh
 cd /my_folder \
-&amp;&amp; rm *.jar \
-&amp;&amp; svn co path to repo \
-&amp;&amp; mvn compile package install
+&& rm *.jar \
+&& svn co path to repo \
+&& mvn compile package install
 ```
 
 (The backslashes at the end of the line are there to prevent the shell from thinking that the next line is a new command; if you omit the backslashes, you would need to write the whole command in a single line.)  
@@ -7015,14 +7015,14 @@ I have tried:
 ```sh
 struct timeval diff, startTV, endTV;
 
-gettimeofday(&amp;startTV, NULL); 
+gettimeofday(&startTV, NULL); 
 
 doSomething();
 doSomethingLong();
 
-gettimeofday(&amp;endTV, NULL); 
+gettimeofday(&endTV, NULL); 
 
-timersub(&amp;endTV, &amp;startTV, &amp;diff);
+timersub(&endTV, &startTV, &diff);
 
 printf("**time taken = %ld %ld\n", diff.tv_sec, diff.tv_usec);
 ```
@@ -7033,7 +7033,7 @@ What about `**time taken = 4 45025`, does that mean 4 seconds and 25 msec?
 
 #### Answer 2 (score 263)
 ```sh
-#include &lt;ctime&gt;
+#include <ctime>
 
 void f() {
   using namespace std;
@@ -7055,25 +7055,25 @@ You can <strong>abstract the time measuring mechanism</strong> and have each cal
 <sup><a href="https://stackoverflow.com/q/31253334/2567683">This</a> is why the forwarded function call.</sup></p>
 
 ```sh
-#include &lt;iostream&gt;
-#include &lt;chrono&gt;
+#include <iostream>
+#include <chrono>
 
-template&lt;typename TimeT = std::chrono::milliseconds&gt;
+template<typename TimeT = std::chrono::milliseconds>
 struct measure
 {
-    template&lt;typename F, typename ...Args&gt;
-    static typename TimeT::rep execution(F&amp;&amp; func, Args&amp;&amp;... args)
+    template<typename F, typename ...Args>
+    static typename TimeT::rep execution(F&& func, Args&&... args)
     {
         auto start = std::chrono::steady_clock::now();
-        std::forward&lt;decltype(func)&gt;(func)(std::forward&lt;Args&gt;(args)...);
-        auto duration = std::chrono::duration_cast&lt; TimeT&gt; 
+        std::forward<decltype(func)>(func)(std::forward<Args>(args)...);
+        auto duration = std::chrono::duration_cast< TimeT> 
                             (std::chrono::steady_clock::now() - start);
         return duration.count();
     }
 };
 
 int main() {
-    std::cout &lt;&lt; measure&lt;&gt;::execution(functor(dummy)) &lt;&lt; std::endl;
+    std::cout << measure<>::execution(functor(dummy)) << std::endl;
 }
 ```
 
@@ -7082,16 +7082,16 @@ int main() {
 According to the comment by <a href="https://stackoverflow.com/users/576911/howard-hinnant"><strong>Howard Hinnant</strong></a> it's best not to escape out of the chrono system until we have to. So the above class could give the user the choice to call `count` manually by providing an extra static method (shown in C++14)  
 
 ```sh
-template&lt;typename F, typename ...Args&gt;
-static auto duration(F&amp;&amp; func, Args&amp;&amp;... args)
+template<typename F, typename ...Args>
+static auto duration(F&& func, Args&&... args)
 {
     auto start = std::chrono::steady_clock::now();
-    std::forward&lt;decltype(func)&gt;(func)(std::forward&lt;Args&gt;(args)...);
-    return std::chrono::duration_cast&lt;TimeT&gt;(std::chrono::steady_clock::now()-start);
+    std::forward<decltype(func)>(func)(std::forward<Args>(args)...);
+    return std::chrono::duration_cast<TimeT>(std::chrono::steady_clock::now()-start);
 } 
 
 // call .count() manually later when needed (eg IO)
-auto avg = (measure&lt;&gt;::duration(func) + measure&lt;&gt;::duration(func)) / 2.0;
+auto avg = (measure<>::duration(func) + measure<>::duration(func)) / 2.0;
 ```
 
 and be most useful for clients that   
@@ -7109,7 +7109,7 @@ The complete <a href="https://github.com/picanumber/bureaucrat/blob/master/time_
 If C++17's <a href="http://en.cppreference.com/w/cpp/utility/functional/invoke" rel="noreferrer">`std::invoke`</a> is available, the invocation of the callable in `execution` could be done like this :   
 
 ```sh
-invoke(forward&lt;decltype(func)&gt;(func), forward&lt;Args&gt;(args)...);
+invoke(forward<decltype(func)>(func), forward<Args>(args)...);
 ```
 
 to provide for callables that are pointers to member functions.   
@@ -7309,7 +7309,7 @@ also, file -s is inefficient ...
 
 ```sh
 file -s /dev/sdl1
-/dev/sdl1: sticky x86 boot sector, code offset 0x52, OEM-ID "NTFS    ", sectors/cluster 8, reserved sectors 0, Media descriptor 0xf8, heads 255, hidden sectors 8192, dos &lt; 4.0 BootSector (0x0)
+/dev/sdl1: sticky x86 boot sector, code offset 0x52, OEM-ID "NTFS    ", sectors/cluster 8, reserved sectors 0, Media descriptor 0xf8, heads 255, hidden sectors 8192, dos < 4.0 BootSector (0x0)
 ```
 
 that's nice ... BUT  
@@ -7497,7 +7497,7 @@ For example, if `/dev/clip` was a device linking to the clipboard we could do:
 
 ```sh
 cat /dev/clip        # Dump the contents of the clipboard
-cat foo &gt; /dev/clip  # Dump the contents of "foo" into the clipboard
+cat foo > /dev/clip  # Dump the contents of "foo" into the clipboard
 ```
 
 #### Answer accepted (score 793)
@@ -7639,8 +7639,8 @@ Note the double slash after the server name. If I don't put an extra slash the p
 
 #### Answer 3 (score 25)
 ```sh
-ncftp -u &lt;user&gt; -p &lt;pass&gt; &lt;server&gt;
-ncftp&gt; mget directory
+ncftp -u <user> -p <pass> <server>
+ncftp> mget directory
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -7815,7 +7815,7 @@ see <a href="https://docs.docker.com/engine/reference/commandline/inspect/" rel=
 You may archive your container' filesystem into tar file:  
 
 ```sh
-docker export adoring_kowalevski &gt; contents.tar
+docker export adoring_kowalevski > contents.tar
 ```
 
 This way works even if your container is stopped and doesn't have any shell program like `/bin/bash`. I mean images like hello-world from <a href="https://docs.docker.com/installation/ubuntulinux/#installing-docker-on-ubuntu" rel="noreferrer">Docker documentation</a>.  

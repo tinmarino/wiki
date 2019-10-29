@@ -24,9 +24,9 @@ How can I achieve this?
 Based on the answers posted so far, I am currently doing this:  
 
 ```html
-&lt;form method="get" action="/page2"&gt;
-    &lt;button type="submit"&gt;Continue&lt;/button&gt;
-&lt;/form&gt;
+<form method="get" action="/page2">
+    <button type="submit">Continue</button>
+</form>
 ```
 
 but the problem with this is that in <a href="http://en.wikipedia.org/wiki/Safari_%28web_browser%29" rel="noreferrer">Safari</a> and <a href="http://en.wikipedia.org/wiki/Internet_Explorer" rel="noreferrer">Internet&nbsp;Explorer</a>, it adds a question mark character to the end of the URL. I need to find a solution that doesn't add any characters to the end of the URL.  
@@ -36,13 +36,13 @@ There are two other solutions to do this: Using JavaScript or styling a link to 
 Using JavaScript:  
 
 ```html
-&lt;button onclick="window.location.href='/page2'"&gt;Continue&lt;/button&gt;
+<button onclick="window.location.href='/page2'">Continue</button>
 ```
 
 But this obviously requires JavaScript, and for that reason it is less accessible to screen readers. The point of a link is to go to another page. So trying to make a button act like a link is the wrong solution. My suggestion is that you should use a link and <a href="https://stackoverflow.com/questions/710089/how-do-i-make-an-html-link-look-like-a-button">style it to look like a button</a>.  
 
 ```html
-&lt;a href="/link/to/page2"&gt;Continue&lt;/a&gt;
+<a href="/link/to/page2">Continue</a>
 ```
 
 #### Answer accepted (score 1946)
@@ -51,9 +51,9 @@ But this obviously requires JavaScript, and for that reason it is less accessibl
 The plain HTML way is to put it in a `&lt;form&gt;` wherein you specify the desired target URL in the `action` attribute.  
 
 ```html
-&lt;form action="http://google.com"&gt;
-    &lt;input type="submit" value="Go to Google" /&gt;
-&lt;/form&gt;
+<form action="http://google.com">
+    <input type="submit" value="Go to Google" />
+</form>
 ```
 
 If necessary, set CSS `display: inline;` on the form to keep it in the flow with the surrounding text. Instead of `&lt;input type="submit"&gt;` in above example, you can also use `&lt;button type="submit"&gt;`. The only difference is that the `&lt;button&gt;` element allows children.  
@@ -65,7 +65,7 @@ You'd intuitively expect to be able to use `&lt;button href="http://google.com"&
 If CSS is allowed, simply use an `&lt;a&gt;` which you style to look like a button using among others the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/-moz-appearance" rel="noreferrer">`appearance`</a> property (<a href="http://caniuse.com/#feat=css-appearance" rel="noreferrer">only Internet&nbsp;Explorer support is currently (July 2015) still poor</a>).  
 
 ```html
-&lt;a href="http://google.com" class="button"&gt;Go to Google&lt;/a&gt;
+<a href="http://google.com" class="button">Go to Google</a>
 ```
 
 
@@ -84,7 +84,7 @@ a.button {
 Or pick one of those many CSS libraries like <a href="http://getbootstrap.com/css/#buttons" rel="noreferrer">Bootstrap</a>.  
 
 ```html
-&lt;a href="http://google.com" class="btn btn-default"&gt;Go to Google&lt;/a&gt;
+<a href="http://google.com" class="btn btn-default">Go to Google</a>
 ```
 
 <h5>JavaScript</h2>
@@ -92,15 +92,15 @@ Or pick one of those many CSS libraries like <a href="http://getbootstrap.com/cs
 If JavaScript is allowed, set the `window.location.href`.  
 
 ```html
-&lt;input type="button" onclick="location.href='http://google.com';" value="Go to Google" /&gt;
+<input type="button" onclick="location.href='http://google.com';" value="Go to Google" />
 ```
 
 #### Answer 2 (score 532)
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="true" data-babel="false">
 <div class="snippet-code">
 ```html
-&lt;button onclick="location.href='http://www.example.com'" type="button"&gt;
-         www.example.com&lt;/button&gt;```
+<button onclick="location.href='http://www.example.com'" type="button">
+         www.example.com</button>```
 </div>
 </div>
 
@@ -111,10 +111,10 @@ Note that the `type="button"` attribute is important, since <a href="https://www
 If it's the visual appearance of a button you're looking for in a basic HTML anchor tag then you can use the <a href="http://getbootstrap.com/" rel="noreferrer">Twitter Bootstrap</a> framework to format any of the following common HTML type links/buttons to appear as a button. Please note the visual differences between version 2, 3 or 4 of the framework:  
 
 ```html
-&lt;a class="btn" href=""&gt;Link&lt;/a&gt;
-&lt;button class="btn" type="submit"&gt;Button&lt;/button&gt;
-&lt;input class="btn" type="button" value="Input"&gt;
-&lt;input class="btn" type="submit" value="Submit"&gt;
+<a class="btn" href="">Link</a>
+<button class="btn" type="submit">Button</button>
+<input class="btn" type="button" value="Input">
+<input class="btn" type="submit" value="Submit">
 ```
 
 <a href="https://getbootstrap.com/docs/4.0/components/buttons/" rel="noreferrer">Bootstrap (v4)</a> sample appearance:  
@@ -152,13 +152,13 @@ else
     $("#txtAge").hide();
 }```
 ```html
-&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"&gt;&lt;/script&gt;
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-&lt;input type="checkbox" id="isAgeSelected"/&gt;
+<input type="checkbox" id="isAgeSelected"/>
 
-&lt;div id="txtAge" style="display:none"&gt;
+<div id="txtAge" style="display:none">
 Age is selected
-&lt;/div&gt;```
+</div>```
 </div>
 </div>
 
@@ -204,9 +204,9 @@ $('#isAgeSelected').click(function() {
     $("#txtAge").toggle(this.checked);
 });```
 ```html
-&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"&gt;&lt;/script&gt;
-&lt;input type="checkbox" id="isAgeSelected"/&gt;
-&lt;div id="txtAge" style="display:none"&gt;Age is something&lt;/div&gt;```
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<input type="checkbox" id="isAgeSelected"/>
+<div id="txtAge" style="display:none">Age is something</div>```
 </div>
 </div>
 
@@ -229,9 +229,9 @@ else
 How can I horizontally center a `&lt;div&gt;` within another `&lt;div&gt;` using CSS?   
 
 ```html
-&lt;div id="outer"&gt;  
-  &lt;div id="inner"&gt;Foo foo&lt;/div&gt;
-&lt;/div&gt;
+<div id="outer">  
+  <div id="inner">Foo foo</div>
+</div>
 ```
 
 
@@ -275,9 +275,9 @@ Working example here:
   width:100%
 }```
 ```html
-&lt;div id="outer"&gt;
-  &lt;div id="inner"&gt;Foo foo&lt;/div&gt;
-&lt;/div&gt;```
+<div id="outer">
+  <div id="inner">Foo foo</div>
+</div>```
 </div>
 </div>
 
@@ -297,9 +297,9 @@ If you don't want to set a fixed width on the inner `div` you could do something
   display: inline-block;
 }```
 ```html
-&lt;div id="outer"&gt;  
-    &lt;div id="inner"&gt;Foo foo&lt;/div&gt;
-&lt;/div&gt;```
+<div id="outer">  
+    <div id="inner">Foo foo</div>
+</div>```
 </div>
 </div>
 
@@ -334,9 +334,9 @@ The best approaches are with <a href="http://www.w3schools.com/css/css3_intro.as
   width: 50%;
 }```
 ```html
-&lt;div id="outer"&gt;
-  &lt;div id="inner"&gt;Foo foo&lt;/div&gt;
-&lt;/div&gt;```
+<div id="outer">
+  <div id="inner">Foo foo</div>
+</div>```
 </div>
 </div>
 
@@ -380,7 +380,7 @@ Is it possible to set up a basic HTML page to redirect to another page on load?
 Try using:  
 
 ```html
-&lt;meta http-equiv="refresh" content="0; url=http://example.com/" /&gt;
+<meta http-equiv="refresh" content="0; url=http://example.com/" />
 ```
 
 Note: Place it in the head section.  
@@ -399,21 +399,21 @@ This will still allow you to get to where you're going with an additional click.
 I would use both <em>meta</em>, and <em>JavaScript code</em> and would have a link just in case.  
 
 ```html
-&lt;!DOCTYPE HTML&gt;
-&lt;html lang="en-US"&gt;
-    &lt;head&gt;
-        &lt;meta charset="UTF-8"&gt;
-        &lt;meta http-equiv="refresh" content="0; url=http://example.com"&gt;
-        &lt;script type="text/javascript"&gt;
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="refresh" content="0; url=http://example.com">
+        <script type="text/javascript">
             window.location.href = "http://example.com"
-        &lt;/script&gt;
-        &lt;title&gt;Page Redirection&lt;/title&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-        &lt;!-- Note: don't tell people to `click` the link, just tell them that it is a link. --&gt;
-        If you are not redirected automatically, follow this &lt;a href='http://example.com'&gt;link to example&lt;/a&gt;.
-    &lt;/body&gt;
-&lt;/html&gt;
+        </script>
+        <title>Page Redirection</title>
+    </head>
+    <body>
+        <!-- Note: don't tell people to `click` the link, just tell them that it is a link. -->
+        If you are not redirected automatically, follow this <a href='http://example.com'>link to example</a>.
+    </body>
+</html>
 ```
 
 For completeness, I think the best way, if possible, is to use server redirects, so send a <a href="https://en.wikipedia.org/wiki/HTTP_301" rel="noreferrer">301</a> status code. This is easy to do via `.htaccess` files using <a href="http://en.wikipedia.org/wiki/Apache_HTTP_Server" rel="noreferrer">Apache</a>, or via numerous plugins using <a href="http://en.wikipedia.org/wiki/WordPress" rel="noreferrer">WordPress</a>. I am sure there are also plugins for all the major content management systems. Also, cPanel has very easy configuration for 301 redirects if you have that installed on your server.  
@@ -422,15 +422,15 @@ For completeness, I think the best way, if possible, is to use server redirects,
 <h5>JavaScript</h3>
 
 ```html
-&lt;script type="text/javascript"&gt;
+<script type="text/javascript">
     window.location.href = "http://example.com";
-&lt;/script&gt;
+</script>
 ```
 
 <h5>Meta tag</h3>
 
 ```html
-&lt;meta http-equiv="refresh" content="0;url=http://example.com"&gt;
+<meta http-equiv="refresh" content="0;url=http://example.com">
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -454,9 +454,9 @@ Here is my div style:
   text-align: center;
 }```
 ```html
-&lt;div id="box"&gt;
+<div id="box">
   Lorem ipsum dolor sit
-&lt;/div&gt;```
+</div>```
 </div>
 </div>
 
@@ -476,9 +476,9 @@ div {
   border: 2px dashed #f69c55;
 }```
 ```html
-&lt;div&gt;
+<div>
   Hello World!
-&lt;/div&gt;```
+</div>```
 </div>
 </div>
 
@@ -506,9 +506,9 @@ span {
   line-height: normal;
 }```
 ```html
-&lt;div&gt;
-  &lt;span&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Haec et tu ita posuisti, et verba vestra sunt. Non enim iam stirpis bonum quaeret, sed animalis. &lt;/span&gt;
-&lt;/div&gt;```
+<div>
+  <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Haec et tu ita posuisti, et verba vestra sunt. Non enim iam stirpis bonum quaeret, sed animalis. </span>
+</div>```
 </div>
 </div>
 
@@ -536,9 +536,9 @@ span {
   vertical-align: middle;
 }```
 ```html
-&lt;div&gt;
-  &lt;span&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/span&gt;
-&lt;/div&gt;```
+<div>
+  <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+</div>```
 </div>
 </div>
 
@@ -582,9 +582,9 @@ align-items: center; /* align vertical */
   /* align vertical */
 }```
 ```html
-&lt;div class="box"&gt;
+<div class="box">
   Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-&lt;/div&gt;```
+</div>```
 </div>
 </div>
 
@@ -614,9 +614,9 @@ So to center the flex item both horizontally and vertically just set it with `ma
   margin: auto;
 }```
 ```html
-&lt;div class="box"&gt;
-  &lt;span&gt;margin:auto on a flex item centers it both horizontally and vertically&lt;/span&gt; 
-&lt;/div&gt;```
+<div class="box">
+  <span>margin:auto on a flex item centers it both horizontally and vertically</span> 
+</div>```
 </div>
 </div>
 
@@ -646,17 +646,17 @@ p {
   margin: 5px;
   }```
 ```html
-&lt;div class="box"&gt;
-  &lt;p&gt;
+<div class="box">
+  <p>
     When flex-direction is column...
-  &lt;/p&gt;
-  &lt;p&gt;
+  </p>
+  <p>
     "justify-content: center" - vertically aligns
-  &lt;/p&gt;
-  &lt;p&gt;
+  </p>
+  <p>
     "align-items: center" - horizontally aligns
-  &lt;/p&gt;
-&lt;/div&gt;```
+  </p>
+</div>```
 </div>
 </div>
 
@@ -706,9 +706,9 @@ That means your CSS finally looks like:
   vertical-align: middle;
 }```
 ```html
-&lt;div id="box"&gt;
+<div id="box">
   Some text
-&lt;/div&gt;```
+</div>```
 </div>
 </div>
 
@@ -749,21 +749,21 @@ You might even be able to get away with using the Unicode <a href="https://codep
 I need to match all of these opening tags:  
 
 ```html
-&lt;p&gt;
-&lt;a href="foo"&gt;
+<p>
+<a href="foo">
 ```
 
 But not these:  
 
 ```html
-&lt;br /&gt;
-&lt;hr class="foo" /&gt;
+<br />
+<hr class="foo" />
 ```
 
 I came up with this and wanted to make sure I've got it right. I am only capturing the `a-z`.  
 
 ```html
-&lt;([a-z]+) *[^/]*?&gt;
+<([a-z]+) *[^/]*?>
 ```
 
 I believe it says:  
@@ -893,13 +893,13 @@ Whilst it is possible to write JavaScript directly inside the HTML event attribu
 The first step to achieving this is by creating a function, and calling the function in the onclick attribute, for example:  
 
 ```html
-&lt;script type="text/javascript"&gt;
+<script type="text/javascript">
     function changeClass(){
         // Code examples from above
     }
-&lt;/script&gt;
+</script>
 ...
-&lt;button onclick="changeClass()"&gt;My Button&lt;/button&gt;
+<button onclick="changeClass()">My Button</button>
 ```
 
 <sub><em>(It is not required to have this code in script tags, this is simply for brevity of example, and including the JavaScript in a distinct file may be more appropriate.)</em></sub>  
@@ -907,7 +907,7 @@ The first step to achieving this is by creating a function, and calling the func
 The second step is to move the onclick event out of the HTML and into JavaScript, for example using <a href="https://developer.mozilla.org/en-US/docs/DOM/element.addEventListener" rel="noreferrer">addEventListener</a>  
 
 ```html
-&lt;script type="text/javascript"&gt;
+<script type="text/javascript">
     function changeClass(){
         // Code examples from above
     }
@@ -915,9 +915,9 @@ The second step is to move the onclick event out of the HTML and into JavaScript
     window.onload = function(){
         document.getElementById("MyElement").addEventListener( 'click', changeClass);
     }
-&lt;/script&gt;
+</script>
 ...
-&lt;button id="MyElement"&gt;My Button&lt;/button&gt;
+<button id="MyElement">My Button</button>
 ```
 
 (Note that the window.onload part is required so that the contents of that function are executed <em>after</em> the HTML has finished loading - without this, the MyElement might not exist when the JavaScript code is called, so that line would fail.)  
@@ -1003,15 +1003,15 @@ function removeClass(ele, cls) {
 So, for example, if I want `onclick` to add some class to the button I can use this:  
 
 ```html
-&lt;script type="text/javascript"&gt;
+<script type="text/javascript">
     function changeClass(btn, cls) {
         if(!hasClass(btn, cls)) {
             addClass(btn, cls);
         }
     }
-&lt;/script&gt;
+</script>
 ...
-&lt;button onclick="changeClass(this, "someClass")"&gt;My Button&lt;/button&gt;
+<button onclick="changeClass(this, "someClass")">My Button</button>
 ```
 
 By now for sure it would just be better to use jQuery.  
@@ -1025,11 +1025,11 @@ I have a `div` tag with `width` set to <strong>800 pixels</strong>. When the bro
 
 #### Answer accepted (score 1059)
 ```html
-&lt;body&gt;
-    &lt;div style="width:800px; margin:0 auto;"&gt;
+<body>
+    <div style="width:800px; margin:0 auto;">
         centered content
-    &lt;/div&gt;
-&lt;/body&gt;
+    </div>
+</body>
 ```
 
 #### Answer 2 (score 312)
@@ -1049,7 +1049,7 @@ I have a `div` tag with `width` set to <strong>800 pixels</strong>. When the bro
   background: red;
 }```
 ```html
-&lt;div id="outPopUp"&gt;&lt;/div&gt;```
+<div id="outPopUp"></div>```
 </div>
 </div>
 
@@ -1060,9 +1060,9 @@ Modern <a href="http://caniuse.com/#search=flexbox" rel="noreferrer"><strong>Fle
 <strong>HTML</strong>  
 
 ```html
-&lt;div class="container"&gt;
-  &lt;div class="center"&gt;Center&lt;/div&gt;
-&lt;/div&gt;
+<div class="container">
+  <div class="center">Center</div>
+</div>
 ```
 
 <strong>CSS</strong>  
@@ -1094,9 +1094,9 @@ Modern <a href="http://caniuse.com/#search=flexbox" rel="noreferrer"><strong>Fle
   font-family: Tahoma;
 }```
 ```html
-&lt;div class="container"&gt;
-  &lt;div class="center"&gt;Centered div with left aligned text.&lt;/div&gt;
-&lt;/div&gt;```
+<div class="container">
+  <div class="center">Centered div with left aligned text.</div>
+</div>```
 </div>
 </div>
 
@@ -1111,13 +1111,13 @@ I thought that adding a `"value"` attribute set on the `&lt;select&gt;` element 
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="true" data-babel="false">
 <div class="snippet-code">
 ```html
-&lt;select name="hall" id="hall" value="3"&gt;
-  &lt;option&gt;1&lt;/option&gt;
-  &lt;option&gt;2&lt;/option&gt;
-  &lt;option&gt;3&lt;/option&gt;
-  &lt;option&gt;4&lt;/option&gt;
-  &lt;option&gt;5&lt;/option&gt;
-&lt;/select&gt;```
+<select name="hall" id="hall" value="3">
+  <option>1</option>
+  <option>2</option>
+  <option>3</option>
+  <option>4</option>
+  <option>5</option>
+</select>```
 </div>
 </div>
 
@@ -1128,9 +1128,9 @@ However, this did not work as I had expected. How can I set which `&lt;option&gt
 Set `selected="selected"` for the option you want to be the default.  
 
 ```html
-&lt;option selected="selected"&gt;
+<option selected="selected">
 3
-&lt;/option&gt;
+</option>
 ```
 
 #### Answer 2 (score 517)
@@ -1139,14 +1139,14 @@ In case you want to have a default text as a sort of placeholder/hint but not co
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="true" data-babel="false">
 <div class="snippet-code">
 ```html
-&lt;select&gt;
-  &lt;option value="" selected disabled hidden&gt;Choose here&lt;/option&gt;
-  &lt;option value="1"&gt;One&lt;/option&gt;
-  &lt;option value="2"&gt;Two&lt;/option&gt;
-  &lt;option value="3"&gt;Three&lt;/option&gt;
-  &lt;option value="4"&gt;Four&lt;/option&gt;
-  &lt;option value="5"&gt;Five&lt;/option&gt;
-&lt;/select&gt;```
+<select>
+  <option value="" selected disabled hidden>Choose here</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+  <option value="4">Four</option>
+  <option value="5">Five</option>
+</select>```
 </div>
 </div>
 
@@ -1157,23 +1157,23 @@ Complete example:
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="true" data-babel="false">
 <div class="snippet-code">
 ```html
-&lt;select name="hall" id="hall"&gt; 
-  &lt;option&gt; 
+<select name="hall" id="hall"> 
+  <option> 
     1 
-  &lt;/option&gt; 
-  &lt;option&gt; 
+  </option> 
+  <option> 
     2 
-  &lt;/option&gt; 
-  &lt;option selected&gt; 
+  </option> 
+  <option selected> 
     3 
-  &lt;/option&gt; 
-  &lt;option&gt; 
+  </option> 
+  <option> 
     4 
-  &lt;/option&gt; 
-  &lt;option&gt; 
+  </option> 
+  <option> 
     5 
-  &lt;/option&gt; 
-&lt;/select&gt; ```
+  </option> 
+</select> ```
 </div>
 </div>
 
@@ -1225,19 +1225,19 @@ img {
 }```
 ```html
 Portrait Div
-&lt;div class="portrait"&gt;
-    &lt;img src="http://i.stack.imgur.com/xkF9Q.jpg"&gt;
-&lt;/div&gt;
+<div class="portrait">
+    <img src="http://i.stack.imgur.com/xkF9Q.jpg">
+</div>
 
 Landscape Div
-&lt;div class="landscape"&gt;
-    &lt;img src="http://i.stack.imgur.com/xkF9Q.jpg"&gt;
-&lt;/div&gt;
+<div class="landscape">
+    <img src="http://i.stack.imgur.com/xkF9Q.jpg">
+</div>
 
 Square Div
-&lt;div class="square"&gt;
-    &lt;img src="http://i.stack.imgur.com/xkF9Q.jpg"&gt;
-&lt;/div&gt;```
+<div class="square">
+    <img src="http://i.stack.imgur.com/xkF9Q.jpg">
+</div>```
 </div>
 </div>
 
@@ -1248,7 +1248,7 @@ Square Div
 It turns out there's another way to do this.  
 
 ```html
-&lt;img style='height: 100%; width: 100%; object-fit: contain'/&gt;
+<img style='height: 100%; width: 100%; object-fit: contain'/>
 ```
 
 will do the work. It's CSS&nbsp;3 stuff.  
@@ -1294,7 +1294,7 @@ function myJsFunc() {
     alert("myJsFunc");
 }```
 ```html
-&lt;a href="#" onclick="myJsFunc();"&gt;Run JavaScript Code&lt;/a&gt;```
+<a href="#" onclick="myJsFunc();">Run JavaScript Code</a>```
 </div>
 </div>
 
@@ -1308,7 +1308,7 @@ function myJsFunc() {
     alert("myJsFunc");
 }```
 ```html
- &lt;a href="javascript:void(0)" onclick="myJsFunc();"&gt;Run JavaScript Code&lt;/a&gt;```
+ <a href="javascript:void(0)" onclick="myJsFunc();">Run JavaScript Code</a>```
 </div>
 </div>
 
@@ -1372,7 +1372,7 @@ Check out <em><a href="http://en.wikipedia.org/wiki/Unobtrusive_JavaScript" rel=
 In an HTML table, the `cellpadding` and `cellspacing` can be set like this:  
 
 ```html
-&lt;table cellspacing="1" cellpadding="1"&gt;
+<table cellspacing="1" cellpadding="1">
 ```
 
 How can the same be accomplished using CSS?  
@@ -1497,16 +1497,16 @@ What are the ways to get and render an input value using jQuery?
 Here is one:   
 
 ```html
-&lt;script type="text/javascript" src="http://code.jquery.com/jquery-1.4.3.min.js" &gt;&lt;/script&gt;
-&lt;script type="text/javascript"&gt;
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.3.min.js" ></script>
+<script type="text/javascript">
     $(document).ready(function(){
         $("#txt_name").keyup(function(){
             alert($(this).val());
         });
     })
-&lt;/script&gt;
+</script>
 
-&lt;input type="text" id="txt_name"  /&gt;
+<input type="text" id="txt_name"  />
 ```
 
 #### Answer accepted (score 1598)
@@ -1584,12 +1584,12 @@ $('#myForm input').on('change', function() {
    alert($('input[name=radioName]:checked', '#myForm').val()); 
 });```
 ```html
-&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"&gt;&lt;/script&gt;
-&lt;form id="myForm"&gt;
-  &lt;input type="radio" name="radioName" value="1" /&gt; 1 &lt;br /&gt;
-  &lt;input type="radio" name="radioName" value="2" /&gt; 2 &lt;br /&gt;
-  &lt;input type="radio" name="radioName" value="3" /&gt; 3 &lt;br /&gt;
-&lt;/form&gt;```
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<form id="myForm">
+  <input type="radio" name="radioName" value="1" /> 1 <br />
+  <input type="radio" name="radioName" value="2" /> 2 <br />
+  <input type="radio" name="radioName" value="3" /> 3 <br />
+</form>```
 </div>
 </div>
 
@@ -1656,9 +1656,9 @@ If you're using Bootstrap, it has an "unstyled" class:
 <h5>Bootstrap 2:</h3>
 
 ```html
-&lt;ul class="unstyled"&gt;
-   &lt;li&gt;...&lt;/li&gt;
-&lt;/ul&gt;
+<ul class="unstyled">
+   <li>...</li>
+</ul>
 ```
 
 <a href="http://twitter.github.io/bootstrap/base-css.html#typography" rel="noreferrer">http://twitter.github.io/bootstrap/base-css.html#typography</a>  
@@ -1666,9 +1666,9 @@ If you're using Bootstrap, it has an "unstyled" class:
 <h5>Bootstrap 3 and 4:</h3>
 
 ```html
-&lt;ul class="list-unstyled"&gt;
-   &lt;li&gt;...&lt;/li&gt;
-&lt;/ul&gt;
+<ul class="list-unstyled">
+   <li>...</li>
+</ul>
 ```
 
 Bootstrap 3: <a href="http://getbootstrap.com/css/#type-lists" rel="noreferrer">http://getbootstrap.com/css/#type-lists</a>  
@@ -1679,9 +1679,9 @@ Bootstrap 4: <a href="https://getbootstrap.com/docs/4.3/content/typography/#unst
 You need to use `list-style: none;`  
 
 ```html
-&lt;ul style="list-style: none;"&gt;
-    &lt;li&gt; ...&lt;/li&gt;
-&lt;/ul&gt;
+<ul style="list-style: none;">
+    <li> ...</li>
+</ul>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -1692,11 +1692,11 @@ You need to use `list-style: none;`
 I am using something similar to the following code:   
 
 ```html
-&lt;div style="opacity:0.4; background-image:url(...);"&gt;
-    &lt;div style="opacity:1.0;"&gt;
+<div style="opacity:0.4; background-image:url(...);">
+    <div style="opacity:1.0;">
         Text
-    &lt;/div&gt;
-&lt;/div&gt;
+    </div>
+</div>
 ```
 
 I expected this to make the background have an opacity of 0.4 and the text to have 100% opacity. Instead they both have an opacity of 0.4.   
@@ -1711,11 +1711,11 @@ Example, 50% faded black background:
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="true" data-babel="false">
 <div class="snippet-code">
 ```html
-&lt;div style="background-color:rgba(0, 0, 0, 0.5);"&gt;
-   &lt;div&gt;
+<div style="background-color:rgba(0, 0, 0, 0.5);">
+   <div>
       Text added.
-   &lt;/div&gt;
-&lt;/div&gt;```
+   </div>
+</div>```
 </div>
 </div>
 
@@ -1724,9 +1724,9 @@ Example, 50% faded black background:
 You can use CSS 3 `:before` to have a semi-transparent background and you can do this with just one container. Use something like this  
 
 ```html
-&lt;article&gt;
+<article>
   Text.
-&lt;/article&gt;
+</article>
 ```
 
 Then apply some CSS  
@@ -1796,10 +1796,10 @@ Say I have the following CSS and HTML code:
   height: 150px;
 }```
 ```html
-&lt;div id="header"&gt;
-  &lt;h1&gt;Header title&lt;/h1&gt;
+<div id="header">
+  <h1>Header title</h1>
   Header content (one or multiple lines)
-&lt;/div&gt;```
+</div>```
 </div>
 </div>
 
@@ -1855,10 +1855,10 @@ Relative+absolute positioning is your best bet:
   background: rgba(40, 40, 100, 0.25);
 }```
 ```html
-&lt;div id="header"&gt;
-  &lt;h1&gt;Title&lt;/h1&gt;
-  &lt;div id="header-content"&gt;Some content&lt;/div&gt;
-&lt;/div&gt;```
+<div id="header">
+  <h1>Title</h1>
+  <div id="header-content">Some content</div>
+</div>```
 </div>
 </div>
 
@@ -1888,11 +1888,11 @@ Use CSS positioning:
 As <a href="https://stackoverflow.com/questions/585945/how-to-align-content-of-a-div-to-the-bottom-with-css/585965#585965">cletus noted</a>, you need identify the header-content to make this work.  
 
 ```html
-&lt;span id="header-content"&gt;some header content&lt;/span&gt;
+<span id="header-content">some header content</span>
 
-&lt;div style="height:100%; position:relative;"&gt;
-    &lt;div style="height:10%; position:absolute; bottom:0px;"&gt;bottom&lt;/div&gt;
-&lt;/div&gt;
+<div style="height:100%; position:relative;">
+    <div style="height:10%; position:absolute; bottom:0px;">bottom</div>
+</div>
 ```
 
 #### Answer 3 (score 111)
@@ -1938,7 +1938,7 @@ For this question, we can make use of `vh`: `1vh` is equal to 1% of the viewport
 <h5>HTML</h3>
 
 ```html
-&lt;div&gt;&lt;/div&gt;
+<div></div>
 ```
 
 <h5>CSS</h3>
@@ -1964,11 +1964,11 @@ In the case of the question at hand, featuring a left and a right divider, here 
 Take this layout for example:  
 
 ```html
-&lt;body style="height:100%"&gt;
-    &lt;div style="height:200px"&gt;
-        &lt;p style="height:100%; display:block;"&gt;Hello, world!&lt;/p&gt;
-    &lt;/div&gt;
-&lt;/body&gt;
+<body style="height:100%">
+    <div style="height:200px">
+        <p style="height:100%; display:block;">Hello, world!</p>
+    </div>
+</body>
 ```
 
 The `p` tag here is set to 100% height, but because its containing `div` has 200 pixels height, 100% of 200 pixels becomes 200 pixels, <em>not</em> 100% of the `body` height. Using `100vh` instead means that the `p` tag will be 100% height of the `body` regardless of the `div` height. Take a look at this <a href="http://jsfiddle.net/JamesD/hr8sL/2/" rel="noreferrer">accompanying JSFiddle</a> to easily see the difference!  
@@ -2074,7 +2074,7 @@ Try it yourself <a href="http://www.w3schools.com/html/tryit.asp?filename=tryhtm
 Use this DOM  
 
 ```html
-&lt;input type='text' onkeypress='validate(event)' /&gt;
+<input type='text' onkeypress='validate(event)' />
 ```
 
 And this script  
@@ -2103,20 +2103,20 @@ function validate(evt) {
 I've searched long and hard for a good answer to this, and we desperately need `&lt;input type="number"`, but short of that, these 2 are the most concise ways I could come up with:  
 
 ```html
-&lt;input type="text" 
-       onkeyup="this.value=this.value.replace(/[^\d]/,'')"&gt;
+<input type="text" 
+       onkeyup="this.value=this.value.replace(/[^\d]/,'')">
 ```
 
 If you dislike the non-accepted character showing for a split-second before being erased, the method below is my solution.  Note the numerous additional conditions, this is to avoid disabling all sorts of navigation and hotkeys.  If anyone knows how to compactify this, let us know!  
 
 ```html
-&lt;input type="text" 
+<input type="text" 
 onkeydown="return ( event.ctrlKey || event.altKey 
-                    || (47&lt;event.keyCode &amp;&amp; event.keyCode&lt;58 &amp;&amp; event.shiftKey==false) 
-                    || (95&lt;event.keyCode &amp;&amp; event.keyCode&lt;106)
+                    || (47<event.keyCode && event.keyCode<58 && event.shiftKey==false) 
+                    || (95<event.keyCode && event.keyCode<106)
                     || (event.keyCode==8) || (event.keyCode==9) 
-                    || (event.keyCode&gt;34 &amp;&amp; event.keyCode&lt;40) 
-                    || (event.keyCode==46) )"&gt;
+                    || (event.keyCode>34 && event.keyCode<40) 
+                    || (event.keyCode==46) )">
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -2135,7 +2135,7 @@ input[placeholder], [placeholder], *[placeholder] {
     color: red !important;
 }```
 ```html
-&lt;input type="text" placeholder="Value"&gt;```
+<input type="text" placeholder="Value">```
 </div>
 </div>
 
@@ -2195,7 +2195,7 @@ User agents are required to ignore a rule with an unknown selector. See <a href=
    color:    #909;
 }```
 ```html
-&lt;input placeholder="Stack Snippets are awesome!"&gt;```
+<input placeholder="Stack Snippets are awesome!">```
 </div>
 </div>
 
@@ -2248,8 +2248,8 @@ User agents are required to ignore a rule with an unknown selector. See <a href=
     color: red;
 }```
 ```html
-&lt;input placeholder="hello"/&gt; &lt;br /&gt;
-&lt;textarea placeholder="hello"&gt;&lt;/textarea&gt;```
+<input placeholder="hello"/> <br />
+<textarea placeholder="hello"></textarea>```
 </div>
 </div>
 
@@ -2280,10 +2280,10 @@ I need assistance with overlaying one individual `div` over another individual `
 My code looks like this:  
 
 ```html
-&lt;div class="navi"&gt;&lt;/div&gt;
-&lt;div id="infoi"&gt;
-    &lt;img src="info_icon2.png" height="20" width="32"/&gt;
-&lt;/div&gt;
+<div class="navi"></div>
+<div id="infoi">
+    <img src="info_icon2.png" height="20" width="32"/>
+</div>
 ```
 
 Unfortunately I cannot nest the `div#infoi` or the `img`, inside the first `div.navi`.  
@@ -2311,12 +2311,12 @@ It has to be two separate `div`s as shown, but I need to know how I could place 
   z-index: 10;
 }```
 ```html
-&lt;div id="container"&gt;
-  &lt;div id="navi"&gt;a&lt;/div&gt;
-  &lt;div id="infoi"&gt;
-    &lt;img src="https://appharbor.com/assets/images/stackoverflow-logo.png" height="20" width="32" /&gt;b
-  &lt;/div&gt;
-&lt;/div&gt;```
+<div id="container">
+  <div id="navi">a</div>
+  <div id="infoi">
+    <img src="https://appharbor.com/assets/images/stackoverflow-logo.png" height="20" width="32" />b
+  </div>
+</div>```
 </div>
 </div>
 
@@ -2366,10 +2366,10 @@ For example, if a `&lt;div class="parent"&gt;` element is given `position: relat
 <strong>The other factor</strong> to be aware of is <strong>stack order</strong> - or how elements are stacked in the z-direction. The must-know here is the stack order of elements are, by default, defined by the reverse of their order in the HTML structure. Consider the following example:  
 
 ```html
-&lt;body&gt;
-  &lt;div&gt;Bottom&lt;/div&gt;
-  &lt;div&gt;Top&lt;/div&gt;
-&lt;/body&gt;
+<body>
+  <div>Bottom</div>
+  <div>Top</div>
+</body>
 ```
 
 In this example, if the two `&lt;div&gt;` elements were positioned in the same place on the page, the `&lt;div&gt;Top&lt;/div&gt;` element would cover the `&lt;div&gt;Bottom&lt;/div&gt;` element. Since `&lt;div&gt;Top&lt;/div&gt;` comes after `&lt;div&gt;Bottom&lt;/div&gt;` in the HTML structure it has a higher stacking order.  
@@ -2395,8 +2395,8 @@ div {
   background-color: red;
 }```
 ```html
-&lt;div id="bottom"&gt;Bottom&lt;/div&gt;
-&lt;div id="top"&gt;Top&lt;/div&gt;```
+<div id="bottom">Bottom</div>
+<div id="top">Top</div>```
 </div>
 </div>
 
@@ -2412,10 +2412,10 @@ So, back to the problem at hand - we'll use position context to solve this issue
 As stated above, our goal is to position the `#infoi` element so it appears within the `.navi` element. To do this, we'll wrap the `.navi` and `#infoi` elements in a new element `&lt;div class="wrapper"&gt;` so we can create a new position context.  
 
 ```html
-&lt;div class="wrapper"&gt;
-  &lt;div class="navi"&gt;&lt;/div&gt;
-  &lt;div id="infoi"&gt;&lt;/div&gt;
-&lt;/div&gt;
+<div class="wrapper">
+  <div class="navi"></div>
+  <div id="infoi"></div>
+</div>
 ```
 
 Then create a new position context by giving `.wrapper` a `position: relative`.  
@@ -2485,12 +2485,12 @@ The example below is boiled down to the basics, and contains some minimal stylin
   padding: 10px 10px;
 }```
 ```html
-&lt;div class="wrapper"&gt;
-  &lt;div class="navi"&gt;&lt;/div&gt;
-  &lt;div id="infoi"&gt;
-    &lt;img src="http://via.placeholder.com/32x20/000000/ffffff?text=?" height="20" width="32"/&gt;
-  &lt;/div&gt;
-&lt;/div&gt;```
+<div class="wrapper">
+  <div class="navi"></div>
+  <div id="infoi">
+    <img src="http://via.placeholder.com/32x20/000000/ffffff?text=?" height="20" width="32"/>
+  </div>
+</div>```
 </div>
 </div>
 
@@ -2533,10 +2533,10 @@ Instead of using `position: absolute` on the `#infoi` element, we'll use `positi
   padding: 10px 10px;
 }```
 ```html
-&lt;div class="navi"&gt;&lt;/div&gt;
-&lt;div id="infoi"&gt;
-  &lt;img src="http://via.placeholder.com/32x20/000000/ffffff?text=?" height="20" width="32"/&gt;
-&lt;/div&gt;```
+<div class="navi"></div>
+<div id="infoi">
+  <img src="http://via.placeholder.com/32x20/000000/ffffff?text=?" height="20" width="32"/>
+</div>```
 </div>
 </div>
 
@@ -2557,9 +2557,9 @@ How do I create a `div` element in <strong>jQuery</strong>?
 You can use `append` (to add at last position of parent) or `prepend` (to add at fist position of parent):  
 
 ```html
-$('#parent').append('&lt;div&gt;hello&lt;/div&gt;');    
+$('#parent').append('<div>hello</div>');    
 // or
-$('&lt;div&gt;hello&lt;/div&gt;').appendTo('#parent');
+$('<div>hello</div>').appendTo('#parent');
 ```
 
 Alternatively, you can use the `.html()` or `.add()` as mentioned in a <a href="https://stackoverflow.com/a/867941/59087">different answer</a>.  
@@ -2570,7 +2570,7 @@ Alternatively, you can use the `.html()` or `.add()` as mentioned in a <a href="
 As of jQuery 1.4 you can pass attributes to a self-closed element like so:  
 
 ```html
-jQuery('&lt;div/&gt;', {
+jQuery('<div/>', {
     id: 'some-id',
     "class": 'some-class',
     title: 'now this div has a title!'
@@ -2708,7 +2708,7 @@ html, body {
     display: table;
     text-align: center;
 }
-.parent &gt; .child {
+.parent > .child {
     display: table-cell;
     vertical-align: middle;
 }
@@ -2732,7 +2732,7 @@ html, body, .container {
     position: relative;
     text-align: center;
 }
-.container &gt; p {
+.container > p {
     position: absolute;
     top: 50%;
     left: 0;
@@ -2759,7 +2759,7 @@ Though this solution will work in some cases, it's worth noting that it won't wo
     width: 400px;
     text-align: center;
 }
-.parent &gt; .child {
+.parent > .child {
     line-height: 200px;
 }
 ```</li>
@@ -2773,9 +2773,9 @@ Methods 4 and 5 aren't the most reliable. Go with one of the first 3.
 Using flexbox/CSS:   
 
 ```html
-&lt;div class="box"&gt;
-    &lt;p&gt;&amp;#x0D05;&lt;/p&gt;
-&lt;/div&gt;
+<div class="box">
+    <p>&#x0D05;</p>
+</div>
 ```
 
 The CSS:  
@@ -2800,7 +2800,7 @@ I am trying to style a checkbox using the following:
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="true" data-babel="false">
 <div class="snippet-code">
 ```html
-&lt;input type="checkbox" style="border:2px dotted #00f;display:block;background:#ff0000;" /&gt;```
+<input type="checkbox" style="border:2px dotted #00f;display:block;background:#ff0000;" />```
 </div>
 </div>
 
@@ -2856,11 +2856,11 @@ There is a way to do this using just CSS. We can (ab)use the `label` element and
   background: url("link_to_another_image");
 }```
 ```html
-&lt;label for="test"&gt;Label for my styled "checkbox"&lt;/label&gt;
-&lt;label class="myCheckbox"&gt;
-  &lt;input type="checkbox" name="test" /&gt;
-  &lt;span&gt;&lt;/span&gt;
-&lt;/label&gt;```
+<label for="test">Label for my styled "checkbox"</label>
+<label class="myCheckbox">
+  <input type="checkbox" name="test" />
+  <span></span>
+</label>```
 </div>
 </div>
 
@@ -2957,38 +2957,38 @@ $(function() {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGHRFWHRBdXRob3IAbWluZWNyYWZ0aW5mby5jb23fZidLAAAAk0lEQVQ4y2P4//8/AyUYwcAD+OzN/oMwshjRBoA0Gr8+DcbIhhBlAEyz+qZZ/7WPryHNAGTNMOxpJvo/w0/uP0kGgGwGaZbrKgfTGnLc/0nyAgiDbEY2BCRGdCDCnA2yGeYVog0Aae5MV4c7Gzk6CRqAbDM2w/EaQEgzXgPQnU2SAcTYjNMAYm3GaQCxNuM0gFwMAPUKd8XyBVDcAAAAAElFTkSuQmCC'), linear-gradient(135deg, #8BB0C2 0%, #FFF 100%);
 }```
 ```html
-&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"&gt;&lt;/script&gt;
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-&lt;table style="width:100%"&gt;
-  &lt;tr&gt;
-    &lt;td&gt;Normal:&lt;/td&gt;
-    &lt;td&gt;&lt;input type="checkbox" /&gt;&lt;/td&gt;
-    &lt;td&gt;&lt;input type="checkbox" checked="checked" /&gt;&lt;/td&gt;
-    &lt;td&gt;&lt;input type="checkbox" disabled="disabled" /&gt;&lt;/td&gt;
-    &lt;td&gt;&lt;input type="checkbox" disabled="disabled" checked="checked" /&gt;&lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-    &lt;td&gt;Small:&lt;/td&gt;
-    &lt;td&gt;&lt;input type="checkbox" class="myinput" /&gt;&lt;/td&gt;
-    &lt;td&gt;&lt;input type="checkbox" checked="checked" class="myinput" /&gt;&lt;/td&gt;
-    &lt;td&gt;&lt;input type="checkbox" disabled="disabled" class="myinput" /&gt;&lt;/td&gt;
-    &lt;td&gt;&lt;input type="checkbox" disabled="disabled" checked="checked" class="myinput" /&gt;&lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-    &lt;td&gt;Large:&lt;/td&gt;
-    &lt;td&gt;&lt;input type="checkbox" class="myinput large" /&gt;&lt;/td&gt;
-    &lt;td&gt;&lt;input type="checkbox" checked="checked" class="myinput large" /&gt;&lt;/td&gt;
-    &lt;td&gt;&lt;input type="checkbox" disabled="disabled" class="myinput large" /&gt;&lt;/td&gt;
-    &lt;td&gt;&lt;input type="checkbox" disabled="disabled" checked="checked" class="myinput large" /&gt;&lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-    &lt;td&gt;Custom icon:&lt;/td&gt;
-    &lt;td&gt;&lt;input type="checkbox" class="myinput large custom" /&gt;&lt;/td&gt;
-    &lt;td&gt;&lt;input type="checkbox" checked="checked" class="myinput large custom" /&gt;&lt;/td&gt;
-    &lt;td&gt;&lt;input type="checkbox" disabled="disabled" class="myinput large custom" /&gt;&lt;/td&gt;
-    &lt;td&gt;&lt;input type="checkbox" disabled="disabled" checked="checked" class="myinput large custom" /&gt;&lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/table&gt;```
+<table style="width:100%">
+  <tr>
+    <td>Normal:</td>
+    <td><input type="checkbox" /></td>
+    <td><input type="checkbox" checked="checked" /></td>
+    <td><input type="checkbox" disabled="disabled" /></td>
+    <td><input type="checkbox" disabled="disabled" checked="checked" /></td>
+  </tr>
+  <tr>
+    <td>Small:</td>
+    <td><input type="checkbox" class="myinput" /></td>
+    <td><input type="checkbox" checked="checked" class="myinput" /></td>
+    <td><input type="checkbox" disabled="disabled" class="myinput" /></td>
+    <td><input type="checkbox" disabled="disabled" checked="checked" class="myinput" /></td>
+  </tr>
+  <tr>
+    <td>Large:</td>
+    <td><input type="checkbox" class="myinput large" /></td>
+    <td><input type="checkbox" checked="checked" class="myinput large" /></td>
+    <td><input type="checkbox" disabled="disabled" class="myinput large" /></td>
+    <td><input type="checkbox" disabled="disabled" checked="checked" class="myinput large" /></td>
+  </tr>
+  <tr>
+    <td>Custom icon:</td>
+    <td><input type="checkbox" class="myinput large custom" /></td>
+    <td><input type="checkbox" checked="checked" class="myinput large custom" /></td>
+    <td><input type="checkbox" disabled="disabled" class="myinput large custom" /></td>
+    <td><input type="checkbox" disabled="disabled" checked="checked" class="myinput large custom" /></td>
+  </tr>
+</table>```
 </div>
 </div>
 
@@ -3051,14 +3051,14 @@ body {
   content: "ON";
 }```
 ```html
-&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"&gt;&lt;/script&gt;
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
-&lt;h2&gt;Webkit friendly mobile-style checkbox/flipswitch&lt;/h2&gt;
-&lt;input type="checkbox" class="flipswitch" /&gt; &amp;nbsp;
-&lt;span&gt;&lt;/span&gt;
-&lt;br&gt;
-&lt;input type="checkbox" checked="checked" class="flipswitch" /&gt; &amp;nbsp;
-&lt;span&gt;&lt;/span&gt;```
+<h2>Webkit friendly mobile-style checkbox/flipswitch</h2>
+<input type="checkbox" class="flipswitch" /> &nbsp;
+<span></span>
+<br>
+<input type="checkbox" checked="checked" class="flipswitch" /> &nbsp;
+<span></span>```
 </div>
 </div>
 
@@ -3086,10 +3086,10 @@ I am trying to find the most effective way to align text with a div. I have trie
   padding: 1em 0 1em 0;
 }```
 ```html
-&lt;div class="testimonialText"&gt;
+<div class="testimonialText">
   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
   in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-&lt;/div&gt;```
+</div>```
 </div>
 </div>
 
@@ -3109,13 +3109,13 @@ A sample is also available at <a href="http://jsfiddle.net/SVJaK/" rel="noreferr
 ```html
 div { border:1px solid green;}```
 ```html
-&lt;div style="display: table; height: 400px; overflow: hidden;"&gt;
-  &lt;div style="display: table-cell; vertical-align: middle;"&gt;
-    &lt;div&gt;
+<div style="display: table; height: 400px; overflow: hidden;">
+  <div style="display: table-cell; vertical-align: middle;">
+    <div>
       everything is vertically centered in modern IE8+ and others.
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;```
+    </div>
+  </div>
+</div>```
 </div>
 </div>
 
@@ -3127,14 +3127,14 @@ It is possible to merge hacks for old browsers (Internet&nbsp;Explorer&nbsp;6/7)
 ```html
 div { border:1px solid green;}```
 ```html
-&lt;div style="display: table; height: 400px; #position: relative; overflow: hidden;"&gt;
-  &lt;div style=
-    "#position: absolute; #top: 50%;display: table-cell; vertical-align: middle;"&gt;
-    &lt;div style=" #position: relative; #top: -50%"&gt;
+<div style="display: table; height: 400px; #position: relative; overflow: hidden;">
+  <div style=
+    "#position: absolute; #top: 50%;display: table-cell; vertical-align: middle;">
+    <div style=" #position: relative; #top: -50%">
       everything is vertically centered
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;```
+    </div>
+  </div>
+</div>```
 </div>
 </div>
 
@@ -3150,9 +3150,9 @@ You need to add the `line-height` attribute and that attribute must match the he
   line-height: 309px; /* same as height! */
 }```
 ```html
-&lt;div class="center"&gt;
+<div class="center">
   A single line.
-&lt;/div&gt;```
+</div>```
 </div>
 </div>
 
@@ -3196,17 +3196,17 @@ li {
   /* Column | row */
 }```
 ```html
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Some Text&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;A bit more text that goes on two lines&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Even more text that demonstrates how lines can span multiple lines&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;```
+<ul>
+  <li>
+    <p>Some Text</p>
+  </li>
+  <li>
+    <p>A bit more text that goes on two lines</p>
+  </li>
+  <li>
+    <p>Even more text that demonstrates how lines can span multiple lines</p>
+  </li>
+</ul>```
 </div>
 </div>
 
@@ -3231,17 +3231,17 @@ p {
   transform: translateY(-50%);
 }```
 ```html
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;Some Text&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;A bit more text that goes on two lines&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Even more text that demonstrates how lines can span multiple lines&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;```
+<ul>
+  <li>
+    <p>Some Text</p>
+  </li>
+  <li>
+    <p>A bit more text that goes on two lines</p>
+  </li>
+  <li>
+    <p>Even more text that demonstrates how lines can span multiple lines</p>
+  </li>
+</ul>```
 </div>
 </div>
 
@@ -3286,33 +3286,33 @@ li {
   height: 100px;
 }```
 ```html
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;div class="outerContainer"&gt;
-      &lt;div class="innerContainer"&gt;
-        &lt;div class="element"&gt;
-          &lt;p&gt;
-            &lt;!-- Content --&gt;
+<ul>
+  <li>
+    <div class="outerContainer">
+      <div class="innerContainer">
+        <div class="element">
+          <p>
+            <!-- Content -->
             Content
-          &lt;/p&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
+          </p>
+        </div>
+      </div>
+    </div>
+  </li>
 
-  &lt;li&gt;
-    &lt;div class="outerContainer"&gt;
-      &lt;div class="innerContainer"&gt;
-        &lt;div class="element"&gt;
-          &lt;p&gt;
-            &lt;!-- Content --&gt;
+  <li>
+    <div class="outerContainer">
+      <div class="innerContainer">
+        <div class="element">
+          <p>
+            <!-- Content -->
             Content
-          &lt;/p&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;```
+          </p>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>```
 </div>
 </div>
 
@@ -3420,12 +3420,12 @@ select::-ms-expand {
     }
 }```
 ```html
-&lt;select&gt;
-  &lt;option&gt;Apples&lt;/option&gt;
-  &lt;option selected&gt;Pineapples&lt;/option&gt;
-  &lt;option&gt;Chocklate&lt;/option&gt;
-  &lt;option&gt;Pancakes&lt;/option&gt;
-&lt;/select&gt;```
+<select>
+  <option>Apples</option>
+  <option selected>Pineapples</option>
+  <option>Chocklate</option>
+  <option>Pancakes</option>
+</select>```
 </div>
 </div>
 
@@ -3474,14 +3474,14 @@ The <strong>advantage</strong> of this approach is that it is cross-browser (Int
   background: url(http://www.stackoverflow.com/favicon.ico) 96% / 20% no-repeat #EEE;
 }```
 ```html
-&lt;div class="styled"&gt;
-  &lt;select&gt;
-    &lt;option&gt;Pineapples&lt;/option&gt;
-    &lt;option selected&gt;Apples&lt;/option&gt;
-    &lt;option&gt;Chocklate&lt;/option&gt;
-    &lt;option&gt;Pancakes&lt;/option&gt;
-  &lt;/select&gt;
-&lt;/div&gt;```
+<div class="styled">
+  <select>
+    <option>Pineapples</option>
+    <option selected>Apples</option>
+    <option>Chocklate</option>
+    <option>Pancakes</option>
+  </select>
+</div>```
 </div>
 </div>
 
@@ -3544,19 +3544,19 @@ select {
   }
 }```
 ```html
-&lt;!--[if !IE]&gt; --&gt;
-&lt;div class="notIE"&gt;
-  &lt;!-- &lt;![endif]--&gt;
-  &lt;span class="fancyArrow"&gt;&lt;/span&gt;
-  &lt;select&gt;
-    &lt;option&gt;Apples&lt;/option&gt;
-    &lt;option selected&gt;Pineapples&lt;/option&gt;
-    &lt;option&gt;Chocklate&lt;/option&gt;
-    &lt;option&gt;Pancakes&lt;/option&gt;
-  &lt;/select&gt;
-  &lt;!--[if !IE]&gt; --&gt;
-&lt;/div&gt;
-&lt;!-- &lt;![endif]--&gt;```
+<!--[if !IE]> -->
+<div class="notIE">
+  <!-- <![endif]-->
+  <span class="fancyArrow"></span>
+  <select>
+    <option>Apples</option>
+    <option selected>Pineapples</option>
+    <option>Chocklate</option>
+    <option>Pancakes</option>
+  </select>
+  <!--[if !IE]> -->
+</div>
+<!-- <![endif]-->```
 </div>
 </div>
 
@@ -3641,9 +3641,9 @@ span {
   opacity: 1;
 }```
 ```html
-&lt;p&gt;
-  &lt;span&gt;Hello world&lt;/span&gt;
-&lt;/p&gt;```
+<p>
+  <span>Hello world</span>
+</p>```
 </div>
 </div>
 
@@ -3664,9 +3664,9 @@ Here's an article from css3.info, <em><a href="http://www.css3.info/opacity_rgba
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="true" data-babel="false">
 <div class="snippet-code">
 ```html
-&lt;p style="background-color: rgba(255, 0, 0, 0.5);"&gt;
-  &lt;span&gt;Hello, World!&lt;/span&gt;
-&lt;/p&gt;```
+<p style="background-color: rgba(255, 0, 0, 0.5);">
+  <span>Hello, World!</span>
+</p>```
 </div>
 </div>
 
@@ -3707,27 +3707,27 @@ This is from <em><a href="http://robertnyman.com/2010/01/11/css-background-trans
      </p>
 
 ```html
- &lt;head&gt;
-     &lt;meta http-equiv="X-UA-Compatible" content="IE=edge" &gt;
-    &lt;title&gt;An XHTML 1.0 Strict standard template&lt;/title&gt;
-     &lt;meta http-equiv="content-type" content="text/html;charset=utf-8" /&gt;
-    &lt;style type="text/css" media="all"&gt;
+ <head>
+     <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+    <title>An XHTML 1.0 Strict standard template</title>
+     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <style type="text/css" media="all">
          .transparent-background-with-text-and-images-on-top {
              background: rgb(0, 0, 0) transparent;   /* Fallback for web browsers that doesn't support RGBa */
             background: rgba(0, 0, 0, 0.6);   /* RGBa with 0.6 opacity */
              filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);  /* For IE 5.5 - 7*/
             -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";  /* For IE 8*/
          }
-     &lt;/style&gt;
- &lt;/head&gt;
+     </style>
+ </head>
 
- &lt;body&gt;
-     &lt;div class="transparent-background-with-text-and-images-on-top"&gt;
-         &lt;p&gt;Here some content (text AND images) "on top of the transparent background"&lt;/p&gt;
-        &lt;img src="http://i.imgur.com/LnnghmF.gif"&gt;
-     &lt;/div&gt;
- &lt;/body&gt;
- &lt;/html&gt;
+ <body>
+     <div class="transparent-background-with-text-and-images-on-top">
+         <p>Here some content (text AND images) "on top of the transparent background"</p>
+        <img src="http://i.imgur.com/LnnghmF.gif">
+     </div>
+ </body>
+ </html>
 ```
 
 <p><img src="https://i.stack.imgur.com/BgkgK.png" alt="Chrome-33">
@@ -3766,13 +3766,13 @@ And using CSS, auto-size the background to fit the content and put the backgroun
   opacity: .5;
 }```
 ```html
-&lt;div class="container"&gt;
-  &lt;div class="content"&gt;
+<div class="container">
+  <div class="content">
     Here is the content.
-    &lt;br/&gt;Background should grow to fit.
-  &lt;/div&gt;
-  &lt;div class="background"&gt;&lt;/div&gt;
-&lt;/div&gt;```
+    <br/>Background should grow to fit.
+  </div>
+  <div class="background"></div>
+</div>```
 </div>
 </div>
 
@@ -3884,9 +3884,9 @@ function()
                 key == 46 ||
                 key == 110 ||
                 key == 190 ||
-                (key &gt;= 35 &amp;&amp; key &lt;= 40) ||
-                (key &gt;= 48 &amp;&amp; key &lt;= 57) ||
-                (key &gt;= 96 &amp;&amp; key &lt;= 105));
+                (key >= 35 && key <= 40) ||
+                (key >= 48 && key <= 57) ||
+                (key >= 96 && key <= 105));
         });
     });
 };
@@ -3904,7 +3904,7 @@ Inline:
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="true" data-babel="false">
 <div class="snippet-code">
 ```html
-&lt;input name="number" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')"&gt;```
+<input name="number" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')">```
 </div>
 </div>
 
@@ -3923,8 +3923,8 @@ $('input[name="number"]').keyup(function(e)
   }
 });```
 ```html
-&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"&gt;&lt;/script&gt;
-&lt;input name="number"&gt;```
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<input name="number">```
 </div>
 </div>
 
@@ -4057,8 +4057,8 @@ For older versions of Firefox, use: `overflow: -moz-scrollbars-none;`
 I have this HTML:  
 
 ```html
-&lt;input type="text" name="textField" /&gt;
-&lt;input type="submit" value="send" /&gt;
+<input type="text" name="textField" />
+<input type="submit" value="send" />
 ```
 
 How can I do something like this:  
@@ -4259,22 +4259,22 @@ I'm using Twitter Bootstrap 3, and I have problems when I want to align vertical
 <p><div class="snippet" data-lang="js" data-hide="false">
 <div class="snippet-code">
 ```html
-&lt;!-- Latest compiled and minified CSS --&gt;
-&lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"&gt;
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
-&lt;!-- Optional theme --&gt;
-&lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"&gt;
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 
-&lt;!-- Latest compiled and minified JavaScript --&gt;
-&lt;script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"&gt;&lt;/script&gt;
-&lt;div class="row"&gt;
-  &lt;div class="col-xs-5"&gt;
-    &lt;div style="height:5em;border:1px solid #000"&gt;Big&lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class="col-xs-5"&gt;
-    &lt;div style="height:3em;border:1px solid #F00"&gt;Small&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;```
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<div class="row">
+  <div class="col-xs-5">
+    <div style="height:5em;border:1px solid #000">Big</div>
+  </div>
+  <div class="col-xs-5">
+    <div style="height:3em;border:1px solid #F00">Small</div>
+  </div>
+</div>```
 </div>
 </div>
 
@@ -4305,14 +4305,14 @@ You still can use a custom class when you need it:
     float: none;
 }```
 ```html
-&lt;div class="row"&gt;
-    &lt;div class="col-xs-5 col-md-3 col-lg-1 vcenter"&gt;
-        &lt;div style="height:10em;border:1px solid #000"&gt;Big&lt;/div&gt;
-    &lt;/div&gt;&lt;!--
-    --&gt;&lt;div class="col-xs-5 col-md-7 col-lg-9 vcenter"&gt;
-        &lt;div style="height:3em;border:1px solid #F00"&gt;Small&lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;```
+<div class="row">
+    <div class="col-xs-5 col-md-3 col-lg-1 vcenter">
+        <div style="height:10em;border:1px solid #000">Big</div>
+    </div><!--
+    --><div class="col-xs-5 col-md-7 col-lg-9 vcenter">
+        <div style="height:3em;border:1px solid #F00">Small</div>
+    </div>
+</div>```
 </div>
 </div>
 
@@ -4322,14 +4322,14 @@ You still can use a custom class when you need it:
 Using `inline-block` adds extra space between blocks if you let a real space in your code (like `...&lt;/div&gt; &lt;/div&gt;...`). This extra space breaks our grid if column sizes add up to 12:  
 
 ```html
-&lt;div class="row"&gt;
-    &lt;div class="col-xs-6 col-md-4 col-lg-2 vcenter"&gt;
-        &lt;div style="height:10em;border:1px solid #000"&gt;Big&lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="col-xs-6 col-md-8 col-lg-10 vcenter"&gt;
-        &lt;div style="height:3em;border:1px solid #F00"&gt;Small&lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
+<div class="row">
+    <div class="col-xs-6 col-md-4 col-lg-2 vcenter">
+        <div style="height:10em;border:1px solid #000">Big</div>
+    </div>
+    <div class="col-xs-6 col-md-8 col-lg-10 vcenter">
+        <div style="height:3em;border:1px solid #F00">Small</div>
+    </div>
+</div>
 ```
 
 Here, we've got extra spaces between `&lt;div class="[...] col-lg-2"&gt;` and `&lt;div class="[...] col-lg-10"&gt;` (a carriage return and 2 tabs/8 spaces). And so...  
@@ -4339,14 +4339,14 @@ Here, we've got extra spaces between `&lt;div class="[...] col-lg-2"&gt;` and `&
 Let's kick this extra space!!  
 
 ```html
-&lt;div class="row"&gt;
-    &lt;div class="col-xs-6 col-md-4 col-lg-2 vcenter"&gt;
-        &lt;div style="height:10em;border:1px solid #000"&gt;Big&lt;/div&gt;
-    &lt;/div&gt;&lt;!--
-    --&gt;&lt;div class="col-xs-6 col-md-8 col-lg-10 vcenter"&gt;
-        &lt;div style="height:3em;border:1px solid #F00"&gt;Small&lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
+<div class="row">
+    <div class="col-xs-6 col-md-4 col-lg-2 vcenter">
+        <div style="height:10em;border:1px solid #000">Big</div>
+    </div><!--
+    --><div class="col-xs-6 col-md-8 col-lg-10 vcenter">
+        <div style="height:3em;border:1px solid #F00">Small</div>
+    </div>
+</div>
 ```
 
 <img src="https://i.stack.imgur.com/XZTJj.png" alt="Enter image description here">  
@@ -4388,13 +4388,13 @@ Using Twitter Bootstrap we have `.row`s having some `.col-*`s. All we need to do
 <a href="http://codepen.io/hashem/pen/Lsprw?editors=110" rel="noreferrer"><strong>EXAMPLE HERE</strong></a> <em>(Please read the comments with care)</em>  
 
 ```html
-&lt;div class="container"&gt;
-    &lt;div class="row vertical-align"&gt; &lt;!--
-                    ^--  Additional class --&gt;
-        &lt;div class="col-xs-6"&gt; ... &lt;/div&gt;
-        &lt;div class="col-xs-6"&gt; ... &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
+<div class="container">
+    <div class="row vertical-align"> <!--
+                    ^--  Additional class -->
+        <div class="col-xs-6"> ... </div>
+        <div class="col-xs-6"> ... </div>
+    </div>
+</div>
 ```
 
 ```html
@@ -4478,8 +4478,8 @@ In order to fix that, you can add `display: flex;` to the columns as well:
   flex-direction: row;
 }
 
-.vertical-align &gt; [class^="col-"],
-.vertical-align &gt; [class*=" col-"] {
+.vertical-align > [class^="col-"],
+.vertical-align > [class*=" col-"] {
   display: flex;
   align-items: center;     /* Align the flex-items vertically */
   justify-content: center; /* Optional, to align inner flex-items
@@ -4531,10 +4531,10 @@ The below code worked for me:
 I'm using placeholders for text inputs which is working out just fine. But I'd like to use a placeholder for my selectboxes as well. Of course I can just use this code:  
 
 ```html
-&lt;select&gt;
-    &lt;option value=""&gt;Select your option&lt;/option&gt;
-    &lt;option value="hurr"&gt;Durr&lt;/option&gt;
-&lt;/select&gt;
+<select>
+    <option value="">Select your option</option>
+    <option value="hurr">Durr</option>
+</select>
 ```
 
 But the 'Select your option' is in black instead of lightgrey. So my solution could possibly be CSS-based. jQuery is fine too.  
@@ -4563,10 +4563,10 @@ A non-CSS - no JavaScript/jQuery answer:
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="false" data-babel="false">
 <div class="snippet-code">
 ```html
-&lt;select&gt;
-    &lt;option value="" disabled selected&gt;Select your option&lt;/option&gt;
-    &lt;option value="hurr"&gt;Durr&lt;/option&gt;
-&lt;/select&gt;```
+<select>
+    <option value="" disabled selected>Select your option</option>
+    <option value="hurr">Durr</option>
+</select>```
 </div>
 </div>
 
@@ -4577,16 +4577,16 @@ I just stumbled across this question, and here's what works in Firefox and Chrom
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="false" data-babel="false">
 <div class="snippet-code">
 ```html
-&lt;style&gt;
+<style>
 select:invalid { color: gray; }
-&lt;/style&gt;
-&lt;form&gt;
-&lt;select required&gt;
-    &lt;option value="" disabled selected hidden&gt;Please Choose...&lt;/option&gt;
-    &lt;option value="0"&gt;Open when powered (most valves do this)&lt;/option&gt;
-    &lt;option value="1"&gt;Closed when powered, auto-opens when power is cut&lt;/option&gt;
-&lt;/select&gt;
-&lt;/form&gt;```
+</style>
+<form>
+<select required>
+    <option value="" disabled selected hidden>Please Choose...</option>
+    <option value="0">Open when powered (most valves do this)</option>
+    <option value="1">Closed when powered, auto-opens when power is cut</option>
+</select>
+</form>```
 </div>
 </div>
 
@@ -4643,11 +4643,11 @@ option {
   color: black;
 }```
 ```html
-&lt;select required&gt;
-  &lt;option value="" disabled selected&gt;Select something...&lt;/option&gt;
-  &lt;option value="1"&gt;One&lt;/option&gt;
-  &lt;option value="2"&gt;Two&lt;/option&gt;
-&lt;/select&gt;```
+<select required>
+  <option value="" disabled selected>Select something...</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+</select>```
 </div>
 </div>
 
@@ -4660,8 +4660,8 @@ option {
 I have a few static pages that are just pure HTML, that we display when the server goes down. How can I put a favicon that I made (it's 16x16px and it's sitting in the same directory as the HTML file; it's called favicon.ico) as the "tab" icon as it were? I have read up on Wikipedia and looked at a few tutorials and have implemented the following:  
 
 ```html
-&lt;link rel="icon" href="favicon.ico" type="image/x-icon"/&gt;
-&lt;link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/&gt;
+<link rel="icon" href="favicon.ico" type="image/x-icon"/>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 ```
 
 But it still doesn't want to work. I am using Chrome to test the sites. According to Wikipedia .ico is the best picture format that runs on all browser types.  
@@ -4674,8 +4674,8 @@ I could not get this to work locally although the code checks out it will only r
 You can make a 16x16 .png and then use one of the following snippets between the `&lt;head&gt;` tags of your static HTML documents:  
 
 ```html
-&lt;link rel="shortcut icon" type="image/png" href="/favicon.png"/&gt;
-&lt;link rel="shortcut icon" type="image/png" href="http://example.com/favicon.png"/&gt;
+<link rel="shortcut icon" type="image/png" href="/favicon.png"/>
+<link rel="shortcut icon" type="image/png" href="http://example.com/favicon.png"/>
 ```
 
 #### Answer 2 (score 206)
@@ -4684,7 +4684,7 @@ Most browsers will pick up `favicon.ico` from the root directory of the site wit
 However, I usually go for the second of your examples:  
 
 ```html
-&lt;link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' /&gt;
+<link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
 ```
 
 #### Answer 3 (score 119)
@@ -4702,14 +4702,14 @@ Hope you like it.
 I have some radio buttons and I want one of them to be set as selected by default when the page is loaded. How can I do that?  
 
 ```html
-&lt;input type="radio" name="imgsel"  value=""  /&gt; 
+<input type="radio" name="imgsel"  value=""  /> 
 ```
 
 #### Answer accepted (score 1058)
 XHTML solution:  
 
 ```html
-&lt;input type="radio" name="imgsel" value="" checked="checked" /&gt;
+<input type="radio" name="imgsel" value="" checked="checked" />
 ```
 
 Please note, that the actual value of `checked` attribute does not actually matter; it's just a convention to assign `"checked"`. Most importantly, strings like `"true"` or `"false"` don't have any special meaning.  
@@ -4717,20 +4717,20 @@ Please note, that the actual value of `checked` attribute does not actually matt
 If you don't aim for XHTML conformance, you can simplify the code to:  
 
 ```html
-&lt;input type="radio" name="imgsel" value="" checked&gt;
+<input type="radio" name="imgsel" value="" checked>
 ```
 
 #### Answer 2 (score 101)
 Use the checked attribute.  
 
 ```html
-&lt;input type="radio" name="imgsel"  value="" checked /&gt; 
+<input type="radio" name="imgsel"  value="" checked /> 
 ```
 
 or  
 
 ```html
-&lt;input type="radio" name="imgsel"  value="" checked="checked" /&gt; 
+<input type="radio" name="imgsel"  value="" checked="checked" /> 
 ```
 
 #### Answer 3 (score 75)
@@ -4739,8 +4739,8 @@ This doesn't exactly answer the question but for anyone using AngularJS trying t
 Your html will look pretty similar to the normal radio button:  
 
 ```html
-&lt;input type='radio' name='group' ng-model='mValue' value='first' /&gt;First
-&lt;input type='radio' name='group' ng-model='mValue' value='second' /&gt; Second
+<input type='radio' name='group' ng-model='mValue' value='first' />First
+<input type='radio' name='group' ng-model='mValue' value='second' /> Second
 ```
 
 In your controller you'll have declared the `mValue` that is associated with the radio buttons. To have one of these radio buttons preselected, assign the `$scope` variable associated with the group to the desired input's value:  
@@ -4756,8 +4756,8 @@ This makes the "second" radio button selected on loading the page.
 The above approach does not work if you're using version 2.x and above. Instead use `ng-checked` attribute as follows:  
 
 ```html
-&lt;input type='radio' name='gender' ng-model='genderValue' value='male' ng-checked='genderValue === male'/&gt;Male
-&lt;input type='radio' name='gender' ng-model='genderValue' value='female' ng-checked='genderValue === female'/&gt; Female
+<input type='radio' name='gender' ng-model='genderValue' value='male' ng-checked='genderValue === male'/>Male
+<input type='radio' name='gender' ng-model='genderValue' value='female' ng-checked='genderValue === female'/> Female
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -4779,18 +4779,18 @@ $("tcol1").hide(); // select by element name does not work
 Note the HTML below, the second column has the same name for all rows.  How could I create this collection using the `name` attribute?  
 
 ```html
-&lt;tr&gt;    
-    &lt;td&gt;data1&lt;/td&gt;
-    &lt;td name="tcol1" class="bold"&gt; data2&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;    
-    &lt;td&gt;data1&lt;/td&gt;
-    &lt;td name="tcol1" class="bold"&gt; data2&lt;/td&gt;
-&lt;/tr&gt;  
-&lt;tr&gt;    
-    &lt;td&gt;data1&lt;/td&gt;
-    &lt;td name="tcol1" class="bold"&gt; data2&lt;/td&gt;
-&lt;/tr&gt;
+<tr>    
+    <td>data1</td>
+    <td name="tcol1" class="bold"> data2</td>
+</tr>
+<tr>    
+    <td>data1</td>
+    <td name="tcol1" class="bold"> data2</td>
+</tr>  
+<tr>    
+    <td>data1</td>
+    <td name="tcol1" class="bold"> data2</td>
+</tr>
 ```
 
 #### Answer accepted (score 2043)
@@ -4815,8 +4815,8 @@ var value = $("[name='nameofobject']");
 If you have something like:  
 
 ```html
-&lt;input type="checkbox" name="mycheckbox" value="11" checked=""&gt;
-&lt;input type="checkbox" name="mycheckbox" value="12"&gt;
+<input type="checkbox" name="mycheckbox" value="11" checked="">
+<input type="checkbox" name="mycheckbox" value="12">
 ```
 
 You can read all like this:  
@@ -4836,9 +4836,9 @@ jQuery("input[name='mycheckbox']").each(function() {
   console.log( this.value + ":" + this.checked );
 });```
 ```html
-&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"&gt;&lt;/script&gt;
-&lt;input type="checkbox" name="mycheckbox" value="11" checked=""&gt;
-&lt;input type="checkbox" name="mycheckbox" value="12"&gt;```
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<input type="checkbox" name="mycheckbox" value="11" checked="">
+<input type="checkbox" name="mycheckbox" value="12">```
 </div>
 </div>
 
@@ -4854,13 +4854,13 @@ The selected tag has the id `aioConceptName`</p>
 <strong>html code</strong>  
 
 ```html
-&lt;label&gt;Name&lt;/label&gt;
-&lt;input type="text" name="name" /&gt;
-&lt;select id="aioConceptName"&gt;
-    &lt;option&gt;choose io&lt;/option&gt;
-    &lt;option&gt;roma&lt;/option&gt;
-    &lt;option&gt;totti&lt;/option&gt;
-&lt;/select&gt;
+<label>Name</label>
+<input type="text" name="name" />
+<select id="aioConceptName">
+    <option>choose io</option>
+    <option>roma</option>
+    <option>totti</option>
+</select>
 ```
 
 #### Answer accepted (score 1750)
@@ -4876,11 +4876,11 @@ The reason `val()` doesn't do the trick is because clicking an option doesn't ch
 <strong>Set the values for each of the options</strong>  
 
 ```html
-&lt;select id="aioConceptName"&gt;
-    &lt;option value="0"&gt;choose io&lt;/option&gt;
-    &lt;option value="1"&gt;roma&lt;/option&gt;
-    &lt;option value="2"&gt;totti&lt;/option&gt;
-&lt;/select&gt;
+<select id="aioConceptName">
+    <option value="0">choose io</option>
+    <option value="1">roma</option>
+    <option value="2">totti</option>
+</select>
 ```
 
 `$('#aioConceptName').val()` didn't work because `.val()` returns the `value` attribute. To have it work properly, the `value` attributes must be set on each `&lt;option&gt;`.  
@@ -4915,7 +4915,7 @@ Now since the script executes <strong>before</strong> the page has loaded, I can
 These solutions will work:  
 
 ```html
-&lt;body onload="script();"&gt;
+<body onload="script();">
 ```
 
 or  
@@ -5003,7 +5003,7 @@ window.addEventListener("load", function(){
 Is it possible to open an `a href` link in a new tab instead of the same tab?  
 
 ```html
-&lt;a href="http://your_url_here.html"&gt;Link&lt;/a&gt;
+<a href="http://your_url_here.html">Link</a>
 ```
 
 #### Answer accepted (score 1805)
@@ -5012,7 +5012,7 @@ You should add the `target="_blank"` and `rel="noopener noreferrer"` in the anch
 For example:  
 
 ```html
-&lt;a target="_blank" rel="noopener noreferrer" href="http://your_url_here.html"&gt;Link&lt;/a&gt;
+<a target="_blank" rel="noopener noreferrer" href="http://your_url_here.html">Link</a>
 ```
 
 Adding `rel="noopener noreferrer"` is not mandatory, but it's a recommended security measure. More information can be found in the links below.   
@@ -5069,7 +5069,7 @@ Simply add the following code to the `&lt;head&gt;` element:
 
 
 ```html
-&lt;link rel="icon" href="http://example.com/favicon.png"&gt;
+<link rel="icon" href="http://example.com/favicon.png">
 ```
 
 PNG favicons <a href="http://caniuse.com/#feat=link-icon-png" rel="noreferrer">are supported by most browsers, except IE &lt;= 10</a>. For backwards compatibility, you can use ICO favicons.  
@@ -5098,7 +5098,7 @@ See also <a href="https://stackoverflow.com/q/1344122/3853934">favicon.png vs fa
 <li><p>Place the ico address in the `head` with a `link`-tag:</p>
 
 ```html
-&lt;link rel="shortcut icon" href="http://sstatic.net/stackoverflow/img/favicon.ico"&gt;
+<link rel="shortcut icon" href="http://sstatic.net/stackoverflow/img/favicon.ico">
 ```</li>
 </ol>
 
@@ -5111,26 +5111,26 @@ Also, their site looks cool and is easy to use.</p>
 They also generate the html that you need to use for the files they generate.  
 
 ```html
-&lt;link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57x57.png" /&gt;
-&lt;link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114.png" /&gt;
-&lt;link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72.png" /&gt;
-&lt;link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144x144.png" /&gt;
-&lt;link rel="apple-touch-icon-precomposed" sizes="60x60" href="apple-touch-icon-60x60.png" /&gt;
-&lt;link rel="apple-touch-icon-precomposed" sizes="120x120" href="apple-touch-icon-120x120.png" /&gt;
-&lt;link rel="apple-touch-icon-precomposed" sizes="76x76" href="apple-touch-icon-76x76.png" /&gt;
-&lt;link rel="apple-touch-icon-precomposed" sizes="152x152" href="apple-touch-icon-152x152.png" /&gt;
-&lt;link rel="icon" type="image/png" href="favicon-196x196.png" sizes="196x196" /&gt;
-&lt;link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" /&gt;
-&lt;link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" /&gt;
-&lt;link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" /&gt;
-&lt;link rel="icon" type="image/png" href="favicon-128.png" sizes="128x128" /&gt;
-&lt;meta name="application-name" content="&amp;nbsp;"/&gt;
-&lt;meta name="msapplication-TileColor" content="#FFFFFF" /&gt;
-&lt;meta name="msapplication-TileImage" content="mstile-144x144.png" /&gt;
-&lt;meta name="msapplication-square70x70logo" content="mstile-70x70.png" /&gt;
-&lt;meta name="msapplication-square150x150logo" content="mstile-150x150.png" /&gt;
-&lt;meta name="msapplication-wide310x150logo" content="mstile-310x150.png" /&gt;
-&lt;meta name="msapplication-square310x310logo" content="mstile-310x310.png" /&gt;
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="favicon-196x196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="favicon-128.png" sizes="128x128" />
+<meta name="application-name" content="&nbsp;"/>
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+<meta name="msapplication-TileImage" content="mstile-144x144.png" />
+<meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+<meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+<meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+<meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
 ```
 
 I looked at the first 20 or so google results, and this was by far the best.  
@@ -5165,8 +5165,8 @@ Probably the best approach is to use the <a href="http://mozilla.github.com/pdf.
 This is quick, easy, to the point and doesn't require any third-party script:  
 
 ```html
-&lt;embed src="http://example.com/the.pdf" width="500" height="375" 
- type="application/pdf"&gt;
+<embed src="http://example.com/the.pdf" width="500" height="375" 
+ type="application/pdf">
 ```
 
 <strong>UPDATE (1/2018):</strong>  
@@ -5174,15 +5174,15 @@ This is quick, easy, to the point and doesn't require any third-party script:
 The Chrome browser on Android no longer supports PDF embeds. You can get around this by using the Google Drive PDF viewer  
 
 ```html
-&lt;embed src="https://drive.google.com/viewerng/
-viewer?embedded=true&amp;url=http://example.com/the.pdf" width="500" height="375"&gt;
+<embed src="https://drive.google.com/viewerng/
+viewer?embedded=true&url=http://example.com/the.pdf" width="500" height="375">
 ```
 
 #### Answer 3 (score 350)
 You can also use Google PDF viewer for this purpose. As far as I know it's not an official Google feature (am I wrong on this?), but it works for me very nicely and smoothly. You need to upload your PDF somewhere before and just use its URL:  
 
 ```html
-&lt;iframe src="http://docs.google.com/gview?url=http://example.com/mypdf.pdf&amp;embedded=true" style="width:718px; height:700px;" frameborder="0"&gt;&lt;/iframe&gt;
+<iframe src="http://docs.google.com/gview?url=http://example.com/mypdf.pdf&embedded=true" style="width:718px; height:700px;" frameborder="0"></iframe>
 ```
 
 What is important is that it doesn't need a Flash player, it uses JavaScript.  
@@ -5197,7 +5197,7 @@ I have 2 HTML files, suppose `a.html` and `b.html`. In `a.html` I want to includ
 In JSF I can do it like that:  
 
 ```html
-&lt;ui:include src="b.xhtml" /&gt;
+<ui:include src="b.xhtml" />
 ```
 
 It means that inside `a.xhtml` file, I can include `b.xhtml`.  
@@ -5210,26 +5210,26 @@ In my opinion the best solution uses jQuery:
 `a.html`:  
 
 ```html
-&lt;html&gt; 
-  &lt;head&gt; 
-    &lt;script src="jquery.js"&gt;&lt;/script&gt; 
-    &lt;script&gt; 
+<html> 
+  <head> 
+    <script src="jquery.js"></script> 
+    <script> 
     $(function(){
       $("#includedContent").load("b.html"); 
     });
-    &lt;/script&gt; 
-  &lt;/head&gt; 
+    </script> 
+  </head> 
 
-  &lt;body&gt; 
-     &lt;div id="includedContent"&gt;&lt;/div&gt;
-  &lt;/body&gt; 
-&lt;/html&gt;
+  <body> 
+     <div id="includedContent"></div>
+  </body> 
+</html>
 ```
 
 `b.html`:  
 
 ```html
-&lt;p&gt;This is my include file&lt;/p&gt;
+<p>This is my include file</p>
 ```
 
 This method is a simple and clean solution to my problem.  
@@ -5240,7 +5240,7 @@ The jQuery `.load()` documentation is <a href="http://api.jquery.com/load/">here
 Expanding lolo's answer from above, here is a little more automation if you have to include a lot of files:  
 
 ```html
-&lt;script&gt;
+<script>
   $(function(){
     var includes = $('[data-include]');
     jQuery.each(includes, function(){
@@ -5248,14 +5248,14 @@ Expanding lolo's answer from above, here is a little more automation if you have
       $(this).load(file);
     });
   });
-&lt;/script&gt;
+</script>
 ```
 
 And then to include something in the html:  
 
 ```html
-&lt;div data-include="header"&gt;&lt;/div&gt;
-&lt;div data-include="footer"&gt;&lt;/div&gt;
+<div data-include="header"></div>
+<div data-include="footer"></div>
 ```
 
 Which would include the file views/header.html and views/footer.html  
@@ -5266,18 +5266,18 @@ My solution is similar to the one of <a href="https://stackoverflow.com/users/10
 <strong>a.html:</strong>  
 
 ```html
-&lt;html&gt; 
-  &lt;body&gt;
-  &lt;h1&gt;Put your HTML content before insertion of b.js.&lt;/h1&gt;
+<html> 
+  <body>
+  <h1>Put your HTML content before insertion of b.js.</h1>
       ...
 
-  &lt;script src="b.js"&gt;&lt;/script&gt;
+  <script src="b.js"></script>
 
       ...
 
-  &lt;p&gt;And whatever content you want afterwards.&lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
+  <p>And whatever content you want afterwards.</p>
+  </body>
+</html>
 ```
 
 <strong>b.js:</strong>  
@@ -5285,11 +5285,11 @@ My solution is similar to the one of <a href="https://stackoverflow.com/users/10
 ```html
 document.write('\
 \
-    &lt;h1&gt;Add your HTML code here&lt;/h1&gt;\
+    <h1>Add your HTML code here</h1>\
 \
-     &lt;p&gt;Notice however, that you have to escape LF's with a '\', just like\
+     <p>Notice however, that you have to escape LF's with a '\', just like\
         demonstrated in this code listing.\
-    &lt;/p&gt;\
+    </p>\
 \
 ');
 ```
@@ -5299,7 +5299,7 @@ The reason for me against using jQuery is that jQuery.js is ~90kb in size, and I
 In order to get the properly escaped JavaScript file without much work, you can use the following sed command:  
 
 ```html
-sed 's/\\/\\\\/g;s/^.*$/&amp;\\/g;s/'\''/\\'\''/g' b.html &gt; escapedB.html
+sed 's/\\/\\\\/g;s/^.*$/&\\/g;s/'\''/\\'\''/g' b.html > escapedB.html
 ```
 
 <p>Or just use the following handy bash script published as a Gist on Github, that automates all necessary work, converting `b.html` to `b.js`:
@@ -5315,10 +5315,10 @@ Credits to <a href="https://stackoverflow.com/users/1527747/greg-minshall">Greg 
 I have a layout similar to:  
 
 ```html
-&lt;div&gt;
-    &lt;table&gt;
-    &lt;/table&gt;
-&lt;/div&gt;
+<div>
+    <table>
+    </table>
+</div>
 ```
 
 I would like for the `div` to only expand to as wide as my `table` becomes.  
@@ -5350,13 +5350,13 @@ Is there a set of classes in Twitter's Bootstrap framework that aligns text?
 For example, I have some tables with `$` totals that I want aligned to the right...  
 
 ```html
-&lt;th class="align-right"&gt;Total&lt;/th&gt;
+<th class="align-right">Total</th>
 ```
 
 and  
 
 ```html
-&lt;td class="align-right"&gt;$1,000,000.00&lt;/td&gt;
+<td class="align-right">$1,000,000.00</td>
 ```
 
 #### Answer accepted (score 1369)
@@ -5365,11 +5365,11 @@ and
 <a href="http://getbootstrap.com/css/#type-alignment" rel="noreferrer">v3 Text Alignment Docs</a>  
 
 ```html
-&lt;p class="text-left"&gt;Left aligned text.&lt;/p&gt;
-&lt;p class="text-center"&gt;Center aligned text.&lt;/p&gt;
-&lt;p class="text-right"&gt;Right aligned text.&lt;/p&gt;
-&lt;p class="text-justify"&gt;Justified text.&lt;/p&gt;
-&lt;p class="text-nowrap"&gt;No wrap text.&lt;/p&gt;
+<p class="text-left">Left aligned text.</p>
+<p class="text-center">Center aligned text.</p>
+<p class="text-right">Right aligned text.</p>
+<p class="text-justify">Justified text.</p>
+<p class="text-nowrap">No wrap text.</p>
 ```
 
 <a href="https://i.stack.imgur.com/DZHMg.png" rel="noreferrer"><img src="https://i.stack.imgur.com/DZHMg.png" alt="Bootstrap 3 text align example"></a>  
@@ -5379,14 +5379,14 @@ and
 <a href="http://v4-alpha.getbootstrap.com/utilities/typography/#text-alignment" rel="noreferrer">v4 Text Alignment Docs</a>  
 
 ```html
-&lt;p class="text-xs-left"&gt;Left aligned text on all viewport sizes.&lt;/p&gt;
-&lt;p class="text-xs-center"&gt;Center aligned text on all viewport sizes.&lt;/p&gt;
-&lt;p class="text-xs-right"&gt;Right aligned text on all viewport sizes.&lt;/p&gt;
+<p class="text-xs-left">Left aligned text on all viewport sizes.</p>
+<p class="text-xs-center">Center aligned text on all viewport sizes.</p>
+<p class="text-xs-right">Right aligned text on all viewport sizes.</p>
 
-&lt;p class="text-sm-left"&gt;Left aligned text on viewports sized SM (small) or wider.&lt;/p&gt;
-&lt;p class="text-md-left"&gt;Left aligned text on viewports sized MD (medium) or wider.&lt;/p&gt;
-&lt;p class="text-lg-left"&gt;Left aligned text on viewports sized LG (large) or wider.&lt;/p&gt;
-&lt;p class="text-xl-left"&gt;Left aligned text on viewports sized XL (extra-large) or wider.&lt;/p&gt;
+<p class="text-sm-left">Left aligned text on viewports sized SM (small) or wider.</p>
+<p class="text-md-left">Left aligned text on viewports sized MD (medium) or wider.</p>
+<p class="text-lg-left">Left aligned text on viewports sized LG (large) or wider.</p>
+<p class="text-xl-left">Left aligned text on viewports sized XL (extra-large) or wider.</p>
 ```
 
 <a href="https://i.stack.imgur.com/Qfi1K.png" rel="noreferrer"><img src="https://i.stack.imgur.com/Qfi1K.png" alt="Bootstrap 4 text align example"></a>  
@@ -5395,9 +5395,9 @@ and
 Using Bootstrap 3.x using `text-right` works perfectly:  
 
 ```html
-&lt;td class="text-right"&gt;
+<td class="text-right">
   text aligned
-&lt;/td&gt;
+</td>
 ```
 
 #### Answer 3 (score 46)
@@ -5410,16 +5410,16 @@ No, Bootstrap doesn't have a class for that, but this kind of class is considere
 In your case, by your question it looks like you wish to have certain text align on the right in your table, but not all of it. Semantically, it would be better to do something like (I'm just going to make up a few classes here, except for the default bootstrap class, .table):   
 
 ```html
-  &lt;table class="table price-table"&gt;
-    &lt;thead&gt;
-      &lt;th class="price-label"&gt;Total&lt;/th&gt;
-    &lt;/thead&gt;
-    &lt;tbody&gt;
-      &lt;tr&gt;
-        &lt;td class="price-value"&gt;$1,000,000.00&lt;/td&gt;
-      &lt;/tr&gt;
-    &lt;/tbody&gt;
-  &lt;/table&gt;
+  <table class="table price-table">
+    <thead>
+      <th class="price-label">Total</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="price-value">$1,000,000.00</td>
+      </tr>
+    </tbody>
+  </table>
 ```
 
 And just apply the `text-align: left` or `text-align: right` declarations to the price-value and price-label classes (or whatever classes work for you).   
@@ -5462,21 +5462,21 @@ I think this quote from the <a href="https://dev.w3.org/html5/html-author/#void"
   A void element in the HTML syntax. This is not permitted in the XHTML syntax.</p>
 
 ```html
-&lt;hr&gt;
+<hr>
 ```
   
   <p>Example:<br>
   A void element using the HTML- and XHTML-compatible self-closing tag syntax.</p>
 
 ```html
-&lt;hr/&gt;
+<hr/>
 ```
   
   <p>XHTML Example:<br>
   A void element using the XHTML-only syntax with an explicit end tag. This is not permitted for void elements in the HTML syntax.</p>
 
 ```html
-&lt;hr&gt;&lt;/hr&gt;
+<hr></hr>
 ```
 </blockquote>
 
@@ -5516,7 +5516,7 @@ I have a huge jQuery application, and I'm using the below two methods for click 
 <h5>HTML</h3>
 
 ```html
-&lt;div id="myDiv"&gt;Some Content&lt;/div&gt;
+<div id="myDiv">Some Content</div>
 ```
 
 <h5>jQuery</h3>
@@ -5532,7 +5532,7 @@ $('#myDiv').click(function(){
 <h5>HTML</h3>
 
 ```html
-&lt;div id="myDiv" onClick="divFunction()"&gt;Some Content&lt;/div&gt;
+<div id="myDiv" onClick="divFunction()">Some Content</div>
 ```
 
 <h5>JavaScript function call</h3>
@@ -5583,7 +5583,7 @@ More about Modern event registration -> <a href="http://www.quirksmode.org/js/ev
 Other methods such as setting the <a href="https://developer.mozilla.org/en-US/docs/DOM/event#HTML_attribute">HTML attributes</a>, example:   
 
 ```html
-&lt;button onclick="alert('Hello world!')"&gt;
+<button onclick="alert('Hello world!')">
 ```
 
 Or <a href="https://developer.mozilla.org/en-US/docs/DOM/event#DOM_element_properties">DOM element properties</a>, example:   
@@ -5716,7 +5716,7 @@ This would 'break' the back button functionality. This may be required in some i
 Possible ways:  
 
 ```html
-&lt;pre&gt; ... &lt;/pre&gt;
+<pre> ... </pre>
 ```
 
 or  
@@ -5738,13 +5738,13 @@ In cases wherein the width/height of the space is beyond `&amp;nbsp;` I usually 
 For horizontal spacer:  
 
 ```html
-&lt;span style="display:inline-block; width: YOURWIDTH;"&gt;&lt;/span&gt;
+<span style="display:inline-block; width: YOURWIDTH;"></span>
 ```
 
 For vertical spacer:  
 
 ```html
-&lt;span style="display:block; height: YOURHEIGHT;"&gt;&lt;/span&gt;
+<span style="display:block; height: YOURHEIGHT;"></span>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -5831,14 +5831,14 @@ Another format feature is to <a href="http://www.codingforums.com/showthread.php
 <em>Basic HTML</em>  
 
 ```html
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;textarea style="overflow:auto;resize:none" rows="13" cols="20"&gt;&lt;/textarea&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <textarea style="overflow:auto;resize:none" rows="13" cols="20"></textarea>
+</body>
+</html>
 ```
 
 <em>Some browsers</em>  
@@ -5887,7 +5887,7 @@ var bodyRect = document.body.getBoundingClientRect(),
     elemRect = element.getBoundingClientRect(),
     offset   = elemRect.top - bodyRect.top;
 
-alert('Element is ' + offset + ' vertical pixels from &lt;body&gt;');
+alert('Element is ' + offset + ' vertical pixels from <body>');
 ```
 
 #### Answer 3 (score 307)
@@ -5898,7 +5898,7 @@ here's a simple function that does the job in every circumstances that I've trie
 function getOffset( el ) {
     var _x = 0;
     var _y = 0;
-    while( el &amp;&amp; !isNaN( el.offsetLeft ) &amp;&amp; !isNaN( el.offsetTop ) ) {
+    while( el && !isNaN( el.offsetLeft ) && !isNaN( el.offsetTop ) ) {
         _x += el.offsetLeft - el.scrollLeft;
         _y += el.offsetTop - el.scrollTop;
         el = el.offsetParent;
@@ -5930,15 +5930,15 @@ window.onload="myFunction()";
 ...or I can use the `body` tag:  
 
 ```html
-&lt;body onload="myFunction()"&gt;
+<body onload="myFunction()">
 ```
 
 ...or I can even try at the bottom of the page after everything, but the end `body` or `html` tag like:  
 
 ```html
-&lt;script type="text/javascript"&gt;
+<script type="text/javascript">
    myFunction();
-&lt;/script&gt;
+</script>
 ```
 
 What is a cross-browser(old/new)-compliant method of issuing one or more functions in a manner like jQuery's `$.ready()`?  
@@ -5947,23 +5947,23 @@ What is a cross-browser(old/new)-compliant method of issuing one or more functio
 The simplest thing to do in the absence of a framework that does all the cross-browser compatibility for you is to just put a call to your code at the end of the body.  This is faster to execute than an `onload` handler because this waits only for the DOM to be ready, not for all images to load.  And, this works in every browser.  
 
 ```html
-&lt;!doctype html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;/head&gt;
-&lt;body&gt;
+<!doctype html>
+<html>
+<head>
+</head>
+<body>
 Your HTML here
 
-&lt;script&gt;
+<script>
 // self executing function here
 (function() {
    // your page initialization code here
    // the DOM will be available here
 
 })();
-&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+</script>
+</body>
+</html>
 ```
 
 <hr>
@@ -6043,7 +6043,7 @@ Here is a full substitute for jQuery's `.ready()` written in plain javascript:
         if (!readyFired) {
             // this must be set to true before we start calling callbacks
             readyFired = true;
-            for (var i = 0; i &lt; readyList.length; i++) {
+            for (var i = 0; i < readyList.length; i++) {
                 // if a callback here happens to add new ready handlers,
                 // the docReady() function will see that it already fired
                 // and will schedule the callback to run right after
@@ -6250,7 +6250,7 @@ document.getElementById("mytext").value = "My value";
 if your form contains an input field like   
 
 ```html
-&lt;input type='text' id='id1' /&gt;
+<input type='text' id='id1' />
 ```
 
 then you can write the code in javascript as given below to set its value as  
@@ -6263,10 +6263,10 @@ document.getElementById('id1').value='text to be displayed' ;
 I use 'setAttribute' function:   
 
 ```html
-&lt;input type="text" id="example"&gt; // Setup text field 
-&lt;script type="text/javascript"&gt; 
+<input type="text" id="example"> // Setup text field 
+<script type="text/javascript"> 
   document.getElementById("example").setAttribute('value','My default value');
-&lt;/script&gt;
+</script>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -6281,11 +6281,11 @@ One of the images needs to be `absolute` positioned within the div.
 What is the CSS needed for this to work on all common browsers?  
 
 ```html
-&lt;div id="header"&gt;
-    &lt;img src=".." &gt;&lt;/img&gt;
-    &lt;h1&gt;testing...&lt;/h1&gt;
-    &lt;img src="..."&gt;&lt;/img&gt;
-&lt;/div&gt;
+<div id="header">
+    <img src=".." ></img>
+    <h1>testing...</h1>
+    <img src="..."></img>
+</div>
 ```
 
 #### Answer accepted (score 867)
@@ -6342,12 +6342,12 @@ I used this very simple code:
 HTML:  
 
 ```html
-&lt;div class="ext-box"&gt;
-    &lt;div class="int-box"&gt;
-        &lt;h2&gt;Some txt&lt;/h2&gt;
-        &lt;p&gt;bla bla bla&lt;/p&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
+<div class="ext-box">
+    <div class="int-box">
+        <h2>Some txt</h2>
+        <p>bla bla bla</p>
+    </div>
+</div>
 ```
 
 CSS:  
@@ -7161,7 +7161,7 @@ How to simply alter:
     border-top-color:#fff;/*Match background colour*/
 }```
 ```html
-&lt;i class="Chevron"&gt;&lt;/i&gt;```
+<i class="Chevron"></i>```
 </div>
 </div>
 
@@ -7246,10 +7246,10 @@ img.center {
     margin: 0 auto;
 }```
 ```html
-&lt;div style="border: 1px solid black;"&gt;
-&lt;img class="center" src ="https://cdn.sstatic.net/Sites/stackoverflow/company/img/logos/so/so-icon.png?v=c78bd457575a"&gt;
+<div style="border: 1px solid black;">
+<img class="center" src ="https://cdn.sstatic.net/Sites/stackoverflow/company/img/logos/so/so-icon.png?v=c78bd457575a">
 
-&lt;/div&gt;```
+</div>```
 </div>
 </div>
 
@@ -7279,10 +7279,10 @@ img {
   margin: auto;
 }```
 ```html
-&lt;div style="border: 1px solid black; position:relative; min-height: 200px"&gt;
-  &lt;img src="https://cdn.sstatic.net/Sites/stackoverflow/company/img/logos/so/so-icon.png?v=c78bd457575a"&gt;
+<div style="border: 1px solid black; position:relative; min-height: 200px">
+  <img src="https://cdn.sstatic.net/Sites/stackoverflow/company/img/logos/so/so-icon.png?v=c78bd457575a">
 
-&lt;/div&gt;```
+</div>```
 </div>
 </div>
 
@@ -7317,8 +7317,8 @@ They're used to explicitly define less than and greater than symbols. If one wan
 They can also be used to present mathematical operators.  
 
 ```html
-&lt;!ENTITY lt      CDATA "&amp;#60;"   -- less-than sign, U+003C ISOnum --&gt;
-&lt;!ENTITY gt      CDATA "&amp;#62;"   -- greater-than sign, U+003E ISOnum --&gt;
+<!ENTITY lt      CDATA "&#60;"   -- less-than sign, U+003C ISOnum -->
+<!ENTITY gt      CDATA "&#62;"   -- greater-than sign, U+003E ISOnum -->
 ```
 
 <a href="http://www.w3.org/TR/html4/sgml/entities.html" rel="noreferrer">http://www.w3.org/TR/html4/sgml/entities.html</a>  
@@ -7345,7 +7345,7 @@ The answer is already in the comments of the question. For more visibility, I am
   color: black;
 }```
 ```html
-&lt;a href="link.html" class="not-active"&gt;Link&lt;/a&gt;```
+<a href="link.html" class="not-active">Link</a>```
 </div>
 </div>
 
@@ -7364,7 +7364,7 @@ Warning: The use of <a href="https://developer.mozilla.org/en-US/docs/CSS/pointe
   opacity: 0.6;
 }```
 ```html
-&lt;a href="#" class="disabled"&gt;link&lt;/a&gt;```
+<a href="#" class="disabled">link</a>```
 </div>
 </div>
 
@@ -7391,15 +7391,15 @@ I have a simple page that has some iframe sections (to display RSS links). How c
 There are two different things here: the style of the iframe block and the style of the page embedded in the iframe. You can set the style of the iframe block the usual way:  
 
 ```html
-&lt;iframe name="iframe1" id="iframe1" src="empty.htm" 
+<iframe name="iframe1" id="iframe1" src="empty.htm" 
         frameborder="0" border="0" cellspacing="0"
-        style="border-style: none;width: 100%; height: 120px;"&gt;&lt;/iframe&gt;
+        style="border-style: none;width: 100%; height: 120px;"></iframe>
 ```
 
 The style of the page embedded in the iframe must be either set by including it in the child page:  
 
 ```html
-&lt;link type="text/css" rel="Stylesheet" href="Style/simple.css" /&gt;
+<link type="text/css" rel="Stylesheet" href="Style/simple.css" />
 ```
 
 Or it can be loaded from the parent page with Javascript:  
@@ -7419,13 +7419,13 @@ I met this issue with <strong>Google Calendar</strong>. I wanted to style it on 
 entire content from the page. Instead of calling the Google URL, it is possible to call a php file located on your server, ex. `google.php`, which will contain the original content with modifications:</p>
 
 ```html
-$content = file_get_contents('https://www.google.com/calendar/embed?src=%23contacts%40group.v.calendar.google.com&amp;ctz=America/Montreal');
+$content = file_get_contents('https://www.google.com/calendar/embed?src=%23contacts%40group.v.calendar.google.com&ctz=America/Montreal');
 ```
 
 Adding the path to your stylesheet:  
 
 ```html
-$content = str_replace('&lt;/head&gt;','&lt;link rel="stylesheet" href="http://www.yourwebsiteurl.com/google.css" /&gt;&lt;/head&gt;', $content);
+$content = str_replace('</head>','<link rel="stylesheet" href="http://www.yourwebsiteurl.com/google.css" /></head>', $content);
 ```
 
 (This will place your stylesheet last just before the `head` end tag.)  
@@ -7433,23 +7433,23 @@ $content = str_replace('&lt;/head&gt;','&lt;link rel="stylesheet" href="http://w
 Specify the base url form the original url in case css and js are called relatively:  
 
 ```html
-$content = str_replace('&lt;/title&gt;','&lt;/title&gt;&lt;base href="https://www.google.com/calendar/" /&gt;', $content);
+$content = str_replace('</title>','</title><base href="https://www.google.com/calendar/" />', $content);
 ```
 
 The final `google.php` file should look like this:  
 
 ```html
-&lt;?php
-$content = file_get_contents('https://www.google.com/calendar/embed?src=%23contacts%40group.v.calendar.google.com&amp;ctz=America/Montreal');
-$content = str_replace('&lt;/title&gt;','&lt;/title&gt;&lt;base href="https://www.google.com/calendar/" /&gt;', $content);
-$content = str_replace('&lt;/head&gt;','&lt;link rel="stylesheet" href="http://www.yourwebsiteurl.com/google.css" /&gt;&lt;/head&gt;', $content);
+<?php
+$content = file_get_contents('https://www.google.com/calendar/embed?src=%23contacts%40group.v.calendar.google.com&ctz=America/Montreal');
+$content = str_replace('</title>','</title><base href="https://www.google.com/calendar/" />', $content);
+$content = str_replace('</head>','<link rel="stylesheet" href="http://www.yourwebsiteurl.com/google.css" /></head>', $content);
 echo $content;
 ```
 
 Then you change the `iframe` embed code to:  
 
 ```html
-&lt;iframe src="http://www.yourwebsiteurl.com/google.php" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"&gt;&lt;/iframe&gt;
+<iframe src="http://www.yourwebsiteurl.com/google.php" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 ```
 
 Good luck!  
@@ -7481,26 +7481,26 @@ In the CSS code below, the greater-than sign means that the padding is only appl
 ```html
 /* Apply padding to td elements that are direct children of the tr elements with class spaceUnder. */
 
-tr.spaceUnder&gt;td {
+tr.spaceUnder>td {
   padding-bottom: 1em;
 }```
 ```html
-&lt;table&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;A&lt;/td&gt;
-      &lt;td&gt;B&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr class="spaceUnder"&gt;
-      &lt;td&gt;C&lt;/td&gt;
-      &lt;td&gt;D&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;E&lt;/td&gt;
-      &lt;td&gt;F&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;```
+<table>
+  <tbody>
+    <tr>
+      <td>A</td>
+      <td>B</td>
+    </tr>
+    <tr class="spaceUnder">
+      <td>C</td>
+      <td>D</td>
+    </tr>
+    <tr>
+      <td>E</td>
+      <td>F</td>
+    </tr>
+  </tbody>
+</table>```
 </div>
 </div>
 
@@ -7561,9 +7561,9 @@ In the case of a <strong>non-fixed width</strong> div (i.e. you don't know how m
   display: inline-block;
 }```
 ```html
-&lt;div id="wrapper"&gt;    
-    &lt;div id="yourdiv"&gt;Your text&lt;/div&gt;
-&lt;/div&gt;```
+<div id="wrapper">    
+    <div id="yourdiv">Your text</div>
+</div>```
 </div>
 </div>
 
@@ -7586,7 +7586,7 @@ div.centre {
   margin-right: auto;
 }```
 ```html
-&lt;div class="centre"&gt;Some Text&lt;/div&gt;```
+<div class="centre">Some Text</div>```
 </div>
 </div>
 
@@ -7609,9 +7609,9 @@ div.centre {
   margin-right: auto;
 }```
 ```html
-&lt;div class="layout"&gt;
-  &lt;div class="centre"&gt;Some Text&lt;/div&gt;
-&lt;/div&gt;```
+<div class="layout">
+  <div class="centre">Some Text</div>
+</div>```
 </div>
 </div>
 
@@ -7685,7 +7685,7 @@ Firefox 30 ignores `autocomplete="off"` for passwords, opting to prompt the user
 According to the <a href="https://developer.mozilla.org/en/How_to_Turn_Off_Form_Autocompletion" rel="noreferrer">Mozilla Developer Network</a> documentation, the Boolean form element attribute `autocomplete` prevents form data from being cached in older browsers.  
 
 ```html
-&lt;input type="text" name="foo" autocomplete="off" /&gt;
+<input type="text" name="foo" autocomplete="off" />
 ```
 
 #### Answer 2 (score 298)
@@ -7710,8 +7710,8 @@ What's a web developer to do?
 <li><p><strong>Chrome</strong> 34, unfortunately, will try to autofill fields with user/pass whenever it sees a password field. This is quite a bad bug that hopefully, they will change the Safari behavior. However, adding this to the top of your form seems to disable the password autofill:</p>
 
 ```html
-&lt;input type="text" style="display:none"&gt;
-&lt;input type="password" style="display:none"&gt;
+<input type="text" style="display:none">
+<input type="password" style="display:none">
 ```</li>
 </ul>
 
@@ -7727,11 +7727,11 @@ I want to get the selected value from a group of radio buttons.
 Here's my HTML:  
 
 ```html
-&lt;div id="rates"&gt;
-  &lt;input type="radio" id="r1" name="rate" value="Fixed Rate"&gt; Fixed Rate
-  &lt;input type="radio" id="r2" name="rate" value="Variable Rate"&gt; Variable Rate
-  &lt;input type="radio" id="r3" name="rate" value="Multi Rate" checked="checked"&gt; Multi Rate  
-&lt;/div&gt;
+<div id="rates">
+  <input type="radio" id="r1" name="rate" value="Fixed Rate"> Fixed Rate
+  <input type="radio" id="r2" name="rate" value="Variable Rate"> Variable Rate
+  <input type="radio" id="r3" name="rate" value="Multi Rate" checked="checked"> Multi Rate  
+</div>
 ```
 
 Here's my .js:  
@@ -7782,7 +7782,7 @@ You can get the value by using the `checked` property.
 ```html
 var rates = document.getElementsByName('rate');
 var rate_value;
-for(var i = 0; i &lt; rates.length; i++){
+for(var i = 0; i < rates.length; i++){
     if(rates[i].checked){
         rate_value = rates[i].value;
     }
@@ -7797,9 +7797,9 @@ for(var i = 0; i &lt; rates.length; i++){
 How do find the id of the button which is being clicked?  
 
 ```html
-&lt;button id="1" onClick="reply_click()"&gt;&lt;/button&gt;
-&lt;button id="2" onClick="reply_click()"&gt;&lt;/button&gt;
-&lt;button id="3" onClick="reply_click()"&gt;&lt;/button&gt;
+<button id="1" onClick="reply_click()"></button>
+<button id="2" onClick="reply_click()"></button>
+<button id="3" onClick="reply_click()"></button>
 
 function reply_click()
 {
@@ -7812,16 +7812,16 @@ You need to send the ID as the function parameters. Do it like this:
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="true" data-babel="false">
 <div class="snippet-code">
 ```html
-&lt;button id="1" onClick="reply_click(this.id)"&gt;B1&lt;/button&gt;
-&lt;button id="2" onClick="reply_click(this.id)"&gt;B2&lt;/button&gt;
-&lt;button id="3" onClick="reply_click(this.id)"&gt;B3&lt;/button&gt;
+<button id="1" onClick="reply_click(this.id)">B1</button>
+<button id="2" onClick="reply_click(this.id)">B2</button>
+<button id="3" onClick="reply_click(this.id)">B3</button>
     
-&lt;script type="text/javascript"&gt;
+<script type="text/javascript">
   function reply_click(clicked_id)
   {
       alert(clicked_id);
   }
-&lt;/script&gt;```
+</script>```
 </div>
 </div>
 
@@ -7836,11 +7836,11 @@ When an event handler is called, it's called within the context of the element t
 For example:  
 
 ```html
-&lt;button id="1"&gt;Button 1&lt;/button&gt;
-&lt;button id="2"&gt;Button 2&lt;/button&gt;
-&lt;button id="3"&gt;Button 3&lt;/button&gt;
+<button id="1">Button 1</button>
+<button id="2">Button 2</button>
+<button id="3">Button 3</button>
 
-&lt;script type="text/javascript"&gt;
+<script type="text/javascript">
 var reply_click = function()
 {
     alert("Button clicked, id "+this.id+", text"+this.innerHTML);
@@ -7848,7 +7848,7 @@ var reply_click = function()
 document.getElementById('1').onclick = reply_click;
 document.getElementById('2').onclick = reply_click;
 document.getElementById('3').onclick = reply_click;
-&lt;/script&gt;
+</script>
 ```
 
 #### Answer 3 (score 38)
@@ -7857,11 +7857,11 @@ document.getElementById('3').onclick = reply_click;
 You could go for event delegation...  
 
 ```html
-&lt;div onClick="reply_click()"&gt;
-    &lt;button id="1"&gt;&lt;/button&gt;
-    &lt;button id="2"&gt;&lt;/button&gt;
-    &lt;button id="3"&gt;&lt;/button&gt;
-&lt;/div&gt;
+<div onClick="reply_click()">
+    <button id="1"></button>
+    <button id="2"></button>
+    <button id="3"></button>
+</div>
 
 function reply_click(e) {
     e = e || window.event;
@@ -7882,7 +7882,7 @@ function reply_click(e) {
 I would like to add a current date to a hidden HTML tag so that it can be sent to the server:  
 
 ```html
-&lt;input type="hidden" id="DATE" name="DATE" value="WOULD_LIKE_TO_ADD_DATE_HERE"&gt;
+<input type="hidden" id="DATE" name="DATE" value="WOULD_LIKE_TO_ADD_DATE_HERE">
 ```
 
 How can I add a formatted date to the VALUE attribute?  
@@ -7896,10 +7896,10 @@ var dd = today.getDate();
 var mm = today.getMonth() + 1; //January is 0!
 
 var yyyy = today.getFullYear();
-if (dd &lt; 10) {
+if (dd < 10) {
   dd = '0' + dd;
 } 
-if (mm &lt; 10) {
+if (mm < 10) {
   mm = '0' + mm;
 } 
 var today = dd + '/' + mm + '/' + yyyy;
@@ -7912,7 +7912,7 @@ document.getElementById('DATE').value = today;
 I honestly suggest that you use <a href="http://momentjs.com" rel="noreferrer">moment.js</a>. Just download `moment.min.js` and then use this snippet to get your date in whatever format you want:  
 
 ```html
-&lt;script&gt;
+<script>
 $(document).ready(function() {
 
      // set an element
@@ -7922,7 +7922,7 @@ $(document).ready(function() {
      var today = moment().format('D MMM, YYYY');
 
 });
-&lt;/script&gt;
+</script>
 ```
 
 Use following chart for date formats:  
@@ -7931,8 +7931,8 @@ Use following chart for date formats:
 
 #### Answer 3 (score 105)
 ```html
-&lt;input type="hidden" id="date"/&gt;
-&lt;script&gt;document.getElementById("date").value = new Date().toJSON().slice(0,10)&lt;/script&gt;
+<input type="hidden" id="date"/>
+<script>document.getElementById("date").value = new Date().toJSON().slice(0,10)</script>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -7955,17 +7955,17 @@ function replaceContentInOtherContainer(replace_target, source) {
   document.getElementById(replace_target).innerHTML = document.getElementById(source).innerHTML;
 }```
 ```html
-&lt;html&gt;
-&lt;button onClick="replaceContentInContainer('target', 'replace_target')"&gt;View Portfolio&lt;/button&gt;
-&lt;button onClick="replaceContentInOtherContainer('replace_target', 'target')"&gt;View Results&lt;/button&gt;
+<html>
+<button onClick="replaceContentInContainer('target', 'replace_target')">View Portfolio</button>
+<button onClick="replaceContentInOtherContainer('replace_target', 'target')">View Results</button>
 
-&lt;div&gt;
-  &lt;span id="target"&gt;div1&lt;/span&gt;
-&lt;/div&gt;
+<div>
+  <span id="target">div1</span>
+</div>
 
-&lt;div style="display:none"&gt;
-  &lt;span id="replace_target"&gt;div2&lt;/span&gt;
-&lt;/div&gt;```
+<div style="display:none">
+  <span id="replace_target">div2</span>
+</div>```
 </div>
 </div>
 
@@ -7998,7 +7998,7 @@ If you want to hide a collection of elements, just iterate over each element and
 ```html
 function hide (elements) {
   elements = elements.length ? elements : [elements];
-  for (var index = 0; index &lt; elements.length; index++) {
+  for (var index = 0; index < elements.length; index++) {
     elements[index].style.display = 'none';
   }
 }
@@ -8020,14 +8020,14 @@ hide(document.querySelectorAll('.target'));
 
 function hide (elements) {
   elements = elements.length ? elements : [elements];
-  for (var index = 0; index &lt; elements.length; index++) {
+  for (var index = 0; index < elements.length; index++) {
     elements[index].style.display = 'none';
   }
 }```
 ```html
-&lt;div class="target"&gt;This div will be hidden.&lt;/div&gt;
+<div class="target">This div will be hidden.</div>
 
-&lt;span class="target"&gt;This span will be hidden as well.&lt;/span&gt;```
+<span class="target">This span will be hidden as well.</span>```
 </div>
 </div>
 
@@ -8041,7 +8041,7 @@ You can optionally specify the desired `display` as the second argument if you d
 ```html
 function show (elements, specifiedDisplay) {
   elements = elements.length ? elements : [elements];
-  for (var index = 0; index &lt; elements.length; index++) {
+  for (var index = 0; index < elements.length; index++) {
     elements[index].style.display = specifiedDisplay || 'block';
   }
 }
@@ -8068,16 +8068,16 @@ show(document.getElementById('hidden-input'));
 
 function show (elements, specifiedDisplay) {
   elements = elements.length ? elements : [elements];
-  for (var index = 0; index &lt; elements.length; index++) {
+  for (var index = 0; index < elements.length; index++) {
     elements[index].style.display = specifiedDisplay || 'block';
   }
 }```
 ```html
-&lt;div class="target" style="display: none"&gt;This hidden div should have a display of 'inline-block' when it is shown.&lt;/div&gt;
+<div class="target" style="display: none">This hidden div should have a display of 'inline-block' when it is shown.</div>
 
-&lt;span&gt;Inline span..&lt;/span&gt;
+<span>Inline span..</span>
 
-&lt;input id="hidden-input" /&gt;```
+<input id="hidden-input" />```
 </div>
 </div>
 
@@ -8089,7 +8089,7 @@ function show (elements, specifiedDisplay) {
   var computedDisplay, element, index;
 
   elements = elements.length ? elements : [elements];
-  for (index = 0; index &lt; elements.length; index++) {
+  for (index = 0; index < elements.length; index++) {
     element = elements[index];
 
     // Remove the element's inline display styling
@@ -8112,7 +8112,7 @@ function show (elements, specifiedDisplay) {
   var computedDisplay, element, index;
 
   elements = elements.length ? elements : [elements];
-  for (index = 0; index &lt; elements.length; index++) {
+  for (index = 0; index < elements.length; index++) {
     element = elements[index];
 
     // Remove the element's inline display styling
@@ -8125,13 +8125,13 @@ function show (elements, specifiedDisplay) {
   }
 }```
 ```html
-&lt;span class="target" style="display: none"&gt;Should revert back to being inline.&lt;/span&gt;
+<span class="target" style="display: none">Should revert back to being inline.</span>
 
-&lt;span class="target" style="display: none"&gt;Inline as well.&lt;/span&gt;
+<span class="target" style="display: none">Inline as well.</span>
 
-&lt;div class="target" style="display: none"&gt;Should revert back to being block level.&lt;/div&gt;
+<div class="target" style="display: none">Should revert back to being block level.</div>
 
-&lt;span class="target" style="display: none"&gt;Should revert back to being inline.&lt;/span&gt;```
+<span class="target" style="display: none">Should revert back to being inline.</span>```
 </div>
 </div>
 
@@ -8147,7 +8147,7 @@ function toggle (elements, specifiedDisplay) {
   var element, index;
 
   elements = elements.length ? elements : [elements];
-  for (index = 0; index &lt; elements.length; index++) {
+  for (index = 0; index < elements.length; index++) {
     element = elements[index];
 
     if (isElementHidden(element)) {
@@ -8187,7 +8187,7 @@ function toggle (elements, specifiedDisplay) {
   var element, index;
 
   elements = elements.length ? elements : [elements];
-  for (index = 0; index &lt; elements.length; index++) {
+  for (index = 0; index < elements.length; index++) {
     element = elements[index];
 
     if (isElementHidden(element)) {
@@ -8208,11 +8208,11 @@ function toggle (elements, specifiedDisplay) {
 ```html
 .target { display: none; }```
 ```html
-&lt;button id="toggle-button"&gt;Toggle display&lt;/button&gt;
+<button id="toggle-button">Toggle display</button>
 
-&lt;span class="target"&gt;Toggle the span.&lt;/span&gt;
+<span class="target">Toggle the span.</span>
 
-&lt;div class="target"&gt;Toggle the div.&lt;/div&gt;```
+<div class="target">Toggle the div.</div>```
 </div>
 </div>
 
@@ -8287,8 +8287,8 @@ $('#test').click(function() {
     alert("Checkbox state (method 2) = " + $('#test').is(':checked'));
 });```
 ```html
-&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"&gt;&lt;/script&gt;
-Check me: &lt;input id="test" type="checkbox" /&gt;```
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+Check me: <input id="test" type="checkbox" />```
 </div>
 </div>
 
@@ -8316,12 +8316,12 @@ Given the following HTML:
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="false" data-babel="false">
 <div class="snippet-code">
 ```html
-&lt;div id="container"&gt;
-  &lt;!-- Other elements here --&gt;
-  &lt;div id="copyright"&gt;
+<div id="container">
+  <!-- Other elements here -->
+  <div id="copyright">
     Copyright Foo web designs
-  &lt;/div&gt;
-&lt;/div&gt;```
+  </div>
+</div>```
 </div>
 </div>
 
@@ -8348,12 +8348,12 @@ Assign `position:relative` to `#container`, and then `position:absolute; bottom:
     bottom: 0;
 }```
 ```html
-&lt;div id="container"&gt;
-  &lt;!-- Other elements here --&gt;
-  &lt;div id="copyright"&gt;
+<div id="container">
+  <!-- Other elements here -->
+  <div id="copyright">
     Copyright Foo web designs
-  &lt;/div&gt;
-&lt;/div&gt;```
+  </div>
+</div>```
 </div>
 </div>
 
@@ -8386,23 +8386,23 @@ html, body {
     border-collapse: collapse;
 }```
 ```html
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;body&gt;
-    &lt;table id="container"&gt;
-        &lt;tr&gt;
-            &lt;td valign="top"&gt;
-                &lt;div id="main"&gt;Lorem ipsum, etc.&lt;/div&gt;
-            &lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-            &lt;td valign="bottom"&gt;
-                &lt;div id="footer"&gt;Copyright some evil company...&lt;/div&gt;
-            &lt;/td&gt;
-        &lt;/tr&gt;
-    &lt;/table&gt;
-&lt;/body&gt;
-&lt;/html&gt;```
+<!DOCTYPE html>
+<html>
+<body>
+    <table id="container">
+        <tr>
+            <td valign="top">
+                <div id="main">Lorem ipsum, etc.</div>
+            </td>
+        </tr>
+        <tr>
+            <td valign="bottom">
+                <div id="footer">Copyright some evil company...</div>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>```
 </div>
 </div>
 
@@ -8448,9 +8448,9 @@ In <a href="http://caniuse.com/#feat=flexbox" rel="noreferrer">supported browser
   margin-top: auto;
 }```
 ```html
-&lt;div class="parent"&gt;
-  &lt;div class="child"&gt;Align to the bottom&lt;/div&gt;
-&lt;/div&gt;```
+<div class="parent">
+  <div class="child">Align to the bottom</div>
+</div>```
 </div>
 </div>
 
@@ -8485,9 +8485,9 @@ The solution above is probably more flexible, however, here is an alternative so
   align-self: flex-end;
 }```
 ```html
-&lt;div class="parent"&gt;
-  &lt;div class="child"&gt;Align to the bottom&lt;/div&gt;
-&lt;/div&gt;```
+<div class="parent">
+  <div class="child">Align to the bottom</div>
+</div>```
 </div>
 </div>
 
@@ -8504,27 +8504,27 @@ As a side note, you may want to add vendor prefixes for additional support.
 I would like to move one DIV element inside another. For example, I want to move this (including all children):  
 
 ```html
-&lt;div id="source"&gt;
+<div id="source">
 ...
-&lt;/div&gt;
+</div>
 ```
 
 into this:  
 
 ```html
-&lt;div id="destination"&gt;
+<div id="destination">
 ...
-&lt;/div&gt;
+</div>
 ```
 
 so that I have this:  
 
 ```html
-&lt;div id="destination"&gt;
-  &lt;div id="source"&gt;
+<div id="destination">
+  <div id="source">
     ...
-  &lt;/div&gt;
-&lt;/div&gt;
+  </div>
+</div>
 ```
 
 #### Answer accepted (score 1729)
@@ -8563,12 +8563,12 @@ $("#prependTo").click(function() {
   border: 1px solid red;
 }```
 ```html
-&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"&gt;&lt;/script&gt;
-&lt;div id="main"&gt;main&lt;/div&gt;
-&lt;div id="moveMeIntoMain" class="moveMeIntoMain"&gt;move me to main&lt;/div&gt;
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<div id="main">main</div>
+<div id="moveMeIntoMain" class="moveMeIntoMain">move me to main</div>
 
-&lt;button id="appendTo"&gt;appendTo main&lt;/button&gt;
-&lt;button id="prependTo"&gt;prependTo main&lt;/button&gt;```
+<button id="appendTo">appendTo main</button>
+<button id="prependTo">prependTo main</button>```
 </div>
 </div>
 
@@ -8607,13 +8607,13 @@ Which I grabbed from <a href="http://www.elated.com/articles/jquery-removing-rep
 I have this text input in a form:  
 
 ```html
-&lt;input type="text"
+<input type="text"
        cols="40" 
        rows="5" 
        style="width:200px; height:50px;" 
        name="Text1" 
        id="Text1" 
-       value="" /&gt;
+       value="" />
 ```
 
 I am trying to get it to take multiple lines of input. The width and height make the box to be bigger, but the user can enter text all (s)he wants yet it fills one line only.   
@@ -8626,7 +8626,7 @@ You need to use a textarea to get multiline handling.
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="false" data-babel="false">
 <div class="snippet-code">
 ```html
-&lt;textarea name="Text1" cols="40" rows="5"&gt;&lt;/textarea&gt;```
+<textarea name="Text1" cols="40" rows="5"></textarea>```
 </div>
 </div>
 
@@ -8647,7 +8647,7 @@ This
 <p><div class="snippet" data-lang="js" data-hide="false">
 <div class="snippet-code">
 ```html
-&lt;div id="" style="overflow:scroll; height:400px;"&gt;```
+<div id="" style="overflow:scroll; height:400px;">```
 </div>
 </div>
 
@@ -8676,7 +8676,7 @@ Try like this.
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="false" data-babel="false">
 <div class="snippet-code">
 ```html
-&lt;div style="overflow-y: scroll; height:400px;"&gt;```
+<div style="overflow-y: scroll; height:400px;">```
 </div>
 </div>
 
@@ -8772,14 +8772,14 @@ This froze my Chrome tab to a point it didn't even show me the 'Wait/Kill' dialo
 I have an input text which is this:  
 
 ```html
-&lt;div class="editor-label"&gt;
-    @Html.LabelFor(model =&gt; model.EmployeeId, "Employee Number")
-&lt;/div&gt;
+<div class="editor-label">
+    @Html.LabelFor(model => model.EmployeeId, "Employee Number")
+</div>
 
-&lt;div class="editor-field textBoxEmployeeNumber"&gt;
-    @Html.EditorFor(model =&gt; model.EmployeeId) 
-    @Html.ValidationMessageFor(model =&gt; model.EmployeeId)
-&lt;/div&gt;
+<div class="editor-field textBoxEmployeeNumber">
+    @Html.EditorFor(model => model.EmployeeId) 
+    @Html.ValidationMessageFor(model => model.EmployeeId)
+</div>
 ```
 
 Which produce following html  
@@ -8787,15 +8787,15 @@ Which produce following html
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="true" data-babel="false">
 <div class="snippet-code">
 ```html
-&lt;div class="editor-label"&gt;
-  &lt;label for="EmployeeId"&gt;Employee Number&lt;/label&gt;
-&lt;/div&gt;
+<div class="editor-label">
+  <label for="EmployeeId">Employee Number</label>
+</div>
 
-&lt;div class="editor-field textBoxEmployeeNumber"&gt;
-  &lt;input class="text-box single-line" data-val="true" data-val-number="The field EmployeeId must be a number." data-val-required="The EmployeeId field is required." id="EmployeeId" name="EmployeeId" type="text" value="" /&gt;
+<div class="editor-field textBoxEmployeeNumber">
+  <input class="text-box single-line" data-val="true" data-val-number="The field EmployeeId must be a number." data-val-required="The EmployeeId field is required." id="EmployeeId" name="EmployeeId" type="text" value="" />
 
-  &lt;span class="field-validation-valid" data-valmsg-for="EmployeeId" data-valmsg-replace="true"&gt;&lt;/span&gt;
-&lt;/div&gt;```
+  <span class="field-validation-valid" data-valmsg-for="EmployeeId" data-valmsg-replace="true"></span>
+</div>```
 </div>
 </div>
 
@@ -8803,11 +8803,11 @@ Which produce following html
 I want to set the value of this input text using jquery so i did this:  
 
 ```html
-&lt;script type="text/javascript" language="javascript"&gt;
+<script type="text/javascript" language="javascript">
     $(function() {
         $('.textBoxEmployeeNumber').val("fgg");
     });
-&lt;/script&gt; 
+</script> 
 ```
 
 however, it is not working... what is the error in my syntax?  
@@ -8861,7 +8861,7 @@ $(document).ready(function () {
     $('#EmployeeId').val("fgg");
 
     //Or
-    $('.textBoxEmployeeNumber &gt; input').val("fgg");
+    $('.textBoxEmployeeNumber > input').val("fgg");
 
     //Or
     $('.textBoxEmployeeNumber').find('input').val("fgg");
@@ -8937,9 +8937,9 @@ Restart and enjoy!!!
 For example:  
 
 ```html
-&lt;iframe name="Stack" src="http://stackoverflow.com/" width="740"
-        frameborder="0" scrolling="no" id="iframe"&gt; ...
-&lt;/iframe&gt;
+<iframe name="Stack" src="http://stackoverflow.com/" width="740"
+        frameborder="0" scrolling="no" id="iframe"> ...
+</iframe>
 ```
 
 I want it to be able to adjust its height according to the contents inside it, without using scroll.  
@@ -8948,17 +8948,17 @@ I want it to be able to adjust its height according to the contents inside it, w
 Add this to your `&lt;head&gt;` section:  
 
 ```html
-&lt;script&gt;
+<script>
   function resizeIframe(obj) {
     obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
   }
-&lt;/script&gt;
+</script>
 ```
 
 And change your iframe to this:  
 
 ```html
-&lt;iframe src="..." frameborder="0" scrolling="no" onload="resizeIframe(this)" /&gt;
+<iframe src="..." frameborder="0" scrolling="no" onload="resizeIframe(this)" />
 ```
 
 As found on <a href="https://www.sitepoint.com/community/t/auto-height-iframe-content-script/67843" rel="noreferrer">sitepoint discussion</a>.  
@@ -8978,9 +8978,9 @@ This works with both cross and same domain iframes.
 Here is a compact version:  
 
 ```html
-&lt;iframe src="hello.html"
-        onload="this.style.height=this.contentDocument.body.scrollHeight +'px';"&gt;
-&lt;/iframe&gt;
+<iframe src="hello.html"
+        onload="this.style.height=this.contentDocument.body.scrollHeight +'px';">
+</iframe>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -8991,9 +8991,9 @@ Here is a compact version:
 I have been trying the following:  
 
 ```html
-&lt;form action="/home" class="inline"&gt;
-    &lt;button class="float-left submit-button" &gt;Home&lt;/button&gt;
-&lt;/form&gt;
+<form action="/home" class="inline">
+    <button class="float-left submit-button" >Home</button>
+</form>
 ```
 
 It seems to work but it goes to the page "/home?"  
@@ -9004,42 +9004,42 @@ Is there a better way for me to make a button inside a form make the page go to 
 Just add an `onclick` event to the `button`:  
 
 ```html
-&lt;button onclick="location.href = 'www.yoursite.com';" id="myButton" class="float-left submit-button" &gt;Home&lt;/button&gt;
+<button onclick="location.href = 'www.yoursite.com';" id="myButton" class="float-left submit-button" >Home</button>
 ```
 
 But you shouldn't really have it inline like that, instead, put it in a JS block and give the `button` an ID:  
 
 ```html
-&lt;button id="myButton" class="float-left submit-button" &gt;Home&lt;/button&gt;
+<button id="myButton" class="float-left submit-button" >Home</button>
 
-&lt;script type="text/javascript"&gt;
+<script type="text/javascript">
     document.getElementById("myButton").onclick = function () {
         location.href = "www.yoursite.com";
     };
-&lt;/script&gt;
+</script>
 ```
 
 #### Answer 2 (score 33)
 try  
 
 ```html
-&lt;button onclick="window.location.href='b.php'"&gt;Click me&lt;/button&gt;
+<button onclick="window.location.href='b.php'">Click me</button>
 ```
 
 #### Answer 3 (score 8)
 Just another variation:  
 
 ```html
-    &lt;body&gt;
-    &lt;button name="redirect" onClick="redirect()"&gt;
+    <body>
+    <button name="redirect" onClick="redirect()">
 
-    &lt;script type="text/javascript"&gt;
+    <script type="text/javascript">
     function redirect()
     {
     var url = "http://www.(url).com";
     window.location(url);
     }
-    &lt;/script&gt;
+    </script>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -9050,7 +9050,7 @@ Just another variation:
 If I use `tel:` I should write the international phone code, like that.  
 
 ```html
-&lt;a href="tel:+6494461709"&gt;61709&lt;/a&gt;
+<a href="tel:+6494461709">61709</a>
 ```
 
 So far, so good, but I can't find information on how to write a cell phone number in an "international" way, if there is one.  
@@ -9089,11 +9089,11 @@ So as per the <a href="http://en.wikipedia.org/wiki/Trunk_prefix#Europe" rel="no
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="true" data-babel="false">
 <div class="snippet-code">
 ```html
-&lt;a href="tel:+496170961709" class="Blondie"&gt;
+<a href="tel:+496170961709" class="Blondie">
     Call me, call me any, anytime
-      &lt;b&gt;Call me (call me) I'll arrive&lt;/b&gt;
+      <b>Call me (call me) I'll arrive</b>
         When you're ready we can share the wine!
-&lt;/a&gt;```
+</a>```
 </div>
 </div>
 
@@ -9104,9 +9104,9 @@ I know the OP is asking about international country codes but for North America,
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="true" data-babel="false">
 <div class="snippet-code">
 ```html
-&lt;a href="tel:1-847-555-5555"&gt;1-847-555-5555&lt;/a&gt;
+<a href="tel:1-847-555-5555">1-847-555-5555</a>
 
-&lt;a href="tel:18475555555"&gt;Click Here To Call Support 1-847-555-5555&lt;/a&gt;```
+<a href="tel:18475555555">Click Here To Call Support 1-847-555-5555</a>```
 </div>
 </div>
 
@@ -9119,13 +9119,13 @@ The BlackBerry browser and Safari for iOS (iPhone/iPod/iPad) automatically detec
 For Safari:  
 
 ```html
-&lt;meta name="format-detection" content="telephone=no"&gt;
+<meta name="format-detection" content="telephone=no">
 ```
 
 For BlackBerry:  
 
 ```html
-&lt;meta http-equiv="x-rim-auto-match" content="none"&gt;
+<meta http-equiv="x-rim-auto-match" content="none">
 ```
 
 Source: <a href="http://www.mobilexweb.com/blog/click-to-call-links-mobile-browsers">mobilexweb.com</a>  
@@ -9138,9 +9138,9 @@ Source: <a href="http://www.mobilexweb.com/blog/click-to-call-links-mobile-brows
 I have following div  
 
 ```html
-&lt;div id="over" style="position:absolute; width:100%; height:100%&gt;
- &lt;img src="img.png"&gt;
-&lt;/div&gt;
+<div id="over" style="position:absolute; width:100%; height:100%>
+ <img src="img.png">
+</div>
 ```
 
 How to align the image so as to be located in the middle and center of div ?  
@@ -9159,9 +9159,9 @@ body {
   display: block;
 }```
 ```html
-&lt;div id="over" style="position:absolute; width:100%; height:100%"&gt;
-  &lt;img src="http://www.garcard.com/images/garcard_symbol.png"&gt;
-&lt;/div&gt;```
+<div id="over" style="position:absolute; width:100%; height:100%">
+  <img src="http://www.garcard.com/images/garcard_symbol.png">
+</div>```
 </div>
 </div>
 
@@ -9170,9 +9170,9 @@ body {
 
 #### Answer 3 (score 158)
 ```html
-&lt;div style="display:table-cell; vertical-align:middle; text-align:center"&gt;
-&lt;img src="img.png"&gt;
-&lt;/div&gt;
+<div style="display:table-cell; vertical-align:middle; text-align:center">
+<img src="img.png">
+</div>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -9183,7 +9183,7 @@ body {
 I have several <a href="http://en.wikipedia.org/wiki/PHP" rel="noreferrer">PHP</a> pages echoing out various things into <a href="http://en.wikipedia.org/wiki/HTML" rel="noreferrer">HTML</a> pages with the following code.  
 
 ```html
-&lt;meta http-equiv="Content-type" content="text/html; charset=utf-8" /&gt;
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 ```
 
 However, when I validate using the <a href="https://en.wikipedia.org/wiki/W3C_Markup_Validation_Service" rel="noreferrer">W3C validator</a> it comes up with:  
@@ -9242,9 +9242,9 @@ Put a `&lt;div&gt;` around the markup where you want the line to appear to next,
   border-left: thick solid #ff0000;
 }```
 ```html
-&lt;div class="verticalLine"&gt;
+<div class="verticalLine">
   some other content
-&lt;/div&gt;```
+</div>```
 </div>
 </div>
 
@@ -9255,7 +9255,7 @@ You can use the horizontal rule tag to create vertical lines.
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="true" data-babel="false">
 <div class="snippet-code">
 ```html
-&lt;hr width="1" size="500"&gt;```
+<hr width="1" size="500">```
 </div>
 </div>
 
@@ -9268,7 +9268,7 @@ You can use an empty `&lt;div&gt;` that is styled exactly like you want the line
 <strong>HTML:</strong>  
 
 ```html
-&lt;div class="vertical-line"&gt;&lt;/div&gt;
+<div class="vertical-line"></div>
 ```
 
 With exact height (overriding style in-line):  
@@ -9285,7 +9285,7 @@ With exact height (overriding style in-line):
         if this fits better with your design */
     }```
 ```html
-&lt;div class="vertical-line" style="height: 45px;"&gt;&lt;/div&gt;```
+<div class="vertical-line" style="height: 45px;"></div>```
 </div>
 </div>
 
@@ -9299,10 +9299,10 @@ Style the border if you want 3D look:
       width: 0px; /* Use only border style */
       height: 100%;
       float: left; 
-      border: 1px inset; /* This is default border style for &lt;hr&gt; tag */
+      border: 1px inset; /* This is default border style for <hr> tag */
     }```
 ```html
-   &lt;div class="vertical-line" style="height: 45px;"&gt;&lt;/div&gt;```
+   <div class="vertical-line" style="height: 45px;"></div>```
 </div>
 </div>
 
@@ -9321,7 +9321,7 @@ You can of course also experiment with advanced combinations:
       border-radius: 2px;
     }```
 ```html
- &lt;div class="vertical-line" style="height: 45px;"&gt;&lt;/div&gt;```
+ <div class="vertical-line" style="height: 45px;"></div>```
 </div>
 </div>
 
@@ -9530,9 +9530,9 @@ If you have more than one image and you need something generic that doesn't depe
 HTML  
 
 ```html
-&lt;img data-other-src="big-zebra.jpg" src="small-cat.jpg"&gt;
-&lt;img data-other-src="huge-elephant.jpg" src="white-mouse.jpg"&gt;
-&lt;img data-other-src="friendly-bear.jpg" src="penguin.jpg"&gt;
+<img data-other-src="big-zebra.jpg" src="small-cat.jpg">
+<img data-other-src="huge-elephant.jpg" src="white-mouse.jpg">
+<img data-other-src="friendly-bear.jpg" src="penguin.jpg">
 ```
 
 JavaScript  
@@ -9573,13 +9573,13 @@ See <em><a href="https://web.archive.org/web/20160104183713/http://www.hunlock.c
 Also, don't forget, you can add links to external stylesheets if that's an option. For example,  
 
 ```html
-&lt;script type="text/javascript"&gt;
+<script type="text/javascript">
   var link = document.createElement("link");
   link.setAttribute("rel","stylesheet");
   link.setAttribute("href","http://wherever.com/yourstylesheet.css");
   var head = document.getElementsByTagName("head")[0];
   head.appendChild(link);
-&lt;/script&gt;
+</script>
 ```
 
 Caution: the above assumes there is a <a href="https://en.wikipedia.org/wiki/HTML_element#Document_structure_elements" rel="noreferrer">head</a> section.   
@@ -9590,9 +9590,9 @@ You can get the same effect by changing your styles with JavaScript in the `onMo
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="true" data-babel="false">
 <div class="snippet-code">
 ```html
-&lt;a href="abc.html"
+<a href="abc.html"
    onMouseOver="this.style.color='#0F0'"
-   onMouseOut="this.style.color='#00F'" &gt;Text&lt;/a&gt;```
+   onMouseOut="this.style.color='#00F'" >Text</a>```
 </div>
 </div>
 
@@ -9638,16 +9638,16 @@ td {
   overflow: hidden;
 }```
 ```html
-&lt;table&gt;
-  &lt;tr&gt;
-    &lt;th&gt;header 1&lt;/th&gt;
-    &lt;th&gt;header 234567895678657&lt;/th&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-    &lt;td&gt;data asdfasdfasdfasdfasdf&lt;/td&gt;
-    &lt;td&gt;data 2&lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/table&gt;```
+<table>
+  <tr>
+    <th>header 1</th>
+    <th>header 234567895678657</th>
+  </tr>
+  <tr>
+    <td>data asdfasdfasdfasdfasdf</td>
+    <td>data 2</td>
+  </tr>
+</table>```
 </div>
 </div>
 
@@ -9665,16 +9665,16 @@ After the table tag, use the col element. you don't need a closing tag.
 For example, if you had three columns:  
 
 ```html
-&lt;table&gt;
-  &lt;colgroup&gt;
-    &lt;col style="width:40%"&gt;
-    &lt;col style="width:30%"&gt;
-    &lt;col style="width:30%"&gt;
-  &lt;/colgroup&gt;  
-  &lt;tbody&gt;
+<table>
+  <colgroup>
+    <col style="width:40%">
+    <col style="width:30%">
+    <col style="width:30%">
+  </colgroup>  
+  <tbody>
     ...
-  &lt;/tbody&gt;
-&lt;/table&gt;
+  </tbody>
+</table>
 ```
 
 #### Answer 3 (score 121)
@@ -9684,7 +9684,7 @@ This will help you. Nothing else works.</p>
 eg.   
 
 ```html
-&lt;td&gt;&lt;div style="width: 50px" &gt;...............&lt;/div&gt;&lt;/td&gt;
+<td><div style="width: 50px" >...............</div></td>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -9724,13 +9724,13 @@ function close_window() {
 with HTML:  
 
 ```html
-&lt;a href="javascript:close_window();"&gt;close&lt;/a&gt;
+<a href="javascript:close_window();">close</a>
 ```
 
 or:  
 
 ```html
-&lt;a href="#" onclick="close_window();return false;"&gt;close&lt;/a&gt;
+<a href="#" onclick="close_window();return false;">close</a>
 ```
 
 You `return false` here to prevent the default behavior for the event. Otherwise the browser will attempt to go to that URL (which it obviously isn't).  
@@ -9743,16 +9743,16 @@ Now the options on the <a href="https://developer.mozilla.org/en/DOM/window.conf
 Try this  
 
 ```html
-&lt;a href="javascript:window.open('','_self').close();"&gt;close&lt;/a&gt;
+<a href="javascript:window.open('','_self').close();">close</a>
 ```
 
 #### Answer 3 (score 64)
 This method works in Chrome and IE:  
 
 ```html
-&lt;a href="blablabla" onclick="setTimeout(function(){var ww = window.open(window.location, '_self'); ww.close(); }, 1000);"&gt;
+<a href="blablabla" onclick="setTimeout(function(){var ww = window.open(window.location, '_self'); ww.close(); }, 1000);">
     If you click on this the window will be closed after 1000ms
-&lt;/a&gt;
+</a>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -9767,11 +9767,11 @@ Here's the standard code that I work with:
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="false" data-babel="false">
 <div class="snippet-code">
 ```html
-&lt;form&gt;
-    &lt;div&gt;
-        &lt;label&gt;&lt;input type="checkbox" /&gt; Label text&lt;/label&gt;
-    &lt;/div&gt;
-&lt;/form&gt;```
+<form>
+    <div>
+        <label><input type="checkbox" /> Label text</label>
+    </div>
+</form>```
 </div>
 </div>
 
@@ -9808,11 +9808,11 @@ input {
   *overflow: hidden;
 }```
 ```html
-&lt;form&gt;
-  &lt;div&gt;
-    &lt;label&gt;&lt;input type="checkbox" /&gt; Label text&lt;/label&gt;
-  &lt;/div&gt;
-&lt;/form&gt;```
+<form>
+  <div>
+    <label><input type="checkbox" /> Label text</label>
+  </div>
+</form>```
 </div>
 </div>
 
@@ -9854,13 +9854,13 @@ The downside is the extra meaningless SPAN tags.
   vertical-align: middle;
 }```
 ```html
-&lt;form&gt;
-  &lt;div class="checkboxes"&gt;
-    &lt;label for="x"&gt;&lt;input type="checkbox" id="x" /&gt; &lt;span&gt;Label text x&lt;/span&gt;&lt;/label&gt;
-    &lt;label for="y"&gt;&lt;input type="checkbox" id="y" /&gt; &lt;span&gt;Label text y&lt;/span&gt;&lt;/label&gt;
-    &lt;label for="z"&gt;&lt;input type="checkbox" id="z" /&gt; &lt;span&gt;Label text z&lt;/span&gt;&lt;/label&gt;
-  &lt;/div&gt;
-&lt;/form&gt;```
+<form>
+  <div class="checkboxes">
+    <label for="x"><input type="checkbox" id="x" /> <span>Label text x</span></label>
+    <label for="y"><input type="checkbox" id="y" /> <span>Label text y</span></label>
+    <label for="z"><input type="checkbox" id="z" /> <span>Label text z</span></label>
+  </div>
+</form>```
 </div>
 </div>
 
@@ -9883,13 +9883,13 @@ Now, if you had a very long label text that <em>needed</em> to wrap without wrap
   vertical-align: middle;
 }```
 ```html
-&lt;form&gt;
-  &lt;div class="checkboxes"&gt;
-    &lt;label for="x"&gt;&lt;input type="checkbox" id="x" /&gt; &lt;span&gt;Label text x so long that it will probably wrap so let's see how it goes with the proposed CSS (expected: two lines are aligned nicely)&lt;/span&gt;&lt;/label&gt;
-    &lt;label for="y"&gt;&lt;input type="checkbox" id="y" /&gt; &lt;span&gt;Label text y&lt;/span&gt;&lt;/label&gt;
-    &lt;label for="z"&gt;&lt;input type="checkbox" id="z" /&gt; &lt;span&gt;Label text z&lt;/span&gt;&lt;/label&gt;
-  &lt;/div&gt;
-&lt;/form&gt;```
+<form>
+  <div class="checkboxes">
+    <label for="x"><input type="checkbox" id="x" /> <span>Label text x so long that it will probably wrap so let's see how it goes with the proposed CSS (expected: two lines are aligned nicely)</span></label>
+    <label for="y"><input type="checkbox" id="y" /> <span>Label text y</span></label>
+    <label for="z"><input type="checkbox" id="z" /> <span>Label text z</span></label>
+  </div>
+</form>```
 </div>
 </div>
 
@@ -9912,10 +9912,10 @@ input[type=radio] {
   bottom: 2px; 
 } ```
 ```html
-&lt;label&gt;&lt;input type="checkbox" /&gt; Label text&lt;/label&gt;
-&lt;p class="font2"&gt;
-  &lt;label&gt;&lt;input type="checkbox"/&gt; Label text&lt;/label&gt;
-&lt;/p&gt;```
+<label><input type="checkbox" /> Label text</label>
+<p class="font2">
+  <label><input type="checkbox"/> Label text</label>
+</p>```
 </div>
 </div>
 
@@ -9939,11 +9939,11 @@ input[type=checkbox], input[type=radio] {
   bottom: .08em; /* this is a better value for different fonts! */
 }```
 ```html
-&lt;label&gt;&lt;input type="checkbox" /&gt; Label text&lt;/label&gt; 
+<label><input type="checkbox" /> Label text</label> 
 
-&lt;p class="font2"&gt;
-  &lt;label&gt;&lt;input type="checkbox"/&gt; Label text&lt;/label&gt;
-&lt;/p&gt;```
+<p class="font2">
+  <label><input type="checkbox"/> Label text</label>
+</p>```
 </div>
 </div>
 
@@ -10073,13 +10073,13 @@ img {
 another way is to create a `table` with `valign`, of course. This would work regardless of you knowing the div's height or not.  
 
 ```html
-&lt;div&gt;
-   &lt;table width="100%" height="100%" align="center" valign="center"&gt;
-   &lt;tr&gt;&lt;td&gt;
-      &lt;img src="foo.jpg" alt="foo" /&gt;
-   &lt;/td&gt;&lt;/tr&gt;
-   &lt;/table&gt;
-&lt;/div&gt;
+<div>
+   <table width="100%" height="100%" align="center" valign="center">
+   <tr><td>
+      <img src="foo.jpg" alt="foo" />
+   </td></tr>
+   </table>
+</div>
 ```
 
 but you should always stick to just `css` whenever possible.  
@@ -10114,15 +10114,15 @@ function getCookie(){
 HTML code:  
 
 ```html
-&lt;form&gt;
-    Select your css layout:&lt;br&gt;
-    &lt;select id="myList"&gt;
-        &lt;option value="style-1.css"&gt;CSS1&lt;/option&gt;
-        &lt;option value="style-2.css"&gt;CSS2&lt;/option&gt;  
-        &lt;option value="style-3.css"&gt;CSS3&lt;/option&gt;
-        &lt;option value="style-4.css"&gt;CSS4&lt;/option&gt;
-    &lt;/select&gt;
-&lt;/form&gt;
+<form>
+    Select your css layout:<br>
+    <select id="myList">
+        <option value="style-1.css">CSS1</option>
+        <option value="style-2.css">CSS2</option>  
+        <option value="style-3.css">CSS3</option>
+        <option value="style-4.css">CSS4</option>
+    </select>
+</form>
 ```
 
 #### Answer 2 (score 721)
@@ -10141,7 +10141,7 @@ function setCookie(name,value,days) {
 function getCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
-    for(var i=0;i &lt; ca.length;i++) {
+    for(var i=0;i < ca.length;i++) {
         var c = ca[i];
         while (c.charAt(0)==' ') c = c.substring(1,c.length);
         if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
@@ -10286,23 +10286,23 @@ You can produce examples using:
 Save the form to a minimal `.html` file:  
 
 ```html
-&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-  &lt;meta charset="utf-8"/&gt;
-  &lt;title&gt;upload&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;form action="http://localhost:8000" method="post" enctype="multipart/form-data"&gt;
-  &lt;p&gt;&lt;input type="text" name="text1" value="text default"&gt;
-  &lt;p&gt;&lt;input type="text" name="text2" value="a&amp;#x03C9;b"&gt;
-  &lt;p&gt;&lt;input type="file" name="file1"&gt;
-  &lt;p&gt;&lt;input type="file" name="file2"&gt;
-  &lt;p&gt;&lt;input type="file" name="file3"&gt;
-  &lt;p&gt;&lt;button type="submit"&gt;Submit&lt;/button&gt;
-&lt;/form&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>upload</title>
+</head>
+<body>
+<form action="http://localhost:8000" method="post" enctype="multipart/form-data">
+  <p><input type="text" name="text1" value="text default">
+  <p><input type="text" name="text2" value="a&#x03C9;b">
+  <p><input type="file" name="file1">
+  <p><input type="file" name="file2">
+  <p><input type="file" name="file3">
+  <p><button type="submit">Submit</button>
+</form>
+</body>
+</html>
 ```
 
 We set the default text value to `a&amp;#x03C9;b`, which means `aωb` because `ω` is `U+03C9`, which are the bytes `61 CF 89 62` in UTF-8.  
@@ -10310,12 +10310,12 @@ We set the default text value to `a&amp;#x03C9;b`, which means `aωb` because `�
 Create files to upload:  
 
 ```html
-echo 'Content of a.txt.' &gt; a.txt
+echo 'Content of a.txt.' > a.txt
 
-echo '&lt;!DOCTYPE html&gt;&lt;title&gt;Content of a.html.&lt;/title&gt;' &gt; a.html
+echo '<!DOCTYPE html><title>Content of a.html.</title>' > a.html
 
 # Binary file containing 4 bytes: 'a', 1, 2 and 'b'.
-printf 'a\xCF\x89b' &gt; binary
+printf 'a\xCF\x89b' > binary
 ```
 
 Run our little echo server:  
@@ -10358,7 +10358,7 @@ Content of a.txt.
 Content-Disposition: form-data; name="file2"; filename="a.html"
 Content-Type: text/html
 
-&lt;!DOCTYPE html&gt;&lt;title&gt;Content of a.html.&lt;/title&gt;
+<!DOCTYPE html><title>Content of a.html.</title>
 
 -----------------------------735323031399963166993862150
 Content-Disposition: form-data; name="file3"; filename="binary"
@@ -10404,7 +10404,7 @@ POST / HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
 Content-Length: 51
 
-text1=text+default&amp;text2=a%CF%89b&amp;file1=a.txt&amp;file2=a.html&amp;file3=binary
+text1=text+default&text2=a%CF%89b&file1=a.txt&file2=a.html&file3=binary
 ```
 
 Clearly the file data was not sent, only the basenames. So this cannot be used for files.  
@@ -10447,7 +10447,7 @@ function codeAddress() {
 ```
 
 ```html
-&lt;body onLoad="codeAddress()"&gt;
+<body onLoad="codeAddress()">
 ```
 
 But I want to run it without the `&lt;body onload="codeAddress()"&gt;` and I have tried a lot of things, e.g. this:  
@@ -10466,22 +10466,22 @@ So how do I run it when the page is loaded?
 <p><div class="snippet" data-lang="js" data-hide="false">
 <div class="snippet-code">
 ```html
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-    &lt;head&gt;
-        &lt;title&gt;Test&lt;/title&gt;
-        &lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;
-        &lt;script type="text/javascript"&gt;
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Test</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <script type="text/javascript">
         function codeAddress() {
             alert('ok');
         }
         window.onload = codeAddress;
-        &lt;/script&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
+        </script>
+    </head>
+    <body>
     
-    &lt;/body&gt;
-&lt;/html&gt;```
+    </body>
+</html>```
 </div>
 </div>
 
@@ -10491,22 +10491,22 @@ So how do I run it when the page is loaded?
 <p><div class="snippet" data-lang="js" data-hide="false">
 <div class="snippet-code">
 ```html
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-    &lt;head&gt;
-        &lt;title&gt;Test&lt;/title&gt;
-        &lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /&gt;
-        &lt;script type="text/javascript"&gt;
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Test</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <script type="text/javascript">
         function codeAddress() {
             alert('ok');
         }
         
-        &lt;/script&gt;
-    &lt;/head&gt;
-    &lt;body onload="codeAddress();"&gt;
+        </script>
+    </head>
+    <body onload="codeAddress();">
     
-    &lt;/body&gt;
-&lt;/html&gt;```
+    </body>
+</html>```
 </div>
 </div>
 
@@ -10543,12 +10543,12 @@ I'm trying to follow a very basic example.  Using the <a href="http://getbootstr
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="false" data-babel="false">
 <div class="snippet-code">
 ```html
-&lt;div class="row"&gt;
-  &lt;div class="span12"&gt;
-    &lt;h1&gt;Bootstrap starter template&lt;/h1&gt;
-    &lt;p&gt;Example text.&lt;/p&gt;
-  &lt;/div&gt;
-&lt;/div&gt;```
+<div class="row">
+  <div class="span12">
+    <h1>Bootstrap starter template</h1>
+    <p>Example text.</p>
+  </div>
+</div>```
 </div>
 </div>
 
@@ -10580,9 +10580,9 @@ NOTE: this was <a href="https://stackoverflow.com/questions/15265253/centering-t
 Pre-Bootstrap 3, you could use the CSS class `pagination-centered` like this:  
 
 ```html
-&lt;div class="span12 pagination-centered"&gt;
+<div class="span12 pagination-centered">
     Centered content.
-&lt;/div&gt;
+</div>
 ```
 
 Class `pagination-centered` is already in bootstrap.css (or bootstrap.min.css) and has the only one rule:  
@@ -10599,11 +10599,11 @@ I guess most of the people here are actually searching for the way to <em>center
 The second way (instead of using text-align:center) to center things in HTML is to have an element with a fixed width and auto margin (left and right). With Bootstrap, the style defining auto margins is the "container" class.  
 
 ```html
-&lt;div class="container"&gt;
-    &lt;div class="span12"&gt;
+<div class="container">
+    <div class="span12">
         "Centered stuff there"
-    &lt;/div&gt;
-&lt;/div&gt;
+    </div>
+</div>
 ```
 
 Take a look here for a fiddle: <a href="http://jsfiddle.net/D2RLR/7788/" rel="noreferrer">http://jsfiddle.net/D2RLR/7788/</a>  
@@ -10620,7 +10620,7 @@ hello <br> How are you
 <strong>code:</strong>  
 
 ```html
-&lt;p&gt;hello &lt;br&gt; How are you &lt;/p&gt;
+<p>hello <br> How are you </p>
 ```
 
 How to achieve same output without `&lt;br&gt;`?  
@@ -10633,7 +10633,7 @@ I suggest using `span`s that you will then display as blocks (just like a `&lt;d
 HTML:  
 
 ```html
-&lt;p&gt;&lt;span&gt;hello&lt;/span&gt;&lt;span&gt;How are you&lt;/span&gt;&lt;/p&gt;
+<p><span>hello</span><span>How are you</span></p>
 ```
 
 CSS:  
@@ -10649,13 +10649,13 @@ p span
 You can use `white-space: pre;` to make elements act like `&lt;pre&gt;`, which preserves newlines.  Example:  
 
 ```html
-&lt;style&gt;
+<style>
  p {
   white-space: pre;
  }
-&lt;/style&gt;
-&lt;p&gt;hello
-How are you&lt;/p&gt;
+</style>
+<p>hello
+How are you</p>
 ```
 
 Note that this doesn't work in IE6 or IE7.  I don't know about IE8.  
@@ -10668,10 +10668,10 @@ I would expect most people finding this question want to use css / responsive de
 While not immediately obvious, you can actually apply `display:none` to a `&lt;br/&gt;` tag to hide it, which enables the use of media queries in tandem with semantic BR tags.   
 
 ```html
- &lt;div&gt;
-   The quick brown fox&lt;br /&gt;
+ <div>
+   The quick brown fox<br />
    jumps over the lazy dog
- &lt;/div&gt;
+ </div>
 
  @media screen and (min-width: 20em) 
  {
@@ -10792,16 +10792,16 @@ I'm having trouble displaying a Base64 image inline.
 Can someone point me in the right direction?  
 
 ```html
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;Display Image&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;img style='display:block; width:100px;height:100px;' id='base64image'                 
-       src='data:image/jpeg;base64, LzlqLzRBQ...&lt;!-- base64 data --&gt;' /&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Display Image</title>
+  </head>
+  <body>
+    <img style='display:block; width:100px;height:100px;' id='base64image'                 
+       src='data:image/jpeg;base64, LzlqLzRBQ...<!-- base64 data -->' />
+  </body>
+</html>
 ```
 
 #### Answer accepted (score 695)
@@ -10810,12 +10810,12 @@ My suspect is of course actual base64 data, otherwise it looks good to me. See <
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="true" data-babel="false">
 <div class="snippet-code">
 ```html
-&lt;div&gt;
-  &lt;p&gt;Taken from wikpedia&lt;/p&gt;
-  &lt;img src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUA
+<div>
+  <p>Taken from wikpedia</p>
+  <img src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUA
     AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
-        9TXL0Y4OHwAAAABJRU5ErkJggg==" alt="Red dot" /&gt;
-&lt;/div&gt;```
+        9TXL0Y4OHwAAAABJRU5ErkJggg==" alt="Red dot" />
+</div>```
 </div>
 </div>
 
@@ -10833,7 +10833,7 @@ like </p>
 according to the syntax of the <a href="https://en.wikipedia.org/wiki/Data_URI_scheme#Syntax" rel="nofollow noreferrer">data URI scheme</a>:  
 
 ```html
- data:[&lt;media type&gt;][;charset=&lt;character set&gt;][;base64],&lt;data&gt;
+ data:[<media type>][;charset=<character set>][;base64],<data>
 ```
 
 #### Answer 3 (score 34)
@@ -10848,7 +10848,7 @@ $imageData = base64_encode(file_get_contents($image));
 $src = 'data: '.mime_content_type($image).';base64,'.$imageData;
 
 // Echo out a sample image
-echo '&lt;img src="'.$src.'"&gt;';
+echo '<img src="'.$src.'">';
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -10861,14 +10861,14 @@ This is crazy but I don't know how to do this, and because of how common the wor
 I want a simple file download, that would do the same as this:  
 
 ```html
-&lt;a href="file.doc"&gt;Download!&lt;/a&gt;
+<a href="file.doc">Download!</a>
 ```
 
 But I want to use an HTML button, e.g. either of these:  
 
 ```html
-&lt;input type="button" value="Download!"&gt;
-&lt;button&gt;Download!&lt;/button&gt;
+<input type="button" value="Download!">
+<button>Download!</button>
 ```
 
 Likewise, is it possible to trigger a simple download via JavaScript?  
@@ -10883,16 +10883,16 @@ I'm definitely <em>not</em> looking for a way to create an anchor that looks lik
 For the button you can do  
 
 ```html
-&lt;form method="get" action="file.doc"&gt;
-   &lt;button type="submit"&gt;Download!&lt;/button&gt;
-&lt;/form&gt;
+<form method="get" action="file.doc">
+   <button type="submit">Download!</button>
+</form>
 ```
 
 #### Answer 2 (score 399)
 You can trigger a download with the HTML5 `download` attribute.  
 
 ```html
-&lt;a href="path_to_file" download="proposed_file_name"&gt;Download&lt;/a&gt;
+<a href="path_to_file" download="proposed_file_name">Download</a>
 ```
 
 Where:  
@@ -10908,7 +10908,7 @@ Documentation: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Elemen
 HTML:  
 
 ```html
-&lt;button type="submit" onclick="window.open('file.doc')"&gt;Download!&lt;/button&gt;
+<button type="submit" onclick="window.open('file.doc')">Download!</button>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -10921,7 +10921,7 @@ I want to have a hidden checkbox that doesn't take up any space on the screen.
 If I have this:  
 
 ```html
-&lt;div id="divCheckbox" style="visibility: hidden"&gt;
+<div id="divCheckbox" style="visibility: hidden">
 ```
 
 I don't see the checkbox, but it still creates a new line.  
@@ -10929,7 +10929,7 @@ I don't see the checkbox, but it still creates a new line.
 If I have this:  
 
 ```html
-&lt;div id="divCheckbox" style="visibility: hidden; display:inline;"&gt;
+<div id="divCheckbox" style="visibility: hidden; display:inline;">
 ```
 
 it no longer creates a new line, but it takes up horizontal space on the screen.  
@@ -10940,7 +10940,7 @@ Is there a way to have a hidden div that takes up no room (vertical or horizonta
 Use `display:none;`  
 
 ```html
-&lt;div id="divCheckbox" style="display: none;"&gt;
+<div id="divCheckbox" style="display: none;">
 ```
 
 <ul>
@@ -10952,7 +10952,7 @@ Use `display:none;`
 Since the release of <a href="http://www.w3.org/TR/html5/" rel="noreferrer">HTML5</a> one can now simply do:  
 
 ```html
-&lt;div hidden&gt;This div is hidden&lt;/div&gt;
+<div hidden>This div is hidden</div>
 ```
 
 <strong>Note:</strong> This is not <a href="http://tjvantoll.com/2013/01/09/html5-hidden-attribute-browser-support/" rel="noreferrer">supported</a> by some old browsers, most notably IE &lt; 11.   
@@ -10990,18 +10990,18 @@ CSS and HTML
     overflow: auto; /* or overflow: hidden; */
 }```
 ```html
-&lt;table id="page"&gt;
-    &lt;tr&gt;
-        &lt;td id="tdheader"&gt;
-            &lt;div id="header"&gt;...&lt;/div&gt;
-        &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;td id="tdcontent"&gt;
-            &lt;div id="content"&gt;...&lt;/div&gt;
-        &lt;/td&gt;
-    &lt;/tr&gt;
-&lt;/table&gt;```
+<table id="page">
+    <tr>
+        <td id="tdheader">
+            <div id="header">...</div>
+        </td>
+    </tr>
+    <tr>
+        <td id="tdcontent">
+            <div id="content">...</div>
+        </td>
+    </tr>
+</table>```
 </div>
 </div>
 
@@ -11076,24 +11076,24 @@ body {
   flex: 0 1 40px;
 }```
 ```html
-&lt;!-- Obviously, you could use HTML5 tags like `header`, `footer` and `section` --&gt;
+<!-- Obviously, you could use HTML5 tags like `header`, `footer` and `section` -->
 
-&lt;div class="box"&gt;
-  &lt;div class="row header"&gt;
-    &lt;p&gt;&lt;b&gt;header&lt;/b&gt;
-      &lt;br /&gt;
-      &lt;br /&gt;(sized to content)&lt;/p&gt;
-  &lt;/div&gt;
-  &lt;div class="row content"&gt;
-    &lt;p&gt;
-      &lt;b&gt;content&lt;/b&gt;
+<div class="box">
+  <div class="row header">
+    <p><b>header</b>
+      <br />
+      <br />(sized to content)</p>
+  </div>
+  <div class="row content">
+    <p>
+      <b>content</b>
       (fills remaining space)
-    &lt;/p&gt;
-  &lt;/div&gt;
-  &lt;div class="row footer"&gt;
-    &lt;p&gt;&lt;b&gt;footer&lt;/b&gt; (fixed height)&lt;/p&gt;
-  &lt;/div&gt;
-&lt;/div&gt;```
+    </p>
+  </div>
+  <div class="row footer">
+    <p><b>footer</b> (fixed height)</p>
+  </div>
+</div>```
 </div>
 </div>
 
@@ -11140,15 +11140,15 @@ And here are some snippets from that post:
   /* end of screen rules. */ 
 }```
 ```html
-&lt;div class="header row" style="background:yellow;"&gt;
-    &lt;h2&gt;My header&lt;/h2&gt;
-&lt;/div&gt; 
-&lt;div class="body row scroll-y" style="background:lightblue;"&gt;
-    &lt;p&gt;The body&lt;/p&gt;
-&lt;/div&gt; 
-&lt;div class="footer row" style="background:#e9e9e9;"&gt;
+<div class="header row" style="background:yellow;">
+    <h2>My header</h2>
+</div> 
+<div class="body row scroll-y" style="background:lightblue;">
+    <p>The body</p>
+</div> 
+<div class="footer row" style="background:#e9e9e9;">
     My footer
-&lt;/div&gt;```
+</div>```
 </div>
 </div>
 

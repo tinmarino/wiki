@@ -140,21 +140,21 @@ The case statement is your friend in this situation, and takes one of two forms:
 The simple case:  
 
 ```sql
-SELECT CASE &lt;variable&gt; WHEN &lt;value&gt;      THEN &lt;returnvalue&gt;
-                       WHEN &lt;othervalue&gt; THEN &lt;returnthis&gt;
-                                         ELSE &lt;returndefaultcase&gt;
-       END AS &lt;newcolumnname&gt;
-FROM &lt;table&gt;
+SELECT CASE <variable> WHEN <value>      THEN <returnvalue>
+                       WHEN <othervalue> THEN <returnthis>
+                                         ELSE <returndefaultcase>
+       END AS <newcolumnname>
+FROM <table>
 ```
 
 The extended case:  
 
 ```sql
-SELECT CASE WHEN &lt;test&gt;      THEN &lt;returnvalue&gt;
-            WHEN &lt;othertest&gt; THEN &lt;returnthis&gt;
-                             ELSE &lt;returndefaultcase&gt;
-       END AS &lt;newcolumnname&gt;
-FROM &lt;table&gt;
+SELECT CASE WHEN <test>      THEN <returnvalue>
+            WHEN <othertest> THEN <returnthis>
+                             ELSE <returndefaultcase>
+       END AS <newcolumnname>
+FROM <table>
 ```
 
 You can even put case statements in an order by clause for really fancy ordering.  
@@ -259,7 +259,7 @@ I have a `.sql` file with an export from `phpMyAdmin`. I want to import it into 
 I have a <a href="http://en.wikipedia.org/wiki/Windows_Server_2008" rel="noreferrer">Windows Server 2008</a> R2 installation. I placed the `.sql` file on the <strong><em>C drive</em></strong>, and I tried this command  
 
 ```sql
-database_name &lt; file.sql
+database_name < file.sql
 ```
 
 It is not working. I get syntax errors.  
@@ -273,7 +273,7 @@ It is not working. I get syntax errors.
 Try:  
 
 ```sql
-mysql -u username -p database_name &lt; file.sql
+mysql -u username -p database_name < file.sql
 ```
 
 Check <a href="http://dev.mysql.com/doc/refman/5.0/en/mysql-command-options.html" rel="noreferrer">MySQL Options</a>.  
@@ -288,7 +288,7 @@ Check <a href="http://dev.mysql.com/doc/refman/5.0/en/mysql-command-options.html
 A common use of <a href="http://dev.mysql.com/doc/refman/5.1/en/mysqldump.html" rel="noreferrer">mysqldump</a> is for making a backup of an entire database:  
 
 ```sql
-shell&gt; mysqldump db_name &gt; backup-file.sql
+shell> mysqldump db_name > backup-file.sql
 ```
 
 You can load the dump file back into the server like this:  
@@ -296,26 +296,26 @@ You can load the dump file back into the server like this:
 <strong>UNIX</strong>  
 
 ```sql
-shell&gt; mysql db_name &lt; backup-file.sql
+shell> mysql db_name < backup-file.sql
 ```
 
 The same in <strong>Windows</strong> command prompt:  
 
 ```sql
-mysql -p -u [user] [database] &lt; backup-file.sql
+mysql -p -u [user] [database] < backup-file.sql
 ```
 
 <strong>PowerShell</strong>  
 
 ```sql
-C:\&gt; cmd.exe /c "mysql -u root -p db_name &lt; backup-file.sql"
+C:\> cmd.exe /c "mysql -u root -p db_name < backup-file.sql"
 ```
 
 <strong>MySQL command line</strong>  
 
 ```sql
-mysql&gt; use db_name;
-mysql&gt; source backup-file.sql;
+mysql> use db_name;
+mysql> source backup-file.sql;
 ```
 
 #### Answer 3 (score 289)
@@ -324,9 +324,9 @@ Regarding the time taken for importing huge files: most importantly, it takes mo
 You just need to do the following thing:  
 
 ```sql
-mysql&gt; use db_name;
+mysql> use db_name;
 
-mysql&gt; SET autocommit=0 ; source the_sql_file.sql ; COMMIT ;
+mysql> SET autocommit=0 ; source the_sql_file.sql ; COMMIT ;
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -507,7 +507,7 @@ It's easy to find duplicates with one field:
 SELECT name, COUNT(email) 
 FROM users
 GROUP BY email
-HAVING COUNT(email) &gt; 1
+HAVING COUNT(email) > 1
 ```
 
 So if we have a table  
@@ -538,7 +538,7 @@ FROM
 GROUP BY
     name, email
 HAVING 
-    COUNT(*) &gt; 1
+    COUNT(*) > 1
 ```
 
 Simply group on both of the columns.  
@@ -580,7 +580,7 @@ SELECT
     name,email, COUNT(*) AS CountOf
     FROM @YourTable
     GROUP BY name,email
-    HAVING COUNT(*)&gt;1
+    HAVING COUNT(*)>1
 ```
 
 OUTPUT:  
@@ -604,7 +604,7 @@ SELECT
                         name,email, COUNT(*) AS CountOf
                         FROM @YourTable
                         GROUP BY name,email
-                        HAVING COUNT(*)&gt;1
+                        HAVING COUNT(*)>1
                     ) dt ON y.name=dt.name AND y.email=dt.email
 ```
 
@@ -633,7 +633,7 @@ DELETE d
                                             name,email, COUNT(*) AS CountOf
                                             FROM @YourTable
                                             GROUP BY name,email
-                                            HAVING COUNT(*)&gt;1
+                                            HAVING COUNT(*)>1
                                         ) dt ON y.name=dt.name AND y.email=dt.email
                    ) dt2 ON d.id=dt2.id
         WHERE dt2.RowRank!=1
@@ -660,7 +660,7 @@ Try this:
 SELECT name, email
 FROM users
 GROUP BY name, email
-HAVING ( COUNT(*) &gt; 1 )
+HAVING ( COUNT(*) > 1 )
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -1417,9 +1417,9 @@ If your SQL dialect supports `CHARINDEX`, it's a lot easier to  use it instead:
 
 ```sql
 SELECT * FROM MyTable
-WHERE CHARINDEX('word1', Column1) &gt; 0
-  AND CHARINDEX('word2', Column1) &gt; 0
-  AND CHARINDEX('word3', Column1) &gt; 0
+WHERE CHARINDEX('word1', Column1) > 0
+  AND CHARINDEX('word2', Column1) > 0
+  AND CHARINDEX('word3', Column1) > 0
 ```
 
 Also, please keep in mind that this and the method in the accepted answer only cover substring matching rather than word matching. So, for example, the string `'word1word2word3'` would still match.  
@@ -1436,12 +1436,12 @@ Also, please keep in mind that this and the method in the accepted answer only c
            UNION ALL
            SELECT pn + 1, stop + 1, CHARINDEX(@sep, @str, stop + 1)
            FROM Pieces
-           WHERE stop &gt; 0
+           WHERE stop > 0
       )
 
       SELECT
            pn AS Id,
-           SUBSTRING(@str, start, CASE WHEN stop &gt; 0 THEN stop - start ELSE 512 END) AS Data
+           SUBSTRING(@str, start, CASE WHEN stop > 0 THEN stop - start ELSE 512 END) AS Data
       FROM
            Pieces
  )
@@ -1496,9 +1496,9 @@ You basically have two options to achieve this:
 <li><p>Using <a href="http://php.net/manual/en/book.pdo.php" rel="noreferrer">PDO</a> (for any supported database driver):</p>
 
 ```sql
-$stmt = $pdo-&gt;prepare('SELECT * FROM employees WHERE name = :name');
+$stmt = $pdo->prepare('SELECT * FROM employees WHERE name = :name');
 
-$stmt-&gt;execute(array('name' =&gt; $name));
+$stmt->execute(array('name' => $name));
 
 foreach ($stmt as $row) {
     // Do something with $row
@@ -1507,13 +1507,13 @@ foreach ($stmt as $row) {
 <li><p>Using <a href="http://php.net/manual/en/book.mysqli.php" rel="noreferrer">MySQLi</a> (for MySQL):</p>
 
 ```sql
-$stmt = $dbConnection-&gt;prepare('SELECT * FROM employees WHERE name = ?');
-$stmt-&gt;bind_param('s', $name); // 's' specifies the variable type =&gt; 'string'
+$stmt = $dbConnection->prepare('SELECT * FROM employees WHERE name = ?');
+$stmt->bind_param('s', $name); // 's' specifies the variable type => 'string'
 
-$stmt-&gt;execute();
+$stmt->execute();
 
-$result = $stmt-&gt;get_result();
-while ($row = $result-&gt;fetch_assoc()) {
+$result = $stmt->get_result();
+while ($row = $result->fetch_assoc()) {
     // Do something with $row
 }
 ```</li>
@@ -1528,8 +1528,8 @@ Note that when using `PDO` to access a MySQL database <em>real</em> prepared sta
 ```sql
 $dbConnection = new PDO('mysql:dbname=dbtest;host=127.0.0.1;charset=utf8', 'user', 'password');
 
-$dbConnection-&gt;setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-$dbConnection-&gt;setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$dbConnection->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+$dbConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 ```
 
 In the above example the error mode isn't strictly necessary, <strong>but it is advised to add it</strong>. This way the script will not stop with a `Fatal Error` when something goes wrong. And it gives the developer the chance to `catch` any error(s) which are `throw`n as `PDOException`s.  
@@ -1551,9 +1551,9 @@ Another benefit of using prepared statements is that if you execute the same sta
 Oh, and since you asked about how to do it for an insert, here's an example (using PDO):  
 
 ```sql
-$preparedStatement = $db-&gt;prepare('INSERT INTO table (column) VALUES (:column)');
+$preparedStatement = $db->prepare('INSERT INTO table (column) VALUES (:column)');
 
-$preparedStatement-&gt;execute(array('column' =&gt; $unsafeValue));
+$preparedStatement->execute(array('column' => $unsafeValue));
 ```
 
 <h5>Can prepared statements be used for dynamic queries?</h2>
@@ -1602,26 +1602,26 @@ See also, the details of the <a href="http://php.net/mysql_real_escape_string" r
 To use the parameterized query, you need to use <a href="http://php.net/mysqli" rel="noreferrer">MySQLi</a> rather than the <a href="http://php.net/mysql" rel="noreferrer">MySQL</a> functions. To rewrite your example, we would need something like the following.  
 
 ```sql
-&lt;?php
+<?php
     $mysqli = new mysqli("server", "username", "password", "database_name");
 
     // TODO - Check that connection was successful.
 
     $unsafe_variable = $_POST["user-input"];
 
-    $stmt = $mysqli-&gt;prepare("INSERT INTO table (column) VALUES (?)");
+    $stmt = $mysqli->prepare("INSERT INTO table (column) VALUES (?)");
 
     // TODO check that $stmt creation succeeded
 
     // "s" means the database expects a string
-    $stmt-&gt;bind_param("s", $unsafe_variable);
+    $stmt->bind_param("s", $unsafe_variable);
 
-    $stmt-&gt;execute();
+    $stmt->execute();
 
-    $stmt-&gt;close();
+    $stmt->close();
 
-    $mysqli-&gt;close();
-?&gt;
+    $mysqli->close();
+?>
 ```
 
 The key function you'll want to read up on there would be <a href="http://php.net/mysqli.prepare" rel="noreferrer">`mysqli::prepare`</a>.  
@@ -1803,7 +1803,7 @@ or can use
 
 ```sql
 select Date, TotalAllowance from Calculation where EmployeeId = 1
-             and Date &gt;= '2011/02/25' and Date &lt;= '2011/02/27'
+             and Date >= '2011/02/25' and Date <= '2011/02/27'
 ```
 
 #### Answer 2 (score 113)
@@ -1818,14 +1818,14 @@ OR
 
 ```sql
 select Date,TotalAllowance from Calculation where EmployeeId=1 
-and Date &gt;= '2011/02/25' and Date &lt; '2011/02/28'
+and Date >= '2011/02/25' and Date < '2011/02/28'
 ```
 
 OR   
 
 ```sql
 select Date,TotalAllowance from Calculation where EmployeeId=1 
-and Date &gt;= '2011/02/25' and Date &lt;= '2011/02/27 23:59:59.999'
+and Date >= '2011/02/25' and Date <= '2011/02/27 23:59:59.999'
 ```
 
 DO NOT use the following, as it could return some records from 2011/02/28 if their times are 00:00:00.000.  
@@ -2202,7 +2202,7 @@ FROM TestTable AS t1
 WHERE 
     (SELECT COUNT(*) 
             FROM TestTable AS t2 
-            WHERE t2.home = t1.home AND t2.date &gt; t1.date
+            WHERE t2.home = t1.home AND t2.date > t1.date
     ) = 0
 ```
 
@@ -2214,7 +2214,7 @@ SELECT m.*                    -- get the row that contains the max value
 FROM topten m                 -- "m" from "max"
     LEFT JOIN topten b        -- "b" from "bigger"
         ON m.home = b.home    -- match "max" row with "bigger" row by `home`
-        AND m.datetime &lt; b.datetime           -- want "bigger" than "max"
+        AND m.datetime < b.datetime           -- want "bigger" than "max"
 WHERE b.datetime IS NULL      -- keep only if there is no bigger than max
 ```
 
@@ -2870,7 +2870,7 @@ In `Oracle`, the only thing people mention is the `rownum` pseudo-column, but it
 ```sql
 select * 
 from sometable
-where rownum &lt;= 10
+where rownum <= 10
 order by name
 ```
 
@@ -2907,7 +2907,7 @@ INSERT ALL
   INTO rownum_order_test
 SELECT level
 FROM   dual
-CONNECT BY level &lt;= 10;
+CONNECT BY level <= 10;
 
 COMMIT;
 ```
@@ -3047,7 +3047,7 @@ from
 ( select * 
   from emp 
   order by sal desc ) 
-where ROWNUM &lt;= 5;
+where ROWNUM <= 5;
 ```
 
 Have also a look at the topic <a href="http://www.oracle.com/technetwork/issue-archive/2006/06-sep/o56asktom-086197.html" rel="noreferrer">On ROWNUM and limiting results</a> at Oracle/AskTom for more information.  
@@ -3058,9 +3058,9 @@ To limit the result with both lower and upper bounds things get a bit more bloat
 ```sql
 select * from 
 ( select a.*, ROWNUM rnum from 
-  ( &lt;your_query_goes_here, with order by&gt; ) a 
-  where ROWNUM &lt;= :MAX_ROW_TO_FETCH )
-where rnum  &gt;= :MIN_ROW_TO_FETCH;
+  ( <your_query_goes_here, with order by> ) a 
+  where ROWNUM <= :MAX_ROW_TO_FETCH )
+where rnum  >= :MIN_ROW_TO_FETCH;
 ```
 
 (Copied from specified AskTom-article)  
@@ -3085,16 +3085,16 @@ I did some performance testing for the following approaches:
 ```sql
 select * from (
   select a.*, ROWNUM rnum from (
-    &lt;select statement with order by clause&gt;
-  ) a where rownum &lt;= MAX_ROW
-) where rnum &gt;= MIN_ROW
+    <select statement with order by clause>
+  ) a where rownum <= MAX_ROW
+) where rnum >= MIN_ROW
 ```
 
 <h5>Analytical</h3>
 
 ```sql
 select * from (
-  &lt;select statement with order by clause&gt;
+  <select statement with order by clause>
 ) where myrow between MIN_ROW and MAX_ROW
 ```
 
@@ -3103,7 +3103,7 @@ select * from (
 ```sql
 select * from (
   select statement, rownum as RN with order by clause
-) where a.rn &gt;= MIN_ROW and a.rn &lt;= MAX_ROW
+) where a.rn >= MIN_ROW and a.rn <= MAX_ROW
 ```
 
 <h5>Results</h1>
@@ -3376,7 +3376,7 @@ Where `005` would be the `HallID`. So Now I want to match that `HallID` to a thi
 So pretty much, I want my result to be like...  
 
 ```sql
- John Doe | 923423 | Incoming Student | Foley Hall &lt;---(INSTEAD OF 005)
+ John Doe | 923423 | Incoming Student | Foley Hall <---(INSTEAD OF 005)
 ```
 
 Here is what I currently have:  
@@ -3568,11 +3568,11 @@ SELECT * INTO TEMPBLOCKEDDATES FROM
     select EventID, EventTitle, EventStartDate, EventEndDate, EventEnumDays,EventStartTime,EventEndTime, EventRecurring, dateadd(dd, 1, PlannedDate)
     ,EventType from Calendar
     where EventRecurring = 1
-        and dateadd(dd, 1, PlannedDate) &lt;= EventEndDate 
+        and dateadd(dd, 1, PlannedDate) <= EventEndDate 
 )
 select EventID, EventStartDate, EventEndDate, PlannedDate as [EventDates], Cast(PlannedDate As datetime) AS DT, Cast(EventStartTime As time) AS ST,Cast(EventEndTime As time) AS ET, EventTitle
 ,EventType from Calendar
-where (PlannedDate &gt;= GETDATE()) AND ',' + EventEnumDays + ',' like '%,' + cast(datepart(dw, PlannedDate) as char(1)) + ',%'
+where (PlannedDate >= GETDATE()) AND ',' + EventEnumDays + ',' like '%,' + cast(datepart(dw, PlannedDate) as char(1)) + ',%'
     or EventEnumDays is null
 order by EventID, PlannedDate
 option (maxrecursion 0)
@@ -3607,7 +3607,7 @@ AS (SELECT /*...*/)
 Insert Into #Temp
 Select EventID, EventStartDate, EventEndDate, PlannedDate as [EventDates], Cast(PlannedDate As datetime) AS DT, Cast(EventStartTime As time) AS ST,Cast(EventEndTime As time) AS ET, EventTitle
 ,EventType from Calendar
-where (PlannedDate &gt;= GETDATE()) AND ',' + EventEnumDays + ',' like '%,' + cast(datepart(dw, PlannedDate) as char(1)) + ',%'
+where (PlannedDate >= GETDATE()) AND ',' + EventEnumDays + ',' like '%,' + cast(datepart(dw, PlannedDate) as char(1)) + ',%'
     or EventEnumDays is null
 ```
 
@@ -3650,9 +3650,9 @@ SELECT EventID,
        Cast(EventEndTime AS TIME)    AS ET,
        EventTitle,
        EventType
-INTO TEMPBLOCKEDDATES /* &lt;---- INTO goes here*/        
+INTO TEMPBLOCKEDDATES /* <---- INTO goes here*/        
 FROM   Calendar
-WHERE  ( PlannedDate &gt;= Getdate() )
+WHERE  ( PlannedDate >= Getdate() )
        AND ',' + EventEnumDays + ',' LIKE '%,' + Cast(Datepart(dw, PlannedDate) AS CHAR(1)) + ',%'
         OR EventEnumDays IS NULL
 ORDER  BY EventID,
@@ -3872,7 +3872,7 @@ So you end up with:
 SELECT a.*
 FROM YourTable a
 LEFT OUTER JOIN YourTable b
-    ON a.id = b.id AND a.rev &lt; b.rev
+    ON a.id = b.id AND a.rev < b.rev
 WHERE b.id IS NULL;
 ```
 
@@ -4033,7 +4033,7 @@ I'm trying:
 ```sql
 SELECT * 
 FROM dbo.March2010 A
-WHERE A.Date &gt;= 2010-04-01;
+WHERE A.Date >= 2010-04-01;
 ```
 
 `A.Date` looks like: `2010-03-04 00:00:00.000`  
@@ -4046,7 +4046,7 @@ Can anyone provide a reference for why?
 ```sql
 select *  
 from dbo.March2010 A 
-where A.Date &gt;= Convert(datetime, '2010-04-01' )
+where A.Date >= Convert(datetime, '2010-04-01' )
 ```
 
 In your query, `2010-4-01` is treated as a mathematical expression, so in essence it read   
@@ -4054,7 +4054,7 @@ In your query, `2010-4-01` is treated as a mathematical expression, so in essenc
 ```sql
 select *  
 from dbo.March2010 A 
-where A.Date &gt;= 2005; 
+where A.Date >= 2005; 
 ```
 
 <p>(`2010 minus 4 minus 1 is 2005`
@@ -4065,7 +4065,7 @@ Technically, the parser might allow you to get away with
 ```sql
 select *  
 from dbo.March2010 A 
-where A.Date &gt;= '2010-04-01'
+where A.Date >= '2010-04-01'
 ```
 
 it will do the conversion for you, but in my opinion it is less readable than explicitly converting to a `DateTime` for the maintenance programmer that will come after you.  
@@ -4076,7 +4076,7 @@ Try enclosing your date into a character string.
 ```sql
  select * 
  from dbo.March2010 A
- where A.Date &gt;= '2010-04-01';
+ where A.Date >= '2010-04-01';
 ```
 
 #### Answer 3 (score 13)
@@ -4085,11 +4085,11 @@ We can use like below as well
 ```sql
 SELECT * 
 FROM dbo.March2010 A
-WHERE CAST(A.Date AS Date) &gt;= '2017-03-22';
+WHERE CAST(A.Date AS Date) >= '2017-03-22';
 
 SELECT * 
     FROM dbo.March2010 A
-    WHERE CAST(A.Date AS Datetime) &gt;= '2017-03-22 06:49:53.840';
+    WHERE CAST(A.Date AS Datetime) >= '2017-03-22 06:49:53.840';
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -4510,7 +4510,7 @@ FROM   generate_series(1,200000) g;
 
 ALTER TABLE purchases ADD CONSTRAINT purchases_id_pkey PRIMARY KEY (id);
 
-DELETE FROM purchases WHERE random() &gt; 0.9; -- some dead rows
+DELETE FROM purchases WHERE random() > 0.9; -- some dead rows
 
 INSERT INTO purchases (customer_id, total, some_column)
 SELECT (random() * 10000)::int             AS customer_id  -- 10k customers
@@ -4611,7 +4611,7 @@ WITH RECURSIVE cte AS (
    ,      LATERAL (
       SELECT id, customer_id, total
       FROM   purchases
-      WHERE  customer_id &gt; c.customer_id  -- lateral reference
+      WHERE  customer_id > c.customer_id  -- lateral reference
       ORDER  BY customer_id, total DESC
       LIMIT  1
       ) u
@@ -4813,7 +4813,7 @@ SELECT
 FROM
     sys.sysprocesses
 WHERE 
-    dbid &gt; 0
+    dbid > 0
 GROUP BY 
     dbid, loginame
 ;
@@ -4839,9 +4839,9 @@ I need to access only Month.Year from Date field in SQL Server.
 
 ```sql
 SELECT
-   DATEADD(MONTH, DATEDIFF(MONTH, 0, &lt;dateField&gt;), 0) AS [year_month_date_field]
+   DATEADD(MONTH, DATEDIFF(MONTH, 0, <dateField>), 0) AS [year_month_date_field]
 FROM
-   &lt;your_table&gt;
+   <your_table>
 ```
 
 This gets the number of whole months from a base date (0) and then adds them to that base date.  Thus rounding Down to the month in which the date is in.  
@@ -5291,8 +5291,8 @@ CREATE SEQUENCE name_of_sequence
 You would then either use that sequence in your `INSERT` statement  
 
 ```sql
-INSERT INTO name_of_table( primary_key_column, &lt;&lt;other columns&gt;&gt; )
-  VALUES( name_of_sequence.nextval, &lt;&lt;other values&gt;&gt; );
+INSERT INTO name_of_table( primary_key_column, <<other columns>> )
+  VALUES( name_of_sequence.nextval, <<other values>> );
 ```
 
 Or you can define a trigger that automatically populates the primary key value using the sequence  
@@ -5324,7 +5324,7 @@ If you really want to use `SYS_GUID`
 ```sql
 CREATE TABLE table_name (
   primary_key_column raw(16) default sys_guid() primary key,
-  &lt;&lt;other columns&gt;&gt;
+  <<other columns>>
 )
 ```
 
@@ -5586,7 +5586,7 @@ WHERE  NOT EXISTS (
    SELECT FROM sales s1                     -- SELECT list can be empty for EXISTS
    WHERE  s.saleprice = s1.saleprice
    AND    s.saledate  = s1.saledate
-   AND    s.id &lt;&gt; s1.id                     -- except for row itself
+   AND    s.id <> s1.id                     -- except for row itself
    )
 AND    s.status IS DISTINCT FROM 'ACTIVE';  -- avoid empty updates. see below
 ```
@@ -5599,7 +5599,7 @@ AND    s.status IS DISTINCT FROM 'ACTIVE';  -- avoid empty updates. see below
 If you don't have a primary or unique key for the table (`id` in the example), you can substitute with the system column `ctid` for the purpose of this query (but not for some other purposes):  
 
 ```sql
-   AND    s1.ctid &lt;&gt; s.ctid
+   AND    s1.ctid <> s.ctid
 ```
 
 <sub>Every table should have a primary key. Add one if you didn't have one, yet. I suggest a `serial` or an `IDENTITY` column in Postgres 10+.</sub>  
@@ -5622,7 +5622,7 @@ For rows that already have `status = 'ACTIVE'` this update would not change anyt
 If `status` is defined `NOT NULL`, you can simplify to:  
 
 ```sql
-AND status &lt;&gt; 'ACTIVE';
+AND status <> 'ACTIVE';
 ```
 
 <h5>Subtle difference in NULL handling</h3>
@@ -5735,7 +5735,7 @@ select
     ,mm.ManufacturerName
     ,im.mf_item_number
     ,mm.ManufacturerID
-    , &lt;your other field&gt;
+    , <your other field>
 from 
     item_master im, group_master gm, Manufacturer_Master mm 
 where
@@ -5743,7 +5743,7 @@ where
     and im.sku=gm.sku
     and gm.ManufacturerID = mm.ManufacturerID
     and gm.manufacturerID=34)
-update cte set mf_item_number = &lt;your other field&gt;
+update cte set mf_item_number = <your other field>
 ```
 
 The query execution engine will figure out on its own how to update the record.  
@@ -5809,7 +5809,7 @@ FROM Employee Emp1
 WHERE (N-1) = (
                SELECT COUNT(DISTINCT(Emp2.Salary))
                FROM Employee Emp2
-               WHERE Emp2.Salary &gt; Emp1.Salary
+               WHERE Emp2.Salary > Emp1.Salary
                )
 ```
 
@@ -5892,7 +5892,7 @@ select @MaxLangID = max(langid) from sys.syslanguages
 
 set @LangID = 0
 
-while @LangID &lt;= @MaxLangID
+while @LangID <= @MaxLangID
 begin
 
     select @Alias = alias
@@ -5919,7 +5919,7 @@ begin
 
     select @LangID = min(langid)
     from sys.syslanguages
-    where langid &gt; @LangID
+    where langid > @LangID
 end
 ```
 
@@ -5983,7 +5983,7 @@ use `SELECT...INTO`
 Example,  
 
 ```sql
-SELECT col1, col2 INTO #a -- &lt;&lt;== creates temporary table
+SELECT col1, col2 INTO #a -- <<== creates temporary table
 FROM   tablename
 ```
 
@@ -5994,7 +5994,7 @@ FROM   tablename
 Standard Syntax,  
 
 ```sql
-SELECT  col1, ....., col@      -- &lt;&lt;== select as many columns as you want
+SELECT  col1, ....., col@      -- <<== select as many columns as you want
         INTO [New tableName]
 FROM    [Source Table Name]
 ```
@@ -6047,9 +6047,9 @@ You can use this simple logic:
 Declare @products varchar(200) = '1|20|3|343|44|6|8765'
 Declare @individual varchar(20) = null
 
-WHILE LEN(@products) &gt; 0
+WHILE LEN(@products) > 0
 BEGIN
-    IF PATINDEX('%|%', @products) &gt; 0
+    IF PATINDEX('%|%', @products) > 0
     BEGIN
         SET @individual = SUBSTRING(@products,
                                     0,
@@ -6107,14 +6107,14 @@ First, create a function (using CTE, common table expression does away with the 
                 b + 1, 
                 charindex(@separator, @str, b + 1)
             from tokens
-            where b &gt; 0
+            where b > 0
         )
         select
             p-1 zeroBasedOccurance,
             substring(
                 @str, 
                 a, 
-                case when b &gt; 0 then b-a ELSE 4000 end) 
+                case when b > 0 then b-a ELSE 4000 end) 
             AS s
         from tokens
       )
@@ -6153,14 +6153,14 @@ with tokens(p, a, b) AS (
         b + 1, 
         charindex(@separator, @str, b + 1)
     from tokens
-    where b &gt; 0
+    where b > 0
 )
 select
     p-1 ItemIndex,
     substring(
         @str, 
         a, 
-        case when b &gt; 0 then b-a ELSE LEN(@str) end) 
+        case when b > 0 then b-a ELSE LEN(@str) end) 
     AS s
 from tokens
 );
@@ -6651,20 +6651,20 @@ Syntax For The SQL WITH Clause
 The following is the syntax of the SQL WITH clause when using a single sub-query alias.  
 
 ```sql
-WITH &lt;alias_name&gt; AS (sql_subquery_statement)
-SELECT column_list FROM &lt;alias_name&gt;[,table_name]
-[WHERE &lt;join_condition&gt;]
+WITH <alias_name> AS (sql_subquery_statement)
+SELECT column_list FROM <alias_name>[,table_name]
+[WHERE <join_condition>]
 ```
 
 When using multiple sub-query aliases, the syntax is as follows.  
 
 ```sql
-WITH &lt;alias_name_A&gt; AS (sql_subquery_statement),
-&lt;alias_name_B&gt; AS(sql_subquery_statement_from_alias_name_A
+WITH <alias_name_A> AS (sql_subquery_statement),
+<alias_name_B> AS(sql_subquery_statement_from_alias_name_A
 or sql_subquery_statement )
-SELECT &lt;column_list&gt;
-FROM &lt;alias_name_A&gt;, &lt;alias_name_B&gt; [,table_names]
-[WHERE &lt;join_condition&gt;]
+SELECT <column_list>
+FROM <alias_name_A>, <alias_name_B> [,table_names]
+[WHERE <join_condition>]
 ```
 
 In the syntax documentation above, the occurrences of `alias_name` is a meaningful name you would give to the sub-query after the AS clause. Each sub-query should be separated with a comma <a href="http://docs.oracle.com/cd/B19306_01/server.102/b14200/img_text/subquery_factoring_clause.htm" rel="noreferrer">Example for WITH statement</a>. The rest of the queries follow the standard formats for simple and complex SQL SELECT queries.  
@@ -6678,7 +6678,7 @@ See <a href="http://docs.oracle.com/cd/B19306_01/server.102/b14200/statements_10
 
 ```sql
 WITH employee AS (SELECT * FROM Employees)
-SELECT * FROM employee WHERE ID &lt; 20
+SELECT * FROM employee WHERE ID < 20
 UNION ALL
 SELECT * FROM employee WHERE Sex = 'M'
 ```
@@ -6704,13 +6704,13 @@ How do I get this working?
 It should be as simple as running this:   
 
 ```sql
-mysql -u &lt;user&gt; -p &lt; db_backup.dump
+mysql -u <user> -p < db_backup.dump
 ```
 
 If the dump is of a single database you may have to add a line at the top of the file:  
 
 ```sql
-USE &lt;database-name-here&gt;;
+USE <database-name-here>;
 ```
 
 If it was a dump of many databases, the use statements are already in there.  
@@ -6723,24 +6723,24 @@ If the database you want to restore doesn't already exist, you need to create it
 On the command-line, if you're in the same directory that contains the dumped file, use these commands (with appropriate substitutions):  
 
 ```sql
-C:\&gt; mysql -u root -p
+C:\> mysql -u root -p
 
-mysql&gt; create database mydb;
-mysql&gt; use mydb;
-mysql&gt; source db_backup.dump;
+mysql> create database mydb;
+mysql> use mydb;
+mysql> source db_backup.dump;
 ```
 
 #### Answer 3 (score 232)
 You simply need to run this:  
 
 ```sql
-mysql -p -u[user] [database] &lt; db_backup.dump
+mysql -p -u[user] [database] < db_backup.dump
 ```
 
 If the dump contains multiple databases you should omit the database name:  
 
 ```sql
-mysql -p -u[user] &lt; db_backup.dump
+mysql -p -u[user] < db_backup.dump
 ```
 
 To run these commands, open up a command prompt (in Windows) and `cd` to the directory where the `mysql.exe` executable is (you may have to look around a bit for it, it'll depend on how you installed mysql, i.e. standalone or as part of a package like WAMP). Once you're in that directory, you should be able to just type the command.  
@@ -7092,7 +7092,7 @@ GO
 
     DECLARE @MyTab TABLE (ID smallint identity(1,1), [Column_Name] nvarchar(128), [Type] nchar(1), [Set Action SQL] nvarchar(max));
 
-    SELECT @SQL_Code        =   'SELECT [&lt;| SQL_Code |&gt;] = '' '' '
+    SELECT @SQL_Code        =   'SELECT [<| SQL_Code |>] = '' '' '
                                         + 'UNION ALL '
                                         + 'SELECT ''----------------------------------------------------------------------------------------------------'' '
                                         + 'UNION ALL '
@@ -7243,7 +7243,7 @@ SELECT @SQL_Dimentions      = 'SELECT ID = ROW_NUMBER() OVER (ORDER BY ' + @List
                                             + ' FROM (SELECT DISTINCT' + @ListOfColumns_Dimension + ' FROM  ' + @TableName
                                             + ' WHERE ' + (SELECT [ColumnName] FROM @DIM_TAB WHERE [DIM_ID] = @DIM_ID) + ' IS NOT NULL ';
                                             SELECT @DIM_ID = @DIM_ID + 1;
-            WHILE @DIM_ID &lt;= (SELECT MAX([DIM_ID]) FROM @DIM_TAB)
+            WHILE @DIM_ID <= (SELECT MAX([DIM_ID]) FROM @DIM_TAB)
             BEGIN
             SELECT @SQL_Dimentions = @SQL_Dimentions + 'AND ' + (SELECT [ColumnName] FROM @DIM_TAB WHERE [DIM_ID] = @DIM_ID) +  ' IS NOT NULL ';
             SELECT @DIM_ID = @DIM_ID + 1;
@@ -7273,7 +7273,7 @@ SELECT @SQL_MainStableColumnTable       = 'SELECT ID = ROW_NUMBER() OVER (ORDER 
                                             + ' FROM (SELECT DISTINCT' + @ListOfColumns_Stable + ' FROM  ' + @TableName
                                             + ' WHERE ' + (SELECT [ColumnName] FROM @StabPos_TAB WHERE [StabPos_ID] = @StabPos_ID) + ' IS NOT NULL ';
                                             SELECT @StabPos_ID = @StabPos_ID + 1;
-            WHILE @StabPos_ID &lt;= (SELECT MAX([StabPos_ID]) FROM @StabPos_TAB)
+            WHILE @StabPos_ID <= (SELECT MAX([StabPos_ID]) FROM @StabPos_TAB)
             BEGIN
             SELECT @SQL_MainStableColumnTable = @SQL_MainStableColumnTable + 'AND ' + (SELECT [ColumnName] FROM @StabPos_TAB WHERE [StabPos_ID] = @StabPos_ID) +  ' IS NOT NULL ';
             SELECT @StabPos_ID = @StabPos_ID + 1;
@@ -7300,7 +7300,7 @@ SELECT @FULL_SQL_1 = 'SELECT t.*, dim.[ID] '
                                     +   'JOIN ##ALL_Dimentions dim '
                                     +   'ON t.' + (SELECT [ColumnName] FROM @DIM_TAB WHERE [DIM_ID] = 1) + ' = dim.' + (SELECT [ColumnName] FROM @DIM_TAB WHERE [DIM_ID] = 1);
                                 SELECT @i = 2                               
-                                WHILE @i &lt;= (SELECT MAX([DIM_ID]) FROM @DIM_TAB)
+                                WHILE @i <= (SELECT MAX([DIM_ID]) FROM @DIM_TAB)
                                     BEGIN
                                     SELECT @FULL_SQL_1 = @FULL_SQL_1 + ' AND t.' + (SELECT [ColumnName] FROM @DIM_TAB WHERE [DIM_ID] = @i) + ' = dim.' + (SELECT [ColumnName] FROM @DIM_TAB WHERE [DIM_ID] = @i)
                                     SELECT @i = @i +1
@@ -7329,10 +7329,10 @@ DECLARE @FinalCode nvarchar(max)
 
 SELECT @FinalCode = ' SELECT ID1.*'
                                         SELECT @y = 1
-                                        WHILE @y &lt;= (SELECT MAX([ID]) FROM ##FinalTab)
+                                        WHILE @y <= (SELECT MAX([ID]) FROM ##FinalTab)
                                             BEGIN
                                                 SELECT @z = 1
-                                                WHILE @z &lt;= (SELECT MAX([VAR_ID]) FROM @VAR_TAB)
+                                                WHILE @z <= (SELECT MAX([VAR_ID]) FROM @VAR_TAB)
                                                     BEGIN
                                                         SELECT @FinalCode = @FinalCode +    ', [ID' + CAST((@y) as varchar(10)) + '.' + (SELECT [ColumnName] FROM @VAR_TAB WHERE [VAR_ID] = @z) + '] =  ID' + CAST((@y + 1) as varchar(10)) + '.' + (SELECT [ColumnName] FROM @VAR_TAB WHERE [VAR_ID] = @z)
                                                         SELECT @z = @z + 1
@@ -7342,7 +7342,7 @@ SELECT @FinalCode = ' SELECT ID1.*'
         SELECT @FinalCode = @FinalCode + 
                                         ' FROM ( SELECT * FROM ##ALL_StableColumns)ID1';
                                         SELECT @y = 1
-                                        WHILE @y &lt;= (SELECT MAX([ID]) FROM ##FinalTab)
+                                        WHILE @y <= (SELECT MAX([ID]) FROM ##FinalTab)
                                         BEGIN
                                             SELECT @x = 1
                                             SELECT @FinalCode = @FinalCode 
@@ -7350,7 +7350,7 @@ SELECT @FinalCode = ' SELECT ID1.*'
                                                                                 + ' FROM ##FinalTab WHERE [ID] = ' 
                                                                                 + CAST(@y as varchar(10)) + ' )ID' + CAST((@y + 1) as varchar(10))  
                                                                                 + ' ON 1 = 1' 
-                                                                                WHILE @x &lt;= (SELECT MAX([STAB_ID]) FROM @STAB_TAB)
+                                                                                WHILE @x <= (SELECT MAX([STAB_ID]) FROM @STAB_TAB)
                                                                                 BEGIN
                                                                                     SELECT @FinalCode = @FinalCode + ' AND ID1.' + (SELECT [ColumnName] FROM @STAB_TAB WHERE [STAB_ID] = @x) + ' = ID' + CAST((@y+1) as varchar(10)) + '.' + (SELECT [ColumnName] FROM @STAB_TAB WHERE [STAB_ID] = @x)
                                                                                     SELECT @x = @x +1
@@ -7473,11 +7473,11 @@ WHERE
         WHEN 0 THEN co.DTEntered = co.DTEntered 
    ELSE 
        CASE LEN('2012-01-09 11:56:29.327') 
-           WHEN 0 THEN co.DTEntered &gt;= '2011-01-09 11:56:29.327' 
+           WHEN 0 THEN co.DTEntered >= '2011-01-09 11:56:29.327' 
       ELSE co.DTEntered BETWEEN '2011-01-09 11:56:29.327' AND '2012-01-09 11:56:29.327' 
        END 
     END
-    AND tl.storenum &lt; 699 
+    AND tl.storenum < 699 
 ORDER BY tl.StoreNum
 ```
 
@@ -7512,7 +7512,7 @@ WHERE (
              AND co.personentered = co.personentered
         ) 
         OR 
-        (LEN('TestPerson') &lt;&gt; 0 
+        (LEN('TestPerson') <> 0 
              AND co.personentered LIKE '%TestPerson')
       )
 ```
@@ -7539,14 +7539,14 @@ WHERE
                 ELSE 
                     CASE LEN('2012-01-09 11:56:29.327') 
                         WHEN 0 THEN 
-                            CASE WHEN co.DTEntered &gt;= '2011-01-09 11:56:29.327' THEN 1 ELSE 0 END 
+                            CASE WHEN co.DTEntered >= '2011-01-09 11:56:29.327' THEN 1 ELSE 0 END 
                         ELSE 
                             CASE WHEN co.DTEntered BETWEEN '2011-01-09 11:56:29.327' 
                                                         AND '2012-01-09 11:56:29.327' 
                                                      THEN 1 ELSE 0 END
                     END
             END = 1
-        AND tl.storenum &lt; 699 
+        AND tl.storenum < 699 
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -7582,7 +7582,7 @@ WHERE col1 IN (
     SELECT id
     FROM table
     GROUP BY id
-    HAVING (COUNT(col1) &gt; 1)
+    HAVING (COUNT(col1) > 1)
 )
 ```
 
@@ -7595,7 +7595,7 @@ WITH CTE AS(
        RN = ROW_NUMBER()OVER(PARTITION BY col1 ORDER BY col1)
    FROM dbo.Table1
 )
-DELETE FROM CTE WHERE RN &gt; 1
+DELETE FROM CTE WHERE RN > 1
 ```
 
 <kbd><a href="http://rextester.com/ZHFH51082" rel="noreferrer"><strong>DEMO</strong></a></kbd>  (result is different; I assume that it's due to a typo on your part)  
@@ -7628,7 +7628,7 @@ SELECT *,ROW_NUMBER() OVER (PARTITION BY col1,col2,col3 ORDER BY col1,col2,col3)
 FROM MyTable
 )
 
-DELETE FROM CTE WHERE RN&lt;&gt;1
+DELETE FROM CTE WHERE RN<>1
 ```
 
 <blockquote>
@@ -7641,7 +7641,7 @@ WITH CTE AS
 FROM MyTable)
  
 DELETE CTE
-WHERE R IN (SELECT R FROM CTE GROUP BY R HAVING COUNT(*)&gt;1)
+WHERE R IN (SELECT R FROM CTE GROUP BY R HAVING COUNT(*)>1)
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -7667,7 +7667,7 @@ Now the `123\` in the `Value` string is not needed. I tried `UPDATE` and `REPLAC
 ```sql
 UPDATE dbo.xxx
 SET Value = REPLACE(Value, '%123%', '')
-WHERE ID &lt;= 4
+WHERE ID <= 4
 ```
 
 When I execute the script SQL Server does not report an error, but it does not update anything either. Why is that?  
@@ -7678,7 +7678,7 @@ You don't need wildcards in the `REPLACE` - it just finds the string you enter f
 ```sql
 UPDATE dbo.xxx
 SET Value = REPLACE(Value, '123\', '')
-WHERE ID &lt;=4
+WHERE ID <=4
 ```
 
 (I also added the `\` in the replace as I assume you don't need that either)  
@@ -7689,7 +7689,7 @@ Try to remove `%` chars as below
 ```sql
 UPDATE dbo.xxx
 SET Value = REPLACE(Value, '123', '')
-WHERE ID &lt;=4
+WHERE ID <=4
 ```
 
 #### Answer 3 (score 35)
@@ -7698,7 +7698,7 @@ To make the query run <strong>faster</strong> in big tables where not every line
 ```sql
 UPDATE dbo.xxx
 SET Value = REPLACE(Value, '123', '')
-WHERE ID &lt;= 4
+WHERE ID <= 4
 AND Value LIKE '%123%'
 ```
 
@@ -7933,11 +7933,11 @@ I have made a number of lookup tables that will be used by the final table. This
 The first table is simply a color listing so that we know what colors we have in the car yard.  
 
 ```sql
-mysql&gt; create table colors(id int(3) not null auto_increment primary key, 
-    -&gt; color varchar(15), paint varchar(10));
+mysql> create table colors(id int(3) not null auto_increment primary key, 
+    -> color varchar(15), paint varchar(10));
 Query OK, 0 rows affected (0.01 sec)
 
-mysql&gt; show columns from colors;
+mysql> show columns from colors;
 +-------+-------------+------+-----+---------+----------------+
 | Field | Type        | Null | Key | Default | Extra          |
 +-------+-------------+------+-----+---------+----------------+
@@ -7947,13 +7947,13 @@ mysql&gt; show columns from colors;
 +-------+-------------+------+-----+---------+----------------+
 3 rows in set (0.01 sec)
 
-mysql&gt; insert into colors (color, paint) values ('Red', 'Metallic'), 
-    -&gt; ('Green', 'Gloss'), ('Blue', 'Metallic'), 
-    -&gt; ('White' 'Gloss'), ('Black' 'Gloss');
+mysql> insert into colors (color, paint) values ('Red', 'Metallic'), 
+    -> ('Green', 'Gloss'), ('Blue', 'Metallic'), 
+    -> ('White' 'Gloss'), ('Black' 'Gloss');
 Query OK, 5 rows affected (0.00 sec)
 Records: 5  Duplicates: 0  Warnings: 0
 
-mysql&gt; select * from colors;
+mysql> select * from colors;
 +----+-------+----------+
 | id | color | paint    |
 +----+-------+----------+
@@ -7969,11 +7969,11 @@ mysql&gt; select * from colors;
 The brands table identifies the different brands of the cars out caryard could possibly sell.  
 
 ```sql
-mysql&gt; create table brands (id int(3) not null auto_increment primary key, 
-    -&gt; brand varchar(15));
+mysql> create table brands (id int(3) not null auto_increment primary key, 
+    -> brand varchar(15));
 Query OK, 0 rows affected (0.01 sec)
 
-mysql&gt; show columns from brands;
+mysql> show columns from brands;
 +-------+-------------+------+-----+---------+----------------+
 | Field | Type        | Null | Key | Default | Extra          |
 +-------+-------------+------+-----+---------+----------------+
@@ -7982,12 +7982,12 @@ mysql&gt; show columns from brands;
 +-------+-------------+------+-----+---------+----------------+
 2 rows in set (0.01 sec)
 
-mysql&gt; insert into brands (brand) values ('Ford'), ('Toyota'), 
-    -&gt; ('Nissan'), ('Smart'), ('BMW');
+mysql> insert into brands (brand) values ('Ford'), ('Toyota'), 
+    -> ('Nissan'), ('Smart'), ('BMW');
 Query OK, 5 rows affected (0.00 sec)
 Records: 5  Duplicates: 0  Warnings: 0
 
-mysql&gt; select * from brands;
+mysql> select * from brands;
 +----+--------+
 | id | brand  |
 +----+--------+
@@ -8003,11 +8003,11 @@ mysql&gt; select * from brands;
 The model table will cover off different types of cars, it is going to be simpler for this to use different car types rather than actual car models.  
 
 ```sql
-mysql&gt; create table models (id int(3) not null auto_increment primary key, 
-    -&gt; model varchar(15));
+mysql> create table models (id int(3) not null auto_increment primary key, 
+    -> model varchar(15));
 Query OK, 0 rows affected (0.01 sec)
 
-mysql&gt; show columns from models;
+mysql> show columns from models;
 +-------+-------------+------+-----+---------+----------------+
 | Field | Type        | Null | Key | Default | Extra          |
 +-------+-------------+------+-----+---------+----------------+
@@ -8016,11 +8016,11 @@ mysql&gt; show columns from models;
 +-------+-------------+------+-----+---------+----------------+
 2 rows in set (0.00 sec)
 
-mysql&gt; insert into models (model) values ('Sports'), ('Sedan'), ('4WD'), ('Luxury');
+mysql> insert into models (model) values ('Sports'), ('Sedan'), ('4WD'), ('Luxury');
 Query OK, 4 rows affected (0.00 sec)
 Records: 4  Duplicates: 0  Warnings: 0
 
-mysql&gt; select * from models;
+mysql> select * from models;
 +----+--------+
 | id | model  |
 +----+--------+
@@ -8035,11 +8035,11 @@ mysql&gt; select * from models;
 And finally, to tie up all these other tables, the table that ties everything together. The ID field is actually the unique lot number used to identify cars.  
 
 ```sql
-mysql&gt; create table cars (id int(3) not null auto_increment primary key, 
-    -&gt; color int(3), brand int(3), model int(3));
+mysql> create table cars (id int(3) not null auto_increment primary key, 
+    -> color int(3), brand int(3), model int(3));
 Query OK, 0 rows affected (0.01 sec)
 
-mysql&gt; show columns from cars;
+mysql> show columns from cars;
 +-------+--------+------+-----+---------+----------------+
 | Field | Type   | Null | Key | Default | Extra          |
 +-------+--------+------+-----+---------+----------------+
@@ -8050,12 +8050,12 @@ mysql&gt; show columns from cars;
 +-------+--------+------+-----+---------+----------------+
 4 rows in set (0.00 sec)
 
-mysql&gt; insert into cars (color, brand, model) values (1,2,1), (3,1,2), (5,3,1), 
-    -&gt; (4,4,2), (2,2,3), (3,5,4), (4,1,3), (2,2,1), (5,2,3), (4,5,1);
+mysql> insert into cars (color, brand, model) values (1,2,1), (3,1,2), (5,3,1), 
+    -> (4,4,2), (2,2,3), (3,5,4), (4,1,3), (2,2,1), (5,2,3), (4,5,1);
 Query OK, 10 rows affected (0.00 sec)
 Records: 10  Duplicates: 0  Warnings: 0
 
-mysql&gt; select * from cars;
+mysql> select * from cars;
 +----+-------+-------+-------+
 | id | color | brand | model |
 +----+-------+-------+-------+
@@ -8643,14 +8643,14 @@ select
 from
     colors
 where
-    ID&gt;2
+    ID>2
 intersect
 select
     *
 from
     colors
 where
-    id&lt;4
+    id<4
 ```
 
 While a normal `union` query would return all the rows of the table (the first query returning anything over `ID&gt;2` and the second anything having `ID&lt;4`) which would result in a full set, an intersect query would only return the row matching `id=3` as it meets both criteria.  
@@ -8667,8 +8667,8 @@ from
         join colors b
             on a.ID=b.ID
 where
-    a.ID&gt;2
-    and b.ID&lt;4
+    a.ID>2
+    and b.ID<4
 
 +----+-------+----------+
 | ID | color | paint    |
@@ -9698,7 +9698,7 @@ To get the list of fields for which there are multiple records, you can use..
 select field1,field2,field3, count(*)
   from table_name
   group by field1,field2,field3
-  having count(*) &gt; 1
+  having count(*) > 1
 ```
 
 Check this link for more information on how to delete the rows.  
@@ -9720,7 +9720,7 @@ SELECT A.ID, A.field1, A.field2, A.field3
                 WHERE B.field1 = A.field1
                   AND B.field2 = A.field2
                   AND B.field3 = A.field3
-                  AND B.ID &lt; A.ID)
+                  AND B.ID < A.ID)
 ```
 
 #### Answer 3 (score 17)
@@ -9740,7 +9740,7 @@ FROM
         , RANK() OVER (PARTITION BY field1, field2, field3 ORDER BY id ASC) AS [rank]
     FROM table_name
 ) a
-WHERE [rank] &gt; 1
+WHERE [rank] > 1
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -9777,9 +9777,9 @@ GO
 SELECT   ProductNumber, Name, "Price Range" = 
   CASE 
      WHEN ListPrice =  0 THEN 'Mfg item - not for resale'
-     WHEN ListPrice &lt; 50 THEN 'Under $50'
-     WHEN ListPrice &gt;= 50 and ListPrice &lt; 250 THEN 'Under $250'
-     WHEN ListPrice &gt;= 250 and ListPrice &lt; 1000 THEN 'Under $1000'
+     WHEN ListPrice < 50 THEN 'Under $50'
+     WHEN ListPrice >= 50 and ListPrice < 250 THEN 'Under $250'
+     WHEN ListPrice >= 250 and ListPrice < 1000 THEN 'Under $1000'
      ELSE 'Over $1000'
   END
 FROM Production.Product
@@ -9823,9 +9823,9 @@ GO
 SELECT   ProductNumber, Name, "Price Range" = 
       CASE 
          WHEN ListPrice =  0 THEN 'Mfg item - not for resale'
-         WHEN ListPrice &lt; 50 THEN 'Under $50'
-         WHEN ListPrice &gt;= 50 and ListPrice &lt; 250 THEN 'Under $250'
-         WHEN ListPrice &gt;= 250 and ListPrice &lt; 1000 THEN 'Under $1000'
+         WHEN ListPrice < 50 THEN 'Under $50'
+         WHEN ListPrice >= 50 and ListPrice < 250 THEN 'Under $250'
+         WHEN ListPrice >= 250 and ListPrice < 1000 THEN 'Under $1000'
          ELSE 'Over $1000'
       END
 FROM Production.Product
@@ -9862,7 +9862,7 @@ GO
 UPDATE HumanResources.Employee
 SET VacationHours = 
     ( CASE
-         WHEN ((VacationHours - 10.00) &lt; 0) THEN VacationHours + 40
+         WHEN ((VacationHours - 10.00) < 0) THEN VacationHours + 40
          ELSE (VacationHours + 20.00)
        END
     )
@@ -9884,10 +9884,10 @@ JOIN HumanResources.EmployeePayHistory AS ph1 ON e.BusinessEntityID = ph1.Busine
 GROUP BY JobTitle
 HAVING (MAX(CASE WHEN Gender = 'M' 
         THEN ph1.Rate 
-        ELSE NULL END) &gt; 40.00
+        ELSE NULL END) > 40.00
      OR MAX(CASE WHEN Gender  = 'F' 
         THEN ph1.Rate  
-        ELSE NULL END) &gt; 42.00)
+        ELSE NULL END) > 42.00)
 ORDER BY MaximumRate DESC;
 ```
 
@@ -10140,7 +10140,7 @@ CASE Col1 WHEN 1 THEN 11 WHEN 2 THEN 21 ELSE 13 END
 <em>Or</em> `CASE` <em>within</em> `CASE` as;  
 
 ```sql
-CASE  WHEN Col1 &lt; 2 THEN  
+CASE  WHEN Col1 < 2 THEN  
                     CASE Col2 WHEN 'X' THEN 10 ELSE 11 END
       WHEN Col1 = 2 THEN 2
       ...
@@ -10176,9 +10176,9 @@ You can use below example of case when with multiple conditions.
 SELECT
   id,stud_name,
   CASE
-    WHEN marks &lt;= 40 THEN 'Bad'
-    WHEN (marks &gt;= 40 AND
-      marks &lt;= 100) THEN 'good'
+    WHEN marks <= 40 THEN 'Bad'
+    WHEN (marks >= 40 AND
+      marks <= 100) THEN 'good'
     ELSE 'best'
   END AS Grade
 FROM Result
@@ -10307,21 +10307,21 @@ There are 8 more similar lines for adding records.
 When I run this with `start` > `run` > `cmd` > `c:\data.bat`, I get this error message:  
 
 ```sql
-1&gt;2&gt;3&gt;4&gt;5&gt;....&lt;1 row affected&gt;
+1>2>3>4>5>....<1 row affected>
 Msg 8152, Level 16, State 4, Server SP1001, Line 1
 string or binary data would be truncated.
 
-&lt;1 row affected&gt;
+<1 row affected>
 
-&lt;1 row affected&gt;
+<1 row affected>
 
-&lt;1 row affected&gt;
+<1 row affected>
 
-&lt;1 row affected&gt;
+<1 row affected>
 
-&lt;1 row affected&gt;
+<1 row affected>
 
-&lt;1 row affected&gt;
+<1 row affected>
 ```
 
 Also, I am a newbie obviously, but what do `Level #`, and `state #` mean, and how do I look up error messages such as the one above: 8152?  
@@ -10459,7 +10459,7 @@ Use:
 ```sql
 SELECT *
   FROM `table`
- WHERE INSTR(`column`, '{$needle}') &gt; 0
+ WHERE INSTR(`column`, '{$needle}') > 0
 ```
 
 Reference:  
@@ -10499,7 +10499,7 @@ SELECT DISTINCT
 But when I am adding   
 
 ```sql
-AND ROWNUM &lt;= 10
+AND ROWNUM <= 10
 ORDER BY STORAGE_GB DESC
 ```
 
@@ -10522,7 +10522,7 @@ SELECT * FROM (
     STORAGE_GB IS NOT NULL AND 
       APP_ID NOT IN (SELECT APP_ID FROM HISTORY WHERE TO_CHAR(HISTORY_DATE, 'DD.MM.YYYY') ='06.02.2009')
   ORDER BY STORAGE_GB DESC )
-WHERE ROWNUM &lt;= 10
+WHERE ROWNUM <= 10
 ```
 
 <p>Oracle applies <a href="http://www.adp-gmbh.ch/ora/sql/rownum.html" rel="noreferrer">rownum</a> to the result after it has been returned.<br> You need to filter the result after it has been returned, so a subquery is required. You can also use <a href="http://www.adp-gmbh.ch/ora/sql/analytical/rank.html" rel="noreferrer">RANK()</a> function to get Top-N results.
@@ -10735,7 +10735,7 @@ FROM    phuongxa a ,
                                                               'Sep 5 2011'
                           GROUP BY  maxa
                         ) AS dkcd ON dkcd.maxa = a.maxa
-WHERE   a.maxa &lt;&gt; '99'
+WHERE   a.maxa <> '99'
         AND LEFT(a.maxa, 2) = b.mahuyen
 ORDER BY maxa;
 ```
@@ -10753,7 +10753,7 @@ SELECT DISTINCT
         b.tenhuyen
 FROM    phuongxa a ,
         quanhuyen b
-WHERE   a.maxa &lt;&gt; '99'
+WHERE   a.maxa <> '99'
         AND LEFT(a.maxa, 2) = b.mahuyen
 ORDER BY maxa;
 ```
@@ -10822,7 +10822,7 @@ FROM phuongxa a
     WHERE CONVERT(datetime, ngaylap, 103) BETWEEN 'Sep 1 2011' AND 'Sep 5 2011'
     GROUP BY maxa
   ) AS dkcd ON dkcd.maxa = a.maxa
-WHERE a.maxa &lt;&gt; '99'
+WHERE a.maxa <> '99'
 ORDER BY a.maxa
 ```
 

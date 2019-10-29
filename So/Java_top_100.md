@@ -218,8 +218,8 @@ int[][] num={ {1}, {1,2}, {1,2,3,4,5}, {1,2}, {1,2,3} };
 <h5>For Accessing:</h2>
 
 ```java
-for (int i=0; i&lt;(num.length); i++ ) {
-    for (int j=0;j&lt;num[i].length;j++)
+for (int i=0; i<(num.length); i++ ) {
+    for (int j=0;j<num[i].length;j++)
         System.out.println(num[i][j]);
 }
 ```
@@ -301,7 +301,7 @@ import java.util.Random;
 /**
  * Returns a pseudo-random number between min and max, inclusive.
  * The difference between min and max can be at most
- * &lt;code&gt;Integer.MAX_VALUE - 1&lt;/code&gt;.
+ * <code>Integer.MAX_VALUE - 1</code>.
  *
  * @param min Minimum value
  * @param max Maximum value.  Must be greater than min.
@@ -436,7 +436,7 @@ If you'd like to retain the split character in the resulting parts, then make us
 
 ```java
 String string = "004-034556";
-String[] parts = string.split("(?&lt;=-)");
+String[] parts = string.split("(?<=-)");
 String part1 = parts[0]; // 004-
 String part2 = parts[1]; // 034556
 ```
@@ -557,7 +557,7 @@ Read more about <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Map.
 If you're only interested in the keys, you can iterate through the <a href="https://docs.oracle.com/javase/1.5.0/docs/api/java/util/Map.html#keySet%28%29" rel="nofollow noreferrer">`keySet()`</a> of the map:  
 
 ```java
-Map&lt;String, Object&gt; map = ...;
+Map<String, Object> map = ...;
 
 for (String key : map.keySet()) {
     // ...
@@ -575,7 +575,7 @@ for (Object value : map.values()) {
 Finally, if you want both the key and value, use <a href="https://docs.oracle.com/javase/1.5.0/docs/api/java/util/Map.html#entrySet%28%29" rel="nofollow noreferrer">`entrySet()`</a>:  
 
 ```java
-for (Map.Entry&lt;String, Object&gt; entry : map.entrySet()) {
+for (Map.Entry<String, Object> entry : map.entrySet()) {
     String key = entry.getKey();
     Object value = entry.getValue();
     // ...
@@ -594,8 +594,8 @@ There are several ways of iterating over a `Map` in Java. Let's go over the most
 This is the most common method and is preferable in most cases. It should be used if you need both map keys and values in the loop.  
 
 ```java
-Map&lt;Integer, Integer&gt; map = new HashMap&lt;Integer, Integer&gt;();
-for (Map.Entry&lt;Integer, Integer&gt; entry : map.entrySet()) {
+Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
     System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
 }
 ```
@@ -607,7 +607,7 @@ Note that the For-Each loop was introduced in Java 5, so this method is working 
 If you need only keys or values from the map, you can iterate over keySet or values instead of entrySet.  
 
 ```java
-Map&lt;Integer, Integer&gt; map = new HashMap&lt;Integer, Integer&gt;();
+Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 
 // Iterating over keys only
 for (Integer key : map.keySet()) {
@@ -627,10 +627,10 @@ This method gives a slight performance advantage over `entrySet` iteration (abou
 Using Generics:  
 
 ```java
-Map&lt;Integer, Integer&gt; map = new HashMap&lt;Integer, Integer&gt;();
-Iterator&lt;Map.Entry&lt;Integer, Integer&gt;&gt; entries = map.entrySet().iterator();
+Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+Iterator<Map.Entry<Integer, Integer>> entries = map.entrySet().iterator();
 while (entries.hasNext()) {
-    Map.Entry&lt;Integer, Integer&gt; entry = entries.next();
+    Map.Entry<Integer, Integer> entry = entries.next();
     System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
 }
 ```
@@ -657,7 +657,7 @@ From a performance point of view this method is equal to a For-Each iteration.
 <strong>Method #4</strong>: Iterating over keys and searching for values (inefficient).  
 
 ```java
-Map&lt;Integer, Integer&gt; map = new HashMap&lt;Integer, Integer&gt;();
+Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 for (Integer key : map.keySet()) {
     Integer value = map.get(key);
     System.out.println("Key = " + key + ", Value = " + value);
@@ -678,7 +678,7 @@ If you need only keys or values from the map, use method #2. If you are stuck wi
 I want to create a list of options for testing purposes. At first, I did this:  
 
 ```java
-ArrayList&lt;String&gt; places = new ArrayList&lt;String&gt;();
+ArrayList<String> places = new ArrayList<String>();
 places.add("Buenos Aires");
 places.add("Córdoba");
 places.add("La Plata");
@@ -687,7 +687,7 @@ places.add("La Plata");
 Then I refactored the code as follows:  
 
 ```java
-ArrayList&lt;String&gt; places = new ArrayList&lt;String&gt;(
+ArrayList<String> places = new ArrayList<String>(
     Arrays.asList("Buenos Aires", "Córdoba", "La Plata"));
 ```
 
@@ -697,7 +697,7 @@ Is there a better way to do this?
 Actually, probably the "best" way to initialize the `ArrayList` is the method you wrote, as it does not need to create a new `List` in any way:  
 
 ```java
-ArrayList&lt;String&gt; list = new ArrayList&lt;String&gt;();
+ArrayList<String> list = new ArrayList<String>();
 list.add("A");
 list.add("B");
 list.add("C");
@@ -708,7 +708,7 @@ The catch is that there is quite a bit of typing required to refer to that `list
 There are alternatives, such as making an anonymous inner class with an instance initializer (also known as an "double brace initialization"):  
 
 ```java
-ArrayList&lt;String&gt; list = new ArrayList&lt;String&gt;() {{
+ArrayList<String> list = new ArrayList<String>() {{
     add("A");
     add("B");
     add("C");
@@ -720,7 +720,7 @@ However, I'm not too fond of that method because what you end up with is a subcl
 What would have been nice was if the <a href="http://mail.openjdk.java.net/pipermail/coin-dev/2009-March/001193.html" rel="noreferrer">Collection Literals proposal</a> for <a href="http://openjdk.java.net/projects/coin" rel="noreferrer">Project Coin</a> was accepted (it was slated to be introduced in Java 7, but it's not likely to be part of Java 8 either.):  
 
 ```java
-List&lt;String&gt; list = ["A", "B", "C"];
+List<String> list = ["A", "B", "C"];
 ```
 
 Unfortunately it won't help you here, as it will initialize an immutable `List` rather than an `ArrayList`, and furthermore, it's not available yet, if it ever will be.  
@@ -729,13 +729,13 @@ Unfortunately it won't help you here, as it will initialize an immutable `List` 
 It would be simpler if you were to just declare it as a `List` - does it have to be an ArrayList?  
 
 ```java
-List&lt;String&gt; places = Arrays.asList("Buenos Aires", "Córdoba", "La Plata");
+List<String> places = Arrays.asList("Buenos Aires", "Córdoba", "La Plata");
 ```
 
 Or if you have only one element:  
 
 ```java
-List&lt;String&gt; places = Collections.singletonList("Buenos Aires");
+List<String> places = Collections.singletonList("Buenos Aires");
 ```
 
 This would mean that `places` is <strong>immutable</strong> (trying to change it will cause an `UnsupportedOperationException` exception to be thrown).  
@@ -743,7 +743,7 @@ This would mean that `places` is <strong>immutable</strong> (trying to change it
 To make a mutable list that is a concrete `ArrayList` you can create an `ArrayList` from the immutable list:  
 
 ```java
-ArrayList&lt;String&gt; places = new ArrayList&lt;&gt;(Arrays.asList("Buenos Aires", "Córdoba", "La Plata"));
+ArrayList<String> places = new ArrayList<>(Arrays.asList("Buenos Aires", "Córdoba", "La Plata"));
 ```
 
 #### Answer 3 (score 796)
@@ -758,7 +758,7 @@ var strings = List.of("foo", "bar", "baz");
 In Java 9 or later:  
 
 ```java
-List&lt;String&gt; strings = List.of("foo", "bar", "baz");
+List<String> strings = List.of("foo", "bar", "baz");
 ```
 
 <p>This will give you an immutable `List`, so it cannot be changed.<br>
@@ -769,7 +769,7 @@ Which is what you want in most cases where you're prepopulating it.</p>
 <h5>Java 8 or earlier:</h1>
 
 ```java
-List&lt;String&gt; strings = Arrays.asList("foo", "bar", "baz");
+List<String> strings = Arrays.asList("foo", "bar", "baz");
 ```
 
 <p>This will give you a `List` backed by the array, so it cannot change length.<br>
@@ -780,7 +780,7 @@ But you can call `List.set`, so it's still mutable.</p>
 You can make `Arrays.asList` even shorter with a static import:  
 
 ```java
-List&lt;String&gt; strings = asList("foo", "bar", "baz");
+List<String> strings = asList("foo", "bar", "baz");
 ```
 
 The static import:  
@@ -805,13 +805,13 @@ For example in IntelliJ IDEA you press `Alt+Enter` and select `Static import met
 With Java 8 or later you can use a `Stream` which is more flexible:</p>
 
 ```java
-Stream&lt;String&gt; strings = Stream.of("foo", "bar", "baz");
+Stream<String> strings = Stream.of("foo", "bar", "baz");
 ```
 
 You can concatenate `Stream`s:  
 
 ```java
-Stream&lt;String&gt; strings = Stream.concat(Stream.of("foo", "bar"),
+Stream<String> strings = Stream.concat(Stream.of("foo", "bar"),
                                        Stream.of("baz", "qux"));
 ```
 
@@ -820,7 +820,7 @@ Or you can go from a `Stream` to a `List`:
 ```java
 import static java.util.stream.Collectors.toList;
 
-List&lt;String&gt; strings = Stream.of("foo", "bar", "baz").collect(toList());
+List<String> strings = Stream.of("foo", "bar", "baz").collect(toList());
 ```
 
 But preferably, just use the `Stream` without collecting it to a `List`.  
@@ -841,14 +841,14 @@ To quote <a href="http://openjdk.java.net/jeps/269" rel="noreferrer">JEP 269</a>
 If you want to <em>both</em> prepopulate an `ArrayList` <em>and</em> add to it afterwards (why?), use  
 
 ```java
-ArrayList&lt;String&gt; strings = new ArrayList&lt;&gt;(List.of("foo", "bar"));
+ArrayList<String> strings = new ArrayList<>(List.of("foo", "bar"));
 strings.add("baz");
 ```
 
 or in Java 8 or earlier:  
 
 ```java
-ArrayList&lt;String&gt; strings = new ArrayList&lt;&gt;(asList("foo", "bar"));
+ArrayList<String> strings = new ArrayList<>(asList("foo", "bar"));
 strings.add("baz");
 ```
 
@@ -857,7 +857,7 @@ or using `Stream`:
 ```java
 import static java.util.stream.Collectors.toCollection;
 
-ArrayList&lt;String&gt; strings = Stream.of("foo", "bar")
+ArrayList<String> strings = Stream.of("foo", "bar")
                              .collect(toCollection(ArrayList::new));
 strings.add("baz");
 ```
@@ -880,23 +880,23 @@ For example, if you're passing an `ArrayList` to a `void method(...)`:
 
 ```java
 // Iterable if you just need iteration, for (String s : strings):
-void method(Iterable&lt;String&gt; strings) { 
+void method(Iterable<String> strings) { 
     for (String s : strings) { ... } 
 }
 
 // Collection if you also need .size(), .isEmpty(), or .stream():
-void method(Collection&lt;String&gt; strings) {
+void method(Collection<String> strings) {
     if (!strings.isEmpty()) { strings.stream()... }
 }
 
 // List if you also need .get(index):
-void method(List&lt;String&gt; strings) {
+void method(List<String> strings) {
     strings.get(...)
 }
 
 // Don't declare a specific list implementation
 // unless you're sure you need it:
-void method(ArrayList&lt;String&gt; strings) {
+void method(ArrayList<String> strings) {
     ??? // You don't want to limit yourself to just ArrayList
 }
 ```
@@ -940,7 +940,7 @@ out.close();
 Creating a text file:  
 
 ```java
-List&lt;String&gt; lines = Arrays.asList("The first line", "The second line");
+List<String> lines = Arrays.asList("The first line", "The second line");
 Path file = Paths.get("the-file-name.txt");
 Files.write(file, lines, StandardCharsets.UTF_8);
 //Files.write(file, lines, StandardCharsets.UTF_8, StandardOpenOption.APPEND);
@@ -1003,7 +1003,7 @@ The following example creates and writes to 6 different files to showcase how it
 
 ```java
 Charset utf8 = StandardCharsets.UTF_8;
-List&lt;String&gt; lines = Arrays.asList("1st line", "2nd line");
+List<String> lines = Arrays.asList("1st line", "2nd line");
 byte[] data = {1, 2, 3, 4, 5};
 
 try {
@@ -1028,7 +1028,7 @@ try {
 Consider:  
 
 ```java
-List&lt;String&gt; someList = new ArrayList&lt;String&gt;();
+List<String> someList = new ArrayList<String>();
 // add "monkey", "donkey", "skeleton key" to someList
 ```
 
@@ -1044,7 +1044,7 @@ What would the equivalent `for` loop look like without using the <em>for each</e
 
 #### Answer accepted (score 1123)
 ```java
-for (Iterator&lt;String&gt; i = someIterable.iterator(); i.hasNext();) {
+for (Iterator<String> i = someIterable.iterator(); i.hasNext();) {
     String item = i.next();
     System.out.println(item);
 }
@@ -1070,7 +1070,7 @@ for (String fruit : fruits) {
 which is essentially equivalent of  
 
 ```java
-for (int i = 0; i &lt; fruits.length; i++) {
+for (int i = 0; i < fruits.length; i++) {
     String fruit = fruits[i];
     // fruit is an element of the `fruits` array.
 }
@@ -1081,7 +1081,7 @@ for (int i = 0; i &lt; fruits.length; i++) {
 
 <blockquote>
 ```java
-for(Iterator&lt;String&gt; i = someList.iterator(); i.hasNext(); ) {
+for(Iterator<String> i = someList.iterator(); i.hasNext(); ) {
   String item = i.next();
   System.out.println(item);
 }
@@ -1123,7 +1123,7 @@ for(int i : intList) {
 <h5>Iterator</h3>
 
 ```java
-Iterator&lt;Integer&gt; intItr = intList.iterator();
+Iterator<Integer> intItr = intList.iterator();
 while(intItr.hasNext()) {
    System.out.println("An element in the list: " + intItr.next());
 }
@@ -1136,8 +1136,8 @@ There are situations where you must use an `Iterator` directly. For example, att
 The only practical difference between `for` and `foreach` is that, in the case of indexable objects, you do not have access to the index. An example when the basic `for` loop is required:  
 
 ```java
-for(int i = 0; i &lt; array.length; i++) {
-   if(i &lt; 5) {
+for(int i = 0; i < array.length; i++) {
+   if(i < 5) {
       // Do something special
    }  else {
       // Do other stuff
@@ -1204,7 +1204,7 @@ I also ran this for an `Integer` array, and indexes are still the clear winner, 
 For a `List` of `Integers`, however, iterators are the clear winner. Just change the int-array in the test-class to:  
 
 ```java
-List&lt;Integer&gt; intList = Arrays.asList(new Integer[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100});
+List<Integer> intList = Arrays.asList(new Integer[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100});
 ```
 
 And make the necessary changes to the test-function (`int[]` to `List&lt;Integer&gt;`, `length` to `size()`, etc.):  
@@ -1266,9 +1266,9 @@ import  java.text.NumberFormat;
 import  java.util.Locale;
 
 /**
-   &amp;lt;P&amp;gt;{@code java TimeIteratorVsIndexIntArray 1000000}&amp;lt;/P&amp;gt;
+   &lt;P&gt;{@code java TimeIteratorVsIndexIntArray 1000000}&lt;/P&gt;
 
-   @see  &amp;lt;CODE&amp;gt;&amp;lt;A HREF=&amp;quot;https://stackoverflow.com/questions/180158/how-do-i-time-a-methods-execution-in-java&amp;quot;&amp;gt;https://stackoverflow.com/questions/180158/how-do-i-time-a-methods-execution-in-java&amp;lt;/A&amp;gt;&amp;lt;/CODE&amp;gt;
+   @see  &lt;CODE&gt;&lt;A HREF="https://stackoverflow.com/questions/180158/how-do-i-time-a-methods-execution-in-java"&gt;https://stackoverflow.com/questions/180158/how-do-i-time-a-methods-execution-in-java&lt;/A&gt;&lt;/CODE&gt;
  **/
 public class TimeIteratorVsIndexIntArray {
 
@@ -1289,14 +1289,14 @@ public class TimeIteratorVsIndexIntArray {
         int[] intArray = new int[] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100};
 
         long lStart = System.nanoTime();
-        for(int i = 0; i &lt; testCount; i++) {
+        for(int i = 0; i < testCount; i++) {
            testIterator(intArray);
         }
 
         long lADuration = outputGetNanoDuration("A", lStart);
 
         lStart = System.nanoTime();
-        for(int i = 0; i &lt; testCount; i++) {
+        for(int i = 0; i < testCount; i++) {
            testFor(intArray);
         }
 
@@ -1307,7 +1307,7 @@ public class TimeIteratorVsIndexIntArray {
 
     private static final void testIterator(int[] int_array) {
        int total = 0;
-       for(int i = 0; i &lt; int_array.length; i++) {
+       for(int i = 0; i < int_array.length; i++) {
           total += int_array[i];
        }
     }
@@ -1331,7 +1331,7 @@ public class TimeIteratorVsIndexIntArray {
         long lDiff = -1;
         double dPct = -1.0;
         String sFaster = null;
-        if(l_aDuration &gt; l_bDuration) {
+        if(l_aDuration > l_bDuration) {
             lDiff = l_aDuration - l_bDuration;
             dPct = 100.00 - (l_bDuration * 100.0 / l_aDuration + 0.5);
             sFaster = "B";
@@ -1367,7 +1367,7 @@ First of all, you need to understand the correct way to launch a program using t
 The normal syntax<sup>1</sup> is this:  
 
 ```java
-    java [ &lt;option&gt; ... ] &lt;class-name&gt; [&lt;argument&gt; ...]
+    java [ <option> ... ] <class-name> [<argument> ...]
 ```
 
 <p>where `&lt;option&gt;` is a command line option (starting with a "-" character), `&lt;class-name&gt;` is a fully qualified Java class name, and `&lt;argument&gt;` is an arbitrary command line argument that gets passed to your application.<br>
@@ -1491,7 +1491,7 @@ If your classes FQN is `com.acme.example.Foon`, then the JVM is going to look fo
 <li><p>If you attempt <em>rename</em> a class by moving it, that will fail as well ... but the exception stacktrace will be different.  It is liable to say something like this:</p>
 
 ```java
-Caused by: java.lang.NoClassDefFoundError: &lt;path&gt; (wrong name: &lt;name&gt;)
+Caused by: java.lang.NoClassDefFoundError: <path> (wrong name: <name>)
 ```
 
 because the FQN in the class file doesn't match what the class loader is expecting to find.  </li>
@@ -1561,7 +1561,7 @@ Also, consider possible problems caused by copying and pasting invisible or non-
 The alternative syntax used for "executable" JAR files is as follows:  
 
 ```java
-  java [ &lt;option&gt; ... ] -jar &lt;jar-file-name&gt; [&lt;argument&gt; ...]
+  java [ <option> ... ] -jar <jar-file-name> [<argument> ...]
 ```
 
 e.g.  
@@ -1649,8 +1649,8 @@ Will the ordering of elements depend on the specific map implementation that I h
 
 #### Answer accepted (score 4782)
 ```java
-Map&lt;String, String&gt; map = ...
-for (Map.Entry&lt;String, String&gt; entry : map.entrySet()) {
+Map<String, String> map = ...
+for (Map.Entry<String, String> entry : map.entrySet()) {
     System.out.println(entry.getKey() + "/" + entry.getValue());
 }
 ```
@@ -1663,9 +1663,9 @@ To summarize the other answers and combine them with what I know, I found 10 mai
 
 ```java
 long i = 0;
-Iterator&lt;Map.Entry&lt;Integer, Integer&gt;&gt; it = map.entrySet().iterator();
+Iterator<Map.Entry<Integer, Integer>> it = map.entrySet().iterator();
 while (it.hasNext()) {
-    Map.Entry&lt;Integer, Integer&gt; pair = it.next();
+    Map.Entry<Integer, Integer> pair = it.next();
     i += pair.getKey() + pair.getValue();
 }
 ```</li>
@@ -1673,7 +1673,7 @@ while (it.hasNext()) {
 
 ```java
 long i = 0;
-for (Map.Entry&lt;Integer, Integer&gt; pair : map.entrySet()) {
+for (Map.Entry<Integer, Integer> pair : map.entrySet()) {
     i += pair.getKey() + pair.getValue();
 }
 ```</li>
@@ -1681,7 +1681,7 @@ for (Map.Entry&lt;Integer, Integer&gt; pair : map.entrySet()) {
 
 ```java
 final long[] i = {0};
-map.forEach((k, v) -&gt; i[0] += k + v);
+map.forEach((k, v) -> i[0] += k + v);
 ```</li>
 <li><p>Using <strong>keySet</strong> and <strong>foreach</strong></p>
 
@@ -1695,7 +1695,7 @@ for (Integer key : map.keySet()) {
 
 ```java
 long i = 0;
-Iterator&lt;Integer&gt; itr2 = map.keySet().iterator();
+Iterator<Integer> itr2 = map.keySet().iterator();
 while (itr2.hasNext()) {
     Integer key = itr2.next();
     i += key + map.get(key);
@@ -1705,8 +1705,8 @@ while (itr2.hasNext()) {
 
 ```java
 long i = 0;
-for (Iterator&lt;Map.Entry&lt;Integer, Integer&gt;&gt; entries = map.entrySet().iterator(); entries.hasNext(); ) {
-    Map.Entry&lt;Integer, Integer&gt; entry = entries.next();
+for (Iterator<Map.Entry<Integer, Integer>> entries = map.entrySet().iterator(); entries.hasNext(); ) {
+    Map.Entry<Integer, Integer> entry = entries.next();
     i += entry.getKey() + entry.getValue();
 }
 ```</li>
@@ -1714,19 +1714,19 @@ for (Iterator&lt;Map.Entry&lt;Integer, Integer&gt;&gt; entries = map.entrySet().
 
 ```java
 final long[] i = {0};
-map.entrySet().stream().forEach(e -&gt; i[0] += e.getKey() + e.getValue());
+map.entrySet().stream().forEach(e -> i[0] += e.getKey() + e.getValue());
 ```</li>
 <li><p>Using the Java 8 <strong>Stream API parallel</strong></p>
 
 ```java
 final long[] i = {0};
-map.entrySet().stream().parallel().forEach(e -&gt; i[0] += e.getKey() + e.getValue());
+map.entrySet().stream().parallel().forEach(e -> i[0] += e.getKey() + e.getValue());
 ```</li>
 <li><p>Using <strong>IterableMap</strong> of `Apache Collections`</p>
 
 ```java
 long i = 0;
-MapIterator&lt;Integer, Integer&gt; it = iterableMap.mapIterator();
+MapIterator<Integer, Integer> it = iterableMap.mapIterator();
 while (it.hasNext()) {
     i += it.next() + it.getValue();
 }
@@ -1735,7 +1735,7 @@ while (it.hasNext()) {
 
 ```java
 final long[] i = {0};
-mutableMap.forEachKeyValue((key, value) -&gt; {
+mutableMap.forEachKeyValue((key, value) -> {
     i[0] += key + value;
 });
 ```</li>
@@ -1817,12 +1817,12 @@ All tests are on <a href="https://github.com/Vedenin/useful-java-links/blob/mast
 In Java 8 you can do it clean and fast using the new lambdas features:  
 
 ```java
- Map&lt;String,String&gt; map = new HashMap&lt;&gt;();
+ Map<String,String> map = new HashMap<>();
  map.put("SomeKey", "SomeValue");
- map.forEach( (k,v) -&gt; [do something with key and value] );
+ map.forEach( (k,v) -> [do something with key and value] );
 
  // such as
- map.forEach( (k,v) -&gt; System.out.println("Key: " + k + ": Value: " + v));
+ map.forEach( (k,v) -> System.out.println("Key: " + k + ": Value: " + v));
 ```
 
 The type of `k` and `v` will be inferred by the compiler and there is no need to use `Map.Entry` anymore.  
@@ -2034,7 +2034,7 @@ final StringBuilder out = new StringBuilder();
 Reader in = new InputStreamReader(inputStream, "UTF-8");
 for (; ; ) {
     int rsz = in.read(buffer, 0, buffer.length);
-    if (rsz &lt; 0)
+    if (rsz < 0)
         break;
     out.append(buffer, 0, rsz);
 }
@@ -2056,7 +2056,7 @@ int length;
 while ((length = inputStream.read(buffer)) != -1) {
     result.write(buffer, 0, length);
 }
-// StandardCharsets.UTF_8.name() &gt; JDK 7
+// StandardCharsets.UTF_8.name() > JDK 7
 return result.toString("UTF-8");
 ```</li>
 <li><p>Using `BufferedReader` (JDK). <strong>Warning:</strong> This solution converts different line breaks (like `\n\r`) to `line.separator` system property (for example, in Windows to "\r\n").</p>
@@ -2082,7 +2082,7 @@ while(result != -1) {
     buf.write((byte) result);
     result = bis.read();
 }
-// StandardCharsets.UTF_8.name() &gt; JDK 7
+// StandardCharsets.UTF_8.name() > JDK 7
 return buf.toString("UTF-8");
 ```</li>
 <li><p>Using `inputStream.read()` and `StringBuilder` (JDK). <strong>Warning</strong>: This solution has problems with Unicode, for example with Russian text (works correctly only with non-Unicode text)</p>
@@ -2293,7 +2293,7 @@ To check whether an array of `int`, `double` or `long` contains a value use `Int
 
 ```java
 int[] a = {1,2,3,4};
-boolean contains = IntStream.of(a).anyMatch(x -&gt; x == 4);
+boolean contains = IntStream.of(a).anyMatch(x -> x == 4);
 ```
 
 #### Answer 2 (score 344)
@@ -2314,7 +2314,7 @@ private static final String[] VALUES = new String[] {"AB","BC","CD","AE"};
 So, reference arrays are bad, and in particular here we want a set:  
 
 ```java
-private static final Set&lt;String&gt; VALUES = new HashSet&lt;String&gt;(Arrays.asList(
+private static final Set<String> VALUES = new HashSet<String>(Arrays.asList(
      new String[] {"AB","BC","CD","AE"}
 ));
 ```
@@ -2332,7 +2332,7 @@ O(1).
 <strong>Update:</strong> Since Java SE 9 we have `Set.of`.  
 
 ```java
-private static final Set&lt;String&gt; VALUES = Set.of(
+private static final Set<String> VALUES = Set.of(
     "AB","BC","CD","AE"
 );
 ```
@@ -2618,8 +2618,8 @@ returns:
 However as you can see this uses half-even rounding. That is it will round down if the previous digit is even. What I'd like is this:  
 
 ```java
-0.912385 -&gt; 0.91239
-0.912300 -&gt; 0.9123
+0.912385 -> 0.91239
+0.912300 -> 0.9123
 ```
 
 What is the best way to achieve this in Java?  
@@ -2701,7 +2701,7 @@ it works. Is there something that I'm missing?
 Use like this.  
 
 ```java
-List&lt;String&gt; stockList = new ArrayList&lt;String&gt;();
+List<String> stockList = new ArrayList<String>();
 stockList.add("stock1");
 stockList.add("stock2");
 
@@ -2817,12 +2817,12 @@ Element[] array = {new Element(1), new Element(2), new Element(3)};
 I would like to convert this array into an object of the ArrayList class.  
 
 ```java
-ArrayList&lt;Element&gt; arraylist = ???;
+ArrayList<Element> arraylist = ???;
 ```
 
 #### Answer accepted (score 4407)
 ```java
-new ArrayList&lt;&gt;(Arrays.asList(array))
+new ArrayList<>(Arrays.asList(array))
 ```
 
 #### Answer 2 (score 865)
@@ -2835,7 +2835,7 @@ Element[] array = new Element[] { new Element(1), new Element(2), new Element(3)
 The simplest answer is to do:  
 
 ```java
-List&lt;Element&gt; list = Arrays.asList(array);
+List<Element> list = Arrays.asList(array);
 ```
 
 This will work fine.  But some caveats:  
@@ -2859,8 +2859,8 @@ It's worth pointing out the Guava way, which greatly simplifies these shenanigan
 Use the <a href="https://github.com/google/guava/blob/master/guava/src/com/google/common/collect/ImmutableList.java" rel="noreferrer">`ImmutableList`</a> class and its <a href="https://github.com/google/guava/blob/master/guava/src/com/google/common/collect/ImmutableList.java#L101" rel="noreferrer">`of()`</a> and <a href="https://github.com/google/guava/blob/master/guava/src/com/google/common/collect/ImmutableList.java#L225" rel="noreferrer">`copyOf()`</a> factory methods <sup>(elements can't be null)</sup>:  
 
 ```java
-List&lt;String&gt; il = ImmutableList.of("string", "elements");  // from varargs
-List&lt;String&gt; il = ImmutableList.copyOf(aStringArray);      // from array
+List<String> il = ImmutableList.of("string", "elements");  // from varargs
+List<String> il = ImmutableList.copyOf(aStringArray);      // from array
 ```
 
 <h5>For A Mutable List</h3>
@@ -2868,9 +2868,9 @@ List&lt;String&gt; il = ImmutableList.copyOf(aStringArray);      // from array
 Use the <a href="https://github.com/google/guava/blob/master/guava/src/com/google/common/collect/Lists.java" rel="noreferrer">`Lists`</a> class and its <a href="https://github.com/google/guava/blob/master/guava/src/com/google/common/collect/Lists.java#L87" rel="noreferrer">`newArrayList()`</a> factory methods:  
 
 ```java
-List&lt;String&gt; l1 = Lists.newArrayList(anotherListOrCollection);    // from collection
-List&lt;String&gt; l2 = Lists.newArrayList(aStringArray);               // from array
-List&lt;String&gt; l3 = Lists.newArrayList("or", "string", "elements"); // from varargs
+List<String> l1 = Lists.newArrayList(anotherListOrCollection);    // from collection
+List<String> l2 = Lists.newArrayList(aStringArray);               // from array
+List<String> l3 = Lists.newArrayList("or", "string", "elements"); // from varargs
 ```
 
 Please also note the similar methods for other data structures in other classes, for instance in <a href="https://github.com/google/guava/blob/master/guava/src/com/google/common/collect/Sets.java" rel="noreferrer">`Sets`</a>.  
@@ -2890,8 +2890,8 @@ But it's not the only reason (and Java 7 isn't everywhere yet): the shorthand sy
 Use the JDK's <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Arrays.html" rel="noreferrer">`Arrays`</a> class and its <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Arrays.html#asList%28T...%29" rel="noreferrer">`asList()`</a> factory method, wrapped with a <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Collections.html#unmodifiableList%28java.util.List%29" rel="noreferrer">`Collections.unmodifiableList()`</a>:  
 
 ```java
-List&lt;String&gt; l1 = Collections.unmodifiableList(Arrays.asList(anArrayOfElements));
-List&lt;String&gt; l2 = Collections.unmodifiableList(Arrays.asList("element1", "element2"));
+List<String> l1 = Collections.unmodifiableList(Arrays.asList(anArrayOfElements));
+List<String> l2 = Collections.unmodifiableList(Arrays.asList("element1", "element2"));
 ```
 
 Note that the returned type for `asList()` is a `List` using a concrete `ArrayList` implementation, but <strong>it is NOT</strong> `java.util.ArrayList`. It's an inner type, which emulates an `ArrayList` but actually directly references the passed array and makes it "write through" (modifications are reflected in the array).  
@@ -2905,10 +2905,10 @@ See the next step if you need a mutable list.
 Same as above, but wrapped with an actual `java.util.ArrayList`:  
 
 ```java
-List&lt;String&gt; l1  = new ArrayList&lt;String&gt;(Arrays.asList(array));    // Java 1.5 to 1.6
-List&lt;String&gt; l1b = new ArrayList&lt;&gt;(Arrays.asList(array));          // Java 1.7+
-List&lt;String&gt; l2  = new ArrayList&lt;String&gt;(Arrays.asList("a", "b")); // Java 1.5 to 1.6
-List&lt;String&gt; l2b = new ArrayList&lt;&gt;(Arrays.asList("a", "b"));       // Java 1.7+
+List<String> l1  = new ArrayList<String>(Arrays.asList(array));    // Java 1.5 to 1.6
+List<String> l1b = new ArrayList<>(Arrays.asList(array));          // Java 1.7+
+List<String> l2  = new ArrayList<String>(Arrays.asList("a", "b")); // Java 1.5 to 1.6
+List<String> l2b = new ArrayList<>(Arrays.asList("a", "b"));       // Java 1.7+
 ```
 
 <hr>
@@ -2917,8 +2917,8 @@ List&lt;String&gt; l2b = new ArrayList&lt;&gt;(Arrays.asList("a", "b"));       /
 
 ```java
 // for Java 1.5+
-static &lt;T&gt; List&lt;T&gt; arrayToList(final T[] array) {
-  final List&lt;T&gt; l = new ArrayList&lt;T&gt;(array.length);
+static <T> List<T> arrayToList(final T[] array) {
+  final List<T> l = new ArrayList<T>(array.length);
 
   for (final T s : array) {
     l.add(s);
@@ -2926,11 +2926,11 @@ static &lt;T&gt; List&lt;T&gt; arrayToList(final T[] array) {
   return (l);
 }
 
-// for Java &lt; 1.5 (no generics, no compile-time type-safety, boo!)
+// for Java < 1.5 (no generics, no compile-time type-safety, boo!)
 static List arrayToList(final Object[] array) {
   final List l = new ArrayList(array.length);
 
-  for (int i = 0; i &lt; array.length; i++) {
+  for (int i = 0; i < array.length; i++) {
     l.add(array[i]);
   }
   return (l);
@@ -2945,9 +2945,9 @@ static List arrayToList(final Object[] array) {
 Here is a piece of C++ code that shows some very peculiar behavior. For some strange reason, sorting the data miraculously makes the code almost six times faster:  
 
 ```java
-#include &lt;algorithm&gt;
-#include &lt;ctime&gt;
-#include &lt;iostream&gt;
+#include <algorithm>
+#include <ctime>
+#include <iostream>
 
 int main()
 {
@@ -2955,7 +2955,7 @@ int main()
     const unsigned arraySize = 32768;
     int data[arraySize];
 
-    for (unsigned c = 0; c &lt; arraySize; ++c)
+    for (unsigned c = 0; c < arraySize; ++c)
         data[c] = std::rand() % 256;
 
     // !!! With this, the next loop runs faster.
@@ -2965,20 +2965,20 @@ int main()
     clock_t start = clock();
     long long sum = 0;
 
-    for (unsigned i = 0; i &lt; 100000; ++i)
+    for (unsigned i = 0; i < 100000; ++i)
     {
         // Primary loop
-        for (unsigned c = 0; c &lt; arraySize; ++c)
+        for (unsigned c = 0; c < arraySize; ++c)
         {
-            if (data[c] &gt;= 128)
+            if (data[c] >= 128)
                 sum += data[c];
         }
     }
 
-    double elapsedTime = static_cast&lt;double&gt;(clock() - start) / CLOCKS_PER_SEC;
+    double elapsedTime = static_cast<double>(clock() - start) / CLOCKS_PER_SEC;
 
-    std::cout &lt;&lt; elapsedTime &lt;&lt; std::endl;
-    std::cout &lt;&lt; "sum = " &lt;&lt; sum &lt;&lt; std::endl;
+    std::cout << elapsedTime << std::endl;
+    std::cout << "sum = " << sum << std::endl;
 }
 ```
 
@@ -3004,7 +3004,7 @@ public class Main
         int data[] = new int[arraySize];
 
         Random rnd = new Random(0);
-        for (int c = 0; c &lt; arraySize; ++c)
+        for (int c = 0; c < arraySize; ++c)
             data[c] = rnd.nextInt() % 256;
 
         // !!! With this, the next loop runs faster
@@ -3014,12 +3014,12 @@ public class Main
         long start = System.nanoTime();
         long sum = 0;
 
-        for (int i = 0; i &lt; 100000; ++i)
+        for (int i = 0; i < 100000; ++i)
         {
             // Primary loop
-            for (int c = 0; c &lt; arraySize; ++c)
+            for (int c = 0; c < arraySize; ++c)
             {
-                if (data[c] &gt;= 128)
+                if (data[c] >= 128)
                     sum += data[c];
             }
         }
@@ -3108,7 +3108,7 @@ Further reading: <a href="//en.wikipedia.org/wiki/Branch_predictor" rel="norefer
 <h5>As hinted from above, the culprit is this if-statement:</h2>
 
 ```java
-if (data[c] &gt;= 128)
+if (data[c] >= 128)
     sum += data[c];
 ```
 
@@ -3146,15 +3146,15 @@ If the compiler isn't able to optimize the branch into a conditional move, you c
 Replace:  
 
 ```java
-if (data[c] &gt;= 128)
+if (data[c] >= 128)
     sum += data[c];
 ```
 
 with:  
 
 ```java
-int t = (data[c] - 128) &gt;&gt; 31;
-sum += ~t &amp; data[c];
+int t = (data[c] - 128) >> 31;
+sum += ~t & data[c];
 ```
 
 This eliminates the branch and replaces it with some bitwise operations.  
@@ -3229,7 +3229,7 @@ The reason why performance improves drastically when the data is sorted is that 
 Now, if we look at the code  
 
 ```java
-if (data[c] &gt;= 128)
+if (data[c] >= 128)
     sum += data[c];
 ```
 
@@ -3238,7 +3238,7 @@ we can find that the meaning of this particular `if... else...` branch is to add
 In `C`, thus `C++`, the statement, which would compile directly (without any optimization) into the conditional move instruction in `x86`, is the ternary operator `... ? ... : ...`. So we rewrite the above statement into an equivalent one:  
 
 ```java
-sum += data[c] &gt;=128 ? data[c] : 0;
+sum += data[c] >=128 ? data[c] : 0;
 ```
 
 While maintaining readability, we can check the speedup factor.  
@@ -3285,7 +3285,7 @@ Now let's look more closely by investigating the `x86` assembly they generate. F
 
 ```java
 int max1(int a, int b) {
-    if (a &gt; b)
+    if (a > b)
         return a;
     else
         return b;
@@ -3296,7 +3296,7 @@ int max1(int a, int b) {
 
 ```java
 int max2(int a, int b) {
-    return a &gt; b ? a : b;
+    return a > b ? a : b;
 }
 ```
 
@@ -3374,7 +3374,7 @@ public class RandomString {
      * Generate a random string.
      */
     public String nextString() {
-        for (int idx = 0; idx &lt; buf.length; ++idx)
+        for (int idx = 0; idx < buf.length; ++idx)
             buf[idx] = symbols[random.nextInt(symbols.length)];
         return new String(buf);
     }
@@ -3394,8 +3394,8 @@ public class RandomString {
     private final char[] buf;
 
     public RandomString(int length, Random random, String symbols) {
-        if (length &lt; 1) throw new IllegalArgumentException();
-        if (symbols.length() &lt; 2) throw new IllegalArgumentException();
+        if (length < 1) throw new IllegalArgumentException();
+        if (symbols.length() < 2) throw new IllegalArgumentException();
         this.random = Objects.requireNonNull(random);
         this.symbols = symbols.toCharArray();
         this.buf = new char[length];
@@ -3503,7 +3503,7 @@ static SecureRandom rnd = new SecureRandom();
 
 String randomString( int len ){
    StringBuilder sb = new StringBuilder( len );
-   for( int i = 0; i &lt; len; i++ ) 
+   for( int i = 0; i < len; i++ ) 
       sb.append( AB.charAt( rnd.nextInt(AB.length()) ) );
    return sb.toString();
 }
@@ -3525,12 +3525,12 @@ Here's a generic-friendly version:
 
 ```java
 public class MapUtil {
-    public static &lt;K, V extends Comparable&lt;? super V&gt;&gt; Map&lt;K, V&gt; sortByValue(Map&lt;K, V&gt; map) {
-        List&lt;Entry&lt;K, V&gt;&gt; list = new ArrayList&lt;&gt;(map.entrySet());
+    public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map) {
+        List<Entry<K, V>> list = new ArrayList<>(map.entrySet());
         list.sort(Entry.comparingByValue());
 
-        Map&lt;K, V&gt; result = new LinkedHashMap&lt;&gt;();
-        for (Entry&lt;K, V&gt; entry : list) {
+        Map<K, V> result = new LinkedHashMap<>();
+        for (Entry<K, V> entry : list) {
             result.put(entry.getKey(), entry.getValue());
         }
 
@@ -3551,9 +3551,9 @@ It seems much easier than all of the foregoing. Use a TreeMap as follows:
 ```java
 public class Testing {
     public static void main(String[] args) {
-        HashMap&lt;String, Double&gt; map = new HashMap&lt;String, Double&gt;();
+        HashMap<String, Double> map = new HashMap<String, Double>();
         ValueComparator bvc = new ValueComparator(map);
-        TreeMap&lt;String, Double&gt; sorted_map = new TreeMap&lt;String, Double&gt;(bvc);
+        TreeMap<String, Double> sorted_map = new TreeMap<String, Double>(bvc);
 
         map.put("A", 99.5);
         map.put("B", 67.4);
@@ -3566,17 +3566,17 @@ public class Testing {
     }
 }
 
-class ValueComparator implements Comparator&lt;String&gt; {
-    Map&lt;String, Double&gt; base;
+class ValueComparator implements Comparator<String> {
+    Map<String, Double> base;
 
-    public ValueComparator(Map&lt;String, Double&gt; base) {
+    public ValueComparator(Map<String, Double> base) {
         this.base = base;
     }
 
     // Note: this comparator imposes orderings that are inconsistent with
     // equals.
     public int compare(String a, String b) {
-        if (base.get(a) &gt;= base.get(b)) {
+        if (base.get(a) >= base.get(b)) {
             return -1;
         } else {
             return 1;
@@ -3646,13 +3646,13 @@ static String readFile(String path, Charset encoding)
 Java 7 added a <a href="http://docs.oracle.com/javase/7/docs/api/java/nio/file/Files.html#readAllLines%28java.nio.file.Path,%20java.nio.charset.Charset%29" rel="noreferrer">convenience method to read a file as lines of text,</a> represented as a `List&lt;String&gt;`. This approach is "lossy" because the line separators are stripped from the end of each line.  
 
 ```java
-List&lt;String&gt; lines = Files.readAllLines(Paths.get(path), encoding);
+List<String> lines = Files.readAllLines(Paths.get(path), encoding);
 ```
 
 Java 8 added the <a href="https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html#lines-java.nio.file.Path-java.nio.charset.Charset-" rel="noreferrer">`Files.lines()`</a> method to produce a `Stream&lt;String&gt;`. Again, this method is lossy because line separators are stripped. If an `IOException` is encountered while reading the file, it is wrapped in an <a href="https://docs.oracle.com/javase/8/docs/api/java/io/UncheckedIOException.html" rel="noreferrer">`UncheckedIOException`</a>, since `Stream` doesn't accept lambdas that throw checked exceptions.  
 
 ```java
-try (Stream&lt;String&gt; lines = Files.lines(path, encoding)) {
+try (Stream<String> lines = Files.lines(path, encoding)) {
   lines.forEach(System.out::println);
 }
 ```
@@ -3718,23 +3718,23 @@ How can I make a Maven project package all dependency JARs into my output JAR?
 
 
 ```java
-&lt;build&gt;
-  &lt;plugins&gt;
-    &lt;plugin&gt;
-      &lt;artifactId&gt;maven-assembly-plugin&lt;/artifactId&gt;
-      &lt;configuration&gt;
-        &lt;archive&gt;
-          &lt;manifest&gt;
-            &lt;mainClass&gt;fully.qualified.MainClass&lt;/mainClass&gt;
-          &lt;/manifest&gt;
-        &lt;/archive&gt;
-        &lt;descriptorRefs&gt;
-          &lt;descriptorRef&gt;jar-with-dependencies&lt;/descriptorRef&gt;
-        &lt;/descriptorRefs&gt;
-      &lt;/configuration&gt;
-    &lt;/plugin&gt;
-  &lt;/plugins&gt;
-&lt;/build&gt;
+<build>
+  <plugins>
+    <plugin>
+      <artifactId>maven-assembly-plugin</artifactId>
+      <configuration>
+        <archive>
+          <manifest>
+            <mainClass>fully.qualified.MainClass</mainClass>
+          </manifest>
+        </archive>
+        <descriptorRefs>
+          <descriptorRef>jar-with-dependencies</descriptorRef>
+        </descriptorRefs>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>
 ```
 
 and you run it with  
@@ -3752,66 +3752,66 @@ See more details in comments.
 Commonly this goal is tied to a build phase to execute automatically. This ensures the JAR is built when executing `mvn install` or performing a deployment/release.  
 
 ```java
-&lt;plugin&gt;
-  &lt;artifactId&gt;maven-assembly-plugin&lt;/artifactId&gt;
-  &lt;configuration&gt;
-    &lt;archive&gt;
-      &lt;manifest&gt;
-        &lt;mainClass&gt;fully.qualified.MainClass&lt;/mainClass&gt;
-      &lt;/manifest&gt;
-    &lt;/archive&gt;
-    &lt;descriptorRefs&gt;
-      &lt;descriptorRef&gt;jar-with-dependencies&lt;/descriptorRef&gt;
-    &lt;/descriptorRefs&gt;
-  &lt;/configuration&gt;
-  &lt;executions&gt;
-    &lt;execution&gt;
-      &lt;id&gt;make-assembly&lt;/id&gt; &lt;!-- this is used for inheritance merges --&gt;
-      &lt;phase&gt;package&lt;/phase&gt; &lt;!-- bind to the packaging phase --&gt;
-      &lt;goals&gt;
-        &lt;goal&gt;single&lt;/goal&gt;
-      &lt;/goals&gt;
-    &lt;/execution&gt;
-  &lt;/executions&gt;
-&lt;/plugin&gt;
+<plugin>
+  <artifactId>maven-assembly-plugin</artifactId>
+  <configuration>
+    <archive>
+      <manifest>
+        <mainClass>fully.qualified.MainClass</mainClass>
+      </manifest>
+    </archive>
+    <descriptorRefs>
+      <descriptorRef>jar-with-dependencies</descriptorRef>
+    </descriptorRefs>
+  </configuration>
+  <executions>
+    <execution>
+      <id>make-assembly</id> <!-- this is used for inheritance merges -->
+      <phase>package</phase> <!-- bind to the packaging phase -->
+      <goals>
+        <goal>single</goal>
+      </goals>
+    </execution>
+  </executions>
+</plugin>
 ```
 
 #### Answer 2 (score 331)
 You can use the dependency-plugin to generate all dependencies in a separate directory before the package phase and then include that in the classpath of the manifest:  
 
 ```java
-&lt;plugin&gt;
-    &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-    &lt;artifactId&gt;maven-dependency-plugin&lt;/artifactId&gt;
-    &lt;executions&gt;
-        &lt;execution&gt;
-            &lt;id&gt;copy-dependencies&lt;/id&gt;
-            &lt;phase&gt;prepare-package&lt;/phase&gt;
-            &lt;goals&gt;
-                &lt;goal&gt;copy-dependencies&lt;/goal&gt;
-            &lt;/goals&gt;
-            &lt;configuration&gt;
-                &lt;outputDirectory&gt;${project.build.directory}/lib&lt;/outputDirectory&gt;
-                &lt;overWriteReleases&gt;false&lt;/overWriteReleases&gt;
-                &lt;overWriteSnapshots&gt;false&lt;/overWriteSnapshots&gt;
-                &lt;overWriteIfNewer&gt;true&lt;/overWriteIfNewer&gt;
-            &lt;/configuration&gt;
-        &lt;/execution&gt;
-    &lt;/executions&gt;
-&lt;/plugin&gt;
-&lt;plugin&gt;
-    &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-    &lt;artifactId&gt;maven-jar-plugin&lt;/artifactId&gt;
-    &lt;configuration&gt;
-        &lt;archive&gt;
-            &lt;manifest&gt;
-                &lt;addClasspath&gt;true&lt;/addClasspath&gt;
-                &lt;classpathPrefix&gt;lib/&lt;/classpathPrefix&gt;
-                &lt;mainClass&gt;theMainClass&lt;/mainClass&gt;
-            &lt;/manifest&gt;
-        &lt;/archive&gt;
-    &lt;/configuration&gt;
-&lt;/plugin&gt;
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-dependency-plugin</artifactId>
+    <executions>
+        <execution>
+            <id>copy-dependencies</id>
+            <phase>prepare-package</phase>
+            <goals>
+                <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+                <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                <overWriteReleases>false</overWriteReleases>
+                <overWriteSnapshots>false</overWriteSnapshots>
+                <overWriteIfNewer>true</overWriteIfNewer>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-jar-plugin</artifactId>
+    <configuration>
+        <archive>
+            <manifest>
+                <addClasspath>true</addClasspath>
+                <classpathPrefix>lib/</classpathPrefix>
+                <mainClass>theMainClass</mainClass>
+            </manifest>
+        </archive>
+    </configuration>
+</plugin>
 ```
 
 Alternatively use `${project.build.directory}/classes/lib` as OutputDirectory to integrate all jar-files into the main jar, but then you will need to add custom classloading code to load the jars.  
@@ -3843,40 +3843,40 @@ Those pros and cons are provided by <a href="https://stackoverflow.com/users/363
 <h5>Copy Dependencies to a specific directory</h3>
 
 ```java
-&lt;plugin&gt;
-  &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-  &lt;artifactId&gt;maven-dependency-plugin&lt;/artifactId&gt;
-  &lt;executions&gt;
-    &lt;execution&gt;
-      &lt;id&gt;copy-dependencies&lt;/id&gt;
-      &lt;phase&gt;prepare-package&lt;/phase&gt;
-      &lt;goals&gt;
-        &lt;goal&gt;copy-dependencies&lt;/goal&gt;
-      &lt;/goals&gt;
-      &lt;configuration&gt;
-        &lt;outputDirectory&gt;${project.build.directory}/${project.build.finalName}.lib&lt;/outputDirectory&gt;
-      &lt;/configuration&gt;
-    &lt;/execution&gt;
-  &lt;/executions&gt;
-&lt;/plugin&gt;
+<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-dependency-plugin</artifactId>
+  <executions>
+    <execution>
+      <id>copy-dependencies</id>
+      <phase>prepare-package</phase>
+      <goals>
+        <goal>copy-dependencies</goal>
+      </goals>
+      <configuration>
+        <outputDirectory>${project.build.directory}/${project.build.finalName}.lib</outputDirectory>
+      </configuration>
+    </execution>
+  </executions>
+</plugin>
 ```
 
 <h5>Make the Jar Executable and Classpath Aware</h3>
 
 ```java
-&lt;plugin&gt;
-  &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-  &lt;artifactId&gt;maven-jar-plugin&lt;/artifactId&gt;
-  &lt;configuration&gt;
-    &lt;archive&gt;
-      &lt;manifest&gt;
-        &lt;addClasspath&gt;true&lt;/addClasspath&gt;
-        &lt;classpathPrefix&gt;${project.build.finalName}.lib/&lt;/classpathPrefix&gt;
-        &lt;mainClass&gt;${fully.qualified.main.class}&lt;/mainClass&gt;
-      &lt;/manifest&gt;
-    &lt;/archive&gt;
-  &lt;/configuration&gt;
-&lt;/plugin&gt;
+<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-jar-plugin</artifactId>
+  <configuration>
+    <archive>
+      <manifest>
+        <addClasspath>true</addClasspath>
+        <classpathPrefix>${project.build.finalName}.lib/</classpathPrefix>
+        <mainClass>${fully.qualified.main.class}</mainClass>
+      </manifest>
+    </archive>
+  </configuration>
+</plugin>
 ```
 
 At this point the `jar` is actually executable with external classpath elements.  
@@ -3891,30 +3891,30 @@ $ java -jar target/${project.build.finalName}.jar
 
 
 ```java
-&lt;plugin&gt;
-  &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-  &lt;artifactId&gt;maven-antrun-plugin&lt;/artifactId&gt;
-  &lt;executions&gt;
-    &lt;execution&gt;
-      &lt;id&gt;antrun-archive&lt;/id&gt;
-      &lt;phase&gt;package&lt;/phase&gt;
-      &lt;goals&gt;
-        &lt;goal&gt;run&lt;/goal&gt;
-      &lt;/goals&gt;
-      &lt;configuration&gt;
-        &lt;target&gt;
-          &lt;property name="final.name" value="${project.build.directory}/${project.build.finalName}"/&gt;
-          &lt;property name="archive.includes" value="${project.build.finalName}.${project.packaging} ${project.build.finalName}.lib/*"/&gt;
-          &lt;property name="tar.destfile" value="${final.name}.tar"/&gt;
-          &lt;zip basedir="${project.build.directory}" destfile="${final.name}.zip" includes="${archive.includes}" /&gt;
-          &lt;tar basedir="${project.build.directory}" destfile="${tar.destfile}" includes="${archive.includes}" /&gt;
-          &lt;gzip src="${tar.destfile}" destfile="${tar.destfile}.gz" /&gt;
-          &lt;bzip2 src="${tar.destfile}" destfile="${tar.destfile}.bz2" /&gt;
-        &lt;/target&gt;
-      &lt;/configuration&gt;
-    &lt;/execution&gt;
-  &lt;/executions&gt;
-&lt;/plugin&gt;
+<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-antrun-plugin</artifactId>
+  <executions>
+    <execution>
+      <id>antrun-archive</id>
+      <phase>package</phase>
+      <goals>
+        <goal>run</goal>
+      </goals>
+      <configuration>
+        <target>
+          <property name="final.name" value="${project.build.directory}/${project.build.finalName}"/>
+          <property name="archive.includes" value="${project.build.finalName}.${project.packaging} ${project.build.finalName}.lib/*"/>
+          <property name="tar.destfile" value="${final.name}.tar"/>
+          <zip basedir="${project.build.directory}" destfile="${final.name}.zip" includes="${archive.includes}" />
+          <tar basedir="${project.build.directory}" destfile="${tar.destfile}" includes="${archive.includes}" />
+          <gzip src="${tar.destfile}" destfile="${tar.destfile}.gz" />
+          <bzip2 src="${tar.destfile}" destfile="${tar.destfile}.bz2" />
+        </target>
+      </configuration>
+    </execution>
+  </executions>
+</plugin>
 ```
 
 Now you have `target/${project.build.finalName}.(zip|tar|tar.bz2|tar.gz)` which each contains the `jar` and `lib/*`.  
@@ -3933,28 +3933,28 @@ Now you have `target/${project.build.finalName}.(zip|tar|tar.bz2|tar.gz)` which 
 </ul>
 
 ```java
-&lt;plugin&gt;
-  &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-  &lt;artifactId&gt;maven-assembly-plugin&lt;/artifactId&gt;
-  &lt;executions&gt;
-    &lt;execution&gt;
-      &lt;phase&gt;package&lt;/phase&gt;
-      &lt;goals&gt;
-        &lt;goal&gt;single&lt;/goal&gt;
-      &lt;/goals&gt;
-      &lt;configuration&gt;
-        &lt;archive&gt;
-          &lt;manifest&gt;
-            &lt;mainClass&gt;${fully.qualified.main.class}&lt;/mainClass&gt;
-          &lt;/manifest&gt;
-        &lt;/archive&gt;
-        &lt;descriptorRefs&gt;
-          &lt;descriptorRef&gt;jar-with-dependencies&lt;/descriptorRef&gt;
-        &lt;/descriptorRefs&gt;
-      &lt;/configuration&gt;
-    &lt;/execution&gt;
-  &lt;/executions&gt;
-&lt;/plugin&gt;
+<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-assembly-plugin</artifactId>
+  <executions>
+    <execution>
+      <phase>package</phase>
+      <goals>
+        <goal>single</goal>
+      </goals>
+      <configuration>
+        <archive>
+          <manifest>
+            <mainClass>${fully.qualified.main.class}</mainClass>
+          </manifest>
+        </archive>
+        <descriptorRefs>
+          <descriptorRef>jar-with-dependencies</descriptorRef>
+        </descriptorRefs>
+      </configuration>
+    </execution>
+  </executions>
+</plugin>
 ```
 
 You have `target/${project.bulid.finalName}-jar-with-dependencies.jar`.  
@@ -3969,25 +3969,25 @@ You have `target/${project.bulid.finalName}-jar-with-dependencies.jar`.
 </ul>
 
 ```java
-&lt;plugin&gt;
-  &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-  &lt;artifactId&gt;maven-shade-plugin&lt;/artifactId&gt;
-  &lt;executions&gt;
-    &lt;execution&gt;
-      &lt;goals&gt;
-        &lt;goal&gt;shade&lt;/goal&gt;
-      &lt;/goals&gt;
-      &lt;configuration&gt;
-        &lt;shadedArtifactAttached&gt;true&lt;/shadedArtifactAttached&gt;
-        &lt;transformers&gt;
-          &lt;transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer"&gt;
-            &lt;mainClass&gt;${fully.qualified.main.class}&lt;/mainClass&gt;
-          &lt;/transformer&gt;
-        &lt;/transformers&gt;
-      &lt;/configuration&gt;
-    &lt;/execution&gt;
-  &lt;/executions&gt;
-&lt;/plugin&gt;
+<plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-shade-plugin</artifactId>
+  <executions>
+    <execution>
+      <goals>
+        <goal>shade</goal>
+      </goals>
+      <configuration>
+        <shadedArtifactAttached>true</shadedArtifactAttached>
+        <transformers>
+          <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+            <mainClass>${fully.qualified.main.class}</mainClass>
+          </transformer>
+        </transformers>
+      </configuration>
+    </execution>
+  </executions>
+</plugin>
 ```
 
 You have `target/${project.build.finalName}-shaded.jar`.  
@@ -4006,25 +4006,25 @@ You have `target/${project.build.finalName}-shaded.jar`.
 </ul>
 
 ```java
-&lt;plugin&gt;
-  &lt;!--groupId&gt;org.dstovall&lt;/groupId--&gt; &lt;!-- not available on the central --&gt;
-  &lt;groupId&gt;com.jolira&lt;/groupId&gt;
-  &lt;artifactId&gt;onejar-maven-plugin&lt;/artifactId&gt;
-  &lt;executions&gt;
-    &lt;execution&gt;
-      &lt;configuration&gt;
-        &lt;mainClass&gt;${fully.qualified.main.class}&lt;/mainClass&gt;
-        &lt;attachToBuild&gt;true&lt;/attachToBuild&gt;
-        &lt;!-- https://code.google.com/p/onejar-maven-plugin/issues/detail?id=8 --&gt;
-        &lt;!--classifier&gt;onejar&lt;/classifier--&gt;
-        &lt;filename&gt;${project.build.finalName}-onejar.${project.packaging}&lt;/filename&gt;
-      &lt;/configuration&gt;
-      &lt;goals&gt;
-        &lt;goal&gt;one-jar&lt;/goal&gt;
-      &lt;/goals&gt;
-    &lt;/execution&gt;
-  &lt;/executions&gt;
-&lt;/plugin&gt;
+<plugin>
+  <!--groupId>org.dstovall</groupId--> <!-- not available on the central -->
+  <groupId>com.jolira</groupId>
+  <artifactId>onejar-maven-plugin</artifactId>
+  <executions>
+    <execution>
+      <configuration>
+        <mainClass>${fully.qualified.main.class}</mainClass>
+        <attachToBuild>true</attachToBuild>
+        <!-- https://code.google.com/p/onejar-maven-plugin/issues/detail?id=8 -->
+        <!--classifier>onejar</classifier-->
+        <filename>${project.build.finalName}-onejar.${project.packaging}</filename>
+      </configuration>
+      <goals>
+        <goal>one-jar</goal>
+      </goals>
+    </execution>
+  </executions>
+</plugin>
 ```
 
 <hr>
@@ -4041,21 +4041,21 @@ You have `target/${project.build.finalName}-shaded.jar`.
 </ul>
 
 ```java
-&lt;plugin&gt;
-  &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-  &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
-  &lt;executions&gt;
-    &lt;execution&gt;
-      &lt;goals&gt;
-        &lt;goal&gt;repackage&lt;/goal&gt;
-      &lt;/goals&gt;
-      &lt;configuration&gt;
-        &lt;classifier&gt;spring-boot&lt;/classifier&gt;
-        &lt;mainClass&gt;${fully.qualified.main.class}&lt;/mainClass&gt;
-      &lt;/configuration&gt;
-    &lt;/execution&gt;
-  &lt;/executions&gt;
-&lt;/plugin&gt;
+<plugin>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-maven-plugin</artifactId>
+  <executions>
+    <execution>
+      <goals>
+        <goal>repackage</goal>
+      </goals>
+      <configuration>
+        <classifier>spring-boot</classifier>
+        <mainClass>${fully.qualified.main.class}</mainClass>
+      </configuration>
+    </execution>
+  </executions>
+</plugin>
 ```
 
 You have `target/${project.bulid.finalName}-spring-boot.jar`.  
@@ -4178,13 +4178,13 @@ To put this another way, there are two instances where null checking comes up:
 (2) is easy.  Either use `assert` statements (assertions) or allow failure (for example,  <a href="http://docs.oracle.com/javase/6/docs/api/index.html?java/lang/NullPointerException.html" rel="noreferrer">NullPointerException</a>).  Assertions are a highly-underused Java feature that was added in 1.4.  The syntax is:  
 
 ```java
-assert &lt;condition&gt;
+assert <condition>
 ```
 
 or  
 
 ```java
-assert &lt;condition&gt; : &lt;object&gt;
+assert <condition> : <object>
 ```
 
 where `&lt;condition&gt;` is a boolean expression and `&lt;object&gt;` is an object whose `toString()` method's output will be included in the error.  
@@ -4425,7 +4425,7 @@ How can I fix this issue?
 This exception is thrown when an application attempts to perform a networking operation on its main thread. Run your code in <a href="http://developer.android.com/reference/android/os/AsyncTask.html" rel="noreferrer">`AsyncTask`</a>:  
 
 ```java
-class RetrieveFeedTask extends AsyncTask&lt;String, Void, RSSFeed&gt; {
+class RetrieveFeedTask extends AsyncTask<String, Void, RSSFeed> {
 
     private Exception exception;
 
@@ -4468,7 +4468,7 @@ new RetrieveFeedTask().execute(urlToRssFeed);
 Don't forget to add this to `AndroidManifest.xml` file:  
 
 ```java
-&lt;uses-permission android:name="android.permission.INTERNET"/&gt;
+<uses-permission android:name="android.permission.INTERNET"/>
 ```
 
 #### Answer 2 (score 640)
@@ -4491,7 +4491,7 @@ and
 ADD this permission in android manifest.xml file:      
 
 ```java
-&lt;uses-permission android:name="android.permission.INTERNET"/&gt;
+<uses-permission android:name="android.permission.INTERNET"/>
 ```
 
 Consequences:  
@@ -4594,8 +4594,8 @@ a) All optional parameters are of the same type:
 
 ```java
 void foo(String a, Integer... b) {
-    Integer b1 = b.length &gt; 0 ? b[0] : 0;
-    Integer b2 = b.length &gt; 1 ? b[1] : 0;
+    Integer b1 = b.length > 0 ? b[0] : 0;
+    Integer b2 = b.length > 1 ? b[1] : 0;
     //...
 }
 
@@ -4609,13 +4609,13 @@ b) Types of optional parameters may be different:
 void foo(String a, Object... b) {
     Integer b1 = 0;
     String b2 = "";
-    if (b.length &gt; 0) {
+    if (b.length > 0) {
       if (!(b[0] instanceof Integer)) { 
           throw new IllegalArgumentException("...");
       }
       b1 = (Integer)b[0];
     }
-    if (b.length &gt; 1) {
+    if (b.length > 1) {
         if (!(b[1] instanceof String)) { 
             throw new IllegalArgumentException("...");
         }
@@ -4647,13 +4647,13 @@ Now all arguments values must be provided, but the default ones may be null.  </
 <li><p><strong>Optional class.</strong> This approach is similar to nulls, but uses Java 8 Optional class for parameters that have a default value:</p>
 
 ```java
-void foo(String a, Optional&lt;Integer&gt; bOpt) {
+void foo(String a, Optional<Integer> bOpt) {
     Integer b = bOpt.isPresent() ? bOpt.get() : 0;
     //...
 }
 
 foo("a", Optional.of(2));
-foo("a", Optional.&lt;Integer&gt;absent());
+foo("a", Optional.<Integer>absent());
 ```
 
 Optional makes a method contract explicit for a caller, however, one may find such signature too verbose.  </li>
@@ -4696,7 +4696,7 @@ Optional makes a method contract explicit for a caller, however, one may find su
 <li><p><strong>Maps.</strong> When the number of parameters is too large and for most of them default values are usually used, you can pass method arguments as a map of their names/values:</p>
 
 ```java
-void foo(Map&lt;String, Object&gt; parameters) {
+void foo(Map<String, Object> parameters) {
     String a = ""; 
     Integer b = 0;
     if (parameters.containsKey("a")) { 
@@ -4710,7 +4710,7 @@ void foo(Map&lt;String, Object&gt; parameters) {
     //...
 }
 
-foo(ImmutableMap.&lt;String, Object&gt;of(
+foo(ImmutableMap.<String, Object>of(
     "a", "a",
     "b", 2, 
     "d", "value")); 
@@ -4752,9 +4752,9 @@ You can use `break` with a label for the outer loop. For example:
 public class Test {
     public static void main(String[] args) {
         outerloop:
-        for (int i=0; i &lt; 5; i++) {
-            for (int j=0; j &lt; 5; j++) {
-                if (i * j &gt; 6) {
+        for (int i=0; i < 5; i++) {
+            for (int j=0; j < 5; j++) {
+                if (i * j > 6) {
                     System.out.println("Breaking");
                     break outerloop;
                 }
@@ -4819,9 +4819,9 @@ Matching the example for the accepted answer:
     }
 
     public static void loop() {
-        for (int i = 0; i &lt; 5; i++) {
-            for (int j = 0; j &lt; 5; j++) {
-                if (i * j &gt; 6) {
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                if (i * j > 6) {
                     System.out.println("Breaking");
                     return;
                 }
@@ -4909,13 +4909,13 @@ Here's a nifty utility I use:
 ```java
 /**
  * A common method for all enums since they can't have another base class
- * @param &lt;T&gt; Enum type
+ * @param <T> Enum type
  * @param c enum type. All enums must be all caps.
  * @param string case insensitive
  * @return corresponding enum, or null
  */
-public static &lt;T extends Enum&lt;T&gt;&gt; T getEnumFromString(Class&lt;T&gt; c, String string) {
-    if( c != null &amp;&amp; string != null ) {
+public static <T extends Enum<T>> T getEnumFromString(Class<T> c, String string) {
+    if( c != null && string != null ) {
         try {
             return Enum.valueOf(c, string.trim().toUpperCase());
         } catch(IllegalArgumentException ex) {
@@ -4967,7 +4967,7 @@ Since <a href="//docs.oracle.com/javase/8/docs/api/java/util/Date.html" rel="nor
 So your custom <a href="//docs.oracle.com/javase/8/docs/api/java/util/Comparator.html" rel="noreferrer">`Comparator`</a> could look like this:  
 
 ```java
-public class CustomComparator implements Comparator&lt;MyObject&gt; {
+public class CustomComparator implements Comparator<MyObject> {
     @Override
     public int compare(MyObject o1, MyObject o2) {
         return o1.getStartDate().compareTo(o2.getStartDate());
@@ -4986,7 +4986,7 @@ Collections.sort(Database.arrayList, new CustomComparator());
 A slightly shorter way to write all this, if you don't need to reuse your comparator, is to write it as an inline anonymous class:  
 
 ```java
-Collections.sort(Database.arrayList, new Comparator&lt;MyObject&gt;() {
+Collections.sort(Database.arrayList, new Comparator<MyObject>() {
     @Override
     public int compare(MyObject o1, MyObject o2) {
         return o1.getStartDate().compareTo(o2.getStartDate());
@@ -5002,13 +5002,13 @@ You can now write the last example in a shorter form by using a <a href="//docs.
 
 ```java
 Collections.sort(Database.arrayList, 
-                        (o1, o2) -&gt; o1.getStartDate().compareTo(o2.getStartDate()));
+                        (o1, o2) -> o1.getStartDate().compareTo(o2.getStartDate()));
 ```
 
 And `List` has a <a href="//docs.oracle.com/javase/8/docs/api/java/util/List.html#sort-java.util.Comparator-" rel="noreferrer">`sort(Comparator)`</a> method, so you can shorten this even further:  
 
 ```java
-Database.arrayList.sort((o1, o2) -&gt; o1.getStartDate().compareTo(o2.getStartDate()));
+Database.arrayList.sort((o1, o2) -> o1.getStartDate().compareTo(o2.getStartDate()));
 ```
 
 This is such a common idiom that there's <a href="//docs.oracle.com/javase/8/docs/api/java/util/Comparator.html#comparing-java.util.function.Function-" rel="noreferrer">a built-in method</a> to generate a `Comparator` for a class with a `Comparable` key:  
@@ -5025,7 +5025,7 @@ Classes that has a natural sort order (a class Number, as an example) should imp
 Two examples:  
 
 ```java
-public class Number implements Comparable&lt;Number&gt; {
+public class Number implements Comparable<Number> {
     private int value;
 
     public Number(int value) { this.value = value; }
@@ -5044,12 +5044,12 @@ public class Chair {
     }
     /* Omitting getters and setters */
 }
-class ChairWeightComparator implements Comparator&lt;Chair&gt; {
+class ChairWeightComparator implements Comparator<Chair> {
     public int compare(Chair chair1, Chair chair2) {
         return chair1.getWeight() - chair2.getWeight();
     }
 }
-class ChairHeightComparator implements Comparator&lt;Chair&gt; {
+class ChairHeightComparator implements Comparator<Chair> {
     public int compare(Chair chair1, Chair chair2) {
         return chair1.getHeight() - chair2.getHeight();
     }
@@ -5059,11 +5059,11 @@ class ChairHeightComparator implements Comparator&lt;Chair&gt; {
 Usage:  
 
 ```java
-List&lt;Number&gt; numbers = new ArrayList&lt;Number&gt;();
+List<Number> numbers = new ArrayList<Number>();
 ...
 Collections.sort(numbers);
 
-List&lt;Chair&gt; chairs = new ArrayList&lt;Chair&gt;();
+List<Chair> chairs = new ArrayList<Chair>();
 // Sort by weight:
 Collections.sort(chairs, new ChairWeightComparator());
 // Sort by height:
@@ -5071,7 +5071,7 @@ Collections.sort(chairs, new ChairHeightComparator());
 
 // You can also create anonymous comparators;
 // Sort by color:
-Collections.sort(chairs, new Comparator&lt;Chair&gt;() {
+Collections.sort(chairs, new Comparator<Chair>() {
     public int compare(Chair chair1, Chair chair2) {
         ...
     }
@@ -5082,7 +5082,7 @@ Collections.sort(chairs, new Comparator&lt;Chair&gt;() {
 For sorting an `ArrayList` you could use the following code snippet:  
 
 ```java
-Collections.sort(studList, new Comparator&lt;Student&gt;(){
+Collections.sort(studList, new Comparator<Student>(){
     public int compare(Student s1, Student s2) {
         return s1.getFirstName().compareToIgnoreCase(s2.getFirstName());
     }
@@ -5117,7 +5117,7 @@ String[] both = ArrayUtils.addAll(first, second);
 Here's a simple method that will concatenate two arrays and return the result:  
 
 ```java
-public &lt;T&gt; T[] concatenate(T[] a, T[] b) {
+public <T> T[] concatenate(T[] a, T[] b) {
     int aLen = a.length;
     int bLen = b.length;
 
@@ -5137,14 +5137,14 @@ The following slightly more complicated version works with both object and primi
 It also makes it possible to concatenate arrays of two different types by picking the most general type as the component type of the result.  
 
 ```java
-public static &lt;T&gt; T concatenate(T a, T b) {
+public static <T> T concatenate(T a, T b) {
     if (!a.getClass().isArray() || !b.getClass().isArray()) {
         throw new IllegalArgumentException();
     }
 
-    Class&lt;?&gt; resCompType;
-    Class&lt;?&gt; aCompType = a.getClass().getComponentType();
-    Class&lt;?&gt; bCompType = b.getClass().getComponentType();
+    Class<?> resCompType;
+    Class<?> aCompType = a.getClass().getComponentType();
+    Class<?> bCompType = b.getClass().getComponentType();
 
     if (aCompType.isAssignableFrom(bCompType)) {
         resCompType = aCompType;
@@ -5181,7 +5181,7 @@ Assert.assertArrayEquals(new Number[] { 1, 2, 3f }, concatenate(new Integer[] { 
 I've always been one to simply use:  
 
 ```java
-List&lt;String&gt; names = new ArrayList&lt;&gt;();
+List<String> names = new ArrayList<>();
 ```
 
 I use the interface as the type name for <em>portability</em>, so that when I ask questions such as these I can rework my code.    
@@ -5306,7 +5306,7 @@ String param1 = "value1";
 String param2 = "value2";
 // ...
 
-String query = String.format("param1=%s&amp;param2=%s", 
+String query = String.format("param1=%s&param2=%s", 
      URLEncoder.encode(param1, charset), 
      URLEncoder.encode(param2, charset));
 ```
@@ -5399,7 +5399,7 @@ int status = httpConnection.getResponseCode();
 <li><p><a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html" rel="noreferrer">HTTP response headers</a>:</p>
 
 ```java
-for (Entry&lt;String, List&lt;String&gt;&gt; header : connection.getHeaderFields().entrySet()) {
+for (Entry<String, List<String>> header : connection.getHeaderFields().entrySet()) {
     System.out.println(header.getKey() + "=" + header.getValue());
 }
 ```</li>
@@ -5456,7 +5456,7 @@ Note that this is known to not always work properly in all circumstances. If it 
 ```java
 // Gather all cookies on the first request.
 URLConnection connection = new URL(url).openConnection();
-List&lt;String&gt; cookies = connection.getHeaderFields().get("Set-Cookie");
+List<String> cookies = connection.getHeaderFields().get("Set-Cookie");
 // ...
 
 // Then use the same cookies on all subsequent requests.
@@ -5903,7 +5903,7 @@ This is to indicate that the class defines a data repository.
 In addition to pointing out, that this is an <em>Annotation based Configuration</em>, `@Repository`’s job is to catch platform specific exceptions and re-throw them as one of Spring’s unified unchecked exception. For this, we’re provided with `PersistenceExceptionTranslationPostProcessor`, that we are required to add in our Spring’s application context like this:  
 
 ```java
-&lt;bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/&gt;
+<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
 ```
 
 This bean post processor adds an advisor to any bean that’s annotated with `@Repository` so that any platform-specific exceptions are caught and then re-thrown as one of Spring’s unchecked data access exceptions.  
@@ -6002,7 +6002,7 @@ import java.lang.reflect.Field;
 public static String dump(Object o, int callCount) {
     callCount++;
     StringBuffer tabs = new StringBuffer();
-    for (int k = 0; k &lt; callCount; k++) {
+    for (int k = 0; k < callCount; k++) {
         tabs.append("\t");
     }
     StringBuffer buffer = new StringBuffer();
@@ -6011,8 +6011,8 @@ public static String dump(Object o, int callCount) {
         buffer.append("\n");
         buffer.append(tabs.toString());
         buffer.append("[");
-        for (int i = 0; i &lt; Array.getLength(o); i++) {
-            if (i &lt; 0)
+        for (int i = 0; i < Array.getLength(o); i++) {
+            if (i < 0)
                 buffer.append(",");
             Object value = Array.get(o, i);
             if (value.getClass().isPrimitive() ||
@@ -6034,7 +6034,7 @@ public static String dump(Object o, int callCount) {
         buffer.append("{\n");
         while (oClass != null) {
             Field[] fields = oClass.getDeclaredFields();
-            for (int i = 0; i &lt; fields.length; i++) {
+            for (int i = 0; i < fields.length; i++) {
                 buffer.append(tabs.toString());
                 fields[i].setAccessible(true);
                 buffer.append(fields[i].getName());
@@ -6130,13 +6130,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Test {
-    private static final Map&lt;Integer, String&gt; myMap = new HashMap&lt;Integer, String&gt;();
+    private static final Map<Integer, String> myMap = new HashMap<Integer, String>();
     static {
         myMap.put(1, "one");
         myMap.put(2, "two");
     }
 
-    private static final Map&lt;Integer, String&gt; myMap2 = new HashMap&lt;Integer, String&gt;(){
+    private static final Map<Integer, String> myMap2 = new HashMap<Integer, String>(){
         {
             put(1, "one");
             put(2, "two");
@@ -6152,9 +6152,9 @@ You can create an immutable map using a static initialiser too:
 
 ```java
 public class Test {
-    private static final Map&lt;Integer, String&gt; myMap;
+    private static final Map<Integer, String> myMap;
     static {
-        Map&lt;Integer, String&gt; aMap = ....;
+        Map<Integer, String> aMap = ....;
         aMap.put(1, "one");
         aMap.put(2, "two");
         myMap = Collections.unmodifiableMap(aMap);
@@ -6166,7 +6166,7 @@ public class Test {
 I like the <a href="https://github.com/google/guava" rel="noreferrer">Guava</a> way of initialising a static, immutable map:  
 
 ```java
-static final Map&lt;Integer, String&gt; MY_MAP = ImmutableMap.of(
+static final Map<Integer, String> MY_MAP = ImmutableMap.of(
     1, "one",
     2, "two"
 );
@@ -6177,7 +6177,7 @@ As you can see, it's very concise (because of the convenient factory methods in 
 If you want the map to have more than 5 entries, you can no longer use `ImmutableMap.of()`. Instead, try <a href="https://google.github.io/guava/releases/snapshot/api/docs/com/google/common/collect/ImmutableMap.html#builder--" rel="noreferrer">`ImmutableMap.builder()`</a> along these lines:  
 
 ```java
-static final Map&lt;Integer, String&gt; MY_MAP = ImmutableMap.&lt;Integer, String&gt;builder()
+static final Map<Integer, String> MY_MAP = ImmutableMap.<Integer, String>builder()
     .put(1, "one")
     .put(2, "two")
     // ... 
@@ -6200,7 +6200,7 @@ As for future of Guava in general, with regards to Java 8, Louis Wasserman <a hr
 <strong>Update (2016)</strong>: As <a href="https://stackoverflow.com/questions/507602/how-can-i-initialise-a-static-map/34508760#34508760">Tagir Valeev points out</a>, <strong>Java 9</strong> will finally make this clean to do using nothing but pure JDK, by adding <a href="http://openjdk.java.net/jeps/269" rel="noreferrer">convenience factory methods</a> for collections:  
 
 ```java
-static final Map&lt;Integer, String&gt; MY_MAP = Map.of(
+static final Map<Integer, String> MY_MAP = Map.of(
     1, "one", 
     2, "two"
 );
@@ -6211,10 +6211,10 @@ I would use:
 
 ```java
 public class Test {
-    private static final Map&lt;Integer, String&gt; MY_MAP = createMap();
+    private static final Map<Integer, String> MY_MAP = createMap();
 
-    private static Map&lt;Integer, String&gt; createMap() {
-        Map&lt;Integer, String&gt; result = new HashMap&lt;Integer, String&gt;();
+    private static Map<Integer, String> createMap() {
+        Map<Integer, String> result = new HashMap<Integer, String>();
         result.put(1, "one");
         result.put(2, "two");
         return Collections.unmodifiableMap(result);
@@ -6428,11 +6428,11 @@ Install the JAR into your local Maven repository as follows:
 
 ```java
 mvn install:install-file \
-   -Dfile=&lt;path-to-file&gt; \
-   -DgroupId=&lt;group-id&gt; \
-   -DartifactId=&lt;artifact-id&gt; \
-   -Dversion=&lt;version&gt; \
-   -Dpackaging=&lt;packaging&gt; \
+   -Dfile=<path-to-file> \
+   -DgroupId=<group-id> \
+   -DartifactId=<artifact-id> \
+   -Dversion=<version> \
+   -Dpackaging=<packaging> \
    -DgeneratePom=true
 ```
 
@@ -6459,13 +6459,13 @@ Where each refers to:
 You can add local dependencies directly (as mentioned in <a href="https://stackoverflow.com/questions/4491199/build-maven-project-with-propriatery-libraries-included/4491343#4491343">build maven project with propriatery libraries included</a>) like this:  
 
 ```java
-&lt;dependency&gt;
-    &lt;groupId&gt;com.sample&lt;/groupId&gt;
-    &lt;artifactId&gt;sample&lt;/artifactId&gt;
-    &lt;version&gt;1.0&lt;/version&gt;
-    &lt;scope&gt;system&lt;/scope&gt;
-    &lt;systemPath&gt;${project.basedir}/src/main/resources/Name_Your_JAR.jar&lt;/systemPath&gt;
-&lt;/dependency&gt;
+<dependency>
+    <groupId>com.sample</groupId>
+    <artifactId>sample</artifactId>
+    <version>1.0</version>
+    <scope>system</scope>
+    <systemPath>${project.basedir}/src/main/resources/Name_Your_JAR.jar</systemPath>
+</dependency>
 ```
 
 <strong>Update</strong>  
@@ -6488,22 +6488,22 @@ I have my master project on `${master_project}` location and subproject1 is on `
 In the pom file in subproject1 located at `${master_project}/${subproject1}/pom.xml`, the repository needs to be specified which would take file path as a URL parameter:  
 
 ```java
-&lt;repositories&gt;
-    &lt;repository&gt;
-        &lt;id&gt;local-maven-repo&lt;/id&gt;
-        &lt;url&gt;file:///${project.parent.basedir}/local-maven-repo&lt;/url&gt;
-    &lt;/repository&gt;
-&lt;/repositories&gt;
+<repositories>
+    <repository>
+        <id>local-maven-repo</id>
+        <url>file:///${project.parent.basedir}/local-maven-repo</url>
+    </repository>
+</repositories>
 ```
 
 The dependency can be specified as for any other repository. This makes your pom repository independent. For instance, once the desired JAR is available in Maven central, you just need to delete it from your local repo and it will be pulled from the default repo.   
 
 ```java
-    &lt;dependency&gt;
-        &lt;groupId&gt;org.apache.felix&lt;/groupId&gt;
-        &lt;artifactId&gt;org.apache.felix.servicebinder&lt;/artifactId&gt;
-        &lt;version&gt;0.9.0-SNAPSHOT&lt;/version&gt;
-    &lt;/dependency&gt;
+    <dependency>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>org.apache.felix.servicebinder</artifactId>
+        <version>0.9.0-SNAPSHOT</version>
+    </dependency>
 ```
 
 The last but not least thing to do is to add the JAR file to local repository using -DlocalRepositoryPath switch like so:  
@@ -6545,7 +6545,7 @@ public class Main {
         {
             StringBuffer sb = new StringBuffer();
             t = System.currentTimeMillis();
-            for (int i = N; i --&gt; 0 ;) {
+            for (int i = N; i --> 0 ;) {
                 sb.append("");
             }
             System.out.println(System.currentTimeMillis() - t);
@@ -6554,7 +6554,7 @@ public class Main {
         {
             StringBuilder sb = new StringBuilder();
             t = System.currentTimeMillis();
-            for (int i = N; i &gt; 0 ; i--) {
+            for (int i = N; i > 0 ; i--) {
                 sb.append("");
             }
             System.out.println(System.currentTimeMillis() - t);
@@ -6590,7 +6590,7 @@ The same happened with `Vector` and `ArrayList`.
 Due to the implementation of Java generics, you can't have code like this:   
 
 ```java
-public class GenSet&lt;E&gt; {
+public class GenSet<E> {
     private E a[];
 
     public GenSet() {
@@ -6606,8 +6606,8 @@ I saw a solution on the Java forums that goes like this:
 ```java
 import java.lang.reflect.Array;
 
-class Stack&lt;T&gt; {
-    public Stack(Class&lt;T&gt; clazz, int capacity) {
+class Stack<T> {
+    public Stack(Class<T> clazz, int capacity) {
         array = (T[])Array.newInstance(clazz, capacity);
     }
 
@@ -6627,11 +6627,11 @@ What does that mean?</p>
 -> in that case, you should write:  
 
 ```java
-public class GenSet&lt;E&gt; {
+public class GenSet<E> {
 
     private E[] a;
 
-    public GenSet(Class&lt;E&gt; c, int s) {
+    public GenSet(Class<E> c, int s) {
         // Use Array native method to create array
         // of a type only known at run time
         @SuppressWarnings("unchecked")
@@ -6649,7 +6649,7 @@ public class GenSet&lt;E&gt; {
 -> in that case, you should write  
 
 ```java
-public class GenSet&lt;E&gt; {
+public class GenSet<E> {
 
     private Object[] a;
 
@@ -6668,7 +6668,7 @@ public class GenSet&lt;E&gt; {
 Note that the component type of the array should be the <a href="http://docs.oracle.com/javase/tutorial/java/generics/erasure.html" rel="noreferrer"><em>erasure</em></a> of the type parameter:  
 
 ```java
-public class GenSet&lt;E extends Foo&gt; { // E has an upper bound of Foo
+public class GenSet<E extends Foo> { // E has an upper bound of Foo
 
     private Foo[] a; // E erases to Foo, so use Foo[]
 
@@ -6704,15 +6704,15 @@ Here's how to use generics to get an array of precisely the type you’re lookin
 ```java
 import java.lang.reflect.Array;  
 
-public class GenSet&lt;E&gt; {  
+public class GenSet<E> {  
     private E[] a;  
 
-    public GenSet(Class&lt;E[]&gt; clazz, int length) {  
+    public GenSet(Class<E[]> clazz, int length) {  
         a = clazz.cast(Array.newInstance(clazz.getComponentType(), length));  
     }  
 
     public static void main(String[] args) {  
-        GenSet&lt;String&gt; foo = new GenSet&lt;String&gt;(String[].class, 1);  
+        GenSet<String> foo = new GenSet<String>(String[].class, 1);  
         String[] bar = foo.a;  
         foo.a[0] = "xyzzy";  
         String baz = foo.a[0];  
@@ -6745,7 +6745,7 @@ Regarding Joachim Sauer's comment on <a href="https://stackoverflow.com/question
 Edit regarding Ingo's comments:  
 
 ```java
-public static &lt;T&gt; T[] newArray(Class&lt;T[]&gt; type, int size) {
+public static <T> T[] newArray(Class<T[]> type, int size) {
    return type.cast(Array.newInstance(type.getComponentType(), size));
 }
 ```
@@ -7024,7 +7024,7 @@ public class Container$Item {
     MAXLOCALS = 1
 
   // access flags 1
-  public &lt;init&gt;(Container,Object) : void
+  public <init>(Container,Object) : void
    L0
     LINENUMBER 12 L0
     ALOAD 0: this
@@ -7033,7 +7033,7 @@ public class Container$Item {
    L1
     LINENUMBER 10 L1
     ALOAD 0: this
-    INVOKESPECIAL Object.&lt;init&gt;() : void
+    INVOKESPECIAL Object.<init>() : void
    L2
     LINENUMBER 11 L2
     ALOAD 0: this
@@ -7117,13 +7117,13 @@ In general, I would recommend using something like `Runnable` rather than `Threa
 If you don't need a particular result, consider using constructions of the form:   
 
 ```java
-Future&lt;?&gt; f = new FutureTask&lt;Object&gt;(runnable, null)
+Future<?> f = new FutureTask<Object>(runnable, null)
 ```
 
 So, if we replace their `runnable` with your `threadA`, we get the following:  
 
 ```java
-new FutureTask&lt;Object&gt;(threadA, null)
+new FutureTask<Object>(threadA, null)
 ```
 
 Another option that allows you to stay closer to Runnables is a <a href="http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ThreadPoolExecutor.html" rel="noreferrer">ThreadPoolExecutor</a>.  You can use the <a href="http://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ThreadPoolExecutor.html#execute%28java.lang.Runnable%29" rel="noreferrer">execute</a> method to pass in a Runnable to execute "the given task sometime in the future."  
@@ -7829,7 +7829,7 @@ The `AsyncTask` will look like this:
 ```java
 // usually, subclasses of AsyncTask are declared inside the activity class.
 // that way, you can easily modify the UI thread from here
-private class DownloadTask extends AsyncTask&lt;String, Integer, String&gt; {
+private class DownloadTask extends AsyncTask<String, Integer, String> {
 
     private Context context;
     private PowerManager.WakeLock mWakeLock;
@@ -7874,7 +7874,7 @@ private class DownloadTask extends AsyncTask&lt;String, Integer, String&gt; {
                 }
                 total += count;
                 // publishing the progress....
-                if (fileLength &gt; 0) // only if total length is known
+                if (fileLength > 0) // only if total length is known
                     publishProgress((int) (total * 100 / fileLength));
                 output.write(data, 0, count);
             }
@@ -7934,7 +7934,7 @@ The method above (`doInBackground`) runs always on a background thread. You shou
 For this to run, you need the WAKE_LOCK permission.  
 
 ```java
-&lt;uses-permission android:name="android.permission.WAKE_LOCK" /&gt;
+<uses-permission android:name="android.permission.WAKE_LOCK" />
 ```
 
 <h5>2. Download from Service</h1>
@@ -8004,7 +8004,7 @@ public class DownloadService extends IntentService {
 Add the service to your manifest:  
 
 ```java
-&lt;service android:name=".DownloadService"/&gt;
+<service android:name=".DownloadService"/>
 ```
 
 And the activity will look like this:  
@@ -8125,7 +8125,7 @@ public class DownloadTask extends GroundyTask {
 And just add this to the manifest:  
 
 ```java
-&lt;service android:name="com.codeslap.groundy.GroundyService"/&gt;
+<service android:name="com.codeslap.groundy.GroundyService"/>
 ```
 
 It couldn't be easier I think. Just grab the latest jar <a href="https://github.com/casidiablo/groundy/downloads" rel="noreferrer">from Github</a> and you are ready to go. Keep in mind that <strong>Groundy</strong>'s main purpose is to make calls to external REST apis in a background service and post results to the UI with easily. If you are doing something like that in your app, it could be really useful.  
@@ -8145,7 +8145,7 @@ First, let's see a utility method:
  */
 public static boolean isDownloadManagerAvailable(Context context) {
 
-    if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.GINGERBREAD) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
         return true;
     }
     return false;
@@ -8160,7 +8160,7 @@ DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
 request.setDescription("Some descrition");
 request.setTitle("Some title");
 // in order for this if to run, you must use the android 3.2 to compile your app
-if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.HONEYCOMB) {
+if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
     request.allowScanningByMediaScanner();
     request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
 }
@@ -8201,26 +8201,26 @@ But also consider that your needs may change. For example, `DownloadManager` <a 
 Don't forget to add permissions to your manifest file if you're gonna be downloading stuff from the internet!  
 
 ```java
-&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.helloandroid"
     android:versionCode="1"
-    android:versionName="1.0"&gt;
+    android:versionName="1.0">
 
-        &lt;uses-sdk android:minSdkVersion="10" /&gt;
+        <uses-sdk android:minSdkVersion="10" />
 
-        &lt;uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"&gt;&lt;/uses-permission&gt;
-        &lt;uses-permission android:name="android.permission.INTERNET"&gt;&lt;/uses-permission&gt;
-        &lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"&gt;&lt;/uses-permission&gt;
-        &lt;uses-permission android:name="android.permission.READ_PHONE_STATE"&gt;&lt;/uses-permission&gt;
+        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+        <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+        <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
 
-        &lt;application 
+        <application 
             android:icon="@drawable/icon" 
             android:label="@string/app_name" 
-            android:debuggable="true"&gt;
+            android:debuggable="true">
 
-        &lt;/application&gt;
+        </application>
 
-&lt;/manifest&gt;
+</manifest>
 ```
 
 #### Answer 3 (score 31)
@@ -8355,9 +8355,9 @@ for (Object i : l) {
 
 ```java
 public static void main(String[] args) {
-    Collection&lt;Integer&gt; l = new ArrayList&lt;&gt;();
+    Collection<Integer> l = new ArrayList<>();
 
-    for (int i = 0; i &lt; 10; ++i) {
+    for (int i = 0; i < 10; ++i) {
         l.add(4);
         l.add(5);
         l.add(6);
@@ -8389,13 +8389,13 @@ I'm also using an arbitrary `Collection` here, not necessarily an `ArrayList`, s
 <a href="https://docs.oracle.com/javase/9/docs/api/java/util/Iterator.html#remove--" rel="noreferrer">`Iterator.remove()`</a> is safe, you can use it like this:  
 
 ```java
-List&lt;String&gt; list = new ArrayList&lt;&gt;();
+List<String> list = new ArrayList<>();
 
 // This is a clever way to create the iterator and call iterator.hasNext() like
 // you would do in a while-loop. It would be the same as doing:
-//     Iterator&lt;String&gt; iterator = list.iterator();
+//     Iterator<String> iterator = list.iterator();
 //     while (iterator.hasNext()) {
-for (Iterator&lt;String&gt; iterator = list.iterator(); iterator.hasNext();) {
+for (Iterator<String> iterator = list.iterator(); iterator.hasNext();) {
     String string = iterator.next();
     if (string.isEmpty()) {
         // Remove the current element from the iterator and the list.
@@ -8420,7 +8420,7 @@ In your case you tried to remove from a list, but the same restriction applies i
 This works:  
 
 ```java
-Iterator&lt;Integer&gt; iter = l.iterator();
+Iterator<Integer> iter = l.iterator();
 while (iter.hasNext()) {
     if (iter.next() == 5) {
         iter.remove();
@@ -8434,10 +8434,10 @@ I assumed that since a foreach loop is syntactic sugar for iterating, using an i
 With Java 8 you can use <a href="http://docs.oracle.com/javase/8/docs/api/java/util/Collection.html#removeIf-java.util.function.Predicate-" rel="noreferrer">the new `removeIf` method</a>. Applied to your example:  
 
 ```java
-Collection&lt;Integer&gt; coll = new ArrayList&lt;&gt;();
+Collection<Integer> coll = new ArrayList<>();
 //populate
 
-coll.removeIf(i -&gt; i == 5);
+coll.removeIf(i -> i == 5);
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -8676,8 +8676,8 @@ In API 21 the implementation was changed to check if there is an installed app w
  * Used to determine whether the user making this call is subject to
  * teleportations.
  *
- * &lt;p&gt;As of {@link android.os.Build.VERSION_CODES#LOLLIPOP}, this method can
- * now automatically identify goats using advanced goat recognition technology.&lt;/p&gt;
+ * <p>As of {@link android.os.Build.VERSION_CODES#LOLLIPOP}, this method can
+ * now automatically identify goats using advanced goat recognition technology.</p>
  *
  * @return Returns true if the user making this call is a goat.
  */
@@ -8730,7 +8730,7 @@ The following Chromium <a href="http://git.chromium.org/gitweb/?p=chromium.git;a
 ```java
 int TaskManagerModel::GetGoatsTeleported(int index) const {
   int seed = goat_salt_ * (index + 1);
-  return (seed &gt;&gt; 16) &amp; 255;
+  return (seed >> 16) & 255;
 }
 ```
 
@@ -8966,9 +8966,9 @@ x = (short)(x + 4.6);
 I'm new to Java EE and I know that something like the following three lines  
 
 ```java
-&lt;%= x+1 %&gt;
-&lt;%= request.getParameter("name") %&gt;
-&lt;%! counter++; %&gt;
+<%= x+1 %>
+<%= request.getParameter("name") %>
+<%! counter++; %>
 ```
 
 is an old school way of coding and in JSP version 2 there exists a method to avoid Java code in JSP files. Can someone please tell me the alternative JSP 2 lines, and what this technique is called?  
@@ -9026,7 +9026,7 @@ When mapped on an appropriate `&lt;url-pattern&gt;` covering the JSP pages of in
 ```java
 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     try {
-        List&lt;Product&gt; products = productService.list(); // Obtain all products.
+        List<Product> products = productService.list(); // Obtain all products.
         request.setAttribute("products", products); // Store products in request scope.
         request.getRequestDispatcher("/WEB-INF/products.jsp").forward(request, response); // Forward to JSP page to display them in a HTML table.
     } catch (SQLException e) {
@@ -9084,28 +9084,28 @@ Or just adopt an MVC framework like <a href="https://stackoverflow.com/tags/jsf/
 <li><p>If you want to invoke some Java code to <strong>control the flow</strong> inside a JSP page, then you need to grab an (existing) flow control taglib like <a href="http://docs.oracle.com/javaee/5/jstl/1.1/docs/tlddocs/c/tld-summary.html" rel="noreferrer">JSTL core</a>. E.g. displaying `List&lt;Product&gt;` in a table:</p>
 
 ```java
-&lt;%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %&gt;
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 ...
-&lt;table&gt;
-    &lt;c:forEach items="${products}" var="product"&gt;
-        &lt;tr&gt;
-            &lt;td&gt;${product.name}&lt;/td&gt;
-            &lt;td&gt;${product.description}&lt;/td&gt;
-            &lt;td&gt;${product.price}&lt;/td&gt;
-        &lt;/tr&gt;
-    &lt;/c:forEach&gt;
-&lt;/table&gt;
+<table>
+    <c:forEach items="${products}" var="product">
+        <tr>
+            <td>${product.name}</td>
+            <td>${product.description}</td>
+            <td>${product.price}</td>
+        </tr>
+    </c:forEach>
+</table>
 ```
 
 With XML-style tags which fit nicely among all that HTML, the code is better readable (and thus better maintainable) than a bunch of scriptlets with various opening and closing braces (<em>"Where the heck does this closing brace belong to?"</em>). An easy aid is to configure your web application to throw an exception whenever <em>scriptlets</em> are still been used by adding the following piece to `web.xml`:  
 
 ```java
-&lt;jsp-config&gt;
-    &lt;jsp-property-group&gt;
-        &lt;url-pattern&gt;*.jsp&lt;/url-pattern&gt;
-        &lt;scripting-invalid&gt;true&lt;/scripting-invalid&gt;
-    &lt;/jsp-property-group&gt;
-&lt;/jsp-config&gt;
+<jsp-config>
+    <jsp-property-group>
+        <url-pattern>*.jsp</url-pattern>
+        <scripting-invalid>true</scripting-invalid>
+    </jsp-property-group>
+</jsp-config>
 ```
 
 In <a href="https://stackoverflow.com/tags/facelets/info">Facelets</a>, the successor of JSP, which is part of the Java EE provided MVC framework <a href="https://stackoverflow.com/tags/jsf/info">JSF</a>, it is already <strong>not</strong> possible to use <em>scriptlets</em>. This way you're automatically forced to do things "the right way".  
@@ -9114,7 +9114,7 @@ In <a href="https://stackoverflow.com/tags/facelets/info">Facelets</a>, the succ
 <li><p>If you want to invoke some Java code to <strong>access and display</strong> "backend" data inside a JSP page, then you need to use EL (Expression Language), those `${}` things. E.g. redisplaying submitted input values:</p>
 
 ```java
-&lt;input type="text" name="foo" value="${param.foo}" /&gt;
+<input type="text" name="foo" value="${param.foo}" />
 ```
 
 The `${param.foo}` displays the outcome of `request.getParameter("foo")`.  
@@ -9123,9 +9123,9 @@ The `${param.foo}` displays the outcome of `request.getParameter("foo")`.
 <li><p>If you want to invoke some <strong>utility</strong> Java code directly in the JSP page (typically `public static` methods), then you need to define them as EL functions. There's a standard <a href="http://docs.oracle.com/javaee/5/jstl/1.1/docs/tlddocs/fn/tld-summary.html" rel="noreferrer">functions taglib</a> in JSTL, but <a href="http://docs.oracle.com/javaee/5/tutorial/doc/bnahq.html#bnaiq" rel="noreferrer">you can also easily create functions yourself</a>. Here's an example how JSTL `fn:escapeXml` is useful to prevent <a href="http://en.wikipedia.org/wiki/Cross-site_scripting" rel="noreferrer">XSS</a> <a href="http://ha.ckers.org/xss.html" rel="noreferrer">attacks</a>.</p>
 
 ```java
-&lt;%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %&gt;
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 ...
-&lt;input type="text" name="foo" value="${fn:escapeXml(param.foo)}" /&gt;
+<input type="text" name="foo" value="${fn:escapeXml(param.foo)}" />
 ```
 
 Note that the XSS sensitivity is in no way specifically related to Java/JSP/JSTL/EL/whatever, this problem needs to be taken into account in <strong>every</strong> web application you develop. The problem of <em>scriptlets</em> is that it provides no way of builtin preventions, at least not using the standard Java API. JSP's successor Facelets has already implicit HTML escaping, so you don't need to worry about XSS holes in Facelets.  </li>
@@ -9149,21 +9149,21 @@ As <a href="https://stackoverflow.com/questions/2188706/how-to-avoid-using-scrip
 I would always do that in order to prevent any developer adding scriptlets, especially in bigger companies where you will lose overview sooner or later. The `web.xml` settings look like this:  
 
 ```java
-&lt;jsp-config&gt;
-  &lt;jsp-property-group&gt;
-    &lt;url-pattern&gt;*.jsp&lt;/url-pattern&gt;
-     &lt;scripting-invalid&gt;true&lt;/scripting-invalid&gt;
-  &lt;/jsp-property-group&gt;
-&lt;/jsp-config&gt;
+<jsp-config>
+  <jsp-property-group>
+    <url-pattern>*.jsp</url-pattern>
+     <scripting-invalid>true</scripting-invalid>
+  </jsp-property-group>
+</jsp-config>
 ```
 
 #### Answer 3 (score 107)
 <a href="https://jstl.java.net/" rel="noreferrer">JSTL</a> offers tags for conditionals, loops, sets, gets, etc. For example:  
 
 ```java
-&lt;c:if test="${someAttribute == 'something'}"&gt;
+<c:if test="${someAttribute == 'something'}">
    ...
-&lt;/c:if&gt;
+</c:if>
 ```
 
 JSTL works with request attributes - they are most often set in the request by a Servlet, which <em>forwards</em> to the JSP.  
@@ -9188,7 +9188,7 @@ Here is the very simple and straightforward way I'm doing it now:
 ```java
 public final static boolean isPerfectSquare(long n)
 {
-  if (n &lt; 0)
+  if (n < 0)
     return false;
 
   long tst = (long)(Math.sqrt(n) + 0.5);
@@ -9221,7 +9221,7 @@ My approach is threefold:
 <li>First, filter out obvious answers.  This includes negative numbers and looking at the last 4 bits.  (I found looking at the last six didn't help.)  I also answer yes for 0.  (In reading the code below, note that my input is `int64 x`.)
 
 ```java
-if( x &lt; 0 || (x&2) || ((x & 7) == 5) || ((x & 11) == 8) )
+if( x < 0 || (x&2) || ((x & 7) == 5) || ((x & 11) == 8) )
     return false;
 if( x == 0 )
     return true;```
@@ -9229,9 +9229,9 @@ if( x == 0 )
 <li>Next, check if it's a square modulo 255 = 3 * 5 * 17.  Because that's a product of three distinct primes, only about 1/8 of the residues mod 255 are squares.  However, in my experience, calling the modulo operator (%) costs more than the benefit one gets, so I use bit tricks involving 255 = 2^8-1 to compute the residue.  (For better or worse, I am not using the trick of reading individual bytes out of a word, only bitwise-and and shifts.)
 ```java
 int64 y = x;
-y = (y & 4294967295LL) + (y &gt;&gt; 32); 
-y = (y & 65535) + (y &gt;&gt; 16);
-y = (y & 255) + ((y &gt;&gt; 8) & 255) + (y &gt;&gt; 16);
+y = (y & 4294967295LL) + (y >> 32); 
+y = (y & 65535) + (y >> 16);
+y = (y & 255) + ((y >> 8) & 255) + (y >> 16);
 // At this point, y is between 0 and 511.  More code can reduce it farther.
 </pre></code>
 To actually check if the residue is a square, I look up the answer in a precomputed table.
@@ -9244,15 +9244,15 @@ if( bad255[y] )
 <li>Finally, try to compute the square root using a method similar to <a href="http://en.wikipedia.org/wiki/Hensel%27s_lemma" rel="noreferrer">Hensel's lemma</a>.  (I don't think it's applicable directly, but it works with some modifications.)  Before doing that, I divide out all powers of 2 with a binary search:
 ```java
 if((x & 4294967295LL) == 0)
-    x &gt;&gt;= 32;
+    x >>= 32;
 if((x & 65535) == 0)
-    x &gt;&gt;= 16;
+    x >>= 16;
 if((x & 255) == 0)
-    x &gt;&gt;= 8;
+    x >>= 8;
 if((x & 15) == 0)
-    x &gt;&gt;= 4;
+    x >>= 4;
 if((x & 3) == 0)
-    x &gt;&gt;= 2;```
+    x >>= 2;```
 At this point, for our number to be a square, it must be 1 mod 8.
 ```java
 if((x & 7) != 1)
@@ -9260,25 +9260,25 @@ if((x & 7) != 1)
 The basic structure of Hensel's lemma is the following.  (Note: untested code; if it doesn't work, try t=2 or 8.)
 ```java
 int64 t = 4, r = 1;
-t &lt;&lt;= 1; r += ((x - r * r) & t) &gt;&gt; 1;
-t &lt;&lt;= 1; r += ((x - r * r) & t) &gt;&gt; 1;
-t &lt;&lt;= 1; r += ((x - r * r) & t) &gt;&gt; 1;
+t <<= 1; r += ((x - r * r) & t) >> 1;
+t <<= 1; r += ((x - r * r) & t) >> 1;
+t <<= 1; r += ((x - r * r) & t) >> 1;
 // Repeat until t is 2^33 or so.  Use a loop if you want.```
 The idea is that at each iteration, you add one bit onto r, the "current" square root of x; each square root is accurate modulo a larger and larger power of 2, namely t/2.  At the end, r and t/2-r will be square roots of x modulo t/2.  (Note that if r is a square root of x, then so is -r.  This is true even modulo numbers, but beware, modulo some numbers, things can have even more than 2 square roots; notably, this includes powers of 2.)  Because our actual square root is less than 2^32, at that point we can actually just check if r or t/2-r are real square roots.  In my actual code, I use the following modified loop:
 ```java
 int64 r, t, z;
-r = start[(x &gt;&gt; 3) & 1023];
+r = start[(x >> 3) & 1023];
 do {
     z = x - r * r;
     if( z == 0 )
         return true;
-    if( z &lt; 0 )
+    if( z < 0 )
         return false;
     t = z & (-z);
-    r += (z & t) &gt;&gt; 1;
-    if( r &gt; (t &gt;&gt; 1) )
+    r += (z & t) >> 1;
+    if( r > (t >> 1) )
         r = t - r;
-} while( t &lt;= (1LL &lt;&lt; 33) );```
+} while( t <= (1LL << 33) );```
 The speedup here is obtained in three ways: precomputed start value (equivalent to ~10 iterations of the loop), earlier exit of the loop, and skipping some t values.  For the last part, I look at `z = r - x * x`, and set t to be the largest power of 2 dividing z with a bit trick.  This allows me to skip t values that wouldn't have affected the value of r anyway.  The precomputed start value in my case picks out the "smallest positive" square root modulo 8192.
 </li>
 </ol>
@@ -9375,48 +9375,48 @@ bool bad255[512] =
 
 inline bool square( int64 x ) {
     // Quickfail
-    if( x &lt; 0 || (x&2) || ((x & 7) == 5) || ((x & 11) == 8) )
+    if( x < 0 || (x&2) || ((x & 7) == 5) || ((x & 11) == 8) )
         return false;
     if( x == 0 )
         return true;
 
     // Check mod 255 = 3 * 5 * 17, for fun
     int64 y = x;
-    y = (y & 4294967295LL) + (y &gt;&gt; 32);
-    y = (y & 65535) + (y &gt;&gt; 16);
-    y = (y & 255) + ((y &gt;&gt; 8) & 255) + (y &gt;&gt; 16);
+    y = (y & 4294967295LL) + (y >> 32);
+    y = (y & 65535) + (y >> 16);
+    y = (y & 255) + ((y >> 8) & 255) + (y >> 16);
     if( bad255[y] )
         return false;
 
     // Divide out powers of 4 using binary search
     if((x & 4294967295LL) == 0)
-        x &gt;&gt;= 32;
+        x >>= 32;
     if((x & 65535) == 0)
-        x &gt;&gt;= 16;
+        x >>= 16;
     if((x & 255) == 0)
-        x &gt;&gt;= 8;
+        x >>= 8;
     if((x & 15) == 0)
-        x &gt;&gt;= 4;
+        x >>= 4;
     if((x & 3) == 0)
-        x &gt;&gt;= 2;
+        x >>= 2;
 
     if((x & 7) != 1)
         return false;
 
     // Compute sqrt using something like Hensel's lemma
     int64 r, t, z;
-    r = start[(x &gt;&gt; 3) & 1023];
+    r = start[(x >> 3) & 1023];
     do {
         z = x - r * r;
         if( z == 0 )
             return true;
-        if( z &lt; 0 )
+        if( z < 0 )
             return false;
         t = z & (-z);
-        r += (z & t) &gt;&gt; 1;
-        if( r &gt; (t  &gt;&gt; 1) )
+        r += (z & t) >> 1;
+        if( r > (t  >> 1) )
             r = t - r;
-    } while( t &lt;= (1LL &lt;&lt; 33) );
+    } while( t <= (1LL << 33) );
 
     return false;
 }```
@@ -9429,21 +9429,21 @@ I'm pretty late to the party, but I hope to provide a better answer; shorter and
 ```java
 long goodMask; // 0xC840C04048404040 computed below
 {
-    for (int i=0; i&lt;64; ++i) goodMask |= Long.MIN_VALUE &gt;&gt;&gt; (i*i);
+    for (int i=0; i<64; ++i) goodMask |= Long.MIN_VALUE >>> (i*i);
 }
 
 public boolean isSquare(long x) {
     // This tests if the 6 least significant bits are right.
     // Moving the to be tested bit to the highest position saves us masking.
-    if (goodMask &lt;&lt; x &gt;= 0) return false;
+    if (goodMask << x >= 0) return false;
     final int numberOfTrailingZeros = Long.numberOfTrailingZeros(x);
     // Each square ends with an even number of zeros.
-    if ((numberOfTrailingZeros &amp; 1) != 0) return false;
-    x &gt;&gt;= numberOfTrailingZeros;
+    if ((numberOfTrailingZeros & 1) != 0) return false;
+    x >>= numberOfTrailingZeros;
     // Now x is either 0 or odd.
     // In binary each odd square ends with 001.
     // Postpone the sign test until now; handle zero in the branch.
-    if ((x&amp;7) != 1 | x &lt;= 0) return x == 0;
+    if ((x&7) != 1 | x <= 0) return x == 0;
     // Do it in the classical way.
     // The correctness is not trivial as the conversion from long to double is lossy!
     final long tst = (long) Math.sqrt(x);
@@ -9472,10 +9472,10 @@ Kip benchmarked the following code implementing the hex trick.  When testing num
 ```java
 public final static boolean isPerfectSquare(long n)
 {
-    if (n &lt; 0)
+    if (n < 0)
         return false;
 
-    switch((int)(n &amp; 0xF))
+    switch((int)(n & 0xF))
     {
     case 0: case 1: case 4: case 9:
         long tst = (long)Math.sqrt(n);
@@ -9492,11 +9492,11 @@ When I tested the analogous code in C++, it actually ran slower than the origina
 ```java
 int isPerfectSquare(int n)
 {
-    int h = n &amp; 0xF;  // h is the last hex "digit"
-    if (h &gt; 9)
+    int h = n & 0xF;  // h is the last hex "digit"
+    if (h > 9)
         return 0;
     // Use lazy evaluation to jump out of the if statement as soon as possible
-    if (h != 2 &amp;&amp; h != 3 &amp;&amp; h != 5 &amp;&amp; h != 6 &amp;&amp; h != 7 &amp;&amp; h != 8)
+    if (h != 2 && h != 3 && h != 5 && h != 6 && h != 7 && h != 8)
     {
         int t = (int) floor( sqrt((double) n) + 0.5 );
         return t*t == n;
@@ -9585,8 +9585,8 @@ Using the following code, the first matrix took 8.52 seconds to complete:
 
 ```java
 Random r = new Random();
-for (int i = 0; i &lt; 1000; i++) {
-    for (int j = 0; j &lt; 1000; j++) {
+for (int i = 0; i < 1000; i++) {
+    for (int j = 0; j < 1000; j++) {
         if(r.nextInt(4) == 0) {
             System.out.print("O");
         } else {
@@ -9602,8 +9602,8 @@ With this code, the second matrix took 259.152 seconds to complete:
 
 ```java
 Random r = new Random();
-for (int i = 0; i &lt; 1000; i++) {
-    for (int j = 0; j &lt; 1000; j++) {
+for (int i = 0; i < 1000; i++) {
+    for (int j = 0; j < 1000; j++) {
         if(r.nextInt(4) == 0) {
             System.out.print("O");
         } else {
@@ -9655,9 +9655,9 @@ So, it looks like Netbeans has bad performance on print to console.
 After more research I realized that the problem is <a href="http://en.wikipedia.org/wiki/Line_wrap_and_word_wrap" rel="noreferrer">line-wrapping</a> of the max buffer of Netbeans (it's not restricted to `System.out.println` command), demonstrated by this code:  
 
 ```java
-for (int i = 0; i &lt; 1000; i++) {
+for (int i = 0; i < 1000; i++) {
     long t1 = System.nanoTime();
-    System.out.print("BBB......BBB"); \\&lt;-contain 1000 "B"
+    System.out.print("BBB......BBB"); \\<-contain 1000 "B"
     long t2 = System.nanoTime();
     System.out.println(t2-t1);
     System.out.println("");
@@ -9703,8 +9703,8 @@ Looking at your code closely you have used a line break at the end of first loop
 
 ```java
 Random r = new Random();
-for (int i = 0; i &lt; 1000; i++) {
-        for (int j = 0; j &lt; 1000; j++) {
+for (int i = 0; i < 1000; i++) {
+        for (int j = 0; j < 1000; j++) {
             if(r.nextInt(4) == 0) {
                 System.out.print("O");
             } else {
@@ -9866,17 +9866,17 @@ and the first 6 numbers that `r.nextInt(27)` generates given `Random r = new Ran
 Then just add those numbers to the integer representation of the character ``` (which is 96):  
 
 ```java
-8  + 96 = 104 --&gt; h
-5  + 96 = 101 --&gt; e
-12 + 96 = 108 --&gt; l
-12 + 96 = 108 --&gt; l
-15 + 96 = 111 --&gt; o
+8  + 96 = 104 --> h
+5  + 96 = 101 --> e
+12 + 96 = 108 --> l
+12 + 96 = 108 --> l
+15 + 96 = 111 --> o
 
-23 + 96 = 119 --&gt; w
-15 + 96 = 111 --&gt; o
-18 + 96 = 114 --&gt; r
-12 + 96 = 108 --&gt; l
-4  + 96 = 100 --&gt; d
+23 + 96 = 119 --> w
+15 + 96 = 111 --> o
+18 + 96 = 114 --> r
+12 + 96 = 108 --> l
+4  + 96 = 100 --> d
 ```
 
 #### Answer 3 (score 276)
@@ -9903,15 +9903,15 @@ public static long[] generateSeed(String goal, long start, long finish) {
     char[] input = goal.toCharArray();
     char[] pool = new char[input.length];
     label:
-    for (long seed = start; seed &lt; finish; seed++) {
+    for (long seed = start; seed < finish; seed++) {
         Random random = new Random(seed);
 
-        for (int i = 0; i &lt; input.length; i++)
+        for (int i = 0; i < input.length; i++)
             pool[i] = (char) random.nextInt(27);
 
         if (random.nextInt(27) == 0) {
             int base = input[0] - pool[0];
-            for (int i = 1; i &lt; input.length; i++) {
+            for (int i = 1; i < input.length; i++) {
                 if (input[i] - pool[i] != base)
                     continue label;
             }

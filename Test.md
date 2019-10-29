@@ -1,5 +1,5 @@
-azeazeaz 
-
+zeazeaz 
+even more modifyed, testing igt
 zea
 Still working, must change for html
 
@@ -28,6 +28,7 @@ Still working, must change for html
   - [Math](Math)
   - [This is a diary test](diary/2019-02-10)
 
+* [Self](Test)
 
 # Array test
 

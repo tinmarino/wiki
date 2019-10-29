@@ -128,12 +128,12 @@ FOO: {
           for my $j ( @listtwo ){
                  if ( cond( $i,$j ) ){
 
-                    last FOO;  # ---&gt;
+                    last FOO;  # --->
                                    # |
                  }                 # |
           }                        # |
        }                           # |
- } # &lt;-------------------------------
+ } # <-------------------------------
 ```
 
 #### Answer 3 (score 17)
@@ -268,7 +268,7 @@ I want to read a new parameter and if it does not exist in `@badparams`, process
 Simply turn the array into a hash:  
 
 ```perl
-my %params = map { $_ =&gt; 1 } @badparams;
+my %params = map { $_ => 1 } @badparams;
 
 if(exists($params{$someparam})) { ... }
 ```
@@ -499,9 +499,9 @@ use Getopt::Long;
 my $data   = "file.dat";
 my $length = 24;
 my $verbose;
-$result = GetOptions ("length=i" =&gt; \$length,    # numeric
-                    "file=s"   =&gt; \$data,      # string
-                    "verbose"  =&gt; \$verbose);  # flag
+$result = GetOptions ("length=i" => \$length,    # numeric
+                    "file=s"   => \$data,      # string
+                    "verbose"  => \$verbose);  # flag
 ```
 
 Alternatively, `@ARGV` is a special variable that contains all the command line arguments. `$ARGV[0]` is the first (ie. `"string1"` in your case) and `$ARGV[1]` is the second argument. You don't need a special module to access `@ARGV`.  
@@ -585,7 +585,7 @@ To see why, notice how you'll still have an issue on half-way-point
 alternation:
 
 ```perl
-    for ($i = 0; $i &lt; 1.01; $i += 0.05) { printf "%.1f ",$i}
+    for ($i = 0; $i < 1.01; $i += 0.05) { printf "%.1f ",$i}
 
     0.0 0.1 0.1 0.2 0.2 0.2 0.3 0.3 0.4 0.4 0.5 0.5 0.6 0.7 0.7
     0.8 0.8 0.9 0.9 1.0 1.0
@@ -640,7 +640,7 @@ Without using a `while` loop would be most preferable (for example, a <a href="h
 
 ```perl
 use Data::Dumper;
-my %hash = ('abc' =&gt; 123, 'def' =&gt; [4,5,6]);
+my %hash = ('abc' => 123, 'def' => [4,5,6]);
 print Dumper(\%hash);
 ```
 
@@ -648,12 +648,12 @@ will output
 
 ```perl
 $VAR1 = {
-          'def' =&gt; [
+          'def' => [
                      4,
                      5,
                      6
                    ],
-          'abc' =&gt; 123
+          'abc' => 123
         };
 ```
 
@@ -743,7 +743,7 @@ I am (a complete Perl newbie) doing string compare in an `if` statement:
 If I do following:  
 
 ```perl
-if ($str1 == "taste" &amp;&amp; $str2 == "waste") { }
+if ($str1 == "taste" && $str2 == "waste") { }
 ```
 
 I see the correct result (i.e. if the condition matches, it evaluates the "then" block). But I see these warnings:  
@@ -756,7 +756,7 @@ I see the correct result (i.e. if the condition matches, it evaluates the "then"
 But if I do:  
 
 ```perl
-if ($str1 eq "taste" &amp;&amp; $str2 eq "waste") { }
+if ($str1 eq "taste" && $str2 eq "waste") { }
 ```
 
 Even if the if condition is satisfied, it doesn't evaluate the "then" block.  
@@ -816,7 +816,7 @@ $file='SnPmaster.txt';
 open(INFO, $file) or die("Could not open  file.");
 
 $count = 0; 
-foreach $line (&lt;INFO&gt;)  {   
+foreach $line (<INFO>)  {   
     print $line;    
     if ($++counter == 2){
       last;
@@ -837,7 +837,7 @@ use warnings;
 my $file = 'SnPmaster.txt';
 open my $info, $file or die "Could not open $file: $!";
 
-while( my $line = &lt;$info&gt;)  {   
+while( my $line = <$info>)  {   
     print $line;    
     last if $. == 2;
 }
@@ -851,7 +851,7 @@ If you want to use a counter instead, use
 
 ```perl
 my $count = 0;
-while( my $line = &lt;$info&gt;)  {   
+while( my $line = <$info>)  {   
     print $line;    
     last if ++$count == 2;
 }
@@ -861,14 +861,14 @@ while( my $line = &lt;$info&gt;)  {
 With these types of complex programs, it's better to let Perl generate the Perl code for you:  
 
 ```perl
-$ perl -MO=Deparse -pe'exit if $.&gt;2'
+$ perl -MO=Deparse -pe'exit if $.>2'
 ```
 
 Which will gladly tell you the answer,  
 
 ```perl
-LINE: while (defined($_ = &lt;ARGV&gt;)) {
-    exit if $. &gt; 2;
+LINE: while (defined($_ = <ARGV>)) {
+    exit if $. > 2;
 }
 continue {
     die "-p destination: $!\n" unless print $_;
@@ -878,7 +878,7 @@ continue {
 Alternatively, you can simply run it as such from the command line,  
 
 ```perl
-$ perl -pe'exit if$.&gt;2' file.txt
+$ perl -pe'exit if$.>2' file.txt
 ```
 
 #### Answer 3 (score 5)
@@ -1142,7 +1142,7 @@ of Perl code?</a></li>
 ```perl
 =pod
 
-my $object = NotGonnaHappen-&gt;new();
+my $object = NotGonnaHappen->new();
 
 ignored_sub();
 
@@ -1167,7 +1167,7 @@ $wont_be_assigned = 37;
 ```perl
 =begin comment
 
-my $object = NotGonnaHappen-&gt;new();
+my $object = NotGonnaHappen->new();
 
 ignored_sub();
 
@@ -1298,14 +1298,14 @@ One thing that I've done in some of my programs is added the same behavior using
 use strict;
 use warnings;
 
-use constant false =&gt; 0;
-use constant true  =&gt; 1;
+use constant false => 0;
+use constant true  => 1;
 
 my $val1 = true;
 my $val2 = false;
 
-print $val1, " &amp;&amp; ", $val2;
-if ( $val1 &amp;&amp; $val2 ) {
+print $val1, " && ", $val2;
+if ( $val1 && $val2 ) {
     print " evaluates to true.\n";
 } else {
     print " evaluates to false.\n";
@@ -1373,14 +1373,14 @@ You can use <a href="http://search.cpan.org/perldoc?Data::Dump" rel="noreferrer"
 
 ```perl
 use Data::Dump qw(dump);
-my @a = (1, [2, 3], {4 =&gt; 5});
+my @a = (1, [2, 3], {4 => 5});
 dump(@a);
 ```
 
 Produces:  
 
 ```perl
-"(1, [2, 3], { 4 =&gt; 5 })"
+"(1, [2, 3], { 4 => 5 })"
 ```
 
 #### Answer 3 (score 18)
@@ -1803,7 +1803,7 @@ open2 my $out, my $in, "/usr/bin/bc"
 
 print $in "5+6\n";
 
-my $answer = &lt;$out&gt;;
+my $answer = <$out>;
 ```
 
 <h5><a href="http://perldoc.perl.org/IPC/Open3.html" rel="noreferrer">IPC::Open3</a>: run a process and create a pipe to STDIN, STDOUT, and STDERR</h2>
@@ -1845,7 +1845,7 @@ Example:
 use IPC::Open2;
 my $pid = open2(\*CHLD_OUT, \*CHLD_IN, 'some', 'cmd', 'and', 'args');
 waitpid( $pid, 0 );
-my $child_exit_status = $? &gt;&gt; 8;
+my $child_exit_status = $? >> 8;
 ```
 
 Finally, <a href="http://search.cpan.org/dist/IPC::Run/" rel="noreferrer">IPC::Run</a> from the CPAN is also worth looking at…  
@@ -1863,10 +1863,10 @@ I've been searching on the Internet and only found how to show save dialog to th
 Here is what I got form the official php documentation:</p>
 
 ```perl
-&lt;?php
+<?php
 header('Content-type: application/pdf');
 readfile('the.pdf');
-?&gt;
+?>
 ```
 
 Also my google-search-result perl code:  
@@ -1874,7 +1874,7 @@ Also my google-search-result perl code:
 ```perl
 open(PDF, "the.pdf") or die "could not open PDF [$!]";
 binmode PDF;
-my $output = do { local $/; &lt;PDF&gt; };
+my $output = do { local $/; <PDF> };
 close (PDF);
 
 print "Content-Type: application/pdf\n";
@@ -1893,31 +1893,31 @@ Lets assume that the users have the Adobe Reader plug-in. So, how to fix my prob
 <strong>edit</strong> : Here's my main php code:  
 
 ```perl
-&lt;?php
+<?php
 $file='/files/the.pdf';
 header('Content-type: application/pdf');
 header('Content-Disposition: inline; filename="the.pdf"');
 @readfile($file);
-?&gt;
+?>
 ```
 
 <strong>edit</strong> : Now the code is working. But the loading progress bar (on Adobe Reader X plugin) doesn't shows up. Why? Anyone can help me? Here's my main code:  
 
 ```perl
-&lt;?php
+<?php
 $file='./files/the.pdf';
 header('Content-type: application/pdf');
 header('Content-Disposition: inline; filename="the.pdf"');
 header('Content-Transfer-Encoding: binary');
 header('Content-Length: ' . filesize($file));
 @readfile($file);
-?&gt;
+?>
 ```
 
 <strong>edit</strong> : All my problems solved. Here's the final code:  
 
 ```perl
-&lt;?php
+<?php
 $file = './path/to/the.pdf';
 $filename = 'Custom file name for the.pdf'; /* Note: Always use .pdf at the end. */
 
@@ -1928,7 +1928,7 @@ header('Content-Length: ' . filesize($file));
 header('Accept-Ranges: bytes');
 
 @readfile($file);
-?&gt;
+?>
 ```
 
 Thanks! :)  
@@ -1973,7 +1973,7 @@ with
 Aside from trying  
 
 ```perl
-perldoc &lt;module name&gt;
+perldoc <module name>
 ```
 
 individually for any CPAN module that takes my fancy or going through the file system and looking at the directories I have no idea what modules we have installed.   
@@ -2165,15 +2165,15 @@ Where `something` is a regular expression.
 I have a file that looks something like this:  
 
 ```perl
-&lt;table name="content_analyzer" primary-key="id"&gt;
-  &lt;type="global" /&gt;
-&lt;/table&gt;
-&lt;table name="content_analyzer2" primary-key="id"&gt;
-  &lt;type="global" /&gt;
-&lt;/table&gt;
-&lt;table name="content_analyzer_items" primary-key="id"&gt;
-  &lt;type="global" /&gt;
-&lt;/table&gt;
+<table name="content_analyzer" primary-key="id">
+  <type="global" />
+</table>
+<table name="content_analyzer2" primary-key="id">
+  <type="global" />
+</table>
+<table name="content_analyzer_items" primary-key="id">
+  <type="global" />
+</table>
 ```
 
 I need to extract anything within the quotes that follow `name=`, i.e., `content_analyzer`, `content_analyzer2` and `content_analyzer_items`.  
@@ -2240,7 +2240,7 @@ important to remember  that you can always  save them by piping  it to a
 file by appending:</p>
 
 ```perl
-&gt; result
+> result
 ```
 
 to the end of the command.  
@@ -2527,7 +2527,7 @@ instead.
 I currently use the following Perl to check if a variable is defined and contains text. I have to check `defined` first to avoid an 'uninitialized value' warning:  
 
 ```perl
-if (defined $name &amp;&amp; length $name &gt; 0) {
+if (defined $name && length $name > 0) {
     # do something with $name
 }
 ```
@@ -2580,7 +2580,7 @@ if( length $name ) { # no warning
 As mobrule indicates, you could use the following instead for a small savings:  
 
 ```perl
-if (defined $name &amp;&amp; $name ne '') {
+if (defined $name && $name ne '') {
     # do something with $name
 }
 ```
@@ -2616,7 +2616,7 @@ if ( length $name )
 and   
 
 ```perl
-if ( length $name &gt; 0 )
+if ( length $name > 0 )
 ```
 
 are equivalent.   
@@ -2774,7 +2774,7 @@ Seems to me that this should work as abs_path knows if you are using a relative 
 #### Answer 3 (score 35)
 ```perl
 Use File::Spec;
-File::Spec-&gt;rel2abs( __FILE__ );
+File::Spec->rel2abs( __FILE__ );
 ```
 
 <a href="http://perldoc.perl.org/File/Spec/Unix.html" rel="noreferrer">http://perldoc.perl.org/File/Spec/Unix.html</a>  
@@ -2834,7 +2834,7 @@ I'm trying to open an .html file as one big long string.  This is what I've got:
 
 ```perl
 open(FILE, 'index.html') or die "Can't read file 'filename' [$!]\n";  
-$document = &lt;FILE&gt;; 
+$document = <FILE>; 
 close (FILE);  
 print $document;
 ```
@@ -2884,9 +2884,9 @@ I would do it like this:
 my $file = "index.html";
 my $document = do {
     local $/ = undef;
-    open my $fh, "&lt;", $file
+    open my $fh, "<", $file
         or die "could not open $file: $!";
-    &lt;$fh&gt;;
+    <$fh>;
 };
 ```
 
@@ -2998,9 +2998,9 @@ use FileHandle;
 
 print "Start connecting to the DB...\n";
 
-@ary = DBI-&gt;available_drivers(true);
-%drivers = DBI-&gt;installed_drivers();
-my $dbh = DBI-&gt;connect("DBI:PgPP:database=chaosLRdb;host=192.168.0.1;port=5433", "postgres", "chaos123");
+@ary = DBI->available_drivers(true);
+%drivers = DBI->installed_drivers();
+my $dbh = DBI->connect("DBI:PgPP:database=chaosLRdb;host=192.168.0.1;port=5433", "postgres", "chaos123");
 ```
 
 May I know what i miss here?  
@@ -3034,13 +3034,13 @@ I suspect that if you md5'd the password, this might work if you trim the lines.
 
 ```perl
  echo -n 'chaos123' | md5sum
- &gt; d6766c33ba6cf0bb249b37151b068f10  -
+ > d6766c33ba6cf0bb249b37151b068f10  -
 ```
 
 So then your connect line would like something like:  
 
 ```perl
-my $dbh = DBI-&gt;connect("DBI:PgPP:database=chaosLRdb;host=192.168.0.1;port=5433",
+my $dbh = DBI->connect("DBI:PgPP:database=chaosLRdb;host=192.168.0.1;port=5433",
     "chaosuser", "d6766c33ba6cf0bb249b37151b068f10");
 ```
 
@@ -3091,17 +3091,17 @@ my @other_array = (0,0,0,1,2,2,3,3,3,4);
 my %tallies;
 $tallies{$_} ++ for @other_array;
 
-print "$_ =&gt; $tallies{$_}\n" for sort {$a &lt;=&gt; $b} keys %tallies;    
+print "$_ => $tallies{$_}\n" for sort {$a <=> $b} keys %tallies;    
 ```
 
 Output:  
 
 ```perl
-0 =&gt; 3
-1 =&gt; 1
-2 =&gt; 2
-3 =&gt; 3
-4 =&gt; 1
+0 => 3
+1 => 1
+2 => 2
+3 => 3
+4 => 1
 ```
 
 To answer your specific question more directly, to create an array populated with a bunch of zeroes, you can use the technique in these two examples:  
@@ -3188,64 +3188,64 @@ Step 3: Configure `apache2`</p>
 open `sites-available/default` and add the following,  
 
 ```perl
-&lt;Files ~ "\.(pl|cgi)$"&gt;
+<Files ~ "\.(pl|cgi)$">
     SetHandler perl-script
     PerlResponseHandler ModPerl::PerlRun
     Options +ExecCGI
     PerlSendHeader On
-&lt;/Files&gt;
+</Files>
 
-&lt;Directory /&gt;
+<Directory />
     Options FollowSymLinks
     AllowOverride None
-&lt;/Directory&gt;
-&lt;Directory [path-to-store-your-website-files-like-.html-(perl-scripts-should-be-stored-in-cgi-bin] &gt;
+</Directory>
+<Directory [path-to-store-your-website-files-like-.html-(perl-scripts-should-be-stored-in-cgi-bin] >
 ####(The Perl/CGI scripts can be stored out of the cgi-bin directory, but that's a story for another day. Let's concentrate on washing out the issue at hand)
 ####
     Options Indexes FollowSymLinks MultiViews
     AllowOverride None
     Order allow,deny
     allow from all
-&lt;/Directory&gt;
+</Directory>
 
 ScriptAlias /cgi-bin/ [path-where-you-want-your-.pl-and-.cgi-files]
 
-&lt;Directory [path-where-you-want-your-.pl-and-.cgi-files]&gt;
+<Directory [path-where-you-want-your-.pl-and-.cgi-files]>
     AllowOverride None
     Options ExecCGI -MultiViews +SymLinksIfOwnerMatch
     AddHandler cgi-script .pl
     Order allow,deny
     allow from all
-&lt;/Directory&gt;
-&lt;Files ~ "\.(pl|cgi)$"&gt;
+</Directory>
+<Files ~ "\.(pl|cgi)$">
     SetHandler perl-script
     PerlResponseHandler ModPerl::PerlRun
     Options +ExecCGI
     PerlSendHeader On
-&lt;/Files&gt;
+</Files>
 
-&lt;Directory /&gt;
+<Directory />
     Options FollowSymLinks
     AllowOverride None
-&lt;/Directory&gt;
-&lt;Directory [path-to-store-your-website-files-like-.html-(perl-scripts-should-be-stored-in-cgi-bin] &gt;
+</Directory>
+<Directory [path-to-store-your-website-files-like-.html-(perl-scripts-should-be-stored-in-cgi-bin] >
 ####(The Perl/CGI scripts can be stored out of the cgi-bin directory, but that's a story for another day. Let's concentrate on washing out the issue at hand)
 ####
     Options Indexes FollowSymLinks MultiViews
     AllowOverride None
     Order allow,deny
     allow from all
-&lt;/Directory&gt;
+</Directory>
 
 ScriptAlias /cgi-bin/ [path-where-you-want-your-.pl-and-.cgi-files]
 
-&lt;Directory [path-where-you-want-your-.pl-and-.cgi-files]&gt;
+<Directory [path-where-you-want-your-.pl-and-.cgi-files]>
     AllowOverride None
     Options ExecCGI -MultiViews +SymLinksIfOwnerMatch
     AddHandler cgi-script .pl
     Order allow,deny
     allow from all
-&lt;/Directory&gt;
+</Directory>
 ```
 
 <h5>Step 4:</h3>
@@ -3254,27 +3254,27 @@ Add the following lines to your `/etc/apache2/apache2.conf` file.
 
 ```perl
 AddHandler cgi-script .cgi .pl
-&lt;Files ~ "\.pl$"&gt;
+<Files ~ "\.pl$">
 Options +ExecCGI
-&lt;/Files&gt;
-&lt;Files ~ "\.cgi$"&gt;
+</Files>
+<Files ~ "\.cgi$">
 Options +ExecCGI
-&lt;/Files&gt;
+</Files>
 
-&lt;IfModule mod_perl.c&gt;
-&lt;IfModule mod_alias.c&gt;
+<IfModule mod_perl.c>
+<IfModule mod_alias.c>
 Alias /perl/ /home/sly/host/perl/
-&lt;/IfModule&gt;
-&lt;Location /perl&gt;
+</IfModule>
+<Location /perl>
 SetHandler perl-script
 PerlHandler Apache::Registry
 Options +ExecCGI
-&lt;/Location&gt;
-&lt;/IfModule&gt;
+</Location>
+</IfModule>
 
-&lt;Files ~ "\.pl$"&gt;
+<Files ~ "\.pl$">
 Options +ExecCGI
-&lt;/Files&gt;
+</Files>
 ```
 
 <h5>Step 5:</h3>
@@ -3284,27 +3284,27 @@ Options +ExecCGI
 `AddHandler cgi-script .cgi .pl`  
 
 ```perl
-&lt;Files ~ "\.pl$"&gt;
+<Files ~ "\.pl$">
 Options +ExecCGI
-&lt;/Files&gt;
-&lt;Files ~ "\.cgi$"&gt;
+</Files>
+<Files ~ "\.cgi$">
 Options +ExecCGI
-&lt;/Files&gt;
+</Files>
 
-&lt;IfModule mod_perl.c&gt;
-&lt;IfModule mod_alias.c&gt;
+<IfModule mod_perl.c>
+<IfModule mod_alias.c>
 Alias /perl/ /home/sly/host/perl/
-&lt;/IfModule&gt;
-&lt;Location /perl&gt;
+</IfModule>
+<Location /perl>
 SetHandler perl-script
 PerlHandler Apache::Registry
 Options +ExecCGI
-&lt;/Location&gt;
-&lt;/IfModule&gt;
+</Location>
+</IfModule>
 
-&lt;Files ~ "\.pl$"&gt;
+<Files ~ "\.pl$">
 Options +ExecCGI
-&lt;/Files&gt;
+</Files>
 ```
 
 <h5>Step 6</h3>
@@ -3314,12 +3314,12 @@ Options +ExecCGI
 Add the following to you `/etc/apache2/sites-enabled/000-default` file  
 
 ```perl
-&lt;Files ~ "\.(pl|cgi)$"&gt;
+<Files ~ "\.(pl|cgi)$">
 SetHandler perl-script
 PerlResponseHandler ModPerl::PerlRun
 Options +ExecCGI
 PerlSendHeader On
-&lt;/Files&gt;
+</Files>
 ```
 
 <h5>Step 7:</h3>
@@ -3348,7 +3348,7 @@ You'll need to take a look at your Apache error log to see what the "internal se
 I tried to check if XML::Simple is installed in my system or not.  
 
 ```perl
-perl -e 'while (&lt;@INC&gt;) { while (&lt;$_/*.pm&gt;) { print "$_\n"; } }'
+perl -e 'while (<@INC>) { while (<$_/*.pm>) { print "$_\n"; } }'
 ```
 
 The above one-liner was used for listing all modules installed in my system. However, it is not listing XML modules.  
@@ -3423,7 +3423,7 @@ I have some code that looks like
 
 ```perl
 my ($ids,$nIds);
-while (&lt;myFile&gt;){
+while (<myFile>){
     chomp;
     $ids.= $_ . " ";
     $nIds++;
@@ -3481,7 +3481,7 @@ unopened filehandle</code>.</li>
 
 ```perl
 my $var;
-while (&lt;&gt;) {
+while (<>) {
     $Var .= $_;
 }
 print $var;
@@ -3518,13 +3518,13 @@ Lastly, some perl magic tips for you:
 use strict;
 use warnings;
 
-# open with explicit direction '&lt;', check the return value
+# open with explicit direction '<', check the return value
 # to make sure open succeeded. Using a lexical filehandle.
-open my $fh, '&lt;', 'file.txt' or die $!;
+open my $fh, '<', 'file.txt' or die $!;
 
 # read the whole file into an array and
 # chomp all the lines at once
-chomp(my @file = &lt;$fh&gt;);
+chomp(my @file = <$fh>);
 close $fh;
 
 my $ids  = join(' ', @file);
@@ -3551,7 +3551,7 @@ You can also do:
 my $ids;
 do {
     local $/;
-    $ids = &lt;$fh&gt;;
+    $ids = <$fh>;
 }
 ```
 
@@ -3560,9 +3560,9 @@ By temporarily "turning off" `$/`, the input record separator, i.e. newline, you
 Line-by-line solution:  
 
 ```perl
-open my $fh, '&lt;', 'file.txt' or die $!; # btw, $! contains the most recent error
+open my $fh, '<', 'file.txt' or die $!; # btw, $! contains the most recent error
 my $ids;
-while (&lt;$fh&gt;) {
+while (<$fh>) {
     chomp;
     $ids .= "$_ "; # concatenate with string
 }
@@ -3878,10 +3878,10 @@ They typically have nominal antecedents, although not always.
 I have a form that looks like this  
 
 ```perl
-&lt;form action="receiver.pl" method="post"&gt;
-  &lt;input name="signed" type="checkbox"&gt;
-  &lt;input value="Save" type="submit"&gt;
-&lt;/form&gt;
+<form action="receiver.pl" method="post">
+  <input name="signed" type="checkbox">
+  <input value="Save" type="submit">
+</form>
 ```
 
 and I would like to stay on the same page, when Submit is clicked, but still have `receiver.pl` executed.  
@@ -3920,16 +3920,16 @@ If you want to add content dynamically and still need it to work, and also with 
 You could include a hidden iframe on your page and set the target attribute of your form to point to that iframe.  
 
 ```perl
-&lt;style&gt;
+<style>
   .hide { position:absolute; top:-1px; left:-1px; width:1px; height:1px; }
-&lt;/style&gt;
+</style>
 
-&lt;iframe name="hiddenFrame" class="hide"&gt;&lt;/iframe&gt;
+<iframe name="hiddenFrame" class="hide"></iframe>
 
-&lt;form action="receiver.pl" method="post" target="hiddenFrame"&gt;
-  &lt;input name="signed" type="checkbox"&gt;
-  &lt;input value="Save" type="submit"&gt;
-&lt;/form&gt;
+<form action="receiver.pl" method="post" target="hiddenFrame">
+  <input name="signed" type="checkbox">
+  <input value="Save" type="submit">
+</form>
 ```
 
 There are very few scenarios where I would choose this route. Generally handling it with javascript is better because, with javascript you can...  
@@ -3955,7 +3955,7 @@ Here's what I have so far:
 ```perl
 use Time::localtime;
 $tm=localtime;
-my ($day,$month,$year)=($tm-&gt;mday,$tm-&gt;month,$tm-&gt;year);
+my ($day,$month,$year)=($tm->mday,$tm->month,$tm->year);
 ```
 
 #### Answer accepted (score 56)
@@ -3974,7 +3974,7 @@ You can use <a href="https://metacpan.org/module/Time::Piece" rel="noreferrer">`
 ```perl
 use Time::Piece;
 
-my $date = localtime-&gt;strftime('%m/%d/%Y');
+my $date = localtime->strftime('%m/%d/%Y');
 print $date;
 ```
 
@@ -3991,7 +3991,7 @@ print $date;
 You may prefer to use the `dmy` method, which takes a single parameter which is the separator to be used between the fields of the result, and avoids having to specify a full date/time format  
 
 ```perl
-my $date = localtime-&gt;dmy('/');
+my $date = localtime->dmy('/');
 ```
 
 This produces an identical result to that of my original solution  
@@ -3999,7 +3999,7 @@ This produces an identical result to that of my original solution
 #### Answer 3 (score 12)
 ```perl
 use DateTime qw();
-DateTime-&gt;now-&gt;strftime('%m/%d/%Y')   
+DateTime->now->strftime('%m/%d/%Y')   
 ```
 
 expression returns `06/13/2012`  
@@ -4124,8 +4124,8 @@ use File::FindLib 'lib/MyEnvironment.pm'
 
 ```perl
 #!/usr/bin/perl
-use lib '&lt;relative-path&gt;';
-use &lt;your lib&gt;;
+use lib '<relative-path>';
+use <your lib>;
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -4136,16 +4136,16 @@ use &lt;your lib&gt;;
 In `RegEx`, I want to find the tag and everything between two `XML tags`, like the following:  
 
 ```perl
-&lt;primaryAddress&gt;
-    &lt;addressLine&gt;280 Flinders Mall&lt;/addressLine&gt;
-    &lt;geoCodeGranularity&gt;PROPERTY&lt;/geoCodeGranularity&gt;
-    &lt;latitude&gt;-19.261365&lt;/latitude&gt;
-    &lt;longitude&gt;146.815585&lt;/longitude&gt;
-    &lt;postcode&gt;4810&lt;/postcode&gt;
-    &lt;state&gt;QLD&lt;/state&gt;
-    &lt;suburb&gt;Townsville&lt;/suburb&gt;
-    &lt;type&gt;PHYSICAL&lt;/type&gt;
-&lt;/primaryAddress&gt;
+<primaryAddress>
+    <addressLine>280 Flinders Mall</addressLine>
+    <geoCodeGranularity>PROPERTY</geoCodeGranularity>
+    <latitude>-19.261365</latitude>
+    <longitude>146.815585</longitude>
+    <postcode>4810</postcode>
+    <state>QLD</state>
+    <suburb>Townsville</suburb>
+    <type>PHYSICAL</type>
+</primaryAddress>
 ```
 
 I want to find the tag and everything between `primaryAddress`, and erase that.   
@@ -4160,7 +4160,7 @@ Anyone have any idea how to do that?
 However, if you want to do it anyway, search for regex pattern   
 
 ```perl
-&lt;primaryAddress&gt;[\s\S]*?&lt;\/primaryAddress&gt;
+<primaryAddress>[\s\S]*?<\/primaryAddress>
 ```
 
 and replace it with empty string...  
@@ -4175,7 +4175,7 @@ The content between the tags will be in the matched group.
 
 
 ```perl
-&lt;primaryAddress.*&gt;((.|\n)*?)&lt;\/primaryAddress&gt;
+<primaryAddress.*>((.|\n)*?)<\/primaryAddress>
 ```
 
 
@@ -4190,7 +4190,7 @@ What is the slickest way to programatically read from stdin or an input file (if
 
 #### Answer accepted (score 81)
 ```perl
-while (&lt;&gt;) {
+while (<>) {
 print;
 }
 ```
@@ -4209,7 +4209,7 @@ Here you just put code between `{}` from first example into `''` in second
 This provides a named variable to work with:  
 
 ```perl
-foreach my $line ( &lt;STDIN&gt; ) {
+foreach my $line ( <STDIN> ) {
     chomp( $line );
     print "$line\n";
 }
@@ -4218,7 +4218,7 @@ foreach my $line ( &lt;STDIN&gt; ) {
 To read a file, pipe it in like this:  
 
 ```perl
-program.pl &lt; inputfile
+program.pl < inputfile
 ```
 
 #### Answer 3 (score 14)
@@ -4304,7 +4304,7 @@ The result is a more verbose version of the program, in a form that no one would
 
 ```perl
 BEGIN { $/ = "\n"; $\ = "\n"; }
-LINE: while (defined($_ = &lt;ARGV&gt;)) {
+LINE: while (defined($_ = <ARGV>)) {
     chomp $_;
     $sum += $_;
 }
@@ -4485,9 +4485,9 @@ use strict;
 use warnings;
 use DateTime;
 
-my $dt   = DateTime-&gt;now;   # Stores current date and time as datetime object
-my $date = $dt-&gt;ymd;   # Retrieves date as a string in 'yyyy-mm-dd' format
-my $time = $dt-&gt;hms;   # Retrieves time as a string in 'hh:mm:ss' format
+my $dt   = DateTime->now;   # Stores current date and time as datetime object
+my $date = $dt->ymd;   # Retrieves date as a string in 'yyyy-mm-dd' format
+my $time = $dt->hms;   # Retrieves time as a string in 'hh:mm:ss' format
 
 my $wanted = "$date $time";   # creates 'yyyy-mm-dd hh:mm:ss' string
 print $wanted;
@@ -4500,8 +4500,8 @@ use strict;
 use warnings;
 use DateTime;
 
-my $dt = DateTime-&gt;now;
-print join ' ', $dt-&gt;ymd, $dt-&gt;hms;
+my $dt = DateTime->now;
+print join ' ', $dt->ymd, $dt->hms;
 ```
 
 #### Answer 3 (score 30)
@@ -4556,7 +4556,7 @@ To avoid the <strong>magic number</strong> 9 needed in the previous example, add
 ```perl
 use File::stat;
 use Time::localtime;
-my $timestamp = ctime(stat($fh)-&gt;mtime);
+my $timestamp = ctime(stat($fh)->mtime);
 ```
 
 #### Answer 2 (score 24)
@@ -4821,7 +4821,7 @@ There are a few operators that have separate modes of operation for numeric and 
 One way to tell is this:  
 
 ```perl
-if ( length( do { no warnings "numeric"; $x &amp; "" } ) ) {
+if ( length( do { no warnings "numeric"; $x & "" } ) ) {
     print "$x is numeric\n";
 }
 ```
@@ -4829,7 +4829,7 @@ if ( length( do { no warnings "numeric"; $x &amp; "" } ) ) {
 If the bitwise feature is enabled, that makes `&amp;` only a numeric operator and adds a separate string `&amp;.` operator, you must disable it:  
 
 ```perl
-if ( length( do { no if $] &gt;= 5.022, "feature", "bitwise"; no warnings "numeric"; $x &amp; "" } ) ) {
+if ( length( do { no if $] >= 5.022, "feature", "bitwise"; no warnings "numeric"; $x & "" } ) ) {
     print "$x is numeric\n";
 }
 ```
@@ -4914,7 +4914,7 @@ my $ws_not_crlf = qr/[^\S\r\n]/;
 
 for (' ', '\f', '\t', '\r', '\n') {
   my $qq = qq["$_"];
-  printf "%-4s =&gt; %s\n", $qq,
+  printf "%-4s => %s\n", $qq,
     (eval $qq) =~ $ws_not_crlf ? "match" : "no match";
 }
 ```
@@ -4943,7 +4943,7 @@ If your text is Unicode, use code similar to the sub below to construct a patter
 
 ```perl
 sub ws_not_nl {
-  local($_) = &lt;&lt;'EOTable';
+  local($_) = <<'EOTable';
 0x0009        CHARACTER TABULATION   h s
 0x000a              LINE FEED (LF)    vs
 0x000b             LINE TABULATION    vs  [1]
@@ -5122,9 +5122,9 @@ Your regex does not work because [] defines a character class, but what you want
 ```perl
 (?=) - Positive look ahead assertion foo(?=bar) matches foo when followed by bar
 (?!) - Negative look ahead assertion foo(?!bar) matches foo when not followed by bar
-(?&lt;=) - Positive look behind assertion (?&lt;=foo)bar matches bar when preceded by foo
-(?&lt;!) - Negative look behind assertion (?&lt;!foo)bar matches bar when NOT preceded by foo
-(?&gt;) - Once-only subpatterns (?&gt;\d+)bar Performance enhancing when bar not present
+(?<=) - Positive look behind assertion (?<=foo)bar matches bar when preceded by foo
+(?<!) - Negative look behind assertion (?<!foo)bar matches bar when NOT preceded by foo
+(?>) - Once-only subpatterns (?>\d+)bar Performance enhancing when bar not present
 (?(x)) - Conditional subpatterns
 (?(3)foo|fu)bar - Matches foo if 3rd subpattern has matched, fu if not
 (?#) - Comment (?# Pattern does x y or z)
@@ -5178,7 +5178,7 @@ Is there an easy way to do this array-to-hash conversion? Ideally, it should be 
 
 #### Answer accepted (score 114)
 ```perl
-%hash = map { $_ =&gt; 1 } @array;
+%hash = map { $_ => 1 } @array;
 ```
 
 It's not as short as the "@hash{@array} = ..." solutions, but those ones require the hash and array to already be defined somewhere else, whereas this one can take an anonymous array and return an anonymous hash.  
@@ -5322,7 +5322,7 @@ sub parsedate {
     $year = $1;  $month = $2;   $day = $3;
     $hour = $4;  $minute = $5;  $second = $6;
     $hour |= 0;  $minute |= 0;  $second |= 0;  # defaults.
-    $year = ($year&lt;100 ? ($year&lt;70 ? 2000+$year : 1900+$year) : $year);
+    $year = ($year<100 ? ($year<70 ? 2000+$year : 1900+$year) : $year);
     return timelocal($second,$minute,$hour,$day,$month-1,$year);  
   }
   return -1;
@@ -5368,7 +5368,7 @@ I wrote a script I call "psh":
 ```perl
 #! /usr/bin/perl
 
-while (&lt;&gt;) {
+while (<>) {
   chomp;
   my $result = eval;
   print "$_ = $result\n";
@@ -5378,16 +5378,16 @@ while (&lt;&gt;) {
 Whatever you type in, it evaluates in Perl:  
 
 ```perl
-&gt; gmtime(2**30)
+> gmtime(2**30)
 gmtime(2**30) = Sat Jan 10 13:37:04 2004
 
-&gt; $x = 'foo'
+> $x = 'foo'
 $x = 'foo' = foo
 
-&gt; $x =~ s/o/a/g
+> $x =~ s/o/a/g
 $x =~ s/o/a/g = 2
 
-&gt; $x
+> $x
 $x = faa
 ```
 
@@ -5455,10 +5455,10 @@ binmode(STDIN, ":encoding(utf8)"); #actually check if it is UTF-8
 or with <a href="http://perldoc.perl.org/PerlIO.html" rel="noreferrer">PerlIO</a>:  
 
 ```perl
-open my $fh, "&gt;:utf8", $filename
+open my $fh, ">:utf8", $filename
     or die "could not open $filename: $!\n";
 
-open my $fh, "&lt;:encoding(utf-8)", $filename
+open my $fh, "<:encoding(utf-8)", $filename
     or die "could not open $filename: $!\n";
 ```
 
@@ -5466,7 +5466,7 @@ or with the <a href="http://perldoc.perl.org/open.html" rel="noreferrer">open pr
 
 ```perl
 use open ":encoding(utf8)";
-use open IN =&gt; ":encoding(utf8)", OUT =&gt; ":utf8";
+use open IN => ":encoding(utf8)", OUT => ":utf8";
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -5545,8 +5545,8 @@ You can set this in your CPAN.pm configuration so modules automatically install 
 
 ```perl
 % cpan
-cpan&gt; o conf makepl_arg INSTALL_BASE=/mydir/perl
-cpan&gt; o conf commit
+cpan> o conf makepl_arg INSTALL_BASE=/mydir/perl
+cpan> o conf commit
 ```
 
 For Build.PL-based distributions, use the --install_base option:  
@@ -5559,8 +5559,8 @@ You can configure CPAN.pm to automatically use this option too:
 
 ```perl
 % cpan
-cpan&gt; o conf mbuildpl_arg '--install_base /mydir/perl'
-cpan&gt; o conf commit
+cpan> o conf mbuildpl_arg '--install_base /mydir/perl'
+cpan> o conf commit
 ```
 
 #### Answer 3 (score 19)
@@ -5590,8 +5590,8 @@ So that I can conduct some operations on this array.
 Just reading the file into an array, one line per element, is trivial:  
 
 ```perl
-open my $handle, '&lt;', $path_to_file;
-chomp(my @lines = &lt;$handle&gt;);
+open my $handle, '<', $path_to_file;
+chomp(my @lines = <$handle>);
 close $handle;
 ```
 
@@ -5601,12 +5601,12 @@ If you want to make sure there is error handling for `open` and `close`, do some
 
 ```perl
 my $handle;
-unless (open $handle, "&lt;:encoding(utf8)", $path_to_file) {
+unless (open $handle, "<:encoding(utf8)", $path_to_file) {
    print STDERR "Could not open file '$path_to_file': $!\n";
    # we return 'undefined', we could also 'die' or 'croak'
    return undef
 }
-chomp(my @lines = &lt;$handle&gt;);
+chomp(my @lines = <$handle>);
 unless (close $handle) {
    # what does it mean if close yields an error and you are just reading?
    print STDERR "Don't care error while closing '$path_to_file': $!\n";
@@ -5618,7 +5618,7 @@ There is the easiest method, using `File::Slurp` module:
 
 ```perl
 use File::Slurp;
-my @lines = read_file("filename", chomp =&gt; 1); # will chomp() each line
+my @lines = read_file("filename", chomp => 1); # will chomp() each line
 ```
 
 If you need some validation for each line you can use `grep` in front of `read_file`.  
@@ -5626,7 +5626,7 @@ If you need some validation for each line you can use `grep` in front of `read_f
 For example, filter lines which contain only integers:  
 
 ```perl
-my @lines = grep { /^\d+$/ } read_file("filename", chomp =&gt; 1);
+my @lines = grep { /^\d+$/ } read_file("filename", chomp => 1);
 ```
 
 #### Answer 3 (score 10)
@@ -5641,7 +5641,7 @@ It's not as glamorous as others, but, it works all the same.  And...
 ```perl
 $todays_data = '/var/tmp/somefile' ;
 open INFILE, "$todays_data" ; 
-@data = &lt;INFILE&gt; ; 
+@data = <INFILE> ; 
 close INFILE ;
 ```
 
@@ -5842,7 +5842,7 @@ my %sparse;
 @sparse{0, 5, 23} = (1 .. 3);
 
 print "there are ", scalar keys %sparse, " items in the sparse array\n",
-    map { "\t$sparse{$_}\n" } sort { $a &lt;=&gt; $b } keys %sparse;
+    map { "\t$sparse{$_}\n" } sort { $a <=> $b } keys %sparse;
 ```
 
 The `keys` function in scalar context will return the number of items in the sparse array.  The only downside to using a hash to emulate a sparse array is that you must sort the keys before iterating over them if their order is important.  
@@ -5862,7 +5862,7 @@ I have dynamically generated strings like `@#@!efq@!#!`, and I want to remove sp
 Currently I am doing something this (replacing the characters with nothing):  
 
 ```perl
-$varTemp =~ s/['\$','\#','\@','\~','\!','\&amp;','\*','\(','\)','\[','\]','\;','\.','\,','\:','\?','\^',' ', '\`','\\','\/']//g;
+$varTemp =~ s/['\$','\#','\@','\~','\!','\&','\*','\(','\)','\[','\]','\;','\.','\,','\:','\?','\^',' ', '\`','\\','\/']//g;
 ```
 
 Is there a better way of doing this? I am fooking for something clean.  
@@ -5871,7 +5871,7 @@ Is there a better way of doing this? I am fooking for something clean.
 You've misunderstood how <a href="http://www.regular-expressions.info/charclass.html" rel="noreferrer">character classes</a> are used:  
 
 ```perl
-$varTemp =~ s/[\$#@~!&amp;*()\[\];.,:?^ `\\\/]+//g;
+$varTemp =~ s/[\$#@~!&*()\[\];.,:?^ `\\\/]+//g;
 ```
 
 does the same as your regex (assuming you didn't mean to remove `'` characters from your strings).   
@@ -5888,20 +5888,20 @@ You could use the tr instead:
 will delete every f and every o from `$p`. In your case it should be:  
 
 ```perl
-       $p =~ tr/\$#@~!&amp;*()[];.,:?^ `\\\///d
+       $p =~ tr/\$#@~!&*()[];.,:?^ `\\\///d
 ```
 
 #### Answer 3 (score 7)
 With a character class this big it is easier to say what you want to keep. A caret in the first position of a character class inverts its sense, so you can write  
 
 ```perl
-$varTemp =~ s/[^"%'+\-0-9&lt;=&gt;a-z_{|}]+//gi
+$varTemp =~ s/[^"%'+\-0-9<=>a-z_{|}]+//gi
 ```
 
 or, using the more efficient `tr`  
 
 ```perl
-$varTemp =~ tr/"%'+\-0-9&lt;=&gt;A-Z_a-z{|}//cd
+$varTemp =~ tr/"%'+\-0-9<=>A-Z_a-z{|}//cd
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -5919,7 +5919,7 @@ how to?</p>
 You can do it with `cut`:  
 
 ```perl
-cut -d " " -f 3- input_filename &gt; output_filename
+cut -d " " -f 3- input_filename > output_filename
 ```
 
 <strong>Explanation:</strong>  
@@ -5936,7 +5936,7 @@ cut -d " " -f 3- input_filename &gt; output_filename
 Alternatively, you can do it with `awk`:  
 
 ```perl
-awk '{$1=""; $2=""; sub("  ", " "); print}' input_filename &gt; output_filename
+awk '{$1=""; $2=""; sub("  ", " "); print}' input_filename > output_filename
 ```
 
 <strong>Explanation:</strong>  
@@ -6033,7 +6033,7 @@ while(my($k, $v) = each %hash) { ... }
 If you plan to change the keys of the hash in any way <em>except</em> for deleting the current key during the iteration, then you must not use each().  For example, this code to create a new set of uppercase keys with doubled values works fine using keys():  
 
 ```perl
-%h = (a =&gt; 1, b =&gt; 2);
+%h = (a => 1, b => 2);
 
 foreach my $k (keys %h)
 {
@@ -6044,13 +6044,13 @@ foreach my $k (keys %h)
 producing the expected resulting hash:  
 
 ```perl
-(a =&gt; 1, A =&gt; 2, b =&gt; 2, B =&gt; 4)
+(a => 1, A => 2, b => 2, B => 4)
 ```
 
 But using each() to do the same thing:  
 
 ```perl
-%h = (a =&gt; 1, b =&gt; 2);
+%h = (a => 1, b => 2);
 
 keys %h;
 while(my($k, $v) = each %h)
@@ -6062,7 +6062,7 @@ while(my($k, $v) = each %h)
 produces incorrect results in hard-to-predict ways.  For example:  
 
 ```perl
-(a =&gt; 1, A =&gt; 2, b =&gt; 2, B =&gt; 8)
+(a => 1, A => 2, b => 2, B => 8)
 ```
 
 This, however, is safe:  
@@ -6102,7 +6102,7 @@ code), it will continue at this position. </p>
 Example:  
 
 ```perl
-my %hash = ( foo =&gt; 1, bar =&gt; 2, baz =&gt; 3, quux =&gt; 4 );
+my %hash = ( foo => 1, bar => 2, baz => 3, quux => 4 );
 
 # find key 'baz'
 while ( my ($k, $v) = each %hash ) {
@@ -6116,7 +6116,7 @@ print "the hash contains:\n";
 
 # iterate over all keys:
 while ( my ($k, $v) = each %hash ) {
-    print "$k =&gt; $v\n";
+    print "$k => $v\n";
 }
 ```
 
@@ -6126,8 +6126,8 @@ This prints:
 found key bar
 found key baz
 the hash contains:
-quux =&gt; 4
-foo =&gt; 1
+quux => 4
+foo => 1
 ```
 
 <p>What happened to keys "bar" and baz"? They're still there, but the
@@ -6138,14 +6138,14 @@ The place where `each` can cause you problems is that it's a true, non-scoped it
 
 ```perl
 while ( my ($key,$val) = each %a_hash ) {
-    print "$key =&gt; $val\n";
+    print "$key => $val\n";
     last if $val; #exits loop when $val is true
 }
 
 # but "each" hasn't reset!!
 while ( my ($key,$val) = each %a_hash ) {
     # continues where the last loop left off
-    print "$key =&gt; $val\n";
+    print "$key => $val\n";
 }
 ```
 
@@ -6215,25 +6215,25 @@ for (1 .. 2){
     # The variables differ with respect to newness.
     $o ++;
     $m ++;
-    print __PACKAGE__, " &gt;&gt; o=$o m=$m\n";  # $m is always 1.
+    print __PACKAGE__, " >> o=$o m=$m\n";  # $m is always 1.
 
     # The package has changed, but we still have direct,
     # unqualified access to both variables, because the
     # lexical scope has not changed.
     package Fubb;
-    print __PACKAGE__, " &gt;&gt; o=$o m=$m\n";
+    print __PACKAGE__, " >> o=$o m=$m\n";
 }
 
 # The our() and my() variables differ with respect to privacy.
 # We can still access the variable declared with our(), provided
 # that we fully qualify its name, but the variable declared
 # with my() is unavailable.
-print __PACKAGE__, " &gt;&gt; main::o=$main::o\n";  # 2
-print __PACKAGE__, " &gt;&gt; main::m=$main::m\n";  # Undefined.
+print __PACKAGE__, " >> main::o=$main::o\n";  # 2
+print __PACKAGE__, " >> main::m=$main::m\n";  # Undefined.
 
 # Attempts to access the variables directly won't compile.
-# print __PACKAGE__, " &gt;&gt; o=$o\n";
-# print __PACKAGE__, " &gt;&gt; m=$m\n";
+# print __PACKAGE__, " >> o=$o\n";
+# print __PACKAGE__, " >> m=$m\n";
 
 # Variables declared with use vars() are like those declared
 # with our(): belong to a package; not private; and not new.
@@ -6246,11 +6246,11 @@ for (1 .. 9){
 # Even though we are outside the lexical scope where the
 # use vars() variable was declared, we have direct access
 # because the package has not changed.
-print __PACKAGE__, " &gt;&gt; uv=$uv\n";
+print __PACKAGE__, " >> uv=$uv\n";
 
 # And we can access it from another package.
 package Bubb;
-print __PACKAGE__, " &gt;&gt; main::uv=$main::uv\n";
+print __PACKAGE__, " >> main::uv=$main::uv\n";
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -6284,7 +6284,7 @@ On the other hand, if you need to get content from all of the directories and su
 use File::Find;
 
 my @content;
-find( \&amp;wanted, '/some/path');
+find( \&wanted, '/some/path');
 do_something_with( @content );
 
 exit;
@@ -6302,7 +6302,7 @@ Check <a href="http://perldoc.perl.org/functions/readdir.html" rel="noreferrer">
 
 ```perl
 opendir(DIR, $some_dir) || die "can't opendir $some_dir: $!";
-@dots = grep { /^\./ &amp;&amp; -f "$some_dir/$_" } readdir(DIR);
+@dots = grep { /^\./ && -f "$some_dir/$_" } readdir(DIR);
 closedir DIR;
 ```
 
@@ -6311,7 +6311,7 @@ Or <a href="http://search.cpan.org/~nwclark/perl-5.8.9/lib/File/Find.pm" rel="no
 
 ```perl
 use File::Find;
-finddepth(\&amp;wanted, '/some/path/to/dir');
+finddepth(\&wanted, '/some/path/to/dir');
 sub wanted { print };
 ```
 
@@ -6447,7 +6447,7 @@ Perhaps you want to split on `.gz` extension:
 
 ```perl
 my $line = "file1.gzfile1.gzfile3.gz";
-my @abc = split /(?&lt;=\.gz)/, $line;
+my @abc = split /(?<=\.gz)/, $line;
 print $_, "\n" for @abc;
 ```
 
@@ -6458,7 +6458,7 @@ If you work with the fixed set of extensions, you can extend the pattern to incl
 ```perl
 my $line = "file1.gzfile2.txtfile2.gzfile3.xls";
 my @exts = ('txt', 'xls', 'gz');
-my $patt = join '|', map { '(?&lt;=\.' . $_ . ')' } @exts;
+my $patt = join '|', map { '(?<=\.' . $_ . ')' } @exts;
 my @abc = split /$patt/, $line;
 print $_, "\n" for @abc;
 ```
@@ -6516,7 +6516,7 @@ I have a file that looks like this:
 
 ```perl
 AE  United Arab Emirates
-AG  Antigua &amp; Barbuda
+AG  Antigua & Barbuda
 AN  Netherlands Antilles
 AS  American Samoa
 BA  Bosnia and Herzegovina
@@ -6541,7 +6541,7 @@ You can also find the number of columns in `NF` and use that in a loop.
 `$1=""` leaves a space as Ben Jackson mentioned, so use a `for` loop:  
 
 ```perl
-awk '{for (i=2; i&lt;=NF; i++) print $i}' filename
+awk '{for (i=2; i<=NF; i++) print $i}' filename
 ```
 
 So if your string was "one two three", the output will be:  
@@ -6552,7 +6552,7 @@ three</p>
 If you want the result in one row, you could do as follows:  
 
 ```perl
-awk '{for (i=2; i&lt;NF; i++) printf $i " "; print $NF}' filename
+awk '{for (i=2; i<NF; i++) printf $i " "; print $NF}' filename
 ```
 
 This will give you: "two three"  
@@ -6646,7 +6646,7 @@ I'm maintaining a script that can get its input from various sources, and works 
 When reading from a file it goes something like this:  
 
 ```perl
-@lines = &lt;IN&gt;;
+@lines = <IN>;
 process(\@lines);
 
 ...
@@ -6685,7 +6685,7 @@ $line =~ s/\R//g;
 It's the same as:  
 
 ```perl
-(?&gt;\x0D\x0A?|[\x0A-\x0C\x85\x{2028}\x{2029}])
+(?>\x0D\x0A?|[\x0A-\x0C\x85\x{2028}\x{2029}])
 ```
 
 I'll keep this question open a while yet, just to see if there's more nifty ways waiting to be suggested.  
@@ -6726,9 +6726,9 @@ Every time I input something the code always tells me that it exists. But I know
 ```perl
 #!/usr/bin/perl
 
-@array = &lt;&gt;;
+@array = <>;
 print "Enter the word you what to match\n";
-chomp($match = &lt;STDIN&gt;);
+chomp($match = <STDIN>);
 
 if (grep($match, @array)) {
     print "found it\n";
@@ -6750,7 +6750,7 @@ If you need to match on a lot of different values, it might also be worth for yo
 
 ```perl
 # convert array to a hash with the array elements as the hash keys and the values are simply 1
-my %hash = map {$_ =&gt; 1} @array;
+my %hash = map {$_ => 1} @array;
 
 # check if the hash contains $match
 if (defined $hash{$match}) {
@@ -6887,8 +6887,8 @@ It won't help you now, but in Perl 6 you will be able to say
 ```perl
 #!/usr/bin/perl6
 
-my @a = &lt;a b c d e&gt;;
-for @a Z 0 .. Inf -&gt; $elem, $index {
+my @a = <a b c d e>;
+for @a Z 0 .. Inf -> $elem, $index {
     say "at index $index, I saw $elem"
 }
 ```
@@ -6915,8 +6915,8 @@ I need to create a subroutine that does a search and replace in file.
 Here's the contents of myfiletemplate.txt:    
 
 ```perl
-CATEGORY1=youknow_&lt;PREF&gt;  
-CATEGORY2=your/&lt;PREF&gt;/goes/here/
+CATEGORY1=youknow_<PREF>  
+CATEGORY2=your/<PREF>/goes/here/
 ```
 
 Here's my replacement string: `ABCD`    
@@ -6931,15 +6931,15 @@ Quick and dirty:
 
 use strict;
 
-open(FILE, "&lt;/tmp/yourfile.txt") || die "File not found";
-my @lines = &lt;FILE&gt;;
+open(FILE, "</tmp/yourfile.txt") || die "File not found";
+my @lines = <FILE>;
 close(FILE);
 
 foreach(@lines) {
-   $_ =~ s/&lt;PREF&gt;/ABCD/g;
+   $_ =~ s/<PREF>/ABCD/g;
 }
 
-open(FILE, "&gt;/tmp/yourfile.txt") || die "File not found";
+open(FILE, ">/tmp/yourfile.txt") || die "File not found";
 print FILE @lines;
 close(FILE);
 ```
@@ -6950,7 +6950,7 @@ Perhaps it i a good idea not to write the result back to your original file; ins
 A one liner:  
 
 ```perl
-perl -pi.back -e 's/&lt;PREF&gt;/ABCD/g;' inputfile
+perl -pi.back -e 's/<PREF>/ABCD/g;' inputfile
 ```
 
 #### Answer 3 (score 16)
@@ -6964,8 +6964,8 @@ use warnings;
 
 $^I = '.bak'; # create a backup copy 
 
-while (&lt;&gt;) {
-   s/&lt;PREF&gt;/ABCD/g; # do the replacement
+while (<>) {
+   s/<PREF>/ABCD/g; # do the replacement
    print; # print to the modified file
 }
 ```
@@ -7059,12 +7059,12 @@ int(5/1.5) = 3;
 The lexically scoped <a href="http://perldoc.perl.org/integer.html" rel="noreferrer">`integer` pragma</a> forces Perl to use integer arithmetic in its scope:  
 
 ```perl
-print 3.0/2.1 . "\n";    # =&gt; 1.42857142857143
+print 3.0/2.1 . "\n";    # => 1.42857142857143
 {
   use integer;
-  print 3.0/2.1 . "\n";  # =&gt; 1
+  print 3.0/2.1 . "\n";  # => 1
 }
-print 3.0/2.1 . "\n";    # =&gt; 1.42857142857143
+print 3.0/2.1 . "\n";    # => 1.42857142857143
 ```
 
 #### Answer 3 (score 5)
@@ -7167,7 +7167,7 @@ How do I pick these 3 substrings from each string shown above? I know it can be 
 You could do something like this:  
 
 ```perl
-my $data = &lt;&lt;END;
+my $data = <<END;
 1) Scheme ID: abc-456-hu5t10 (High priority) *
 2) Scheme ID: frt-78f-hj542w (Balanced)
 3) Scheme ID: 23f-f974-nm54w (super formula run) *
@@ -7465,19 +7465,19 @@ use utf8;
 use strict;
 use autodie;
 use warnings; 
-use warnings    qw&lt; FATAL  utf8     &gt;;
-use open        qw&lt; :std  :utf8     &gt;;
-use charnames   qw&lt; :full &gt;;
-use feature     qw&lt; unicode_strings &gt;;
+use warnings    qw< FATAL  utf8     >;
+use open        qw< :std  :utf8     >;
+use charnames   qw< :full >;
+use feature     qw< unicode_strings >;
 
-use File::Basename      qw&lt; basename &gt;;
-use Carp                qw&lt; carp croak confess cluck &gt;;
-use Encode              qw&lt; encode decode &gt;;
-use Unicode::Normalize  qw&lt; NFD NFC &gt;;
+use File::Basename      qw< basename >;
+use Carp                qw< carp croak confess cluck >;
+use Encode              qw< encode decode >;
+use Unicode::Normalize  qw< NFD NFC >;
 
 END { close STDOUT }
 
-if (grep /\P{ASCII}/ =&gt; @ARGV) { 
+if (grep /\P{ASCII}/ => @ARGV) { 
    @ARGV = map { decode("UTF-8", $_) } @ARGV;
 }
 
@@ -7499,7 +7499,7 @@ local $SIG{__WARN__} = sub {
     else     { confess "Deadly warning: @_"  }
 };
 
-while (&lt;&gt;)  {
+while (<>)  {
     chomp;
     $_ = NFD($_);
     ...
@@ -7560,7 +7560,7 @@ That's easy enough; the Encode module has the functions to do that. The generic 
 If we rewrite our one-liner:  
 
 ```perl
-perl -MEncode=decode -E 'while(&lt;&gt;){ chomp; say length decode("UTF-8", $_) }'
+perl -MEncode=decode -E 'while(<>){ chomp; say length decode("UTF-8", $_) }'
 ```
 
 We type in 文字化け and get "4" as the result. Success.  
@@ -7590,7 +7590,7 @@ People run into trouble where half their data is a proper character string, and 
 Here's an example: you have a program that reads a UTF-8-encoded text file, you tack on a Unicode `PILE OF POO` to each line, and you print it out. You write it like:  
 
 ```perl
-while(&lt;&gt;){
+while(<>){
     chomp;
     say "$_ 💩";
 }
@@ -7803,7 +7803,7 @@ This would work only on the OS where it was built.
 I have some files that I'd like to delete the last newline if it is the last character in a file.  `od -c` shows me that the command I run does write the file with a trailing new line:  
 
 ```perl
-0013600   n   t  &gt;  \n
+0013600   n   t  >  \n
 ```
 
 I've tried a few tricks with sed but the best I could think of isn't doing the trick:  
@@ -7816,7 +7816,7 @@ Any ideas how to do this?
 
 #### Answer accepted (score 212)
 ```perl
-perl -pe 'chomp if eof' filename &gt;filename2
+perl -pe 'chomp if eof' filename >filename2
 ```
 
 or, to edit the file in place:  
@@ -7837,13 +7837,13 @@ You can take advantage of the fact that <strong>shell <a href="http://pubs.openg
 Simple form that works in bash, ksh, zsh:  
 
 ```perl
-printf %s "$(&lt; in.txt)" &gt; out.txt
+printf %s "$(< in.txt)" > out.txt
 ```
 
 Portable (POSIX-compliant) alternative (slightly less efficient):  
 
 ```perl
-printf %s "$(cat in.txt)" &gt; out.txt
+printf %s "$(cat in.txt)" > out.txt
 ```
 
 Note:  
@@ -7880,7 +7880,7 @@ To test for an ending newline you can use `tail` and `wc`. The following example
 
 ```perl
 if [[ $(tail -c1 file | wc -l) == 1 ]]; then
-  head -c -1 file &gt; file.tmp
+  head -c -1 file > file.tmp
   mv file.tmp file
 fi
 ```
@@ -7888,7 +7888,7 @@ fi
 You could also use `sponge` from `moreutils` to do "in-place" editing:  
 
 ```perl
-[[ $(tail -c1 file | wc -l) == 1 ]] &amp;&amp; head -c -1 file | sponge file
+[[ $(tail -c1 file | wc -l) == 1 ]] && head -c -1 file | sponge file
 ```
 
 <hr>
@@ -7896,12 +7896,12 @@ You could also use `sponge` from `moreutils` to do "in-place" editing:
 You can also make a general reusable function by stuffing this in your `.bashrc` file:  
 
 ```perl
-# Example:  remove-last-newline &lt; multiline.txt
+# Example:  remove-last-newline < multiline.txt
 function remove-last-newline(){
     local file=$(mktemp)
-    cat &gt; $file
+    cat > $file
     if [[ $(tail -c1 $file | wc -l) == 1 ]]; then
-        head -c -1 $file &gt; $file.tmp
+        head -c -1 $file > $file.tmp
         mv $file.tmp $file
     fi
     cat $file
@@ -7928,7 +7928,7 @@ Install <a href="https://metacpan.org/pod/PAR::Packer" rel="noreferrer">PAR::Pac
 ```perl
   :: short answer :
   :: perl -MCPAN -e "install PAR::Packer" 
-  pp -o &lt;&lt;DesiredExeName&gt;&gt;.exe &lt;&lt;MyFancyPerlScript&gt;&gt; 
+  pp -o <<DesiredExeName>>.exe <<MyFancyPerlScript>> 
 
   :: long answer - create the following cmd , adjust vars to your taste ...
   :: next_line_is_templatized
@@ -7989,18 +7989,18 @@ Install <a href="https://metacpan.org/pod/PAR::Packer" rel="noreferrer">PAR::Pac
   set _
   :: debug PAUSE
   :: truncate the run log
-  echo date is %date% time is %time% &gt; %_RunLog%
+  echo date is %date% time is %time% > %_RunLog%
 
 
   :: uncomment this to debug all the vars 
-  :: debug set  &gt;&gt; %_RunLog%
+  :: debug set  >> %_RunLog%
 
   :: for each perl pm and or pl file to check syntax and with output to logs
-  for /f %%i in ('dir %_ProductVersionPerlDir%\*.pl /s /b /a-d' ) do echo %%i &gt;&gt; %_RunLog%&amp;perl -wc %%i | tee -a  %_RunLog% 2&gt;&amp;1
+  for /f %%i in ('dir %_ProductVersionPerlDir%\*.pl /s /b /a-d' ) do echo %%i >> %_RunLog%&perl -wc %%i | tee -a  %_RunLog% 2>&1
 
 
   :: for each perl pm and or pl file to check syntax and with output to logs
-  for /f %%i in ('dir %_ProductVersionPerlDir%\*.pm /s /b /a-d' ) do echo %%i &gt;&gt; %_RunLog%&amp;perl -wc %%i | tee -a  %_RunLog% 2&gt;&amp;1
+  for /f %%i in ('dir %_ProductVersionPerlDir%\*.pm /s /b /a-d' ) do echo %%i >> %_RunLog%&perl -wc %%i | tee -a  %_RunLog% 2>&1
 
   :: now open the run log
   cmd /c start /max %_MyEditor% %_RunLog%
@@ -8008,11 +8008,11 @@ Install <a href="https://metacpan.org/pod/PAR::Packer" rel="noreferrer">PAR::Pac
 
   :: this is the call without debugging
   :: old 
-  echo CFPoint1  OK The run cmd script %0 is executed &gt;&gt; %_RunLog%
-  echo CFPoint2  OK  compile the exe file  STDOUT and STDERR  to a single _RunLog file &gt;&gt; %_RunLog%
+  echo CFPoint1  OK The run cmd script %0 is executed >> %_RunLog%
+  echo CFPoint2  OK  compile the exe file  STDOUT and STDERR  to a single _RunLog file >> %_RunLog%
   cd %_ProductVersionPerlDir%
 
-  pp -o %_Action%_%_ProductName%.exe %_PerlScript% | tee -a %_RunLog% 2&gt;&amp;1 
+  pp -o %_Action%_%_ProductName%.exe %_PerlScript% | tee -a %_RunLog% 2>&1 
 
   :: open the run log
   cmd /c start /max %_MyEditor% %_RunLog%
@@ -8031,7 +8031,7 @@ Install <a href="https://metacpan.org/pod/PAR::Packer" rel="noreferrer">PAR::Pac
   :: Requirements : 
   :: perl , pp , win gnu utils tee 
   :: perl -MCPAN -e "install PAR::Packer" 
-  :: text editor supporting &lt;&lt;textEditor&gt;&gt; &lt;&lt;FileNameToOpen&gt;&gt; cmd call syntax
+  :: text editor supporting <<textEditor>> <<FileNameToOpen>> cmd call syntax
   :::::::
   :: VersionHistory
   :: 1.0.0 --- 2012-06-23 12:05:45 --- ysg --- Initial creation from run_morphus.cmd
@@ -8285,7 +8285,7 @@ I want to SSH to a server and execute a simple command like "id" and get the out
 The best way to run commands remotely using SSH is  
 
 ```perl
-$ ssh user@host "command" &gt; output.file
+$ ssh user@host "command" > output.file
 ```
 
 You can use this either in bash or in perl. However, If you want to use perl you can install the perl modules in your local directory path as suggested by brian in his comment or from Perl FAQ at "<a href="http://perldoc.perl.org/perlfaq8.html#How-do-I-keep-my-own-module/library-directory?" rel="nofollow noreferrer">How do I keep my own module/library directory?</a>". Instead of using Net::SSH I would suggest to use Net::SSH::Perl with the below example.  
@@ -8303,9 +8303,9 @@ my $password = "password";
 
 my $cmd = shift;
 
-my $ssh = Net::SSH::Perl-&gt;new("$hostname", debug=&gt;0);
-$ssh-&gt;login("$username","$password");
-my ($stdout,$stderr,$exit) = $ssh-&gt;cmd("$cmd");
+my $ssh = Net::SSH::Perl->new("$hostname", debug=>0);
+$ssh->login("$username","$password");
+my ($stdout,$stderr,$exit) = $ssh->cmd("$cmd");
 print $stdout;
 ```
 
@@ -8318,7 +8318,7 @@ You can always install modules locally, and that is the method you should look i
 use strict;
 use warnings;
 
-my $id = qx/ssh remotehost id 2&gt;&amp;1/;
+my $id = qx/ssh remotehost id 2>&1/;
 
 chomp $id;
 
@@ -8350,18 +8350,18 @@ All `use` does is to figure out the filename from the package name provided, `re
 For example, below I put the `Example::Plot::FourD` package in a file called `t.pl`, loaded it in a script in file `s.pl`.  
 
 ```perl
-C:\Temp&gt; cat t.pl
+C:\Temp> cat t.pl
 package Example::Plot::FourD;
 
 use strict; use warnings;
 
-sub new { bless {} =&gt; shift }
+sub new { bless {} => shift }
 
 sub something { print "something\n" }
 
 "Example::Plot::FourD"
 
-C:\Temp&gt; cat s.pl
+C:\Temp> cat s.pl
 #!/usr/bin/perl
 use strict; use warnings;
 
@@ -8369,11 +8369,11 @@ BEGIN {
     require 't.pl';
 }
 
-my $p = Example::Plot::FourD-&gt;new;
-$p-&gt;something;
+my $p = Example::Plot::FourD->new;
+$p->something;
 
 
-C:\Temp&gt; s
+C:\Temp> s
 something
 ```
 
@@ -8411,8 +8411,8 @@ print "Access denied!";
 Simple:  
 
 ```perl
-if ( $name eq 'tom' &amp;&amp; $password eq '123!'
-    || $name eq 'frank' &amp;&amp; $password eq '321!'
+if ( $name eq 'tom' && $password eq '123!'
+    || $name eq 'frank' && $password eq '321!'
 ) {
 ```
 
@@ -8422,11 +8422,11 @@ Better:
 
 ```perl
 my %password = (
-    'tom' =&gt; '123!',
-    'frank' =&gt; '321!',
+    'tom' => '123!',
+    'frank' => '321!',
 );
 
-if ( exists $password{$name} &amp;&amp; $password eq $password{$name} ) {
+if ( exists $password{$name} && $password eq $password{$name} ) {
 ```
 
 #### Answer 2 (score 3)
@@ -8434,7 +8434,7 @@ I don't recommend storing passwords in a script, but this is a way to what you i
 
 ```perl
 use 5.010;
-my %user_table = ( tom =&gt; '123!', frank =&gt; '321!' );
+my %user_table = ( tom => '123!', frank => '321!' );
 
 say ( $user_table{ $name } eq $password ? 'You have gained access.'
     :                                     'Access denied!'

@@ -33,7 +33,7 @@ Find the `index` of the array element you want to remove, and then remove that i
 var array = [2, 5, 9];
 console.log(array)
 var index = array.indexOf(5);
-if (index &gt; -1) {
+if (index > -1) {
   array.splice(index, 1);
 }
 // array = [2, 9]
@@ -56,7 +56,7 @@ array.splice(i, 1);
 If you want to remove every element with value `number` from the array:  
 
 ```javascript
-for(var i = array.length - 1; i &gt;= 0; i--) {
+for(var i = array.length - 1; i >= 0; i--) {
     if(array[i] === number) {
        array.splice(i, 1);
     }
@@ -102,7 +102,7 @@ let value = 3
 
 let arr = [1, 2, 3, 4, 5, 3]
 
-arr = arr.filter(item =&gt; item !== value)
+arr = arr.filter(item => item !== value)
 
 console.log(arr)
 // [ 1, 2, 4, 5 ]
@@ -121,7 +121,7 @@ let forDeletion = [2, 3, 5]
 
 let arr = [1, 2, 3, 4, 5, 3]
 
-arr = arr.filter(item =&gt; !forDeletion.includes(item))
+arr = arr.filter(item => !forDeletion.includes(item))
 // !!! Read below about array.includes(...) support !!!
 
 console.log(arr)
@@ -138,7 +138,7 @@ If the <a href="https://github.com/tc39/proposal-bind-operator" rel="noreferrer"
 // array-lib.js
 
 export function remove(...forDeletion) {
-    return this.filter(item =&gt; !forDeletion.includes(item))
+    return this.filter(item => !forDeletion.includes(item))
 }
 
 // main.js
@@ -244,14 +244,14 @@ function redirect (url) {
         version   = parseInt(ua.substr(4, 2), 10);
 
     // Internet Explorer 8 and lower
-    if (isIE &amp;&amp; version &lt; 9) {
+    if (isIE && version < 9) {
         var link = document.createElement('a');
         link.href = url;
         document.body.appendChild(link);
         link.click();
     }
 
-    // All other browsers can use the standard window.location.href (they don't lose HTTP_REFERER like Internet Explorer 8 &amp; lower does)
+    // All other browsers can use the standard window.location.href (they don't lose HTTP_REFERER like Internet Explorer 8 & lower does)
     else { 
         window.location.href = url; 
     }
@@ -299,7 +299,7 @@ console.log(string.indexOf(substring) !== -1);```
 
 ```javascript
 "potato".includes("to");
-&gt; true
+> true
 ```
 
 Note that this <a href="https://caniuse.com/?v=1#feat=es6-string-includes" rel="noreferrer">does not work in Internet Explorer or some other old browsers</a> with no or incomplete ES6 support. To make it work in old browsers, you may wish to use a transpiler like <a href="https://babeljs.io/" rel="noreferrer">Babel</a>, a shim library like <a href="https://github.com/paulmillr/es6-shim" rel="noreferrer">es6-shim</a>, or this <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/includes#Polyfill" rel="noreferrer">polyfill from MDN</a>:  
@@ -312,7 +312,7 @@ if (!String.prototype.includes) {
       start = 0;
     }
 
-    if (start + search.length &gt; this.length) {
+    if (start + search.length > this.length) {
       return false;
     } else {
       return this.indexOf(search, start) !== -1;
@@ -342,9 +342,9 @@ function kmpSearch(pattern, text) {
 
   // Compute longest suffix-prefix table
   var lsp = [0]; // Base case
-  for (var i = 1; i &lt; pattern.length; i++) {
+  for (var i = 1; i < pattern.length; i++) {
     var j = lsp[i - 1]; // Start by assuming we're extending the previous LSP
-    while (j &gt; 0 &amp;&amp; pattern.charAt(i) != pattern.charAt(j))
+    while (j > 0 && pattern.charAt(i) != pattern.charAt(j))
       j = lsp[j - 1];
     if (pattern.charAt(i) == pattern.charAt(j))
       j++;
@@ -353,8 +353,8 @@ function kmpSearch(pattern, text) {
 
   // Walk through text string
   var j = 0; // Number of chars matched in pattern
-  for (var i = 0; i &lt; text.length; i++) {
-    while (j &gt; 0 &amp;&amp; text.charAt(i) != pattern.charAt(j))
+  for (var i = 0; i < text.length; i++) {
+    while (j > 0 && text.charAt(i) != pattern.charAt(j))
       j = lsp[j - 1]; // Fall back in the pattern
     if (text.charAt(i) == pattern.charAt(j)) {
       j++; // Next char matched, increment position
@@ -394,13 +394,13 @@ else
     $("#txtAge").hide();
 }```
 ```javascript
-&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"&gt;&lt;/script&gt;
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-&lt;input type="checkbox" id="isAgeSelected"/&gt;
+<input type="checkbox" id="isAgeSelected"/>
 
-&lt;div id="txtAge" style="display:none"&gt;
+<div id="txtAge" style="display:none">
 Age is selected
-&lt;/div&gt;```
+</div>```
 </div>
 </div>
 
@@ -446,9 +446,9 @@ $('#isAgeSelected').click(function() {
     $("#txtAge").toggle(this.checked);
 });```
 ```javascript
-&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"&gt;&lt;/script&gt;
-&lt;input type="checkbox" id="isAgeSelected"/&gt;
-&lt;div id="txtAge" style="display:none"&gt;Age is something&lt;/div&gt;```
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<input type="checkbox" id="isAgeSelected"/>
+<div id="txtAge" style="display:none">Age is something</div>```
 </div>
 </div>
 
@@ -562,7 +562,7 @@ Sometimes the old ways are the best:
 ```javascript
 var index;
 var a = ["a", "b", "c"];
-for (index = 0; index &lt; a.length; ++index) {
+for (index = 0; index < a.length; ++index) {
     console.log(a[index]);
 }```
 </div>
@@ -576,7 +576,7 @@ If the length of the array won't change during the loop, and it's in performance
 ```javascript
 var index, len;
 var a = ["a", "b", "c"];
-for (index = 0, len = a.length; index &lt; len; ++index) {
+for (index = 0, len = a.length; index < len; ++index) {
     console.log(a[index]);
 }```
 </div>
@@ -590,7 +590,7 @@ And/or counting backward:
 ```javascript
 var index;
 var a = ["a", "b", "c"];
-for (index = a.length - 1; index &gt;= 0; --index) {
+for (index = a.length - 1; index >= 0; --index) {
     console.log(a[index]);
 }```
 </div>
@@ -603,7 +603,7 @@ In ES2015 and higher, you can make your index and value variables local to the `
 
 ```javascript
 let a = ["a", "b", "c"];
-for (let index = 0; index &lt; a.length; ++index) {
+for (let index = 0; index < a.length; ++index) {
     let value = a[index];
     console.log(index, value);
 }
@@ -615,7 +615,7 @@ for (let index = 0; index &lt; a.length; ++index) {
 <div class="snippet-code snippet-currently-hidden">
 ```javascript
 let a = ["a", "b", "c"];
-for (let index = 0; index &lt; a.length; ++index) {
+for (let index = 0; index < a.length; ++index) {
     let value = a[index];
     console.log(index, value);
 }
@@ -637,8 +637,8 @@ And when you do that, not just `value` but also `index` is recreated for each lo
 
 ```javascript
 let divs = document.querySelectorAll("div");
-for (let index = 0; index &lt; divs.length; ++index) {
-    divs[index].addEventListener('click', e =&gt; {
+for (let index = 0; index < divs.length; ++index) {
+    divs[index].addEventListener('click', e => {
         console.log("Index is: " + index);
     });
 }
@@ -648,17 +648,17 @@ for (let index = 0; index &lt; divs.length; ++index) {
 <div class="snippet-code snippet-currently-hidden">
 ```javascript
 let divs = document.querySelectorAll("div");
-for (let index = 0; index &lt; divs.length; ++index) {
-    divs[index].addEventListener('click', e =&gt; {
+for (let index = 0; index < divs.length; ++index) {
+    divs[index].addEventListener('click', e => {
         console.log("Index is: " + index);
     });
 }```
 ```javascript
-&lt;div&gt;zero&lt;/div&gt;
-&lt;div&gt;one&lt;/div&gt;
-&lt;div&gt;two&lt;/div&gt;
-&lt;div&gt;three&lt;/div&gt;
-&lt;div&gt;four&lt;/div&gt;```
+<div>zero</div>
+<div>one</div>
+<div>two</div>
+<div>three</div>
+<div>four</div>```
 </div>
 </div>
 
@@ -688,9 +688,9 @@ a[0] = "a";
 a[10] = "b";
 a[10000] = "c";
 for (key in a) {
-    if (a.hasOwnProperty(key)  &amp;&amp;        // These checks are
-        /^0$|^[1-9]\d*$/.test(key) &amp;&amp;    // explained
-        key &lt;= 4294967294                // below
+    if (a.hasOwnProperty(key)  &&        // These checks are
+        /^0$|^[1-9]\d*$/.test(key) &&    // explained
+        key <= 4294967294                // below
         ) {
         console.log(a[key]);
     }
@@ -719,9 +719,9 @@ function sparseEach(array, callback, thisArg) {
     var index;
     for (var key in array) {
         index = +key;
-        if (hasOwn.call(a, key) &amp;&amp;
-            rexNum.test(key) &amp;&amp;
-            index &lt;= 4294967294
+        if (hasOwn.call(a, key) &&
+            rexNum.test(key) &&
+            index <= 4294967294
             ) {
             callback.call(thisArg, array[key], index, array);
         }
@@ -876,7 +876,7 @@ Or if you wanted to get an array of the tag names of the elements with a given c
 
 ```javascript
 // Arrow function (ES2015):
-var divs = Array.from(document.querySelectorAll(".some-class"), element =&gt; element.tagName);
+var divs = Array.from(document.querySelectorAll(".some-class"), element => element.tagName);
 
 // Standard function (since `Array.from` can be shimmed):
 var divs = Array.from(document.querySelectorAll(".some-class"), function(element) {
@@ -915,7 +915,7 @@ The standard way to iterate an array in <a href="http://en.wikipedia.org/wiki/Ja
 ```javascript
 var length = arr.length,
     element = null;
-for (var i = 0; i &lt; length; i++) {
+for (var i = 0; i < length; i++) {
   element = arr[i];
   // Do something with element
 }
@@ -942,7 +942,7 @@ As per question, user want code in javascript instead of jquery so the edit is
 
 ```javascript
 var length = yourArray.length;   
-for (var i = 0; i &lt; length; i++) {
+for (var i = 0; i < length; i++) {
   // Do something with yourArray[i].
 }
 ```
@@ -966,11 +966,11 @@ var strUser = e.options[e.selectedIndex].value;
 If you have a select element that looks like this:  
 
 ```javascript
-&lt;select id="ddlViewBy"&gt;
-  &lt;option value="1"&gt;test1&lt;/option&gt;
-  &lt;option value="2" selected="selected"&gt;test2&lt;/option&gt;
-  &lt;option value="3"&gt;test3&lt;/option&gt;
-&lt;/select&gt;
+<select id="ddlViewBy">
+  <option value="1">test1</option>
+  <option value="2" selected="selected">test2</option>
+  <option value="3">test3</option>
+</select>
 ```
 
 Running this code:  
@@ -1009,10 +1009,10 @@ $("#elementId :selected").val(); // The value of the selected option
 
 ```javascript
 // HTML
-&lt;select ng-model="selectItem" ng-options="item as item.text for item in items"&gt;
-&lt;/select&gt;
-&lt;p&gt;Text: {{selectItem.text}}&lt;/p&gt;
-&lt;p&gt;Value: {{selectItem.value}}&lt;/p&gt;
+<select ng-model="selectItem" ng-options="item as item.text for item in items">
+</select>
+<p>Text: {{selectItem.text}}</p>
+<p>Value: {{selectItem.value}}</p>
 
 // JavaScript
 $scope.items = [{
@@ -1039,9 +1039,9 @@ var strUser = e.options[e.selectedIndex].text;
 So you're clear on the terminology:  
 
 ```javascript
-&lt;select&gt;
-    &lt;option value="hello"&gt;Hello World&lt;/option&gt;
-&lt;/select&gt;
+<select>
+    <option value="hello">Hello World</option>
+</select>
 ```
 
 This option has:  
@@ -1078,8 +1078,8 @@ You don't need jQuery for that purpose. You can use just some pure JavaScript:
 ```javascript
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
-    name = name.replace(/[\[\]]/g, '\\$&amp;');
-    var regex = new RegExp('[?&amp;]' + name + '(=([^&amp;#]*)|&amp;|#|$)'),
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
         results = regex.exec(url);
     if (!results) return null;
     if (!results[2]) return '';
@@ -1090,7 +1090,7 @@ function getParameterByName(name, url) {
 <strong>Usage:</strong>  
 
 ```javascript
-// query string: ?foo=lorem&amp;bar=&amp;baz
+// query string: ?foo=lorem&bar=&baz
 var foo = getParameterByName('foo'); // "lorem"
 var bar = getParameterByName('bar'); // "" (present with empty value)
 var baz = getParameterByName('baz'); // "" (present with no value)
@@ -1140,10 +1140,10 @@ Result:
 }
 
 alert(urlParams["mode"]);
-// -&gt; "front"
+// -> "front"
 
 alert("empty" in urlParams);
-// -&gt; true
+// -> true
 ```
 
 This could easily be improved upon to handle array-style query strings too.  An example of this is <a href="http://jsbin.com/adali3/2" rel="noreferrer">here</a>, but since array-style parameters aren't defined in <a href="http://tools.ietf.org/html/rfc3986" rel="noreferrer">RFC 3986</a> I won't pollute this answer with the source code. <a href="https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript/23401756#23401756">For those interested in a "polluted" version, look at campbeln's answer below</a>.  
@@ -1154,7 +1154,7 @@ Also, as pointed out in the comments, `;` is a legal delimiter for `key=value` p
 If you're using a server-side preprocessing language, you might want to use its native JSON functions to do the heavy lifting for you.  For example, in PHP you can write:</p>
 
 ```javascript
-&lt;script>var urlParams = &lt;?php echo <a href="http://php.net/manual/en/function.json-encode.php" rel="noreferrer">json_encode</a>($_GET, JSON_HEX_TAG);?>;&lt;/script>```
+<script>var urlParams = <?php echo <a href="http://php.net/manual/en/function.json-encode.php" rel="noreferrer">json_encode</a>($_GET, JSON_HEX_TAG);?>;</script>```
 
 Much simpler!  
 
@@ -1162,11 +1162,11 @@ Much simpler!
 <h5>ES2015 (ES6)</h1>
 
 ```javascript
-getQueryStringParams = query =&gt; {
+getQueryStringParams = query => {
     return query
         ? (/^[?#]/.test(query) ? query.slice(1) : query)
-            .split('&amp;')
-            .reduce((params, param) =&gt; {
+            .split('&')
+            .reduce((params, param) => {
                     let [key, value] = param.split('=');
                     params[key] = value ? decodeURIComponent(value.replace(/\+/g, ' ')) : '';
                     return params;
@@ -1184,7 +1184,7 @@ getQueryStringParams = query =&gt; {
 var qs = (function(a) {
     if (a == "") return {};
     var b = {};
-    for (var i = 0; i &lt; a.length; ++i)
+    for (var i = 0; i < a.length; ++i)
     {
         var p=a[i].split('=', 2);
         if (p.length == 1)
@@ -1193,7 +1193,7 @@ var qs = (function(a) {
             b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
     }
     return b;
-})(window.location.search.substr(1).split('&amp;'));
+})(window.location.search.substr(1).split('&'));
 ```
 
 With an URL like `?topic=123&amp;name=query+string`, the following will return:  
@@ -1213,8 +1213,8 @@ Tearing Google's code I found the method they use: `getUrlParameters`
 ```javascript
 function (b) {
     var c = typeof b === "undefined";
-    if (a !== h &amp;&amp; c) return a;
-    for (var d = {}, b = b || k[B][vb], e = b[p]("?"), f = b[p]("#"), b = (f === -1 ? b[Ya](e + 1) : [b[Ya](e + 1, f - e - 1), "&amp;", b[Ya](f + 1)][K](""))[z]("&amp;"), e = i.dd ? ia : unescape, f = 0, g = b[w]; f &lt; g; ++f) {
+    if (a !== h && c) return a;
+    for (var d = {}, b = b || k[B][vb], e = b[p]("?"), f = b[p]("#"), b = (f === -1 ? b[Ya](e + 1) : [b[Ya](e + 1, f - e - 1), "&", b[Ya](f + 1)][K](""))[z]("&"), e = i.dd ? ia : unescape, f = 0, g = b[w]; f < g; ++f) {
         var l = b[f][p]("=");
         if (l !== -1) {
             var q = b[f][I](0, l),
@@ -1225,7 +1225,7 @@ function (b) {
             } catch (A) {}
         }
     }
-    c &amp;&amp; (a = d);
+    c && (a = d);
     return d
 }
 ```
@@ -1245,7 +1245,7 @@ My method as a <strong>jQuery plugin</strong>
     $.QueryString = (function(paramsArray) {
         let params = {};
 
-        for (let i = 0; i &lt; paramsArray.length; ++i)
+        for (let i = 0; i < paramsArray.length; ++i)
         {
             let param = paramsArray[i]
                 .split('=', 2);
@@ -1257,7 +1257,7 @@ My method as a <strong>jQuery plugin</strong>
         }
 
         return params;
-    })(window.location.search.substr(1).split('&amp;'))
+    })(window.location.search.substr(1).split('&'))
 })(jQuery);
 ```
 
@@ -1283,7 +1283,7 @@ $.QueryString.param = "newvalue"
 //Convert object into string suitable for url a querystring (Requires jQuery)
 $.param($.QueryString)
 //This outputs something like...
-//"param=newvalue&amp;param2=val"
+//"param=newvalue&param2=val"
 
 //Update the url/querystring in the browser's location bar with the $.QueryString object
 history.replaceState({}, '', "?" + $.param($.QueryString));
@@ -1349,7 +1349,7 @@ You have several options:
 ```javascript
 var myStringArray = ["Hello","World"];
 var arrayLength = myStringArray.length;
-for (var i = 0; i &lt; arrayLength; i++) {
+for (var i = 0; i < arrayLength; i++) {
     console.log(myStringArray[i]);
     //Do something
 }```
@@ -1392,7 +1392,7 @@ Being almost 9 years as the time of writing that the ES5 spec. was released (Dec
 And with the ES6 arrow function syntax, it's even more succinct:  
 
 ```javascript
-array.forEach(item =&gt; console.log(item));
+array.forEach(item => console.log(item));
 ```
 
 Arrow functions are also being widely implemented, unless you plan to support very old platforms (e.g. IE11) you are also safe to go.  
@@ -1413,8 +1413,8 @@ Arrow functions are also being widely implemented, unless you plan to support ve
 Normally, you can replace the need to `break` out of imperative loops by filtering the array elements before iterating them, for example:  
 
 ```javascript
-array.filter(item =&gt; item.condition &lt; 10)
-     .forEach(item =&gt; console.log(item))
+array.filter(item => item.condition < 10)
+     .forEach(item => console.log(item))
 ```
 
 Keep in mind if you are iterating an array <em>to build another array from it</em>, you should use `map`, I've seen this anti-pattern so many times.  
@@ -1424,7 +1424,7 @@ Keep in mind if you are iterating an array <em>to build another array from it</e
 ```javascript
 const numbers = [1,2,3,4,5], doubled = [];
 
-numbers.forEach((n, i) =&gt; { doubled[i] = n * 2 });
+numbers.forEach((n, i) => { doubled[i] = n * 2 });
 ```
 
 <strong>Proper use case of <em>map</em>:</strong>  
@@ -1433,7 +1433,7 @@ numbers.forEach((n, i) =&gt; { doubled[i] = n * 2 });
 <div class="snippet-code">
 ```javascript
 const numbers = [1,2,3,4,5];
-const doubled = numbers.map(n =&gt; n * 2);
+const doubled = numbers.map(n => n * 2);
 
 console.log(doubled);```
 </div>
@@ -1447,7 +1447,7 @@ Also if you are trying to <em>reduce</em> the array to a value, for example, you
 ```javascript
 const numbers = [1,2,3,4,5];
 const sum = 0;
-numbers.forEach(num =&gt; { total += num });
+numbers.forEach(num => { total += num });
 ```
 
 <strong>Proper use of <em>reduce</em>:</strong>  
@@ -1456,7 +1456,7 @@ numbers.forEach(num =&gt; { total += num });
 <div class="snippet-code">
 ```javascript
 const numbers = [1,2,3,4,5];
-const sum = numbers.reduce((total, n) =&gt; total + n, 0);
+const sum = numbers.reduce((total, n) => total + n, 0);
 
 console.log(sum);```
 </div>
@@ -1598,7 +1598,7 @@ The final option, which works in <em>all</em> versions of JavaScript, is <a href
 
 ```javascript
 var i, s, myStringArray = [ "Hello", "World" ], len = myStringArray.length;
-for (i=0; i&lt;len; ++i) {
+for (i=0; i<len; ++i) {
   s = myStringArray[i];
   // ... do something with s ...
 }
@@ -1608,7 +1608,7 @@ One advantage of this approach is that you can choose how to handle sparse array
 
 ```javascript
 var i, s, myStringArray = [ "Hello", "World" ], len = myStringArray.length;
-for (i=0; i&lt;len; ++i) {
+for (i=0; i<len; ++i) {
   if (i in myStringArray) {
     s = myStringArray[i];
     // ... do something with s ...
@@ -1622,7 +1622,7 @@ You may see the length caching done in the loop initialization clause, like this
 
 ```javascript
 var i, len, myStringArray = [ "Hello", "World" ];
-for (len = myStringArray.length, i=0; i&lt;len; ++i) {
+for (len = myStringArray.length, i=0; i<len; ++i) {
 ```
 
 The `for`...`in` syntax mentioned by others is for looping over an object's properties; since an Array in JavaScript is just an object with numeric property names (and an automatically-updated `length` property), you can theoretically loop over an Array with it.  But the problem is that it doesn't restrict itself to the numeric property values (remember that even methods are actually just properties whose value is a closure), nor is it guaranteed to iterate over those in numeric order. Therefore, the `for`...`in` syntax should <em>not</em> be used for looping through Arrays.   
@@ -1945,7 +1945,7 @@ MDN also provides an implementation to escape our strings. It would be nice if t
 
 ```javascript
 function escapeRegExp(str) {
-  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&amp;"); // $&amp; means the whole matched string
+  return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
 }
 ```
 
@@ -2048,7 +2048,7 @@ var arr = ["Hi", "Hello", "Bonjour", "Hola"];
 arr.push("Salut", "Hey");
 
 // display all values
-for (var i = 0; i &lt; arr.length; i++) {
+for (var i = 0; i < arr.length; i++) {
   console.log(arr[i]);
 }```
 </div>
@@ -2164,10 +2164,10 @@ My benchmarking loops:
 ```javascript
 function arrpush_small() {
     var arr1 = [];
-    for (a = 0; a &lt; 100; a++)
+    for (a = 0; a < 100; a++)
     {
         arr1 = [];
-        for (i = 0; i &lt; 5000; i++)
+        for (i = 0; i < 5000; i++)
         {
             arr1.push('elem' + i);
         }
@@ -2176,10 +2176,10 @@ function arrpush_small() {
 
 function arrlen_small() {
     var arr2 = [];
-    for (b = 0; b &lt; 100; b++)
+    for (b = 0; b < 100; b++)
     {
         arr2 = [];
-        for (j = 0; j &lt; 5000; j++)
+        for (j = 0; j < 5000; j++)
         {
             arr2[arr2.length] = 'elem' + j;
         }
@@ -2189,7 +2189,7 @@ function arrlen_small() {
 
 function arrpush_large() {
     var arr1 = [];
-    for (i = 0; i &lt; 500000; i++)
+    for (i = 0; i < 500000; i++)
     {
         arr1.push('elem' + i);
     }
@@ -2197,7 +2197,7 @@ function arrpush_large() {
 
 function arrlen_large() {
     var arr2 = [];
-    for (j = 0; j &lt; 500000; j++)
+    for (j = 0; j < 500000; j++)
     {
         arr2[arr2.length] = 'elem' + j;
     }
@@ -2240,10 +2240,10 @@ let val = hello();  // val is "Hello";
 Browsers have had support for loading ECMAScript modules directly (no tools like Webpack required) <a href="https://jakearchibald.com/2017/es-modules-in-browsers/" rel="noreferrer">since</a> Safari 10.1, Chrome 61, Firefox 60, and Edge 16. Check the current support at <a href="https://caniuse.com/#feat=es6-module" rel="noreferrer">caniuse</a>.  
 
 ```javascript
-&lt;script type="module"&gt;
+<script type="module">
   import { hello } from './hello.mjs';
   hello('world');
-&lt;/script&gt;
+</script>
 ```
 
 ```javascript
@@ -2262,11 +2262,11 @@ Read more at <a href="https://jakearchibald.com/2017/es-modules-in-browsers/" re
 Dynamic imports let the script load other scripts as needed:  
 
 ```javascript
-&lt;script type="module"&gt;
-  import('hello.mjs').then(module =&gt; {
+<script type="module">
+  import('hello.mjs').then(module => {
       module.hello('world');
     });
-&lt;/script&gt;
+</script>
 ```
 
 Read more at <a href="https://developers.google.com/web/updates/2017/11/dynamic-import" rel="noreferrer">https://developers.google.com/web/updates/2017/11/dynamic-import</a>  
@@ -2303,7 +2303,7 @@ Like Dynamic Imports you can load one or many scripts with a `fetch` call using 
 ```javascript
 fetchInject([
   'https://cdn.jsdelivr.net/momentjs/2.17.1/moment.min.js'
-]).then(() =&gt; {
+]).then(() => {
   console.log(`Finish in less than ${moment().endOf('year').fromNow(true)}`)
 })
 ```
@@ -2459,7 +2459,7 @@ There actually <em>is</em> a way to load a JavaScript file <em>not</em> asynchro
 You need to use `jQuery.append()` on the `&lt;head&gt;` element of your page, that is:  
 
 ```javascript
-$("head").append('&lt;script type="text/javascript" src="' + script + '"&gt;&lt;/script&gt;');
+$("head").append('<script type="text/javascript" src="' + script + '"></script>');
 ```
 
 However, this method also has a problem: if an error happens in the imported JavaScript file, <a href="http://en.wikipedia.org/wiki/Firebug_%28software%29" rel="noreferrer">Firebug</a> (and also Firefox Error Console and <a href="https://developers.google.com/chrome-developer-tools/" rel="noreferrer">Chrome Developer Tools</a> as well) will report its place incorrectly, which is a big problem if you use Firebug to track JavaScript errors down a lot (I do). Firebug simply doesn't know about the newly loaded file for some reason, so if an error occurs in that file, it reports that it occurred in your main <a href="http://en.wikipedia.org/wiki/HTML" rel="noreferrer">HTML</a> file, and you will have trouble finding out the real reason for the error.  
@@ -2481,14 +2481,14 @@ I have actually written a jQuery plugin called <em>$.import_js()</em> which uses
         import_js : function(script)
         {
             var found = false;
-            for (var i = 0; i &lt; import_js_imported.length; i++)
+            for (var i = 0; i < import_js_imported.length; i++)
                 if (import_js_imported[i] == script) {
                     found = true;
                     break;
                 }
 
             if (found == false) {
-                $("head").append('&lt;script type="text/javascript" src="' + script + '"&gt;&lt;/script&gt;');
+                $("head").append('<script type="text/javascript" src="' + script + '"></script>');
                 import_js_imported.push(script);
             }
         }
@@ -2530,7 +2530,7 @@ Using <a href="http://en.wikipedia.org/wiki/Regular_expression" rel="noreferrer"
 
 ```javascript
 function validateEmail(email) {
-    var re = /^(([^&lt;&gt;()\[\]\\.,;:\s@"]+(\.[^&lt;&gt;()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
 }
 ```
@@ -2538,7 +2538,7 @@ function validateEmail(email) {
 Here's the example of regular expresion that accepts unicode:  
 
 ```javascript
-var re = /^(([^&lt;&gt;()\[\]\.,;:\s@\"]+(\.[^&lt;&gt;()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^&lt;&gt;()[\]\.,;:\s@\"]+\.)+[^&lt;&gt;()[\]\.,;:\s@\"]{2,})$/i;
+var re = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 ```
 
 But keep in mind that one should not rely only upon JavaScript validation. JavaScript can easily be disabled. This should be validated on the server side as well.  
@@ -2549,7 +2549,7 @@ Here's an example of the above in action:
 <div class="snippet-code">
 ```javascript
 function validateEmail(email) {
-  var re = /^(([^&lt;&gt;()[\]\\.,;:\s@\"]+(\.[^&lt;&gt;()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(email);
 }
 
@@ -2570,15 +2570,15 @@ function validate() {
 
 $("#validate").on("click", validate);```
 ```javascript
-&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"&gt;&lt;/script&gt;
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-&lt;form&gt;
-  &lt;p&gt;Enter an email address:&lt;/p&gt;
-  &lt;input id='email'&gt;
-  &lt;button type='submit' id='validate'&gt;Validate!&lt;/button&gt;
-&lt;/form&gt;
+<form>
+  <p>Enter an email address:</p>
+  <input id='email'>
+  <button type='submit' id='validate'>Validate!</button>
+</form>
 
-&lt;h2 id='result'&gt;&lt;/h2&gt;```
+<h2 id='result'></h2>```
 </div>
 </div>
 
@@ -2659,7 +2659,7 @@ var currentLocation = window.location;
 <strong>Basic URL Structure</strong>  
 
 ```javascript
-&lt;protocol&gt;//&lt;hostname&gt;:&lt;port&gt;/&lt;pathname&gt;&lt;search&gt;&lt;hash&gt;
+<protocol>//<hostname>:<port>/<pathname><search><hash>
 ```
 
 <ul>
@@ -2756,7 +2756,7 @@ new Date().valueOf()
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="true" data-babel="false">
 <div class="snippet-code">
 ```javascript
-var timeStampInMs = window.performance &amp;&amp; window.performance.now &amp;&amp; window.performance.timing &amp;&amp; window.performance.timing.navigationStart ? window.performance.now() + window.performance.timing.navigationStart : Date.now();
+var timeStampInMs = window.performance && window.performance.now && window.performance.timing && window.performance.timing.navigationStart ? window.performance.now() + window.performance.timing.navigationStart : Date.now();
 
 console.log(timeStampInMs, Date.now());```
 </div>
@@ -2912,9 +2912,9 @@ Above method does not consider the visibility of the parent. To consider the par
 For example,  
 
 ```javascript
-&lt;div id="div1" style="display:none"&gt;
-  &lt;div id="div2" style="display:block"&gt;Div2&lt;/div&gt;
-&lt;/div&gt;
+<div id="div1" style="display:none">
+  <div id="div2" style="display:block">Div2</div>
+</div>
 ```
 
 <blockquote>
@@ -3009,13 +3009,13 @@ Whilst it is possible to write JavaScript directly inside the HTML event attribu
 The first step to achieving this is by creating a function, and calling the function in the onclick attribute, for example:  
 
 ```javascript
-&lt;script type="text/javascript"&gt;
+<script type="text/javascript">
     function changeClass(){
         // Code examples from above
     }
-&lt;/script&gt;
+</script>
 ...
-&lt;button onclick="changeClass()"&gt;My Button&lt;/button&gt;
+<button onclick="changeClass()">My Button</button>
 ```
 
 <sub><em>(It is not required to have this code in script tags, this is simply for brevity of example, and including the JavaScript in a distinct file may be more appropriate.)</em></sub>  
@@ -3023,7 +3023,7 @@ The first step to achieving this is by creating a function, and calling the func
 The second step is to move the onclick event out of the HTML and into JavaScript, for example using <a href="https://developer.mozilla.org/en-US/docs/DOM/element.addEventListener" rel="noreferrer">addEventListener</a>  
 
 ```javascript
-&lt;script type="text/javascript"&gt;
+<script type="text/javascript">
     function changeClass(){
         // Code examples from above
     }
@@ -3031,9 +3031,9 @@ The second step is to move the onclick event out of the HTML and into JavaScript
     window.onload = function(){
         document.getElementById("MyElement").addEventListener( 'click', changeClass);
     }
-&lt;/script&gt;
+</script>
 ...
-&lt;button id="MyElement"&gt;My Button&lt;/button&gt;
+<button id="MyElement">My Button</button>
 ```
 
 (Note that the window.onload part is required so that the contents of that function are executed <em>after</em> the HTML has finished loading - without this, the MyElement might not exist when the JavaScript code is called, so that line would fail.)  
@@ -3119,15 +3119,15 @@ function removeClass(ele, cls) {
 So, for example, if I want `onclick` to add some class to the button I can use this:  
 
 ```javascript
-&lt;script type="text/javascript"&gt;
+<script type="text/javascript">
     function changeClass(btn, cls) {
         if(!hasClass(btn, cls)) {
             addClass(btn, cls);
         }
     }
-&lt;/script&gt;
+</script>
 ...
-&lt;button onclick="changeClass(this, "someClass")"&gt;My Button&lt;/button&gt;
+<button onclick="changeClass(this, "someClass")">My Button</button>
 ```
 
 By now for sure it would just be better to use jQuery.  
@@ -3186,19 +3186,19 @@ var objToday = new Date(),
 	weekday = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'),
 	dayOfWeek = weekday[objToday.getDay()],
 	domEnder = function() { var a = objToday; if (/1/.test(parseInt((a + "").charAt(0)))) return "th"; a = parseInt((a + "").charAt(1)); return 1 == a ? "st" : 2 == a ? "nd" : 3 == a ? "rd" : "th" }(),
-	dayOfMonth = today + ( objToday.getDate() &lt; 10) ? '0' + objToday.getDate() + domEnder : objToday.getDate() + domEnder,
+	dayOfMonth = today + ( objToday.getDate() < 10) ? '0' + objToday.getDate() + domEnder : objToday.getDate() + domEnder,
 	months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'),
 	curMonth = months[objToday.getMonth()],
 	curYear = objToday.getFullYear(),
-	curHour = objToday.getHours() &gt; 12 ? objToday.getHours() - 12 : (objToday.getHours() &lt; 10 ? "0" + objToday.getHours() : objToday.getHours()),
-	curMinute = objToday.getMinutes() &lt; 10 ? "0" + objToday.getMinutes() : objToday.getMinutes(),
-	curSeconds = objToday.getSeconds() &lt; 10 ? "0" + objToday.getSeconds() : objToday.getSeconds(),
-	curMeridiem = objToday.getHours() &gt; 12 ? "PM" : "AM";
+	curHour = objToday.getHours() > 12 ? objToday.getHours() - 12 : (objToday.getHours() < 10 ? "0" + objToday.getHours() : objToday.getHours()),
+	curMinute = objToday.getMinutes() < 10 ? "0" + objToday.getMinutes() : objToday.getMinutes(),
+	curSeconds = objToday.getSeconds() < 10 ? "0" + objToday.getSeconds() : objToday.getSeconds(),
+	curMeridiem = objToday.getHours() > 12 ? "PM" : "AM";
 var today = curHour + ":" + curMinute + "." + curSeconds + curMeridiem + " " + dayOfWeek + " " + dayOfMonth + " of " + curMonth + ", " + curYear;
 
 document.getElementsByTagName('h1')[0].textContent = today;```
 ```javascript
-&lt;h1&gt;&lt;/h1&gt;```
+<h1></h1>```
 </div>
 </div>
 
@@ -3314,7 +3314,7 @@ This is the only way I know to do it:
 
 ```javascript
 function contains(a, obj) {
-    for (var i = 0; i &lt; a.length; i++) {
+    for (var i = 0; i < a.length; i++) {
         if (a[i] === obj) {
             return true;
         }
@@ -3331,7 +3331,7 @@ This is very closely related to Stack Overflow question <em><a href="https://sta
 Current browsers have <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes#Browser_compatibility" rel="noreferrer">`Array#includes`</a>, which does <em>exactly</em> that, <a href="https://kangax.github.io/compat-table/es2016plus/#test-Array.prototype.includes" rel="noreferrer">is widely supported</a>, and has a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes#Polyfill" rel="noreferrer">polyfill</a> for older browsers.  
 
 ```javascript
-&gt; ['joe', 'jane', 'mary'].includes('jane');
+> ['joe', 'jane', 'mary'].includes('jane');
 true 
 ```
 
@@ -3390,8 +3390,8 @@ Array.prototype.contains = function(obj) {
 And now you can simply use the following:  
 
 ```javascript
-alert([1, 2, 3].contains(2)); // =&gt; true
-alert([1, 2, 3].contains('2')); // =&gt; false
+alert([1, 2, 3].contains(2)); // => true
+alert([1, 2, 3].contains('2')); // => false
 ```
 
 #### Answer 3 (score 189)
@@ -3400,9 +3400,9 @@ alert([1, 2, 3].contains('2')); // =&gt; false
 Example:  
 
 ```javascript
-[1, 2, 3].indexOf(1) =&gt; 0
-["foo", "bar", "baz"].indexOf("bar") =&gt; 1
-[1, 2, 3].indexOf(4) =&gt; -1
+[1, 2, 3].indexOf(1) => 0
+["foo", "bar", "baz"].indexOf("bar") => 1
+[1, 2, 3].indexOf(4) => -1
 ```
 
 AFAICS <a href="http://msdn.microsoft.com/en-us/library/k4h76zbx%5C%28VS.85%5C%29.aspx" rel="noreferrer">Microsoft does <em>not</em> offer some kind of alternative</a> to this, but you can add similar functionality to arrays in Internet Explorer (and other browsers that don't support `indexOf`) if you want to, as a <a href="http://google.com/search?q=indexof%20internet%20explorer" rel="noreferrer">quick Google search reveals</a> (for example, <a href="http://soledadpenades.com/2007/05/17/arrayindexof-in-internet-explorer/" rel="noreferrer">this one</a>).  
@@ -3465,7 +3465,7 @@ Using `.splice()` will work perfectly, but since the `.splice()` function will r
 <strong>Method 4</strong> (as <a href="https://stackoverflow.com/a/17306971/113570">suggested</a> by <a href="https://stackoverflow.com/users/990356/tanguy-k">tanguy_k</a>)  
 
 ```javascript
-while(A.length &gt; 0) {
+while(A.length > 0) {
     A.pop();
 }
 ```
@@ -3509,7 +3509,7 @@ FYI <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/G
 TypeScript version:  
 
 ```javascript
-function clearArray&lt;T&gt;(array: T[]) {
+function clearArray<T>(array: T[]) {
   while (array.length) {
     array.pop();
   }
@@ -3519,8 +3519,8 @@ function clearArray&lt;T&gt;(array: T[]) {
 The corresponding tests:  
 
 ```javascript
-describe('clearArray()', () =&gt; {
-  test('clear regular array', () =&gt; {
+describe('clearArray()', () => {
+  test('clear regular array', () => {
     const array = [1, 2, 3, 4, 5];
     clearArray(array);
     expect(array.length).toEqual(0);
@@ -3528,7 +3528,7 @@ describe('clearArray()', () =&gt; {
     expect(array[4]).toEqual(undefined);
   });
 
-  test('clear array that contains undefined and null', () =&gt; {
+  test('clear array that contains undefined and null', () => {
     const array = [1, undefined, 3, null, 5];
     clearArray(array);
     expect(array.length).toEqual(0);
@@ -3604,9 +3604,9 @@ var methods = [
 ];
 
 var $body = $("body");
-for (var i = 0; i &lt; methods.length; ++i) {
+for (var i = 0; i < methods.length; ++i) {
   (function(cMethod) {
-    $body.append($("&lt;button&gt;", {
+    $body.append($("<button>", {
       text: cMethod
     }).on("click", function() {
       eval(cMethod); // don't blame me for using eval
@@ -3630,7 +3630,7 @@ button:hover {
   background: #27ae60;
 }```
 ```javascript
-&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"&gt;&lt;/script&gt;```
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>```
 </div>
 </div>
 
@@ -3650,9 +3650,9 @@ if(EmpName == 'undefined'){
 ```
 
 ```javascript
-&lt;div id="esd-names"&gt;
-  &lt;div id="name"&gt;&lt;/div&gt;
-&lt;/div&gt;
+<div id="esd-names">
+  <div id="name"></div>
+</div>
 ```
 
 
@@ -3744,7 +3744,7 @@ function openInNewTab(url) {
 In most cases, this should happen directly in the `onclick` handler for the link to prevent pop-up blockers, and the default "new window" behavior. You could do it this way, or by adding an event listener to your `DOM` object.    
 
 ```javascript
-&lt;div onclick="openInNewTab('www.test.com');"&gt;Something To Click On&lt;/div&gt;
+<div onclick="openInNewTab('www.test.com');">Something To Click On</div>
 ```
 
 <a href="http://www.tutsplanet.com/open-url-new-tab-using-javascript/" rel="noreferrer">http://www.tutsplanet.com/open-url-new-tab-using-javascript/</a>  
@@ -3753,12 +3753,12 @@ In most cases, this should happen directly in the `onclick` handler for the link
 `window.open()` will not open in a new tab if it is not happening on the actual click event. In the example given the URL is being opened on the actual click event. <strong>This will work provided the user has appropriate settings in the browser</strong>.  
 
 ```javascript
-&lt;a class="link"&gt;Link&lt;/a&gt;
-&lt;script  type="text/javascript"&gt;
+<a class="link">Link</a>
+<script  type="text/javascript">
      $("a.link").on("click",function(){
          window.open('www.yourdomain.com','_blank');
      });
-&lt;/script&gt;
+</script>
 ```
 
 Similarly, if you are trying to do an Ajax call within the click function and want to open a window on success, ensure you are doing the Ajax call with the `async : false` option set.  
@@ -3776,7 +3776,7 @@ function pausecomp(millis)
     var date = new Date();
     var curDate = null;
     do { curDate = new Date(); }
-    while(curDate-date &lt; millis);
+    while(curDate-date < millis);
 }
 ```
 
@@ -3791,7 +3791,7 @@ Since 2009 when this question was asked, JavaScript has evolved significantly. A
 <div class="snippet-code">
 ```javascript
 function sleep(ms) {
-  return new Promise(resolve =&gt; setTimeout(resolve, ms));
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 async function demo() {
@@ -3800,7 +3800,7 @@ async function demo() {
   console.log('Two seconds later, showing sleep in a loop...');
 
   // Sleep in loop
-  for (let i = 0; i &lt; 5; i++) {
+  for (let i = 0; i < 5; i++) {
     if (i === 3)
       await sleep(2000);
     console.log(i);
@@ -3869,11 +3869,11 @@ Writing a sleep function is simple and made even more usable with JavaScript Pro
 ```javascript
 // sleep time expects milliseconds
 function sleep (time) {
-  return new Promise((resolve) =&gt; setTimeout(resolve, time));
+  return new Promise((resolve) => setTimeout(resolve, time));
 }
 
 // Usage!
-sleep(500).then(() =&gt; {
+sleep(500).then(() => {
     // Do something after the sleep!
 });
 ```
@@ -3886,7 +3886,7 @@ sleep(500).then(() =&gt; {
 I have this `input` element:  
 
 ```javascript
-&lt;input type="text" class="textfield" value="" id="subject" name="subject"&gt;
+<input type="text" class="textfield" value="" id="subject" name="subject">
 ```
 
 Then I have some other elements, like other text inputs, textareas, etc.  
@@ -3896,7 +3896,7 @@ When the user clicks on that `input` with `#subject`, the page should scroll to 
 The last item of the page is a `submit` button with `#submit`:  
 
 ```javascript
-&lt;input type="submit" class="submit" id="submit" name="submit" value="Ok, Done."&gt;
+<input type="submit" class="submit" id="submit" name="submit" value="Ok, Done.">
 ```
 
 The animation should not be too fast and should be fluid.  
@@ -3919,9 +3919,9 @@ I got the code from the article <em><a href="http://www.abeautifulsite.net/smoot
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="false" data-babel="false">
 <div class="snippet-code">
 ```javascript
-&lt;html&gt;
-    &lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"&gt;&lt;/script&gt;
-    &lt;script&gt;
+<html>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+    <script>
         $(document).ready(function (){
             $("#click").click(function (){
                 $('html, body').animate({
@@ -3929,16 +3929,16 @@ I got the code from the article <em><a href="http://www.abeautifulsite.net/smoot
                 }, 2000);
             });
         });
-    &lt;/script&gt;
-    &lt;div id="div1" style="height: 1000px; width 100px"&gt;
+    </script>
+    <div id="div1" style="height: 1000px; width 100px">
         Test
-    &lt;/div&gt;
-    &lt;br/&gt;
-    &lt;div id="div2" style="height: 1000px; width 100px"&gt;
+    </div>
+    <br/>
+    <div id="div2" style="height: 1000px; width 100px">
         Test 2
-    &lt;/div&gt;
-    &lt;button id="click"&gt;Click me&lt;/button&gt;
-&lt;/html&gt;```
+    </div>
+    <button id="click">Click me</button>
+</html>```
 </div>
 </div>
 
@@ -3999,7 +3999,7 @@ function myJsFunc() {
     alert("myJsFunc");
 }```
 ```javascript
-&lt;a href="#" onclick="myJsFunc();"&gt;Run JavaScript Code&lt;/a&gt;```
+<a href="#" onclick="myJsFunc();">Run JavaScript Code</a>```
 </div>
 </div>
 
@@ -4013,7 +4013,7 @@ function myJsFunc() {
     alert("myJsFunc");
 }```
 ```javascript
- &lt;a href="javascript:void(0)" onclick="myJsFunc();"&gt;Run JavaScript Code&lt;/a&gt;```
+ <a href="javascript:void(0)" onclick="myJsFunc();">Run JavaScript Code</a>```
 </div>
 </div>
 
@@ -4318,7 +4318,7 @@ function roundNumber(num, scale) {
   } else {
     var arr = ("" + num).split("e");
     var sig = ""
-    if(+arr[1] + scale &gt; 0) {
+    if(+arr[1] + scale > 0) {
       sig = "+";
     }
     return +(Math.round(+arr[0] + "e" + sig + (+arr[1] + scale)) + "e-" + scale);
@@ -4495,12 +4495,12 @@ $('#myForm input').on('change', function() {
    alert($('input[name=radioName]:checked', '#myForm').val()); 
 });```
 ```javascript
-&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"&gt;&lt;/script&gt;
-&lt;form id="myForm"&gt;
-  &lt;input type="radio" name="radioName" value="1" /&gt; 1 &lt;br /&gt;
-  &lt;input type="radio" name="radioName" value="2" /&gt; 2 &lt;br /&gt;
-  &lt;input type="radio" name="radioName" value="3" /&gt; 3 &lt;br /&gt;
-&lt;/form&gt;```
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<form id="myForm">
+  <input type="radio" name="radioName" value="1" /> 1 <br />
+  <input type="radio" name="radioName" value="2" /> 2 <br />
+  <input type="radio" name="radioName" value="3" /> 3 <br />
+</form>```
 </div>
 </div>
 
@@ -4638,7 +4638,7 @@ will behave equivalently for both methods.
 To summarize, differences are all about ways of determining the property existence, and about `for..in` loop.  
 
 ```javascript
- console.log('* -&gt; "Takes prototype inheritance into consideration, that means it lookups all over prototype chain too."');
+ console.log('* -> "Takes prototype inheritance into consideration, that means it lookups all over prototype chain too."');
 
  console.log(obj.field === undefined, 'obj.field === undefined', 'You get "undefined" value when querying for "field" in object-hashmap. *');
 
@@ -4788,7 +4788,7 @@ I am using jQuery. How do I get the path of the current URL and assign it to a v
 Example URL:  
 
 ```javascript
-http://localhost/menuname.de?foo=bar&amp;amp;number=0
+http://localhost/menuname.de?foo=bar&amp;number=0
 ```
 
 #### Answer accepted (score 2385)
@@ -4824,19 +4824,19 @@ href        http://www.refulz.com:8082/index.php#tab2
 hash        #tab2
 search      ?foo=789
 
-var x = $(location).attr('&lt;property&gt;');
+var x = $(location).attr('<property>');
 ```
 
 <strong>This will work only if you have jQuery. For example:</strong>  
 
 ```javascript
-&lt;html&gt;
-&lt;script src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"&gt;&lt;/script&gt;
-&lt;script&gt;
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+<script>
   $(location).attr('href');      // http://www.refulz.com:8082/index.php#tab2
   $(location).attr('pathname');  // index.php
-&lt;/script&gt;
-&lt;/html&gt;
+</script>
+</html>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -5094,7 +5094,7 @@ console.log(obj);
 I have a URL with some GET parameters as follows:  
 
 ```javascript
-www.test.com/t.html?a=1&amp;b=3&amp;c=m2-m3-m4-m5 
+www.test.com/t.html?a=1&b=3&c=m2-m3-m4-m5 
 ```
 
 I need to get the whole value of `c`. I tried to read the URL, but I got only `m2`. How do I do this using JavaScript?  
@@ -5107,7 +5107,7 @@ Code running in a (modern) browser you can use the <a href="https://developer.mo
 <p><div class="snippet" data-lang="js" data-hide="false" data-console="true" data-babel="false">
 <div class="snippet-code">
 ```javascript
-var url_string = "http://www.example.com/t.html?a=1&amp;b=3&amp;c=m2-m3-m4-m5"; //window.location.href
+var url_string = "http://www.example.com/t.html?a=1&b=3&c=m2-m3-m4-m5"; //window.location.href
 var url = new URL(url_string);
 var c = url.searchParams.get("c");
 console.log(c);```
@@ -5127,9 +5127,9 @@ Then you can parse it with this:
 <div class="snippet-code">
 ```javascript
 function parse_query_string(query) {
-  var vars = query.split("&amp;");
+  var vars = query.split("&");
   var query_string = {};
-  for (var i = 0; i &lt; vars.length; i++) {
+  for (var i = 0; i < vars.length; i++) {
     var pair = vars[i].split("=");
     var key = decodeURIComponent(pair[0]);
     var value = decodeURIComponent(pair[1]);
@@ -5148,7 +5148,7 @@ function parse_query_string(query) {
   return query_string;
 }
 
-var query_string = "a=1&amp;b=3&amp;c=m2-m3-m4-m5";
+var query_string = "a=1&b=3&c=m2-m3-m4-m5";
 var parsed_qs = parse_query_string(query_string);
 console.log(parsed_qs.c);```
 </div>
@@ -5173,7 +5173,7 @@ function getQueryParams(qs) {
 
     var params = {},
         tokens,
-        re = /[?&amp;]?([^=]+)=([^&amp;]*)/g;
+        re = /[?&]?([^=]+)=([^&]*)/g;
 
     while (tokens = re.exec(qs)) {
         params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
@@ -5193,7 +5193,7 @@ function getQueryParams(qs) {
 function gup( name, url ) {
     if (!url) url = location.href;
     name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
-    var regexS = "[\\?&amp;]"+name+"=([^&amp;#]*)";
+    var regexS = "[\\?&]"+name+"=([^&#]*)";
     var regex = new RegExp( regexS );
     var results = regex.exec( url );
     return results == null ? null : results[1];
@@ -5239,7 +5239,7 @@ You simply make each item within the array an array.
 ```javascript
 var x = new Array(10);
 
-for (var i = 0; i &lt; x.length; i++) {
+for (var i = 0; i < x.length; i++) {
   x[i] = new Array(3);
 }
 
@@ -5256,7 +5256,7 @@ function createArray(length) {
     var arr = new Array(length || 0),
         i = length;
 
-    if (arguments.length &gt; 1) {
+    if (arguments.length > 1) {
         var args = Array.prototype.slice.call(arguments, 1);
         while(i--) arr[length-1 - i] = createArray.apply(this, args);
     }
@@ -5292,7 +5292,7 @@ How can I check whether that's the case?
 ```javascript
 // because Object.entries(new Date()).length === 0;
 // we have to do some additional check
-Object.entries(obj).length === 0 &amp;&amp; obj.constructor === Object
+Object.entries(obj).length === 0 && obj.constructor === Object
 ```
 
 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys#Browser_compatibility" rel="noreferrer">ECMA 5+</a>:  
@@ -5300,7 +5300,7 @@ Object.entries(obj).length === 0 &amp;&amp; obj.constructor === Object
 ```javascript
 // because Object.keys(new Date()).length === 0;
 // we have to do some additional check
-Object.keys(obj).length === 0 &amp;&amp; obj.constructor === Object
+Object.keys(obj).length === 0 && obj.constructor === Object
 ```
 
 Pre-ECMA 5:  
@@ -5703,15 +5703,15 @@ var dates = {
     compare:function(a,b) {
         // Compare two dates (could be of any type supported by the convert
         // function above) and returns:
-        //  -1 : if a &lt; b
+        //  -1 : if a < b
         //   0 : if a = b
-        //   1 : if a &gt; b
+        //   1 : if a > b
         // NaN : if a or b is an illegal date
         // NOTE: The code inside isFinite does an assignment (=).
         return (
-            isFinite(a=this.convert(a).valueOf()) &amp;&amp;
+            isFinite(a=this.convert(a).valueOf()) &&
             isFinite(b=this.convert(b).valueOf()) ?
-            (a&gt;b)-(a&lt;b) :
+            (a>b)-(a<b) :
             NaN
         );
     },
@@ -5723,10 +5723,10 @@ var dates = {
         //    NaN   : if one or more of the dates is illegal.
         // NOTE: The code inside isFinite does an assignment (=).
        return (
-            isFinite(d=this.convert(d).valueOf()) &amp;&amp;
-            isFinite(start=this.convert(start).valueOf()) &amp;&amp;
+            isFinite(d=this.convert(d).valueOf()) &&
+            isFinite(start=this.convert(start).valueOf()) &&
             isFinite(end=this.convert(end).valueOf()) ?
-            start &lt;= d &amp;&amp; d &lt;= end :
+            start <= d && d <= end :
             NaN
         );
     }
@@ -5741,15 +5741,15 @@ var x = new Date('2013-05-23');
 var y = new Date('2013-05-23');
 
 // less than, greater than is fine:
-x &lt; y; =&gt; false
-x &gt; y; =&gt; false
-x === y; =&gt; false, oops!
+x < y; => false
+x > y; => false
+x === y; => false, oops!
 
 // anything involving '=' should use the '+' prefix
 // it will then compare the dates' millisecond values
-+x &lt;= +y;  =&gt; true
-+x &gt;= +y;  =&gt; true
-+x === +y; =&gt; true
++x <= +y;  => true
++x >= +y;  => true
++x === +y; => true
 ```
 
 Hope this helps!  
@@ -5965,7 +5965,7 @@ var p = {
 
 for (var key in p) {
     if (p.hasOwnProperty(key)) {
-        console.log(key + " -&gt; " + p[key]);
+        console.log(key + " -> " + p[key]);
     }
 }```
 </div>
@@ -5995,7 +5995,7 @@ ECMAScript 8 adds <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScri
 
 ```javascript
 Object.entries(obj).forEach(
-    ([key, value]) =&gt; console.log(key, value)
+    ([key, value]) => console.log(key, value)
 );
 ```
 
@@ -6034,7 +6034,7 @@ for (var prop in p) {
 I have a layout similar to this:  
 
 ```javascript
-&lt;div id="..."&gt;&lt;img src="..."&gt;&lt;/div&gt;
+<div id="..."><img src="..."></div>
 ```
 
 and would like to use a jQuery selector to select the child `img` inside the `div` on click.  
@@ -6188,29 +6188,29 @@ function isCheckedById(id) {
 IDs must be unique in your document, meaning that you <strong>shouldn't</strong> do this:  
 
 ```javascript
-&lt;input type="checkbox" name="chk[]" id="chk[]" value="Apples" /&gt;
-&lt;input type="checkbox" name="chk[]" id="chk[]" value="Bananas" /&gt;
+<input type="checkbox" name="chk[]" id="chk[]" value="Apples" />
+<input type="checkbox" name="chk[]" id="chk[]" value="Bananas" />
 ```
 
 Instead, drop the ID, and then select them by name, or by a containing element:  
 
 ```javascript
-&lt;fieldset id="checkArray"&gt;
-    &lt;input type="checkbox" name="chk[]" value="Apples" /&gt;
+<fieldset id="checkArray">
+    <input type="checkbox" name="chk[]" value="Apples" />
 
-    &lt;input type="checkbox" name="chk[]" value="Bananas" /&gt;
-&lt;/fieldset&gt;
+    <input type="checkbox" name="chk[]" value="Bananas" />
+</fieldset>
 ```
 
 And now the jQuery:  
 
 ```javascript
-var atLeastOneIsChecked = $('#checkArray:checkbox:checked').length &gt; 0;
+var atLeastOneIsChecked = $('#checkArray:checkbox:checked').length > 0;
 //there should be no space between identifier and selector
 
 // or, without the container:
 
-var atLeastOneIsChecked = $('input[name="chk[]"]:checked').length &gt; 0;
+var atLeastOneIsChecked = $('input[name="chk[]"]:checked').length > 0;
 ```
 
 #### Answer 2 (score 1923)
@@ -6303,7 +6303,7 @@ function clone(obj) {
     // Handle Array
     if (obj instanceof Array) {
         copy = [];
-        for (var i = 0, len = obj.length; i &lt; len; i++) {
+        for (var i = 0, len = obj.length; i < len; i++) {
             copy[i] = clone(obj[i]);
         }
         return copy;
@@ -6485,7 +6485,7 @@ chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security
 
 #### Question
 ```javascript
-&lt;a href="javascript:void(0)" id="loginlink"&gt;login&lt;/a&gt;
+<a href="javascript:void(0)" id="loginlink">login</a>
 ```
 
 I've seen such `href`s many times, but I don't know what exactly that means.  
@@ -6532,7 +6532,7 @@ It means it’ll do nothing. It’s an attempt to have the link not ‘navigate�
 You should actually just `return false` in the `onclick` event, like so:  
 
 ```javascript
-&lt;a href="#" onclick="return false;"&gt;hello&lt;/a&gt;
+<a href="#" onclick="return false;">hello</a>
 ```
 
 Typically it’s used if the link is doing some ‘JavaScript-y’ thing. Like posting an AJAX form, or swapping an image, or whatever. In that case you just make whatever function is being called return `false`.  
@@ -6540,8 +6540,8 @@ Typically it’s used if the link is doing some ‘JavaScript-y’ thing. Like p
 To make your website completely awesome, however, generally you’ll include a link that does the same action, if the person browsing it chooses not to run JavaScript.  
 
 ```javascript
-&lt;a href="backup_page_displaying_image.aspx"
-   onclick="return coolImageDisplayFunction();"&gt;hello&lt;/a&gt;
+<a href="backup_page_displaying_image.aspx"
+   onclick="return coolImageDisplayFunction();">hello</a>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -6700,7 +6700,7 @@ var DecimalSeparator = Number("1.2").toLocaleString().substr(1,1);
 var AmountWithCommas = Amount.toLocaleString();
 var arParts = String(AmountWithCommas).split(DecimalSeparator);
 var intPart = arParts[0];
-var decPart = (arParts.length &gt; 1 ? arParts[1] : '');
+var decPart = (arParts.length > 1 ? arParts[1] : '');
 decPart = (decPart + '00').substr(0,2);
 
 return '£ ' + intPart + DecimalSeparator + decPart;
@@ -6735,9 +6735,9 @@ function formatMoney(number, decPlaces, decSep, thouSep) {
 decPlaces = isNaN(decPlaces = Math.abs(decPlaces)) ? 2 : decPlaces,
 decSep = typeof decSep === "undefined" ? "." : decSep;
 thouSep = typeof thouSep === "undefined" ? "," : thouSep;
-var sign = number &lt; 0 ? "-" : "";
+var sign = number < 0 ? "-" : "";
 var i = String(parseInt(number = Math.abs(Number(number) || 0).toFixed(decPlaces)));
-var j = (j = i.length) &gt; 3 ? j % 3 : 0;
+var j = (j = i.length) > 3 ? j % 3 : 0;
 
 return sign +
 	(j ? i.substr(0, j) + thouSep : "") +
@@ -6745,14 +6745,14 @@ return sign +
 	(decPlaces ? decSep + Math.abs(number - i).toFixed(decPlaces).slice(2) : "");
 }
 
-document.getElementById("b").addEventListener("click", event =&gt; {
+document.getElementById("b").addEventListener("click", event => {
   document.getElementById("x").innerText = "Result was: " + formatMoney(document.getElementById("d").value);
 });```
 ```javascript
-&lt;label&gt;Insert your amount: &lt;input id="d" type="text" placeholder="Cash amount" /&gt;&lt;/label&gt;
-&lt;br /&gt;
-&lt;button id="b"&gt;Get Output&lt;/button&gt;
-&lt;p id="x"&gt;(press button to get output)&lt;/p&gt;```
+<label>Insert your amount: <input id="d" type="text" placeholder="Cash amount" /></label>
+<br />
+<button id="b">Get Output</button>
+<p id="x">(press button to get output)</p>```
 </div>
 </div>
 
@@ -6788,24 +6788,24 @@ function formatMoney(amount, decimalCount = 2, decimal = ".", thousands = ",") {
     decimalCount = Math.abs(decimalCount);
     decimalCount = isNaN(decimalCount) ? 2 : decimalCount;
 
-    const negativeSign = amount &lt; 0 ? "-" : "";
+    const negativeSign = amount < 0 ? "-" : "";
 
     let i = parseInt(amount = Math.abs(Number(amount) || 0).toFixed(decimalCount)).toString();
-    let j = (i.length &gt; 3) ? i.length % 3 : 0;
+    let j = (i.length > 3) ? i.length % 3 : 0;
 
     return negativeSign + (j ? i.substr(0, j) + thousands : '') + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousands) + (decimalCount ? decimal + Math.abs(amount - i).toFixed(decimalCount).slice(2) : "");
   } catch (e) {
     console.log(e)
   }
 };
-document.getElementById("b").addEventListener("click", event =&gt; {
+document.getElementById("b").addEventListener("click", event => {
   document.getElementById("x").innerText = "Result was: " + formatMoney(document.getElementById("d").value);
 });```
 ```javascript
-&lt;label&gt;Insert your amount: &lt;input id="d" type="text" placeholder="Cash amount" /&gt;&lt;/label&gt;
-&lt;br /&gt;
-&lt;button id="b"&gt;Get Output&lt;/button&gt;
-&lt;p id="x"&gt;(press button to get output)&lt;/p&gt;```
+<label>Insert your amount: <input id="d" type="text" placeholder="Cash amount" /></label>
+<br />
+<button id="b">Get Output</button>
+<p id="x">(press button to get output)</p>```
 </div>
 </div>
 
@@ -6814,7 +6814,7 @@ document.getElementById("b").addEventListener("click", event =&gt; {
 <h5>Short and fast solution (works everywhere!)</h2>
 
 ```javascript
-(12345.67).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&amp;,');  // 12,345.67
+(12345.67).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');  // 12,345.67
 ```
 
 The idea behind this solution is replacing matched sections with first match and comma, i.e. `'$&amp;,'`. The matching is done using <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#special-lookahead" rel="noreferrer">lookahead approach</a>. You may read the expression as <em>"match a number if it is followed by a sequence of three number sets (one or more) and a dot"</em>.  
@@ -6822,14 +6822,14 @@ The idea behind this solution is replacing matched sections with first match and
 <strong>TESTS:</strong>  
 
 ```javascript
-1        --&gt; "1.00"
-12       --&gt; "12.00"
-123      --&gt; "123.00"
-1234     --&gt; "1,234.00"
-12345    --&gt; "12,345.00"
-123456   --&gt; "123,456.00"
-1234567  --&gt; "1,234,567.00"
-12345.67 --&gt; "12,345.67"
+1        --> "1.00"
+12       --> "12.00"
+123      --> "123.00"
+1234     --> "1,234.00"
+12345    --> "12,345.00"
+123456   --> "123,456.00"
+1234567  --> "1,234,567.00"
+12345.67 --> "12,345.67"
 ```
 
 <strong>DEMO:</strong> <a href="http://jsfiddle.net/hAfMM/9571/" rel="noreferrer">http://jsfiddle.net/hAfMM/9571/</a>  
@@ -6848,8 +6848,8 @@ You can also extend the prototype of <a href="https://developer.mozilla.org/en-U
  * @param integer x: length of sections
  */
 Number.prototype.format = function(n, x) {
-    var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n &gt; 0 ? '\\.' : '$') + ')';
-    return this.toFixed(Math.max(0, ~~n)).replace(new RegExp(re, 'g'), '$&amp;,');
+    var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\.' : '$') + ')';
+    return this.toFixed(Math.max(0, ~~n)).replace(new RegExp(re, 'g'), '$&,');
 };
 
 1234..format();           // "1,234"
@@ -6876,10 +6876,10 @@ In this <a href="https://stackoverflow.com/questions/149055/how-can-i-format-num
  * @param mixed   c: decimal delimiter
  */
 Number.prototype.format = function(n, x, s, c) {
-    var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n &gt; 0 ? '\\D' : '$') + ')',
+    var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\D' : '$') + ')',
         num = this.toFixed(Math.max(0, ~~n));
 
-    return (c ? num.replace('.', c) : num).replace(new RegExp(re, 'g'), '$&amp;' + (s || ','));
+    return (c ? num.replace('.', c) : num).replace(new RegExp(re, 'g'), '$&' + (s || ','));
 };
 
 12345678.9.format(2, 3, '.', ',');  // "12.345.678,90"
@@ -7000,15 +7000,15 @@ copyJaneBtn.addEventListener('click', function(event) {
   copyTextToClipboard('Jane');
 });```
 ```javascript
-&lt;div style="display:inline-block; vertical-align:top;"&gt;
-  &lt;button class="js-copy-bob-btn"&gt;Set clipboard to BOB&lt;/button&gt;&lt;br /&gt;&lt;br /&gt;
-  &lt;button class="js-copy-jane-btn"&gt;Set clipboard to JANE&lt;/button&gt;
-&lt;/div&gt;
-&lt;div style="display:inline-block;"&gt;
-  &lt;textarea class="js-test-textarea" cols="35" rows="4"&gt;Try pasting into here to see what you have on your clipboard:
+<div style="display:inline-block; vertical-align:top;">
+  <button class="js-copy-bob-btn">Set clipboard to BOB</button><br /><br />
+  <button class="js-copy-jane-btn">Set clipboard to JANE</button>
+</div>
+<div style="display:inline-block;">
+  <textarea class="js-test-textarea" cols="35" rows="4">Try pasting into here to see what you have on your clipboard:
 
-  &lt;/textarea&gt;
-&lt;/div&gt;```
+  </textarea>
+</div>```
 </div>
 </div>
 
@@ -7069,10 +7069,10 @@ copyTextareaBtn.addEventListener('click', function(event) {
   }
 });```
 ```javascript
-&lt;p&gt;
-  &lt;button class="js-textareacopybtn" style="vertical-align:top;"&gt;Copy Textarea&lt;/button&gt;
-  &lt;textarea class="js-copytextarea"&gt;Hello I'm some text&lt;/textarea&gt;
-&lt;/p&gt;```
+<p>
+  <button class="js-textareacopybtn" style="vertical-align:top;">Copy Textarea</button>
+  <textarea class="js-copytextarea">Hello I'm some text</textarea>
+</p>```
 </div>
 </div>
 
@@ -7159,15 +7159,15 @@ copyJaneBtn.addEventListener('click', function(event) {
   copyTextToClipboard('Jane');
 });```
 ```javascript
-&lt;div style="display:inline-block; vertical-align:top;"&gt;
-  &lt;button class="js-copy-bob-btn"&gt;Set clipboard to BOB&lt;/button&gt;&lt;br /&gt;&lt;br /&gt;
-  &lt;button class="js-copy-jane-btn"&gt;Set clipboard to JANE&lt;/button&gt;
-&lt;/div&gt;
-&lt;div style="display:inline-block;"&gt;
-  &lt;textarea class="js-test-textarea" cols="35" rows="4"&gt;Try pasting into here to see what you have on your clipboard:
+<div style="display:inline-block; vertical-align:top;">
+  <button class="js-copy-bob-btn">Set clipboard to BOB</button><br /><br />
+  <button class="js-copy-jane-btn">Set clipboard to JANE</button>
+</div>
+<div style="display:inline-block;">
+  <textarea class="js-test-textarea" cols="35" rows="4">Try pasting into here to see what you have on your clipboard:
 
-  &lt;/textarea&gt;
-&lt;/div&gt;```
+  </textarea>
+</div>```
 </div>
 </div>
 
@@ -7222,13 +7222,13 @@ Now the clipboard copy operation is SAFE, because the user does it manually (but
 <p><div class="snippet" data-lang="js" data-hide="false">
 <div class="snippet-code">
 ```javascript
-&lt;button id="demo" onclick="copyToClipboard(document.getElementById('demo').innerHTML)"&gt;This is what I want to copy&lt;/button&gt;
+<button id="demo" onclick="copyToClipboard(document.getElementById('demo').innerHTML)">This is what I want to copy</button>
 
-&lt;script&gt;
+<script>
   function copyToClipboard(text) {
     window.prompt("Copy to clipboard: Ctrl+C, Enter", text);
   }
-&lt;/script&gt;```
+</script>```
 </div>
 </div>
 
@@ -7285,7 +7285,7 @@ Then you can use it like:
 var arr = [ 'A', 'B', 'D', 'E' ];
 arr.insert(2, 'C');
 
-// =&gt; arr == [ 'A', 'B', 'C', 'D', 'E' ]
+// => arr == [ 'A', 'B', 'C', 'D', 'E' ]
 ```
 
 #### Answer 3 (score 106)
@@ -7296,7 +7296,7 @@ Other than splice, you can use this approach which will not mutate the original 
 ```javascript
 const items = [1, 2, 3, 4, 5]
 
-const insert = (arr, index, newItem) =&gt; [
+const insert = (arr, index, newItem) => [
   // part of the array before the specified index
   ...arr.slice(0, index),
   // inserted item
@@ -7320,7 +7320,7 @@ This can be used to add more than one item by tweaking the function a bit to use
 ```javascript
 const items = [1, 2, 3, 4, 5]
 
-const insert = (arr, index, ...newItems) =&gt; [
+const insert = (arr, index, ...newItems) => [
   // part of the array before the specified index
   ...arr.slice(0, index),
   // inserted items
@@ -7348,9 +7348,9 @@ How do I create a `div` element in <strong>jQuery</strong>?
 You can use `append` (to add at last position of parent) or `prepend` (to add at fist position of parent):  
 
 ```javascript
-$('#parent').append('&lt;div&gt;hello&lt;/div&gt;');    
+$('#parent').append('<div>hello</div>');    
 // or
-$('&lt;div&gt;hello&lt;/div&gt;').appendTo('#parent');
+$('<div>hello</div>').appendTo('#parent');
 ```
 
 Alternatively, you can use the `.html()` or `.add()` as mentioned in a <a href="https://stackoverflow.com/a/867941/59087">different answer</a>.  
@@ -7361,7 +7361,7 @@ Alternatively, you can use the `.html()` or `.add()` as mentioned in a <a href="
 As of jQuery 1.4 you can pass attributes to a self-closed element like so:  
 
 ```javascript
-jQuery('&lt;div/&gt;', {
+jQuery('<div/>', {
     id: 'some-id',
     "class": 'some-class',
     title: 'now this div has a title!'
@@ -7451,7 +7451,7 @@ Object.keys(myArray).length
 
 ```javascript
 _.size({one : 1, two : 2, three : 3});
-=&gt; 3
+=> 3
 ```
 
 <strong>If not</strong>, and you don't want to mess around with Object properties for whatever reason, and are already using jQuery, a plugin is equally accessible:  
@@ -7569,7 +7569,7 @@ For an <a href="https://www.ietf.org/rfc/rfc4122.txt" rel="noreferrer">RFC4122</
 ```javascript
 function uuidv4() {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r &amp; 0x3 | 0x8);
+    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
     return v.toString(16);
   });
 }
@@ -7589,8 +7589,8 @@ console.log(uuidv4());```
 <div class="snippet-code">
 ```javascript
 function uuidv4() {
-  return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =&gt;
-    (c ^ crypto.getRandomValues(new Uint8Array(1))[0] &amp; 15 &gt;&gt; c / 4).toString(16)
+  return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+    (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
   );
 }
 
@@ -7609,17 +7609,17 @@ Here's a similar <a href="http://www.ietf.org/rfc/rfc4122.txt" rel="noreferrer">
 ```javascript
 function generateUUID() { // Public Domain/MIT
     var d = new Date().getTime();//Timestamp
-    var d2 = (performance &amp;&amp; performance.now &amp;&amp; (performance.now()*1000)) || 0;//Time in microseconds since page-load or 0 if unsupported
+    var d2 = (performance && performance.now && (performance.now()*1000)) || 0;//Time in microseconds since page-load or 0 if unsupported
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
         var r = Math.random() * 16;//random number between 0 and 16
-        if(d &gt; 0){//Use timestamp until depleted
+        if(d > 0){//Use timestamp until depleted
             r = (d + r)%16 | 0;
             d = Math.floor(d/16);
         } else {//Use microseconds since page-load if supported
             r = (d2 + r)%16 | 0;
             d2 = Math.floor(d2/16);
         }
-        return (c === 'x' ? r : (r &amp; 0x3 | 0x8)).toString(16);
+        return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
     });
 }
 
@@ -7640,7 +7640,7 @@ Is there a universal JavaScript function that checks that a variable has a value
 
 ```javascript
 function isEmpty(val){
-    return (val === undefined || val == null || val.length &lt;= 0) ? true : false;
+    return (val === undefined || val == null || val.length <= 0) ? true : false;
 }
 ```
 
@@ -7729,7 +7729,7 @@ What is the best method in jQuery to add an additional row to a table as the las
 Is this acceptable?  
 
 ```javascript
-$('#myTable').append('&lt;tr&gt;&lt;td&gt;my data&lt;/td&gt;&lt;td&gt;more data&lt;/td&gt;&lt;/tr&gt;');
+$('#myTable').append('<tr><td>my data</td><td>more data</td></tr>');
 ```
 
 Are there limitations to what you can add to a table like this (such as inputs, selects, number of rows)?  
@@ -7738,30 +7738,30 @@ Are there limitations to what you can add to a table like this (such as inputs, 
 The approach you suggest is not guaranteed to give you the result you're looking for - what if you had a `tbody` for example:  
 
 ```javascript
-&lt;table id="myTable"&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;...&lt;/tr&gt;
-    &lt;tr&gt;...&lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+<table id="myTable">
+  <tbody>
+    <tr>...</tr>
+    <tr>...</tr>
+  </tbody>
+</table>
 ```
 
 You would end up with the following:  
 
 ```javascript
-&lt;table id="myTable"&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;...&lt;/tr&gt;
-    &lt;tr&gt;...&lt;/tr&gt;
-  &lt;/tbody&gt;
-  &lt;tr&gt;...&lt;/tr&gt;
-&lt;/table&gt;
+<table id="myTable">
+  <tbody>
+    <tr>...</tr>
+    <tr>...</tr>
+  </tbody>
+  <tr>...</tr>
+</table>
 ```
 
 I would therefore recommend this approach instead:  
 
 ```javascript
-$('#myTable tr:last').after('&lt;tr&gt;...&lt;/tr&gt;&lt;tr&gt;...&lt;/tr&gt;');
+$('#myTable tr:last').after('<tr>...</tr><tr>...</tr>');
 ```
 
 You can include anything within the `after()` method as long as it's valid HTML, including multiple rows as per the example above.  
@@ -7775,7 +7775,7 @@ Weighing everything up, I'm not sure there is a single one-line solution that ac
 I think the safest solution is probably to ensure your `table` always includes at least one `tbody` in your markup, even if it has no rows. On this basis, you can use the following which will work however many rows you have (and also account for multiple `tbody` elements):  
 
 ```javascript
-$('#myTable &gt; tbody:last-child').append('&lt;tr&gt;...&lt;/tr&gt;&lt;tr&gt;...&lt;/tr&gt;');
+$('#myTable > tbody:last-child').append('<tr>...</tr><tr>...</tr>');
 ```
 
 #### Answer 2 (score 746)
@@ -7785,9 +7785,9 @@ jQuery has a built-in facility to manipulate DOM elements on the fly.
 
 ```javascript
 $("#tableID").find('tbody')
-    .append($('&lt;tr&gt;')
-        .append($('&lt;td&gt;')
-            .append($('&lt;img&gt;')
+    .append($('<tr>')
+        .append($('<td>')
+            .append($('<img>')
                 .attr('src', 'img.png')
                 .text('Image cell')
             )
@@ -7807,7 +7807,7 @@ jQuery since version 1.4(?) automatically detects if the element you are trying 
 So yes your example code is acceptable and will work fine with jQuery 1.4+. ;)  
 
 ```javascript
-$('#myTable').append('&lt;tr&gt;&lt;td&gt;my data&lt;/td&gt;&lt;td&gt;more data&lt;/td&gt;&lt;/tr&gt;');
+$('#myTable').append('<tr><td>my data</td><td>more data</td></tr>');
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -7847,16 +7847,16 @@ var contains = function(needle) {
     var findNaN = needle !== needle;
     var indexOf;
 
-    if(!findNaN &amp;&amp; typeof Array.prototype.indexOf === 'function') {
+    if(!findNaN && typeof Array.prototype.indexOf === 'function') {
         indexOf = Array.prototype.indexOf;
     } else {
         indexOf = function(needle) {
             var i = -1, index = -1;
 
-            for(i = 0; i &lt; this.length; i++) {
+            for(i = 0; i < this.length; i++) {
                 var item = this[i];
 
-                if((findNaN &amp;&amp; item !== item) || item === needle) {
+                if((findNaN && item !== item) || item === needle) {
                     index = i;
                     break;
                 }
@@ -7866,7 +7866,7 @@ var contains = function(needle) {
         };
     }
 
-    return indexOf.call(this, needle) &gt; -1;
+    return indexOf.call(this, needle) > -1;
 };
 ```
 
@@ -7895,7 +7895,7 @@ See also <a href="https://stackoverflow.com/questions/237104/array-containsobj-i
 This is generally what the indexOf() method is for. You would say:  
 
 ```javascript
-return arrValues.indexOf('Sam') &gt; -1
+return arrValues.indexOf('Sam') > -1
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -7937,11 +7937,11 @@ That will take any `&lt;a&gt;` tag whose `href="#top"` and make it smooth scroll
 <strong>Try this to scroll on top</strong>  
 
 ```javascript
-&lt;script&gt;
+<script>
  $(document).ready(function(){
     $(window).scrollTop(0);
 });
-&lt;/script&gt;
+</script>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -8122,7 +8122,7 @@ console.log(str);```
 You can use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/slice" rel="noreferrer">slice</a>! You just have to make sure you know how to use it. Positive #s are relative to the beginning, negative numbers are relative to the end.  
 
 ```javascript
-js&gt;"12345.00".slice(0,-1)
+js>"12345.00".slice(0,-1)
 12345.0
 ```
 
@@ -8241,9 +8241,9 @@ for (var key in validation_messages) {
 I have an element that already has a class:  
 
 ```javascript
-&lt;div class="someclass"&gt;
-    &lt;img ... id="image1" name="image1" /&gt;
-&lt;/div&gt;
+<div class="someclass">
+    <img ... id="image1" name="image1" />
+</div>
 ```
 
 Now I want to create a JavaScript function that will add a class to the `div` (not replace, but add).  
@@ -8254,9 +8254,9 @@ How can I do that?
 Add a space plus the name of your new class to the `className` property of the element. First, put an `id` on the element so you can easily get a reference.  
 
 ```javascript
-&lt;div id="div1" class="someclass"&gt;
-    &lt;img ... id="image1" name="image1" /&gt;
-&lt;/div&gt;
+<div id="div1" class="someclass">
+    <img ... id="image1" name="image1" />
+</div>
 ```
 
 Then   
@@ -8337,7 +8337,7 @@ With `JSON.stringify()` found in <a href="http://www.json.org/js.html" rel="nore
                     of nested structures. If it is omitted, the text will
                     be packed without extra whitespace. If it is a number,
                     it will specify the number of spaces to indent at each
-                    level. If it is a string (such as '\t' or '&amp;nbsp;'),
+                    level. If it is a string (such as '\t' or '&nbsp;'),
                     it contains the characters used to indent at each level.
 
        This method produces a JSON text from a JavaScript value.
@@ -8385,17 +8385,17 @@ Bonus points for:
 Test cases:  
 
 ```javascript
-01. IsNumeric('-1')      =&gt; true
-02. IsNumeric('-1.5')    =&gt; true
-03. IsNumeric('0')       =&gt; true
-04. IsNumeric('0.42')    =&gt; true
-05. IsNumeric('.42')     =&gt; true
-06. IsNumeric('99,999')  =&gt; false
-07. IsNumeric('0x89f')   =&gt; false
-08. IsNumeric('#abcdef') =&gt; false
-09. IsNumeric('1.2.3')   =&gt; false
-10. IsNumeric('')        =&gt; false
-11. IsNumeric('blah')    =&gt; false
+01. IsNumeric('-1')      => true
+02. IsNumeric('-1.5')    => true
+03. IsNumeric('0')       => true
+04. IsNumeric('0.42')    => true
+05. IsNumeric('.42')     => true
+06. IsNumeric('99,999')  => false
+07. IsNumeric('0x89f')   => false
+08. IsNumeric('#abcdef') => false
+09. IsNumeric('1.2.3')   => false
+10. IsNumeric('')        => false
+11. IsNumeric('blah')    => false
 ```
 
 #### Answer accepted (score 2860)
@@ -8420,7 +8420,7 @@ I think is worth sharing this set of <a href="http://run.plnkr.co/plunks/93FPpac
 
 ```javascript
 function isNumeric(n) {
-    return !isNaN(parseFloat(n)) &amp;&amp; isFinite(n);
+    return !isNaN(parseFloat(n)) && isFinite(n);
 }
 ```
 
@@ -8433,8 +8433,8 @@ function isNumeric(n) {
 
 ```javascript
 isNumeric: function(obj) {
-    var realStringObj = obj &amp;&amp; obj.toString();
-    return !jQuery.isArray(obj) &amp;&amp; (realStringObj - parseFloat(realStringObj) + 1) &gt;= 0;
+    var realStringObj = obj && obj.toString();
+    return !jQuery.isArray(obj) && (realStringObj - parseFloat(realStringObj) + 1) >= 0;
 }
 ```
 
@@ -8455,7 +8455,7 @@ If you can't use `isNaN()`, this should work much better:
 ```javascript
 function IsNumeric(input)
 {
-    return (input - 0) == input &amp;&amp; (''+input).trim().length &gt; 0;
+    return (input - 0) == input && (''+input).trim().length > 0;
 }
 ```
 
@@ -8492,17 +8492,17 @@ And to test it:
 
 function TestIsNumeric(){
     var results = ''
-    results += (IsNumeric('-1')?"Pass":"Fail") + ": IsNumeric('-1') =&gt; true\n";
-    results += (IsNumeric('-1.5')?"Pass":"Fail") + ": IsNumeric('-1.5') =&gt; true\n";
-    results += (IsNumeric('0')?"Pass":"Fail") + ": IsNumeric('0') =&gt; true\n";
-    results += (IsNumeric('0.42')?"Pass":"Fail") + ": IsNumeric('0.42') =&gt; true\n";
-    results += (IsNumeric('.42')?"Pass":"Fail") + ": IsNumeric('.42') =&gt; true\n";
-    results += (!IsNumeric('99,999')?"Pass":"Fail") + ": IsNumeric('99,999') =&gt; false\n";
-    results += (!IsNumeric('0x89f')?"Pass":"Fail") + ": IsNumeric('0x89f') =&gt; false\n";
-    results += (!IsNumeric('#abcdef')?"Pass":"Fail") + ": IsNumeric('#abcdef') =&gt; false\n";
-    results += (!IsNumeric('1.2.3')?"Pass":"Fail") + ": IsNumeric('1.2.3') =&gt; false\n";
-    results += (!IsNumeric('')?"Pass":"Fail") + ": IsNumeric('') =&gt; false\n";
-    results += (!IsNumeric('blah')?"Pass":"Fail") + ": IsNumeric('blah') =&gt; false\n";
+    results += (IsNumeric('-1')?"Pass":"Fail") + ": IsNumeric('-1') => true\n";
+    results += (IsNumeric('-1.5')?"Pass":"Fail") + ": IsNumeric('-1.5') => true\n";
+    results += (IsNumeric('0')?"Pass":"Fail") + ": IsNumeric('0') => true\n";
+    results += (IsNumeric('0.42')?"Pass":"Fail") + ": IsNumeric('0.42') => true\n";
+    results += (IsNumeric('.42')?"Pass":"Fail") + ": IsNumeric('.42') => true\n";
+    results += (!IsNumeric('99,999')?"Pass":"Fail") + ": IsNumeric('99,999') => false\n";
+    results += (!IsNumeric('0x89f')?"Pass":"Fail") + ": IsNumeric('0x89f') => false\n";
+    results += (!IsNumeric('#abcdef')?"Pass":"Fail") + ": IsNumeric('#abcdef') => false\n";
+    results += (!IsNumeric('1.2.3')?"Pass":"Fail") + ": IsNumeric('1.2.3') => false\n";
+    results += (!IsNumeric('')?"Pass":"Fail") + ": IsNumeric('') => false\n";
+    results += (!IsNumeric('blah')?"Pass":"Fail") + ": IsNumeric('blah') => false\n";
 
     return results;
 }
@@ -8527,7 +8527,7 @@ $/ match end of string
 How do you safely encode a URL using JavaScript such that it can be put into a GET string?  
 
 ```javascript
-var myUrl = "http://example.com/index.html?param=1&amp;anotherParam=2";
+var myUrl = "http://example.com/index.html?param=1&anotherParam=2";
 var myOtherUrl = "http://example.com/index.html?url=" + myUrl;
 ```
 
@@ -8641,7 +8641,7 @@ if(!is_mobile) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
         js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/pt_PT/all.js#xfbml=1&amp;appId=210731252294735";
+        js.src = "//connect.facebook.net/pt_PT/all.js#xfbml=1&appId=210731252294735";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 }
@@ -8809,7 +8809,7 @@ But when I restart bash, this is what I see:
 nvm ls
 v0.6.19
 current:    v0.6.1-pre
-default -&gt; 0.6.19 (-&gt; v0.6.19)
+default -> 0.6.19 (-> v0.6.19)
 ```
 
 So where is this phantom node 0.6.1-pre version and how can I get rid of it? I'm trying to install libraries via NPM so that I can work on a project.  
@@ -8881,8 +8881,8 @@ To install:
 
 ```javascript
 brew install node;
-which node # =&gt; /usr/local/bin/node
-export NODE_PATH='/usr/local/lib/node_modules' # &lt;--- add this ~/.bashrc
+which node # => /usr/local/bin/node
+export NODE_PATH='/usr/local/lib/node_modules' # <--- add this ~/.bashrc
 ```
 
 You can run `brew info node` for more details regarding your node installs.  
@@ -8896,14 +8896,14 @@ NVM (node version manager) is a portable solution for managing multiple versions
 <h5><a href="https://github.com/creationix/nvm" rel="noreferrer">https://github.com/creationix/nvm</a></h2>
 
 ```javascript
-&gt; nvm uninstall v4.1.0
-&gt; nvm install v8.1.2
-&gt; nvm use v8.1.2
-&gt; nvm list
+> nvm uninstall v4.1.0
+> nvm install v8.1.2
+> nvm use v8.1.2
+> nvm list
          v4.2.0
          v5.8.0
         v6.11.0
--&gt;       v8.1.2
+->       v8.1.2
          system
 ```
 
@@ -8933,7 +8933,7 @@ Thanks to <a href="https://gist.github.com/jguix" rel="noreferrer">`jguix`</a> f
 <strong>First, create an intermediate file:</strong>  
 
 ```javascript
-lsbom -f -l -s -pf /var/db/receipts/org.nodejs.node.pkg.bom &gt;&gt; ~/filelist.txt
+lsbom -f -l -s -pf /var/db/receipts/org.nodejs.node.pkg.bom >> ~/filelist.txt
 ```
 
 <strong>Manually review your file (located in your `Home` folder)</strong>  
@@ -9047,7 +9047,7 @@ Check out this <a href="http://jsben.ch/#/QgYAV" rel="noreferrer">benchmark</a> 
 From <a href="https://stackoverflow.com/users/8432239/bharath?tab=profile">@Bharath</a> convert string to array using Es6 for the question asked:  
 
 ```javascript
-const convertStringToArray = (object) =&gt; {
+const convertStringToArray = (object) => {
    return (typeof object === 'string') ? Array(object) : object 
 }
 ```
@@ -9396,8 +9396,8 @@ Element.prototype.remove = function() {
     this.parentElement.removeChild(this);
 }
 NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
-    for(var i = this.length - 1; i &gt;= 0; i--) {
-        if(this[i] &amp;&amp; this[i].parentElement) {
+    for(var i = this.length - 1; i >= 0; i--) {
+        if(this[i] && this[i].parentElement) {
             this[i].parentElement.removeChild(this[i]);
         }
     }
@@ -9427,7 +9427,7 @@ document.getElementById("my-element").remove();
 or  
 
 ```javascript
-[...document.getElementsByClassName("my-elements")].map(n =&gt; n &amp;&amp; n.remove());
+[...document.getElementsByClassName("my-elements")].map(n => n && n.remove());
 ```
 
 These functions are available in all modern browsers (not IE). Read more on <a href="https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove" rel="noreferrer">MDN</a>.  
@@ -9777,7 +9777,7 @@ You need to understand the "variable hoisting" feature in Javascript in order to
 ```javascript
 function buildList(list) {
     var result = [];
-    for (var i = 0; i &lt; list.length; i++) {
+    for (var i = 0; i < list.length; i++) {
         var item = 'item' + i;
         result.push( function() {console.log(item + ' ' + list[i])} );
     }
@@ -9787,7 +9787,7 @@ function buildList(list) {
 function testList() {
     var fnlist = buildList([1,2,3]);
     // Using j only to help prevent confusion -- could use i.
-    for (var j = 0; j &lt; fnlist.length; j++) {
+    for (var j = 0; j < fnlist.length; j++) {
         fnlist[j]();
     }
 }
@@ -10068,9 +10068,9 @@ document.location.href = 'http://example.com/q=a';
 But the resource I'm trying to access won't respond properly unless I use a POST request. If this were not dynamically generated, I might use the HTML  
 
 ```javascript
-&lt;form action="http://example.com/" method="POST"&gt;
-  &lt;input type="hidden" name="q" value="a"&gt;
-&lt;/form&gt;
+<form action="http://example.com/" method="POST">
+  <input type="hidden" name="q" value="a">
+</form>
 ```
 
 Then I would just submit the form from the DOM.  
@@ -10137,13 +10137,13 @@ This would be a version of the selected answer using <a href="http://en.wikipedi
 ```javascript
 // Post to the provided URL with the specified parameters.
 function post(path, parameters) {
-    var form = $('&lt;form&gt;&lt;/form&gt;');
+    var form = $('<form></form>');
 
     form.attr("method", "post");
     form.attr("action", path);
 
     $.each(parameters, function(key, value) {
-        var field = $('&lt;input&gt;&lt;/input&gt;');
+        var field = $('<input></input>');
 
         field.attr("type", "hidden");
         field.attr("name", key);
@@ -10163,7 +10163,7 @@ function post(path, parameters) {
 A simple quick-and-dirty implementation of @Aaron answer:  
 
 ```javascript
-document.body.innerHTML += '&lt;form id="dynForm" action="http://example.com/" method="post"&gt;&lt;input type="hidden" name="q" value="a"&gt;&lt;/form&gt;';
+document.body.innerHTML += '<form id="dynForm" action="http://example.com/" method="post"><input type="hidden" name="q" value="a"></form>';
 document.getElementById("dynForm").submit();
 ```
 
@@ -10186,8 +10186,8 @@ $("a").attr("href", "http://www.google.com/")
 will modify the href of all hyperlinks to point to Google. You probably want a somewhat more refined selector though. For instance, if you have a mix of link source (hyperlink) and link target (a.k.a. "anchor") anchor tags:  
 
 ```javascript
-&lt;a name="MyLinks"&gt;&lt;/a&gt;
-&lt;a href="http://www.codeproject.com/"&gt;The CodeProject&lt;/a&gt;
+<a name="MyLinks"></a>
+<a href="http://www.codeproject.com/">The CodeProject</a>
 ```
 
 ...Then you probably don't want to accidentally add `href` attributes to them. For safety then, we can specify that our selector will only match `&lt;a&gt;` tags with an existing `href` attribute:  
@@ -10252,18 +10252,18 @@ $("tcol1").hide(); // select by element name does not work
 Note the HTML below, the second column has the same name for all rows.  How could I create this collection using the `name` attribute?  
 
 ```javascript
-&lt;tr&gt;    
-    &lt;td&gt;data1&lt;/td&gt;
-    &lt;td name="tcol1" class="bold"&gt; data2&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;    
-    &lt;td&gt;data1&lt;/td&gt;
-    &lt;td name="tcol1" class="bold"&gt; data2&lt;/td&gt;
-&lt;/tr&gt;  
-&lt;tr&gt;    
-    &lt;td&gt;data1&lt;/td&gt;
-    &lt;td name="tcol1" class="bold"&gt; data2&lt;/td&gt;
-&lt;/tr&gt;
+<tr>    
+    <td>data1</td>
+    <td name="tcol1" class="bold"> data2</td>
+</tr>
+<tr>    
+    <td>data1</td>
+    <td name="tcol1" class="bold"> data2</td>
+</tr>  
+<tr>    
+    <td>data1</td>
+    <td name="tcol1" class="bold"> data2</td>
+</tr>
 ```
 
 #### Answer accepted (score 2043)
@@ -10288,8 +10288,8 @@ var value = $("[name='nameofobject']");
 If you have something like:  
 
 ```javascript
-&lt;input type="checkbox" name="mycheckbox" value="11" checked=""&gt;
-&lt;input type="checkbox" name="mycheckbox" value="12"&gt;
+<input type="checkbox" name="mycheckbox" value="11" checked="">
+<input type="checkbox" name="mycheckbox" value="12">
 ```
 
 You can read all like this:  
@@ -10309,9 +10309,9 @@ jQuery("input[name='mycheckbox']").each(function() {
   console.log( this.value + ":" + this.checked );
 });```
 ```javascript
-&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"&gt;&lt;/script&gt;
-&lt;input type="checkbox" name="mycheckbox" value="11" checked=""&gt;
-&lt;input type="checkbox" name="mycheckbox" value="12"&gt;```
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<input type="checkbox" name="mycheckbox" value="11" checked="">
+<input type="checkbox" name="mycheckbox" value="12">```
 </div>
 </div>
 
@@ -10327,13 +10327,13 @@ The selected tag has the id `aioConceptName`</p>
 <strong>html code</strong>  
 
 ```javascript
-&lt;label&gt;Name&lt;/label&gt;
-&lt;input type="text" name="name" /&gt;
-&lt;select id="aioConceptName"&gt;
-    &lt;option&gt;choose io&lt;/option&gt;
-    &lt;option&gt;roma&lt;/option&gt;
-    &lt;option&gt;totti&lt;/option&gt;
-&lt;/select&gt;
+<label>Name</label>
+<input type="text" name="name" />
+<select id="aioConceptName">
+    <option>choose io</option>
+    <option>roma</option>
+    <option>totti</option>
+</select>
 ```
 
 #### Answer accepted (score 1750)
@@ -10349,11 +10349,11 @@ The reason `val()` doesn't do the trick is because clicking an option doesn't ch
 <strong>Set the values for each of the options</strong>  
 
 ```javascript
-&lt;select id="aioConceptName"&gt;
-    &lt;option value="0"&gt;choose io&lt;/option&gt;
-    &lt;option value="1"&gt;roma&lt;/option&gt;
-    &lt;option value="2"&gt;totti&lt;/option&gt;
-&lt;/select&gt;
+<select id="aioConceptName">
+    <option value="0">choose io</option>
+    <option value="1">roma</option>
+    <option value="2">totti</option>
+</select>
 ```
 
 `$('#aioConceptName').val()` didn't work because `.val()` returns the `value` attribute. To have it work properly, the `value` attributes must be set on each `&lt;option&gt;`.  
@@ -10383,7 +10383,7 @@ This saves you an extra jQuery call, selects everything in one shot, and is more
 I have the following code in Ruby. I want to convert this code into JavaScript. what's the equivalent code in JS?  
 
 ```javascript
-text = &lt;&lt;"HERE"
+text = <<"HERE"
 This
 Is
 A
@@ -10401,9 +10401,9 @@ A template literal is delimited by <em>backticks</em>:
 
 ```javascript
 var html = `
-  &lt;div&gt;
-    &lt;span&gt;Some HTML here&lt;/span&gt;
-  &lt;/div&gt;
+  <div>
+    <span>Some HTML here</span>
+  </div>
 `;
 ```
 
@@ -10482,10 +10482,10 @@ To keep oversight with complex or long multiline strings I sometimes use an arra
 
 ```javascript
 var myString = 
-   ['&lt;div id="someId"&gt;',
-    'some content&lt;br /&gt;',
-    '&lt;a href="#someRef"&gt;someRefTxt&lt;/a&gt;',
-    '&lt;/div&gt;'
+   ['<div id="someId">',
+    'some content<br />',
+    '<a href="#someRef">someRefTxt</a>',
+    '</div>'
    ].join('\n');
 ```
 
@@ -10493,20 +10493,20 @@ or the pattern anonymous already showed (escape newline), which can be an ugly b
 
 ```javascript
     var myString = 
-       '&lt;div id="someId"&gt; \
-some content&lt;br /&gt; \
-&lt;a href="#someRef"&gt;someRefTxt&lt;/a&gt; \
-&lt;/div&gt;';
+       '<div id="someId"> \
+some content<br /> \
+<a href="#someRef">someRefTxt</a> \
+</div>';
 ```
 
 Here's another weird but working 'trick'<sup><b>1</b></sup>:  
 
 ```javascript
 var myString = (function () {/*
-   &lt;div id="someId"&gt;
-     some content&lt;br /&gt;
-     &lt;a href="#someRef"&gt;someRefTxt&lt;/a&gt;
-    &lt;/div&gt;        
+   <div id="someId">
+     some content<br />
+     <a href="#someRef">someRefTxt</a>
+    </div>        
 */}).toString().match(/[^]*\/\*([^]*)\*\/\}$/)[1];
 ```
 
@@ -10537,8 +10537,8 @@ I have one text input and one button (see below). How can I use JavaScript to <s
 There is already a different submit button on my current page, so I can't simply make the button a submit button. And, I <em>only</em> want the <kbd>Enter</kbd> key to click this specific button if it is pressed from within this one text box, nothing else.  
 
 ```javascript
-&lt;input type="text" id="txtSearch" /&gt;
-&lt;input type="button" id="btnSearch" value="Search" onclick="doSomething();" /&gt;
+<input type="text" id="txtSearch" />
+<input type="button" id="btnSearch" value="Search" onclick="doSomething();" />
 ```
 
 #### Answer accepted (score 1390)
@@ -10565,11 +10565,11 @@ $("#myButton").click(function() {
   alert("Button code executed.");
 });```
 ```javascript
-&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"&gt;&lt;/script&gt;
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-Username:&lt;input id="username" type="text"&gt;&lt;br&gt;
-Password:&amp;nbsp;&lt;input id="pw" type="password"&gt;&lt;br&gt;
-&lt;button id="myButton"&gt;Submit&lt;/button&gt;```
+Username:<input id="username" type="text"><br>
+Password:&nbsp;<input id="pw" type="password"><br>
+<button id="myButton">Submit</button>```
 </div>
 </div>
 
@@ -10602,11 +10602,11 @@ function buttonCode()
   alert("Button code executed.");
 }```
 ```javascript
-&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"&gt;&lt;/script&gt;
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-Username:&lt;input id="username" type="text"&gt;&lt;br&gt;
-Password:&amp;nbsp;&lt;input id="pw" type="password"&gt;&lt;br&gt;
-&lt;button id="myButton" onclick="buttonCode()"&gt;Submit&lt;/button&gt;```
+Username:<input id="username" type="text"><br>
+Password:&nbsp;<input id="pw" type="password"><br>
+<button id="myButton" onclick="buttonCode()">Submit</button>```
 </div>
 </div>
 
@@ -10615,27 +10615,27 @@ Password:&amp;nbsp;&lt;input id="pw" type="password"&gt;&lt;br&gt;
 Then just code it in!  
 
 ```javascript
-&lt;input type = "text"
+<input type = "text"
        id = "txtSearch" 
        onkeydown = "if (event.keyCode == 13)
                         document.getElementById('btnSearch').click()"    
-/&gt;
+/>
 
-&lt;input type = "button"
+<input type = "button"
        id = "btnSearch"
        value = "Search"
        onclick = "doSomething();"
-/&gt;
+/>
 ```
 
 #### Answer 3 (score 176)
 Figured this out:  
 
 ```javascript
-&lt;input type="text" id="txtSearch" onkeypress="return searchKeyPress(event);" /&gt;
-&lt;input type="button" id="btnSearch" Value="Search" onclick="doSomething();" /&gt;
+<input type="text" id="txtSearch" onkeypress="return searchKeyPress(event);" />
+<input type="button" id="btnSearch" Value="Search" onclick="doSomething();" />
 
-&lt;script&gt;
+<script>
 function searchKeyPress(e)
 {
     // look for window.event in case event isn't passed in
@@ -10647,7 +10647,7 @@ function searchKeyPress(e)
     }
     return true;
 }
-&lt;/script&gt;
+</script>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -10673,31 +10673,31 @@ Why even have the splice method if I can delete array elements like I can with o
 `delete` will delete the object property, but will not reindex the array or update its length. This makes it appears as if it is undefined:  
 
 ```javascript
-&gt; myArray = ['a', 'b', 'c', 'd']
+> myArray = ['a', 'b', 'c', 'd']
   ["a", "b", "c", "d"]
-&gt; delete myArray[0]
+> delete myArray[0]
   true
-&gt; myArray[0]
+> myArray[0]
   undefined
 ```
 
 Note that it is not in fact set to the value `undefined`, rather the property is removed from the array, making it <em>appear</em> undefined. The Chrome dev tools make this distinction clear by printing `empty` when logging the array.  
 
 ```javascript
-&gt; myArray[0]
+> myArray[0]
   undefined
-&gt; myArray
+> myArray
   [empty, "b", "c", "d"]
 ```
 
 <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/splice" rel="noreferrer">`myArray.splice(start, deleteCount)`</a> actually removes the element, reindexes the array, and changes its length.  
 
 ```javascript
-&gt; myArray = ['a', 'b', 'c', 'd']
+> myArray = ['a', 'b', 'c', 'd']
   ["a", "b", "c", "d"]
-&gt; myArray.splice(0, 2)
+> myArray.splice(0, 2)
   ["a", "b"]
-&gt; myArray
+> myArray
   ["c", "d"]
 ```
 
@@ -10710,7 +10710,7 @@ Note that it is not in fact set to the value `undefined`, rather the property is
 // Array Remove - By John Resig (MIT Licensed)
 Array.prototype.remove = function(from, to) {
   var rest = this.slice((to || from) + 1 || this.length);
-  this.length = from &lt; 0 ? this.length + from : from;
+  this.length = from < 0 ? this.length + from : from;
   return this.push.apply(this, rest);
 };
 ```
@@ -10738,7 +10738,7 @@ The following code will display "a", "b", "undefined", "d"
 ```javascript
 myArray = ['a', 'b', 'c', 'd']; delete myArray[2];
 
-for (var count = 0; count &lt; myArray.length; count++) {
+for (var count = 0; count < myArray.length; count++) {
     alert(myArray[count]);
 }
 ```
@@ -10748,7 +10748,7 @@ Whereas this will display "a", "b", "d"
 ```javascript
 myArray = ['a', 'b', 'c', 'd']; myArray.splice(2,1);
 
-for (var count = 0; count &lt; myArray.length; count++) {
+for (var count = 0; count < myArray.length; count++) {
     alert(myArray[count]);
 }
 ```
@@ -10777,10 +10777,10 @@ It's easy enough to write your own comparison function:
 
 ```javascript
 function compare( a, b ) {
-  if ( a.last_nom &lt; b.last_nom ){
+  if ( a.last_nom < b.last_nom ){
     return -1;
   }
-  if ( a.last_nom &gt; b.last_nom ){
+  if ( a.last_nom > b.last_nom ){
     return 1;
   }
   return 0;
@@ -10792,7 +10792,7 @@ objs.sort( compare );
 Or inline (c/o Marco Demaio):   
 
 ```javascript
-objs.sort((a,b) =&gt; (a.last_nom &gt; b.last_nom) ? 1 : ((b.last_nom &gt; a.last_nom) ? -1 : 0)); 
+objs.sort((a,b) => (a.last_nom > b.last_nom) ? 1 : ((b.last_nom > a.last_nom) ? -1 : 0)); 
 ```
 
 #### Answer 2 (score 793)
@@ -10809,7 +10809,7 @@ function dynamicSort(property) {
         /* next line works with strings and numbers, 
          * and you may want to customize it to your needs
          */
-        var result = (a[property] &lt; b[property]) ? -1 : (a[property] &gt; b[property]) ? 1 : 0;
+        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
         return result * sortOrder;
     }
 }
@@ -10852,7 +10852,7 @@ function dynamicSortMultiple() {
         /* try getting a different result from 0 (equal)
          * as long as we have extra properties to compare
          */
-        while(result === 0 &amp;&amp; i &lt; numberOfProperties) {
+        while(result === 0 && i < numberOfProperties) {
             result = dynamicSort(props[i])(obj1, obj2);
             i++;
         }
@@ -10889,7 +10889,7 @@ MyArray.from(People).sortBy("Name", "-Surname");
 In ES6/ES2015 or later you can do this way:  
 
 ```javascript
-objs.sort((a, b) =&gt; a.last_nom.localeCompare(b.last_nom));
+objs.sort((a, b) => a.last_nom.localeCompare(b.last_nom));
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -10909,7 +10909,7 @@ function foo() {
         url: '...',
         success: function(response) {
             result = response;
-            // return response; // &lt;- I tried that one as well
+            // return response; // <- I tried that one as well
         }
     });
 
@@ -11736,8 +11736,8 @@ Any bitwise operator (here I've done a bitwise or, but you could also do double 
 ~~"3000000000.654" === -1294967296
 // This is the same as
 Number("3000000000.654")|0
-"3000000000.654" &gt;&gt;&gt; 0 === 3000000000 // unsigned right shift gives you an extra bit
-"300000000000.654" &gt;&gt;&gt; 0 === 3647256576 // but still fails with larger numbers
+"3000000000.654" >>> 0 === 3000000000 // unsigned right shift gives you an extra bit
+"300000000000.654" >>> 0 === 3647256576 // but still fails with larger numbers
 ```
 
 To work correctly with larger numbers, you should use the rounding methods  
@@ -11805,16 +11805,16 @@ Math.floor(Math.random() * (max - min + 1)) + min;
 Useful examples:  
 
 ```javascript
-// 0 -&gt; 10
+// 0 -> 10
 Math.floor(Math.random() * 11);
 
-// 1 -&gt; 10
+// 1 -> 10
 Math.floor(Math.random() * 10) + 1;
 
-// 5 -&gt; 20
+// 5 -> 20
 Math.floor(Math.random() * 16) + 5;
 
-// -10 -&gt; (-2)
+// -10 -> (-2)
 Math.floor(Math.random() * 9) - 10;
 ```
 
@@ -11826,9 +11826,9 @@ Math.floor(Math.random() * 9) - 10;
 I would like to upload a file asynchronously with jQuery. This is my HTML:  
 
 ```javascript
-&lt;span&gt;File&lt;/span&gt;
-&lt;input type="file" id="file" name="file" size="10"/&gt;
-&lt;input id="uploadbutton" type="button" value="Upload"/&gt;
+<span>File</span>
+<input type="file" id="file" name="file" size="10"/>
+<input id="uploadbutton" type="button" value="Upload"/>
 ```
 
 And here my `Jquery` code:  
@@ -11865,11 +11865,11 @@ With <a href="http://en.wikipedia.org/wiki/HTML5" rel="noreferrer">HTML5</a> you
 The HTML:  
 
 ```javascript
-&lt;form enctype="multipart/form-data"&gt;
-    &lt;input name="file" type="file" /&gt;
-    &lt;input type="button" value="Upload" /&gt;
-&lt;/form&gt;
-&lt;progress&gt;&lt;/progress&gt;
+<form enctype="multipart/form-data">
+    <input name="file" type="file" />
+    <input type="button" value="Upload" />
+</form>
+<progress></progress>
 ```
 
 First, you can do some validation if you want. For example, in the `.on('change')` event of the file:  
@@ -11878,7 +11878,7 @@ First, you can do some validation if you want. For example, in the `.on('change'
 $(':file').on('change', function () {
   var file = this.files[0];
 
-  if (file.size &gt; 1024) {
+  if (file.size > 1024) {
     alert('max upload size is 1k');
   }
 
@@ -11968,7 +11968,7 @@ How do I do this in JavaScript or using jQuery?
 Use the `find()` method:  
 
 ```javascript
-myArray.find(x =&gt; x.id === '45').foo;
+myArray.find(x => x.id === '45').foo;
 ```
 
 From <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find" rel="noreferrer">MDN</a>:  
@@ -11982,7 +11982,7 @@ From <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/
 If you want to find its <em>index</em> instead, use `findIndex()`:  
 
 ```javascript
-myArray.findIndex(x =&gt; x.id === '45');
+myArray.findIndex(x => x.id === '45');
 ```
 
 From <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex" rel="noreferrer">MDN</a>:  
@@ -11996,13 +11996,13 @@ From <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/
 If you want to get an array of matching elements, use the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" rel="noreferrer">`filter()`</a> method instead:  
 
 ```javascript
-myArray.filter(x =&gt; x.id === '45');
+myArray.filter(x => x.id === '45');
 ```
 
 This will return an array of objects. If you want to get an array of `foo` properties, you can do this with the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map" rel="noreferrer">`map()`</a> method:  
 
 ```javascript
-myArray.filter(x =&gt; x.id === '45').map(x =&gt; x.foo);
+myArray.filter(x => x.id === '45').map(x => x.foo);
 ```
 
 <hr>
@@ -12033,7 +12033,7 @@ Another solution is to create a lookup object:
 
 ```javascript
 var lookup = {};
-for (var i = 0, len = array.length; i &lt; len; i++) {
+for (var i = 0, len = array.length; i < len; i++) {
     lookup[array[i].id] = array[i];
 }
 
@@ -12140,7 +12140,7 @@ function uniq(a) {
         if(type in prims)
             return prims[type].hasOwnProperty(item) ? false : (prims[type][item] = true);
         else
-            return objs.indexOf(item) &gt;= 0 ? false : objs.push(item);
+            return objs.indexOf(item) >= 0 ? false : objs.push(item);
     });
 }
 ```
@@ -12188,7 +12188,7 @@ function uniqBy(a, key) {
     var index = [];
     return a.filter(function (item) {
         var k = key(item);
-        return index.indexOf(k) &gt;= 0 ? false : index.push(k);
+        return index.indexOf(k) >= 0 ? false : index.push(k);
     });
 }
 ```
@@ -12198,7 +12198,7 @@ In ES6 you can use a `Set`:
 ```javascript
 function uniqBy(a, key) {
     let seen = new Set();
-    return a.filter(item =&gt; {
+    return a.filter(item => {
         let k = key(item);
         return seen.has(k) ? false : seen.add(k);
     });
@@ -12211,7 +12211,7 @@ or a `Map`:
 function uniqBy(a, key) {
     return [
         ...new Map(
-            a.map(x =&gt; [key(x), x])
+            a.map(x => [key(x), x])
         ).values()
     ]
 }
@@ -12230,7 +12230,7 @@ Use the `Set` variant above to keep the first, and the `Map` to keep the last:
 ```javascript
 function uniqByKeepFirst(a, key) {
     let seen = new Set();
-    return a.filter(item =&gt; {
+    return a.filter(item => {
         let k = key(item);
         return seen.has(k) ? false : seen.add(k);
     });
@@ -12240,7 +12240,7 @@ function uniqByKeepFirst(a, key) {
 function uniqByKeepLast(a, key) {
     return [
         ...new Map(
-            a.map(x =&gt; [key(x), x])
+            a.map(x => [key(x), x])
         ).values()
     ]
 }
@@ -12256,8 +12256,8 @@ data = [
     {a:6, u:3},
 ];
 
-console.log(uniqByKeepFirst(data, it =&gt; it.u))
-console.log(uniqByKeepLast(data, it =&gt; it.u))```
+console.log(uniqByKeepFirst(data, it => it.u))
+console.log(uniqByKeepLast(data, it => it.u))```
 </div>
 </div>
 
@@ -12269,7 +12269,7 @@ Both <a href="http://underscorejs.org/#uniq" rel="noreferrer">underscore</a> and
 ```javascript
 var result = [];
 a.forEach(function(item) {
-     if(result.indexOf(item) &lt; 0) {
+     if(result.indexOf(item) < 0) {
          result.push(item);
      }
 });
@@ -12299,7 +12299,7 @@ function uniq_fast(a) {
     var out = [];
     var len = a.length;
     var j = 0;
-    for(var i = 0; i &lt; len; i++) {
+    for(var i = 0; i < len; i++) {
          var item = a[i];
          if(seen[item] !== 1) {
                seen[item] = 1;
@@ -12327,7 +12327,7 @@ function uniq_fast(a) {
     var out = [];
     var len = a.length;
     var j = 0;
-    for(var i = 0; i &lt; len; i++) {
+    for(var i = 0; i < len; i++) {
          var item = a[i];
          if(seen[item] !== 1) {
                seen[item] = 1;
@@ -12348,14 +12348,14 @@ while(LEN--)
     a = a.concat(r);
 
 var d = new Date();
-for(var i = 0; i &lt; LOOPS; i++)
+for(var i = 0; i < LOOPS; i++)
     uniq(a);
-document.write('&lt;br&gt;uniq, ms/loop: ' + (new Date() - d)/LOOPS)
+document.write('<br>uniq, ms/loop: ' + (new Date() - d)/LOOPS)
 
 var d = new Date();
-for(var i = 0; i &lt; LOOPS; i++)
+for(var i = 0; i < LOOPS; i++)
     uniq_fast(a);
-document.write('&lt;br&gt;uniq_fast, ms/loop: ' + (new Date() - d)/LOOPS)```
+document.write('<br>uniq_fast, ms/loop: ' + (new Date() - d)/LOOPS)```
 </div>
 </div>
 
@@ -12373,7 +12373,7 @@ function uniq(a) {
 or  
 
 ```javascript
-let uniq = a =&gt; [...new Set(a)];
+let uniq = a => [...new Set(a)];
 ```
 
 Note that, unlike in python, ES6 sets are iterated in insertion order, so this code preserves the order of the original array.  
@@ -12436,14 +12436,14 @@ Got tired of seeing all bad examples with for-loops or jQuery. Javascript has th
 var names = ["Mike","Matt","Nancy","Adam","Jenny","Nancy","Carl"];
 
 var uniq = names.reduce(function(a,b){
-    if (a.indexOf(b) &lt; 0 ) a.push(b);
+    if (a.indexOf(b) < 0 ) a.push(b);
     return a;
   },[]);
 
 console.log(uniq, names) // [ 'Mike', 'Matt', 'Nancy', 'Adam', 'Jenny', 'Carl' ]
 
 // one liner
-return names.reduce(function(a,b){if(a.indexOf(b)&lt;0)a.push(b);return a;},[]);
+return names.reduce(function(a,b){if(a.indexOf(b)<0)a.push(b);return a;},[]);
 ```
 
 <h5>Faster uniq with sorting</h2>
@@ -12453,7 +12453,7 @@ There are probably faster ways but this one is pretty decent.
 ```javascript
 var uniq = names.slice() // slice makes copy of array before sorting it
   .sort(function(a,b){
-    return a &gt; b;
+    return a > b;
   })
   .reduce(function(a,b){
     if (a.slice(-1)[0] !== b) a.push(b); // slice(-1)[0] means last item in array without removing it (like .pop())
@@ -12461,7 +12461,7 @@ var uniq = names.slice() // slice makes copy of array before sorting it
   },[]); // this empty array becomes the starting value for a
 
 // one liner
-return names.slice().sort(function(a,b){return a &gt; b}).reduce(function(a,b){if (a.slice(-1)[0] !== b) a.push(b);return a;},[]);
+return names.slice().sort(function(a,b){return a > b}).reduce(function(a,b){if (a.slice(-1)[0] !== b) a.push(b);return a;},[]);
 ```
 
 <h5>Update 2015: ES6 version:</h2>
@@ -12480,15 +12480,15 @@ Someone asked about ordering the results based on how many unique names there ar
 var names = ['Mike', 'Matt', 'Nancy', 'Adam', 'Jenny', 'Nancy', 'Carl']
 
 var uniq = names
-  .map((name) =&gt; {
+  .map((name) => {
     return {count: 1, name: name}
   })
-  .reduce((a, b) =&gt; {
+  .reduce((a, b) => {
     a[b.name] = (a[b.name] || 0) + b.count
     return a
   }, {})
 
-var sorted = Object.keys(uniq).sort((a, b) =&gt; uniq[a] &lt; uniq[b])
+var sorted = Object.keys(uniq).sort((a, b) => uniq[a] < uniq[b])
 
 console.log(sorted)
 ```
@@ -12642,7 +12642,7 @@ var bodyRect = document.body.getBoundingClientRect(),
     elemRect = element.getBoundingClientRect(),
     offset   = elemRect.top - bodyRect.top;
 
-alert('Element is ' + offset + ' vertical pixels from &lt;body&gt;');
+alert('Element is ' + offset + ' vertical pixels from <body>');
 ```
 
 #### Answer 3 (score 307)
@@ -12653,7 +12653,7 @@ here's a simple function that does the job in every circumstances that I've trie
 function getOffset( el ) {
     var _x = 0;
     var _y = 0;
-    while( el &amp;&amp; !isNaN( el.offsetLeft ) &amp;&amp; !isNaN( el.offsetTop ) ) {
+    while( el && !isNaN( el.offsetLeft ) && !isNaN( el.offsetTop ) ) {
         _x += el.offsetLeft - el.scrollLeft;
         _y += el.offsetTop - el.scrollTop;
         el = el.offsetParent;
@@ -12685,15 +12685,15 @@ window.onload="myFunction()";
 ...or I can use the `body` tag:  
 
 ```javascript
-&lt;body onload="myFunction()"&gt;
+<body onload="myFunction()">
 ```
 
 ...or I can even try at the bottom of the page after everything, but the end `body` or `html` tag like:  
 
 ```javascript
-&lt;script type="text/javascript"&gt;
+<script type="text/javascript">
    myFunction();
-&lt;/script&gt;
+</script>
 ```
 
 What is a cross-browser(old/new)-compliant method of issuing one or more functions in a manner like jQuery's `$.ready()`?  
@@ -12702,23 +12702,23 @@ What is a cross-browser(old/new)-compliant method of issuing one or more functio
 The simplest thing to do in the absence of a framework that does all the cross-browser compatibility for you is to just put a call to your code at the end of the body.  This is faster to execute than an `onload` handler because this waits only for the DOM to be ready, not for all images to load.  And, this works in every browser.  
 
 ```javascript
-&lt;!doctype html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;/head&gt;
-&lt;body&gt;
+<!doctype html>
+<html>
+<head>
+</head>
+<body>
 Your HTML here
 
-&lt;script&gt;
+<script>
 // self executing function here
 (function() {
    // your page initialization code here
    // the DOM will be available here
 
 })();
-&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+</script>
+</body>
+</html>
 ```
 
 <hr>
@@ -12798,7 +12798,7 @@ Here is a full substitute for jQuery's `.ready()` written in plain javascript:
         if (!readyFired) {
             // this must be set to true before we start calling callbacks
             readyFired = true;
-            for (var i = 0; i &lt; readyList.length; i++) {
+            for (var i = 0; i < readyList.length; i++) {
                 // if a callback here happens to add new ready handlers,
                 // the docReady() function will see that it already fired
                 // and will schedule the callback to run right after
@@ -13032,7 +13032,7 @@ Try to check the length of the selector, if it returns you something then the el
 Try this:  
 
 ```javascript
-if ($("#mydiv").length &gt; 0){
+if ($("#mydiv").length > 0){
   // do something here
 }
 ```

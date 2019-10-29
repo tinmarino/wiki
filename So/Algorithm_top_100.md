@@ -19,7 +19,7 @@ This is the only way I know to do it:
 
 ```c
 function contains(a, obj) {
-    for (var i = 0; i &lt; a.length; i++) {
+    for (var i = 0; i < a.length; i++) {
         if (a[i] === obj) {
             return true;
         }
@@ -36,7 +36,7 @@ This is very closely related to Stack Overflow question <em><a href="https://sta
 Current browsers have <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes#Browser_compatibility" rel="noreferrer">`Array#includes`</a>, which does <em>exactly</em> that, <a href="https://kangax.github.io/compat-table/es2016plus/#test-Array.prototype.includes" rel="noreferrer">is widely supported</a>, and has a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes#Polyfill" rel="noreferrer">polyfill</a> for older browsers.  
 
 ```c
-&gt; ['joe', 'jane', 'mary'].includes('jane');
+> ['joe', 'jane', 'mary'].includes('jane');
 true 
 ```
 
@@ -95,8 +95,8 @@ Array.prototype.contains = function(obj) {
 And now you can simply use the following:  
 
 ```c
-alert([1, 2, 3].contains(2)); // =&gt; true
-alert([1, 2, 3].contains('2')); // =&gt; false
+alert([1, 2, 3].contains(2)); // => true
+alert([1, 2, 3].contains('2')); // => false
 ```
 
 #### Answer 3 (score 189)
@@ -105,9 +105,9 @@ alert([1, 2, 3].contains('2')); // =&gt; false
 Example:  
 
 ```c
-[1, 2, 3].indexOf(1) =&gt; 0
-["foo", "bar", "baz"].indexOf("bar") =&gt; 1
-[1, 2, 3].indexOf(4) =&gt; -1
+[1, 2, 3].indexOf(1) => 0
+["foo", "bar", "baz"].indexOf("bar") => 1
+[1, 2, 3].indexOf(4) => -1
 ```
 
 AFAICS <a href="http://msdn.microsoft.com/en-us/library/k4h76zbx%5C%28VS.85%5C%29.aspx" rel="noreferrer">Microsoft does <em>not</em> offer some kind of alternative</a> to this, but you can add similar functionality to arrays in Internet Explorer (and other browsers that don't support `indexOf`) if you want to, as a <a href="http://google.com/search?q=indexof%20internet%20explorer" rel="noreferrer">quick Google search reveals</a> (for example, <a href="http://soledadpenades.com/2007/05/17/arrayindexof-in-internet-explorer/" rel="noreferrer">this one</a>).  
@@ -134,13 +134,13 @@ The common approach to get a unique collection of items is to use a <a href="htt
 The following example should cover whatever you are trying to do:  
 
 ```c
-&gt;&gt;&gt; t = [1, 2, 3, 1, 2, 5, 6, 7, 8]
-&gt;&gt;&gt; t
+>>> t = [1, 2, 3, 1, 2, 5, 6, 7, 8]
+>>> t
 [1, 2, 3, 1, 2, 5, 6, 7, 8]
-&gt;&gt;&gt; list(set(t))
+>>> list(set(t))
 [1, 2, 3, 5, 6, 7, 8]
-&gt;&gt;&gt; s = [1, 2, 3]
-&gt;&gt;&gt; list(set(t) - set(s))
+>>> s = [1, 2, 3]
+>>> list(set(t) - set(s))
 [8, 5, 6, 7]
 ```
 
@@ -151,15 +151,15 @@ As you can see from the example result, <em>the original order is not maintained
 If order is important to you, then you will have to use a different mechanism. A very common solution for this is to rely on <a href="https://docs.python.org/3/library/collections.html#collections.OrderedDict" rel="noreferrer">`OrderedDict`</a> to keep the order of keys during insertion:  
 
 ```c
-&gt;&gt;&gt; from collections import OrderedDict
-&gt;&gt;&gt; list(OrderedDict.fromkeys(t))
+>>> from collections import OrderedDict
+>>> list(OrderedDict.fromkeys(t))
 [1, 2, 3, 5, 6, 7, 8]
 ```
 
 <a href="https://mail.python.org/pipermail/python-dev/2017-December/151283.html" rel="noreferrer">Starting with Python 3.7</a>, the built-in dictionary is guaranteed to maintain the insertion order as well, so you can also use that directly if you are on Python 3.7 or later (or CPython 3.6):  
 
 ```c
-&gt;&gt;&gt; list(dict.fromkeys(t))
+>>> list(dict.fromkeys(t))
 [1, 2, 3, 5, 6, 7, 8]
 ```
 
@@ -173,8 +173,8 @@ Finally note that both the `set` as well as the `OrderedDict`/`dict` solutions r
 <strong>In Python 2.7</strong>, the new way of removing duplicates from an iterable while keeping it in the original order is:  
 
 ```c
-&gt;&gt;&gt; from collections import OrderedDict
-&gt;&gt;&gt; list(OrderedDict.fromkeys('abracadabra'))
+>>> from collections import OrderedDict
+>>> list(OrderedDict.fromkeys('abracadabra'))
 ['a', 'b', 'r', 'c', 'd']
 ```
 
@@ -183,14 +183,14 @@ Finally note that both the `set` as well as the `OrderedDict`/`dict` solutions r
 <strong>In Python 3.6</strong>, the regular dict became both ordered and compact.  (This feature is holds for CPython and PyPy but may not present in other implementations).  That gives us a new fastest way of deduping while retaining order:  
 
 ```c
-&gt;&gt;&gt; list(dict.fromkeys('abracadabra'))
+>>> list(dict.fromkeys('abracadabra'))
 ['a', 'b', 'r', 'c', 'd']
 ```
 
 <strong>In Python 3.7</strong>, the regular dict is guaranteed to both ordered across all implementations.  <strong>So, the shortest and fastest solution is:</strong>  
 
 ```c
-&gt;&gt;&gt; list(dict.fromkeys('abracadabra'))
+>>> list(dict.fromkeys('abracadabra'))
 ['a', 'b', 'r', 'c', 'd']
 ```
 
@@ -464,24 +464,24 @@ static class DistanceAlgorithm
     const double PIx = 3.141592653589793;
     const double RADIUS = 6378.16;
 
-    /// &lt;summary&gt;
+    /// <summary>
     /// Convert degrees to Radians
-    /// &lt;/summary&gt;
-    /// &lt;param name="x"&gt;Degrees&lt;/param&gt;
-    /// &lt;returns&gt;The equivalent in radians&lt;/returns&gt;
+    /// </summary>
+    /// <param name="x">Degrees</param>
+    /// <returns>The equivalent in radians</returns>
     public static double Radians(double x)
     {
         return x * PIx / 180;
     }
 
-    /// &lt;summary&gt;
+    /// <summary>
     /// Calculate the distance between two places.
-    /// &lt;/summary&gt;
-    /// &lt;param name="lon1"&gt;&lt;/param&gt;
-    /// &lt;param name="lat1"&gt;&lt;/param&gt;
-    /// &lt;param name="lon2"&gt;&lt;/param&gt;
-    /// &lt;param name="lat2"&gt;&lt;/param&gt;
-    /// &lt;returns&gt;&lt;/returns&gt;
+    /// </summary>
+    /// <param name="lon1"></param>
+    /// <param name="lat1"></param>
+    /// <param name="lon2"></param>
+    /// <param name="lat2"></param>
+    /// <returns></returns>
     public static double DistanceBetweenPlaces(
         double lon1,
         double lat1,
@@ -755,7 +755,7 @@ actualAlgorithmTime(N) ∈ O(bound(N))
 
 ```c
 actualAlgorithmTime(N)                 e.g. "mergesort_duration(N)       "
-────────────────────── &lt; constant            ───────────────────── &lt; 2.5 
+────────────────────── < constant            ───────────────────── < 2.5 
        bound(N)                                    N log(N)         
 ```
 
@@ -912,19 +912,19 @@ The basics: Whenever we interact with every element in a collection of size A (s
 (here, the `x`s represent constant-time units of work, processor instructions, interpreter opcodes, whatever)  
 
 ```c
-for(i=0; i&lt;A; i++)        // A * ...
+for(i=0; i<A; i++)        // A * ...
     some O(1) operation     // 1
 
---&gt; A*1 --&gt; O(A) time
+--> A*1 --> O(A) time
 
 visualization:
 
-|&lt;------ A -------&gt;|
+|<------ A ------->|
 1 2 3 4 5 x x ... x
 
 other languages, multiplying orders of growth:
   javascript, O(A) time and space
-    someListOfSizeA.map((x,i) =&gt; [x,i])               
+    someListOfSizeA.map((x,i) => [x,i])               
   python, O(rows*cols) time and space
     [[r*c for c in range(cols)] for r in range(rows)]
 ```
@@ -938,18 +938,18 @@ for every x in listOfSizeA:   // A * (...
     for every y in listOfSizeC: // C * (...
         some O(1) operation       // 1))
 
---&gt; O(A*(1 + B + C))
+--> O(A*(1 + B + C))
     O(A*(B+C))        (1 is dwarfed)
 
 visualization:
 
-|&lt;------ A -------&gt;|
+|<------ A ------->|
 1 x x x x x x ... x
 
 2 x x x x x x ... x ^
 3 x x x x x x ... x |
 4 x x x x x x ... x |
-5 x x x x x x ... x B  &lt;-- A*B
+5 x x x x x x ... x B  <-- A*B
 x x x x x x x ... x |
 ................... |
 x x x x x x x ... x v
@@ -957,7 +957,7 @@ x x x x x x x ... x v
 x x x x x x x ... x ^
 x x x x x x x ... x |
 x x x x x x x ... x |
-x x x x x x x ... x C  &lt;-- A*C
+x x x x x x x ... x C  <-- A*C
 x x x x x x x ... x |
 ................... |
 x x x x x x x ... x v
@@ -1008,7 +1008,7 @@ Of course this does not mean that loops and functions are bad; on the contrary, 
 Here is another thing we can recognize visually:  
 
 ```c
-&lt;----------------------------- N -----------------------------&gt;
+<----------------------------- N ----------------------------->
 x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x
 x x x x x x x x x x x x x x x x
 x x x x x x x x
@@ -1020,7 +1020,7 @@ x
 We can just rearrange this and see it's O(N):  
 
 ```c
-&lt;----------------------------- N -----------------------------&gt;
+<----------------------------- N ----------------------------->
 x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x x
 x x x x x x x x x x x x x x x x|x x x x x x x x|x x x x|x x|x
 ```
@@ -1028,7 +1028,7 @@ x x x x x x x x x x x x x x x x|x x x x x x x x|x x x x|x x|x
 Or maybe you do log(N) passes of the data, for O(N*log(N)) total time:  
 
 ```c
-   &lt;----------------------------- N -----------------------------&gt;
+   <----------------------------- N ----------------------------->
  ^  x x x x x x x x x x x x x x x x|x x x x x x x x x x x x x x x x
  |  x x x x x x x x|x x x x x x x x|x x x x x x x x|x x x x x x x x
 lgN x x x x|x x x x|x x x x|x x x x|x x x x|x x x x|x x x x|x x x x
@@ -1042,7 +1042,7 @@ Unrelatedly but worth mentioning again: If we perform a hash (e.g. a dictionary 
 [myDictionary.has(x) for x in listOfSizeA]
  \----- O(1) ------/    
 
---&gt; A*1 --&gt; O(A)
+--> A*1 --> O(A)
 ```
 
 If we do something very complicated, such as with a recursive function or divide-and-conquer algorithm, <strike>you can use the <a href="https://en.wikipedia.org/wiki/Master_theorem" rel="noreferrer">Master Theorem</a> (usually works), or in ridiculous cases the Akra-Bazzi Theorem (almost always works)</strike> you look up the running time of your algorithm on Wikipedia.  
@@ -1151,7 +1151,7 @@ int abc = 0; // This will be executed 1 time
 Say for a loop like the one below:   
 
 ```c
-for (int i = 0; i &lt; N; i++) {        
+for (int i = 0; i < N; i++) {        
     Console.Write('Hello World !');
 }
 ```
@@ -1221,15 +1221,15 @@ statement;
 Is constant. The running time of the statement will not change in relation to N.  
 
 ```c
-for ( i = 0; i &lt; N; i++ )
+for ( i = 0; i < N; i++ )
      statement;
 ```
 
 Is linear. The running time of the loop is directly proportional to N. When N doubles, so does the running time.  
 
 ```c
-for ( i = 0; i &lt; N; i++ ) {
-  for ( j = 0; j &lt; N; j++ )
+for ( i = 0; i < N; i++ ) {
+  for ( j = 0; j < N; j++ )
     statement;
 }
 ```
@@ -1237,11 +1237,11 @@ for ( i = 0; i &lt; N; i++ ) {
 Is quadratic. The running time of the two loops is proportional to the square of N. When N doubles, the running time increases by N * N.  
 
 ```c
-while ( low &lt;= high ) {
+while ( low <= high ) {
   mid = ( low + high ) / 2;
-  if ( target &lt; list[mid] )
+  if ( target < list[mid] )
     high = mid - 1;
-  else if ( target &gt; list[mid] )
+  else if ( target > list[mid] )
     low = mid + 1;
   else break;
 }
@@ -1307,7 +1307,7 @@ Consider the following examples, below I am linearly searching for an element, t
 ```c
 int find = 66;
 var numbers = new int[] { 33, 435, 36, 37, 43, 45, 66, 656, 2232 };
-for (int i = 0; i &lt; numbers.Length - 1; i++)
+for (int i = 0; i < numbers.Length - 1; i++)
 {
     if(find == numbers[i])
     {
@@ -1364,7 +1364,7 @@ public string Reverse(string text)
 {
     char[] cArray = text.ToCharArray();
     string reverse = String.Empty;
-    for (int i = cArray.Length - 1; i &gt; -1; i--)
+    for (int i = cArray.Length - 1; i > -1; i--)
     {
         reverse += cArray[i];
     }
@@ -1395,7 +1395,7 @@ using System.Linq;
 
 public static class Test
 {
-    private static IEnumerable&lt;string&gt; GraphemeClusters(this string s) {
+    private static IEnumerable<string> GraphemeClusters(this string s) {
         var enumerator = StringInfo.GetTextElementEnumerator(s);
         while(enumerator.MoveNext()) {
             yield return (string)enumerator.Current;
@@ -1446,7 +1446,7 @@ There is a second approach that can be faster for certain string lengths which <
         char[] charArray = s.ToCharArray();
         int len = s.Length - 1;
 
-        for (int i = 0; i &lt; len; i++, len--)
+        for (int i = 0; i < len; i++, len--)
         {
             charArray[i] ^= charArray[len];
             charArray[len] ^= charArray[i];
@@ -1478,7 +1478,7 @@ namespace ConsoleApplication4
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
-            for (int j = 0; j &lt; times; j++)
+            for (int j = 0; j < times; j++)
             {
                 d(text);
             }
@@ -1491,7 +1491,7 @@ namespace ConsoleApplication4
             char[] charArray = s.ToCharArray();
             int len = s.Length - 1;
 
-            for (int i = 0; i &lt; len; i++, len--)
+            for (int i = 0; i < len; i++, len--)
             {
                 charArray[i] ^= charArray[len];
                 charArray[len] ^= charArray[i];
@@ -1504,7 +1504,7 @@ namespace ConsoleApplication4
         public static string ReverseSB(string text)
         {
             StringBuilder builder = new StringBuilder(text.Length);
-            for (int i = text.Length - 1; i &gt;= 0; i--)
+            for (int i = text.Length - 1; i >= 0; i--)
             {
                 builder.Append(text[i]);
             }
@@ -1522,7 +1522,7 @@ namespace ConsoleApplication4
         {
             Random random = new Random();
             StringBuilder sb = new StringBuilder();
-            for (int i = 0; i &lt; length; i++)
+            for (int i = 0; i < length; i++)
             {
                 sb.Append(Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65))));
             }
@@ -1636,7 +1636,7 @@ If you're using an <strong>older Python (&lt;2.6)</strong> for some reason or ar
 
 ```c
 def all_perms(elements):
-    if len(elements) &lt;=1:
+    if len(elements) <=1:
         yield elements
     else:
         for perm in all_perms(elements[1:]):
@@ -1649,12 +1649,12 @@ A couple of alternative approaches are listed in the documentation of `itertools
 
 ```c
 def permutations(iterable, r=None):
-    # permutations('ABCD', 2) --&gt; AB AC AD BA BC BD CA CB CD DA DB DC
-    # permutations(range(3)) --&gt; 012 021 102 120 201 210
+    # permutations('ABCD', 2) --> AB AC AD BA BC BD CA CB CD DA DB DC
+    # permutations(range(3)) --> 012 021 102 120 201 210
     pool = tuple(iterable)
     n = len(pool)
     r = n if r is None else r
-    if r &gt; n:
+    if r > n:
         return
     indices = range(n)
     cycles = range(n, n-r, -1)
@@ -1754,8 +1754,8 @@ It's trivial to write a function to determine the min/max value in an array, suc
  */
 private static int maxValue(char[] chars) {
     int max = chars[0];
-    for (int ktr = 0; ktr &lt; chars.length; ktr++) {
-        if (chars[ktr] &gt; max) {
+    for (int ktr = 0; ktr < chars.length; ktr++) {
+        if (chars[ktr] > max) {
             max = chars[ktr];
         }
     }
@@ -1861,7 +1861,7 @@ private static void permutation(String prefix, String str) {
     int n = str.length();
     if (n == 0) System.out.println(prefix);
     else {
-        for (int i = 0; i &lt; n; i++)
+        for (int i = 0; i < n; i++)
             permutation(prefix + str.charAt(i), str.substring(0, i) + str.substring(i+1, n));
     }
 }
@@ -1887,13 +1887,13 @@ Here is my solution that is based on the idea of the book "Cracking the Coding I
  * @param s the input string
  * @return  the list of permutations
  */
-public static ArrayList&lt;String&gt; permutation(String s) {
+public static ArrayList<String> permutation(String s) {
     // The result
-    ArrayList&lt;String&gt; res = new ArrayList&lt;String&gt;();
+    ArrayList<String> res = new ArrayList<String>();
     // If input string's length is 1, return {s}
     if (s.length() == 1) {
         res.add(s);
-    } else if (s.length() &gt; 1) {
+    } else if (s.length() > 1) {
         int lastIndex = s.length() - 1;
         // Find out the last character
         String last = s.substring(lastIndex);
@@ -1911,13 +1911,13 @@ public static ArrayList&lt;String&gt; permutation(String s) {
  * @param c    the last character
  * @return     a merged new list, e.g. {"cab", "acb" ... }
  */
-public static ArrayList&lt;String&gt; merge(ArrayList&lt;String&gt; list, String c) {
-    ArrayList&lt;String&gt; res = new ArrayList&lt;&gt;();
+public static ArrayList<String> merge(ArrayList<String> list, String c) {
+    ArrayList<String> res = new ArrayList<>();
     // Loop through all the string in the list
     for (String s : list) {
         // For each string, insert the last character to all possible positions
         // and add them to the new list
-        for (int i = 0; i &lt;= s.length(); ++i) {
+        for (int i = 0; i <= s.length(); ++i) {
             String ps = new StringBuffer(s).insert(i, c).toString();
             res.add(ps);
         }
@@ -1970,11 +1970,11 @@ I believe a very good general purpose algorithm is the following, known as 'para
 ```c
 int numberOfSetBits(int i)
 {
-     // Java: use &gt;&gt;&gt; instead of &gt;&gt;
+     // Java: use >>> instead of >>
      // C or C++: use uint32_t
-     i = i - ((i &gt;&gt; 1) &amp; 0x55555555);
-     i = (i &amp; 0x33333333) + ((i &gt;&gt; 2) &amp; 0x33333333);
-     return (((i + (i &gt;&gt; 4)) &amp; 0x0F0F0F0F) * 0x01010101) &gt;&gt; 24;
+     i = i - ((i >> 1) & 0x55555555);
+     i = (i & 0x33333333) + ((i >> 2) & 0x33333333);
+     return (((i + (i >> 4)) & 0x0F0F0F0F) * 0x01010101) >> 24;
 }
 ```
 
@@ -2033,25 +2033,25 @@ For target architectures where hardware popcount is an optional extension (like 
 But at least you get something portable that works everywhere, and with gcc/clang with the right target options, you get hardware popcount for architectures that support it.  
 
 ```c
-#include &lt;bitset&gt;
-#include &lt;limits&gt;
-#include &lt;type_traits&gt;
+#include <bitset>
+#include <limits>
+#include <type_traits>
 
-template&lt;typename T&gt;
+template<typename T>
 //static inline  // static if you want to compile with -mpopcnt in one compilation unit but not others
-typename std::enable_if&lt;std::is_integral&lt;T&gt;::value,  unsigned &gt;::type 
+typename std::enable_if<std::is_integral<T>::value,  unsigned >::type 
 popcount(T x)
 {
-    static_assert(std::numeric_limits&lt;T&gt;::radix == 2, "non-binary type");
+    static_assert(std::numeric_limits<T>::radix == 2, "non-binary type");
 
     // sizeof(x)*CHAR_BIT
-    constexpr int bitwidth = std::numeric_limits&lt;T&gt;::digits + std::numeric_limits&lt;T&gt;::is_signed;
+    constexpr int bitwidth = std::numeric_limits<T>::digits + std::numeric_limits<T>::is_signed;
     // std::bitset constructor was only unsigned long before C++11.  Beware if porting to C++03
-    static_assert(bitwidth &lt;= std::numeric_limits&lt;unsigned long long&gt;::digits, "arg too wide for std::bitset() constructor");
+    static_assert(bitwidth <= std::numeric_limits<unsigned long long>::digits, "arg too wide for std::bitset() constructor");
 
-    typedef typename std::make_unsigned&lt;T&gt;::type UT;        // probably not needed, bitset width chops after sign-extension
+    typedef typename std::make_unsigned<T>::type UT;        // probably not needed, bitset width chops after sign-extension
 
-    std::bitset&lt;bitwidth&gt; bs( static_cast&lt;UT&gt;(x) );
+    std::bitset<bitwidth> bs( static_cast<UT>(x) );
     return bs.count();
 }
 ```
@@ -2093,10 +2093,10 @@ In my opinion, the "best" solution is the one that can be read by another progra
 ```c
 unsigned int bitCount (unsigned int value) {
     unsigned int count = 0;
-    while (value &gt; 0) {           // until all bits are zero
-        if ((value &amp; 1) == 1)     // check lower bit
+    while (value > 0) {           // until all bits are zero
+        if ((value & 1) == 1)     // check lower bit
             count++;
-        value &gt;&gt;= 1;              // shift bits, removing lower bit
+        value >>= 1;              // shift bits, removing lower bit
     }
     return count;
 }
@@ -2108,7 +2108,7 @@ If you want more speed (and assuming you document it well to help out your succe
 // Lookup table for fast calculation of bits set in 8-bit unsigned char.
 
 static unsigned char oneBitsInUChar[] = {
-//  0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F (&lt;- n)
+//  0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F (<- n)
 //  =====================================================
     0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 3, 3, 4, // 0n
     1, 2, 2, 3, 2, 3, 3, 4, 2, 3, 3, 4, 3, 4, 4, 5, // 1n
@@ -2119,15 +2119,15 @@ static unsigned char oneBitsInUChar[] = {
 // Function for fast calculation of bits set in 16-bit unsigned short.
 
 unsigned char oneBitsInUShort (unsigned short x) {
-    return oneBitsInUChar [x &gt;&gt;    8]
-         + oneBitsInUChar [x &amp;  0xff];
+    return oneBitsInUChar [x >>    8]
+         + oneBitsInUChar [x &  0xff];
 }
 
 // Function for fast calculation of bits set in 32-bit unsigned int.
 
 unsigned char oneBitsInUInt (unsigned int x) {
-    return oneBitsInUShort (x &gt;&gt;     16)
-         + oneBitsInUShort (x &amp;  0xffff);
+    return oneBitsInUShort (x >>     16)
+         + oneBitsInUShort (x &  0xffff);
 }
 ```
 
@@ -2144,8 +2144,8 @@ What is the effective way to replace all occurrences of a character with another
 `std::string` doesn't contain such function but you could use stand-alone `replace` function from `algorithm` header.  
 
 ```c
-#include &lt;algorithm&gt;
-#include &lt;string&gt;
+#include <algorithm>
+#include <string>
 
 void some_func() {
   std::string s = "example string";
@@ -2157,7 +2157,7 @@ void some_func() {
 I thought I'd toss in the <a href="http://www.boost.org/doc/libs/release/libs/algorithm/string">boost solution</a> as well:  
 
 ```c
-#include &lt;boost/algorithm/string/replace.hpp&gt;
+#include <boost/algorithm/string/replace.hpp>
 
 // in place
 std::string in_place = "blah#blah";
@@ -2172,7 +2172,7 @@ std::string output = boost::replace_all_copy(input, "#", "@");
 The question is centered on `character` replacement, but, as I found this page very useful (especially <a href="https://stackoverflow.com/users/18664/konrad">Konrad</a>'s remark), I'd like to share this more generalized implementation, which allows to deal with `substrings` as well:  
 
 ```c
-std::string ReplaceAll(std::string str, const std::string&amp; from, const std::string&amp; to) {
+std::string ReplaceAll(std::string str, const std::string& from, const std::string& to) {
     size_t start_pos = 0;
     while((start_pos = str.find(from, start_pos)) != std::string::npos) {
         str.replace(start_pos, from.length(), to);
@@ -2185,9 +2185,9 @@ std::string ReplaceAll(std::string str, const std::string&amp; from, const std::
 Usage:  
 
 ```c
-std::cout &lt;&lt; ReplaceAll(string("Number Of Beans"), std::string(" "), std::string("_")) &lt;&lt; std::endl;
-std::cout &lt;&lt; ReplaceAll(string("ghghjghugtghty"), std::string("gh"), std::string("X")) &lt;&lt; std::endl;
-std::cout &lt;&lt; ReplaceAll(string("ghghjghugtghty"), std::string("gh"), std::string("h")) &lt;&lt; std::endl;
+std::cout << ReplaceAll(string("Number Of Beans"), std::string(" "), std::string("_")) << std::endl;
+std::cout << ReplaceAll(string("ghghjghugtghty"), std::string("gh"), std::string("X")) << std::endl;
+std::cout << ReplaceAll(string("ghghjghugtghty"), std::string("gh"), std::string("h")) << std::endl;
 ```
 
 Outputs:  
@@ -2209,7 +2209,7 @@ Outputs:
 <em>Code :</em>  
 
 ```c
-static inline void ReplaceAll2(std::string &amp;str, const std::string&amp; from, const std::string&amp; to)
+static inline void ReplaceAll2(std::string &str, const std::string& from, const std::string& to)
 {
     // Same inner code...
     // No return statement
@@ -2622,17 +2622,17 @@ For an example: `27 = C(6,4) + C(5,3) + C(2,2) + C(1,1)`. So, the 27th lexicogra
 (* this will find the [x] combination of a [set] list when taking [k] elements *)
 let combination_maccaffery set k x =
     (* maximize function -- maximize a that is aCb              *)
-    (* return largest c where c &lt; i and choose(c,i) &lt;= z        *)
+    (* return largest c where c < i and choose(c,i) <= z        *)
     let rec maximize a b x =
-        if (choose a b ) &lt;= x then a else maximize (a-1) b x
+        if (choose a b ) <= x then a else maximize (a-1) b x
     in
     let rec iterate n x i = match i with
-        | 0 -&gt; []
-        | i -&gt;
+        | 0 -> []
+        | i ->
             let max = maximize n i x in
             max :: iterate n (x - (choose max i)) (i-1)
     in
-    if x &lt; 0 then failwith "errors" else
+    if x < 0 then failwith "errors" else
     let idxs =  iterate (List.length set) x k in
     List.map (List.nth set) (List.sort (-) idxs)
 ```
@@ -2657,10 +2657,10 @@ A more general version will call the user provided function along with the state
 ```c
 let fold_combs n k f x =
   let rec loop i s c x =
-    if i &lt; n then
+    if i < n then
       loop (i+1) s c @@
       let c = i::c and s = s + 1 and i = i + 1 in
-      if s &lt; k then loop i s c x else f c x
+      if s < k then loop i s c x else f c x
     else x in
   loop 0 0 [] x
 ```
@@ -2670,11 +2670,11 @@ let fold_combs n k f x =
 In C#:</p>
 
 ```c
-public static IEnumerable&lt;IEnumerable&lt;T&gt;&gt; Combinations&lt;T&gt;(this IEnumerable&lt;T&gt; elements, int k)
+public static IEnumerable<IEnumerable<T>> Combinations<T>(this IEnumerable<T> elements, int k)
 {
   return k == 0 ? new[] { new T[0] } :
-    elements.SelectMany((e, i) =&gt;
-      elements.Skip(i + 1).Combinations(k - 1).Select(c =&gt; (new[] {e}).Concat(c)));
+    elements.SelectMany((e, i) =>
+      elements.Skip(i + 1).Combinations(k - 1).Select(c => (new[] {e}).Concat(c)));
 }
 ```
 
@@ -2717,7 +2717,7 @@ public class Combination {
             System.out.println(Arrays.toString(result));
             return;
         }       
-        for (int i = startPosition; i &lt;= arr.length-len; i++){
+        for (int i = startPosition; i <= arr.length-len; i++){
             result[result.length - len] = arr[i];
             combinations2(arr, len-1, i+1, result);
         }
@@ -2839,7 +2839,7 @@ Of course, `E`, `S`, and `Q` have to be defined to compute some interesting valu
 ```c
 sum(n) {
   int i = 1, k = 0;
-  while( i &lt;= n ) {
+  while( i <= n ) {
     k += i;
     ++i;
   }
@@ -2851,7 +2851,7 @@ is equivalent to the tail-recursive function(s)
 
 ```c
 sum_aux(n,i,k) {
-  if( i &lt;= n ) {
+  if( i <= n ) {
     return sum_aux(n,i+1,k+i);
   } else {
     return k;
@@ -2894,7 +2894,7 @@ For example, let's say you have this piece of code:
 int sum(int* data, int N) {
     int result = 0;               // 1
 
-    for (int i = 0; i &lt; N; i++) { // 2
+    for (int i = 0; i < N; i++) { // 2
         result += data[i];        // 3
     }
 
@@ -2968,8 +2968,8 @@ There are a few tricks to solve some tricky ones: use <a href="http://en.wikiped
 As an example, this code can be easily solved using summations:  
 
 ```c
-for (i = 0; i &lt; 2*n; i += 2) {  // 1
-    for (j=n; j &gt; i; j--) {     // 2
+for (i = 0; i < 2*n; i += 2) {  // 1
+    for (j=n; j > i; j--) {     // 2
         foo();                  // 3
     }
 }
@@ -3028,13 +3028,13 @@ f(N) = C * (Summation(i from 1 to N / 2)( N ) - Summation(i from 1 to N / 2)( (i
 
 f(N) = C * (( N ^ 2 / 2 ) - 2 * Summation(i from 1 to N / 2)( i - 1 )) + (N / 2)( C )
 
-=&gt; Summation(i from 1 to N / 2)( i - 1 ) = Summation(i from 1 to N / 2 - 1)( i )
+=> Summation(i from 1 to N / 2)( i - 1 ) = Summation(i from 1 to N / 2 - 1)( i )
 
 f(N) = C * (( N ^ 2 / 2 ) - 2 * Summation(i from 1 to N / 2 - 1)( i )) + (N / 2)( C )
 
 f(N) = C * (( N ^ 2 / 2 ) - 2 * ( (N / 2 - 1) * (N / 2 - 1 + 1) / 2) ) + (N / 2)( C )
 
-=&gt; (N / 2 - 1) * (N / 2 - 1 + 1) / 2 = 
+=> (N / 2 - 1) * (N / 2 - 1 + 1) / 2 = 
 
    (N / 2 - 1) * (N / 2) / 2 = 
 
@@ -3083,7 +3083,7 @@ x = array[0];
 If we wanted to find a number in the list:  
 
 ```c
-for(int i = 0; i &lt; n; i++){
+for(int i = 0; i < n; i++){
     if(array[i] == numToFind){ return i; }
 }
 ```
@@ -3093,8 +3093,8 @@ This would be O(n) since at most we would have to look through the entire list t
 When we get to nested loops:  
 
 ```c
-for(int i = 0; i &lt; n; i++){
-    for(int j = i; j &lt; n; j++){
+for(int i = 0; i < n; i++){
+    for(int j = i; j < n; j++){
         array[j] += 2;
     }
 }
@@ -3239,7 +3239,7 @@ But something like:
 bool CompareDoubles2 (double A, double B) 
 {
    diff = A - B;
-   return (diff &lt; EPSILON) &amp;&amp; (-diff &lt; EPSILON);
+   return (diff < EPSILON) && (-diff < EPSILON);
 }
 ```
 
@@ -3273,7 +3273,7 @@ You should change your implementation a little though:
 ```c
 bool AreSame(double a, double b)
 {
-    return fabs(a - b) &lt; EPSILON;
+    return fabs(a - b) < EPSILON;
 }
 ```
 
@@ -3295,13 +3295,13 @@ How would I need to change this code to the way my book wants it to be?
 ```c
 int main () 
 {
-    for (int i=2; i&lt;100; i++) 
-        for (int j=2; j&lt;i; j++)
+    for (int i=2; i<100; i++) 
+        for (int j=2; j<i; j++)
         {
             if (i % j == 0) 
                 break;
             else if (i == j+1)
-                cout &lt;&lt; i &lt;&lt; " ";
+                cout << i << " ";
 
         }   
     return 0;
@@ -3332,13 +3332,13 @@ Three ways:
 ```c
 int main () 
 {
-    for (int i=2; i&lt;100; i++) 
-        for (int j=2; j*j&lt;=i; j++)
+    for (int i=2; i<100; i++) 
+        for (int j=2; j*j<=i; j++)
         {
             if (i % j == 0) 
                 break;
-            else if (j+1 &gt; sqrt(i)) {
-                cout &lt;&lt; i &lt;&lt; " ";
+            else if (j+1 > sqrt(i)) {
+                cout << i << " ";
 
             }
 
@@ -3353,10 +3353,10 @@ int main ()
 ```c
 int main () 
 {
-    for (int i=2; i&lt;100; i++) 
+    for (int i=2; i<100; i++) 
     {
         bool prime=true;
-        for (int j=2; j*j&lt;=i; j++)
+        for (int j=2; j*j<=i; j++)
         {
             if (i % j == 0) 
             {
@@ -3364,7 +3364,7 @@ int main ()
                 break;    
             }
         }   
-        if(prime) cout &lt;&lt; i &lt;&lt; " ";
+        if(prime) cout << i << " ";
     }
     return 0;
 }
@@ -3373,15 +3373,15 @@ int main ()
 3.  
 
 ```c
-#include &lt;vector&gt;
+#include <vector>
 int main()
 {
-    std::vector&lt;int&gt; primes;
+    std::vector<int> primes;
     primes.push_back(2);
-    for(int i=3; i &lt; 100; i++)
+    for(int i=3; i < 100; i++)
     {
         bool prime=true;
-        for(int j=0;j&lt;primes.size() &amp;&amp; primes[j]*primes[j] &lt;= i;j++)
+        for(int j=0;j<primes.size() && primes[j]*primes[j] <= i;j++)
         {
             if(i % primes[j] == 0)
             {
@@ -3392,7 +3392,7 @@ int main()
         if(prime) 
         {
             primes.push_back(i);
-            cout &lt;&lt; i &lt;&lt; " ";
+            cout << i << " ";
         }
     }
 
@@ -3408,7 +3408,7 @@ If `j` is <em>equal</em> to `sqrt(i)` it might also be a valid factor, not only 
 To iterate up to and including `sqrt(i)` in your inner loop, you could write:  
 
 ```c
-for (int j=2; j*j&lt;=i; j++)
+for (int j=2; j*j<=i; j++)
 ```
 
 (Compared to using `sqrt(i)` this has the advantage to not need conversion to floating point numbers.)   
@@ -3524,13 +3524,13 @@ If we select one senator completely randomly, what is the probability that this 
 Probability of (Democrat and Female Senator)= Prob(Senator is Democrat) multiplied by Conditional Probability of Being Female given that they are a Democrat.  
 
 ```c
-  P(Democrat &amp; Female) = P(Democrat) * P(Female | Democrat) 
+  P(Democrat & Female) = P(Democrat) * P(Female | Democrat) 
 ```
 
 We could compute the exact same thing, the reverse way:  
 
 ```c
-  P(Democrat &amp; Female) = P(Female) * P(Democrat | Female) 
+  P(Democrat & Female) = P(Female) * P(Democrat | Female) 
 ```
 
 <h5>Understanding Bayes Rule</h3>
@@ -3754,7 +3754,7 @@ def subset_sum(numbers, target, partial=[]):
     # check if the partial sum is equals to target
     if s == target: 
         print "sum(%s)=%s" % (partial, target)
-    if s &gt;= target:
+    if s >= target:
         return  # if we reach the number why bother to continue
 
     for i in range(len(numbers)):
@@ -3783,7 +3783,7 @@ The above as a generator function, making it a bit more useful. Requires Python 
 def subset_sum(numbers, target, partial=[], partial_sum=0):
     if partial_sum == target:
         yield partial
-    if partial_sum &gt;= target:
+    if partial_sum >= target:
         return
     for i, n in enumerate(numbers):
         remaining = numbers[i + 1:]
@@ -3799,29 +3799,29 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 class SumSet {
-    static void sum_up_recursive(ArrayList&lt;Integer&gt; numbers, int target, ArrayList&lt;Integer&gt; partial) {
+    static void sum_up_recursive(ArrayList<Integer> numbers, int target, ArrayList<Integer> partial) {
        int s = 0;
        for (int x: partial) s += x;
        if (s == target)
             System.out.println("sum("+Arrays.toString(partial.toArray())+")="+target);
-       if (s &gt;= target)
+       if (s >= target)
             return;
-       for(int i=0;i&lt;numbers.size();i++) {
-             ArrayList&lt;Integer&gt; remaining = new ArrayList&lt;Integer&gt;();
+       for(int i=0;i<numbers.size();i++) {
+             ArrayList<Integer> remaining = new ArrayList<Integer>();
              int n = numbers.get(i);
-             for (int j=i+1; j&lt;numbers.size();j++) remaining.add(numbers.get(j));
-             ArrayList&lt;Integer&gt; partial_rec = new ArrayList&lt;Integer&gt;(partial);
+             for (int j=i+1; j<numbers.size();j++) remaining.add(numbers.get(j));
+             ArrayList<Integer> partial_rec = new ArrayList<Integer>(partial);
              partial_rec.add(n);
              sum_up_recursive(remaining,target,partial_rec);
        }
     }
-    static void sum_up(ArrayList&lt;Integer&gt; numbers, int target) {
-        sum_up_recursive(numbers,target,new ArrayList&lt;Integer&gt;());
+    static void sum_up(ArrayList<Integer> numbers, int target) {
+        sum_up_recursive(numbers,target,new ArrayList<Integer>());
     }
     public static void main(String args[]) {
         Integer[] numbers = {3,9,8,4,5,7,10};
         int target = 15;
-        sum_up(new ArrayList&lt;Integer&gt;(Arrays.asList(numbers)),target);
+        sum_up(new ArrayList<Integer>(Arrays.asList(numbers)),target);
     }
 }
 ```
@@ -3833,17 +3833,17 @@ It is exactly the same heuristic. My Java is a bit rusty but I think is easy to 
 ```c
 public static void Main(string[] args)
 {
-    List&lt;int&gt; numbers = new List&lt;int&gt;() { 3, 9, 8, 4, 5, 7, 10 };
+    List<int> numbers = new List<int>() { 3, 9, 8, 4, 5, 7, 10 };
     int target = 15;
     sum_up(numbers, target);
 }
 
-private static void sum_up(List&lt;int&gt; numbers, int target)
+private static void sum_up(List<int> numbers, int target)
 {
-    sum_up_recursive(numbers, target, new List&lt;int&gt;());
+    sum_up_recursive(numbers, target, new List<int>());
 }
 
-private static void sum_up_recursive(List&lt;int&gt; numbers, int target, List&lt;int&gt; partial)
+private static void sum_up_recursive(List<int> numbers, int target, List<int> partial)
 {
     int s = 0;
     foreach (int x in partial) s += x;
@@ -3851,16 +3851,16 @@ private static void sum_up_recursive(List&lt;int&gt; numbers, int target, List&l
     if (s == target)
         Console.WriteLine("sum(" + string.Join(",", partial.ToArray()) + ")=" + target);
 
-    if (s &gt;= target)
+    if (s >= target)
         return;
 
-    for (int i = 0; i &lt; numbers.Count; i++)
+    for (int i = 0; i < numbers.Count; i++)
     {
-        List&lt;int&gt; remaining = new List&lt;int&gt;();
+        List<int> remaining = new List<int>();
         int n = numbers[i];
-        for (int j = i + 1; j &lt; numbers.Count; j++) remaining.Add(numbers[j]);
+        for (int j = i + 1; j < numbers.Count; j++) remaining.Add(numbers[j]);
 
-        List&lt;int&gt; partial_rec = new List&lt;int&gt;(partial);
+        List<int> partial_rec = new List<int>(partial);
         partial_rec.Add(n);
         sum_up_recursive(remaining, target, partial_rec);
     }
@@ -3876,7 +3876,7 @@ def subset_sum(numbers, target, partial=[])
 
   puts "sum(#{partial})=#{target}" if s == target
 
-  return if s &gt;= target # if we reach the number why bother to continue
+  return if s >= target # if we reach the number why bother to continue
 
   (0..(numbers.length - 1)).each do |i|
     n = numbers[i]
@@ -3908,7 +3908,7 @@ filter ((==) 12345 . sum) $ subsequences [1,5,22,15,0,..]
 And <a href="http://jsoftware.com/" rel="noreferrer">J</a>:  
 
 ```c
-(]#~12345=+/@&gt;)(]&lt;@#~[:#:@i.2^#)1 5 22 15 0 ...
+(]#~12345=+/@>)(]<@#~[:#:@i.2^#)1 5 22 15 0 ...
 ```
 
 As you may notice, both take the same approach and divide the problem into two parts: generate each member of the power set, and check each member's sum to the target.  
@@ -3927,7 +3927,7 @@ filter ((==) 12345 . sum) $ subsequences [1,5,22,15,0,..]
 And <a href="http://jsoftware.com/" rel="noreferrer">J</a>:  
 
 ```c
-(]#~12345=+/@&gt;)(]&lt;@#~[:#:@i.2^#)1 5 22 15 0 ...
+(]#~12345=+/@>)(]<@#~[:#:@i.2^#)1 5 22 15 0 ...
 ```
 
 As you may notice, both take the same approach and divide the problem into two parts: generate each member of the power set, and check each member's sum to the target.  
@@ -3944,17 +3944,17 @@ Do you need help with either one, or finding a different approach?
 I prefer two ways:  
 
 ```c
-void copyVecFast(const vec&lt;int&gt;&amp; original)
+void copyVecFast(const vec<int>& original)
 {
-  vector&lt;int&gt; newVec;
+  vector<int> newVec;
   newVec.reserve(original.size());
   copy(original.begin(),original.end(),back_inserter(newVec));
 }
 
-void copyVecFast(vec&lt;int&gt;&amp; original)
+void copyVecFast(vec<int>& original)
 {
 
-  vector&lt;int&gt; newVec;
+  vector<int> newVec;
   newVec.swap(original); 
 }
 ```
@@ -3965,10 +3965,10 @@ How do you do it?
 Your second example does not work if you send the argument by reference. Did you mean  
 
 ```c
-void copyVecFast(vec&lt;int&gt; original) // no reference
+void copyVecFast(vec<int> original) // no reference
 {
 
-  vector&lt;int&gt; new_;
+  vector<int> new_;
   new_.swap(original); 
 }
 ```
@@ -3976,7 +3976,7 @@ void copyVecFast(vec&lt;int&gt; original) // no reference
 That would work, but an easier way is   
 
 ```c
-vector&lt;int&gt; new_(original);
+vector<int> new_(original);
 ```
 
 #### Answer 2 (score 227)
@@ -3994,7 +3994,7 @@ Where `a` and `b` are vectors.
 This is another valid way to make a copy of a vector, just use its constructor:  
 
 ```c
-std::vector&lt;int&gt; newvector(oldvector);
+std::vector<int> newvector(oldvector);
 ```
 
 This is even simpler than using `std::copy` to walk the entire vector from start to finish to `std::back_insert` them into the new vector.  
@@ -4106,8 +4106,8 @@ int[,] rotated = RotateMatrix(array, 4);
 static int[,] RotateMatrix(int[,] matrix, int n) {
     int[,] ret = new int[n, n];
 
-    for (int i = 0; i &lt; n; ++i) {
-        for (int j = 0; j &lt; n; ++j) {
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
             ret[i, j] = matrix[n - j - 1, i];
         }
     }
@@ -4582,13 +4582,13 @@ def rotate(matrix):
         bottom_right = matrix[last][last]
         bottom_left = matrix[last][first]
 
-        # bottom_left -&gt; top_left
+        # bottom_left -> top_left
         matrix[first][first] = bottom_left
-        # top_left -&gt; top_right
+        # top_left -> top_right
         matrix[first][last] = top_left
-        # top_right -&gt; bottom_right
+        # top_right -> bottom_right
         matrix[last][last] = top_right
-        # bottom_right -&gt; bottom_left
+        # bottom_right -> bottom_left
         matrix[last][first] = bottom_right
 
 
@@ -4770,11 +4770,11 @@ Using this method, each element will be in each stack exactly once - meaning eac
 Here's an implementation in Java:  
 
 ```c
-public class Queue&lt;E&gt;
+public class Queue<E>
 {
 
-    private Stack&lt;E&gt; inbox = new Stack&lt;E&gt;();
-    private Stack&lt;E&gt; outbox = new Stack&lt;E&gt;();
+    private Stack<E> inbox = new Stack<E>();
+    private Stack<E> outbox = new Stack<E>();
 
     public void queue(E item) {
         inbox.push(item);
@@ -4874,23 +4874,23 @@ Here is an implementation in Java. I'm not going to use the existing implementat
 <h5>C - 1) MyStack class : A Simple Stack Implementation</h1>
 
 ```c
-public class MyStack&lt;T&gt; {
+public class MyStack<T> {
 
     // inner generic Node class
-    private class Node&lt;T&gt; {
+    private class Node<T> {
         T data;
-        Node&lt;T&gt; next;
+        Node<T> next;
 
         public Node(T data) {
             this.data = data;
         }
     }
 
-    private Node&lt;T&gt; head;
+    private Node<T> head;
     private int size;
 
     public void push(T e) {
-        Node&lt;T&gt; newElem = new Node(e);
+        Node<T> newElem = new Node(e);
 
         if(head == null) {
             head = newElem;
@@ -4928,7 +4928,7 @@ public class MyStack&lt;T&gt; {
         if(size == 0)
             System.out.print("Empty !");
         else
-            for(Node&lt;T&gt; temp = head; temp != null; temp = temp.next)
+            for(Node<T> temp = head; temp != null; temp = temp.next)
                 System.out.printf("%s ", temp.data);
 
         System.out.printf("\n");
@@ -4939,15 +4939,15 @@ public class MyStack&lt;T&gt; {
 <h5>C - 2) MyQueue class : Queue Implementation Using Two Stacks</h1>
 
 ```c
-public class MyQueue&lt;T&gt; {
+public class MyQueue<T> {
 
-    private MyStack&lt;T&gt; inputStack;      // for enqueue
-    private MyStack&lt;T&gt; outputStack;     // for dequeue
+    private MyStack<T> inputStack;      // for enqueue
+    private MyStack<T> outputStack;     // for dequeue
     private int size;
 
     public MyQueue() {
-        inputStack = new MyStack&lt;&gt;();
-        outputStack = new MyStack&lt;&gt;();
+        inputStack = new MyStack<>();
+        outputStack = new MyStack<>();
     }
 
     public void enqueue(T e) {
@@ -4987,18 +4987,18 @@ public class MyQueue&lt;T&gt; {
 public class TestMyQueue {
 
     public static void main(String[] args) {
-        MyQueue&lt;Integer&gt; queue = new MyQueue&lt;&gt;();
+        MyQueue<Integer> queue = new MyQueue<>();
 
         // enqueue integers 1..3
-        for(int i = 1; i &lt;= 3; i++)
+        for(int i = 1; i <= 3; i++)
             queue.enqueue(i);
 
         // execute 2 dequeue operations 
-        for(int i = 0; i &lt; 2; i++)
+        for(int i = 0; i < 2; i++)
             System.out.println("Dequeued: " + queue.dequeue());
 
         // enqueue integers 4..5
-        for(int i = 4; i &lt;= 5; i++)
+        for(int i = 4; i <= 5; i++)
             queue.enqueue(i);
 
         // dequeue the rest
@@ -5176,18 +5176,18 @@ void findpair(int arr[], int len, int sum)
     std::sort(arr, arr+len);
     int i = 0;
     int j = len -1;
-    while( i &lt; j){
-        while((arr[i] + arr[j]) &lt;= sum &amp;&amp; i &lt; j)
+    while( i < j){
+        while((arr[i] + arr[j]) <= sum && i < j)
         {
             if((arr[i] + arr[j]) == sum)
-                cout &lt;&lt; "(" &lt;&lt; arr[i] &lt;&lt; "," &lt;&lt; arr[j] &lt;&lt; ")" &lt;&lt; endl;
+                cout << "(" << arr[i] << "," << arr[j] << ")" << endl;
             i++;
         }
         j--;
-        while((arr[i] + arr[j]) &gt;= sum &amp;&amp; i &lt; j)
+        while((arr[i] + arr[j]) >= sum && i < j)
         {
             if((arr[i] + arr[j]) == sum)
-                cout &lt;&lt; "(" &lt;&lt; arr[i] &lt;&lt; "," &lt;&lt; arr[j] &lt;&lt; ")" &lt;&lt; endl;
+                cout << "(" << arr[i] << "," << arr[j] << ")" << endl;
             j--;
         }
     }
@@ -5254,9 +5254,9 @@ public static void main(String[] args) {
 
 
 public static void printSumPairs(int []input, int k){
-    Map&lt;Integer, Integer&gt; pairs = new HashMap&lt;Integer, Integer&gt;();
+    Map<Integer, Integer> pairs = new HashMap<Integer, Integer>();
 
-    for(int i=0;i&lt;input.length;i++){
+    for(int i=0;i<input.length;i++){
 
         if(pairs.containsKey(input[i]))
             System.out.println(input[i] +", "+ pairs.get(input[i]));
@@ -5346,7 +5346,7 @@ One-liner:
 
 ```c
 def checkEqual2(iterator):
-   return len(set(iterator)) &lt;= 1
+   return len(set(iterator)) <= 1
 ```
 
 Also one-liner:  
@@ -5423,13 +5423,13 @@ x.count(x[0]) == len(x)
 some simple benchmarks:  
 
 ```c
-&gt;&gt;&gt; timeit.timeit('len(set(s1))&lt;=1', 's1=[1]*5000', number=10000)
+>>> timeit.timeit('len(set(s1))<=1', 's1=[1]*5000', number=10000)
 1.4383411407470703
-&gt;&gt;&gt; timeit.timeit('len(set(s1))&lt;=1', 's1=[1]*4999+[2]', number=10000)
+>>> timeit.timeit('len(set(s1))<=1', 's1=[1]*4999+[2]', number=10000)
 1.4765670299530029
-&gt;&gt;&gt; timeit.timeit('s1.count(s1[0])==len(s1)', 's1=[1]*5000', number=10000)
+>>> timeit.timeit('s1.count(s1[0])==len(s1)', 's1=[1]*5000', number=10000)
 0.26274609565734863
-&gt;&gt;&gt; timeit.timeit('s1.count(s1[0])==len(s1)', 's1=[1]*4999+[2]', number=10000)
+>>> timeit.timeit('s1.count(s1[0])==len(s1)', 's1=[1]*4999+[2]', number=10000)
 0.25654196739196777
 ```
 
@@ -5486,7 +5486,7 @@ def isprime(n):
     i = 5
     w = 2
 
-    while i * i &lt;= n:
+    while i * i <= n:
         if n % i == 0:
             return False
 
@@ -5554,8 +5554,8 @@ Here is my implementation in C#:
 Who needs trig when you have <a href="http://imgs.xkcd.com/comics/e_to_the_pi_times_i.png" rel="noreferrer">complex numbers</a>:  
 
 ```c
-#include &lt;complex.h&gt;
-#include &lt;math.h&gt;
+#include <complex.h>
+#include <math.h>
 
 #define PI      3.14159265358979323846
 
@@ -5590,8 +5590,8 @@ void reverse() {
     while (p != NULL) {
         r = q;
         q = p;
-        p = p-&gt;link;
-        q-&gt;link = r;
+        p = p->link;
+        q->link = r;
     }
     first = q;
 }
@@ -5605,7 +5605,7 @@ Any alternative?  No, this is as simple as it gets, and there's no fundamentally
 It looks like your code is on the right track, but it's not quite working in the form above.  Here's a working version:  
 
 ```c
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 
 typedef struct Node {
   char data;
@@ -5614,8 +5614,8 @@ typedef struct Node {
 
 void print_list(Node* root) {
   while (root) {
-    printf("%c ", root-&gt;data);
-    root = root-&gt;next;
+    printf("%c ", root->data);
+    root = root->next;
   }
   printf("\n");
 }
@@ -5623,8 +5623,8 @@ void print_list(Node* root) {
 Node* reverse(Node* root) {
   Node* new_root = 0;
   while (root) {
-    Node* next = root-&gt;next;
-    root-&gt;next = new_root;
+    Node* next = root->next;
+    root->next = new_root;
     new_root = root;
     root = next;
   }
@@ -5633,11 +5633,11 @@ Node* reverse(Node* root) {
 
 int main() {
   Node d = { 'd', 0 };
-  Node c = { 'c', &amp;d };
-  Node b = { 'b', &amp;c };
-  Node a = { 'a', &amp;b };
+  Node c = { 'c', &d };
+  Node b = { 'b', &c };
+  Node a = { 'a', &b };
 
-  Node* root = &amp;a;
+  Node* root = &a;
   print_list(root);
   root = reverse(root);
   print_list(root);
@@ -5664,7 +5664,7 @@ I hate to be the bearer of bad news but I don't think your three-pointer solutio
 You won't get better time complexity than your solution since it's O(n) and you have to visit every node to change the pointers, but you <em>can</em> do a solution with only two extra pointers quite easily, as shown in the following code:  
 
 ```c
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 
 // The list element type and head.
 
@@ -5684,10 +5684,10 @@ void reverse() {
     // Until no more in list, insert current before first and advance.
     while (curNode != NULL) {
         // Need to save next node since we're changing the current.
-        nxtNode = curNode-&gt;link;
+        nxtNode = curNode->link;
 
         // Insert at start of new list.
-        curNode-&gt;link = first;
+        curNode->link = first;
         first = curNode;
 
         // Advance to next.
@@ -5701,8 +5701,8 @@ static void dumpNodes() {
     struct node *curNode = first;
     printf ("==========\n");
     while (curNode != NULL) {
-        printf ("%d\n", curNode-&gt;data);
-        curNode = curNode-&gt;link;
+        printf ("%d\n", curNode->data);
+        curNode = curNode->link;
     }
 }
 
@@ -5715,10 +5715,10 @@ int main (void) {
     // Create list (using actually the same insert-before-first
     // that is used in reverse function.
 
-    for (i = 0; i &lt; 5; i++) {
+    for (i = 0; i < 5; i++) {
         newnode = malloc (sizeof (struct node));
-        newnode-&gt;data = i;
-        newnode-&gt;link = first;
+        newnode->data = i;
+        newnode->link = first;
         first = newnode;
     }
 
@@ -5755,7 +5755,7 @@ which I think is what you were after. It can actually do this since, once you've
 
 #### Answer 3 (score 25)
 ```c
-#include &lt;stddef.h&gt;
+#include <stddef.h>
 
 typedef struct Node {
     struct Node *next;
@@ -5766,8 +5766,8 @@ Node * reverse(Node *cur) {
     Node *prev = NULL;
     while (cur) {
         Node *temp = cur;
-        cur = cur-&gt;next; // advance cur
-        temp-&gt;next = prev;
+        cur = cur->next; // advance cur
+        temp->next = prev;
         prev = temp; // advance prev
     }
     return prev;
@@ -5915,9 +5915,9 @@ public static int[] merge(int[] a, int[] b) {
 
     int[] answer = new int[a.length + b.length];
     int i = 0, j = 0, k = 0;
-    while (i &lt; a.length &amp;&amp; j &lt; b.length)
+    while (i < a.length && j < b.length)
     {
-        if (a[i] &lt; b[j])
+        if (a[i] < b[j])
         {
             answer[k] = a[i];
             i++;
@@ -5930,14 +5930,14 @@ public static int[] merge(int[] a, int[] b) {
         k++;
     }
 
-    while (i &lt; a.length)
+    while (i < a.length)
     {
         answer[k] = a[i];
         i++;
         k++;
     }
 
-    while (j &lt; b.length)
+    while (j < b.length)
     {
         answer[k] = b[j];
         j++;
@@ -5962,14 +5962,14 @@ public static int[] merge(int[] a, int[] b) {
     int[] answer = new int[a.length + b.length];
     int i = 0, j = 0, k = 0;
 
-    while (i &lt; a.length &amp;&amp; j &lt; b.length)  
-       answer[k++] = a[i] &lt; b[j] ? a[i++] :  b[j++];
+    while (i < a.length && j < b.length)  
+       answer[k++] = a[i] < b[j] ? a[i++] :  b[j++];
 
-    while (i &lt; a.length)  
+    while (i < a.length)  
         answer[k++] = a[i++];
 
 
-    while (j &lt; b.length)    
+    while (j < b.length)    
         answer[k++] = b[j++];
 
     return answer;
@@ -5986,9 +5986,9 @@ public static int[] merge(int[] a, int[] b) {
     int[] answer = new int[a.length + b.length];
     int i = a.length - 1, j = b.length - 1, k = answer.length;
 
-    while (k &gt; 0)
+    while (k > 0)
         answer[--k] =
-                (j &lt; 0 || (i &gt;= 0 &amp;&amp; a[i] &gt;= b[j])) ? a[i--] : b[j--];
+                (j < 0 || (i >= 0 && a[i] >= b[j])) ? a[i--] : b[j--];
     return answer;
 }
 ```
@@ -6095,7 +6095,7 @@ This requires the use of integer division and modulo. A pseudo-code example:
 ```c
 digits = []
 
-while num &gt; 0
+while num > 0
   remainder = modulo(num, 62)
   digits.push(remainder)
   num = divide(num, 62)
@@ -6158,7 +6158,7 @@ public class UrlShortener {
 
     public static String encode(int num) {
         StringBuilder sb = new StringBuilder();
-        while ( num &gt; 0 ) {
+        while ( num > 0 ) {
             sb.append( ALPHABET.charAt( num % BASE ) );
             num /= BASE;
         }
@@ -6167,7 +6167,7 @@ public class UrlShortener {
 
     public static int decode(String str) {
         int num = 0;
-        for ( int i = 0; i &lt; str.length(); i++ )
+        for ( int i = 0; i < str.length(); i++ )
             num = num * BASE + ALPHABET.indexOf(str.charAt(i));
         return num;
     }   
@@ -6193,7 +6193,7 @@ That is the missing number. The empty slot can be detected during the iteration 
 // will be the sum of the numbers in the array.
 int sum = 0;
 int idx = -1;
-for (int i = 0; i &lt; arr.length; i++)
+for (int i = 0; i < arr.length; i++)
 {
     if (arr[i] == 0)
     {
@@ -6222,7 +6222,7 @@ Now, XORing [1..n] with the elements present in the array cancels the identical 
 // Assuming that the array contains 99 distinct integers between 1..99
 // and empty slot value is zero
 int XOR = 0;
-for(int i=0; i&lt;100; i++) {
+for(int i=0; i<100; i++) {
     if (ARRAY[i] != 0) // remove this condition keeping the body if no zero slot
         XOR ^= ARRAY[i];
     XOR ^= (i + 1);
@@ -6321,7 +6321,7 @@ Also, calculating XOR(1...N) using above formula has two implementations. Implem
 
 ```c
 // Thanks to https://a3nm.net/blog/xor.html for this implementation
-xor = (n&gt;&gt;1)&amp;1 ^ (((n&amp;1)&gt;0)?1:n)
+xor = (n>>1)&1 ^ (((n&1)>0)?1:n)
 ```
 
 is faster than calculating  
@@ -6337,18 +6337,18 @@ long n = 100;
 long a[] = new long[n];
 
 //XOR of all numbers from 1 to n
-// n%4 == 0 ---&gt; n
-// n%4 == 1 ---&gt; 1
-// n%4 == 2 ---&gt; n + 1
-// n%4 == 3 ---&gt; 0
+// n%4 == 0 ---> n
+// n%4 == 1 ---> 1
+// n%4 == 2 ---> n + 1
+// n%4 == 3 ---> 0
 
 //Slower way of implementing the formula
 // long xor = (n % 4 == 0) ? n : (n % 4 == 1) ? 1 : (n % 4 == 2) ? n + 1 : 0;
 //Faster way of implementing the formula
-// long xor = (n&gt;&gt;1)&amp;1 ^ (((n&amp;1)&gt;0)?1:n);
-long xor = (n&gt;&gt;1)&amp;1 ^ (((n&amp;1)&gt;0)?1:n);
+// long xor = (n>>1)&1 ^ (((n&1)>0)?1:n);
+long xor = (n>>1)&1 ^ (((n&1)>0)?1:n);
 
-for (long i = 0; i &lt; n; i++)
+for (long i = 0; i < n; i++)
 {
     xor = xor ^ a[i];
 }
@@ -6372,7 +6372,7 @@ Please note that points that satisfy the above equation with `&lt;` replaced by 
 Mathematically, Pythagoras is probably a simple method as many have already mentioned.  
 
 ```c
-(x-center_x)^2 + (y - center_y)^2 &lt; radius^2
+(x-center_x)^2 + (y - center_y)^2 < radius^2
 ```
 
 Computationally, there are quicker ways. Define:  
@@ -6386,23 +6386,23 @@ R = radius
 <strong>If a point is more likely to be <em>outside</em> this circle</strong> then imagine a square drawn around it such that it's sides are tangents to this circle:    
 
 ```c
-if dx&gt;R then 
+if dx>R then 
     return false.
-if dy&gt;R then 
+if dy>R then 
     return false.
 ```
 
 Now imagine a square diamond drawn inside this circle such that it's vertices touch this circle:  
 
 ```c
-if dx + dy &lt;= R then 
+if dx + dy <= R then 
     return true.
 ```
 
 Now we have covered most of our space and only a small area of this circle remains in between our square and diamond to be tested. Here we revert to Pythagoras as above.  
 
 ```c
-if dx^2 + dy^2 &lt;= R^2 then 
+if dx^2 + dy^2 <= R^2 then 
     return true
 else 
     return false.
@@ -6411,13 +6411,13 @@ else
 <strong>If a point is more likely to be <em>inside</em> this circle</strong> then reverse order of first 3 steps:  
 
 ```c
-if dx + dy &lt;= R then 
+if dx + dy <= R then 
     return true.
-if dx &gt; R then 
+if dx > R then 
     return false.
-if dy &gt; R 
+if dy > R 
     then return false.
-if dx^2 + dy^2 &lt;= R^2 then 
+if dx^2 + dy^2 <= R^2 then 
     return true
 else
     return false.
@@ -6429,7 +6429,7 @@ Alternate methods imagine a square inside this circle instead of a diamond but t
 
 ```c
 k = R/sqrt(2)
-if dx &lt;= k and dy &lt;= k then 
+if dx <= k and dy <= k then 
     return true.
 ```
 
@@ -6448,32 +6448,32 @@ Overhead: 16.5s</code></p>
 So, it seems this method is more efficient in this implementation.  
 
 ```c
-// compile gcc -O3 &lt;filename&gt;.c
+// compile gcc -O3 <filename>.c
 // run: time ./a.out
 
-#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
+#include <stdio.h>
+#include <stdlib.h>
 
 #define TRUE  (0==0)
 #define FALSE (0==1)
 
-#define ABS(x) (((x)&lt;0)?(0-(x)):(x))
+#define ABS(x) (((x)<0)?(0-(x)):(x))
 
 int xo, yo, R;
 
 int inline inCircle( int x, int y ){  // 19.1, 19.1, 19.1
   int dx = ABS(x-xo);
-  if (    dx &gt;  R ) return FALSE;
+  if (    dx >  R ) return FALSE;
   int dy = ABS(y-yo);
-  if (    dy &gt;  R ) return FALSE;
-  if ( dx+dy &lt;= R ) return TRUE;
-  return ( dx*dx + dy*dy &lt;= R*R );
+  if (    dy >  R ) return FALSE;
+  if ( dx+dy <= R ) return TRUE;
+  return ( dx*dx + dy*dy <= R*R );
 }
 
 int inline inCircleN( int x, int y ){  // 21.3, 21.1, 21.5
   int dx = ABS(x-xo);
   int dy = ABS(y-yo);
-  return ( dx*dx + dy*dy &lt;= R*R );
+  return ( dx*dx + dy*dy <= R*R );
 }
 
 int inline dummy( int x, int y ){  // 16.6, 16.5, 16.4
@@ -6489,7 +6489,7 @@ int main(){
   xo = rand()%1000; yo = rand()%1000; R = 1;
   int n = 0;
   int c;
-  for (c=0; c&lt;N; c++){
+  for (c=0; c<N; c++){
     x = rand()%1000; y = rand()%1000;
 //    if ( inCircle(x,y)  ){
     if ( inCircleN(x,y) ){
@@ -6513,9 +6513,9 @@ I've tried to implement what is mentioned in <a href="https://stackoverflow.com/
 My current implementation does the following:  
 
 ```c
-// Gets all the vertices for Rectangle 1 and stores them in an array -&gt; arrRect1
+// Gets all the vertices for Rectangle 1 and stores them in an array -> arrRect1
 // point 1 x: arrRect1[0], point 1 y: arrRect1[1] and so on...
-// Gets all the vertices for Rectangle 2 and stores them in an array -&gt; arrRect2
+// Gets all the vertices for Rectangle 2 and stores them in an array -> arrRect2
 
 // rotated edge of point a, rect 1
 int rot_x, rot_y;
@@ -6532,7 +6532,7 @@ tst_y = arrRect2[1];
 
 int value;
 value = (rot_x * (tst_x - pnt_x)) + (rot_y * (tst_y - pnt_y));
-cout &lt;&lt; "Value: " &lt;&lt; value;  
+cout << "Value: " << value;  
 ```
 
 However I'm not quite sure if (a) I've implemented the algorithm I linked to correctly, or if I did exactly how to interpret this?  
@@ -6541,8 +6541,8 @@ Any suggestions?
 
 #### Answer accepted (score 678)
 ```c
-if (RectA.Left &lt; RectB.Right &amp;&amp; RectA.Right &gt; RectB.Left &amp;&amp;
-     RectA.Top &gt; RectB.Bottom &amp;&amp; RectA.Bottom &lt; RectB.Top ) 
+if (RectA.Left < RectB.Right && RectA.Right > RectB.Left &&
+     RectA.Top > RectB.Bottom && RectA.Bottom < RectB.Top ) 
 ```
 
 or, using Cartesian coordinates       
@@ -6550,8 +6550,8 @@ or, using Cartesian coordinates
 (With X1 being left coord, X2 being right coord, increasing from left to right and   Y1 being Top coord, and Y2 being Bottom coord, increasing from bottom to top) ...  
 
 ```c
-if (RectA.X1 &lt; RectB.X2 &amp;&amp; RectA.X2 &gt; RectB.X1 &amp;&amp;
-    RectA.Y1 &gt; RectB.Y2 &amp;&amp; RectA.Y2 &lt; RectB.Y1) 
+if (RectA.X1 < RectB.X2 && RectA.X2 > RectB.X1 &&
+    RectA.Y1 > RectB.Y2 && RectA.Y2 < RectB.Y1) 
 ```
 
 NOTE: TO ALL SO USERS WITH EDIT AUTHORITY.  PLEASE STOP FIDDLING WITH THIS.  
@@ -6608,7 +6608,7 @@ struct rect
 };
 
 bool valueInRange(int value, int min, int max)
-{ return (value &gt;= min) && (value &lt;= max); }
+{ return (value >= min) && (value <= max); }
 
 bool rectOverlap(rect A, rect B)
 {
@@ -6629,25 +6629,25 @@ struct Rect
     Rect(int x1, int x2, int y1, int y2)
     : x1(x1), x2(x2), y1(y1), y2(y2)
     {
-        assert(x1 &lt; x2);
-        assert(y1 &lt; y2);
+        assert(x1 < x2);
+        assert(y1 < y2);
     }
 
     int x1, x2, y1, y2;
 };
 
 bool
-overlap(const Rect &amp;r1, const Rect &amp;r2)
+overlap(const Rect &r1, const Rect &r2)
 {
     // The rectangles don't overlap if
     // one rectangle's minimum in some dimension 
     // is greater than the other's maximum in
     // that dimension.
 
-    bool noOverlap = r1.x1 &gt; r2.x2 ||
-                     r2.x1 &gt; r1.x2 ||
-                     r1.y1 &gt; r2.y2 ||
-                     r2.y1 &gt; r1.y2;
+    bool noOverlap = r1.x1 > r2.x2 ||
+                     r2.x1 > r1.x2 ||
+                     r1.y1 > r2.y2 ||
+                     r2.y1 > r1.y2;
 
     return !noOverlap;
 }
@@ -6738,7 +6738,7 @@ Since the infinite sum is exactly <em>n</em>, we conclude that the finite sum is
 If it is possible to run `buildHeap` in linear time, why does heap sort require <em>O(n log n)</em> time? Well, heap sort consists of two stages. First, we call `buildHeap` on the array, which requires <em>O(n)</em> time if implemented optimally. The next stage is to  repeatedly delete the largest item in the heap and put it at the end of the array. Because we delete an item from the heap, there is always an open spot just after the end of the heap where we can store the item. So heap sort achieves a sorted order by successively removing the next largest item and putting it into the array starting at the last position and moving towards the front. It is the complexity of this last part that dominates in heap sort. The loop looks likes this:  
 
 ```c
-for (i = n - 1; i &gt; 0; i--) {
+for (i = n - 1; i > 0; i--) {
     arr[i] = deleteMax();
 }
 ```
@@ -6936,11 +6936,11 @@ The conversion is from MSB->LSB to LSB->MSB.  All bits must be reversed; that is
 unsigned int
 reverse(register unsigned int x)
 {
-    x = (((x &amp; 0xaaaaaaaa) &gt;&gt; 1) | ((x &amp; 0x55555555) &lt;&lt; 1));
-    x = (((x &amp; 0xcccccccc) &gt;&gt; 2) | ((x &amp; 0x33333333) &lt;&lt; 2));
-    x = (((x &amp; 0xf0f0f0f0) &gt;&gt; 4) | ((x &amp; 0x0f0f0f0f) &lt;&lt; 4));
-    x = (((x &amp; 0xff00ff00) &gt;&gt; 8) | ((x &amp; 0x00ff00ff) &lt;&lt; 8));
-    return((x &gt;&gt; 16) | (x &lt;&lt; 16));
+    x = (((x & 0xaaaaaaaa) >> 1) | ((x & 0x55555555) << 1));
+    x = (((x & 0xcccccccc) >> 2) | ((x & 0x33333333) << 2));
+    x = (((x & 0xf0f0f0f0) >> 4) | ((x & 0x0f0f0f0f) << 4));
+    x = (((x & 0xff00ff00) >> 8) | ((x & 0x00ff00ff) << 8));
+    return((x >> 16) | (x << 16));
 
 }
 ```
@@ -6974,14 +6974,14 @@ unsigned int v; // reverse 32-bit value, 8 bits at time
 unsigned int c; // c will get v reversed
 
 // Option 1:
-c = (BitReverseTable256[v &amp; 0xff] &lt;&lt; 24) | 
-    (BitReverseTable256[(v &gt;&gt; 8) &amp; 0xff] &lt;&lt; 16) | 
-    (BitReverseTable256[(v &gt;&gt; 16) &amp; 0xff] &lt;&lt; 8) |
-    (BitReverseTable256[(v &gt;&gt; 24) &amp; 0xff]);
+c = (BitReverseTable256[v & 0xff] << 24) | 
+    (BitReverseTable256[(v >> 8) & 0xff] << 16) | 
+    (BitReverseTable256[(v >> 16) & 0xff] << 8) |
+    (BitReverseTable256[(v >> 24) & 0xff]);
 
 // Option 2:
-unsigned char * p = (unsigned char *) &amp;v;
-unsigned char * q = (unsigned char *) &amp;c;
+unsigned char * p = (unsigned char *) &v;
+unsigned char * q = (unsigned char *) &c;
 q[3] = BitReverseTable256[p[0]]; 
 q[2] = BitReverseTable256[p[1]]; 
 q[1] = BitReverseTable256[p[2]]; 
@@ -6998,30 +6998,30 @@ You can extend this idea to 64-bit `int`s, or trade off memory for speed (assumi
 
 ```c
 unsigned int v;     // input bits to be reversed
-unsigned int r = v &amp; 1; // r will be reversed bits of v; first get LSB of v
+unsigned int r = v & 1; // r will be reversed bits of v; first get LSB of v
 int s = sizeof(v) * CHAR_BIT - 1; // extra shift needed at end
 
-for (v &gt;&gt;= 1; v; v &gt;&gt;= 1)
+for (v >>= 1; v; v >>= 1)
 {   
-  r &lt;&lt;= 1;
-  r |= v &amp; 1;
+  r <<= 1;
+  r |= v & 1;
   s--;
 }
-r &lt;&lt;= s; // shift when v's highest bits are zero
+r <<= s; // shift when v's highest bits are zero
 ```
 
 <strong>Faster (32-bit processor)</strong>  
 
 ```c
 unsigned char b = x;
-b = ((b * 0x0802LU &amp; 0x22110LU) | (b * 0x8020LU &amp; 0x88440LU)) * 0x10101LU &gt;&gt; 16; 
+b = ((b * 0x0802LU & 0x22110LU) | (b * 0x8020LU & 0x88440LU)) * 0x10101LU >> 16; 
 ```
 
 <strong>Faster (64-bit processor)</strong>  
 
 ```c
 unsigned char b; // reverse this (8-bit) byte
-b = (b * 0x0202020202ULL &amp; 0x010884422010ULL) % 1023;
+b = (b * 0x0202020202ULL & 0x010884422010ULL) % 1023;
 ```
 
 If you want to do this on a 32-bit `int`, just reverse the bits in each byte, and reverse the order of the bytes.  That is:  
@@ -7029,11 +7029,11 @@ If you want to do this on a 32-bit `int`, just reverse the bits in each byte, an
 ```c
 unsigned int toReverse;
 unsigned int reversed;
-unsigned char inByte0 = (toReverse &amp; 0xFF);
-unsigned char inByte1 = (toReverse &amp; 0xFF00) &gt;&gt; 8;
-unsigned char inByte2 = (toReverse &amp; 0xFF0000) &gt;&gt; 16;
-unsigned char inByte3 = (toReverse &amp; 0xFF000000) &gt;&gt; 24;
-reversed = (reverseBits(inByte0) &lt;&lt; 24) | (reverseBits(inByte1) &lt;&lt; 16) | (reverseBits(inByte2) &lt;&lt; 8) | (reverseBits(inByte3);
+unsigned char inByte0 = (toReverse & 0xFF);
+unsigned char inByte1 = (toReverse & 0xFF00) >> 8;
+unsigned char inByte2 = (toReverse & 0xFF0000) >> 16;
+unsigned char inByte3 = (toReverse & 0xFF000000) >> 24;
+reversed = (reverseBits(inByte0) << 24) | (reverseBits(inByte1) << 16) | (reverseBits(inByte2) << 8) | (reverseBits(inByte3);
 ```
 
 <hr>
@@ -7045,18 +7045,18 @@ I benchmarked the two most promising solutions, the lookup table, and bitwise-AN
 <strong>reverse.c</strong>  
 
 ```c
-#include &lt;stdlib.h&gt;
-#include &lt;stdio.h&gt;
-#include &lt;omp.h&gt;
+#include <stdlib.h>
+#include <stdio.h>
+#include <omp.h>
 
 unsigned int
 reverse(register unsigned int x)
 {
-    x = (((x &amp; 0xaaaaaaaa) &gt;&gt; 1) | ((x &amp; 0x55555555) &lt;&lt; 1));
-    x = (((x &amp; 0xcccccccc) &gt;&gt; 2) | ((x &amp; 0x33333333) &lt;&lt; 2));
-    x = (((x &amp; 0xf0f0f0f0) &gt;&gt; 4) | ((x &amp; 0x0f0f0f0f) &lt;&lt; 4));
-    x = (((x &amp; 0xff00ff00) &gt;&gt; 8) | ((x &amp; 0x00ff00ff) &lt;&lt; 8));
-    return((x &gt;&gt; 16) | (x &lt;&lt; 16));
+    x = (((x & 0xaaaaaaaa) >> 1) | ((x & 0x55555555) << 1));
+    x = (((x & 0xcccccccc) >> 2) | ((x & 0x33333333) << 2));
+    x = (((x & 0xf0f0f0f0) >> 4) | ((x & 0x0f0f0f0f) << 4));
+    x = (((x & 0xff00ff00) >> 8) | ((x & 0x00ff00ff) << 8));
+    return((x >> 16) | (x << 16));
 
 }
 
@@ -7064,7 +7064,7 @@ int main()
 {
     unsigned int *ints = malloc(100000000*sizeof(unsigned int));
     unsigned int *ints2 = malloc(100000000*sizeof(unsigned int));
-    for(unsigned int i = 0; i &lt; 100000000; i++)
+    for(unsigned int i = 0; i < 100000000; i++)
       ints[i] = rand();
 
     unsigned int *inptr = ints;
@@ -7094,9 +7094,9 @@ int main()
 <strong>reverse_lookup.c</strong>  
 
 ```c
-#include &lt;stdlib.h&gt;
-#include &lt;stdio.h&gt;
-#include &lt;omp.h&gt;
+#include <stdlib.h>
+#include <stdio.h>
+#include <omp.h>
 
 static const unsigned char BitReverseTable256[] = 
 {
@@ -7122,7 +7122,7 @@ int main()
 {
     unsigned int *ints = malloc(100000000*sizeof(unsigned int));
     unsigned int *ints2 = malloc(100000000*sizeof(unsigned int));
-    for(unsigned int i = 0; i &lt; 100000000; i++)
+    for(unsigned int i = 0; i < 100000000; i++)
       ints[i] = rand();
 
     unsigned int *inptr = ints;
@@ -7136,14 +7136,14 @@ int main()
     unsigned int in = *inptr;  
 
     // Option 1:
-    //*outptr = (BitReverseTable256[in &amp; 0xff] &lt;&lt; 24) | 
-    //    (BitReverseTable256[(in &gt;&gt; 8) &amp; 0xff] &lt;&lt; 16) | 
-    //    (BitReverseTable256[(in &gt;&gt; 16) &amp; 0xff] &lt;&lt; 8) |
-    //    (BitReverseTable256[(in &gt;&gt; 24) &amp; 0xff]);
+    //*outptr = (BitReverseTable256[in & 0xff] << 24) | 
+    //    (BitReverseTable256[(in >> 8) & 0xff] << 16) | 
+    //    (BitReverseTable256[(in >> 16) & 0xff] << 8) |
+    //    (BitReverseTable256[(in >> 24) & 0xff]);
 
     // Option 2:
-    unsigned char * p = (unsigned char *) &amp;(*inptr);
-    unsigned char * q = (unsigned char *) &amp;(*outptr);
+    unsigned char * p = (unsigned char *) &(*inptr);
+    unsigned char * q = (unsigned char *) &(*outptr);
     q[3] = BitReverseTable256[p[0]]; 
     q[2] = BitReverseTable256[p[1]]; 
     q[1] = BitReverseTable256[p[2]]; 
@@ -7355,10 +7355,10 @@ Time to bitflip 400000000 bytes: 0.050082 seconds !!!!!
 // Bitflip using AVX2 - The fastest Intel based bitflip in the world!!
 // Made by Anders Cedronius 2014 (anders.cedronius (you know what) gmail.com)
 
-#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;math.h&gt;
-#include &lt;omp.h&gt;
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <omp.h>
 
 using namespace std;
 
@@ -7383,15 +7383,15 @@ void bitflipbyte(unsigned char[],unsigned int,unsigned char[]);
 int main()
 {
 
-    for(unsigned int i = 0; i &lt; NUM_DATA_BYTES; i++)
+    for(unsigned int i = 0; i < NUM_DATA_BYTES; i++)
     {
         data[i] = rand();
     }
 
     printf ("\r\nData in(start):\r\n");
-    for (unsigned int j = 0; j &lt; 4; j++)
+    for (unsigned int j = 0; j < 4; j++)
     {
-        for (unsigned int i = 0; i &lt; DISPLAY_WIDTH; i++)
+        for (unsigned int i = 0; i < DISPLAY_WIDTH; i++)
         {
             printf ("0x%02x,",data[i+(j*DISPLAY_WIDTH)]);
         }
@@ -7405,9 +7405,9 @@ int main()
     double end_time = omp_get_wtime();
 
     printf ("\r\nData out:\r\n");
-    for (unsigned int j = 0; j &lt; 4; j++)
+    for (unsigned int j = 0; j < 4; j++)
     {
-        for (unsigned int i = 0; i &lt; DISPLAY_WIDTH; i++)
+        for (unsigned int i = 0; i < DISPLAY_WIDTH; i++)
         {
             printf ("0x%02x,",data[i+(j*DISPLAY_WIDTH)]);
         }
@@ -7464,7 +7464,7 @@ Divide up input by half and swap the two halves, continue until it reaches singl
 ```c
 Illustrated in the example below.
 
-Ex : If Input is 00101010   ==&gt; Expected output is 01010100
+Ex : If Input is 00101010   ==> Expected output is 01010100
 
 1. Divide the input into 2 halves 
     0010 --- 1010
@@ -7495,11 +7495,11 @@ int reverse_bits_recursive(unsigned int num, unsigned int numBits)
     unsigned int reversedNum;;
     unsigned int mask = 0;
 
-    mask = (0x1 &lt;&lt; (numBits/2)) - 1;
+    mask = (0x1 << (numBits/2)) - 1;
 
     if (numBits == 1) return num;
-    reversedNum = reverse_bits_recursive(num &gt;&gt; numBits/2, numBits/2) |
-                   reverse_bits_recursive((num &amp; mask), numBits/2) &lt;&lt; numBits/2;
+    reversedNum = reverse_bits_recursive(num >> numBits/2, numBits/2) |
+                   reverse_bits_recursive((num & mask), numBits/2) << numBits/2;
     return reversedNum;
 }
 
@@ -7842,8 +7842,8 @@ Select(A,n,i):
     /* Find ith element in L, pivot, or G */
     k = |L| + 1
     If i = k, return pivot
-    If i &lt; k, return Select(L, k-1, i)
-    If i &gt; k, return Select(G, n-k, i-k)
+    If i < k, return Select(L, k-1, i)
+    If i > k, return Select(G, n-k, i-k)
 ```
 
 It's also very nicely detailed in the Introduction to Algorithms book by Cormen et al.  
@@ -7862,17 +7862,17 @@ QuickSelect(A, k)
   let A1, A2 be new arrays
   # split into a pile A1 of small elements and A2 of big elements
   for i = 1 to n
-    if A[i] &lt; pivot then
+    if A[i] < pivot then
       append A[i] to A1
-    else if A[i] &gt; pivot then
+    else if A[i] > pivot then
       append A[i] to A2
     else
       # do nothing
   end for
-  if k &lt;= length(A1):
+  if k <= length(A1):
     # it's in the pile of small elements
     return QuickSelect(A1, k)
-  else if k &gt; length(A) - length(A2)
+  else if k > length(A) - length(A2)
     # it's in the pile of big elements
     return QuickSelect(A2, k - (length(A) - length(A2))
   else
@@ -7889,7 +7889,7 @@ T(n) = Theta(n) + T(n-1) = Theta(n<sup>2</sup>)
 But if the choices are indeed random, the expected running time is given by  
 
 ```c
-T(n) &lt;= Theta(n) + (1/n) ∑<sub>i=1 to n</sub>T(max(i, n-i-1))
+T(n) <= Theta(n) + (1/n) ∑<sub>i=1 to n</sub>T(max(i, n-i-1))
 ```
 
 where we are making the not entirely reasonable assumption that the recursion always lands in the larger of `A1` or `A2`.  
@@ -7898,10 +7898,10 @@ Let's guess that `T(n) &lt;= an` for some `a`.  Then we get
 
 ```c
 T(n) 
- &lt;= cn + (1/n) ∑<sub>i=1 to n</sub>T(max(i-1, n-i))
+ <= cn + (1/n) ∑<sub>i=1 to n</sub>T(max(i-1, n-i))
  = cn + (1/n) ∑<sub>i=1 to floor(n/2)</sub> T(n-i) + (1/n) ∑<sub>i=floor(n/2)+1 to n</sub> T(i)
- &lt;= cn + 2 (1/n) ∑<sub>i=floor(n/2) to n</sub> T(i)
- &lt;= cn + 2 (1/n) ∑<sub>i=floor(n/2) to n</sub> ai
+ <= cn + 2 (1/n) ∑<sub>i=floor(n/2) to n</sub> T(i)
+ <= cn + 2 (1/n) ∑<sub>i=floor(n/2) to n</sub> ai
 ```
 
 and now somehow we have to get the horrendous sum on the right of the plus sign to absorb the `cn` on the left.  If we just bound it as `2(1/n) ∑<sub>i=n/2 to n</sub> an`, we get roughly `2(1/n)(n/2)an = an`.  But this is too big - there's no room to squeeze in an extra `cn`.  So let's expand the sum using the arithmetic series formula:  
@@ -7910,7 +7910,7 @@ and now somehow we have to get the horrendous sum on the right of the plus sign 
 ∑<sub>i=floor(n/2) to n</sub> i  
  = ∑<sub>i=1 to n</sub> i - ∑<sub>i=1 to floor(n/2)</sub> i  
  = n(n+1)/2 - floor(n/2)(floor(n/2)+1)/2  
- &lt;= n<sup>2</sup>/2 - (n/4)<sup>2</sup>/2  
+ <= n<sup>2</sup>/2 - (n/4)<sup>2</sup>/2  
  = (15/32)n<sup>2</sup>
 ```
 
@@ -7918,9 +7918,9 @@ where we take advantage of n being "sufficiently large" to replace the ugly `flo
 
 ```c
 cn + 2 (1/n) ∑<sub>i=floor(n/2) to n</sub> ai,
- &lt;= cn + (2a/n) (15/32) n<sup>2</sup>
+ <= cn + (2a/n) (15/32) n<sup>2</sup>
  = n (c + (15/16)a)
- &lt;= an
+ <= an
 ```
 
 provided `a &gt; 16c`.  
@@ -8044,7 +8044,7 @@ For any given number:
 ```c
 n = num;
 rev = 0;
-while (num &gt; 0)
+while (num > 0)
 {
     dig = num % 10;
     rev = rev * 10 + dig;
@@ -8055,7 +8055,7 @@ while (num &gt; 0)
 If `n == rev` then `num` is a palindrome:  
 
 ```c
-cout &lt;&lt; "Number " &lt;&lt; (n == rev ? "IS" : "IS NOT") &lt;&lt; " a palindrome" &lt;&lt; endl;
+cout << "Number " << (n == rev ? "IS" : "IS NOT") << " a palindrome" << endl;
 ```
 
 #### Answer 3 (score 24)
@@ -8094,7 +8094,7 @@ private bool IsPowerOfTwo(ulong number)
     if (number == 0)
         return false;
 
-    for (ulong power = 1; power &gt; 0; power = power &lt;&lt; 1)
+    for (ulong power = 1; power > 0; power = power << 1)
     {
         // This for loop used shifting for powers of 2, meaning
         // that the value will become 0 after the last shift
@@ -8103,7 +8103,7 @@ private bool IsPowerOfTwo(ulong number)
 
         if (power == number)
             return true;
-        if (power &gt; number)
+        if (power > number)
             return false;
     }
     return false;
@@ -8131,7 +8131,7 @@ There's a simple trick for this problem:
 ```c
 bool IsPowerOfTwo(ulong x)
 {
-    return (x &amp; (x - 1)) == 0;
+    return (x & (x - 1)) == 0;
 }
 ```
 
@@ -8140,7 +8140,7 @@ Note, this function will report `true` for `0`, which is not a power of `2`. If 
 ```c
 bool IsPowerOfTwo(ulong x)
 {
-    return (x != 0) &amp;&amp; ((x &amp; (x - 1)) == 0);
+    return (x != 0) && ((x & (x - 1)) == 0);
 }
 ```
 
@@ -8166,19 +8166,19 @@ bool b = IsPowerOfTwo(4)
 Now we replace each occurrence of x with 4:  
 
 ```c
-return (4 != 0) &amp;&amp; ((4 &amp; (4-1)) == 0);
+return (4 != 0) && ((4 & (4-1)) == 0);
 ```
 
 Well we already know that 4 != 0 evals to true, so far so good.  But what about:  
 
 ```c
-((4 &amp; (4-1)) == 0)
+((4 & (4-1)) == 0)
 ```
 
 This translates to this of course:  
 
 ```c
-((4 &amp; 3) == 0)
+((4 & 3) == 0)
 ```
 
 But what exactly is `4&amp;3`?  
@@ -8202,19 +8202,19 @@ Imagine these values being stacked up much like elementary addition. The `&amp;`
 The result is simply 0. So we go back and look at what our return statement now translates to:  
 
 ```c
-return (4 != 0) &amp;&amp; ((4 &amp; 3) == 0);
+return (4 != 0) && ((4 & 3) == 0);
 ```
 
 Which translates now to:  
 
 ```c
-return true &amp;&amp; (0 == 0);
+return true && (0 == 0);
 ```
 
 
 
 ```c
-return true &amp;&amp; true;
+return true && true;
 ```
 
 We all know that `true &amp;&amp; true` is simply `true`, and this shows that for our example, 4 is a power of 2.  
@@ -8238,7 +8238,7 @@ And the grandaddy of them, <a href="https://rads.stackoverflow.com/amzn/click/co
 As <a href="http://graphics.stanford.edu/~seander/bithacks.html#DetermineIfPowerOf2" rel="noreferrer">Sean Anderson's page</a> explains, the expression `((x &amp; (x - 1)) == 0)` incorrectly indicates that 0 is a power of 2.  He suggests to use:  
 
 ```c
-(!(x &amp; (x - 1)) &amp;&amp; x)
+(!(x & (x - 1)) && x)
 ```
 
 to correct that problem.  
@@ -8256,8 +8256,8 @@ How can I find (iterate over) ALL the cycles in a directed graph from/to a given
 For example, I want something like this:  
 
 ```c
-A-&gt;B-&gt;A
-A-&gt;B-&gt;C-&gt;A
+A->B->A
+A->B->C->A
 ```
 
 <p>but not:
@@ -8336,10 +8336,10 @@ bool PointInTriangle (fPoint pt, fPoint v1, fPoint v2, fPoint v3)
     d2 = sign(pt, v2, v3);
     d3 = sign(pt, v3, v1);
 
-    has_neg = (d1 &lt; 0) || (d2 &lt; 0) || (d3 &lt; 0);
-    has_pos = (d1 &gt; 0) || (d2 &gt; 0) || (d3 &gt; 0);
+    has_neg = (d1 < 0) || (d2 < 0) || (d3 < 0);
+    has_pos = (d1 > 0) || (d2 > 0) || (d3 > 0);
 
-    return !(has_neg &amp;&amp; has_pos);
+    return !(has_neg && has_pos);
 }
 ```
 
@@ -8400,7 +8400,7 @@ Here is an algorithm in Python that works by in place on an array:
 
 ```c
 def permute(xs, low=0):
-    if low + 1 &gt;= len(xs):
+    if low + 1 >= len(xs):
         yield xs
     else:
         for p in permute(xs, low + 1):
@@ -8443,20 +8443,20 @@ permute array
 Here is how I implemented this in C#:  
 
 ```c
-public IEnumerable&lt;List&lt;T&gt;&gt; Permutate&lt;T&gt;(List&lt;T&gt; input)
+public IEnumerable<List<T>> Permutate<T>(List<T> input)
 {
     if (input.Count == 2) // this are permutations of array of size 2
     {
-        yield return new List&lt;T&gt;(input);
-        yield return new List&lt;T&gt; {input[1], input[0]}; 
+        yield return new List<T>(input);
+        yield return new List<T> {input[1], input[0]}; 
     }
     else
     {
         foreach(T elem in input) // going through array
         {
-            var rlist = new List&lt;T&gt;(input); // creating subarray = array
+            var rlist = new List<T>(input); // creating subarray = array
             rlist.Remove(elem); // removing element
-            foreach(List&lt;T&gt; retlist in Permutate(rlist))
+            foreach(List<T> retlist in Permutate(rlist))
             {
                 retlist.Insert(0,elem); // inserting the element at pos 0
                 yield return retlist;
@@ -8552,8 +8552,8 @@ Summary:
 Check out <a href="http://jgrapht.org/" rel="noreferrer">JGraphT</a> for a very simple and powerful Java graph library that is pretty well done and, to allay any confusion, <em>is different than JGraph</em>. Some <a href="https://github.com/jgrapht/jgrapht/wiki/HelloWorld" rel="noreferrer">sample code</a>:  
 
 ```c
-UndirectedGraph&lt;String, DefaultEdge&gt; g =
-        new SimpleGraph&lt;String, DefaultEdge&gt;(DefaultEdge.class);
+UndirectedGraph<String, DefaultEdge> g =
+        new SimpleGraph<String, DefaultEdge>(DefaultEdge.class);
 
     String v1 = "v1";
     String v2 = "v2";
@@ -8587,7 +8587,7 @@ This algorithm does not properly shift the elements:
 ```c
 Object temp = pool[position];
 
-for (int i = 0; i &lt; position; i++) {                
+for (int i = 0; i < position; i++) {                
     array[i+1] = array[i];
 }
 array[0] = temp;
@@ -8609,7 +8609,7 @@ What you should be doing is
 ```c
 Object temp = pool[position];
 
-for (int i = (position - 1); i &gt;= 0; i--) {                
+for (int i = (position - 1); i >= 0; i--) {                
     array[i+1] = array[i];
 }
 
@@ -8620,7 +8620,7 @@ array[0] = temp;
 Logically it does not work and you should reverse your loop:  
 
 ```c
-for (int i = position-1; i &gt;= 0; i--) {                
+for (int i = position-1; i >= 0; i--) {                
     array[i+1] = array[i];
 }
 ```
@@ -8724,7 +8724,7 @@ grid = "fxie amlo ewbx astu".split()
 nrows, ncols = len(grid), len(grid[0])
 
 # A dictionary word that could be a solution must use only the grid's
-# letters and have length &gt;= 3. (With a case-insensitive match.)
+# letters and have length >= 3. (With a case-insensitive match.)
 import re
 alphabet = ''.join(set(''.join(grid)))
 bogglable = re.compile('[' + alphabet + ']{3,}$', re.I).match
@@ -8798,7 +8798,7 @@ def MakeTrie(dictfile):
     for word in dict:
         curNode = root
         for letter in word.lower():
-            if 97 &lt;= ord(letter) &lt; 123:
+            if 97 <= ord(letter) < 123:
                 nextNode = curNode.children[ord(letter) - 97]
                 if nextNode is None:
                     nextNode = TrieNode(curNode, letter)
@@ -8822,7 +8822,7 @@ def BoggleWords(grid, dict):
         del queue[0]
         for dx, dy in ((1, 0), (1, -1), (0, -1), (-1, -1), (-1, 0), (-1, 1), (0, 1), (1, 1)):
             x2, y2 = x + dx, y + dy
-            if 0 &lt;= x2 &lt; cols and 0 &lt;= y2 &lt; rows:
+            if 0 <= x2 < cols and 0 <= y2 < rows:
                 s2 = s + grid[y2][x2]
                 node2 = node.children[ord(grid[y2][x2]) - 97]
                 if node2 is not None:
@@ -8889,70 +8889,70 @@ use warnings;
   # and for extending paths as new paths.
 
   # Usage:
-  # my $p = Prefix-&gt;new(path=&gt;[ $startnode ]);
-  # my $c = $p-&gt;child( $extensionNode );
-  # print $c-&gt;current_word ;
+  # my $p = Prefix->new(path=>[ $startnode ]);
+  # my $c = $p->child( $extensionNode );
+  # print $c->current_word ;
 
   package Prefix;
   use Moose;
 
-  has path =&gt; (
-      isa     =&gt; 'ArrayRef[MatrixNode]',
-      is      =&gt; 'rw',
-      default =&gt; sub { [] },
+  has path => (
+      isa     => 'ArrayRef[MatrixNode]',
+      is      => 'rw',
+      default => sub { [] },
   );
-  has current_word =&gt; (
-      isa        =&gt; 'Str',
-      is         =&gt; 'rw',
-      lazy_build =&gt; 1,
+  has current_word => (
+      isa        => 'Str',
+      is         => 'rw',
+      lazy_build => 1,
   );
 
   # Create a clone of this object
   # with a longer path
 
-  # $o-&gt;child( $successive-node-on-graph );
+  # $o->child( $successive-node-on-graph );
 
   sub child {
       my $self    = shift;
       my $newNode = shift;
-      my $f       = Prefix-&gt;new();
+      my $f       = Prefix->new();
 
       # Have to do this manually or other recorded paths get modified
-      push @{ $f-&gt;{path} }, @{ $self-&gt;{path} }, $newNode;
+      push @{ $f->{path} }, @{ $self->{path} }, $newNode;
       return $f;
   }
 
-  # Traverses $o-&gt;path left-to-right to get the string it represents.
+  # Traverses $o->path left-to-right to get the string it represents.
 
   sub _build_current_word {
       my $self = shift;
-      return join q{}, map { $_-&gt;{value} } @{ $self-&gt;{path} };
+      return join q{}, map { $_->{value} } @{ $self->{path} };
   }
 
   # Returns  the rightmost node on this path
 
   sub tail {
       my $self = shift;
-      return $self-&gt;{path}-&gt;[-1];
+      return $self->{path}->[-1];
   }
 
-  # pretty-format $o-&gt;path
+  # pretty-format $o->path
 
   sub pp_path {
       my $self = shift;
       my @path =
-        map { '[' . $_-&gt;{x_position} . ',' . $_-&gt;{y_position} . ']' }
-        @{ $self-&gt;{path} };
+        map { '[' . $_->{x_position} . ',' . $_->{y_position} . ']' }
+        @{ $self->{path} };
       return "[" . join( ",", @path ) . "]";
   }
 
   # pretty-format $o
   sub pp {
       my $self = shift;
-      return $self-&gt;current_word . ' =&gt; ' . $self-&gt;pp_path;
+      return $self->current_word . ' => ' . $self->pp_path;
   }
 
-  __PACKAGE__-&gt;meta-&gt;make_immutable;
+  __PACKAGE__->meta->make_immutable;
 }
 
 {
@@ -8968,13 +8968,13 @@ use warnings;
   package MatrixNode;
   use Moose;
 
-  has x_position =&gt; ( isa =&gt; 'Int', is =&gt; 'rw', required =&gt; 1 );
-  has y_position =&gt; ( isa =&gt; 'Int', is =&gt; 'rw', required =&gt; 1 );
-  has value      =&gt; ( isa =&gt; 'Str', is =&gt; 'rw', required =&gt; 1 );
-  has siblings   =&gt; (
-      isa     =&gt; 'ArrayRef[MatrixNode]',
-      is      =&gt; 'rw',
-      default =&gt; sub { [] }
+  has x_position => ( isa => 'Int', is => 'rw', required => 1 );
+  has y_position => ( isa => 'Int', is => 'rw', required => 1 );
+  has value      => ( isa => 'Str', is => 'rw', required => 1 );
+  has siblings   => (
+      isa     => 'ArrayRef[MatrixNode]',
+      is      => 'rw',
+      default => sub { [] }
   );
 
 # Its not implicitly uni-directional joins. It would be more effient in therory
@@ -8984,16 +8984,16 @@ use warnings;
   sub add_sibling {
       my $self    = shift;
       my $sibling = shift;
-      push @{ $self-&gt;siblings }, $sibling;
+      push @{ $self->siblings }, $sibling;
   }
 
   # Convenience method to derive a path starting at this node
 
   sub to_path {
       my $self = shift;
-      return Prefix-&gt;new( path =&gt; [$self] );
+      return Prefix->new( path => [$self] );
   }
-  __PACKAGE__-&gt;meta-&gt;make_immutable;
+  __PACKAGE__->meta->make_immutable;
 
 }
 
@@ -9002,27 +9002,27 @@ use warnings;
   package Matrix;
   use Moose;
 
-  has rows =&gt; (
-      isa     =&gt; 'ArrayRef',
-      is      =&gt; 'rw',
-      default =&gt; sub { [] },
+  has rows => (
+      isa     => 'ArrayRef',
+      is      => 'rw',
+      default => sub { [] },
   );
 
-  has regex =&gt; (
-      isa        =&gt; 'Regexp',
-      is         =&gt; 'rw',
-      lazy_build =&gt; 1,
+  has regex => (
+      isa        => 'Regexp',
+      is         => 'rw',
+      lazy_build => 1,
   );
 
-  has cells =&gt; (
-      isa        =&gt; 'ArrayRef',
-      is         =&gt; 'rw',
-      lazy_build =&gt; 1,
+  has cells => (
+      isa        => 'ArrayRef',
+      is         => 'rw',
+      lazy_build => 1,
   );
 
   sub add_row {
       my $self = shift;
-      push @{ $self-&gt;rows }, [@_];
+      push @{ $self->rows }, [@_];
   }
 
   # Most of these functions from here down are just builder functions,
@@ -9030,14 +9030,14 @@ use warnings;
   # Some just broken out to make it easier for me to process.
   # All thats really useful is add_row
   # The rest will generally be computed, stored, and ready to go
-  # from -&gt;cells by the time either -&gt;cells or -&gt;regex are called.
+  # from ->cells by the time either ->cells or ->regex are called.
 
   # traverse all cells and make a regex that covers them.
   sub _build_regex {
       my $self  = shift;
       my $chars = q{};
-      for my $cell ( @{ $self-&gt;cells } ) {
-          $chars .= $cell-&gt;value();
+      for my $cell ( @{ $self->cells } ) {
+          $chars .= $cell->value();
       }
       $chars = "[^$chars]";
       return qr/$chars/i;
@@ -9053,13 +9053,13 @@ use warnings;
       my $self = shift;
       my $x    = shift;
       my $y    = shift;
-      my $v    = $self-&gt;_read( $x, $y );
-      my $n    = MatrixNode-&gt;new(
-          x_position =&gt; $x,
-          y_position =&gt; $y,
-          value      =&gt; $v,
+      my $v    = $self->_read( $x, $y );
+      my $n    = MatrixNode->new(
+          x_position => $x,
+          y_position => $y,
+          value      => $v,
       );
-      $self-&gt;_write( $x, $y, $n );
+      $self->_write( $x, $y, $n );
       return $n;
   }
 
@@ -9068,18 +9068,18 @@ use warnings;
   sub _build_cells {
       my $self = shift;
       my @out  = ();
-      my @rows = @{ $self-&gt;{rows} };
+      my @rows = @{ $self->{rows} };
       for my $x ( 0 .. $#rows ) {
-          next unless defined $self-&gt;{rows}-&gt;[$x];
-          my @col = @{ $self-&gt;{rows}-&gt;[$x] };
+          next unless defined $self->{rows}->[$x];
+          my @col = @{ $self->{rows}->[$x] };
           for my $y ( 0 .. $#col ) {
-              next unless defined $self-&gt;{rows}-&gt;[$x]-&gt;[$y];
-              push @out, $self-&gt;_convert( $x, $y );
+              next unless defined $self->{rows}->[$x]->[$y];
+              push @out, $self->_convert( $x, $y );
           }
       }
       for my $c (@out) {
-          for my $n ( $self-&gt;_neighbours( $c-&gt;x_position, $c-&gt;y_position ) ) {
-              $c-&gt;add_sibling( $self-&gt;{rows}-&gt;[ $n-&gt;[0] ]-&gt;[ $n-&gt;[1] ] );
+          for my $n ( $self->_neighbours( $c->x_position, $c->y_position ) ) {
+              $c->add_sibling( $self->{rows}->[ $n->[0] ]->[ $n->[1] ] );
           }
       }
       return \@out;
@@ -9092,12 +9092,12 @@ use warnings;
       my $y    = shift;
       my @out  = ();
       for my $sx ( -1, 0, 1 ) {
-          next if $sx + $x &lt; 0;
-          next if not defined $self-&gt;{rows}-&gt;[ $sx + $x ];
+          next if $sx + $x < 0;
+          next if not defined $self->{rows}->[ $sx + $x ];
           for my $sy ( -1, 0, 1 ) {
-              next if $sx == 0 &amp;&amp; $sy == 0;
-              next if $sy + $y &lt; 0;
-              next if not defined $self-&gt;{rows}-&gt;[ $sx + $x ]-&gt;[ $sy + $y ];
+              next if $sx == 0 && $sy == 0;
+              next if $sy + $y < 0;
+              next if not defined $self->{rows}->[ $sx + $x ]->[ $sy + $y ];
               push @out, [ $sx + $x, $sy + $y ];
           }
       }
@@ -9107,21 +9107,21 @@ use warnings;
   sub _has_row {
       my $self = shift;
       my $x    = shift;
-      return defined $self-&gt;{rows}-&gt;[$x];
+      return defined $self->{rows}->[$x];
   }
 
   sub _has_cell {
       my $self = shift;
       my $x    = shift;
       my $y    = shift;
-      return defined $self-&gt;{rows}-&gt;[$x]-&gt;[$y];
+      return defined $self->{rows}->[$x]->[$y];
   }
 
   sub _read {
       my $self = shift;
       my $x    = shift;
       my $y    = shift;
-      return $self-&gt;{rows}-&gt;[$x]-&gt;[$y];
+      return $self->{rows}->[$x]->[$y];
   }
 
   sub _write {
@@ -9129,11 +9129,11 @@ use warnings;
       my $x    = shift;
       my $y    = shift;
       my $v    = shift;
-      $self-&gt;{rows}-&gt;[$x]-&gt;[$y] = $v;
+      $self->{rows}->[$x]->[$y] = $v;
       return $v;
   }
 
-  __PACKAGE__-&gt;meta-&gt;make_immutable;
+  __PACKAGE__->meta->make_immutable;
 }
 
 use Tree::Trie;
@@ -9141,16 +9141,16 @@ use Tree::Trie;
 sub readDict {
   my $fn = shift;
   my $re = shift;
-  my $d  = Tree::Trie-&gt;new();
+  my $d  = Tree::Trie->new();
 
   # Dictionary Loading
-  open my $fh, '&lt;', $fn;
-  while ( my $line = &lt;$fh&gt; ) {
+  open my $fh, '<', $fn;
+  while ( my $line = <$fh> ) {
       chomp($line);
 
  # Commenting the next line makes it go from 1.5 seconds to 7.5 seconds. EPIC.
       next if $line =~ $re;    # Early Filter
-      $d-&gt;add( uc($line) );
+      $d->add( uc($line) );
   }
   return $d;
 }
@@ -9165,38 +9165,38 @@ sub traverseGraph {
   # Inject all grid nodes into the processing queue.
 
   my @queue =
-    grep { $d-&gt;lookup( $_-&gt;current_word ) }
-    map  { $_-&gt;to_path } @{ $m-&gt;cells };
+    grep { $d->lookup( $_->current_word ) }
+    map  { $_->to_path } @{ $m->cells };
 
   while (@queue) {
       my $item = shift @queue;
 
       # put the dictionary into "exact match" mode.
 
-      $d-&gt;deepsearch('exact');
+      $d->deepsearch('exact');
 
-      my $cword = $item-&gt;current_word;
+      my $cword = $item->current_word;
       my $l     = length($cword);
 
-      if ( $l &gt;= $min &amp;&amp; $d-&gt;lookup($cword) ) {
+      if ( $l >= $min && $d->lookup($cword) ) {
           push @words,
             $item;    # push current path into "words" if it exactly matches.
       }
-      next if $l &gt; $max;
+      next if $l > $max;
 
       # put the dictionary into "is-a-prefix" mode.
-      $d-&gt;deepsearch('boolean');
+      $d->deepsearch('boolean');
 
-    siblingloop: foreach my $sibling ( @{ $item-&gt;tail-&gt;siblings } ) {
-          foreach my $visited ( @{ $item-&gt;{path} } ) {
+    siblingloop: foreach my $sibling ( @{ $item->tail->siblings } ) {
+          foreach my $visited ( @{ $item->{path} } ) {
               next siblingloop if $sibling == $visited;
           }
 
           # given path y , iterate for all its end points
-          my $subpath = $item-&gt;child($sibling);
+          my $subpath = $item->child($sibling);
 
           # create a new path for each end-point
-          if ( $d-&gt;lookup( $subpath-&gt;current_word ) ) {
+          if ( $d->lookup( $subpath->current_word ) ) {
 
              # if the new path is a prefix, add it to the bottom of the queue.
               push @queue, $subpath;
@@ -9210,17 +9210,17 @@ sub setup_predetermined {
   my $m = shift; 
   my $gameNo = shift;
   if( $gameNo == 0 ){
-      $m-&gt;add_row(qw( F X I E ));
-      $m-&gt;add_row(qw( A M L O ));
-      $m-&gt;add_row(qw( E W B X ));
-      $m-&gt;add_row(qw( A S T U ));
+      $m->add_row(qw( F X I E ));
+      $m->add_row(qw( A M L O ));
+      $m->add_row(qw( E W B X ));
+      $m->add_row(qw( A S T U ));
       return $m;
   }
   if( $gameNo == 1 ){
-      $m-&gt;add_row(qw( D G H I ));
-      $m-&gt;add_row(qw( K L P S ));
-      $m-&gt;add_row(qw( Y E U T ));
-      $m-&gt;add_row(qw( E O R N ));
+      $m->add_row(qw( D G H I ));
+      $m->add_row(qw( K L P S ));
+      $m->add_row(qw( Y E U T ));
+      $m->add_row(qw( E O R N ));
       return $m;
   }
 }
@@ -9234,20 +9234,20 @@ sub setup_random {
       for( 1 .. 4 ){
           push @r , $letters[int(rand(25))];
       }
-      $m-&gt;add_row( @r );
+      $m->add_row( @r );
   }
 }
 
 # Here is where the real work starts.
 
-my $m = Matrix-&gt;new();
+my $m = Matrix->new();
 setup_predetermined( $m, 0 );
 #setup_random( $m, 5 );
 
-my $d = readDict( 'dict.txt', $m-&gt;regex );
-my $c = scalar @{ $m-&gt;cells };    # get the max, as per spec
+my $d = readDict( 'dict.txt', $m->regex );
+my $c = scalar @{ $m->cells };    # get the max, as per spec
 
-print join ",\n", map { $_-&gt;pp } @{
+print join ",\n", map { $_->pp } @{
   traverseGraph( $d, $m, 3, $c ) ;
 };
 ```
@@ -9272,7 +9272,7 @@ Histogram for block sizes:
  64-79          18831   1% ==
  80-95          19271   1% ==
  96-111        238398  22% ==============================
-112-127          3007  &lt;1% 
+112-127          3007  <1% 
 128-143        236727  21% ==============================
 ```
 
@@ -9288,13 +9288,13 @@ Here is some varying code additions:
 sub readDict_nofilter {
   my $fn = shift;
   my $re = shift;
-  my $d  = Tree::Trie-&gt;new();
+  my $d  = Tree::Trie->new();
 
   # Dictionary Loading
-  open my $fh, '&lt;', $fn;
-  while ( my $line = &lt;$fh&gt; ) {
+  open my $fh, '<', $fn;
+  while ( my $line = <$fh> ) {
       chomp($line);
-      $d-&gt;add( uc($line) );
+      $d->add( uc($line) );
   }
   return $d;
 }
@@ -9314,10 +9314,10 @@ sub benchmark_io {
       return qr/$c/i;
   };
   cmpthese( 200 , { 
-      filtered =&gt; sub { 
-          readDict('dict.txt', $regexen-&gt;() );
+      filtered => sub { 
+          readDict('dict.txt', $regexen->() );
       }, 
-      unfiltered =&gt; sub {
+      unfiltered => sub {
           readDict_nofilter('dict.txt');
       }
   });
@@ -9379,7 +9379,7 @@ def prime_factors(n):
     """Returns all the prime factors of a positive integer"""
     factors = []
     d = 2
-    while n &gt; 1:
+    while n > 1:
         while n % d == 0:
             factors.append(d)
             n /= d
@@ -9402,13 +9402,13 @@ def prime_factors(n):
     """Returns all the prime factors of a positive integer"""
     factors = []
     d = 2
-    while n &gt; 1:
+    while n > 1:
         while n % d == 0:
             factors.append(d)
             n /= d
         d = d + 1
-        if d*d &gt; n:
-            if n &gt; 1: factors.append(n)
+        if d*d > n:
+            if n > 1: factors.append(n)
             break
     return factors
 
@@ -9434,7 +9434,7 @@ if(n mod 3 == 0)
 }
 
 multOfSix = 6;
-while(multOfSix - 1 &lt;= n)
+while(multOfSix - 1 <= n)
 {
     if(n mod (multOfSix - 1) == 0)
     {
@@ -9485,9 +9485,9 @@ void rmdup(int *array, int length)
 {
     int *current , *end = array + length - 1;
 
-    for ( current = array + 1; array &lt; end; array++, current = array + 1 )
+    for ( current = array + 1; array < end; array++, current = array + 1 )
     {
-        while ( current &lt;= end )
+        while ( current <= end )
         {
             if ( *current == *array )
             {
@@ -9530,7 +9530,7 @@ void uniqueInPlace(T)(ref T[] dataIn) {
 }
 
 void uniqueInPlaceImpl(T)(ref T[] dataIn, size_t start) {
-    if(dataIn.length - start &lt; 2)
+    if(dataIn.length - start < 2)
         return;
 
     invariant T sentinel = dataIn[start];
@@ -9543,11 +9543,11 @@ void uniqueInPlaceImpl(T)(ref T[] dataIn, size_t start) {
             return elem.toHash;
         } else {
             static auto ti = typeid(typeof(elem));
-            return ti.getHash(&amp;elem);
+            return ti.getHash(&elem);
         }
     }
 
-    for(size_t index = 0; index &lt; data.length;) {
+    for(size_t index = 0; index < data.length;) {
         if(data[index] == sentinel) {
             index++;
             continue;
@@ -9574,7 +9574,7 @@ void uniqueInPlaceImpl(T)(ref T[] dataIn, size_t start) {
         auto hashHash = getHash(data[hash]) % data.length;
         if(hashHash != hash) {
             swap(data[index], data[hash]);
-            if(hash &lt; index)
+            if(hash < index)
                 index++;
         } else {
             index++;
@@ -9584,13 +9584,13 @@ void uniqueInPlaceImpl(T)(ref T[] dataIn, size_t start) {
 
     size_t swapPos = 0;
     foreach(i; 0..data.length) {
-        if(data[i] != sentinel &amp;&amp; i == getHash(data[i]) % data.length) {
+        if(data[i] != sentinel && i == getHash(data[i]) % data.length) {
             swap(data[i], data[swapPos++]);
         }
     }
 
     size_t sentinelPos = data.length;
-    for(size_t i = swapPos; i &lt; sentinelPos;) {
+    for(size_t i = swapPos; i < sentinelPos;) {
         if(data[i] == sentinel) {
             swap(data[i], data[--sentinelPos]);
         } else {
@@ -9700,7 +9700,7 @@ It's advantage is that it uses generic type arguments and therefore will not cau
 ```c
 public static class HashHelper
 {
-    public static int GetHashCode&lt;T1, T2&gt;(T1 arg1, T2 arg2)
+    public static int GetHashCode<T1, T2>(T1 arg1, T2 arg2)
     {
          unchecked
          {
@@ -9708,7 +9708,7 @@ public static class HashHelper
          }
     }
 
-    public static int GetHashCode&lt;T1, T2, T3&gt;(T1 arg1, T2 arg2, T3 arg3)
+    public static int GetHashCode<T1, T2, T3>(T1 arg1, T2 arg2, T3 arg3)
     {
         unchecked
         {
@@ -9718,7 +9718,7 @@ public static class HashHelper
         }
     }
 
-    public static int GetHashCode&lt;T1, T2, T3, T4&gt;(T1 arg1, T2 arg2, T3 arg3, 
+    public static int GetHashCode<T1, T2, T3, T4>(T1 arg1, T2 arg2, T3 arg3, 
         T4 arg4)
     {
         unchecked
@@ -9730,7 +9730,7 @@ public static class HashHelper
         }
     }
 
-    public static int GetHashCode&lt;T&gt;(T[] list)
+    public static int GetHashCode<T>(T[] list)
     {
         unchecked
         {
@@ -9743,7 +9743,7 @@ public static class HashHelper
         }
     }
 
-    public static int GetHashCode&lt;T&gt;(IEnumerable&lt;T&gt; list)
+    public static int GetHashCode<T>(IEnumerable<T> list)
     {
         unchecked
         {
@@ -9756,13 +9756,13 @@ public static class HashHelper
         }
     }
 
-    /// &lt;summary&gt;
+    /// <summary>
     /// Gets a hashcode for a collection for that the order of items 
     /// does not matter.
     /// So {1, 2, 3} and {3, 2, 1} will get same hash code.
-    /// &lt;/summary&gt;
-    public static int GetHashCodeForOrderNoMatterCollection&lt;T&gt;(
-        IEnumerable&lt;T&gt; list)
+    /// </summary>
+    public static int GetHashCodeForOrderNoMatterCollection<T>(
+        IEnumerable<T> list)
     {
         unchecked
         {
@@ -9777,13 +9777,13 @@ public static class HashHelper
         }
     }
 
-    /// &lt;summary&gt;
+    /// <summary>
     /// Alternative way to get a hashcode is to use a fluent 
-    /// interface like this:&lt;br /&gt;
+    /// interface like this:<br />
     /// return 0.CombineHashCode(field1).CombineHashCode(field2).
     ///     CombineHashCode(field3);
-    /// &lt;/summary&gt;
-    public static int CombineHashCode&lt;T&gt;(this int hashCode, T arg)
+    /// </summary>
+    public static int CombineHashCode<T>(this int hashCode, T arg)
     {
         unchecked
         {
@@ -9997,7 +9997,7 @@ void stack_push (queue_data *q, int val)
   int old_count = queue_get_element_count (q), i;
 
   queue_insert (q, val);
-  for (i=0; i&lt;old_count; i++)
+  for (i=0; i<old_count; i++)
   {
     queue_insert (q, queue_remove (q));
   }
@@ -10028,9 +10028,9 @@ int ipow(int base, int exp)
     int result = 1;
     for (;;)
     {
-        if (exp &amp; 1)
+        if (exp & 1)
             result *= base;
-        exp &gt;&gt;= 1;
+        exp >>= 1;
         if (!exp)
             break;
         base *= base;
@@ -10075,8 +10075,8 @@ There are no efficient algorithms to find this optimal sequence of multiplicatio
 If you need to raise 2 to a power. The fastest way to do so is to bit shift by the power.  
 
 ```c
-2 ** 3 == 1 &lt;&lt; 3 == 8
-2 ** 30 == 1 &lt;&lt; 30 == 1073741824 (A Gigabyte)
+2 ** 3 == 1 << 3 == 8
+2 ** 30 == 1 << 30 == 1073741824 (A Gigabyte)
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -10113,13 +10113,13 @@ static char[] ReverseAllWords(char[] in_text)
 {
     int lindex = 0;
     int rindex = in_text.Length - 1;
-    if (rindex &gt; 1)
+    if (rindex > 1)
     {
         //reverse complete phrase
         in_text = ReverseString(in_text, 0, rindex);
 
         //reverse each word in resultant reversed phrase
-        for (rindex = 0; rindex &lt;= in_text.Length; rindex++)
+        for (rindex = 0; rindex <= in_text.Length; rindex++)
         {
             if (rindex == in_text.Length || in_text[rindex] == ' ')
             {
@@ -10134,7 +10134,7 @@ static char[] ReverseAllWords(char[] in_text)
 static char[] ReverseString(char[] intext, int lindex, int rindex)
 {
     char tempc;
-    while (lindex &lt; rindex)
+    while (lindex < rindex)
     {
         tempc = intext[lindex];
         intext[lindex++] = intext[rindex];
@@ -10148,8 +10148,8 @@ static char[] ReverseString(char[] intext, int lindex, int rindex)
 ```c
 Not exactly in place, but anyway: Python:
 
-&gt;&gt;&gt; a = "These pretzels are making me thirsty"
-&gt;&gt;&gt; " ".join(a.split()[::-1])
+>>> a = "These pretzels are making me thirsty"
+>>> " ".join(a.split()[::-1])
 'thirsty me making are pretzels These'
 ```
 
@@ -10181,7 +10181,7 @@ hash(unsigned char *str)
     int c;
 
     while (c = *str++)
-        hash = ((hash &lt;&lt; 5) + hash) + c; /* hash * 33 + c */
+        hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
 
     return hash;
 }
@@ -10359,7 +10359,7 @@ Scala function:
 ```c
 def countChange(money: Int, coins: List[Int]): Int =
   if (money == 0) 1
-  else if (coins.isEmpty || money &lt; 0) 0
+  else if (coins.isEmpty || money < 0) 0
   else countChange(money - coins.head, coins) + countChange(money, coins.tail)
 ```
 
@@ -10381,7 +10381,7 @@ I'm thinking that using `apply()`, `map()`, or something similar might be better
 I want to take a dictionary of the following form and apply each operation to a given Series object and return a 'filtered' Series object.  
 
 ```c
-relops = {'&gt;=': [1], '&lt;=': [1]}
+relops = {'>=': [1], '<=': [1]}
 ```
 
 <h5>Long Example</h2>
@@ -10404,22 +10404,22 @@ I'll start with an example of what I have currently and just filtering a single 
 The user provides a dictionary with the operations they want to perform:  
 
 ```c
-&gt;&gt;&gt; df = pandas.DataFrame({'col1': [0, 1, 2], 'col2': [10, 11, 12]})
-&gt;&gt;&gt; print df
-&gt;&gt;&gt; print df
+>>> df = pandas.DataFrame({'col1': [0, 1, 2], 'col2': [10, 11, 12]})
+>>> print df
+>>> print df
    col1  col2
 0     0    10
 1     1    11
 2     2    12
 
-&gt;&gt;&gt; from operator import le, ge
-&gt;&gt;&gt; ops ={'&gt;=': ge, '&lt;=': le}
-&gt;&gt;&gt; apply_relops(df['col1'], {'&gt;=': [1]})
+>>> from operator import le, ge
+>>> ops ={'>=': ge, '<=': le}
+>>> apply_relops(df['col1'], {'>=': [1]})
 col1
 1       1
 2       2
 Name: col1
-&gt;&gt;&gt; apply_relops(df['col1'], relops = {'&gt;=': [1], '&lt;=': [1]})
+>>> apply_relops(df['col1'], relops = {'>=': [1], '<=': [1]})
 col1
 1       1
 Name: col1
@@ -10433,19 +10433,19 @@ Also, I would like to expand this so that the dictionary passed in can include t
 Pandas (and numpy) allow for <a href="http://pandas.pydata.org/pandas-docs/dev/indexing.html#boolean-indexing" rel="noreferrer">boolean indexing</a>, which will be much more efficient:  
 
 ```c
-In [11]: df.loc[df['col1'] &gt;= 1, 'col1']
+In [11]: df.loc[df['col1'] >= 1, 'col1']
 Out[11]: 
 1    1
 2    2
 Name: col1
 
-In [12]: df[df['col1'] &gt;= 1]
+In [12]: df[df['col1'] >= 1]
 Out[12]: 
    col1  col2
 1     1    11
 2     2    12
 
-In [13]: df[(df['col1'] &gt;= 1) &amp; (df['col1'] &lt;=1 )]
+In [13]: df[(df['col1'] >= 1) & (df['col1'] <=1 )]
 Out[13]: 
    col1  col2
 1     1    11
@@ -10473,7 +10473,7 @@ Out[18]:
 Update: <a href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.query.html" rel="noreferrer">pandas 0.13 has a query method</a> for these kind of use cases, assuming column names are valid identifiers the following works (and can be more efficient for large frames as it uses <a href="https://github.com/pydata/numexpr" rel="noreferrer">numexpr</a> behind the scenes):  
 
 ```c
-In [21]: df.query('col1 &lt;= 1 &amp; 1 &lt;= col1')
+In [21]: df.query('col1 <= 1 & 1 <= col1')
 Out[21]:
    col1  col2
 1     1    11
@@ -10492,7 +10492,7 @@ def conjunction(*conditions):
     return functools.reduce(np.logical_and, conditions)
 
 c_1 = data.col1 == True
-c_2 = data.col2 &lt; 64
+c_2 = data.col2 < 64
 c_3 = data.col3 != 4
 
 data_filtered = data[conjunction(c1,c2,c3)]
@@ -10508,13 +10508,13 @@ Note that this still has some redundancies: a) shortcutting does not happen on a
 Use:  
 
 ```c
-filtered_df = df[(df['col1'] &gt;= 1) &amp; (df['col1'] &lt;= 5)]
+filtered_df = df[(df['col1'] >= 1) & (df['col1'] <= 5)]
 ```
 
 <strong>Another Example</strong>, To filter the dataframe for values belonging to Feb-2018, use the below code   
 
 ```c
-filtered_df = df[(df['year'] == 2018) &amp; (df['month'] == 2)]
+filtered_df = df[(df['year'] == 2018) & (df['month'] == 2)]
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -10525,9 +10525,9 @@ filtered_df = df[(df['year'] == 2018) &amp; (df['month'] == 2)]
 On my homepage, I'm using this method to hide my email from spam bots:  
 
 ```c
-&lt;a href="admin [at] example.com"
+<a href="admin [at] example.com"
    rel="nofollow"
-   onclick="this.href='mailto:' + 'admin' + '@' + 'example.com'"&gt;Contact me&lt;/a&gt;
+   onclick="this.href='mailto:' + 'admin' + '@' + 'example.com'">Contact me</a>
 ```
 
 What do you think about it? Is it effective? What other methods do you know or use?  
@@ -10536,25 +10536,25 @@ What do you think about it? Is it effective? What other methods do you know or u
 This is the method I used, with a server-side include, e.g. `&lt;!--#include file="emailObfuscator.include" --&gt;` where `emailObfuscator.include` contains the following:  
 
 ```c
-&lt;!-- // http://lists.evolt.org/archive/Week-of-Mon-20040202/154813.html --&gt;
-&lt;script type="text/javascript"&gt;
+<!-- // http://lists.evolt.org/archive/Week-of-Mon-20040202/154813.html -->
+<script type="text/javascript">
     function gen_mail_to_link(lhs,rhs,subject) {
-        document.write("&lt;a href=\"mailto");
+        document.write("<a href=\"mailto");
         document.write(":" + lhs + "@");
-        document.write(rhs + "?subject=" + subject + "\"&gt;" + lhs + "@" + rhs + "&lt;\/a&gt;");
+        document.write(rhs + "?subject=" + subject + "\">" + lhs + "@" + rhs + "<\/a>");
     }
-&lt;/script&gt;
+</script>
 ```
 
 To include an address, I use JavaScript:  
 
 ```c
-&lt;script type="text/javascript"&gt; 
+<script type="text/javascript"> 
     gen_mail_to_link('john.doe','example.com','Feedback about your site...');
-&lt;/script&gt;
-&lt;noscript&gt;
-  &lt;em&gt;Email address protected by JavaScript. Activate JavaScript to see the email.&lt;/em&gt;
-&lt;/noscript&gt;
+</script>
+<noscript>
+  <em>Email address protected by JavaScript. Activate JavaScript to see the email.</em>
+</noscript>
 ```
 
 Because I have been getting email via Gmail since 2005, spam is pretty much a non-issue. So, I can't speak of how effective this method is. You might want to read <a href="http://techblog.tilllate.com/2008/07/20/ten-methods-to-obfuscate-e-mail-addresses-compared/">this study</a> (although it's old) that produced this graph:   
@@ -10652,14 +10652,14 @@ treeNodePtr findLCA(treeNodePtr root, treeNodePtr p, treeNodePtr q) {
                 return root;
         } else {
                 // get LCA of p and q in left subtree.
-                treeNodePtr l=findLCA(root-&gt;left , p , q);
+                treeNodePtr l=findLCA(root->left , p , q);
 
                 // get LCA of p and q in right subtree.
-                treeNodePtr r=findLCA(root-&gt;right , p, q);
+                treeNodePtr r=findLCA(root->right , p, q);
 
                 // if one of p or q is in leftsubtree and other is in right
                 // then root it the LCA.
-                if(l &amp;&amp; r) {
+                if(l && r) {
                         return root;
                 }
                 // else if l is not null, l is LCA.
@@ -10683,19 +10683,19 @@ treeNodePtr findLCA(treeNodePtr root, treeNodePtr p, treeNodePtr q) {
         }
 
         // if either p or q is direct child of root then root is LCA.
-        if(root-&gt;left==p || root-&gt;left==q || 
-           root-&gt;right ==p || root-&gt;right ==q) {
+        if(root->left==p || root->left==q || 
+           root->right ==p || root->right ==q) {
                 return root;
         } else {
                 // get LCA of p and q in left subtree.
-                treeNodePtr l=findLCA(root-&gt;left , p , q);
+                treeNodePtr l=findLCA(root->left , p , q);
 
                 // get LCA of p and q in right subtree.
-                treeNodePtr r=findLCA(root-&gt;right , p, q);
+                treeNodePtr r=findLCA(root->right , p, q);
 
                 // if one of p or q is in leftsubtree and other is in right
                 // then root it the LCA.
-                if(l &amp;&amp; r) {
+                if(l && r) {
                         return root;
                 }
                 // else if l is not null, l is LCA.
@@ -10729,7 +10729,7 @@ public static Node LCA(Node root, Node a, Node b) {
 
    // If both nodes lie in left or right then their LCA is in left or right,
    // Otherwise root is their LCA
-   if (left != null &amp;&amp; right != null) {
+   if (left != null && right != null) {
       return root;
    }
 
@@ -10882,15 +10882,15 @@ Fast solution for Java using an `ArrayList` and a `HashMap`: [element -> index].
 Motivation: I needed a set of items with `RandomAccess` properties, especially to pick a random item from the set (see `pollRandom` method). Random navigation in a binary tree is not accurate: trees are not perfectly balanced, which would not lead to a uniform distribution.  
 
 ```c
-public class RandomSet&lt;E&gt; extends AbstractSet&lt;E&gt; {
+public class RandomSet<E> extends AbstractSet<E> {
 
-    List&lt;E&gt; dta = new ArrayList&lt;E&gt;();
-    Map&lt;E, Integer&gt; idx = new HashMap&lt;E, Integer&gt;();
+    List<E> dta = new ArrayList<E>();
+    Map<E, Integer> idx = new HashMap<E, Integer>();
 
     public RandomSet() {
     }
 
-    public RandomSet(Collection&lt;E&gt; items) {
+    public RandomSet(Collection<E> items) {
         for (E item : items) {
             idx.put(item, dta.size());
             dta.add(item);
@@ -10908,18 +10908,18 @@ public class RandomSet&lt;E&gt; extends AbstractSet&lt;E&gt; {
     }
 
     /**
-     * Override element at position &lt;code&gt;id&lt;/code&gt; with last element.
+     * Override element at position <code>id</code> with last element.
      * @param id
      */
     public E removeAt(int id) {
-        if (id &gt;= dta.size()) {
+        if (id >= dta.size()) {
             return null;
         }
         E res = dta.get(id);
         idx.remove(res);
         E last = dta.remove(dta.size() - 1);
         // skip filling the hole if last is removed
-        if (id &lt; dta.size()) {
+        if (id < dta.size()) {
             idx.put(last, id);
             dta.set(id, last);
         }
@@ -10955,7 +10955,7 @@ public class RandomSet&lt;E&gt; extends AbstractSet&lt;E&gt; {
     }
 
     @Override
-    public Iterator&lt;E&gt; iterator() {
+    public Iterator<E> iterator() {
         return dta.iterator();
     }
 }
@@ -10982,16 +10982,16 @@ log(n!) = log(1) + log(2) + ... + log(n-1) + log(n)
 You can get the upper bound by   
 
 ```c
-log(1) + log(2) + ... + log(n) &lt;= log(n) + log(n) + ... + log(n)
+log(1) + log(2) + ... + log(n) <= log(n) + log(n) + ... + log(n)
                                 = n*log(n)
 ```
 
 And you can get the lower bound by doing a similar thing after throwing away the first half of the sum:  
 
 ```c
-log(1) + ... + log(n/2) + ... + log(n) &gt;= log(n/2) + ... + log(n) 
+log(1) + ... + log(n/2) + ... + log(n) >= log(n/2) + ... + log(n) 
                                        = log(n/2) + log(n/2+1) + ... + log(n-1) + log(n)
-                                       &gt;= log(n/2) + ... + log(n/2)
+                                       >= log(n/2) + ... + log(n/2)
                                         = n/2 * log(n/2) 
 ```
 
@@ -11032,19 +11032,19 @@ int maxLength = 1, bestEnd = 0;
 DP[0] = 1;
 prev[0] = -1;
 
-for (int i = 1; i &lt; N; i++)
+for (int i = 1; i < N; i++)
 {
    DP[i] = 1;
    prev[i] = -1;
 
-   for (int j = i - 1; j &gt;= 0; j--)
-      if (DP[j] + 1 &gt; DP[i] &amp;&amp; array[j] &lt; array[i])
+   for (int j = i - 1; j >= 0; j--)
+      if (DP[j] + 1 > DP[i] && array[j] < array[i])
       {
          DP[i] = DP[j] + 1;
          prev[i] = j;
       }
 
-   if (DP[i] &gt; maxLength)
+   if (DP[i] > maxLength)
    {
       bestEnd = i;
       maxLength = DP[i];
@@ -11137,12 +11137,12 @@ def recursive_solution(remaining_sequence, bigger_than=None):
     # Recursive case 2: include the current element if it's big enough.            
     first = remaining_sequence[0]
 
-    if (first &gt; bigger_than) or (bigger_than is None):
+    if (first > bigger_than) or (bigger_than is None):
 
         sequence_with = [first] + recursive_solution(remaining_sequence[1:], first)
 
         # Choose whichever of case 1 and case 2 were longer.                         
-        if len(sequence_with) &gt;= len(best_sequence):
+        if len(sequence_with) >= len(best_sequence):
             best_sequence = sequence_with
 
     return best_sequence                                                        
@@ -11172,8 +11172,8 @@ def dynamic_programming_solution(sequence):
             # If the prev_elem is smaller than the current elem (so it's increasing)   
             # And if the longest subsequence from prev_elem would yield a better       
             # subsequence for curr_elem.                                               
-            if ((sequence[prev_elem] &lt; sequence[curr_elem]) and
-                    (subsequence_length_through_prev &gt;
+            if ((sequence[prev_elem] < sequence[curr_elem]) and
+                    (subsequence_length_through_prev >
                          longest_subsequence_ending_with[curr_elem])):
 
                 # Set the candidate best subsequence at curr_elem to go through prev.    
@@ -11181,7 +11181,7 @@ def dynamic_programming_solution(sequence):
                 backreference_for_subsequence_ending_with[curr_elem] = prev_elem
                 # If the new end is the best, update the best.    
 
-        if (longest_subsequence_ending_with[curr_elem] &gt;
+        if (longest_subsequence_ending_with[curr_elem] >
                 longest_subsequence_ending_with[current_best_end]):
             current_best_end = curr_elem
             # Output the overall best by following the backreferences.  
@@ -11210,11 +11210,11 @@ def find_smallest_elem_as_big_as(sequence, subsequence, elem):
     low = 0
     high = len(subsequence) - 1
 
-    while high &gt; low:
+    while high > low:
         mid = (high + low) / 2
         # If the current element is not as big as elem, throw out the low half of    
         # sequence.                                                                  
-        if sequence[subsequence[mid]] &lt; sequence[elem]:
+        if sequence[subsequence[mid]] < sequence[elem]:
             low = mid + 1
             # If the current element is as big as elem, throw out everything bigger, but 
         # keep the current element.                                                  
@@ -11245,10 +11245,10 @@ def optimized_dynamic_programming_solution(sequence):
         # end of longest current subsequence, we have a new longest increasing          
         # subsequence.                                                               
         if (len(smallest_end_to_subsequence_of_length) == 0 or
-                    sequence[elem] &gt; sequence[smallest_end_to_subsequence_of_length[-1]]):
+                    sequence[elem] > sequence[smallest_end_to_subsequence_of_length[-1]]):
             # If we are adding the first element, it has no parent.  Otherwise, we        
             # need to update the parent to be the previous biggest element.            
-            if len(smallest_end_to_subsequence_of_length) &gt; 0:
+            if len(smallest_end_to_subsequence_of_length) > 0:
                 parent[elem] = smallest_end_to_subsequence_of_length[-1]
             smallest_end_to_subsequence_of_length.append(elem)
         else:
@@ -11319,11 +11319,11 @@ func lcs(arr1 []int) int {
         M[i] = e[i * (n1 + 1):(i + 1) * (n1 + 1)]
     }
 
-    for i := 1; i &lt;= n2; i++ {
-        for j := 1; j &lt;= n1; j++ {
+    for i := 1; i <= n2; i++ {
+        for j := 1; j <= n1; j++ {
             if arr2[j - 1] == arr3[i - 1] {
                 M[i][j] = M[i - 1][j - 1] + 1
-            } else if M[i - 1][j] &gt; M[i][j - 1] {
+            } else if M[i - 1][j] > M[i][j - 1] {
                 M[i][j] = M[i - 1][j]
             } else {
                 M[i][j] = M[i][j - 1]
@@ -11368,7 +11368,7 @@ class Tree:
             self._add(val, self.root)
 
     def _add(self, val, node):
-        if(val &lt; node.v):
+        if(val < node.v):
             if(node.l != None):
                 self._add(val, node.l)
             else:
@@ -11388,9 +11388,9 @@ class Tree:
     def _find(self, val, node):
         if(val == node.v):
             return node
-        elif(val &lt; node.v and node.l != None):
+        elif(val < node.v and node.l != None):
             self._find(val, node.l)
-        elif(val &gt; node.v and node.r != None):
+        elif(val > node.v and node.r != None):
             self._find(val, node.r)
 
     def deleteTree(self):
@@ -11525,14 +11525,14 @@ Use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/F
 The <strong>arguments</strong> is <a href="https://stackoverflow.com/a/29707677/1766230">an array-like object</a> (not an actual array). Example function...  
 
 ```c
-function testArguments () // &lt;-- notice no arguments specified
+function testArguments () // <-- notice no arguments specified
 {
     console.log(arguments); // outputs the arguments to the console
     var htmlOutput = "";
-    for (var i=0; i &lt; arguments.length; i++) {
-        htmlOutput += '&lt;li&gt;' + arguments[i] + '&lt;/li&gt;';
+    for (var i=0; i < arguments.length; i++) {
+        htmlOutput += '<li>' + arguments[i] + '</li>';
     }
-    document.write('&lt;ul&gt;' + htmlOutput + '&lt;/ul&gt;');
+    document.write('<ul>' + htmlOutput + '</ul>');
 }
 ```
 
@@ -11611,7 +11611,7 @@ The following computes floor(sqrt(N)) for N > 0:
 x = 2^ceil(numbits(N)/2)
 loop:
     y = floor((x + floor(N/x))/2)
-    if y &gt;= x
+    if y >= x
         return x
     x = y
 ```
@@ -11630,8 +11630,8 @@ Let's say you want the square root of 62.104. You pick a value halfway between 0
 With real math, you could keep dividing the search space in two forever (if it doesn't have a rational square root). In reality, computers will eventually run out of precision and you'll have your approximation. The following C program illustrates the point:  
 
 ```c
-#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
+#include <stdio.h>
+#include <stdlib.h>
 
 int main (int argc, char *argv[]) {
     float val, low, high, mid, oldmid, midsqr;
@@ -11639,8 +11639,8 @@ int main (int argc, char *argv[]) {
 
     // Get argument, force to non-negative.
 
-    if (argc &lt; 2) {
-        printf ("Usage: sqrt &lt;number&gt;\n");
+    if (argc < 2) {
+        printf ("Usage: sqrt <number>\n");
         return 1;
     }
     val = fabs (atof (argv[1]));
@@ -11656,7 +11656,7 @@ int main (int argc, char *argv[]) {
 
     // Keep going until accurate enough.
 
-    while (fabs(oldmid - mid) &gt;= 0.00001) {
+    while (fabs(oldmid - mid) >= 0.00001) {
         oldmid = mid;
 
         // Get midpoint and see if we need lower or higher.
@@ -11665,7 +11665,7 @@ int main (int argc, char *argv[]) {
         midsqr = mid * mid;
         printf ("%4d  %10.4f  %10.4f  %10.4f  %10.4f  %10.4f  ",
             ++step, val, low, high, mid, midsqr);
-        if (mid * mid &gt; val) {
+        if (mid * mid > val) {
             high = mid;
             printf ("- too high\n");
         } else {
@@ -11684,7 +11684,7 @@ int main (int argc, char *argv[]) {
 Here's a couple of runs so you hopefully get an idea how it works. For 77:  
 
 ```c
-pax&gt; sqrt 77
+pax> sqrt 77
 Step      Number         Low        High         Mid      Square    Result
    1     77.0000      0.0000     77.0000     38.5000   1482.2500  - too high
    2     77.0000      0.0000     38.5000     19.2500    370.5625  - too high
@@ -11715,7 +11715,7 @@ sqrt(77.0000) = 8.7750
 For 62.104:  
 
 ```c
-pax&gt; sqrt 62.104
+pax> sqrt 62.104
 Step      Number         Low        High         Mid      Square    Result
    1     62.1040      0.0000     62.1040     31.0520    964.2267  - too high
    2     62.1040      0.0000     31.0520     15.5260    241.0567  - too high
@@ -11746,7 +11746,7 @@ sqrt(62.1040) = 7.8806
 For 49:  
 
 ```c
-pax&gt; sqrt 49
+pax> sqrt 49
 Step      Number         Low        High         Mid      Square    Result
    1     49.0000      0.0000     49.0000     24.5000    600.2500  - too high
    2     49.0000      0.0000     24.5000     12.2500    150.0625  - too high
@@ -11779,10 +11779,10 @@ A simple (but not very fast) method to calculate the square root of X:
 
 ```c
 squareroot(x)
-    if x&lt;0 then Error
+    if x<0 then Error
     a = 1
     b = x
-    while (abs(a-b)&gt;ErrorMargin) 
+    while (abs(a-b)>ErrorMargin) 
         a = (a+b)/2
         b = x/a
     endwhile
@@ -11828,14 +11828,14 @@ def sort(array=[12,4,5,6,7,3,1,15]):
     equal = []
     greater = []
 
-    if len(array) &gt; 1:
+    if len(array) > 1:
         pivot = array[0]
         for x in array:
-            if x &lt; pivot:
+            if x < pivot:
                 less.append(x)
             if x == pivot:
                 equal.append(x)
-            if x &gt; pivot:
+            if x > pivot:
                 greater.append(x)
             sort(less)
             sort(pivot)
@@ -11851,14 +11851,14 @@ def sort(array=[12,4,5,6,7,3,1,15]):
     equal = []
     greater = []
 
-    if len(array) &gt; 1:
+    if len(array) > 1:
         pivot = array[0]
         for x in array:
-            if x &lt; pivot:
+            if x < pivot:
                 less.append(x)
             elif x == pivot:
                 equal.append(x)
-            elif x &gt; pivot:
+            elif x > pivot:
                 greater.append(x)
         # Don't forget to return something!
         return sort(less)+equal+sort(greater)  # Just use the + operator to join lists
@@ -11876,14 +11876,14 @@ Quick sort without additional memory (in place)
 ```c
 array = [97, 200, 100, 101, 211, 107]
 quicksort(array)
-# array -&gt; [97, 100, 101, 107, 200, 211]
+# array -> [97, 100, 101, 107, 200, 211]
 ```
 
 ```c
 def partition(array, begin, end):
     pivot = begin
     for i in xrange(begin+1, end+1):
-        if array[i] &lt;= array[begin]:
+        if array[i] <= array[begin]:
             pivot += 1
             array[i], array[pivot] = array[pivot], array[i]
     array[pivot], array[begin] = array[begin], array[pivot]
@@ -11895,7 +11895,7 @@ def quicksort(array, begin=0, end=None):
     if end is None:
         end = len(array) - 1
     def _quicksort(array, begin, end):
-        if begin &gt;= end:
+        if begin >= end:
             return
         pivot = partition(array, begin, end)
         _quicksort(array, begin, pivot-1)
@@ -11908,12 +11908,12 @@ There is another concise and beautiful version
 
 ```c
 def qsort(arr): 
-    if len(arr) &lt;= 1:
+    if len(arr) <= 1:
         return arr
     else:
-        return qsort([x for x in arr[1:] if x &lt; arr[0]]) + \
+        return qsort([x for x in arr[1:] if x < arr[0]]) + \
                [arr[0]] + \
-               qsort([x for x in arr[1:] if x &gt;= arr[0]])
+               qsort([x for x in arr[1:] if x >= arr[0]])
 
 # this comment is just to improve readability due to horizontal scroll!!!
 ```
@@ -11965,21 +11965,21 @@ hsv rgb2hsv(rgb in)
     hsv         out;
     double      min, max, delta;
 
-    min = in.r &lt; in.g ? in.r : in.g;
-    min = min  &lt; in.b ? min  : in.b;
+    min = in.r < in.g ? in.r : in.g;
+    min = min  < in.b ? min  : in.b;
 
-    max = in.r &gt; in.g ? in.r : in.g;
-    max = max  &gt; in.b ? max  : in.b;
+    max = in.r > in.g ? in.r : in.g;
+    max = max  > in.b ? max  : in.b;
 
     out.v = max;                                // v
     delta = max - min;
-    if (delta &lt; 0.00001)
+    if (delta < 0.00001)
     {
         out.s = 0;
         out.h = 0; // undefined, maybe nan?
         return out;
     }
-    if( max &gt; 0.0 ) { // NOTE: if Max is == 0, this divide would cause a crash
+    if( max > 0.0 ) { // NOTE: if Max is == 0, this divide would cause a crash
         out.s = (delta / max);                  // s
     } else {
         // if max is 0, then r = g = b = 0              
@@ -11988,17 +11988,17 @@ hsv rgb2hsv(rgb in)
         out.h = NAN;                            // its now undefined
         return out;
     }
-    if( in.r &gt;= max )                           // &gt; is bogus, just keeps compilor happy
-        out.h = ( in.g - in.b ) / delta;        // between yellow &amp; magenta
+    if( in.r >= max )                           // > is bogus, just keeps compilor happy
+        out.h = ( in.g - in.b ) / delta;        // between yellow & magenta
     else
-    if( in.g &gt;= max )
-        out.h = 2.0 + ( in.b - in.r ) / delta;  // between cyan &amp; yellow
+    if( in.g >= max )
+        out.h = 2.0 + ( in.b - in.r ) / delta;  // between cyan & yellow
     else
-        out.h = 4.0 + ( in.r - in.g ) / delta;  // between magenta &amp; cyan
+        out.h = 4.0 + ( in.r - in.g ) / delta;  // between magenta & cyan
 
     out.h *= 60.0;                              // degrees
 
-    if( out.h &lt; 0.0 )
+    if( out.h < 0.0 )
         out.h += 360.0;
 
     return out;
@@ -12011,14 +12011,14 @@ rgb hsv2rgb(hsv in)
     long        i;
     rgb         out;
 
-    if(in.s &lt;= 0.0) {       // &lt; is bogus, just shuts up warnings
+    if(in.s <= 0.0) {       // < is bogus, just shuts up warnings
         out.r = in.v;
         out.g = in.v;
         out.b = in.v;
         return out;
     }
     hh = in.h;
-    if(hh &gt;= 360.0) hh = 0.0;
+    if(hh >= 360.0) hh = 0.0;
     hh /= 60.0;
     i = (long)hh;
     ff = hh - i;
@@ -12098,9 +12098,9 @@ RgbColor HsvToRgb(HsvColor hsv)
     region = hsv.h / 43;
     remainder = (hsv.h - (region * 43)) * 6; 
 
-    p = (hsv.v * (255 - hsv.s)) &gt;&gt; 8;
-    q = (hsv.v * (255 - ((hsv.s * remainder) &gt;&gt; 8))) &gt;&gt; 8;
-    t = (hsv.v * (255 - ((hsv.s * (255 - remainder)) &gt;&gt; 8))) &gt;&gt; 8;
+    p = (hsv.v * (255 - hsv.s)) >> 8;
+    q = (hsv.v * (255 - ((hsv.s * remainder) >> 8))) >> 8;
+    t = (hsv.v * (255 - ((hsv.s * (255 - remainder)) >> 8))) >> 8;
 
     switch (region)
     {
@@ -12132,8 +12132,8 @@ HsvColor RgbToHsv(RgbColor rgb)
     HsvColor hsv;
     unsigned char rgbMin, rgbMax;
 
-    rgbMin = rgb.r &lt; rgb.g ? (rgb.r &lt; rgb.b ? rgb.r : rgb.b) : (rgb.g &lt; rgb.b ? rgb.g : rgb.b);
-    rgbMax = rgb.r &gt; rgb.g ? (rgb.r &gt; rgb.b ? rgb.r : rgb.b) : (rgb.g &gt; rgb.b ? rgb.g : rgb.b);
+    rgbMin = rgb.r < rgb.g ? (rgb.r < rgb.b ? rgb.r : rgb.b) : (rgb.g < rgb.b ? rgb.g : rgb.b);
+    rgbMax = rgb.r > rgb.g ? (rgb.r > rgb.b ? rgb.r : rgb.b) : (rgb.g > rgb.b ? rgb.g : rgb.b);
 
     hsv.v = rgbMax;
     if (hsv.v == 0)
@@ -12268,7 +12268,7 @@ boolean hasLoop(Node first) {
         if(fast.next != null)
             fast = fast.next.next; // 2 hops
         else
-            return false;          // next node null =&gt; no loop
+            return false;          // next node null => no loop
 
         if(slow == null || fast == null) // if either hits null..no loop
             return false;
@@ -12287,7 +12287,7 @@ boolean hasLoop(Node first) {
     Node slow = first;
     Node fast = first;
 
-    while(fast != null &amp;&amp; fast.next != null) {
+    while(fast != null && fast.next != null) {
         slow = slow.next;          // 1 hop
         fast = fast.next.next;     // 2 hops 
 
@@ -12312,7 +12312,7 @@ while (cur != null) {
     prev = cur;
     cur = next;
 }
-boolean hasCycle = prev == first &amp;&amp; first != null &amp;&amp; first.next != null;
+boolean hasCycle = prev == first && first != null && first.next != null;
 
 // reconstruct the list
 cur = prev;
@@ -12331,17 +12331,17 @@ Test code:
 
 ```c
 static void assertSameOrder(Node[] nodes) {
-    for (int i = 0; i &lt; nodes.length - 1; i++) {
+    for (int i = 0; i < nodes.length - 1; i++) {
         assert nodes[i].next == nodes[i + 1];
     }
 }
 
 public static void main(String[] args) {
     Node[] nodes = new Node[100];
-    for (int i = 0; i &lt; nodes.length; i++) {
+    for (int i = 0; i < nodes.length; i++) {
         nodes[i] = new Node();
     }
-    for (int i = 0; i &lt; nodes.length - 1; i++) {
+    for (int i = 0; i < nodes.length - 1; i++) {
         nodes[i].next = nodes[i + 1];
     }
     Node first = nodes[0];
@@ -12494,7 +12494,7 @@ public class TripleT {
         //check end conditions
 
         //check col
-        for(int i = 0; i &lt; n; i++){
+        for(int i = 0; i < n; i++){
             if(board[x][i] != s)
                 break;
             if(i == n-1){
@@ -12503,7 +12503,7 @@ public class TripleT {
         }
 
         //check row
-        for(int i = 0; i &lt; n; i++){
+        for(int i = 0; i < n; i++){
             if(board[i][y] != s)
                 break;
             if(i == n-1){
@@ -12514,7 +12514,7 @@ public class TripleT {
         //check diag
         if(x == y){
             //we're on a diagonal
-            for(int i = 0; i &lt; n; i++){
+            for(int i = 0; i < n; i++){
                 if(board[i][i] != s)
                     break;
                 if(i == n-1){
@@ -12525,7 +12525,7 @@ public class TripleT {
 
         //check anti diag (thanks rampion)
         if(x + y == n - 1){
-            for(int i = 0; i &lt; n; i++){
+            for(int i = 0; i < n; i++){
                 if(board[i][(n-1)-i] != s)
                     break;
                 if(i == n-1){
@@ -13266,7 +13266,7 @@ In simple words, a loop invariant is some predicate (condition) that holds for e
 
 ```c
 int j = 9;
-for(int i=0; i&lt;10; i++)  
+for(int i=0; i<10; i++)  
   j--;
 ```
 
@@ -13307,12 +13307,12 @@ A good example of a complex loop invariant is for binary search.
 bsearch(type A[], type a) {
 start = 1, end = length(A)
 
-    while ( start &lt;= end ) {
+    while ( start <= end ) {
         mid = floor(start + end / 2)
 
         if ( A[mid] == a ) return mid
-        if ( A[mid] &gt; a ) end = mid - 1
-        if ( A[mid] &lt; a ) start = mid + 1
+        if ( A[mid] > a ) end = mid - 1
+        if ( A[mid] < a ) start = mid + 1
 
     }
     return -1
@@ -13325,7 +13325,7 @@ So the loop conditional <em>seems</em> pretty straight forward - when start > en
 The invariant is the logical statement:  
 
 ```c
-if ( A[mid] == a ) then ( start &lt;= mid &lt;= end )
+if ( A[mid] == a ) then ( start <= mid <= end )
 ```
 
 This statement is a logical tautology - it is always true <em>in the context of the specific loop / algorithm we are trying to prove</em>.  And it provides useful information about the correctness of the loop after it terminates.  
@@ -13479,14 +13479,14 @@ while(streamHasData())
 {
   int x = readNumberFromStream();
 
-  if (n &lt; SIZE)
+  if (n < SIZE)
   {
        reservoir[n++] = x;
   }         
   else 
   {
-      int p = random(++n); // Choose a random number 0 &gt;= p &lt; n
-      if (p &lt; SIZE)
+      int p = random(++n); // Choose a random number 0 >= p < n
+      if (p < SIZE)
       {
            reservoir[p] = x;
       }
@@ -13532,7 +13532,7 @@ If you want to hide the temporary variable, you can use a utility method:
 ```c
 public static class Foo {
 
-    public static void Swap&lt;T&gt; (ref T lhs, ref T rhs) {
+    public static void Swap<T> (ref T lhs, ref T rhs) {
         T temp = lhs;
         lhs = rhs;
         rhs = temp;
@@ -13683,7 +13683,7 @@ We start with the obvious recursive definition
 ```c
 unsigned fac(unsigned n)
 {
-    if (n &lt; 2) return 1;
+    if (n < 2) return 1;
     return n * fac(n - 1);
 }
 ```
@@ -13695,7 +13695,7 @@ Even though `fac()` looks tail-recursive at first glance, it is not as what actu
 ```c
 unsigned fac(unsigned n)
 {
-    if (n &lt; 2) return 1;
+    if (n < 2) return 1;
     unsigned acc = fac(n - 1);
     return n * acc;
 }
@@ -13713,7 +13713,7 @@ unsigned fac(unsigned n)
 
 unsigned fac_tailrec(unsigned acc, unsigned n)
 {
-    if (n &lt; 2) return acc;
+    if (n < 2) return acc;
     return fac_tailrec(n * acc, n - 1);
 }
 ```
@@ -13726,7 +13726,7 @@ The tail-call optimization transforms our recursive code into
 unsigned fac_tailrec(unsigned acc, unsigned n)
 {
 TOP:
-    if (n &lt; 2) return acc;
+    if (n < 2) return acc;
     acc = n * acc;
     n = n - 1;
     goto TOP;
@@ -13741,7 +13741,7 @@ unsigned fac(unsigned n)
     unsigned acc = 1;
 
 TOP:
-    if (n &lt; 2) return acc;
+    if (n < 2) return acc;
     acc = n * acc;
     n = n - 1;
     goto TOP;
@@ -13755,7 +13755,7 @@ unsigned fac(unsigned n)
 {
     unsigned acc = 1;
 
-    for (; n &gt; 1; --n)
+    for (; n > 1; --n)
         acc *= n;
 
     return acc;
@@ -13845,7 +13845,7 @@ int divisors(int x) {
 
     if (x == 1) return 1;
 
-    for (int i = 1; i &lt; limit; ++i) {
+    for (int i = 1; i < limit; ++i) {
         if (x % i == 0) {
             limit = x / i;
             if (limit != i) {
@@ -14067,7 +14067,7 @@ public class AnagramCheck
 
       String phrase2 = "schoolmaster";
       phrase2 = (phrase2.toLowerCase()).trim();
-      ArrayList&lt;Character&gt; phrase2ArrList = convertStringToArraylist(phrase2);
+      ArrayList<Character> phrase2ArrList = convertStringToArraylist(phrase2);
 
       if (phrase1.length() != phrase2.length()) 
       {
@@ -14076,9 +14076,9 @@ public class AnagramCheck
       else 
       {
           boolean isFound = true;
-          for (int i=0; i&lt;phrase1Arr.length; i++)
+          for (int i=0; i<phrase1Arr.length; i++)
           {  
-              for(int j = 0; j &lt; phrase2ArrList.size(); j++) 
+              for(int j = 0; j < phrase2ArrList.size(); j++) 
               {
                   if(phrase1Arr[i] == phrase2ArrList.get(j))
                   {
@@ -14097,9 +14097,9 @@ public class AnagramCheck
       }
   }
 
-  public static ArrayList&lt;Character&gt; convertStringToArraylist(String str) {
-      ArrayList&lt;Character&gt; charList = new ArrayList&lt;Character&gt;(); 
-      for(int i = 0; i&lt;str.length();i++){
+  public static ArrayList<Character> convertStringToArraylist(String str) {
+      ArrayList<Character> charList = new ArrayList<Character>(); 
+      for(int i = 0; i<str.length();i++){
           charList.add(str.charAt(i));
       }
       return charList;
@@ -14132,7 +14132,7 @@ If you sort either array, the solution becomes O(n log n). but if you use a hash
 char[] word1 = "test".toCharArray();
 char[] word2 = "tes".toCharArray();
 
-Map&lt;Character, Integer&gt; lettersInWord1 = new HashMap&lt;Character, Integer&gt;();
+Map<Character, Integer> lettersInWord1 = new HashMap<Character, Integer>();
 
 for (char c : word1) {
     int count = 1;

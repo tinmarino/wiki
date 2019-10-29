@@ -183,7 +183,7 @@ Get-Process -Id (Get-NetTCPConnection -LocalPort portNumber).OwningProcess
 <h5>cmd</h1>
 
 ```sh
- C:\&gt; netstat -a -b
+ C:\> netstat -a -b
 ```
 
 (Add <strong>-n</strong> to stop it trying to resolve hostnames, which will make it a lot faster.)  
@@ -322,12 +322,12 @@ What am I doing wrong?
 <li><p>Navigate to the directory where the script lives</p>
 
 ```sh
-PS&gt; cd C:\my_path\yada_yada\ (enter)
+PS> cd C:\my_path\yada_yada\ (enter)
 ```</li>
 <li><p>Execute the script:</p>
 
 ```sh
-PS&gt; .\run_import_script.ps1 (enter)
+PS> .\run_import_script.ps1 (enter)
 ```</li>
 </ol>
 
@@ -336,7 +336,7 @@ What am I missing??
 Or: you can run the PowerShell script from `cmd.exe` like this:  
 
 ```sh
-powershell -noexit "&amp; ""C:\my_path\yada_yada\run_import_script.ps1""" (enter)
+powershell -noexit "& ""C:\my_path\yada_yada\run_import_script.ps1""" (enter)
 ```
 
 according to this <a href="http://poshoholic.com/2007/09/27/invoking-a-powershell-script-from-cmdexe-or-start-run/" rel="nofollow noreferrer">blog post here</a>  
@@ -356,7 +356,7 @@ Powershell.exe -File C:\my_path\yada_yada\run_import_script.ps1
 If you want to run a script without modifying the default script execution policy, you can use the <em>bypass</em> switch when launching <strong>Windows PowerShell</strong>.    
 
 ```sh
-powershell [-noexit] -executionpolicy bypass -File &lt;Filename&gt;
+powershell [-noexit] -executionpolicy bypass -File <Filename>
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -461,8 +461,8 @@ This is another useful tool you can use. To quote <a href="https://en.wikipedia.
 Example usage:  
 
 ```sh
-C:\&gt;logparser.exe -i:textline -o:tsv "select Index, Text from 'c:\path\to\file.log' where line &gt; 1000 and line &lt; 2000"
-C:\&gt;logparser.exe -i:textline -o:tsv "select Index, Text from 'c:\path\to\file.log' where line like '%pattern%'"
+C:\>logparser.exe -i:textline -o:tsv "select Index, Text from 'c:\path\to\file.log' where line > 1000 and line < 2000"
+C:\>logparser.exe -i:textline -o:tsv "select Index, Text from 'c:\path\to\file.log' where line like '%pattern%'"
 ```
 
 <h5>The relativity of sizes</h2>
@@ -607,7 +607,7 @@ I have already added it using the Environment Variables dialog box.
 But when I type into my console:  
 
 ```sh
-C:\&gt;path
+C:\>path
 ```
 
 it doesn't show the new `C:\xampp\php` directory:  
@@ -843,7 +843,7 @@ If you want the date independently of the region day/month order, you can use "W
 
 ```sh
 @echo off
-for /F "usebackq tokens=1,2 delims==" %%i in (`wmic os get LocalDateTime /VALUE 2^&gt;NUL`) do if '.%%i.'=='.LocalDateTime.' set ldt=%%j
+for /F "usebackq tokens=1,2 delims==" %%i in (`wmic os get LocalDateTime /VALUE 2^>NUL`) do if '.%%i.'=='.LocalDateTime.' set ldt=%%j
 set ldt=%ldt:~0,4%-%ldt:~4,2%-%ldt:~6,2% %ldt:~8,2%:%ldt:~10,2%:%ldt:~12,6%
 echo Local date is [%ldt%]
 ```
@@ -881,7 +881,7 @@ Text: 09/12/22-any text-18.55</p>
 Using it in a CMD script to get year, month, day, time information:  
 
 ```sh
-for /f "tokens=1,2,3,4,5,6* delims=," %%i in ('C:\Tools\etc\date.exe +"%%y,%%m,%%d,%%H,%%M,%%S"') do set yy=%%i&amp; set mo=%%j&amp; set dd=%%k&amp; set hh=%%l&amp; set mm=%%m&amp; set ss=%%n
+for /f "tokens=1,2,3,4,5,6* delims=," %%i in ('C:\Tools\etc\date.exe +"%%y,%%m,%%d,%%H,%%M,%%S"') do set yy=%%i& set mo=%%j& set dd=%%k& set hh=%%l& set mm=%%m& set ss=%%n
 ```
 
 Using it in a CMD script to get a timestamp in any required format:  
@@ -893,7 +893,7 @@ for /f "tokens=*" %%i in ('C:\Tools\etc\date.exe +"%%y-%%m-%%d %%H:%%M:%%S"') do
 Extracting the date/time information from any reference file.  
 
 ```sh
-for /f "tokens=1,2,3,4,5,6* delims=," %%i in ('C:\Tools\etc\date.exe -r file.txt +"%%y,%%m,%%d,%%H,%%M,%%S"') do set yy=%%i&amp; set mo=%%j&amp; set dd=%%k&amp; set hh=%%l&amp; set mm=%%m&amp; set ss=%%n
+for /f "tokens=1,2,3,4,5,6* delims=," %%i in ('C:\Tools\etc\date.exe -r file.txt +"%%y,%%m,%%d,%%H,%%M,%%S"') do set yy=%%i& set mo=%%j& set dd=%%k& set hh=%%l& set mm=%%m& set ss=%%n
 ```
 
 Adding to a file its date/time information:  
@@ -915,8 +915,8 @@ Two more ways that do not depend on the time settings (both taken from <a href="
 ```sh
 @echo off
 pushd "%temp%"
-makecab /D RptFileName=~.rpt /D InfFileName=~.inf /f nul &gt;nul
-for /f "tokens=3-7" %%a in ('find /i "makecab"^&lt;~.rpt') do (
+makecab /D RptFileName=~.rpt /D InfFileName=~.inf /f nul >nul
+for /f "tokens=3-7" %%a in ('find /i "makecab"^<~.rpt') do (
    set "current-date=%%e-%%b-%%c"
    set "current-time=%%d"
    set "weekday=%%a"
@@ -982,10 +982,10 @@ WScript.Echo(GetCurrentDate());
 ```sh
 :sub echo(str) :end sub
 echo off
-'&gt;nul 2&gt;&amp;1|| copy /Y %windir%\System32\doskey.exe %windir%\System32\'.exe &gt;nul
-'&amp; echo current date:
-'&amp; cscript /nologo /E:vbscript "%~f0"
-'&amp; exit /b
+'>nul 2>&1|| copy /Y %windir%\System32\doskey.exe %windir%\System32\'.exe >nul
+'& echo current date:
+'& cscript /nologo /E:vbscript "%~f0"
+'& exit /b
 
 '0 = vbGeneralDate - Default. Returns date: mm/dd/yy and time if specified: hh:mm:ss PM/AM.
 '1 = vbLongDate - Returns date: weekday, monthname, year
@@ -998,7 +998,7 @@ WScript.echo  Replace(FormatDateTime(Date,1),", ","-")
 <li><p><strong>PowerShell</strong> - can be installed on every machine that has .NET - download from Microsoft (<a href="http://www.microsoft.com/en-us/download/details.aspx?id=7217" rel="noreferrer">v1</a>, <a href="http://support.microsoft.com/kb/968929/bg" rel="noreferrer">v2</a>, <a href="http://www.microsoft.com/en-us/download/details.aspx?id=34595" rel="noreferrer">v3</a> (only for Windows&nbsp;7 and above)). It is installed by default on everything from Windows&nbsp;7/Windows Server 2008 and above:</p>
 
 ```sh
-C:\&gt; powershell get-date -format "{dd-MMM-yyyy HH:mm}"
+C:\> powershell get-date -format "{dd-MMM-yyyy HH:mm}"
 ```
 
 To use it from a batch file:  
@@ -1028,7 +1028,7 @@ for /f "tokens=* delims=" %%v in ('dir /b /s /a:d /o:-n "%SystemRoot%\Microsoft.
         goto :break_loop
     )
 )
-echo jsc.exe not found &amp;&amp; exit /b 0
+echo jsc.exe not found && exit /b 0
 :break_loop
 
 
@@ -1057,15 +1057,15 @@ Console.WriteLine(dt.ToString("yyyy-MM-dd hh:mm:ss"));
 setlocal
 del /q /f %temp%\timestampfile_*
 
-Logman.exe stop ts-CPU 1&gt;nul 2&gt;&amp;1
-Logman.exe delete ts-CPU 1&gt;nul 2&gt;&amp;1
+Logman.exe stop ts-CPU 1>nul 2>&1
+Logman.exe delete ts-CPU 1>nul 2>&1
 
-Logman.exe create counter ts-CPU  -sc 2 -v mmddhhmm -max 250 -c "\Processor(_Total)\%% Processor Time" -o %temp%\timestampfile_ &gt;nul
-Logman.exe start ts-CPU 1&gt;nul 2&gt;&amp;1
+Logman.exe create counter ts-CPU  -sc 2 -v mmddhhmm -max 250 -c "\Processor(_Total)\%% Processor Time" -o %temp%\timestampfile_ >nul
+Logman.exe start ts-CPU 1>nul 2>&1
 
-Logman.exe stop ts-CPU &gt;nul 2&gt;&amp;1
-Logman.exe delete ts-CPU &gt;nul 2&gt;&amp;1
-for /f "tokens=2 delims=_." %%t in  ('dir /b %temp%\timestampfile_*^&amp;del /q/f %temp%\timestampfile_*') do set timestamp=%%t
+Logman.exe stop ts-CPU >nul 2>&1
+Logman.exe delete ts-CPU >nul 2>&1
+for /f "tokens=2 delims=_." %%t in  ('dir /b %temp%\timestampfile_*^&del /q/f %temp%\timestampfile_*') do set timestamp=%%t
 
 echo %timestamp%
 echo MM: %timestamp:~0,2%
@@ -1121,7 +1121,7 @@ endlocal
 <li><p><strong>MSHTA</strong> allows calling JavaScript methods similar to the JScript method demonstrated in #3 above. Bear in mind that JavaScript's Date object properties involving month values are numbered from 0 to 11, not 1 to 12. So a value of 9 means October.</p>
 
 ```sh
-&lt;!-- : Batch portion
+<!-- : Batch portion
 
 @echo off
 setlocal
@@ -1133,9 +1133,9 @@ set now.
 
 goto :EOF
 
-end batch / begin HTA --&gt;
+end batch / begin HTA -->
 
-&lt;script&gt;
+<script>
     resizeTo(0,0)
     var fso = new ActiveXObject('Scripting.FileSystemObject').GetStandardStream(1),
         now = new Date(),
@@ -1148,7 +1148,7 @@ end batch / begin HTA --&gt;
 
     for (var i in props) {output.push(props[i] + '()=' + now[props[i]]())}
     close(fso.Write(output.join('\n')));
-&lt;/script&gt;
+</script>
 ```</li>
 </ol>
 
@@ -1210,7 +1210,7 @@ I Modified @mongoose_za's answer to make it easier to change the python version:
 As a final sanity check open a command prompt and enter python. You should see   
 
 ```sh
-&gt;python [whatever version you are using]
+>python [whatever version you are using]
 ```
 
 If you need to switch between versions, you only need to modify the PY_HOME variable to point to the proper directory. This is bit easier to manage if you need multiple python versions installed.   
@@ -1258,7 +1258,7 @@ SET | more
 enables you to see the variables one page at a time, rather than the whole lot, or  
 
 ```sh
-SET &gt; output.txt
+SET > output.txt
 ```
 
 sends the output to a file output.txt which you can open in <a href="http://en.wikipedia.org/wiki/Notepad_%28software%29" rel="nofollow noreferrer">Notepad</a> or whatever...  
@@ -1336,7 +1336,7 @@ I am in the same boat as the OP.
 Using a Windows command prompt, from directory:  
 
 ```sh
-C:\Python34\Scripts&gt;
+C:\Python34\Scripts>
 pip install wheel
 ```
 
@@ -1529,7 +1529,7 @@ Similar things can be <a href="https://stackoverflow.com/questions/25785/delete-
 Enjoy:  
 
 ```sh
-forfiles -p "C:\what\ever" -s -m *.* -d &lt;number of days&gt; -c "cmd /c del @path"
+forfiles -p "C:\what\ever" -s -m *.* -d <number of days> -c "cmd /c del @path"
 ```
 
 See <a href="http://ss64.com/nt/forfiles.html" rel="noreferrer">`forfiles` documentation</a> for more details.  
@@ -1545,7 +1545,7 @@ For Windows&nbsp;7 and newer (including Windows&nbsp;10):
 The syntax has changed a little. Therefore the updated command is:  
 
 ```sh
-forfiles /p "C:\what\ever" /s /m *.* /D -&lt;number of days&gt; /C "cmd /c del @path"
+forfiles /p "C:\what\ever" /s /m *.* /D -<number of days> /C "cmd /c del @path"
 ```
 
 #### Answer 2 (score 74)
@@ -1585,16 +1585,16 @@ exit /b 0
 rem Args[1]: Year-Month-Day
 :epoch
     setlocal ENABLEDELAYEDEXPANSION
-    for /f "tokens=1,2,3 delims=-" %%d in ('echo %1') do set Years=%%d&amp; set Months=%%e&amp; set Days=%%f
+    for /f "tokens=1,2,3 delims=-" %%d in ('echo %1') do set Years=%%d& set Months=%%e& set Days=%%f
     if "!Months:~0,1!"=="0" set Months=!Months:~1,1!
     if "!Days:~0,1!"=="0" set Days=!Days:~1,1!
     set /a Days=Days*day
     set /a _months=0
-    set i=1&amp;&amp; for %%m in (31 28 31 30 31 30 31 31 30 31 30 31) do if !i! LSS !Months! (set /a _months=!_months! + %%m*day&amp;&amp; set /a i+=1)
+    set i=1&& for %%m in (31 28 31 30 31 30 31 31 30 31 30 31) do if !i! LSS !Months! (set /a _months=!_months! + %%m*day&& set /a i+=1)
     set /a Months=!_months!
     set /a Years=(Years-1970)*year
     set /a Epoch=Years+Months+Days
-    endlocal&amp; set Epoch=%Epoch%
+    endlocal& set Epoch=%Epoch%
     exit /b 0
 ```
 
@@ -1695,7 +1695,7 @@ How to create an empty file at the DOS/Windows command-line?
 I tried:  
 
 ```sh
-copy nul &gt; file.txt
+copy nul > file.txt
 ```
 
 but it always displays that a file was copied.  
@@ -1718,11 +1718,11 @@ copy /b NUL EmptyFile.txt
 "<a href="https://stackoverflow.com/q/210201/6309">How to create empty text file from a batch file?</a>" (2008) also points to:  
 
 ```sh
-type NUL &gt; EmptyFile.txt
+type NUL > EmptyFile.txt
 # also
-echo. 2&gt;EmptyFile.txt
-copy nul file.txt &gt; nul # also in qid's answer below
-REM. &gt; empty.file
+echo. 2>EmptyFile.txt
+copy nul file.txt > nul # also in qid's answer below
+REM. > empty.file
 fsutil file createnew file.cmd 0 # to create a file on a mapped drive
 ```
 
@@ -1731,15 +1731,15 @@ fsutil file createnew file.cmd 0 # to create a file on a mapped drive
 <a href="https://stackoverflow.com/users/3040932/nomad">Nomad</a> mentions <a href="https://stackoverflow.com/a/20237561/6309">an original one</a>:  
 
 ```sh
-C:\Users\VonC\prog\tests&gt;aaaa &gt; empty_file
+C:\Users\VonC\prog\tests>aaaa > empty_file
 'aaaa' is not recognized as an internal or external command, operable program or batch file.
 
-C:\Users\VonC\prog\tests&gt;dir
+C:\Users\VonC\prog\tests>dir
 
  Folder C:\Users\VonC\prog\tests
 
-27/11/2013  10:40    &lt;REP&gt;          .
-27/11/2013  10:40    &lt;REP&gt;          ..
+27/11/2013  10:40    <REP>          .
+27/11/2013  10:40    <REP>          ..
 27/11/2013  10:40                 0 empty_file
 ```
 
@@ -1750,7 +1750,7 @@ In the same spirit, <a href="https://stackoverflow.com/users/840405/samuel">Samu
 </blockquote>
 
 ```sh
-.&gt;out.txt
+.>out.txt
 ```
 
 It does give an error:   
@@ -1767,7 +1767,7 @@ Hence the creation of an <em>empty</em> file. The error message can be disregard
 (Original answer, November 2009)  
 
 ```sh
-echo.&gt;filename
+echo.>filename
 ```
 
 (`echo ""` would actually put "" in the file! And `echo` without the '.' would put "`Command ECHO activated`" in the file...)  
@@ -1779,7 +1779,7 @@ Note: the resulting file is not <em>empty</em> but includes a return line sequen
 This <a href="http://groups.google.com/group/microsoft.public.win2000.cmdprompt.admin/msg/092e5cc12148ce2f?pli=1" rel="noreferrer">discussion</a> points to a true batch solution for a real <em>empty</em> file:  
 
 ```sh
- &lt;nul (set/p z=) &gt;filename
+ <nul (set/p z=) >filename
 
  dir filename
  11/09/2009  19:45                 0 filename
@@ -1799,8 +1799,8 @@ Since here the "string to the right of the equal sign" is empty... the result is
 The difference with `cd. &gt; filename` (which is mentioned in <a href="https://stackoverflow.com/questions/1702762/how-to-create-an-empty-file-in-the-command-line/1703040#1703040">Patrick Cuff's answer</a> and does also produce a 0-byte-length file) is that this "bit of redirection" (the `&lt;nul...` trick) can be used to <strong>echo lines without any CR</strong>:  
 
 ```sh
-&lt;nul (set/p z=hello) &gt;out.txt
-&lt;nul (set/p z= world!) &gt;&gt;out.txt
+<nul (set/p z=hello) >out.txt
+<nul (set/p z= world!) >>out.txt
 dir out.txt
 ```
 
@@ -1812,7 +1812,7 @@ dir out.txt
 Try this:  
 
 ```sh
-type NUL &gt; 1.txt
+type NUL > 1.txt
 ```
 
 this will definitely create an empty file.  
@@ -1821,7 +1821,7 @@ this will definitely create an empty file.
 Here's another way:  
 
 ```sh
-cd. &gt; filename
+cd. > filename
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -1891,7 +1891,7 @@ You can use the `netstat` combined with the `-np` flags and a pipe to the `find`
 Basic Usage is as such:  
 
 ```sh
-netstat -np &lt;protocol&gt; | find "port #"
+netstat -np <protocol> | find "port #"
 ```
 
 <p>So for example to check port 80 on TCP, you can do this: `netstat -np TCP | find "80"`
@@ -1913,7 +1913,7 @@ I need to run a utility only if a certain file exists. How do I do this in Windo
 
 #### Answer accepted (score 705)
 ```sh
-if exist &lt;insert file name here&gt; (
+if exist <insert file name here> (
     rem file exists
 ) else (
     rem file doesn't exist
@@ -1923,7 +1923,7 @@ if exist &lt;insert file name here&gt; (
 Or on a single line (if only a single action needs to occur):  
 
 ```sh
-if exist &lt;insert file name here&gt; &lt;action&gt;
+if exist <insert file name here> <action>
 ```
 
 for example, this opens notepad on autoexec.bat, if the file exists:  
@@ -1934,7 +1934,7 @@ if exist c:\autoexec.bat notepad c:\autoexec.bat
 
 #### Answer 2 (score 81)
 ```sh
-C:\&gt;help if
+C:\>help if
 ```
 
 Performs conditional processing in batch programs.  
@@ -1978,7 +1978,7 @@ Here's my sample bat file contents:
 @echo off
 set /p id=Enter ID: 
 echo %id%
-jstack &gt; jstack.txt
+jstack > jstack.txt
 ```
 
 and here's what shows up in jstack.txt:  
@@ -2001,7 +2001,7 @@ You can then use `%id%` as a parameter to another batch file like `jstack %id%`.
 
 ```sh
 set /P id=Enter id: 
-jstack %id% &gt; jstack.txt
+jstack %id% > jstack.txt
 ```
 
 #### Answer 3 (score 97)
@@ -2195,7 +2195,7 @@ error: Unable to find vcvarsall.bat
 The same happens if I try installing the package manually:  
 
 ```sh
-&gt; python setup.py install
+> python setup.py install
 running build_ext
 building 'dulwich._objects' extension
 error: Unable to find vcvarsall.bat
@@ -2273,20 +2273,20 @@ In my computer (Mac OS X - Snow Leopard):
 $ which java
 /usr/bin/java
 $ ls -l /usr/bin/java
-lrwxr-xr-x  1 root  wheel  74 Nov  7 07:59 /usr/bin/java -&gt; /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/java
+lrwxr-xr-x  1 root  wheel  74 Nov  7 07:59 /usr/bin/java -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/java
 ```
 
 If you are using Windows:  
 
 ```sh
-c:\&gt; for %i in (java.exe) do @echo.   %~$PATH:i
+c:\> for %i in (java.exe) do @echo.   %~$PATH:i
 ```
 
 #### Answer 2 (score 105)
 Windows > Start > cmd >   
 
 ```sh
-C:&gt; for %i in (javac.exe) do @echo.   %~$PATH:i
+C:> for %i in (javac.exe) do @echo.   %~$PATH:i
 ```
 
 <p>If you have a JDK installed, the Path is displayed,<br>
@@ -2308,7 +2308,7 @@ How can I grant permissions to a user on a directory (Read, Write, Modify) using
 As of Vista, `cacls` is deprecated. Here's the first couple of help lines:  
 
 ```sh
-C:\&gt;cacls
+C:\>cacls
 NOTE: Cacls is now deprecated, please use Icacls.
 
 Displays or modifies access control lists (ACLs) of files
@@ -2317,7 +2317,7 @@ Displays or modifies access control lists (ACLs) of files
 You should use `icacls` instead. This is how you grant John full control over `D:\test` folder and all its subfolders:  
 
 ```sh
-C:\&gt;icacls "D:\test" /grant John:(OI)(CI)F /T
+C:\>icacls "D:\test" /grant John:(OI)(CI)F /T
 ```
 
 According do MS documentation:  
@@ -2337,13 +2337,13 @@ You can also use ICACLS.
 To grant the <strong>Users</strong> group <strong>Full Control</strong> to a folder:  
 
 ```sh
-&gt;icacls "C:\MyFolder" /grant Users:F
+>icacls "C:\MyFolder" /grant Users:F
 ```
 
 To grant <strong>Modify</strong> permission to IIS users for `C:\MyFolder` (if you need your IIS has ability to R/W files into specific folder):  
 
 ```sh
-&gt;icacls "C:\MyFolder" /grant IIS_IUSRS:M
+>icacls "C:\MyFolder" /grant IIS_IUSRS:M
 ```
 
 If you do <strong>ICACLS /?</strong> you will be able to see all available options.  
@@ -2404,7 +2404,7 @@ Answering late. Hope it help someone.
 An addition to the answer: when you do not want to list the folders, only the files in the subfoldes, use /A-D switch like this:  
 
 ```sh
-dir ..\myfolder /b /s /A-D /o:gn&gt;list.txt
+dir ..\myfolder /b /s /A-D /o:gn>list.txt
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -2557,7 +2557,7 @@ On the source machine:
 On the target machine:  
 
 ```sh
-.\import.ps1 &gt; cmd.ps1
+.\import.ps1 > cmd.ps1
 # Examine cmd.ps1 to ensure it doesn't do anything nasty
 .\cmd.ps1
 ```
@@ -2661,13 +2661,13 @@ How is it done on Windows?
 Like this on all Microsoft OSes since 2000, and still good today:  
 
 ```sh
-dir &amp; echo foo
+dir & echo foo
 ```
 
 If you want the second command to execute only if the first exited successfully:  
 
 ```sh
-dir &amp;&amp; echo foo
+dir && echo foo
 ```
 
 The single ampersand (&amp;) syntax to execute multiple commands on one line goes back to Windows XP, Windows 2000, and some earlier NT versions. (4.0 at least, according to one commenter here.)  
@@ -2880,19 +2880,19 @@ console.log('Hello');
 So far I have tried all these version and <strong>none of them seems to work</strong>.  May be I am doing something completely wrong.  
 
 ```sh
-&gt;node hello.js
-&gt;$ node hello.js
-&gt;node.exe hello.js
-&gt;node /hello.js
-&gt;node \hello.js
-&gt; \node \hello.js
-&gt; /node /hello.js
-&gt; C:\abc\xyz\node.exe C:\abc\xyz\hello.js
-&gt; C:\abc\xyz\node.exe C:/abc/xyz/hello.js
-&gt; hello.js
-&gt; /hello.js
-&gt; \hello.js
-&gt;node hello
+>node hello.js
+>$ node hello.js
+>node.exe hello.js
+>node /hello.js
+>node \hello.js
+> \node \hello.js
+> /node /hello.js
+> C:\abc\xyz\node.exe C:\abc\xyz\hello.js
+> C:\abc\xyz\node.exe C:/abc/xyz/hello.js
+> hello.js
+> /hello.js
+> \hello.js
+>node hello
 ```
 
 <strong>Refer to my file structure</strong>  
@@ -2903,7 +2903,7 @@ So far I have tried all these version and <strong>none of them seems to work</st
 Instead of running node.exe, try running in command prompt with the following option and it worked.</p>
 
 ```sh
-c:\&gt;node c:\abc\hello.js
+c:\>node c:\abc\hello.js
 Hello
 World! (after 2 secs)
 ```
@@ -3048,7 +3048,7 @@ Here is how I generate a log filename (based on <a href="http://ss64.com/nt/synt
 ```sh
 @ECHO OFF
 :: Check WMIC is available
-WMIC.EXE Alias /? &gt;NUL 2&gt;&amp;1 || GOTO s_error
+WMIC.EXE Alias /? >NUL 2>&1 || GOTO s_error
 
 :: Use WMIC to retrieve date and time
 FOR /F "skip=1 tokens=1-6" %%G IN ('WMIC Path Win32_LocalTime Get Day^,Hour^,Minute^,Month^,Second^,Year /Format:table') DO (
@@ -3149,7 +3149,7 @@ net stop [serviceName]
 tell you whether they have succeeded or failed pretty clearly. For example  
 
 ```sh
-U:\&gt;net stop alerter
+U:\>net stop alerter
 The Alerter service is not started.
 
 More help is available by typing NET HELPMSG 3521.
@@ -3172,7 +3172,7 @@ pause
 The output looks like this:  
 
 ```sh
-U:\&gt;error.bat
+U:\>error.bat
 The Alerter service is not started.
 
 More help is available by typing NET HELPMSG 3521.
@@ -3371,7 +3371,7 @@ You have at least three options. I have presented them in order of usage prefere
 Open a Command Prompt and enter  
 
 ```sh
-sc delete &lt;service-name&gt;
+sc delete <service-name>
 ```
 
 Tool help snippet follows:  
@@ -3402,7 +3402,7 @@ Search for the sub-key with the service name under referred key and delete it. (
 From the command prompt, use the Windows "sc.exe" utility.  You will run something like this:  
 
 ```sh
-sc delete &lt;service-name&gt;
+sc delete <service-name>
 ```
 
 #### Answer 3 (score 27)
@@ -3501,7 +3501,7 @@ Back in 2013, that was not possible. Microsoft didn't provide any executable for
 To expand upon Steven Penny's PowerShell solution, you can incorporate it into a batch file by calling powershell.exe like this:  
 
 ```sh
-powershell.exe -nologo -noprofile -command "&amp; { Add-Type -A 'System.IO.Compression.FileSystem'; [IO.Compression.ZipFile]::ExtractToDirectory('foo.zip', 'bar'); }"
+powershell.exe -nologo -noprofile -command "& { Add-Type -A 'System.IO.Compression.FileSystem'; [IO.Compression.ZipFile]::ExtractToDirectory('foo.zip', 'bar'); }"
 ```
 
 As Ivan Shilo said, this won't work with PowerShell 2, it requires PowerShell 3 or greater and .NET Framework 4.  
@@ -3709,11 +3709,11 @@ to get more options.
 It does not offer many command line parameters:  
 
 ```sh
-C:\uptimefromcodeplex\&gt; uptime /?
+C:\uptimefromcodeplex\> uptime /?
 usage: Uptime [-V]
     -V   display version
 
-C:\uptimefromcodeplex\&gt; uptime -V
+C:\uptimefromcodeplex\> uptime -V
 version 1.1.0
 ```
 
@@ -3725,7 +3725,7 @@ There is an older version of the "uptime.exe" utility. This has the advantage of
 </a></p>
 
 ```sh
-C:\uptimev100download&gt;uptime.exe /?
+C:\uptimev100download>uptime.exe /?
 
 UPTIME, Version 1.00
 (C) Copyright 1999, Microsoft Corporation
@@ -3814,7 +3814,7 @@ function Get-SystemUptime {
 which then yields something like the following:  
 
 ```sh
-PS&gt; Get-SystemUptime
+PS> Get-SystemUptime
 6.20:40:40.2625526
 ```
 
@@ -3824,7 +3824,7 @@ Two ways to do that..
 <strong>Option 1:</strong>  
 
 ```sh
-1.  Go to "Start" -&gt; "Run".
+1.  Go to "Start" -> "Run".
 
 2.  Write "CMD" and press on "Enter" key.
 
@@ -3894,9 +3894,9 @@ I'm using `cmd.exe` (C:\WINDOWS\System32\cmd.exe) and I have to change my curren
 When I try to `cd` nothing happens.  
 
 ```sh
-C:\&gt; cd D:\temp
+C:\> cd D:\temp
 
-C:\&gt;
+C:\>
 ```
 
 I don't know what else to do here. Even pressing `tab` key does not give any hints. I have never got the reason to use cmd.exe until now when I have to. I mostly use Linux for development.  
@@ -3919,9 +3919,9 @@ That will get you the results you want.
 Another alternative is `pushd`, which will automatically switch drives as needed. It also allows you to return to the previous directory via `popd`:  
 
 ```sh
-C:\Temp&gt;<b>pushd D:\some\folder</b><br>
-D:\some\folder&gt;<b>popd</b><br>
-C:\Temp&gt;_```
+C:\Temp><b>pushd D:\some\folder</b><br>
+D:\some\folder><b>popd</b><br>
+C:\Temp>_```
 
 #### Answer 3 (score 81)
 `cd` has a parameter `/d`, which will change drive and path with one command:  
@@ -3955,7 +3955,7 @@ Downloading/unpacking linkchecker
   Could not fetch URL https://pypi.python.org/simple/linkchecker/: connection error: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed (_ssl.c:598)
   Will skip URL https://pypi.python.org/simple/linkchecker/ when looking for download links for linkchecker
   Getting page https://pypi.python.org/simple/
-  Could not fetch URL https://pypi.python.org/simple/: connection error: HTTPSConnectionPool(host='pypi.python.org', port=443): Max retries exceeded with url: /simple/ (Caused by &lt;class 'http.client.CannotSendRequest'&gt;: Request-sent)
+  Could not fetch URL https://pypi.python.org/simple/: connection error: HTTPSConnectionPool(host='pypi.python.org', port=443): Max retries exceeded with url: /simple/ (Caused by <class 'http.client.CannotSendRequest'>: Request-sent)
   Will skip URL https://pypi.python.org/simple/ when looking for download links for linkchecker
   Cannot fetch index base URL https://pypi.python.org/simple/
   URLs to search for versions for linkchecker:
@@ -3984,7 +3984,7 @@ pip.exceptions.DistributionNotFound: No distributions at all found for linkcheck
 You can ignore SSL errors by setting <a href="https://pypi.org" rel="noreferrer">`pypi.org`</a> and <a href="https://files.pythonhosted.org" rel="noreferrer">`files.pythonhosted.org`</a> as trusted hosts.  
 
 ```sh
-$ pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org &lt;package_name&gt;
+$ pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org <package_name>
 ```
 
 <strong>Note</strong>: Sometime during April 2018, the <a href="https://pypi.org" rel="noreferrer">Python Package Index</a> was migrated from `pypi.python.org` to `pypi.org`. This means "trusted-host" commands using the old domain no longer work.  
@@ -4087,13 +4087,13 @@ I explain both why you would want to call a PowerShell script from a batch file 
 This is basically what you are looking for:  
 
 ```sh
-PowerShell -NoProfile -ExecutionPolicy Bypass -Command "&amp; 'C:\Users\SE\Desktop\ps.ps1'"
+PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& 'C:\Users\SE\Desktop\ps.ps1'"
 ```
 
 And if you need to run your PowerShell script as an admin, use this:  
 
 ```sh
-PowerShell -NoProfile -ExecutionPolicy Bypass -Command "&amp; {Start-Process PowerShell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File ""C:\Users\SE\Desktop\ps.ps1""' -Verb RunAs}"
+PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& {Start-Process PowerShell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File ""C:\Users\SE\Desktop\ps.ps1""' -Verb RunAs}"
 ```
 
 Rather than hard-coding the entire path to the PowerShell script though, I recommend placing the batch file and PowerShell script file in the same directory, as my blog post describes.  
@@ -4186,7 +4186,7 @@ Is there any quick way to, given an executable file, create a Windows service th
 To create a Windows Service from an executable, you can use `sc.exe`:  
 
 ```sh
-sc.exe create &lt;new_service_name&gt; binPath= "&lt;path_to_the_service_executable&gt;"
+sc.exe create <new_service_name> binPath= "<path_to_the_service_executable>"
 ```
 
 You must have quotation marks around the actual `exe` path, and a space after the `binPath=`.  
@@ -4246,7 +4246,7 @@ This prints a nice `"Press any key to continue . . . "` message
 Or, if you don't want the `"Press any key to continue . . ."` message, do this instead:  
 
 ```sh
-pause &gt;nul
+pause >nul
 ```
 
 #### Answer 2 (score 133)
@@ -4538,7 +4538,7 @@ Just add this to the top of your bat file:
 
 ```sh
 set "params=%*"
-cd /d "%~dp0" &amp;&amp; ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) &amp;&amp; fsutil dirty query %systemdrive% 1&gt;nul 2&gt;nul || (  echo Set UAC = CreateObject^("Shell.Application"^) : UAC.ShellExecute "cmd.exe", "/k cd ""%~sdp0"" &amp;&amp; %~s0 %params%", "", "runas", 1 &gt;&gt; "%temp%\getadmin.vbs" &amp;&amp; "%temp%\getadmin.vbs" &amp;&amp; exit /B )
+cd /d "%~dp0" && ( if exist "%temp%\getadmin.vbs" del "%temp%\getadmin.vbs" ) && fsutil dirty query %systemdrive% 1>nul 2>nul || (  echo Set UAC = CreateObject^("Shell.Application"^) : UAC.ShellExecute "cmd.exe", "/k cd ""%~sdp0"" && %~s0 %params%", "", "runas", 1 >> "%temp%\getadmin.vbs" && "%temp%\getadmin.vbs" && exit /B )
 ```
 
 It will elevate to admin and also stay in the correct directory. Tested on Windows 10.  
@@ -4558,7 +4558,7 @@ Also the application could be running as any user.
 Another possibility I came up with, inspired by using <a href="http://en.wikipedia.org/wiki/Grep" rel="noreferrer">grep</a>, is:  
 
 ```sh
-tasklist /FI "IMAGENAME eq myapp.exe" 2&gt;NUL | find /I /N "myapp.exe"&gt;NUL
+tasklist /FI "IMAGENAME eq myapp.exe" 2>NUL | find /I /N "myapp.exe">NUL
 if "%ERRORLEVEL%"=="0" echo Program is running
 ```
 
@@ -4568,7 +4568,7 @@ It doesn't need to save an extra file, so I prefer this method.
 Here's how I've worked it out:  
 
 ```sh
-tasklist /FI "IMAGENAME eq notepad.exe" /FO CSV &gt; search.log
+tasklist /FI "IMAGENAME eq notepad.exe" /FO CSV > search.log
 
 FOR /F %%A IN (search.log) DO IF %%~zA EQU 0 GOTO end
 
@@ -4605,10 +4605,10 @@ Note that Windows PowerShell defines `where` as an alias for <a href="http://tec
 While later versions of Windows have a `where` command, you can also do this with Windows XP by using the environment variable modifiers, as follows:  
 
 ```sh
-c:\&gt; for %i in (cmd.exe) do @echo.   %~$PATH:i
+c:\> for %i in (cmd.exe) do @echo.   %~$PATH:i
    C:\WINDOWS\system32\cmd.exe
 
-c:\&gt; for %i in (python.exe) do @echo.   %~$PATH:i
+c:\> for %i in (python.exe) do @echo.   %~$PATH:i
    C:\Python25\python.exe
 ```
 
@@ -4625,7 +4625,7 @@ setlocal enableextensions enabledelayedexpansion
 :: Needs an argument.
 
 if "x%1"=="x" (
-    echo Usage: which ^&lt;progName^&gt;
+    echo Usage: which ^<progName^>
     goto :end
 )
 
@@ -4997,7 +4997,7 @@ Also have a look here: <a href="http://technet.microsoft.com/en-us/library/bb490
 @ECHO OFF
 setlocal enabledelayedexpansion
 for %%f in (directory\path\*.txt) do (
-  set /p val=&lt;%%f
+  set /p val=<%%f
   echo "fullname: %%f"
   echo "name: %%~nf"
   echo "contents: !val!"
@@ -5369,15 +5369,15 @@ As you mentioned, you can do a system call:
 For Windows  
 
 ```sh
-&gt;&gt;&gt; import os
-&gt;&gt;&gt; clear = lambda: os.system('cls')
-&gt;&gt;&gt; clear()
+>>> import os
+>>> clear = lambda: os.system('cls')
+>>> clear()
 ```
 
 For Linux the lambda becomes  
 
 ```sh
-&gt;&gt;&gt; clear = lambda: os.system('clear')
+>>> clear = lambda: os.system('clear')
 ```
 
 #### Answer 2 (score 176)
@@ -5397,10 +5397,10 @@ cls()
 Well, here's a quick hack:  
 
 ```sh
-&gt;&gt;&gt; clear = "\n" * 100
-&gt;&gt;&gt; print clear
-&gt;&gt;&gt; ...do some other stuff...
-&gt;&gt;&gt; print clear
+>>> clear = "\n" * 100
+>>> print clear
+>>> ...do some other stuff...
+>>> print clear
 ```
 
 Or to save some typing, put this file in your python search path:  
@@ -5417,10 +5417,10 @@ wipe = Wipe()
 Then you can do this from the interpreter all you like :)  
 
 ```sh
-&gt;&gt;&gt; from wiper import wipe
-&gt;&gt;&gt; wipe
-&gt;&gt;&gt; wipe
-&gt;&gt;&gt; wipe
+>>> from wiper import wipe
+>>> wipe
+>>> wipe
+>>> wipe
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -5479,7 +5479,7 @@ sh test.sh
 The most common way to run a <a href="http://en.wikipedia.org/wiki/Bourne_shell" rel="noreferrer"><strong>.sh</strong></a> file is using the <strong>sh</strong> command:  
 
 ```sh
-C:\&gt;sh my-script-test.sh 
+C:\>sh my-script-test.sh 
 ```
 
 other good option is installing <a href="https://www.cygwin.com/" rel="noreferrer"><strong>CygWin</strong></a>  
@@ -5540,7 +5540,7 @@ SITEDIR=$(python -m site --user-site)
 mkdir -p "$SITEDIR"
 
 # create new .pth file with our path
-echo "$HOME/foo/bar" &gt; "$SITEDIR/somelib.pth"
+echo "$HOME/foo/bar" > "$SITEDIR/somelib.pth"
 ```
 
 </b> </em> </i> </small> </strong> </sub> </sup>
@@ -5620,8 +5620,8 @@ to get a list of alternative file or directory names. Example output:
 
 ```sh
 11/09/2014 12:54 AM             8,065  DEFAUL~1.XML Default Desktop Policy.xml
-06/12/2014  03:49 PM    &lt;DIR&gt;          PROGRA~1     Program Files 
-10/12/2014  12:46 AM    &lt;DIR&gt;          PROGRA~2     Program Files (x86)
+06/12/2014  03:49 PM    <DIR>          PROGRA~1     Program Files 
+10/12/2014  12:46 AM    <DIR>          PROGRA~2     Program Files (x86)
 ```
 
 Now use the short 8 character file or folder name in the 5th column, e.g. PROGRA~1 or DEFAUL~1.XML, in your commands. For instance:  
@@ -5748,17 +5748,17 @@ Set oFile = objFileSystem.CreateTextFile(filename, TRUE)
 
 set oEnv=oShell.Environment("System")
 for each sitem in oEnv 
-    oFile.WriteLine("SET " &amp; sitem)
+    oFile.WriteLine("SET " & sitem)
 next
 path = oEnv("PATH")
 
 set oEnv=oShell.Environment("User")
 for each sitem in oEnv 
-    oFile.WriteLine("SET " &amp; sitem)
+    oFile.WriteLine("SET " & sitem)
 next
 
-path = path &amp; ";" &amp; oEnv("PATH")
-oFile.WriteLine("SET PATH=" &amp; path)
+path = path & ";" & oEnv("PATH")
+oFile.WriteLine("SET PATH=" & path)
 oFile.Close
 ```
 
@@ -5802,7 +5802,7 @@ Set oFile = objFileSystem.CreateTextFile(filename, TRUE)
 
 set oEnv=oShell.Environment("Process")
 for each sitem in oEnv 
-    oFile.WriteLine("SET " &amp; sitem)
+    oFile.WriteLine("SET " & sitem)
 next
 oFile.Close
 ```
@@ -5835,7 +5835,7 @@ goto main
 
 :: Set one environment variable from registry key
 :SetFromReg
-    "%WinDir%\System32\Reg" QUERY "%~1" /v "%~2" &gt; "%TEMP%\_envset.tmp" 2&gt;NUL
+    "%WinDir%\System32\Reg" QUERY "%~1" /v "%~2" > "%TEMP%\_envset.tmp" 2>NUL
     for /f "usebackq skip=2 tokens=2,*" %%A IN ("%TEMP%\_envset.tmp") do (
         echo/set %~3=%%B
     )
@@ -5843,7 +5843,7 @@ goto main
 
 :: Get a list of environment variables from registry
 :GetRegEnv
-    "%WinDir%\System32\Reg" QUERY "%~1" &gt; "%TEMP%\_envget.tmp"
+    "%WinDir%\System32\Reg" QUERY "%~1" > "%TEMP%\_envget.tmp"
     for /f "usebackq skip=2" %%A IN ("%TEMP%\_envget.tmp") do (
         if /I not "%%~A"=="Path" (
             call :SetFromReg "%~1" "%%~A" "%%~A"
@@ -5852,22 +5852,22 @@ goto main
     goto :EOF
 
 :main
-    echo/@echo off &gt;"%TEMP%\_env.cmd"
+    echo/@echo off >"%TEMP%\_env.cmd"
 
     :: Slowly generating final file
-    call :GetRegEnv "HKLM\System\CurrentControlSet\Control\Session Manager\Environment" &gt;&gt; "%TEMP%\_env.cmd"
-    call :GetRegEnv "HKCU\Environment"&gt;&gt;"%TEMP%\_env.cmd" &gt;&gt; "%TEMP%\_env.cmd"
+    call :GetRegEnv "HKLM\System\CurrentControlSet\Control\Session Manager\Environment" >> "%TEMP%\_env.cmd"
+    call :GetRegEnv "HKCU\Environment">>"%TEMP%\_env.cmd" >> "%TEMP%\_env.cmd"
 
     :: Special handling for PATH - mix both User and System
-    call :SetFromReg "HKLM\System\CurrentControlSet\Control\Session Manager\Environment" Path Path_HKLM &gt;&gt; "%TEMP%\_env.cmd"
-    call :SetFromReg "HKCU\Environment" Path Path_HKCU &gt;&gt; "%TEMP%\_env.cmd"
+    call :SetFromReg "HKLM\System\CurrentControlSet\Control\Session Manager\Environment" Path Path_HKLM >> "%TEMP%\_env.cmd"
+    call :SetFromReg "HKCU\Environment" Path Path_HKCU >> "%TEMP%\_env.cmd"
 
-    :: Caution: do not insert space-chars before &gt;&gt; redirection sign
-    echo/set Path=%%Path_HKLM%%;%%Path_HKCU%% &gt;&gt; "%TEMP%\_env.cmd"
+    :: Caution: do not insert space-chars before >> redirection sign
+    echo/set Path=%%Path_HKLM%%;%%Path_HKCU%% >> "%TEMP%\_env.cmd"
 
     :: Cleanup
-    del /f /q "%TEMP%\_envset.tmp" 2&gt;nul
-    del /f /q "%TEMP%\_envget.tmp" 2&gt;nul
+    del /f /q "%TEMP%\_envset.tmp" 2>nul
+    del /f /q "%TEMP%\_envget.tmp" 2>nul
 
     :: Set these variables
     call "%TEMP%\_env.cmd"
@@ -5978,7 +5978,7 @@ Now I realize that the other grep tools can do all of the above. It's just that 
 <a href="http://ss64.com/nt/findstr.html" rel="noreferrer">FINDSTR</a> is fairly powerful, supports <a href="http://en.wikipedia.org/wiki/Regular_expression" rel="noreferrer">regular expressions</a> and has the advantages of being on all Windows machines already.  
 
 ```sh
-c:\&gt; FindStr /?
+c:\> FindStr /?
 
 Searches for strings in files.
 
@@ -6023,8 +6023,8 @@ Regular expression quick reference:
   [^class] Inverse class: any one character not in set
   [x-y]    Range: any characters within the specified range
   \x       Escape: literal use of metacharacter x
-  \&lt;xyz    Word position: beginning of word
-  xyz\&gt;    Word position: end of word
+  \<xyz    Word position: beginning of word
+  xyz\>    Word position: end of word
 ```
 
 Example usage: `findstr text_to_find *` or to search recursively `findstr /s text_to_find *`  
@@ -6137,7 +6137,7 @@ I have a database called `nitm`. I haven't created any tables there. But I have 
 I have used the following syntax in MySQL console to import the file:  
 
 ```sh
-mysql&gt;c:/nitm.sql;
+mysql>c:/nitm.sql;
 ```
 
 But this didn't work.  
@@ -6146,7 +6146,7 @@ But this didn't work.
 Finally, i solved the problem. I placed the `nitm.sql` file in `bin` file of the `mysql` folder and used the following syntax.  
 
 ```sh
-C:\wamp\bin\mysql\mysql5.0.51b\bin&gt;mysql -u root nitm &lt; nitm.sql
+C:\wamp\bin\mysql\mysql5.0.51b\bin>mysql -u root nitm < nitm.sql
 ```
 
 And this worked.  
@@ -6170,15 +6170,15 @@ If you are using wamp you can try this. Just type `use your_Database_name` first
 <li><p>If you dont have password, just hit enter and type :</p>
 
 ```sh
-mysql&gt; use database_name;
-mysql&gt; source location_of_your_file;
+mysql> use database_name;
+mysql> source location_of_your_file;
 ```
 
 If you have password, you will promt to enter a password. Enter you password first then type:  
 
 ```sh
-mysql&gt; use database_name;
-mysql&gt; source location_of_your_file;
+mysql> use database_name;
+mysql> source location_of_your_file;
 ```</li>
 </ol>
 
@@ -6414,7 +6414,7 @@ call myProg param1 param^^2 "param^3" %%path%%
 Will be expanded to (from within an batch file)    
 
 ```sh
-myProg param1 param2 param^^3 &lt;content of path&gt;
+myProg param1 param2 param^^3 <content of path>
 ```
 
 #### Answer 2 (score 15)
@@ -6428,7 +6428,7 @@ In short, given the additional options provided by start, it should be your tool
 ```sh
 START ["title"] [/D path] [/I] [/MIN] [/MAX] [/SEPARATE | /SHARED]
   [/LOW | /NORMAL | /HIGH | /REALTIME | /ABOVENORMAL | /BELOWNORMAL]
-  [/NODE &lt;NUMA node&gt;] [/AFFINITY &lt;hex affinity mask&gt;] [/WAIT] [/B]
+  [/NODE <NUMA node>] [/AFFINITY <hex affinity mask>] [/WAIT] [/B]
   [command/program] [parameters]
 
 "title"     Title to display in window title bar.
@@ -6514,7 +6514,7 @@ Taken from this <a href="https://web.archive.org/web/20180210044548/http://sprin
 For Mac OS X:  
 
 ```sh
-export ANDROID_HOME=/&lt;installation location&gt;/android-sdk-macosx
+export ANDROID_HOME=/<installation location>/android-sdk-macosx
 export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 ```
 
@@ -6537,9 +6537,9 @@ and
 I used the following:</p>
 
 ```sh
-export ANDROID_HOME="/Users/&lt;user_name&gt;/Library/Android/sdk"
-export ANDROID_TOOLS="/Users/&lt;user_name&gt;/Library/Android/sdk/tools/"
-export ANDROID_PLATFORM_TOOLS="/Users/&lt;user_name&gt;/Library/Android/sdk/platform-tools/"
+export ANDROID_HOME="/Users/<user_name>/Library/Android/sdk"
+export ANDROID_TOOLS="/Users/<user_name>/Library/Android/sdk/tools/"
+export ANDROID_PLATFORM_TOOLS="/Users/<user_name>/Library/Android/sdk/platform-tools/"
 PATH=$PATH:$ANDROID_HOME:$ANDROID_TOOLS:$ANDROID_PLATFORM_TOOLS
 echo $PATH
 ```
@@ -6564,9 +6564,9 @@ This is the content of my .bash_profile file.
 export PATH=$PATH:/usr/local/bin
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 launchctl setenv STUDIO_JDK /library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk
-export ANDROID_HOME="/Users/&lt;UserName&gt;/Library/Android/sdk"
-export ANDROID_TOOLS="/Users/&lt;UserName&gt;/Library/Android/sdk/tools"
-export ANDROID_PLATFORM_TOOLS="/Users/&lt;UserName&gt;/Library/Android/sdk/platform-tools"
+export ANDROID_HOME="/Users/<UserName>/Library/Android/sdk"
+export ANDROID_TOOLS="/Users/<UserName>/Library/Android/sdk/tools"
+export ANDROID_PLATFORM_TOOLS="/Users/<UserName>/Library/Android/sdk/platform-tools"
 PATH=$PATH:$ANDROID_HOME:$ANDROID_TOOLS:$ANDROID_PLATFORM_TOOLS
 ```
 
@@ -6663,7 +6663,7 @@ If you need to include hidden folders add `/a`.
 <a href="http://technet.microsoft.com/en-us/sysinternals/bb896651" rel="noreferrer">http://technet.microsoft.com/en-us/sysinternals/bb896651</a></p>
 
 ```sh
-usage: du [-c] [-l &lt;levels&gt; | -n | -v] [-u] [-q] &lt;directory&gt;
+usage: du [-c] [-l <levels> | -n | -v] [-u] [-q] <directory>
    -c     Print output as CSV.
    -l     Specify subdirectory depth of information (default is all levels).
    -n     Do not recurse.
@@ -6672,7 +6672,7 @@ usage: du [-c] [-l &lt;levels&gt; | -n | -v] [-u] [-q] &lt;directory&gt;
    -v     Show size (in KB) of intermediate directories.
 
 
-C:\SysInternals&gt;du -n d:\temp
+C:\SysInternals>du -n d:\temp
 
 Du v1.4 - report directory disk usage
 Copyright (C) 2005-2011 Mark Russinovich
@@ -6694,7 +6694,7 @@ While you are at it, take a look at the other utilities. They are a life-saver f
 I'm trying to redirect all output (stdout + stderr) of a <a href="http://en.wikipedia.org/wiki/DOS" rel="noreferrer">DOS</a> command to a single file:  
 
 ```sh
-C:\&gt;dir 1&gt; a.txt 2&gt; a.txt
+C:\>dir 1> a.txt 2> a.txt
 The process cannot access the file because it is being used by another process.
 ```
 
@@ -6704,7 +6704,7 @@ Is it possible, or should I just redirect to two separate files?
 You want:  
 
 ```sh
-dir &gt; a.txt 2&gt;&amp;1
+dir > a.txt 2>&1
 ```
 
 The syntax `2&gt;&amp;1` will redirect `2` (stderr) to `1` (stdout). You can also hide messages by redirecting to `NUL`, <a href="https://support.microsoft.com/en-us/help/110930/redirecting-error-messages-from-command-prompt-stderr-stdout" rel="noreferrer">more explanation and examples on MSDN</a>.  
@@ -6714,7 +6714,7 @@ Anders Lindahl's answer is correct, but it should be noted that if you are redir
 
 ```sh
 REM *** WARNING: THIS WILL NOT REDIRECT STDERR TO STDOUT ****
-dir 2&gt;&amp;1 &gt; a.txt
+dir 2>&1 > a.txt
 ```
 
 #### Answer 3 (score 76)
@@ -6756,19 +6756,19 @@ File Not Found
   To redirect (only) the error message to `NUL`, use the following command:  
 
 ```sh
-dir file.xxx 2&gt; nul
+dir file.xxx 2> nul
 ```
   
   Or, you can redirect the output to one place, and the errors to another.  
 
 ```sh
-dir file.xxx &gt; output.msg 2&gt; output.err
+dir file.xxx > output.msg 2> output.err
 ```
   
   You can print the errors and standard output to a single file by using the "&amp;1" command to redirect the output for STDERR to STDOUT and then sending the output from STDOUT to a file:  
 
 ```sh
-dir file.xxx 1&gt; output.msg 2&gt;&amp;1
+dir file.xxx 1> output.msg 2>&1
 ```
 </blockquote>
 
@@ -6868,7 +6868,7 @@ mysql.exe -u=root -p=admin
 but i getting this error  
 
 ```sh
-ERROR 1045: &lt;28000&gt;: Access denied for user 'root'@'localhost' &lt;using password:YES&gt;
+ERROR 1045: <28000>: Access denied for user 'root'@'localhost' <using password:YES>
 ```
 
 Thanks,   
@@ -6885,15 +6885,15 @@ You can't `cd` to `CD:\` anything, because `CD:\` isn't a valid directory in Win
 If your `\MYSQL\BIN` is on drive `C:`, then your commands need to be:  
 
 ```sh
-C:\&gt;cd \MYSQL\Bin
-C:\MYSQL\Bin&gt;mysql -u root -p admin
+C:\>cd \MYSQL\Bin
+C:\MYSQL\Bin>mysql -u root -p admin
 ```
 
 If you're not already on `C:` (which you'll know by looking at the prompt in the cmd window), or your MySQL folder is on another drive (for instance, `D:`), change to that drive too:  
 
 ```sh
-C:\&gt; cd /d D:\MYSQL\Bin
-D:\MYSQL\Bin&gt;mysql -u root -p admin
+C:\> cd /d D:\MYSQL\Bin
+D:\MYSQL\Bin>mysql -u root -p admin
 ```
 
 The `.exe` after `mysql` is optional, since `.exe` is an executable extension on Windows. If you type `mysql`, Windows will automatically look for an executable file with that name and run it if it finds it.  
@@ -6961,7 +6961,7 @@ Next best is to use `rmdir /s/q foldername` from the command line. `del /f/s/q f
 The best I've found is a two line batch file with a first pass to delete files and outputs to nul to avoid the overhead of writing to screen for every singe file. A second pass then cleans up the remaining directory structure:  
 
 ```sh
-del /f/s/q foldername &gt; nul
+del /f/s/q foldername > nul
 rmdir /s/q foldername
 ```
 
@@ -7143,7 +7143,7 @@ The `dos2unix` and `unix2dos` commands are not available on certain systems. How
 You can use `tr` to convert from DOS to Unix; however, you can only do this safely if CR appears in your file only as the first byte of a CRLF byte pair.  This is usually the case.  You then use:  
 
 ```sh
-tr -d '\015' &lt;DOS-file &gt;UNIX-file
+tr -d '\015' <DOS-file >UNIX-file
 ```
 
 Note that the name `DOS-file` is different from the name `UNIX-file`; if you try to use the same name twice, you will end up with no data in the file.  
@@ -7168,7 +7168,7 @@ However, if you're going to have to do this very often (more than once, roughly 
 
 #### Answer 3 (score 56)
 ```sh
-tr -d "\r" &lt; file
+tr -d "\r" < file
 ```
 
 take a look <a href="http://sed.sourceforge.net/sed1line.txt" rel="noreferrer">here</a> for examples using `sed`:  
@@ -7249,14 +7249,14 @@ Is there any way to wrangle it back into a somewhat-readable format so I can try
 If you don't mind reading bytecode, javap should work fine. It's part of the standard JDK installation.  
 
 ```sh
-Usage: javap &lt;options&gt; &lt;classes&gt;...
+Usage: javap <options> <classes>...
 
 where options include:
    -c                        Disassemble the code
-   -classpath &lt;pathlist&gt;     Specify where to find user class files
-   -extdirs &lt;dirs&gt;           Override location of installed extensions
+   -classpath <pathlist>     Specify where to find user class files
+   -extdirs <dirs>           Override location of installed extensions
    -help                     Print this usage message
-   -J&lt;flag&gt;                  Pass &lt;flag&gt; directly to the runtime system
+   -J<flag>                  Pass <flag> directly to the runtime system
    -l                        Print line number and local variable tables
    -public                   Show only public classes and members
    -protected                Show protected/public classes and members
@@ -7264,7 +7264,7 @@ where options include:
                              and members (default)
    -private                  Show all classes and members
    -s                        Print internal type signatures
-   -bootclasspath &lt;pathlist&gt; Override location of class files loaded
+   -bootclasspath <pathlist> Override location of class files loaded
                              by the bootstrap class loader
    -verbose                  Print stack size, number of locals and args for methods
                              If verifying, print reasons for failure
@@ -7331,7 +7331,7 @@ class MyMessageBox
 public:
   void sendMessage(Message *msg, User *recvr);
   Message receiveMessage();
-  vector&lt;Message&gt; *dataMessageList;
+  vector<Message> *dataMessageList;
 };
 ```
 
@@ -7359,7 +7359,7 @@ struct bar
     foo* fp; 
 
     // likewise, we can form a reference to it
-    void some_func(foo&amp; fr);
+    void some_func(foo& fr);
 
     // but this would be an error, as before, because it requires a definition
     /* foo fooMember; */
@@ -7371,7 +7371,7 @@ struct foo // okay, now define foo!
     double fooDouble;
 };
 
-void bar::some_func(foo&amp; fr)
+void bar::some_func(foo& fr)
 {
     // now that foo is defined, we can read that reference:
     fr.fooInt = 111605;
@@ -7391,7 +7391,7 @@ public:
     void sendMessage(Message *msg, User *recvr); 
 
     Message receiveMessage();
-    vector&lt;Message&gt;* dataMessageList;
+    vector<Message>* dataMessageList;
 };
 
 class User
@@ -7430,7 +7430,7 @@ Probably shouldn't take either of those by pointer. You can't send a message wit
 Rather, use a reference (possibly const):  
 
 ```sh
- void sendMessage(const Message&amp; msg, User&amp; recvr);
+ void sendMessage(const Message& msg, User& recvr);
 ```
 
 #### Answer 2 (score 8)

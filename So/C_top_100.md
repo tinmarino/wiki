@@ -184,8 +184,8 @@ Thus, inside functions this method does not work. Instead, always pass an additi
 Test:  
 
 ```c
-#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
+#include <stdio.h>
+#include <stdlib.h>
 
 void printSizeOf(int intArray[]);
 void printLength(int intArray[]);
@@ -291,8 +291,8 @@ Is there a function to generate a random int number in C?  Or will I have to use
 </blockquote>
 
 ```c
-#include &lt;time.h&gt;
-#include &lt;stdlib.h&gt;
+#include <time.h>
+#include <stdlib.h>
 
 srand(time(NULL));   // Initialization, should only be called once.
 int r = rand();      // Returns a pseudo-random integer between 0 and RAND_MAX.
@@ -323,18 +323,18 @@ int randint(int n) {
   } else {
     // Supporting larger values for n would requires an even more
     // elaborate implementation that combines multiple calls to rand()
-    assert (n &lt;= RAND_MAX)
+    assert (n <= RAND_MAX)
 
     // Chop off all of the values that would cause skew...
     int end = RAND_MAX / n; // truncate skew
-    assert (end &gt; 0);
+    assert (end > 0);
     end *= n;
 
     // ... and ignore results from rand() that fall above that limit.
     // (Worst case the loop condition should succeed 50% of the time,
     // so we can expect to bail out of this loop pretty quickly.)
     int r;
-    while ((r = rand()) &gt;= end);
+    while ((r = rand()) >= end);
 
     return r % n;
   }
@@ -362,7 +362,7 @@ int foo()
     char myString[32];
     uint32_t myInt;
 
-    if (sodium_init() &lt; 0) {
+    if (sodium_init() < 0) {
         /* panic! the library couldn't be initialized, it is not safe to use */
         return 1; 
     }
@@ -391,7 +391,7 @@ From best to worse:
 <strong>Option 1 (C99)</strong>  
 
 ```c
-#include &lt;stdbool.h&gt;
+#include <stdbool.h>
 ```
 
 <strong>Option 2</strong>  
@@ -516,7 +516,7 @@ How do you set, clear, and toggle a bit?
 Use the bitwise OR operator (`|`) to set a bit.  
 
 ```c
-number |= 1UL &lt;&lt; n;
+number |= 1UL << n;
 ```
 
 That will set the `n`th bit of `number`. `n` should be zero, if you want to set the `1`st bit and so on upto `n-1`, if you want to set the `n`th bit.  
@@ -528,7 +528,7 @@ Use `1ULL` if `number` is wider than `unsigned long`; promotion of `1UL &lt;&lt;
 Use the bitwise AND operator (`&amp;`) to clear a bit.  
 
 ```c
-number &amp;= ~(1UL &lt;&lt; n);
+number &= ~(1UL << n);
 ```
 
 That will clear the `n`th bit of `number`. You must invert the bit string with the bitwise NOT operator (`~`), then AND it.  
@@ -538,7 +538,7 @@ That will clear the `n`th bit of `number`. You must invert the bit string with t
 The XOR operator (`^`) can be used to toggle a bit.  
 
 ```c
-number ^= 1UL &lt;&lt; n;
+number ^= 1UL << n;
 ```
 
 That will toggle the `n`th bit of `number`.  
@@ -550,7 +550,7 @@ You didn't ask for this, but I might as well add it.
 To check a bit, shift the number n to the right, then bitwise AND it:  
 
 ```c
-bit = (number &gt;&gt; n) &amp; 1U;
+bit = (number >> n) & 1U;
 ```
 
 That will put the value of the `n`th bit of `number` into the variable `bit`.  
@@ -560,7 +560,7 @@ That will put the value of the `n`th bit of `number` into the variable `bit`.
 Setting the `n`th bit to either `1` or `0` can be achieved with the following on a 2's complement C++ implementation:  
 
 ```c
-number ^= (-x ^ number) &amp; (1UL &lt;&lt; n);
+number ^= (-x ^ number) & (1UL << n);
 ```
 
 Bit `n` will be set if `x` is `1`, and cleared if `x` is `0`.  If `x` has some other value, you get garbage.  `x = !!x` will booleanize it to 0 or 1.  
@@ -568,14 +568,14 @@ Bit `n` will be set if `x` is `1`, and cleared if `x` is `0`.  If `x` has some o
 To make this independent of 2's complement negation behaviour (where `-1` has all bits set, unlike on a 1's complement or sign/magnitude C++ implementation), use unsigned negation.  
 
 ```c
-number ^= (-(unsigned long)x ^ number) &amp; (1UL &lt;&lt; n);
+number ^= (-(unsigned long)x ^ number) & (1UL << n);
 ```
 
 or  
 
 ```c
 unsigned long newbit = !!x;    // Also booleanize to force 0 or 1
-number ^= (-newbit ^ number) &amp; (1UL &lt;&lt; n);
+number ^= (-newbit ^ number) & (1UL << n);
 ```
 
 It's generally a good idea to use unsigned types for portable bit manipulation.  
@@ -583,7 +583,7 @@ It's generally a good idea to use unsigned types for portable bit manipulation.
 or  
 
 ```c
-number = (number &amp; ~(1UL &lt;&lt; n)) | (x &lt;&lt; n);
+number = (number & ~(1UL << n)) | (x << n);
 ```
 
 `(number &amp; ~(1UL &lt;&lt; n))` will clear the `n`th bit and `(x &lt;&lt; n)` will set the `n`th bit to `x`.  
@@ -598,25 +598,25 @@ Or the <a href="http://en.wikipedia.org/wiki/Boost_%28C%2B%2B_libraries%29" rel=
 There is no need to roll your own:  
 
 ```c
-#include &lt;bitset&gt;
-#include &lt;iostream&gt;
+#include <bitset>
+#include <iostream>
 
 int main()
 {
-    std::bitset&lt;5&gt; x;
+    std::bitset<5> x;
 
     x[1] = 1;
     x[2] = 0;
     // Note x[0-4]  valid
 
-    std::cout &lt;&lt; x &lt;&lt; std::endl;
+    std::cout << x << std::endl;
 }
 ```
 
 <hr>
 
 ```c
-[Alpha:] &gt; ./a.out
+[Alpha:] > ./a.out
 00010
 ```
 
@@ -743,15 +743,15 @@ I tried this example:
 
 ```c
 /* itoa example */
-#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
+#include <stdio.h>
+#include <stdlib.h>
 
 int main ()
 {
     int i;
     char buffer [33];
     printf ("Enter a number: ");
-    scanf ("%d",&amp;i);
+    scanf ("%d",&i);
     itoa (i,buffer,10);
     printf ("decimal: %s\n",buffer);
     itoa (i,buffer,16);
@@ -782,7 +782,7 @@ Making your own `itoa` is also easy, try this :
 char* itoa(int i, char b[]){
     char const digit[] = "0123456789";
     char* p = b;
-    if(i&lt;0){
+    if(i<0){
         *p++ = '-';
         i *= -1;
     }
@@ -835,7 +835,7 @@ This precision loss could lead to greater truncation errors being accumulated wh
 ```c
 float a = 1.f / 81;
 float b = 0;
-for (int i = 0; i &lt; 729; ++ i)
+for (int i = 0; i < 729; ++ i)
     b += a;
 printf("%.7g\n", b); // prints 9.000023
 ```
@@ -845,7 +845,7 @@ while
 ```c
 double a = 1.0 / 81;
 double b = 0;
-for (int i = 0; i &lt; 729; ++ i)
+for (int i = 0; i < 729; ++ i)
     b += a;
 printf("%.15g\n", b); // prints 8.99999999999996
 ```
@@ -887,8 +887,8 @@ Given a quadratic equation: <em>x</em><sup>2</sup>&nbsp;&minus;&nbsp;4.0000000&n
 Using `float` and `double`, we can write a test program:  
 
 ```c
-#include &lt;stdio.h&gt;
-#include &lt;math.h&gt;
+#include <stdio.h>
+#include <math.h>
 
 void dbl_solve(double a, double b, double c)
 {
@@ -943,7 +943,7 @@ What is the correct format specifier for `double` in printf? Is it `%f` or is it
 <h5>Code sample</h3>
 
 ```c
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 
 int main()
 {
@@ -1094,14 +1094,14 @@ Similarly `++i` will be executed before `j=i;`.</p>
 For your question  <strong>which should be used in the incrementation block of a for loop?</strong> the answer is, you can use any one.. doesn't matter. It will execute your for loop same no. of times.  
 
 ```c
-for(i=0; i&lt;5; i++)
+for(i=0; i<5; i++)
    printf("%d ",i);
 ```
 
 And  
 
 ```c
-for(i=0; i&lt;5; ++i)
+for(i=0; i<5; ++i)
    printf("%d ",i);
 ```
 
@@ -1110,7 +1110,7 @@ Both the loops will produce same output. ie `0 1 2 3 4`.
 It only matters where you are using it.  
 
 ```c
-for(i = 0; i&lt;5;)
+for(i = 0; i<5;)
     printf("%d ",++i);
 ```
 
@@ -1250,7 +1250,7 @@ You might also be interested in <a href="http://en.cppreference.com/w/c/string/b
 
 ```c
 uintmax_t num = strtoumax(s, NULL, 10);
-if (num == UINTMAX_MAX &amp;&amp; errno == ERANGE)
+if (num == UINTMAX_MAX && errno == ERANGE)
     /* Could not convert. */
 ```
 
@@ -1282,12 +1282,12 @@ With:
 
 
 ```c
-#include &lt;assert.h&gt;
-#include &lt;ctype.h&gt;
-#include &lt;errno.h&gt;
-#include &lt;limits.h&gt;
-#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
+#include <assert.h>
+#include <ctype.h>
+#include <errno.h>
+#include <limits.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 typedef enum {
     STR2INT_SUCCESS,
@@ -1320,11 +1320,11 @@ str2int_errno str2int(int *out, char *s, int base) {
     if (s[0] == '\0' || isspace(s[0]))
         return STR2INT_INCONVERTIBLE;
     errno = 0;
-    long l = strtol(s, &amp;end, base);
+    long l = strtol(s, &end, base);
     /* Both checks are needed because INT_MAX == LONG_MAX is possible. */
-    if (l &gt; INT_MAX || (errno == ERANGE &amp;&amp; l == LONG_MAX))
+    if (l > INT_MAX || (errno == ERANGE && l == LONG_MAX))
         return STR2INT_OVERFLOW;
-    if (l &lt; INT_MIN || (errno == ERANGE &amp;&amp; l == LONG_MIN))
+    if (l < INT_MIN || (errno == ERANGE && l == LONG_MIN))
         return STR2INT_UNDERFLOW;
     if (*end != '\0')
         return STR2INT_INCONVERTIBLE;
@@ -1338,62 +1338,62 @@ int main(void) {
     char s[256];
 
     /* Simple case. */
-    assert(str2int(&amp;i, "11", 10) == STR2INT_SUCCESS);
+    assert(str2int(&i, "11", 10) == STR2INT_SUCCESS);
     assert(i == 11);
 
     /* Negative number . */
-    assert(str2int(&amp;i, "-11", 10) == STR2INT_SUCCESS);
+    assert(str2int(&i, "-11", 10) == STR2INT_SUCCESS);
     assert(i == -11);
 
     /* Different base. */
-    assert(str2int(&amp;i, "11", 16) == STR2INT_SUCCESS);
+    assert(str2int(&i, "11", 16) == STR2INT_SUCCESS);
     assert(i == 17);
 
     /* 0 */
-    assert(str2int(&amp;i, "0", 10) == STR2INT_SUCCESS);
+    assert(str2int(&i, "0", 10) == STR2INT_SUCCESS);
     assert(i == 0);
 
     /* INT_MAX. */
     sprintf(s, "%d", INT_MAX);
-    assert(str2int(&amp;i, s, 10) == STR2INT_SUCCESS);
+    assert(str2int(&i, s, 10) == STR2INT_SUCCESS);
     assert(i == INT_MAX);
 
     /* INT_MIN. */
     sprintf(s, "%d", INT_MIN);
-    assert(str2int(&amp;i, s, 10) == STR2INT_SUCCESS);
+    assert(str2int(&i, s, 10) == STR2INT_SUCCESS);
     assert(i == INT_MIN);
 
     /* Leading and trailing space. */
-    assert(str2int(&amp;i, " 1", 10) == STR2INT_INCONVERTIBLE);
-    assert(str2int(&amp;i, "1 ", 10) == STR2INT_INCONVERTIBLE);
+    assert(str2int(&i, " 1", 10) == STR2INT_INCONVERTIBLE);
+    assert(str2int(&i, "1 ", 10) == STR2INT_INCONVERTIBLE);
 
     /* Trash characters. */
-    assert(str2int(&amp;i, "a10", 10) == STR2INT_INCONVERTIBLE);
-    assert(str2int(&amp;i, "10a", 10) == STR2INT_INCONVERTIBLE);
+    assert(str2int(&i, "a10", 10) == STR2INT_INCONVERTIBLE);
+    assert(str2int(&i, "10a", 10) == STR2INT_INCONVERTIBLE);
 
     /* int overflow.
      *
      * `if` needed to avoid undefined behaviour
      * on `INT_MAX + 1` if INT_MAX == LONG_MAX.
      */
-    if (INT_MAX &lt; LONG_MAX) {
+    if (INT_MAX < LONG_MAX) {
         sprintf(s, "%ld", (long int)INT_MAX + 1L);
-        assert(str2int(&amp;i, s, 10) == STR2INT_OVERFLOW);
+        assert(str2int(&i, s, 10) == STR2INT_OVERFLOW);
     }
 
     /* int underflow */
-    if (LONG_MIN &lt; INT_MIN) {
+    if (LONG_MIN < INT_MIN) {
         sprintf(s, "%ld", (long int)INT_MIN - 1L);
-        assert(str2int(&amp;i, s, 10) == STR2INT_UNDERFLOW);
+        assert(str2int(&i, s, 10) == STR2INT_UNDERFLOW);
     }
 
     /* long overflow */
     sprintf(s, "%ld0", LONG_MAX);
-    assert(str2int(&amp;i, s, 10) == STR2INT_OVERFLOW);
+    assert(str2int(&i, s, 10) == STR2INT_OVERFLOW);
 
     /* long underflow */
     sprintf(s, "%ld0", LONG_MIN);
-    assert(str2int(&amp;i, s, 10) == STR2INT_UNDERFLOW);
+    assert(str2int(&i, s, 10) == STR2INT_UNDERFLOW);
 
     return EXIT_SUCCESS;
 }
@@ -1481,7 +1481,7 @@ I've seen the word `static` used in different places in C code; is this like a s
 (1) is the more foreign topic if you're a newbie, so here's an example:  
 
 ```c
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 
 void foo()
 {
@@ -1499,7 +1499,7 @@ int main()
 {
     int i;
 
-    for (i = 0; i &lt; 10; ++i)
+    for (i = 0; i < 10; ++i)
         foo();
 }
 ```
@@ -1588,7 +1588,7 @@ struct dirent *ent;
 if ((dir = opendir ("c:\\src\\")) != NULL) {
   /* print all the files and directories within directory */
   while ((ent = readdir (dir)) != NULL) {
-    printf ("%s\n", ent-&gt;d_name);
+    printf ("%s\n", ent->d_name);
   }
   closedir (dir);
 } else {
@@ -1607,16 +1607,16 @@ The author of the windows compatibility layer is Toni Ronkko. In Unix, it is a s
 In C++17 there is now an official way to list files of your file system: `std::filesystem`. There is an excellent answer from <a href="https://stackoverflow.com/a/37494654/23264"><strong>Shreevardhan</strong></a> below with this source code:  
 
 ```c
-#include &lt;string&gt;
-#include &lt;iostream&gt;
-#include &lt;filesystem&gt;
+#include <string>
+#include <iostream>
+#include <filesystem>
 namespace fs = std::filesystem;
 
 int main()
 {
     std::string path = "/path/to/directory";
-    for (const auto &amp; entry : fs::directory_iterator(path))
-        std::cout &lt;&lt; entry.path() &lt;&lt; std::endl;
+    for (const auto & entry : fs::directory_iterator(path))
+        std::cout << entry.path() << std::endl;
 }
 ```
 
@@ -1624,15 +1624,15 @@ int main()
 C++17 now has a <a href="http://en.cppreference.com/w/cpp/filesystem/directory_iterator" rel="noreferrer">`std::filesystem::directory_iterator`</a>, which can be used as  
 
 ```c
-#include &lt;string&gt;
-#include &lt;iostream&gt;
-#include &lt;filesystem&gt;
+#include <string>
+#include <iostream>
+#include <filesystem>
 namespace fs = std::filesystem;
 
 int main() {
     std::string path = "/path/to/directory";
-    for (const auto &amp; entry : fs::directory_iterator(path))
-        std::cout &lt;&lt; entry.path() &lt;&lt; std::endl;
+    for (const auto & entry : fs::directory_iterator(path))
+        std::cout << entry.path() << std::endl;
 }
 ```
 
@@ -1649,9 +1649,9 @@ Since there is no cross platform way, the best cross platform way is to use a li
   The following function, given a directory path and a file name, recursively searches the directory and its sub-directories for the file name, returning a bool, and if successful, the path to the file that was found.   
 
 ```c
-bool find_file(const path &amp; dir_path,         // in this directory,
-               const std::string &amp; file_name, // search for this name,
-               path &amp; path_found)             // placing path here if found
+bool find_file(const path & dir_path,         // in this directory,
+               const std::string & file_name, // search for this name,
+               path & path_found)             // placing path here if found
 {
     if (!exists(dir_path)) 
         return false;
@@ -1660,14 +1660,14 @@ bool find_file(const path &amp; dir_path,         // in this directory,
 
     for (directory_iterator itr(dir_path); itr != end_itr; ++itr)
     {
-        if (is_directory(itr-&gt;status()))
+        if (is_directory(itr->status()))
         {
-            if (find_file(itr-&gt;path(), file_name, path_found)) 
+            if (find_file(itr->path(), file_name, path_found)) 
                 return true;
         }
-        else if (itr-&gt;leaf() == file_name) // see below
+        else if (itr->leaf() == file_name) // see below
         {
-            path_found = itr-&gt;path();
+            path_found = itr->path();
             return true;
         }
     }
@@ -1689,7 +1689,7 @@ You can use <a href="http://www.manpagez.com/man/3/opendir/" rel="noreferrer">op
 len = strlen(name);
 dirp = opendir(".");
 while ((dp = readdir(dirp)) != NULL)
-        if (dp-&gt;d_namlen == len &amp;&amp; !strcmp(dp-&gt;d_name, name)) {
+        if (dp->d_namlen == len && !strcmp(dp->d_name, name)) {
                 (void)closedir(dirp);
                 return FOUND;
         }
@@ -1708,9 +1708,9 @@ You can use the Win32 API <a href="http://msdn.microsoft.com/en-us/library/aa364
   The following C++ example shows you a minimal use of FindFirstFile.  
 
 ```c
-#include &lt;windows.h&gt;
-#include &lt;tchar.h&gt;
-#include &lt;stdio.h&gt;
+#include <windows.h>
+#include <tchar.h>
+#include <stdio.h>
 
 void _tmain(int argc, TCHAR *argv[])
 {
@@ -1724,7 +1724,7 @@ void _tmain(int argc, TCHAR *argv[])
    }
 
    _tprintf (TEXT("Target file is %s\n"), argv[1]);
-   hFind = FindFirstFile(argv[1], &amp;FindFileData);
+   hFind = FindFirstFile(argv[1], &FindFileData);
    if (hFind == INVALID_HANDLE_VALUE) 
    {
       printf ("FindFirstFile failed (%d)\n", GetLastError());
@@ -1771,7 +1771,7 @@ int (*functionPtr)(int,int);
 Now we can safely point to our function:  
 
 ```c
-functionPtr = &amp;addInt;
+functionPtr = &addInt;
 ```
 
 Now that we have a pointer to the function, let's use it:  
@@ -1796,7 +1796,7 @@ We can use function pointers in return values as well (try to keep up, it gets m
 // and it returns another int
 int (*functionFactory(int n))(int, int) {
     printf("Got parameter %d", n);
-    int (*functionPtr)(int,int) = &amp;addInt;
+    int (*functionPtr)(int,int) = &addInt;
     return functionPtr;
 }
 ```
@@ -1809,7 +1809,7 @@ typedef int (*myFuncDef)(int, int);
 
 myFuncDef functionFactory(int n) {
     printf("Got parameter %d", n);
-    myFuncDef functionPtr = &amp;addInt;
+    myFuncDef functionPtr = &addInt;
     return functionPtr;
 }
 ```
@@ -1821,7 +1821,7 @@ For example, the following lines is written in C:
 
 ```c
 String s1 = newString();
-s1-&gt;set(s1, "hello");
+s1->set(s1, "hello");
 ```
 
 Yes, the `-&gt;` and the lack of a `new` operator is a dead give away, but it sure seems to imply that we're setting the text of some `String` class to be `"hello"`.  
@@ -1856,11 +1856,11 @@ String newString()
 {
     String self = (String)malloc(sizeof(struct String_Struct));
 
-    self-&gt;get = &amp;getString;
-    self-&gt;set = &amp;setString;
-    self-&gt;length = &amp;lengthString;
+    self->get = &getString;
+    self->set = &setString;
+    self->length = &lengthString;
 
-    self-&gt;set(self, "");
+    self->set(self, "");
 
     return self;
 }
@@ -1871,7 +1871,7 @@ For example, the `getString` function that is called by invoking the `get` metho
 ```c
 char* getString(const void* self_obj)
 {
-    return ((String)self_obj)-&gt;internal-&gt;value;
+    return ((String)self_obj)->internal->value;
 }
 ```
 
@@ -1906,12 +1906,12 @@ ImmutableString newImmutableString(const char* value)
 {
     ImmutableString self = (ImmutableString)malloc(sizeof(struct ImmutableString_Struct));
 
-    self-&gt;base = newString();
+    self->base = newString();
 
-    self-&gt;get = self-&gt;base-&gt;get;
-    self-&gt;length = self-&gt;base-&gt;length;
+    self->get = self->base->get;
+    self->length = self->base->length;
 
-    self-&gt;base-&gt;set(self-&gt;base, (char*)value);
+    self->base->set(self->base, (char*)value);
 
     return self;
 }
@@ -1946,12 +1946,12 @@ ImmutableString newImmutableString(const char* value)
 {
     ImmutableString self = (ImmutableString)malloc(sizeof(struct ImmutableString_Struct));
 
-    self-&gt;base = newString();
+    self->base = newString();
 
-    self-&gt;get = self-&gt;base-&gt;get;
-    self-&gt;length = &amp;lengthOverrideMethod;
+    self->get = self->base->get;
+    self->length = &lengthOverrideMethod;
 
-    self-&gt;base-&gt;set(self-&gt;base, (char*)value);
+    self->base->set(self->base, (char*)value);
 
     return self;
 }
@@ -1979,23 +1979,23 @@ You wouldn't normally write these by hand, you'd write in assembly language and 
 <li><p>Returns the current value on the EAX register</p>
 
 ```c
-int eax = ((int(*)())("\xc3 &lt;- This returns the value of the EAX register"))();
+int eax = ((int(*)())("\xc3 <- This returns the value of the EAX register"))();
 ```</li>
 <li><p>Write a swap function</p>
 
 ```c
 int a = 10, b = 20;
-((void(*)(int*,int*))"\x8b\x44\x24\x04\x8b\x5c\x24\x08\x8b\x00\x8b\x1b\x31\xc3\x31\xd8\x31\xc3\x8b\x4c\x24\x04\x89\x01\x8b\x4c\x24\x08\x89\x19\xc3 &lt;- This swaps the values of a and b")(&amp;a,&amp;b);
+((void(*)(int*,int*))"\x8b\x44\x24\x04\x8b\x5c\x24\x08\x8b\x00\x8b\x1b\x31\xc3\x31\xd8\x31\xc3\x8b\x4c\x24\x04\x89\x01\x8b\x4c\x24\x08\x89\x19\xc3 <- This swaps the values of a and b")(&a,&b);
 ```</li>
 <li><p>Write a for-loop counter to 1000, calling some function each time</p>
 
 ```c
-((int(*)())"\x66\x31\xc0\x8b\x5c\x24\x04\x66\x40\x50\xff\xd3\x58\x66\x3d\xe8\x03\x75\xf4\xc3")(&amp;function); // calls function with 1-&gt;1000
+((int(*)())"\x66\x31\xc0\x8b\x5c\x24\x04\x66\x40\x50\xff\xd3\x58\x66\x3d\xe8\x03\x75\xf4\xc3")(&function); // calls function with 1->1000
 ```</li>
 <li><p>You can even write a recursive function that counts to 100</p>
 
 ```c
-const char* lol = "\x8b\x5c\x24\x4\x3d\xe8\x3\x0\x0\x7e\x2\x31\xc0\x83\xf8\x64\x7d\x6\x40\x53\xff\xd3\x5b\xc3\xc3 &lt;- Recursively calls the function at address lol.";
+const char* lol = "\x8b\x5c\x24\x4\x3d\xe8\x3\x0\x0\x7e\x2\x31\xc0\x83\xf8\x64\x7d\x6\x40\x53\xff\xd3\x5b\xc3\xc3 <- Recursively calls the function at address lol.";
 i = ((int(*)())(lol))(lol);
 ```</li>
 </ol>
@@ -2010,13 +2010,13 @@ To disassemble these, you can compile this to put a label on the bytes, and use 
 
 ```c
 // at global scope
-const char swap[] = "\x8b\x44\x24\x04\x8b\x5c\x24\x08\x8b\x00\x8b\x1b\x31\xc3\x31\xd8\x31\xc3\x8b\x4c\x24\x04\x89\x01\x8b\x4c\x24\x08\x89\x19\xc3 &lt;- This swaps the values of a and b";
+const char swap[] = "\x8b\x44\x24\x04\x8b\x5c\x24\x08\x8b\x00\x8b\x1b\x31\xc3\x31\xd8\x31\xc3\x8b\x4c\x24\x04\x89\x01\x8b\x4c\x24\x08\x89\x19\xc3 <- This swaps the values of a and b";
 ```
 
 Compiling with `gcc -c -m32 foo.c` and disassembling with `objdump -D -rwC -Mintel`, we can get the assembly, and find out that this code violates the ABI by clobbering EBX (a call-preserved register) and is generally inefficient.  
 
 ```c
-00000000 &lt;swap&gt;:
+00000000 <swap>:
    0:   8b 44 24 04             mov    eax,DWORD PTR [esp+0x4]   # load int *a arg from the stack
    4:   8b 5c 24 08             mov    ebx,DWORD PTR [esp+0x8]   # ebx = b
    8:   8b 00                   mov    eax,DWORD PTR [eax]       # dereference: eax = *a
@@ -2090,9 +2090,9 @@ You can use `stat` (if you know the filename), or `fstat` (if you have the file 
 Here is an example for stat:  
 
 ```c
-#include &lt;sys/stat.h&gt;
+#include <sys/stat.h>
 struct stat st;
-stat(filename, &amp;st);
+stat(filename, &st);
 size = st.st_size;
 ```
 
@@ -2104,13 +2104,13 @@ You can use <a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa
 If you have the file descriptor `fstat()` returns a stat structure which contain the file size.  
 
 ```c
-#include &lt;sys/types.h&gt;
-#include &lt;sys/stat.h&gt;
-#include &lt;unistd.h&gt;
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
 
 // fd = fileno(f); //if you have a stream (e.g. from fopen), not a file descriptor.
 struct stat buf;
-fstat(fd, &amp;buf);
+fstat(fd, &buf);
 off_t size = buf.st_size;
 ```
 
@@ -2134,14 +2134,14 @@ Hacky but works for me:
 ```c
 #define BYTE_TO_BINARY_PATTERN "%c%c%c%c%c%c%c%c"
 #define BYTE_TO_BINARY(byte)  \
-  (byte &amp; 0x80 ? '1' : '0'), \
-  (byte &amp; 0x40 ? '1' : '0'), \
-  (byte &amp; 0x20 ? '1' : '0'), \
-  (byte &amp; 0x10 ? '1' : '0'), \
-  (byte &amp; 0x08 ? '1' : '0'), \
-  (byte &amp; 0x04 ? '1' : '0'), \
-  (byte &amp; 0x02 ? '1' : '0'), \
-  (byte &amp; 0x01 ? '1' : '0') 
+  (byte & 0x80 ? '1' : '0'), \
+  (byte & 0x40 ? '1' : '0'), \
+  (byte & 0x20 ? '1' : '0'), \
+  (byte & 0x10 ? '1' : '0'), \
+  (byte & 0x08 ? '1' : '0'), \
+  (byte & 0x04 ? '1' : '0'), \
+  (byte & 0x02 ? '1' : '0'), \
+  (byte & 0x01 ? '1' : '0') 
 ```
 
 
@@ -2154,7 +2154,7 @@ For multi-byte types
 
 ```c
 printf("m: "BYTE_TO_BINARY_PATTERN" "BYTE_TO_BINARY_PATTERN"\n",
-  BYTE_TO_BINARY(m&gt;&gt;8), BYTE_TO_BINARY(m));
+  BYTE_TO_BINARY(m>>8), BYTE_TO_BINARY(m));
 ```
 
 You need all the extra quotes unfortunately. This approach has the efficiency risks of macros (don't pass a function as the argument to `BYTE_TO_BINARY`) but avoids the memory issues and multiple invocations of strcat in some of the other proposals here.  
@@ -2170,11 +2170,11 @@ void printBits(size_t const size, void const * const ptr)
     unsigned char byte;
     int i, j;
 
-    for (i=size-1;i&gt;=0;i--)
+    for (i=size-1;i>=0;i--)
     {
-        for (j=7;j&gt;=0;j--)
+        for (j=7;j>=0;j--)
         {
-            byte = (b[i] &gt;&gt; j) &amp; 1;
+            byte = (b[i] >> j) & 1;
             printf("%u", byte);
         }
     }
@@ -2190,9 +2190,9 @@ int main(int argv, char* argc[])
         int i = 23;
         uint ui = UINT_MAX;
         float f = 23.45f;
-        printBits(sizeof(i), &amp;i);
-        printBits(sizeof(ui), &amp;ui);
-        printBits(sizeof(f), &amp;f);
+        printBits(sizeof(i), &i);
+        printBits(sizeof(ui), &ui);
+        printBits(sizeof(f), &f);
         return 0;
 }
 ```
@@ -2203,7 +2203,7 @@ int main(int argv, char* argc[])
 
 #### Question
 ```c
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 int main() {
     unsigned long long int num = 285212672; //FYI: fits in 29 bits
     int normalInt = 5;
@@ -2488,7 +2488,7 @@ extern "C" {
 
     // Templates.
     // error: template with C linkage
-    template &lt;class C&gt; void f(C i) { }
+    template <class C> void f(C i) { }
 }
 ```
 
@@ -2501,7 +2501,7 @@ Calling C from C++ is pretty easy: each C function only has one possible non-man
 main.cpp  
 
 ```c
-#include &lt;cassert&gt;
+#include <cassert>
 
 #include "c.h"
 
@@ -2564,7 +2564,7 @@ Here we illustrate how to expose C++ function overloads to C.
 main.c  
 
 ```c
-#include &lt;assert.h&gt;
+#include <assert.h>
 
 #include "cpp.h"
 
@@ -2666,7 +2666,7 @@ const char *readLine(FILE *file) {
     char ch = getc(file);
     int count = 0;
 
-    while ((ch != '\n') &amp;&amp; (ch != EOF)) {
+    while ((ch != '\n') && (ch != EOF)) {
         if (count == maximumLineLength) {
             maximumLineLength += 128;
             lineBuffer = realloc(lineBuffer, maximumLineLength);
@@ -2708,8 +2708,8 @@ If your task is not to invent the line-by-line reading function, but just to rea
 
 ```c
 #define _GNU_SOURCE
-#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
+#include <stdio.h>
+#include <stdlib.h>
 
 int main(void)
 {
@@ -2722,7 +2722,7 @@ int main(void)
     if (fp == NULL)
         exit(EXIT_FAILURE);
 
-    while ((read = getline(&amp;line, &amp;len, fp)) != -1) {
+    while ((read = getline(&line, &len, fp)) != -1) {
         printf("Retrieved line of length %zu:\n", read);
         printf("%s", line);
     }
@@ -2853,7 +2853,7 @@ How can I round a float (such as 37.777779) to two decimal places (37.78) in C?
 If you just want to round the number for output purposes, then the `"%.2f"` format string is indeed the correct answer.  However, if you actually want to round the floating point value for further computation, something like the following works:  
 
 ```c
-#include &lt;math.h&gt;
+#include <math.h>
 
 float val = 37.777779;
 
@@ -2893,7 +2893,7 @@ I am getting confused with `size_t` in C. I know that it is returned by the `siz
 Let's say I have a `for` loop:  
 
 ```c
-for(i = 0; i &lt; some_size; i++)
+for(i = 0; i < some_size; i++)
 ```
 
 Should I use `int i;` or `size_t i;`?  
@@ -3045,7 +3045,7 @@ int increment(void) { return global_variable++; }
 ```c
 #include "file3.h"
 #include "prog1.h"
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 
 void use_it(void)
 {
@@ -3082,7 +3082,7 @@ extern int increment(void);
 ```c
 #include "file3.h"
 #include "prog1.h"
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 
 int main(void)
 {
@@ -3217,7 +3217,7 @@ void dec(void) { i--; }
 
 ```c
 #include "prog2.h"
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 
 int i = 9;   /* Do not do this in portable code */
 
@@ -3292,7 +3292,7 @@ extern void inc(void);
 
 ```c
 #include "prog2.h"
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 
 int main(void)
 {
@@ -3436,7 +3436,7 @@ int increment(void) { return global_variable++; }
 ```c
 #include "file3a.h"
 #include "prog3.h"
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 
 void use_it(void)
 {
@@ -3460,7 +3460,7 @@ extern int increment(void);
 ```c
 #include "file3a.h"
 #include "prog3.h"
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 
 int main(void)
 {
@@ -3520,7 +3520,7 @@ int oddball_value(void) { return oddball_struct.a + oddball_struct.b; }
 ```c
 #include "file3b.h"
 #include "prog4.h"
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 
 void use_them(void)
 {
@@ -3557,7 +3557,7 @@ extern void use_them(void);
 ```c
 #include "file3b.h"
 #include "prog4.h"
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 
 int main(void)
 {
@@ -3643,7 +3643,7 @@ you define the macro DEFINE_VARIABLES.</li>
 
 ```c
 /*
-** This header must not contain header guards (like &lt;assert.h&gt; must not).
+** This header must not contain header guards (like <assert.h> must not).
 ** Each time it is invoked, it redefines the macros EXTERN, INITIALIZE
 ** based on whether macro DEFINE_VARIABLES is currently defined.
 */
@@ -3682,7 +3682,7 @@ extern int oddball_value(void);
 
 ```c
 /* Standard prologue */
-#if defined(DEFINE_VARIABLES) &amp;&amp; !defined(FILE2C_H_DEFINITIONS)
+#if defined(DEFINE_VARIABLES) && !defined(FILE2C_H_DEFINITIONS)
 #undef FILE2C_H_INCLUDED
 #endif
 
@@ -3722,7 +3722,7 @@ int oddball_value(void) { return oddball_struct.a + oddball_struct.b; }
 
 ```c
 #include "file2c.h"
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 
 void use_them(void)
 {
@@ -3764,7 +3764,7 @@ int oddball_value(void) { return oddball_struct.a + oddball_struct.b; }
 
 ```c
 #include "file2c.h"
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 
 int main(void)
 {
@@ -3797,7 +3797,7 @@ easy way around that other than "don't do it".</p>
 
 ```c
 /* Standard prologue */
-#if defined(DEFINE_VARIABLES) &amp;&amp; !defined(FILE2D_H_DEFINITIONS)
+#if defined(DEFINE_VARIABLES) && !defined(FILE2D_H_DEFINITIONS)
 #undef FILE2D_H_INCLUDED
 #endif
 
@@ -3847,7 +3847,7 @@ have to remember to write the the extra line.  An alternative might be:</p>
 
 ```c
 /*
-** This header must not contain header guards (like &lt;assert.h&gt; must not).
+** This header must not contain header guards (like <assert.h> must not).
 ** Each time it is included, the macro HEADER_DEFINING_VARIABLES should
 ** be defined with the name (in quotes - or possibly angle brackets) of
 ** the header to be included that defines variables when the macro
@@ -3895,7 +3895,7 @@ int oddball_value(void) { return oddball_struct.a + oddball_struct.b; }
 
 ```c
 /* Standard prologue */
-#if defined(DEFINE_VARIABLES) &amp;&amp; !defined(FILE8C_H_DEFINITIONS)
+#if defined(DEFINE_VARIABLES) && !defined(FILE8C_H_DEFINITIONS)
 #undef FILE8C_H_INCLUDED
 #endif
 
@@ -3943,7 +3943,7 @@ int oddball_value(void) { return oddball_struct.a + oddball_struct.b; }
 
 ```c
 #include "file2d.h"
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 
 int main(void)
 {
@@ -3960,7 +3960,7 @@ int main(void)
 
 ```c
 #include "file2d.h"
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 
 void use_them(void)
 {
@@ -4018,7 +4018,7 @@ Complete sample:
 $ cat test1.c 
 int test1_var = 5;
 $ cat test2.c
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 
 extern int test1_var;
 
@@ -4057,7 +4057,7 @@ As functions. I wouldn't use macros like `#define MIN(X, Y) (((X) &lt; (Y)) ? (X
  #define max(a,b) \
    ({ __typeof__ (a) _a = (a); \
        __typeof__ (b) _b = (b); \
-     _a &gt; _b ? _a : _b; })
+     _a > _b ? _a : _b; })
 ```
 
 Everyone says "oh I know about double evaluation, it's no problem" and a few months down the road, you'll be debugging the silliest problems for hours on end.  
@@ -4086,8 +4086,8 @@ $ cat /etc/debian_version
 5.0.2
 
 $ egrep 'MIN\(|MAX\(' /usr/include/sys/param.h
-#define MIN(a,b) (((a)&lt;(b))?(a):(b))
-#define MAX(a,b) (((a)&gt;(b))?(a):(b))
+#define MIN(a,b) (((a)<(b))?(a):(b))
+#define MAX(a,b) (((a)>(b))?(a):(b))
 
 $ head -n 2 /usr/include/sys/param.h | grep GNU
 This file is part of the GNU C Library.
@@ -4100,8 +4100,8 @@ $ uname -sr
 FreeBSD 5.5-STABLE
 
 $ egrep 'MIN\(|MAX\(' /usr/include/sys/param.h
-#define MIN(a,b) (((a)&lt;(b))?(a):(b))
-#define MAX(a,b) (((a)&gt;(b))?(a):(b))
+#define MIN(a,b) (((a)<(b))?(a):(b))
+#define MAX(a,b) (((a)>(b))?(a):(b))
 ```
 
 <hr>
@@ -4117,8 +4117,8 @@ The source repositories are here:
 There's a `std::min` and `std::max` in C++, but AFAIK, there's no equivalent in the C standard library.  You can define them yourself with macros like  
 
 ```c
-#define MAX(x, y) (((x) &gt; (y)) ? (x) : (y))
-#define MIN(x, y) (((x) &lt; (y)) ? (x) : (y))
+#define MAX(x, y) (((x) > (y)) ? (x) : (y))
+#define MIN(x, y) (((x) < (y)) ? (x) : (y))
 ```
 
 But this causes problems if you write something like `MAX(++a, ++b)`.  
@@ -4345,9 +4345,9 @@ Out of all the combinations you tried, `%ld` and `%lu` are the only ones which a
 I am trying to write a C program in linux that having sqrt of the argument, Here's the code:  
 
 ```c
-#include&lt;stdlib.h&gt;
-#include&lt;stdio.h&gt;
-#include&lt;math.h&gt;
+#include<stdlib.h>
+#include<stdio.h>
+#include<math.h>
 
 int main(char *argv[]){
     float k;
@@ -4421,7 +4421,7 @@ size_t nread;
 
 file = fopen("test.txt", "r");
 if (file) {
-    while ((nread = fread(buf, 1, sizeof buf, file)) &gt; 0)
+    while ((nread = fread(buf, 1, sizeof buf, file)) > 0)
         fwrite(buf, 1, nread, stdout);
     if (ferror(file)) {
         /* deal with error */
@@ -4440,7 +4440,7 @@ if (buf == NULL) {
 }
 
 /* otherwise do this.  Note 'chunk' instead of 'sizeof buf' */
-while ((nread = fread(buf, 1, chunk, file)) &gt; 0) {
+while ((nread = fread(buf, 1, chunk, file)) > 0) {
     /* as above */
 }
 ```
@@ -4455,8 +4455,8 @@ I'm not saying it's better. It's not, and as Ricardo sometimes it can be bad, bu
 I sprinkled it with comments because there's a lot going on.  
 
 ```c
-#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
+#include <stdio.h>
+#include <stdlib.h>
 
 char* ReadFile(char *filename)
 {
@@ -4517,8 +4517,8 @@ Let me know if it's useful or you could learn something from it :)
 Instead just directly print the characters onto the console because the text file maybe very large and you may require a lot of memory.  
 
 ```c
-#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
+#include <stdio.h>
+#include <stdlib.h>
 
 int main() {
 
@@ -4621,14 +4621,14 @@ e.g. Say this is main.c and your referenced function is in "SSD1306_LCD.h" </p>
 
 ```c
 #include "SSD1306_LCD.h"    
-#include "system.h"        #include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;xc.h&gt;
-#include &lt;string.h&gt;
-#include &lt;math.h&gt;
-#include &lt;libpic30.h&gt;       // http://microchip.wikidot.com/faq:74
-#include &lt;stdint.h&gt;
-#include &lt;stdbool.h&gt;
+#include "system.h"        #include <stdio.h>
+#include <stdlib.h>
+#include <xc.h>
+#include <string.h>
+#include <math.h>
+#include <libpic30.h>       // http://microchip.wikidot.com/faq:74
+#include <stdint.h>
+#include <stdbool.h>
 #include "GenericTypeDefs.h"  // This has the 'BYTE' type definition
 ```
 
@@ -4636,14 +4636,14 @@ The above will not generate the "implicit declaration of function" error, but be
 
 ```c
 #include "system.h"        
-#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;xc.h&gt;
-#include &lt;string.h&gt;
-#include &lt;math.h&gt;
-#include &lt;libpic30.h&gt;       // http://microchip.wikidot.com/faq:74
-#include &lt;stdint.h&gt;
-#include &lt;stdbool.h&gt;
+#include <stdio.h>
+#include <stdlib.h>
+#include <xc.h>
+#include <string.h>
+#include <math.h>
+#include <libpic30.h>       // http://microchip.wikidot.com/faq:74
+#include <stdint.h>
+#include <stdbool.h>
 #include "GenericTypeDefs.h"     // This has the 'BYTE' type definition
 #include "SSD1306_LCD.h"    
 ```
@@ -4715,9 +4715,9 @@ But the <a href="http://www.gnu.org/software/libc/manual/html_node/Customizing-P
 An example:  
 
 ```c
-#include &lt;stdio.h&gt;
-#include &lt;printf.h&gt;
-#include &lt;stdbool.h&gt;
+#include <stdio.h>
+#include <printf.h>
+#include <stdbool.h>
 
 static int bool_arginfo(const struct printf_info *info, size_t n,
     int *argtypes, int *size)
@@ -4744,7 +4744,7 @@ int main(int argc, char **argv)
 {
   int r = setup_bool_specifier();
   if (r) return 1;
-  bool b = argc &gt; 1;
+  bool b = argc > 1;
   r = printf("The result is: %B\n", b);
   printf("(written %d characters)\n", r);
   return 0;
@@ -4811,13 +4811,13 @@ main()
 Here for another Example  
 
 ```c
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 
 int main(void)
 {
    char text[] = "StringX";
    int digit;
-   for (digit = 0; digit &lt; 10; ++digit)
+   for (digit = 0; digit < 10; ++digit)
    {
       text[6] = digit + '0';
       puts(text);
@@ -4859,10 +4859,10 @@ EDIT:
 Example (note it does not handle consecutive delimiters, "JAN,,,FEB,MAR" for example):  
 
 ```c
-#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;string.h&gt;
-#include &lt;assert.h&gt;
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <assert.h>
 
 char** str_split(char* a_str, const char a_delim)
 {
@@ -4886,7 +4886,7 @@ char** str_split(char* a_str, const char a_delim)
     }
 
     /* Add space for trailing token. */
-    count += last_comma &lt; (a_str + strlen(a_str) - 1);
+    count += last_comma < (a_str + strlen(a_str) - 1);
 
     /* Add space for terminating null string so caller
        knows where the list of returned strings ends. */
@@ -4901,7 +4901,7 @@ char** str_split(char* a_str, const char a_delim)
 
         while (token)
         {
-            assert(idx &lt; count);
+            assert(idx < count);
             *(result + idx++) = strdup(token);
             token = strtok(0, delim);
         }
@@ -4961,7 +4961,7 @@ month=[DEC]
 I think `strsep` is still the best tool for this:  
 
 ```c
-while ((token = strsep(&amp;str, ","))) my_fn(token);
+while ((token = strsep(&str, ","))) my_fn(token);
 ```
 
 That is literally one line that splits a string.  
@@ -4976,7 +4976,7 @@ const char *my_str_literal = "JAN,FEB,MAR";
 char *token, *str, *tofree;
 
 tofree = str = strdup(my_str_literal);  // We own str's memory now.
-while ((token = strsep(&amp;str, ","))) my_fn(token);
+while ((token = strsep(&str, ","))) my_fn(token);
 free(tofree);
 ```
 
@@ -5108,9 +5108,9 @@ Edit: Added a piece of my code.
     f = fopen("contacts.pcl", "a");
 
     printf("\nNew contact name: ");
-    scanf("%s", &amp;name);
+    scanf("%s", &name);
     printf("New contact number: ");
-    scanf("%i", &amp;number);
+    scanf("%i", &number);
 
 
     fprintf(f, "%c\n[ %d ]\n\n", name, number);
@@ -5177,8 +5177,8 @@ fclose(fp);
 I picked up the following demo off the web from <a href="https://computing.llnl.gov/tutorials/pthreads/" rel="noreferrer">https://computing.llnl.gov/tutorials/pthreads/</a>  
 
 ```c
-#include &lt;pthread.h&gt;
-#include &lt;stdio.h&gt;
+#include <pthread.h>
+#include <stdio.h>
 #define NUM_THREADS     5
 
 void *PrintHello(void *threadid)
@@ -5194,9 +5194,9 @@ int main (int argc, char *argv[])
    pthread_t threads[NUM_THREADS];
    int rc;
    long t;
-   for(t=0; t&lt;NUM_THREADS; t++){
+   for(t=0; t<NUM_THREADS; t++){
       printf("In main: creating thread %ld\n", t);
-      rc = pthread_create(&amp;threads[t], NULL, PrintHello, (void *)t);
+      rc = pthread_create(&threads[t], NULL, PrintHello, (void *)t);
       if (rc){
          printf("ERROR; return code from pthread_create() is %d\n", rc);
          exit(-1);
@@ -5248,7 +5248,7 @@ properties->c/c++Build->setting->GCC C++ linker->libraries in top part add "pthr
 I would like to find the fastest way to check if a file exist in standard C++11, C++, or C. I have thousands of files and before doing something on them I need to check if all of them exist. What can I write instead of `/* SOMETHING */` in the following function?    
 
 ```c
-inline bool exist(const std::string&amp; name)
+inline bool exist(const std::string& name)
 {
     /* SOMETHING */
 }
@@ -5258,17 +5258,17 @@ inline bool exist(const std::string&amp; name)
 Well I threw together a test program that ran each of these methods 100,000 times, half on files that existed and half on files that didn't.  
 
 ```c
-#include &lt;sys/stat.h&gt;
-#include &lt;unistd.h&gt;
-#include &lt;string&gt;
-#include &lt;fstream&gt;
+#include <sys/stat.h>
+#include <unistd.h>
+#include <string>
+#include <fstream>
 
-inline bool exists_test0 (const std::string&amp; name) {
+inline bool exists_test0 (const std::string& name) {
     ifstream f(name.c_str());
     return f.good();
 }
 
-inline bool exists_test1 (const std::string&amp; name) {
+inline bool exists_test1 (const std::string& name) {
     if (FILE *file = fopen(name.c_str(), "r")) {
         fclose(file);
         return true;
@@ -5277,13 +5277,13 @@ inline bool exists_test1 (const std::string&amp; name) {
     }   
 }
 
-inline bool exists_test2 (const std::string&amp; name) {
+inline bool exists_test2 (const std::string& name) {
     return ( access( name.c_str(), F_OK ) != -1 );
 }
 
-inline bool exists_test3 (const std::string&amp; name) {
+inline bool exists_test3 (const std::string& name) {
   struct stat buffer;   
-  return (stat (name.c_str(), &amp;buffer) == 0); 
+  return (stat (name.c_str(), &buffer) == 0); 
 }
 ```
 
@@ -5401,7 +5401,7 @@ Dangling pointer points to a thing that does not exist any more, like here:
 char *p = NULL;
 {
     char c;
-    p = &amp;c;
+    p = &c;
 }
 // Now p is dangling
 ```
@@ -5520,7 +5520,7 @@ In <a href="http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf#page=182" 
   <li><p>A preprocessing directive of the form</p>
 
 ```c
-#include &lt;h-char-sequence&gt; new-line
+#include <h-char-sequence> new-line
 ```
   
   searches a sequence of implementation-defined places for a <strong>header</strong> identified uniquely by the specified sequence between the `&lt;` and `&gt;` delimiters, and causes the replacement of that directive by the entire contents of the <strong>header</strong>. How the places are specified or the header identified is implementation-defined.  </li>
@@ -5533,7 +5533,7 @@ In <a href="http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf#page=182" 
   causes the replacement of that directive by the entire contents of the <strong>source file</strong> identified by the specified sequence between the `"` delimiters. The named <strong>source file</strong> is searched for in an implementation-defined manner. If this search is not supported, or if the search fails, the directive is reprocessed as if it read  
 
 ```c
-#include &lt;h-char-sequence&gt; new-line
+#include <h-char-sequence> new-line
 ```
   
   <p>with the identical contained sequence (including `&gt;` characters, if any) from the original
@@ -5563,15 +5563,15 @@ In <a href="http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf#page=182" 
 I want to know how and when can I use the `exit()` function like the program in my book:  
 
 ```c
-#include&lt;stdio.h&gt;
+#include<stdio.h>
 
 void main()
 {
     int goals;
     printf("enter number of goals scored");
-    scanf("%d",&amp;goals);
+    scanf("%d",&goals);
 
-    if(goals&lt;=5)
+    if(goals<=5)
         goto sos;
     else
     {
@@ -5594,7 +5594,7 @@ Try using `exit(0);` instead. The <a href="http://man7.org/linux/man-pages/man3/
 The `exit` function is declared in the stdlib header, so you need to have  
 
 ```c
-#include &lt;stdlib.h&gt;
+#include <stdlib.h>
 ```
 
 at the top of your program to be able to use `exit`.  
@@ -5607,7 +5607,7 @@ There are also predefined macros `EXIT_SUCCESS` and `EXIT_FAILURE`, e.g. `exit(E
 `exit(int code);` is declared in `stdlib.h` so you need an  
 
 ```c
-#include &lt;stdlib.h&gt;
+#include <stdlib.h>
 ```
 
 <p>Also:<br>
@@ -5861,7 +5861,7 @@ If you have some data that can be written to, then you can do things like this:
 
 ```c
 int x = 2;
-int* p_x = &amp;x;  // Put the address of the x variable into the pointer p_x
+int* p_x = &x;  // Put the address of the x variable into the pointer p_x
 *p_x = 4;       // Change the memory at the address in p_x to be 4
 assert(x == 4); // Check x is now 4
 ```
@@ -5875,8 +5875,8 @@ In C, if you have a variable that is a pointer to a structure with data members,
 ```c
 typedef struct X { int i_; double d_; } X;
 X x;
-X* p = &amp;x;
-p-&gt;d_ = 3.14159;  // Dereference and access data member x.d_
+X* p = &x;
+p->d_ = 3.14159;  // Dereference and access data member x.d_
 (*p).d_ *= -1;    // Another equivalent notation for accessing x.d_
 ```
 
@@ -5895,7 +5895,7 @@ assert(p[1] == 13.4);  // Actually looks at bytes from address p + 1 * sizeof(do
 assert(++p);           // Advance p by sizeof(double)
 assert(*p == 13.4);    // The double at memory beginning at address p has value 13.4
 *(p + 2) = 29.8;       // Change sizes[3] from 19.4 to 29.8
-                       // Note: earlier ++p and + 2 here =&gt; sizes[3]
+                       // Note: earlier ++p and + 2 here => sizes[3]
 ```
 
 <h5>Pointers to dynamically allocated memory</h2>
@@ -5956,7 +5956,7 @@ In C++, it's best practice to use <a href="http://en.wikipedia.org/wiki/Smart_po
 
 ```c
 {
-    std::unique_ptr&lt;T&gt; p{new T(42, "meaning")};
+    std::unique_ptr<T> p{new T(42, "meaning")};
     call_a_function(p);
     // The function above might throw, so delete here is unreliable, but...
 } // p's destructor's guaranteed to run "here", calling delete
@@ -5966,7 +5966,7 @@ In C++, it's best practice to use <a href="http://en.wikipedia.org/wiki/Smart_po
 
 ```c
 {
-    std::shared_ptr&lt;T&gt; p(new T(3.14, "pi"));
+    std::shared_ptr<T> p(new T(3.14, "pi"));
     number_storage.may_add(p); // Might copy p into its container
 } // p's destructor will only delete the T if number_storage didn't copy
 ```
@@ -6012,7 +6012,7 @@ Dereferencing a pointer means getting the value that is stored in the memory loc
 
 ```c
 int a = 10;
-int* ptr = &amp;a;
+int* ptr = &a;
 
 printf("%d", *ptr); // With *ptr I'm dereferencing the pointer. 
                     // Which means, I am asking the value pointed at by the pointer.
@@ -6029,7 +6029,7 @@ A pointer is a "reference" to a value.. much like a library call number is a ref
 
 ```c
 int a=4 ;
-int *pA = &amp;a ;
+int *pA = &a ;
 printf( "The REFERENCE/call number for the variable `a` is %p\n", pA ) ;
 
 // The * causes pA to DEREFERENCE...  `a` via "callnumber" `pA`.
@@ -6111,7 +6111,7 @@ would call `func`, passing the print function to it.
 As with any parameter, func can now use the parameter's name in the function body to access the value of the parameter. Let's say that func will apply the function it is passed to the numbers 0-4. Consider, first, what the loop would look like to call print directly:  
 
 ```c
-for ( int ctr = 0 ; ctr &lt; 5 ; ctr++ ) {
+for ( int ctr = 0 ; ctr < 5 ; ctr++ ) {
   print(ctr);
 }
 ```
@@ -6120,7 +6120,7 @@ Since `func`'s parameter declaration says that `f` is the name for a pointer to 
 
 ```c
 void func ( void (*f)(int) ) {
-  for ( int ctr = 0 ; ctr &lt; 5 ; ctr++ ) {
+  for ( int ctr = 0 ; ctr < 5 ; ctr++ ) {
     (*f)(ctr);
   }
 }
@@ -6140,7 +6140,7 @@ Declares a function that returns void and takes no arguments. To create a functi
 ```c
 void dosomething() { }
 
-functiontype func = &amp;dosomething;
+functiontype func = &dosomething;
 func();
 ```
 
@@ -6155,14 +6155,14 @@ and to use it
 ```c
 int dosomethingwithchar(char a) { return 1; }
 
-functiontype2 func2 = &amp;dosomethingwithchar
+functiontype2 func2 = &dosomethingwithchar
 int result = func2('a');
 ```
 
 There are libraries that can help with turning function pointers into nice readable types. The <a href="http://www.boost.org/doc/libs/1_36_0/doc/html/function.html" rel="noreferrer">boost function</a> library is great and is well worth the effort!  
 
 ```c
-boost::function&lt;int (char a)&gt; functiontype2;
+boost::function<int (char a)> functiontype2;
 ```
 
 is so much nicer than the above.  
@@ -6171,7 +6171,7 @@ is so much nicer than the above.
 Since C++11 you can use the <a href="http://www.cplusplus.com/reference/functional/function/function/" rel="noreferrer">functional library</a> to do this in a succinct and generic fashion. The syntax is, e.g.,  
 
 ```c
-std::function&lt;bool (int)&gt;
+std::function<bool (int)>
 ```
 
 where `bool` is the return type here of a one-argument function whose first argument is of type `int`.  
@@ -6180,9 +6180,9 @@ I have included an example program below:
 
 ```c
 // g++ test.cpp --std=c++11
-#include &lt;functional&gt;
+#include <functional>
 
-double Combiner(double a, double b, std::function&lt;double (double,double)&gt; func){
+double Combiner(double a, double b, std::function<double (double,double)> func){
   return func(a,b);
 }
 
@@ -6205,7 +6205,7 @@ Sometimes, though, it is more convenient to use a template function:
 ```c
 // g++ test.cpp --std=c++11
 
-template&lt;class T&gt;
+template<class T>
 double Combiner(double a, double b, T func){
   return func(a,b);
 }
@@ -6240,7 +6240,7 @@ and want to get `"test"`. How can I do that?
 #### Answer accepted (score 202)
 ```c
 char subbuff[5];
-memcpy( subbuff, &amp;buff[10], 4 );
+memcpy( subbuff, &buff[10], 4 );
 subbuff[4] = '\0';
 ```
 
@@ -6382,7 +6382,7 @@ $ ./lab21
 What I'm trying to do is reading a string (like `"Barack Obama"`) and put it in a variable:</p>
 
 ```c
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 
 int main(void)
 {
@@ -6443,7 +6443,7 @@ scanf("%[^\n]s",name);
 Here is an example of how you can get input containing spaces by using the `fgets` function.   
 
 ```c
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 
 int main()
 {
@@ -6472,7 +6472,7 @@ scanf( "%s" , string );
 However, the following seems to work too,  
 
 ```c
-scanf( "%s" , &amp;string );
+scanf( "%s" , &string );
 ```
 
 Is this just my compiler (gcc), pure luck, or something else?  
@@ -6504,7 +6504,7 @@ char *strPtr = &amp;str[0]; //declaration and initialization  </li>
 alternatively, you can split this in two:   
 
 ```c
-char *strPtr; strPtr = &amp;str[0];
+char *strPtr; strPtr = &str[0];
 ```
 
 <ol start="4">
@@ -6519,7 +6519,7 @@ char *strPtr; strPtr = &amp;str[0];
 I think that you could declare a pointer to a pointer as:  
 
 ```c
-char **vPtr = &amp;strPtr;  
+char **vPtr = &strPtr;  
 ```
 
 declares and initializes with address of strPtr pointer  
@@ -6528,7 +6528,7 @@ Alternatively you could split in two:
 
 ```c
 char **vPtr;
-*vPtr = &amp;strPtr
+*vPtr = &strPtr
 ```
 
 <ol start="10">
@@ -6600,8 +6600,8 @@ Point * point_new(int x, int y)
   Point *p;
   if((p = malloc(sizeof *p)) != NULL)
   {
-    p-&gt;x = x;
-    p-&gt;y = y;
+    p->x = x;
+    p->y = y;
   }
   return p;
 }
@@ -6640,7 +6640,7 @@ Also, since the namespaces are different between the tag names and the member na
 ```c
 struct foo *foo;
 
-printf("foo-&gt;bar = %p", foo-&gt;bar);
+printf("foo->bar = %p", foo->bar);
 ```
 
 Since the namespaces are separate, there is no conflict in naming variables coincident with their struct tag name.  
@@ -6803,7 +6803,7 @@ The standard function `atoi()` will likely do what you want.
 A simple example using "atoi":  
 
 ```c
-#include &lt;unistd.h&gt;
+#include <unistd.h>
 
 int main(int argc, char *argv[])
 {
@@ -6871,7 +6871,7 @@ Both ways have their pro and cons. The one is more wordy, but keeps type identif
 You're trying to declare `strategy` twice, and that's why you're getting the above error. The following works without any complaints (compiled with `gcc -ansi -pendantic -Wall`):  
 
 ```c
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 
 enum { RANDOM, IMMEDIATE, SEARCH } strategy = IMMEDIATE;
 
@@ -6905,7 +6905,7 @@ So the compiler took `strategy = IMMEDIATE` for a declaration of a variable call
 However, if you placed the assignment in the `main()` function, it would be a valid code:  
 
 ```c
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 
 enum { RANDOM, IMMEDIATE, SEARCH } strategy = IMMEDIATE;
 
@@ -6959,7 +6959,7 @@ Use stat like this:
 bool file_exist (char *filename)
 {
   struct stat   buffer;   
-  return (stat (filename, &amp;buffer) == 0);
+  return (stat (filename, &buffer) == 0);
 }
 ```
 
@@ -6978,11 +6978,11 @@ Usually when you want to check if a file exists, it's because you want to <em>cr
 If you want to check for existence <em>and</em> create the file if it doesn't exist, <strong>atomically</strong> so that there are no race conditions, then use this:  
 
 ```c
-#include &lt;fcntl.h&gt;
-#include &lt;errno.h&gt;
+#include <fcntl.h>
+#include <errno.h>
 
 fd = open(pathname, O_CREAT | O_WRONLY | O_EXCL, S_IRUSR | S_IWUSR);
-if (fd &lt; 0) {
+if (fd < 0) {
   /* failure */
   if (errno == EEXIST) {
     /* the file already existed */
@@ -7021,7 +7021,7 @@ Linux:
 char szTmp[32];
 sprintf(szTmp, "/proc/%d/exe", getpid());
 int bytes = MIN(readlink(szTmp, pBuf, len), len - 1);
-if(bytes &gt;= 0)
+if(bytes >= 0)
     pBuf[bytes] = '\0';
 return bytes;
 ```
@@ -7036,12 +7036,12 @@ Since you are creating a C program it will link with the default c run time libr
 On windows getcwd function has been deprecated in favour of _getcwd. I think you could use it in this fashion.  
 
 ```c
-#include &lt;stdio.h&gt;  /* defines FILENAME_MAX */
+#include <stdio.h>  /* defines FILENAME_MAX */
 #ifdef WINDOWS
-    #include &lt;direct.h&gt;
+    #include <direct.h>
     #define GetCurrentDir _getcwd
 #else
-    #include &lt;unistd.h&gt;
+    #include <unistd.h>
     #define GetCurrentDir getcwd
  #endif
 
@@ -7063,8 +7063,8 @@ This is from the <a href="http://www.cplusplus.com/forum/general/11104/">cpluspl
 <strong>On windows:</strong>  
 
 ```c
-#include &lt;string&gt;
-#include &lt;windows.h&gt;
+#include <string>
+#include <windows.h>
 
 std::string getexepath()
 {
@@ -7076,37 +7076,37 @@ std::string getexepath()
 <strong>On Linux:</strong>  
 
 ```c
-#include &lt;string&gt;
-#include &lt;limits.h&gt;
-#include &lt;unistd.h&gt;
+#include <string>
+#include <limits.h>
+#include <unistd.h>
 
 std::string getexepath()
 {
   char result[ PATH_MAX ];
   ssize_t count = readlink( "/proc/self/exe", result, PATH_MAX );
-  return std::string( result, (count &gt; 0) ? count : 0 );
+  return std::string( result, (count > 0) ? count : 0 );
 }
 ```
 
 <strong>On HP-UX:</strong>  
 
 ```c
-#include &lt;string&gt;
-#include &lt;limits.h&gt;
+#include <string>
+#include <limits.h>
 #define _PSTAT64
-#include &lt;sys/pstat.h&gt;
-#include &lt;sys/types.h&gt;
-#include &lt;unistd.h&gt;
+#include <sys/pstat.h>
+#include <sys/types.h>
+#include <unistd.h>
 
 std::string getexepath()
 {
   char result[ PATH_MAX ];
   struct pst_status ps;
 
-  if (pstat_getproc( &amp;ps, sizeof( ps ), 0, getpid() ) &lt; 0)
+  if (pstat_getproc( &ps, sizeof( ps ), 0, getpid() ) < 0)
     return std::string();
 
-  if (pstat_getpathname( result, PATH_MAX, &amp;ps.pst_fid_text ) &lt; 0)
+  if (pstat_getpathname( result, PATH_MAX, &ps.pst_fid_text ) < 0)
     return std::string();
 
   return std::string( result );
@@ -7198,10 +7198,10 @@ Following is a complete example.
 
 ```c
 $ cat mysort.c
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 int main( int argc, char * argv [] ) {
     printf( "argc = %d\n", argc );
-    for( int i = 0; i &lt; argc; ++i ) {
+    for( int i = 0; i < argc; ++i ) {
         printf( "argv[ %d ] = %s\n", i, argv[ i ] );
     }
 }
@@ -7261,14 +7261,14 @@ I have tried:
 ```c
 struct timeval diff, startTV, endTV;
 
-gettimeofday(&amp;startTV, NULL); 
+gettimeofday(&startTV, NULL); 
 
 doSomething();
 doSomethingLong();
 
-gettimeofday(&amp;endTV, NULL); 
+gettimeofday(&endTV, NULL); 
 
-timersub(&amp;endTV, &amp;startTV, &amp;diff);
+timersub(&endTV, &startTV, &diff);
 
 printf("**time taken = %ld %ld\n", diff.tv_sec, diff.tv_usec);
 ```
@@ -7279,7 +7279,7 @@ What about `**time taken = 4 45025`, does that mean 4 seconds and 25 msec?
 
 #### Answer 2 (score 263)
 ```c
-#include &lt;ctime&gt;
+#include <ctime>
 
 void f() {
   using namespace std;
@@ -7301,25 +7301,25 @@ You can <strong>abstract the time measuring mechanism</strong> and have each cal
 <sup><a href="https://stackoverflow.com/q/31253334/2567683">This</a> is why the forwarded function call.</sup></p>
 
 ```c
-#include &lt;iostream&gt;
-#include &lt;chrono&gt;
+#include <iostream>
+#include <chrono>
 
-template&lt;typename TimeT = std::chrono::milliseconds&gt;
+template<typename TimeT = std::chrono::milliseconds>
 struct measure
 {
-    template&lt;typename F, typename ...Args&gt;
-    static typename TimeT::rep execution(F&amp;&amp; func, Args&amp;&amp;... args)
+    template<typename F, typename ...Args>
+    static typename TimeT::rep execution(F&& func, Args&&... args)
     {
         auto start = std::chrono::steady_clock::now();
-        std::forward&lt;decltype(func)&gt;(func)(std::forward&lt;Args&gt;(args)...);
-        auto duration = std::chrono::duration_cast&lt; TimeT&gt; 
+        std::forward<decltype(func)>(func)(std::forward<Args>(args)...);
+        auto duration = std::chrono::duration_cast< TimeT> 
                             (std::chrono::steady_clock::now() - start);
         return duration.count();
     }
 };
 
 int main() {
-    std::cout &lt;&lt; measure&lt;&gt;::execution(functor(dummy)) &lt;&lt; std::endl;
+    std::cout << measure<>::execution(functor(dummy)) << std::endl;
 }
 ```
 
@@ -7328,16 +7328,16 @@ int main() {
 According to the comment by <a href="https://stackoverflow.com/users/576911/howard-hinnant"><strong>Howard Hinnant</strong></a> it's best not to escape out of the chrono system until we have to. So the above class could give the user the choice to call `count` manually by providing an extra static method (shown in C++14)  
 
 ```c
-template&lt;typename F, typename ...Args&gt;
-static auto duration(F&amp;&amp; func, Args&amp;&amp;... args)
+template<typename F, typename ...Args>
+static auto duration(F&& func, Args&&... args)
 {
     auto start = std::chrono::steady_clock::now();
-    std::forward&lt;decltype(func)&gt;(func)(std::forward&lt;Args&gt;(args)...);
-    return std::chrono::duration_cast&lt;TimeT&gt;(std::chrono::steady_clock::now()-start);
+    std::forward<decltype(func)>(func)(std::forward<Args>(args)...);
+    return std::chrono::duration_cast<TimeT>(std::chrono::steady_clock::now()-start);
 } 
 
 // call .count() manually later when needed (eg IO)
-auto avg = (measure&lt;&gt;::duration(func) + measure&lt;&gt;::duration(func)) / 2.0;
+auto avg = (measure<>::duration(func) + measure<>::duration(func)) / 2.0;
 ```
 
 and be most useful for clients that   
@@ -7355,7 +7355,7 @@ The complete <a href="https://github.com/picanumber/bureaucrat/blob/master/time_
 If C++17's <a href="http://en.cppreference.com/w/cpp/utility/functional/invoke" rel="noreferrer">`std::invoke`</a> is available, the invocation of the callable in `execution` could be done like this :   
 
 ```c
-invoke(forward&lt;decltype(func)&gt;(func), forward&lt;Args&gt;(args)...);
+invoke(forward<decltype(func)>(func), forward<Args>(args)...);
 ```
 
 to provide for callables that are pointers to member functions.   
@@ -7368,7 +7368,7 @@ to provide for callables that are pointers to member functions.
 I was confused with usage of `%c` and `%s` in the following C program  
 
 ```c
-#include&lt;stdio.h&gt;
+#include<stdio.h>
 
     void main()
     {
@@ -7404,13 +7404,13 @@ str.c:9:2: warning: format ‘%c’ expects type ‘int’, but argument 2 has t
 If you try this:  
 
 ```c
-#include&lt;stdio.h&gt;
+#include<stdio.h>
 
 void main()
 {
  char name[]="siva";
  printf("name = %p\n", name);
- printf("&amp;name[0] = %p\n", &amp;name[0]);
+ printf("&name[0] = %p\n", &name[0]);
  printf("name printed as %%s is %s\n",name);
  printf("*name = %c\n",*name);
  printf("name[0] = %c\n", name[0]);
@@ -7421,7 +7421,7 @@ Output is:
 
 ```c
 name = 0xbff5391b  
-&amp;name[0] = 0xbff5391b
+&name[0] = 0xbff5391b
 name printed as %s is siva
 *name = s
 name[0] = s
@@ -7433,11 +7433,11 @@ So 'name' is actually a pointer to the array of characters in memory. If you try
 Location     Data
 =========   ======
 
-0xbff5391b    0x73  's'  ---&gt; name[0]
-0xbff5391c    0x69  'i'  ---&gt; name[1]
-0xbff5391d    0x76  'v'  ---&gt; name[2]
-0xbff5391e    0x61  'a'  ---&gt; name[3]
-0xbff5391f    0x00  '\0' ---&gt; This is the NULL termination of the string
+0xbff5391b    0x73  's'  ---> name[0]
+0xbff5391c    0x69  'i'  ---> name[1]
+0xbff5391d    0x76  'v'  ---> name[2]
+0xbff5391e    0x61  'a'  ---> name[3]
+0xbff5391f    0x00  '\0' ---> This is the NULL termination of the string
 ```
 
 To print a character you need to pass the value of the character to printf. The value can be referenced as name[0] or *name (since for an array name = &amp;name[0]).  
@@ -7651,9 +7651,9 @@ I use this array in several different methods, but the easiest and least space c
 
 ```c
   int a, b;
- for(a = 0; a &lt; n; a++)
+ for(a = 0; a < n; a++)
  {
-        for(b = 0; b &lt; 3; b++)
+        for(b = 0; b < 3; b++)
         {
             bodies[a].p[b] = 0;
             bodies[a].v[b] = 0;
@@ -7670,7 +7670,7 @@ One last clarification, by header I mean the space above `int main(void)` but in
 
 #### Answer accepted (score 97)
 ```c
-#include&lt;stdio.h&gt;
+#include<stdio.h>
 #define n 3
 struct body
 {
@@ -7686,9 +7686,9 @@ struct body bodies[n];
 int main()
 {
     int a, b;
-     for(a = 0; a &lt; n; a++)
+     for(a = 0; a < n; a++)
      {
-            for(b = 0; b &lt; 3; b++)
+            for(b = 0; b < 3; b++)
             {
                 bodies[a].p[b] = 0;
                 bodies[a].v[b] = 0;
@@ -7708,7 +7708,7 @@ this works fine. your question was not very clear by the way, so match the layou
 I think you could write it that way too. I am also a student so I understand your struggle. A bit late response but ok .  
 
 ```c
-#include&lt;stdio.h&gt;
+#include<stdio.h>
 #define n 3
 
 struct {
@@ -7737,17 +7737,17 @@ int main(int argc, char** argv) {
     int numStudents=3;
     int x;
     STUDENT* students = malloc(numStudents * sizeof *students);
-    for (x = 0; x &lt; numStudents; x++){
+    for (x = 0; x < numStudents; x++){
         students[x].firstName=(char*)malloc(sizeof(char*));
         scanf("%s",students[x].firstName);
         students[x].lastName=(char*)malloc(sizeof(char*));
         scanf("%s",students[x].lastName);
-        scanf("%d",&amp;students[x].day);
-        scanf("%d",&amp;students[x].month);
-        scanf("%d",&amp;students[x].year);
+        scanf("%d",&students[x].day);
+        scanf("%d",&students[x].month);
+        scanf("%d",&students[x].year);
     }
 
-    for (x = 0; x &lt; numStudents; x++)
+    for (x = 0; x < numStudents; x++)
         printf("first name: %s, surname: %s, day: %d, month: %d, year: %d\n",students[x].firstName,students[x].lastName,students[x].day,students[x].month,students[x].year);
 
     return (EXIT_SUCCESS);
@@ -7847,8 +7847,8 @@ struct foo* pvar;
 pvar = malloc(sizeof(pvar));
 
 var.x = 5;   // var.x is 5
-(&amp;var)-&gt;y = 14.3;
-pvar-&gt;y = 22.4;
+(&var)->y = 14.3;
+pvar->y = 22.4;
 (*pvar).x = 6;   // (*pvar).x is 5
 ```
 
@@ -7888,7 +7888,7 @@ Now try it...it should work
 Here is a way for C/C++:  
 
 ```c
-#include &lt;stdlib.h&gt;
+#include <stdlib.h>
 
 #ifdef _WIN32
     #define WINPAUSE system("pause")
@@ -7980,8 +7980,8 @@ I am not able to get the array to print.. Any ideas why? I am a beginning progra
 What you are doing is printing the value in the array at spot [3][3], which is invalid for a 3by3 array, you need to loop over all the spots and print them.  
 
 ```c
-for(int i = 0; i &lt; 3; i++) {
-    for(int j = 0; j &lt; 3; j++) {
+for(int i = 0; i < 3; i++) {
+    for(int j = 0; j < 3; j++) {
         printf("%d ", array[i][j]);
     }
     printf("\n");
@@ -8006,8 +8006,8 @@ I would suggest something like this:
 ```c
 int index;
 int jdex;
-for( index = 0; index &lt; (sizeof( my_array ) / sizeof( my_array[0] )); index++){
-   for( jdex = 0; jdex &lt; (sizeof( my_array ) / sizeof( my_array[0] )); jdex++){
+for( index = 0; index < (sizeof( my_array ) / sizeof( my_array[0] )); index++){
+   for( jdex = 0; jdex < (sizeof( my_array ) / sizeof( my_array[0] )); jdex++){
         printf( "%d", my_array[index][jdex] );
         printf( "\n" );
    }
@@ -8036,8 +8036,8 @@ printf("%d\n", my_array[2][2]);
 If you want the entire array:  
 
 ```c
-for(int i = 0; i &lt; my_array.length; i++) {
-  for(int j = 0; j &lt; my_array[i].length; j++)
+for(int i = 0; i < my_array.length; i++) {
+  for(int j = 0; j < my_array[i].length; j++)
     printf("%d ", my_array[i][j]);
   printf("\n");
 }
@@ -8110,7 +8110,7 @@ I want to get the current time of my system. For that I'm using the following co
 
 ```c
 time_t now;
-struct tm *mytime = localtime(&amp;now); 
+struct tm *mytime = localtime(&now); 
 if ( strftime(buffer, sizeof buffer, "%X", mytime) )
 {
     printf("time1 = \"%s\"\n", buffer);
@@ -8124,16 +8124,16 @@ Copy-pasted from <a href="http://www.cplusplus.com/reference/clibrary/ctime/loca
 
 ```c
 /* localtime example */
-#include &lt;stdio.h&gt;
-#include &lt;time.h&gt;
+#include <stdio.h>
+#include <time.h>
 
 int main ()
 {
   time_t rawtime;
   struct tm * timeinfo;
 
-  time ( &amp;rawtime );
-  timeinfo = localtime ( &amp;rawtime );
+  time ( &rawtime );
+  timeinfo = localtime ( &rawtime );
   printf ( "Current local time and date: %s", asctime (timeinfo) );
 
   return 0;
@@ -8155,13 +8155,13 @@ The `localtime` function is used to convert the time value in the passed `time_t
 Easy way:   
 
 ```c
-#include &lt;time.h&gt;
-#include &lt;stdio.h&gt;
+#include <time.h>
+#include <stdio.h>
 
 int main(void)
 {
     time_t mytime = time(NULL);
-    char * time_str = ctime(&amp;mytime);
+    char * time_str = ctime(&mytime);
     time_str[strlen(time_str)-1] = '\0';
     printf("Current Time : %s\n", time_str);
 
@@ -8197,7 +8197,7 @@ If you're just playing, get GCC --it's free. If you're concerned about multiple 
 I am trying to get a program to let a user enter a word or character, store it, and then print it until the user types it again, exiting the program. My code looks like this:  
 
 ```c
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 
 int main()
 {
@@ -8338,7 +8338,7 @@ Instead of manipulating the `CMAKE_CXX_FLAGS` strings directly (which could be d
 ```c
 add_compile_options(
   "-Wall" "-Wpedantic" "-Wextra" "-fexceptions"
-  "$&lt;$&lt;CONFIG:DEBUG&gt;:-O0;-g3;-ggdb&gt;"
+  "$<$<CONFIG:DEBUG>:-O0;-g3;-ggdb>"
 )
 ```
 
@@ -8595,12 +8595,12 @@ assuming a.out as the executable will give u the time taken to run this
 You functionally want this:  
 
 ```c
-#include &lt;sys/time.h&gt;
+#include <sys/time.h>
 
 struct timeval  tv1, tv2;
-gettimeofday(&amp;tv1, NULL);
+gettimeofday(&tv1, NULL);
 /* stuff to do! */
-gettimeofday(&amp;tv2, NULL);
+gettimeofday(&tv2, NULL);
 
 printf ("Total time = %f seconds\n",
          (double) (tv2.tv_usec - tv1.tv_usec) / 1000000 +
@@ -8620,7 +8620,7 @@ This is my makefile:
 all:ll
 
 ll:ll.c   
-  gcc  -c  -Wall -Werror -02 c.c ll.c  -o  ll  $@  $&lt;
+  gcc  -c  -Wall -Werror -02 c.c ll.c  -o  ll  $@  $<
 
 clean :
   \rm -fr ll
@@ -8648,7 +8648,7 @@ Kaizen ~/so_test $ cat -e -t -v  mk.t
 all:ll$      ## here the $ is end of line ...                   
 $
 ll:ll.c   $
-^Igcc  -c  -Wall -Werror -02 c.c ll.c  -o  ll  $@  $&lt;$ 
+^Igcc  -c  -Wall -Werror -02 c.c ll.c  -o  ll  $@  $<$ 
 ## the ^I above means a tab was there before the action part, so this line is ok .
  $
 clean :$
@@ -8746,7 +8746,7 @@ int array[100] = {0};
 simply tells the compiler "set these 100 ints to zero", which the compiler can optimize freely.  
 
 ```c
-for (int i = 0; i &lt; 100; ++i){
+for (int i = 0; i < 100; ++i){
   array[i] = 0;
 }
 ```
@@ -8810,8 +8810,8 @@ if(pch)
 Try to use pointers...  
 
 ```c
-#include &lt;stdio.h&gt;
-#include &lt;string.h&gt;
+#include <stdio.h>
+#include <string.h>
 
 int main()
 {
@@ -8825,12 +8825,12 @@ int main()
   p1 = str;
   p2 = sub;
 
-  for(i = 0; i&lt;strlen(str); i++)
+  for(i = 0; i<strlen(str); i++)
   {
     if(*p1 == *p2)
       {
           p3 = p1;
-          for(j = 0;j&lt;strlen(sub);j++)
+          for(j = 0;j<strlen(sub);j++)
           {
             if(*p3 == *p2)
             {
@@ -8875,8 +8875,8 @@ C does not have the support for strings that some other languages have. A string
 Use `strcat` to concatenate two strings. You could use the following function to do it:  
 
 ```c
-#include &lt;stdlib.h&gt;
-#include &lt;string.h&gt;
+#include <stdlib.h>
+#include <string.h>
 
 char* concat(const char *s1, const char *s2)
 {
@@ -8917,7 +8917,7 @@ If you are planning to do a lot of work with strings then you may be better off 
 
 #### Answer 2 (score 16)
 ```c
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 
 int main(){
     char name[] =  "derp" "herp";
@@ -8934,9 +8934,9 @@ David Heffernan <a href="https://stackoverflow.com/a/8465083/471214">explained</
 We can write a useful <a href="http://en.wikipedia.org/wiki/Variadic_function" rel="nofollow noreferrer">variadic function</a> to concatenate any number of strings:  
 
 ```c
-#include &lt;stdlib.h&gt;       // calloc
-#include &lt;stdarg.h&gt;       // va_*
-#include &lt;string.h&gt;       // strlen, strcpy
+#include <stdlib.h>       // calloc
+#include <stdarg.h>       // va_*
+#include <string.h>       // strlen, strcpy
 
 char* concat(int count, ...)
 {
@@ -8946,7 +8946,7 @@ char* concat(int count, ...)
     // Find required length to store merged string
     int len = 1; // room for NULL
     va_start(ap, count);
-    for(i=0 ; i&lt;count ; i++)
+    for(i=0 ; i<count ; i++)
         len += strlen(va_arg(ap, char*));
     va_end(ap);
 
@@ -8956,7 +8956,7 @@ char* concat(int count, ...)
 
     // Actually concatenate strings
     va_start(ap, count);
-    for(i=0 ; i&lt;count ; i++)
+    for(i=0 ; i<count ; i++)
     {
         char *s = va_arg(ap, char*);
         strcpy(merged+null_pos, s);
@@ -8971,7 +8971,7 @@ char* concat(int count, ...)
 <h5>Usage</h1>
 
 ```c
-#include &lt;stdio.h&gt;        // printf
+#include <stdio.h>        // printf
 
 void println(char *line)
 {
@@ -9041,7 +9041,7 @@ That prevents double declaration of any identifiers such as types, enums and sta
 
 #### Answer 2 (score 31)
 ```c
-#ifndef &lt;token&gt;
+#ifndef <token>
 /* code */
 #else
 /* code to include if the token is defined */
@@ -9104,19 +9104,19 @@ Use the <a href="http://cdecl.org/" rel="noreferrer">cdecl</a> program, as sugge
 ```c
 $ cdecl
 Type `help' or `?' for help
-cdecl&gt; explain int* arr1[8];
+cdecl> explain int* arr1[8];
 declare arr1 as array 8 of pointer to int
-cdecl&gt; explain int (*arr2)[8]
+cdecl> explain int (*arr2)[8]
 declare arr2 as pointer to array 8 of int
-cdecl&gt; explain int *(arr3[8])
+cdecl> explain int *(arr3[8])
 declare arr3 as array 8 of pointer to int
-cdecl&gt;
+cdecl>
 ```
 
 It works the other way too.  
 
 ```c
-cdecl&gt; declare x as pointer to function(void) returning pointer to float
+cdecl> declare x as pointer to function(void) returning pointer to float
 float *(*x)(void )
 ```
 
@@ -9178,12 +9178,12 @@ With ctypes, you need to satisfy any compile time dependency on python, and your
 Suppose you have a simple C++ example class you want to talk to in a file called foo.cpp:  
 
 ```c
-#include &lt;iostream&gt;
+#include <iostream>
 
 class Foo{
     public:
         void bar(){
-            std::cout &lt;&lt; "Hello" &lt;&lt; std::endl;
+            std::cout << "Hello" << std::endl;
         }
 };
 ```
@@ -9193,7 +9193,7 @@ Since ctypes can only talk to C functions, you need to provide those declaring t
 ```c
 extern "C" {
     Foo* Foo_new(){ return new Foo(); }
-    void Foo_bar(Foo* foo){ foo-&gt;bar(); }
+    void Foo_bar(Foo* foo){ foo->bar(); }
 }
 ```
 
@@ -9233,7 +9233,7 @@ Example from SWIG <a href="http://www.swig.org/tutorial.html" rel="noreferrer">t
 ```c
 /* File : example.c */
 int fact(int n) {
-    if (n &lt;= 1) return 1;
+    if (n <= 1) return 1;
     else return n*fact(n-1);
 }
 ```
@@ -9262,8 +9262,8 @@ gcc -shared example.o example_wrap.o -o _example.so
 Usage:  
 
 ```c
-&gt;&gt;&gt; import example
-&gt;&gt;&gt; example.fact(5)
+>>> import example
+>>> example.fact(5)
 120
 ```
 
@@ -9308,10 +9308,10 @@ Optimizing SQLite is tricky. Bulk-insert performance of a C application can vary
     from http://www.toronto.ca/open/datasets/ttc-routes/
 
 **************************************************************/
-#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;time.h&gt;
-#include &lt;string.h&gt;
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <string.h>
 #include "sqlite3.h"
 
 #define INPUTDATA "C:\\TTC_schedule_scheduleitem_10-27-2009.txt"
@@ -9345,8 +9345,8 @@ int main(int argc, char **argv) {
 
     /*********************************************/
     /* Open the Database and create the Schema */
-    sqlite3_open(DATABASE, &amp;db);
-    sqlite3_exec(db, TABLE, NULL, NULL, &amp;sErrMsg);
+    sqlite3_open(DATABASE, &db);
+    sqlite3_exec(db, TABLE, NULL, NULL, &sErrMsg);
 
     /*********************************************/
     /* Open input file and import into Database*/
@@ -9399,7 +9399,7 @@ We're going to generate the SQL string using the values read from the file and i
 
 ```c
 sprintf(sSQL, "INSERT INTO TTC VALUES (NULL, '%s', '%s', '%s', '%s', '%s', '%s', '%s')", sRT, sBR, sVR, sST, sVI, sDT, sTM);
-sqlite3_exec(db, sSQL, NULL, NULL, &amp;sErrMsg);
+sqlite3_exec(db, sSQL, NULL, NULL, &sErrMsg);
 ```
 
 This is going to be slow because the SQL will be compiled into VDBE code for every insert and every insert will happen in its own transaction. <em>How slow?</em>  
@@ -9416,7 +9416,7 @@ Yikes! 2 hours and 45 minutes! That's only <strong>85 inserts per second.</stron
 By default, SQLite will evaluate every INSERT / UPDATE statement within a unique transaction. If performing a large number of inserts, it's advisable to wrap your operation in a transaction:  
 
 ```c
-sqlite3_exec(db, "BEGIN TRANSACTION", NULL, NULL, &amp;sErrMsg);
+sqlite3_exec(db, "BEGIN TRANSACTION", NULL, NULL, &sErrMsg);
 
 pFile = fopen (INPUTDATA,"r");
 while (!feof(pFile)) {
@@ -9426,7 +9426,7 @@ while (!feof(pFile)) {
 }
 fclose (pFile);
 
-sqlite3_exec(db, "END TRANSACTION", NULL, NULL, &amp;sErrMsg);
+sqlite3_exec(db, "END TRANSACTION", NULL, NULL, &sErrMsg);
 ```
 
 <blockquote>
@@ -9445,9 +9445,9 @@ Using a transaction was a huge improvement, but recompiling the SQL statement fo
 cStartClock = clock();
 
 sprintf(sSQL, "INSERT INTO TTC VALUES (NULL, @RT, @BR, @VR, @ST, @VI, @DT, @TM)");
-sqlite3_prepare_v2(db,  sSQL, BUFFER_SIZE, &amp;stmt, &amp;tail);
+sqlite3_prepare_v2(db,  sSQL, BUFFER_SIZE, &stmt, &tail);
 
-sqlite3_exec(db, "BEGIN TRANSACTION", NULL, NULL, &amp;sErrMsg);
+sqlite3_exec(db, "BEGIN TRANSACTION", NULL, NULL, &sErrMsg);
 
 pFile = fopen (INPUTDATA,"r");
 while (!feof(pFile)) {
@@ -9479,7 +9479,7 @@ while (!feof(pFile)) {
 }
 fclose (pFile);
 
-sqlite3_exec(db, "END TRANSACTION", NULL, NULL, &amp;sErrMsg);
+sqlite3_exec(db, "END TRANSACTION", NULL, NULL, &sErrMsg);
 
 printf("Imported %d records in %4.2f seconds\n", n, (clock() - cStartClock) / (double)CLOCKS_PER_SEC);
 
@@ -9502,9 +9502,9 @@ By default, SQLite will pause after issuing a OS-level write command. This guara
 
 ```c
 /* Open the database and create the schema */
-sqlite3_open(DATABASE, &amp;db);
-sqlite3_exec(db, TABLE, NULL, NULL, &amp;sErrMsg);
-sqlite3_exec(db, "PRAGMA synchronous = OFF", NULL, NULL, &amp;sErrMsg);
+sqlite3_open(DATABASE, &db);
+sqlite3_exec(db, TABLE, NULL, NULL, &sErrMsg);
+sqlite3_exec(db, "PRAGMA synchronous = OFF", NULL, NULL, &sErrMsg);
 ```
 
 <blockquote>
@@ -9520,9 +9520,9 @@ Consider storing the rollback journal in memory by evaluating `PRAGMA journal_mo
 
 ```c
 /* Open the database and create the schema */
-sqlite3_open(DATABASE, &amp;db);
-sqlite3_exec(db, TABLE, NULL, NULL, &amp;sErrMsg);
-sqlite3_exec(db, "PRAGMA journal_mode = MEMORY", NULL, NULL, &amp;sErrMsg);
+sqlite3_open(DATABASE, &db);
+sqlite3_exec(db, TABLE, NULL, NULL, &sErrMsg);
+sqlite3_exec(db, "PRAGMA journal_mode = MEMORY", NULL, NULL, &sErrMsg);
 ```
 
 <blockquote>
@@ -9538,10 +9538,10 @@ Let's combine the previous two optimizations. It's a little more risky (in case 
 
 ```c
 /* Open the database and create the schema */
-sqlite3_open(DATABASE, &amp;db);
-sqlite3_exec(db, TABLE, NULL, NULL, &amp;sErrMsg);
-sqlite3_exec(db, "PRAGMA synchronous = OFF", NULL, NULL, &amp;sErrMsg);
-sqlite3_exec(db, "PRAGMA journal_mode = MEMORY", NULL, NULL, &amp;sErrMsg);
+sqlite3_open(DATABASE, &db);
+sqlite3_exec(db, TABLE, NULL, NULL, &sErrMsg);
+sqlite3_exec(db, "PRAGMA synchronous = OFF", NULL, NULL, &sErrMsg);
+sqlite3_exec(db, "PRAGMA journal_mode = MEMORY", NULL, NULL, &sErrMsg);
 ```
 
 <blockquote>
@@ -9617,8 +9617,8 @@ Before we start measuring `SELECT` performance, we know that we'll be creating i
 <strong>Create Index then Insert Data</strong>  
 
 ```c
-sqlite3_exec(db, "CREATE  INDEX 'TTC_Stop_Index' ON 'TTC' ('Stop')", NULL, NULL, &amp;sErrMsg);
-sqlite3_exec(db, "BEGIN TRANSACTION", NULL, NULL, &amp;sErrMsg);
+sqlite3_exec(db, "CREATE  INDEX 'TTC_Stop_Index' ON 'TTC' ('Stop')", NULL, NULL, &sErrMsg);
+sqlite3_exec(db, "BEGIN TRANSACTION", NULL, NULL, &sErrMsg);
 ...
 ```
 
@@ -9631,8 +9631,8 @@ sqlite3_exec(db, "BEGIN TRANSACTION", NULL, NULL, &amp;sErrMsg);
 
 ```c
 ...
-sqlite3_exec(db, "END TRANSACTION", NULL, NULL, &amp;sErrMsg);
-sqlite3_exec(db, "CREATE  INDEX 'TTC_Stop_Index' ON 'TTC' ('Stop')", NULL, NULL, &amp;sErrMsg);
+sqlite3_exec(db, "END TRANSACTION", NULL, NULL, &sErrMsg);
+sqlite3_exec(db, "CREATE  INDEX 'TTC_Stop_Index' ON 'TTC' ('Stop')", NULL, NULL, &sErrMsg);
 ```
 
 <blockquote>
@@ -9806,7 +9806,7 @@ P.S. Thanks <strong>@caf</strong> for correcting me.
 
 #### Answer 3 (score 6)
 ```c
-printf("%.&lt;number&gt;f", myFloat) //where &lt;number&gt; - digit after comma
+printf("%.<number>f", myFloat) //where <number> - digit after comma
 ```
 
 <a href="http://www.cplusplus.com/reference/clibrary/cstdio/printf/" rel="nofollow noreferrer">http://www.cplusplus.com/reference/clibrary/cstdio/printf/</a>  
@@ -9904,7 +9904,7 @@ A typical test suite in one of my C projects might look like this:
 
 ```c
 #include "myimplementationfile.c"
-#include &lt;gtest/gtest.h&gt;
+#include <gtest/gtest.h>
 
 // Mock out external dependency on mylogger.o
 void Logger_log(...){}
@@ -9995,7 +9995,7 @@ int product(int u, int v) {
   return u*v;
 }
 
-t_somefunc afunc = &amp;product;
+t_somefunc afunc = &product;
 ...
 int x2 = (*afunc)(123, 456); // call product() to calculate 123*456
 ```
@@ -10015,7 +10015,7 @@ typedef   void      (*FunctionFunc)  ( );
 ```c
 FunctionFunc x;
 void doSomething() { printf("Hello there\n"); }
-x = &amp;doSomething;
+x = &doSomething;
 
 x(); //prints "Hello there"
 ```</li>
@@ -10097,13 +10097,13 @@ How would I need to change this code to the way my book wants it to be?
 ```c
 int main () 
 {
-    for (int i=2; i&lt;100; i++) 
-        for (int j=2; j&lt;i; j++)
+    for (int i=2; i<100; i++) 
+        for (int j=2; j<i; j++)
         {
             if (i % j == 0) 
                 break;
             else if (i == j+1)
-                cout &lt;&lt; i &lt;&lt; " ";
+                cout << i << " ";
 
         }   
     return 0;
@@ -10134,13 +10134,13 @@ Three ways:
 ```c
 int main () 
 {
-    for (int i=2; i&lt;100; i++) 
-        for (int j=2; j*j&lt;=i; j++)
+    for (int i=2; i<100; i++) 
+        for (int j=2; j*j<=i; j++)
         {
             if (i % j == 0) 
                 break;
-            else if (j+1 &gt; sqrt(i)) {
-                cout &lt;&lt; i &lt;&lt; " ";
+            else if (j+1 > sqrt(i)) {
+                cout << i << " ";
 
             }
 
@@ -10155,10 +10155,10 @@ int main ()
 ```c
 int main () 
 {
-    for (int i=2; i&lt;100; i++) 
+    for (int i=2; i<100; i++) 
     {
         bool prime=true;
-        for (int j=2; j*j&lt;=i; j++)
+        for (int j=2; j*j<=i; j++)
         {
             if (i % j == 0) 
             {
@@ -10166,7 +10166,7 @@ int main ()
                 break;    
             }
         }   
-        if(prime) cout &lt;&lt; i &lt;&lt; " ";
+        if(prime) cout << i << " ";
     }
     return 0;
 }
@@ -10175,15 +10175,15 @@ int main ()
 3.  
 
 ```c
-#include &lt;vector&gt;
+#include <vector>
 int main()
 {
-    std::vector&lt;int&gt; primes;
+    std::vector<int> primes;
     primes.push_back(2);
-    for(int i=3; i &lt; 100; i++)
+    for(int i=3; i < 100; i++)
     {
         bool prime=true;
-        for(int j=0;j&lt;primes.size() &amp;&amp; primes[j]*primes[j] &lt;= i;j++)
+        for(int j=0;j<primes.size() && primes[j]*primes[j] <= i;j++)
         {
             if(i % primes[j] == 0)
             {
@@ -10194,7 +10194,7 @@ int main()
         if(prime) 
         {
             primes.push_back(i);
-            cout &lt;&lt; i &lt;&lt; " ";
+            cout << i << " ";
         }
     }
 
@@ -10210,7 +10210,7 @@ If `j` is <em>equal</em> to `sqrt(i)` it might also be a valid factor, not only 
 To iterate up to and including `sqrt(i)` in your inner loop, you could write:  
 
 ```c
-for (int j=2; j*j&lt;=i; j++)
+for (int j=2; j*j<=i; j++)
 ```
 
 (Compared to using `sqrt(i)` this has the advantage to not need conversion to floating point numbers.)   
@@ -10226,8 +10226,8 @@ If a number has divisors, at least one of them must be less than or equal to the
 C99 standard has integer types with bytes size like int64_t. I am using the following code:  
 
 ```c
-#include &lt;stdio.h&gt;
-#include &lt;stdint.h&gt;
+#include <stdio.h>
+#include <stdint.h>
 int64_t my_int = 999999999999999999;
 printf("This is my_int: %I64d\n", my_int);
 ```
@@ -10261,7 +10261,7 @@ Which format should I use to print my_int variable without having a warning?
 For `int64_t` type:  
 
 ```c
-#include &lt;inttypes.h&gt;
+#include <inttypes.h>
 int64_t t;
 printf("%" PRId64 "\n", t);
 ```
@@ -10269,7 +10269,7 @@ printf("%" PRId64 "\n", t);
 for `uint64_t` type:  
 
 ```c
-#include &lt;inttypes.h&gt;
+#include <inttypes.h>
 uint64_t t;
 printf("%" PRIu64 "\n", t);
 ```
@@ -10288,7 +10288,7 @@ For your code to be fully portable, you must use `PRId32` and so on for printing
 The C99 way is  
 
 ```c
-#include &lt;inttypes.h&gt;
+#include <inttypes.h>
 int64_t my_int = 999999999999999999;
 printf("%" PRId64 "\n", my_int);
 ```
@@ -10307,13 +10307,13 @@ If you're stuck with a C89 implementation (notably Visual Studio) you can perhap
 With C99 the `%j` length modifier can also be used with the printf family of functions to print values of type `int64_t` and `uint64_t`:  
 
 ```c
-#include &lt;stdio.h&gt;
-#include &lt;stdint.h&gt;
+#include <stdio.h>
+#include <stdint.h>
 
 int main(int argc, char *argv[])
 {
-    int64_t  a = 1LL &lt;&lt; 63;
-    uint64_t b = 1ULL &lt;&lt; 63;
+    int64_t  a = 1LL << 63;
+    uint64_t b = 1ULL << 63;
 
     printf("a=%jd (0x%jx)\n", a, a);
     printf("b=%ju (0x%jx)\n", b, b);
@@ -10364,13 +10364,13 @@ An array in C is just a memory location, so indeed, your `my_custom_data[0] = '\
 If you want to clear all the elements of the array, you'll have to visit each element. That is what `memset` is for:  
 
 ```c
-memset(&amp;arr[0], 0, sizeof(arr));
+memset(&arr[0], 0, sizeof(arr));
 ```
 
 This is generally the fastest way to take care of this. If you can use C++, consider std::fill instead:  
 
 ```c
-char *begin = &amp;arr;
+char *begin = &arr;
 char *end = begin + sizeof(arr);
 std::fill(begin, end, 0);
 ```
@@ -10402,46 +10402,46 @@ Am I missing something, or can someone point me in the right direction?
 I wrote this a long time ago (<a href="https://stackoverflow.com/questions/25996171/linux-blocking-vs-non-blocking-serial-read/26006680#comment70743914_26006680">from years 1985-1992, with just a few tweaks since then</a>), and just copy and paste the bits needed into each project.  
 
 ```c
-#include &lt;errno.h&gt;
-#include &lt;fcntl.h&gt; 
-#include &lt;string.h&gt;
-#include &lt;termios.h&gt;
-#include &lt;unistd.h&gt;
+#include <errno.h>
+#include <fcntl.h> 
+#include <string.h>
+#include <termios.h>
+#include <unistd.h>
 
 int
 set_interface_attribs (int fd, int speed, int parity)
 {
         struct termios tty;
-        memset (&amp;tty, 0, sizeof tty);
-        if (tcgetattr (fd, &amp;tty) != 0)
+        memset (&tty, 0, sizeof tty);
+        if (tcgetattr (fd, &tty) != 0)
         {
                 error_message ("error %d from tcgetattr", errno);
                 return -1;
         }
 
-        cfsetospeed (&amp;tty, speed);
-        cfsetispeed (&amp;tty, speed);
+        cfsetospeed (&tty, speed);
+        cfsetispeed (&tty, speed);
 
-        tty.c_cflag = (tty.c_cflag &amp; ~CSIZE) | CS8;     // 8-bit chars
+        tty.c_cflag = (tty.c_cflag & ~CSIZE) | CS8;     // 8-bit chars
         // disable IGNBRK for mismatched speed tests; otherwise receive break
         // as \000 chars
-        tty.c_iflag &amp;= ~IGNBRK;         // disable break processing
+        tty.c_iflag &= ~IGNBRK;         // disable break processing
         tty.c_lflag = 0;                // no signaling chars, no echo,
                                         // no canonical processing
         tty.c_oflag = 0;                // no remapping, no delays
         tty.c_cc[VMIN]  = 0;            // read doesn't block
         tty.c_cc[VTIME] = 5;            // 0.5 seconds read timeout
 
-        tty.c_iflag &amp;= ~(IXON | IXOFF | IXANY); // shut off xon/xoff ctrl
+        tty.c_iflag &= ~(IXON | IXOFF | IXANY); // shut off xon/xoff ctrl
 
         tty.c_cflag |= (CLOCAL | CREAD);// ignore modem controls,
                                         // enable reading
-        tty.c_cflag &amp;= ~(PARENB | PARODD);      // shut off parity
+        tty.c_cflag &= ~(PARENB | PARODD);      // shut off parity
         tty.c_cflag |= parity;
-        tty.c_cflag &amp;= ~CSTOPB;
-        tty.c_cflag &amp;= ~CRTSCTS;
+        tty.c_cflag &= ~CSTOPB;
+        tty.c_cflag &= ~CRTSCTS;
 
-        if (tcsetattr (fd, TCSANOW, &amp;tty) != 0)
+        if (tcsetattr (fd, TCSANOW, &tty) != 0)
         {
                 error_message ("error %d from tcsetattr", errno);
                 return -1;
@@ -10453,8 +10453,8 @@ void
 set_blocking (int fd, int should_block)
 {
         struct termios tty;
-        memset (&amp;tty, 0, sizeof tty);
-        if (tcgetattr (fd, &amp;tty) != 0)
+        memset (&tty, 0, sizeof tty);
+        if (tcgetattr (fd, &tty) != 0)
         {
                 error_message ("error %d from tggetattr", errno);
                 return;
@@ -10463,7 +10463,7 @@ set_blocking (int fd, int should_block)
         tty.c_cc[VMIN]  = should_block ? 1 : 0;
         tty.c_cc[VTIME] = 5;            // 0.5 seconds read timeout
 
-        if (tcsetattr (fd, TCSANOW, &amp;tty) != 0)
+        if (tcsetattr (fd, TCSANOW, &tty) != 0)
                 error_message ("error %d setting term attributes", errno);
 }
 
@@ -10472,7 +10472,7 @@ set_blocking (int fd, int should_block)
 char *portname = "/dev/ttyUSB1"
  ...
 int fd = open (portname, O_RDWR | O_NOCTTY | O_SYNC);
-if (fd &lt; 0)
+if (fd < 0)
 {
         error_message ("error %d opening %s: %s", errno, portname, strerror (errno));
         return;
@@ -10524,43 +10524,43 @@ and <a href="http://www.cmrr.umn.edu/~strupp/serial.html" rel="nofollow noreferr
 It's essentially derived from the other answer, but inaccurate and misleading comments have been corrected.</p>
 
 ```c
-#include &lt;errno.h&gt;
-#include &lt;fcntl.h&gt; 
-#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;string.h&gt;
-#include &lt;termios.h&gt;
-#include &lt;unistd.h&gt;
+#include <errno.h>
+#include <fcntl.h> 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <termios.h>
+#include <unistd.h>
 
 int set_interface_attribs(int fd, int speed)
 {
     struct termios tty;
 
-    if (tcgetattr(fd, &amp;tty) &lt; 0) {
+    if (tcgetattr(fd, &tty) < 0) {
         printf("Error from tcgetattr: %s\n", strerror(errno));
         return -1;
     }
 
-    cfsetospeed(&amp;tty, (speed_t)speed);
-    cfsetispeed(&amp;tty, (speed_t)speed);
+    cfsetospeed(&tty, (speed_t)speed);
+    cfsetispeed(&tty, (speed_t)speed);
 
     tty.c_cflag |= (CLOCAL | CREAD);    /* ignore modem controls */
-    tty.c_cflag &amp;= ~CSIZE;
+    tty.c_cflag &= ~CSIZE;
     tty.c_cflag |= CS8;         /* 8-bit characters */
-    tty.c_cflag &amp;= ~PARENB;     /* no parity bit */
-    tty.c_cflag &amp;= ~CSTOPB;     /* only need 1 stop bit */
-    tty.c_cflag &amp;= ~CRTSCTS;    /* no hardware flowcontrol */
+    tty.c_cflag &= ~PARENB;     /* no parity bit */
+    tty.c_cflag &= ~CSTOPB;     /* only need 1 stop bit */
+    tty.c_cflag &= ~CRTSCTS;    /* no hardware flowcontrol */
 
     /* setup for non-canonical mode */
-    tty.c_iflag &amp;= ~(IGNBRK | BRKINT | PARMRK | ISTRIP | INLCR | IGNCR | ICRNL | IXON);
-    tty.c_lflag &amp;= ~(ECHO | ECHONL | ICANON | ISIG | IEXTEN);
-    tty.c_oflag &amp;= ~OPOST;
+    tty.c_iflag &= ~(IGNBRK | BRKINT | PARMRK | ISTRIP | INLCR | IGNCR | ICRNL | IXON);
+    tty.c_lflag &= ~(ECHO | ECHONL | ICANON | ISIG | IEXTEN);
+    tty.c_oflag &= ~OPOST;
 
     /* fetch bytes as they become available */
     tty.c_cc[VMIN] = 1;
     tty.c_cc[VTIME] = 1;
 
-    if (tcsetattr(fd, TCSANOW, &amp;tty) != 0) {
+    if (tcsetattr(fd, TCSANOW, &tty) != 0) {
         printf("Error from tcsetattr: %s\n", strerror(errno));
         return -1;
     }
@@ -10571,7 +10571,7 @@ void set_mincount(int fd, int mcount)
 {
     struct termios tty;
 
-    if (tcgetattr(fd, &amp;tty) &lt; 0) {
+    if (tcgetattr(fd, &tty) < 0) {
         printf("Error tcgetattr: %s\n", strerror(errno));
         return;
     }
@@ -10579,7 +10579,7 @@ void set_mincount(int fd, int mcount)
     tty.c_cc[VMIN] = mcount ? 1 : 0;
     tty.c_cc[VTIME] = 5;        /* half second timer */
 
-    if (tcsetattr(fd, TCSANOW, &amp;tty) &lt; 0)
+    if (tcsetattr(fd, TCSANOW, &tty) < 0)
         printf("Error tcsetattr: %s\n", strerror(errno));
 }
 
@@ -10591,7 +10591,7 @@ int main()
     int wlen;
 
     fd = open(portname, O_RDWR | O_NOCTTY | O_SYNC);
-    if (fd &lt; 0) {
+    if (fd < 0) {
         printf("Error opening %s: %s\n", portname, strerror(errno));
         return -1;
     }
@@ -10613,18 +10613,18 @@ int main()
         int rdlen;
 
         rdlen = read(fd, buf, sizeof(buf) - 1);
-        if (rdlen &gt; 0) {
+        if (rdlen > 0) {
 #ifdef DISPLAY_STRING
             buf[rdlen] = 0;
             printf("Read %d: \"%s\"\n", rdlen, buf);
 #else /* display hex */
             unsigned char   *p;
             printf("Read %d:", rdlen);
-            for (p = buf; rdlen-- &gt; 0; p++)
+            for (p = buf; rdlen-- > 0; p++)
                 printf(" 0x%x", *p);
             printf("\n");
 #endif
-        } else if (rdlen &lt; 0) {
+        } else if (rdlen < 0) {
             printf("Error from read: %d: %s\n", rdlen, strerror(errno));
         } else {  /* rdlen == 0 */
             printf("Timeout from read\n");
@@ -10746,7 +10746,7 @@ What could be the possible reasons for this and how do I rectify it?
 Stack Smashing here is actually caused due to a protection mechanism used by gcc to detect buffer overflow errors. For example in the following snippet:  
 
 ```c
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 
 void func()
 {
@@ -10774,7 +10774,7 @@ main.c
 ```c
 void myfunc(char *const src, int len) {
     int i;
-    for (i = 0; i &lt; len; ++i) {
+    for (i = 0; i < len; ++i) {
         src[i] = 42;
     }
 }
@@ -10793,7 +10793,7 @@ Compile and run:
 
 ```c
 gcc -fstack-protector -g -O0 -std=c99 main.c
-ulimit -c unlimited &amp;&amp; rm -f core
+ulimit -c unlimited && rm -f core
 ./a.out
 ```
 
@@ -10844,7 +10844,7 @@ int main (void){
   4005ad:       48 8d 45 f4             lea    -0xc(%rbp),%rax
   4005b1:       89 d6                   mov    %edx,%esi
   4005b3:       48 89 c7                mov    %rax,%rdi
-  4005b6:       e8 8b ff ff ff          callq  400546 &lt;myfunc&gt;
+  4005b6:       e8 8b ff ff ff          callq  400546 <myfunc>
     return 0;
   4005bb:       b8 00 00 00 00          mov    $0x0,%eax
 }
@@ -10858,8 +10858,8 @@ int main (void){
   4005c0:       48 8b 4d f8             mov    -0x8(%rbp),%rcx
   4005c4:       64 48 33 0c 25 28 00    xor    %fs:0x28,%rcx
   4005cb:       00 00 
-  4005cd:       74 05                   je     4005d4 &lt;main+0x5b&gt;
-  4005cf:       e8 4c fe ff ff          callq  400420 &lt;__stack_chk_fail@plt&gt;
+  4005cd:       74 05                   je     4005d4 <main+0x5b>
+  4005cf:       e8 4c fe ff ff          callq  400420 <__stack_chk_fail@plt>
 
   # Otherwise, exit normally.
   4005d4:       c9                      leaveq 
@@ -10956,7 +10956,7 @@ then, as we saw on the assembly, GDB should point you to the end of the function
 #0  0x00007f0f66e20428 in __GI_raise (sig=sig@entry=6) at ../sysdeps/unix/sysv/linux/raise.c:54
 #1  0x00007f0f66e2202a in __GI_abort () at abort.c:89
 #2  0x00007f0f66e627ea in __libc_message (do_abort=do_abort@entry=1, fmt=fmt@entry=0x7f0f66f7a49f "*** %s ***: %s terminated\n") at ../sysdeps/posix/libc_fatal.c:175
-#3  0x00007f0f66f0415c in __GI___fortify_fail (msg=&lt;optimized out&gt;, msg@entry=0x7f0f66f7a481 "stack smashing detected") at fortify_fail.c:37
+#3  0x00007f0f66f0415c in __GI___fortify_fail (msg=<optimized out>, msg@entry=0x7f0f66f7a481 "stack smashing detected") at fortify_fail.c:37
 #4  0x00007f0f66f04100 in __stack_chk_fail () at stack_chk_fail.c:28
 #5  0x00000000004005f6 in main () at main.c:15
 (gdb) f 5
@@ -10989,14 +10989,14 @@ Hardware watchpoint 2: *0x7fffffffcf18
 
 Old value = 1800814336
 New value = 1800814378
-myfunc (src=0x7fffffffcf14 "*****?Vk\266", &lt;incomplete sequence \355\216&gt;, len=5) at main.c:3
-3           for (i = 0; i &lt; len; ++i) {
+myfunc (src=0x7fffffffcf14 "*****?Vk\266", <incomplete sequence \355\216>, len=5) at main.c:3
+3           for (i = 0; i < len; ++i) {
 (gdb) p len
 $2 = 5
 (gdb) p i
 $3 = 4
 (gdb) bt
-#0  myfunc (src=0x7fffffffcf14 "*****?Vk\266", &lt;incomplete sequence \355\216&gt;, len=5) at main.c:3
+#0  myfunc (src=0x7fffffffcf14 "*****?Vk\266", <incomplete sequence \355\216>, len=5) at main.c:3
 #1  0x00000000004005cc in main () at main.c:12
 ```
 
@@ -11018,8 +11018,8 @@ Please look at the following situation:
 
 ```c
 ab@cd-x:$ cat test_overflow.c 
-#include &lt;stdio.h&gt;
-#include &lt;string.h&gt;
+#include <stdio.h>
+#include <string.h>
 
 int check_password(char *password){
     int flag = 0;
@@ -11036,7 +11036,7 @@ int check_password(char *password){
 }
 
 int main(int argc, char *argv[]){
-    if(argc &gt;= 2){
+    if(argc >= 2){
         if(check_password(argv[1])){
             printf("%s", "Access granted\n");
         }else{
@@ -11115,7 +11115,7 @@ This is the code:
 ```c
 char ch;
 printf("Enter one char");
-scanf("%c", &amp;ch);
+scanf("%c", &ch);
 printf("%c\n",ch);
 ```
 
@@ -11127,7 +11127,7 @@ The `%c` conversion specifier won't automatically skip any leading whitespace, s
 One way around the problem is to put a blank space before the conversion specifier in the format string:  
 
 ```c
-scanf(" %c", &amp;c);
+scanf(" %c", &c);
 ```
 
 The blank in the format string tells `scanf` to skip leading whitespace, and the first non-whitespace character will be read with the `%c` conversion specifier.    
@@ -11140,21 +11140,21 @@ See: <a href="http://c-faq.com/stdio/scanfprobs.html" rel="noreferrer">Why does 
 Using a whitespace character in `scanf()` would ignore any number of whitespace characters left in the input stream, what if you need to read more inputs? Consider:  
 
 ```c
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 
 int main(void)
 {
    char ch1, ch2;
 
-   scanf("%c", &amp;ch1);  /* Leaves the newline in the input */
-   scanf(" %c", &amp;ch2); /* The leading whitespace ensures it's the
+   scanf("%c", &ch1);  /* Leaves the newline in the input */
+   scanf(" %c", &ch2); /* The leading whitespace ensures it's the
                           previous newline is ignored */
    printf("ch1: %c, ch2: %c\n", ch1, ch2);
 
    /* All good so far */
 
    char ch3;
-   scanf("%c", &amp;ch3); /* Doesn't read input due to the same problem */
+   scanf("%c", &ch3); /* Doesn't read input due to the same problem */
    printf("ch3: %c\n", ch3);
 
    return 0;
@@ -11165,14 +11165,14 @@ int main(void)
 Another major problem is, `scanf()` will not discard any input in the input stream if it doesn't match the format. For example, if you input `abc` for an `int` such as: `scanf("%d", &amp;int_var);` then `abc` will have to read and discarded. Consider:</p>
 
 ```c
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 
 int main(void)
 {
     int i;
 
     while(1) {
-        if (scanf("%d", &amp;i) != 1) { /* Input "abc" */
+        if (scanf("%d", &i) != 1) { /* Input "abc" */
             printf("Invalid input. Try again\n");
         } else {
             break;
@@ -11187,14 +11187,14 @@ int main(void)
 Another common problem is mixing `scanf()` and `fgets()`. Consider:  
 
 ```c
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 
 int main(void)
 {
     int age;
     char name[256];
     printf("Input your age:");
-    scanf("%d", &amp;age); /* Input 10 */
+    scanf("%d", &age); /* Input 10 */
     printf("Input your full name [firstname lastname]");
     fgets(name, sizeof name, stdin); /* Doesn't read! */
     return 0;
@@ -11208,7 +11208,7 @@ There are many other similar problems associated with `scanf()`. That's why it's
 So, what's the alternative? Use <a href="http://man7.org/linux/man-pages/man3/fgetc.3.html" rel="noreferrer">`fgets()`</a> function instead in the following fashion to read a single character:  
 
 ```c
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 
 int main(void)
 {
@@ -11259,25 +11259,25 @@ Out of curiosity, I created two trivial test case programs:
 
 ```c
 /* modulo.c */
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 
 int main(void)
 {
     int x;
-    for (x = 0; x &lt; 10; x++)
+    for (x = 0; x < 10; x++)
         if (x % 2)
             printf("%d is odd\n", x);
     return 0;
 }
 
 /* and.c */
-#include &lt;stdio.h&gt;
+#include <stdio.h>
 
 int main(void)
 {
     int x;
-    for (x = 0; x &lt; 10; x++)
-        if (x &amp; 1)
+    for (x = 0; x < 10; x++)
+        if (x & 1)
             printf("%d is odd\n", x);
     return 0;
 }
@@ -11324,7 +11324,7 @@ Of course, that doesn't work for negative numbers. But with brilliance comes sac
 Use bit arithmetic:  
 
 ```c
-if((x &amp; 1) == 0)
+if((x & 1) == 0)
     printf("EVEN!\n");
 else
     printf("ODD!\n");
@@ -11342,16 +11342,16 @@ What is the difference between while loop and do while loop. I used to think bot
 ```c
 do {
         printf("Word length... ");
-        scanf("%d", &amp;wdlen);
-    } while(wdlen&lt;2);
+        scanf("%d", &wdlen);
+    } while(wdlen<2);
 ```
 
 This code works perfectly. It prints word length and tascans the input. But when I changed it to  
 
 ```c
-while(wdlen&lt;2){
+while(wdlen<2){
         printf("Word length... ");
-        scanf("%d", &amp;wdlen);
+        scanf("%d", &wdlen);
     } 
 ```
 
@@ -11375,16 +11375,16 @@ In this case you are waiting for user input with scanf(), which will never execu
 ```c
 do {
     printf("Word length... ");
-    scanf("%d", &amp;wdlen);
-} while(wdlen&lt;2);
+    scanf("%d", &wdlen);
+} while(wdlen<2);
 ```
 
 A `do-while` loop guarantees the execution of the loop at least once because it checks the loop condition AFTER the loop iteration. Therefore it'll print the string and call scanf, thus updating the wdlen variable.  
 
 ```c
-while(wdlen&lt;2){
+while(wdlen<2){
     printf("Word length... ");
-    scanf("%d", &amp;wdlen);
+    scanf("%d", &wdlen);
 } 
 ```
 
