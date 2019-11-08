@@ -11,3 +11,7 @@
 1. Fuit
 2. Cache toi
 3. Defend toi
+
+# Travail d'équipe
+
+1. Ne perd pas de vue ta mission, soit légitile en tout temps
