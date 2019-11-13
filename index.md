@@ -16,6 +16,7 @@
   * [Js](Js)  
   ### Compiled
   * [C](C)
+  * [Java](Java)
   * [Cmake](Cmake)
   * [Assembly](Assembly)  
   ### Markup
@@ -26,6 +27,7 @@
   * [Dot](Dot)   
   ### Algorithm
   * [Paradigm](Paradigm-Programming)
+  * [BigData](BigData)
 
 
 ## Program
