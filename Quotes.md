@@ -101,7 +101,6 @@ Et de tous vos défauts les zélés adversaires. (Art po, Chant 1)
 * Souviens-toi d'aimer. (Abbé Pierre)
 
 * L'espérance, c'est de croire que la vie a un sens. (Abbé Pierre)
-  (Abbé Pierre)
 	
 # Informatique
 
