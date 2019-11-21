@@ -1,5 +1,9 @@
 # Firefox
 
+### Inspector
+
+* Css: see `:hover` and `:active`:  Click on the element inside the element inspector. Move your mouse over the element, press the up arrow key and then the down arrow key. You'll see the hover properties.
+
 ## [Shortcuts](https://support.mozilla.org/en-US/kb/keyboard-shortcuts-perform-firefox-tasks-quickly)
 
 This is a list of keyboard shortcuts in Mozilla Firefox. If you have enabled

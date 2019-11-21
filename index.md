@@ -32,6 +32,8 @@
 
 
 ## Program
+  * [Inkscape](Inkscape)
+  * [Gimp](Gimp)
   * [Firefox](Firefox)
   * [IDA](IDA)
   * [Ia](Ia)
