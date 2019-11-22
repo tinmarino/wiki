@@ -119,7 +119,7 @@ Et de tous vos défauts les zélés adversaires. (Art po, Chant 1)
 
 * Dans le doute, écoute ton coeur. Tous les chemins mênent à ta mort mais suivant celui çi, au moins tu auras vécu
 
-* Fais de ton mieu car c'est le mieux que tu puisse faire
+* Fais de ton mieux car c'est le mieux que tu puisse faire
 
 * Peux importe l'altitude, seule la pente compte.
 
