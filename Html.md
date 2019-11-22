@@ -1,3 +1,8 @@
+### Table
+THEAD, TFOOT and TBODY elements
+Zerba strip: tbody tr:nth-child(odd) {background: #eee; }
+
+
 ### Color
 	* `<span style="color:red">My test *here* is red</span>
 
