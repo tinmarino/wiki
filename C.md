@@ -4,6 +4,9 @@
 * [Operators](Cheat/C-Operators)
 * [Regle De Codage](C-Regle-De-Codage)
 
+Werror overwrite
+   make CFLAGS=-Wno-error
+
 Include path (print)
 	gcc -xc -E -v -
 	gcc -xc++ -E -v -
