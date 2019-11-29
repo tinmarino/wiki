@@ -64,6 +64,13 @@
     P.then( function(data) {return doWork('text', data);} );
     P.then( data => doWork('text', data) );
     
+# Idioms
+
+* Run other thread
+    setTimeout(func, 0)
+
+* Global (__The__ correct way)
+    window.myglobal = 3;
     
 # Vars
 

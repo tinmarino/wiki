@@ -255,7 +255,7 @@ But `map` can ber replaced by:
 #### Get filetype of a buffer
 	* `:let bufFiletype = getbufvar(bufNr, '&filetype')`
 
-#### Show highlight sytnax type
+#### Show highlight syntax type
   * `:echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')`
 
 #### Get filetype of a buffer
