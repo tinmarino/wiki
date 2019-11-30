@@ -1,4 +1,23 @@
+### Charcode
 
+\makeatletter : transform @ as a letter so it can be ised in a macro name. so not use it in .sty or .cls class
+
+    0 = Escape character, normally \
+    1 = Begin grouping, normally {
+    2 = End grouping, normally }
+    3 = Math shift, normally $
+    4 = Alignment tab, normally &
+    5 = End of line, normally <return>
+    6 = Parameter, normally #
+    7 = Superscript, normally ^
+    8 = Subscript, normally _
+    9 = Ignored character, normally <null>
+    10 = Space, normally <space> and <tab>
+    11 = Letter, normally only contains the letters a,...,z and A,...,Z. These characters can be used in command names
+    12 = Other, normally everything else not listed in the other categories
+    13 = Active character, for example ~
+    14 = Comment character, normally %
+    15 = Invalid character, normally <delete>
 
 # Htxelatex
 
