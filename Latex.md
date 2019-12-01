@@ -19,7 +19,27 @@
     14 = Comment character, normally %
     15 = Invalid character, normally <delete>
 
-# Htxelatex
+### Math
+
+```tex
+\usepackage{pgf}
+\pgfmathparse
+\pgfmathsetmacro{\x}{int(2 * 2)}
+```
+
+```tex
+\usepackage{calc}
+
+\newlength\len
+\setlength{\textwidth+1cm}
+
+\newcounter{cnt}
+\setcounter{cnt}{1+1}
+```
+
+
+
+# Tex4ht or Htxelatex
 
 ```sh
 htxelatex martin_tourneboeuf_cv_english.tex  && iconv -t utf-8  martin_tourneboeuf_cv_english.html | pandoc --self-contained -o  martin_tourneboeuf_cv_english.html
@@ -49,3 +69,42 @@ ebb -x TestImage.png to get .xbb file (image size)
 \footnotesize
 \scriptsize
 \tiny
+
+### Texlive
+
+```                      
+                      texlive-latex-extra
+                         |   |   :   :
+       +-----------------+   |   :   :..................
+       |                     |   :                     :
+       v                     |   :                     v
+texlive-pictures             |   :           texlive-plain-generic
+       |                     |   :
+       |    +----------------+   :...............
+       |    |                                   :
+       |    |              texlive              :
+       |    |               | | |               :
+       |    |    +----------+ | +----------+    :
+       |    |    |            |            |    :
+       v    v    v            |            v    v
+texlive-latex-recommended     |  texlive-fonts-recommended
+                 |            |            :
+                 |            |            v
+                 |            |           tipa
+                 |            |            |
+                 +----------+ | +----------+
+                            | | |
+                            v v v
+                     texlive-latex-base
+```
+
+Package                    Archives  Disk Space
+-------------------------  --------  ----------
+texlive-latex-base            59 MB      216 MB
+texlive-latex-recommended     74 MB      248 MB
+texlive-pictures              83 MB      277 MB
+texlive-fonts-recommended     83 MB      281 MB
+texlive                       98 MB      314 MB
+texlive-plain-generic         82 MB      261 MB
+texlive-latex-extra          144 MB      452 MB
+texlive-full                2804 MB     5358 MB

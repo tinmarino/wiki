@@ -74,11 +74,13 @@
     
 # Vars
 
-| keyword | meaning  |
-| ---     | ---      |
+| keyword | meaning |
+| ---     | --- |
 | var     | function |
-| let     | block    |
-| []      | global   |
+| let     | block |
+| const   | constant |
+| []      | global |
+| window. | global |
     
 # Loop
 
