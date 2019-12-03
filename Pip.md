@@ -1,0 +1,1 @@
+pip completion --bash >> ~/.bashrc

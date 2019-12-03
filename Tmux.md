@@ -2,6 +2,23 @@
 
 [Tmux Conf](Tmux-Conf)
 
+### Pane to new Windows == break pane o
+
+    join-pane -s
+    join-pane -t
+    break-pane   (!)
+    
+    
+### Vertical to horizontal
+
+C-b space (bound to next-layout by default) cycles through available layouts, you can also use the select-layout command.
+
+M-1 to M-5  Arrange panes in one of the five preset layouts: even-
+            horizontal, even-vertical, main-horizontal, main-
+            vertical, or tiled.
+
+On OS X, M is Esc, i.e. Ctrl-b Esc-1.
+
 # Clipboard 
 tmux save-buffer -  | xclip -i 
 
