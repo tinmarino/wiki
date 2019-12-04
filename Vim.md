@@ -1,5 +1,9 @@
 * [Vim Menu](Vim-Menu)
 
+### Jump matching endif
+
+runtime macros/matchit.vim
+
 ### Not clearing screen after leaving (for git diff)
 
 `set t_te=`

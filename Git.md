@@ -2,6 +2,11 @@
 
 # Tips
 
+
+### Reset one commit
+* git reset --hard HEAD^  # One
+* git reset --hard HEAD~2  # Two
+
 ### Ugly tips from draft
 
 * git push <remote_name> --delete <branch_name>  # or -d branch or :branch
