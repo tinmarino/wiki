@@ -90,8 +90,8 @@ Some usefull function
 ```vim
 :%!tac
 :%!tail -r
+:g/^/m0
 ```
-*   g/^/m0
 
 ### Man
 ```vim

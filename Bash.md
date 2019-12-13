@@ -2,6 +2,7 @@
 
 [Bash Rc](Bash-Rc)
 
+* `ps -ef | grep 'myProcessName' | grep -v grep | awk '{print $2}' | xargs -r kill -15` : kill all process from name
 * `type find` , `type vi` : see if command is alias or function or binary
 * `kill -l` list signals
 * `current_script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"`
@@ -9,7 +10,18 @@
 # Commpletion
 
 * `complete -p` : list 
+* bind 'set show-all-if-ambiguous on'
+* bind TAB:menu-complete 
 
+```conf
+# display all possible matches for an ambiguous pattern at first tab
+set show-all-if-ambiguous on
+
+# next tab(s) will cycle through matches
+TAB: menu-complete
+# shift tab cycles backward
+"\e[Z": menu-complete-backward
+```
 
 # Other tips
 

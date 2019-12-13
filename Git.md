@@ -1,6 +1,21 @@
-% Git Wiki
+%ipython Git Wiki
 
 # Tips
+
+git branch -m old-name new-name # Rename branch 
+
+### Pickaxe
+
+Git can search diffs with the -S option (it's called pickaxe in the docs)
+
+git log -Spassword  # word like --grep=word
+git log -Gword  # regex
+
+This will find any commit that added or removed the string password. Here a few options:
+
+    -p: will show the diffs. If you provide a file (-p file), it will generate a patch for you.
+    -G: looks for differences whose added or removed line matches the given regexp, as opposed to -S, which "looks for differences that introduce or remove an instance of string".
+    --all: searches over all branches and tags; alternatively, use --branches[=<pattern>] or --tags[=<pattern>]
 
 
 ### Reset one commit
@@ -41,7 +56,7 @@
 	* `git log --all --{file_path}` : file_path can have * inside
 	* `git log --pretty=format:"%h"`
 	* `git log --pretty=oneline`
-	* `git log -S watever [--source --all] [--decorate] [--reverse]`
+	* `git log -S watever [--source --all] [--decorate] [--reverse]` : pickaxe or pickace
 	* `git log -G "^(\s)*function foo[(][)](\s)**{$"` : regex
 	* `git reflog`
 	* `git show <COMMIT_ID> -- <FILE_PATH>` : show deleted files

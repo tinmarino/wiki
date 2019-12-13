@@ -14,6 +14,8 @@
 
 # Tips
 
+* Remove AnsiEscaped colors
+  * `perl -pe 's/\e\[[0-9;]*m(?:\e\[K)?//g' # Adam Katz's trick`
 * use Number::Format 'format_number'
 * glob
 * .perldlrc  # to edit and load automatically some libs

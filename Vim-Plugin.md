@@ -79,6 +79,7 @@ https://github.com/tpope/vim-fugitive
 
 # IPYTHON
 
+Replaced by jupyter-vim
 The functionality `vim-server` and `python-zmq` (zero-message-query: to
 install) plus this small plugin, allow you to execute lines of code from here
 to a remote ipython/jupyter kernel
@@ -86,6 +87,10 @@ to a remote ipython/jupyter kernel
 https://github.com/ivanov/vim-ipython
 
 # PYTHON-MODE
+
+```sh
+pip3 install --user pylint
+```
 
 A HUGE collection of python plugins taht are up to date because they are
 written in python. Thanks to the +python feature of vim that is now embeded

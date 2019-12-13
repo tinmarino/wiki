@@ -15,6 +15,7 @@
 * [Nvidia](Nvidia)
 * [Ubuntu](Ubuntu)
 * [Man](Man)
+* [Docker](Docker)
 
 # Program
 * [Imagemagick](Imagemagick)
@@ -23,6 +24,8 @@
 * [Accronym](Accronym)
 * [Screen](Screen)
 
+* Trash: /home/$USER/.local/share/Trash (install trash-cli)
+* find . -type f -name "*_peaks.bed" ! -path "./tmp/*" ! -path "./scripts/*"
 * echo -e "\a" # beep
 
 - qed -> ed -> ex -> vi -> vim

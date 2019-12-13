@@ -1,3 +1,50 @@
+### Hide element (5 ways)
+1. Opacity
+
+```css
+.hide {
+  opacity: 0;
+}
+```
+
+2. Visibility
+
+Just like the opacity property, the hidden element will still affect the layout of our web page. The only difference is that this time it will not capture any user interaction when hidden from the user. 
+```css
+.hide {
+   visibility: hidden;
+}
+```
+
+3. Display : best
+
+Setting display to none makes sure that the box-model is not generated at all.
+```css
+.hide {
+   display: none;
+}
+```
+
+4. Position
+
+```css
+.hide {
+   position: absolute;
+   top: -9999px;
+   left: -9999px;
+}
+```
+
+5. CLip-path
+
+Ocupy my space
+```css
+.hide {
+  clip-path: polygon(0px 0px,0px 0px,0px 0px,0px 0px);
+}
+```
+
+
 ### Indent wraped text
 ```css
 div {
