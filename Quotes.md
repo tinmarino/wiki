@@ -147,6 +147,4 @@ Ton    Tel  Traite
 
 * Pour être précis, vise loin
 
-* Si tu n'arrêtes pas jusqu'au succès, tu succéderas avant de t'arrêter
-
-* Nous sommes tous des touristes dans cet univers
+* Si tu ne t'arrête pas jusqu'au succès, tu succéderas avant de t'arrêter

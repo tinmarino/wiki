@@ -7,9 +7,7 @@ See README.md for details.
 # Google Python Style Guide
 
 
-<a id="1-background"></a>
 
-<a id="background"></a>
 ## 1 Background 
 
 Python is the main dynamic language used at Google. This style guide is a list
@@ -22,24 +20,15 @@ Many teams use the [yapf](https://github.com/google/yapf/)
 auto-formatter to avoid arguing over formatting.
 
 
-<a id="s2-python-language-rules"></a>
-<a id="2-python-language-rules"></a>
 
-<a id="python-language-rules"></a>
 ## 2 Python Language Rules 
 
-<a id="s2.1-lint"></a>
-<a id="21-lint"></a>
 
-<a id="lint"></a>
 ### 2.1 Lint 
 
 Run `pylint` over your code.
 
-<a id="s2.1.1-definition"></a>
-<a id="211-definition"></a>
 
-<a id="lint-definition"></a>
 #### 2.1.1 Definition 
 
 `pylint` is a tool for finding bugs and style problems in Python source
@@ -48,27 +37,18 @@ languages like C and C++. Because of the dynamic nature of Python, some
 warnings may be incorrect; however, spurious warnings should be fairly
 infrequent.
 
-<a id="s2.1.2-pros"></a>
-<a id="212-pros"></a>
 
-<a id="lint-pros"></a>
 #### 2.1.2 Pros 
 
 Catches easy-to-miss errors like typos, using-vars-before-assignment, etc.
 
-<a id="s2.1.3-cons"></a>
-<a id="213-cons"></a>
 
-<a id="lint-cons"></a>
 #### 2.1.3 Cons 
 
 `pylint` isn't perfect. To take advantage of it, we'll need to sometimes: a)
 Write around it b) Suppress its warnings or c) Improve it.
 
-<a id="s2.1.4-decision"></a>
-<a id="214-decision"></a>
 
-<a id="lint-decision"></a>
 #### 2.1.4 Decision 
 
 Make sure you run `pylint` on your code.
@@ -120,46 +100,31 @@ identifier for the unused argument, prefixing the argument name with
 encouraged. The first two break callers that pass arguments by name, while the
 last does not enforce that the arguments are actually unused.
 
-<a id="s2.2-imports"></a>
-<a id="22-imports"></a>
 
-<a id="imports"></a>
 ### 2.2 Imports 
 
 Use `import` statements for packages and modules only, not for individual
 classes or functions. Note that there is an explicit exemption for imports from
 the [typing module](#typing-imports).
 
-<a id="s2.2.1-definition"></a>
-<a id="221-definition"></a>
 
-<a id="imports-definition"></a>
 #### 2.2.1 Definition 
 
 Reusability mechanism for sharing code from one module to another.
 
-<a id="s2.2.2-pros"></a>
-<a id="222-pros"></a>
 
-<a id="imports-pros"></a>
 #### 2.2.2 Pros 
 
 The namespace management convention is simple. The source of each identifier is
 indicated in a consistent way; `x.Obj` says that object `Obj` is defined in
 module `x`.
 
-<a id="s2.2.3-cons"></a>
-<a id="223-cons"></a>
 
-<a id="imports-cons"></a>
 #### 2.2.3 Cons 
 
 Module names can still collide. Some module names are inconveniently long.
 
-<a id="s2.2.4-decision"></a>
-<a id="224-decision"></a>
 
-<a id="imports-decision"></a>
 #### 2.2.4 Decision 
 
 * Use `import x` for importing packages and modules.
@@ -186,36 +151,24 @@ Imports from the [typing module](#typing-imports) and the
 [six.moves module](https://six.readthedocs.io/#module-six.moves)
 are exempt from this rule.
 
-<a id="s2.3-packages"></a>
-<a id="23-packages"></a>
 
-<a id="packages"></a>
 ### 2.3 Packages 
 
 Import each module using the full pathname location of the module.
 
-<a id="s2.3.1-pros"></a>
-<a id="231-pros"></a>
 
-<a id="packages-pros"></a>
 #### 2.3.1 Pros 
 
 Avoids conflicts in module names or incorrect imports due to the module search
 path not being what the author expected.  Makes it easier to find modules.
 
-<a id="s2.3.2-cons"></a>
-<a id="232-cons"></a>
 
-<a id="packages-cons"></a>
 #### 2.3.2 Cons 
 
 Makes it harder to deploy code because you have to replicate the package
 hierarchy.  Not really a problem with modern deployment mechanisms.
 
-<a id="s2.3.3-decision"></a>
-<a id="233-decision"></a>
 
-<a id="packages-decision"></a>
 #### 2.3.3 Decision 
 
 All new code should import each module by its full package name.
@@ -255,27 +208,18 @@ code should assume that `import jodie` refers to a third party or top level
 package named `jodie`, not a local `jodie.py`.
 
 
-<a id="s2.4-exceptions"></a>
-<a id="24-exceptions"></a>
 
-<a id="exceptions"></a>
 ### 2.4 Exceptions 
 
 Exceptions are allowed but must be used carefully.
 
-<a id="s2.4.1-definition"></a>
-<a id="241-definition"></a>
 
-<a id="exceptions-definition"></a>
 #### 2.4.1 Definition 
 
 Exceptions are a means of breaking out of the normal flow of control of a code
 block to handle errors or other exceptional conditions.
 
-<a id="s2.4.2-pros"></a>
-<a id="242-pros"></a>
 
-<a id="exceptions-pros"></a>
 #### 2.4.2 Pros 
 
 The control flow of normal operation code is not cluttered by error-handling
@@ -283,19 +227,13 @@ code. It also allows the control flow to skip multiple frames when a certain
 condition occurs, e.g., returning from N nested functions in one step instead of
 having to carry-through error codes.
 
-<a id="s2.4.3-cons"></a>
-<a id="243-cons"></a>
 
-<a id="exceptions-cons"></a>
 #### 2.4.3 Cons 
 
 May cause the control flow to be confusing. Easy to miss error cases when making
 library calls.
 
-<a id="s2.4.4-decision"></a>
-<a id="244-decision"></a>
 
-<a id="exceptions-decision"></a>
 #### 2.4.4 Decision 
 
 Exceptions must follow certain conditions:
@@ -393,43 +331,28 @@ Exceptions must follow certain conditions:
       pass
     ```
 
-<a id="s2.5-global-variables"></a>
-<a id="25-global-variables"></a>
 
-<a id="global-variables"></a>
 ### 2.5 Global variables 
 
 Avoid global variables.
 
-<a id="s2.5.1-definition"></a>
-<a id="251-definition"></a>
 
-<a id="global-variables-definition"></a>
 #### 2.5.1 Definition 
 
 Variables that are declared at the module level or as class attributes.
 
-<a id="s2.5.2-pros"></a>
-<a id="252-pros"></a>
 
-<a id="global-variables-pros"></a>
 #### 2.5.2 Pros 
 
 Occasionally useful.
 
-<a id="s2.5.3-cons"></a>
-<a id="253-cons"></a>
 
-<a id="global-variables-cons"></a>
 #### 2.5.3 Cons 
 
 Has the potential to change module behavior during the import, because
 assignments to global variables are done when the module is first imported.
 
-<a id="s2.5.4-decision"></a>
-<a id="254-decision"></a>
 
-<a id="global-variables-decision"></a>
 #### 2.5.4 Decision 
 
 Avoid global variables.
@@ -442,29 +365,20 @@ If needed, globals should be declared at the module level and made internal to
 the module by prepending an `_` to the name. External access must be done
 through public module-level functions. See [Naming](#s3.16-naming) below.
 
-<a id="s2.6-nested"></a>
-<a id="26-nested"></a>
 
-<a id="nested-classes-functions"></a>
 ### 2.6 Nested/Local/Inner Classes and Functions 
 
 Nested local functions or classes are fine when used to close over a local
 variable. Inner classes are fine.
 
-<a id="s2.6.1-definition"></a>
-<a id="261-definition"></a>
 
-<a id="nested-classes-functions-definition"></a>
 #### 2.6.1 Definition 
 
 A class can be defined inside of a method, function, or class. A function can be
 defined inside a method or function. Nested functions have read-only access to
 variables defined in enclosing scopes.
 
-<a id="s2.6.2-pros"></a>
-<a id="262-pros"></a>
 
-<a id="nested-classes-functions-pros"></a>
 #### 2.6.2 Pros 
 
 Allows definition of utility classes and functions that are only used inside of
@@ -472,20 +386,14 @@ a very limited scope. Very
 [ADT](http://www.google.com/url?sa=D&q=http://en.wikipedia.org/wiki/Abstract_data_type)-y.
 Commonly used for implementing decorators.
 
-<a id="s2.6.3-cons"></a>
-<a id="263-cons"></a>
 
-<a id="nested-classes-functions-cons"></a>
 #### 2.6.3 Cons 
 
 Instances of nested or local classes cannot be pickled. Nested functions and
 classes cannot be directly tested. Nesting can make your outer function longer
 and less readable.
 
-<a id="s2.6.4-decision"></a>
-<a id="264-decision"></a>
 
-<a id="nested-classes-functions-decision"></a>
 #### 2.6.4 Decision 
 
 They are fine with some caveats. Avoid nested functions or classes except when
@@ -493,48 +401,31 @@ closing over a local value. Do not nest a function just to hide it from users
 of a module. Instead, prefix its name with an \_ at the module level so that it
 can still be accessed by tests.
 
-<a id="s2.7-list_comprehensions"></a>
-<a id="27-list_comprehensions"></a>
-<a id="list_comprehensions"></a>
-<a id="list-comprehensions"></a>
 
-<a id="comprehensions"></a>
 ### 2.7 Comprehensions & Generator Expressions 
 
 Okay to use for simple cases.
 
-<a id="s2.7.1-definition"></a>
-<a id="271-definition"></a>
 
-<a id="comprehensions-definition"></a>
 #### 2.7.1 Definition 
 
 List, Dict, and Set comprehensions as well as generator expressions provide a
 concise and efficient way to create container types and iterators without
 resorting to the use of traditional loops, `map()`, `filter()`, or `lambda`.
 
-<a id="s2.7.2-pros"></a>
-<a id="272-pros"></a>
 
-<a id="comprehensions-pros"></a>
 #### 2.7.2 Pros 
 
 Simple comprehensions can be clearer and simpler than other dict, list, or set
 creation techniques. Generator expressions can be very efficient, since they
 avoid the creation of a list entirely.
 
-<a id="s2.7.3-cons"></a>
-<a id="273-cons"></a>
 
-<a id="comprehensions-cons"></a>
 #### 2.7.3 Cons 
 
 Complicated comprehensions or generator expressions can be hard to read.
 
-<a id="s2.7.4-decision"></a>
-<a id="274-decision"></a>
 
-<a id="comprehensions-decision"></a>
 #### 2.7.4 Decision 
 
 Okay to use for simple cases. Each portion must fit on one line: mapping
@@ -592,46 +483,32 @@ No:
           if y != z)
 ```
 
-<a id="s2.8-default-iterators-and-operators"></a>
 
-<a id="default-iterators-operators"></a>
 ### 2.8 Default Iterators and Operators 
 
 Use default iterators and operators for types that support them, like lists,
 dictionaries, and files.
 
-<a id="s2.8.1-definition"></a>
-<a id="281-definition"></a>
 
-<a id="default-iterators-operators-definition"></a>
 #### 2.8.1 Definition 
 
 Container types, like dictionaries and lists, define default iterators and
 membership test operators ("in" and "not in").
 
-<a id="s2.8.2-pros"></a>
-<a id="282-pros"></a>
 
-<a id="default-iterators-operators-pros"></a>
 #### 2.8.2 Pros 
 
 The default iterators and operators are simple and efficient. They express the
 operation directly, without extra method calls. A function that uses default
 operators is generic. It can be used with any type that supports the operation.
 
-<a id="s2.8.3-cons"></a>
-<a id="283-cons"></a>
 
-<a id="default-iterators-operators-cons"></a>
 #### 2.8.3 Cons 
 
 You can't tell the type of objects by reading the method names (e.g. has\_key()
 means a dictionary). This is also an advantage.
 
-<a id="s2.8.4-decision"></a>
-<a id="284-decision"></a>
 
-<a id="default-iterators-operators-decision"></a>
 #### 2.8.4 Decision 
 
 Use default iterators and operators for types that support them, like lists,
@@ -656,91 +533,61 @@ No:   for key in adict.keys(): ...
       for k, v in dict.iteritems(): ...
 ```
 
-<a id="s2.9-generators"></a>
-<a id="29-generators"></a>
 
-<a id="generators"></a>
 ### 2.9 Generators 
 
 Use generators as needed.
 
-<a id="s2.9.1-definition"></a>
-<a id="291-definition"></a>
 
-<a id="generators-definition"></a>
 #### 2.9 Definition 
 
 A generator function returns an iterator that yields a value each time it
 executes a yield statement. After it yields a value, the runtime state of the
 generator function is suspended until the next value is needed.
 
-<a id="s2.9.2-pros"></a>
-<a id="292-pros"></a>
 
-<a id="generators-pros"></a>
 #### 2.9.2 Pros 
 
 Simpler code, because the state of local variables and control flow are
 preserved for each call. A generator uses less memory than a function that
 creates an entire list of values at once.
 
-<a id="s2.9.3-cons"></a>
-<a id="293-cons"></a>
 
-<a id="generators-cons"></a>
 #### 2.9.3 Cons 
 
 None.
 
-<a id="s2.9.4-decision"></a>
-<a id="294-decision"></a>
 
-<a id="generators-decision"></a>
 #### 2.9.4 Decision 
 
 Fine. Use "Yields:" rather than "Returns:" in the docstring for generator
 functions.
 
-<a id="s2.10-lambda-functions"></a>
-<a id="210-lambda-functions"></a>
 
-<a id="lambdas"></a>
 ### 2.10 Lambda Functions 
 
 Okay for one-liners.
 
-<a id="s2.10.1-definition"></a>
-<a id="2101-definition"></a>
 
-<a id="lambdas-definition"></a>
 #### 2.10.1 Definition 
 
 Lambdas define anonymous functions in an expression, as opposed to a statement.
 They are often used to define callbacks or operators for higher-order functions
 like `map()` and `filter()`.
 
-<a id="s2.10.2-pros"></a>
-<a id="2102-pros"></a>
 
-<a id="lambdas-pros"></a>
 #### 2.10.2 Pros 
 
 Convenient.
 
-<a id="s2.10.3-cons"></a>
-<a id="2103-cons"></a>
 
-<a id="lambdas-cons"></a>
 #### 2.10.3 Cons 
 
 Harder to read and debug than local functions. The lack of names means stack
 traces are more difficult to understand. Expressiveness is limited because the
 function may only contain an expression.
 
-<a id="s2.10.4-decision"></a>
-<a id="2104-decision"></a>
 
-<a id="lambdas-decision"></a>
 #### 2.10.4 Decision 
 
 Okay to use them for one-liners. If the code inside the lambda function is
@@ -751,45 +598,30 @@ For common operations like multiplication, use the functions from the `operator`
 module instead of lambda functions. For example, prefer `operator.mul` to
 `lambda x, y: x * y`.
 
-<a id="s2.11-conditional-expressions"></a>
-<a id="211-conditional-expressions"></a>
 
-<a id="conditional-expressions"></a>
 ### 2.11 Conditional Expressions 
 
 Okay for simple cases.
 
-<a id="s2.11.1-definition"></a>
-<a id="2111-definition"></a>
 
-<a id="conditional-expressions-definition"></a>
 #### 2.11.1 Definition 
 
 Conditional expressions (sometimes called a “ternary operator”) are mechanisms
 that provide a shorter syntax for if statements. For example:
 `x = 1 if cond else 2`.
 
-<a id="s2.11.2-pros"></a>
-<a id="2112-pros"></a>
 
-<a id="conditional-expressions-pros"></a>
 #### 2.11.2 Pros 
 
 Shorter and more convenient than an if statement.
 
-<a id="s2.11.3-cons"></a>
-<a id="2113-cons"></a>
 
-<a id="conditional-expressions-cons"></a>
 #### 2.11.3 Cons 
 
 May be harder to read than an if statement. The condition may be difficult to
 locate if the expression is long.
 
-<a id="s2.11.4-decision"></a>
-<a id="2114-decision"></a>
 
-<a id="conditional-expressions-decision"></a>
 #### 2.11.4 Decision 
 
 Okay to use for simple cases. Each portion must fit on one line:
@@ -815,18 +647,12 @@ portion_too_long = ('yes'
                     else 'no, false, negative, nay')
 ```
 
-<a id="s2.12-default-argument-values"></a>
-<a id="212-default-argument-values"></a>
 
-<a id="default-arguments"></a>
 ### 2.12 Default Argument Values 
 
 Okay in most cases.
 
-<a id="s2.12.1-definition"></a>
-<a id="2121-definition"></a>
 
-<a id="default-arguments-definition"></a>
 #### 2.12.1 Definition 
 
 You can specify values for variables at the end of a function's parameter list,
@@ -834,10 +660,7 @@ e.g., `def foo(a, b=0):`.  If `foo` is called with only one argument,
 `b` is set to 0. If it is called with two arguments, `b` has the value of the
 second argument.
 
-<a id="s2.12.2-pros"></a>
-<a id="2122-pros"></a>
 
-<a id="default-arguments-pros"></a>
 #### 2.12.2 Pros 
 
 Often you have a function that uses lots of default values, but on rare
@@ -846,10 +669,7 @@ easy way to do this, without having to define lots of functions for the rare
 exceptions. As Python does not support overloaded methods/functions, default
 arguments are an easy way of "faking" the overloading behavior.
 
-<a id="s2.12.3-cons"></a>
-<a id="2123-cons"></a>
 
-<a id="default-arguments-cons"></a>
 #### 2.12.3 Cons 
 
 Default arguments are evaluated once at module load time. This may cause
@@ -857,10 +677,7 @@ problems if the argument is a mutable object such as a list or a dictionary. If
 the function modifies the object (e.g., by appending an item to a list), the
 default value is modified.
 
-<a id="s2.12.4-decision"></a>
-<a id="2124-decision"></a>
 
-<a id="default-arguments-decision"></a>
 #### 2.12.4 Decision 
 
 Okay to use with the following caveat:
@@ -888,28 +705,19 @@ No:  def foo(a, b=FLAGS.my_thing):  # sys.argv has not yet been parsed...
          ...
 ```
 
-<a id="s2.13-properties"></a>
-<a id="213-properties"></a>
 
-<a id="properties"></a>
 ### 2.13 Properties 
 
 Use properties for accessing or setting data where you would normally have used
 simple, lightweight accessor or setter methods.
 
-<a id="s2.13.1-definition"></a>
-<a id="2131-definition"></a>
 
-<a id="properties-definition"></a>
 #### 2.13.1 Definition 
 
 A way to wrap method calls for getting and setting an attribute as a standard
 attribute access when the computation is lightweight.
 
-<a id="s2.13.2-pros"></a>
-<a id="2132-pros"></a>
 
-<a id="properties-pros"></a>
 #### 2.13.2 Pros 
 
 Readability is increased by eliminating explicit get and set method calls for
@@ -919,19 +727,13 @@ properties bypasses needing trivial accessor methods when a direct variable
 access is reasonable. This also allows accessor methods to be added in the
 future without breaking the interface.
 
-<a id="s2.13.3-cons"></a>
-<a id="2133-cons"></a>
 
-<a id="properties-cons"></a>
 #### 2.13.3 Cons 
 
 Must inherit from `object` in Python 2. Can hide side-effects much like operator
 overloading. Can be confusing for subclasses.
 
-<a id="s2.13.4-decision"></a>
-<a id="2134-decision"></a>
 
-<a id="properties-decision"></a>
 #### 2.13.4 Decision 
 
 Use properties in new code to access or set data where you would normally have
@@ -987,45 +789,30 @@ Yes: import math
              return self.side * 4
 ```
 
-<a id="s2.14-truefalse-evaluations"></a>
-<a id="214-truefalse-evaluations"></a>
 
-<a id="truefalse-evaluations"></a>
 ### 2.14 True/False Evaluations 
 
 Use the "implicit" false if at all possible.
 
-<a id="s2.14.1-definition"></a>
-<a id="2141-definition"></a>
 
-<a id="truefalse-evaluations-definition"></a>
 #### 2.14.1 Definition 
 
 Python evaluates certain values as `False` when in a boolean context. A quick
 "rule of thumb" is that all "empty" values are considered false, so
 `0, None, [], {}, ''` all evaluate as false in a boolean context.
 
-<a id="s2.14.2-pros"></a>
-<a id="2142-pros"></a>
 
-<a id="truefalse-evaluations-pros"></a>
 #### 2.14.2 Pros 
 
 Conditions using Python booleans are easier to read and less error-prone. In
 most cases, they're also faster.
 
-<a id="s2.14.3-cons"></a>
-<a id="2143-cons"></a>
 
-<a id="truefalse-evaluations-cons"></a>
 #### 2.14.3 Cons 
 
 May look strange to C/C++ developers.
 
-<a id="s2.14.4-decision"></a>
-<a id="2144-decision"></a>
 
-<a id="truefalse-evaluations-decision"></a>
 #### 2.14.4 Decision 
 
 Use the "implicit" false if possible, e.g., `if foo:` rather than `if foo !=
@@ -1080,10 +867,7 @@ Use the "implicit" false if possible, e.g., `if foo:` rather than `if foo !=
 
 -   Note that `'0'` (i.e., `0` as string) evaluates to true.
 
-<a id="s2.15-deprecated-language-features"></a>
-<a id="215-deprecated-language-features"></a>
 
-<a id="deprecated-features"></a>
 ### 2.15 Deprecated Language Features 
 
 Use string methods instead of the `string` module where possible. Use function
@@ -1091,19 +875,13 @@ call syntax instead of `apply`. Use list comprehensions and `for` loops instead
 of `filter` and `map` when the function argument would have been an inlined
 lambda anyway. Use `for` loops instead of `reduce`.
 
-<a id="s2.15.1-definition"></a>
-<a id="2151-definition"></a>
 
-<a id="deprecated-features-definition"></a>
 #### 2.15.1 Definition 
 
 Current versions of Python provide alternative constructs that people find
 generally preferable.
 
-<a id="s2.15.2-decision"></a>
-<a id="2152-decision"></a>
 
-<a id="deprecated-features-decision"></a>
 #### 2.15.2 Decision 
 
 We do not use any Python version which does not support these features, so there
@@ -1127,18 +905,12 @@ No:  words = string.split(foo, ':')
      apply(fn, args, kwargs)
 ```
 
-<a id="s2.16-lexical-scoping"></a>
-<a id="216-lexical-scoping"></a>
 
-<a id="lexical-scoping"></a>
 ### 2.16 Lexical Scoping 
 
 Okay to use.
 
-<a id="s2.16.1-definition"></a>
-<a id="2161-definition"></a>
 
-<a id="lexical-scoping-definition"></a>
 #### 2.16.1 Definition 
 
 A nested Python function can refer to variables defined in enclosing functions,
@@ -1159,19 +931,13 @@ def get_adder(summand1):
     return adder
 ```
 
-<a id="s2.16.2-pros"></a>
-<a id="2162-pros"></a>
 
-<a id="lexical-scoping-pros"></a>
 #### 2.16.2 Pros 
 
 Often results in clearer, more elegant code. Especially comforting to
 experienced Lisp and Scheme (and Haskell and ML and ...) programmers.
 
-<a id="s2.16.3-cons"></a>
-<a id="2163-cons"></a>
 
-<a id="lexical-scoping-cons"></a>
 #### 2.16.3 Cons 
 
 Can lead to confusing bugs. Such as this example based on
@@ -1193,28 +959,18 @@ def foo(x):
 So `foo([1, 2, 3])` will print `1 2 3 3`, not `1 2 3
 4`.
 
-<a id="s2.16.4-decision"></a>
-<a id="2164-decision"></a>
 
-<a id="lexical-scoping-decision"></a>
 #### 2.16.4 Decision 
 
 Okay to use.
 
-<a id="s2.17-function-and-method-decorators"></a>
-<a id="217-function-and-method-decorators"></a>
-<a id="function-and-method-decorators"></a>
 
-<a id="decorators"></a>
 ### 2.17 Function and Method Decorators 
 
 Use decorators judiciously when there is a clear advantage. Avoid
 `@staticmethod` and limit use of `@classmethod`.
 
-<a id="s2.17.1-definition"></a>
-<a id="2171-definition"></a>
 
-<a id="decorators-definition"></a>
 #### 2.17.1 Definition 
 
 [Decorators for Functions and
@@ -1241,19 +997,13 @@ class C(object):
     method = my_decorator(method)
 ```
 
-<a id="s2.17.2-pros"></a>
-<a id="2172-pros"></a>
 
-<a id="decorators-pros"></a>
 #### 2.17.2 Pros 
 
 Elegantly specifies some transformation on a method; the transformation might
 eliminate some repetitive code, enforce invariants, etc.
 
-<a id="s2.17.3-cons"></a>
-<a id="2173-cons"></a>
 
-<a id="decorators-cons"></a>
 #### 2.17.3 Cons 
 
 Decorators can perform arbitrary operations on a function's arguments or return
@@ -1261,10 +1011,7 @@ values, resulting in surprising implicit behavior. Additionally, decorators
 execute at import time. Failures in decorator code are pretty much impossible to
 recover from.
 
-<a id="s2.17.4-decision"></a>
-<a id="2174-decision"></a>
 
-<a id="decorators-decision"></a>
 #### 2.17.4 Decision 
 
 Use decorators judiciously when there is a clear advantage. Decorators should
@@ -1287,10 +1034,7 @@ defined in an existing library. Write a module level function instead.
 Use `@classmethod` only when writing a named constructor or a class-specific
 routine that modifies necessary global state such as a process-wide cache.
 
-<a id="s2.18-threading"></a>
-<a id="218-threading"></a>
 
-<a id="threading"></a>
 ### 2.18 Threading 
 
 Do not rely on the atomicity of built-in types.
@@ -1306,18 +1050,12 @@ data between threads. Otherwise, use the threading module and its locking
 primitives. Learn about the proper use of condition variables so you can use
 `threading.Condition` instead of using lower-level locks.
 
-<a id="s2.19-power-features"></a>
-<a id="219-power-features"></a>
 
-<a id="power-features"></a>
 ### 2.19 Power Features 
 
 Avoid these features.
 
-<a id="s2.19.1-definition"></a>
-<a id="2191-definition"></a>
 
-<a id="power-features-definition"></a>
 #### 2.19.1 Definition 
 
 Python is an extremely flexible language and gives you many fancy features such
@@ -1325,18 +1063,12 @@ as custom metaclasses, access to bytecode, on-the-fly compilation, dynamic
 inheritance, object reparenting, import hacks, reflection (e.g. some uses of
 `getattr()`), modification of system internals, etc.
 
-<a id="s2.19.2-pros"></a>
-<a id="2192-pros"></a>
 
-<a id="power-features-pros"></a>
 #### 2.19.2 Pros 
 
 These are powerful language features. They can make your code more compact.
 
-<a id="s2.19.3-cons"></a>
-<a id="2193-cons"></a>
 
-<a id="power-features-cons"></a>
 #### 2.19.3 Cons 
 
 It's very tempting to use these "cool" features when they're not absolutely
@@ -1345,10 +1077,7 @@ features underneath. It doesn't seem that way at first (to the original author),
 but when revisiting the code, it tends to be more difficult than code that is
 longer but is straightforward.
 
-<a id="s2.19.4-decision"></a>
-<a id="2194-decision"></a>
 
-<a id="power-features-decision"></a>
 #### 2.19.4 Decision 
 
 Avoid these features in your code.
@@ -1357,20 +1086,14 @@ Standard library modules and classes that internally use these features are okay
 to use (for example, `abc.ABCMeta`, `collections.namedtuple`, `dataclasses`,
 and `enum`).
 
-<a id="s2.20-modern-python"></a>
-<a id="220-modern-python"></a>
 
-<a id="modern-python"></a>
 ### 2.20 Modern Python: Python 3 and from \_\_future\_\_ imports 
 
 Python 3 is here! While not every project is ready to
 use it yet, all code should be written to be 3 compatible (and tested under
 3 when possible).
 
-<a id="s2.20.1-definition"></a>
-<a id="2201-definition"></a>
 
-<a id="modern-python-definition"></a>
 #### 2.20.1 Definition 
 
 Python 3 is a significant change in the Python language. While existing code is
@@ -1378,29 +1101,20 @@ often written with 2.7 in mind, there are some simple things to do to make code
 more explicit about its intentions and thus better prepared for use under Python
 3 without modification.
 
-<a id="s2.20.2-pros"></a>
-<a id="2202-pros"></a>
 
-<a id="modern-python-pros"></a>
 #### 2.20.2 Pros 
 
 Code written with Python 3 in mind is more explicit and easier to get running
 under Python 3 once all of the dependencies of your project are ready.
 
-<a id="s2.20.3-cons"></a>
-<a id="2203-cons"></a>
 
-<a id="modern-python-cons"></a>
 #### 2.20.3 Cons 
 
 Some people find the additional boilerplate to be ugly. It's unusual to add
 imports to a module that doesn't actually require the features added by the
 import.
 
-<a id="s2.20.4-decision"></a>
-<a id="2204-decision"></a>
 
-<a id="modern-python-decision"></a>
 #### 2.20.4 Decision 
 
 ##### from \_\_future\_\_ imports
@@ -1440,11 +1154,7 @@ the [six](https://pypi.org/project/six/),
 [past](https://pypi.org/project/past/) libraries as you see fit. They exist to
 make your code cleaner and life easier.
 
-<a name="s2.21-typed-code"></a>
-<a name="221-type-annotated-code"></a>
-<a name="typed-code"></a>
 
-<a id="typed-code"></a>
 ### 2.21 Type Annotated Code 
 
 You can annotate Python 3 code with type hints according to
@@ -1459,10 +1169,7 @@ annotations should be in the source. Use pyi files for third-party or extension
 modules.
 
 
-<a id="s2.21.1-definition"></a>
-<a id="2211-definition"></a>
 
-<a id="typed-code-definition"></a>
 #### 2.21.1 Definition 
 
 Type annotations (or "type hints") are for function or method arguments and
@@ -1478,29 +1185,20 @@ You can also declare the type of a variable using a special comment:
 a = SomeFunc()  # type: SomeType
 ```
 
-<a id="s2.21.2-pros"></a>
-<a id="2212-pros"></a>
 
-<a id="typed-code-pros"></a>
 #### 2.21.2 Pros 
 
 Type annotations improve the readability and maintainability of your code. The
 type checker will convert many runtime errors to build-time errors, and reduce
 your ability to use [Power Features](#power-features).
 
-<a id="s2.21.3-cons"></a>
-<a id="2213-cons"></a>
 
-<a id="typed-code-cons"></a>
 #### 2.21.3 Cons 
 
 You will have to keep the type declarations up to date. You might see type errors that you think are valid code. Use of a [type checker](https://github.com/google/pytype)
 may reduce your ability to use [Power Features](#power-features).
 
-<a id="s2.21.4-decision"></a>
-<a id="2214-decision"></a>
 
-<a id="typed-code-decision"></a>
 #### 2.21.4 Decision 
 
 You are strongly encouraged to enable Python type analysis when updating code.
@@ -1513,25 +1211,16 @@ authors are encouraged to add a comment with a TODO or link to a bug describing
 the issue(s) currently preventing type annotation adoption in the BUILD file or
 in the code itself as appropriate.
 
-<a id="s3-python-style-rules"></a>
-<a id="3-python-style-rules"></a>
 
-<a id="python-style-rules"></a>
 ## 3 Python Style Rules 
 
-<a id="s3.1-semicolons"></a>
-<a id="31-semicolons"></a>
 
-<a id="semicolons"></a>
 ### 3.1 Semicolons 
 
 Do not terminate your lines with semicolons, and do not use semicolons to put
 two statements on the same line.
 
-<a id="s3.2-line-length"></a>
-<a id="32-line-length"></a>
 
-<a id="line-length"></a>
 ### 3.2 Line length 
 
 Maximum line length is *80 characters*.
@@ -1611,10 +1300,7 @@ In all other cases where a line exceeds 80 characters, and the
 auto-formatter does not help bring the line below the limit, the line is allowed
 to exceed this maximum.
 
-<a id="s3.3-parentheses"></a>
-<a id="33-parentheses"></a>
 
-<a id="parentheses"></a>
 ### 3.3 Parentheses 
 
 Use parentheses sparingly.
@@ -1648,10 +1334,7 @@ No:  if (x):
      return (foo)
 ```
 
-<a id="s3.4-indentation"></a>
-<a id="34-indentation"></a>
 
-<a id="indentation"></a>
 ### 3.4 Indentation 
 
 Indent your code blocks with *4 spaces*.
@@ -1712,11 +1395,7 @@ No:    # Stuff on first line forbidden
        }
 ```
 
-<a id="s3.4.1-trailing_comma"></a>
-<a id="341-trailing_comma"></a>
-<a id="trailing_comma"></a>
 
-<a id="trailing-comma"></a>
 ### 3.4.1 Trailing commas in sequences of items? 
 
 Trailing commas in sequences of items are recommended only when the closing
@@ -1744,10 +1423,7 @@ No:    golomb4 = [
        ]
 ```
 
-<a id="s3.5-blank-lines"></a>
-<a id="35-blank-lines"></a>
 
-<a id="blank-lines"></a>
 ### 3.5 Blank Lines 
 
 Two blank lines between top-level definitions, be they function or class
@@ -1755,10 +1431,7 @@ definitions. One blank line between method definitions and between the `class`
 line and the first method. No blank line following a `def` line. Use single
 blank lines as you judge appropriate within functions or methods.
 
-<a id="s3.6-whitespace"></a>
-<a id="36-whitespace"></a>
 
-<a id="whitespace"></a>
 ### 3.6 Whitespace 
 
 Follow standard typographic rules for the use of spaces around punctuation.
@@ -1864,11 +1537,7 @@ No:
 ```
 
 
-<a id="Python_Interpreter"></a>
-<a id="s3.7-shebang-line"></a>
-<a id="37-shebang-line"></a>
 
-<a id="shebang-line"></a>
 ### 3.7 Shebang Line 
 
 Most `.py` files do not need to start with a `#!` line. Start the main file of a
@@ -1880,20 +1549,13 @@ This line is used by the kernel to find the Python interpreter, but is ignored
 by Python when importing modules. It is only necessary on a file that will be
 executed directly.
 
-<a id="s3.8-comments"></a>
-<a id="38-comments-and-docstrings"></a>
 
-<a id="documentation"></a>
 ### 3.8 Comments and Docstrings 
 
 Be sure to use the right style for module, function, method docstrings and
 inline comments.
 
-<a id="s3.8.1-comments-in-doc-strings"></a>
-<a id="381-docstrings"></a>
-<a id="comments-in-doc-strings"></a>
 
-<a id="docstrings"></a>
 #### 3.8.1 Docstrings 
 
 Python uses _docstrings_ to document code. A docstring is a string that is the
@@ -1909,11 +1571,7 @@ followed by the rest of the docstring starting at the same cursor position as
 the first quote of the first line. There are more formatting guidelines for
 docstrings below.
 
-<a id="s3.8.2-comments-in-modules"></a>
-<a id="382-modules"></a>
-<a id="comments-in-modules"></a>
 
-<a id="module-docs"></a>
 #### 3.8.2 Modules 
 
 Every file should contain license boilerplate.
@@ -1938,11 +1596,7 @@ examples.
 ```
 
 
-<a id="s3.8.3-functions-and-methods"></a>
-<a id="383-functions-and-methods"></a>
-<a id="functions-and-methods"></a>
 
-<a id="function-docs"></a>
 #### 3.8.3 Functions and Methods 
 
 In this section, "function" means a method, function, or generator.
@@ -1957,7 +1611,6 @@ A docstring should give enough information to write a call to the function
 without reading the function's code. The docstring should be descriptive-style
 (`"""Fetches rows from a Bigtable."""`) rather than imperative-style (`"""Fetch
 rows from a Bigtable."""`), except for `@property` data descriptors, which
-should use the <a href="#384-classes">same style as attributes</a>. A docstring
 should describe the function's calling syntax and its semantics, not its
 implementation. For tricky code, comments alongside the code are more
 appropriate than using docstrings.
@@ -1978,7 +1631,6 @@ spaces (be consistent within a file). These sections can be omitted in cases
 where the function's name and signature are informative enough that it can be
 aptly described using a one-line docstring.
 
-<a id="doc-function-args"></a>
 [*Args:*](#doc-function-args)
 :   List each parameter by name. A description should follow the name, and be
     separated by a colon and a space. If the description is too long to fit on a
@@ -1990,7 +1642,6 @@ aptly described using a one-line docstring.
     length argument lists) and/or `**bar` (arbitrary keyword arguments), they
     should be listed as `*foo` and `**bar`.
 
-<a id="doc-function-returns"></a>
 [*Returns:* (or *Yields:* for generators)](#doc-function-returns)
 :   Describe the type and semantics of the return value. If the function only
     returns None, this section is not required. It may also be omitted if the
@@ -1998,7 +1649,6 @@ aptly described using a one-line docstring.
     as a tuple of strings."""`) and the opening sentence is sufficient to
     describe return value.
 
-<a id="doc-function-raises"></a>
 [*Raises:*](#doc-function-raises)
 :   List all exceptions that are relevant to the interface. You should not
     document exceptions that get raised if the API specified in the docstring is
@@ -2037,11 +1687,7 @@ def fetch_bigtable_rows(big_table, keys, other_silly_variable=None):
     """
 ```
 
-<a id="s3.8.4-comments-in-classes"></a>
-<a id="384-classes"></a>
-<a id="comments-in-classes"></a>
 
-<a id="class-docs"></a>
 #### 3.8.4 Classes 
 
 Classes should have a docstring below the class definition describing the class.
@@ -2070,11 +1716,7 @@ class SampleClass(object):
         """Performs operation blah."""
 ```
 
-<a id="comments-in-block-and-inline"></a>
-<a id="s3.8.5-comments-in-block-and-inline"></a>
-<a id="385-block-and-inline-comments"></a>
 
-<a id="comments"></a>
 #### 3.8.5 Block and Inline Comments 
 
 The final place to have comments is in tricky parts of the code. If you're going
@@ -2106,13 +1748,7 @@ knows Python (though not what you're trying to do) better than you do.
 
 <!-- The next section is copied from the C++ style guide. -->
 
-<a id="s3.8.6-punctuation-spelling-and-grammar"></a>
-<a id="386-punctuation-spelling-and-grammar"></a>
-<a id="spelling"></a>
-<a id="punctuation"></a>
-<a id="grammar"></a>
 
-<a id="punctuation-spelling-grammar"></a>
 #### 3.8.6 Punctuation, Spelling and Grammar 
 
 Pay attention to punctuation, spelling, and grammar; it is easier to read
@@ -2128,10 +1764,7 @@ using a comma when you should be using a semicolon, it is very important that
 source code maintain a high level of clarity and readability. Proper
 punctuation, spelling, and grammar help with that goal.
 
-<a id="s3.9-classes"></a>
-<a id="39-classes"></a>
 
-<a id="classes"></a>
 ### 3.9 Classes 
 
 If a class inherits from no other base classes, explicitly inherit from
@@ -2170,10 +1803,7 @@ defines special methods that implement the default semantics of objects
 including `__new__`, `__init__`, `__delattr__`, `__getattribute__`,
 `__setattr__`, `__hash__`, `__repr__`, and `__str__`.
 
-<a id="s3.10-strings"></a>
-<a id="310-strings"></a>
 
-<a id="strings"></a>
 ### 3.10 Strings 
 
 Use the `format` method or the `%` operator for formatting strings, even when
@@ -2279,11 +1909,7 @@ Don't do this.
       will collapse common leading spaces in each line.""")
 ```
 
-<a id="s3.11-files-and-sockets"></a>
-<a id="311-files-and-sockets"></a>
-<a id="files-and-sockets"></a>
 
-<a id="files"></a>
 ### 3.11 Files and Sockets 
 
 Explicitly close files and sockets when done with them.
@@ -2332,10 +1958,7 @@ with contextlib.closing(urllib.urlopen("http://www.python.org/")) as front_page:
         print(line)
 ```
 
-<a id="s3.12-todo-comments"></a>
-<a id="312-todo-comments"></a>
 
-<a id="todo"></a>
 ### 3.12 TODO Comments 
 
 Use `TODO` comments for code that is temporary, a short-term solution, or
@@ -2361,10 +1984,7 @@ If your `TODO` is of the form "At a future date do something" make sure that you
 either include a very specific date ("Fix by November 2009") or a very specific
 event ("Remove this code when all clients can handle XML responses.").
 
-<a id="s3.13-imports-formatting"></a>
-<a id="313-imports-formatting"></a>
 
-<a id="imports-formatting"></a>
 ### 3.13 Imports formatting 
 
 Imports should be on separate lines.
@@ -2460,10 +2080,7 @@ from otherproject.ai import soul
 ```
 
 
-<a id="s3.14-statements"></a>
-<a id="314-statements"></a>
 
-<a id="statements"></a>
 ### 3.14 Statements 
 
 Generally only one statement per line.
@@ -2493,11 +2110,7 @@ No:
   except ValueError: baz(foo)
 ```
 
-<a id="s3.15-access-control"></a>
-<a id="315-access-control"></a>
-<a id="access-control"></a>
 
-<a id="accessors"></a>
 ### 3.15 Accessors 
 
 If an accessor function would be trivial, you should use public variables
@@ -2513,10 +2126,7 @@ bind the new accessor functions to the property. Any code still attempting to
 access the variable by the old method should break visibly so they are made
 aware of the change in complexity.
 
-<a id="s3.16-naming"></a>
-<a id="316-naming"></a>
 
-<a id="naming"></a>
 ### 3.16 Naming 
 
 `module_name`, `package_name`, `ClassName`, `method_name`, `ExceptionName`,
@@ -2531,10 +2141,7 @@ letters within a word.
 
 Always use a `.py` filename extension. Never use dashes.
 
-<a id="s3.16.1-names-to-avoid"></a>
-<a id="3161-names-to-avoid"></a>
 
-<a id="names-to-avoid"></a>
 #### 3.16.1 Names to Avoid 
 
 -   single character names except for counters or iterators. You may use "e" as
@@ -2542,10 +2149,7 @@ Always use a `.py` filename extension. Never use dashes.
 -   dashes (`-`) in any package/module name
 -   `__double_leading_and_trailing_underscore__` names (reserved by Python)
 
-<a id="s3.16.2-naming-conventions"></a>
-<a id="3162-naming-convention"></a>
 
-<a id="naming-conventions"></a>
 #### 3.16.2 Naming Conventions 
 
 -   "Internal" means internal to a module, or protected or private within a
@@ -2574,10 +2178,7 @@ Always use a `.py` filename extension. Never use dashes.
     example `testPop_EmptyStack` is okay. There is no One Correct Way to name
     test methods.
 
-<a id="s3.16.3-file-naming"></a>
-<a id="3163-file-naming"></a>
 
-<a id="file-naming"></a>
 #### 3.16.3 File Naming 
 
 Python filenames must have a `.py` extension and must not contain dashes (`-`).
@@ -2585,10 +2186,7 @@ This allows them to be imported and unittested. If you want an executable to be
 accessible without the extension, use a symbolic link or a simple bash wrapper
 containing `exec "$0.py" "$@"`.
 
-<a id="s3.16.4-guidelines-derived-from-guidos-recommendations"></a>
-<a id="3164-guidelines-derived-from-guidos-recommendations"></a>
 
-<a id="guidelines-derived-from-guidos-recommendations"></a>
 #### 3.16.4 Guidelines derived from Guido's Recommendations 
 
 <table rules="all" border="1" summary="Guidelines from Guido's Recommendations"
@@ -2674,10 +2272,7 @@ single underscore. They are easier to type, read, and to access from small
 unittests. Lint warnings take care of invalid access to protected members.
 
 
-<a id="s3.17-main"></a>
-<a id="317-main"></a>
 
-<a id="main"></a>
 ### 3.17 Main 
 
 Even a file meant to be used as an executable should be importable and a mere
@@ -2700,10 +2295,7 @@ All code at the top level will be executed when the module is imported. Be
 careful not to call functions, create objects, or perform other operations that
 should not be executed when the file is being `pydoc`ed.
 
-<a id="s3.18-function-length"></a>
-<a id="318-function-length"></a>
 
-<a id="function-length"></a>
 ### 3.18 Function length 
 
 Prefer small and focused functions.
@@ -2723,16 +2315,10 @@ a function proves to be difficult, you find that errors are hard to debug, or
 you want to use a piece of it in several different contexts, consider breaking
 up the function into smaller and more manageable pieces.
 
-<a id="s3.19-type-annotations"></a>
-<a id="319-type-annotations"></a>
 
-<a id="type-annotations"></a>
 ### 3.19 Type Annotations 
 
-<a id="s3.19.1-general"></a>
-<a id="3191-general-rules"></a>
 
-<a id="typing-general"></a>
 #### 3.19.1 General Rules 
 
 * Familiarize yourself with [PEP-484](https://www.python.org/dev/peps/pep-0484/).
@@ -2751,10 +2337,7 @@ up the function into smaller and more manageable pieces.
       too much flexibility.
 
 
-<a id="s3.19.2-line-breaking"></a>
-<a id="3192-line-breaking"></a>
 
-<a id="typing-line-breaking"></a>
 #### 3.19.2 Line Breaking 
 
 Try to follow the existing [indentation](#indentation) rules.
@@ -2845,10 +2428,7 @@ def my_function(
   ...
 ```
 
-<a id="s3.19.3-forward-declarations"></a>
-<a id="3193-forward-declarations"></a>
 
-<a id="forward-declarations"></a>
 #### 3.19.3 Forward Declarations 
 
 If you need to use a class name from the same module that is not yet defined --
@@ -2862,10 +2442,7 @@ class MyClass(object):
                stack: List["MyClass"]) -> None:
 ```
 
-<a id="s3.19.4-default-values"></a>
-<a id="3194-default-values"></a>
 
-<a id="typing-default-values"></a>
 #### 3.19.4 Default Values 
 
 As per
@@ -2884,10 +2461,7 @@ def func(a:int=0) -> int:
   ...
 ```
 
-<a id="s3.19.5-none-type"></a>
-<a id="3195-nonetype"></a>
 
-<a id="none-type"></a>
 #### 3.19.5 NoneType 
 
 In the Python type system, `NoneType` is a "first class" type, and for typing
@@ -2915,11 +2489,7 @@ def implicit_optional(a: Text = None) -> Text:
   ...
 ```
 
-<a id="s3.19.6-aliases"></a>
-<a id="3196-type-aliases"></a>
-<a id="typing-aliases"></a>
 
-<a id="type-aliases"></a>
 #### 3.19.6 Type Aliases 
 
 You can declare aliases of complex types. The name of an alias should be
@@ -2937,10 +2507,7 @@ ComplexMap = Mapping[Text, List[Tuple[int, int]]]
 Other examples are complex nested types and multiple return variables from a
 function (as a tuple).
 
-<a id="s3.19.7-ignore"></a>
-<a id="3197-ignoring-types"></a>
 
-<a id="typing-ignore"></a>
 #### 3.19.7 Ignoring Types 
 
 You can disable type checking on a line with the special comment
@@ -2952,16 +2519,12 @@ You can disable type checking on a line with the special comment
 # pytype: disable=attribute-error
 ```
 
-<a id="s3.19.8-comments"></a>
-<a id="3198-typing-internal-variables"></a>
 
-<a id="typing-variables"></a>
 #### 3.19.8 Typing Variables 
 
 If an internal variable has a type that is hard or impossible to infer, you can
 specify its type in a couple ways.
 
-<a id="type-comments"></a>
 [*Type Comments:*](#type-comments)
 :   Use a `# type:` comment on the end of the line
 
@@ -2977,10 +2540,7 @@ specify its type in a couple ways.
     a: Foo = SomeUndecoratedFunction()
     ```
 
-<a id="s3.19.9-tuples"></a>
-<a id="3199-tuples-vs-lists"></a>
 
-<a id="typing-tuples"></a>
 #### 3.19.9 Tuples vs Lists 
 
 Unlike Lists, which can only have a single type, Tuples can have either a single
@@ -2993,11 +2553,7 @@ b = (1, 2, 3)  # type: Tuple[int, ...]
 c = (1, "2", 3.5)  # type: Tuple[int, Text, float]
 ```
 
-<a id="s3.19.10-type-var"></a>
-<a id="31910-typevar"></a>
-<a id="typing-type-var"></a>
 
-<a id="typevars"></a>
 #### 3.19.10 TypeVars 
 
 The Python type system has
@@ -3034,10 +2590,7 @@ def check_length(x: AnyStr) -> AnyStr:
   raise ValueError()
 ```
 
-<a id="s3.19.11-strings"></a>
-<a id="31911-string-types"></a>
 
-<a id="typing-strings"></a>
 #### 3.19.11 String types 
 
 The proper type for annotating strings depends on what versions of Python the
@@ -3098,10 +2651,7 @@ return type is the same as the argument type in the code above, use
 
 Writing it like this will simplify the process of porting the code to Python 3.
 
-<a id="s3.19.12-imports"></a>
-<a id="31912-imports-for-typing"></a>
 
-<a id="typing-imports"></a>
 #### 3.19.12 Imports For Typing 
 
 For classes from the `typing` module, always import the class itself. You are
@@ -3122,10 +2672,7 @@ between a type and an existing name in a module, import it using
 from typing import Any as AnyType
 ```
 
-<a id="s3.19.13-conditional-imports"></a>
-<a id="31913-conditional-imports"></a>
 
-<a id="typing-conditional-imports"></a>
 #### 3.19.13 Conditional Imports 
 
 Use conditional imports only in exceptional cases where the additional imports
@@ -3153,10 +2700,7 @@ if typing.TYPE_CHECKING:
 def f(x: "sketch.Sketch"): ...
 ```
 
-<a id="s3.19.14-circular-deps"></a>
-<a id="31914-circular-dependencies"></a>
 
-<a id="typing-circular-deps"></a>
 #### 3.19.14 Circular Dependencies 
 
 Circular dependencies that are caused by typing are code smells. Such code is a
@@ -3179,11 +2723,7 @@ def my_method(self, var: some_mod.SomeType) -> None:
   ...
 ```
 
-<a id="typing-generics"></a>
-<a id="s3.19.15-generics"></a>
-<a id="31915-generics"></a>
 
-<a id="generics"></a>
 #### 3.19.15 Generics 
 
 When annotating, prefer to specify type parameters for generic types; otherwise,
@@ -3219,9 +2759,7 @@ def get_names(employee_ids: List[T]) -> Dict[T, Text]:
 ```
 
 
-<a id="4-parting-words"></a>
 
-<a id="consistency"></a>
 ## 4 Parting Words 
 
 *BE CONSISTENT*.
