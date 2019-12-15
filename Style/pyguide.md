@@ -1,10 +1,55 @@
-<!--
-AUTHORS:
-Prefer only GitHub-flavored Markdown in external text.
-See README.md for details.
--->
-
 # Google Python Style Guide
+
+## Contents
+
+  - [Google Python Style Guide](#Google Python Style Guide)
+    - [1 Background](#Google Python Style Guide#1 Background)
+
+    - [2 Python Language Rules](#Google Python Style Guide#2 Python Language Rules)
+      - [2.1 Lint](#Google Python Style Guide#2 Python Language Rules#2.1 Lint)
+      - [2.2 Imports](#Google Python Style Guide#2 Python Language Rules#2.2 Imports)
+      - [2.3 Packages](#Google Python Style Guide#2 Python Language Rules#2.3 Packages)
+      - [2.4 Exceptions](#Google Python Style Guide#2 Python Language Rules#2.4 Exceptions)
+      - [2.5 Global variables](#Google Python Style Guide#2 Python Language Rules#2.5 Global variables)
+      - [2.6 Nested/Local/Inner Classes and Functions](#Google Python Style Guide#2 Python Language Rules#2.6 Nested/Local/Inner Classes and Functions)
+      - [2.7 Comprehensions & Generator Expressions](#Google Python Style Guide#2 Python Language Rules#2.7 Comprehensions & Generator Expressions)
+      - [2.8 Default Iterators and Operators](#Google Python Style Guide#2 Python Language Rules#2.8 Default Iterators and Operators)
+      - [2.9 Generators](#Google Python Style Guide#2 Python Language Rules#2.9 Generators)
+      - [2.10 Lambda Functions](#Google Python Style Guide#2 Python Language Rules#2.10 Lambda Functions)
+      - [2.11 Conditional Expressions](#Google Python Style Guide#2 Python Language Rules#2.11 Conditional Expressions)
+      - [2.12 Default Argument Values](#Google Python Style Guide#2 Python Language Rules#2.12 Default Argument Values)
+      - [2.13 Properties](#Google Python Style Guide#2 Python Language Rules#2.13 Properties)
+      - [2.14 True/False Evaluations](#Google Python Style Guide#2 Python Language Rules#2.14 True/False Evaluations)
+      - [2.15 Deprecated Language Features](#Google Python Style Guide#2 Python Language Rules#2.15 Deprecated Language Features)
+      - [2.16 Lexical Scoping](#Google Python Style Guide#2 Python Language Rules#2.16 Lexical Scoping)
+      - [2.17 Function and Method Decorators](#Google Python Style Guide#2 Python Language Rules#2.17 Function and Method Decorators)
+      - [2.18 Threading](#Google Python Style Guide#2 Python Language Rules#2.18 Threading)
+      - [2.19 Power Features](#Google Python Style Guide#2 Python Language Rules#2.19 Power Features)
+      - [2.20 Modern Python](#too_long)
+      - [2.21 Type Annotated Code](#Google Python Style Guide#2 Python Language Rules#2.21 Type Annotated Code)
+
+    - [3 Python Style Rules](#Google Python Style Guide#3 Python Style Rules)
+      - [3.1 Semicolons](#Google Python Style Guide#3 Python Style Rules#3.1 Semicolons)
+      - [3.2 Line length](#Google Python Style Guide#3 Python Style Rules#3.2 Line length)
+      - [3.3 Parentheses](#Google Python Style Guide#3 Python Style Rules#3.3 Parentheses)
+      - [3.4 Indentation](#Google Python Style Guide#3 Python Style Rules#3.4 Indentation)
+      - [3.4.1 Trailing commas in sequences of items?](#Google Python Style Guide#3 Python Style Rules#3.4.1 Trailing commas in sequences of items?)
+      - [3.5 Blank Lines](#Google Python Style Guide#3 Python Style Rules#3.5 Blank Lines)
+      - [3.6 Whitespace](#Google Python Style Guide#3 Python Style Rules#3.6 Whitespace)
+      - [3.7 Shebang Line](#Google Python Style Guide#3 Python Style Rules#3.7 Shebang Line)
+      - [3.8 Comments and Docstrings](#Google Python Style Guide#3 Python Style Rules#3.8 Comments and Docstrings)
+      - [3.9 Classes](#Google Python Style Guide#3 Python Style Rules#3.9 Classes)
+      - [3.10 Strings](#Google Python Style Guide#3 Python Style Rules#3.10 Strings)
+      - [3.11 Files and Sockets](#Google Python Style Guide#3 Python Style Rules#3.11 Files and Sockets)
+      - [3.12 TODO Comments](#Google Python Style Guide#3 Python Style Rules#3.12 TODO Comments)
+      - [3.13 Imports formatting](#Google Python Style Guide#3 Python Style Rules#3.13 Imports formatting)
+      - [3.14 Statements](#Google Python Style Guide#3 Python Style Rules#3.14 Statements)
+      - [3.15 Accessors](#Google Python Style Guide#3 Python Style Rules#3.15 Accessors)
+      - [3.16 Naming](#Google Python Style Guide#3 Python Style Rules#3.16 Naming)
+      - [3.17 Main](#Google Python Style Guide#3 Python Style Rules#3.17 Main)
+      - [3.18 Function length](#Google Python Style Guide#3 Python Style Rules#3.18 Function length)
+      - [3.19 Type Annotations](#Google Python Style Guide#3 Python Style Rules#3.19 Type Annotations)
+    - [4 Parting Words](#Google Python Style Guide#4 Parting Words)
 
 
 

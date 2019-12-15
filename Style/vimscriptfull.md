@@ -1,8 +1,14 @@
-Revision 1.1
 
-Nate Soares\
+---
+version: Revision 1.1
+authors: Nate Soares\
 Joshua Hoak\
 David Barnett\
+---
+
+
+
+
 
 This is the in-depth vimscript guide. If you\'re just a casual user
 looking to write a plugin, the [abbreviated style

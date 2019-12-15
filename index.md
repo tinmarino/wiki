@@ -32,6 +32,7 @@
 
 
 ## Program
+  * [Jupyter](Jupyter)
   * [Web](Web)
   * [Inkscape](Inkscape)
   * [Gimp](Gimp)
