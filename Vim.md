@@ -37,6 +37,32 @@ __Notes__:
 ### Match non ascii
 * `/[^\x00-\x7F]`
 * `[\x00-\x08\x0B\x0C\x0E-\x1F\x7F-\x9F]`
+## Prompt press enter
+
+* For a confirmation, I would use `:call confirm('My warning here')`; this uses a popup window in GVIM.
+* To wait for _any_ character, you can use `:call getchar()`.
+* For a confirmation with <kbd>Enter</kbd>, the already mentioned `:call input('Press enter to continue')`
+
+# Debug timing function
+```vim
+function! Foo()
+    " do your thing
+    for i in range(1,8)
+        let @a = i
+    endfor
+endfunction
+
+" save current time
+let start_time = reltime()
+
+" call your function
+call Foo()
+
+" echo elapsed time expressed in seconds
+echo "elapsed time:" reltimestr(reltime(start_time))
+```
+
+
 
 ### Vim as hex interpreter
 vim -s -e '<cmd>'
