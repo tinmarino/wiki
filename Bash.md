@@ -24,7 +24,11 @@ TAB: menu-complete
 ```
 
 # Other tips
-
+* How to join multiple lines of file names into one with custom delimiter?:
+  * `paste` in `ls -1 | paste -sd "," -`
+  * `tr` in `ls -1 | tr '\n' ','`
+  * `awk` in `ls -1 | awk 'ORS=","'` Output Record Separator
+  * `xargs` in ls  | xargs -d, -L 1 echo
 * Exit with <C-D>
 * cat directory any write
   * `inotifywait -qme close_write . | while read -r fil ; do cat $fil ; done`

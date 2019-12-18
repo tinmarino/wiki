@@ -1,6 +1,17 @@
 * [Vim Menu](Vim-Menu)
 
 
+## Snippet
+
+```vim
+" Make it AutoScroll
+augroup JupyterTerm
+    autocmd!
+    autocmd TextChanged __jupyter_term__ call cursor('$', 0)
+augroup END
+```
+
+
 ### Location list
 
 call setqflist([])
