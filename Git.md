@@ -2,7 +2,9 @@
 
 # Tips
 
+git push <remote-name> <local-branch-name>:<remote-branch-name>
 git branch -m old-name new-name # Rename branch 
+g -c merge.driver.union rebase  origin/master 
 
 ### Pickaxe
 

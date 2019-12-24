@@ -112,7 +112,7 @@ bind-key -n C-S-Right swap-window -t +1
 	tmux attach-session -t "$session"
 
 * Creating a session:
-	tmux new[-session] -s work
+	tmux [new[-session]] -s work
 
 * Create a new session that shares all windows with an existing session, but has its own separate notion of which window is current:
 	tmux new-session -s work2 -t work
@@ -131,7 +131,7 @@ bind-key -n C-S-Right swap-window -t +1
     C-a (          previous session
     C-a )          next session
     C-a L          ‘last’ (previously used) session
-    C-a s          choose a session from a list
+    C-a s          choose a session from a list (navigate)
 
 * Other:
     C-a $          rename the current session

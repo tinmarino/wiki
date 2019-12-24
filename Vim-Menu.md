@@ -16,6 +16,9 @@
 * [Vim Wiki](Cheat/Vim-Wiki)
 
 
+## Plugin
+
+* [Vim Plugin Jupyter](Vim-Plugin-Jupyter)
 
 * [BordelVim](BordelVim)
 * [CheatVim](CheatVim)

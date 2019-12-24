@@ -9,6 +9,7 @@ augroup JupyterTerm
     autocmd!
     autocmd TextChanged __jupyter_term__ call cursor('$', 0)
 augroup END
+echo getregtype('a') " To see if in Visual or v
 ```
 
 

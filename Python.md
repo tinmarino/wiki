@@ -1,5 +1,33 @@
 * [Pip](Pip)
 
+* Fromat string `'Name: {user.name} Age: {user.age}'.format(user=user)`
+
+# Int
+```python
+def cmp(a, b):
+    return (a > b) - (a < b) 
+```
+# List
+
+* All combinations between two list
+```python
+a = ["foo", "melon"]
+b = [True, False]
+c = list(itertools.product(a, b))
+>> [("foo", True), ("foo", False), ("melon", True), ("melon", False)]
+```
+
+* Combination of len 2 of one list
+```python
+list(itertools.combinations([1, 2, 3, 4, 5], 2))
+```
+
+
+# String
+
+* alphabet = [chr(i) for i in range(ord('a'),ord('z')+1)]
+
+
 # Async
 
 asyncio.Task.all_tasks()
