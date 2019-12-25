@@ -1,3 +1,15 @@
+```java
+// Exit process
+System.exit(0);
+
+System.out.println((a & 1) == 0 ?  "EVEN" : "ODD" ); 
+// Use StringBuffer for string manipulations, as String in java is immutable
+
+// nb of digit
+No. of digits in N = Math.floor(Math.log10(N)) + 1;
+BigInteger.valueOf(1235).isProbablePrime
+
+```
 
 # Class library
 

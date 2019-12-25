@@ -1,3 +1,5 @@
+* If you're going through hell, keep going (Winston Churchill)
+
 * Il n'est point de coupable au repos (Boileau)
 
 * Personne n'est content de ceux qui ne sont contents de personne (Jean de La Bruyère)
