@@ -47,6 +47,9 @@ munix(){
   # Convertion pipeline
   cat "$INPUT" |
   # Add h3-section betewwen h3/h2 headings and end
+  #
+  # Newline after title
+  perl -pe ' s/(\s*)(#.*)/\n\2/; ' |
   # Replace vim by language-vim for prism color higlight
   perl -pe ' s/```vim/```language-vim/; ' |
   # Change links: add html

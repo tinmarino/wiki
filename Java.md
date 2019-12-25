@@ -132,6 +132,7 @@ return Arrays.equals(word1, word2);
 
 // Match IP (note I escape only the \)
 String patten = "((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\\.|$)){4}"
+String ip_no_eading_zero "^(?:(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(\\.(?!$)|$)){4}$"
 
 // Delete second (juxtaposed) word
 // I failed with String regex =  "(?=\\b(\\w+)\\b(.*)( \\1))";
@@ -192,6 +193,7 @@ if (count == 0) System.out.println("None");
 From: [jenkov](http://tutorials.jenkov.com/java-io/overview.html)
 
 | Byte Based     |                                     | Character Based                   |                                 |   |
+| ---            | ---                                 | ---                               | ---                             | --- |
 | Input          | Output                              | Input                             | Output                          |   |
 | Basic          | InputStream                         | OutputStream                      | Reader,InputStreamReader        | Writer,OutputStreamWriter |
 | Arrays         | ByteArrayInputStream                | ByteArrayOutputStream             | CharArrayReader                 | CharArrayWriter |
