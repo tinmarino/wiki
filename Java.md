@@ -115,10 +115,54 @@ Arrays.sort(word1);
 Arrays.sort(word2);
 return Arrays.equals(word1, word2);
 
+// Get variable name
+"toto".getClass().getName();
 
+// Match IP (note I escape only the \)
+String patten = "((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\\.|$)){4}"
+
+// Delete second (juxtaposed) word
+// I failed with String regex =  "(?=\\b(\\w+)\\b(.*)( \\1))";
+String regex = "(\\b\\w+\\b)(\\s+\\1\\b)+";
+String regex = "\\b(\\w+)(?:\\W+\\1\\b)+";
+Pattern p = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+input = input.replaceAll(m.group(), m.group(1));
+
+// Full example
+// Compile and match regex
+String regex =  "\\b(\\w+)(?:\\W+\\1\\b)+"";
+Pattern p = Pattern.compile(regex,  Pattern.CASE_INSENSITIVE);
+Matcher m = p.matcher(input);
+// Check for subsequences of input that match the compiled pattern
+while (m.find()) {
+    input = input.replaceAll( m.group(1) + m.group(2) + m.group(3), m.group(1) + m.group(2) );
+}
+// Prints the modified sentence.
+return input;
+
+// User name validation
+String regularExpression = "^[a-zA-Z][a-zA-Z0-9_]{7,29}$"
+
+// (?:(?!PAT).)* is to patterns as [^CHAR]* is to characters.
+
+// Extracting innnermost tag ....
+int count=0;
+Pattern r = Pattern.compile("<(.+?)>([^<>]+)</\\1>");
+Matcher m = r.matcher(line);
+while(m.find()) {
+    if (m.group(2).length() !=0) {
+        System.out.println(m.group(2));
+    count++;
+    }
+}
+if (count == 0) System.out.println("None");
 
 ```
 
+### Big Number tuto
+
+```java
+```
 
 
 # Class library
