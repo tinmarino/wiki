@@ -175,7 +175,270 @@ if (count == 0) System.out.println("None");
 ### Big Number tuto
 
 ```java
+// Sort
+String[] names = {"Dan", "Bob", "Kris"};
+java.util.Collections.sort(java.util.Arrays.asList(names), new java.util.Comparator<String>() {
+    @Override
+    public int compare(String s1, String s2) {
+        // TODO: Argument validation (nullity, length)
+        return s1.charAt(1) - s2.charAt(1);//comparision
+    }  
+});
+
+for (String name : names) System.out.println(name);
+
+// Map
+Integer[] boxed = Stream.of(myarray).map(Integer::valueOf).toArray(Integer[]::new);
+
+// Subarray all combination
+int allMasks = (1 << N);
+for (int i = 1; i < allMasks; i++)
+{
+    for (int j = 0; j < N; j++)
+        if ((i & (1 << j)) > 0) //The j-th element is used
+           System.out.print((j + 1) + " ");
+
+    System.out.println();
+}
+
+// Scan and add
+Scanner in = new Scanner(System.in);
+String s_a = in.nextLine(), s_b = in.nextLine();
+in.close();
+
+BigInteger a = new BigInteger(s_a), b = new BigInteger(s_b);
+System.out.println(a.add(b));
+System.out.println(a.multiply(b));
 ```
+
+### ArrayList tuto
+
+```java
+// In / Out : full example: 2D array/hourglass
+public static void main(String[] args) {
+    int[][] a = new int[6][6];
+    private static final Scanner scanner = new Scanner(System.in);
+    scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
+
+    // In
+    for (int i = 0; i < 6; i++) {
+        String[] arrRowItems = scanner.nextLine().split(" ");
+
+        for (int j = 0; j < 6; j++) {
+            int arrItem = Integer.parseInt(arrRowItems[j]);
+            a[i][j] = arrItem;
+        }
+    }
+
+    scanner.close();
+
+    // Out
+    int res = Integer.MIN_VALUE;
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++) {
+            int sum = a[i][j] + a[i][j+1] +a[i][j+2]
+                + a[i+1][j+1] + a[i+2][j] + a[i+2][j+1] + a[i+2][j+2];
+            if (sum > res){res = sum;}
+        }
+    }
+    System.out.println(res);
+
+}
+
+// IN/Out till EOF
+Scanner in = new Scanner(System.in);
+int n=in.nextInt();
+in.nextLine();
+for(int i=0;i<n;i++) {
+  String name=in.nextLine();
+  int phone=in.nextInt();
+  in.nextLine();
+}
+while(in.hasNext()) {
+  String s=in.nextLine();
+}
+
+
+// Generic methods solution 1
+public static < E > void printArray( E[] inputArray ){    
+     for ( E element : inputArray ){        
+        System.out.println( element );
+     }
+} 
+// Generic methods solution 2
+public void printArray(Object[] a){
+   for (int i = 0; i < a.length; i++){
+       System.out.println(a[i]);
+   }
+}
+// Generic methods solution 3: overloading of course (better)
+
+// Comparator
+class Checker implements Comparator<Player>{
+    public int compare(Player p1, Player p2){
+        if (p1.score != p2.score){
+            return p2.score - p1.score; 
+        }
+        return p1.name.compareTo(p2.name);
+    }
+}
+// The compare() method should return a negative integer in order to pick the first argument.
+if(a.score > b.score){ // For decreasing order
+    return -1;
+}
+
+// Custom sort
+ArrayList<Student> studentList = studentList.stream().sorted((f1, f2) -> {
+    double res = 0;
+    res = f2.getCgpa() - f1.getCgpa();
+    if (0 != res) { return (int) Math.signum(res); }
+
+    res = f1.getFname().compareTo(f2.getFname());
+    if (0 != res) { return (int) Math.signum(res); }
+
+    return (int) Math.signum(f2.getId() - f1.getId());
+}).collect(Collectors.toList());
+
+// Custom sort from 7
+class StudentComparator implements Comparator<Student>{
+	@Override
+	public int compare(Student s1, Student s2) {}
+}  
+Collections.sort(studentList, new StudentComparator());
+
+// Stream
+long i_new = deque.stream()
+    .skip(j).limit(m)
+    .distinct().count();
+
+// Initilise List ArraList
+List<String> list = List.of("A", "B", "C");
+List<String> list = Arrays.asList("foo", "bar", "baz");
+ArrayList<String> list = new ArrayList<>(List.of("foo", "bar"));
+ArrayList<String> list = Stream.of("Buenos Aires", "Córdoba", "La Plata").collect(Collectors.toCollection(ArrayList::new));
+List<String> list = new ArrayList<String>(); Collections.addAll(list,"A","B","C","D");
+
+    
+```
+
+
+### Object orientation tuto
+
+```java
+// instanceof
+if(element instanceof Student) { return; }
+
+```
+
+
+
+### Advanced tuto
+
+```java
+// MD5 cryptography hash
+import java.io.FileInputStream;
+import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+public class MD5 {
+    public static String getMD5(String input) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] messageDigest = md.digest(input.getBytes());
+            BigInteger number = new BigInteger(1, messageDigest);
+            String hashtext = number.toString(16);
+            // Now we need to zero pad it if you actually want the full 32 chars.
+            while (hashtext.length() < 32) {
+                hashtext = "0" + hashtext;
+            }
+            return hashtext;
+        }
+        catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void main(String[] args) throws NoSuchAlgorithmException {
+        System.out.println(getMD5("Javarmi.com"));
+    }
+}
+
+
+// Embeded Inner class : Solution -> (static) Inner -> Private
+Inner i = new Solution.Inner();
+o = i.new Private();
+String s_print = String.valueOf(num) + " is ";
+s_print += ((Solution.Inner.Private) o).powerof2(num);
+System.out.println(s_print);
+
+```
+
+
+### Exception handling tuto
+
+```java
+
+// Catch multiple exception (separed them with |)
+try {
+  //.....
+} catch ( IllegalArgumentException | SecurityException |
+         IllegalAccessException |NoSuchFieldException exc) {
+  someCode();
+}
+
+// Or
+try {
+   // This Is The Protected code
+} catch (ExceptionType1 e1) {
+   // first Catch block
+} catch (ExceptionType2 e2) {
+   // second Catch block
+} catch (ExceptionType3 e3) {
+   // third Catch block
+}
+
+// Catch full solution
+Scanner scan = new Scanner(System.in);
+
+try {
+    int x = scan.nextInt();
+    int y = scan.nextInt();
+    System.out.println(x / y);
+} 
+catch(InputMismatchException e) {
+    // ensure that "java.util.InputMismatchException" is printed only.
+    System.out.println(e.getClass().toString().replaceFirst("class ", ""));
+}
+catch(ArithmeticException e) {
+    // Print exception
+    System.out.println(e);
+}
+scan.close();
+
+// Catch all
+try {
+    System.out.println(my_calculator.power(n, p));
+} catch (Exception e) {
+    System.out.println(e);
+}
+
+// Throws
+long power(int n, int p) throws  Exception {
+    if (n == 0 && p == 0){
+        throw new Exception("n and p should not be zero.");
+    }
+    if (n < 0 || p < 0){
+        throw new Exception("n or p should not be negative.");
+    }
+
+    return (long) Math.pow(n, p);
+}
+
+
+```
+
 
 
 # Class library
@@ -192,21 +455,21 @@ if (count == 0) System.out.println("None");
 
 From: [jenkov](http://tutorials.jenkov.com/java-io/overview.html)
 
-| Byte Based     |                                     | Character Based                   |                                 |   |
-| ---            | ---                                 | ---                               | ---                             | --- |
-| Input          | Output                              | Input                             | Output                          |   |
+| Type           | Byte Based                          |                                   | Character Based                 |                           |
+| ---            | ---                                 | ---                               | ---                             | ---                       |
+| Input          | Output                              | Input                             | Output                          |                           |
 | Basic          | InputStream                         | OutputStream                      | Reader,InputStreamReader        | Writer,OutputStreamWriter |
-| Arrays         | ByteArrayInputStream                | ByteArrayOutputStream             | CharArrayReader                 | CharArrayWriter |
-| Files          | FileInputStream,RandomAccessFile    | FileOutputStream,RandomAccessFile | FileReader                      | FileWriter |
-| Pipes          | PipedInputStream                    | PipedOutputStream                 | PipedReader                     | PipedWriter |
-| Buffering      | BufferedInputStream                 | BufferedOutputStream              | BufferedReader                  | BufferedWriter |
-| Filtering      | FilterInputStream                   | FilterOutputStream                | FilterReader                    | FilterWriter |
-| Parsing        | PushbackInputStream,StreamTokenizer |                                   | PushbackReader,LineNumberReader |   |
-| Strings        |                                     |                                   | StringReader                    | StringWriter |
-| Data           | DataInputStream                     | DataOutputStream                  |                                 |   |
-| Data-Formatted |                                     | PrintStream                       |                                 | PrintWriter |
-| Objects        | ObjectInputStream                   | ObjectOutputStream                |                                 |   |
-| Utilities      | SequenceInputStream                 |                                   |                                 |   |
+| Arrays         | ByteArrayInputStream                | ByteArrayOutputStream             | CharArrayReader                 | CharArrayWriter           |
+| Files          | FileInputStream,RandomAccessFile    | FileOutputStream,RandomAccessFile | FileReader                      | FileWriter                |
+| Pipes          | PipedInputStream                    | PipedOutputStream                 | PipedReader                     | PipedWriter               |
+| Buffering      | BufferedInputStream                 | BufferedOutputStream              | BufferedReader                  | BufferedWriter            |
+| Filtering      | FilterInputStream                   | FilterOutputStream                | FilterReader                    | FilterWriter              |
+| Parsing        | PushbackInputStream,StreamTokenizer |                                   | PushbackReader,LineNumberReader |                           |
+| Strings        |                                     |                                   | StringReader                    | StringWriter              |
+| Data           | DataInputStream                     | DataOutputStream                  |                                 |                           |
+| Data-Formatted |                                     | PrintStream                       |                                 | PrintWriter               |
+| Objects        | ObjectInputStream                   | ObjectOutputStream                |                                 |                           |
+| Utilities      | SequenceInputStream                 |                                   |                                 |                           |
 
 ## Java.lang
 
