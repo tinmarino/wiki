@@ -1,3 +1,7 @@
+# Links
+
+- [Jupyter TroubleShooting Windows](Jupyter-TroubleShooting-Windows)
+
 # Contents
 
 - [Supported kernel languages](#Supported kernel languages)
@@ -15,6 +19,8 @@
 - [Kernel Not to implement](#Kernel Not to implement)
     - [Asm (No syscall, to be used in notebook)](#Kernel Not to implement#Asm (No syscall, to be used in notebook))
     - [C (shitty)](#Kernel Not to implement#C (shitty))
+
+
 
 ## Supported kernel languages
 # Jupyter generic
