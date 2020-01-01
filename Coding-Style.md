@@ -107,7 +107,10 @@ To complete the style, you should also initialize pointers to NULL before they g
 
 ### Replace Nested Conditional with Guard Clauses
 
-Exiting early allows you to pop stuff off your limited mental stack. :
+* Exiting early allows you to pop stuff off your limited mental stack
+* The same way, `break` is allowed only at top of loop (clause)
+
+
 ```java
 public void SomeFunction(bool someCondition)
 {
@@ -116,7 +119,9 @@ public void SomeFunction(bool someCondition)
         // Do Something
     }
 }
-// -> 
+```
+```javascript
+ 
 public void SomeFunction(bool someCondition)
 {
     if (!someCondition)
@@ -142,7 +147,9 @@ __Problem:__ Functions are always taking the same parameters
 function base(aReading) {...}
 function taxableCharge(aReading) {...}
 function calculateBaseCharge(aReading) {...}
-// ->
+```
+```javascript
+
 class Reading {
   base() {...}
   taxableCharge() {...}
@@ -158,7 +165,9 @@ class Reading {
 if (anEmployee.seniority < 2) return 0;
 if (anEmployee.monthsDisabled > 12) return 0;
 if (anEmployee.isPartTime) return 0;
-// ->
+```
+```javascript
+
 if (isNotEligableForDisability()) return 0;
 
 function isNotEligableForDisability() {
@@ -178,7 +187,9 @@ if (!aDate.isBefore(plan.summerStart) && !aDate.isAfter(plan.summerEnd))
   charge = quantity * plan.summerRate;
 else
   charge = quantity * plan.regularRate + plan.regularServiceCharge;
-// ->
+```
+```javascript
+
 if (summer())
   charge = summerCharge();
 else
@@ -191,7 +202,9 @@ else
 
 ```javascript
 organization = {name: "Acme Gooseberries", country: "GB"};
-// ->
+```
+```javascript
+
 class Organization {
   constructor(data) {
     this._name = data.name;
@@ -215,7 +228,9 @@ When can you divide on class in two ? Here:
 class Person {
   get officeAreaCode() {return this._officeAreaCode;}
   get officeNumber()   {return this._officeNumber;}
-// ->
+```
+```javascript
+
 class Person {
   get officeAreaCode() {return this._telephoneNumber.areaCode;}
   get officeNumber()   {return this._telephoneNumber.number;}
@@ -238,7 +253,9 @@ function printOwing(invoice) {
   console.log(`name: ${invoice.customer}`);
   console.log(`amount: ${outstanding}`);  
 }
-// ->
+```
+```javascript
+
 function printOwing(invoice) {
   printBanner();
   let outstanding  = calculateOutstanding();
@@ -268,7 +285,9 @@ class Employee {
   get name() {...}
   get id() {...}
 }
-// ->
+```
+```javascript
+
 class Party {
   get name() {...}
   get annualCost() {...}
@@ -294,7 +313,9 @@ __Problem:__ Long declaration line
 return order.quantity * order.itemPrice -
   Math.max(0, order.quantity - 500) * order.itemPrice * 0.05 +
   Math.min(order.quantity * order.itemPrice * 0.1, 100);
-// ->
+```
+```javascript
+
 const basePrice = order.quantity * order.itemPrice;
 const quantityDiscount = Math.max(0, order.quantity - 500) * order.itemPrice * 0.05;
 const shipping = Math.min(basePrice * 0.1, 100);
@@ -308,7 +329,9 @@ inverse of Remove Middle Man
 
 ```javascript
 manager = aPerson.department.manager;
-// ->
+```
+```javascript
+
 manager = aPerson.manager;
 
 class Person {
@@ -326,7 +349,9 @@ Inverse of extract
 ```javascript
 if (this.discountRate)
   base = base - (this.discountRate * base);
-// ->
+```
+```javascript
+
 assert(this.discountRate >= 0);
 if (this.discountRate)
   base = base - (this.discountRate * base);
@@ -339,7 +364,9 @@ if (this.discountRate)
 function amountInvoiced(startDate, endDate) {...}
 function amountReceived(startDate, endDate) {...}
 function amountOverdue(startDate, endDate) {...}
-// ->
+```
+```javascript
+
 function amountInvoiced(aDateRange) {...}
 function amountReceived(aDateRange) {...}
 function amountOverdue(aDateRange) {...}
@@ -352,7 +379,9 @@ As class
 
 ```javascript
 if (aCustomer === "unknown") customerName = "occupant";
-// ->
+```
+```javascript
+
 class UnknownCustomer {
     get name() {return "occupant";}
 ```
@@ -372,7 +401,9 @@ function photoData(aPhoto) {
     `<p>date: ${aPhoto.date.toDateString()}</p>`,
   ];
 }
-// ->
+```
+```javascript
+
 result.concat(photoData(person.photo));
 
 function photoData(aPhoto) {
@@ -396,7 +427,9 @@ function tenPercentRaise(aPerson) {
 function fivePercentRaise(aPerson) {
   aPerson.salary = aPerson.salary.multiply(1.05);
 }
-// ->
+```
+```javascript
+
 function raise(aPerson, factor) {
   aPerson.salary = aPerson.salary.multiply(1 + factor);
 }
@@ -411,7 +444,9 @@ In function call
 const low = aRoom.daysTempRange.low;
 const high = aRoom.daysTempRange.high;
 if (aPlan.withinRange(low, high))
-// ->
+```
+```javascript
+
 if (aPlan.withinRange(aRoom.daysTempRange))
 ```
 
@@ -431,7 +466,9 @@ class Employee extends Party {
     this._monthlyCost = monthlyCost;
   }
 }
-// ->
+```
+```javascript
+
 class Party {
   constructor(name){
     this._name = name;
@@ -452,53 +489,409 @@ class Employee extends Party {
 
 ```javascript
 let customer = new Customer(customerData);
-// ->
+```
+```javascript
+
 let customer = customerRepository.get(customerData.id);
 ```
 
 
-###
+### Remove Flag Argument
 
 ```javascript
+function setDimension(name, value) {
+  if (name === "height") {
+    this._height = value;
+    return;
+  }
+  if (name === "width") {
+    this._width = value;
+    return;
+  }
+}
+```
+```javascript
 
-// ->
-
+function setHeight(value) {this._height = value;}
+function setWidth (value) {this._width = value;}
 ```
 
 
-###
+### Remove Middle Man
 
 ```javascript
+manager = aPerson.manager;
 
-// ->
+class Person {
+  get manager() {return this.department.manager;}
+```
+```javascript
 
+manager = aPerson.department.manager;
 ```
 
 
-###
+### Replace Conditional with Polymorphism
 
 ```javascript
+switch (bird.type) {
+  case 'EuropeanSwallow':
+    return "average";
+  case 'AfricanSwallow':
+    return (bird.numberOfCoconuts > 2) ? "tired" : "average";
+  case 'NorwegianBlueParrot':
+    return (bird.voltage > 100) ? "scorched" : "beautiful";
+  default:
+    return "unknown";
+```
+```javascript
 
-// ->
-
+class EuropeanSwallow {
+  get plumage() {
+    return "average";
+  }
+class AfricanSwallow {
+  get plumage() {
+     return (this.numberOfCoconuts > 2) ? "tired" : "average";
+  }
+class NorwegianBlueParrot {
+  get plumage() {
+     return (this.voltage > 100) ? "scorched" : "beautiful";
+  }
 ```
 
 
-###
+### Replace Constructor with Factory Function
 
 ```javascript
+leadEngineer = new Employee(document.leadEngineer, 'E');
+```
+```javascript
 
-// ->
-
+leadEngineer = createEngineer(document.leadEngineer);
 ```
 
 
-###
+### Replace Control Flag with Break
 
 ```javascript
+for (const p of people) {
+  if (! found) {
+    if ( p === "Don") {
+      sendAlert();
+      found = true;
+    }
+```
+```javascript
 
-// ->
+for (const p of people) {
+  if ( p === "Don") {
+    sendAlert();
+    break;
+  }
+```
+
+
+### Replace Exception with Precheck
+
+Also called `Clause`
+
+```javascript
+double getValueForPeriod (int periodNumber) {
+  try {
+    return values[periodNumber];
+  } catch (ArrayIndexOutOfBoundsException e) {
+    return 0;
+  }
+}
+```
+```javascript
+
+double getValueForPeriod (int periodNumber) {
+  return (periodNumber >= values.length) ? 0 : values[periodNumber];
+}
+```
+
+
+### Replace Inline Code with Function Call
+
+```javascript
+let appliesToMass = false;
+for(const s of states) {
+  if (s === "MA") appliesToMass = true;
+}
+```
+```javascript
+
+appliesToMass = states.includes("MA");
+```
+
+
+### Replace Loop with Pipeline
+
+__Keywords:__ Streams, Functional progamming
+
+```javascript
+const names = [];
+for (const i of input) {
+  if (i.job === "programmer")
+    names.push(i.name);
+}
+```
+```javascript
+
+  const names = input
+    .filter(i => i.job === "programmer")
+    .map(i => i.name)
+  ;
+```
+
+
+### Replace Magic Literal
+
+With constants
+
+```javascript
+function potentialEnergy(mass, height) {
+  return mass * 9.81 * height;
+}
+```
+```javascript
+
+const STANDARD_GRAVITY = 9.81;
+function potentialEnergy(mass, height) {
+  return mass * STANDARD_GRAVITY * height;
+}
+```
+
+
+### Replace Parameter with Query
+
+That is why it is better to pass the full object
+
+```javascript
+availableVacation(anEmployee, anEmployee.grade);
+
+function availableVacation(anEmployee, grade) {
+  // calculate vacation...
+```
+```javascript
+
+availableVacation(anEmployee)
+
+function availableVacation(anEmployee) {
+  const grade = anEmployee.grade;
+  // calculate vacation...
+```
+
+
+### Replace Temp with Query
+
+```javascript
+const basePrice = this._quantity * this._itemPrice;
+if (basePrice > 1000)
+  return basePrice * 0.95;
+else
+  return basePrice * 0.98;
+```
+```javascript
+
+get basePrice() {this._quantity * this._itemPrice;}
+
+...
+
+if (this.basePrice > 1000)
+  return this.basePrice * 0.95;
+else
+  return this.basePrice * 0.98;
+```
+
+
+### Replace Type Code with Subclasses
+
+```javascript
+function createEmployee(name, type) {
+  return new Employee(name, type);
+}
+```
+```javascript
+
+function createEmployee(name, type) {
+  switch (type) {
+    case "engineer": return new Engineer(name);
+    case "salesman": return new Salesman(name);
+    case "manager":  return new Manager (name);
+  }
+```
+
+
+### Return Modified Value
+
+Of input
+
+```javascript
+let totalAscent = 0;
+calculateAscent();
+
+function calculateAscent() {
+  for (let i = 1; i < points.length; i++) {
+    const verticalChange = points[i].elevation - points[i-1].elevation;
+    totalAscent += (verticalChange > 0) ? verticalChange : 0;
+  }
+}
+```
+```javascript
+
+const totalAscent = calculateAscent();
+
+function calculateAscent() {
+  let result = 0;
+  for (let i = 1; i < points.length; i++) {
+    const verticalChange = points[i].elevation - points[i-1].elevation;
+    result += (verticalChange > 0) ? verticalChange : 0;
+  }
+  return result;
+}
+```
+
+
+### Separate Query from Modifier
+
+```javascript
+function getTotalOutstandingAndSendBill() {
+  const result = customer.invoices.reduce((total, each) => each.amount + total, 0);
+  sendBill();
+  return result;
+}
+```
+```javascript
+
+function totalOutstanding() {
+  return customer.invoices.reduce((total, each) => each.amount + total, 0);  
+}
+function sendBill() {
+  emailGateway.send(formatBill(customer));
+}
+```
+
+
+### Slide statement
+
+Together, far from call
+
+aliases Consolidate Duplicate Conditional Fragments
+
+```javascript
+const pricingPlan = retrievePricingPlan();
+const order = retreiveOrder();
+let charge;
+const chargePerUnit = pricingPlan.unit;
+```
+```javascript
+
+const pricingPlan = retrievePricingPlan();
+const chargePerUnit = pricingPlan.unit;
+const order = retreiveOrder();
+let charge;
+```
+
+
+### Split Loop
+
+Work with the ass little nesting level as possible -> return from loop early
+
+```javascript
+let averageAge = 0;
+let totalSalary = 0;
+for (const p of people) {
+  averageAge += p.age;
+  totalSalary += p.salary;
+}
+averageAge = averageAge / people.length;
+```
+```javascript
+
+let totalSalary = 0;
+for (const p of people) {
+  totalSalary += p.salary;
+}
+
+let averageAge = 0;
+for (const p of people) {
+  averageAge += p.age;
+}
+averageAge = averageAge / people.length;
+```
+
+
+### Split Phase
+
+```javascript
+const orderData = orderString.split(/\s+/);
+const productPrice = priceList[orderData[0].split("-")[1]];
+const orderPrice = parseInt(orderData[1]) * productPrice;
+```
+```javascript
+
+const orderRecord = parseOrder(order);
+const orderPrice = price(orderRecord, priceList);
+
+function parseOrder(aString) {
+  const values =  aString.split(/\s+/);
+  return ({
+    productID: values[0].split("-")[1],
+    quantity: parseInt(values[1]),
+  });
+}
+function price(order, priceList) {
+  return order.quantity * priceList[order.productID];
+}
+```
+
+
+### Split Variable
+
+```javascript
+let temp = 2 * (height + width);
+console.log(temp);
+temp = height * width;
+console.log(temp);
+```
+```javascript
+
+const perimeter = 2 * (height + width);
+console.log(perimeter);
+const area = height * width;
+console.log(area);
+```
+
+
+### Substitute Algorithm
+
+```javascript
+function foundPerson(people) {
+  for(let i = 0; i < people.length; i++) {
+    if (people[i] === "Don") {
+      return "Don";
+    }
+    if (people[i] === "John") {
+      return "John";
+    }
+    if (people[i] === "Kent") {
+      return "Kent";
+    }
+  }
+  return "";
+}
+```
+```javascript
+
+function foundPerson(people) {
+  const candidates = ["Don", "John", "Kent"];
+  return people.find(p => candidates.includes(p)) || '';
+}
 
 ```
+
 
 </section>
