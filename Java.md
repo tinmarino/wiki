@@ -1,6 +1,6 @@
 # HackerRank
 ## Doc I need
-* regexp (`pydoc regex`)
+* regexp (`pydoc regex`, `perldoc perlreref`))
 * printf format (`man 3 printf`)
 
 
@@ -19,6 +19,18 @@ System.out.println((a & 1) == 0 ?  "EVEN" : "ODD" );
 // nb of digit
 No. of digits in N = Math.floor(Math.log10(N)) + 1;
 BigInteger.valueOf(1235).isProbablePrime
+
+// Enum - String - Int
+// // enum → int
+yourEnum.ordinal()
+// // int → enum
+EnumType.values()[someInt]
+// // String → enum
+EnumType.valueOf(yourString)
+// // enum → String
+yourEnum.name()
+
+
 
 ```
 

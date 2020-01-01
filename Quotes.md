@@ -150,3 +150,5 @@ Ton    Tel  Traite
 * Pour être précis, vise loin
 
 * Si tu ne t'arrête pas jusqu'au succès, tu succéderas avant de t'arrêter
+
+* Si tu es en quête de sens, commence par donner un sens à ta quétes
