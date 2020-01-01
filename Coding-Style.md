@@ -1,3 +1,46 @@
+---
+title: Coding style
+category: Computing
+wiki_css: Css/color_dark_solarized.css, Css/layout_toc.css
+header-includes: <script type="text/javascript" src="Css/js_masonry_desandro.js"></script>
+wiki_pandoc: --toc
+---
+
+
+## From So
+<section class="level2">
+
+### How do you tell someone they're writing bad code
+
+
+Introduce questions to make them realise that what they are doing is wrong. For example, ask these sort of questions:
+
+1. Why did you decide to make that a global variable?
+
+2. Why did you give it that name?
+
+3. That's interesting. I usually do mine this way because [Insert reason why you are better]
+
+4. Does that way work? I usually [Insert how you would make them look silly]
+
+I think the ideal way of going about this is subtly asking them why they code a certain way. You may find that they believe that there are benefits to other methods. Unless I knew the reason for their coding style was due to misinformation I would never judge my way as better without good reason. The best way to go about this is to just ask them why they chose that way; be sure to sound interested in their reasoning, because that is what you need to attack, not their ability.
+
+A coding standard will definitely help, but if it were the answer to every software project then we'd all be sipping cocktails on our private islands in paradise. In reality, we're all prone to problems and software projects still have a low success rate. I think the problem would mostly stem from individual ability rather than a problem with convention, which is why I'd suggest working through the problems as a group when a problem rears its ugly head.
+
+Most importantly, __do NOT immediately assume that your way is better__. In reality, it probably is, but we're dealing with another person's opinion and to them there is only one solution. Never say that your way is the better way of doing it unless you want them to see you as a smug loser.
+
+The goal is not for you to teach your team how to code better. It's to establish a culture of learning in your team. Where each person looks to the others for help in becoming a better programmer.
+
+__Globals:__ Do you think we'll ever want to have more than one of these? Do you think we will want to control access to this?
+
+__Mutable state:__ Do you think we'll want to manipulate this from another thread?
+
+__long functions:__ My brain isn't big enough to hold all of this at once. How can we make smaller pieces that I can handle?
+
+__bad names:__ I get confused easily enough when reading clear code; when names are misleading, there's no hope for me.
+
+__If the coder feel attacked -> Game Over: You (both) Lose__
+
 ### Function complexity
 
 1. Deeply nested control structures: e.g. for-loops 3 levels deep or even just 2 levels deep with nested if-statements that have complex conditions.
@@ -65,7 +108,7 @@ To complete the style, you should also initialize pointers to NULL before they g
 ### Replace Nested Conditional with Guard Clauses
 
 Exiting early allows you to pop stuff off your limited mental stack. :
-```
+```java
 public void SomeFunction(bool someCondition)
 {
     if (someCondition)
@@ -73,7 +116,7 @@ public void SomeFunction(bool someCondition)
         // Do Something
     }
 }
-
+// -> 
 public void SomeFunction(bool someCondition)
 {
     if (!someCondition)
@@ -81,3 +124,381 @@ public void SomeFunction(bool someCondition)
 
     // Do Something
 }
+```
+
+
+</section>
+
+## Refactoring Catalog
+
+<section class="level2">
+
+
+### Combine function into class
+
+__Problem:__ Functions are always taking the same parameters
+
+```javascript
+function base(aReading) {...}
+function taxableCharge(aReading) {...}
+function calculateBaseCharge(aReading) {...}
+// ->
+class Reading {
+  base() {...}
+  taxableCharge() {...}
+  calculateBaseCharge() {...}
+}
+```
+
+
+### Consolidate Conditional Expression
+
+
+```javascript
+if (anEmployee.seniority < 2) return 0;
+if (anEmployee.monthsDisabled > 12) return 0;
+if (anEmployee.isPartTime) return 0;
+// ->
+if (isNotEligableForDisability()) return 0;
+
+function isNotEligableForDisability() {
+  return ((anEmployee.seniority < 2)
+          || (anEmployee.monthsDisabled > 12)
+          || (anEmployee.isPartTime));
+}
+```
+
+
+### Decompose Conditional
+
+__Problem:__ tired of seen deeply nested long statements
+
+```javascript
+if (!aDate.isBefore(plan.summerStart) && !aDate.isAfter(plan.summerEnd))
+  charge = quantity * plan.summerRate;
+else
+  charge = quantity * plan.regularRate + plan.regularServiceCharge;
+// ->
+if (summer())
+  charge = summerCharge();
+else
+  charge = regularCharge();
+```
+
+
+### Encapsulate Record -> Data class
+
+
+```javascript
+organization = {name: "Acme Gooseberries", country: "GB"};
+// ->
+class Organization {
+  constructor(data) {
+    this._name = data.name;
+    this._country = data.country;
+  }
+  get name()    {return this._name;}
+  set name(arg) {this._name = arg;}
+  get country()    {return this._country;}
+  set country(arg) {this._country = arg;}
+}
+```
+
+The caller is happyer
+
+
+### Extract Class
+
+When can you divide on class in two ? Here:
+
+```javascript
+class Person {
+  get officeAreaCode() {return this._officeAreaCode;}
+  get officeNumber()   {return this._officeNumber;}
+// ->
+class Person {
+  get officeAreaCode() {return this._telephoneNumber.areaCode;}
+  get officeNumber()   {return this._telephoneNumber.number;}
+}
+class TelephoneNumber {
+  get areaCode() {return this._areaCode;}
+  get number()   {return this._number;}
+}
+```
+
+
+### Extract Function
+
+```javascript
+function printOwing(invoice) {
+  printBanner();
+  let outstanding  = calculateOutstanding();
+
+  //print details
+  console.log(`name: ${invoice.customer}`);
+  console.log(`amount: ${outstanding}`);  
+}
+// ->
+function printOwing(invoice) {
+  printBanner();
+  let outstanding  = calculateOutstanding();
+  printDetails(outstanding);
+
+  function printDetails(outstanding) {
+    console.log(`name: ${invoice.customer}`);
+    console.log(`amount: ${outstanding}`);
+  }
+}
+```
+
+
+### Extract Superclass
+
+Heritance is made to mutualize varaibles / functions
+
+```javascript
+class Department {
+  get totalAnnualCost() {...}
+  get name() {...}
+  get headCount() {...}
+}
+
+class Employee {
+  get annualCost() {...}
+  get name() {...}
+  get id() {...}
+}
+// ->
+class Party {
+  get name() {...}
+  get annualCost() {...}
+}
+
+class Department extends Party {
+  get annualCost() {...}
+  get headCount() {...}
+}
+
+class Employee extends Party {
+  get annualCost() {...}
+  get id() {...}
+}
+```
+
+
+### Extract Variable
+
+__Problem:__ Long declaration line
+
+```javascript
+return order.quantity * order.itemPrice -
+  Math.max(0, order.quantity - 500) * order.itemPrice * 0.05 +
+  Math.min(order.quantity * order.itemPrice * 0.1, 100);
+// ->
+const basePrice = order.quantity * order.itemPrice;
+const quantityDiscount = Math.max(0, order.quantity - 500) * order.itemPrice * 0.05;
+const shipping = Math.min(basePrice * 0.1, 100);
+return basePrice - quantityDiscount + shipping;
+```
+
+
+### Hide Delegate
+
+inverse of Remove Middle Man
+
+```javascript
+manager = aPerson.department.manager;
+// ->
+manager = aPerson.manager;
+
+class Person {
+  get manager() {return this.department.manager;}
+```
+
+
+### Inline
+
+Inverse of extract
+
+
+### Introduction Assertion
+
+```javascript
+if (this.discountRate)
+  base = base - (this.discountRate * base);
+// ->
+assert(this.discountRate >= 0);
+if (this.discountRate)
+  base = base - (this.discountRate * base);
+```
+
+
+### Introduce Parameter Object
+
+```javascript
+function amountInvoiced(startDate, endDate) {...}
+function amountReceived(startDate, endDate) {...}
+function amountOverdue(startDate, endDate) {...}
+// ->
+function amountInvoiced(aDateRange) {...}
+function amountReceived(aDateRange) {...}
+function amountOverdue(aDateRange) {...}
+```
+
+
+### Introduce Special Case
+
+As class
+
+```javascript
+if (aCustomer === "unknown") customerName = "occupant";
+// ->
+class UnknownCustomer {
+    get name() {return "occupant";}
+```
+
+
+### Move Statements into Function
+
+__Problem:__ Caller always sanitize/concat in/out of function call
+
+```javascript
+result.push(`<p>title: ${person.photo.title}</p>`);
+result.concat(photoData(person.photo));
+
+function photoData(aPhoto) {
+  return [
+    `<p>location: ${aPhoto.location}</p>`,
+    `<p>date: ${aPhoto.date.toDateString()}</p>`,
+  ];
+}
+// ->
+result.concat(photoData(person.photo));
+
+function photoData(aPhoto) {
+  return [
+    `<p>title: ${aPhoto.title}</p>`,
+    `<p>location: ${aPhoto.location}</p>`,
+    `<p>date: ${aPhoto.date.toDateString()}</p>`,
+  ];
+}
+```
+
+
+### Parametrize Function
+
+Opposite of something (remove parameters)
+
+```javascript
+function tenPercentRaise(aPerson) {
+  aPerson.salary = aPerson.salary.multiply(1.1);
+}
+function fivePercentRaise(aPerson) {
+  aPerson.salary = aPerson.salary.multiply(1.05);
+}
+// ->
+function raise(aPerson, factor) {
+  aPerson.salary = aPerson.salary.multiply(1 + factor);
+}
+```
+
+
+### Preserve Whole Object
+
+In function call
+
+```javascript
+const low = aRoom.daysTempRange.low;
+const high = aRoom.daysTempRange.high;
+if (aPlan.withinRange(low, high))
+// ->
+if (aPlan.withinRange(aRoom.daysTempRange))
+```
+
+
+### Pull Up Constructor Body
+
+Works with fields / methods
+
+```javascript
+class Party {...}
+
+class Employee extends Party {
+  constructor(name, id, monthlyCost) {
+    super();
+    this._id = id;
+    this._name = name;
+    this._monthlyCost = monthlyCost;
+  }
+}
+// ->
+class Party {
+  constructor(name){
+    this._name = name;
+  }
+}
+
+class Employee extends Party {
+  constructor(name, id, monthlyCost) {
+    super(name);
+    this._id = id;
+    this._monthlyCost = monthlyCost;
+  }
+}
+```
+
+
+### Change Value to Reference
+
+```javascript
+let customer = new Customer(customerData);
+// ->
+let customer = customerRepository.get(customerData.id);
+```
+
+
+###
+
+```javascript
+
+// ->
+
+```
+
+
+###
+
+```javascript
+
+// ->
+
+```
+
+
+###
+
+```javascript
+
+// ->
+
+```
+
+
+###
+
+```javascript
+
+// ->
+
+```
+
+
+###
+
+```javascript
+
+// ->
+
+```
+
+</section>
