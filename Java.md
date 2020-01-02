@@ -1,4 +1,9 @@
 # HackerRank
+
+## Jdb
+rlwrap -f . -f tags -e "" jdb 
+
+
 ## Doc I need
 * regexp (`pydoc regex`, `perldoc perlreref`))
 * printf format (`man 3 printf`)

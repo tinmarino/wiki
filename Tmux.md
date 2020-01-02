@@ -2,6 +2,8 @@
 
 [Tmux Conf](Tmux-Conf)
 
+tmux capture-pane -pS -1000000 -t 0 > file.out
+
 ### Pane to new Windows == break pane o
 
     join-pane -s

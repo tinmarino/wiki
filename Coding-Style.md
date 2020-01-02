@@ -1100,4 +1100,12 @@ function foundPerson(people) {
 ```
 
 
+
+### Link
+
+* [catalog of refactorings](https://refactoring.com/catalog/)
+* [StackOverflow/coding-style](https://stackoverflow.com/questions/tagged/coding-style?sort=votes)
+* [StackEngeenering/coding-style](https://softwareengineering.stackexchange.com/questions/tagged/coding-style?sort=votes)
+
+
 </section>

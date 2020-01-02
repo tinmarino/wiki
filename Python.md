@@ -1,12 +1,21 @@
 * [Pip](Pip)
 
-* Fromat string `'Name: {user.name} Age: {user.age}'.format(user=user)`
+# Inspect
+```python
+def info(msg):
+    frm = inspect.stack()[1]
+    mod = inspect.getmodule(frm[0])
+    print('[%s] %s' % (mod.__name__, msg))
+```
+
 
 # Int
 ```python
 def cmp(a, b):
     return (a > b) - (a < b) 
 ```
+
+
 # List
 
 * All combinations between two list
@@ -26,6 +35,7 @@ list(itertools.combinations([1, 2, 3, 4, 5], 2))
 # String
 
 * alphabet = [chr(i) for i in range(ord('a'),ord('z')+1)]
+* Format string `'Name: {user.name} Age: {user.age}'.format(user=user)`
 
 
 # Async
