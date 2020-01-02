@@ -109,6 +109,10 @@ To complete the style, you should also initialize pointers to NULL before they g
 
 * Exiting early allows you to pop stuff off your limited mental stack
 * The same way, `break` is allowed only at top of loop (clause)
+* Better separation of corner cases from the main method logic
+* Another big problem arises when the logic of such code becomes long enough to not fit the screen vertically. At some point you may even forget that it’s there, which would completely break your picture
+
+Probably the most documented case is the guard clause, also known as assert or precondition. The idea is that when you have something to assert in the beginning of a method — do this using a fast return.
 
 
 ```java
@@ -131,6 +135,104 @@ public void SomeFunction(bool someCondition)
 }
 ```
 
+### No return in the middle
+
+* a return or throw in the middle of the method is not so easily detected at the first sight
+* it requires you to consider that under some circumstances, the main logic of this method will not be executed completely
+* every time you’ll have to decide: should you put the new code before or after this return?
+
+```java
+public void executeTimer( String timerId ) {
+  logger.debug( "Executing timer with ID {}", timerId );  TimerEntity timerEntity = timerRepository.find( timerId );  logger.debug( "Found TimerEntity {} for timer ID {}", timerEntity, timerId );  if( timerEntity == null )
+    return;  Timer timer = Timer.fromEntity( timerEntity );
+  timersInvoker.execute( timer );
+}
+```
+```java
+public void executeTimer( String timerId ) {
+  logger.debug( "Executing timer with ID {}", timerId );  TimerEntity timerEntity = timerRepository.find( timerId );  logger.debug( "Found TimerEntity {} for timer ID {}", timerEntity, timerId );  executeTimer( timerEntity );
+}
+private void executeTimer( TimerEntity timerEntity ) {
+  if( timerEntity == null )
+    return;  Timer timer = Timer.fromEntity( timerEntity );
+  timersInvoker.execute( timer );
+}
+```
+
+
+### Anti if
+
+#### Small conditional actions to method
+
+You’ll probably notice this further, when each time you invoke the method you need to add this if-statement because the business logic says so
+
+```java
+if( timer.getMode() != TimerMode.DRAFT )
+  timer.validate();
+```
+```java
+public void validate() {
+  if( mode == TimerMode.DRAFT )
+    return;
+  
+  // validation logic
+}
+timer.validate();
+```
+
+#### NullObject/Optional over null passing
+
+* Avoid null object: prefer `""` or `[]`
+
+Tolerance: It’s necessary to be defensive at the outer parts of your codebase, but being defensive inside your codebase probably means the code that you are writing is offensive. Don’t write offensive code.
+
+Solution: Use a NullObject or Optional type instead of ever passing a null. An empty collection is a great alternative.
+
+```java
+public void example() {
+    sumOf(null);
+}
+
+private int sumOf(List<Integer> numbers) {
+    if(numbers == null) {
+        return 0;
+    }
+
+    return numbers.stream().mapToInt(i -> i).sum();
+}
+```
+```java
+public void example() {
+    sumOf(new ArrayList<>());
+}
+
+private int sumOf(List<Integer> numbers) {
+    return numbers.stream().mapToInt(i -> i).sum();
+}
+```
+
+#### Inline statements into expressions
+```java
+public boolean horrible(boolean foo, boolean bar, boolean baz) {
+    if (foo) {
+        if (bar) {
+            return true;
+        }
+    }
+
+    if (baz) {
+        return true;
+    } else {
+        return false;
+    }
+}
+```
+To
+```java
+public boolean horrible(boolean foo, boolean bar, boolean baz) {
+    return foo && bar || baz;
+}
+```
 
 </section>
 
