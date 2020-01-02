@@ -162,6 +162,110 @@ private void executeTimer( TimerEntity timerEntity ) {
 
 ### Anti if
 
+#### Boolean parameters to duplicate method
+
+```java
+public void example() {
+    FileUtils.createFile("name.txt", "file contents", false);
+    FileUtils.createFile("name_temp.txt", "file contents", true);
+}
+
+public class FileUtils {
+    public static void createFile(String name, String contents, boolean temporary) {
+        if(temporary) {
+            // save temp file
+        } else {
+            // save permanent file
+        }
+    }
+}
+```
+```java
+public void example() {
+    FileUtils.createFile("name.txt", "file contents");
+    FileUtils.createTemporaryFile("name_temp.txt", "file contents");
+}
+
+public class FileUtils {
+    public static void createFile(String name, String contents) {
+        // save permanent file
+    }
+
+    public static void createTemporaryFile(String name, String contents) {
+        // save temp file
+    }
+}
+```
+
+#### Switch to polymorphism
+
+```java
+public class Bird {
+
+    private enum Species {
+        EUROPEAN, AFRICAN, NORWEGIAN_BLUE;
+    }
+
+    private boolean isNailed;
+    private Species type;
+
+    public double getSpeed() {
+        switch (type) {
+            case EUROPEAN:
+                return getBaseSpeed();
+            case AFRICAN:
+                return getBaseSpeed() - getLoadFactor();
+            case NORWEGIAN_BLUE:
+                return isNailed ? 0 : getBaseSpeed();
+            default:
+                return 0;
+        }
+    }
+
+    private double getLoadFactor() {
+        return 3;
+    }
+
+    private double getBaseSpeed() {
+        return 10;
+    }
+}
+```
+```java
+public abstract class Bird {
+
+    public abstract double getSpeed();
+
+    protected double getLoadFactor() {
+        return 3;
+    }
+
+    protected double getBaseSpeed() {
+        return 10;
+    }
+}
+
+public class EuropeanBird extends Bird {
+    public double getSpeed() {
+        return getBaseSpeed();
+    }
+}
+
+public class AfricanBird extends Bird {
+    public double getSpeed() {
+        return getBaseSpeed() - getLoadFactor();
+    }
+}
+
+public class NorwegianBird extends Bird {
+    private boolean isNailed;
+
+    public double getSpeed() {
+        return isNailed ? 0 : getBaseSpeed();
+    }
+}
+```
+
 #### Small conditional actions to method
 
 You’ll probably notice this further, when each time you invoke the method you need to add this if-statement because the business logic says so
