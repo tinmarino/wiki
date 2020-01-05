@@ -1,4 +1,36 @@
 * [Pip](Pip)
+* [Python HackerRank](Python-HackerRank)
+
+
+# Hackerrank
+
+### Roate left list
+
+* Using modular arithmetic to calculate new pos
+
+```java
+for(int i = 0; i < lengthOfArray; i++){
+    int newLocation = (i + (lengthOfArray - shiftAmount)) % lengthOfArray;
+    a[newLocation] = in.nextInt();
+}
+```
+
+* Slicing
+```python
+def rotLeft(a, d): return a[d:]+a[:d]
+```
+
+* Deque in python support that
+```python
+from collections import deque
+
+def rotLeft(a, d):
+    deq = deque(a)
+    deq.rotate(-d)
+    return list(deq)
+```
+
+
 
 # Inspect
 ```python
@@ -14,6 +46,12 @@ def info(msg):
 def cmp(a, b):
     return (a > b) - (a < b) 
 ```
+
+
+# String
+
+* alphabet = [chr(i) for i in range(ord('a'),ord('z')+1)]
+* Format string `'Name: {user.name} Age: {user.age}'.format(user=user)`
 
 
 # List
@@ -32,16 +70,14 @@ list(itertools.combinations([1, 2, 3, 4, 5], 2))
 ```
 
 
-# String
-
-* alphabet = [chr(i) for i in range(ord('a'),ord('z')+1)]
-* Format string `'Name: {user.name} Age: {user.age}'.format(user=user)`
+# Dict
+example_dict.get('key1', {}).get('key2')
 
 
-# Async
 
-asyncio.Task.all_tasks()
+* asyncio.Task.all_tasks()
 
+* print(datetime.datetime.now())
 
 * set([1,2,3,1,1]) -> [1,2,3] (uniq)
 * scipy.stats.entropy

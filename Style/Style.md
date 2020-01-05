@@ -13,6 +13,7 @@
 * [objcguide](objcguide)
 * [philosophy](philosophy)
 * [pyguide](pyguide)
+* [pydocstring](pydocstring)
 * [README](README)
 * [READMEs](READMEs)
 * [Rguide](Rguide)

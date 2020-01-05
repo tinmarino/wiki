@@ -1,5 +1,34 @@
 * [Vim Menu](Vim-Menu)
 
+## Python
+
+```ŧext
+]] Jump forward to begin of next toplevel
+[[ Jump backwards to begin of current toplevel (if already there, previous toplevel)
+]m Jump forward to begin of next method/scope
+[m Jump backwords to begin of previous method/scope
+
+][ Jump forward to end of current toplevel
+[] Jump backward to end of previous of toplevel
+]M Jump forward to end of current method/scope
+[M Jump backward to end of previous method/scope
+
+PYMODE
+==========  ============================
+Key         Command (modes)
+==========  ============================
+[[          Jump to previous class or function (normal, visual, operator)
+]]          Jump to next class or function  (normal, visual, operator)
+[M          Jump to previous class or method (normal, visual, operator)
+]M          Jump to next class or method (normal, visual, operator)
+aC          Select a class. Ex: vaC, daC, yaC, caC (normal, operator)
+iC          Select inner class. Ex: viC, diC, yiC, ciC (normal, operator)
+aM          Select a function or method. Ex: vaM, daM, yaM, caM (normal, operator)
+iM          Select inner func. or method. Ex: viM, diM, yiM, ciM (normal, operator)
+==========  ============================
+```
+
+
 
 ## Snippet
 
@@ -12,6 +41,11 @@ augroup END
 echo getregtype('a') " To see if in Visual or v
 ```
 
+### Run lines
+
+```vim
+:vnoremap <f2> :<c-u>exe join(getline("'<","'>"),'<bar>')<cr>
+:execute getline(".")
 
 ### Location list
 
@@ -95,6 +129,7 @@ call youcompleteme#EnableCursorMovedAutocommands()
 
 ### Exit 
 ZZ
+ZQ
 
 ### Jump matching endif
 
