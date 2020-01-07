@@ -1,5 +1,6 @@
 * [Vim Menu](Vim-Menu)
 
+* `:window diffthis`
 ## Python
 
 ```ŧext
