@@ -17,6 +17,7 @@
   ### Compiled
   * [C](C)
   * [Java](Java)
+  * [Rust](Rust)
   * [Cmake](Cmake)
   * [Assembly](Assembly)  
   ### Markup

@@ -77,7 +77,7 @@ example_dict.get('key1', {}).get('key2')
 
 * asyncio.Task.all_tasks()
 
-* print(datetime.datetime.now())
+* import datetime; print('Tin 1: ' + strdatetime.datetime.now()))
 
 * set([1,2,3,1,1]) -> [1,2,3] (uniq)
 * scipy.stats.entropy
