@@ -1,3 +1,12 @@
+---
+title: Python HackerRank tips
+category: Python
+wiki_css: Css/color_dark_solarized.css, Css/layout_toc.css
+header-includes: <script type="text/javascript" src="Css/js_masonry_desandro.js"></script>
+wiki_pandoc: --toc
+---
+
+
 ### Tips
 
 * `cur = curs.pop(0)` to remove first. Wanring not cur.pop()
@@ -7,6 +16,7 @@
 * `UNIQUE` <- grep this keyword, then pre-uniquify anything: can fasten a lot combinatory
 * `42.2 // 2` <- `int(42.2/2)` or `math.floor(42.2/2)` but the result is float
 * Do not dickotomize by hand !!! Use bisect
+
 
 #### Memoize function return value (cache)
 ```python
@@ -18,6 +28,10 @@
 print(sys.getrecursionlimit())  # gives me 1000
 sys.setrecursionlimit(3000) 
 ```
+
+## Classes tips
+
+<section class="level2">
 
 ### String
 
@@ -43,6 +57,8 @@ s = "ababdfegtduab"
 ```
 
 ### List
+
+* deque is short for Double Ended Queue
 
 ```python
 # Find last elt of list
@@ -181,9 +197,11 @@ value = d.get(key, {}).get(key2, "empty")
 ```
 
 
-
+</section>
 
 ## Some HackerRank solutions
+
+<section class="level2">
 
 ### Count triplet
 
@@ -726,3 +744,58 @@ def minTime(machines, goal):
         totalManufactured+=1
     return minDays if not popped else popped[0]
 ```
+
+
+### Balanced parenthesis (Stack of course)
+
+* My first
+
+```python
+def isBalanced(s):
+    if len(s) == 0: return "YES"
+    stack = []
+    for i in s:
+        if i in ('(', '[', '{'):
+            stack.append(i)
+            continue
+        if not len(stack): return "NO"
+        j = stack.pop()
+        if (j,i) not in (('(', ')'), ('[', ']'), ('{', '}')):
+            return "NO"
+
+    return "YES" if len(stack) == 0 else "NO"
+```
+
+* Shorter one by someone
+
+```python
+def isBalanced(s):
+    stack = []
+    closer = {'{': '}', '[': ']', '(': ')'}
+    for bracket in s:
+        if bracket in {'}',']',')'}:
+            if not stack or closer[stack.pop()] != bracket:
+                return "NO"
+        else:
+            stack.append(bracket)
+    return "NO" if stack else "YES"
+```
+
+* My imporvement removing duplication of '{' definition
+
+```python
+def isBalanced(s):
+    stack = []
+    closer = {'{': '}', '[': ']', '(': ')'}
+    for bracket in s:
+        if bracket in closer:
+            stack.append(bracket)
+            continue
+        if not stack or closer[stack.pop()] != bracket:
+                return "NO"
+    return "NO" if stack else "YES"
+```
+
+
+
+</section>
