@@ -1,6 +1,7 @@
 
 
 ### Sorting
+
     
 #### Comparaison
 
@@ -13,7 +14,7 @@
 | Heapsort       | O(n log n) | O(n log n) | O(n log n )  [|](|) O(1)             | No |
 | Counting Sort  | O(k+n)     | O(k+n)     | O(k+n)       | O(k+n)           | Yes |
 
-#### Merfge sort
+#### Merge sort
 
 * Merge pre sorted
 
@@ -42,6 +43,10 @@ Quicksort is a comparison-based algorithm that uses divide-and-conquer to sort a
 * Binary tree
 
 Heapsort is a comparison-based algorithm that uses a binary heap data structure to sort elements. It divides its input into a sorted and an unsorted region, and it iteratively shrinks the unsorted region by extracting the largest element and moving that to the sorted region. 
+
+#### Integer sort linear time
+
+O(n), or linear, sorting algorithms for lists of integers, such as radix, bucket and counting sorts, which may be suitable depending on the nature of the integers in your lists.
 
 #### Link
 
