@@ -1,3 +1,18 @@
+# Debugging
+
+
+## Compile debug
+
+* -g
+* -ggdb
+
+
+## Check if symbols
+
+* objdump --syms [ | grep debug ]
+* file -> 'not stripped'
+
+
 # Assembly and retro engineering
 
 

@@ -2,34 +2,53 @@
 * [Python HackerRank](Python-HackerRank)
 
 
-# Hackerrank
+# Decorator
 
-### Roate left list
-
-* Using modular arithmetic to calculate new pos
-
-```java
-for(int i = 0; i < lengthOfArray; i++){
-    int newLocation = (i + (lengthOfArray - shiftAmount)) % lengthOfArray;
-    a[newLocation] = in.nextInt();
-}
-```
-
-* Slicing
 ```python
-def rotLeft(a, d): return a[d:]+a[:d]
+# Used in vimspector to check if object._connected 
+def IfConnected( fct ):
+  """Decorator, call fct if self._connected else echo warning
+  The decorated member function must belong to an object with _connection
+  """
+  def wrapper(*args, **kwargs):
+    if not args[0]._connection:
+      MessageNoConnection( )
+      return
+    return fct(*args, **kwargs)
+  return wrapper
+
+# Instead of passing in the instance attribute at class definition time, check it at runtime:
+def check_authorization(f):
+    def wrapper(*args):
+        print args[0].url
+        return f(*args)
+    return wrapper
+
+class Client(object):
+    def __init__(self, url):
+        self.url = url
+
+    @check_authorization
+    def get(self):
+        print 'get'
+
+>>> Client('http://www.google.com').get()
+http://www.google.com
+get
+# Arguments without
+@decorator
+def foo(*args, **kwargs):
+    pass
+# -> 
+foo = decorator(foo)
+# Arugments with
+@decorator_with_args(arg)
+def foo(*args, **kwargs):
+    pass
+# ->
+foo = decorator_with_args(arg)(foo)
+
 ```
-
-* Deque in python support that
-```python
-from collections import deque
-
-def rotLeft(a, d):
-    deq = deque(a)
-    deq.rotate(-d)
-    return list(deq)
-```
-
 
 
 # Inspect

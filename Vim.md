@@ -48,6 +48,7 @@ echo getregtype('a') " To see if in Visual or v
 ```vim
 :vnoremap <f2> :<c-u>exe join(getline("'<","'>"),'<bar>')<cr>
 :execute getline(".")
+```
 
 ### Location list
 
@@ -56,6 +57,10 @@ call setqflist([])
 
 ### Compile
 
+
+```sh
+# Add first line for debug
+CFLAGS='-g -gdwarf4 -DDEBUG -O0 -fno-omit-frame-pointer' \
 ./configure \
             --with-features=huge \
             --prefix=/usr/local \
@@ -77,6 +82,7 @@ call setqflist([])
             \
             \
             --with-compiledby="Tinmarino" \
+```
 
 __Notes__:
 * Cannot make py2 and py3 in debian (choose only one)

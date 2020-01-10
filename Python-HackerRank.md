@@ -98,6 +98,8 @@ l += [4, 5, 6]
 # # intersection
 z = x.intersection(y) 
 
+# Copy nested list (2 dimension)
+y = [row[:] for row in x]
 
 ```
 
@@ -202,6 +204,34 @@ value = d.get(key, {}).get(key2, "empty")
 ## Some HackerRank solutions
 
 <section class="level2">
+
+
+### Rotate left list
+
+* Using modular arithmetic to calculate new pos
+
+```java
+for(int i = 0; i < lengthOfArray; i++){
+    int newLocation = (i + (lengthOfArray - shiftAmount)) % lengthOfArray;
+    a[newLocation] = in.nextInt();
+}
+```
+
+* Slicing
+```python
+def rotLeft(a, d): return a[d:]+a[:d]
+```
+
+* Deque in python support that
+```python
+from collections import deque
+
+def rotLeft(a, d):
+    deq = deque(a)
+    deq.rotate(-d)
+    return list(deq)
+```
+
 
 ### Count triplet
 
@@ -795,6 +825,105 @@ def isBalanced(s):
                 return "NO"
     return "NO" if stack else "YES"
 ```
+
+
+
+### Maze: Castle on the Grid
+
+* My solution, kind of dirty: I thought you had to move until the end
+
+```python
+# Complete the minimumMoves function below.
+def minimumMoves(grid, startX, startY, goalX, goalY):
+    res = 1
+
+    pos = [ [startX, startY, (0, 0)] ]
+
+    # Create visited bool array to avoid looping
+    visited = []
+    for line in grid:
+        visited.append([False]* len(line))
+    next_pos = []
+
+    while True:
+        for x0, y0, last_move in pos:
+            # Check and mark as visited
+            if (x0, y0) == (goalX, goalY): return res
+            if visited[x0][y0]: continue
+            visited[x0][y0] = True
+
+            # Move any number one direction ...
+            for moves in ((-1, 0), (0, 1), (1, 0), (0, -1) ):
+                if moves in (last_move, (-last_move[0], -last_move[1])):
+                    continue
+                x, y = x0, y0
+
+                # ... any number of step
+                while (0 <= x + moves[0] < len(grid)
+                        and 0 <= y + moves[1] < len(grid[0])
+                        and grid[x + moves[0]][y + moves[1]] != 'X'
+                        ):
+                    x += moves[0]
+                    y += moves[1]
+                    
+                    # Return ?
+                    if (x,y) == (goalX, goalY): return res
+                
+                    # Break: comming to late: my line and col is visited already
+                    if visited[x][y]: break
+
+                    # Add this point for a next walk
+                    next_pos.append([x, y, moves])
+            
+        print(next_pos)            
+        pos = next_pos
+        next_pos = []
+        res += 1
+
+```
+
+
+
+* Explore bfs-wise, and only increase the level when changing direction
+
+```python
+from collections import deque
+
+def minimumMoves(grid, startX, startY, goalX, goalY):
+    """standard bfs
+    """
+    start, goal = (startX, startY), (goalX, goalY)
+    # special case: dtart == goal
+    if start == goal: return 0
+    # set-up bfs
+    q = deque([(start, 0)])
+    parents = {}
+    moves = {'right':lambda n: (n[0], n[1]+1),
+            'down':lambda n: (n[0]+1, n[1]),
+            'left':lambda n: (n[0], n[1]-1),
+            'up':lambda n: (n[0]-1, n[1])
+            }
+    def is_valid(node):
+        x, y = node
+        return (x < len(grid) and y < len(grid)
+                and x >= 0 and y >= 0
+                and grid[x][y] == '.')
+    while q:
+        current_node, level = q.pop()
+        # match? we are done...
+        if current_node == goal: return level
+        # explore... bfs wise
+        for move in 'up', 'right', 'down', 'left':
+            next_node = moves[move](current_node)
+            while is_valid(next_node):
+                # no revisiting...
+                if next_node not in parents:
+                    q.appendleft((next_node, level+1))
+                    parents[next_node] = current_node
+                next_node = moves[move](next_node)
+    raise ValueError('unreachable')
+```
+
 
 
 

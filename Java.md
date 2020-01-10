@@ -444,6 +444,60 @@ long power(int n, int p) throws  Exception {
 
 ```
 
+### LCS longest common subsequence
+
+```java
+private Set<Character> lcs(String x, String y) {
+
+    // Create the arr of edition
+    int[][] arr = new int[x.length() + 1][y.length() + 1];
+    for(int i = 1; i <= x.length(); i++) {
+        for (int j = 1; j <= y.length(); j++) {
+            if (x.charAt(i - 1) == y.charAt(j - 1))
+                arr[i][j] = arr[i - 1][j - 1] + 1;
+            else
+                arr[i][j] = Math.max(arr[i - 1][j], arr[i][j - 1]);
+        }
+    }
+
+    // Craft response
+    Set<Character> res = new HashSet<Character>();
+
+    // Start the circle of life
+    while (true){
+        // Helpers
+        int len1 = x.length();
+        int len2 = y.length();
+
+        // Early return
+        if (len1 == 0 || len2 == 0) {
+            return res;
+        }
+
+        // If same characters, append it
+        if (x.charAt(len1 - 1) == y.charAt(len2 - 1)) {
+            // Append character to res
+            res.add(x.charAt(len1 - 1));
+
+            // Remove it
+            x = x.substring(0, len1 - 1);
+            y = y.substring(0, len2 - 1);
+
+        } else {
+            // Remove char from x
+            if (arr[len1 - 1][len2] >= arr[len1][len2 - 1]) {
+                x = x.substring(0, len1 - 1);
+            }
+            // Remove char from y
+            if (arr[len1][len2 - 1] >= arr[len1 - 1][len2]) {
+                y = y.substring(0, len2 - 1);
+            }
+        }
+    }
+}
+```
+
+
 
 
 # Class library
