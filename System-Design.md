@@ -21,7 +21,9 @@
 * Consisten hashing, used by load balancers to responsibilise a server on a (discontinous) range of request IDs
   * Ensure there is no duplicayes
 * Notifier: Check heartbeat for each server (each 10sec) and if one is dead, notify
-* Database Sharding: Divide the data in different machines according to the mist relevant index => first find the most relvant index (goelic, age, tag)
+* Database Sharding: Divide the data in different machines according to the mist relevant index => first find the most relvant index (goelic, age, tag). Also known as horizontal partitioning.
+* Client Server Communication Protocol: (ex: HTTP) The client requedt, the server respond. Pb: if slow operation, the client must request every 5s, generate noise
+* Peer to Peer: (ex: XMPP) Every actor is equal, WebSocket (C TCP)
 
 ## Interview tips
 
@@ -31,16 +33,18 @@
 1. Think about the features you want, 4 feature is enought for 1h interview
   1. Store profile
     1. Id
-    2. Surname
-    3. Images (Give a max bound), Avatar
+    2. Score (good client ?)
+    3. Surname
+    4. Images (Give a max bound), Avatar
   2. Recommend matches (Tinder)
   3. Notes maches, analytices
-  4. Dirext messaging (chat)
+  4. Direct messaging (chat)
 
 
 ## Databases
 
-Blob: Binary large object stored in databaese have 3 avantages over files
+* Blob: Binary large object stored in databaese have 3 avantages over files
+* You must shard your database according to the query. Some frameworks do it automamatically (Casandra, Dynamo)
 
 * Blob
   1. Mutability: can change cells := item attributes
@@ -51,7 +55,7 @@ Blob: Binary large object stored in databaese have 3 avantages over files
 * Files (No select *)
   1. Cheap
   2. Faster
-  3. Content Delivery Network
+  3. Content Delivery Network: Distributed File System : each file is referenced by an url
 
 
 ## Monolith Vs microservices
