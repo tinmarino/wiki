@@ -12,15 +12,37 @@ wiki_pandoc: --toc
 * `cur = curs.pop(0)` to remove first. Wanring not cur.pop()
 * In loops, you will fail at first try -> print
 * Don't hesitate to comment, especially math
-* Represent the cas of arry and not the bound : arr[0] is first case not first frontier
+* Represent the case of array and not the bound : arr[0] is first case not first frontier
 * `UNIQUE` <- grep this keyword, then pre-uniquify anything: can fasten a lot combinatory
 * `42.2 // 2` <- `int(42.2/2)` or `math.floor(42.2/2)` but the result is float
 * Do not dickotomize by hand !!! Use bisect
+* Use differential or integral of an array can sometime helps
+  * differential can be used to work on range input
+  * integral can be used to find the max of subarray % some_integer, there they are called array prefix and sum(arr[i..j]) = prefix(j) - prefix(i) which can be sorted
 
 
 #### Memoize function return value (cache)
+
+* lru_cache <- Least Recently Used
+
 ```python
 @functools.lru_cache(maxsize=100, typed=False)
+@functools.lru_cache(maxsize=None)
+```
+
+```python
+# Fibonacci numbers
+@lru_cache(maxsize=None)
+def fib(n):
+    if n < 2:
+        return n
+    return fib(n-1) + fib(n-2)
+
+>>> print([fib(n) for n in range(16)])
+[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610]
+
+>>> print(fib.cache_info())
+CacheInfo(hits=28, misses=16, maxsize=None, currsize=16)
 ```
 
 #### Increase recursion depth
@@ -924,6 +946,135 @@ def minimumMoves(grid, startX, startY, goalX, goalY):
     raise ValueError('unreachable')
 ```
 
+
+### Array Largest rectangle
+
+* A rectangle in min(arr[i...j]) * j - i
+* Solution, cut at the min, or return full size * min
+
+```python
+def largestRectangle(h):
+    if(len(h)==0):return
+    if(len(h)==1):
+        if(h[0]>largestRectangle.max):
+            largestRectangle.max=n
+        return
+    v=min(h)
+    if(v*len(h)>largestRectangle.max):
+        largestRectangle.max=len(h)*v
+    largestRectangle(h[0:h.index(v)])
+    largestRectangle(h[h.index(v)+1:len(h)])
+    return largestRectangle.max
+    
+largestRectangle.max=0
+```
+
+* For each cell, extend the  left and right
+* Only one cell, should be smallest and never stop
+
+```python
+def largestRectangle(h):
+    
+    x=[]
+    for i in range(len(h)):
+        l=1
+        b=0
+        c=h[i]
+        while(i-b-1>=0 and h[i-b-1]>=c):
+            b+=1
+        while(i+l<len(h)and h[i+l]>c):
+            l+=1
+        l=l+b
+        s=l*c
+        x.append(s)
+    return max(x)
+```
+
+* Even the n^2 works here ! Meaning my solution was even worse -> start simple
+
+```python
+def largestRectangle(h):
+    sumi, maxi = 0, 0
+    for i in range(len(h)):
+        sumi = 0
+        for j in range(i, len(h)):
+            if h[j] >= h[i]:
+                sumi += h[i]
+            else:
+                break
+        for j in range(i-1, -1, -1):
+            if h[j] >= h[i]:
+                sumi += h[i]
+            else:
+                break
+        maxi = max(maxi, sumi)
+    return maxi
+```
+
+### Recursion: Davis' Staircase
+
+* Close to combinations (my first solution)
+
+```python
+from math import factorial
+def comb(k, n):
+    return factorial(n) // factorial(k) // factorial(n-k)
+
+# Complete the stepPerms function below.
+def stepPerms(n):
+    if n == 0 : return 0
+    res = 0
+    trees = (n // 3)
+    for tree in range(trees+1):
+        tree_rest = n - tree * 3
+        twos = tree_rest // 2
+        for two in range(twos+1):
+            one = tree_rest - two * 2
+            res += comb(tree, tree + two)
+            
+    return res % 10000000007
+```
+
+* Recursive
+
+```python
+from functools import lru_cache
+@lru_cache(None)
+def stepPerms(n):
+    if n == 0: return 1  # NA
+    if n == 1: return 1  # 1
+    if n == 2: return 2  # 2 / 1,1
+
+    # 3 / 2, .. / 1, ..
+    return  stepPerms(n-3) + stepPerms(n-2) + stepPerms(n-1)
+```
+
+* Iterativ, Dynamic programming
+
+```python
+def stepPerms(n):
+    dp = []
+    dp.append(1)  # NA
+    dp.append(1)  # 1
+    dp.append(2)  # 2 / 1,1
+
+    for i in range(3, n+1):
+        dp.append(dp[i-3] + dp[i-2] + dp[i-1])
+        
+    return dp[n]
+```
+
+* Dynamic progaming keeping just last values (reduce space complexity)
+
+```python
+def stepPerms(n):
+    dp = [1, 1, 2]  # NA, 1, 2 / 1.1
+
+    for _ in range(3, n+1):
+        new = dp[2] + dp[1] + dp[0]
+        dp[0], dp[1], dp[2] = dp[1], dp[2], new
+    return dp[n] if n < 3 else dp[-1]
+```
 
 
 

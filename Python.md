@@ -50,6 +50,35 @@ foo = decorator_with_args(arg)(foo)
 
 ```
 
+```python
+def memoize(function):
+  memo = {}
+  def wrapper(*args):
+    if args in memo:
+      return memo[args]
+    else:
+      rv = function(*args)
+      memo[args] = rv
+      return rv
+  return wrapper
+# Example
+@memoize
+def fibonacci(n):
+  if n < 2: return n
+  return fibonacci(n - 1) + fibonacci(n - 2)
+# Class memoization
+class memorize(dict):
+  def __init__(self, func):
+      self.func = func
+
+  def __call__(self, *args):
+      return self[args]
+
+  def __missing__(self, key):
+      result = self[key] = self.func(*key)
+      return result
+```
+
 
 # Inspect
 ```python
