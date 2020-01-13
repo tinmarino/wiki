@@ -1077,5 +1077,236 @@ def stepPerms(n):
 ```
 
 
+### Binary Tree: Height
+
+```python
+def height(root):
+    if root is None or root.left is None and root.right is None : return 0
+    return 1 + max(height(root.left), height(root.right))
+```
+
+
+### Binary Tree: Lowest Common Ancestor
+
+My sol
+
+```python
+sol = None
+def who_in(root, v1, v2):
+    """Reeturns list [], [v1, v2]"""
+    global sol
+    if root == None: return []
+
+    # print('Visiting', root.info)
+
+    res = []
+    if root.info in (v1, v2):
+        res.append(root.info)
+    res.extend(who_in(root.left, v1, v2))
+    res.extend(who_in(root.right, v1, v2))
+
+    # print("  res", res)
+    if sol is None and v1 in res and v2 in res:
+        sol = root
+    return res
+
+
+def lca(root, v1, v2):
+    who_in(root, v1, v2)
+    return sol
+
+```
+
+Solution understanding that values are ordered (lower, highter), hence the binary search
+
+```python
+def lca(root, v1, v2):
+    cur = root
+    while cur:
+        if v1<cur.info and v2<cur.info:
+            cur = cur.left
+        elif v1>cur.info and v2>cur.info:
+            cur = cur.right
+        elif max(v1, v2)>=cur.info and cur.info>=min(v1,v2):
+            return cur
+```
+
+Problem tester code
+
+```python
+# Python 3 iterative solution
+def lca(root , v1 , v2):
+    # make sure v2 > v1
+    if v1 > v2: v1, v2 = v2, v1
+    # traverse until terminal
+    while True:
+        if v1 < root.info and v2 < root.info:
+            root = root.left
+        elif v1 > root.info and v2 > root.info:
+            root = root.right
+        else:
+            return(root)
+```
+
+Tree class and parser (from problem itself
+
+```python
+class Node:
+    def __init__(self, info): 
+        self.info = info  
+        self.left = None  
+        self.right = None 
+        self.level = None 
+
+    def __str__(self):
+        return str(self.info) 
+
+class BinarySearchTree:
+    def __init__(self): 
+        self.root = None
+
+    def create(self, val):  
+        if self.root == None:
+            self.root = Node(val)
+        else:
+            current = self.root
+         
+            while True:
+                if val < current.info:
+                    if current.left:
+                        current = current.left
+                    else:
+                        current.left = Node(val)
+                        break
+                elif val > current.info:
+                    if current.right:
+                        current = current.right
+                    else:
+                        current.right = Node(val)
+                        break
+                else:
+                    break
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+'''
+class Node:
+      def __init__(self,info): 
+          self.info = info  
+          self.left = None  
+          self.right = None 
+           
+
+       // this is a node of the tree , which contains info as data, left , right
+'''
+
+tree = BinarySearchTree()
+t = int(input())
+
+arr = list(map(int, input().split()))
+
+for i in range(t):
+    tree.create(arr[i])
+
+v = list(map(int, input().split()))
+
+ans = lca(tree.root, v[0], v[1])
+print (ans.info)
+
+```
+
+
+### Trees: Is This a Binary Search Tree?
+
+```python
+def checkBST(root, i_left=-1, i_right=10001):
+    if root is None: return True
+    if root.data >= i_right or root.data <= i_left: return False
+    res = checkBST(root.left, i_left, root.data)
+    res &= checkBST(root.right, root.data, i_right)
+    return res
+```
+
+### Tree: Huffman Decoding
+
+My solution, note that reading a String + Visiting a tree, the recursive solution could not be the shortest: because you have to pass many variables (at least 2) and one is often unchanged, or changed together so why bother: just reloop + I knwo when it is finished: when the string_in is completely consumed
+
+```python
+def readChar(sub, s):
+    # Finish
+    if sub.data != '\0':
+        return (sub.data, 0)
+
+    # Go deeper, I know s is not null 
+    sub = sub.left if s[0] == '0' else sub.right
+    s_new, i_more = readChar(sub, s[1:])
+    return s_new, i_more + 1
+    
+    
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+def decodeHuff(root, s, p=True):
+    if root is None or len(s) == 0: return ''
+
+    # Get char and res
+    res, i_more = readChar(root, s)
+    res += decodeHuff(root, s[i_more:], p=False)
+
+    # Print is called by the test program
+    if p: print(res)
+    return res
+```
+
+Keep reading
+
+```java
+void decode(String S, Node root)
+{
+    StringBuilder sb = new StringBuilder();
+    Node c = root;
+    for (int i = 0; i < S.length(); i++) {
+        c = S.charAt(i) == '1' ? c.right : c.left;
+        if (c.left == null && c.right == null) {
+            sb.append(c.data);
+            c = root;
+        }
+    }
+    System.out.print(sb);
+}
+```
+
+Or in python, a simple, visiting loop, restoring root when getting a char
+
+```python
+def decodeHuff(root, s):
+    ans=''
+    curr=root
+    for i in range(0,len(s)):
+        if(s[i]=='0'):
+            curr=curr.left
+        else:
+            curr=curr.right
+        if(curr.left== None and curr.right== None):
+            ans=ans+curr.data
+            curr=root
+    print(ans)
+```
+
+Solution from Team
+
+```cpp
+void decode_huff(node * root,string s)
+{
+    string ans="";
+    node *curr=root;
+    for(int i=0;i<s.size();i++){
+        if(s[i]=='0') curr = curr->left;
+        else curr = curr->right;
+        if(!curr->left and !curr->right){ //reached leaf node
+            ans=ans + curr->data;
+            curr=root;
+        }
+    }
+    cout<<ans<<endl;
+}
+```
 
 </section>
