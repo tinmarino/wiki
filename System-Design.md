@@ -24,6 +24,7 @@
 * Database Sharding: Divide the data in different machines according to the mist relevant index => first find the most relvant index (goelic, age, tag). Also known as horizontal partitioning.
 * Client Server Communication Protocol: (ex: HTTP) The client requedt, the server respond. Pb: if slow operation, the client must request every 5s, generate noise
 * Peer to Peer: (ex: XMPP) Every actor is equal, WebSocket (C TCP)
+* Long pooling: repitively send HTTP request for user to check if there is a change in server (i.e. if he received a message)
 
 ## Interview tips
 
@@ -39,6 +40,8 @@
   2. Recommend matches (Tinder)
   3. Notes maches, analytices
   4. Direct messaging (chat)
+  5. Group messages (Wts)
+  6. Sent / Delivered / Read notification (Wts)
 
 
 ## Databases
@@ -57,6 +60,23 @@
   2. Faster
   3. Content Delivery Network: Distributed File System : each file is referenced by an url
 
+* Cache:
+  1. Save networkk call
+  2. Avoid repeated computation
+  3. Reduce Db load
+
+* Cache policies:
+  1. Least Recently Used (queue)
+  2. Least Frecuently Used
+
+* Redis is a global cache, slower but more accurate than in memory cache. Easyer to scale
+
+* Write though cache, first write cache then db
+* Write-back cache, first db then write cache
+
+### Not Only SQL
+
+Advantages are like json Vs comma separated values
 
 ## Monolith Vs microservices
 
