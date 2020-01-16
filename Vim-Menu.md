@@ -19,6 +19,7 @@
 ## Plugin
 
 * [Vim Plugin Jupyter](Vim-Plugin-Jupyter)
+* [Vim Color](Vim-Color)
 
 * [BordelVim](BordelVim)
 * [CheatVim](CheatVim)

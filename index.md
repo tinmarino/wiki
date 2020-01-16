@@ -31,6 +31,7 @@
   * [Paradigm](Paradigm-Programming)
   * [BigData](BigData)
   * [Coding Style](Coding-Style)
+  * [Regex Collection](Regex-Collection)
   * [Algorithm](Algorithm)
   * [System Design](System-Design)
 

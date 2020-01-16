@@ -9,6 +9,7 @@ wiki_pandoc: --toc
 
 ### Tips
 
+* Dynamic programming is like fire propagation. The dp array is keeping the position of the fire
 * `cur = curs.pop(0)` to remove first. Wanring not cur.pop()
 * In loops, you will fail at first try -> print
 * Don't hesitate to comment, especially math
@@ -1308,5 +1309,130 @@ void decode_huff(node * root,string s)
     cout<<ans<<endl;
 }
 ```
+
+
+### Dynamic Programming: Abbreviation
+
+My timeout
+
+```python
+sys.setrecursionlimit(5000)
+@lru_cache(None)
+def abbreviation_wrap(a, b):
+    if len(a) == 0: return len(b) == 0
+    if len(b) == 0: return a.islower()
+
+    if a[0] == b[0]:
+        return abbreviation_wrap(a[1:], b[1:])
+
+    if not a[0].islower():
+        return False
+
+    # Capitalize
+    res = a[0].capitalize() == b[0] and abbreviation_wrap(a[1:], b[1:])
+    res |= abbreviation_wrap(a[1:], b)
+    return res
+```
+
+This works
+
+```python
+def abbreviation(a, b):
+    m, n = len(a), len(b)
+    dp = [[False]*(m+1) for _ in range(n+1)]
+    dp[0][0] = True
+    for i in range(n+1):
+        for j in range(1,m+1):
+            if a[j-1] == b[i-1]:
+                dp[i][j] = dp[i-1][j-1]
+            elif a[j-1].upper() == b[i-1]:
+                dp[i][j] = dp[i-1][j-1] or dp[i][j-1]
+            elif a[j-1].islower():
+                dp[i][j] = dp[i][j-1]   
+    return "YES" if dp[n][m] else "NO"
+```
+
+
+### Dynamic programming: candies
+
+* My first working shot
+
+```python
+def candies(n, arr):
+    if len(arr) < 2: return len(arr)
+    res = [1] * n
+
+    for i in range(len(arr)):
+        # If in valley
+        if ((i <= 0 or arr[i] <= arr[i-1]) 
+                and (i >= len(arr)-1 or arr[i] <= arr[i+1])):
+            print("In valley", i)
+            # up
+            j = i
+            while j < len(arr)-1 and arr[j+1] > arr[j]:
+                res[j+1] = max(res[j+1], res[j] + 1)
+                j += 1
+
+            # down
+            j = i
+            while j > 0 and arr[j-1] > arr[j]:
+                res[j-1] = max(res[j-1], res[j] + 1)
+                j -= 1
+
+    print(res)        
+    return sum(res)
+```
+
+* Mutualize fire up and fire down
+* Remove anti-pattern
+
+```python
+def candies(n, arr):
+    if len(arr) < 2: return len(arr)
+    # Minimum 1 candy for each
+    res = [1] * n
+
+    for i in range(len(arr)):
+        # Do Not work out of  valley
+        in_valley = ((i <= 0 or arr[i] <= arr[i-1]) 
+            and (i >= len(arr)-1 or arr[i] <= arr[i+1]))
+        if not in_valley: continue
+
+        # Fire
+        for sens, bound in ((1, len(arr) - 1), (-1, 0)):
+            for j in range(i, bound, sens):
+                if arr[j+sens] <= arr[j]: break
+                res[j+sens] = max(res[j+sens], res[j] + 1)
+                
+    # Return total number of cadies
+    return sum(res)
+```
+
+* Without dp: burn left then burn right. take advantage of 1 d propagation that is linear
+
+```python
+def candies(n, arr):
+    """naive approach
+    """
+    candies = [1] * len(arr)
+    # left -> right
+    for i in range(len(arr)-1):
+        if arr[i] < arr[i+1]:
+            candies[i+1] = max(candies[i+1], candies[i] + 1)
+    # right -> left
+    for i in reversed(range(1, len(arr))):
+        if arr[i] < arr[i-1]:
+            candies[i-1] = max(candies[i-1], candies[i] + 1)
+    return sum(candies)
+```
+
+Some definitions:
+
+```text
+  /           \         /\
+ /   RISE      \ FALL  /  \  PEAK   \  /   VALLEY
+/               \                    \/
+```
+
 
 </section>
