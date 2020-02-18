@@ -24,6 +24,7 @@
 11. hearld (not bad)
 12. inkpot (brown, white, light pink))
 13. duoduo
+14. kkruby (colorfull)
 
 
 ## Different

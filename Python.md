@@ -1,6 +1,27 @@
 * [Pip](Pip)
 * [Python HackerRank](Python-HackerRank)
 
+# tkinter thread
+https://stackoverflow.com/questions/459083/how-do-you-run-your-own-code-alongside-tkinters-event-loop
+
+## Photo image error in thread (because belongs to process
+splsh_img = tkinter.PhotoImage(file=file,master=wlcm_scrn)
+
+
+def clear_all_cache():
+    # pylint: disable = protected-access
+    import functools
+    import gc
+
+    gc.collect()
+    wrappers = [
+        a for a in gc.get_objects()
+        if isinstance(a, functools._lru_cache_wrapper)]
+
+    for wrapper in wrappers:
+        wrapper.cache_clear()
+
+
 
 # Decorator
 

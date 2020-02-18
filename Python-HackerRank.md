@@ -1435,4 +1435,64 @@ Some definitions:
 ```
 
 
+### Find A Sub-Word (Regex list)
+
+```python
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+import os
+import re
+
+def work(ss, sq):
+    res = []
+    for query in sq:
+        w = r'[0-9a-zA-Z_]+'
+        query = r'\b' + w + query + w + r'\b'
+        print(query, ss, re.findall(query, ss[0]))
+
+        # lambda x: 
+        num = sum(list(map(lambda x: len((re.findall(query, x))),  ss)))
+        res.append(num)
+    return res
+
+
+fptr = open(os.environ['OUTPUT_PATH'], 'w')
+s = int(input().strip())
+strings = []
+for _ in range(s):
+    strings.append(input())
+q = int(input().strip())
+queries = []
+for _ in range(q):
+    queries.append(input())
+
+ans = work(strings, queries)
+
+fptr.write('\n'.join(map(str, ans)))
+fptr.write('\n')
+```
+
+* Minimized
+
+```python
+#!/usr/bin/env python3
+
+import re
+
+n = int(input())
+text = "\n".join(input() for _ in range(n))
+t = int(input())
+for _ in range(t):
+    print(len(re.findall(r'\w%s\w' % input().strip(), text)))
+```
+
+### Regex: Alien Username
+
+```python
+import re
+
+r_user = r'^[_.][0-9]+[a-zA-Z]*_?$'
+n = int(input())
+for _ in range(n):
+    print('VALID' if re.match(r_user, input()) else 'INVALID')
+```
 </section>

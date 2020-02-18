@@ -116,6 +116,8 @@ Et de tous vos défauts les zélés adversaires. (Art po, Chant 1)
 
 * Ce qui est simple est faux, ce qui ne l'est pas est inutilisable. (Paul Valéry)
 
+* A design that doesn’t take change into account risks major redesign in the future (Erich Gamma)
+
 
 # Tinmarino
 
@@ -151,4 +153,4 @@ Ton    Tel  Traite
 
 * Si tu ne t'arrête pas jusqu'au succès, tu succéderas avant de t'arrêter
 
-* Si tu es en quête de sens, commence par donner un sens à ta quétes
+* Si tu es en quête de sens, commence par donner un sens à ta quête

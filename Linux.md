@@ -21,6 +21,7 @@
 
 # Program
 * [Imagemagick](Imagemagick)
+* [Xterm](Xterm)
 
 # Not so used
 * [Accronym](Accronym)

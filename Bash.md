@@ -1,5 +1,6 @@
 % BASH Bourne Again SHell
 
+[Bash HackerRank](Bash-HackerRank)
 [Bash Rc](Bash-Rc)
 
 * `ps -ef | grep 'myProcessName' | grep -v grep | awk '{print $2}' | xargs -r kill -15` : kill all process from name
