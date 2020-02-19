@@ -27,6 +27,7 @@
   * [Pandoc](Pandoc)
   * [Markdown](Markdown)
   * [Dot](Dot)   
+  * [Sql](Sql)
   ### Algorithm
   * [Paradigm](Paradigm-Programming)
   * [BigData](BigData)

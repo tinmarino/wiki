@@ -182,4 +182,20 @@ fi
 ```
 
 
+### Arithmetic Operations
+
+```sh
+printf %.3f $({ echo -n "scale=4; "; cat; } | bc)
+```
+
+```sh
+cat | bc -l | xargs printf "%.3f"
+```
+
+```sh
+read a
+printf "%.3f\n" $(bc -l <<< "$a")
+```
+
+
 ### 
