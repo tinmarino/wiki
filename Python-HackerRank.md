@@ -5,6 +5,7 @@ wiki_css: Css/color_dark_solarized.css, Css/layout_toc.css
 header-includes: <script type="text/javascript" src="Css/js_masonry_desandro.js"></script>
 wiki_pandoc: --toc
 ---
+<section class="level2">
 
 
 ### Tips
@@ -51,6 +52,8 @@ CacheInfo(hits=28, misses=16, maxsize=None, currsize=16)
 print(sys.getrecursionlimit())  # gives me 1000
 sys.setrecursionlimit(3000) 
 ```
+
+</section>
 
 ## Classes tips
 
@@ -1495,4 +1498,6 @@ n = int(input())
 for _ in range(n):
     print('VALID' if re.match(r_user, input()) else 'INVALID')
 ```
+
+
 </section>
