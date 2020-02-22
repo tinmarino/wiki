@@ -1,0 +1,66 @@
+Perl 6 cheat sheet v6 20171128                                       »ö«
+
+```text
+SIGILS    MAJOR/MINOR CONTEXTS         ACCESS ARRAYS      HASHES
+$scalar   item   list       sink       whole: @array[]    %hash{}
+@array     Str    flat/slice         element: @array[0]   %hash{'a'}
+%hash      Num    lazy/eager/hyper/race  (or)             %hash<a>
+&code      Bool                        slice: @array[0,2] %hash{'a','b'}
+                       COMPOSERS         (or)             %hash<a b>
+TWIGILS                [ ] array
+$normal-lexical        { } block/hash     AUTOMATIC DEREFERENCE
+$?compiler-constant    < > quotewords     &($foo)(1,2)     == $foo(1,2)
+$*dynamic-or-global    (,) list           @($foo)[1]       == $foo[1]
+$.public-accessor      :() signature      %($foo){'bar'}   == $foo<bar>
+$!private-attribute    \() capture        @(@($foo)[1])[2] == $foo[1][2]
+$^positional-param
+$:named-parameter       CONTROL SYNTAX
+$=pod-info              for LIST { }                # implicit $_ arg
+$<named-match-capture>  for LIST -> $a, $b { }      # explicit args
+$~slang-variable        while/until EXPR { }
+                        repeat while/until EXPR { } # do at least once
+OPERATOR PRECEDENCE     loop { }   loop (a;b;c) { } # parens required!
+.method .[] i           if EXPR { } elsif EXPR { } else { }    # truthy
+++ --                   with EXPR { } orwith EXPR { } else { } # defined
+**                      given EXPR { when EXPR { } default { } }
+unary + - ~ ! ? ^       EXPR if EXPR for LIST;      # list comprehension
+* / % %% div            next, last, redo            # loop controls
++ -                     proceed, succeed            # switch controls
+x xx       TYPES
+~          Bit Int Rat FatRat UInt Num Complex int8 int32 complex64 etc.
+&               Str Buf Blob Uni NFC NFD NFKC NFKD buf8 buf16 buf32 utf8
+| ^                   IO Mu Any Cool Junction Supply Whatever Slip Empty
+sleep abs sin temp let                            List Capture Signature
+<=> leg cmp .. but          SCOPE DECLARATORS     Pair Range Set Bag Mix
+~~ > == gt eq === eqv !op   my  lexical scope    SetHash BagHash MixHash
+&&                         our  package scope     Scalar Array Hash Code
+|| ^^ // min max           has  instance scope    Enum Bool Order Signal
+??!! ff                   anon  no scope at all        Block Routine Sub
+= := op= =>              state  persistent lexical    Method Regex Match
+so not                 augment  benign parasitic   Nil Failure Exception
+, :                  supersede  deadly parasitic        Instant Duration
+X Xop Z Zop ...                                            Date DateTime
+say die map etc.  OPERATOR DOMAINS
+and               Numeric: ==  !==(!=) + <      >     <=> <=     >=
+or xor            Stringy: eq  !eq(ne) ~ lt     gt    leg le     ge
+<== ==>             Value: eqv  !eqv     before after cmp !after !before
+                 ObjectID: ===  !===
+METAOPERATORS                         LINKS      IRC on irc.freenode.net
+[op] reduce listop to A op B op C...  perl6.org  #perl6 #perl6-dev
+op=  A = A op B                      rakudo.org  #moarvm
+!op  !(A op B)
+»op« hyper/vectorize    REGEX  METACHARS          REGEX MODIFIERS
+Zop  zip with op        ^ $    string begin/end   :i   ignore case
+Xop  cross with op      ^^ $$  line begin/end     :m   ignore marks
+Rop  reverse args       +      one or more        :g   global
+Sop  sequentialize      *      zero or more       :r   ratchet
+                        ?      zero or one        :s   sigspace
+SPECIAL VARIABLES       **1..3 repeat in range    :4th nth occurrence
+$_     current topic    ()     capture to $0,$1   :4x  n times
+$/     regex result     []     no capture
+$!     error object     <foo>  subrule          REGEX CHARCLASSES
+@*ARGS command line     <[]>   character class  .  == anychar, \N non \n
+@*INC  include path     |      parallel or      \s == <space>, \S non
+%*ENV  environment      ||     serial or        \d == <digit>, \D non
+$*PID  process id       « »    word boundary    \w == <+alpha+digit+[_]>
+```
