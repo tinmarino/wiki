@@ -10,6 +10,7 @@
 ## Language
   * [Links](Programming-Links)  
   ### Script
+  * [Raku](Raku)
   * [Perl](Perl)
   * [Ruby](Ruby)
   * [Python](Python)
