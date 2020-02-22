@@ -411,9 +411,362 @@ cut -c0-4
 
 cut -f1-3 -d$'\t'  # Tab delimiter
 cut -f1-3 -s  # Not containg delimiter
-
-
+cut -c13-
+cut -f4 -d" "
+cut -f1-3 -d" "
+cut -f2-
 ```
+
+
+### Head
+
+```sh
+head -n 20  # Line
+head -c 20  # Character
+```
+
+
+### Middle
+
+```sh
+sed -n '12,22p'
+```
+
+```sh
+head -n 22 | tail -n +12
+cut -d$'\n' -f12-22
+```
+
+* Problem tester:
+
+```sh
+head -22 | tail -11
+```
+
+
+### Tail
+
+```sh
+tail -n 20
+tail -c 20
+```
+
+
+### Tr
+
+```sh
+tr '()' '[]'
+tr -d [a-z]
+```
+
+```sh
+sed "s/  */ /g"
+tr -s  ' ' ' '  # S for squeezze
+tr -s " "
+```
+
+
+### Sort
+
+* The vanilla sort command simply sorts the lines of the input file in lexicographical order.
+* The `-n` option sorts the file on the basis of the numeric fields available if the first word or column in the file is a number.
+* The `-r` option reverses the sorting order to either the reverse of the usual lexicographical ordering or descending order while sorting in numerical mode.
+* The `-k` option is useful while sorting a table of data (tsv, csv etc.) based on a specified column (or columns).
+* The `-t` option is used while specifying a delimiter in a particular file where columns are separated by tabs, spaces, pipes etc.
+
+```sh
+sort
+sort -r
+sort -n
+sort -rn
+sort -t$'\t' -nr -k2
+sort -r -n -k2 -t $'\t'  # Same
+sort -n -t $'\t' -k 2
+sort -nr -t '|' -k 2
+```
+
+
+### Uniq
+
+* `-c` count: prefix with the number of lines collaspsed
+* `-d` duplicate: only print duplicate lines
+* `-u` uniqque: only print unique lines
+* `-w` word: Limit comparison only to the first characters
+* `-s` paSS: Avoid comparing the first characters
+* `-i` ignore case: Ignore variations in case between lines
+* `-f` field: Avoid comparing the first fields
+
+```sh
+uniq
+uniq -c | cut -c7-
+uniq -c | tr -s " " | cut -b 2-  # Same
+uniq -ci | tr -s " " | cut -b 2-
+uniq -u
+```
+
+
+### Paste
+
+* `-s` serial
+* `-d";"` delimiter separated by ;
+
+```sh
+tr '\n' ';' | head -c -1
+paste -s -d";"
+```
+
+```sh
+paste -d ";" - - -
+paste -sd ';;\n'
+```
+
+```sh
+paste -s
+```
+
+```sh
+paste - - -
+```
+
+
+</section>
+## Array
+<section class="level2">
+
+
+### Read in an Array
+
+```sh
+arr=($(cat)); echo ${arr[@]}
+```
+
+### Slice an Array
+
+* `${A[@]:3:5}`: From 3 (0 indexed) with 5 elements
+
+```sh
+readarray -t A
+B=("${A[@]:3:5}")
+echo "${B[*]}"
+```
+
+```sh
+arr=($(cat))
+echo ${arr[@]:3:5}
+```
+
+```sh
+head -8 | tail -5 | paste -s -d' '
+```
+
+
+### Filter an Array with Patterns
+
+```sh
+arr=($(cat))
+echo ${arr[@]/*[Aa]*/}
+```
+
+```sh
+grep -vi a
+```
+
+
+### Concatenate an array with itself
+
+```sh
+arr=($(cat))
+echo "${arr[@]} ${arr[@]} ${arr[@]}"
+```
+
+```sh
+X=$(xargs)
+echo $X $X $X
+```
+
+```sh
+X=$(paste -d' ')
+echo $X $X $X
+```
+
+```sh
+tr `$'\n' ' ' | awk '{print $`0 `$0 $`0}'
+```
+
+```sh
+IFS=$'\n' read -d '' -ra countries
+echo "${countries[@]}" "${countries[@]}" "${countries[@]}"
+```
+
+
+### Display an element of an array
+
+```sh
+arr=($(cat))
+echo ${arr[3]}
+```
+
+```sh
+awk 'NR==4'
+```
+
+
+### Count the number of elements in an Array
+
+```sh
+arr=($(cat))
+echo ${#arr[*]}
+```
+
+
+### Remove the First Capital Letter from Each Element
+
+
+```sh
+arr=($(cat))
+echo ${arr[@]/?/.}
+```
+
+
+### Lonely Integer - Bash!
+
+```sh
+read n
+tr " " "\n" | sort | uniq -u
+```
+
+```sh
+read
+arr=($(cat))
+arr=${arr[*]}  # render a new variable of type string from the merging of the array arr delimited by space, i.e., from [1,2,2,2,1] to "1 2 2 2 1"
+echo $((${arr// /^}))  # replaces all spaces ' ' in the string variable with ^ (bitwise-XOR operator),
+```
+
+```sh
+read
+echo $(( `tr ' ' '^'` ))
+```
+
+```sh
+# read the input values
+read n
+read -a A
+#echo -e "The size of the array is '${#A[*]}', and the array is:\n${A[*]}"
+x=${A[0]}
+#echo "A[0] = ${A[0]}, x = $x"
+for (( i = 1; i < ${#A[*]}; i++ )); do
+#for (( i = 1; i < n; i++ )); do
+    $((x ^= ${A[i]} ))
+    #x=$((x ^ ${A[i]} ))
+    #echo "A[$i] = ${A[i]}, x = $x"
+    
+done
+echo $x
+```
+
+
+</section>
+## Grep / Sed / Awk
+<section class="level2">
+
+
+### Grep
+
+* Note: escape `|` `()`
+
+```sh
+grep " the "
+grep '\bthe\b'
+grep -w 'the'
+```
+
+```sh
+grep -viw that
+grep -iw 'the\|that\|then\|those'
+grep '\(\d\)\s*\1'
+```
+
+
+### Sed
+
+```sh
+sed 's/\bthe\b/this/'
+sed -e 's/\<the\>/this/'
+sed 's/\<thy\>/your/gi'
+sed 's/\<thy\>/{\0}/gi'
+```
+
+```sh
+sed 's/\d\d\d\d \d\d\d\d \d\d\d\d/**** **** ****/'
+sed 's/[0-9]\+ /**** /g'
+sed -e 's/([0-9]){4} /**** /g'
+sed -r 's/[0-9]{4} /**** /g'
+# Reverse each line
+# Used sed to replace digits with *, starting with the 5th digit
+# Reverse each line again
+rev | sed 's/[0-9]/*/g5' | rev
+```
+
+```sh
+sed -E 's/(\d{4}) (\d{4}) (\d{4}) (\d{4})/\4 \3 \2 \1/'
+awk '{print $4" "$3" "$2" "$1}'
+sed -r 's/(.... )(.... )(.... )(....)/\4 \3\2\1/'
+```
+
+
+### Awk
+
+* `NF` Number of Fields
+
+```sh
+awk '{if ($4 == "") print "Not all scores are available for",$1;}'
+awk '{if(NF < 4) print "Not all scores are available for",$1;}'
+awk '{if (NF < 4){print "Not all scores are available for "$1}}'  # Removed coma
+awk '$4=="" {print "Not all scores are available for " $1} '
+```
+
+```sh
+awk '{printf $1" : "; if ($2+$3+$4 >= 150) {print "Pass"} else {print "Fail"}}'  # Wrong but I got lucky
+awk '{print $1,":", ($2<50||$3<50||$4<50) ? "Fail" : "Pass"}'
+```
+
+```sh
+awk '{
+    printf $0" : ";
+    sum=$2+$3+$4;
+    if (sum >= 240) {print "A"}
+    else if (sum >= 180) {print "B"}
+    else if (sum >= 150) {print "C"}
+    else {print "FAIL"}
+    }'
+awk '{avg=($2+$3+$4)/3; print $0, ":", (avg<50)?"FAIL":(avg<80)?"B":"A"}'
+```
+
+* Concatenate each 2 lines
+
+```sh
+paste -d";" - -
+awk 'ORS=NR%2?";":"\n"'
+awk 'NR%2{printf$0";"}1-NR%2'
+awk '{
+    if ( NR % 2 == 1 )
+        printf "%s;", $0
+    else
+        printf "%s\n", $0  
+}'
+```
+
+#### Awk tricks
+
+```sh
+awk '/^num/ {n++;sum+=$2} END {print n?sum/n:0}' file
+```
+
+
+
+
+
+
 
 
 </section>
