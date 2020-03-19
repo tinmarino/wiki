@@ -1,13 +1,4 @@
 * [Perldoc](Perl-Perldoc)
-* [One_Liners](Perl-One_Liners)
-* [Perl Programming Note](Perl-Programming-Note)
-* [Japh](Perl-Japh) : Just Another Perl Hacker
-
-# Old
-* [If & For & Sub = Structures](Perl-Structure)
-* [List & Hash = Arrays](Perl-Array)
-* [/ = Regexp (Downloaded)](Perl-Regexp-Downloaded)
-* [Tutorial France Anger](Perl-Tuto-France)
 * [Cheatsheet_one_page](Perl-Cheatsheet_one_page)
 * [Perl One_Liners_old](Perl-One_Liners_old)
 * [Perl Snippet](Perl-Snippet)
