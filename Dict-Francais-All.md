@@ -251119,7 +251119,7 @@ puiseraient
 puiserais
 puiserait
 puiseras
-puisèrent
+[puisèrent](puisèrent)
 puiserez
 puiseriez
 puiserions

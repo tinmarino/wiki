@@ -17,6 +17,7 @@ say 'abc' ~~ / <(a <( b )> c)>/;        # OUTPUT: «｢bc｣␤»
 * `a*!` Greedy (default `a*`)
 * `a*?` Frugal (alias: minimal or non-greedy)
 * `a*:` Ratchet (alias: non-backtracking)
+* `a ** 1..10` Numbered quantifier
 
 ### | Vs ||
 
