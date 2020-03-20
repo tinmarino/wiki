@@ -36,6 +36,7 @@
   * [Regex Collection](Regex-Collection)
   * [Algorithm](Algorithm)
   * [System Design](System-Design)
+  * [Design Pattern](Design-Pattern)
 
 
 ## Program
