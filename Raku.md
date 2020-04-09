@@ -5,6 +5,7 @@
 * [Raky Style](Raky-Style)
 * [Raku Guide](Raku-Guide)
 * [Raku Y Minute](Raku-Y-Minute)
+* [Raku_Mem](Raku_Mem)
 
 
 
@@ -13,11 +14,35 @@
 my $1 := my $b = 2;
 ```
 
-
 * Enable not defining variables
 ```raku
 no strict;
 ```
+
+* Number base
+```raku
+my $b = :2<11110000>;  # -> 240   ## A binary (base 2) number
+my $a = :16<FF>;       # -> 255   ## A hexadecimal (base 16) number
+my $b = :2("11110000");  # -> 240   ## A binary (base 2) number
+```
+
+### Instrospection
+
+```raku
+for "azea".HOW.^attributes { .name.say }
+```
+
+###  Dispatch 
+
+
+* Link: https://perl6.party/post/Perl6-But-Heres-My-Dispatch-So-Callwith-Maybe
+
+call____ — call next matching candidate in the chain and come back here
+next____ — just go to next matching candidate in the chain and don't come back
+____same — use the same arguments as were used for current candidate
+____with — make the operation with these new arguments provided
+samewith — make the same call from scratch, following a new dispatch chain, with these new arguments, and come back
+
 
 ### Async
 

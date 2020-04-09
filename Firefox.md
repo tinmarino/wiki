@@ -1,10 +1,12 @@
 # Firefox
 
-### Inspector
+## Inspector
 
 * Css: see `:hover` and `:active`:  Click on the element inside the element inspector. Move your mouse over the element, press the up arrow key and then the down arrow key. You'll see the hover properties.
 
-## [Shortcuts](https://support.mozilla.org/en-US/kb/keyboard-shortcuts-perform-firefox-tasks-quickly)
+## Shortcuts
+
+* Duplicate tab: ctrl and click on reload
 
 This is a list of keyboard shortcuts in Mozilla Firefox. If you have enabled
 Emacs-style text editing shortcuts in GNOME, they will also work in Firefox.
@@ -13,7 +15,8 @@ occurs with Ctrl+K), the Emacs shortcut will take precedence if focus is inside
 a text box (which would include the location bar and search bar). In such cases
 you should use the alternate keyboard shortcut if one is listed below.
 
-for page inspector go [there](https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/Keyboard_shortcuts)
+* [link](https://support.mozilla.org/en-US/kb/keyboard-shortcuts-perform-firefox-tasks-quickly)
+* for page inspector go [there](https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/Keyboard_shortcuts)
 
 
 

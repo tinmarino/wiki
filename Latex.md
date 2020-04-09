@@ -1,3 +1,10 @@
+### Crossword
+
+* Change page color
+%\usepackage{xcolor}                         % pagecolor
+%\pagecolor{yellow!30}
+
+
 ### Charcode
 
 \makeatletter : transform @ as a letter so it can be ised in a macro name. so not use it in .sty or .cls class

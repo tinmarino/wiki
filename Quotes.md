@@ -10,7 +10,7 @@
 
 * Plans get you into things but you've got to work your way out (Will Rogers)
 
-* It is better to be wrong than  to be vague (Freeman Dyson)
+* It is better to be wrong than to be vague (Freeman Dyson)
 
 * Think like a man of action, act like a man of thought (Henri Bergson)
 
@@ -70,15 +70,16 @@
 
 * Méfie toi de la rivière qui est trop calme
 
-* The competent programmer is fully aware of the strictly limited size of his own skull	(Dijkstra, the humble programmer)
+* The competent programmer is fully aware of the strictly limited size of his own skull(Dijkstra, the humble programmer)
 
 *	It's hard enough to start a revolution, even harder to sustain it and hardest of all to win it. But it's only afterward, once we've won, that the real difficulties begins. 
 
-*	Doubtless this is somewhat interesting to someone somewhere, but we'll restrain ourselves from talking about them somehow (Perl book timotee)
+*	Doubtless this is somewhat interesting to someone somewhere, but we'll restrain ourselves from talking about them somehow (TimToady)
 
 * Wizards had always known that the act of observation changed the thing that was observed, and sometimes forgot that it also changed the observer too. (Terry Pratchett  -  Interesting times)
 
 * On ne discute pas avec une brouette on la pousse (Pierre de Villiers)
+
 
 # Boileau
 
@@ -93,7 +94,6 @@ Et de tous vos défauts les zélés adversaires. (Art po, Chant 1)
 * Un sot trouve toujours un plus sot qui l'admire.
 
 
-
 # Abbé Pierre
 
 * Il ne faut pas attendre d'être parfait pour commencer quelque chose de bien. (Abbé Pierre) 
@@ -106,6 +106,7 @@ Et de tous vos défauts les zélés adversaires. (Art po, Chant 1)
 
 * L'espérance, c'est de croire que la vie a un sens. (Abbé Pierre)
 	
+
 # Informatique
 
 * Dans le doute, reboot. Si tu te tates, formates
