@@ -7,7 +7,11 @@
 * [Raku Y Minute](Raku-Y-Minute)
 * [Raku_Mem](Raku_Mem)
 
-
+* Show index while looping (enumerate)
+```raku
+my @aa = 8 .. 12;
+for @aa.kv -> $i, $_ { say "$i: $_" }
+```
 
 * Tie variables
 ```raku
