@@ -27,9 +27,7 @@
 
 # Harmonica
 
-* [Harmonica1](Harmonica1)
-* [Harmonica2](Harmonica2)
-* [Harmonica3](Harmonica3)
+* [Harmonica](Harmonica)
 
 # Draw
 

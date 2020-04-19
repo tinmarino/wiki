@@ -34,7 +34,12 @@ my $b = :2("11110000");  # -> 240   ## A binary (base 2) number
 
 ```raku
 for "azea".HOW.^attributes { .name.say }
+
+# Candidates
+say .signature for @arr.^method_table{'AT-POS'}.candidates;
 ```
+
+* `FALLBACK` is called for methods with unknown name
 
 ###  Dispatch 
 
