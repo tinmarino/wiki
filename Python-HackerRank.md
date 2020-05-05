@@ -5,6 +5,49 @@ wiki_css: Css/color_dark_solarized.css, Css/layout_toc.css
 header-includes: <script type="text/javascript" src="Css/js_masonry_desandro.js"></script>
 wiki_pandoc: --toc
 ---
+
+# Contents
+
+    - [Tips](#Tips)
+      - [Memoize function return value (cache)](#Tips#Memoize function return value (cache))
+      - [Increase recursion depth](#Tips#Increase recursion depth)
+  - [Classes tips](#Classes tips)
+    - [String](#Classes tips#String)
+    - [List](#Classes tips#List)
+    - [Dictionary](#Classes tips#Dictionary)
+    - [Golf](#Classes tips#Golf)
+    - [StdIn / StdOut](#Classes tips#StdIn / StdOut)
+    - [Sorting](#Classes tips#Sorting)
+    - [Idioms](#Classes tips#Idioms)
+  - [Some HackerRank solutions](#Some HackerRank solutions)
+    - [Rotate left list](#Some HackerRank solutions#Rotate left list)
+    - [Count triplet](#Some HackerRank solutions#Count triplet)
+    - [Solution: Reverse Shuffle Merge](#Some HackerRank solutions#Solution: Reverse Shuffle Merge)
+    - [Fraudulent Activity Notifications](#Some HackerRank solutions#Fraudulent Activity Notifications)
+    - [Sherlock and Anagrams](#Some HackerRank solutions#Sherlock and Anagrams)
+    - [String: Sub count](#Some HackerRank solutions#String: Sub count)
+      - [1 My solution with too many if](#Some HackerRank solutions#String: Sub count#1 My solution with too many if)
+      - [2 Can be replaced with regex !!](#Some HackerRank solutions#String: Sub count#2 Can be replaced with regex !!)
+      - [3 Can mutualize some if](#Some HackerRank solutions#String: Sub count#3 Can mutualize some if)
+    - [String: Longest Common substring problem](#Some HackerRank solutions#String: Longest Common substring problem)
+    - [Tree: Swap Node](#Some HackerRank solutions#Tree: Swap Node)
+    - [Array : max sum in subarray (Max Array Sum)](#Some HackerRank solutions#Array : max sum in subarray (Max Array Sum))
+    - [Pairs (of equal difference)](#Some HackerRank solutions#Pairs (of equal difference))
+    - [Triple sum (find unique)](#Some HackerRank solutions#Triple sum (find unique))
+    - [Minimum Time Required](#Some HackerRank solutions#Minimum Time Required)
+    - [Balanced parenthesis (Stack of course)](#Some HackerRank solutions#Balanced parenthesis (Stack of course))
+    - [Maze: Castle on the Grid](#Some HackerRank solutions#Maze: Castle on the Grid)
+    - [Array Largest rectangle](#Some HackerRank solutions#Array Largest rectangle)
+    - [Recursion: Davis' Staircase](#Some HackerRank solutions#Recursion: Davis' Staircase)
+    - [Binary Tree: Height](#Some HackerRank solutions#Binary Tree: Height)
+    - [Binary Tree: Lowest Common Ancestor](#Some HackerRank solutions#Binary Tree: Lowest Common Ancestor)
+    - [Trees: Is This a Binary Search Tree?](#Some HackerRank solutions#Trees: Is This a Binary Search Tree?)
+    - [Tree: Huffman Decoding](#Some HackerRank solutions#Tree: Huffman Decoding)
+    - [Dynamic Programming: Abbreviation](#Some HackerRank solutions#Dynamic Programming: Abbreviation)
+    - [Dynamic programming: candies](#Some HackerRank solutions#Dynamic programming: candies)
+    - [Find A Sub-Word (Regex list)](#Some HackerRank solutions#Find A Sub-Word (Regex list))
+    - [Regex: Alien Username](#Some HackerRank solutions#Regex: Alien Username)
+
 <section class="level2">
 
 
@@ -366,7 +409,7 @@ gives you an index (i) used to remove the last income
 
 --------
 
-1. del
+3. del
 
 This is the slow version O(n): The end of the list must be copied. Here we are lucky, please explain to me !! This also work: `l_sorted.remove(index)`
 
@@ -829,29 +872,13 @@ def isBalanced(s):
     stack = []
     closer = {'{': '}', '[': ']', '(': ')'}
     for bracket in s:
-        if bracket in {'}',']',')'}:
-            if not stack or closer[stack.pop()] != bracket:
-                return "NO"
-        else:
-            stack.append(bracket)
-    return "NO" if stack else "YES"
-```
-
-* My imporvement removing duplication of '{' definition
-
-```python
-def isBalanced(s):
-    stack = []
-    closer = {'{': '}', '[': ']', '(': ')'}
-    for bracket in s:
         if bracket in closer:
             stack.append(bracket)
             continue
         if not stack or closer[stack.pop()] != bracket:
-                return "NO"
+            return "NO"
     return "NO" if stack else "YES"
 ```
-
 
 
 ### Maze: Castle on the Grid

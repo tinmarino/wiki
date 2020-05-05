@@ -60,7 +60,127 @@
 *   [Mistral gagnant](#mistral-gagnant)
 *   [Je vais taimer ](#je-vais-taimer) 
 
-### Wind  of change
+### Jimmy Fontana: Il mondo
+
+```text
+No
+Stanotte amore non ho più pensato a te
+Ho aperto gli occhi per guardare intorno a me
+E intorno a me
+Girava il mondo come sempre
+
+Gira, il mondo gira
+Nello spazio senza fine
+Con gli amori appena nati
+Con gli amori già finiti
+Con la gioia e col dolore
+Della gente come me
+
+5__-4 5 3
+Un mondo
+3 -5 5   5 -4   -4 4 4 2^^
+Soltanto adesso, io ti guardo
+Nel tuo silenzio io mi perdo
+E sono niente accanto a te
+
+Il mondo
+Non si è fermato mai un momento
+La notte insegue sempre il giorno
+Ed il giorno verrà
+Oh mondo
+
+Il mondo
+Non si è fermato mai un momento
+La notte insegue sempre il giorno
+Ed il giorno verrà
+Verrà
+Verrà
+```
+
+### Jimmy fontana: Che sara
+
+```text
+5 5 5 5   5   -4    4 5  -4 4 4 
+Paese mio che stai sulla collina
+7  7  7  7  7   -7 -7     -7 -6 6 -5 5
+Disteso come'un vecchio addormentato
+7  7 7   7  7  -7 -7
+La noia l'abbandono ..
+-6 -6  6   6  6 6 6 -5  5
+Niente son la tua malattia
+5 5 5  5  5  -4 -4  5 -4 4
+Paese mio ti lascio vado via
+5 -4 4   4 4 4    4 5 6 (-5 5)
+Che sarà che sarà che sarà
+-6  -7 7 7  7  7   7 7  -7  -6 6 -5 5  
+Che sarà della mia vita chi lo sa
+-6 -7  7  7    7  7  6   6
+So far tutto'o forse niente
+-7 -6 6 6  6 -5 5  
+Da domani si vedrà
+5 5 -4  -4 5 -5 -5   5   -4 4 
+E sarà  e  sarà quel che sarà
+
+Amore mio ti bacio sulla bocca
+Che fu la fonte del mio primo amore
+Ti do l'appuntamento
+Come e quando non lo so
+Ma so soltanto che ritornerò
+Che sarà che sarà che sarà
+Che sarà della mia vita chi lo sa
+Con me porto la chitarra
+E se la notte piangerò
+Una nenia di paese suonerò
+
+Gli amici miei son quasi tutti via
+E gli altri partiranno dopo me
+Peccato perché stavo bene in loro compagnia
+Ma tutto passa tutto se ne va
+Che sarà che sarà che sarà
+Che sarà della mia vita chi lo sa
+So far tutto o forse niente
+Da domani si vedrà
+E sarà sarà quel che sarà
+Che sarà che sarà che sarà
+Che sarà della mia vita chi lo sa
+So far tutto o forse niente
+Da domani si vedrà
+E sarà sarà quel che sarà
+Che sarà sarà
+```
+
+
+### Renaud: Pierrot
+
+```text
+5    5   5  5    5  -5
+T'es pas né dans la rue
+-5   -5 -5  6   -6     5
+T'es pas né dans l'ruisseau
+5    5   5  5    5  -5
+T'es pas un enfant perdu
+-5   -5 -5  6   -6     5
+Pas un enfant de salaud,
+5  5        5 5    5  -6
+Vu qu't'es né dans ma tête
+-6 -6    -6  6    -5 5
+Et qu'tu vis dans ma peau
+5  5        5 5    5  -6
+J'ai construit ta planète
+-6 -6   -6 -7  7  [7](-7)
+Au fond de mon cerveau
+
+5   -7   7   -6     -6  -6  -6   -7  7  -8
+Pierrot, mon gosse, mon frangin, mon poteau
+
+-8  -8 -8  7  -7      6
+Mon copain tu m'tiens chaud
+6  5
+Pierrot
+```
+
+
+### Wind of change
 
 ```text
 -6 -7 7 -6 -7 7 -8 7
@@ -170,12 +290,12 @@ In the wind of change
 	That saved a wrentch like me
 	8  9      8  -8 7 8    -8  7   -6         6
 	I once was      lost but now I'm found
-	 6  7          8-8 7 8  -8       7
+	 6  7  8 -8 7 8  -8       7
 	was blind, but    now I see
 ```
 
 												  
-### SO LONG MARIANN 
+### Cohen: So long mariann 
 
 ```text
   4    4 4  4 4  4   5   6    6  6   6   -5  5 -4 -4
@@ -1362,14 +1482,12 @@ Les fruits sucrés de la liberté
 -8  8   -9  8
 -8  7   -7  -6
 
-
 -6  8   7,  -6  8   7,  -6  8   8
 8   -9  -9  -9  -8  8   -9  8
 
 7   -7  -7  -7  -7
 -7  7   7   7   7
 7   7   -7  7   -8  7   -8  8
-
 
 8   7   -7  -6  8
 7   -7  -6  8
@@ -1381,8 +1499,7 @@ Les fruits sucrés de la liberté
 ```
 
 
-                                               
-### LES COPAINS D'ABORD 
+### Les copains d'abord 
 
 ```text
 -5  6   -6' -6      6   -5  6   -6
@@ -2544,10 +2661,10 @@ Noth-ing's gon-na change my world.
 
 ### Nowhere Man
                                                       
+```text
 6    6  7  -7   -6    6   -5  -5  -6  -6
 He's a real No-where Man, Sit-ting in his
 
-```text
 6   -5    5    -4  -4  -5  -5  5   -4    4
 No-where Land, Mak-ing all his no-where plans
 
@@ -3071,8 +3188,6 @@ And don't you come back no more
 ### Auvergnat
 
 ```text
- 	
-
 -5   -5 +6 -6  -5  +5< -5  +6
 Elle est à toi cet-te chan-son
 +5<  +5< -5   +6   -6 -5   +6 -6
@@ -3172,7 +3287,7 @@ En suivant mon chemin de petit bonhomme.
 	
 ```
 
-### Mistral gagnant
+### Renaud: Mistral gagnant
 
 ```text
  	

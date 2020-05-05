@@ -21,17 +21,17 @@
   * Embedded software
   * Web Applications
   * Artificial Intelligence software
-  * Scientific software.
+  * Scientific software
 
 * Describe the software development process in brief: 
-  * Requirement analysis
-  * Specification
-  * Software architecture
-  * Implementation
-  * Testing
-  * Documentation
-  * Training and support
-  * Maintenance
+  1. Requirement analysis
+  2. Specification
+  3. Software architecture
+  4. Implementation
+  5. Testing
+  6. Documentation
+  7. Training and support
+  8. Maintenance
 
 * How do you organize CSS files?
   * reset.css: reset and normalization styles; minimal color, border, or font-related declarations
@@ -44,16 +44,16 @@
   * accordion.css: styles for accordion components.”
 
 * What are some ways to make websites faster?
-  * Implement your own content delivery network (CDN). 
-  * Use adaptive images. 
-  * Cache, cache, cache.
-  * Evaluate your plugins.
-  * Combine images into CSS sprites. 
-  * Enable HTTP keep-alive response headers.
-  * Compress your content. 
-  * Configure expires headers. 
-  * Minify JavaScript and CSS. 
-  * Review your hosting package.
+  * Implement your own content delivery network (CDN)
+  * Use adaptive images
+  * Cache, cache, cache
+  * Evaluate your plugins
+  * Combine images into CSS sprites
+  * Enable HTTP keep-alive response headers
+  * Compress your content
+  * Configure expires headers
+  * Minify JavaScript and CSS
+  * Review your hosting package
 
 ## Python
 
@@ -74,3 +74,16 @@
 * [::-1]: is used to reverse the order of an array or a sequence.
 * Help() function: The help() function is used to display the documentation string and also facilitates you to see the help related to modules, keywords, attributes, etc.
 * Dir() function: The dir() function is used to display the defined symbols.
+* PUSH: append, extend and insert
+* POP: pop, remove
+* Encapsulation means binding the code and the data together
+* object(): returns a featureless object that is a base for all classes
+* How to get indices of N maximum values in a NumPy array?
+
+```python
+import numpy as np
+arr = np.array([1, 3, 2, 4, 5])
+print(arr.argsort()[-3:][::-1])
+```
+
+* 
