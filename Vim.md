@@ -30,6 +30,10 @@ iM          Select inner func. or method. Ex: viM, diM, yiM, ciM (normal, operat
 ==========  ============================
 ```
 
+## Sudo
+
+* `sudo -E vim README.txt`
+* `sudoedit`
 
 
 ## Snippet

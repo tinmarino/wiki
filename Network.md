@@ -1,4 +1,3 @@
-
 # Protocol layers
 
 1. Physical : cable

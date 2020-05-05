@@ -16,8 +16,8 @@ wiki_pandoc: --toc
 * Don't hesitate to comment, especially math
 * Represent the case of array and not the bound : arr[0] is first case not first frontier
 * `UNIQUE` <- grep this keyword, then pre-uniquify anything: can fasten a lot combinatory
-* `42.2 // 2` <- `int(42.2/2)` or `math.floor(42.2/2)` but the result is float
-* Do not dickotomize by hand !!! Use bisect
+* `42.2 // 2` -> `int(42.2/2)` or `math.floor(42.2/2)` but the result is float
+* Do not dickotomize by hand: use bisect
 * Use differential or integral of an array can sometime helps
   * differential can be used to work on range input
   * integral can be used to find the max of subarray % some_integer, there they are called array prefix and sum(arr[i..j]) = prefix(j) - prefix(i) which can be sorted
@@ -1232,7 +1232,7 @@ def checkBST(root, i_left=-1, i_right=10001):
 
 ### Tree: Huffman Decoding
 
-My solution, note that reading a String + Visiting a tree, the recursive solution could not be the shortest: because you have to pass many variables (at least 2) and one is often unchanged, or changed together so why bother: just reloop + I knwo when it is finished: when the string_in is completely consumed
+My solution, note that reading a String + Visiting a tree, the recursive solution could not be the shortest: because you have to pass many variables (at least 2) and one is often unchanged, or changed together so why bother: just reloop + I know when it is finished: when the string_in is completely consumed
 
 ```python
 def readChar(sub, s):

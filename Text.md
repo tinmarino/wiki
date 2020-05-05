@@ -19,6 +19,7 @@
 
 # Théologie
 
+* [Regles Expeditionnaire](Regles-Expeditionnaire)
 * [Principle_of_war](Principle_of_war)
 * [TaoTeKing](TaoTeKing)
 * [Hymne Algerien](Hymne-Algerien)

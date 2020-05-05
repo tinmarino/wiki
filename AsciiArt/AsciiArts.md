@@ -48,4 +48,3 @@
 * [AsciiScarecrowArchive](AsciiScarecrowArchive)
 * [AsciiScarecrowBestBBS](AsciiScarecrowBestBBS)
 * [[AsciiScarecrowArtGallery](AsciiScarecrowArtGallery)
-

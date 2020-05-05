@@ -1,3 +1,5 @@
+* La intolerancia determina fronteras (Michael Byrne Ibarra)
+
 * Là où croit le peril, croit aussi ce qui sauve (Holderlin)
 
 * If you're going through hell, keep going (Winston Churchill)

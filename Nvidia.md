@@ -1,4 +1,4 @@
-GUI : NVIDIA X server settings
+# GUI : NVIDIA X server settings
 
 * `nvidia-smi` : system management interface
 * `nvidia-smi --query-gpu=driver_version --format=csv,noheader`
@@ -12,8 +12,11 @@ GUI : NVIDIA X server settings
 * `cat /proc/driver/nvidia/gpus/0/info`
 * `cat /proc/cpuinfo`
 
+# Install
 
-
+* `sudo lshw -c display`: Check
+* `sudo ubuntu-drivers devices`: See if ubuntu can help
+* `sudo ubuntu-drivers autoinstall` if seems good
 
 # Important files
 
@@ -21,11 +24,10 @@ GUI : NVIDIA X server settings
 * `/usr/share/X11/xorg.conf.d`
 * `/etc/modules`  # modules à charger au démarage
 
+
 # Ubuntu
 
 * `gpu-manager`
-* 
-
 
 
 # Log files

@@ -1,5 +1,6 @@
 % Harmonica
 
+*   Wind of change
 *   [AMAZING GRACE](#amazing-grace)  
 *   [SO LONG MARIANN](#so-long-mariann)  
 *   [SUZANNE](#suzanne)  
@@ -59,6 +60,106 @@
 *   [Mistral gagnant](#mistral-gagnant)
 *   [Je vais taimer ](#je-vais-taimer) 
 
+### Wind  of change
+
+```text
+-6 -7 7 -6 -7 7 -8 7
+-6 -7 7 -6 -7 7 -8 7
+7 -8 8 7 -8 6 7 -7
+
+4 -4 5 4 -4 
+I follow the Moskva 
+-4 5 -5 6 5 
+Down to Gorky Park 
+4 -5 5 -4 5 -4 3 4 -3 
+Listening to the wind of change 
+4 -4 5 4 -4 
+An August summer night 
+-4 5 -5 6 5 
+Soldiers passing by 
+4 -5 5 -4 5 -4 3 4 -3 
+Listening to the wind of change 
+
+-6 -7 7 -6 -7 7 -8 7
+-6 -7 7 -6 -7 7 -8 7
+7 -8 8 7 -8 6 7 -7
+
+4 -4 5 4 -4 
+The world is closing in 
+-4 5 -5 6 5 
+And did you ever think 
+4 -5 5 -4 5 -4 3 4 -3 
+That we could be so close, like brothers 
+4 -4 5 4 -4 
+The future's in the air 
+-4 5 -5 6 5 
+I can feel it everywhere 
+4 -5 5 -4 5 -4 3 4 -3 
+And Blowing with the wind of change 
+
+5 -4 -4 5 -5 -5 -5 -5 6 -5  
+Take me to the magic of the moment 
+5 -4 5 -4 -4
+On a glory night 
+-4 5 -5 -5 -5 -5 6 -5 5 -4  5 
+Where the children of tomorrow dream away 
+4 4 -5 5 -4
+In the wind of change 
+
+4 -4 5 4 -4 
+Walking down the street 
+-4 5 -5 6 5 
+Distant memories 
+4 -5 5 -4 5 -4 3 4 -3 
+Are buried in the past forever
+4 -4 5 4 -4 
+I follow the Moskva 
+-4 5 -5 6 5 
+Down to Gorky Park 
+4 -5 5 -4 5 -4 3 4 -3 
+Listening to the wind of change
+
+5 -4 -4 5 -5 -5 -5 -5 6 -5  
+Take me to the magic of the moment 
+5 -4 5 -4 -4
+On a glory night 
+-4 5 -5 -5 -5 -5 6 -5 5 -4  5 
+Where the children of tomorrow dream away
+4 4 -5 5 -4
+In the wind of change
+7 7 -7
+(Wind of change)
+
+3 3 3 4 -4 -3
+The wind of change blows straight 
+-3 -3 -3 4 -3 3
+Into the face of time 
+3 3 3 3 -3 -4 -3
+Like a stormwind that will ring 
+-3 -3 -3 -3 4 -4 5
+The freedom bell for peace of mind 
+5 5 4 4 -5 5 -4
+Let your balalaika sing 
+-4 -4 5 -5 -5 5 -4 5
+What my guitar wants to say
+
+[Solo]
+
+5 -4 -4 5 -5 -5 -5 -5 6 -5  
+Take me to the magic of the moment 
+5 -4 5 -4 -4
+On a glory night 
+-4 5 -5 -5 -5 -5 6 -5 5 -4 5 
+Where the children of tomorrow dream away 
+4 4 -5 5 -4
+In the wind of change
+7 7 -7
+(Wind of change)
+
+-6 -7 7 -6 -7 7 -8 7
+-6 -7 7 -6 -7 7 -8 7
+7 -8 8 7 -8 6 7 -7
+```
 													
 ### AMAZING GRACE 
 
