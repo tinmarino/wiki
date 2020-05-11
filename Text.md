@@ -29,6 +29,8 @@
 # Harmonica
 
 * [Harmonica](Harmonica)
+* [Harmonica Theory](Harmonica-Theory)
+* [Harmonica Class](Harmonica-Class)
 
 # Draw
 
