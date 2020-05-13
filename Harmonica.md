@@ -1,7 +1,8 @@
 # Contents
 
-    - [Notes  C](#Notes  C)
 - [English](#English)
+    - [Franki Valli: Can't tke my eyes off you](#English#Franki Valli: Can't tke my eyes off you)
+    - [Dave Brubeck: Take five (Jazz)](#English#Dave Brubeck: Take five (Jazz))
     - [Sinatra: My way](#English#Sinatra: My way)
     - [River of babylon](#English#River of babylon)
     - [From the west](#English#From the west)
@@ -23,6 +24,7 @@
     - [Take me home](#English#Take me home)
     - [Disney: Bare Necessities](#English#Disney: Bare Necessities)
     - [Disney: A whole new world](#English#Disney: A whole new world)
+    - [Simon & Garfunkel: El condor pasa](#English#Simon & Garfunkel: El condor pasa)
     - [Simon & Garfunkel: Sound of silence](#English#Simon & Garfunkel: Sound of silence)
     - [Simon & Garfunkel: Mrs Robinson](#English#Simon & Garfunkel: Mrs Robinson)
     - [Simon & Garfunkel: Bridge oveer trouble water](#English#Simon & Garfunkel: Bridge oveer trouble water)
@@ -34,11 +36,10 @@
     - [Elvis Presley: Wonder of you](#English#Elvis Presley: Wonder of you)
     - [Mario](#English#Mario)
     - [The house of the rising sun](#English#The house of the rising sun)
-    - [The first cut](#English#The first cut)
-    - [Hymne russe](#English#Hymne russe)
     - [Chariot of fire](#English#Chariot of fire)
     - [Con te partiro](#English#Con te partiro)
-    - [Ubiergo: El tiempo en las bastillas](#English#Ubiergo: El tiempo en las bastillas)
+    - [Cat Stevens: The first cut](#English#Cat Stevens: The first cut)
+    - [Hymne russe](#English#Hymne russe)
     - [Cat Stevens: The wind](#English#Cat Stevens: The wind)
     - [Cat Stevens: Father and son](#English#Cat Stevens: Father and son)
     - [Cat Stevens: Lady d'arbanville](#English#Cat Stevens: Lady d'arbanville)
@@ -55,10 +56,16 @@
     - [Just the way you are](#English#Just the way you are)
     - [Wonderwall](#English#Wonderwall)
     - [Hit the road jack](#English#Hit the road jack)
+    - [Stand by me](#English#Stand by me)
+    - [Adele: someone like you](#English#Adele: someone like you)
 - [Francais](#Francais)
+    - [Alain Barriere: Elle était si jolie](#Francais#Alain Barriere: Elle était si jolie)
+    - [Boris vian: Le deserteur](#Francais#Boris vian: Le deserteur)
+    - [Richard Antony: J'ettend siffler le train](#Francais#Richard Antony: J'ettend siffler le train)
     - [Bruel: Qui a le droit](#Francais#Bruel: Qui a le droit)
     - [Micel Berger: Diego](#Francais#Micel Berger: Diego)
     - [Chant des partisants](#Francais#Chant des partisants)
+    - [Joe Dassin: L'amerique](#Francais#Joe Dassin: L'amerique)
     - [Joe Dassin: Si tu n'existait pas](#Francais#Joe Dassin: Si tu n'existait pas)
     - [Joe Dassin: Champs elysées](#Francais#Joe Dassin: Champs elysées)
     - [La marseillaise](#Francais#La marseillaise)
@@ -85,18 +92,18 @@
     - [Brassens: Mauvaise reputation](#Francais#Brassens: Mauvaise reputation)
     - [Renaud: Mistral gagnant](#Francais#Renaud: Mistral gagnant)
     - [Je vais taimer](#Francais#Je vais taimer)
-    - [Silvio: Quien fuera](#Francais#Silvio: Quien fuera)
-    - [Silvio: Ojala](#Francais#Silvio: Ojala)
     - [La java bleu](#Francais#La java bleu)
     - [TODO AU CAFÉ DU CANAL -](#Francais#TODO AU CAFÉ DU CANAL -)
     - [Le jazz et la java (C. nougaro)](#Francais#Le jazz et la java (C. nougaro))
     - [La vie en rose](#Francais#La vie en rose)
-    - [Stand by me](#Francais#Stand by me)
     - [Le lion est mort ce soir](#Francais#Le lion est mort ce soir)
     - [TODO Il jouai du piano debout (France Gall)](#Francais#TODO Il jouai du piano debout (France Gall))
-    - [Adele: someone like you](#Francais#Adele: someone like you)
-    - [Carlos Puebla: Hasta Siempre Commandante](#Francais#Carlos Puebla: Hasta Siempre Commandante)
     - [Claude Nougaro: Amstrong](#Francais#Claude Nougaro: Amstrong)
+- [Spanish](#Spanish)
+    - [Ubiergo: El tiempo en las bastillas](#Spanish#Ubiergo: El tiempo en las bastillas)
+    - [Silvio: Quien fuera](#Spanish#Silvio: Quien fuera)
+    - [Silvio: Ojala](#Spanish#Silvio: Ojala)
+    - [Carlos Puebla: Hasta Siempre Commandante](#Spanish#Carlos Puebla: Hasta Siempre Commandante)
 
 # English
 
@@ -327,6 +334,63 @@ The record   shows;  I took the  blows - and did it  my   way!
 -3   4    -4    -4-------  4------
 I  did    it    my           way.   
 ```
+
+
+### Disney: Bare Necessities
+
+```text
+-1   2  -2
+Il  en  faut
+
+ A  Ti    A    To   A
+-3  -3'   -3   -3" -2
+peu pour être heureux
+
+A   To     A  To   A   To     A 
+-2  -3"   -2  -3" -2   -3"   -2   2
+Vraiment trés peu pour être heureux 
+-1  -2  -1  -2  -3  5 -4   4  -3  -3"
+Il faut se satisfaire du  necessaire 
+
+-4   5  -4
+ 5  -4   5  -4  -3
+-2  -3" -2  -3" -2   5  -2  -2
+-3" -3  -4  -3  -4  -3  -2   2  -1  -2
+```
+
+
+### Disney: A whole new world 
+
+```text
+5 -4  -5    5   4    3
+I can show you the world
+5 -4      -5 5 4    5 -4
+shining shimmering splended
+-4   4    5 -4   -3  -4   4   -3   4   -3   4
+tell me princess now when did you last let your 
+ -4    4 3
+heart decide
+
+5 -4  -5 5  4    3
+I can open your eyes
+ 5   -4  -5 5   4   5 -4
+take you wonder by wonder
+-4 4  5 -4    -3  -4 4  -3 4 -3 4  -4 4    5
+over sideways and under on a magic carpet ride
+5  -5   -6   6    5  -5  -6 6 5    -5   5   5
+a whole new world a new fantastic point of view
+5  -5  6  -7   -6 6  4   -7   7  6  4   5  -4
+no one to tell us no or where to go or say we're 
+4 -3  4 -4
+only dreaming
+5  -5   -6   6    5  -5  -6 6 5    -5   5   5
+a whole new world a dazzling place I never knew
+5   -5    6  -7  -6  6    4   -7  7     6    4
+but when I'm way up here it's crystal clear that 
+5   -4  4 -4 -5     5    4   -3   4
+now I'm in a whole new world with you 
+```
+
 
 ### River of babylon
 
@@ -1212,111 +1276,55 @@ i wan-na hold your hand
 ### Take me home 
 
 ```text
-    6  6    -6   6  -6   6  -6   7
-  1.AL-MOST HEAV-EN,WEST VIR-GIN-IA
-  2.ALL MY MEM'-RIES GATH-ER 'ROUND HER
-  
-     -8   -8     8   -8   -6  -6  -6    6  6 -6 7
-  1.BLUE RIDGE MOUN-TAINS,SHEN-AN-DOAH RIV-ER
-  2.MIN-ER'S LA-DY,STRAN-GER TO BLUE WA-TERS
-  
-     6   6  -6   6    -6  7    7   8    8
-  1.LIFE IS OLD THERE,OLD-ER THAN THE TREES
-  2.DARK AND DUST-Y,PAINT-ED ON THE SKY
-  
-     -8   -8  -8  -8    8  -8
-  1.YOUNG-ER THAN THE MOUN-TAINS
-  2.MIST-Y TASTE OF MOON-SHINE
-  
-     -6   7    7 -8   7
-  1.GROW-IN' LIKE A BREEZE
-  2.TEAR-DROP IN MY EYE
-  
-    7  -8    8     8  7   -8    8 -8    7   8  9 -10
-  COUN-TRY ROADS,TAKE ME HOME  TO THE PLACE I BE-LONG
-  
-  
-  
-  -10  -10  9  8    8   -8   7  -8
-  WEST VIR-GIN-IA,MOUN-TAIN MOM-MA
-  
-   8   -8   7   7   -8    7
-  TAKE ME HOME,COUN-TRY ROADS
-  
-  7  7    7    -7    7 -8   8    8    8    8    8    7
-  I HEAR HER VOICE, IN THE MORN-ING HOURS SHE CALLS  ME.
-  
-  
-   7 -9  -9  -9   -9 -9  8  -8   7 -8 8  8  -8
-  RA-DIO RE-MINDS ME OF MY HOME FAR A-WAY
-  
-  -8   8   8    8   8   -8 -8 -8 -8  7    7
-  AND DRV-IN' DOWN THE ROAD I GET A FEEL-IN'
-  
-    7  7    7     7   7   7
-  THAT I SHOULD HAVE BEEN HOME 
-  
-  -8  8   -8  -8   8  -9
-  YES-TER-DAY,YES-TER-DAY 
+  6  6    -6   6  -6   6  -6   7
+1.al-most heav-en,west vir-gin-ia
+2.all my mem'-ries gath-er 'round her
+
+   -8   -8     8   -8   -6  -6  -6    6  6 -6 7
+1.blue ridge moun-tains,shen-an-doah riv-er
+2.min-er's la-dy,stran-ger to blue wa-ters
+
+   6   6  -6   6    -6  7    7   8    8
+1.life is old there,old-er than the trees
+2.dark and dust-y,paint-ed on the sky
+
+   -8   -8  -8  -8    8  -8
+1.young-er than the moun-tains
+2.mist-y taste of moon-shine
+
+   -6   7    7 -8   7
+1.grow-in' like a breeze
+2.tear-drop in my eye
+
+  7  -8    8     8  7   -8    8 -8    7   8  9 -10
+coun-try roads,take me home  to the place i be-long
+
+
+
+-10  -10  9  8    8   -8   7  -8
+west vir-gin-ia,moun-tain mom-ma
+
+ 8   -8   7   7   -8    7
+take me home,coun-try roads
+
+7  7    7    -7    7 -8   8    8    8    8    8    7
+i hear her voice, in the morn-ing hours she calls  me.
+
+
+ 7 -9  -9  -9   -9 -9  8  -8   7 -8 8  8  -8
+ra-dio re-minds me of my home far a-way
+
+-8   8   8    8   8   -8 -8 -8 -8  7    7
+and drv-in' down the road i get a feel-in'
+
+  7  7    7     7   7   7
+that i should have been home 
+
+-8  8   -8  -8   8  -9
+yes-ter-day,yes-ter-day 
 ```
 
 												
-### Disney: Bare Necessities
-
-```text
--1   2  -2
-Il  en  faut
-
- A  Ti    A    To   A
--3  -3'   -3   -3" -2
-peu pour être heureux
-
-A   To     A  To   A   To     A 
--2  -3"   -2  -3" -2   -3"   -2   2
-Vraiment trés peu pour être heureux 
--1  -2  -1  -2  -3  5 -4   4  -3  -3"
-Il faut se satisfaire du  necessaire 
-
--4   5  -4
- 5  -4   5  -4  -3
--2  -3" -2  -3" -2   5  -2  -2
--3" -3  -4  -3  -4  -3  -2   2  -1  -2
-```
-
-
-### Disney: A whole new world 
-
-```text
-5 -4  -5    5   4    3
-I can show you the world
-5 -4      -5 5 4    5 -4
-shining shimmering splended
--4   4    5 -4   -3  -4   4   -3   4   -3   4
-tell me princess now when did you last let your 
- -4    4 3
-heart decide
-
-5 -4  -5 5  4    3
-I can open your eyes
- 5   -4  -5 5   4   5 -4
-take you wonder by wonder
--4 4  5 -4    -3  -4 4  -3 4 -3 4  -4 4    5
-over sideways and under on a magic carpet ride
-5  -5   -6   6    5  -5  -6 6 5    -5   5   5
-a whole new world a new fantastic point of view
-5  -5  6  -7   -6 6  4   -7   7  6  4   5  -4
-no one to tell us no or where to go or say we're 
-4 -3  4 -4
-only dreaming
-5  -5   -6   6    5  -5  -6 6 5    -5   5   5
-a whole new world a dazzling place I never knew
-5   -5    6  -7  -6  6    4   -7  7     6    4
-but when I'm way up here it's crystal clear that 
-5   -4  4 -4 -5     5    4   -3   4
-now I'm in a whole new world with you 
-```
-
-
 ### Simon & Garfunkel: El condor pasa
 
 ```text
@@ -1930,7 +1938,36 @@ And God, I kn-ow I'm one.
 ```
 
 
-### The first cut 
+### Chariot of fire 
+
+```text
+4   -5  6   -6  6   5
+4   -5  6   -6  6
+4   -5  6   -6  6   5
+5   -5  5   4   4
+
+4   7   -7  -6  6   -7  -6  6
+7   -7  -6  6   -7 (bis)
+-7  -6  -5  6   5   -5  5   4
+
+4   7   -7  -6  6   -7  6   -6  -5  6
+7   -7  -6  6   -7  7   -7  -6  6
+```
+
+
+                                                  
+### Con te partiro 
+
+```text
+3   -3  -4  4
+-4  5   5   5   5   5
+-4  -5  5   4
+7   -7  6   7   -7  6   5   6
+-4  -5  5   -4  4   -3
+```
+
+
+### Cat Stevens: The first cut 
 
 ```text
 6   7    -8   8-9   8  -8  8  -8   7
@@ -2041,85 +2078,6 @@ When it comes to lovin' me, she's worst.
 
 
                                                   
-### Chariot of fire 
-
-```text
-4   -5  6   -6  6   5
-4   -5  6   -6  6
-4   -5  6   -6  6   5
-5   -5  5   4   4
-
-4   7   -7  -6  6   -7  -6  6
-7   -7  -6  6   -7 (bis)
--7  -6  -5  6   5   -5  5   4
-
-4   7   -7  -6  6   -7  6   -6  -5  6
-7   -7  -6  6   -7  7   -7  -6  6
-```
-
-
-                                                  
-### Con te partiro 
-
-```text
-3   -3  -4  4
--4  5   5   5   5   5
--4  -5  5   4
-7   -7  6   7   -7  6   5   6
--4  -5  5   -4  4   -3
-```
-
-
-                                              
-### Ubiergo: El tiempo en las bastillas 
-
-```text
-8   8   8   8   8   8   -8  -8  7   -8  -8
--8  7   7   7   7   7   -7  -7  7   -7  -6
--10 -10 9   9   8   7
--6  -9  -9  -9  -9  -9  -9  8   -8  7   -7  -9__8
-
-8   8   -8  8   -9  9   7   7
--7  7   -8  8   -6  -6
--9  8   -8  7   8   -8
-
-8   -9  8   -8  7   7   -7  7
--10 9   8   8   7   -8
-
-
-Dicen que el tiempo guarda en las Bastillas
-las cosas que el hombre olvidó
-lo que nadie escribió,
-aquello que la historia presintió
-
-Y vuelan las gaviotas a la tierra,
-trayendo la vida que han robado al mar
-A quién le importará que las gaviotas
-vuelen la historia del mar
-
-Guarda el tiempo en las Bastillas
-unas cuantas semillas
-que entrega una canción
-pero hay un lugar donde olvido floreció
-
-Guardan polvos Las Bastillas el tiempo
-una semilla, quizás una canción
-Pero quién guardará las cosas
-que no son de Dios
-
-Y buscan las hormigas por la tierra
-migar y migas hasta hacer un pan
-a quién le importará que las hormigas
-miguen su propia verdad
-
-Y nace esta canción desde el cemento
-una flor que en el desierto morirá
-y el canto de un zorzal
-se perderá en el ruido de
-la gran ciudad
-```
-
-                                                        
 ### Cat Stevens: The wind 
 
 ```text
@@ -2549,13 +2507,11 @@ Ex. N
 
 ```text
 
+(
 4  -4  5  4    -5  -6  6   5
 
 4  -4  5  6     5  -5  5  -4  4
-
-4  -4  5  4    -5  -6  6   5
-
-4  -4  5  6     5  -5  5  -4  4
+) bis
 
 
 -6  6  -5  5  -5   6   6
@@ -3159,6 +3115,210 @@ And don't you come back no more
 ```
 
 
+### Stand by me
+
+```text
+ 5    6   -6    5   6
+When the night has come
+ 4  -4    5  -4  4
+And the land is dark
+ 4  -4   5    4  5  -4 4  -4    -4    4
+And the moon is the only light we'll see
+5  6   -6   5  6 -6   5 -5   5   5  -4  4 
+Oh I won't be afraid, no I won't be afraid
+ 4   5   -4  4   4   5 -4  5 -4  4  4
+Just as long as you stand, stand by me
+
+ 6 -6  6     7 -7    -6 6  6  -7   5 4  -4 4
+So darlin', darlin', stand by me, stand by me
+5  -4 4    5 -4 -4 4    5 -4 -4 4
+Oh stand  stand by me, stand by me
+
+5   6  -6   5   5   5   -6 6
+If the sky that we look upon
+ -4     5  5  -4   4
+Should tumble and fall
+  4 -4    5   4      5    -4  4  -4 4  -4   4
+And the mountains should crumble in to the sea
+5   6   -6   5   6   -6   6 -5 -4 4   5  -4  4       
+I won't cry, I won't cry, no I won't shed a tear
+ 4   5   -4  4   4   5 -4  5 -4  4  4
+Just as long as you stand, stand by me
+ 
+ 6 -6  6     7 -7    -6 6  6  -7   5 4  -4 4
+So darlin', darlin', stand by me, stand by me
+5  -4 4    5 -4 -4 4    5 -4 -4 4
+Oh stand  stand by me, stand by me
+```
+
+
+### Adele: someone like you
+
+```text
+6____ 5____    -4   4______ 6   6    5______
+I____ heard    that you’re_ set-tled down,__
+
+-4   4____ 6     6 5_____ -4  4___-3”___ 6   6    5____-4___4___
+that you__ found a girl__ and you’re____ mar-ried now.__________
+
+6 5     -4   4    -6     5    4     -4    4   -3”  -3” 4__-3”___
+I heard that your dreams came true, guess she gave you things___
+
+-3” 3   -3” -4   4  -4____5_____
+I   did-nt  give to you.________
+
+6_____ 5
+Old___ friend,
+
+-6  6   6   6____ 6__-5__5____
+why are you so___ shy?________
+
+5     5    -3” -3 4____ -3”_____ 3_-3” -4____ 4    4   -4__5_____
+Ain’t like you to hold_ back____ or___ hide__ from the light.____
+
+3 -4   5  5    5__ -4  -4 4   -4
+I hate to turn up_ out of the blue
+
+-4 4  -4 4    4   4__ -4    4   -4   4 -4____ 4 -4    4   -4    4
+un-in-vi-ted, but I__ could-n’t stay a-way,__ I could-n’t fight it.
+
+4 4   -4    5     5   5  5___ -4  -4   4     -4 4  -4   4  -4   5   -3”
+I had hoped you’d see my face and that you’d be re-mind-ed that for me,
+
+4  -4 4   -4  5___________
+It is-n’t o – ver.________
+         -3”  -3”_________
+
+4   4  4_____ 4    -3____ -3   -3  4    -3”______
+Nev-er-mind__ I’ll find__ some-one like you,_____
+
+-3” -3   4    3   3___ 4_-3 -3____  -3_4_-3” -3”____ 4
+I   wish noth-ing but_ the_ best__  for_____ you____ two.
+-2” -2”  2                  3_____           2______ (-2”-3”)
+
+5     5   5   5
+Don’t for-get me,
+          4   4
+
+6 5    -5_5 -4_4 5     5       5   -4_4_-3”
+I beg, I___ re – mem - ber     you said,____
+  3
+
+ 4    4     4  4____ 3  3___ 3   -3”  3     3  -3”   3  -3”_____
+“Some-times it lasts in love but some-times it hurts in-stead,__
+-3”   -3”   -3” 3___                                    2_______
+
+4    4     4  4____ 3  3___  3   3    -2”   2  -1____ 1  1_____-1_____
+some-times it lasts in love, but some-times it hurs__ in-stead”.______
+-3”  -3”   -3” 3___
+
+6     5    -4  4       6    5     -4 -4
+You’d know how the     time flies on-ly
+
+6   6   5___ -4  4__ -5   -5 -5_ 5      -4 4    4    6   5      -4 4__
+yes-ter-day_ was the time of our lives. We were born and raised in a__
+                     4    4  4__ 4              3        3
+
+4   6__ 5     5     -3” 5   -4  5_____ 4  4   -5  5___-4 4_____ 
+sum-mer haze, bound by  the sur-prise_ of our glo-ry____ days._
+                                              4          -3”___
+
+-3” -4   5  5    5__ -4  -4 4   -4   -4 4  -4 4    4   4____
+I   hate to turn up_ out of the blue un-in-vi-ted, but I____
+
+-4    4   -4   4 -4___ 4 -4    4   -4    4   4 4   -4    5     5   5  5___
+could-n’t stay a-way._ I could-n’t fight it. I had hoped you’d see my face
+                                                   3
+
+-4  -4   4     -4 4  -4   4  -4    5  -3”    4  -4 4   -4  5_____-4____
+and that you’d be re-mind-ed that for me,    it is-n’t o - ver.________
+    -3”
+
+4   4  4____ 4    -3____ -3   -3  4    -3”_______
+Nev-er-mind_ I’ll find__ some-one like you,______
+
+-3” -3   4    3   3___ 4_-3 -3____    -3_4_-3” -3”____ 4
+I   wish noth-ing but_ the_ best__    for_____ you____ two.
+-2” -2   3                  -2”___             2______ (-2”-3”)
+
+
+ 5     5   5   5     6 5       -5_5 -4_4 5     5
+“Don’t for-get me,”  I begged, I___ re – mem – ber
+           4   4       -3
+
+5   -4_4_-3” 4    4     4  4____ 3  3___ 3   -3”  3     3  -3”   3  -3”___
+you said,___”Some-times it lasts in love but some-times it hurts in-stead,
+             3    3     3  3____                                    2_____
+
+4    4     4  4____ 3  3___  3   3    -2”   2  2_-1  1  1__________
+some-times it lasts in love, but some-times it hurts in-stead.”____
+-2”  -2”   -2” 2___
+
+3    3   3   3      3  3   3    3  3____  3  -3”   3   3   3
+Noth-ing com-pares, no wor-ries or cares, re-grets and mis-takes
+1    1   3   2      -1 1   1    3  2____  2  -2”   2   2   2
+
+3    3   -3” 3 3    3     3   3     3    3     3___-2”_
+they are mem-o-ries made, who would have known how_____
+2    2   -2” 2 2    2     1   1     3    2     1_______
+
+3   3   3__-2”__ -2”  3     3___-2”__
+bit-ter–sweet___ this would taste?___
+2   2   2__-1___ -1   2     1________
+
+4   4  4____ 4    -3___ -3   -3  4    -3”____
+Nev-er-mind_ I’ll find_ some-one like you,___
+
+-3” 3    4  3     3___ 4_-3 3___ -3_4_-3” -3”____ 4 
+I   wish no-thing but_ the_ best for_____ you____ two.
+
+5     5   5   5
+Don’t for-get me,
+
+6 5    -5_5 -4_4 5   5
+I beg, I___ re – mem–ber
+
+5   -4_4_-3”  4    4     4  4_____ 3  3____ 3   -3”  3
+you said,___ “Some-times it lasts_ in love_ but some-times 
+
+3  -3”   -3” -3”___3__-2”__
+it hurts in-stead.”________
+
+4   4  4____ 4    -3____ -3   -3  4    -3”______
+Nev-er-mind_ I’ll find__ some-one like you,_____
+                                       2________
+
+-3” -3   4    3   3__ 4_-3 -3_____
+I   wish noth-ing but the_ best___
+-2” -2”  3                 3______
+
+-3_4_-3” -3”______ 4
+for_____ you______ two.
+         2________ (-2”-3”)
+
+5     5   5   5
+Don’t for-get me
+
+6 5    -5_5 -4_4 5   5
+I beg, I___ re – mem–ber
+
+5   -4_4_-3”_  4    4     4   4______ 3  3_____
+you said,____ “Some-times it  lasts__ in love__
+               -2”  -2”   -2” 2______
+
+3   -3”  3     3  -3”   3  -3”_________
+but some-times it hurts in-stead.______
+                           2___________
+
+4    4     4   4______ 3  3______
+some-times it  lasts__ in love,__
+-2”  -2”   -2” 2______
+
+3   3    -2”   2  2_-1_ 1  1__________
+but some-times it hurts in-stead.”____
+```
+
+
 # Francais
 
 
@@ -3491,34 +3651,75 @@ S'endort peut-être
 ### Chant des partisants 
 
 ```text
-   6 7 7 -8 8 8 -8 7 7 -7 -6 6 -7 -6 6
-   Ami, entends-tu le vol noir des corbeaux sur nos plaines ?
-   6 7 7 -8 8 8 -8 7 7 -7 -6 6 -7 -6 6
-   Ami, entends-tu les cris sourds du pays qu'on enchaîne ?
-   6 8 8 -9 9 9 -9 8 -8 8 -9 7 -7 -8 -6 6
-   Ohé, partisans, ouvriers et paysans, c'est l'alarme.
-   6 8 8 -9 9 9 -9 8 -8 8 -9 7 -7 -8 -6 6
-   Ce soir l'ennemi connaîtra le prix du sang et les larmes.
-   
-   Montez de la mine, descendez des collines, camarades !
-   Sortez de la paille les fusils, la mitraille, les grenades.
-   Ohé, les tueurs à la balle et au couteau, tuez vite !
-   Ohé, saboteur, attention à ton fardeau : dynamite...
-   
-   C'est nous qui brisons les barreaux des prisons pour nos frères.
-   La haine à nos trousses et la faim qui nous pousse, la misère.
-   Il y a des pays où les gens au creux des lits font des rêves.
-   Ici, nous, vois-tu, nous on marche et nous on tue, nous on crève...
-   
-   Ici chacun sait ce qu'il veut, ce qu'il fait quand il passe.
-   Ami, si tu tombes un ami sort de l'ombre à ta place.
-   Demain du sang noir sèchera au grand soleil sur les routes.
-   Chantez, compagnons, dans la nuit la Liberté nous écoute...
-   
-   Ami, entends-tu ces cris sourds du pays qu'on enchaîne ?
-   Ami, entends-tu le vol noir des corbeaux sur nos plaines ?
-   Oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh...
+6 7 7 -8 8 8 -8 7 7 -7 -6 6 -7 -6 6
+Ami, entends-tu le vol noir des corbeaux sur nos plaines ?
+6 7 7 -8 8 8 -8 7 7 -7 -6 6 -7 -6 6
+Ami, entends-tu les cris sourds du pays qu'on enchaîne ?
+6 8 8 -9 9 9 -9 8 -8 8 -9 7 -7 -8 -6 6
+Ohé, partisans, ouvriers et paysans, c'est l'alarme.
+6 8 8 -9 9 9 -9 8 -8 8 -9 7 -7 -8 -6 6
+Ce soir l'ennemi connaîtra le prix du sang et les larmes.
+
+Montez de la mine, descendez des collines, camarades !
+Sortez de la paille les fusils, la mitraille, les grenades.
+Ohé, les tueurs à la balle et au couteau, tuez vite !
+Ohé, saboteur, attention à ton fardeau : dynamite...
+
+C'est nous qui brisons les barreaux des prisons pour nos frères.
+La haine à nos trousses et la faim qui nous pousse, la misère.
+Il y a des pays où les gens au creux des lits font des rêves.
+Ici, nous, vois-tu, nous on marche et nous on tue, nous on crève...
+
+Ici chacun sait ce qu'il veut, ce qu'il fait quand il passe.
+Ami, si tu tombes un ami sort de l'ombre à ta place.
+Demain du sang noir sèchera au grand soleil sur les routes.
+Chantez, compagnons, dans la nuit la Liberté nous écoute...
+
+Ami, entends-tu ces cris sourds du pays qu'on enchaîne ?
+Ami, entends-tu le vol noir des corbeaux sur nos plaines ?
+Oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh...
 ```
+
+### Joe Dassin: L'amerique
+
+```text
+ 7   7   7  -6   6  -6    6   6
+so long boy,you can take my place
+6 -6  -6 -6  6  5  6   5  5
+i got my papers,i got my pay
+ 6  -6  -6 -6    6   5   6   5 -4 -4
+so pack my bags,and i`ll be on my way
+-4  6 6   -6-7
+to yellow river
+
+ 7   7  7  -6     6  -6   6  6
+put my gun down, the war is won
+ -6 -6   -6     6   5    6   5    5
+fill my glass high the time has come
+ 6  -6-6  -6   6   5    6     5 -4  -4
+i`m goin` back to the place that i love,
+ 6  6  -6-7
+yellow river.
+
+                  (chorus)
+ 7  7   7-6   7  7   7-6   6 -7-7  -7
+yellow river,yellow river is in my mind
+-6 -6   6  6
+and in my eyes
+ 7 7    7-6   7  7   7-6   6 -7 -7  -7
+yellow river,yellow river is in my blood
+-7  -6  -6    6   6
+its the place i love
+-6 -6  -6   -6  -6  6  -6-7   7  7   7   7   7
+got no time for explanations,got no time to lose
+ 7  7 7    7    -7      7  -7
+tomorrow night you`ll find me
+  7 -8   -8 -8 -8   -8  -8
+sleeping underneath the moon
+-7   7  7   7-6
+and yellow river 
+```
+
 
 ### Joe Dassin: Si tu n'existait pas 
 
@@ -3548,7 +3749,7 @@ Comme un pein-tre qui voit sous ses doigts
 8  -8   7  -7  -7~~~ 7  6~~~~~~~~
 Na-tre les cou-leurs du jour
 
--8 7    -7    -6  -6b~~~~~~~~~
+-8 7    -7    -6  6~~~~~~~~~~
 Et qui n'en re-vient pas
 ```
 
@@ -3578,7 +3779,6 @@ Il suffisait de te parler, pour t'apprivoiser.
 
 
 Refrain:
-
  5    -4  4  -4  4     -5     5  4  5  -4
 Aux Champs-Elysées, aux Champs-Elysées
 
@@ -3880,8 +4080,6 @@ Plus d'un million d'années
 Et toujours en été
 ```
                                                        
-
-                                                      
 
 ### Sardou: Je vais t'aimer 
 
@@ -4494,7 +4692,7 @@ Pas au bateau qui craque entre deux d�ferlantes
 ```text
  	-6   -6  -6  -6    -6 -7 7          6  -5 5
 Parc'que des potes ne r'viendront plus jamais
--6 -6 -6 -6 -6 7 7 6 5 -4
+-6 -6   -6    -6    -6  7   7   6     5 -4
 Du fond d'la flotte sur un sale coup d'filet
 -6   -6  -6  -6    -6 -7 7  6  -5 5
 Que qu'part �a trotte dans ma t�te mais je sais
@@ -4945,97 +5143,6 @@ Je vais t´ai-mer
 Je vais t´ai-mer
 ```
 
-### Silvio: Quien fuera
-
-TODO
-### Silvio: Ojala
-
-```
--8  -8  -8   8  -9   9  -9
-O   ja   la que las ho -jas
-
-8   -8  7    -8    8  -9  8
-no  te  to - quen  el cuerpo
-
--8   7  8  -8
-cuando  caigan
-
-
-7  7  7  6  6   6   6
-Para que no las puedas
-
-6   6  8  -8  7 (-6&-8) # double note
-convertir en cristal
-
-
-9 -9  8  -8   7  -7   -6
-O-ja-là  que  la llu--via
-
--6  -6  -6   9  -9   8  -8
-de--je  de  ser mi--la--gro
-
--8  7#  7  7   7  -7   -7
-que ba--ja por tu cuer--po
-
--8  -8   -8 -6  -6 -7b    -6
-O - ja - là que la tie---rra
-
-6  6  6   -5   5  5   -4
-no te be - se los pa - sos
-
-
--8  -8   -8  8   -9   9    -9
-O - ja - la se (te a)--ca--be
-
-8  -8  7   -8  8   -9    8
-la mi--ra--da con--stan--te
-
-7  7   7   -8  8    -9  8 
-la pa--la--bra pre--ci--sa
-
--8  7   7   -8  8   -9  7
-la son--ri--sa per--fe--cta
-
-
-7   7    7  -8  8  9   9
-O - ja - là pa--se al--go
-
-9   9  9   -9  8  -8   7
-que te bo--rre de pron--to
-
-7 7 7   -8  -7  -7  7
-una luz ce--ga--do--ra
-
-7  7   7  -8 8  -9  -9
-un dis-pa-ro de nie-ve
-
-
--9  -9  -9   9 -10 9  9
-O - ja - la por lo me-nos
-
-9   -8 -8  8  -8  8   8
-que me lle-ve la muer-te
-
-7  7  7  -8  -7  7  7
-pa-ra no ver-te tan-to 
-
-7  7  7  -8  8  -9  -9
-pa-ra no ver-te siem-pre
-
--9 -9 -9  9  -10  9  -9
-en to-dos los se-gun-dos
-
-7  7  7   7   7__-8  8 
-en to-das las vi-sio-nes
-
--6b -6  -6b  6  6  6   6
-O - ja - la que no pue-dan
-
-6   6  6  -6 -6 -7  -8  -8  
-to-car-te ni en can-cio-nes
-```
-
-
 ### La java bleu
 
 ```text
@@ -5301,42 +5408,6 @@ Et dès que je t'aperçois
 Alors je sens en moi, mon cœur qui bat... 
 ```
 
-### Stand by me
-
-```text
- 5    6   -6    5   6
-When the night has come
- 4  -4    5  -4  4
-And the land is dark
- 4  -4   5    4  5  -4 4  -4    -4    4
-And the moon is the only light we'll see
-5  6   -6   5  6 -6   5 -5   5   5  -4  4 
-Oh I won't be afraid, no I won't be afraid
- 4   5   -4  4   4   5 -4  5 -4  4  4
-Just as long as you stand, stand by me
-
- 6 -6  6     7 -7    -6 6  6  -7   5 4  -4 4
-So darlin', darlin', stand by me, stand by me
-5  -4 4    5 -4 -4 4    5 -4 -4 4
-Oh stand  stand by me, stand by me
-
-5   6  -6   5   5   5   -6 6
-If the sky that we look upon
- -4     5  5  -4   4
-Should tumble and fall
-  4 -4    5   4      5    -4  4  -4 4  -4   4
-And the mountains should crumble in to the sea
-5   6   -6   5   6   -6   6 -5 -4 4   5  -4  4       
-I won't cry, I won't cry, no I won't shed a tear
- 4   5   -4  4   4   5 -4  5 -4  4  4
-Just as long as you stand, stand by me
- 
- 6 -6  6     7 -7    -6 6  6  -7   5 4  -4 4
-So darlin', darlin', stand by me, stand by me
-5  -4 4    5 -4 -4 4    5 -4 -4 4
-Oh stand  stand by me, stand by me
-```
-
 ### Le lion est mort ce soir
 
 ```
@@ -5380,196 +5451,6 @@ the lion sleeps tonight
 
 
 ### TODO Il jouai du piano debout (France Gall)
-
-### Adele: someone like you
-
-```text
-6____ 5____    -4   4______ 6   6    5______
-I____ heard    that you’re_ set-tled down,__
-
--4   4____ 6     6 5_____ -4  4___-3”___ 6   6    5____-4___4___
-that you__ found a girl__ and you’re____ mar-ried now.__________
-
-6 5     -4   4    -6     5    4     -4    4   -3”  -3” 4__-3”___
-I heard that your dreams came true, guess she gave you things___
-
--3” 3   -3” -4   4  -4____5_____
-I   did-nt  give to you.________
-
-6_____ 5
-Old___ friend,
-
--6  6   6   6____ 6__-5__5____
-why are you so___ shy?________
-
-5     5    -3” -3 4____ -3”_____ 3_-3” -4____ 4    4   -4__5_____
-Ain’t like you to hold_ back____ or___ hide__ from the light.____
-
-3 -4   5  5    5__ -4  -4 4   -4
-I hate to turn up_ out of the blue
-
--4 4  -4 4    4   4__ -4    4   -4   4 -4____ 4 -4    4   -4    4
-un-in-vi-ted, but I__ could-n’t stay a-way,__ I could-n’t fight it.
-
-4 4   -4    5     5   5  5___ -4  -4   4     -4 4  -4   4  -4   5   -3”
-I had hoped you’d see my face and that you’d be re-mind-ed that for me,
-
-4  -4 4   -4  5___________
-It is-n’t o – ver.________
-         -3”  -3”_________
-
-4   4  4_____ 4    -3____ -3   -3  4    -3”______
-Nev-er-mind__ I’ll find__ some-one like you,_____
-
--3” -3   4    3   3___ 4_-3 -3____  -3_4_-3” -3”____ 4
-I   wish noth-ing but_ the_ best__  for_____ you____ two.
--2” -2”  2                  3_____           2______ (-2”-3”)
-
-5     5   5   5
-Don’t for-get me,
-          4   4
-
-6 5    -5_5 -4_4 5     5       5   -4_4_-3”
-I beg, I___ re – mem - ber     you said,____
-  3
-
- 4    4     4  4____ 3  3___ 3   -3”  3     3  -3”   3  -3”_____
-“Some-times it lasts in love but some-times it hurts in-stead,__
--3”   -3”   -3” 3___                                    2_______
-
-4    4     4  4____ 3  3___  3   3    -2”   2  -1____ 1  1_____-1_____
-some-times it lasts in love, but some-times it hurs__ in-stead”.______
--3”  -3”   -3” 3___
-
-6     5    -4  4       6    5     -4 -4
-You’d know how the     time flies on-ly
-
-6   6   5___ -4  4__ -5   -5 -5_ 5      -4 4    4    6   5      -4 4__
-yes-ter-day_ was the time of our lives. We were born and raised in a__
-                     4    4  4__ 4              3        3
-
-4   6__ 5     5     -3” 5   -4  5_____ 4  4   -5  5___-4 4_____ 
-sum-mer haze, bound by  the sur-prise_ of our glo-ry____ days._
-                                              4          -3”___
-
--3” -4   5  5    5__ -4  -4 4   -4   -4 4  -4 4    4   4____
-I   hate to turn up_ out of the blue un-in-vi-ted, but I____
-
--4    4   -4   4 -4___ 4 -4    4   -4    4   4 4   -4    5     5   5  5___
-could-n’t stay a-way._ I could-n’t fight it. I had hoped you’d see my face
-                                                   3
-
--4  -4   4     -4 4  -4   4  -4    5  -3”    4  -4 4   -4  5_____-4____
-and that you’d be re-mind-ed that for me,    it is-n’t o - ver.________
-    -3”
-
-4   4  4____ 4    -3____ -3   -3  4    -3”_______
-Nev-er-mind_ I’ll find__ some-one like you,______
-
--3” -3   4    3   3___ 4_-3 -3____    -3_4_-3” -3”____ 4
-I   wish noth-ing but_ the_ best__    for_____ you____ two.
--2” -2   3                  -2”___             2______ (-2”-3”)
-
-
- 5     5   5   5     6 5       -5_5 -4_4 5     5
-“Don’t for-get me,”  I begged, I___ re – mem – ber
-           4   4       -3
-
-5   -4_4_-3” 4    4     4  4____ 3  3___ 3   -3”  3     3  -3”   3  -3”___
-you said,___”Some-times it lasts in love but some-times it hurts in-stead,
-             3    3     3  3____                                    2_____
-
-4    4     4  4____ 3  3___  3   3    -2”   2  2_-1  1  1__________
-some-times it lasts in love, but some-times it hurts in-stead.”____
--2”  -2”   -2” 2___
-
-3    3   3   3      3  3   3    3  3____  3  -3”   3   3   3
-Noth-ing com-pares, no wor-ries or cares, re-grets and mis-takes
-1    1   3   2      -1 1   1    3  2____  2  -2”   2   2   2
-
-3    3   -3” 3 3    3     3   3     3    3     3___-2”_
-they are mem-o-ries made, who would have known how_____
-2    2   -2” 2 2    2     1   1     3    2     1_______
-
-3   3   3__-2”__ -2”  3     3___-2”__
-bit-ter–sweet___ this would taste?___
-2   2   2__-1___ -1   2     1________
-
-4   4  4____ 4    -3___ -3   -3  4    -3”____
-Nev-er-mind_ I’ll find_ some-one like you,___
-
--3” 3    4  3     3___ 4_-3 3___ -3_4_-3” -3”____ 4 
-I   wish no-thing but_ the_ best for_____ you____ two.
-
-5     5   5   5
-Don’t for-get me,
-
-6 5    -5_5 -4_4 5   5
-I beg, I___ re – mem–ber
-
-5   -4_4_-3”  4    4     4  4_____ 3  3____ 3   -3”  3
-you said,___ “Some-times it lasts_ in love_ but some-times 
-
-3  -3”   -3” -3”___3__-2”__
-it hurts in-stead.”________
-
-4   4  4____ 4    -3____ -3   -3  4    -3”______
-Nev-er-mind_ I’ll find__ some-one like you,_____
-                                       2________
-
--3” -3   4    3   3__ 4_-3 -3_____
-I   wish noth-ing but the_ best___
--2” -2”  3                 3______
-
--3_4_-3” -3”______ 4
-for_____ you______ two.
-         2________ (-2”-3”)
-
-5     5   5   5
-Don’t for-get me
-
-6 5    -5_5 -4_4 5   5
-I beg, I___ re – mem–ber
-
-5   -4_4_-3”_  4    4     4   4______ 3  3_____
-you said,____ “Some-times it  lasts__ in love__
-               -2”  -2”   -2” 2______
-
-3   -3”  3     3  -3”   3  -3”_________
-but some-times it hurts in-stead.______
-                           2___________
-
-4    4     4   4______ 3  3______
-some-times it  lasts__ in love,__
--2”  -2”   -2” 2______
-
-3   3    -2”   2  2_-1_ 1  1__________
-but some-times it hurts in-stead.”____
-```
-
-
-### Carlos Puebla: Hasta Siempre Commandante
-
-```text
-4 -5 5 -4 4 -4 4 -3
-Aprendimos a quererte
-4 -5 5 -4 5 -4 4 -3
-desde la histórica altura
--3b -3 4 -3b 4 -3 -4 -3 
-donde el Sol de tu bravura
--4 5 -5 5 4 -4 4 -3
-le puso cerco a la muerte.
-
-4 5 5 5 -5 6 -5 5
-Aquí se queda la clara,
-5 5 5 5 -5 6 -5 5 
-la entrañable transparencia,
-5 -6 5 -6 5 -6 6 6 
-de tu querida presencia,
--6 6 -5 4 4 -4 -5 5
-Comandante Che Guevara.
-```
-
 
 ### Claude Nougaro: Amstrong
 
@@ -5687,3 +5568,171 @@ Comme deux gouttes d´eau
 4   3
 Oh yeay!
 ```
+
+# Spanish
+
+
+### Ubiergo: El tiempo en las bastillas 
+
+```text
+8   8   8   8   8   8   -8  -8  7   -8  -8
+-8  7   7   7   7   7   -7  -7  7   -7  -6
+-10 -10 9   9   8   7
+-6  -9  -9  -9  -9  -9  -9  8   -8  7   -7  -9__8
+
+8   8   -8  8   -9  9   7   7
+-7  7   -8  8   -6  -6
+-9  8   -8  7   8   -8
+
+8   -9  8   -8  7   7   -7  7
+-10 9   8   8   7   -8
+
+
+Dicen que el tiempo guarda en las Bastillas
+las cosas que el hombre olvidó
+lo que nadie escribió,
+aquello que la historia presintió
+
+Y vuelan las gaviotas a la tierra,
+trayendo la vida que han robado al mar
+A quién le importará que las gaviotas
+vuelen la historia del mar
+
+Guarda el tiempo en las Bastillas
+unas cuantas semillas
+que entrega una canción
+pero hay un lugar donde olvido floreció
+
+Guardan polvos Las Bastillas el tiempo
+una semilla, quizás una canción
+Pero quién guardará las cosas
+que no son de Dios
+
+Y buscan las hormigas por la tierra
+migar y migas hasta hacer un pan
+a quién le importará que las hormigas
+miguen su propia verdad
+
+Y nace esta canción desde el cemento
+una flor que en el desierto morirá
+y el canto de un zorzal
+se perderá en el ruido de
+la gran ciudad
+```
+
+                                                        
+### Silvio: Quien fuera
+
+TODO
+### Silvio: Ojala
+
+```
+-8  -8  -8   8  -9   9  -9
+O   ja   la que las ho -jas
+
+8   -8  7    -8    8  -9  8
+no  te  to - quen  el cuerpo
+
+-8   7  8  -8
+cuando  caigan
+
+
+7  7  7  6  6   6   6
+Para que no las puedas
+
+6   6  8  -8  7 (-6&-8) # double note
+convertir en cristal
+
+
+9 -9  8  -8   7  -7   -6
+O-ja-là  que  la llu--via
+
+-6  -6  -6   9  -9   8  -8
+de--je  de  ser mi--la--gro
+
+-8  7#  7  7   7  -7   -7
+que ba--ja por tu cuer--po
+
+-8  -8   -8 -6  -6 -7b    -6
+O - ja - là que la tie---rra
+
+6  6  6   -5   5  5   -4
+no te be - se los pa - sos
+
+
+-8  -8   -8  8   -9   9    -9
+O - ja - la se (te a)--ca--be
+
+8  -8  7   -8  8   -9    8
+la mi--ra--da con--stan--te
+
+7  7   7   -8  8    -9  8 
+la pa--la--bra pre--ci--sa
+
+-8  7   7   -8  8   -9  7
+la son--ri--sa per--fe--cta
+
+
+7   7    7  -8  8  9   9
+O - ja - là pa--se al--go
+
+9   9  9   -9  8  -8   7
+que te bo--rre de pron--to
+
+7 7 7   -8  -7  -7  7
+una luz ce--ga--do--ra
+
+7  7   7  -8 8  -9  -9
+un dis-pa-ro de nie-ve
+
+
+-9  -9  -9   9 -10 9  9
+O - ja - la por lo me-nos
+
+9   -8 -8  8  -8  8   8
+que me lle-ve la muer-te
+
+7  7  7  -8  -7  7  7
+pa-ra no ver-te tan-to 
+
+7  7  7  -8  8  -9  -9
+pa-ra no ver-te siem-pre
+
+-9 -9 -9  9  -10  9  -9
+en to-dos los se-gun-dos
+
+7  7  7   7   7__-8  8 
+en to-das las vi-sio-nes
+
+-6b -6  -6b  6  6  6   6
+O - ja - la que no pue-dan
+
+6   6  6  -6 -6 -7  -8  -8  
+to-car-te ni en can-cio-nes
+```
+
+
+### Carlos Puebla: Hasta Siempre Commandante
+
+```text
+4 -5 5 -4 4 -4 4 -3
+Aprendimos a quererte
+4 -5 5 -4 5 -4 4 -3
+desde la histórica altura
+-3b -3 4 -3b 4 -3 -4 -3 
+donde el Sol de tu bravura
+-4 5 -5 5 4 -4 4 -3
+le puso cerco a la muerte.
+
+4 5 5 5 -5 6 -5 5
+Aquí se queda la clara,
+5 5 5 5 -5 6 -5 5 
+la entrañable transparencia,
+5 -6 5 -6 5 -6 6 6 
+de tu querida presencia,
+-6 6 -5 4 4 -4 -5 5
+Comandante Che Guevara.
+```
+
+
+
