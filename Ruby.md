@@ -162,7 +162,3 @@ d = adder.(input_number_1, input_number_2);e = values_only.(input_hash)
 
 p a; p b; p c; p d; p e
 ```
-
-
-
-

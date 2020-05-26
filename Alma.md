@@ -32,7 +32,20 @@ https://tinmarino.github.io/?show=cosmo_obs_cheat
 | Obscure band designation     | Confusing band designation |
 | Adaptive Optic               | Phase Calibration |
 
+## Article Notes
 
+* PyUnit
+* Hudson
+* Scheduling blocks, created by the __observing tool__, selected and queued by the __scheduling subsystem__, exxecuted by the __monitor and control system__, reduced by __telescope calibration__ and stored in the __arhive__ for later analysis.
+* Many small pains are easier to deal with than few big ones => deliver software more often
+* Add complexity later when warranted, but it is very hard to substract it
+* Regular operation are the best possible test bed for any integrated system
+* Usual tests:
+  1. Regression
+  2. Scability
+  3. Feature/Functionality
+  4. Bug fix
+* Avoid testing: Code without added value, such as getters/setters and delegations
 
 ## Emission
 

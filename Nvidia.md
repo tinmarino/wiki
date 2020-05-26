@@ -35,3 +35,28 @@
 cat /var/log/lightdm
 cat /var/log/Xorg.0.log
 cat /var/log/gpu-manager.log
+
+# Smi
+
+## SMi working
+
+```text
+Wed May 20 00:28:45 2020       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 440.64       Driver Version: 440.64       CUDA Version: 10.2     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|===============================+======================+======================|
+|   0  GeForce GTX 850M    Off  | 00000000:04:00.0 Off |                  N/A |
+| N/A   57C    P0    N/A /  N/A |    183MiB /  4046MiB |      0%      Default |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                       GPU Memory |
+|  GPU       PID   Type   Process name                             Usage      |
+|=============================================================================|
+|    0       964      G   /usr/lib/xorg/Xorg                           110MiB |
+|    0      1353      G   /usr/bin/gnome-shell                          70MiB |
++-----------------------------------------------------------------------------+
+```

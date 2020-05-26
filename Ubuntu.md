@@ -1,4 +1,10 @@
 
+# Sortcut
+
+* Super + Q : Show number of window app in dock (left launcher)
+* Alt + f2 : Run command
+
+
 # Mouse
 
 modprobe -r psmouse

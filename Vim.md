@@ -80,13 +80,15 @@ CFLAGS='-g -gdwarf4 -DDEBUG -O0 -fno-omit-frame-pointer' \
             --enable-perlinterp=dynamic \
             --enable-python3interp=dynamic \
             --with-python3-config-dir=$(python3-config --configdir) \
-            ##--with-python3-command=python3.7 
             --enable-rubyinterp=dynamic \
             --with-ruby-command=$(which ruby) \
             --with-luajit \
             \
+            --enable-gui=gtk3 \
             \
             --with-compiledby="Tinmarino" \
+            
+            ##--with-python3-command=python3.7 \
 ```
 
 __Notes__:

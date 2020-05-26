@@ -2,6 +2,57 @@
 title: Accronyms
 ---
 
+# Alma
+
+| Accronym | Meaning |
+| ---      | ------------------------ |
+| ACA      | Atacama Compact Array |
+| ACS      | ALMA Common Software |
+| ADC      | ALMA Department of Computing at JAO |
+| ALMA     | Atacama Large Millimeter/submillimeter Array |
+| AMT      | ALMA Management Team |
+| AOS      | Array Operations Site |
+| APE      | ALMA Production Environment |
+| ARC      | ALMA Regional Center (Europe, North America and East Asia) |
+| CAN      | Control Area Network |
+| CASA     | Common Astronomy Software Applications |
+| CCB      | ALMA Change Control Board |
+| CIPT     | Computing IPT |
+| CL       | Chile |
+| DDS      | Data Distribution System |
+| DSO      | JAO Department of Science Operations |
+| EA       | East Asia |
+| EAASC    | East Asian ALMA Support Center |
+| EASC     | ESO ALMA Support Centre |
+| ESO      | European Southern Observatory |
+| EU       | Europe |
+| FTE      | Full-Time Equivalent |
+| ICT      | Integrated Computing Team |
+| IET      | Integrated Engineering Team |
+| ISOpT    | Integrated Science Operations Team |
+| IPT      | Integrated Product Team |
+| IT       | Information Technology |
+| ITS      | integration Testing and Support |
+| JAO      | Joint ALMA Observatory |
+| MAQ      | Multi Archive Query: REtreieve all metadata from all archives into ONE database |
+| MC       | Monitor & Control |
+| NA       | North America |
+| NAASC    | North American ALMA Science Center |
+| NAOJ     | National Astronomical Observatory of Japan |
+| NGAS     | Next Generation Archive System |
+| NRAO     | National Radio Astronomy Observatory (USA) |
+| OSF      | ALMA Operations Support Facility |
+| SACM     | Science Archive Content Managers |
+| SCCB     | Software Change Control Board |
+| SCO      | ALMA Santiago Central Office |
+| SE       | Software Engineering |
+| STE      | Standard Test Environment |
+| TelCal   | Telescope Calibration |
+| TMCDB    | Telescope Monitoring and Configuration Database |
+| VLBI     | Very Large Baseline Interferometry |
+
+
+# Computing
 
 | Accronym | Meaning |
 | ---      | ------------------------ |
@@ -200,3 +251,7 @@ title: Accronyms
 | XD       | eXecute Disable |
 | XOP      | eXtended OPeration |
 | XSS      | Cross Site Scripting |
+
+# Definition
+
+Prosodie: Musicalité de la voie dans le discours: volume, rythme, intonation

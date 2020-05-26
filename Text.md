@@ -35,6 +35,7 @@
 # Draw
 
 * [Figlet Font](Figlet-Font)
+* [Unicode](Unicode)
 * [Emoji](Emoji)
 * [Emoji Best](Emoji-Best)
 * [Draw](Draw)
