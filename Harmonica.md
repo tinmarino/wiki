@@ -1585,7 +1585,7 @@ Asking only workman's wages
 I come looking for a job,
  5  5  5  5   5 -4
 But I get no offers,
- -4 -4  -5  -5  -5  -5  -5  5 
+ -4 -4  -5  -5  -5  -5  -5  (5)
 Just a come-on from the whores
 5    4 -4  -5 5 5 
 On Seventh Avenue
@@ -1967,6 +1967,51 @@ And God, I kn-ow I'm one.
 -4  -5  5   -4  4   -3
 ```
 
+
+### Cat Stavrns: Wild world
+
+```text
+ 7   7    7    7   7  7    7 7-7
+Now that I`ve ev`ry-thing to you
+-7  -7  -7   -7  -7  -7    -7  -7   -7-6
+You say you want to start something new
+-6  -6    -6  -6  -6  -7    -6    b-6-5
+and it`s breaking my heart you`re leaving
+6 6   6  -6  -7
+Baby I`m grievin`
+ 7   7  7   7    7   7     7   7    -7
+But if you want to leave take good care,
+-7   -7   -7 -7 -7  -7  -7   -7    -7 -7-6
+Hope you have a lot of nice things to wear
+-6  -6  -6 -6  -6 -6    -6     -7  b-6  5   -4
+But then a lot of nice things turn bad out there
+
+Chorus
+8  -8-7 7-8  -8   7  7    -6   -7   -7   -7  7
+Oh baby baby it`s a WILD WORLD it`s hard to get
+-6  -5  -5 6-6  6      8  -8-7 7 -8  -8  7  7
+by just upon a smile . Oh baby baby it`s a WILD
+ -6    -7  -7 -7  -7 -6 -6  6   6   6   5   5-4 4
+WORLD I`ll always remember you like a child girl
+
+Verse 2.
+You know I`ve seen a lot of what the world can do
+And it`s breaking my heart in two 
+Because I never want to see you sad girl
+Don`t be a bad girl
+But if you want to leave take good care
+Hope you make a lot of nice friends out there
+But remember ther`s a lot of bad and beware
+Chorus Then the following part
+b-6b-6 b-6 -6  -7   7   7  7   7    7 8-8 7  8
+  Baby  I love you But if you want to leave take 
+ 7    -8  -7   -7   -7 -7 -8  -8  -8   -8 7
+good care hope you make a lot of nice friends
+-7   7    -6   -6  -6 -6 -6  -6    -6 -6  -7 -6
+out there but just remember there`s a lot of bad
+b-6 5 -4
+and beware 
+```
 
 ### Cat Stevens: The first cut 
 
@@ -4241,7 +4286,6 @@ Comme toi (x4)
 ### Goldman: Ensemble 
 
 ```text
-
 4    4    4    5 -5  5  -4    4   -3  4 6  4 5 
 Souviens-toi. Était-ce Mai, Novembre  ici  où là
 
@@ -5571,6 +5615,50 @@ Oh yeay!
 ```
 
 # Spanish
+
+
+### Ubiergo: Cafe para Platon
+
+```text
+Un día de Octubre a clases no llegó
+había dejado la universidad
+como un pitillo a medio terminar
+su carrera se quedó.
+
+Siempre pedía un café para Platón
+why unas monedas para locomoción
+no tenía nada why valía más que yo,
+porque él todo lo dio…
+
+Dime amigo en que lugar
+del mundo te hallarás,
+tomando un café junto a Platón…
+yo sé bien que tú estarás
+hablando de la paz…de la paz
+
+Tú siempre dijiste que; la paz
+se escapa entre los dedos de la humanidad
+why los pretendes juntar, son tantas manos
+que no alcanzarás..
+
+La clase continuaba en el café
+afuera el mundo giraba al revés
+era la loca aventura de la fe
+por cambiar el al revés.
+
+Un día de Octubre a clases no llegó
+un día de Octubre un café que se enfrió
+hoy nadie pide un café para Platón
+porque él se marchó.
+
+Dime amigo en que lugar
+del mundo te hallarás
+tomando un café junto a Platón
+yo sé bien que tú estarás
+hablando de la paz…de la paz
+tú siempre dijiste que, la paz
+se escapa por entre los…
+```
 
 
 ### Ubiergo: El tiempo en las bastillas 

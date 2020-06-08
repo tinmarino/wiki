@@ -61,6 +61,7 @@
   * [Francais Figure De Style](Francais-Figure-De-Style)
 
 ## Misc
+  * [Sport](Sport)
   * [Text](Text)
   * [Cheats](Cheats)
   * [Coding Style](Style/Style)
