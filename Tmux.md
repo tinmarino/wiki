@@ -2,6 +2,8 @@
 
 [Tmux Conf](Tmux-Conf)
 
+
+TMUX=1 gnome-terminal
 tmux capture-pane -pS -1000000 -t 0 > file.out
 
 ### Pane to new Windows == break pane o

@@ -4,6 +4,9 @@
 
 ## Command
 
+* __Copy:__ `docker cp foo.txt mycontainer:/foo.txt`
+* __List:__ `docker ps -a`
+
 ### Run
 
 * -i : read from stdin

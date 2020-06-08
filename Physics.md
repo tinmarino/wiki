@@ -25,11 +25,20 @@
 
 # Multipliers
 
-* k     e3  = 1000^1
-* M     e6  = 1000^2
-* G     e9  = 1000^3
-* T     e12 = 1000^4
-* P     e15 = 1000^5
-* T     e18 = 1000^6
-* T     e12 = 1000^4
-* T     e12 = 1000^4
+* k, kilo,     e3  = 1000^1
+* M, Mega,     e6  = 1000^2
+* G, Giga,     e9  = 1000^3
+* T, Tera,     e12 = 1000^4
+* P, Peta,     e15 = 1000^5
+* E, Exa,      e18 = 1000^6
+* Z, Zeta,     e21 = 1000^7
+* Y, Yota,     e24 = 1000^8
+
+* m, mili,     e-3
+* μ, micro,    e-6
+* n, nano,     e-9
+* p, pico,     e-12
+* f, fempto,   e-15
+* a, atto,     e-18
+* z, zepto,    e-21
+* y, yocto     e-24

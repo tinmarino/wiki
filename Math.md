@@ -47,6 +47,8 @@ Jf(x,y) = | df1  |  df1 |
 
 * __Parte abierta:__ (A) `∀x ∈ A; ∃d>0 tq B(x,d) ⊂ A`
 
+* __Convexo:__ Una parte C de un espacio vectorial real es convexa si para cada par de puntos de C, el segmento que los une está totalmente incluido en C; es decir, un conjunto es convexo si se puede ir de cualquier punto a cualquier otro en línea recta, sin salir del mismo (wiki)
+
 * E y ∅ son abiertos Y cerrados
 
 

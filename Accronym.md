@@ -7,19 +7,24 @@ title: Accronyms
 | Accronym | Meaning |
 | ---      | ------------------------ |
 | ACA      | Atacama Compact Array |
+| ACE      | Adaptive Communication Environment |
 | ACS      | ALMA Common Software |
 | ADC      | ALMA Department of Computing at JAO |
 | ALMA     | Atacama Large Millimeter/submillimeter Array |
+| AM       | Acceptance Manager |
 | AMT      | ALMA Management Team |
 | AOS      | Array Operations Site |
 | APE      | ALMA Production Environment |
 | ARC      | ALMA Regional Center (Europe, North America and East Asia) |
+| BACI     | Basic Access Control Interface |
 | CAN      | Control Area Network |
 | CASA     | Common Astronomy Software Applications |
 | CCB      | ALMA Change Control Board |
+| CDB      | Configuration Database (for ACS components) |
 | CIPT     | Computing IPT |
 | CL       | Chile |
 | DDS      | Data Distribution System |
+| DM       | Deployment Manager |
 | DSO      | JAO Department of Science Operations |
 | EA       | East Asia |
 | EAASC    | East Asian ALMA Support Center |
@@ -27,13 +32,17 @@ title: Accronyms
 | ESO      | European Southern Observatory |
 | EU       | Europe |
 | FTE      | Full-Time Equivalent |
+| HPC      | High Performance Computing (Big Data) |
+| HPDA     | High Performance Data Analytics |
+| ICD      | Interface Common Definitions |
 | ICT      | Integrated Computing Team |
 | IET      | Integrated Engineering Team |
 | ISOpT    | Integrated Science Operations Team |
 | IPT      | Integrated Product Team |
 | IT       | Information Technology |
-| ITS      | integration Testing and Support |
+| ITS      | Integration Testing and Support or Integration and Testing System |
 | JAO      | Joint ALMA Observatory |
+| MACI     | Management and Control Interface |
 | MAQ      | Multi Archive Query: REtreieve all metadata from all archives into ONE database |
 | MC       | Monitor & Control |
 | NA       | North America |
@@ -42,11 +51,16 @@ title: Accronyms
 | NGAS     | Next Generation Archive System |
 | NRAO     | National Radio Astronomy Observatory (USA) |
 | OSF      | ALMA Operations Support Facility |
+| QoS      | Quality of Service |
+| RM       | Release Manager |
 | SACM     | Science Archive Content Managers |
 | SCCB     | Software Change Control Board |
 | SCO      | ALMA Santiago Central Office |
+| SDAF     | Software Develoment Approval From |
 | SE       | Software Engineering |
+| SSR      | Science Software Requirement |
 | STE      | Standard Test Environment |
+| TAO      | The ACE ORB (open CORBA) |
 | TelCal   | Telescope Calibration |
 | TMCDB    | Telescope Monitoring and Configuration Database |
 | VLBI     | Very Large Baseline Interferometry |

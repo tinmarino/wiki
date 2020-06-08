@@ -632,7 +632,7 @@ Like a stormwind that will ring
 The freedom bell for peace of mind 
 5 5 4 4 -5 5 -4
 Let your balalaika sing 
--4 -4 5 -5 -5 5 -4 5
+-4   -4  5 -5  -5>5 -4  5
 What my guitar wants to say
 
 [Solo]
@@ -641,7 +641,7 @@ What my guitar wants to say
 Take me to the magic of the moment 
 5 -4 5 -4 -4
 On a glory night 
--4 5 -5 -5 -5 -5 6 -5 5 -4 5 
+-4    5   -5   -5 -5  -5 6 -5    5 -4 5 
 Where the children of tomorrow dream away 
 4 4 -5 5 -4
 In the wind of change
@@ -879,7 +879,7 @@ to chorus for end.
 ```
 
 														
-### Cohen: Like a bird
+### Cohen: Bird on a wire
 
 ```text
  5  -4  4   5   5  -4
@@ -894,16 +894,16 @@ Like a worm on a hook,
 Like a knight from some old fashioned book
 4  -4    5   -5   5 -4   4  -3   4
 I have saved all my ribbons for thee.
-7  7  7  7  7   -8    7  8
+7  7, 7  7  7   -8    7  8
 If i, if I have been unkind,
-7  7     7  7    7   7    7  -7 -6  6
+7  7     7  7    7 , 7    7  -7 -6  6
 I hope that you can just let it go by.
-7  7   7 7  7    -8   7  8
+7  7,  7 7  7    -8   7  8
 If i, if I have been untrue
-7  7    7    7  7   7  7  -7 -6  6
+7  7    7    7 , 7  7  7  -7 -6  6
 I hope you know it was never to you.
 
- 5  -4 4 4    5  -4
+ 5  -4 4 4 ,  5  -4
 Like a baby, stillborn,
  6   6   6   -6    6  -5
 Like a beast with his horn
@@ -915,13 +915,13 @@ But I swear by this song
 And by all that I have done wrong
 4  -4   5  -5  -4  4  -3   4
 I will make it all up to thee.
-7  7  7  7   7   7     7   7   -8  7    8
+7  7  7  7   7,  7  7  7   7   -8  7    8
 I saw a beggar leaning on his wooden crutch,
-7   7   7  7    7    7  7    7  -7  -6   6 
+7   7   7  7 ,  7    7  7    7  -7  -6   6 
 He said to me, you must not ask for so much.
-7   7    7     7      7    7   7  -8   7     8
+7   7  7  7  7  7 , 7  7    7   7  -8   7     8
 And a pretty woman leaning in her darkened door,
-7     7   7  7     7   7   7  -7  -6   6
+7     7   7  7 ,   7   7   7  -7  -6   6
 She cried to me, hey, why not ask for more? 
 5    5 -4  4   5  5  -4
 Oh like a bird on a wire,
