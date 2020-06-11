@@ -53,6 +53,7 @@ title: Accronyms
 | OSF      | ALMA Operations Support Facility |
 | QoS      | Quality of Service |
 | RM       | Release Manager |
+| RUT      | Registro Unico Tributario |
 | SACM     | Science Archive Content Managers |
 | SCCB     | Software Change Control Board |
 | SCO      | ALMA Santiago Central Office |

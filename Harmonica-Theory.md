@@ -9,6 +9,10 @@ Dans le doute, tire le 4
 
 ### Notes  C
 
+| A  | B  | C  | D  | E  | F  | G |
+| La | Si | Do | Re | Mi | Fa | Sol |
+
+
 |      |     |      |     |     |      |     |     |     |      |   |
 |------|-----|------|-----|-----|------|-----|-----|-----|------|---|
 | +1/2 | Mib |      |     | Mib | Solb | Sib |     | Mib | Solb | Si |

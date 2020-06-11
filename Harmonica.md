@@ -1,22 +1,28 @@
 # Contents
 
+- [Selected](#Selected)
+    - [Simon & Garfunkel: The boxer](#Selected#Simon & Garfunkel: The boxer)
+    - [Cohen: Bird on a wire](#Selected#Cohen: Bird on a wire)
+    - [Wind of change](#Selected#Wind of change)
+    - [Sinatra: My way](#Selected#Sinatra: My way)
+    - [Disney: Bare Necessities](#Selected#Disney: Bare Necessities)
 - [English](#English)
+    - [Gloria Gaynor: I will survive](#English#Gloria Gaynor: I will survive)
+    - [Evanescence:  Bring Me To Life](#English#Evanescence:  Bring Me To Life)
     - [Franki Valli: Can't tke my eyes off you](#English#Franki Valli: Can't tke my eyes off you)
     - [Dave Brubeck: Take five (Jazz)](#English#Dave Brubeck: Take five (Jazz))
-    - [Sinatra: My way](#English#Sinatra: My way)
-    - [Disney: Bare Necessities](#English#Disney: Bare Necessities)
     - [Disney: A whole new world](#English#Disney: A whole new world)
     - [River of babylon](#English#River of babylon)
     - [From the west](#English#From the west)
     - [Jimmy Fontana: Il mondo](#English#Jimmy Fontana: Il mondo)
     - [Jimmy fontana: Che sara](#English#Jimmy fontana: Che sara)
-    - [Wind of change](#English#Wind of change)
     - [Amazing grace](#English#Amazing grace)
     - [Cohen: Chesea Hotel](#English#Cohen: Chesea Hotel)
     - [Cohen: So long mariann](#English#Cohen: So long mariann)
     - [Cohen: Suzanne](#English#Cohen: Suzanne)
-    - [Cohen: Like a bird](#English#Cohen: Like a bird)
     - [Cohen: Halleluja](#English#Cohen: Halleluja)
+    - [Beatles: All my loving](#English#Beatles: All my loving)
+    - [Beatles: Yesterday](#English#Beatles: Yesterday)
     - [Beatles: Hey jude](#English#Beatles: Hey jude)
     - [Beatles: Imagine](#English#Beatles: Imagine)
     - [Beatles: Across The Universe](#English#Beatles: Across The Universe)
@@ -28,7 +34,6 @@
     - [Simon & Garfunkel: Sound of silence](#English#Simon & Garfunkel: Sound of silence)
     - [Simon & Garfunkel: Mrs Robinson](#English#Simon & Garfunkel: Mrs Robinson)
     - [Simon & Garfunkel: Bridge oveer trouble water](#English#Simon & Garfunkel: Bridge oveer trouble water)
-    - [Simon & Garfunkel: The boxer](#English#Simon & Garfunkel: The boxer)
     - [Simon & Garfunkel: Cecilia](#English#Simon & Garfunkel: Cecilia)
     - [Bob Dylan: Blowing in the wind](#English#Bob Dylan: Blowing in the wind)
     - [Guantanamera](#English#Guantanamera)
@@ -36,13 +41,18 @@
     - [Elvis Presley: Wonder of you](#English#Elvis Presley: Wonder of you)
     - [Mario](#English#Mario)
     - [The house of the rising sun](#English#The house of the rising sun)
-    - [Chariot of fire](#English#Chariot of fire)
+    - [Vangelis: Chariot of fire](#English#Vangelis: Chariot of fire)
     - [Con te partiro](#English#Con te partiro)
+    - [Rocky: Eye of the tiger](#English#Rocky: Eye of the tiger)
+    - [Bowie: The man who sold the world](#English#Bowie: The man who sold the world)
+    - [Nirvana: Smells like teen spirit](#English#Nirvana: Smells like teen spirit)
+    - [Cat Stevens: Wild world](#English#Cat Stevens: Wild world)
     - [Cat Stevens: The first cut](#English#Cat Stevens: The first cut)
-    - [Hymne russe](#English#Hymne russe)
     - [Cat Stevens: The wind](#English#Cat Stevens: The wind)
     - [Cat Stevens: Father and son](#English#Cat Stevens: Father and son)
     - [Cat Stevens: Lady d'arbanville](#English#Cat Stevens: Lady d'arbanville)
+    - [Tetris](#English#Tetris)
+    - [Hymne russe](#English#Hymne russe)
     - [Over the rainbow](#English#Over the rainbow)
     - [Bella ciao](#English#Bella ciao)
     - [Let it be](#English#Let it be)
@@ -59,6 +69,7 @@
     - [Stand by me](#English#Stand by me)
     - [Adele: someone like you](#English#Adele: someone like you)
 - [Francais](#Francais)
+    - [Ennio Morricone: Chi Mey: Le professionnel](#Francais#Ennio Morricone: Chi Mey: Le professionnel)
     - [Alain Barriere: Elle était si jolie](#Francais#Alain Barriere: Elle était si jolie)
     - [Boris vian: Le deserteur](#Francais#Boris vian: Le deserteur)
     - [Richard Antony: J'ettend siffler le train](#Francais#Richard Antony: J'ettend siffler le train)
@@ -100,12 +111,623 @@
     - [TODO Il jouai du piano debout (France Gall)](#Francais#TODO Il jouai du piano debout (France Gall))
     - [Claude Nougaro: Amstrong](#Francais#Claude Nougaro: Amstrong)
 - [Spanish](#Spanish)
+    - [Violeta Para: Run Run se Fue Pa'l Norte](#Spanish#Violeta Para: Run Run se Fue Pa'l Norte)
+    - [Vicentico: Los caminos de la vida](#Spanish#Vicentico: Los caminos de la vida)
+    - [Mercedes Sosa: Solo le pido a Dios](#Spanish#Mercedes Sosa: Solo le pido a Dios)
+    - [Popular: Cancion de cuna](#Spanish#Popular: Cancion de cuna)
+    - [Chile: Himno](#Spanish#Chile: Himno)
+    - [Jara: El derecho de vivir en paz](#Spanish#Jara: El derecho de vivir en paz)
+    - [Jaivas: Todos Juntos](#Spanish#Jaivas: Todos Juntos)
+    - [Los Prisioneros: Tren al sur](#Spanish#Los Prisioneros: Tren al sur)
+    - [Ubiergo: Cafe para Platon](#Spanish#Ubiergo: Cafe para Platon)
     - [Ubiergo: El tiempo en las bastillas](#Spanish#Ubiergo: El tiempo en las bastillas)
     - [Silvio: Quien fuera](#Spanish#Silvio: Quien fuera)
     - [Silvio: Ojala](#Spanish#Silvio: Ojala)
     - [Carlos Puebla: Hasta Siempre Commandante](#Spanish#Carlos Puebla: Hasta Siempre Commandante)
 
+# Selected
+
+
+### Simon & Garfunkel: The boxer
+
+```text
+6 6   6  -6  6    5
+I am just a poor boy.
+  5    -5  6 6     7 -7   -6 
+Though my story's seldom told,
+-6 -7    -6   6   6  -6  6  -4 
+I have squandered my resistance
+-4  5 -5 -5 -5  6   -5  5   
+For a pocketful of mumbles,
+ 4   -4  -5 5 4
+Such are promises
+ 7   7   -7   7
+All lies and jest
+  7   -7  7   -7    -7  -7  -7   -6  -6
+Still, a man hears what he wants to hear
+-6  -6 -6 -6   -5   6
+And disregards the rest.
+
+ 5  -5  6   6   6
+When I left my home
+ 6  6  6 -5 5
+And my family-,
+5 -5  6   7    7  -7 -6
+I was no more than a boy
+-6 -6   6 6  6 6    6  -4
+In the company of strangers
+-4  5  -5 -5 -5 -5   -5  5   4 -4
+In the quiet of the railway station,
+ -5  5    4
+Running scared,
+ 7 -7   7
+Laying low,
+ 7  -7   7  -7  -7 -7   -7  -6 
+Seeking out the poorer quarters
+ -6   -6  -6 -6  -6  6  6
+Where the ragged people go,
+ 5  -5   6  -4  -4  5
+Looking for the places
+-5 -5  5     -4   4
+Only- they would know.
+
+ 7  -7  7
+Lie la lie
+ 7  -7  7  -7 -7  -6  6
+Lie la lie la lie la lie
+ 7  -7  7
+Lie la lie
+-8  8  -9  8  8  -8 7  -8
+Lie la lie la la la la lie
+7  7  7  -7  7
+la la la la lie
+
+ 5 -5  6  6   6   6   6  5
+Asking only workman's wages
+5  5    -5  5   4 -4  5
+I come looking for a job,
+ 5  5  5  5   5 -4
+But I get no offers,
+ -4 -4  -5  -5  -5  -5  -5  (5)
+Just a come-on from the whores
+5    4 -4  -5 5 5 
+On Seventh Avenue
+7 7   -7  7
+I do declare,
+  7    -7    7    -7 -7 -7  -7  -6  -6
+There were times when I was so lonesome
+-6 -6   -6   -6 6     6
+I took some comfort there.
+
+ 6  6  6  6  6  6  6
+Ooo la la la la la la
+
+ 5   -5   6  6   6  6   6 -5     5
+Then I'm laying out my winter clothes
+-5   6  7   7 -7   -6
+And wishing I was gone,
+-6 5   6
+Going home
+ -4    5   -5  -5  -5 -5  -5  5
+Where the New York City- winters
+ 4 -4   -5  5   5 
+Aren't bleeding me,
+ 7  -7  6 -6
+Leading me--,
+-6 5   6
+Going home.
+
+6  -6    6  6     6    6  6 5
+In the clearing stands a boxer,
+ 5 -5  6  6   7  -7   -6
+And a fighter by his trade
+-6  -7  -6  6   6  -6  6 -4 
+And he carries the reminders
+-4 -5 -5  -5    -5   -5   5   4
+Of ev'ry glove that laid him down
+-4 -5   5   4   -4  -5    5  
+Or cut him till he cried out
+6   6   6 7   7  -7    7
+In his anger and his shame,
+ 7 7   7  -7  -7 -7  -7 -6 
+"I am leaving, I am leaving." 
+-6  -6   -6 -6   -6    6  6
+But the fighter still remains
+
+ 7  -7  7
+Lie la lie
+ 7  -7  7  -7 -7  -6  6
+Lie la lie la lie la lie
+ 7  -7  7
+Lie la lie
+-8  8  -9  8  8  -8 7  -8
+Lie la lie la la la la lie
+7  7  7  -7  7
+la la la la lie
+
+ 7  -7  7
+Lie la lie
+ 7  -7  7  -7 -7  -6  6
+Lie la lie la lie la lie
+ 7  -7  7
+Lie la lie
+-8  8  -9  8  8  -8 7  -8
+Lie la lie la la la la lie
+7  7  7  -7  7
+la la la la lie
+```
+
+
+### Cohen: Bird on a wire
+
+```text
+ 5  -4  4   5   5  -4
+Like a bird on  a wire,
+ 6   6   6   6  6  6  -6   6  -5
+Like a drunk in a midnight choir
+4  -4   5    -5 5  -4  4  -3   4
+I have tried in my way to be free.
+ 5  -4  4   5  5  -4
+Like a worm on a hook,
+ 6   6   6      6    6   6    -6    6  -5
+Like a knight from some old fashioned book
+4  -4    5   -5   5 -4   4  -3   4
+I have saved all my ribbons for thee.
+7  7, 7  7  7   -8    7  8
+If i, if I have been unkind,
+7  7     7  7    7 , 7    7  -7 -6  6
+I hope that you can just let it go by.
+7  7,  7 7  7    -8   7  8
+If i, if I have been untrue
+7  7    7    7 , 7  7  7  -7 -6  6
+I hope you know it was never to you.
+
+ 5  -4 4 4 ,  5  -4
+Like a baby, stillborn,
+ 6   6   6   -6    6  -5
+Like a beast with his horn
+4  -4   5   -5 5 -4  -4     -4   5   -4  4
+I have torn everyone who reached out for me.
+5  -4   4   5    5   -4
+But I swear by this song
+ 6  6   6   6   6  -6    6     -5
+And by all that I have done wrong
+4  -4   5  -5  -4  4  -3   4
+I will make it all up to thee.
+7  7  7  7   7,  7  7  7   7   -8  7    8
+I saw a beggar leaning on his wooden crutch,
+7   7   7  7 ,  7    7  7    7  -7  -6   6 
+He said to me, you must not ask for so much.
+7   7  7  7  7  7 , 7  7    7   7  -8   7     8
+And a pretty woman leaning in her darkened door,
+7     7   7  7 ,   7   7   7  -7  -6   6
+She cried to me, hey, why not ask for more? 
+5    5 -4  4   5  5  -4
+Oh like a bird on a wire,
+ 6   6   6   6  6   6  -6  6  -5
+Like a drunk in a midnight choir
+4  -4   5    -5  5 -4  4  -3   4
+I have tried in my way to be free
+```
+
+
+### Wind of change
+
+```text
+-6 -7 7 -6 -7 7 -8 7
+-6 -7 7 -6 -7 7 -8 7
+7 -8 8 7 -8 6 7 -7
+
+4 -4 5 4 -4 
+I follow the Moskva 
+-4 5 -5 6 5 
+Down to Gorky Park 
+4 -5 5 -4 5 -4 3 4 -3 
+Listening to the wind of change 
+4 -4 5 4 -4 
+An August summer night 
+-4 5 -5 6 5 
+Soldiers passing by 
+4 -5 5 -4 5 -4 3 4 -3 
+Listening to the wind of change 
+
+-6 -7 7 -6 -7 7 -8 7
+-6 -7 7 -6 -7 7 -8 7
+7 -8 8 7 -8 6 7 -7
+
+4 -4 5 4 -4 
+The world is closing in 
+-4 5 -5 6 5 
+And did you ever think 
+4 -5 5 -4 5 -4 3 4 -3 
+That we could be so close, like brothers 
+4 -4 5 4 -4 
+The future's in the air 
+-4 5 -5 6 5 
+I can feel it everywhere 
+4 -5 5 -4 5 -4 3 4 -3 
+And Blowing with the wind of change 
+
+5 -4 -4 5 -5 -5 -5 -5 6 -5  
+Take me to the magic of the moment 
+5 -4 5 -4 -4
+On a glory night 
+-4 5 -5 -5 -5 -5 6 -5 5 -4  5 
+Where the children of tomorrow dream away 
+4 4 -5 5 -4
+In the wind of change 
+
+4 -4 5 4 -4 
+Walking down the street 
+-4 5 -5 6 5 
+Distant memories 
+4 -5 5 -4 5 -4 3 4 -3 
+Are buried in the past forever
+4 -4 5 4 -4 
+I follow the Moskva 
+-4 5 -5 6 5 
+Down to Gorky Park 
+4 -5 5 -4 5 -4 3 4 -3 
+Listening to the wind of change
+
+5 -4 -4 5 -5 -5 -5 -5 6 -5  
+Take me to the magic of the moment 
+5 -4 5 -4 -4
+On a glory night 
+-4 5 -5 -5 -5 -5 6 -5 5 -4  5 
+Where the children of tomorrow dream away
+4 4 -5 5 -4
+In the wind of change
+7 7 -7
+(Wind of change)
+
+3 3 3 4 -4 -3
+The wind of change blows straight 
+-3 -3 -3 4 -3 3
+Into the face of time 
+3 3 3 3 -3 -4 -3
+Like a stormwind that will ring 
+-3 -3 -3 -3 4 -4 5
+The freedom bell for peace of mind 
+5 5 4 4 -5 5 -4
+Let your balalaika sing 
+-4   -4  5 -5  -5>5 -4  5
+What my guitar wants to say
+
+[Solo]
+
+5 -4 -4 5 -5 -5 -5 -5 6 -5  
+Take me to the magic of the moment 
+5 -4 5 -4 -4
+On a glory night 
+-4    5   -5   -5 -5  -5 6 -5    5 -4 5 
+Where the children of tomorrow dream away 
+4 4 -5 5 -4
+In the wind of change
+7 7 -7
+(Wind of change)
+
+-6 -7 7 -6 -7 7 -8 7
+-6 -7 7 -6 -7 7 -8 7
+7 -8 8 7 -8 6 7 -7
+```
+
+
+### Sinatra: My way
+
+```text
+35 35-45 35-45 55-4-44
+
+3-5 3-55-5 3-55-5 -46-4-55
+
+46 -66-56 -656-5 -5-556-5 -55 5-55-4 -34-4-44
+
+35 35-45 35-45 55-4-44
+
+3-5 -5-55-5 -5-55-5 -46-4-55
+
+46 -66-56 -656-5 -5-556-5 6-55 5-55-4 -34-4-44
+
+5-566 -66-56 5-56-6 -7-66-6
+
+-6-777 -67-6-7 -77-8-8 -7-8-77 -6-777 -67-6-7 -77-8-87
+
+35 35-45 35-45 55-4-4-4b
+
+3-5 -5-55-5 -5-55-5 -46-4-55
+
+46 66-66 66-6-5 -5-556-5 -55 5-55-4 -34-4-44
+
+5-566 -66-56 5-56-6 -7-66-6
+
+-6-777 -67-6-7 -77-8-8 -7-8-77 -6-777 -67-6-7 -77-8-87
+
+----------------------------------------------------------------
+
+3     5  | 3   5  -4     5  | 3   5 -4    5 | 3   5 -4    -4  4   
+And   now, the end is   near; and so I   face the final   curtain.
+-3    -5 |   -5   -5  5     -5 |  -3    -5   5    -5 | -4   6   5 -4  -5  5 
+My friend, I'll say it   clear, I'll state my   case, of which I'm certain.
+4    6 | 6   6    -5       6   | 6    6  -6      6 | -5 -5  5     6 -5 5 -5 
+I've lived a life that's   full. I've traveled   each and every highwa a--ay;
+3    5  |  3   -5    5     -4  |-3 4  -4   -4    4   
+and more, much more than   this, I did it   my   way.
+
+3     5       
+Re---grets, 
+6    5  -4   5 ; 3    5 -4     5 ;   5   5  -4    -4  4   
+I’ve had a few; but then a---gain, too few to   mention.
+-3   -5 | -5 -5  -5  5  -5 | -3  -5  5   -5 |  -4  6  5 -4  -5   5
+I   did  what I had to do    and saw it through without e-x---emption. 
+4       6  |  6    6  -5        6  |  -6    5  6  -5 | -5 -5   5    6 -5
+I   planned each chartered   course; each careful step along the byway,
+3     5  |  5   -5    5     -4  | -3 4  -4   -4  4
+but  more, much more than   this, I did it   my way 
+
+5    -5    6      6   | -6   6   -5    6  | -5  6  -7    -7 | 7   -7  6 -6 
+Yes, there were  times, I'm sure you  knew, when I bit  off more than I  c'chew.
+-6    -7    7    7 |  -6    7    -6     -7 | -7 7  -8 -8 | 8  -7  -8 7  
+But through it all, when there was   doubt, I ate it  up and spit it  out.
+7   7   -7    7 | 7 -8   7      -7 |  -7  7  -8   -8    7  
+I faced it  all and I stood   tall; and did it   my   way.
+3      5  |   3      5    -4     5  |   3   5  -4     5    
+I’ve loved, I've laughed and   cried. I've had my  fill; 
+3   5   -4    -4 4    
+my share of   losing.
+
+-3   -5 |-3   -5   5     -5 | -3  -5   5    -5 | 6 -4   -5 5    
+And  now, as tears sub---side, I find it   all   so a---musing. 
+4     6 | 6  6   -5  6  | -6  5   6   -5
+To  think I did all that  and may I   say 
+-5 -5 5    6   -5 | 6   5 | 3 -5  5    -4 | -3  4  -4 -4  4
+not in a   shy way, no, no, oh no not  me,  I did it my  way.
+
+4    5  -5 6    6 |  -6   6  -5    6 |  -5  6   -6    -6 |  -7  -6  6 -6    
+For what is a  man, what has he   got?  If not him   self, then he has naught.
+-6  -7  7      7  |  -6   7 -6  -7  | -7  7   -8     -8  | 8  -7 -8   7      
+To say the  things;  he truly  feels; and not the   words of one who kneels.
+7   7  7      7   | 7  -8   7      -7  | -7  7  -8   -8    7  
+The record   shows;  I took the  blows - and did it  my   way!  
+
+-3   4    -4    -4-------  4------
+I  did    it    my           way.   
+```
+
+
+### Disney: Bare Necessities
+
+```text
+-1   2  -2
+Il  en  faut
+
+ A  Ti    A    To   A
+-3  -3'   -3   -3" -2
+peu pour être heureux
+
+A   To     A  To   A   To     A 
+-2  -3"   -2  -3" -2   -3"   -2   2
+Vraiment trés peu pour être heureux 
+-1  -2  -1  -2  -3  5 -4   4  -3  -3"
+Il faut se satisfaire du  necessaire 
+
+-4   5  -4
+ 5  -4   5  -4  -3
+-2  -3" -2  -3" -2   5  -2  -2
+-3" -3  -4  -3  -4  -3  -2   2  -1  -2
+
+ 
+
+ -4   5   6   -7  -6  -7 -6  6
+Look for the bare ne-cess-i-ties,
+ 6   -6  6   -6   6  -6  6  5
+the sim-ple bare ne-cess-i-ties,
+-4   6 -4   6   -7   8  -8    7   -7    -6  
+for-get a-bout your wor-ries and your strife.
+
+
+-8   8  -8   8   -8   8 -8  -7
+ I mean the bare ne-cess-i-ties
+ 6   -6  6  -6   6    8  6  6
+old Moth-er Na-ture's re-ci-pes
+ -6   -7   -8   -7  -8  -7  6  5   -4   6
+that bring the bare ne-cess-i-ties of life.
+
+
+  6  -5 -5 5 -4  -4    -6  -6 6 -5  6
+Wher-ev-er I wan-der, wher-ev-er I roam
+6  -5   -5  5   -4  -6 -6 6  -6   -7
+I could-n't be fond-er of my big home.
+ -7  7    -8  8   8   8   7   -7
+The bees are buzz-in' in the tree
+-6  -7    7   -8 -8  -8  -7  -6
+to make some hon-ey just for me,
+-7   7   -8  8   8  8   7   -7  -6    6   -5  6
+the bare ne-cess-i-ties of life will come to you. 
+```
+
+
 # English
+
+### Gloria Gaynor: I will survive
+
+```text
+-6  -6   -6 -6  -6 -6  -7 -7  -7 -6 -6  
+At first I was afraid, I was petrified
+ -6   -6  -6  -6  6    6  6  -6
+Kept thinkin' I could never live
+ 6   6  -5  -5  5   5
+Without you by my side
+ 5    5  5   5   5  5  5   5
+But then I spent so many nights
+ 5   5    5   -4  -4 -4   5
+Thinkin' how you did me wrong
+ -4 -4 -4    5 
+And I grew strong
+ 5  5    5      6  6  6  -6 -7 
+And I learned how to get along
+ 6   6   6     -6    -6  -6 -6  -6    
+And so you're back, from outer space
+-6  -6    -6   -6  6   6   6   -6 
+ I just walked in to find you here
+  6   6    6   -6  6  6   6   6   
+With that sad look upon your face
+5    5     5    -5      5   5  5   5    
+I should have changed that stupid lock
+5    5    5     5  -4   -4    -4  -4
+I should have made you leave your key
+-4 -4   5    5    5   5    5   5  5   
+If I'd 've known for just one second
+  5    5   6  6   6  -6  -7
+You'd be back to bother  me 
+
+ 6  6  6  -6   -6  -6  -6   -6 
+Go on now go, walk out the door
+ -6   -6  -6 -6   6   -6
+Just turn around ~~~ now
+    6      -6    6   -6  6  6  6  -6
+('cause) you're not welcome an-y-more
+  5      5   5   5   5    5   5
+Weren't you the one who tried to 
+  5  -4  -4   -4 -4    -4 5  5   5
+Hurt me with goodbye, did I crumble ?
+ 5   5    5    5   6    6   -6  -7
+Did you think I'd lay down and die
+ 6  6  6  -6  -6  -7   7   -7
+Oh no not I,  I  will survive
+-6 -6  -6   6 6   6  -6  6   6
+Oh as long as I know how to love
+6  -6   6    6   6  6 
+I know I'll stay alive
+  5   5   5   5   5  5   5
+I've got all my life to live
+  5   5   5   5  -5  5   5 
+I've got all my love to give
+ 5    5   5   5   5  -6   -5  6    6  -6
+And I'll survive, I will survive, HEY HEY
+
+ 6   6  -6  -6     -6    -6  -6   
+It took all the strength I  had
+ -7  7  -7  -6 -6 
+Not to fall apart
+ -6  -6 -6   -6  6    6   6   -6  6 
+Kept tryin' hard to mend the pieces
+ 6 -5  -5  5   5
+Of my broken heart
+ 5  5   5    5  5  5 5   5
+And I spent oh so many nights
+ 5    5  5   -4 -4  -4  -4 -4  5   5  5   5 
+Just feelin' sorry for myself, I used to cry
+ 5   5  5   6   6   6  -6  -7 
+But now I hold my head up high
+ 6   6   6  -6  -6 -6 -6  -6 
+And you see me, somebody new
+ -6 -6   -6    -6    6   6  6   -6  6 
+I'm not that chained up little person
+  6   -5  -5   5    5
+Still in love with you
+ 5   5  5   -5   5    5   5   5
+And so you feel like droppin' in
+ 5    5   5  5  -4 -4 -4  -4
+And just expect me to be free
+ -4  5  5  5   5   5  5  5
+Now Im savin' all my lovin'
+ 5   5   6   6     6 -6  -7
+For someone who's lovin' me
+
+6  6  6  -6   -6  -6  -6   -6 
+Go on now go, walk out the door
+ -6   -6  -6 -6   6   -6
+Just turn around ~~~ now
+    6      -6    6   -6  6  6  6  -6
+('cause) you're not welcome an-y-more
+  5      5   5   5   5    5   5
+Weren't you the one who tried to 
+  5  -4  -4   -4 -4    -4 5  5   5
+Hurt me with goodbye, did I crumble ?
+ 5   5    5    5   6    6   -6  -7
+Did you think I'd lay down and die
+ 6  6  6  -6  -6  -7   7   -7
+Oh no not I,  I  will survive
+-6 -6  -6   6 6   6  -6  6   6
+Oh as long as I know how to love
+6  -6   6    6   6  6 
+I know I'll stay alive
+  5   5   5   5   5  5   5
+I've got all my life to live
+  5   5   5   5  -5  5   5 
+I've got all my love to give
+ 5    5   5   5   5  -6   -5  6    6  -6
+And I'll survive, I will survive, HEY HEY
+ 6    6     -6
+I'll sur - vive......
+```
+
+
+### Evanescence:  Bring Me To Life
+
+```text
+-7  -6  -7  +7  -7 -6 -7 +6
+How can you see in~to my eyes
++5   -5 +6  -6
+Like o~~pen doors
+-7  -6  -8  +7   -7 -6 -7 +6
+Leading you down in~to my core
++5    -5   +6 -6   +6 -5 +6 -5
+Where I've be~come so~~~ numb~
+============================================
++5  -5  +6 -6    +6 -5 +6 -5 +5
+Without a~ soul (ooOOooOOooOOoo)
++5 -5 +6    +7   -7  -6  +7    -7
+My spirit's sleeping somewhere cold
+-7 -6  -7  +7   -7 -6    -7  -7  -6 +6
+Un~til you find it there and lead~~~~~
+-6 -5   +5
+It back home.
+============================================
+(+5   +5 +5)
+(Wake me up)
+-7   -7 -7 -6 -6
+Wake me up in~side
+(-3 +5    +5   +5)
+(I~ can't wake up)
+-7   -7 -7 -6 -6
+Wake me up in~side
+(+6   -5)
+(Save me)
++7   -7 -6   +6  +7   -7 -6   -7  +6
+Call my name and save me from the dark
+(+5   +5 +5)
+(Wake me up)
+-7  -7 -7    -6 -6
+Bid my blood to run
+(-3 +5    +5   +5)
+(I~ can't wake up)
++6 +7   -7 -7   -6 -6
+Be~fore I~ come un~done
+(+6   -5)
+(Save me)
++7   -7 -6   +6  +7  -7  -6   -7 +6
+Save me from the nothing I've be~come
+============================================
++6    -6 -5 +5
+Bring me to life
++5   +5   +5 +5  +5 +5
+I've been living a~ lie
++5      +5  +5  +5 +5
+There's nothing in~side
++6    -6 +7 -7
+Bring me to life
+============================================
++7 -7  -6 -7   +6  -6  -7   -6
+Frozen in~side without your tourch
++6  -6  -7   -7  -6 +6 -6 -7
+Without your love~~~~~ darling
+-7 -6 -7 -6 +6 -6  -7  -6
+On~ly you~~~~~ are the life
++6 -6   -7  -7
+A~~mong the dead
+```
+
 
 ### Franki Valli: Can't tke my eyes off you
 
@@ -253,110 +875,6 @@ Cant take my eyes off you
 -6   -6'  +6    -5
 -3'' +4   -4    +4    -3'' -2    -3''
 -5   -4   +4    -4 
-```
-
-
-### Sinatra: My way
-
-```text
-35 35-45 35-45 55-4-44
-
-3-5 3-55-5 3-55-5 -46-4-55
-
-46 -66-56 -656-5 -5-556-5 -55 5-55-4 -34-4-44
-
-35 35-45 35-45 55-4-44
-
-3-5 -5-55-5 -5-55-5 -46-4-55
-
-46 -66-56 -656-5 -5-556-5 6-55 5-55-4 -34-4-44
-
-5-566 -66-56 5-56-6 -7-66-6
-
--6-777 -67-6-7 -77-8-8 -7-8-77 -6-777 -67-6-7 -77-8-87
-
-35 35-45 35-45 55-4-4-4b
-
-3-5 -5-55-5 -5-55-5 -46-4-55
-
-46 66-66 66-6-5 -5-556-5 -55 5-55-4 -34-4-44
-
-5-566 -66-56 5-56-6 -7-66-6
-
--6-777 -67-6-7 -77-8-8 -7-8-77 -6-777 -67-6-7 -77-8-87
-
-----------------------------------------------------------------
-
-3     5  | 3   5  -4     5  | 3   5 -4    5 | 3   5 -4    -4  4   
-And   now, the end is   near; and so I   face the final   curtain.
--3    -5 |   -5   -5  5     -5 |  -3    -5   5    -5 | -4   6   5 -4  -5  5 
-My friend, I'll say it   clear, I'll state my   case, of which I'm certain.
-4    6 | 6   6    -5       6   | 6    6  -6      6 | -5 -5  5     6 -5 5 -5 
-I've lived a life that's   full. I've traveled   each and every highwa a--ay;
-3    5  |  3   -5    5     -4  |-3 4  -4   -4    4   
-and more, much more than   this, I did it   my   way.
-
-3     5       
-Re---grets, 
-6    5  -4   5 ; 3    5 -4     5 ;   5   5  -4    -4  4   
-I’ve had a few; but then a---gain, too few to   mention.
--3   -5 | -5 -5  -5  5  -5 | -3  -5  5   -5 |  -4  6  5 -4  -5   5
-I   did  what I had to do    and saw it through without e-x---emption. 
-4       6  |  6    6  -5        6  |  -6    5  6  -5 | -5 -5   5    6 -5
-I   planned each chartered   course; each careful step along the byway,
-3     5  |  5   -5    5     -4  | -3 4  -4   -4  4
-but  more, much more than   this, I did it   my way 
-
-5    -5    6      6   | -6   6   -5    6  | -5  6  -7    -7 | 7   -7  6 -6 
-Yes, there were  times, I'm sure you  knew, when I bit  off more than I  c'chew.
--6    -7    7    7 |  -6    7    -6     -7 | -7 7  -8 -8 | 8  -7  -8 7  
-But through it all, when there was   doubt, I ate it  up and spit it  out.
-7   7   -7    7 | 7 -8   7      -7 |  -7  7  -8   -8    7  
-I faced it  all and I stood   tall; and did it   my   way.
-3      5  |   3      5    -4     5  |   3   5  -4     5    
-I’ve loved, I've laughed and   cried. I've had my  fill; 
-3   5   -4    -4 4    
-my share of   losing.
-
--3   -5 |-3   -5   5     -5 | -3  -5   5    -5 | 6 -4   -5 5    
-And  now, as tears sub---side, I find it   all   so a---musing. 
-4     6 | 6  6   -5  6  | -6  5   6   -5
-To  think I did all that  and may I   say 
--5 -5 5    6   -5 | 6   5 | 3 -5  5    -4 | -3  4  -4 -4  4
-not in a   shy way, no, no, oh no not  me,  I did it my  way.
-
-4    5  -5 6    6 |  -6   6  -5    6 |  -5  6   -6    -6 |  -7  -6  6 -6    
-For what is a  man, what has he   got?  If not him   self, then he has naught.
--6  -7  7      7  |  -6   7 -6  -7  | -7  7   -8     -8  | 8  -7 -8   7      
-To say the  things;  he truly  feels; and not the   words of one who kneels.
-7   7  7      7   | 7  -8   7      -7  | -7  7  -8   -8    7  
-The record   shows;  I took the  blows - and did it  my   way!  
-
--3   4    -4    -4-------  4------
-I  did    it    my           way.   
-```
-
-
-### Disney: Bare Necessities
-
-```text
--1   2  -2
-Il  en  faut
-
- A  Ti    A    To   A
--3  -3'   -3   -3" -2
-peu pour être heureux
-
-A   To     A  To   A   To     A 
--2  -3"   -2  -3" -2   -3"   -2   2
-Vraiment trés peu pour être heureux 
--1  -2  -1  -2  -3  5 -4   4  -3  -3"
-Il faut se satisfaire du  necessaire 
-
--4   5  -4
- 5  -4   5  -4  -3
--2  -3" -2  -3" -2   5  -2  -2
--3" -3  -4  -3  -4  -3  -2   2  -1  -2
 ```
 
 
@@ -552,107 +1070,6 @@ Che sarà sarà
 ```
 
 
-### Wind of change
-
-```text
--6 -7 7 -6 -7 7 -8 7
--6 -7 7 -6 -7 7 -8 7
-7 -8 8 7 -8 6 7 -7
-
-4 -4 5 4 -4 
-I follow the Moskva 
--4 5 -5 6 5 
-Down to Gorky Park 
-4 -5 5 -4 5 -4 3 4 -3 
-Listening to the wind of change 
-4 -4 5 4 -4 
-An August summer night 
--4 5 -5 6 5 
-Soldiers passing by 
-4 -5 5 -4 5 -4 3 4 -3 
-Listening to the wind of change 
-
--6 -7 7 -6 -7 7 -8 7
--6 -7 7 -6 -7 7 -8 7
-7 -8 8 7 -8 6 7 -7
-
-4 -4 5 4 -4 
-The world is closing in 
--4 5 -5 6 5 
-And did you ever think 
-4 -5 5 -4 5 -4 3 4 -3 
-That we could be so close, like brothers 
-4 -4 5 4 -4 
-The future's in the air 
--4 5 -5 6 5 
-I can feel it everywhere 
-4 -5 5 -4 5 -4 3 4 -3 
-And Blowing with the wind of change 
-
-5 -4 -4 5 -5 -5 -5 -5 6 -5  
-Take me to the magic of the moment 
-5 -4 5 -4 -4
-On a glory night 
--4 5 -5 -5 -5 -5 6 -5 5 -4  5 
-Where the children of tomorrow dream away 
-4 4 -5 5 -4
-In the wind of change 
-
-4 -4 5 4 -4 
-Walking down the street 
--4 5 -5 6 5 
-Distant memories 
-4 -5 5 -4 5 -4 3 4 -3 
-Are buried in the past forever
-4 -4 5 4 -4 
-I follow the Moskva 
--4 5 -5 6 5 
-Down to Gorky Park 
-4 -5 5 -4 5 -4 3 4 -3 
-Listening to the wind of change
-
-5 -4 -4 5 -5 -5 -5 -5 6 -5  
-Take me to the magic of the moment 
-5 -4 5 -4 -4
-On a glory night 
--4 5 -5 -5 -5 -5 6 -5 5 -4  5 
-Where the children of tomorrow dream away
-4 4 -5 5 -4
-In the wind of change
-7 7 -7
-(Wind of change)
-
-3 3 3 4 -4 -3
-The wind of change blows straight 
--3 -3 -3 4 -3 3
-Into the face of time 
-3 3 3 3 -3 -4 -3
-Like a stormwind that will ring 
--3 -3 -3 -3 4 -4 5
-The freedom bell for peace of mind 
-5 5 4 4 -5 5 -4
-Let your balalaika sing 
--4   -4  5 -5  -5>5 -4  5
-What my guitar wants to say
-
-[Solo]
-
-5 -4 -4 5 -5 -5 -5 -5 6 -5  
-Take me to the magic of the moment 
-5 -4 5 -4 -4
-On a glory night 
--4    5   -5   -5 -5  -5 6 -5    5 -4 5 
-Where the children of tomorrow dream away 
-4 4 -5 5 -4
-In the wind of change
-7 7 -7
-(Wind of change)
-
--6 -7 7 -6 -7 7 -8 7
--6 -7 7 -6 -7 7 -8 7
-7 -8 8 7 -8 6 7 -7
-```
-													
 ### Amazing grace 
 
 ```text
@@ -879,59 +1296,6 @@ to chorus for end.
 ```
 
 														
-### Cohen: Bird on a wire
-
-```text
- 5  -4  4   5   5  -4
-Like a bird on  a wire,
- 6   6   6   6  6  6  -6   6  -5
-Like a drunk in a midnight choir
-4  -4   5    -5 5  -4  4  -3   4
-I have tried in my way to be free.
- 5  -4  4   5  5  -4
-Like a worm on a hook,
- 6   6   6      6    6   6    -6    6  -5
-Like a knight from some old fashioned book
-4  -4    5   -5   5 -4   4  -3   4
-I have saved all my ribbons for thee.
-7  7, 7  7  7   -8    7  8
-If i, if I have been unkind,
-7  7     7  7    7 , 7    7  -7 -6  6
-I hope that you can just let it go by.
-7  7,  7 7  7    -8   7  8
-If i, if I have been untrue
-7  7    7    7 , 7  7  7  -7 -6  6
-I hope you know it was never to you.
-
- 5  -4 4 4 ,  5  -4
-Like a baby, stillborn,
- 6   6   6   -6    6  -5
-Like a beast with his horn
-4  -4   5   -5 5 -4  -4     -4   5   -4  4
-I have torn everyone who reached out for me.
-5  -4   4   5    5   -4
-But I swear by this song
- 6  6   6   6   6  -6    6     -5
-And by all that I have done wrong
-4  -4   5  -5  -4  4  -3   4
-I will make it all up to thee.
-7  7  7  7   7,  7  7  7   7   -8  7    8
-I saw a beggar leaning on his wooden crutch,
-7   7   7  7 ,  7    7  7    7  -7  -6   6 
-He said to me, you must not ask for so much.
-7   7  7  7  7  7 , 7  7    7   7  -8   7     8
-And a pretty woman leaning in her darkened door,
-7     7   7  7 ,   7   7   7  -7  -6   6
-She cried to me, hey, why not ask for more? 
-5    5 -4  4   5  5  -4
-Oh like a bird on a wire,
- 6   6   6   6  6   6  -6  6  -5
-Like a drunk in a midnight choir
-4  -4   5    -5  5 -4  4  -3   4
-I have tried in my way to be free
-```
-
-
 ### Cohen: Halleluja 
 
 ```text
@@ -987,6 +1351,190 @@ Hallelujah, Hallelujah
 ```
 
 														 
+### Cohen: Famous blue raincoat
+
+```text
+-3    4   -3 -3”  4 -3    -3”  4  -3 -3” 4 -3
+It's four in the morning, the end of December
+
+ 4   4  4    4   4   -3  -3” -3  -3   -3    4 -3 
+I'm writing you now just to  see if you're better
+
+ 4   4   4   4    -3” -3” 4    4     4   4 -3 
+New York is cold, but  I like where I'm living
+
+ -3”    4 4   4   4 -3    -3”   -3    -3    -3   4 -3 
+There's music on Clinton Street all through the evening.
+
+4  4    -4    5     -4 -4    -5  -5 -5    5    5   5   5  -4 -4 
+I hear that you're building your little house deep in the desert 
+
+ 4      4 4    4  -3 -3   -3  
+You're living for nothing now, 
+
+-3 -3   -3     4  4    4     4   4  -3 -3
+I hope you're keeping some kind of record.
+
+ 
+
+-3” 3   3    5    5  5   -5  6  6   -5   5   -4
+ Ye-s, and Jane came by with a lock of your hair
+
+-4   -4   5   -5   -5  5  -4  4 
+She said that you gave it to her
+
+ 4     4    -4   5     5    -4  4  -3 
+That night that you planned to go clear
+
+-3” -3  4 -3 -3”  -3 
+Did you ever go clear? 
+
+ 
+
+ -3  4    -3 -3”  4   -3 -3”    4   -3  -3” 4 -3
+The last time we saw you you looked so much older 
+
+ 4    4  4    4   4   -3  -3” -3  -3  -3    4 -3
+Your famous blue raincoat was torn at the shoulder 
+
+ 4     4   4   4  -3” -3”  4  4    4 4   -3
+You'd been to the station to meet every train 
+
+-3”  4   4    -3  -3” -3 -3 -3  4  -3
+And you came home without Lili Marlene 
+
+ 4   4   4 -4   5  -4 -4 -5 -5  5    5   5    -4
+And you treated my woman to  a flake of your life
+
+ -3  -3  -3   4    4    4   4  4 -3 -3  -3
+And when she came back she was nobody's wife. 
+
+ 
+
+-3”  3  5   5    5    -5   6   6   -5   5   -4
+Well I see you there with the rose in your teeth 
+
+-4   5    -5   5 -4   4
+One more thin gypsy thief 
+
+ 4  -4  5   -4    4 -3
+Well I see Jane's awake -- 
+
+-3   4    -3  -3” -3
+She sends her regards.
+
+ 
+
+-3   4   -3 -3” 4   -3  -3” 4  -3  -3”  4 -3
+And what can I tell you my brother, my killer 
+
+ 4    4  4 4  4 -3   -3
+What can I possibly say? 
+
+-3” -3   -3  -3  4   -3   4  4    4    4     4
+I  guess that I miss you, I guess I forgive you 
+
+-3” -3”   4    4   4  4  -3
+I'm glad you stood in my way.
+
+ 
+
+-3” 4  4 4   4  -3   -3”  -3   -3  -3  4  -3
+If you ever come by here, for Jane or for me 
+
+ 4    4   -4 5 -4  -4  -4 -4     5   5   5 5  -4  -4
+Well your  enemy   is sleeping, and his woman is free. 
+
+-3”   3    3      5   5   5  -5   6   6    -5   5   -4
+Yes, and thanks, for the trouble you took from her eyes 
+
+-4   -4   5   -5   -5   5  -4   4  5 -4 4   -3
+I thought it was there for good so I never tried.
+
+ 
+
+ 3   5    5   5   -5  6  6   -5  5    -4
+And Jane came by with a lock of your hair
+
+-4   -4    5  -5   -5  5  -4  4 
+She said that you gave it to her
+
+ 4    4     -4   5    5     -4 4   -3 
+That night that you planned to go clear -- 
+
+4 4 -3    -3” -3 -3
+Sincerely, L. Cohen
+```
+
+
+### Beatles: All my loving
+
+```text
+-5 5 -4 5 -5 6 -6
+close your eyes and i´ll kiss you
+
+-7 7 7 -7 -6 5
+tomorrow i´ll miss you
+
+-6 -6 -6 6 -5 -4 4 -4 -4
+remember i´ll always be true
+
+-5 5 -4 5 -5 6
+and then while i´m away
+
+-6 -7 7 7 -7 -6 5
+i´ll write home ev´ry day
+
+-6 -6 -6 -6 6 -5 5 -4 4 4
+and i´ll send all my loving to you
+
+ 7 -7 -6 5 5 -4 4 -4 5 5
+all my lving i will send to you
+
+ 7 -7 -6 5 5 -4 4 -4 4 4
+all my loving darling i´ll be true
+
+I'll pretend that I'm kissing
+The lips I am missing
+And hope that my dreams will come true
+And then while I'm away
+I'll write home every day
+And I'll send all my lovin' to you
+```
+
+
+### Beatles: Yesterday
+
+```text
+-4 4 4  5 -5 6 -6 -7 7 -7 -6 -6
+yesterday all my troubles seemed so far away
+
+-6 -6 6 -5 5 -4 -5 5 5 
+now it loooks as trough they´re here to stay
+
+-4 4 5 -4 -3b 4  5 5
+oh i belive in yesterday
+
+5 5 -6 -7 7 -7 -6 -7 -6 6 -6 5
+why she had to go i don´t know she wouldn´t say
+
+5 -4 -6 -7 7 -7 -6 -7 -6 6 -7 7 6 -55
+i said something wrong now i long for yesterday
+
+-4 4 4 5 -5 6 -6 -7 7 -7 -6 -6
+yesterday love was such an easy game to play
+
+-6 -6 6 -5 5 -4 -5 5 5
+now i need a place to hide away
+
+-4 4 5 -4 -3b 4 5 5
+oh i belive in yesterday
+
+7 8 -8 -6 7 8 8
+mmm-mmm-mmm-mmm-mmm-mmm-mmm
+```
+
+
 ### Beatles: Hey jude 
 
 ```text
@@ -1525,136 +2073,6 @@ I will ease your mind
 ```
 
 
-### Simon & Garfunkel: The boxer
-
-```text
-6 6   6  -6  6    5
-I am just a poor boy.
-  5    -5  6 6     7 -7   -6 
-Though my story's seldom told,
--6 -7    -6   6   6  -6  6  -4 
-I have squandered my resistance
--4  5 -5 -5 -5  6   -5  5   
-For a pocketful of mumbles,
- 4   -4  -5 5 4
-Such are promises
- 7   7   -7   7
-All lies and jest
-  7   -7  7   -7    -7  -7  -7   -6  -6
-Still, a man hears what he wants to hear
--6  -6 -6 -6   -5   6
-And disregards the rest.
-
- 5  -5  6   6   6
-When I left my home
- 6  6  6 -5 5
-And my family-,
-5 -5  6   7    7  -7 -6
-I was no more than a boy
--6 -6   6 6  6 6    6  -4
-In the company of strangers
--4  5  -5 -5 -5 -5   -5  5   4 -4
-In the quiet of the railway station,
- -5  5    4
-Running scared,
- 7 -7   7
-Laying low,
- 7  -7   7  -7  -7 -7   -7  -6 
-Seeking out the poorer quarters
- -6   -6  -6 -6  -6  6  6
-Where the ragged people go,
- 5  -5   6  -4  -4  5
-Looking for the places
--5 -5  5     -4   4
-Only- they would know.
-
- 7  -7  7
-Lie la lie
- 7  -7  7  -7 -7  -6  6
-Lie la lie la lie la lie
- 7  -7  7
-Lie la lie
--8  8  -9  8  8  -8 7  -8
-Lie la lie la la la la lie
-7  7  7  -7  7
-la la la la lie
-
- 5 -5  6  6   6   6   6  5
-Asking only workman's wages
-5  5    -5  5   4 -4  5
-I come looking for a job,
- 5  5  5  5   5 -4
-But I get no offers,
- -4 -4  -5  -5  -5  -5  -5  (5)
-Just a come-on from the whores
-5    4 -4  -5 5 5 
-On Seventh Avenue
-7 7   -7  7
-I do declare,
-  7    -7    7    -7 -7 -7  -7  -6  -6
-There were times when I was so lonesome
--6 -6   -6   -6 6     6
-I took some comfort there.
-
- 6  6  6  6  6  6  6
-Ooo la la la la la la
-
- 5   -5   6  6   6  6   6 -5     5
-Then I'm laying out my winter clothes
--5   6  7   7 -7   -6
-And wishing I was gone,
--6 5   6
-Going home
- -4    5   -5  -5  -5 -5  -5  5
-Where the New York City- winters
- 4 -4   -5  5   5 
-Aren't bleeding me,
- 7  -7  6 -6
-Leading me--,
--6 5   6
-Going home.
-
-6  -6    6  6     6    6  6 5
-In the clearing stands a boxer,
- 5 -5  6  6   7  -7   -6
-And a fighter by his trade
--6  -7  -6  6   6  -6  6 -4 
-And he carries the reminders
--4 -5 -5  -5    -5   -5   5   4
-Of ev'ry glove that laid him down
--4 -5   5   4   -4  -5    5  
-Or cut him till he cried out
-6   6   6 7   7  -7    7
-In his anger and his shame,
- 7 7   7  -7  -7 -7  -7 -6 
-"I am leaving, I am leaving." 
--6  -6   -6 -6   -6    6  6
-But the fighter still remains
-
- 7  -7  7
-Lie la lie
- 7  -7  7  -7 -7  -6  6
-Lie la lie la lie la lie
- 7  -7  7
-Lie la lie
--8  8  -9  8  8  -8 7  -8
-Lie la lie la la la la lie
-7  7  7  -7  7
-la la la la lie
-
- 7  -7  7
-Lie la lie
- 7  -7  7  -7 -7  -6  6
-Lie la lie la lie la lie
- 7  -7  7
-Lie la lie
--8  8  -9  8  8  -8 7  -8
-Lie la lie la la la la lie
-7  7  7  -7  7
-la la la la lie
-```
-
-
 ### Simon & Garfunkel: Cecilia
 
 ```text
@@ -1707,6 +2125,73 @@ She loves me again,
 6  -6  6  -5   6    -5  5   6 -4/-3
 4  -4  4  -3   4    -3  -3b   -3/3
 I fall on the floor and Im laughing. REPEAT... 
+```
+
+
+### Bob Dylan: Mr tamborine man
+
+```text
+7 7 -7 -6 6 6 5
+Hey mister tambourine man
+5 -6 6 5 4
+play a song for me
+4 -4 5 6 6 6
+I'm not sleepy and there
+-6 6 -5 5 5 -4 -4
+ain't no place I'm going to
+7 7 -7 -6 6 6 5
+Hey mister tambourine man
+5 -6 6 5 4
+play a song for me
+4 -4 5 6 6 5 -5 5
+In the jingle jangle morning
+-4 4 -4 5 -4 4
+I'll come following you
+7 7 7 -7 -6 6 6 5
+Take me for a trip upon your
+5 -6 6 5 4
+magic swirling ship
+4 -4 5 -6 6
+Oh my senses have
+5 4
+been stripped
+4 -4 5 -6
+and my hands can't
+6 5 4
+feel to grip
+4 -4 5 -6 6 5 4
+And my toes too numb to step
+7 7 -7 -6 6 6 -5
+wait only for my bootheels
+5 5 5 -4
+to be wand'ring
+7 7 7 7 -7 -6 6 6
+I'm ready to go anywhere
+5 5 -6 6 5 4
+I'm ready for to fade
+-4 5 -6 6 5 4
+into my own parade
+4 -4 5 -6 6 5 4
+Cast your dancing spell my way
+7 7 -7 -6 6 -5 5 -4
+I promise to go under it
+7 7 -7 -6 6 6 5
+Hey mister tambourine man
+5 -6 6 5 4
+play a song for me
+4 -4 5 6 6 6 -6
+I'm not sleepy and there ain't
+6 -5 5 5 -4 -4
+no place I'm going to
+7 7 -7 -6 6 6 5
+Hey mister tambourine man
+5 -6 6 5 4
+play a song for me
+4 -4 5 6 6 5 -5 5
+In the jingle jangle morning
+-4 4 -4 5 -4 4
+I'll come following you
+	
 ```
 
 
@@ -1939,7 +2424,7 @@ And God, I kn-ow I'm one.
 ```
 
 
-### Chariot of fire 
+### Vangelis: Chariot of fire 
 
 ```text
 4   -5  6   -6  6   5
@@ -1968,7 +2453,265 @@ And God, I kn-ow I'm one.
 ```
 
 
-### Cat Stavrns: Wild world
+### Rocky: Eye of the tiger
+
+```text
+ 5   6   5   -4  4   5    -4  4
+Ris-in' up, back on the stre-et 
+-4  -4  -4   -4  5    -4  4 
+did my time took my chanc-es 
+ 5    6   -6   5    -4   4   5   -4 -4  4 
+went the dis-tance. Now I'm back on my feet 
+ 3   4 -4  -4   4   -4  -4  4   5  
+just a man and his will to sur-vive. 
+
+
+5   5  6   5   4  -4   4    5  -4 4
+So man-y times it hap-pens too fa-st. 
+-4    -4   -4   -4   4   5  -4  4 
+You trade your pass-ion for glo-ry. 
+ 5     5    6    -6  -4  4     5   -4 -4   4 
+Don't lose your grip on the dreams of the past. 
+ 3   4    -4    -4  4  -4   -4   4  5 
+You must fight just to keep them a-live. 
+
+
+ -4   5  -5  -5 -5  -5  5 
+It's the eye of the ti-ger. 
+ -4   4    4    -4  5   -4 
+It's the thrill of the fight, 
+ -4  5 -5 -5 -5   -5   5    -4  4  5  -4 
+ris-in up to the chal-lenge of our ri-val. 
+ -4  5   -5    -5  -5 -5   5    -4    4   4   -4  5   -4 
+And the last known sur-vi-vor stalks his prey in the night, 
+-4   5     -5   5  -5  6   -5   -6  -6 -4  4  -4 4  4
+and he's watch-ing us all with the eye of the ti-i-ger. 
+
+
+  5   6   5   -4  4   5  -4 4
+Face to face, out in the heat, 
+-4   -4   -4     -4  5  -4   4 
+hang-ing tough, stay-in hun-gry. 
+ 5    6    -6   5     -4   4   5   -4 -4    4 
+They stack the odds, still we take to the street 
+ 3   4   -4  -4    4   -4   -4  4   5 
+for the kill with the skill to sur-vive. 
+
+
+ -4   5  -5  -5 -5  -5  5 
+It's the eye of the ti-ger. 
+ -4   4    4    -4  5   -4 
+It's the thrill of the fight, 
+ -4  5 -5 -5 -5   -5   5    -4  4  5  -4 
+ris-in up to the chal-lenge of our ri-val. 
+ -4  5   -5    -5  -5 -5   5    -4    4   4   -4  5   -4 
+And the last known sur-vi-vor stalks his prey in the night, 
+-4   5     -5   5  -5  6   -5   -6  -6 -4  4  -4 4  4
+and he's watch-ing us all with the eye of the ti-i-ger. 
+
+
+
+ 5   6   5   -4  4  5  -4   4
+Ris-in up, straight to the top. 
+-4  -4   -4   -4   5  -4  4 
+Had the guts, got the glo-ry. 
+ 5    6  -6   5    -4   4   5  -4 -4    4 
+Went the dis-tance now I'm not gon-na stop, 
+ 3   4 -4  -4   4  -4   -4  4   5 
+just a man and his will to sur-vive. 
+
+
+ -4   5  -5  -5 -5  -5  5 
+It's the eye of the ti-ger. 
+ -4   4    4    -4  5   -4 
+It's the thrill of the fight, 
+ -4  5 -5 -5 -5   -5   5    -4  4  5  -4 
+ris-in up to the chal-lenge of our ri-val. 
+ -4  5   -5    -5  -5 -5   5    -4    4   4   -4  5   -4 
+And the last known sur-vi-vor stalks his prey in the night, 
+-4   5     -5   5  -5  6   -5   -6  -6 -4  4  -4 4  4
+and he's watch-ing us all with the eye of the ti-i-ger. 
+
+ -6  -4  4  -4  4 
+Eye, of the ti-ger. 
+ 3   5  -4  4  -4  4 
+The eye of the ti-ger. 
+ 3   5  -4  4  -4  4 
+The eye of the ti-ger. 
+```
+
+
+### Bowie: The man who sold the world
+
+```text
+INTRO (repeat 6x)
+-6 -6 -6 +6 -6 -7 -6 +6
+
+-6   +6   -5 +5  -4  +5
+We passed u-pon the stair, 
++6   +6  +6o  +6 +6   -6
+we spoke in  was and when
+-6   +6  -5  +5  -4   +5
+Al-though I was-n't there,
++5  +6 +6 +6o +6    +6  -6 
+he said I was his friend__
+  -6   +7  +7 +6o -6   +6
+Which came as  a  sur-prise
++6  -8   -8 +7 +6o  -6 
+ I spoke in-to his eyes
+-6   -6    -6  +6o  -6 -5 
+ I thought you died a-lone,
+-6  +6   -5   -5 +6 +5 
+ a long long time a-go
+
+-8 +7  -8  +7  +7 +7  -7  -7  +7   -6 
+Oh no, not me. We nev-er lost con-trol.
+ -8     +7  -8  +7
+You're face to face
+ +7   +7  +7  -7  -7   +7   -6
+With The Man Who Sold The World.
+
+-6   +6    -5   +5   -4   +5
+ I laughed and shook his hand, 
++6   +6  +6o  +6  +6   -6
+and made  my way back home
+-6   +6     -5   +5  -4   +5
+ I searched for form and land,
+ +5  +6    +6  +6o +6  +6   -6 
+for years and years I roamed__
+-6  +7  +7 +6o   -6   +6
+ I gazed a gaze-less stare, 
++6  -8   -8 +7  +6o   -6
+we walked a mil-lion hills
+-6  -6   -6  +6o  -6 -5
+ I must have died a-lone, 
+-6  +6   -5   -5 +6 +5  
+ a long long time a-go
+
+-8    +7   -8  +7  +7 +7 -7  -7  +7   -6
+Who knows? Not me. I nev-er lost con-trol.
+ -8     +7  -8  +7
+You're face to face
+ +7   +7  +7  -7  -7   +7   -6
+With the Man who Sold the World
+
+-8    +7   -8  +7  +7 +7  -7  -7  +7   -6 
+Who knows? Not me. We nev-er lost con-trol.
+ -8     +7  -8  +7
+You're face to face
+ +7   +7  +7  -7  -7   +7   -6
+With The Man Who Sold The World.
+
+
+
+LOWER OCTAVE VERSION
+INTRO (repeat 6x)
+-3'' -3'' -3'' +3 -3'' -3 -3'' +3
+
+VERSE 1
+-3'' +3   -2'' +2   -1   +2   
++3   +3   -3'  +3   +3   -3''
+-3'' +3   -2'' +2   -1   +2   
++2   +3   +3   -3'  +3   +3  -3'' 
+-3'' +4   +4   -3'  -3'' +3   
++3   -4   -4   +4   -3'  -3'' 
+-3'' -3'' -3'' -3'  -3'' -2'' 
+-3'' +3   -2'' -2'' +3   +2 
+
+REFRAIN
+-4 +4 -4 +4 +4 +4 -3 -3 +4 -3'' 
+-4 +4 -4 +4
++4 +4 +4 -3 -3 +4 -3''
+
+VERSE 2
+-3'' +3   -2'' +2   -1   +2   
++3   +3   -3'  +3   +3   -3''
+-3'' +3   -2'' +2   -1   +2   
++2   +3   +3   -3'  +3   +3  -3'' 
+-3'' +4   +4   -3'  -3'' +3   
++3   -4   -4   +4   -3'  -3'' 
+-3'' -3'' -3'' -3'  -3'' -2'' 
+-3'' +3   -2'' -2'' +3   +2 
+
+REPEAT REFRAIN 2x
+```
+
+
+### Nirvana: Smells like teen spirit
+
+```text
+    5     6    -6     4     -6  6    -5        5
+Load up on guns, bring your friends
+ -5   5   -4    4      -4  5    -4   4  -3
+It's fun to lose and to pretend
+   5       6    -6     4    6   -6  6   -5    5
+She's overboard and self-assured
+-5   5   -4   4   -4   5   -4   4   -3
+Oh no, I know a dirty word
+
+4  -3    4  -3    4 -3   4  -3→-3//    [x3]
+Hello, hello, hello, how low?       [x3]
+4  -3    4  -3    4 -3   
+Hello, hello, hello!
+
+   7       -7     -7      -6   -8   -8      -8   7
+With the lights out, it's less dang’rous
+  -5     -5   -5     5      -8  -8  -8   7
+Here we are now, entertain us
+   7       -7     -7      -6   -8   -8      -8   7
+I feel stupid and contagious
+  -5     -5   -5     5      -8  -8  -8   7
+Here we are now, entertain us
+   7       -7     -7      -6   -8   -8      -8   7
+A mulatto, an albino
+  -5     -5   -5     5      -8  -8  -8   7
+A mosquito, my libido
+7→7/     8/→8     8/→8
+Yeah,        hey,         yay
+```
+
+
+### Cat Stevens: Morning has broken
+
+```text
+ 	   4  5    6   7-8
+1.Morning has broken, 
+-6   -7   -6    65
+like the first morning.
+4    5     6   6-6
+Blackbird has spoken, 
+6     5    4    -4
+like the first bird.
+4       5    6  6-6
+Praise for the singin'
+6      5    4   -4-4
+praise for the mornin'.
+4       5    6   6-6
+Praise for them springing 
+-4      5   -4    4
+fresh from the world
+
+2. Sweet the rain new fall, 
+sunlit from heaven,
+like the first dewfall, 
+on the first grass.
+Praise for the sweetness 
+of the wet garden
+sprung in completeness 
+where his feet pass.
+
+3. Mine is the sunlight, 
+mine is the morning,
+born of the one light, 
+Eden saw play.
+Praise with elation, 
+praise every morning,
+God's recreation, 
+of the new day.
+```
+
+
+### Cat Stevens: Wild world
 
 ```text
  7   7    7    7   7  7    7 7-7
@@ -2012,6 +2755,7 @@ out there but just remember there`s a lot of bad
 b-6 5 -4
 and beware 
 ```
+
 
 ### Cat Stevens: The first cut 
 
@@ -2109,21 +2853,6 @@ When it comes to lovin' me, she's worst.
 ```
 
 													  
-### Hymne russe 
-
-```text
-6   7   6   -6  -7  5
-5   -6  6   -5  6   4
-4   -4  -4  5   -5  -5  6   -6  -7  7   -8
-
-6   8   -8  7   -8  6
-6   7   -7  -6  -7  5
-5   -6  6   -5  5   4
-4   7   -6  -6  6
-```
-
-
-                                                  
 ### Cat Stevens: The wind 
 
 ```text
@@ -2255,6 +2984,97 @@ This rose will never die ...
 ```
 
                                                  
+### Louis Amstrong: What a wonderfull world
+
+```text
+3 -3     4   4   6    -6  -6-6   6
+I see trees of green, red roses too
+I see skies of blue, clouds of white
+
+-5    6      -5     5   -4  -4    -4      4
+I    see    them  bloom for  me   and    you
+The bright blessed day, the dark sacred night
+
+ 4  4  4  4   4 4
+And I say to myself
+
+ 4   4  -3 4 -3    5
+What a wonderful world
+
+ 4  4  4  4   4 4
+And I say to myself
+
+ 4   4  -3 4 -3    4
+What a wonderful world
+
+ 4  -4 -4  -4 -4   -4 3
+The colors of the rainbow
+
+3   5 5   5   5   4
+So pretty in the sky
+
+ 4  -4-4 -4 -4  -4 3
+Are also on the faces
+
+3   5  5   5  5   4
+Of people passing by
+
+5  6    -6    -6  -6    6
+I see friends shaking hands
+I hear    babies       cry
+
+ 5  6   -6  -6 -6   6
+Saying, how do you do?
+And I  watch them  grow
+
+  -6    -6    -6    6  5    -5    5 -4
+Theyre real - ly   saying,   I  love you
+Theyll learn much more than Ill ever know
+
+ 4  4  4  -4  5 4
+And I say to myself
+
+  4 -3  -3 4 -4  (45)
+What a wonderful world
+```
+
+
+### Tetris
+
+```text
+-6  5  -5  6  -5  5  -4
+
+-4  -5  -6  6  -5  5
+
+5  6  -6  -5  -4  -4
+
+6  -7  -8  7  -7  -6
+
+-4  -5 -6  6  -5  5
+
+5  6  -6  -5  -4  -4
+
+-6  -5  6  5  -4  -5  -6
+
+6  -5  5  5  6  -6  -5  -4  -4
+```
+
+
+### Hymne russe 
+
+```text
+6   7   6   -6  -7  5
+5   -6  6   -5  6   4
+4   -4  -4  5   -5  -5  6   -6  -7  7   -8
+
+6   8   -8  7   -8  6
+6   7   -7  -6  -7  5
+5   -6  6   -5  5   4
+4   7   -6  -6  6
+```
+
+
+                                                  
 ### Over the rainbow 
 
 ```text
@@ -2273,6 +3093,19 @@ why, Oh why can’t I?
 ```
 
                                               
+### Indiana Jones
+
+```text
+5 -5 6 7 -4 5 -5
+
+6 -6 -7 -9 -6 -7 7 -8 8
+
+5 -5 6 7 7 -8 8 -9
+
+6 6 8 -8 6 8 -8 6 -9 -9 -9 8 -8 7
+```
+
+
 ### Bella ciao 
 
 ```text
@@ -3366,6 +4199,38 @@ but some-times it hurts in-stead.”____
 
 
 # Francais
+
+
+### Ennio Morricone: Chi Mey: Le professionnel
+
+```text
+Key: A
+(  + = blow  |  - = draw  |  ' = bend  |  # = overblow  )
+Warning: a few notes are lost due to the sheer insanity of trilling
+-6'+5#-6' and such.
+Time: 3/4    Tempo: q.96
+
+(section 1, intro-like)
+|+7   +7   |+7   +7   |+7   +7   |+7   +7   |
+|+8        |+8   +8   |     -8 +7|-8        |
+|+7   -6   |     -7 +7|+7   -5   |     -7 -6|-7   +5    |  |
+|     -6 +6|-6   -4   |     +8   |-8        |+8         |  |
+
+(section 2)
+|+8        |+8   +8   |     -8 +7|-8        |
+|+7   -10  |    -7  +7|-5        |
+|-7-6-7 -7-6-7 -7-6-7 |-7   +5   |          |
+|-6        |-6+6-6 -6+6-6 -6+6-6 |-4   -4   |  |
+|-6'       |-6'    -6'    -6'    |     -6   |  |  |
+
+(section 3, an instrument change in original track)
+|+5    -4+5-5+5|-4     +4-3|+4        |  |
+|-6    +6-6-7-6|+6     -5+5|-5        |
+|          +5-4|+5   -6    |-7     +5#|-6'  |
+|        -6 -7 |+7   +8    |-8    -6  |-7   |  |
+
+Section 2 repeats a couple times, fading into numerous -6. 
+```
 
 
 ### Alain Barriere: Elle était si jolie
@@ -5616,10 +6481,502 @@ Oh yeay!
 
 # Spanish
 
+### Violeta Para: Run Run se Fue Pa'l Norte
+
+```text
+-7 +6 -6 +6 -8   -6 +6  +5 +6  +5  +6 -6 -5
+En un carro de olvi~do, an~tes del a~~clarar
+
+-7  +6   -6 +6   -8  -6  +6  +5 +6 +5 +6   +5 +5
+De una esta~ción del tiempo, de~ci~di~do a ro~dar
+
+==================================================
+
+-6 -6  -6   -6 -7 +7 +7 -7  +7 -7  +7 -7 -6
+A~ los tres dí~as carta con le~tra de co~ral
+
+-6 -6 -6 -6  -7 +7 +7 -7  +7 -7 +7  -7 -6
+Me di~ce que su viaje se alarga más y~ más
+
+-6 -8 -8   -7 -7 -6 -6 +6  -6  +6 -6 +6 -6
+Se va de Anto~fa~gasta sin dar u~~na se~ñal
+
+-6 -8 -8   -7  -7 -6 -6 +6 -6 +6    -6 +6 -7
+Y~ cuenta una aventu~ra que pa~so a de~le~trear
+
+-8  +7  -6  -7 -6
+Ay, ay, ay, de mi
+```
+
+### Vicentico: Los caminos de la vida
+
+```text
+
+(2   2  -3" -3"  4   4   5   5
+MI  MI  LA  LA  do  do  mi  mi
+
+ 4   5   5   4   5   5  -4  -4
+do  mi  mi  do  mi  mi  re  re
+
+-3  -4  -4  -3  -4  -4   4   4
+SI  re  re  SI  re  re  do  do
+
+-3"  4   4  -3"  4  -5   5 ) x 2    5
+LA  do  do  LA  do  fa  mi ) x 2   mi
+
+
+===
+
+ 2   2   4   4  -4  -4   5  5
+MI  MI  do  do  re  re  mi  mi
+
+ 4   5   5   4   5   5  -4  -4
+do  mi  mi  do  mi  mi  re  re
+
+-3  -4  -4  -3  -4  -4   4   4
+SI  re  re  SI  re  re  do  do
+
+-3"  4   4  -3"  4  -5   5   5
+LA  do  do  LA  do  fa  mi  mi
+
+===
+
+ 2   2   4   4  -4  -4   5  5
+MI  MI  do  do  re  re  mi  mi
+
+ 4   5   5   4   5   3    3
+do  mi  mi  re  re  SOL  SOL
+
+-3  -3   4   4  -4  -3  -4  -4   4
+SI  SI  do  do  re  SI  re  re  do
+
+ 4  -2" -2" -3" -3" -3  -3   4  -3"  4  -5   5
+do  FA  FA  LA  LA  SI  SI  do  LA  do  fa  mi
+
+ 5  -4   5  -4   5  -4   5   5
+mi  re  mi  re  mi  re  mi  mi
+
+ 5   5  -4  -4   3   3  -3  -3   4   4  -4
+mi  mi  re  re  SO  SO  SI  SI  do  do  re
+
+-3  -4  -4   4   4  -2" -2" -3" -3"
+SI  re  re  do  do  FA  FA  LA  LA
+
+ 4   4  -5   4  -5   4   5
+do  do  fa  do  fa  do  mi
+
+[estribillo]
+
+(
+mi mi mi mi re re re do do do SOL
+mi mi mi mi re re re do do SI
+re re re re do do do SI SI SI SI
+re re re re do do do SI LA SOL
+) x 2
+
+
+============================================================
+  
+(
+5 5 4 4 -4 -4 5 5
+4 5 5 4 5 5 -4 -4
+-7 -4 -4 -7 -4 -4 4 4
+-5 4 4 -5 4 -5 5 5
+) x 3
+
+5 5 4 4 -4 -4 5 5
+4 5 5 -4 -4 6 6
+-7 -7 4 4 -4 -7 -4 -4 4
+4 -5 -5 -5 -5 -7 -7 4 -5 4 -5 5
+5 -4 5 -4 5 -4 5 5
+5 5 -4 -4 6 6 -7 -7 4 4 -4
+-7 -4 -4 4 4 -5 -5 -5 -5
+4 4 -5 4 -5 4 5
+
+5 5 -5 -5 4 4 5 5
+4 5 5 4 5 5 -4 -4
+-7 -4 -4 -7 -4 -4 4 4
+-5 4 4 -5 4 -5 5
+
+5 5 -5 -5 4 4 5 5
+4 5 5 4 5 5 -4 -4
+-7 -4 -4 -7 -4 -4 4 4
+-5 4 4 -5 4 -5 5
+
+5 5 5 5 -4 -4 -4 4 4 4 6
+5 5 5 5 -4 -4 -4 4 4 -7
+-4 -4 -4 -4 4 4 4 -7 -7 -7 -7
+-4 -4 -4 -4 4 4 4 -7 -5 6
+
+5 5 5 5 -4 -4 -4 4 4 4 6
+5 5 5 5 -4 -4 -4 4 4 -7
+-4 -4 -4 -4 4 4 4 -7 -7 -7 -7
+-4 -4 -4 -4 4 4 4 -7 -5 6 
+
+
+
+===== 
+
+5   5 -6 -6  7  7  8 8
+Los caminos  de la vida
+Los caminos de la vida
+
+7  8   8  7   8    8 -8 -8 
+No son lo que yo-esperaba
+Son muy difícil de-andarlos
+
+-7 -8 -8  -7  -8 -8 7 7
+No son lo que yo creia,
+Difícil   de caminarlos
+
+-6 7   7  -6   7 -9 8 8
+No son lo que-imaginaba.
+Yo no-encuentro la salida
+
+
+
+5   5 -6 -6  7  7  8 8 , 8   8 -8 -8  
+Yo pensaba  que la vida-era distinta
+
+-4 -4  6 6 -6 -6 -8 -6, -8 -8 7 7 
+Cuando era chiquitito   yo creí­a
+
+4    4  -5 -5 -6 -6   7 -6  7  -9  8   
+Que las cosas eran   fácil  como-ayer
+
+Que mi viejecita buena se esmeraba
+Por darme todo lo que necesitaba
+Y hoy me doy cuenta que tanto así­ no es
+
+Porque mi viejita ya está cansada
+De trabajar pa' mi hermano y pa' mí­
+Y ahora con gusto me toca ayudarla
+Y por mi vieja luchare hasta el fin
+
+Por ella lucharé hasta que me muera
+Y por ella no me quiero morir
+Tampoco que se me muerja mi vieja
+Pero qué va si el destino es así­
+
+Los Caminos de la vida
+No son como yo pensaba
+No son como imaginaba
+No son como yo creí­a
+
+Los caminos de la vida
+Son muy difícil de andarlos
+Difícil de caminarlos
+Y no encuentro la salida
+
+Uno sabe que la vida
+De repente ha de acabarse
+Y uno espera que sea tarde
+Que llegue la despedida
+
+Un amigo me decí­a
+Recompensaré a mis viejos
+Por la crianza que me dieron
+Y no le alcanzó la vida
+
+Por eso te pido a ti, mi Dios del cielo
+Para que me guí­es al camino correcto
+Para mi viejita linda compensar
+
+Para que olvide ese mar de sufrimientos
+Y que de ella se aparte todo el tormento
+Que para criarnos tuvo que pasar
+
+Viejita linda tienes que entenderme
+No te preocupes todo va a cambiar
+Yo sufro mucho madrecita al verte
+Necesitada y no te puedo dar
+
+A veces lloro al sentirme impotente
+Son tantas cosas que te quiero dar
+Y voy a luchar incansablemente
+Porque tú no mereces sufrir más
+
+Los Caminos de la vida
+No son como yo pensaba
+No son como imaginaba
+No son como yo creí­a
+
+Los caminos de la vida
+Son muy difícil de andarlos
+Difícil de caminarlos
+Y no encuentro la salida
+```
+
+### Mercedes Sosa: Solo le pido a Dios
+
+```text
+-6 -6 , -6  6 ,  6 -5
+laaa, la, la, soool, sol, faaa
+
+-8 -8 -8 -8 -8 , 7 7 7 7 7 -7'
+re*, re*, re*, re*, re*, do*, do*, do*, do*, do*, Siiib
+
+-6 -6    7 -6 7 , -6 7 -6   7>>>> 6
+la, la, do*, la, do*, la, do*, la, do*, soool
+
+6  -6     -7' -7' -7'  -7'   -6 -6 -6 -6    -6>>>>>>  -4
+sol, la, sib, sib, sib, sib, la, la, la, la, laaaa, ree.
+```
+
+
+### Popular: Cancion de cuna
+
+```text
+mi  mi  so
+mi  mi  so
+mi  so  Do  si  la  la  so
+re  mi  fa
+re  re  mi  fa
+re  fa  si  la  so  si  Do
+do  do  Do  la  fa  so
+mi  do  fa  so  la  la  so
+do  do  Do  si  fa  so
+mi  do  fa  mi  re  do
+```
+
+
+### Chile: Himno
+
+
+```text
+6 7   7 -7  -7  -6 -6 6  6 -5' 6>-5 5
+Puro, Chile, es tu cielo azulado.
+
+-4 5  -5 -6  -5  5  6  5   -4 
+Puras brisas te cruzan también.
+
+6 7  7 -7  -6 -6  6  -5' 6>-5 5
+Y tu campo de flores bordado
+
+6  7  -7>-6 -7  7 -6  -6  -7 6
+Es la co-o-pia  feliz del Edén.
+
+6 6   6   6   6  -6'  6  -5   6 -6' 6 -5  
+Majestuosa-es la blan-an-ca   monta-a-ña
+
+-6  -6 -6' -6 -6  -7>-6     6   -6 -7'
+Que te dio por baluar-ar..te-el Señor
+
+6   6  7   7   7  7>6>-6'   6  -5' 6
+Que te dio por baluar....te-el Señor,
+
+5    5   5>-4  5   -4 5>-4 5 -5 6 -6
+Y (e)se mar-ar que tranquilo te baña
+
+-4 -4 -4>4  -4    4 -4>5 -5    -5d -6>6 
+Te prome....te    futu...ro-esplendor
+
+-6 7 -6  -7   6  6   -5 -6 -5 6 5 
+Y  ese   mar que tranquilo te baña
+
+-6 , 7 6 7  , -6 -6 -5  , -5>5 -4 4
+Te  promete   futuro      esplendor.
+
+
+Coro:
+-7 7  -8 -8   -7 7 7>-7  7>-8   -7 -7
+Dulce Patria, recibe-e   los-os votos
+
+-7  7  -8 -8     -7  7 7>-7  7>-8 -7 
+Con que Chile-en tus ara-as  ju-uró:
+
+5     -5 6  6  -6 -7' -7 -7  -7' -6     
+Que-o la tumba serás  de los libres
+
+-5'   6 -6'-6, -7  7  7       7   -7 
+O-el  a-si-lo  contra la-o .. pre-sión
+
+-7    -7 -7>-6>-7  -6 -6>6 -6  6   -5>6 5
+Que-o la tumba     serás    de los libres
+
+7    -7 -7 -7 , -6 -6 -6      6  5
+O-el asilo      contra la-o...presión
+
+4     -4 5>-5 6  -6 -7'  -8 -8'  -8 -8
+Que-o la tumba   serás   de los libres
+
+7    7 8 7 7 -8   -7 -7 7 
+O-el asilo contra la-opresión (x 3)
+```
+
+
+### Jara: El derecho de vivir en paz
+
+```text
+-7 -6  6  5  6 -6 -7
+-3 -3"-2  2 -2 -3"-3
+si la so mi so la si
+El derecho de vivir
+
+ 5  8  8  8  -8  7 -8
+ 2  5  5  5  -4  4 -4
+Poe-e-ta  Ho Chi Minh
+
+-7 -6  6  5  6 -6 -7
+-3 -3" 3  2  3 -3"-3
+Que golpea  de Vietnam
+
+ 5  8  8  8  -8  7 -8
+ 2  5  5  5  -4  4 -4
+A   toda  la humanidad
+
+-7 -8 -8 -8  7 -7  7
+-3 -4 -4 -4  4 -3  4
+Ningún cañón borrará
+
+-6  7  7  7 -7 -6 -7  
+-3" 4  4  4 -3 -3"-3
+El surco de-tu arrozal
+
+-7 -6  6  5  6 -6 -7 -6  5
+-3 -3"-2  2 -2 -3"-3 -3" 2
+El derecho de vivir en paz
+
+(Indochina es el lugar
+Más allá del ancho mar
+Donde revientan la flor
+Con genocidio y napalm
+La Luna es una explosión
+Que funde todo el clamor
+El derecho de vivir en paz) x 2
+
+Tío Ho, nuestra canción
+Es fuego de puro amor
+Es palomo palomar
+Olivo de olivar
+Es el canto universal
+Cadena que hará triunfar
+El derecho de vivir en paz
+
+Es el canto universal
+Cadena que hará triunfar
+El derecho de vivir en paz
+El derecho de vivir en paz
+```
+
+
+### Jaivas: Todos Juntos
+
+```text
+(BAD
+(4) (4) (4) 4 (4) 4 (4) 5 (5)- 6 (6) (5)- (6) 6-- (6) 6 (5) 5 (4) x2
+
+Estrofa
+(4) 5 (5) 6 (6) (5) (6) 7 7 5 5 5 (5) (4) (4)
+(4) 5 (5) 6 (6) (5) (6) 7 7 5 5 5 (5) 5 (4) 4 (4)
+
+Coro
+(6) 7 (8)- 7 (8) 7 (6) 7 (8) 7 (6)- (6) 7 6- (5) 6 (5) (4) 4 (4) x2
+)
+
+-4 5 -5 6 -6 -5   -6  7  7 5  5  5  -5 -4 -4 
+Hace mucho tiempo que yo vivo preguntándome
+Tantas penas que nos van llevando a todos al final
+
+
+-4   5   -5 6 -6   -5 -6  7  7 5  5  5 -4 -4 -6 7>-8
+Para-qué la tierra es tan redonda y-una sola  no más?
+Cuantas noches, cada noche, de ternura tendremos que dar?
+
+7 -8 7>-6 7  -8 7  -6 -6 7 6
+Si vivimos   todos separados
+Para qué vivir tan separados?
+
+-6 -6 7   6  -5 6 -5 -4 4 -4
+Para qué son el cielo y el mar?
+Si la tierra nos quiere juntar
+
+Para qué es el sol que nos alumbra?
+Si este mundo es uno y para todos
+
+Si no nos queremos ni mirar
+Todos juntos vamos a vivir
+```
+
+### Los Prisioneros: Tren al sur
+
+```text
+
+7, ( -4 5 -5 7 -6 
+-4 5 -5 8 7)  x2
+
+5  5  5  4  ,  -4  4  4 4
+Siete y media en la mañana
+Ya estas fierros van andando
+
+5  5  5  4  ,  -4  4  4 4
+Mi asiento toca la ventana
+Y mi corazón esta saltando
+
+5  5  5  4  ,  -4  4  4 4
+Estación central, segundo carro
+Porque me llevan a las tierras
+
+5  5  5  4  ,  -4  4  4 4  , -4 5
+Del ferrocarril que me llevará al sur
+Donde al fin podré de nuevo
+
+Respirar adentro y hondo
+Alegrías del corazón, a ha ha
+
+
+-7 7 -7 -6 6  -8 -6 -7  
+Y no me digas pobre
+
+-7  6  -6  -5  6  -4
+Por ir viajando-así
+
+-7 7 -7 -6 6  -8 -6 -7  
+No ves que estoy contento
+-7  6  -6  -5  6  -4
+No ves que voy feliz
+
+
+4 -4 5 -5 5 -5 6 -6 6 -6 7 -8
+
+Dos y media en la mañana
+El olor se mete en la ventana
+Son flores y mis animales
+Que me dicen bienvenido al sur
+
+Yo recuerdo a mi papito
+Y no me importa estar solito
+Porque me llevan a las tierras
+Donde al fin podré de nuevo
+
+Respirar adentro y hondo
+Alegrías del corazón
+
+Respirar adentro y hondo
+Alegrías del corazón
+
+Y no me digas pobre
+Por ir viajando así
+No ves que estoy contento
+No ves que voy feliz
+Viajando en este tren
+En este tren al sur
+
+Y no me digas pobre
+Por ir viajando así
+No ves que estoy contento
+No ves que voy feliz
+Viajando en este tren
+En este tren al sur
+
+Tren al sur
+```
+
 
 ### Ubiergo: Cafe para Platon
 
 ```text
+
 Un día de Octubre a clases no llegó
 había dejado la universidad
 como un pitillo a medio terminar
@@ -5627,7 +6984,7 @@ su carrera se quedó.
 
 Siempre pedía un café para Platón
 why unas monedas para locomoción
-no tenía nada why valía más que yo,
+no tenía nada y valía más que yo,
 porque él todo lo dio…
 
 Dime amigo en que lugar
@@ -5822,6 +7179,3 @@ de tu querida presencia,
 -6 6 -5 4 4 -4 -5 5
 Comandante Che Guevara.
 ```
-
-
-
