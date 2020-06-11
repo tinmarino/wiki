@@ -6562,8 +6562,7 @@ Contra-el pecho abraz(a)ras su suave fuego
 7 6    -5   5 -4 4  5   ,  7 -6 5 -4 4 -3 4
 Y en (un)a danza sutil     libelulas de jardin
 
-
--6 -5  -4   4  6  5  , 4  6   -5' 6 -5 6>>>>>>>>>
+-6 -5  -4   4  6  5  , 4  6   -5' 6 -5 6
 Cruzaran el cielo      de tus sentimientos
 
 
@@ -6756,29 +6755,29 @@ Yo no-encuentro la salida
 Yo pensaba  que la vida-era distinta
 
 -4 -4  6 6 -6 -6 -8 -6, -8 -8 7 7 
-Cuando era chiquitito   yo creí­a
+Cuando era chiquitito   yo creía
 
 4    4  -5 -5 -6 -6   7 -6  7  -9  8   
 Que las cosas eran   fácil  como-ayer
 
 Que mi viejecita buena se esmeraba
 Por darme todo lo que necesitaba
-Y hoy me doy cuenta que tanto así­ no es
+Y hoy me doy cuenta que tanto así no es
 
 Porque mi viejita ya está cansada
-De trabajar pa' mi hermano y pa' mí­
+De trabajar pa' mi hermano y pa' mí
 Y ahora con gusto me toca ayudarla
 Y por mi vieja luchare hasta el fin
 
 Por ella lucharé hasta que me muera
 Y por ella no me quiero morir
 Tampoco que se me muerja mi vieja
-Pero qué va si el destino es así­
+Pero qué va si el destino es así
 
 Los Caminos de la vida
 No son como yo pensaba
 No son como imaginaba
-No son como yo creí­a
+No son como yo creía
 
 Los caminos de la vida
 Son muy difícil de andarlos
@@ -6790,13 +6789,13 @@ De repente ha de acabarse
 Y uno espera que sea tarde
 Que llegue la despedida
 
-Un amigo me decí­a
+Un amigo me decía
 Recompensaré a mis viejos
 Por la crianza que me dieron
 Y no le alcanzó la vida
 
 Por eso te pido a ti, mi Dios del cielo
-Para que me guí­es al camino correcto
+Para que me guíes al camino correcto
 Para mi viejita linda compensar
 
 Para que olvide ese mar de sufrimientos
@@ -6816,7 +6815,7 @@ Porque tú no mereces sufrir más
 Los Caminos de la vida
 No son como yo pensaba
 No son como imaginaba
-No son como yo creí­a
+No son como yo creía
 
 Los caminos de la vida
 Son muy difícil de andarlos
@@ -6926,7 +6925,7 @@ O-el asilo contra la-opresión (x 3)
 
 ```text
 -7 -6  6  5  6 -6 -7
--3 -3"-2  2 -2 -3"-3
+-3 -3" 3  2  3 -3"-3
 si la so mi so la si
 El derecho de vivir
 
@@ -6951,7 +6950,7 @@ Ningún cañón borrará
 El surco de-tu arrozal
 
 -7 -6  6  5  6 -6 -7 -6  5
--3 -3"-2  2 -2 -3"-3 -3" 2
+-3 -3" 3  2  3 -3"-3 -3" 2
 El derecho de vivir en paz
 
 (Indochina es el lugar
@@ -7183,7 +7182,82 @@ se perderá en el ruido de
 la gran ciudad
 ```
 
-                                                        
+### Silvio Rodriguez: Rabo de nuve
+
+```text
+Si me dijeran pide un deseo,
+3 4 -4 5 -5 -4 4 -3 -4 4
+
+preferiría un rabo de nube,
+-3 4 -4 5 -5 -4 4 -4 4 -3
+
+un torbellino en el suelo
+4 4 -4 5 -4 4 -5 5
+
+y una gran ira que sube.
+-4 -4 5 -5 5 -4 -6 6
+
+Un barredor de tristezas,
+-4 -4 -6 -6 6 -5 5 -4
+
+un aguacero en venganza
+4 4 6 6 -5 5 -4 4
+
+que cuando escampe parezca nuestra esperanza.
+3 3 -5 -5 5 -4 4 -3 4 -4 5 -4 4
+```
+
+
+### Silvio Rodriguez: Unicornio
+
+```text
+Mi unicornio azul ayer se me perdió,
+3 5 -4 -4 4 4 -3 4 -4 5 6 -3
+
+pastando lo deje y desapareció.
+3 -5 5 5 -5 -4 3 3 -3' -3 4 3
+
+cualquier información bien la voy a pagar.
+5 5 -4 -4 4 4 2 -2 -3 4 -4 5
+
+las flores que dejó
+-3 -5 5 5 -5 -4
+
+no me han querido hablar.
+3 3 -3 -4 4 -3
+
+
+Mi unicornio azul ayer se me perdió,
+3 5 -4 -4 4 4 -3 4 -4 5 6 -3
+no sé si se me fue,no sé si extravió,
+3 -5 5 5 -5 -4 3 3 -3' -3 4 3
+y yo no tengo más que un unicornio azul.
+5 5 -4 -4 4 4 2 -2 -3 4 -4 5
+si alguien sabe de él,le ruego información,
+3 -5 5 5 -5 -4 3 3 -3 4 -4 3
+
+
+cien mil o un millón yo pagaré.
+5 5 -4 -4 4 4 -3 4 -3 4 -4 5
+mi unicornio azul
+3 5 -4 -4 6 4
+
+
+se me ha perdido ayer,se fue.
+3 -5 5 -4 4 3 4 4 
+
+mi unicornio y yo hicimos amistad,
+un poco con amor,un poco con verdad.
+con su cuerno de añil pescaba una canción,
+saberla compartir era su vocación.
+Mi unicornio azu layer se me perdió,
+y puede parecer acaso una obsesión,
+pero no tengo más que un unicornio azul
+y aunque tuviera dos yo solo quiero aquel.
+cualquier información la pagaré.
+mi unicornio azul se me ha perdido ayer,se fue.
+```
+
 ### Silvio: Quien fuera
 
 TODO
