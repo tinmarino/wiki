@@ -54,7 +54,7 @@
     - [Cat Stevens: The wind](#English#Cat Stevens: The wind)
     - [Cat Stevens: Father and son](#English#Cat Stevens: Father and son)
     - [Cat Stevens: Lady d'arbanville](#English#Cat Stevens: Lady d'arbanville)
-    - [Louis Amstrong: What a wonderfull world](#English#Louis Amstrong: What a wonderfull world)
+    - [Louis Armstrong: What a wonderfull world](#English#Louis Armstrong: What a wonderfull world)
     - [Tetris](#English#Tetris)
     - [Hymne russe](#English#Hymne russe)
     - [Over the rainbow](#English#Over the rainbow)
@@ -73,49 +73,54 @@
     - [Hit the road jack](#English#Hit the road jack)
     - [Stand by me](#English#Stand by me)
     - [Adele: someone like you](#English#Adele: someone like you)
-- [Francais](#Francais)
-    - [Ennio Morricone: Chi Mey: Le professionnel](#Francais#Ennio Morricone: Chi Mey: Le professionnel)
-    - [Alain Barriere: Elle était si jolie](#Francais#Alain Barriere: Elle était si jolie)
-    - [Boris vian: Le deserteur](#Francais#Boris vian: Le deserteur)
-    - [Richard Antony: J'ettend siffler le train](#Francais#Richard Antony: J'ettend siffler le train)
-    - [Bruel: Qui a le droit](#Francais#Bruel: Qui a le droit)
-    - [Micel Berger: Diego](#Francais#Micel Berger: Diego)
-    - [Chant des partisants](#Francais#Chant des partisants)
-    - [Joe Dassin: L'amerique](#Francais#Joe Dassin: L'amerique)
-    - [Joe Dassin: Si tu n'existait pas](#Francais#Joe Dassin: Si tu n'existait pas)
-    - [Joe Dassin: Champs elysées](#Francais#Joe Dassin: Champs elysées)
-    - [La marseillaise](#Francais#La marseillaise)
-    - [Celine Dion: My heart will go on](#Francais#Celine Dion: My heart will go on)
-    - [Amant de saint jean](#Francais#Amant de saint jean)
-    - [Aufray: Steball](#Francais#Aufray: Steball)
-    - [Le chasseur](#Francais#Le chasseur)
-    - [Le sud](#Francais#Le sud)
-    - [Sardou: Je vais t'aimer](#Francais#Sardou: Je vais t'aimer)
-    - [Goldman: Comme toi](#Francais#Goldman: Comme toi)
-    - [Goldman: Ensemble](#Francais#Goldman: Ensemble)
-    - [Renaud: Des que le vent soufflera](#Francais#Renaud: Des que le vent soufflera)
-    - [Renaud: Un oranger](#Francais#Renaud: Un oranger)
-    - [Renaud: Pierrot](#Francais#Renaud: Pierrot)
-    - [Francaise: A la claire fontaine](#Francais#Francaise: A la claire fontaine)
-    - [Gilbert: L'eau vive](#Francais#Gilbert: L'eau vive)
-    - [Soldat Louis: Oh mama Oh](#Francais#Soldat Louis: Oh mama Oh)
-    - [Soldat Louis: Du rhum des femmes](#Francais#Soldat Louis: Du rhum des femmes)
-    - [Soldat Louis: Soldat Louis](#Francais#Soldat Louis: Soldat Louis)
-    - [Soldat Louis: Bohemien](#Francais#Soldat Louis: Bohemien)
-    - [Soldat Louis: Encore un rhum](#Francais#Soldat Louis: Encore un rhum)
-    - [Alain Souchon: Bidon](#Francais#Alain Souchon: Bidon)
-    - [Brassens: Les copains d'abord](#Francais#Brassens: Les copains d'abord)
-    - [Brassens: Auvergnat](#Francais#Brassens: Auvergnat)
-    - [Brassens: Mauvaise reputation](#Francais#Brassens: Mauvaise reputation)
-    - [Renaud: Mistral gagnant](#Francais#Renaud: Mistral gagnant)
-    - [Je vais taimer](#Francais#Je vais taimer)
-    - [La java bleu](#Francais#La java bleu)
-    - [TODO AU CAFÉ DU CANAL -](#Francais#TODO AU CAFÉ DU CANAL -)
-    - [Le jazz et la java (C. nougaro)](#Francais#Le jazz et la java (C. nougaro))
-    - [La vie en rose](#Francais#La vie en rose)
-    - [Le lion est mort ce soir](#Francais#Le lion est mort ce soir)
-    - [TODO Il jouai du piano debout (France Gall)](#Francais#TODO Il jouai du piano debout (France Gall))
-    - [Claude Nougaro: Amstrong](#Francais#Claude Nougaro: Amstrong)
+- [French](#French)
+    - [Ennio Morricone: Chi Mey: Le professionnel](#French#Ennio Morricone: Chi Mey: Le professionnel)
+    - [Alain Barriere: Elle était si jolie](#French#Alain Barriere: Elle était si jolie)
+    - [Boris vian: Le deserteur](#French#Boris vian: Le deserteur)
+    - [Richard Antony: J'ettend siffler le train](#French#Richard Antony: J'ettend siffler le train)
+    - [Bruel: Qui a le droit](#French#Bruel: Qui a le droit)
+    - [Micel Berger: Diego](#French#Micel Berger: Diego)
+    - [Yves Duteuil: Prendre un enfant par la main](#French#Yves Duteuil: Prendre un enfant par la main)
+    - [J'avais un camarade](#French#J'avais un camarade)
+    - [Chant des partisants](#French#Chant des partisants)
+    - [Joe Dassin: L'amerique](#French#Joe Dassin: L'amerique)
+    - [Joe Dassin: Si tu n'existait pas](#French#Joe Dassin: Si tu n'existait pas)
+    - [Joe Dassin: Champs elysées](#French#Joe Dassin: Champs elysées)
+    - [La marseillaise](#French#La marseillaise)
+    - [Celine Dion: My heart will go on](#French#Celine Dion: My heart will go on)
+    - [Amant de saint jean](#French#Amant de saint jean)
+    - [Aufray: Steball](#French#Aufray: Steball)
+    - [Le chasseur](#French#Le chasseur)
+    - [Le sud](#French#Le sud)
+    - [Sardou: Je vais t'aimer](#French#Sardou: Je vais t'aimer)
+    - [Goldman: Comme toi](#French#Goldman: Comme toi)
+    - [Goldman: Ensemble](#French#Goldman: Ensemble)
+    - [Renaud: Des que le vent soufflera](#French#Renaud: Des que le vent soufflera)
+    - [Renaud: Un oranger](#French#Renaud: Un oranger)
+    - [Renaud: Pierrot](#French#Renaud: Pierrot)
+    - [Francaise: A la claire fontaine](#French#Francaise: A la claire fontaine)
+    - [Gilbert: L'eau vive](#French#Gilbert: L'eau vive)
+    - [Soldat Louis: Oh mama Oh](#French#Soldat Louis: Oh mama Oh)
+    - [Soldat Louis: Du rhum des femmes](#French#Soldat Louis: Du rhum des femmes)
+    - [Soldat Louis: Soldat Louis](#French#Soldat Louis: Soldat Louis)
+    - [Soldat Louis: Bohemien](#French#Soldat Louis: Bohemien)
+    - [Soldat Louis: Encore un rhum](#French#Soldat Louis: Encore un rhum)
+    - [Alain Souchon: Bidon](#French#Alain Souchon: Bidon)
+    - [Charles Aznavour: Ma Bohème](#French#Charles Aznavour: Ma Bohème)
+    - [Salvador Adamo: Inch Allah](#French#Salvador Adamo: Inch Allah)
+    - [Brassens: Les copains d'abord](#French#Brassens: Les copains d'abord)
+    - [Brassens: Auvergnat](#French#Brassens: Auvergnat)
+    - [Brassens: Mauvaise reputation](#French#Brassens: Mauvaise reputation)
+    - [Renaud: Mistral gagnant](#French#Renaud: Mistral gagnant)
+    - [Je vais taimer](#French#Je vais taimer)
+    - [Jeanne Moreau](#French#Jeanne Moreau)
+    - [La java bleu](#French#La java bleu)
+    - [TODO AU CAFÉ DU CANAL -](#French#TODO AU CAFÉ DU CANAL -)
+    - [Le jazz et la java (C. nougaro)](#French#Le jazz et la java (C. nougaro))
+    - [La vie en rose](#French#La vie en rose)
+    - [Le lion est mort ce soir](#French#Le lion est mort ce soir)
+    - [TODO Il jouai du piano debout (France Gall)](#French#TODO Il jouai du piano debout (France Gall))
+    - [Claude Nougaro: Amstrong](#French#Claude Nougaro: Amstrong)
 - [Spanish](#Spanish)
     - [Manuel Garcia: Un viejo comunista](#Spanish#Manuel Garcia: Un viejo comunista)
     - [Manuel Garcia: Danza de la Libelulas](#Spanish#Manuel Garcia: Danza de la Libelulas)
@@ -129,6 +134,8 @@
     - [Los Prisioneros: Tren al sur](#Spanish#Los Prisioneros: Tren al sur)
     - [Ubiergo: Cafe para Platon](#Spanish#Ubiergo: Cafe para Platon)
     - [Ubiergo: El tiempo en las bastillas](#Spanish#Ubiergo: El tiempo en las bastillas)
+    - [Illapu : Lejos del amor](#Spanish#Illapu : Lejos del amor)
+    - [Illapu : Candome para José](#Spanish#Illapu : Candome para José)
     - [Silvio Rodriguez: Rabo de nuve](#Spanish#Silvio Rodriguez: Rabo de nuve)
     - [Silvio Rodriguez: Unicornio](#Spanish#Silvio Rodriguez: Unicornio)
     - [Silvio: Quien fuera](#Spanish#Silvio: Quien fuera)
@@ -2994,7 +3001,7 @@ This rose will never die ...
 ```
 
                                                  
-### Louis Amstrong: What a wonderfull world
+### Louis Armstrong: What a wonderfull world
 
 ```text
 3 -3     4   4   6    -6  -6-6   6
@@ -4208,7 +4215,7 @@ but some-times it hurts in-stead.”____
 ```
 
 
-# Francais
+# French
 
 
 ### Ennio Morricone: Chi Mey: Le professionnel
@@ -4566,6 +4573,84 @@ La loi du plus fort?
 Diego, libre dans sa tête
 Derrière sa fenêtre
 S'endort peut-être
+```
+
+
+### Yves Duteuil: Prendre un enfant par la main
+
+```text
+ 4 -4  5  5 -4  5  4
+Prendre un enfant par la main
+ 4 -4  5  5 -5  6 -4 
+Pour l'emmener vers demain
+-5 -5  5 -4 -4  4 -3 -3 -3  3
+Pour lui donner la confiance en son pas.
+-3 -3 -3  3  3 -2  2
+Prendre un enfant pour un roi.
+ 5 -5  6  6 -5  6  5  , -6 -6 -6 -6  6 -5 -5
+Prendre un enfant dans ses bras et pour la première fois
+-4  5 -5 -5  5 -4  5 -5  6  6
+Sécher ses larmes en étouffant de joie.
+ 3 -4  5 -5  5 -4  4
+Prendre un enfant dans ses bras.
+
+Prendre un enfant par le cœur
+Pour soulager ses malheurs
+Tout doucement, sans parler, sans pudeur.
+Prendre un enfant sur son cœur.
+Prendre un enfant dans ses bras
+Mais pour la première fois
+R des larmes en étouffant sa joie.
+Prendre un enfant contre soi.
+
+(Hmmm)
+
+Prendre un enfant par la main
+Et lui chanter des refrains
+Pour qu'il s'endorme à la tombée du jour.
+Prendre un enfant par l'amour.
+Prendre un enfant comme il vient
+Et consoler ses chagrins.
+Vivre sa vie des années puis soudain, prendre un enfant par
+la main.
+En regardant tout au bout du chemin, prendre un enfant pour
+le sien.
+```
+
+
+### J'avais un camarade
+
+```text
+ 3  4  5  5 -4  4
+ 4 -4  5  6  6.-5  5
+ 4 -4  5  5  5 -4  5.-5  6
+-5  5 -4 -4 -4  4 -4. 5 -5
+ 5  6 -4 -4  5  4. 4
+ 5  6 -4 -4  5  4.
+
+J’avais un camarade
+De meilleur il n’en est pas
+Dans la paix et dans la guerre
+Nous allions comme des frères
+Marchant d’un même pas (bis)
+
+Un cavalier par bravade
+Des siens le plus résolu
+Me porta son estocade
+Ce fut toi mon camarade
+Ce fut toi qui la reçu (bis)
+
+J’ai vengé l’estafilade
+Que se coup t’avais valu
+Mais très tard dans la nuit froide
+J’ai pleuré mon camarade
+Prés de son corps étendu (bis)
+
+Ainsi courte et ma ballade
+Et je chevauche sans but
+Prie le Dieu des cavalcades
+De placer mon camarade
+A la droite de jésus (bis)
 ```
 
 
@@ -5958,6 +6043,75 @@ inter
 -4 -5 -5
 ```
 
+### Charles Aznavour: Ma Bohème
+
+```text
+-4 -4  5 -4  5 -5  , -5 -5  6 -5  6 -6  , -6 -6 -7 -6 -7  7  6
+Je vous parle d'un temps que les moins de 20 ans ne peuvent pas connaître
+ 7 -7 -6  7 -7  5  ,  7 -7 -6  7 -7  5  ,  5  5  5  6 -5  5
+Montmartre en ce temps-là, Accrochait ses lilas, jusque sous nos fenêtres
+ 5 -5  5 -4  5 -5  , -5 -5  6 -5  6 -6  , -6 -6 -7 -6 -7  7  7
+Et si l'humble garni, qui nous servait de nid Ne payait pas de mine
+ 7 -7  7  8 -8 -8  ,  7  7 -7 -8  7  7  , -7  7 -7 -6  6 -6
+C'est là qu'on s'est connu, moi qui criait famine et toi qui posais nue
+
+-6  6 -6 -4
+La bohème
+-6  6 -6  5
+La bohème
+ 5  6 -5  5
+Ça voulait dire
+ 5 -3  4  5
+On est heureux
+-6  6 -6 -4
+La bohème
+-7 -6  7  5
+La bohème
+ 7 -7 -6  6  , -5  5 -4  5
+Nous ne mangions qu'un jour sur deux
+
+Dans les cafés voisins Nous étions quelques-uns qui attendions la gloire
+Et bien que miséreux
+Avec le ventre creux, nous ne cessions d'y croire
+Et quand quelques bistro Contre un bon repas chaud Nous prenaient une toile
+Nous récitions des vers groupés autour du poêle en oubliant l'hiver
+
+La bohème
+La bohème
+Ça voulait dire
+Tu es jolie
+La bohème
+La bohème
+Et nous avions tous du génie
+
+Souvent il m'arrivait Devant mon chevalet de passer des nuits blanches
+Retouchant le dessin De la ligne d'un sein, du galbe d'une hanche
+Et ce n'est qu'au matin Qu'on s'asseyait enfin devant un café-crème
+Épuisés mais ravis, fallait-il que l'on s'aime et qu'on aime la vie
+
+La bohème
+La bohème
+Ça voulait dire
+On a 20 ans
+La bohème
+La bohème
+Et nous vivions de l'air du temps
+
+Quand au hasard des jours Je m'en vais faire un tour À mon ancienne adresse
+Je ne reconnais plus, Ni les murs, ni les rues qui ont vu ma jeunesse
+En haut d'un escalier Je cherche l'atelier Dont plus rien ne subsiste
+Dans son nouveau décor, Montmartre semble triste et les Lilas sont morts
+
+La bohème
+La bohème
+On était jeunes
+On était fous
+La bohème
+La bohème
+Ça ne veut plus rien dire du tout
+```
+
+
 ### Salvador Adamo: Inch Allah
 
 https://www.youtube.com/watch?v=uFSszlJfvoI
@@ -6760,7 +6914,7 @@ the lion sleeps tonight
 Verset I
 
 -3'  -3'   -3"-3" -3'  -3'  3
-Armstrong, je ne suis pas noir
+[Armstrong](Armstrong), je ne suis pas noir
 
 -1  -1  -2'  -2"  3       4
 Je suis blanc de peau
@@ -7573,6 +7727,157 @@ y el canto de un zorzal
 se perderá en el ruido de
 la gran ciudad
 ```
+
+### Illapu : Lejos del amor
+
+LaMayor
+
+```text
+la la so#la mi    do#mi fa#
+
+Qué hacen aquí estas gaviotas
+tan lejos del mar que hacen aquí
+entre piedras y rincón en este río marrón
+que hacen aquí tan lejos del mar
+
+Que hacen aquí estos pequeños
+lejos del hogar que hacen aquí
+entre piedras y dolor en este sucio baldón
+que hacen aquí lejos del hogar
+
+Que hacen aquí estos amantes
+en este lugar que hacen aquí
+entre hierbas y candor en este parque de amor
+que hacen aquí lejos de la razón
+
+Lejos del amor
+lejos del cielo
+como un alma perdida
+un sol sin vida
+
+que hacen aquí estos desvelos
+que hacen aquí sin un consuelo.
+
+Que hacen aquí estos amantes
+en este lugar que hacen aquí
+entre hierbas y candor en este parque de amor
+que hacen aquí lejos de la razón
+
+Lejos del amor
+lejos del cielo
+como un alma perdida
+un sol sin vida
+
+que hacen aquí estos desvelos
+que hacen aquí sin un consuelo.
+
+que hacen aquí, que hacen aquí,
+que hacen aquí, que hacen aquí,
+que hacen aquí, que hacen aquí,
+que hacen aquí, que hacen aquí.
+```
+
+### Illapu : Candome para José
+
+```text
+Chilean Folk song (also called Negro José), interpreted by Illapu.
+
+Played on C harp, Time=4/4, 110bpm.
+
+ 
+
+6  7   6 7   6 7 6   6  -5  5 -5 6
+En un pueblo olvida--do no se porque,
+
+-6 8  -6 8  -6 8-6  -6  6  -5   6 -6
+ y su danza de more--no la hace mover,
+
+-9 -9  8 8   -8 -8 -8   7  -7 7  -8 8
+En el pueblo lo llama--ban negro José
+
+-9  -98  8 -8  -8 7   
+ a--migo negro José.
+
+  
+
+ 6   7 6   7 6  7  6    6  -5 5  -5 6
+Con mucho amor candom--bea negro José
+
+-6 8  -6 8  -6 8  -6-6   6-5  6  -6
+tiene color de la noche sobre la piel
+
+-9 -9   8 8  -8  -8  -8  7  -7 7 -8  8
+es muy feliz candombean--do dichose el
+
+-9  -98  8 -8  -8 7    
+ a--migo negro José.
+
+  
+
+ 6 -7 7 8 -8  7 8   8  7 -7  7 -8
+Perdoname si te di--go negro Jose
+
+ 5   -6'-7  -8 7 -7 7-6  -6'-6 -7 7
+eres diablo pero a--migo negro José
+
+6  -7 7 8 -8  7 8   8  7 -7  7 -8
+tu futuro va conmi--go negro José
+
+-9 -9  8 8 -8 -8  7    
+yo te digo porque se.
+
+ 
+
+ 6   7 6    7  6 7 6    6 -5  5  -5 6
+Con muchos las miradas cuando al bailar
+
+ -6   8 -6 8  -6  8  -6   -6 6-5  6 -6
+y el tamboril de sus ojos parece hablar
+
+-9 -9  8 8   -8 -8 -8 7 -7 7  -8 8
+ y su camisa endiabladaquiere saltar
+
+-9  -98  8 -8  -8 7    
+ a--migo negro José.
+
+ 
+
+ 6  7 6    7 6 7  6 6  -5  5-5 6
+No tienes ninguna pena al parecer
+
+ -6 8 -6   8-6   8  -6 -6   6-5  6 -6
+pe-ro las penas que sobran negro José
+
+-9  -9  8  8  -8   -8  -8 7  -7  7 -8   8
+que tu en el balle las dejas yo se mui bien
+
+-9  -98  8 -8  -8 7    
+ a--migo negro José.
+
+ 
+
+ 6 -7 7 8 -8  7 8   8  7 -7  7 -8
+Perdoname si te di--go negro José
+
+ 5   -6'-7  -8 7 -7 7-6  -6'-6 -7 7
+eres diablo pero a--migo negro José
+
+6  -7 7 8 -8  7 8   8  7 -7  7 -8
+tu futuro va conmi--go negro José
+
+-9 -9 8 8  -8 -8  7    
+yo te digo porque se
+
+-9  -98  8 -8  -8 7    
+ a--migo negro José.
+
+-9 -9 8 8  -8 -8  7    
+yo te digo porque se
+
+-9  -98  8 -8  -8 7    
+ a--migo negro José.
+```
+
 
 ### Silvio Rodriguez: Rabo de nuve
 
