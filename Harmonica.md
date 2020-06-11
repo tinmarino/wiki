@@ -6481,6 +6481,123 @@ Oh yeay!
 
 # Spanish
 
+### Manuel Garcia: Un viejo comunista
+
+```text
+MI RE DO# si la
+fa# sol# la RE DO# si la sol# la sol# fa# do# mi
+mi fa# sol# DO# si la sol# fa# la sol# la
+MI RE DO# si RE DO# si DO# si la
+fa# sol# la RE
+fa# fa# fa# fa# mi
+MI RE DO# si RE DO# si DO# si la
+fa# sol# la RE
+fa# fa# fa# fa# mi
+si si si si si la sol# la sol# la
+fa# sol# la RE DO# si la sol# la sol# fa# do# mi
+mi fa# sol# DO# la sol# la sol# la sol# fa# do# mi
+MI RE DO# si la
+fa# sol# la RE DO# si la sol# la sol# la la
+MI RE DO# si RE DO# si DO# si la
+fa# sol# la RE DO# si la sol# la sol# fa # do# mi
+mi fa# sol# DO# la sol# la sol# la sol# fa# do# mi
+si si si si si la sol# la sol# la
+mi mi fa# sol# la RE la 
+si la sol# fa# do# mi
+mi fa# sol# la DO# la
+la sol# fa# do# mi
+MI RE DO# si la
+fa# sol# la RE DO# si la sol# la sol# fa# do# mi
+mi fa# sol# DO# si la sol# fa# la sol# la
+MI RE DO# si RE DO# si DO# si la
+fa# sol# la RE DO# si la sol# la sol# fa# do# mi
+mi fa# sol# DO# la sol# la sol# la sol# fa# do# mi
+MI RE DO# si RE DO# si DO# si la
+fa# sol# la RE DO# si la sol# la sol# fa# do# mi
+mi fa# sol# DO# la sol# la sol# la sol# fa# do# mi
+si si si si si la sol# la sol# la
+fa# sol# la RE la
+la sol# fa# do# mi
+sol# la fa#
+la si fa#
+fa# mi
+sol# la fa# 
+la si fa#
+la la 
+MI RE DO# si la
+la sol# fa# do# mi
+DO# si la sol# la
+la sol# fa# do# mi
+do# si la sol# la
+la sol# fa# do# mi
+DO#
+RE
+la sol# fa# do# mi
+DO# si la sol# la 
+la sol# fa# do# mi
+fa#
+do#
+mi
+```
+
+
+### Manuel Garcia: Danza de la Libelulas
+
+```text
+7 6 -5   5 -4  4    5
+Ahora    parece-que yo
+
+7 -6 5 -4  4 -3     4
+Debo mirar hacia-el mar
+
+-6 -5  -4   4  6  5  , 4  6 -5' 6 -5 6      -5 6
+Descubri-en la noche , su reflejo entre-los botes
+
+7 6 -5   5 -4  4    5   7 -6 5 -4  4 -3     4
+Mañana vas a encontrar una flor que te deje
+
+-6 -5    -4  4    6  5     , 4  6 -5' 6 -5 6
+Contra-el pecho abraz(a)ras su suave fuego
+
+7 6    -5   5 -4 4  5   ,  7 -6 5 -4 4 -3 4
+Y en (un)a danza sutil     libelulas de jardin
+
+
+-6 -5  -4   4  6  5  , 4  6   -5' 6 -5 6>>>>>>>>>
+Cruzaran el cielo      de tus sentimientos
+
+
+7  -7 7  ,  6 8 -8   7   -7   7  -7  7 
+Es decir ,  belleza que quiero-olvidar
+
+6  7 -7  -6 6  -6   6 -6
+Me llama me viene-a buscar
+
+-4  6   -6 6
+Me-hace soñar,
+
+7 -7 6  , 6   8  -8  7  -7  7  -7  7
+Es decir, que con la violencia del mar
+
+6 7  -7  -6  6  -6 6 -6 , -5 6  -6 6
+Quisiera volver a besar , hasta sangrar.
+
+Y aunque hace años que yo
+Vivo tan lejos del mar
+Siempre vuelvo al pueblo
+Donde imagine hace tiempo
+A mi damicela y su flor
+Con su sombrilla y mi amor
+Damicela del jardin de las camelias
+
+Es decir, belleza que quiero olvidar
+Me llama me viene a buscar
+Me hace soñar,
+Es decir, que con la violencia del mar
+Quisiera volver a besar hasta sangrar.
+```
+
+
 ### Violeta Para: Run Run se Fue Pa'l Norte
 
 ```text
