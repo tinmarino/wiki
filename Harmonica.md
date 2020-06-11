@@ -21,6 +21,7 @@
     - [Cohen: So long mariann](#English#Cohen: So long mariann)
     - [Cohen: Suzanne](#English#Cohen: Suzanne)
     - [Cohen: Halleluja](#English#Cohen: Halleluja)
+    - [Cohen: Famous blue raincoat](#English#Cohen: Famous blue raincoat)
     - [Beatles: All my loving](#English#Beatles: All my loving)
     - [Beatles: Yesterday](#English#Beatles: Yesterday)
     - [Beatles: Hey jude](#English#Beatles: Hey jude)
@@ -35,6 +36,7 @@
     - [Simon & Garfunkel: Mrs Robinson](#English#Simon & Garfunkel: Mrs Robinson)
     - [Simon & Garfunkel: Bridge oveer trouble water](#English#Simon & Garfunkel: Bridge oveer trouble water)
     - [Simon & Garfunkel: Cecilia](#English#Simon & Garfunkel: Cecilia)
+    - [Bob Dylan: Mr tamborine man](#English#Bob Dylan: Mr tamborine man)
     - [Bob Dylan: Blowing in the wind](#English#Bob Dylan: Blowing in the wind)
     - [Guantanamera](#English#Guantanamera)
     - [Elvis Presley: Love me tender](#English#Elvis Presley: Love me tender)
@@ -46,14 +48,17 @@
     - [Rocky: Eye of the tiger](#English#Rocky: Eye of the tiger)
     - [Bowie: The man who sold the world](#English#Bowie: The man who sold the world)
     - [Nirvana: Smells like teen spirit](#English#Nirvana: Smells like teen spirit)
+    - [Cat Stevens: Morning has broken](#English#Cat Stevens: Morning has broken)
     - [Cat Stevens: Wild world](#English#Cat Stevens: Wild world)
     - [Cat Stevens: The first cut](#English#Cat Stevens: The first cut)
     - [Cat Stevens: The wind](#English#Cat Stevens: The wind)
     - [Cat Stevens: Father and son](#English#Cat Stevens: Father and son)
     - [Cat Stevens: Lady d'arbanville](#English#Cat Stevens: Lady d'arbanville)
+    - [Louis Amstrong: What a wonderfull world](#English#Louis Amstrong: What a wonderfull world)
     - [Tetris](#English#Tetris)
     - [Hymne russe](#English#Hymne russe)
     - [Over the rainbow](#English#Over the rainbow)
+    - [Indiana Jones](#English#Indiana Jones)
     - [Bella ciao](#English#Bella ciao)
     - [Let it be](#English#Let it be)
     - [So you think you can tell](#English#So you think you can tell)
@@ -98,6 +103,7 @@
     - [Soldat Louis: Soldat Louis](#Francais#Soldat Louis: Soldat Louis)
     - [Soldat Louis: Bohemien](#Francais#Soldat Louis: Bohemien)
     - [Soldat Louis: Encore un rhum](#Francais#Soldat Louis: Encore un rhum)
+    - [Alain Souchon: Bidon](#Francais#Alain Souchon: Bidon)
     - [Brassens: Les copains d'abord](#Francais#Brassens: Les copains d'abord)
     - [Brassens: Auvergnat](#Francais#Brassens: Auvergnat)
     - [Brassens: Mauvaise reputation](#Francais#Brassens: Mauvaise reputation)
@@ -111,6 +117,8 @@
     - [TODO Il jouai du piano debout (France Gall)](#Francais#TODO Il jouai du piano debout (France Gall))
     - [Claude Nougaro: Amstrong](#Francais#Claude Nougaro: Amstrong)
 - [Spanish](#Spanish)
+    - [Manuel Garcia: Un viejo comunista](#Spanish#Manuel Garcia: Un viejo comunista)
+    - [Manuel Garcia: Danza de la Libelulas](#Spanish#Manuel Garcia: Danza de la Libelulas)
     - [Violeta Para: Run Run se Fue Pa'l Norte](#Spanish#Violeta Para: Run Run se Fue Pa'l Norte)
     - [Vicentico: Los caminos de la vida](#Spanish#Vicentico: Los caminos de la vida)
     - [Mercedes Sosa: Solo le pido a Dios](#Spanish#Mercedes Sosa: Solo le pido a Dios)
@@ -121,6 +129,8 @@
     - [Los Prisioneros: Tren al sur](#Spanish#Los Prisioneros: Tren al sur)
     - [Ubiergo: Cafe para Platon](#Spanish#Ubiergo: Cafe para Platon)
     - [Ubiergo: El tiempo en las bastillas](#Spanish#Ubiergo: El tiempo en las bastillas)
+    - [Silvio Rodriguez: Rabo de nuve](#Spanish#Silvio Rodriguez: Rabo de nuve)
+    - [Silvio Rodriguez: Unicornio](#Spanish#Silvio Rodriguez: Unicornio)
     - [Silvio: Quien fuera](#Spanish#Silvio: Quien fuera)
     - [Silvio: Ojala](#Spanish#Silvio: Ojala)
     - [Carlos Puebla: Hasta Siempre Commandante](#Spanish#Carlos Puebla: Hasta Siempre Commandante)
@@ -5722,6 +5732,310 @@ Ton grand con fils
 ```
 
 
+### Alain Souchon: Bidon
+
+```text
++5 +5 +5 +5 +5 +6 -4
+
+-4 -4 -4 -4 -4 +6 +4
+
++4 +4 +4 +4 +4 +5 -3
+
+-3 -3 -4 +2 -2'' -2
+
+ 
+
++5 +5 +5 +5 +5 +5 +5 +6 -4
+
+-4 -4 -4 -4 -4 +6 +4
+
++4 +4 +4 +4 +4 +5 -3
+
+-3 -4 +2 -2'' -2
+
+ 
+
+-5 -5 -5 -5 -5 -5 -5 +5
+
+-3'' -4 -4 -4 -4 -4 -4 -4 -4'
+
+-3'' -5 -5 -5 -5 -5 -5 -5 +5
+
+-4 +4 -3'' +5 -5 +5 -4
+
+ 
+
++5 +5 +5 +5 +5 +6 -4
+
+-4 -4 -4 -4 -4 +6 +4
+
++4 +4 +4 +4 +4 +5 -3
+
+-3 -3 -4 +2 -2'' -2
+
+ 
+
++5 +5 +5 +5 +5 +5 +5 +6 -4
+
+-4 -4 -4 -4 -4 +6 +4
+
++4 +4 +4 +4 +4 +5 -3
+
++5 +2 -2'' -2
+
+ 
+
+-5 -5 -5 -5 -5 -5 -5 +5
+
+-3'' -4 -4 -4 -4 -4 -4 -4 -4'
+
+-3'' -5 -5 -5 -5 -5 -5 -5 +5
+
+-4 +4 -3'' +5
+
+ 
+
+-5 -5 -5 -5 -5
+
+-5 -5 -5 -5 -5
+
+-5 -5 -5 -5
+
++6 -5 -6' -6' +6 -5
+
+-4 -5 -5
+
+-4 -5 -5
+
+ 
+
+-5 -5 -5 -5 -5
+
+-5 -5 -5 -5 -5
+
+-5 -5 -5 -5
+
++6 -5 -6' -6' +6 -5
+
+-4 -5 -5
+
+-4 -5 -5
+
+ 
+
+inter
+
+ 
+
++5 +5 +5 +5 +5 +6 -4
+
+-4 -4 -4 -4 -4 +6 +4
+
++4 +4 +4 +4 +4 +5 -3
+
++5 +2 -2'' -2
+
+ 
+
++5 +5 +5 +5 +5 +5 +5 +6 -4
+
+-4 -4 -4 -4 -4 +6 +4
+
++4 +4 +4 +4 +4 +5 -3
+
+-4 +2 -2'' -2
+
+ 
+
+-5 -5 -5 -5 -5 -5 -5 +5
+
+-3'' -4 -4 -4 -4 -4 -4 -4 -4'
+
+-3'' -5 -5 -5 -5 -5 -5 -5 +5
+
+-4 +4 -3'' +5
+
+ 
+
+-5 -5 -5 -5 -5
+
+-5 -5 -5 -5 -5
+
+-5 -5 -5 -5
+
++6 -5 -6' -6' +6 -5
+
+-4 -5 -5
+
+-4 -5 -5
+
+ 
+
+-5 -5 -5 -5 -5
+
+-5 -5 -5 -5 -5
+
+-5 -5 -5 -5
+
++6 -5 -6' -6' +6 -5
+
+-4 -5 -5
+
+-4 -5 -5
+
+ 
+
+-5 -5 -5 -5 -5
+
+-5 -5 -5 -5 -5
+
+-5 -5 -5 -5
+
++6 -5 -6' -6' +6 -5
+
+-4 -5 -5
+
+-4 -5 -5
+
+ 
+
+inter
+
+ 
+
+-5 -5 -5 -5 -5
+
+-5 -5 -5 -5 -5
+
+-5 -5 -5 -5
+
++6 -5 -6' -6' +6 -5
+
+-4 -5 -5
+
+-4 -5 -5
+
+ 
+
+-5 -5 -5 -5 -5
+
+-5 -5 -5 -5 -5
+
+-5 -5 -5 -5
+
++6 -5 -6' -6' +6 -5
+
+-4 -5 -5
+
+-4 -5 -5
+
+ 
+
+-5 -5 -5 -5 -5
+
+-5 -5 -5 -5 -5
+
+-5 -5 -5 -5
+
++6 -5 -6' -6' +6 -5
+
+-4 -5 -5
+
+-4 -5 -5
+
+ 
+
+-5 -5 -5 -5 -5
+
+-5 -5 -5 -5 -5
+
+-5 -5 -5 -5
+
++6 -5 -6' -6' +6 -5
+
+-4 -5 -5
+
+-4 -5 -5
+```
+
+### Salvador Adamo: Inch Allah
+
+https://www.youtube.com/watch?v=uFSszlJfvoI
+
+```text
+-4 -4 -5 -6  , -6 -7 -6  6
+ 5  5  6  6  ,  5 -4  4 -4
+-6 -6 -6 -6  , -6 -7 -6  6
+ 5  5  6  6  ,  5 -4  4 -4
+ 
+-5 -5 -5  5  4 -4 
+-5 -5 -5  5  4 -4 
+
+-4 -4 -5 -6  , -6  6 -5  5
+ 4 -4  5  6  ,  5 -4  4 -4
+ 4 -4  5 -6  , -5  5 -4  4
+ 4 -4  5  6  ,  5 -4  4 -4
+-4 -4 -5 -6  , -6 -7 -6  6
+
+ 5  5  6  6  ,  5 -4  4 -4
+Mais quand j'ai vu, Jérusalem
+-6 -6 -6 -6  , -6 -7 -6  6
+ 5  5  6  6  ,  5 -4  4 -4
+ Quand sur lui je  ,  me suis couché
+
+-6 -6  7 -7  , -6  6 -7 -7>-6
+ 6 -6  7 -7  , -6  6 -7 -6
+-6 -6  7 -7  , -7 -7 -7  7>6
+ 7  7  7  7  ,  7 -7 -7 -7
+ 
+-7 -6 -6
+-6  6  6
+ 6 -5 -5 -5
+ 5  4  4
+
+
+J'ai vu l'Orient dans son écrin
+Avec la lune pour bannière
+Et je comptais en un quatrain
+Chanter au monde sa lumière
+
+Mais quand j'ai vu Jérusalem
+Coquelicot sur un rocher
+J'ai entendu un requiem
+Quand sur lui je me suis penché
+
+Ne vois-tu pas Humble Chapelle
+Toi qui murmures paix sur la terre
+Que les oiseaux cachent de leurs ailes
+Ces lettres de Feu Danger Frontière
+
+Mais voici qu'après tant de haine
+Fils d'Ismaël et fils d'Israël
+Libèrent d'une main sereine
+Une colombe dans le ciel
+
+Inch'Allah, Inch'Allah, Inch'Allah, Inch'Allah
+
+Et l'olivier retrouve son ombre
+Sa tendre épouse, son amie
+Qui reposait sur les décombres
+Prisonnière en terre ennemie
+
+Et par dessus les barbelés
+Le papillon vole vers la rose
+Hier on l'aurait répudié
+Mais aujourd'hui, enfin il ose
+
+Requiem pour les millions d'âmes
+De ces enfants, ces femmes, ces hommes
+Tombés des deux côtés du drame
+Assez de sang, Salam, Shalom
+
+Inch'Allah, Inch'Allah, Inch'Allah, Inch'Allah
+Musixmatch.com
+```
+
+
 ### Brassens: Les copains d'abord 
 
 ```text
@@ -6052,6 +6366,84 @@ Je vais t´ai-mer
 +6  -5  +6   +5-4-3
 Je vais t´ai-mer
 ```
+
+### Jeanne Moreau
+
+```text
+
+6  4  5 -6  6  ,  6  4  5 -6  6
+Elle avait des bagues ,  à chaque doigt,
+6 -4 -4 -4  6  ,  6 -4 -4 -4  6
+Des tas de bracelets autour des poignets,
+6  4  5 -6  6  ,  6  4  5 -6  6
+Et puis elle chantait avec une voix
+6 -4 -5 -6 -7  7
+Qui, sitôt, m'enjôla.
+
+7  7  7  7  , -8  8  7  6
+Elle-avait des yeux, des yeux d'opale,
+8  8  8  8  ,  7 -7  7 -8
+Qui me fascinaient, qui me fascinaient.
+7  7  7  7  , -8  8  7  6
+Y avait l'ovale de son visage
+4  5 -6  6  ,  6  6  4  4
+De femme fatale qui m'fut fatale
+4  5 -6  6  , -7  7  7  7
+De femme fatale qui m'fut fatale
+
+On s'est connu, on s'est reconnu,
+On s'est perdu de vue, on s'est r'perdu d'vue
+On s'est retrouvé, on s'est réchauffé,
+Puis on s'est séparé.
+
+Chacun pour soi est reparti.
+Dans l'tourbillon de la vie
+Je l'ai revue un soir, aïe, aïe, aïe,
+Ça fait déjà un fameux bail
+Ça fait déjà un fameux bail
+
+Au son des banjos je l'ai reconnue.
+Ce curieux sourire qui m'avait tant plu.
+Sa voix si fatale, son beau visage pâle
+M'émurent plus que jamais.
+
+Je me suis soûlé en l'écoutant.
+L'alcool fait oublier le temps.
+Je me suis réveillé en sentant
+Des baisers sur mon front brûlant
+Des baisers sur mon front brûlant
+
+On s'est connu, on s'est reconnu.
+On s'est perdu de vue, on s'est r'perdu de vue
+On s'est retrouvé, on s'est séparé.
+Dans le tourbillon de la vie.
+
+On a continué à toumer
+Tous les deux enlacés
+Tous les deux enlacés.
+Puis on s'est réchauffé.
+
+Chacun pour soi est reparti.
+Dans l'tourbillon de la vie.
+Je l'ai revue un soir ah! là là
+Elle est retombée dans mes bras.
+
+Quand on s'est connu,
+Quand on s'est reconnu,
+Pourquoi s'perdre de vue,
+Se reperdre de vue?
+
+Quand on s'est retrouvé,
+Quand on s'est réchauffé,
+Pourquoi se séparer?
+
+Et tous deux on est reparti
+Dans le tourbillon de la vie
+On a continué à tourner
+Tous les deux enlacés
+Tous les deux enlacés.
+```
+
 
 ### La java bleu
 
