@@ -1,10 +1,9 @@
-https://tinmarino.github.io/?show=cosmo_obs_cheat
-
 [Alma ReleaseManagement](Alma-ReleaseManagement)
 [Alma ACS](Alma-ACS)
 [Alma Note](Alma-Note)
 [Alma ADASS2017](Alma-ADASS2017.md)
 [Alma_Links](Alma_Links.md)
+[Alma Conferences](Alma-Conferences.md)
 
 # Science
 
