@@ -1,30 +1,39 @@
+# Questions
+
+- ? Who is responsible to develop ACS
+- ? What is the process responsible for NotifyService, for ORB transactions
+  - . The NotifyService is called via library in the ACS
+  - . The message format is defined in IDL and then included
+  - . The transaction (alias comunication) protocole seems to be in ACS ThirdParty headers, lib (TAO)
+  - ? What process is actually communicating:
+    - ? myself: the process I compile (ex: car_control)
+    - ? A TAO, JavaORB__ service running in background, one or many.
+  - ? Is the notify/subscribe protocol architecturaly diferent: I guess so because actor (process) relations are different.
+  - ? Is the name of the channel enought to get subscription or do the subscriber need to PID, hostname coordinates
+  - ? Can a notifier check who is subscribing to it ? (retrocontrol may not be overkill: like if no-one is listening why should I speak)
+  - ? Is the Archive team responsible to also keep the logs
+- ? How much can I test locally (meaning NOT ONLINE machine, so testing, failure is bening)
+  - . I imagine no problem for unit-test, API test but for system testing it may be hard.
+- ? What is the name of ONLINE, real-time maintenance: "validation", "verification", "test". I mean the process to control everything works fine during acquisition.
+  - Is this harder, are there some specific machine supervising the others
+- ? Is someone from ICT needed on site OSF, what cannot we do from Santiago
+
+
 # Overview
     
-ksh
-gcc
-libx11-dev
-libffi-dev \
-perl \
-libreadline-dev \
-bzip2 \
-openssl-dev
-openldap-dev
-libxml2-dev
-freetype-dev
-libxslt-dev
-sqlite-dev
-expat-dev
-bison \
-flex \
-autoconf \
-unzip \
-dos2unix \
-tcl-dev \
-tk-dev \
-
-
 * Model driven with code generation (IDL)
 * Manager > Container > Component && Channels
+
+
+# Links
+* Hands on: https://confluence.alma.cl/display/ICTACS/Configuring+ACS
+* Excercices: http://www.eso.org/~almamgr/AlmaAcs/OtherDocs/ACSPapersAndSlides/ACS-Course/Exercises/
+* IDL: https://github.com/ACS-Community/ACS-Workshop
+* Online Doc @ ESO: http://www.eso.org/projects/alma/develop/acs/OnlineDocs/index.html
+
+# Hands on
+
+* source /alma/ACS-<version>/ACSSW/config/.acs/.bash_profile.acs
 
 # Tests
 
@@ -63,3 +72,39 @@ df
 ## Alarms
 
 ## Configuration data
+
+
+# Install
+
+ksh \
+gcc \
+libx11-dev \
+libffi-dev \
+perl \
+libreadline-dev \
+bzip2 \
+openssl-dev
+openldap-dev
+libxml2-dev
+freetype-dev
+libxslt-dev
+sqlite-dev
+expat-dev
+bison \
+flex \
+autoconf \
+unzip \
+dos2unix \
+tcl-dev \
+tk-dev \
+
+## Third party
+
+gcc: 4.8.5 RHEL 7.6
+java: openjdk-11.0.4
+python: 2.7.16 and 3.6.9
+ACE: 6.4.3
+TAO: 2.4.3
+mico: 2.3.13
+JacORB: 3.9
+omniorb: 4.2.3

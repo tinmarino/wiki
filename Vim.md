@@ -1,7 +1,12 @@
 * [Vim Menu](Vim-Menu)
 
+# Fast
+
+'<,'>s#\-\?\d\+\(\.\d\+\)\?#\=str2float(submatch(0))*0.05#g
+
 * `:window diffthis`
 * `:diffoff!  " <-:window diffoff`
+
 ## Python
 
 ```ŧext

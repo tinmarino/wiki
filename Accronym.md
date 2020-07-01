@@ -29,6 +29,8 @@ title: Accronyms
 | EA       | East Asia |
 | EAASC    | East Asian ALMA Support Center |
 | EASC     | ESO ALMA Support Centre |
+| EB       | Excecution Block |
+| EPO      | Education and Public Outreach |
 | ESO      | European Southern Observatory |
 | EU       | Europe |
 | FTE      | Full-Time Equivalent |
@@ -41,6 +43,7 @@ title: Accronyms
 | IPT      | Integrated Product Team |
 | IT       | Information Technology |
 | ITS      | Integration Testing and Support or Integration and Testing System |
+| IVOA     | International Virtual Observatory Alliance |
 | JAO      | Joint ALMA Observatory |
 | MACI     | Management and Control Interface |
 | MAQ      | Multi Archive Query: REtreieve all metadata from all archives into ONE database |
@@ -51,20 +54,26 @@ title: Accronyms
 | NGAS     | Next Generation Archive System |
 | NRAO     | National Radio Astronomy Observatory (USA) |
 | OSF      | ALMA Operations Support Facility |
+| POA      | ?? |
+| POM      | Project Object Model |
 | QoS      | Quality of Service |
 | RM       | Release Manager |
 | RUT      | Registro Unico Tributario |
 | SACM     | Science Archive Content Managers |
 | SCCB     | Software Change Control Board |
 | SCO      | ALMA Santiago Central Office |
+| SCM      | Source Code Management |
 | SDAF     | Software Develoment Approval From |
 | SE       | Software Engineering |
 | SSR      | Science Software Requirement |
 | STE      | Standard Test Environment |
 | TAO      | The ACE ORB (open CORBA) |
+| TAT      | Tools for Automated Testing |
 | TelCal   | Telescope Calibration |
 | TMCDB    | Telescope Monitoring and Configuration Database |
 | VLBI     | Very Large Baseline Interferometry |
+| VO       | Virtual Observatory (serie of standards) |
+| WWT      | World Wide Telescope |
 
 
 # Computing
@@ -160,6 +169,7 @@ title: Accronyms
 | LLMNR    | Link-Local Multicast Name Resolution |
 | LPE      | Local Privilege Escalation |
 | LSASS    | Local Security Authority Subsystem Service |
+| LTS      | Long Term Support |
 | MBR      | Master Boot Record (vs PTR) |
 | MBS      | Master Boot Sector |
 | MCB      | Machine Control Block |
