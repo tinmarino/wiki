@@ -14,7 +14,8 @@ title: Accronyms
 | AM       | Acceptance Manager |
 | AMT      | ALMA Management Team |
 | AOS      | Array Operations Site |
-| APE      | ALMA Production Environment |
+| APE      | ALMA Production Environment -> infrastructure where the ONLINE software is deployed |
+| APO      | ALMA Pipeline Operation (Archive Team) |
 | ARC      | ALMA Regional Center (Europe, North America and East Asia) |
 | BACI     | Basic Access Control Interface |
 | CAN      | Control Area Network |

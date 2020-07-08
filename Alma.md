@@ -1,9 +1,12 @@
-[Alma ReleaseManagement](Alma-ReleaseManagement)
-[Alma ACS](Alma-ACS)
-[Alma Note](Alma-Note)
-[Alma ADASS2017](Alma-ADASS2017.md)
-[Alma_Links](Alma_Links.md)
-[Alma Conferences](Alma-Conferences.md)
+* [Alma ACS](Alma-ACS)
+* [Alma Note](Alma-Note)
+
+# More
+
+* [Alma_Links](Alma_Links.md)
+* [Alma Conferences](Alma-Conferences.md)
+* [Alma ReleaseManagement](Alma-ReleaseManagement)
+* [Alma Diary](Alma-Diary.md)
 
 # Science
 

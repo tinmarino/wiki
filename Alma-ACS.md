@@ -1,7 +1,6 @@
 # Questions
 
-- ? Who is responsible to develop ACS
-- ? What is the process responsible for NotifyService, for ORB transactions
+- ? What is the process responsible for NotifyService, for ORB transactions, is Corba a delocalised service ?
   - . The NotifyService is called via library in the ACS
   - . The message format is defined in IDL and then included
   - . The transaction (alias comunication) protocole seems to be in ACS ThirdParty headers, lib (TAO)
@@ -17,6 +16,17 @@
 - ? What is the name of ONLINE, real-time maintenance: "validation", "verification", "test". I mean the process to control everything works fine during acquisition.
   - Is this harder, are there some specific machine supervising the others
 - ? Is someone from ICT needed on site OSF, what cannot we do from Santiago
+
+# Releease at ALma
+
+Phase A: tests performed by the developer - 4 weeks
+Phase B: tests performed by IRM - 3 weeks
+Phase C: validation from the subsystems scientists - 1 week
+
+Proposal submission
+Data Acquisition
+Data Processing
+Data Delivery
 
 
 # Overview

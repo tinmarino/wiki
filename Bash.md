@@ -8,6 +8,32 @@
 * `kill -l` list signals
 * `current_script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"`
 
+# Tutorial LinkedIn
+
+* `unset` variable
+* () subshell do not change env var but {} do
+* `enable` to list builtins
+* `echo`
+  * -n dont print new line
+  * -e enable backslash escaped (\n, \e, \t)
+  * -E disable basckslash escaped chars
+* `declare`
+  * declare -l lstring="ABCdef"
+  * declare -u ustring="ABCdef"
+  * declare -r readonly="A value"
+  * declare -a Myarray
+  * declare -A Myarray2
+* `read`
+  * breaks on whitespace
+* `lsof`
+
+### Mnemonic
+
+* `tee` for T intersection
+* `cat` for concatenate
+* `tac` for cat upside down
+
+
 # Commpletion
 
 * `complete -p` : list 
