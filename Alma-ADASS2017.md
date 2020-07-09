@@ -1,3 +1,0 @@
-
-* Wolrd Wide Telescope
-* Aladin
