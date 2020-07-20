@@ -1,3 +1,19 @@
+# 30 25 20 15 10
+
+Calentamiendo (5 min max repeticiones
+- 10 Sentadillas
+- 10 mariposa
+- 10 lagartijas 
+- 10 Junping Jacks doble
+
+5 x 5 × 1 min
+- 30: Jumping jacks
+- 25: Sentadillas
+- 20: Mariposa (abdominal)
+- 15: Lagartijas
+- 10: Burpie
+Puedes descanzar en el minuto que te queda
+
 # Vienes 5 Junio
 
 Calentamiento: 5 min

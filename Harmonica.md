@@ -6521,10 +6521,9 @@ Je vais t´ai-mer
 Je vais t´ai-mer
 ```
 
-### Jeanne Moreau
+### Jeanne Moreau : Le tourbillon de la vie
 
 ```text
-
 6  4  5 -6  6  ,  6  4  5 -6  6
 Elle avait des bagues ,  à chaque doigt,
 6 -4 -4 -4  6  ,  6 -4 -4 -4  6
