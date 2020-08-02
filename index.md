@@ -1,9 +1,8 @@
-* [Alma](Alma.md)
-
 ## Software
   * [Linux](Linux)
     * [Bash](Bash)
     * [Vim](Vim)
+    * [Script](Script.md)
   * [Windows](Windows)
     * [Powershell](Powershell)
     * [Batch](Batch)
@@ -72,5 +71,6 @@
   * [KeyBinding Custom](KeyBinding-Custom)
   * [Accent](Accent)
   * [Fast](Fast)
+  * [Link](Link.md)
 
 * [Test](Test)

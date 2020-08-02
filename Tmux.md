@@ -1,10 +1,15 @@
 % Tmux : TerminalMultiplexer
 
 [Tmux Conf](Tmux-Conf)
+[Tmux Dump](Tmux-Dump.md)
 
 
-TMUX=1 gnome-terminal
+TMUX=1 gnome-terminal  # Spawn a terminal without tmux
 tmux capture-pane -pS -1000000 -t 0 > file.out
+* Capture other tmux pane : `tmux capture-pane -t "$target_pane" \; save-buffer - \; delete-buffer`
+* Share window: `tmux link-window -s <src-window> -t <dst-window>`  
+* Join pane in same window : `join-pane -s 2:3.1`
+* Set variable (Env) run 'tmux setenv -g RESULT $VALUE'
 
 ### Pane to new Windows == break pane o
 

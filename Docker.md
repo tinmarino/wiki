@@ -28,6 +28,9 @@
 * -e VAR=value : set an environment variable before invoking the command
 * -d : run in detached mode
 * --name=toto : set the name of container to toto
+* --rm : clean up direcotry at leave 
+* -v [host_src:]docker_dest : volume mount bind
+* -w [pwd] : set working directory
 
 
 ## Location
