@@ -2,20 +2,35 @@
 
 # Fast
 
+```vim
+
+nnoremap <silent> <leader><space> :execute 'silent! update'<Bar>Files<CR>
+tmux unbind -T copy-mode-vi MouseDragEnd1Pane
+vim pre.md  +'redir! > cmds | sil com Vimwiki' +q && cut -b5- cmds | cut -d ' ' -f 3
+$ vim --clean DbBuilder.pm -c 'setfiletype perl6' \
+   -c 'syntime on' \
+   -c redraw -c redraw -c redraw \
+   -c 'syntime report'
+   # See there: https://github.com/vim/vim/issues/4339
+   
+:cq commit quit -> Quit with error -> amend commit
 1<C-g> show full file path, 2<C-g> 
 '<,'>s#\-\?\d\+\(\.\d\+\)\?#\=str2float(submatch(0))*0.05#g
+```
 
 * `:window diffthis`
 * `:diffoff!  " <-:window diffoff`
 
 ## Ctags
 
+```
 ctags -R --language=C++ --c++-kinds=+p --fields=+iaS --extra=+q .
 ctags -R -a --language=C++ --c++-kinds=+p --fields=+iaS --extra=+q /usr/lib/gcc/x86_64-linux-gnu/9/include /usr/local/include /usr/include/x86_64-linux-gnu /usr/include /usr/include/c++/9/ /usr/include/c++/9 /usr/include/x86_64-linux-gnu/c++/9 /usr/include/c++/9/backward /usr/lib/gcc/x86_64-linux-gnu/9/include
+```
 
 ## Python
 
-```ŧext
+```text
 ]] Jump forward to begin of next toplevel
 [[ Jump backwards to begin of current toplevel (if already there, previous toplevel)
 ]m Jump forward to begin of next method/scope
@@ -72,13 +87,14 @@ call setqflist([])
 
 ### Compile
 
+See: https://github.com/ycm-core/YouCompleteMe/wiki/Building-Vim-from-source
 
+##### Local
 ```sh
 # Add first line for debug
 CFLAGS='-g -gdwarf4 -DDEBUG -O0 -fno-omit-frame-pointer' \
 ./configure \
             --with-features=huge \
-            --prefix=/usr/local \
             --disable-netbeans \
             --enable-gui=auto \
             \
@@ -98,11 +114,33 @@ CFLAGS='-g -gdwarf4 -DDEBUG -O0 -fno-omit-frame-pointer' \
             --enable-gui=gtk3 \
             \
             --with-compiledby="Tinmarino" \
-            
-            ##--with-python3-command=python3.7 \
 ```
 
-__Notes__:
+
+##### On remote (Alma)
+```sh
+# Do not se local --prefix=/usr/local \
+./configure \
+            --with-features=huge \
+            --prefix=$HOME/.local \
+            --disable-netbeans \
+            --enable-gui=auto \
+            \
+            --enable-cscope \
+            --enable-fail-if-missing \
+            --enable-largefile \
+            --enable-multibyte \
+            \
+            --enable-python3interp=dynamic \
+            --with-python3-config-dir=$(python3-config --configdir) \
+            \
+            \
+            --with-compiledby="Tinmarino" \
+make && make install 
+make install DESTDIR=~/.local
+```
+
+__Notes:__
 * Cannot make py2 and py3 in debian (choose only one)
 * Dynamic loading impossible in debian
 

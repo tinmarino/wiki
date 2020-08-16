@@ -1,4 +1,5 @@
-%ipython Git Wiki
+%Git Wiki
+
 
 # Tips
 
@@ -32,6 +33,17 @@ This will find any commit that added or removed the string password. Here a few 
 * git diff --staged (stage vs commit)
 * git config --list
 
+# Rc conf
+
+
+```sh
+# In glo
+--graph --color=always --format='%C(auto)%h%d %s %C(blue)%an %C(black)%C(bold)%cr' $* $forgit_emojify"
+
+# Old
+--graph --color=always --abbrev=7 --format='%C(cyan)%h %C(blue)%ar%C(auto)%d %C(yellow)%s%+b %C(black)%ae' "$@"
+--graph --color=always --abbrev=7 --format='%C(cyan)%h %C(blue)%ar%C(auto)%d %C(yellow)%s%+b %C(black)%ae' "$@"
+```
 
 
 * Add wisely

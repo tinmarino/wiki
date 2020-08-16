@@ -1,8 +1,15 @@
 
+
+# Ubuntu cannot run `su` by default
+
+sudo su - root
+sudo -i
+
 # Sortcut
 
 * Super + Q : Show number of window app in dock (left launcher)
 * Alt + f2 : Run command
+* OS + (~ or tick) : Change window of same program (Friefox or terminal)
 
 
 # Mouse

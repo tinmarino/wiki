@@ -2,6 +2,8 @@
   * [Linux](Linux)
     * [Bash](Bash)
     * [Vim](Vim)
+    * [Tmux](Tmux)
+    * [Fzf](Fzf.md)
     * [Script](Script.md)
   * [Windows](Windows)
     * [Powershell](Powershell)

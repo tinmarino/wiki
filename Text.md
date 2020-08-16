@@ -38,6 +38,7 @@
 * [Unicode](Unicode)
 * [Emoji](Emoji)
 * [Emoji Best](Emoji-Best)
+* [Emoji Table](Emoji-Table.md)
 * [Draw](Draw)
 * [Color Solarized](Color-Solarized)
 

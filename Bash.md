@@ -3,6 +3,7 @@
 [Bash HackerRank](Bash-HackerRank)
 [Bash Rc](Bash-Rc)
 
+* `IFS=''; while read REPLY; do echo "$REPLY"; done < tag.md`
 * `ps -ef | grep 'myProcessName' | grep -v grep | awk '{print $2}' | xargs -r kill -15` : kill all process from name
 * `type find` , `type vi` : see if command is alias or function or binary
 * `kill -l` list signals

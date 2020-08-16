@@ -2,7 +2,6 @@
 * [Sed](Sed)
 * [Awk](Awk)
 * [Readline](Readline)
-* [Tmux](Tmux)
 * [Dialog](Dialog)
 * [Termux](Termux)
 * [Git](Git)

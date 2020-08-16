@@ -1,6 +1,14 @@
 * [Pip](Pip)
 * [Python HackerRank](Python-HackerRank)
 
+
+
+import sys
+sys.executable
+sys.path
+os.environ['LD_LIBRARY_PATH']
+os.environ['ORIG_LD_LIBRARY_PATH']
+
 # tkinter thread
 https://stackoverflow.com/questions/459083/how-do-you-run-your-own-code-alongside-tkinters-event-loop
 
