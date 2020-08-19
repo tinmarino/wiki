@@ -38,7 +38,7 @@ This will find any commit that added or removed the string password. Here a few 
 
 ```sh
 # In glo
---graph --color=always --format='%C(auto)%h%d %s %C(blue)%an %C(black)%C(bold)%cr' $* $forgit_emojify"
+git log --graph --color=always --format='%C(auto)%h%d %s %C(blue)%an %C(black)%C(bold)%cr'
 
 # Old
 --graph --color=always --abbrev=7 --format='%C(cyan)%h %C(blue)%ar%C(auto)%d %C(yellow)%s%+b %C(black)%ae' "$@"

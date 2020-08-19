@@ -13,13 +13,18 @@
 * __uts__ provides dedicated hostname
 * __ipc__ provides dedicated shared memory
 * There are also cgroups (for cpu and memory limits), reduced capabilities, seccomp, selinux/apparmor, and ulimits. The filesystem is also layered, potentially read only, and allowed to be overlaid with volume mounts. 
-* 
 
 
 ## Command
 
 * __Copy:__ `docker cp foo.txt mycontainer:/foo.txt`
 * __List:__ `docker ps -a`
+
+### Stop
+
+```bash
+docker stop $(docker ps -a -q)
+```
 
 ### Run
 
