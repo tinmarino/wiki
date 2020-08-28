@@ -285,7 +285,7 @@ But `map` can ber replaced by:
 
 ### Ex 1 char (1/3)
 
-|       |   |
+| Alias | Command |
 | ---   | --- |
 | `ab`  | abbrev |
 | `a`   | append |
@@ -305,7 +305,7 @@ But `map` can ber replaced by:
 
 ### Ex 1 char (2/3)
 
-|       |   |
+| Alias | Command |
 | ---   | --- |
 | `m`   | move |
 | `n`   | next |
@@ -325,7 +325,7 @@ But `map` can ber replaced by:
 
 ### Ex 1 char (3/3)
 
-|       |   |
+| Alias | Command |
 | ---   | --- |
 | `s`   | substitute |
 | `una` | unabbrev |

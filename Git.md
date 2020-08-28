@@ -3,6 +3,7 @@
 
 # Tips
 
+git branch -a --contains b3fc085e3cf71df6ff01f858cc1cb9858cd5c290
 git push <remote-name> <local-branch-name>:<remote-branch-name>
 git branch -m old-name new-name # Rename branch 
 g -c merge.driver.union rebase  origin/master 

@@ -52,6 +52,7 @@
   * [Firefox](Firefox)
   * [IDA](IDA)
   * [Ia](Ia)
+  * [Alacritty](Alacritty.md)
 
 
 ## Science

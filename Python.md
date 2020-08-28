@@ -2,7 +2,6 @@
 * [Python HackerRank](Python-HackerRank)
 
 
-
 import sys
 sys.executable
 sys.path
