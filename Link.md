@@ -1,7 +1,9 @@
+# Bash
 
 # Python
 
 * Py2 -> Py3: https://python-future.org/compatible_idioms.html
+
 # Tmux
 
 * Awesome list_of_list of userfull features: https://github.com/rothgar/awesome-tmux

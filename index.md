@@ -1,5 +1,6 @@
 ## Software
   * [Linux](Linux)
+    * [Alias](Alias)
     * [Bash](Bash)
     * [Vim](Vim)
     * [Tmux](Tmux)
@@ -71,7 +72,6 @@
   * [Coding Style](Style/Style)
   * [StackOverflow Best](So/So)
   * [AsciiArts](AsciiArt/AsciiArts)
-  * [KeyBinding Custom](KeyBinding-Custom)
   * [Accent](Accent)
   * [Fast](Fast)
   * [Link](Link.md)

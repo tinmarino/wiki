@@ -9,12 +9,147 @@ xrdb -merge ~/.Xresources
 
 # Escape
 
+* Copy to clipboard: `printf '\e]52;c;%s\007' $(printf 'test 3' | base64)`
+  * With mux: set -g set-clipboard on
 * enable windows operation: `echo VT100.allowWindowOps: true | xrdb -merge`
 * resize (line,col): `printf '\e[8;50;100t'`
 * move to top left: `printf '\e[3;0;0t'`
 * zoom: `printf '\e[9;1t'`
 * to front: `printf '\e[5t'`
+* Color: 	`echo -e "Default \e[33mYellow\e[0mnormal"`
 
+```
+39 	Default foreground color 	
+
+echo -e "Default \e[39mDefault"
+
+	Default Default
+30 	Black 	
+
+echo -e "Default \e[30mBlack"
+
+	Default Black
+31 	Red 	
+
+echo -e "Default \e[31mRed"
+
+	Default Red
+32 	Green 	
+
+echo -e "Default \e[32mGreen"
+
+	Default Green
+33 	Yellow 	
+
+echo -e "Default \e[33mYellow"
+
+	Default Yellow
+34 	Blue 	
+
+echo -e "Default \e[34mBlue"
+
+	Default Blue
+35 	Magenta 	
+
+echo -e "Default \e[35mMagenta"
+
+	Default Magenta
+36 	Cyan 	
+
+echo -e "Default \e[36mCyan"
+
+	Default Cyan
+37 	Light gray 	
+
+echo -e "Default \e[37mLight gray"
+
+	Default Light gray
+90 	Dark gray 	
+
+echo -e "Default \e[90mDark gray"
+
+	Default Dark gray
+91 	Light red 	
+
+echo -e "Default \e[91mLight red"
+
+	Default Light red
+92 	Light green 	
+
+echo -e "Default \e[92mLight green"
+
+	Default Light green
+93 	Light yellow 	
+
+echo -e "Default \e[93mLight yellow"
+
+	Default Light yellow
+94 	Light blue 	
+
+echo -e "Default \e[94mLight blue"
+
+	Default Light blue
+95 	Light magenta 	
+
+echo -e "Default \e[95mLight magenta"
+
+	Default Light magenta
+96 	Light cyan 	
+
+echo -e "Default \e[96mLight cyan"
+
+	Default Light cyan
+97 	White 	
+
+echo -e "Default \e[97mWhite"
+
+From: https://stackoverflow.com/questions/4842424/list-of-ansi-color-escape-sequences
+```
+╔══════════╦════════════════════════════════╦═════════════════════════════════════════════════════════════════════════╗
+║  Code    ║             Effect             ║                                   Note                                  ║
+╠══════════╬════════════════════════════════╬═════════════════════════════════════════════════════════════════════════╣
+║ 0        ║  Reset / Normal                ║  all attributes off                                                     ║
+║ 1        ║  Bold or increased intensity   ║                                                                         ║
+║ 2        ║  Faint (decreased intensity)   ║  Not widely supported.                                                  ║
+║ 3        ║  Italic                        ║  Not widely supported. Sometimes treated as inverse.                    ║
+║ 4        ║  Underline                     ║                                                                         ║
+║ 5        ║  Slow Blink                    ║  less than 150 per minute                                               ║
+║ 6        ║  Rapid Blink                   ║  MS-DOS ANSI.SYS; 150+ per minute; not widely supported                 ║
+║ 7        ║  [[reverse video]]             ║  swap foreground and background colors                                  ║
+║ 8        ║  Conceal                       ║  Not widely supported.                                                  ║
+║ 9        ║  Crossed-out                   ║  Characters legible, but marked for deletion.  Not widely supported.    ║
+║ 10       ║  Primary(default) font         ║                                                                         ║
+║ 11–19    ║  Alternate font                ║  Select alternate font `n-10`                                           ║
+║ 20       ║  Fraktur                       ║  hardly ever supported                                                  ║
+║ 21       ║  Bold off or Double Underline  ║  Bold off not widely supported; double underline hardly ever supported. ║
+║ 22       ║  Normal color or intensity     ║  Neither bold nor faint                                                 ║
+║ 23       ║  Not italic, not Fraktur       ║                                                                         ║
+║ 24       ║  Underline off                 ║  Not singly or doubly underlined                                        ║
+║ 25       ║  Blink off                     ║                                                                         ║
+║ 27       ║  Inverse off                   ║                                                                         ║
+║ 28       ║  Reveal                        ║  conceal off                                                            ║
+║ 29       ║  Not crossed out               ║                                                                         ║
+║ 30–37    ║  Set foreground color          ║  See color table below                                                  ║
+║ 38       ║  Set foreground color          ║  Next arguments are `5;<n>` or `2;<r>;<g>;<b>`, see below               ║
+║ 39       ║  Default foreground color      ║  implementation defined (according to standard)                         ║
+║ 40–47    ║  Set background color          ║  See color table below                                                  ║
+║ 48       ║  Set background color          ║  Next arguments are `5;<n>` or `2;<r>;<g>;<b>`, see below               ║
+║ 49       ║  Default background color      ║  implementation defined (according to standard)                         ║
+║ 51       ║  Framed                        ║                                                                         ║
+║ 52       ║  Encircled                     ║                                                                         ║
+║ 53       ║  Overlined                     ║                                                                         ║
+║ 54       ║  Not framed or encircled       ║                                                                         ║
+║ 55       ║  Not overlined                 ║                                                                         ║
+║ 60       ║  ideogram underline            ║  hardly ever supported                                                  ║
+║ 61       ║  ideogram double underline     ║  hardly ever supported                                                  ║
+║ 62       ║  ideogram overline             ║  hardly ever supported                                                  ║
+║ 63       ║  ideogram double overline      ║  hardly ever supported                                                  ║
+║ 64       ║  ideogram stress marking       ║  hardly ever supported                                                  ║
+║ 65       ║  ideogram attributes off       ║  reset the effects of all of 60-64                                      ║
+║ 90–97    ║  Set bright foreground color   ║  aixterm (not in standard)                                              ║
+║ 100–107  ║  Set bright background color   ║  aixterm (not in standard)                                              ║
+╚══════════╩════════════════════════════════╩═════════════════════════════════════════════════════════════════════════╝
+```
 
 ## Send to other
 
