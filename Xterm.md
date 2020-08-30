@@ -19,89 +19,24 @@ xrdb -merge ~/.Xresources
 * Color: 	`echo -e "Default \e[33mYellow\e[0mnormal"`
 
 ```
-39 	Default foreground color 	
-
-echo -e "Default \e[39mDefault"
-
-	Default Default
-30 	Black 	
-
-echo -e "Default \e[30mBlack"
-
-	Default Black
-31 	Red 	
-
-echo -e "Default \e[31mRed"
-
-	Default Red
-32 	Green 	
-
-echo -e "Default \e[32mGreen"
-
-	Default Green
-33 	Yellow 	
-
-echo -e "Default \e[33mYellow"
-
-	Default Yellow
-34 	Blue 	
-
-echo -e "Default \e[34mBlue"
-
-	Default Blue
-35 	Magenta 	
-
-echo -e "Default \e[35mMagenta"
-
-	Default Magenta
-36 	Cyan 	
-
-echo -e "Default \e[36mCyan"
-
-	Default Cyan
-37 	Light gray 	
-
-echo -e "Default \e[37mLight gray"
-
-	Default Light gray
-90 	Dark gray 	
-
-echo -e "Default \e[90mDark gray"
-
-	Default Dark gray
-91 	Light red 	
-
-echo -e "Default \e[91mLight red"
-
-	Default Light red
-92 	Light green 	
-
-echo -e "Default \e[92mLight green"
-
-	Default Light green
-93 	Light yellow 	
-
-echo -e "Default \e[93mLight yellow"
-
-	Default Light yellow
-94 	Light blue 	
-
-echo -e "Default \e[94mLight blue"
-
-	Default Light blue
-95 	Light magenta 	
-
-echo -e "Default \e[95mLight magenta"
-
-	Default Light magenta
-96 	Light cyan 	
-
-echo -e "Default \e[96mLight cyan"
-
-	Default Light cyan
-97 	White 	
-
-echo -e "Default \e[97mWhite"
+echo -e "\e[39mDefault"
+echo -e "\e[30mBlack"
+  echo -e "\e[31mRed"
+echo -e "\e[32mGreen"
+echo -e "\e[33mYellow"
+echo -e "\e[34mBlue"
+echo -e "\e[35mMagenta"
+echo -e "\e[36mCyan"
+echo -e "\e[37mLight gray"
+echo -e "\e[90mDark gray"
+echo -e "\e[91mLight red"
+echo -e "\e[92mLight green"
+echo -e "\e[93mLight yellow"
+echo -e "\e[94mLight blue"
+echo -e "\e[95mLight magenta"
+echo -e "\e[96mLight cyan"
+echo -e "\e[97mWhite"
+```
 
 From: https://stackoverflow.com/questions/4842424/list-of-ansi-color-escape-sequences
 ```
