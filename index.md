@@ -12,26 +12,26 @@
 
 
 ## Language
-  * [Links](Programming-Links)  
+  * [Links](Programming-Links)
   ### Script
   * [Raku](Raku)
   * [Perl](Perl)
   * [Ruby](Ruby)
   * [Python](Python)
-  * [Js](Js)  
+  * [Js](Js)
   ### Compiled
   * [C](C)
   * [Java](Java)
   * [Rust](Rust)
   * [Cmake](Cmake)
-  * [Assembly](Assembly)  
+  * [Assembly](Assembly)
   ### Markup
   * [Css](Css)
   * [Html](Html)
   * [Latex](Latex)
   * [Pandoc](Pandoc)
   * [Markdown](Markdown)
-  * [Dot](Dot)   
+  * [Dot](Dot)
   * [Sql](Sql)
   ### Algorithm
   * [Paradigm](Paradigm-Programming)
@@ -66,6 +66,7 @@
   * [Francais Figure De Style](Francais-Figure-De-Style)
 
 ## Misc
+  * [Dumps](Dumps.md)
   * [Sport](Sport)
   * [Text](Text)
   * [Cheats](Cheats)

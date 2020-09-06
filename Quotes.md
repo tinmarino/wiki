@@ -159,3 +159,5 @@ Ton    Tel  Traite
 * Si tu ne t'arrête pas jusqu'au succès, tu succéderas avant de t'arrêter
 
 * Si tu es en quête de sens, commence par donner un sens à ta quête
+
+* Ce n'est pas parce que tu ne le vois pas que ca n'existe pas

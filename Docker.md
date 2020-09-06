@@ -15,6 +15,14 @@
 * There are also cgroups (for cpu and memory limits), reduced capabilities, seccomp, selinux/apparmor, and ulimits. The filesystem is also layered, potentially read only, and allowed to be overlaid with volume mounts. 
 
 
+## Tips
+
+### Check is running
+docker inspect returns a JSON object with a lot of info about the container, and in particular whether the container is currently running or not. The -f flag lets you easily extract the bits needed:
+
+* `docker inspect -f "{{.State.Running}}" $CONTAINER_ID`
+* `docker top`
+
 ## Command
 
 * __Copy:__ `docker cp foo.txt mycontainer:/foo.txt`
@@ -28,12 +36,15 @@ docker stop $(docker ps -a -q)
 
 ### Run
 
+From: https://docs.docker.com/engine/reference/commandline/run/
+
 * -i : read from stdin
 * -t : prompt to terminal
 * -e VAR=value : set an environment variable before invoking the command
 * -d : run in detached mode
 * --name=toto : set the name of container to toto
-* --rm : clean up direcotry at leave 
+* --rm : clean up directory at leave 
+* --user , -u 		Username or UID (format: <name|uid>[:<group|gid>])
 * -v [host_src:]docker_dest : volume mount bind
 * -w [pwd] : set working directory
 

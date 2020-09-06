@@ -19,15 +19,15 @@ xrdb -merge ~/.Xresources
 * Color: 	`echo -e "Default \e[33mYellow\e[0mnormal"`
 
 ```
-echo -e "\e[39mDefault"
 echo -e "\e[30mBlack"
-  echo -e "\e[31mRed"
+echo -e "\e[31mRed"
 echo -e "\e[32mGreen"
 echo -e "\e[33mYellow"
 echo -e "\e[34mBlue"
 echo -e "\e[35mMagenta"
 echo -e "\e[36mCyan"
 echo -e "\e[37mLight gray"
+echo -e "\e[39mDefault"
 echo -e "\e[90mDark gray"
 echo -e "\e[91mLight red"
 echo -e "\e[92mLight green"

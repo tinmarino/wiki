@@ -368,7 +368,8 @@
 '---------------------------------------------------------------------'
 ```
 
-# Regex Atoms
+# Regex Atoms and multipliers
+
 From: https://www.gnu.org/software/sed/manual/html_node/Regular-Expressions.html
 
 ```

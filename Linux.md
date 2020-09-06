@@ -28,6 +28,7 @@
 * [Accronym](Accronym)
 * [Screen](Screen)
 
+```bash
 * Trash: /home/$USER/.local/share/Trash (install trash-cli)
 * find . -type f -name "*_peaks.bed" ! -path "./tmp/*" ! -path "./scripts/*"
 * echo -e "\a" # beep
@@ -40,6 +41,7 @@
 * tmux :clear-history 
 * tmux :bind -n C-k clear-history  #-n to avoid prefix
 * tmux: bind b send-keys-R \; clear-history
+```
   
 # Files (Read, get specific info)
   * /proc/sys/vm/block_dump  # echo 1 lgos IO; then tail -f /var/log/syslog
@@ -86,7 +88,8 @@
   xset dpms force off
 
 *  Tar   
-  tar - cvf tecmint-14-09-12.tar /home/tecmint/
+  ```bash
+  tar cvf tecmint-14-09-12.tar /home/tecmint/
   tar cvzf MyImages-14-09-12.tar.gz /home/MyImages
       c – Creates a new .tar archive file.
       v – Verbosely show the .tar file progress.
@@ -94,6 +97,7 @@
       z - Compress
   tar -xvf thumbnails-14-09-12.tar.gz
   tar -zxvf tar-archive-name.tar.gz 
+  ```
 
 *   Remotely move mouse : `xdotool`
   ```
