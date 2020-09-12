@@ -119,7 +119,8 @@ CFLAGS='-g -gdwarf4 -DDEBUG -O0 -fno-omit-frame-pointer' \
 
 ##### On remote (Alma)
 ```sh
-# Do not se local --prefix=/usr/local \
+# export LDFLAGS=-static
+# Do not see local --prefix=/usr/local \
 ./configure \
             --with-features=huge \
             --prefix=$HOME/.local \

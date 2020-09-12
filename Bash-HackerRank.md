@@ -7,6 +7,64 @@ wiki_pandoc: --toc
 ---
 <section class="level2">
 
+# Array
+
+* Copy: [link](https://stackoverflow.com/questions/19417015/how-to-copy-an-array-in-bash)
+
+```bash
+a=(foo bar "foo 1" "bar two")  #create an array
+b=("${a[@]}")                  #copy the array in another one 
+
+for value in "${b[@]}" ; do    #print the new array 
+echo "$value" 
+done
+```
+
+* Delete: [link](https://stackoverflow.com/questions/16860877/remove-an-element-from-a-bash-array)
+```bash
+delete=(pluto pippo)
+for del in ${delete[@]}
+do
+   array=("${array[@]/$del}") #Quotes when working with strings
+done
+
+# This technique actually removes prefixes matching $delete from the elements, not necessarily whole elements.
+# To really remove an exact item, you need to walk through the array, comparing the target to each element, and using unset to delete an exact match.
+
+array=(pluto pippo bob)
+delete=(pippo)
+for target in "${delete[@]}"; do
+  for i in "${!array[@]}"; do
+    if [[ ${array[i]} = $target ]]; then
+      unset 'array[i]'
+    fi
+  done
+done
+
+# Note that if you do this, and one or more elements is removed, the indices will no longer be a continuous sequence of integers.
+
+declare -p array
+declare -a array=([0]="pluto" [2]="bob")
+
+#If gaps are a problem, then you need to rebuild the array to fill the gaps:
+
+for i in "${!array[@]}"; do
+    new_array+=( "${array[i]}" )
+done
+array=("${new_array[@]}")
+unset new_array
+```
+
+```bash
+array=(pluto pippo)
+new_array=()
+for value in "${array[@]}"
+do
+    [[ $value != pluto ]] && new_array+=($value)
+done
+array=("${new_array[@]}")
+unset new_array
+```
 
 ### Looping and Skipping
 

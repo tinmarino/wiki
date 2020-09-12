@@ -3,12 +3,39 @@
 [Bash HackerRank](Bash-HackerRank)
 [Bash Rc](Bash-Rc)
 
+* nl  # for number line: prepend each line with line number, pipeutil
 * `IFS=''; while read REPLY; do echo "$REPLY"; done < tag.md`
 * `ps -ef | grep 'myProcessName' | grep -v grep | awk '{print $2}' | xargs -r kill -15` : kill all process from name
 * `type find` , `type vi` : see if command is alias or function or binary
 * `kill -l` list signals
 * `current_script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"`
 
+# Shell check
+
+# shellcheck disable=SC2155  # Declare and assign separately to avoid masking return values -> Prevent declare -a
+# shellcheck disable=SC2092  # Remove backticks
+
+# Completion
+
+* COMP_WORDS: an array of all the words typed after the name of the program the compspec belongs to
+* COMP_CWORD: an index of the COMP_WORDS array pointing to the word the current cursor is at - in other words, the index of the word the cursor was when the tab key was pressed
+* COMP_LINE: the current command line
+  
+Dirty
+```
+92 cword          Bonjour 0: aa!    Bonjour 2: toto!  Bonjour 4: toto!
+1: name
+2: last word
+3: last last
+Then need the 
+$ toto a1 a2 a3
+91 word                Bonjour 0: aa!         Bonjour 3: a3!
+92 cword               Bonjour 1: bb!         Bonjour 4: a2!
+93 line toto a1 a2 a3  Bonjour 2: toto!
+```
+
+~/Software/Bash
+$ toto a1 a2 a3
 # Tutorial LinkedIn
 
 * `unset` variable
@@ -51,7 +78,21 @@ TAB: menu-complete
 "\e[Z": menu-complete-backward
 ```
 
+# History
+
+```
+!^      first argument
+!:2     second argument
+!:2-$   second to last arguments
+!:2*    second to last arguments
+!:2-    second to next to last arguments
+!:2-3   second to third arguments
+!$      last argument
+!*      all arguments
+```
+
 # Other tips
+
 * How to join multiple lines of file names into one with custom delimiter?:
   * `paste` in `ls -1 | paste -sd "," -`
   * `tr` in `ls -1 | tr '\n' ','`

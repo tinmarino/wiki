@@ -7,6 +7,11 @@ Install the xorg-xrdb package.
 xrdb -query -all
 xrdb -merge ~/.Xresources
 
+# Background color
+
+printf %b '\e]11;#ffffff\a'
+tmux select-pane -P 'bg=#FFFFFF,fg=#000000'
+
 # Escape
 
 * Copy to clipboard: `printf '\e]52;c;%s\007' $(printf 'test 3' | base64)`
