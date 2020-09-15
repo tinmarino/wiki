@@ -10,6 +10,8 @@
 * `kill -l` list signals
 * `current_script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"`
 
+
+
 # Shell check
 
 # shellcheck disable=SC2155  # Declare and assign separately to avoid masking return values -> Prevent declare -a
@@ -32,6 +34,61 @@ $ toto a1 a2 a3
 91 word                Bonjour 0: aa!         Bonjour 3: a3!
 92 cword               Bonjour 1: bb!         Bonjour 4: a2!
 93 line toto a1 a2 a3  Bonjour 2: toto!
+```
+
+# Getopt
+
+```bash
+# $@ is all command line parameters passed to the script.
+# -o is for short options like -v
+# -l is for long options with double dash like --version
+options=$(getopt \
+  -l "all,help,rosetta,site,vim,html,wiki" \
+  -o "ahrsvxw" -- "$@")
+
+# set --:
+# If no arguments follow this option, then the positional parameters are unset. Otherwise, the positional parameters
+# are set to the arguments, even if some of them begin with a ‘-’.
+eval set -- "$options"
+echo -n "Args: "
+while true; do
+  case "$1" in
+    -a|--all)
+      echo -n "All, "
+      ((ball=1))
+      ;;
+    -h|--help)
+      usage
+      ;;
+    -r|--rosetta)
+      echo -n "Rosetta, "
+      ((brosetta=1))
+      ;;
+    -s|--site)
+      echo -n "Site, "
+      ((bsite=1))
+      ;;
+    -v|--vim)
+      echo -n "Vim, "
+      ((bvim=1))
+      ;;
+    -w|--wiki)
+      echo -n "Wiki, "
+      ((bwiki=1))
+      ;;
+    -x|--html)
+      echo -n "Html, "
+      ((bhtml=1))
+      ;;
+    --)
+      shift
+      break
+      ;;
+  esac
+  shift
+done
+echo
+
 ```
 
 ~/Software/Bash
