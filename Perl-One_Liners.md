@@ -21,17 +21,16 @@ Remove all blank lines
 	perl -lne 'print if length'
 	perl -ne 'print if /\S/'
 	perl -pe 's/^\s*$//'
-
+  
 Remove all consecutive blank lines, leaving only one
 	perl -00 -pe ''
 	perl -00pe0
 
 Compress/expand all blank lines into N consecutive lines
-	perl -00 -pe '$_ .= "\n"x2'
+  perl -00 -pe '$_ .= "\n"x2'
 
 Insert a space between all characters
 	perl -lpe 's// /g'
-
 
 ### Numbering
 
@@ -409,4 +408,3 @@ Match printable ASCII characters
 
 Extract all matches from a regular expression
 	my @matches = $text =~ /regex/g;
-
