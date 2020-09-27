@@ -129,10 +129,13 @@ Et de tous vos défauts les zélés adversaires. (Art po, Chant 1)
 * Dans le doute, écoute ton coeur. Tous les chemins mênent à ta mort mais suivant celui çi, au moins tu auras vécu
 
 * Fais de ton mieux car c'est le mieux que tu puisse faire
+  * Do your best, that is the best you can do
 
 * Peux importe l'altitude, seule la pente compte.
+  * No matter the altitude, what counts is the slope
 
 * Ton fort te traite tel tu traites ton faible
+  * Your strong treats you as you treat your weak
 
 ```
    Fort           
@@ -143,6 +146,7 @@ Ton    Tel  Traite
 ```
 
 * Nous sommes tous des touristes dans cet univers
+  * We are all tourists in this universe
 
 * Pourquoi se tuer pour un monde meilleur sans profiter du meilleur des mondes
 
@@ -153,11 +157,16 @@ Ton    Tel  Traite
 * On ne se perd jamais. On perd ce qu'on a aimait
 
 * L'essentiel est dans le détail
+  * The essential is in the detail
 
 * Pour être précis, vise loin
+  * To be precise, aim far
 
 * Si tu ne t'arrête pas jusqu'au succès, tu succéderas avant de t'arrêter
+  * If you keep on until sucess, you will succeed before you stop
 
 * Si tu es en quête de sens, commence par donner un sens à ta quête
+  * If you are in search of meaning, start by giving meaning to your search
 
 * Ce n'est pas parce que tu ne le vois pas que ca n'existe pas
+  * It's not because you don't see it that it doesn't exist
