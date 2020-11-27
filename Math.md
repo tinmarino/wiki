@@ -1,5 +1,8 @@
-
 [Crypto](Crypto)
+
+# Vectorial
+div . rot = 0
+rot . grad = 0
 
 
 # Calculo
