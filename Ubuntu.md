@@ -1,4 +1,8 @@
 
+# Path
+
+* /etc/systemd/logind.conf
+* /etc/security/limits.conf
 
 # Ubuntu cannot run `su` by default
 
@@ -10,6 +14,7 @@ sudo -i
 * Super + Q : Show number of window app in dock (left launcher)
 * Alt + f2 : Run command
 * OS + (~ or tick) : Change window of same program (Friefox or terminal)
+* Invert fn behavior: Press fn + Esc Key (Or look for a key with a lock sign on it)
 
 
 # Mouse

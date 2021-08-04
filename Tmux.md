@@ -3,6 +3,8 @@
 [Tmux Conf](Tmux-Conf)
 [Tmux Dump](Tmux-Dump.md)
 
+bind-key    -T copy-mode-vi MouseDragEnd1Pane    send-keys -X copy-selection-and-cancel
+
 
 TMUX=1 gnome-terminal  # Spawn a terminal without tmux
 tmux capture-pane -pS -1000000 -t 0 > file.out
@@ -10,6 +12,11 @@ tmux capture-pane -pS -1000000 -t 0 > file.out
 * Share window: `tmux link-window -s <src-window> -t <dst-window>`  
 * Join pane in same window : `join-pane -s 2:3.1`
 * Set variable (Env) run 'tmux setenv -g RESULT $VALUE'
+* 
+
+```tmux
+setw synchronise-panes  # gives us is that it simultaneously sends keyboard input from one pane to the rest of the panes
+```
 
 ### Pane to new Windows == break pane o
 

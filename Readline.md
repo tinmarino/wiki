@@ -1,5 +1,21 @@
 % Readline
 
+# Complete
+
+* $1 name of the command whose arguments are being completed,
+* $2 word being completed
+* $3 is the word preceding the word being completed
+
+# Other
+
+```bash
+# Now useless, cares of setting at least latin-1 encoding
+# French characters
+stty cs8 -istrip -parenb
+bind 'set convert-meta off'
+bind 'set meta-flag on'
+bind 'set output-meta on'
+```
 
 
 * <C-X><C-E> : dit current line with vim

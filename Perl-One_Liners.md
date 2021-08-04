@@ -1,39 +1,42 @@
 ### All lines Stuff
 
-Double-space a file
+```bash
+# Double-space a file
 	perl -pe '$\ = "\n"' file
 	perl -pe '$_ .= "\n"' file
 	perl -pe 's/$/\n/' file
 	perl -nE 'say' file
 
-Double-space a file, excluding the blank lines
+# Double-space a file, excluding the blank lines
 	perl -pe '$_ .= "\n" unless /^$/'
 	perl -pe '$_ .= "\n" if /\S/'
 
-N-space a file
+# N-space a file
 	perl -pe '$_ .= "\n"x7'
 
-Add a blank line before every line
+# Add a blank line before every line
 	perl -pe 's/^/\n/'
 
-Remove all blank lines
+# Remove all blank lines
 	perl -ne 'print unless /^$/'
 	perl -lne 'print if length'
 	perl -ne 'print if /\S/'
-	perl -pe 's/^\s*$//'
+	perl -pe 's/^\s*'
   
-Remove all consecutive blank lines, leaving only one
+# Remove all consecutive blank lines, leaving only one
 	perl -00 -pe ''
 	perl -00pe0
 
-Compress/expand all blank lines into N consecutive lines
+# Compress/expand all blank lines into N consecutive lines
   perl -00 -pe '$_ .= "\n"x2'
 
-Insert a space between all characters
+# Insert a space between all characters
 	perl -lpe 's// /g'
+```
 
 ### Numbering
 
+```bash
 Number all lines in a file
 	perl -pe '$_ = "$. $_"'
 	perl -ne 'print "$. $_"'
@@ -90,6 +93,7 @@ Number words across all lines
 
 Number words on each individual line
 	perl -pe '$i=0; s/(\w+)/++$i.".$1"/ge'
+```
 
 
 ### Calculations
@@ -372,7 +376,7 @@ All unique lines
 	perl -ne 'print unless $a{$_}++'
 
 
-###­Useful Regular Expressions
+### Useful Regular Expressions
 
 
 Match something that looks like an IP address

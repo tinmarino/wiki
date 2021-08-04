@@ -1,3 +1,4 @@
+* [Gdb](Gdb.md)
 * [Apt](Apt)
 * [Sed](Sed)
 * [Awk](Awk)
@@ -29,6 +30,10 @@
 * [Screen](Screen)
 
 ```bash
+
+bind '"\e[B": history-search-forward'; bind '"\e[A": history-search-backward';
+
+
 * Trash: /home/$USER/.local/share/Trash (install trash-cli)
 * find . -type f -name "*_peaks.bed" ! -path "./tmp/*" ! -path "./scripts/*"
 * echo -e "\a" # beep

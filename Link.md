@@ -1,5 +1,7 @@
 # Bash
 
+* [Advanced Bash Scripting](https://tldp.org/LDP/abs/html/abs-guide.html)
+
 # Python
 
 * Py2 -> Py3: https://python-future.org/compatible_idioms.html

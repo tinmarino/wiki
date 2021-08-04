@@ -1,9 +1,54 @@
-* use Time'HiRes"usleep";$|=@q=(a..z,' ');@w=('just another perl hacker' =~/./g);while("@w"ne"@e"){$e[$_]eq$w[$_]or$e[$_]=$q[rand@q]for+0..$#w; print"\r@e";usleep+1e5} 
-* $_="krJhruaesrltre c a cnP,ohet";$_.=$1,print$2while s/(..)(.)//;
-* $_="mbTia1z0nrn";$_.=$1,print$2while s/(..)(.)//;
-* perl -le "s,,reverse killer,e,y,rifle,lycra,,print"
+# Just Another Perl Hacker
 
-* ```not exp log srand xor s qq qx xor
+## Tinmarino
+
+### Animated
+
+* Jim is hacker Padawan
+
+```bash
+perl -e 'use Time::HiRes"usleep";$|=@q=(a..z," ");$_="hwjdai 5mcn pkiaasea dr";while(s/(..)(.)//){ $_.=$1; $s.=$2 };@w=("$s"=~/./g);while("@w"ne"@e"){$e[$_]eq$w[$_]or$e[$_]=$q[rand@q]for+0..$#w;print"\r@e";usleep+1e5};print"\n"'
+```
+
+* Tinmarino
+
+```bash
+perl -e 'use Time::HiRes"usleep";$|=@q=(a..z," ");print"\e[1m\e[31m";$_="mbtiaizonrn";while(s/(..)(.)//){ $_.=$1; $s.=$2 };@w=("$s"=~/./g);while("@w"ne"@e"){$e[$_]eq$w[$_]or$e[$_]=$q[rand@q]for+0..$#w;print"\r@e";usleep+1e5};print"\e[0m\n"'
+```
+
+* Base
+
+```bash
+perl -e 'use Time::HiRes"usleep";$|=@q=(a..z," ");@w=("just another perl hacker"=~/./g);while("@w"ne"@e"){$e[$_]eq$w[$_]or$e[$_]=$q[rand@q]for+0..$#w;print"\r@e";usleep+1e5}'
+```
+
+
+
+## Web
+
+
+* Fire: https://bruxy.regnet.cz/web/linux/EN/bash-on-fire/
+```bash
+X=`tput cols` Y=`tput lines` e=echo M=`eval $e {1..$[X*Y]}` P=`eval $e {1..$X}`;
+B=(' ' '\E[0;31m.' '\E[0;31m:' '\E[1;31m+' '\E[0;33m+' '\E[1;33mU' '\E[1;33mW');
+$e -e "\E[2J\E[?25l" ; while true; do p=''; for j in  $P; do p=$p$[$RANDOM%2*9];
+done;O=${C:0:$[X*(Y-1)]}$p;C='' S='';for p in $M;do #  _-=[ BruXy.RegNet.CZ ]=-_
+read a b c d <<< "${O:$[p+X-1]:1} ${O:$[p+X]:1} ${O:$[p+X+1]:1} ${O:$[p+X+X]:1}"
+v=$[(a+b+c+d)/4] C=$C$v S=$S${B[$v]}; done; printf "\E[1;1f$S"; done  
+```
+
+```perl
+use Time'HiRes"usleep";$|=@q=(a..z,' ');@w=('just another perl hacker' =~/./g);while("@w"ne"@e"){$e[$_]eq$w[$_]or$e[$_]=$q[rand@q]for+0..$#w; print"\r@e";usleep+1e5} 
+
+
+# Other
+$_="krJhruaesrltre c a cnP,ohet";$_.=$1,print$2while s/(..)(.)//;
+$_="mbTia1z0nrn";$_.=$1,print$2while s/(..)(.)//;
+perl -le "s,,reverse killer,e,y,rifle,lycra,,print"
+```
+
+```perl
+not exp log srand xor s qq qx xor
 s x x length uc ord and print chr
 ord for qw q join use sub tied qx
 xor eval xor print qq q q xor int
@@ -16,7 +61,8 @@ each return local x y or print qq
 s s and eval q s undef or oct xor
 time xor ref print chr int ord lc
 foreach qw y hex alarm chdir kill
-exec return y s gt sin sort split```
+exec return y s gt sin sort split
+```
 
 * `perl -e 'length q chmod lc and print chr ord q q eq'`
 * `perl -E '$_=unpack("H21","9Ø HvÂláµöÂ");s/(.)/" "x(hex$1<3).substr "AHPJocehtunarslk",hex$1,1/eg;say'` 

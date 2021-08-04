@@ -16,7 +16,7 @@
 2. evening (low contrast)
 3. fromthehell (red and yellow, nice contrast)
 4. frood (exactly the opposite blue)
-5. fruit (like dante almost
+5. fruit (like dante almost)
 6. gravity
 7. gryffin (many color and darker than grishin)
 8. gurunew (puple comments)
@@ -33,6 +33,7 @@
 
 * onehalf
 * PaperColor
+* summerfruit256
 
 
 ## Different

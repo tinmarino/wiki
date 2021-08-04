@@ -18,6 +18,8 @@
 
 * You must use your mind to get things off your mind (David Allen)
 
+* Your mind is for having ideas, not holding them (David Allen)
+
 * Qui perd la légitimité perd la guerre (jc+)
 
 * L'expérience est le nom que chacun donne à ses erreurs (Oscar Wilde 1892)

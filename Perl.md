@@ -3,6 +3,7 @@
 * [Perl One_Liners](Perl-One_Liners)
 * [Perl Snippet](Perl-Snippet)
 * [Perl_Old_Reference](Perl_Old_Reference)
+* [Perl Japh](Perl-Japh.md)
 
 # Tips
 
@@ -33,9 +34,11 @@ Even without the /x modifier, you can enclose comments in (?# ... ):my $foo = "z
 
 
 Add to path
-  use lib qw(.); # Will add your cwd to @INC
-  use lib qw(. /path/to/my/home /some/other/dir); # will add those dirs 
-  perl -I/path/to/include script
+```perl
+use lib qw(.); # Will add your cwd to @INC
+use lib qw(. /path/to/my/home /some/other/dir); # will add those dirs 
+perl -I/path/to/include script
+```
   
 Get package path
   perl -MTime::HiRes -e 'print $INC{"Time/HiRes.pm"}' or perldoc -l Time::HiRes

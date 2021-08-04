@@ -3,11 +3,14 @@
 
 # Tips
 
-* Get branch name: git rev-parse --abbrev-ref HEAD
+```bash
+git fetch wiki pull/982/head:pr_982   # wiki is the name I gave to the remote -> https://github.com/vimwiki/vimwiki/
+git rev-parse --abbrev-ref HEAD  # Get branch name
 git branch -a --contains b3fc085e3cf71df6ff01f858cc1cb9858cd5c290
 git push <remote-name> <local-branch-name>:<remote-branch-name>
 git branch -m old-name new-name # Rename branch 
 g -c merge.driver.union rebase  origin/master 
+```
 
 ### Pickaxe
 
@@ -27,6 +30,36 @@ This will find any commit that added or removed the string password. Here a few 
 * git reset --hard HEAD^  # One
 * git reset --hard HEAD~2  # Two
 
+### Checkout to PR
+
+Description: https://github.com/vimwiki/vimwiki/pull/982
+
+```bash
+git fetch wiki pull/982/head:pr_982   # wiki is the name I gave to the remote -> https://github.com/vimwiki/vimwiki/
+git checkout pr_982
+
+# Oh I must rebase because Tinmarino pushed some commit on dev after divergence and I want to get this line much clearer so let's forget Jeromg history, and put the diff in one commit
+git checkout -b pr_reset_982   # create new branch for backup the pr_982
+# Searching for last merge from 4431caf
+git reset  4431caf
+git diff
+# Insepection, looking the changes
+# => Lets go
+git commit -m 'Feature: Utility function: linkify to extract link title from url (PR #982 from @jeromg)'
+# I'm still down I mus tmove to the top
+git rebase dev
+
+    Loading the weapon
+
+git checkout dev && git rebase pr_reset_982
+
+    Fire ! : Warning: Point de non retour:
+
+git push wiki
+```
+
+
+
 ### Ugly tips from draft
 
 * git push <remote_name> --delete <branch_name>  # or -d branch or :branch
@@ -35,7 +68,7 @@ This will find any commit that added or removed the string password. Here a few 
 * git diff --staged (stage vs commit)
 * git config --list
 
-# Rc conf
+, Rc conf
 
 
 ```sh

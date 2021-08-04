@@ -1,3 +1,42 @@
+# Contents
+
+  - [](#)
+  - [wiki_pandoc: --toc](#wiki_pandoc---toc)
+  - [Syntax](#syntax)
+    - [Common operation](#common-operation)
+    - [Looping and Skipping](#looping-and-skipping)
+    - [A Personalized Echo](#a-personalized-echo)
+    - [The World of Numbers](#the-world-of-numbers)
+    - [Comparing Numbers](#comparing-numbers)
+    - [Getting started with conditionals](#getting-started-with-conditionals)
+    - [More on Conditionals](#more-on-conditionals)
+    - [Arithmetic Operations](#arithmetic-operations)
+    - [Compute the Average](#compute-the-average)
+  - [Pipe](#pipe)
+    - [Functions and Fractals - Recursive Trees - Bash!](#functions-and-fractals---recursive-trees---bash)
+    - [Cut](#cut)
+    - [Head](#head)
+    - [Middle](#middle)
+    - [Tail](#tail)
+    - [Tr](#tr)
+    - [Sort](#sort)
+    - [Uniq](#uniq)
+    - [Paste](#paste)
+  - [Array](#array)
+    - [Read in an Array](#read-in-an-array)
+    - [Slice an Array](#slice-an-array)
+    - [Filter an Array with Patterns](#filter-an-array-with-patterns)
+    - [Concatenate an array with itself](#concatenate-an-array-with-itself)
+    - [Display an element of an array](#display-an-element-of-an-array)
+    - [Count the number of elements in an Array](#count-the-number-of-elements-in-an-array)
+    - [Remove the First Capital Letter from Each Element](#remove-the-first-capital-letter-from-each-element)
+    - [Lonely Integer - Bash!](#lonely-integer---bash)
+  - [Grep / Sed / Awk](#grep-sed-awk)
+    - [Grep](#grep)
+    - [Sed](#sed)
+    - [Awk](#awk)
+      - [Awk tricks](#awk-tricks)
+
 ---
 title: Bash HackerRank tips
 category: Bash
@@ -7,7 +46,8 @@ wiki_pandoc: --toc
 ---
 <section class="level2">
 
-# Array
+## Syntax
+### Common operation
 
 * Copy: [link](https://stackoverflow.com/questions/19417015/how-to-copy-an-array-in-bash)
 
@@ -16,7 +56,7 @@ a=(foo bar "foo 1" "bar two")  #create an array
 b=("${a[@]}")                  #copy the array in another one 
 
 for value in "${b[@]}" ; do    #print the new array 
-echo "$value" 
+  echo "$value" 
 done
 ```
 
@@ -127,7 +167,6 @@ echo $((x / y))
 ```
 
 ```sh
-#!/bin/bash
 read X
 read Y
 printf "%s\n" $X{+,-,*,/}"($Y)" | bc
@@ -144,7 +183,6 @@ done
 ```
 
 ```sh
-#!/bin/bash
 read x
 read y
 
@@ -176,7 +214,6 @@ fi
 ```
 
 ```sh
-#!/bin/bash
 read x
 read y
 [[ $x -gt $y ]] && echo 'X is greater than Y'
@@ -304,7 +341,8 @@ for i in $(seq 1 $n);
 printf "%.3f" $(echo "$sum/$n" | bc -l)
 ```
 
-
+## Pipe
+<section class="level2">
 ### Functions and Fractals - Recursive Trees - Bash!
 
 Too long, I passed !
@@ -356,7 +394,7 @@ draw 16 62 49 x
 print
 ```
 
-```sh
+```bash
 
 branch() {    
     if (( $1 == 0 )); then
@@ -398,9 +436,7 @@ branch 5
 
 * Recursive
 
-```sh
-#!/bin/bash
-
+```bash
 declare -A m
 StartLegLength=16
 maxrows=63
@@ -590,8 +626,6 @@ paste - - -
 </section>
 ## Array
 <section class="level2">
-
-
 ### Read in an Array
 
 ```sh
@@ -726,8 +760,6 @@ echo $x
 </section>
 ## Grep / Sed / Awk
 <section class="level2">
-
-
 ### Grep
 
 * Note: escape `|` `()`

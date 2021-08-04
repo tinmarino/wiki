@@ -1,11 +1,22 @@
 # Interface
+
+CSR: Select Graphic Rendition
+
+
  Ctrl key and right click button
 
+```bash
+printf '\e[3J'   # Erase scrollback buffer
 
+# Copy to clipboard OSC 52
+printf '\ePtmux;\e\e]52;c;dG90bw==\a\e\'   # Copy toto to clipboard
+echo -e "\033]52;c;$(base64 <<< hello)\a"
 Install the xorg-xrdb package. 
+```
 
 xrdb -query -all
 xrdb -merge ~/.Xresources
+
 
 # Background color
 
@@ -13,6 +24,19 @@ printf %b '\e]11;#ffffff\a'
 tmux select-pane -P 'bg=#FFFFFF,fg=#000000'
 
 # Escape
+
+* Display 3 bytes color:
+
+    echo -e '\e[38;2;104;157;106mCyan\a'
+
+* Change terminal background:
+
+    echo -e '\e]11;rgb:50/50/50\a'   # Background permanently grey
+    echo -e '\e]11;#005000\a'
+
+* Change color mapping: 
+
+    printf '\e]4;1;rgb:00/ff/ff\a'; echo -e "\e[31mRed\e[0m Normal" # Print a blue text, do not work on Konsole
 
 * Copy to clipboard: `printf '\e]52;c;%s\007' $(printf 'test 3' | base64)`
   * With mux: set -g set-clipboard on
@@ -24,16 +48,18 @@ tmux select-pane -P 'bg=#FFFFFF,fg=#000000'
 * Color: 	`echo -e "Default \e[33mYellow\e[0mnormal"`
 
 ```
-echo -e "\e[30mBlack"
-echo -e "\e[31mRed"
-echo -e "\e[32mGreen"
-echo -e "\e[33mYellow"
-echo -e "\e[34mBlue"
-echo -e "\e[35mMagenta"
-echo -e "\e[36mCyan"
-echo -e "\e[37mLight gray"
+echo -e "\e[31mRed\e[0m"; echo -e "\e[32mGreen\e[0m"; echo -e "\e[33mYellow\e[0m"; echo -e "\e[34mBlue\e[0m"; echo -e "\e[35mMagenta\e[0m"; echo -e "\e[36mCyan\e[0m"
+
+echo -e "\e[30mBlack\e[0m"
+echo -e "\e[31mRed\e[0m"
+echo -e "\e[32mGreen\e[0m"
+echo -e "\e[33mYellow\e[0m"
+echo -e "\e[34mBlue\e[0m"
+echo -e "\e[35mMagenta\e[0m"
+echo -e "\e[36mCyan\e[0m"
+echo -e "\e[37mLight gray[0m"
 echo -e "\e[39mDefault"
-echo -e "\e[90mDark gray"
+echo -e "\e[90mDark gray[0m"
 echo -e "\e[91mLight red"
 echo -e "\e[92mLight green"
 echo -e "\e[93mLight yellow"

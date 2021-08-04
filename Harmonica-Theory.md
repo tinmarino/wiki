@@ -23,5 +23,3 @@ Dans le doute, tire le 4
 |      |     |      |     |     |      |     |     |     |      |   |
 | -1/2 | Reb | Solb | Sib | Reb |      | Lab | Reb |     | Lab  | Reb |
 | -1   |     | Fa   | La  |     |      |     |     |     |      |   |
-
-

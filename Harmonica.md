@@ -1,4 +1,4 @@
-# Contents
+﻿# Contents
 
 - [Selected](#Selected)
     - [Simon & Garfunkel: The boxer](#Selected#Simon & Garfunkel: The boxer)
@@ -562,7 +562,6 @@ to make some hon-ey just for me,
 the bare ne-cess-i-ties of life will come to you. 
 ```
 
-
 # English
 
 ### Gloria Gaynor: I will survive
@@ -928,6 +927,18 @@ now I'm in a whole new world with you
 ```
 
 
+### Disney: Jungle book
+
+```text
+-66-665 4-44-445-44
+456565 -44-33
+5-44-3-4 -44-45
+5-44-3-4 -44-45                            x2
+-56-6-6-66-555
+-56-6-6-66-555
+-44-4222 -4222 -45-45-4 
+```
+
 ### River of babylon
 
 ```text
@@ -994,8 +1005,7 @@ Stanotte amore non ho più pensato a te
 4 4 5 5     -4 -4 4 4     -3 -3 3 4
 Ho aperto gli occhi per guardare intorno a me
 4 4 5 5     -4 -4 4 4     -3 -3 3 -3 3
-E intorno a me
-Girava il mondo come sempre
+E intorno a me Girava il mondo come sempre
 
 5   -5 -5    6  6   -5 
 Gira, il mondo gira
@@ -4218,6 +4228,130 @@ but some-times it hurts in-stead.”____
 # French
 
 
+### Leforestier: san francisco
+
+```text
+-4  -4 -6 -6 -6  -6 
+C'est une maison bleue
+6 -6 6  -5 5  4  -4
+Adossée à la colline
+-4 5 -5    6 -6  , 4 -4  5  -5  6
+On y vient à pied, on ne frappe pas
+4    -4  5  -5   6,  4  -4 5 4  -4
+Ceux qui vivent là, ont jeté la clé 
+(Bis)
+
+-4    -4  -5 -4 -6  6  -5  6 
+Quand San Francisco s'embrume
+-4    -4  -5 -4 -5  -4  4  -4 
+Quand San Francisco s'allume
+4   -4 4  -3'  -3' 4 -4 -4
+San Francisco, où êtes vous
+-6 6   -5  6  , -5. -4., 5 -4 4 -4~
+Lizzard et Luc, Psylvia, attendez-moi
+
+On se retrouve ensemble
+Après des années de route
+Et l'on vient s'asseoir autour du repas
+Tout le monde est là, à cinq heures du soir
+
+Nageant dans le brouillard
+Enlacés, roulant dans l'herbe
+On écoutera Tom à la guitare 
+Phil à la kéna, jusqu'à la nuit noire
+Un autre arrivera pour nous dire des nouvelles
+D'un qui reviendra dans un an ou deux
+Puisqu'il est heureux, on s'endormira
+Quand San Francisco se lève
+Quand San Francisco se lève
+San Francisco ! où êtes vous
+Lizzard et Luc, Psylvia, attendez-moi
+
+C'est une maison bleue
+Accrochée à ma mémoire
+On y vient à pied, on ne frappe pas
+Ceux qui vivent là, ont jeté la clef
+Peuplée de cheveux longs
+De grands lits et de musique
+Peuplée de lumière, et peuplée de fous
+Elle sera dernière à rester debout
+Si San Francisco s'effondre
+Si San Francisco s'effondre
+San Francisco ! Où êtes vous
+Lizzard et Luc, Psylvia, attendez-moi 
+
+Si San Francisco s'effondre
+San Francisco ! Où êtes vous
+Lizzard et Luc, Psylvia, attendez-moi 
+```
+
+### Piaf: TODO
+
+### Emilie jolie et du grand oiseau
+
+TODO grave
+
+```text
+-6 9   9     9 -9 9  10' 9
+Je m'appelle Émilie  Jolie
+-6 9   9     9 -9 9  10' 9
+Je m'appelle Émilie  Jolie
+9  -9 -9    -9 -9  -9 9 -9
+Je voudrais partir avec vous
+9    -9  -6  10' 10'  9   10' 10'
+Tout au bout du ciel, sur vos ailes
+9   -9 -9 -9  -9   -9  9  -9    9  8'
+Et je voudrais vivre avec vous, ma vie
+
+-3" 6    6    6 -5 6  6' 6
+Tu t'appelles Émilie Jolie
+-3" 6    6    6 -5 6  6' 6
+Tu t'appelles Émilie Jolie
+6  -5  -5   -5 -5  -5 6  -5
+Tu voudrais partir avec nous
+Tout au bout du ciel sur nos ailes
+Et tu voudrais vivre avec nous ta vie
+
+Oui c'est çà vous m'avez comprise
+Alors, dites-moi oui
+
+Tu t'appelles Émilie Jolie
+Tu rêves de voler la nuit
+Partir rejoindre le soleil
+Et même la lune sur nos plumes
+Faire un p'tit tour, au paradis
+
+Oui c'est çà vous m'avez comprise
+Alors, dites-moi oui
+	Mais y'a tant de choses à voir avant
+De partir pour le firmament
+Y a tant de pages à tourner
+Ta vie ne fait que commencer
+Y'a tant de choses à voir avant
+De partir pour le firmament
+Y'a tant de jours et tant de nuits
+Tu es au début de ta vie
+
+J'ai tant de choses à voir avant
+Mais n'oubliez pas pour autant
+La petite fille aux cheveux blonds
+Qui vous a chanté sa chanson
+
+Je m'appelle Émilie Jolie
+Je m'appelle Émilie Jolie
+Et si un jour je deviens vieille
+J'irai par le ciel sur vos ailes
+Au rendez-vous du paradis
+
+Mais prends le temps de vivre ta vie
+Ma petite Émilie Jolie
+Tu sais dans les pays rêvés
+Les oiseaux ne sont pas pressés
+
+
+```
+
+
 ### Ennio Morricone: Chi Mey: Le professionnel
 
 ```text
@@ -4268,7 +4402,7 @@ je ne peux l'ou- bli- er
 -4 -4 -4    5    -4 -4  4
 elle é- tait trop jo-li- e
 
--3     -3  -3  (-2)  (-3 )  -3
+-3     -3  -3  -2'  -3'  -3
 quand le vent l'em-me- nait
 
 -5 -5 -5  6  -5  4  6
@@ -4404,8 +4538,8 @@ Et qu´ils pourront tirer
 ### Richard Antony: J'ettend siffler le train
 
 ```text
-6     6    -7   -7  -6    6   -7
-J'ai- pen-sé qu'il va-lait- mieux
+6     6   -7,  -7  -6    6   -7
+J'ai- pen-sé, qu'il va-lait- mieux
 
 -6        6  -6      -7   -6   6   5
 Nous qui-tter  sans   un  a- dieu
@@ -4912,7 +5046,7 @@ And my heart will go on and on
 ### Amant de saint jean 
 
 ```text
--6  -7
+-6 -7
 7   7   7   7   -7  -6  7
 -7  7   -8
 7   -7  7   -6
@@ -4942,12 +5076,22 @@ And my heart will go on and on
 ### Aufray: Steball 
 
 ```text
-3   4   -4  5   -4  4
-4   4   4   -4  5   -4
--4  -4  -4  5   -5  5   -4
--3  -3  -3  4   -4  4
+3   4  -4   5  -4   4
+4   4   4  -4   5  -4
+-4 -4  -4   5  -5   5  -4
+-3 -3  -3   4  -4   4
 ```
 
+                                                  
+### Aufray: Santiano
+ 	
+```text
+(gliss -->)
+-6~-4  5 -5 -5  6 -6 -6 6
+7  7 -6   -4  5 -5  6  6
+6  6  6  5 -5  6  5 -4
+-4+5-5-5+5+4-4-4-4
+```
                                                   
 
 ### Le chasseur 
@@ -5190,10 +5334,10 @@ Je vais t´ai-mer
 ### Goldman: Comme toi 
 
 ```text
-5 7 7 7 7 -7-7-7 -6-7 7 5->
+5   7   7   7   7    -7    -7 -7 -6   -7 7 5->
 Elle avait les yeux clairs et la robe en velour
 
-5 6 6 6 6 -5 -5 -5 5 -5 5 -3              
+5 6 6   6  6 -5 -5 -5 5 -5 5 -3              
 A côté de sa mère et la famille autour
 
 -3 -5 -5 -5 5 5 5 -4 -4 4 4 -3 -3''->
@@ -6661,7 +6805,11 @@ Mais ses serments remplis d'amour
 On sait qu'on ne les tiendra pas toujours.
 ```
 
-### TODO AU CAFÉ DU CANAL -
+### Perret: Lily
+
+
+
+### Perret: TODO AU CAFÉ DU CANAL -
 
 ```text
 Pierre Perret menu

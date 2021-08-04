@@ -1,5 +1,6 @@
 ## Software
   * [Linux](Linux)
+    * [Sixel](Sixel.md)
     * [Alias](Alias)
     * [Bash](Bash)
     * [Vim](Vim)
@@ -67,6 +68,7 @@
   * [Francais Figure De Style](Francais-Figure-De-Style)
 
 ## Misc
+  * [Recipe](Recipe.md)
   * [Dumps](Dumps.md)
   * [Sport](Sport)
   * [Text](Text)

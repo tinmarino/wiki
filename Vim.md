@@ -3,6 +3,21 @@
 # Fast
 
 ```vim
+" indent
+:%s/^\s*/&&
+
+
+function! CopyMatches(reg)
+  let hits = []
+  %s//\=len(add(hits, submatch(0))) ? submatch(0) : ''/gne
+  let reg = empty(a:reg) ? '+' : a:reg
+  execute 'let @'.reg.' = join(hits, "\n") . "\n"'
+endfunction
+command! -register CopyMatches call CopyMatches(<q-reg>)
+
+
+g/^\w/s/^\([a-zA-z0-9-/]\+\)\s\+\t\(.*\)\s*\t.*/| \1 | \2|/
+g/^\w/s/^\([a-zA-z0-9-/]\+\)\s*\t\(.*\)\t.*/| \1 | \2|/
 
 nnoremap <silent> <leader><space> :execute 'silent! update'<Bar>Files<CR>
 tmux unbind -T copy-mode-vi MouseDragEnd1Pane

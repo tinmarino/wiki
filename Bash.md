@@ -2,20 +2,141 @@
 
 [Bash HackerRank](Bash-HackerRank)
 [Bash Rc](Bash-Rc)
-
-* nl  # for number line: prepend each line with line number, pipeutil
-* `IFS=''; while read REPLY; do echo "$REPLY"; done < tag.md`
-* `ps -ef | grep 'myProcessName' | grep -v grep | awk '{print $2}' | xargs -r kill -15` : kill all process from name
-* `type find` , `type vi` : see if command is alias or function or binary
-* `kill -l` list signals
-* `current_script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"`
+[Bash_Snippet](Bash_Snippet.md)
 
 
+```bash
+compgen -c # will list all the commands you could run.
+compgen -a # will list all the aliases you could run.
+compgen -b # will list all the built-ins you could run.
+compgen -k # will list all the keywords you could run.
+compgen -A function # will list all the functions you could run.
+compgen -A function -abck # will list all the above in one go.
+
+# Export all function
+declare -fx $(compgen -A function)
+
+copy_function() {
+  # See: https://stackoverflow.com/a/18839557/2544873
+  test -n "$(declare -f "$1")" || return 
+  eval "${_/$1/$2}"
+}
+
+# Bash Terminal raw
+alacritty -e env -i INPUTRC= bash --noprofile --norc
+alacritty -e env -i INPUTRC= bash --noprofile --norc -ic 'echo toto; bash --norc'
+
+
+nl  # for number line: prepend each line with line number, pipeutil
+
+IFS=''; while read REPLY; do echo "$REPLY"; done < tag.md
+
+ps -ef | grep 'myProcessName' | grep -v grep | awk '{print $2}' | xargs -r kill -15  #  kill all process from name
+
+type find; type vi  # see if command is alias or function or binary
+
+kill -l  # list signals
+
+current_script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"`
+```
+
+# Create User
+
+```bash
+name=isaacgd
+useradd -m -s $(which bash) -d /users/$name $name
+passwd $name
+getent passwd $name
+```
+
+# Useless cat
+
+```bash
+value=`cat config.txt`
+value=$(<config.txt)
+```
+
+# Redirection 
+
+```bash
+# :from: https://catonmat.net/bash-redirections-cheat-sheet
+cmd > file        # Redirect the standard output (stdout) ofcmdto a file.
+cmd 1> file       # Same ascmd > file. 1 is the default file descriptor (fd) for stdout.
+cmd 2> file       # Redirect the standard error (stderr) ofcmdto a file. 2 is the default fd for stderr.
+cmd >> file       # Append stdout ofcmdto a file.
+cmd 2>> file      # Append stderr ofcmdto a file.
+cmd &> file       # Redirect stdout and stderr ofcmdto a file.
+cmd > file 2>&1   # Another way to redirect both stdout and stderr ofascmd 2>&1 > file. Redirection order matters! cmdto a file. This is notthe same
+cmd > /dev/null   # Discard stdout ofcmd.
+cmd 2> /dev/null  # Discard stderr ofcmd.
+cmd &> /dev/null  # Discard stdout and stderr ofcmd.
+cmd < file        # Redirect the contents of the file to the standard input (stdin) ofcmd.
+
+# Redirect a bunch of lines to the stdin. If'EOL'is quoted, text is treated literally. This is called a here-document.
+cmd << EOL
+line
+line
+EOL
+
+# Redirect a bunch of lines to the stdin and strip the leading tabs.
+cmd <<- EOL
+<tab>foo
+<tab><tab>bar
+EOL
+
+cmd <<< "string"  # Redirect a single line of text to the stdin ofcmd. This is called a here-string.
+exec 2> file      # Redirect stderr of all commands to a file forever.
+exec 3< file      # Open a file for reading using a custom file descriptor.
+exec 3> file      # Open a file for writing using a custom file descriptor.
+exec 3<> file     # Open a file for reading and writing using a custom file descriptor.
+exec 3>&-         # Close a file descriptor.
+exec 4>&3         # Make file descriptor 4 to be a copy of file descriptor 3. (Copy fd 3 to 4 .)
+exec 4>&3-        # Copy file descriptor 3 to 4 and close file descriptor 3.
+echo "foo" >&3    # Write to a custom file descriptor.
+cat <&3           # Read from a custom file descriptor.
+(cmd1; cmd2) > file  # Redirect stdout from multiple commands to a file (using a sub-shell).
+{ cmd1; cmd2; } > file  # Redirect stdout from multiple commands to a file (faster; not using a sub-shell).
+exec 3<> /dev/tcp/host/port  # Open a TCP connection tohost:port. (This is a bash feature, not Linux feature).
+exec 3<> /dev/udp/host/port  # Open a UDP connection tohost:port. (This is a bash feature, not Linux feature).
+cmd <(cmd1)       # Redirect stdout ofUseful whencmddoesn’t read from stdin directly.cmd1to an anonymous fifo, then pass the fifo tocmdas an argument.
+cmd < <(cmd1)     # Redirect stdout ofBest example:diff <(find /path1 | sort) <(find /path2 | sort)cmd1to an anonymous fifo, then redirect the fifo to stdin of. cmd.
+cmd <(cmd1) <(cmd2)  # Redirect stdout ofarguments tocmd. cmd1andcmd2to two anonymous fifos, then pass both fifos as
+cmd1 >(cmd2)      # Runpipe as an argument tocmd2with its stdin connected to an anonymous fifo, and pass the filename of thecmd1.
+cmd1 > >(cmd2)    # Runto this anonymous pipe.cmd2with its stdin connected to an anonymous fifo, then redirect stdout ofcmd
+cmd1 | cmd2       # Redirect stdout ofsame ascmd2 < <(cmd1)cmd1to stdin of, same ascmd2> >(cmd2) cmd1. Pro-tip: This is the same as, same as< <(cmd1) cmd2cmd1 > >(cmd2). ,
+cmd1 |& cmd2      #  Redirect stdout and stderr ofcmd1 2>&1 | cmd2for older bashes.cmd1 to stdin of cmd2 (bash 4.0+ only). Use
+cmd | tee file    # Redirect stdout ofcmdto a file and print it to screen.
+exec {filew}> file  # Open a file for writing using a named file descriptor called{filew}(bash 4.1+).
+cmd 3>&1 1>&2 2>&3  # Swap stdout and stderr ofcmd.
+cmd > >(cmd1) 2> >(cmd2)  # Send stdout ofcmdtocmd1and stderr ofcmdtocmd2.
+cmd1 | cmd2 | cmd3 | cmd; echo ${PIPESTATUS[@]}  # Find out the exit codes of all piped commands.
+```
+
+# interactive
+
+```bash
+bash --init-file my-init-script
+
+eval "$(declare -F | sed -e 's/-f /-fx /')"
+```
+
+# Introspection
+
+* typedef  # Know type instances
+* caller  # Stacktrace
+* hash  # Previously Run command
+* type  # Show type of a lias, keyword, function, builtin, file
+* FUNCNAME
+* BASH_SOURCE
+* BASH_LINENO
+* ${!variable name}
 
 # Shell check
 
+```bash
 # shellcheck disable=SC2155  # Declare and assign separately to avoid masking return values -> Prevent declare -a
 # shellcheck disable=SC2092  # Remove backticks
+```
 
 # Completion
 
@@ -23,18 +144,6 @@
 * COMP_CWORD: an index of the COMP_WORDS array pointing to the word the current cursor is at - in other words, the index of the word the cursor was when the tab key was pressed
 * COMP_LINE: the current command line
   
-Dirty
-```
-92 cword          Bonjour 0: aa!    Bonjour 2: toto!  Bonjour 4: toto!
-1: name
-2: last word
-3: last last
-Then need the 
-$ toto a1 a2 a3
-91 word                Bonjour 0: aa!         Bonjour 3: a3!
-92 cword               Bonjour 1: bb!         Bonjour 4: a2!
-93 line toto a1 a2 a3  Bonjour 2: toto!
-```
 
 # Getopt
 

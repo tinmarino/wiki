@@ -4,6 +4,12 @@
 * If cannot connect to host, enusre no sudo problem: https://askubuntu.com/questions/477551/how-can-i-use-docker-without-sudo
 * For alma, ensure the env.sh is well loaded otherwise, docker-compose won't be ble to work
 
+
+```bash
+docker rm $(docker ps -a -q)
+docker rmi $(docker images -q)
+```
+
 ## Docker vs chroot
 
 * __mnt__ namespace provides a root filesystem (this one can be compared to chroot I guess)
