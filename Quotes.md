@@ -172,3 +172,5 @@ Ton    Tel  Traite
 
 * Ce n'est pas parce que tu ne le vois pas que ca n'existe pas
   * It's not because you don't see it that it doesn't exist
+
+* L'unique mesure objective de qualité est la perfection

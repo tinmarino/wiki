@@ -26,7 +26,6 @@ copy_function() {
 alacritty -e env -i INPUTRC= bash --noprofile --norc
 alacritty -e env -i INPUTRC= bash --noprofile --norc -ic 'echo toto; bash --norc'
 
-
 nl  # for number line: prepend each line with line number, pipeutil
 
 IFS=''; while read REPLY; do echo "$REPLY"; done < tag.md

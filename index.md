@@ -68,10 +68,10 @@
   * [Francais Figure De Style](Francais-Figure-De-Style)
 
 ## Misc
+  * [Text](Text)
   * [Recipe](Recipe.md)
   * [Dumps](Dumps.md)
   * [Sport](Sport)
-  * [Text](Text)
   * [Cheats](Cheats)
   * [Coding Style](Style/Style)
   * [StackOverflow Best](So/So)
