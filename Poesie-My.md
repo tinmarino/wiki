@@ -1,5 +1,5 @@
 
-# Fais le à ta manière : (2019 aou)
+# Fais le à ta manière : (2019 aout)
 
 1. Intro
 2. Silverfox
@@ -245,7 +245,7 @@ Crétin,         Ordure,           Bouffon,        Ceux qui,
 Mot vain,       Manière           Beau rôle,      Fâchés,
 Mauvais,        Trés dure         Bien con,       Font chier,
 Crotté.         De taire.         Bien drôle.     Souris,
-                                                  Pas peu,
+                                                  Pas peur,
 Cabron,         Branleur          Connard,        Pas de
 Le sud          Fais tout         Connerie !      Faveur,
 Sa sonne        Sans coeur,       Peu rare,       Dis le :
