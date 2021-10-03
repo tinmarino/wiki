@@ -7,9 +7,9 @@
 * Hamburger (not burger, con lechuga, mostaza, pepinillo, lechuga)
 * Salsa de tomate
 * Rizotto
+* Arroz: pimenton, ajo, cebolla
 * Tiramisu
 * Pad thay
-* Arroz: Pimenton, ajo cebolla
 * Lentejas
 * Tortilla: porotos o espinaqua
 * Ensalada: repollo, palta, apio
