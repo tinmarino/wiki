@@ -2,7 +2,7 @@
 2. Clarify
 3. Plan
 4. Organize
-5. Relfect : get clear/current/creative
+5. Reflect : get clear/current/creative
 6. Act
 
 # Tips
@@ -44,7 +44,7 @@
 * Your best thoughts about your work won't happen while you're at work
 * Success is learning to deal with plan B (Unknown)
 * There are no interruptions, there are only mismanaged inputs
-* The best place to succed is where you are with what you have (Charles Schwab)
+* The best place to succeed is where you are with what you have (Charles Schwab)
 * If your boat is sinking, you really don't care in which direction it's pointed
 * Pick battles big enought to matter, small enought to win (Jonathan Kozol)
 * The middle of every successful project looks like a disaster (Rosabeth Moss Kanter)
