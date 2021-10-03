@@ -20,6 +20,7 @@
 * Dolmen, feuille de vigne
 * Budin de sapallo Italiano, o sapallo saltado con tallarines y pesto
 * Cucacha
+* Lentilles
 
 
 ### 1/2
