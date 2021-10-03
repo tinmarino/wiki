@@ -3,6 +3,12 @@
 [Tmux Conf](Tmux-Conf)
 [Tmux Dump](Tmux-Dump.md)
 
+
+# Trick
+
+
+
+
 bind-key    -T copy-mode-vi MouseDragEnd1Pane    send-keys -X copy-selection-and-cancel
 
 
