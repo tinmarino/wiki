@@ -13,6 +13,9 @@ compgen -k # will list all the keywords you could run.
 compgen -A function # will list all the functions you could run.
 compgen -A function -abck # will list all the above in one go.
 
+# Cat all file with filename
+tail -n +1 file1.txt file2.txt file3.txt
+
 # Export all function
 declare -fx $(compgen -A function)
 

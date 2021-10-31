@@ -1,6 +1,5 @@
 %Git Wiki
 
-
 # Tips
 
 ```bash

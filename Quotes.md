@@ -95,7 +95,11 @@ Faites-vous des amis prompts à vous censurer ;
 Qu'ils soient de vos écrits les confidents sincères,  
 Et de tous vos défauts les zélés adversaires. (Art po, Chant 1)
 
-* Un sot trouve toujours un plus sot qui l'admire.
+* Un sot trouve toujours un plus sot qui l'admire. (maréchal de Lattre)
+
+* Ask, and it shall be given you; seek, and ye shall find; knock, and it shall be opened unto you (Matthew 7:7)
+
+* Beware of false prophets, which come to you in sheep's clothing, but inwardly they are ravening wolves (Matthew 7:15)
 
 
 # Abbé Pierre
@@ -110,6 +114,28 @@ Et de tous vos défauts les zélés adversaires. (Art po, Chant 1)
 
 * L'espérance, c'est de croire que la vie a un sens. (Abbé Pierre)
 	
+
+# Truth
+
+* The search for truth is more precious than its possession
+
+* Truth never damages a cause that is just (Gandhi)
+
+* A tool is only worth the hand that animates it 
+
+* Her wings are cut and then she is blamed for not knowing how to fly (Simone_de_Beauvoir)
+
+* One's life has value so long as one attributes value to the life of others (De Beauvoir)
+
+* Open-source code is extremely well-adapted to service-oriented architecture (Winston Damarillo)
+
+* Would love to change the world, but they won't give me the source code (Various)
+
+* The absolute truth may be impossible to find, but it is also impossible not to look for (Rajesh)
+
+* More important than the search for truth is acceptance of ignorance (Naskar)
+
+
 
 # Informatique
 

@@ -1,14 +1,23 @@
+* [Perl One_Liners](Perl-One_Liners)
 * [Perldoc](Perl-Perldoc)
 * [Cheatsheet_one_page](Perl-Cheatsheet_one_page)
-* [Perl One_Liners](Perl-One_Liners)
 * [Perl Snippet](Perl-Snippet)
 * [Perl_Old_Reference](Perl_Old_Reference)
 * [Perl Japh](Perl-Japh.md)
 
 # Tips
 
-* Remove AnsiEscaped colors
-  * `perl -pe 's/\e\[[0-9;]*m(?:\e\[K)?//g' # Adam Katz's trick`
+```bash
+# Delete all lines matching
+find . -name "*.xml" | xargs sed -i "/TVOCoefficients/d"
+
+# Replace recursively
+find . -name "*.txt" | xargs perl -p -i -e "s/Sitaram/Mohan/g"
+
+# Remove AnsiEscaped colors
+perl -pe 's/\e\[[0-9;]*m(?:\e\[K)?//g' # Adam Katz's trick`
+```
+
 * use Number::Format 'format_number'
 * glob
 * .perldlrc  # to edit and load automatically some libs
