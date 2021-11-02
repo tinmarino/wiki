@@ -1,3 +1,73 @@
+# Contents
+
+- [Ma petite fripouille :(2020)](#ma-petite-fripouille-2020)
+- [Fais le à ta manière : (2019 aout)](#fais-le-ta-manire-2019-aout)
+- [Mon âme frivole : (2010)](#mon-me-frivole-2010)
+- [Elle berce mon esprit : (2009 dec)](#elle-berce-mon-esprit-2009-dec)
+- [Ma maison : (2007 aou)](#ma-maison-2007-aou)
+- [Un poême sans fin : (2006 mar)](#un-pome-sans-fin-2006-mar)
+- [Pars plus loin : (2006 mar)](#pars-plus-loin-2006-mar)
+- [Le plongeur : (2006 fev) (mon préféré) !!](#le-plongeur-2006-fev-mon-prfr-)
+- [Votre voix muette : (2006 jan)](#votre-voix-muette-2006-jan)
+- [Les jurons : (2006 jan)](#les-jurons-2006-jan)
+- [Je ne sais pas quoi dire : (2006 jan)](#je-ne-sais-pas-quoi-dire-2006-jan)
+- [Mon héros : (2005 nov)](#mon-hros-2005-nov)
+- [Louche spécimen : (2005 jul)](#louche-spcimen-2005-jul)
+- [Éternelle noblesse : (2005 jan)](#ternelle-noblesse-2005-jan)
+- [Oreiller : (2002 nov)](#oreiller-2002-nov)
+- [Trois chansons pour maman](#trois-chansons-pour-maman)
+  - [Iul: L'infirmier](#iul-linfirmier)
+  - [Tin: Comme un ane](#tin-comme-un-ane)
+- [Fix: Vent de Siouville](#fix-vent-de-siouville)
+
+# Ma petite fripouille :(2020)
+
+Tu quitte ma - petite ville, Hacouville,
+Passant au pas - mon si cher bourg, Cherbourg,
+Pour décoller - de mon pays, d'Orly.
+Sans picoller - t'éteindre ici, à Brindisi,
+
+___ Ref1
+
+Tu fuis d'enfants - une armada, à Torre rinalda.
+Puis en tirrant - ton sac au dos, de torre del orso,
+Tu épargne - tes capitaux, vers Frassanito.
+Si ta hargne - fais peur aux trentes, d'Otrante,
+C'est que d'antant - tu récréa, Santa Cesarèa.
+Tout ces savants - ils flippent au lit, à Gallipoli,
+Sans savoir si - là-bas ça va, à Sava.
+Moi t'ai choisie - nana polie, de Napolie,
+
+___ Ref2
+
+Tu sais marcher - mais ne ski pas, à Ischia.
+Mais sans charmer - le proprio, de Forio,
+Au chien vaut mieux - payer sa rente, à Sarente.
+Par temps pluvieux - part ton vaisseau, de Giovinazzo.
+Pourtant il court - mais sans Lucas, vers Leuca.
+Puis ton parcourt - si mal fléché, par Lecce,
+Revient à te - restraindre ici, à Brindisi.
+Sans sonate - le temps mauvais, de Beauvais,
+Accoure à nous - coucou ma ville, Hacouville.
+
+___ Bonus
+
+
+___ Ref1
+Tu es ma pe - tite fripouille, des Pouilles
+Mon unique - quête aquatique, Adriatique.
+La plus-value(flé) - polivalente, en Salente
+Est ta refle - xion abysienne, sur l'Ionienne.
+
+___ Ref2
+Prend moi en stop - ou j'te dépouilles, des Pouilles.
+Ton endoscope - m'est sabatique, Adriatique.
+Ma vie va en - avant, si lente, en Salente.
+Toi la lache en - fin draconienne, sur l'Ionienne
+
+___ Bonus
+Et tu prie saint - francois d'Asise, Assise
+
 
 # Fais le à ta manière : (2019 aout)
 
@@ -363,11 +433,126 @@ Je me couche il est tard.
 C'est fini pour ce soir.
 Je sombre dans le noir.
 
+# Trois chansons pour maman
 
-# Pass : 2006 (mar) : Ma marionette (Malisimo !!!)
-# Pass : 2005 (jui) : une belle ryme en "abe"
-# Pass : 2004 (nov) : Hugo Vs Beaudelaire (5/20)
-# Pass : 2004 (nov) : Salut Kelly, c'est moi
-# Pass : 2003 (fév) : Vivre éternellement
-# Pass : 2003 (jan) : Montagne et neige
-# Pass : 2003 (jan) : Incipit d'autobiographie
+## Iul: L'infirmier
+
+Je n'suis rien qu'un ch'tit gars
+Mais j'ai mon histoire à moi.
+En résistant au vent Normand
+Elle va et vient et indiffére,
+L'histoire du grand frère!
+Mais tu l'entend
+Ce, coeur qui bat, pour ma fille Léa
+Et Roselyne ma mère.
+                                           
+Quand quittant ma terre pendant ma jeunesse
+J'gaviottait vers la grande ville.
+Voguant les vallés de Granville
+De Carentan en carence de caresse ...
+... Allongé,
+Affollé,
+Mon exil commence en asil
+Là où les accablé vont,
+Cherchant quelqu'un utile
+Ou ben quelqu'un bon.
+                                           
+Pour pouvoir soigner j'étudie
+Dedans la blouse d'infirmier
+D'où elle me remercie,
+Cette hypocryte trop peu flattée
+D'un coup qu'j'ai pas vu v'nir.
+Mais je l'avous,
+Moué j'ai pas tombé car sous les coups
+J'préfère me battre que fuir.
+                                           
+Maintenant caché sous un costard
+Je rève au temps d'avant,
+Chez maman.
+Entre deux grogons deux bavards
+Pour se chamailler,
+Rigoler,
+Chez maman.
+                                       
+Dans mon bureau un guérisseur,
+Par un guerrier renforcé,
+Qui rallie mes actes antérieurs
+De chute et choc qui m'ont avancé
+Ou dévaster davantage
+Dans la haine et l'infamie
+Je plie bagage, je plie bagage
+Mais l'infirmier reste ici
+
+
+## Tin: Comme un ane
+
+
+Comme un ane, un Martin,
+Comme un Jules de douze ans qui craint rien;
+J'ai suivis, mes sentiers, débridé.
+Comme un chat, comme Félix,
+Comme un soldat et son regard fixe;
+J'ai gardé, décidé, mes idées.
+Si je, n't'écris qu'une seule chanson,
+C'est que j'peux pas, en chanter cent millions.
+Si j'suis, j'suis rentrer en chaussure,
+J'espère qu'tu peux, pardonner ces injures. I hope you know it was never to you.
+
+Comme un boeuf, vers une reine;
+Comme une fra--ppe aérienne;
+J'ai chargé, sans jamais, m'replier.
+Mais j'te jure, sur ce chant
+Et sur Ponponne et sa maman,
+Que je vais, pour une fois, écouter
+J'ai vu un collègue, sur son siège en réunion
+Il m'a conté, tu dois couper l'cordon
+Et un vieux livre me lègue, sa connaissance millénaire
+Car tu es né, n'oublie pas tes arrières
+Oh, Comme un ane, un Martin,
+Comme un Jules de douze ans qui craint rien;
+J'ai suivis, mes sentiers, débridé.
+
+
+# Fix: Vent de Siouville
+
+Je vogue sur la plage,
+Radeau du rivage,
+En écoutant le vent de Siouville.
+Un nouveau soir d'Août,
+Où je sens des gouttes
+De rosée dans le vent de Siouville.
+
+Le monde se sépare.
+Chacun prend sa part,
+Et la mienne est ici, à Siouville.
+Mes yeux partent en mer,
+Perçant les mystères
+Prélevés par le vent de Siouville
+
+Flottant vers l'avenir,
+D'anciens souvenirs
+Sont enterré dans l'sable, de Siouville.
+Je vague sur la plage,
+Radeau du rivage,
+Ecoutant le vent de Siouville.
+
+Le vent d'Siouville
+Souffle fort, sur mon corps si petit.
+Comme une bourrasque exaltée,
+Dans la voile de mon esprit.
+Le cap, vers toi est calé
+Quand l'mat, l'climat, l'divertit.
+
+Viens là, dans l'océan de mes pensées
+D'une nuit agitée,
+Où ton fils poursuit ton reflet volatile,
+Dans le vent d'Siouville.
+
+
+* Pass : 2006 (mar) : Ma marionette (Malisimo !!!)
+* Pass : 2005 (jui) : une belle ryme en "abe"
+* Pass : 2004 (nov) : Hugo Vs Beaudelaire (5/20)
+* Pass : 2004 (nov) : Salut Kelly, c'est moi
+* Pass : 2003 (fév) : Vivre éternellement
+* Pass : 2003 (jan) : Montagne et neige
+* Pass : 2003 (jan) : Incipit d'autobiographie
