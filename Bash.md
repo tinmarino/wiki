@@ -58,9 +58,26 @@ value=`cat config.txt`
 value=$(<config.txt)
 ```
 
-# Redirection 
+# Redirection and file descriptor
+
+
 
 ```bash
+# Fork a pipe
+echo "Hello world." | tee >(sed 's/^/1: /')  >(sed 's/^/2: /') >/dev/null
+# Fork a pipe bis: more sophisticated
+echo "Hello world." | tee >(md5sum | tee out1 | sed 's/^/md5 : /') >(sha1sum | tee out2 | sed 's/^/sha1: /') > out3
+# For a pipe posix compliant
+( # 6
+( # 5
+( # 4
+echo "Hello World" | tee /dev/fd/{4,5} > /dev/null
+) 4>&1 | ( sed 's/^/one: /' > /dev/fd/6 )
+) 5>&1 | ( sed 's/^/two: /' > /dev/fd/6 )
+) 6>&1
+
+
+
 # :from: https://catonmat.net/bash-redirections-cheat-sheet
 cmd > file        # Redirect the standard output (stdout) ofcmdto a file.
 cmd 1> file       # Same ascmd > file. 1 is the default file descriptor (fd) for stdout.
@@ -112,6 +129,8 @@ exec {filew}> file  # Open a file for writing using a named file descriptor call
 cmd 3>&1 1>&2 2>&3  # Swap stdout and stderr ofcmd.
 cmd > >(cmd1) 2> >(cmd2)  # Send stdout ofcmdtocmd1and stderr ofcmdtocmd2.
 cmd1 | cmd2 | cmd3 | cmd; echo ${PIPESTATUS[@]}  # Find out the exit codes of all piped commands.
+
+# 
 ```
 
 # interactive
@@ -414,4 +433,4 @@ TAB: menu-complete
 
 	cd ~2 is /Project/Warnest/docs/  
 
-	You can use ~1,~2 etc in exactly the same way as  
+	You can use ~1,~2 etc in exactly the same way as
