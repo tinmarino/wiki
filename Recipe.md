@@ -29,7 +29,8 @@
 
 ### 1/2
 
-* Humous
+* [Gyoza](#Gyoza)
+* [Houmous](#Houmous)
 * Tapenade d'olive
 
 
@@ -64,16 +65,62 @@ Apres la derniere etape, peut parfumer a convenace:
 
 # Tiramisu
 
-* Mascarpone ((500g)
+* Mascarpone (500g)
 * Biscuit cuillere (40)
 * Oeuf (6)
 * Sucre glace (200g)
 * Poudre de cacao
 
 1. Preparer le cafe
-2. Fouetter le JAUNE d'oeuf => banc et mousseux
+2. Fouetter le JAUNE d'oeuf => blanc et mousseux
 3. Ajouter le mascarpone
 4. Monter les BLANCS d'oeuf en neige 
 5. Ajouter le melange precedent (JAUNE)
 6. Faire les couches (creme, boudins au cafe).
   * Commencer et finir par une fine creme
+
+# Houmous
+
+* Poid chiche (300g)
+* Tahin (3 cuillere a soupe)
+* Citron (1/2)
+* Opt: Ail
+* Opt: Cumin
+* Opt: Sel
+* Opt: Huile de Sesame
+
+1. Laver les poids chiche
+2. Mixer les poids chiche, ajouter un peu d'eau (eau de cuisson pour plus de saveur)
+3. Ajouter tahin, citron, cumin, sel
+  * Opt: Ajouter ail  # mais Rocío n'aime pas et ça pourri plus vite
+4. Incorporer l'huile d'olive tout en mixant => texture homgene et crémeuse
+5. Opt: Couvrir d'huile de sesame et de cumin
+
+
+# Gyoza
+
+* Gyoza (25)  # le reste est optionel
+
+* Green cabbage (1/2 = 400g)
+* Beans (150g)
+* Tofu (150g)
+* Carrot (100g)
+* Huile de tournesol
+
+* Ginger (1 teaspoon)
+* Soy sauce (1 tablespoon)
+* Oyster sauce (1 table spoon)
+* Sugar (1/2 teaspoon)
+
+1. Frire le gingembre puis carrote, tofu, bean, choux => 5 a 10 min
+2. Assaisoner avec: sel,sauce soja, sauce huitre, sucre
+  * Opt: sauce mushroom
+3. Mixer le tout => pas de gros morceaux (arreter bien avant que ce soit de la purée)
+4. Assembler les petits trucs, utiliser de l'eau comme colle => toute la pate est utilisée
+5. Faire boullir les petits trucs => 1, 2 min (plutot 2)
+6. Faire la sauce:
+  1. Sauce soja
+  2. Vinegre noir
+  3. Huile de sesame
+  4. Sucre
+7. Opt: Servir: Avec cilantro, Huile de piment, graine de sesame toastées
