@@ -13,6 +13,9 @@ compgen -k # will list all the keywords you could run.
 compgen -A function # will list all the functions you could run.
 compgen -A function -abck # will list all the above in one go.
 
+# Replace recursive
+find . -type f -name "*.txt" -print0 | xargs -0 sed -i -e 's/foo/bar/g'
+
 # Cat all file with filename
 tail -n +1 file1.txt file2.txt file3.txt
 
@@ -103,6 +106,7 @@ cmd <<- EOL
 <tab><tab>bar
 EOL
 
+exec &> >(tee log.out)
 cmd <<< "string"  # Redirect a single line of text to the stdin ofcmd. This is called a here-string.
 exec 2> file      # Redirect stderr of all commands to a file forever.
 exec 3< file      # Open a file for reading using a custom file descriptor.

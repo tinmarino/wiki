@@ -564,6 +564,21 @@ the bare ne-cess-i-ties of life will come to you.
 
 # English
 
+### Oasis: wonderwall
+
+```text
+5 -4 4 -4 4 -4 4 -4 -4 4 -4 4 -4 5 4
+5 -4 4 -4 4 -4 -4 4 -4 4 -4 5 4
+5 6 5 6 5 6 -6 6 -4 4 -4 -4 5 4 -3�� 4 -3�� 4 -3��
+
+4 4 -4 -3�� -3 4 -4 -3�� -3 4 3
+4 4 -4 -3�� -3 4 -4 -3�� -3 4 3
+4 -4 -3�� -3 4 -4 -3�� -3�� 5.. 4 -4 5 4
+4 4 -4 5 -4 4 3
+5 5 5 4, -3��4 -3��4-3��4 45 4
+5 -5 6 4, 55-5 55 -4 4 
+```
+
 ### Gloria Gaynor: I will survive
 
 ```text
@@ -4227,6 +4242,182 @@ but some-times it hurts in-stead.”____
 
 # French
 
+### Eddy Mitchell: Le cmetiere des elephants
+
+```text
+Intro
+
++6 +4o +4 -3' -3''
+
++6 -5 -4 -3' -3'' -2
+
++4o +4 -3'' -2 -2'
+
++2 -2' -2 -3'' -3'
+
+ 
+
+Couplet
+
+-1 -4-4-4 -4 -4-4 -4 +4o
+
+-1 -4-4-4 -4 -4-4 -4 +4o
+
+-2'' -5 -5 -5 -5 -5 -5 -5 +6
+
++6 +4o +4 -3' -3' -3''
+
+-5 -4 -3' -3'' -3'' -2
+
++4o +4 -2 -2 -2 -2'
+
+ 
+
+Refrain
+
+ 
+
++5 +4 +5 +4
+
+-3 -4 +5 +5 -4
+
+-4 +5 -5 +6 +5
+
+-4 -3 -2 -2 +2 +3 +2
+
+-3'' -3 +4 -4 +4 -4 -4 -3
+
++5 +5o -6 +6 +5o +5 -4 +4 +4 -3''
+
+ 
+
++5 +4 +5 +4
+
+-3 -4 +5 +5 -4
+
+-4 +5 -5 +6 +5
+
+-4 -3 -2 -2 +2 +3 +2
+
+-3'' -3 +4 -4 +4 -4 -4 -3
+
++5 +5o -6 +6 +5o +5 -4 +4 +4 -3''
+
+ 
+
+Couplet
+
+-1 -4-4-4 -4 -4-4 -4 +4o
+
+-1 -4-4-4 -4 -4-4 -4 +4o
+
+-2'' -5 -5 -5 -5 -5 -5 -5 +6
+
++6 +4o +4 -3' -3' -3''
+
+-5 -4 -3' -3'' -3'' -2
+
++4o +4 -2 -2 -2 -2'
+
+ 
+
+Refrain
+
+ 
+
++5 +4 +5 +4
+
+-3 -4 +5 +5 -4
+
+-4 +5 -5 +6 +5
+
+-4 -3 -2 -2 +2 +3 +2
+
+-3'' -3 +4 -4 +4 -4 -4 -3
+
++5 +5o -6 +6 +5o +5 -4 +4 +4 -3''
+
+ 
+
++5 +4 +5 +4
+
+-3 -4 +5 +5 -4
+
+-4 +5 -5 +6 +5
+
+-4 -3 -2 -2 +2 +3 +2
+
+-3'' -3 +4 -4 +4 -4 -4 -3
+
++5 +5o -6 +6 +5o +5 -4 +4 +4 -3''
+
+C'est pas perdu puisque tu m'aimes
+Un peu moins fort, quand meme
+J'suis ta solution sans problème
+Gadget évident
+Mais toi maintenant
+Tu veux plus jouer
+
+Y faut m'garder
+Et m'emporter
+J'suis pas périssable
+J'suis bon à consommer
+Te presses pas tu as tout l'temps
+D'm'emmener au cimetière des éléphants
+
+Y faut m'garder
+Et m'emporter
+
+J'prendrai pas trop d'place
+
+Promis, craché, juré
+Quand j'serai vieux
+J'te f'rai le plan
+D'chercher le cimetière des éléphants
+
+Y a des souvenirs quand on les jette
+Qui r'viennent sans faute dans les maux d'tete
+Faut pas qu'je pleure pour qu'tu m'regrettes
+Côté sentiment
+J'suis pas pire qu'avant
+Solvable à mi-temps
+Mais faut m'garder
+Et m'emporter
+
+Je sais que j'ai plus l'droit au crédit renouvelé
+J'suis dans l'safari partant
+Mourir au cimetière des éléphants
+```
+
+### La 7eme compagnie
+
+```text
+-7 -7 +7 -8  
+ 
+-8 -8 +9 -8  
+ 
++7 +7 -7 -6  
+ 
+-7 -7 -6 +6  
+
+-3 -3 +4 -4
+ 
+-4 -4 +6 -4
+ 
++4 +4 -3 -3''
+ 
+-3 -3 -3'' -2
+```
+
+### Barbapapa
+
+```text
+3  3  3  4  5 -5  5 -4  4,  6 -6  5  5 (x2)
+
+-6 -6 -6 -7  7  6  5  4,  -6  6 -5  5 -4
+
+3  3  3  4  5 -5  5 -4  4,  6 -6  5  5 (x2)
+```
 
 ### Leforestier: san francisco
 
@@ -4545,55 +4736,35 @@ J'ai- pen-sé, qu'il va-lait- mieux
 Nous qui-tter  sans   un  a- dieu
 
 5    6  -6    -7  -6   6     5   -4 -4  5  6
-
 Je n'au-rais pas eu le coeur de te re-voir
 
 6        -6 -7      -7 -6    6 -7
-
 Mais j'en-tends si- ffler le train
 
 -6       6   -6     -7 -6  6  5
-
 Mais j'en-tends si-ffler le train
 
 5       6     -6   -7    -6    6  5 -4   -4  5  6  ≈
-
 Que c'est triste un train qui si-ffle dans le soir
 
  
 
 Je pouvais t'imaginer ,
-
 Toute seule,abandonnée
-
 Sur le quai dans la cohue des au-revoirs
-
 Et j'entends siffler le train (x2 )
-
 Que c'est triste un train qui siffle dans le soir
 
- 
-
 J'ai failli courir vers toi
-
 J'ai failli crier vers toi
-
 C'est à peine si j'ai pu me retenir
-
 Que c'est loin où tu t'en vas (x2 )
-
 Auras-tu jamais le temps de revenir.
 
- 
-
 J'ai pensé qu'il valait mieux
-
 Nous quitter sans un adieu
-
 Mais je sens que maintenant tout est fini
-
 Et j'entends siffler le train (x2 )
-
 J'entendrai siffler ce train toute  ma vie...
 ```
 
@@ -4756,10 +4927,15 @@ le sien.
 
 ```text
  3  4  5  5 -4  4
+ 
  4 -4  5  6  6.-5  5
+ 
  4 -4  5  5  5 -4  5.-5  6
+ 
 -5  5 -4 -4 -4  4 -4. 5 -5
+
  5  6 -4 -4  5  4. 4
+ 
  5  6 -4 -4  5  4.
 
 J’avais un camarade
@@ -4795,6 +4971,7 @@ A la droite de jésus (bis)
 Ami, entends-tu le vol noir des corbeaux sur nos plaines ?
 6 7 7 -8 8 8 -8 7 7 -7 -6 6 -7 -6 6
 Ami, entends-tu les cris sourds du pays qu'on enchaîne ?
+
 6 8 8 -9 9 9 -9 8 -8 8 -9 7 -7 -8 -6 6
 Ohé, partisans, ouvriers et paysans, c'est l'alarme.
 6 8 8 -9 9 9 -9 8 -8 8 -9 7 -7 -8 -6 6
@@ -5187,10 +5364,12 @@ Au bout de leur vo-ya-ge
 ### Le sud 
 
 ```text
+(
 4   -4  4   -5
 6   -5  -6  -6
 6   -6  6   -5 
 -4  -5  6   -6
+) x2
 
 -4  -5  6   -5  -6
 -4  -5  6   -5  7   -6
@@ -5537,6 +5716,16 @@ Nous nous en aillerons
 ### Renaud: Un oranger 
 
 ```text
+-1 -2 -3'' -3
+-3'' -2 +2 -1
+-2 +3 -2' -2
+-3'' -3 +4  -3 -3''
+
+-3'' -3 +4 -4
++4 -3 -3''  -2 -3
+-3'' -2 +2 -1
+-2 +3 -3'' -2
+
 6   7   -8  +8
 -8  +7  -6  6
 7   7   -7  7
@@ -5841,20 +6030,26 @@ Pas au bateau qui craque entre deux d�ferlantes
 ```text
  	-6   -6  -6  -6    -6 -7 7          6  -5 5
 Parc'que des potes ne r'viendront plus jamais
+
 -6 -6   -6    -6    -6  7   7   6     5 -4
 Du fond d'la flotte sur un sale coup d'filet
+
 -6   -6  -6  -6    -6 -7 7  6  -5 5
 Que qu'part �a trotte dans ma t�te mais je sais
+
 -6 -6 -6 7 6 5 4 -4 4 -3 4
 Qu'elle serait bien p�lotte ma vie sans les quais.
 
 {Refrain:}
 5 5 5 -4 4 -6 6 6
 Boh�miens autant que mat'lots
+
 5 5 5 -4 4 -6 -6 6 6
 Fils de rien, tant�t enfants d'salauds
+
 5 5 5 -4 4 -6 6 6
 Puisqu'on a l'choix selon l'ch�teau
+
 -6 6 6 5 4 -4 4 -3 4
 Fils de rois sur le pont d'un bateau.
 
@@ -6273,13 +6468,6 @@ https://www.youtube.com/watch?v=uFSszlJfvoI
  4 -4  5  6  ,  5 -4  4 -4
  4 -4  5 -6  , -5  5 -4  4
  4 -4  5  6  ,  5 -4  4 -4
--4 -4 -5 -6  , -6 -7 -6  6
-
- 5  5  6  6  ,  5 -4  4 -4
-Mais quand j'ai vu, Jérusalem
--6 -6 -6 -6  , -6 -7 -6  6
- 5  5  6  6  ,  5 -4  4 -4
- Quand sur lui je  ,  me suis couché
 
 -6 -6  7 -7  , -6  6 -7 -7>-6
  6 -6  7 -7  , -6  6 -7 -6
@@ -6515,7 +6703,6 @@ En suivant mon chemin de petit bonhomme.
 ### Renaud: Mistral gagnant
 
 ```text
- 	
 A m'asseoir sur un banc cinq minutes avec toi
 4  4  5      5  5  5      5  5  5   -4  4  5
 
@@ -7173,6 +7360,128 @@ Oh yeay!
 ```
 
 # Spanish
+
+### Los Angales Azules: Como te voy a olvidar
+
+```text
+-4 -5 -6 -8  7 -7 -6 -5 -4  (x2)
+
+(
+-5 -5 -5  5 -5  4
+   -5 -5  5 -5  4
+-6 -6 -6  6 -6  5
+   -6 -6  6 -6  5
+   
+6 (x4)  5 -4  4
+) x2
+
+(
+5 -5  (x3)
+Amor, amor, amor,
+
+-5 -6 |  6 -6 |  7 -6 |
+Amor, amor, amor
+
+6  6  6  6.... 6  6  5  5
+Quiero que me vuelvan a mirar tus ojos
+
+-5 -5 -5 -5 -5 -5  5  -5
+Como  no acordarme de ti
+
+-5 -6  6 -6 -6 | 6 -6  5
+De que manera-olvidarte
+Si todo me recuerda a ti
+En todas partes estas tu
+
+(
+7 -9  8 -9 -9,  8 -9  8 -9
+Si en rosa-a,   esta-as tú
+
+-9   -10 -10 -10 9 -10,     9 -10 10 -10
+Si,en cada res---pirar,    esta--as  tu
+
+9  9  9  9     8 -8  7
+Como te voy- a olvidar
+
+9  9  9  9     8 -8  7
+Como te voy- a olvidar
+) x2
+
+4  4  4  -5 -5, 5 -5  5 -5 -4 
+Si te clavaste, en mi corazón
+
+-4  4,  5 -5 -4,  5  4,  5 -4  4  
+Y de amor has llenado mi alma
+
+4  4 -5 -5 ,  5 -5  5 -5 -4 
+Y tu sangre,  corre mi vena
+
+-4  4,  5 -5 -4,  5  4
+Y tu sangre me hace estremecer
+Iré contigo
+
+Amor, amor, amor,
+Amor, amor, amor
+Quiero que me vuelvan a mirar tus ojos
+
+Amor, amor, amor,
+Amor, amor, amor
+Quiero volver a besar tus labios rojos
+
+Como no acordarme de ti
+De que manera olvidarte
+Si todo me recuerda a ti
+En todas partes estas tu
+
+Si en rosa estas tú
+Si en cada respirar estas tu
+Como te voy a olvidar
+Como te voy a olvidar
+
+Si besando la cruz estás tú
+Si rezando una oración estas tú
+Como te voy a olvidar
+Como te voy a olvidar
+
+Si te clavaste aquí en mi corazón
+Y de amor has llenado mi alma
+Y tu sangre corre por mis venas
+Y tu sangre me hace estremecer
+Iré contigo
+
+Amor, amor, amor,
+Amor, amor, amor
+Quiero que me vuelvan a mirar tus ojos
+
+Amor, amor, amor,
+Amor, amor, amor
+Quiero volver a besar tus labios rojos
+
+Como no acordarme de ti
+De que manera olvidarte
+Si todo me recuerda a ti
+En todas partes estas tu
+
+Si en rosa estas tú
+Si en cada respirar estas tu
+Como te voy a olvidar
+Como te voy a olvidar
+
+Si besando la cruz estás tú
+Si rezando una oración estas tú
+Como te voy a olvidar
+Como te voy a olvidar
+
+Si en rosa estas tú
+Si en cada respirar estas tu
+Como te voy a olvidar
+Como te voy a olvidar
+
+Si besando la cruz estás tú
+Si rezando una oración estas tú
+Como te voy a olvidar
+Como te voy a olvidar
+```
 
 ### Manuel Garcia: Un viejo comunista
 
