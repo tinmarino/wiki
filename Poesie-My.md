@@ -27,7 +27,7 @@ Passant au pas - mon si cher bourg, Cherbourg,
 Pour décoller - de mon pays, d'Orly.
 Sans picoller - t'éteindre ici, à Brindisi,
 
-___ Ref1
+Ref1
 
 Tu fuis d'enfants - une armada, à Torre rinalda.
 Puis en tirrant - ton sac au dos, de torre del orso,
@@ -38,7 +38,7 @@ Tout ces savants - ils flippent au lit, à Gallipoli,
 Sans savoir si - là-bas ça va, à Sava.
 Moi t'ai choisie - nana polie, de Napolie,
 
-___ Ref2
+Ref2
 
 Tu sais marcher - mais ne ski pas, à Ischia.
 Mais sans charmer - le proprio, de Forio,
@@ -59,13 +59,13 @@ Mon unique - quête aquatique, Adriatique.
 La plus-value(flé) - polivalente, en Salente
 Est ta refle - xion abysienne, sur l'Ionienne.
 
-___ Ref2
+Ref2
 Prend moi en stop - ou j'te dépouilles, des Pouilles.
 Ton endoscope - m'est sabatique, Adriatique.
 Ma vie va en - avant, si lente, en Salente.
 Toi la lache en - fin draconienne, sur l'Ionienne
 
-___ Bonus
+Bonus
 Et tu prie saint - francois d'Asise, Assise
 
 
