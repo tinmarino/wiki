@@ -124,3 +124,23 @@ Apres la derniere etape, peut parfumer a convenace:
   3. Huile de sesame
   4. Sucre
 7. Opt: Servir: Avec cilantro, Huile de piment, graine de sesame toastées
+
+
+# Pate a pizza
+
+* Harina 500g, sin polvo de ornear
+* Levure fraiche, 10g
+
+* Eau 325 ml
+* Sel 5g
+
+1. Melanger farine et sel, Levure fraiche et 1/2 d'eau
+2. Vercer la levure fraiche et progressivement l'eau dans la farine, remuer jusqu'à obtention de la pate
+3. Faire reposer la pate, diviser, reposer encore
+
+
+1. Etaller a pate avec les mains. Poings au milieu et la laisser se tendre par gravité
+2. Saupourdrer: sel, huile d'olive, tomate, mozarella, huile d'olive
+3. Cuire à 250 degree ou plus. 10 min
+4. Ajouter les ingredients choisi
+5. Recuire 3 minutes.
