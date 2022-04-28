@@ -3,6 +3,9 @@
 # Tips
 
 ```bash
+fgl OBOPS/obops-utils/pom.xml  # Cutom fzf_git_log
+gitk [filename]  # View the change history of a file using Git versioning
+gitk --follow [filename]
 git fetch wiki pull/982/head:pr_982   # wiki is the name I gave to the remote -> https://github.com/vimwiki/vimwiki/
 git rev-parse --abbrev-ref HEAD  # Get branch name
 git branch -a --contains b3fc085e3cf71df6ff01f858cc1cb9858cd5c290

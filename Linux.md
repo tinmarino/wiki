@@ -1,3 +1,4 @@
+* [Bios](Bios.md): Grub
 * [Gdb](Gdb.md)
 * [Apt](Apt)
 * [Sed](Sed)
@@ -9,7 +10,7 @@
 * [Gcc](Gcc)
 * [Pentest](Pentest)
 * [Emacs](Emacs)
-* [Network](Network) : Unbound
+* [Network](Network): Unbound
 * [BusyBox](BusyBox)
 * [W3m](W3m)
 * [Nvidia](Nvidia)

@@ -6,6 +6,13 @@
 * $2 word being completed
 * $3 is the word preceding the word being completed
 
+
+showkey -a
+C-Space => Set mark
+C-xC-x => goto mark
+\C-V\C-j => newline
+\C-V\C-i => tab
+
 # Other
 
 ```bash
@@ -18,7 +25,7 @@ bind 'set output-meta on'
 ```
 
 
-* <C-X><C-E> : dit current line with vim
+* <C-X><C-E> : edit current line with vim
 $ echo -e "\e[?1000;1006;1015h" # Enable
 $ echo -e "\e[?1000;1006;1015l" # Disable
 $ bind '"\e[<":"echo totot is happy"'
@@ -83,6 +90,11 @@ in inputrc
 | `<A-t>` | transpose 2 words |
 | `<A-b>` | Back 1 word       |
 | `<A-l>` | Lower 1 word      |
+
+
+
+    Ctrl + P - go to previous line
+    Ctrl + N - go to next line
 
 
 From:

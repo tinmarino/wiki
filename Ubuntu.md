@@ -1,4 +1,6 @@
 
+gsettings set org.gnome.shell.extensions.dash-to-dock multi-monitor true
+
 # Path
 
 * /etc/systemd/logind.conf

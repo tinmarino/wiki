@@ -6,6 +6,13 @@
 
 
 ```bash
+
+# Remove duplicate lines while keeping the order of the lines
+# From https://unix.stackexchange.com/questions/194780/remove-duplicate-lines-while-keeping-the-order-of-the-lines
+cat -n out.txt | sort -k2 -k1n  | uniq -f1 | sort -nk1,1 | cut -f2-
+
+newline_separated=${space_separated// /$'\n'}
+
 compgen -c # will list all the commands you could run.
 compgen -a # will list all the aliases you could run.
 compgen -b # will list all the built-ins you could run.
@@ -79,6 +86,9 @@ echo "Hello World" | tee /dev/fd/{4,5} > /dev/null
 ) 5>&1 | ( sed 's/^/two: /' > /dev/fd/6 )
 ) 6>&1
 
+shopt -s lastpipe  # permit last pipe command to execute in current shell
+set +m  # disable Monitor mode (i.e. job control)
+{ echo -e "begin\nIrmEval: a=12\nend" | tee /dev/fd/3 | sed -n 's/IrmEval: //p' | readarray -t a_irm_eval; } 3>&1
 
 
 # :from: https://catonmat.net/bash-redirections-cheat-sheet

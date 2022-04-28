@@ -564,6 +564,28 @@ the bare ne-cess-i-ties of life will come to you.
 
 # English
 
+### Oh Suzanah
+
+```text
+ 4  -4      5    6   6 -6  6 5 
+Well I come from Al-a-ba-ma
+
+ 4  -4  5  5  -4  4  -4
+with a ban-jo on my knee
+
+-5 -5 -6  -6  
+Oh su-san-na, 
+
+-6   6         6   5   4  -4
+now don't you cry for me
+
+4 -4 5 6  6  -6  6  5  4  
+I'm going to Lou-is-i-ana, 
+
+-4  5     5  -4  -4  4
+My true love for to see
+```
+
 ### Oasis: wonderwall
 
 ```text
@@ -4242,6 +4264,37 @@ but some-times it hurts in-stead.”____
 
 # French
 
+### Polnareff: 
+
+```text
+-4 -4 -4  5 -4 4, -4  5     -5  -5   5    -5   5   -4  (bis)  
+C'est une poupée, qui fait non, non, non, non, non, non
+Toute la journée, elle fait non, non, non, non, non, non
+
+5 -4  4 -4  3  3, -5 -5  5 -5  5 -4
+Elle est, elle est tellement jolie
+Que j'en rêve la nuit
+
+C'est une poupée, qui fait non, non, non, non, non, non
+Toute la journée, elle fait non, non, non, non, non, non
+Personne ne lui a jamais appris
+Qu'on pouvait dire oui
+
+Sans même écouter elle fait non, non, non, non, non, non
+Sans me regarder elle fait non, non, non, non, non, non
+Pourtant je donnerai ma vie
+Pour qu'elle dise oui
+
+Mais c'est une poupée, qui fait non, non, non, non, non, non
+Toute la journée, elle fait non, non, non, non, non, non
+Personne ne lui a jamais appris
+Qu'on pouvait dire oui
+
+Oh non, non, non, non, non, non
+Elle fait non, non, non, non, non, non
+```
+
+
 ### Eddy Mitchell: Le cmetiere des elephants
 
 ```text
@@ -4555,8 +4608,8 @@ Time: 3/4    Tempo: q.96
 (section 1, intro-like)
 |+7   +7   |+7   +7   |+7   +7   |+7   +7   |
 |+8        |+8   +8   |     -8 +7|-8        |
-|+7   -6   |     -7 +7|+7   -5   |     -7 -6|-7   +5    |  |
-|     -6 +6|-6   -4   |     +8   |-8        |+8         |  |
+|+7   -6   |     -7 +7|+7   -5   |     -7 -6|-7   +5    |
+|     -6 +6|-6   -4   |     +8   |-8        |+8         |
 
 (section 2)
 |+8        |+8   +8   |     -8 +7|-8        |

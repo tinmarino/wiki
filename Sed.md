@@ -1,3 +1,8 @@
+```
+# From https://unix.stackexchange.com/questions/32907/what-characters-do-i-need-to-escape-when-using-sed-in-a-sh-script
+$.*[\^  # Quote
+(){}+?|  # Not quote
+```
 
 * Get submatch 1 for all lines
     *   

@@ -76,7 +76,7 @@
 
 * The competent programmer is fully aware of the strictly limited size of his own skull(Dijkstra, the humble programmer)
 
-*	It's hard enough to start a revolution, even harder to sustain it and hardest of all to win it. But it's only afterward, once we've won, that the real difficulties begins. 
+*	Starting a revolution is hard, and it’s even harder to continue it. Winning is hardest of all. But only afterward, when we have won, will the real hardships begin (Larbi Ben M’hidi, in the battle of Alguiers)
 
 *	Doubtless this is somewhat interesting to someone somewhere, but we'll restrain ourselves from talking about them somehow (TimToady)
 

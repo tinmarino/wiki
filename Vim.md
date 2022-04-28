@@ -38,7 +38,8 @@ $ vim --clean DbBuilder.pm -c 'setfiletype perl6' \
 
 ## Ctags
 
-```
+```bash
+ctags -R --language=C++ --c++-kinds=+p --fields=+iaS --extra=+q .
 ctags -R --language=C++ --c++-kinds=+p --fields=+iaS --extra=+q .
 ctags -R -a --language=C++ --c++-kinds=+p --fields=+iaS --extra=+q /usr/lib/gcc/x86_64-linux-gnu/9/include /usr/local/include /usr/include/x86_64-linux-gnu /usr/include /usr/include/c++/9/ /usr/include/c++/9 /usr/include/x86_64-linux-gnu/c++/9 /usr/include/c++/9/backward /usr/lib/gcc/x86_64-linux-gnu/9/include
 ```

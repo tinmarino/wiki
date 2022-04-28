@@ -10,6 +10,7 @@
 ```bash
 # Delete all lines matching
 find . -name "*.xml" | xargs sed -i "/TVOCoefficients/d"
+find . -type f -print0 | xargs -0 sed -i 's/jhall-2.0_05/jhall-2.0/g'
 
 # Replace recursively
 find . -name "*.txt" | xargs perl -p -i -e "s/Sitaram/Mohan/g"
