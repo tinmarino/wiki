@@ -108,7 +108,25 @@ See: https://github.com/ycm-core/YouCompleteMe/wiki/Building-Vim-from-source
 ##### Local
 ```sh
 # Add first line for debug
-CFLAGS='-g -gdwarf4 -DDEBUG -O0 -fno-omit-frame-pointer' \
+export CFLAGS='-g -gdwarf4 -DDEBUG -O0 -fno-omit-frame-pointer'
+export MAKE_PARS='-j 28 '; export LC_CTYPE=en_US.UTF-8; export MAKE_NOSTATIC=yes; export MAKE_NOIFR_CHECK=on;
+export CFLAGS='-O2'
+#export LDFLAGS='-static -lxcb -lX11'
+./configure \
+            --with-features=huge \
+            --with-x=yes \
+            \
+            --enable-cscope \
+            --enable-fail-if-missing \
+            --enable-largefile \
+            --enable-multibyte \
+            --enable-autoservername \
+            \
+            --enable-python3interp=dynamic \
+            --with-python3-config-dir=$(python3-config --configdir) \
+            \
+            --with-compiledby="Tinmarino" \
+
 ./configure \
             --with-features=huge \
             --disable-netbeans \
