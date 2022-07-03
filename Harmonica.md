@@ -2192,6 +2192,63 @@ I fall on the floor and Im laughing. REPEAT...
 ```
 
 
+### Bob Dylan: All Along the Watchtower
+
+```text
+   6   -6   6   -6   6   7  6   -6      
+"There must be some way out of here"   
+  6    6  -6 6  -6  6   -6 
+said the joker to the thief
+   6     -6   -6  -6  7  6      
+"There's too much confusion",
+6 -6    -6  -6 6  -6
+I can't get no relief
+ -8   7  -8    7    -8   -6 7 -8      
+Business men, they drink my wine,   
+ -6 -6    7  -6  -6
+plowmen dig my earth
+ -8   7  -8  7 -8  -6  8 -8      
+None of them along the line   
+ -6   -6  7 7 6  -6 6   -6
+know what any of it is worth.
+
+ -8 -8  7  -8 -8  7 -8 -6     
+"No reason to get excited",   
+ 6   -6   6  -6  6   7 -6
+the thief he kindly spoke
+  -6   -6  7 -6 -6   6  6  -6   
+"There are many here among us   
+ 6   -6   6   -6   6  -6  6  -6
+who feel that life is but a joke
+-8  -8   7 -8   7    -8     -6     7      
+But you and I, we've been through that,   
+-6   7   -6 -6  -6  -6
+and this is not our fate
+-6 -6  -6 -6   -6   7  6   -6      
+So let us not talk falsely now,   
+ 6   -6  -6 -6  6    -6
+the hour is getting late".
+
+-8  -8 -8 7   -8  -6  -6   
+All along the watchtower,   
+-6  -6  -6   6    -6
+princes kept the view
+ -6   -6 -6   -6 -6  -6   6  -6     
+While all the women came and went,   
+ -6  -6    7   6    -6
+barefoot servants, too.
+
+  -8    -8 -8  7 -8 -6     
+Outside in the distance    
+6 -6  -6   6   -6
+a wildcat did growl
+ -8  -8 7   -8   7  -8  -6     
+Two riders were approaching,   
+ 6   -6  -6 -6 6   -6
+the wind began to howl.
+```
+
+
 ### Bob Dylan: Mr tamborine man
 
 ```text
@@ -2309,6 +2366,201 @@ The answer is blowin' in the wind.
 ```
 
 													 
+### Bob Dylan: Girl From The North Country (Bb)
+
+4  5      6  -55    4   6     -5  5   4
+If you're traveling the north country fair
+3     4   5     4   6  6  -5 5   -5 4  5
+Where the winds hit heavy on the borderline
+4 4  3   4  3  2   3   2     1
+Remember me to one who lives there
+1   1   2    3   2 3    2    2  1
+For she once was a true love of mine.
+-4 4   5  4    4   6   -5     4
+If you go when the snowflakes storm
+4    4   5 5    6      5   -5 4   5
+When the rivers freeze and summer ends
+4      4   3  4   4   3 3    2  1
+Please see if she has a coat so warm
+1  1    2   3    2   3  2    1
+To keep her from the howlin' winds.
+4      5   -4 4   6    -4    4
+Please see if her hair hangs long
+4  4  5     4   6     -5  5    -4  5
+If it rolls and flows all down her breast
+4      4   3   4  3  2   3      2  2    1
+Please see for me if her hair's hanging long
+1   1      2   3   2 2 3  2   2   1
+For that's the way I remember her best.
+4   3 4  3  4   5  4   4 6  6    -5 5  4
+I'm a-wonderin' if she remembers me at all
+5 5  6     5    -54   5
+Many times I've often prayed
+4  3   4   4    3  2  1
+In the darkness of my night
+1  2   3     2    3  2  1
+In the brightness of my day.
+
+Harmonica part: 
+8 -8 7 4 5 5 6 -5 5
+-4 5 6 5 6 7 -5 5 4 
+4 -5 5 6 7 -5 5 -4 4
+
+3  4  4      5  4 5    4   6     -5  5   4
+So if you're travelin' the north country fair
+5     4   5     5   6  6  -5 5   -5 4  5
+Where the winds hit heavy on the borderline
+4 4  3   4  3  2   3   2     1
+Remember me to one who lives there
+1   2    3   2   3    2    2  1
+She once was the true love of mine.
+
+Harmonica part:
+7 5 -6 6 5 -6 6 5
+
+
+### Bob Dylan: The times, they are changing (G)
+
+Solo 1 (0:32)
+5 4  4 4 -5 5  (4) -5 5 -4 4
+
+Solo 2 (1:06)
+5 5 -6 7 6 -6 7  -7 7->8
+9 9   9 9 9   9 -10 9  -9 9->8
+
+Solo 3 (1:45)
+5 5 5  -5 8 9
+9 -9 8  -8 7 7
+
+Solo 4 (2:20)
+5 5 -8 8 8 -9 8 -8 8
+9 9  9 9 9  9 -10 9  -9 9->8
+8 -9 9 9 -10 9  8 -8 8 -8 7
+
+Solo 5 (3:03 to fade out)
+6 6 6 -8 8 8 -9 8 -8 8
+9  9 9  -10 9 7 -8 8 -8 9
+
+
+ 
+ 4    4  4     4    4  4
+Come gather 'round people
+ 4  -4 4 -4   5 
+Wherever you roam
+ 6   6 6   6    6   6 -5
+And admit that the waters
+5  -4  -4  -4    -4
+Around you have grown
+ 4   4  4  4   4    4
+And accept it that soon
+   4   4     -4    4  -4   5
+You'll be drenched to the bone.
+ 5  -5   6   6   6
+If your time to you
+-5   5   -4 -4
+Is worth savin'
+ 5   -5  6   6    6    6    6
+Then you better start swimmin'
+ 6    6    6    6   6   6
+Or you'll sink like a stone
+ 5  -5    6    6    -5 5 -44 4
+For the times they are a-changin'.
+
+
+ 4    4   4   4   4  4
+Come writers and critics
+ 4      -4      4    -4   5 
+Who prophesize with your pen
+ 6   6    6    6    6   
+And keep your eyes wide
+5     5    -4     -4  -4 -4
+The chance won't come again
+
+And don't speak too soon
+
+For the wheel's still in spin
+
+And there's no tellin' who
+
+That it's namin'.
+
+For the loser now
+
+Will be later to win
+
+For the times they are a-changin'.
+
+
+
+Come senators, congressmen
+
+Please heed the call
+
+Don't stand in the doorway
+
+Don't block up the hall
+
+For he that gets hurt
+
+Will be he who has stalled
+
+There's a battle outside
+
+And it is ragin'.
+
+It'll soon shake your windows
+
+And rattle your walls
+
+For the times they are a-changin'.
+
+
+
+Come mothers and fathers
+
+Throughout the land
+
+And don't criticize
+
+What you can't understand
+
+Your sons and your daughters
+
+Are beyond your command
+
+Your old road is
+
+Rapidly agin'.
+
+Please get out of the new one
+
+If you can't lend your hand
+
+For the times they are a-changin'.
+
+
+
+The line it is drawn
+
+The curse it is cast
+
+The slow one now
+
+Will later be fast
+
+As the present now
+
+Will later be past
+
+The order is
+
+Rapidly fadin'.
+
+And the first one now
+
+Will later be last
+
+For the times they are a-changin'. 
 ### Guantanamera 
 
 ```text
@@ -2351,6 +2603,133 @@ Me complace más que el mar
 ```
 
 													
+### Queen: We are the champions
+
+```text
+3     3  4   4    3   -3 -3  4 
+I've paid my dues,time after time
+
+ 3     3  -3  4   4    3   3  -4 4  -3   4
+I've done my sentence,but committed no crime
+
+ 4   4   -5  -5   4     5 -5 -5
+And bad mistakes,I've made a few
+
+ 4    4  5    -5  -5  -5    6    -5 6   -6
+I've had my share of sand kicked in my face 
+
+-6   -7  -6-7    7
+But I've come through
+
+7  -7   7   -7   6    5   -6  5
+We are the champions, my friends
+
+ 6    7    -8  8    9   8   -6  -7  -6
+And we'll keep on fighting till the end 
+
+-6  6  -6    6  -5   8  -8   8   -8   7
+We are the champions,we are the champions
+
+8   -8   8   -8 7 
+No time for losers
+
+  -6   8  -8   8   -8   7    -6  6    7
+'Cause we are the champions, of the world
+
+ 3    3 -3 -3  4    3  3   -3 -4    4
+I've taken my bows,and my curtain calls
+ 
+ 3     3    3    4   4   4  4 
+You brought me fame and fortune
+
+ 4   4  4  -4   -4   -4   4   -3 
+and everything that goes with it 
+
+3   -3  -4   4
+I thank you all 
+
+ 4   4    4   5   5  5  -5 -5
+But it's been no bed of roses
+
+4    4  -5    -5  -5 -5 -5 -5 -5-5   6   6
+No pleasure cruise,I consider it a challenge 
+
+ 6  6   6   -6   -6 -6  -7  -7 -7  -7   -6 -7   7
+before the whole human race and I ain't gonna lose 
+
+7  -7   7   -7   6   5   -6 5
+We are the champions,my friends
+
+ 6   7     -8  8    9   8   -6  -7  -6
+And we'll keep on fighting,till the end 
+
+-6  6  -6    6  -5   8  -8   8   -8   7
+We are the champions,we are the champions
+
+8   -8   8  -8 7 
+No time for losers
+
+  -6   8  -8   8   -8  7    -6  6    7
+'Cause we are the champions,of the world  
+```
+
+
+### Queen: Love of my life
+
+```text
+================================================
+7    -7 7  9(9)  -7     -7(-6)-6
+Love of my life, you've hurt~ me.
+-6     -9  8  -9 -10(-10)-6  6   9   9     9
+You've broken my heart~~ and now you leave me.
+8    -8 7  -10(-10) 9     -10 -10
+Love of my life~~~, can't you see?
+9     8  -9    -9    -8 8
+Bring it back, bring it back,
+8     9    8  8 8  7    -6
+Don't take it away from me
+6  -5   7   9     -10 9 -8   7  -8    8  -9
+Because you don't know~ what it means to me.
+================================================
+-9     -9 -9  -9  -9   8    8  -10   8 8 7
+You'll re~mem~ber when this is blown o~~~ver.
+-6  -7  7  -8    -9 -9 -5 6   -6
+And everything's all~~ by the way.
+-9   -9 -9   -9 -9 -9  8 8    8  8  8  -8 7    8 8
+When I~ grow older~~~, I will be there at your side
+-8 7 -9 -9 -8  7   -7 9     9 9  9
+To remind~ you how I~ still love you
+7 10    10   10 -10
+I still love you~~~.
+================================================
+
+================================================
+4    -3 4  6(6)  -3     -3(-3") -3
+Love of my life, you've hurt~~~ me.
+-3"    -5  5  -5 -6 (-6) -3" 3   6   6     6
+You've broken my heart~~ and now you leave me.
+5    -4 4  -6 (-6)  6     -6  -6
+Love of my life~~~, can't you see?
+6     5  -5    -5    -4 5
+Bring it back, bring it back,
+5     6    5  5 5  4    -3"
+Don't take it away from me
+3  -2"  4   6     -6  6 -4   4  -4    5  -5
+Because you don't know~ what it means to me.
+================================================
+-5     -5 -5  -5  -5   5    5  -6    5 5 4
+You'll re~mem~ber when this is blown o~~~ver.
+-3"  -3  4 -4    -5 -5 -2" 3   -3"
+And everything's all~~ by  the way.
+-5   -5 -5   -5 -5 -5  5 5    5  5  5  -4 4    5 5
+When I~ grow older~~~, I will be there at your side
+-4 4 -5 -5 -4  4   -3 6     6 6  6
+To remind~ you how I~ still love you
+4 7     7    7  -6
+I still love you~~~.
+```
+
+
 ### Elvis Presley: Love me tender
 
 ```text
@@ -3139,21 +3518,67 @@ What a wonderful world
 
 
                                                   
-### Over the rainbow 
+### Somewhere Over the rainbow 
 
 ```text
- 4     8  -8 7   -7  -8   8    4 -7   7 
-Some where ov-er the rain-bow way up high
-  -3    -6   6    5  -5   6   -6  -5  -4 4  -5 6  4 
-There’s  a land that i  heard of once in a lul-la-by
-  4    8   -8 7   -7  -8   8    4     -7   7 
-Some where ov-er the rain-bow, skies are blue.
--3   -6    6     5   -5   6  -6   -5   -4  4  -5   6    4 
-and the dreams that you dare to dream real-ly do come true
-7   6  7    6   7  6     7    6   7 -6    7   -6   7 
-If hap-py litt-le blue birds fly be-yond the rain bow,
--6    7 -7   -8   8
-why, Oh why can’t I?
+ 	   4    7   -7  6   -6 -7     7
+1.some-where o-ver the rain-bow
+2.some-where o-ver the rain-bow
+
+   4  -6  6
+1.way up high
+2.skies are blue
+
+    4    -6  6
+1.there's a land
+2.and the dreams
+
+   5  -5  6    -6
+1.that i heard of
+2.that you dare to dream
+
+  -4   -3 4  -4  5  4
+1.once in a lull-a-by
+2.real-ly do come true
+
+ 6    5   6    5   6   5 6    5
+some-day i'll wish up-on a star
+
+ 6   -5   6  -5
+and wake up where
+
+ 6   -5     6  -5 6 -6 -7
+the clouds are be-hind me
+
+  6     5    6   5    6   5   6    5
+where trou-bles melt like le-mon drops
+
+6 -5  6  -5   6   -5   6   -5
+a-way a-bove the chim-ney tops
+
+  6     -5    6      -6  -7
+that's where you'll find me
+
+  4    7   -7 6   -6  -7   7
+some-where o-ver the rain-bow
+
+ 4   -6     6
+blue-birds fly
+
+ 5    -6  5  4  -4    5  -5
+birds fly o-ver the rain-bow
+
+-4   -3   4   5    4
+why,then why,can't i ?
+
+ 6  5   6  5   6   5    6    5
+if hap-py lit-tle blue-birds fly
+
+6  -5   6   -5   6
+beyond the rain-bow
+
+-5   6 -6  -7    7
+why,oh why,can't i ?
 ```
 
                                               
@@ -7682,7 +8107,6 @@ Ay, ay, ay, de mi
 ### Vicentico: Los caminos de la vida
 
 ```text
-
 (2   2  -3" -3"  4   4   5   5
 MI  MI  LA  LA  do  do  mi  mi
 

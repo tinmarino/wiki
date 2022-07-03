@@ -134,13 +134,15 @@ test_print_args(){
  print_args arg1 "arg with spaces" "${a_arg[@]}" "$not_existing_scalar" arg_sep "${not_existing_array[@]}" end
 }
 
+
 print_stack(){
   ### Print current stack trace to stderr
-  local i
-  local fstg="%1s/ %20s %20s %20s\n"
-  >&2 printf "$fstg" "" Function File Line
+  local -i i=0 j=0 k=0
+  local fstg="%1s/ %s\t\t %15s %15s %15s\n"
+  >&2 printf "$fstg" "-" Function File Line Arguments
   for i in "${!FUNCNAME[@]}"; do
-    >&2 printf "$fstg" "$i" "${FUNCNAME[$i]}" "${BASH_SOURCE[$i]}" "${BASH_LINENO[$i]}"
+    local -a a_argv=(); shopt -q extdebug && { local argc=${BASH_ARGC[i]}; for ((j=0; j<argc; j++)); do a_argv[$((argc-j))]=${BASH_ARGV[$((k++))]}; done; }
+    >&2 printf "$fstg" "$i" "${FUNCNAME[$i]}" "${BASH_SOURCE[$i]}" "${BASH_LINENO[$i]}" "${a_argv[*]}"
   done
 }
  
@@ -186,6 +188,15 @@ function teee(){
   while read -rn1 -d $'\0'; do
     (( ${#REPLY} == 0 )) && { for fp in "${a_file[@]}"; do printf '\0' >> "$fp"; done; continue; }
     for fp in "${a_file[@]}"; do echo -n "$REPLY" >> "$fp"; done
+  done
+}
+
+print_multiplication_table(){
+  for a in {1..15}; do
+    for (( b=1; b<=15; b=b+1 )); do
+      ((b >=a || b == 1)) && { printf "%4d" $((a*b)); } || { printf "    "; }
+      continue || break  # here, break is never executed
+    done; echo 
   done
 }
 ```

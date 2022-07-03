@@ -84,6 +84,18 @@
 
 * On ne discute pas avec une brouette on la pousse (Pierre de Villiers)
 
+* It is literally true that you can succeed best and quickest by helping others to succeed (Napolean Hill)
+
+* If it's not written, it never happened. If it is written, it doesn't matter what happened
+
+* Documentation is a love letter that you write to your futre self (Damian Conway)
+
+* Education is our passport to the future, for tomorrow belongs to the people who prepare for it today (Malcolm X)
+
+* The art of teaching is the art of assisting discovery (Mark Van Doren)
+
+* Education breeds confidence. Confidence breeds hope. Hope breeds peace (Confucius)
+
 
 # Boileau
 
@@ -134,6 +146,14 @@ Et de tous vos défauts les zélés adversaires. (Art po, Chant 1)
 * The absolute truth may be impossible to find, but it is also impossible not to look for (Rajesh)
 
 * More important than the search for truth is acceptance of ignorance (Naskar)
+
+* Obstacles are those frightful things you see when you take your eyes off your goal (Henry Ford)
+
+* Teamwork is the ability to work together toward a common vision. The ability to direct individual accomplishments toward organizational objectives. It is the fuel that allows common people to attain uncommon results (Andrew Carnegie)
+
+* Coming together is a beginning, staying together is progress, and working together is success (Henry Ford)
+
+* Talent wins games, but teamwork and intelligence win championships (Michael Jordan)
 
 
 
@@ -200,3 +220,8 @@ Ton    Tel  Traite
   * It's not because you don't see it that it doesn't exist
 
 * L'unique mesure objective de qualité est la perfection
+  * Perfection is the unique objective quality metric
+
+* Everything which is not explicitly forbidden is allowed
+
+* Remember your mission and be legitimate at all time

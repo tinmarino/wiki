@@ -6,6 +6,10 @@
 
 
 ```bash
+https://codegolf.stackexchange.com/questions/28786/write-a-program-that-makes-2-2-5
+
+# List process attached to tty (showed by w)
+ps -ft pts/3 
 
 # Remove duplicate lines while keeping the order of the lines
 # From https://unix.stackexchange.com/questions/194780/remove-duplicate-lines-while-keeping-the-order-of-the-lines
@@ -86,9 +90,8 @@ echo "Hello World" | tee /dev/fd/{4,5} > /dev/null
 ) 5>&1 | ( sed 's/^/two: /' > /dev/fd/6 )
 ) 6>&1
 
-shopt -s lastpipe  # permit last pipe command to execute in current shell
-set +m  # disable Monitor mode (i.e. job control)
-{ echo -e "begin\nIrmEval: a=12\nend" | tee /dev/fd/3 | sed -n 's/IrmEval: //p' | readarray -t a_irm_eval; } 3>&1
+shopt -s lastpipe; set +m  # permit last pipe command to execute in current shell; disable Monitor mode (i.e. job control)
+{ echo -e "begin\ngrepme\nend" | tee /dev/fd/3 | sed -n '/grepme/p' | readarray -t a_filter; } 3>&1; echo "${a_filter[*]}"
 
 
 # :from: https://catonmat.net/bash-redirections-cheat-sheet
@@ -116,7 +119,9 @@ cmd <<- EOL
 <tab><tab>bar
 EOL
 
-exec &> >(tee log.out)
+exec &> >(tee -a log.out)  # Redirect stdout and stderr to file
+exec &> /dev/tty           # Reset stdout and stderr 
+
 cmd <<< "string"  # Redirect a single line of text to the stdin ofcmd. This is called a here-string.
 exec 2> file      # Redirect stderr of all commands to a file forever.
 exec 3< file      # Open a file for reading using a custom file descriptor.
