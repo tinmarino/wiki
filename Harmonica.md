@@ -1,5 +1,167 @@
 ﻿# Contents
 
+- [Selected](#selected)
+    - [Simon & Garfunkel: The boxer](#simon-garfunkel-the-boxer)
+    - [Cohen: Bird on a wire](#cohen-bird-on-a-wire)
+    - [Wind of change](#wind-of-change)
+    - [Sinatra: My way](#sinatra-my-way)
+    - [Disney: Bare Necessities](#disney-bare-necessities)
+- [English](#english)
+    - [Oh Suzanah](#oh-suzanah)
+    - [Oasis: wonderwall](#oasis-wonderwall)
+    - [Gloria Gaynor: I will survive](#gloria-gaynor-i-will-survive)
+    - [Evanescence:  Bring Me To Life](#evanescence-bring-me-to-life)
+    - [Franki Valli: Can't tke my eyes off you](#franki-valli-cant-tke-my-eyes-off-you)
+    - [Dave Brubeck: Take five (Jazz)](#dave-brubeck-take-five-jazz)
+    - [Disney: A whole new world](#disney-a-whole-new-world)
+    - [Disney: Jungle book](#disney-jungle-book)
+    - [River of babylon](#river-of-babylon)
+    - [From the west](#from-the-west)
+    - [Jimmy Fontana: Il mondo](#jimmy-fontana-il-mondo)
+    - [Jimmy fontana: Che sara](#jimmy-fontana-che-sara)
+    - [Amazing grace](#amazing-grace)
+    - [Cohen: Chesea Hotel](#cohen-chesea-hotel)
+    - [Cohen: So long mariann](#cohen-so-long-mariann)
+    - [Cohen: Suzanne](#cohen-suzanne)
+    - [Cohen: Halleluja](#cohen-halleluja)
+    - [Cohen: Famous blue raincoat](#cohen-famous-blue-raincoat)
+    - [Beatles: All my loving](#beatles-all-my-loving)
+    - [Beatles: Yesterday](#beatles-yesterday)
+    - [Beatles: Hey jude](#beatles-hey-jude)
+    - [Beatles: Imagine](#beatles-imagine)
+    - [Beatles: Across The Universe](#beatles-across-the-universe)
+    - [Beatles: Nowhere Man](#beatles-nowhere-man)
+    - [Beatles: Yellow submarine](#beatles-yellow-submarine)
+    - [beatles: i want to hold your hand](#beatles-i-want-to-hold-your-hand)
+    - [Take me home](#take-me-home)
+    - [Simon & Garfunkel: El condor pasa](#simon-garfunkel-el-condor-pasa)
+    - [Simon & Garfunkel: Sound of silence](#simon-garfunkel-sound-of-silence)
+    - [Simon & Garfunkel: Mrs Robinson](#simon-garfunkel-mrs-robinson)
+    - [Simon & Garfunkel: Bridge oveer trouble water](#simon-garfunkel-bridge-oveer-trouble-water)
+    - [Simon & Garfunkel: Cecilia](#simon-garfunkel-cecilia)
+    - [Bob Dylan: All Along the Watchtower](#bob-dylan-all-along-the-watchtower)
+    - [Bob Dylan: Mr tamborine man](#bob-dylan-mr-tamborine-man)
+    - [Bob Dylan: Blowing in the wind](#bob-dylan-blowing-in-the-wind)
+    - [Bob Dylan: Girl From The North Country (Bb)](#bob-dylan-girl-from-the-north-country-bb)
+    - [Bob Dylan: The times, they are changing (G)](#bob-dylan-the-times-they-are-changing-g)
+    - [Guantanamera](#guantanamera)
+    - [Queen: We are the champions](#queen-we-are-the-champions)
+    - [Queen: Love of my life](#queen-love-of-my-life)
+    - [Elvis Presley: Love me tender](#elvis-presley-love-me-tender)
+    - [Elvis Presley: Wonder of you](#elvis-presley-wonder-of-you)
+    - [Mario](#mario)
+    - [The house of the rising sun](#the-house-of-the-rising-sun)
+    - [Vangelis: Chariot of fire](#vangelis-chariot-of-fire)
+    - [Con te partiro](#con-te-partiro)
+    - [Rocky: Eye of the tiger](#rocky-eye-of-the-tiger)
+    - [Bowie: The man who sold the world](#bowie-the-man-who-sold-the-world)
+    - [Nirvana: Smells like teen spirit](#nirvana-smells-like-teen-spirit)
+    - [Cat Stevens: Morning has broken](#cat-stevens-morning-has-broken)
+    - [Cat Stevens: Wild world](#cat-stevens-wild-world)
+    - [Cat Stevens: The first cut](#cat-stevens-the-first-cut)
+    - [Cat Stevens: The wind](#cat-stevens-the-wind)
+    - [Cat Stevens: Father and son](#cat-stevens-father-and-son)
+    - [Cat Stevens: Lady d'arbanville](#cat-stevens-lady-darbanville)
+    - [Louis Armstrong: What a wonderfull world](#louis-armstrong-what-a-wonderfull-world)
+    - [Tetris](#tetris)
+    - [Hymne russe](#hymne-russe)
+    - [Somewhere Over the rainbow](#somewhere-over-the-rainbow)
+    - [Indiana Jones](#indiana-jones)
+    - [Bella ciao](#bella-ciao)
+    - [Let it be](#let-it-be)
+    - [So you think you can tell](#so-you-think-you-can-tell)
+    - [EXERCICES](#exercices)
+    - [Bob Marley: Redemption song](#bob-marley-redemption-song)
+    - [Bob Marley: No woman no cry](#bob-marley-no-woman-no-cry)
+    - [Lauper: time after time](#lauper-time-after-time)
+    - [Lauper: True color](#lauper-true-color)
+    - [Lauper: Girls just want to have fun](#lauper-girls-just-want-to-have-fun)
+    - [Just the way you are](#just-the-way-you-are)
+    - [Wonderwall](#wonderwall)
+    - [Hit the road jack](#hit-the-road-jack)
+    - [Stand by me](#stand-by-me)
+    - [Adele: someone like you](#adele-someone-like-you)
+- [French](#french)
+    - [Polnareff:](#polnareff)
+    - [Eddy Mitchell: Le cmetiere des elephants](#eddy-mitchell-le-cmetiere-des-elephants)
+    - [La 7eme compagnie](#la-7eme-compagnie)
+    - [Barbapapa](#barbapapa)
+    - [Leforestier: san francisco](#leforestier-san-francisco)
+    - [Piaf: TODO](#piaf-todo)
+    - [Emilie jolie et du grand oiseau](#emilie-jolie-et-du-grand-oiseau)
+    - [Ennio Morricone: Chi Mey: Le professionnel](#ennio-morricone-chi-mey-le-professionnel)
+    - [Alain Barriere: Elle était si jolie](#alain-barriere-elle-tait-si-jolie)
+    - [Boris vian: Le deserteur](#boris-vian-le-deserteur)
+    - [Richard Antony: J'ettend siffler le train](#richard-antony-jettend-siffler-le-train)
+    - [Bruel: Qui a le droit](#bruel-qui-a-le-droit)
+    - [Micel Berger: Diego](#micel-berger-diego)
+    - [Yves Duteuil: Prendre un enfant par la main](#yves-duteuil-prendre-un-enfant-par-la-main)
+    - [J'avais un camarade](#javais-un-camarade)
+    - [Chant des partisants](#chant-des-partisants)
+    - [Joe Dassin: L'amerique](#joe-dassin-lamerique)
+    - [Joe Dassin: Si tu n'existait pas](#joe-dassin-si-tu-nexistait-pas)
+    - [Joe Dassin: Champs elysées](#joe-dassin-champs-elyses)
+    - [La marseillaise](#la-marseillaise)
+    - [Celine Dion: My heart will go on](#celine-dion-my-heart-will-go-on)
+    - [Amant de saint jean](#amant-de-saint-jean)
+    - [Aufray: Steball](#aufray-steball)
+    - [Aufray: Santiano](#aufray-santiano)
+    - [Le chasseur](#le-chasseur)
+    - [Le sud](#le-sud)
+    - [Sardou: Je vais t'aimer](#sardou-je-vais-taimer)
+    - [Goldman: Comme toi](#goldman-comme-toi)
+    - [Goldman: Ensemble](#goldman-ensemble)
+    - [Renaud: Des que le vent soufflera](#renaud-des-que-le-vent-soufflera)
+    - [Renaud: Un oranger](#renaud-un-oranger)
+    - [Renaud: Pierrot](#renaud-pierrot)
+    - [Francaise: A la claire fontaine](#francaise-a-la-claire-fontaine)
+    - [Gilbert: L'eau vive](#gilbert-leau-vive)
+    - [Soldat Louis: Oh mama Oh](#soldat-louis-oh-mama-oh)
+    - [Soldat Louis: Du rhum des femmes](#soldat-louis-du-rhum-des-femmes)
+    - [Soldat Louis: Soldat Louis](#soldat-louis-soldat-louis)
+    - [Soldat Louis: Bohemien](#soldat-louis-bohemien)
+    - [Soldat Louis: Encore un rhum](#soldat-louis-encore-un-rhum)
+    - [Alain Souchon: Bidon](#alain-souchon-bidon)
+    - [Charles Aznavour: Ma Bohème](#charles-aznavour-ma-bohme)
+    - [Salvador Adamo: Inch Allah](#salvador-adamo-inch-allah)
+    - [Brassens: Les copains d'abord](#brassens-les-copains-dabord)
+    - [Brassens: Auvergnat](#brassens-auvergnat)
+    - [Brassens: Mauvaise reputation](#brassens-mauvaise-reputation)
+    - [Renaud: Mistral gagnant](#renaud-mistral-gagnant)
+    - [Je vais taimer](#je-vais-taimer)
+    - [Jeanne Moreau : Le tourbillon de la vie](#jeanne-moreau-le-tourbillon-de-la-vie)
+    - [La java bleu](#la-java-bleu)
+    - [Perret: Lily](#perret-lily)
+    - [Perret: TODO AU CAFÉ DU CANAL -](#perret-todo-au-caf-du-canal--)
+    - [Le jazz et la java (C. nougaro)](#le-jazz-et-la-java-c-nougaro)
+    - [La vie en rose](#la-vie-en-rose)
+    - [Le lion est mort ce soir](#le-lion-est-mort-ce-soir)
+    - [TODO Il jouai du piano debout (France Gall)](#todo-il-jouai-du-piano-debout-france-gall)
+    - [Claude Nougaro: Amstrong](#claude-nougaro-amstrong)
+- [Spanish](#spanish)
+    - [Los Angales Azules: Como te voy a olvidar](#los-angales-azules-como-te-voy-a-olvidar)
+    - [Manuel Garcia: Un viejo comunista](#manuel-garcia-un-viejo-comunista)
+    - [Manuel Garcia: Danza de la Libelulas](#manuel-garcia-danza-de-la-libelulas)
+    - [Violeta Para: Run Run se Fue Pa'l Norte](#violeta-para-run-run-se-fue-pal-norte)
+    - [Vicentico: Los caminos de la vida](#vicentico-los-caminos-de-la-vida)
+    - [Mercedes Sosa: Solo le pido a Dios](#mercedes-sosa-solo-le-pido-a-dios)
+    - [Popular: Cancion de cuna](#popular-cancion-de-cuna)
+    - [Chile: Himno](#chile-himno)
+    - [Jara: El derecho de vivir en paz](#jara-el-derecho-de-vivir-en-paz)
+    - [Jaivas: Todos Juntos](#jaivas-todos-juntos)
+    - [Los Prisioneros: Tren al sur](#los-prisioneros-tren-al-sur)
+    - [Ubiergo: Cafe para Platon](#ubiergo-cafe-para-platon)
+    - [Ubiergo: El tiempo en las bastillas](#ubiergo-el-tiempo-en-las-bastillas)
+    - [Illapu : Lejos del amor](#illapu-lejos-del-amor)
+    - [Illapu : Candome para José](#illapu-candome-para-jos)
+    - [Silvio Rodriguez: Rabo de nuve](#silvio-rodriguez-rabo-de-nuve)
+    - [Silvio Rodriguez: Unicornio](#silvio-rodriguez-unicornio)
+    - [Silvio: Quien fuera](#silvio-quien-fuera)
+    - [Silvio: Ojala](#silvio-ojala)
+    - [Carlos Puebla: Hasta Siempre Commandante](#carlos-puebla-hasta-siempre-commandante)
+
+#  Contents
+
 - [Selected](#Selected)
     - [Simon & Garfunkel: The boxer](#Selected#Simon & Garfunkel: The boxer)
     - [Cohen: Bird on a wire](#Selected#Cohen: Bird on a wire)
@@ -562,7 +724,260 @@ to make some hon-ey just for me,
 the bare ne-cess-i-ties of life will come to you. 
 ```
 
+### Nei Young: Heart of gold
+
+From: https://www.youtube.com/watch?v=_n1AvLoEEKY
+     
+```text
+. = croche
+" = double croche
+
+     .        . 
+5 6 -5 5 | -4 4 3...
+
+     .        .
+6 7 -6 6 | -6 6 5.. 
+
+" . " " . " " . "       .
+4 4 4 5 5 5 6 6 6  | -5 5 4.. 
+
+----------------------------
+          .       .
+4 6 6... -5 5. -4 4 3...
+
+     .        . .  . .      .
+7 8 -6 6.  | -6 6 -6 6 5.. -4 4..
+
+" . " . " . " .   .  . .  . .      .
+7 7 6 6 5 5 4 4 / 4 -4 4 -4 5 5.. -4 4..
+
+
+
+
+From: https://www.harptabs.com/song.php?ID=13137
+Song: 	This tab is for the studio recording released on the Harvest album
+from '72. The tab is based on the version from gatman. I changed most
+of the solos so they are nearly 100% correct for the version mentioned
+above. Also i added two guitar patterns you can use and mentioned
+where they are played. Pattern #2 imitates the riff the steel guitar
+plays.
+
+
+INTRO: 2 x pattern #1
+
+[Em]4 [C] 6 -5 5 [D] -4 4 [G] 3 
+[Em] 6 [C] 7 -6 6 [D] -6 6 [G] 5 
+[Em]4 4 4 [C] 5 5 5 5 5 [D] -5 5 [G] 4 
+
+-> 1 x pattern #1
+
+Em        C     D         G 
+4  4   4   -6   6  6   -4  5 
+I want to live, I want to give, 
+Em          C           D        G 
+ 4    4   4 -6-6  -6 -6  6    -4  5 
+I've been a miner for a heart of gold. 
+Em           C          D       G 
+ 4     4   4  -6  -6    6 6 -4   5 
+It's these expressions, I never give, 
+Em7                         G 
+-4    5   -4  5  -4    4 -4  5    -6 6  5 
+that keep me searchin for a heart of go-ld. 
+C                      Am7  G 
+ 3   3   4  4   4 
+And I'm gettin old. 
+Em7                    G 
+ 5   5   5   -4   4 -4  5    -6 6  5 
+Keep me searchin for a heart of go-ld,  
+C                      Am7  G 
+ 3   3   4  4   4 
+and I'm gettin old. 
+
+SOLO 1: 
+[Em] 4 6 6 [C] -5 5 [D] -4 4 [G] 3             
+[Em] 7 [C] 8 -6 6 [D] -6 6 -6 6 [G] 5
+[Em] 67 67 67 56 56 56 [C] 45 45 45 45 45 [D] -4 4 -4 5 [G] 5 -4 4
+
+       -> 1 x pattern #1
+
+Em           C 
+ 4    4   4  -6 -6 -6 
+I've been to hollywood, 
+D            G 
+ 6    6   -4  5  5 
+I've been to redwood, 
+Em            C           D        G 
+4    4     4  -6-6  -6 -6  6    -4  5 
+I crossed the ocean for a heart of gold. 
+Em              C 
+ 4    4   4  -6  -6 
+I've been in my mind, 
+D           G 
+ 6    6  -4  5    5 
+it's such a fine line, 
+Em7                          G 
+-4    5    5   5  -4    4 -4   5   -6 6  5 
+that keeps me searchin for a heart of go-ld. 
+C                         Am7  G 
+ 3   3   4  4   4 
+And I'm gettin old. 
+Em7                     G 
+ 5    5   5  -4   4  -4   5   -6 6  5 
+keeps me searchin for a heart of go-ld. 
+C                         Am7  G 
+ 3   3   4  4   4 
+And I'm gettin old. 
+
+SOLO 2: 
+ 6 6 [Em] 7 -6 6 [C] 7 -6 6 [D] -6� -6� [G] 6  4
+ [Em] 6 6 4 [C]6 4 4 34 4 [D] -4 5 -4 5 [G] 4 34 34
+ [Em] 7 6 6 [C] 7 6 -6 6 [D] -6� 6 [G] 5 -34 34 
+
+Em                     D        Em 
+  5  5   5   5    5  5  -4   -3  3 
+Keep me searchin for a heart of gold. 
+Em                            D      Em 
+ 3   3   3    3  3    3   3  -4 -4   4 
+You keep me searchin and i�m growin old.
+Em                           D        Em 
+ 4    4   4   4   4   4  4  -4   -2   3 
+You keep me searchin for a heart of go-ld.
+Em                         G 
+ 3    5   5  5 5   -4  5  -6   6 -4  5 
+I�ve been a miner for a heart of gold.
+
+   Am7  G
+      (234)
+
+
+
+Pattern #1
+
+6x Em7  2or3x D     Em
+                 -----------------
+                 -----------------
+                 -----------------
+                 -------0h2-------
+                 --0h2------------
+                 -----------------
+ 
+
+Pattern #2: Am7 to G
+
+             Am7          G
+                --0-----------3--
+                --1-----------0--
+                --0-----------0--
+                --2--0�-------0--
+                --0-----2-----2--
+                --------------3--
+
+
+Strumming pattern you can use: (b for base note)
+b b D   D U 
+```
+
+
 # English
+
+### Julie Covington: Don't Cry For Me Argentina
+
+```text
+6   6    6   6 6  
+It won't be easy, 
+
+  6      6   7    -6
+you'll think it strange,
+
+-6  -6  -6-6  -6  -6  -6 -6  6
+When I try to explain how I feel.
+
+-4   5  -5   -5   -5   -5   
+That I still need your love 
+
+-5 -5  -5   5   -4   5
+after all that I've done,
+             ^
+5   5     6 -6   5
+You won't believe me.
+
+5    5   5    5   5 6  6   -5  -5    -5
+All you will see is a girl you once knew.
+
+5   5    -4      -4   -4 -4  5   -4
+Although she's dressed up to the nines,
+
+-4 -4 -4 -4  -6 6    -5   6
+At sixes and sevens with you.
+
+6  6  -5  5  -5  6  6   6  6  7   -6
+I had to let it happen--I had to change.
+
+-6  -6   -6   -6  -6  -6  -6   -6  6
+Couldn't stay all my life down at heel--
+
+-4  5   -5  -5  -5  -5 -5   -5 -5  -5  5  -4   5
+Looking out of the window, staying out of the sun.
+            ^
+5  5   6   -6   5
+So I chose freedom.  
+
+5  5    5   5   5   6  6 -5  5    -5
+Running around trying everything new.
+
+5   5  -4   -4  -4   -4  5 -4   
+But nothing impressed me at all.
+
+-4 -4 -4 -4 -6 6  -5  6
+I never expected it to.
+
+5    5    5   5 -5 6 -6 6
+Don't cry for me Argentina.
+
+6    -6   -6 6 7  6   -5   5
+The truth is I never left you.
+
+5     -5    6  -4   -4    -4  5  -4 4  4
+All through my wild days--my mad existence,
+
+4  -4   4  5   6      6    6    6   -6   7
+I kept my promise.  Don't keep your distance.
+
+6  6   6   6  6    6  6   6   -6
+And as for fortune and as for fame.
+
+-6-6-6 -6 -6 -6  6   6    
+I never invited them in, 
+
+ -4    5  -5    -5 -5  -5
+though it seemed to the world
+                                      ^
+-5   -5   -5  5 -4  5      5    5  6 -6...  5
+They were all I desired.  They are illusions.
+
+   5     5  5   5 5  5     6    6 -5    -5 -5
+They're not the solutions they promised to be.
+
+5   5 -4   -4  -4   -4   5   -4
+The answer was there all the time.
+
+-4  -4  -4  -4  -6   6  -5   6
+I love you and hope you love me.
+
+Coda
+
+5   5   5   5   5
+Have I said too much?
+
+  5      5  5    5   5  5    5   -4  4 -4   6  6
+There's nothing more I can think of to say to you.
+
+5   5   5   5   5   5  5  5   5  5  5   5    -4
+But all you have to do is look at me to know that
+
+4 5   -4   6  5
+Every word is true.
+```
 
 ### Oh Suzanah
 
@@ -1889,6 +2304,23 @@ i wan-na hold your hand
 ### Take me home 
 
 ```text
+
+From: https://www.youtube.com/watch?v=eYkGqoiHCEA
+
+4   -4   5     5   4  -4'..-4
+country road, take me home
+
+5   -4  4     5 6  -6...-6'...-6
+To the place, I belong
+
+-6   5  6  5   5  4    -4 5
+West Virginia, moutain mama
+
+5    -4  4     4  -4   4
+Take me home, country roads
+
+
+
   6  6    -6   6  -6   6  -6   7
 1.al-most heav-en,west vir-gin-ia
 2.all my mem'-ries gath-er 'round her
@@ -2192,6 +2624,91 @@ I fall on the floor and Im laughing. REPEAT...
 ```
 
 
+### Bob Dylan: Masters of war
+
+```text
+-4  -4  -4  -4  -5 -4
+Come you masters of war
+-6   -6   -6   -6   7  -6
+You that build all the guns
+-6   -6    7    7   -8   -6
+You that build the death planes
+-6  -6     7    7  -8   -6 
+You that build the big bombs
+-6   -6   6    6 -6   -8
+You that hide behind walls
+-6  -6    7   -6  7  -6
+You that hide behind desks
+-6 -6  -6    6  -5  6 
+I just want you to know
+-5 -4 -5    -4     4    4
+I can see through your masks
+
+You that never done nothin'
+But build to destroy
+You play with my world
+Like it's your little toy
+You put a gun in my hand
+And you hide from my eyes
+And you turn and run farther
+When the fast bullets fly
+
+Like Judas of old
+You lie and deceive
+A world war can be won
+You want me to believe
+But I see through your eyes
+And I see through your brain
+Like I see through the water
+That runs down my drain
+
+You fasten the triggers
+For the others to fire
+Then you set back and watch
+When the death count gets higher
+You hide in your mansion
+As young people's blood
+Flows out of their bodies
+And is buried in the mud
+
+You've thrown the worst fear
+That can ever be hurled
+Fear to bring children
+Into the world
+For threatening my baby
+Unborn and unnamed
+You ain't worth the blood
+That runs in your veins
+
+How much do I know
+To talk out of turn
+You might say that I'm young
+You might say I'm unlearned
+But there's one thing I know
+Though I'm younger than you
+Even Jesus would never
+Forgive what you do
+
+Let me ask you one question
+Is your money that good
+Will it buy you forgiveness
+Do you think that it could
+I think you will find
+When your death takes its toll
+All the money you made
+Will never buy back your soul
+
+And I hope that you die
+And your death'll come soon
+I will follow your casket
+In the pale afternoon
+And I'll watch while you're lowered
+Down to your deathbed
+And I'll stand o'er your grave
+'Til I'm sure that you're dead
+```
+
+
 ### Bob Dylan: All Along the Watchtower
 
 ```text
@@ -2249,9 +2766,14 @@ the wind began to howl.
 ```
 
 
-### Bob Dylan: Mr tamborine man
+### Bob Dylan: Mr tambourine man 1964
 
 ```text
+(
+4 6 4 -6 6 -5 5
+-4 4 4 -4 4 4 -4
+) x 2
+
 7 7 -7 -6 6 6 5
 Hey mister tambourine man
 5 -6 6 5 4
@@ -2260,6 +2782,7 @@ play a song for me
 I'm not sleepy and there
 -6 6 -5 5 5 -4 -4
 ain't no place I'm going to
+
 7 7 -7 -6 6 6 5
 Hey mister tambourine man
 5 -6 6 5 4
@@ -2268,6 +2791,7 @@ play a song for me
 In the jingle jangle morning
 -4 4 -4 5 -4 4
 I'll come following you
+
 7 7 7 -7 -6 6 6 5
 Take me for a trip upon your
 5 -6 6 5 4
@@ -2286,6 +2810,7 @@ And my toes too numb to step
 wait only for my bootheels
 5 5 5 -4
 to be wand'ring
+
 7 7 7 7 -7 -6 6 6
 I'm ready to go anywhere
 5 5 -6 6 5 4
@@ -2296,6 +2821,7 @@ into my own parade
 Cast your dancing spell my way
 7 7 -7 -6 6 -5 5 -4
 I promise to go under it
+
 7 7 -7 -6 6 6 5
 Hey mister tambourine man
 5 -6 6 5 4
@@ -2304,6 +2830,7 @@ play a song for me
 I'm not sleepy and there ain't
 6 -5 5 5 -4 -4
 no place I'm going to
+
 7 7 -7 -6 6 6 5
 Hey mister tambourine man
 5 -6 6 5 4
@@ -2312,7 +2839,6 @@ play a song for me
 In the jingle jangle morning
 -4 4 -4 5 -4 4
 I'll come following you
-	
 ```
 
 
@@ -2368,7 +2894,7 @@ The answer is blowin' in the wind.
 													 
 ### Bob Dylan: Girl From The North Country (Bb)
 
-4  5      6  -55    4   6     -5  5   4
+4  5      6  -55...  4   6..  -5  5   4
 If you're traveling the north country fair
 3     4   5     4   6  6  -5 5   -5 4  5
 Where the winds hit heavy on the borderline
@@ -2420,6 +2946,9 @@ Harmonica part:
 
 
 ### Bob Dylan: The times, they are changing (G)
+
+From: https://www.youtube.com/watch?v=Ip_cLI4O-qY
+Ref: https://www.youtube.com/watch?v=90WD_ats6eE
 
 Solo 1 (0:32)
 5 4  4 4 -5 5  (4) -5 5 -4 4
@@ -2733,7 +3262,7 @@ I still love you~~~.
 ### Elvis Presley: Love me tender
 
 ```text
-  6   7      -7  7      -8  -6      -8
+  6   7  -7  7 -8  -6   -8
 Love me tender love me true
  7   -7   -6 -7  7
 Say we'll never part
@@ -3343,7 +3872,7 @@ Find a girl settle down if you want you can marry
 Look at me I am old but I`m happy
 5  -5   6   -5   5  -5   6   5  -5  6   6    6
 I was once like you are now and I know it`s not 
-6 4   4 -4   5   4     -4      5    5    5
+-6 4  4 -4   5   4     -4      5    5    5
 easy to be calm when you`ve found some-thing
 -4 4  -4
 going on.
@@ -3355,7 +3884,7 @@ thing you`ve got
 For you will still be here to-morrow but your
   -4    -4  4
 dreams may not
-2.
+
  5  -5  6  6   5  -5  6    5 -5  6  6   6
 How can I try to explain when I do he turns 
 6 -6  4 4   -4    5 -4   4  -4    5   -5   5
@@ -3366,7 +3895,7 @@ story. From the moment I could talk I was ordered
 to listen now there`s a way   and I know that I
  5   -4 4  3 4    5      6    5    5    -4    4
 have to go away   I    know   I  have   to   go
-3.
+
 It`s not time to make a change just sit down take
 it slowly, you`re still young that`s your fault
 There`s so much you have to go through
@@ -4688,6 +5217,63 @@ but some-times it hurts in-stead.”____
 
 
 # French
+
+### Garou: Sous le vent
+
+From: http://ekladata.com/f-SDu8KCeCsJSBPmrowV6Hu12Vo.pdf
+
+```text
+Et si tu crois que j'ai eu peur
+C'est faux
+Je donne des vacances à mon cœur
+Un peu de repos
+Et si tu crois que j'ai eu tort
+Attends
+Respire un peu le souffle d'or
+Qui me pousse en avant
+Et
+Fais comme si j'avais pris la mer
+J'ai sorti la grande voile
+Et j'ai glissé sous le vent
+Fais comme si je quittais la terre
+J'ai trouvé mon étoile
+Je l'ai suivie un instant
+Sous le vent
+Et si tu crois que c'est fini
+Jamais
+C'est juste une pause, un répit
+Après les dangers
+Et si tu crois que je t'oublie
+Écoute
+Ouvre ton corps aux vents de la nuit
+Et ferme les yeux
+Et
+Fais comme si j'avais pris la mer
+J'ai sorti la grande voile
+Et j'ai glissé sous le vent
+Fais comme si je quittais la terre
+J'ai trouvé mon étoile
+Je l'ai suivie un instant
+Sous le vent
+Et si tu crois que c'est fini
+Jamais
+C'est juste une pause un répit
+Après les dangers
+Fais comme si j'avais pris la mer
+J'ai sorti la grande voile
+Et j'ai glissé sous le vent (j'ai glissé sous le vent)
+Fais comme si je quittais la Terre
+J'ai trouvé mon étoile
+Je l'ai suivie un instant (suivi un instant)
+Fais comme si j'avais pris la mer
+J'ai sorti la grand voile
+Et j'ai glissé sous le vent (j'ai glissé sous le vent)
+Fait comme si je quittais la terre
+J'ai trouvé mon étoile
+Je l'ai suivie un instant (suivi un instant)
+Sous le vent
+Sous le vent
+```
 
 ### Polnareff: 
 
@@ -8400,7 +8986,74 @@ O-el asilo contra la-opresión (x 3)
 ```
 
 
-### Jara: El derecho de vivir en paz
+### Victor Jara: El hombre es un creador (G)
+
+Elevado de un tono para harmonica en G (desde gamma de La)
+From: http://www.musicadechile.org/library/partituras/Victor%20Jara%20Obra%20Completa/10186_el_hombre_es_un_creador.pdf
+Video: https://www.youtube.com/watch?v=3fgMWB0uLdg
+
+```text
+Intro: Peinata
+3 3
+5 5 5 -4 4 | -4 -3 4 | -4 -4 4 -3 | 4 (pause)
+3 3 3 3 -3'' 3 3 (bis)
+
+
+3 3 5 5  -4      4  -4  -3
+Igualito que..otros tantos
+
+4  -4   -4  -4   4    -3 4
+De niño..aprendí..a sudar
+
+3  3 3 3  -3'' 3  3  3
+No conocí las  escuelas
+
+3  3 3  3  -3''    3  3
+Ni supe lo que..es jugar
+
+3  3 5  5  -4 4  -4 -3
+Me sacaban de la cama
+
+4   -4 -4 -4 4  -3 4 4
+Por la mañana  temprano
+
+3     3   -3'  -3   -3 -3 -3''
+Y-al la..í...to--e mi papá
+
+-4  4  -3   -3   -3'' 3  4 4
+Fui creciendo-en el   trabajo
+
+
+Con mi pura habilidad
+Me las di de carpintero
+De estucador y albañil
+De gásfiter y tornero
+Pucha, que sería bueno
+Haber tenido instrucción
+Porque de todo elemento
+El hombre es un creador
+
+Yo le levanto una casa
+O le construyo un camino
+Le pongo sabor al vino
+Le saco humito a la fábrica
+Voy al fondo de la tierra
+Y conquisto las alturas
+Camino por las estrellas
+Y hago surco a la espesura
+
+Aprendí el vocabulario
+Del amo, dueño y patrón
+Me mataron tantas veces
+Por levantarles la voz
+Pero del suelo me paro
+Porque me prestan las manos
+Porque ahora no estoy solo
+Porque ahora somos tantos
+```
+
+
+### Victor Jara: El derecho de vivir en paz
 
 ```text
 -7 -6  6  5  6 -6 -7
