@@ -154,6 +154,26 @@ Parce que 1 = 4 = Do et -1 = -4 = Re
 Note que -2 = +3 = Sol
 
 
+# Jimmy Moriarty
+FromVaudeville: https://www.youtube.com/watch?v=c5ang_QGadM
+
+```text
+ o .
+-6 6 -6 5....
+-4  (wha wha)
+-4 
+6
+7
+8
+
+-4 4 -4 4 5...
+```
+
+# Dede 
+
+
+
+
 ### Vamp, kit de depart (Vaudeville)
 From Vaudeville: https://www.youtube.com/watch?v=h5wPk8PNbbg
 Pense a de l'air chaud, pas de pression
@@ -180,6 +200,3 @@ Dans le doute, tire le 4
 5. La pause de l'ombre = meme rythme avec des notes differentes
 6. Bend come un wuahhh
 7. Whaka: Le Wha est un Who, chaud et profond et creschnedo, a la quebecquois, le ka et du bout des levres et sec a la chiliennes
-
-
-

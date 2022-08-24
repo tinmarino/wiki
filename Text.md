@@ -6,6 +6,7 @@
 * [Getting Things Done](Getting-Things-Done)
 * [Dict-Francais-All](Dict-Francais-All)
 * [Dict Francais Verbes](Dict-Francais-Verbes)
+* [Dict English](Dict-English.md)
 * [Redaction](Redaction)
 
 # Poesie

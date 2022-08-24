@@ -6,7 +6,9 @@
     - [Wind of change](#wind-of-change)
     - [Sinatra: My way](#sinatra-my-way)
     - [Disney: Bare Necessities](#disney-bare-necessities)
+    - [Nei Young: Heart of gold](#nei-young-heart-of-gold)
 - [English](#english)
+    - [Julie Covington: Don't Cry For Me Argentina](#julie-covington-dont-cry-for-me-argentina)
     - [Oh Suzanah](#oh-suzanah)
     - [Oasis: wonderwall](#oasis-wonderwall)
     - [Gloria Gaynor: I will survive](#gloria-gaynor-i-will-survive)
@@ -39,8 +41,9 @@
     - [Simon & Garfunkel: Mrs Robinson](#simon-garfunkel-mrs-robinson)
     - [Simon & Garfunkel: Bridge oveer trouble water](#simon-garfunkel-bridge-oveer-trouble-water)
     - [Simon & Garfunkel: Cecilia](#simon-garfunkel-cecilia)
+    - [Bob Dylan: Masters of war](#bob-dylan-masters-of-war)
     - [Bob Dylan: All Along the Watchtower](#bob-dylan-all-along-the-watchtower)
-    - [Bob Dylan: Mr tamborine man](#bob-dylan-mr-tamborine-man)
+    - [Bob Dylan: Mr tambourine man 1964](#bob-dylan-mr-tambourine-man-1964)
     - [Bob Dylan: Blowing in the wind](#bob-dylan-blowing-in-the-wind)
     - [Bob Dylan: Girl From The North Country (Bb)](#bob-dylan-girl-from-the-north-country-bb)
     - [Bob Dylan: The times, they are changing (G)](#bob-dylan-the-times-they-are-changing-g)
@@ -82,6 +85,7 @@
     - [Stand by me](#stand-by-me)
     - [Adele: someone like you](#adele-someone-like-you)
 - [French](#french)
+    - [Garou: Sous le vent](#garou-sous-le-vent)
     - [Polnareff:](#polnareff)
     - [Eddy Mitchell: Le cmetiere des elephants](#eddy-mitchell-le-cmetiere-des-elephants)
     - [La 7eme compagnie](#la-7eme-compagnie)
@@ -147,7 +151,8 @@
     - [Mercedes Sosa: Solo le pido a Dios](#mercedes-sosa-solo-le-pido-a-dios)
     - [Popular: Cancion de cuna](#popular-cancion-de-cuna)
     - [Chile: Himno](#chile-himno)
-    - [Jara: El derecho de vivir en paz](#jara-el-derecho-de-vivir-en-paz)
+    - [Victor Jara: El hombre es un creador (G)](#victor-jara-el-hombre-es-un-creador-g)
+    - [Victor Jara: El derecho de vivir en paz](#victor-jara-el-derecho-de-vivir-en-paz)
     - [Jaivas: Todos Juntos](#jaivas-todos-juntos)
     - [Los Prisioneros: Tren al sur](#los-prisioneros-tren-al-sur)
     - [Ubiergo: Cafe para Platon](#ubiergo-cafe-para-platon)
@@ -159,150 +164,6 @@
     - [Silvio: Quien fuera](#silvio-quien-fuera)
     - [Silvio: Ojala](#silvio-ojala)
     - [Carlos Puebla: Hasta Siempre Commandante](#carlos-puebla-hasta-siempre-commandante)
-
-#  Contents
-
-- [Selected](#Selected)
-    - [Simon & Garfunkel: The boxer](#Selected#Simon & Garfunkel: The boxer)
-    - [Cohen: Bird on a wire](#Selected#Cohen: Bird on a wire)
-    - [Wind of change](#Selected#Wind of change)
-    - [Sinatra: My way](#Selected#Sinatra: My way)
-    - [Disney: Bare Necessities](#Selected#Disney: Bare Necessities)
-- [English](#English)
-    - [Gloria Gaynor: I will survive](#English#Gloria Gaynor: I will survive)
-    - [Evanescence:  Bring Me To Life](#English#Evanescence:  Bring Me To Life)
-    - [Franki Valli: Can't tke my eyes off you](#English#Franki Valli: Can't tke my eyes off you)
-    - [Dave Brubeck: Take five (Jazz)](#English#Dave Brubeck: Take five (Jazz))
-    - [Disney: A whole new world](#English#Disney: A whole new world)
-    - [River of babylon](#English#River of babylon)
-    - [From the west](#English#From the west)
-    - [Jimmy Fontana: Il mondo](#English#Jimmy Fontana: Il mondo)
-    - [Jimmy fontana: Che sara](#English#Jimmy fontana: Che sara)
-    - [Amazing grace](#English#Amazing grace)
-    - [Cohen: Chesea Hotel](#English#Cohen: Chesea Hotel)
-    - [Cohen: So long mariann](#English#Cohen: So long mariann)
-    - [Cohen: Suzanne](#English#Cohen: Suzanne)
-    - [Cohen: Halleluja](#English#Cohen: Halleluja)
-    - [Cohen: Famous blue raincoat](#English#Cohen: Famous blue raincoat)
-    - [Beatles: All my loving](#English#Beatles: All my loving)
-    - [Beatles: Yesterday](#English#Beatles: Yesterday)
-    - [Beatles: Hey jude](#English#Beatles: Hey jude)
-    - [Beatles: Imagine](#English#Beatles: Imagine)
-    - [Beatles: Across The Universe](#English#Beatles: Across The Universe)
-    - [Beatles: Nowhere Man](#English#Beatles: Nowhere Man)
-    - [Beatles: Yellow submarine](#English#Beatles: Yellow submarine)
-    - [beatles: i want to hold your hand](#English#beatles: i want to hold your hand)
-    - [Take me home](#English#Take me home)
-    - [Simon & Garfunkel: El condor pasa](#English#Simon & Garfunkel: El condor pasa)
-    - [Simon & Garfunkel: Sound of silence](#English#Simon & Garfunkel: Sound of silence)
-    - [Simon & Garfunkel: Mrs Robinson](#English#Simon & Garfunkel: Mrs Robinson)
-    - [Simon & Garfunkel: Bridge oveer trouble water](#English#Simon & Garfunkel: Bridge oveer trouble water)
-    - [Simon & Garfunkel: Cecilia](#English#Simon & Garfunkel: Cecilia)
-    - [Bob Dylan: Mr tamborine man](#English#Bob Dylan: Mr tamborine man)
-    - [Bob Dylan: Blowing in the wind](#English#Bob Dylan: Blowing in the wind)
-    - [Guantanamera](#English#Guantanamera)
-    - [Elvis Presley: Love me tender](#English#Elvis Presley: Love me tender)
-    - [Elvis Presley: Wonder of you](#English#Elvis Presley: Wonder of you)
-    - [Mario](#English#Mario)
-    - [The house of the rising sun](#English#The house of the rising sun)
-    - [Vangelis: Chariot of fire](#English#Vangelis: Chariot of fire)
-    - [Con te partiro](#English#Con te partiro)
-    - [Rocky: Eye of the tiger](#English#Rocky: Eye of the tiger)
-    - [Bowie: The man who sold the world](#English#Bowie: The man who sold the world)
-    - [Nirvana: Smells like teen spirit](#English#Nirvana: Smells like teen spirit)
-    - [Cat Stevens: Morning has broken](#English#Cat Stevens: Morning has broken)
-    - [Cat Stevens: Wild world](#English#Cat Stevens: Wild world)
-    - [Cat Stevens: The first cut](#English#Cat Stevens: The first cut)
-    - [Cat Stevens: The wind](#English#Cat Stevens: The wind)
-    - [Cat Stevens: Father and son](#English#Cat Stevens: Father and son)
-    - [Cat Stevens: Lady d'arbanville](#English#Cat Stevens: Lady d'arbanville)
-    - [Louis Armstrong: What a wonderfull world](#English#Louis Armstrong: What a wonderfull world)
-    - [Tetris](#English#Tetris)
-    - [Hymne russe](#English#Hymne russe)
-    - [Over the rainbow](#English#Over the rainbow)
-    - [Indiana Jones](#English#Indiana Jones)
-    - [Bella ciao](#English#Bella ciao)
-    - [Let it be](#English#Let it be)
-    - [So you think you can tell](#English#So you think you can tell)
-    - [EXERCICES](#English#EXERCICES)
-    - [Bob Marley: Redemption song](#English#Bob Marley: Redemption song)
-    - [Bob Marley: No woman no cry](#English#Bob Marley: No woman no cry)
-    - [Lauper: time after time](#English#Lauper: time after time)
-    - [Lauper: True color](#English#Lauper: True color)
-    - [Lauper: Girls just want to have fun](#English#Lauper: Girls just want to have fun)
-    - [Just the way you are](#English#Just the way you are)
-    - [Wonderwall](#English#Wonderwall)
-    - [Hit the road jack](#English#Hit the road jack)
-    - [Stand by me](#English#Stand by me)
-    - [Adele: someone like you](#English#Adele: someone like you)
-- [French](#French)
-    - [Ennio Morricone: Chi Mey: Le professionnel](#French#Ennio Morricone: Chi Mey: Le professionnel)
-    - [Alain Barriere: Elle était si jolie](#French#Alain Barriere: Elle était si jolie)
-    - [Boris vian: Le deserteur](#French#Boris vian: Le deserteur)
-    - [Richard Antony: J'ettend siffler le train](#French#Richard Antony: J'ettend siffler le train)
-    - [Bruel: Qui a le droit](#French#Bruel: Qui a le droit)
-    - [Micel Berger: Diego](#French#Micel Berger: Diego)
-    - [Yves Duteuil: Prendre un enfant par la main](#French#Yves Duteuil: Prendre un enfant par la main)
-    - [J'avais un camarade](#French#J'avais un camarade)
-    - [Chant des partisants](#French#Chant des partisants)
-    - [Joe Dassin: L'amerique](#French#Joe Dassin: L'amerique)
-    - [Joe Dassin: Si tu n'existait pas](#French#Joe Dassin: Si tu n'existait pas)
-    - [Joe Dassin: Champs elysées](#French#Joe Dassin: Champs elysées)
-    - [La marseillaise](#French#La marseillaise)
-    - [Celine Dion: My heart will go on](#French#Celine Dion: My heart will go on)
-    - [Amant de saint jean](#French#Amant de saint jean)
-    - [Aufray: Steball](#French#Aufray: Steball)
-    - [Le chasseur](#French#Le chasseur)
-    - [Le sud](#French#Le sud)
-    - [Sardou: Je vais t'aimer](#French#Sardou: Je vais t'aimer)
-    - [Goldman: Comme toi](#French#Goldman: Comme toi)
-    - [Goldman: Ensemble](#French#Goldman: Ensemble)
-    - [Renaud: Des que le vent soufflera](#French#Renaud: Des que le vent soufflera)
-    - [Renaud: Un oranger](#French#Renaud: Un oranger)
-    - [Renaud: Pierrot](#French#Renaud: Pierrot)
-    - [Francaise: A la claire fontaine](#French#Francaise: A la claire fontaine)
-    - [Gilbert: L'eau vive](#French#Gilbert: L'eau vive)
-    - [Soldat Louis: Oh mama Oh](#French#Soldat Louis: Oh mama Oh)
-    - [Soldat Louis: Du rhum des femmes](#French#Soldat Louis: Du rhum des femmes)
-    - [Soldat Louis: Soldat Louis](#French#Soldat Louis: Soldat Louis)
-    - [Soldat Louis: Bohemien](#French#Soldat Louis: Bohemien)
-    - [Soldat Louis: Encore un rhum](#French#Soldat Louis: Encore un rhum)
-    - [Alain Souchon: Bidon](#French#Alain Souchon: Bidon)
-    - [Charles Aznavour: Ma Bohème](#French#Charles Aznavour: Ma Bohème)
-    - [Salvador Adamo: Inch Allah](#French#Salvador Adamo: Inch Allah)
-    - [Brassens: Les copains d'abord](#French#Brassens: Les copains d'abord)
-    - [Brassens: Auvergnat](#French#Brassens: Auvergnat)
-    - [Brassens: Mauvaise reputation](#French#Brassens: Mauvaise reputation)
-    - [Renaud: Mistral gagnant](#French#Renaud: Mistral gagnant)
-    - [Je vais taimer](#French#Je vais taimer)
-    - [Jeanne Moreau](#French#Jeanne Moreau)
-    - [La java bleu](#French#La java bleu)
-    - [TODO AU CAFÉ DU CANAL -](#French#TODO AU CAFÉ DU CANAL -)
-    - [Le jazz et la java (C. nougaro)](#French#Le jazz et la java (C. nougaro))
-    - [La vie en rose](#French#La vie en rose)
-    - [Le lion est mort ce soir](#French#Le lion est mort ce soir)
-    - [TODO Il jouai du piano debout (France Gall)](#French#TODO Il jouai du piano debout (France Gall))
-    - [Claude Nougaro: Amstrong](#French#Claude Nougaro: Amstrong)
-- [Spanish](#Spanish)
-    - [Manuel Garcia: Un viejo comunista](#Spanish#Manuel Garcia: Un viejo comunista)
-    - [Manuel Garcia: Danza de la Libelulas](#Spanish#Manuel Garcia: Danza de la Libelulas)
-    - [Violeta Para: Run Run se Fue Pa'l Norte](#Spanish#Violeta Para: Run Run se Fue Pa'l Norte)
-    - [Vicentico: Los caminos de la vida](#Spanish#Vicentico: Los caminos de la vida)
-    - [Mercedes Sosa: Solo le pido a Dios](#Spanish#Mercedes Sosa: Solo le pido a Dios)
-    - [Popular: Cancion de cuna](#Spanish#Popular: Cancion de cuna)
-    - [Chile: Himno](#Spanish#Chile: Himno)
-    - [Jara: El derecho de vivir en paz](#Spanish#Jara: El derecho de vivir en paz)
-    - [Jaivas: Todos Juntos](#Spanish#Jaivas: Todos Juntos)
-    - [Los Prisioneros: Tren al sur](#Spanish#Los Prisioneros: Tren al sur)
-    - [Ubiergo: Cafe para Platon](#Spanish#Ubiergo: Cafe para Platon)
-    - [Ubiergo: El tiempo en las bastillas](#Spanish#Ubiergo: El tiempo en las bastillas)
-    - [Illapu : Lejos del amor](#Spanish#Illapu : Lejos del amor)
-    - [Illapu : Candome para José](#Spanish#Illapu : Candome para José)
-    - [Silvio Rodriguez: Rabo de nuve](#Spanish#Silvio Rodriguez: Rabo de nuve)
-    - [Silvio Rodriguez: Unicornio](#Spanish#Silvio Rodriguez: Unicornio)
-    - [Silvio: Quien fuera](#Spanish#Silvio: Quien fuera)
-    - [Silvio: Ojala](#Spanish#Silvio: Ojala)
-    - [Carlos Puebla: Hasta Siempre Commandante](#Spanish#Carlos Puebla: Hasta Siempre Commandante)
 
 # Selected
 
@@ -752,8 +613,6 @@ From: https://www.youtube.com/watch?v=_n1AvLoEEKY
 7 7 6 6 5 5 4 4 / 4 -4 4 -4 5 5.. -4 4..
 
 
-
-
 From: https://www.harptabs.com/song.php?ID=13137
 Song: 	This tab is for the studio recording released on the Harvest album
 from '72. The tab is based on the version from gatman. I changed most
@@ -991,7 +850,7 @@ with a ban-jo on my knee
 -5 -5 -6  -6  
 Oh su-san-na, 
 
--6   6         6   5   4  -4
+-6   6    6   5   4  -4
 now don't you cry for me
 
 4 -4 5 6  6  -6  6  5  4  
@@ -1946,6 +1805,25 @@ Sincerely, L. Cohen
 ```
 
 
+### Beatles: Love me do
+
+```text
+-5V 5V -4  | -2W -2W -2W -2W
+    .  .    . . 
+-5 -5 -5  5 5 5 -4    -2 -2 -2 -2
+
+-5V 5V -4  | -2W -2W -2W 4 -3
+
+-2 -2 -2 -2 -2 4 -3
+
+ 
+ -4    -4   5  6   4   -4 -4   5   6
+Love, love me do, you know I love you.
+  4  -4 -4   5   6   -5  6 -5  5   6   | 3   3 -5 | 5   -4  -5   5  5
+-4
+I'll always be true, so ple e  e  ese  |love me do, wo -oh love me do.
+```
+
 ### Beatles: All my loving
 
 ```text
@@ -2301,7 +2179,7 @@ i wan-na hold your hand
 ```
 
 
-### Take me home 
+### John Denver: Take me home 
 
 ```text
 
@@ -2969,8 +2847,6 @@ Solo 4 (2:20)
 Solo 5 (3:03 to fade out)
 6 6 6 -8 8 8 -9 8 -8 8
 9  9 9  -10 9 7 -8 8 -8 9
-
-
  
  4    4  4     4    4  4
 Come gather 'round people
@@ -3341,6 +3217,41 @@ for i can't help fall-ing in love with you.
 ### The house of the rising sun 
 
 ```text
+ -4   -4  5   -5    -6   6  -4 -5 
+There is  a  house  in  New Orleans, 
+ -8   -8  -8  7-6 6  -6
+They call the Rising Sun. 
+-6   7    -8  -8   7   -6  6  -5 -4   -4
+And it's been the ruin of many a poor boy, 
+  4       -4        4         4         -5  5     -4
+And God, I  know  I'm one.
+
+---
+
+Tabbed on a D diatonic
+
+ -4   -4 5  -5   -6  6  -4  -4
+ -1   -1 2  -2�  -3� -2 -1  -1 
+There is a house in New Or-leans 
+
+-4    -8  -6   7  -6  -6
+-1    -4  -3�  4  -3� -3� 
+They call the Ris-ing Sun. 
+
+ 6   -8   -8  -6  7  -6
+-2   -4   -4  -3� 4 -3�
+And it's been the ru-in 
+
+-4  6 -4 -4 -5  -4
+-1  3 -1 -1 -2� -1
+of man-y a poor boy 
+
+-4  -4  -6  6  -5  -4
+-1  -1 -3� -2  -2� -1
+And me, I know I'm one.  
+
+---
+
 5   -6  -7   7    8   -8   -6  -6 
 There is  a  house  in  New Orleans,
 -10  -10 -10   9  8   8
@@ -6780,15 +6691,18 @@ Nous nous en aillerons
 ### Renaud: Un oranger 
 
 ```text
--1 -2 -3'' -3
--3'' -2 +2 -1
--2 +3 -2' -2
--3'' -3 +4  -3 -3''
+ i     i     i     i
+ A     A     O     A
+-----------------------
+-1    -2    -3''  -3
+-3''  -2     2    -1
+-2     3    -2'   -2
+-3''  -3     4    -3    -3''
 
--3'' -3 +4 -4
-+4 -3 -3''  -2 -3
--3'' -2 +2 -1
--2 +3 -3'' -2
+-3''  -3     4    -4
+ 4    -3    -3''  -2    -3
+-3''  -2     2    -1
+-2     3    -3''  -2
 
 6   7   -8  +8
 -8  +7  -6  6
@@ -9652,4 +9566,84 @@ la entrañable transparencia,
 de tu querida presencia,
 -6 6 -5 4 4 -4 -5 5
 Comandante Che Guevara.
+```
+
+
+### Victor Heredia: Sobreviviendo
+
+```text
+
+SOBREVIVIENDO
+
+
+Armónica en Do
+
+7: soplar la nota
+(6): aspirarla
+
+
+
+
+ 7   7 7(7)(7) (6)(6) (6)6 6   6   (6) 6 (6)(6)
+Me preguntaron  como   vivía, me  preguntaron
+
+  6 6  5 6 5   6 6   5 6 (6) 6 (4)
+sobreviviendo dije, sobreviviendo
+
+ 7  7   7(7)(7)  (6)(6)  6  (6) 6  (6)(6)
+Tengo un poema escrito  mas de mil veces
+
+5  6   5 6 5    6  6   5    6 (6)   6  (4)
+en el repito  siempre que mientras alguien
+
+(6) 7  7   (6) 6   6 (6)  (8)   7 (6)
+proponga  muerte  sobre  esta  tierra
+
+7  7  7 (7)(7)  (6)(6)   (6)6 (6)  6  5
+y se fabriquen  armas   para  la  guerra
+
+ 6    6 6 6   6    6  6   6 (7)(8)7(6)
+Yo   pisaré estos campos sobreviviendo
+
+ 7 7   (6)  7   (6)7 7    (6)7(6)6 5
+todos frente al peligro  sobreviviendo
+
+  6  6  6   6   6   6  6    6 (7)(8)7(6)
+tristes y errantes hombres sobreviviendo
+
+ 7 7 (6) 6 5    6 (7)(8)7 (6)  7 7 (6) 6  5
+Sobreviviendo, sobreviviendo, sobreviviendo,
+
+ 6 (7)(8)7(6)
+Sobreviviendo.
+
+
+
+
+(Continúa igual)
+
+
+Hace tiempo no río, como hace tiempo
+y eso que yo reía como un jilguero
+Tengo cierta memoria que me lastima
+y no puedo olvidarme lo de Hiroshima
+cuanta tragedia sobre esta tierra
+Hoy no quiero reirme apenas si puedo
+ya no tengo la risa como un jilguero
+ni la paz de los pinos del mes de enero
+Ando sobre este mundo sobreviviendo,
+Sobreviviendo, sobreviviendo.......
+
+
+Ya no quiero ser sólo un sobreviviente
+quiero elegir el día para mi muerte
+tengo la carne jóven roja la sangre
+la dentadura buena y mi esperna urgente
+quiero la vida de mi simiente
+no quiero ver un día manifestando
+por la paz en el mundo a los animales
+como me reiría eso loco día
+ellos manifestándose por la vida
+y nosotros apenas sobreviviendo,
+sobreviviendo, sobreviviendo......
 ```
