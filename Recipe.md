@@ -38,6 +38,7 @@
 
 * Aceite de oliva + ajo
 * Tomates peladas
+*
 
 Todo lento (no quemes el ajo que es solo para dar sabor al aceite)
 
@@ -84,6 +85,7 @@ Apres la derniere etape, peut parfumer a convenace:
 * Poid chiche (300g)
 * Tahin (3 cuillere a soupe)
 * Citron (1/2)
+* Huile d'olive
 * Opt: Ail
 * Opt: Cumin
 * Opt: Sel
@@ -91,10 +93,10 @@ Apres la derniere etape, peut parfumer a convenace:
 
 1. Laver les poids chiche
 2. Mixer les poids chiche, ajouter un peu d'eau (eau de cuisson pour plus de saveur)
-3. Ajouter tahin, citron, cumin, sel
+3. Ajouter tahin, citron, cumin, sel, huile a volonté
   * Opt: Ajouter ail  # mais Rocío n'aime pas et ça pourri plus vite
 4. Incorporer l'huile d'olive tout en mixant => texture homgene et crémeuse
-5. Opt: Couvrir d'huile de sesame et de cumin
+5. Opt: Couvrir d'huile de sesame et de oa piprica (ou graine de sesame)
 
 
 # Gyoza
@@ -105,6 +107,7 @@ Apres la derniere etape, peut parfumer a convenace:
 * Beans (150g)
 * Tofu (150g)
 * Carrot (100g)
+* Champignon
 * Huile de tournesol
 
 * Ginger (1 teaspoon)
@@ -112,7 +115,7 @@ Apres la derniere etape, peut parfumer a convenace:
 * Oyster sauce (1 table spoon)
 * Sugar (1/2 teaspoon)
 
-1. Frire le gingembre puis carrote, tofu, bean, choux => 5 a 10 min
+1. Frire le gingembre puis carrote, tofu, bean, choux, champignons => 5 a 10 min
 2. Assaisoner avec: sel,sauce soja, sauce huitre, sucre
   * Opt: sauce mushroom
 3. Mixer le tout => pas de gros morceaux (arreter bien avant que ce soit de la purée)
@@ -133,6 +136,7 @@ Apres la derniere etape, peut parfumer a convenace:
 
 * Eau 325 ml
 * Sel 5g
+* Aceite oliva 1g 
 
 1. Melanger farine et sel, Levure fraiche et 1/2 d'eau
 2. Vercer la levure fraiche et progressivement l'eau dans la farine, remuer jusqu'à obtention de la pate
