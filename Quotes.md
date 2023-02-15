@@ -126,6 +126,9 @@ Et de tous vos défauts les zélés adversaires. (Art po, Chant 1)
 
 * L'espérance, c'est de croire que la vie a un sens. (Abbé Pierre)
 	
+* Plus nous nous élevons et plus nous paraissons petits à ceux qui ne savent pas voler. (Friedrich Nietzsche)
+  * The higher we rise, the smaller we appear to those who cannot fly.
+
 
 # Truth
 

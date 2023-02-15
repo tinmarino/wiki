@@ -1,11 +1,10 @@
 ## Software
   * [Linux](Linux)
-    * [Sixel](Sixel.md)
-    * [Alias](Alias)
     * [Bash](Bash)
     * [Vim](Vim)
     * [Tmux](Tmux)
     * [Fzf](Fzf.md)
+    * [Alias](Alias)
     * [Script](Script.md)
   * [Windows](Windows)
     * [Powershell](Powershell)
@@ -59,6 +58,7 @@
 
 
 ## Science
+  * [Picturing](Picturing.md)
   * [Physics](Physics)
   * [Math](Math)
   * [Communication](Communication)
@@ -70,6 +70,7 @@
 ## Misc
   * [Text](Text)
   * [Recipe](Recipe.md)
+  * [Voyage](Voyage.md)
   * [Dumps](Dumps.md)
   * [Sport](Sport)
   * [Cheats](Cheats)

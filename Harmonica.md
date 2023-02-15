@@ -1410,6 +1410,23 @@ Che sarà sarà
 
 ### Amazing grace 
 
+From: https://www.youtube.com/watch?v=tl7p_oFr-zU
+
+En 2eme position majeure (de sol pousse 6 a sol pousse 9)
+
+```
+-4 5
+G                  G           G          G
+| 6 * * (-7 -6 6)  | -7 * * -6 | 6 * * 5  | -4 * * (-4 5) |
+G                  G           D          D
+| 6 * * (-7 -6 6)  | -7 * * -7 | -8 * * * | -4 -4 -4 (-8 8) |
+G                  G           G          G
+| -7 * * (-7 -6 6) | -7 * * -6 | 6 * * 5  | -4 * * (-4 5) |
+G                  G      D    G          G
+| 6 * * (-7 -6 6)  | -7 * -6 * | 6 * * *  | * * * (-4 5) |
+```
+
+
 ```text
  7 8 -8 7 8        -8    7   -6    6
 Amazing    Grace! How sweet the sound
@@ -4314,7 +4331,6 @@ Ex. N
 ### Bob Marley: Redemption song
 
 ```text
-
 (
 4  -4  5  4    -5  -6  6   5
 
@@ -5128,6 +5144,12 @@ but some-times it hurts in-stead.”____
 
 
 # French
+
+### Gainsbourg: La chanson de Prevert
+
+```text
+```
+
 
 ### Garou: Sous le vent
 

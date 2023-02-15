@@ -104,6 +104,14 @@ test_is_alma(){
 ```
 
 
+# One line
+
+```
+printf -v timestamp '%(%Y-%m-%dT%H:%M:%S)T'
+local timestamp=$(date '+%Y-%m-%dT%H:%M:%S.%3N')
+```
+
+
 # Function
 
 ```bash

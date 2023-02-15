@@ -138,19 +138,22 @@ export CFLAGS='-O2'
             --enable-cscope \
             --enable-fail-if-missing \
             --enable-largefile \
-            --enable-luainterp \
             --enable-multibyte \
             \
-            --enable-perlinterp=dynamic \
             --enable-python3interp=dynamic \
             --with-python3-config-dir=$(python3-config --configdir) \
             --enable-rubyinterp=dynamic \
-            --with-ruby-command=$(which ruby) \
             --with-luajit \
             \
             --enable-gui=gtk3 \
             \
             --with-compiledby="Tinmarino" \
+            
+            
+            
+            [enable perlinterp](--enable-perlinterp.md)=dynamic \
+            --enable-luainterp \
+            --with-ruby-command=$(which ruby) \
 ```
 
 

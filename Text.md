@@ -24,6 +24,7 @@
 * [Regles Expeditionnaire](Regles-Expeditionnaire)
 * [Principle_of_war](Principle_of_war)
 * [TaoTeKing](TaoTeKing)
+* [TaoTeChing_English](TaoTeChing_English.md)
 * [Hymne Algerien](Hymne-Algerien)
 * [Coran_en_ouvrant_le](Coran_en_ouvrant_le)
 * [Coran_Comparatif_Traductions](Coran_Comparatif_Traductions)

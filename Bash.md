@@ -4,17 +4,28 @@
 [Bash Rc](Bash-Rc)
 [Bash_Snippet](Bash_Snippet.md)
 [Bash_Cheatsheet](Bash_Cheatsheet.sh)
+[Bash_Quizz](Bash_Quizz.md)
+[Bash_Dump](Bash_Dump.md)
 
 
 ```bash
-https://codegolf.stackexchange.com/questions/28786/write-a-program-that-makes-2-2-5
+# Repeat string
+printf '=%.0s' {1..100}
 
-# List process attached to tty (showed by w)
-ps -ft pts/3 
+# Array map append to each elt (and prepend)
+array=( "${array[@]/%/_content}" )
+array=( "${array[@]/#/prefix_}" )
 
 # Remove duplicate lines while keeping the order of the lines
 # From https://unix.stackexchange.com/questions/194780/remove-duplicate-lines-while-keeping-the-order-of-the-lines
 cat -n out.txt | sort -k2 -k1n  | uniq -f1 | sort -nk1,1 | cut -f2-
+
+# Replace recursive
+find . -type f -print0 | xargs -0 sed -i -e 's/foo/bar/g'
+
+# List process attached to tty (showed by w)
+ps -ft pts/3 
+pkill -t pts/1
 
 newline_separated=${space_separated// /$'\n'}
 
@@ -25,8 +36,7 @@ compgen -k # will list all the keywords you could run.
 compgen -A function # will list all the functions you could run.
 compgen -A function -abck # will list all the above in one go.
 
-# Replace recursive
-find . -type f -name "*.txt" -print0 | xargs -0 sed -i -e 's/foo/bar/g'
+https://codegolf.stackexchange.com/questions/28786/write-a-program-that-makes-2-2-5
 
 # Cat all file with filename
 tail -n +1 file1.txt file2.txt file3.txt

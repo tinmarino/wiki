@@ -19,6 +19,7 @@
 * [Docker](Docker)
 * [Jenkins](Jenkins.md)
 * [Make](Make)
+* [Sixel](Sixel.md)
 
 
 # Program
