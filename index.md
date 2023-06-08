@@ -6,9 +6,12 @@
     * [Fzf](Fzf.md)
     * [Alias](Alias)
     * [Script](Script.md)
+  * [Cloud](Cloud.md)
   * [Windows](Windows)
     * [Powershell](Powershell)
     * [Batch](Batch)
+  * [Lexicon](Lexicon.md)
+  * [Regex](Regex.md)
 
 
 ## Language
@@ -21,10 +24,12 @@
   * [Js](Js)
   ### Compiled
   * [C](C)
+  * [Cpp](Cpp.md)
   * [Java](Java)
   * [Rust](Rust)
   * [Cmake](Cmake)
   * [Assembly](Assembly)
+  * [Haskell](Haskell.md)
   ### Markup
   * [Css](Css)
   * [Html](Html)
@@ -34,11 +39,12 @@
   * [Dot](Dot)
   * [Sql](Sql)
   ### Algorithm
+  * [Interview](Interview.md)
+  * [Algorithm](Algorithm)
   * [Paradigm](Paradigm-Programming)
   * [BigData](BigData)
   * [Coding Style](Coding-Style)
   * [Regex Collection](Regex-Collection)
-  * [Algorithm](Algorithm)
   * [System Design](System-Design)
   * [Design Pattern](Design-Pattern)
 
@@ -70,6 +76,7 @@
 ## Misc
   * [Text](Text)
   * [Recipe](Recipe.md)
+  * [ChatGPT](ChatGPT.md)
   * [Voyage](Voyage.md)
   * [Dumps](Dumps.md)
   * [Sport](Sport)

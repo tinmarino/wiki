@@ -1,3 +1,19 @@
+# Quickstart
+
+```bash
+echo "from ubuntu:latest" > dockerfile_bash
+docker build -t bash_image -f dockerfile_bash .
+docker run -it --name=bash_container bash_image
+docker restart bash_container
+docker exec -it bash_container bash 
+docker cp bash_test.sh bash_container:bash_test.sh
+
+docker container ls -a
+docker ps -a
+```
+
+
+
 
 ## Tips
 
@@ -8,6 +24,24 @@
 ```bash
 docker rm $(docker ps -a -q)
 docker rmi $(docker images -q)
+```
+
+### Tip: Keep alive
+
+From: https://stackoverflow.com/questions/29599632/container-is-not-running
+```bash
+docker pull debian
+
+docker run -t -d --name my_debian debian
+e7672d54b0c2
+
+docker ps -a
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+e7672d54b0c2        debian              "bash"              3 minutes ago       Up 3 minutes                            my_debian
+
+#now you can execute command on the container
+docker exec -it my_debian bash
+root@e7672d54b0c2:/# 
 ```
 
 ## Docker vs chroot

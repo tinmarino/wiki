@@ -1,3 +1,5 @@
+* Etre sa propre solution leur pose bien des problemes (David Goudreault)
+
 * La intolerancia determina fronteras (Michael Byrne Ibarra)
 
 * Là où croit le peril, croit aussi ce qui sauve (Holderlin)

@@ -1,0 +1,6 @@
+* "Attention Is All You Need" (Vaswani et al., 2017)
+* "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding" (Devlin et al., 2018)
+* "GPT-2: Language Models are Unsupervised Multitask Learners" (Radford et al., 2019)
+* "XLNet: Generalized Autoregressive Pretraining for Language Understanding" (Yang et al., 2019)
+* "GShard: Scaling Giant Models with Conditional Computation and Automatic Sharding" (Dai et al., 2020)
+* "Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity" (Fedus et al., 2021)

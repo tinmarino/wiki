@@ -6,6 +6,8 @@
 * $2 word being completed
 * $3 is the word preceding the word being completed
 
+shell-expand-line (M-C-e)
+M-C-e would typically be Esc Ctrl+e or Alt+Ctrl+e.
 
 showkey -a
 C-Space => Set mark

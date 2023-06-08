@@ -69,6 +69,14 @@ for (type i : arr) {
 repeated = new String(new char[n]).replace("\0", s);
 // Repeat string java 11
 "a".repeat(3)
+
+Method method = foo.getClass().getMethod("doSomething", null);
+method.invoke(foo, null);
+
+// Unicode length
+String str = "Hello\uD83D\uDE00World"; // String with a smiley face emoji
+int length = str.length(); // Returns 12
+int codePointCount = str.codePointCount(0, str.length()); // Returns 11
 ```
 
 

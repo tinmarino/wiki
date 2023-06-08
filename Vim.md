@@ -19,6 +19,14 @@ command! -register CopyMatches call CopyMatches(<q-reg>)
 g/^\w/s/^\([a-zA-z0-9-/]\+\)\s\+\t\(.*\)\s*\t.*/| \1 | \2|/
 g/^\w/s/^\([a-zA-z0-9-/]\+\)\s*\t\(.*\)\t.*/| \1 | \2|/
 
+" Tip from Brennen in https://github.com/vimwiki/vimwiki/issues/1291
+" hit ,S to debug current syntax highlighting groups
+" https://vim.fandom.com/wiki/Identify_the_syntax_highlighting_group_used_at_the_cursor
+"
+map <Leader>S :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
 nnoremap <silent> <leader><space> :execute 'silent! update'<Bar>Files<CR>
 tmux unbind -T copy-mode-vi MouseDragEnd1Pane
 vim pre.md  +'redir! > cmds | sil com Vimwiki' +q && cut -b5- cmds | cut -d ' ' -f 3
@@ -115,6 +123,7 @@ export CFLAGS='-g -gdwarf4 -DDEBUG -O0 -fno-omit-frame-pointer'
 export MAKE_PARS='-j 28 '; export LC_CTYPE=en_US.UTF-8; export MAKE_NOSTATIC=yes; export MAKE_NOIFR_CHECK=on;
 export CFLAGS='-O2'
 #export LDFLAGS='-static -lxcb -lX11'
+
 ./configure \
             --with-features=huge \
             --with-x=yes \
@@ -128,7 +137,7 @@ export CFLAGS='-O2'
             --enable-python3interp=dynamic \
             --with-python3-config-dir=$(python3-config --configdir) \
             \
-            --with-compiledby="Tinmarino" \
+            --with-compiledby="Tinmarino"
 
 ./configure \
             --with-features=huge \
@@ -138,22 +147,19 @@ export CFLAGS='-O2'
             --enable-cscope \
             --enable-fail-if-missing \
             --enable-largefile \
+            --enable-luainterp \
             --enable-multibyte \
             \
+            --enable-perlinterp=dynamic \
             --enable-python3interp=dynamic \
             --with-python3-config-dir=$(python3-config --configdir) \
             --enable-rubyinterp=dynamic \
+            --with-ruby-command=$(which ruby) \
             --with-luajit \
             \
             --enable-gui=gtk3 \
             \
             --with-compiledby="Tinmarino" \
-            
-            
-            
-            [enable perlinterp](--enable-perlinterp.md)=dynamic \
-            --enable-luainterp \
-            --with-ruby-command=$(which ruby) \
 ```
 
 
@@ -217,6 +223,7 @@ echo "elapsed time:" reltimestr(reltime(start_time))
 
 ### Vim as hex interpreter
 vim -s -e '<cmd>'
+
 * s for silent
 * e for ex mode
 * -V1 for verbose (to see errors)

@@ -8,6 +8,7 @@
 * [Negative Regex](V-negative-regex) : Tips for negate searching
 * [Tips](Tips) : advanced commands
 * [Vim Dump](Vim-Dump.md)
+* [Vim Trash](Vim-Trash.md)
 
 ## Cheats
 

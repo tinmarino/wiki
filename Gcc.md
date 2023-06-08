@@ -1,3 +1,12 @@
+```bash
+# Print include path
+g++ -E -x c++ - -v < /dev/null 
+g++ -E -x c - -v < /dev/null 
+* -E: stop after preprocessing
+* -x language
+* -v verbose
+```
+
 * Assemble
 	* gcc file.c -masm=intel -S -o file.d # assemble
 	* gcc -c file.s -i file.o # compile

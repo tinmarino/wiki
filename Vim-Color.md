@@ -9,6 +9,7 @@
 6. neverland-darker (nice idea to hi curent cursor line number)
 7. solarized8
 8. dracula
+9. ayu
 
 # From me
 

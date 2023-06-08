@@ -26,9 +26,14 @@ setw synchronise-panes  # gives us is that it simultaneously sends keyboard inpu
 
 ### Pane to new Windows == break pane o
 
-    join-pane -s
-    join-pane -t
-    break-pane   (!)
+    
+```tmux
+tmux join-pane -s 2 -t 1 
+tmux join-pane -hs 2  # To join pane 2 vertically (counter-intuitive) here
+join-pane -s
+join-pane -t
+break-pane   (!)
+```
     
     
 ### Vertical to horizontal

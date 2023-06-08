@@ -853,10 +853,4 @@ awk '/^num/ {n++;sum+=$2} END {print n?sum/n:0}' file
 ```
 
 
-
-
-
-
-
-
 </section>

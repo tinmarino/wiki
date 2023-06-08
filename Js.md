@@ -1,5 +1,6 @@
 * [Js Fuck](Js-Fuck)
 * [Js Security](Js-Security)
+* [Js Dump](Js-Dump.md)
 
 
 # Cheat

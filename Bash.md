@@ -1,14 +1,15 @@
-% BASH Bourne Again SHell
-
-[Bash HackerRank](Bash-HackerRank)
-[Bash Rc](Bash-Rc)
-[Bash_Snippet](Bash_Snippet.md)
-[Bash_Cheatsheet](Bash_Cheatsheet.sh)
-[Bash_Quizz](Bash_Quizz.md)
-[Bash_Dump](Bash_Dump.md)
+* [Bash HackerRank](Bash-HackerRank)
+* [Bash Rc](Bash-Rc)
+* [Bash_Snippet](Bash_Snippet.md)
+* [Bash_Cheatsheet](Bash_Cheatsheet.sh)
+* [Bash_Quizz](Bash_Quizz.md)
+* [Bash_Dump](Bash_Dump.md)
 
 
 ```bash
+# Sed colorize
+echo "color test" | sed 's,color,\x1b[31m&\x1b[0m,'
+
 # Repeat string
 printf '=%.0s' {1..100}
 
@@ -91,7 +92,7 @@ value=$(<config.txt)
 # Fork a pipe
 echo "Hello world." | tee >(sed 's/^/1: /')  >(sed 's/^/2: /') >/dev/null
 # Fork a pipe bis: more sophisticated
-echo "Hello world." | tee >(md5sum | tee out1 | sed 's/^/md5 : /') >(sha1sum | tee out2 | sed 's/^/sha1: /') > out3
+echo "Hello world." | tee >(md5sum | tee out1 | sed 's/^/md5 : /') >(sha1sum | tee out2 | sed 's/^/sha1: /') > /dev/null
 # For a pipe posix compliant
 ( # 6
 ( # 5
@@ -251,8 +252,6 @@ echo
 
 ```
 
-~/Software/Bash
-$ toto a1 a2 a3
 # Tutorial LinkedIn
 
 * `unset` variable
@@ -274,12 +273,22 @@ $ toto a1 a2 a3
 
 ### Mnemonic
 
-* `tee` for T intersection
+* `tee` for T intersection, T pipe fitting (plumbing device)
+* tr translate
+* fd D file descriptors (as in /dev/fd)
+* dev D devices
+* diff C difference
+* dd C (opinions 3-n) data, device, disk, dump in various combinations
+* bc C better calculator
+* awk C Aho, Weinberger, Kernighan (program authors)
+* bash C Bourne again shell
+* sed Stream EDitor
 * `cat` for concatenate
 * `tac` for cat upside down
+* `xargss execute a command with many arguments
 
 
-# Commpletion
+# Completion
 
 * `complete -p` : list 
 * bind 'set show-all-if-ambiguous on'
@@ -464,3 +473,8 @@ TAB: menu-complete
 	cd ~2 is /Project/Warnest/docs/  
 
 	You can use ~1,~2 etc in exactly the same way as
+
+
+# Link
+
+* Turn off buffereing with stdbuf: https://unix.stackexchange.com/questions/25372/turn-off-buffering-in-pipe

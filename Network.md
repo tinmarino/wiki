@@ -1,12 +1,14 @@
-# Protocol layers
+# OSI Protocol layers
 
-1. Physical : cable
-2. Link : MAC data
-3. Network : IP
-4. Transport : TCP | UDP
-5. Session
-6. Presentation
-7. Application
+| N | Name         | Ex    | Description |
+| - | ---          | ---   | --- |
+| 7 | Application  | HTTP  | Ensure app are working |
+| 6 | Presentation | TLS   | Crypt and Compress |
+| 5 | Session      | TLS   | Open and close communcations: sessions and ports |
+| 4 | Transport    | TCP   | Transmit data: segments |
+| 3 | Network      | IP    | Decide the physical path: packet, routes: VLAN |
+| 2 | Link         | MAC   | Define the format of data into frames: switch, brigdes, VRF |
+| 1 | Physical     | cable | Transmit Raw bytes |
 
 
 # Unbound : DNS server

@@ -3,6 +3,14 @@
 # Tips
 
 ```bash
+# Git reset --hard without checkout, in only one 
+https://stackoverflow.com/questions/5471174/move-branch-pointer-to-different-commit-without-checkout
+git branch --force <branch-name> [<new-tip-commit>]
+git branch -f myBranch
+git switch -C <branch-name> [<start-point>]
+
+
+
 fgl OBOPS/obops-utils/pom.xml  # Cutom fzf_git_log
 gitk [filename]  # View the change history of a file using Git versioning
 gitk --follow [filename]

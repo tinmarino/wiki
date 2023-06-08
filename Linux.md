@@ -20,6 +20,8 @@
 * [Jenkins](Jenkins.md)
 * [Make](Make)
 * [Sixel](Sixel.md)
+* [Syscall](Syscall.md)
+* [Shell](Shell.md)
 
 
 # Program

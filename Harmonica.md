@@ -4331,6 +4331,7 @@ Ex. N
 ### Bob Marley: Redemption song
 
 ```text
+
 (
 4  -4  5  4    -5  -6  6   5
 
@@ -5144,12 +5145,6 @@ but some-times it hurts in-stead.”____
 
 
 # French
-
-### Gainsbourg: La chanson de Prevert
-
-```text
-```
-
 
 ### Garou: Sous le vent
 
