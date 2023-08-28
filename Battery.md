@@ -1,9 +1,9 @@
 [Battery script example 1](Battery-script-example-1.md)
 
 ```bash
-for ((i=9;i<16;i++)); do echo 0 | sudo dd of=/sys/devices/system/cpu/cpu$i/online; done
+for ((i=4;i<16;i++)); do echo 0 | sudo dd of=/sys/devices/system/cpu/cpu$i/online; done
 for ((i=0;i<16;i++)); do echo 1 | sudo dd of=/sys/devices/system/cpu/cpu$i/online; done
-cat /sys/devices/system/cpu/cpu*/online
+tail -n +1 /sys/devices/system/cpu/cpu*/online
 
 for i in 0..16; do sudo cpufreq-set -c $i -g powersave; done
 cpufreq-info | sed 's/current CPU frequency.*/\x1b[31m&\x1b[0m/'

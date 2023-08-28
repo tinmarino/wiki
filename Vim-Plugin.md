@@ -260,3 +260,121 @@ Warning: It overwrites the: <<C-R> -> pretty annoying
 
 https://github.com/houtsnip/vim-emacscommandline
 
+# My gitmodules in 2023
+
+When I started using Vim-Plug
+
+```
+https://github.com/junegunn/gv.vim
+https://github.com/scop/bash-completion
+https://github.com/jpalardy/vim-slime
+https://github.com/tinmarino/vim-almasw
+https://github.com/neoclide/coc.nvim
+https://github.com/ryanoasis/vim-devicons
+https://github.com/Xuyuanp/nerdtree-git-plugin
+https://github.com/kana/vim-submode
+https://github.com/farmergreg/vim-lastplace
+https://github.com/christoomey/vim-tmux-navigator
+https://github.com/junegunn/fzf
+https://github.com/junegunn/fzf.vim
+https://github.com/chrisbra/unicode.vim
+https://github.com/ycm-core/YouCompleteMe
+https://github.com/tinmarino/vim-color
+https://github.com/junegunn/vader.vim
+https://github.com/Raku/vim-raku
+https://github.com/kana/vim-textobj-user
+https://github.com/kana/vim-textobj-function
+https://github.com/tpope/vim-sleuth
+https://github.com/cohama/lexima.vim
+https://github.com/dense-analysis/ale
+https://github.com/mbbill/undotree
+https://github.com/tpope/vim-repeat
+https://github.com/chrisbra/Colorizer.git
+git://github.com/honza/vim-snippets.git
+https://github.com/itchyny/calendar.vim
+https://github.com/powerman/vim-plugin-viewdoc
+https://github.com/c9s/perlomni.vim
+https://github.com/dhruvasagar/vim-table-mode
+https://github.com/github/gitignore
+https://github.com/mileszs/ack.vim
+https://github.com/salsifis/vim-transpose
+https://github.com/python-mode/python-mode
+https://github.com/vim-vdebug/vdebug
+https://github.com/michaeljsmith/vim-indent-object
+https://github.com/vim-scripts/Align
+https://github.com/vim-scripts/Mines
+https://github.com/vim-scripts/DrawIt
+https://github.com/suan/vim-instant-markdown
+https://github.com/vimwiki/vimwiki
+https://github.com/tpope/vim-unimpaired
+https://github.com/junegunn/vim-emoji
+https://github.com/vim-scripts/argtextobj.vim
+https://github.com/michaeljsmith/vim-indent-object
+https://github.com/houtsnip/vim-emacscommandline
+https://github.com/powerman/vim-plugin-AnsiEsc
+https://github.com/SirVer/ultisnips
+https://github.com/vim-airline/vim-airline
+https://github.com/vim-scripts/Conque-GDB
+https://github.com/xolox/vim-misc
+https://github.com/scrooloose/nerdtree
+https://github.com/ctrlpvim/ctrlp.vim
+https://github.com/tpope/vim-surround
+https://github.com/xolox/vim-colorscheme-switcher
+https://github.com/lervag/vimtex
+https://github.com/python-mode/python-mode
+https://github.com/tpope/vim-fugitive
+```
+
+
+
+# My ex vimconf
+
+Just to keep the timer trick
+
+```vim
+
+Plug farmergreg/vim-lastplace  " Open vim at last edition place on file
+Plug tpope/fugitive
+
+" TODO
+packadd submode  " Map C-W
+
+function! TimerPack(timer) abort
+  " Lazy loader
+  packadd almasw
+  " Map: 10ms for 9pg
+  packadd surround  " ySS<div>
+  packadd repeat  " for surround
+  packadd textobj-user  " for function
+  packadd textobj-arg  " data
+  packadd textobj-indent  " dai
+  packadd textobj-function  " daf
+  packadd unimpaired  " 5ms  ]b (:bn) , ]<space> (add empty lines), ]q
+  packadd tmux-navigator  " ]q
+  packadd emacscommandline  " 3ms
+  "packadd tex
+  " Misc:
+  packadd vader
+  packadd ale
+  " Youcompleteme: is verbose at init if no python
+  try
+    python3 '42'
+    " Deletes the vim intro screen
+    let g:ycm_auto_hover = ''
+    " set omnifunc=syntaxcomplete#Complete
+    " packadd youcompleteme
+  catch | endtry
+  "" Ultisnip: is annoying at run time if no python
+  try
+    python3 '42'
+    packadd ultisnips  " 3ms
+    packadd snippets " for some ultisnips macro
+  catch | endtry
+endfunction
+
+" Call it
+if has('timers')
+  call timer_start(0, 'TimerPack')
+else
+  call TimerPack(42)
+endif

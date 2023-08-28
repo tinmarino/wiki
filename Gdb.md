@@ -15,6 +15,7 @@ info reg
 info all-registers
 
 info inferior
+info proc mappings
 
 # Go
 run
