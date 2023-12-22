@@ -1,6 +1,11 @@
 # Quickstart
 
 ```bash
+# Alpine (fast)
+docker pull alpine
+docker run -it --name=alpine_container alpine
+
+# Ubuntu
 echo "from ubuntu:latest" > dockerfile_bash
 docker build -t bash_image -f dockerfile_bash .
 docker run -it --name=bash_container bash_image
@@ -10,10 +15,8 @@ docker cp bash_test.sh bash_container:bash_test.sh
 
 docker container ls -a
 docker ps -a
+
 ```
-
-
-
 
 ## Tips
 

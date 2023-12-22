@@ -61,6 +61,7 @@
   * [Ia](Ia)
   * [Alacritty](Alacritty.md)
   * [Jenkins](Jenkins.md)
+  * [Aws](Aws.md)
 
 
 ## Science
@@ -74,6 +75,8 @@
   * [Francais Figure De Style](Francais-Figure-De-Style)
 
 ## Misc
+  * [Speach](Speach.md)
+  * [Computing Class](Computing-Class.md)
   * [Text](Text)
   * [Recipe](Recipe.md)
   * [ChatGPT](ChatGPT.md)

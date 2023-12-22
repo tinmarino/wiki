@@ -1,3 +1,14 @@
+[PowerShell Pentest](PowerShell-Pentest.md)
+
+# Shortcut Windows terminal
+
+* Esc => clear line
+* Ctrl-Shift-W => exit
+
+
+# List
+
+
 * Remote Powershell
 	1. Guest : 
 		* `Get-NetConectionProfile` : Get interface

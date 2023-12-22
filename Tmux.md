@@ -6,7 +6,8 @@
 
 # Trick
 
-
+capture-pane -S -10000
+save-buffer tmux.txt
 
 
 bind-key    -T copy-mode-vi MouseDragEnd1Pane    send-keys -X copy-selection-and-cancel
@@ -47,7 +48,7 @@ M-1 to M-5  Arrange panes in one of the five preset layouts: even-
 On OS X, M is Esc, i.e. Ctrl-b Esc-1.
 
 # Clipboard 
-tmux save-buffer -  | xclip -i 
+tmux save-buffer - | xclip -i 
 
 # Get help
     tmux list-keys

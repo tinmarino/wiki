@@ -260,6 +260,7 @@ python3 -c "while 1:locals().setdefault('t',0);print(chr((((t*((ord('36364689'[t
 //12&128)+(((t>>12)^(t>>12)-2)%11*t//4|t>>13)&127)),end='');t+=1" | aplay -r 44100
  
 # ByteBeat: Music from fractal
+# -- Wikipedia: https://en.wikipedia.org/wiki/Linear-feedback_shift_register
 # -- Sound like this
 for((t=0;;t++));do((n=(
 t&t>>8

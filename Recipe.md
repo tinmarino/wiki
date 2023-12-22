@@ -29,10 +29,23 @@
 
 ### 1/2
 
+* [Pesto](#Pesto)
 * [Gyoza](#Gyoza)
 * [Houmous](#Houmous)
 * Tapenade d'olive
 
+
+# Pesto
+
+* Albahaca
+* Aceite de oliva
+* Nueces
+* Parmesano
+* Ajo, pimienta, 
+
+1. Hervir 1 min / 30 sec la abahaca y dejarla en agua helada => fijar la clorofina
+2. Liquar todo junto
+3. Mantener con aceite en potes cerrados
 
 # Kombucha
 

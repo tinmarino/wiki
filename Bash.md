@@ -7,6 +7,9 @@
 
 
 ```bash
+# Rang in pipe
+seq 0 10 | xargs -I% echo pre % post
+
 # Sed colorize
 echo "color test" | sed 's,color,\x1b[31m&\x1b[0m,'
 

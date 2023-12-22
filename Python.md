@@ -2,6 +2,7 @@
 * [Python HackerRank](Python-HackerRank)
 
 
+python -m site  # Show path of modules
 find . -name '*.pyc' -delete
 
 ```python
