@@ -230,3 +230,5 @@ Ton    Tel  Traite
 * Everything which is not explicitly forbidden is allowed
 
 * Remember your mission and be legitimate at all time
+
+* All code is open source for those who can read Assembly (2023)

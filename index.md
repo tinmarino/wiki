@@ -59,6 +59,7 @@
   * [Firefox](Firefox)
   * [IDA](IDA)
   * [Ia](Ia)
+  * [AI](AI.md)
   * [Alacritty](Alacritty.md)
   * [Jenkins](Jenkins.md)
   * [Aws](Aws.md)
