@@ -1,4 +1,4 @@
-## Software
+##  Software
   * [Linux](Linux)
     * [Bash](Bash)
     * [Vim](Vim)
@@ -76,6 +76,7 @@
   * [Francais Figure De Style](Francais-Figure-De-Style)
 
 ## Misc
+  * [Padi](Padi.md)
   * [Speach](Speach.md)
   * [Computing Class](Computing-Class.md)
   * [Text](Text)
@@ -88,6 +89,7 @@
   * [Coding Style](Style/Style)
   * [StackOverflow Best](So/So)
   * [AsciiArts](AsciiArt/AsciiArts)
+  * [Font](Font.md)
   * [Accent](Accent)
   * [Fast](Fast)
   * [Link](Link.md)

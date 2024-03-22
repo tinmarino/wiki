@@ -5,9 +5,10 @@ for ((i=4;i<16;i++)); do echo 0 | sudo dd of=/sys/devices/system/cpu/cpu$i/onlin
 for ((i=0;i<16;i++)); do echo 1 | sudo dd of=/sys/devices/system/cpu/cpu$i/online; done
 tail -n +1 /sys/devices/system/cpu/cpu*/online
 
+# Set
 for i in 0..16; do sudo cpufreq-set -c $i -g powersave; done
 cpufreq-info | sed 's/current CPU frequency.*/\x1b[31m&\x1b[0m/'
-
+# Resset
 sudo cpupower frequency-set -g powersave -d 0.8G -u 1.2G
 
 # Screen brigthness

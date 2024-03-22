@@ -1,0 +1,162 @@
+{
+  "main": {
+    "id": "7231f122ed8d9415",
+    "type": "split",
+    "children": [
+      {
+        "id": "06eeafb77ea2b5e7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c76134224001245c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Perl.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "52eadfa50291e325",
+    "type": "split",
+    "children": [
+      {
+        "id": "5444ae3eecfcd433",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cbde5c19429a3c9b",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "25fd296f670e83db",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "b2313d9682940b68",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "766e20b4797766f2",
+    "type": "split",
+    "children": [
+      {
+        "id": "1a0cadbb681b0363",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "01a62c78dc31f2a3",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Perl.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "bca55edeb7382389",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Perl.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "f0d2c07a3cd168d7",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "558c438959de78b1",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Perl.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "c76134224001245c",
+  "lastOpenFiles": [
+    "index.md",
+    "Latex.md",
+    "Haskell.md",
+    "Sql.md",
+    "So/C++_top_100.md",
+    "So/Algorithm_top_100.md",
+    "AI-Image.md",
+    "AI.md",
+    "Accent.md",
+    "Computing-Class.md"
+  ]
+}

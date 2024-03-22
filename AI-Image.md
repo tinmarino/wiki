@@ -1,6 +1,8 @@
 # Artificial Inteligence Image
 # Sites
 
+* ChatGpt
+* MidJourney
 * Leonardo
 * Starryai
 * ideogram.ai
@@ -10,6 +12,7 @@
 
 * Surrealist
 * Illustration
+* Vibrant
 
 
 ## Scretch example
@@ -23,6 +26,20 @@ Italy Venice by night. Keep your watercolor thick Painting 1000+ images about JI
 watercolor Cute cartoon style of a young woman, wearing blue hijab and use a white sweater, and with dark eyes, teenage, use pastel color, pastel texture background. half body, fashion, typography, photo, conceptual art, vibrant, poster, cinematic, illustration, painting
 
 My foot painting by Van Gogh
+t
+# THis is comment
+
+# 1. If
+​￼if (0 == 1):
+    print("lyer")
+    
+# 2. For
+​￼while (True):
+    print("eternal")
+​￼for i in range(1,11):
+    print(i)
+​￼for (i = 0; i < 10; i++):  # for(initiliaser, condition salida, increment)
+    print(i)
 
 Giant megalopolis Cyberpunk city, megalophobia, Brilliant art, Ultra detailed, 4k, Digital art, Blurred buildings on the horizon, Flying cars and motorcycles
 
