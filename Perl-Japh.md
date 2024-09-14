@@ -13,7 +13,7 @@ perl -e 'use Time::HiRes"usleep";$|=@q=(a..z," ");$_="hwjdai 5mcn pkiaasea dr";w
 * Tinmarino
 
 ```bash
-perl -e 'use Time::HiRes"usleep";$|=@q=(a..z," ");print"\e[1m\e[31m";$_="mbtiaizonrn";while(s/(..)(.)//){ $_.=$1; $s.=$2 };@w=("$s"=~/./g);while("@w"ne"@e"){$e[$_]eq$w[$_]or$e[$_]=$q[rand@q]for+0..$#w;print"\r@e";usleep+1e5};print"\e[0m\n"'
+perl -e 'use Time::HiRes"usleep";$|=@q=(a..z," ");print"\e[1m\e[31m";$_="mbtiaizonrn";while(s/(..)(.)//){$_.=$1; $s.=$2 };@w=("$s"=~/./g);while("@w"ne"@e"){$e[$_]eq$w[$_]or$e[$_]=$q[rand@q]for+0..$#w;print"\r@e";usleep+1e5};print"\e[0m\n"'
 ```
 
 * Base

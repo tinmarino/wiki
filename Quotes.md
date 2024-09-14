@@ -177,6 +177,12 @@ Et de tous vos défauts les zélés adversaires. (Art po, Chant 1)
 * A design that doesn’t take change into account risks major redesign in the future (Erich Gamma)
 
 
+# Latin
+
+* In dubio pro Rocío (Rocío Sanhueza)
+* Hackito ergo sum (Pablo Videla)
+
+
 # Tinmarino
 
 * Dans le doute, écoute ton coeur. Tous les chemins mênent à ta mort mais suivant celui çi, au moins tu auras vécu

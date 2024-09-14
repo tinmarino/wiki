@@ -76,6 +76,7 @@
   * [Francais Figure De Style](Francais-Figure-De-Style)
 
 ## Misc
+  * [Cloud](Cloud.md)
   * [Padi](Padi.md)
   * [Speach](Speach.md)
   * [Computing Class](Computing-Class.md)

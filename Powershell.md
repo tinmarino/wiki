@@ -1,5 +1,17 @@
 [PowerShell Pentest](PowerShell-Pentest.md)
 
+# Added by Hand
+
+```ps1
+# Permit script execution (Admin)
+Set-ExecutionPolicy Unrestricted
+
+# List mount
+Get-Volume  # Local Mounts like C: D:
+Get-WmiObject -Class Win32_NetworkConnection  # Network Mounts like Z: W:
+
+```
+
 # Shortcut Windows terminal
 
 * Esc => clear line

@@ -1,4 +1,8 @@
 [AWS Term Educate](AWS-Term-Educate.md)
+* [AWS](AWS.md)
+* [Site](Site.md)
+
+
 # IT Roles
 
 * Solution Architect: Develop the high level solution forbusyness application systems. They often design and manage communicacions, security, networking and storage

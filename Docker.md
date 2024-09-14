@@ -16,6 +16,7 @@ docker cp bash_test.sh bash_container:bash_test.sh
 docker container ls -a
 docker ps -a
 
+su - www-data -s /bin/bash
 ```
 
 ## Tips

@@ -165,6 +165,22 @@ print “Address: “,$2 }
                         ignored
 ```
 
+# Dump
+
+```bash
+jq -r .results[]._links.download < /tmp/academy-attachment.json \
+  | awk -F/ '{
+    split($5, a_filename,"?");
+    print( \
+      "mkdir", \
+      "attachment/" $4 ";", \
+      "wget", \
+      "--no-check-certificate", \
+      "\"'"$url_base/"'" $0 "\"", \
+      "-O", \
+      "attachment/" $4 "/" a_filename[1])
+    }'
+```
 
 
 

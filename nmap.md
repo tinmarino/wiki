@@ -2,7 +2,7 @@
 
 ```bash
 sudo nmap -vvv -T4 -F scanme.nmap.org
-sudo nmap -A -T4 -p- --script=vulners,default --min-rate 1000 -Pn -n -v -oA nmap target.htb | tee -a nmap.log
+sudo nmap -A -T4 -p- --script=vulners,default --min-rate 1000 -Pn -n -v scanme.nmap.org
 ```
 
 # Options
