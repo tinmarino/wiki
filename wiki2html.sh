@@ -3,19 +3,36 @@
 # shellcheck disable=SC2002  # Useless cat.
 
 # shellcheck disable=SC2034  # FORCE appears unused
-FORCE="$1"
-SYNTAX="$2"
-EXTENSION="$3"
-OUTPUTDIR="$4"
-INPUT="$5"
-CSSFILE="$6" # Not used bad concatenation
+FORCE=$1
+SYNTAX=$2
+EXTENSION=$3
+OUTPUTDIR=$4
+INPUT=$5
+CSSFILE=$6 # Not used bad concatenation
+
+echo -e "
+FORCE=$FORCE
+SYNTAX=$SYNTAX
+EXTENSION=$EXTENSION
+OUTPUTDIR=$OUTPUTDIR
+INPUT=$INPUT
+CSSFILE=$CSSFILE
+"
 
 FILE=$(basename "$INPUT")
-FILENAME=$(basename "$INPUT" . "$EXTENSION")
-FILEPATH=${INPUT%$FILE}
-OUTDIR=${OUTPUTDIR%$FILEPATH*}
-OUTPUT="$OUTDIR"/$FILENAME
+FILEPATH=${INPUT%"$FILE"}
+OUTDIR=${OUTPUTDIR%"$FILEPATH"*}
+OUTPUT="$OUTDIR${FILE%."$EXTENSION"}.html"
+TITLE=${FILE%."$EXTENSION"}
+TITLE=${TITLE^}
 
+echo -e "
+FILE=$FILE
+FILEPATH=$FILEPATH
+OUTDIR=$OUTPUTDIR
+OUTPUT=$OUTPUT
+TITLE=$TITLE
+"
 
 # Define $MATH
 HAS_MATH=$(grep -o "\$\$.\+\$\$" "$INPUT")
@@ -40,6 +57,12 @@ munix(){
   # Read `wiki_pandoc:` in metadata
   PANDOC=""
   export PANDOC=$(echo -e "$meta" | perl -0777 -ne 'while ($_ =~ /^wiki_pandoc:(.+)$/mg) {print $1}')
+  
+  # Craft command
+  a_cmd=(pandoc "$MATH" "$PANDOC" --highlight-style breezedark --section-divs -f "$SYNTAX" -t html -T "$FILE" -c "$CSSFILE")
+  a_cmd=(pandoc --metadata title="$TITLE" --highlight-style breezedark --section-divs -f "$SYNTAX" -t html -T "$FILE" -c "$CSSFILE")
+  echo -e "Css: $CSSFILE \nPandoc: $PANDOC \nMeta: $meta"
+  echo -e "Running:\n${a_cmd[*]}"
 
   # Convertion pipeline
   cat "$INPUT" |
@@ -55,11 +78,12 @@ munix(){
   perl -0pe ' s/((^|\n\S)[^\n]*)\n\t([^*])/\1\n\n\t\3/g;' |
   # Remove spaces in void lines
   perl -lpe ' s/^\s*$//' |
+  tee /tmp/wiki.md |
+  "${a_cmd[@]}" > "$OUTPUT"
+
   # Debug
   # tee test.md |
   # Compile: can add  --standalone --self-contained and --include-header=<file>
-  pandoc "$MATH"  "$PANDOC" --highlight-style breezedark --section-divs -f "$SYNTAX" -t html -T "$FILE" -c "$CSSFILE" > "$OUTPUT.html"
-  echo -e "Css: $CSSFILE \nPandoc: $PANDOC \nMeta: $meta"
 }
 
 

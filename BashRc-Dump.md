@@ -4,6 +4,20 @@
 ```sh
 
 
+parse_title() {
+  local res=""
+  # Host
+  if [[ "$HOSTNAME" == "tourny" ]] || [[ "$HOSTNAME" == "almatin" ]]; then
+    :  #res=''
+  else
+    res+="<$HOSTNAME>:   "
+  fi
+  # Pwd
+  res+=$(dirs +0)
+  echo "$res"
+}
+export -f parse_title
+
 # Profiling, Helper to profile, very very slow
   # https://stackoverflow.com/questions/5014823/how-to-profile-a-bash-shell-script-slow-startup
   exec 3>&2 2> >( tee /tmp/bash-$$.log |

@@ -3,15 +3,15 @@
     * [Bash](Bash)
     * [Vim](Vim)
     * [Tmux](Tmux)
-    * [Fzf](Fzf.md)
+    * [Fzf](Fzf)
     * [Alias](Alias)
-    * [Script](Script.md)
-  * [Cloud](Cloud.md)
+    * [Script](Script)
+  * [Cloud](Cloud)
   * [Windows](Windows)
     * [Powershell](Powershell)
     * [Batch](Batch)
-  * [Lexicon](Lexicon.md)
-  * [Regex](Regex.md)
+  * [Lexicon](Lexicon)
+  * [Regex](Regex)
 
 
 ## Language
@@ -24,12 +24,12 @@
   * [Js](Js)
   ### Compiled
   * [C](C)
-  * [Cpp](Cpp.md)
+  * [Cpp](Cpp)
   * [Java](Java)
   * [Rust](Rust)
   * [Cmake](Cmake)
   * [Assembly](Assembly)
-  * [Haskell](Haskell.md)
+  * [Haskell](Haskell)
   ### Markup
   * [Css](Css)
   * [Html](Html)
@@ -39,7 +39,7 @@
   * [Dot](Dot)
   * [Sql](Sql)
   ### Algorithm
-  * [Interview](Interview.md)
+  * [Interview](Interview)
   * [Algorithm](Algorithm)
   * [Paradigm](Paradigm-Programming)
   * [BigData](BigData)
@@ -50,6 +50,7 @@
 
 
 ## Program
+  * [AWS](AWS.md)
   * [ElasticSearch](ElasticSearch)
   * [Documentation](Documentation)
   * [Jupyter](Jupyter)
@@ -59,14 +60,14 @@
   * [Firefox](Firefox)
   * [IDA](IDA)
   * [Ia](Ia)
-  * [AI](AI.md)
-  * [Alacritty](Alacritty.md)
-  * [Jenkins](Jenkins.md)
-  * [Aws](Aws.md)
+  * [AI](AI)
+  * [Alacritty](Alacritty)
+  * [Jenkins](Jenkins)
+  * [Aws](Aws)
 
 
 ## Science
-  * [Picturing](Picturing.md)
+  * [Picturing](Picturing)
   * [Physics](Physics)
   * [Math](Math)
   * [Communication](Communication)
@@ -76,23 +77,24 @@
   * [Francais Figure De Style](Francais-Figure-De-Style)
 
 ## Misc
-  * [Cloud](Cloud.md)
-  * [Padi](Padi.md)
-  * [Speach](Speach.md)
-  * [Computing Class](Computing-Class.md)
+  * [Cloud](Cloud)
+  * [Padi](Padi)
+  * [OnePlus](OnePlus)
+  * [Speach](Speach)
+  * [Computing Class](Computing-Class)
   * [Text](Text)
-  * [Recipe](Recipe.md)
-  * [ChatGPT](ChatGPT.md)
-  * [Voyage](Voyage.md)
-  * [Dumps](Dumps.md)
+  * [Recipe](Recipe)
+  * [ChatGPT](ChatGPT)
+  * [Voyage](Voyage)
+  * [Dumps](Dumps)
   * [Sport](Sport)
   * [Cheats](Cheats)
   * [Coding Style](Style/Style)
   * [StackOverflow Best](So/So)
   * [AsciiArts](AsciiArt/AsciiArts)
-  * [Font](Font.md)
+  * [Font](Font)
   * [Accent](Accent)
   * [Fast](Fast)
-  * [Link](Link.md)
+  * [Link](Link)
 
 * [Test](Test)

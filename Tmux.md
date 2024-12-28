@@ -6,6 +6,8 @@
 
 # Trick
 
+set synchronize-panes on
+
 capture-pane -S -10000
 save-buffer tmux.txt
 
@@ -24,6 +26,18 @@ tmux capture-pane -pS -1000000 -t 0 > file.out
 ```tmux
 setw synchronise-panes  # gives us is that it simultaneously sends keyboard input from one pane to the rest of the panes
 ```
+
+### Same size pane
+
+Vertically
+
+select-layout even-vertical
+Usually assigned to: Ctrl+b, Alt+2
+
+Horizontally
+
+select-layout even-horizontal
+Usually assigned to: Ctrl+b, Alt+1
 
 ### Pane to new Windows == break pane o
 

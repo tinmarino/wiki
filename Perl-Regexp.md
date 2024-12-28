@@ -1,6 +1,62 @@
 ---
 title: 'Regular expressions in Perl - a summary with examples'
-----------------------------------
+---
+
+# Table
+
+## Quantifier
+
+|       |   |
+| ---   | --- |
+| ?     | 0 or 1 |
+| +     | 1 or more, may be *? |
+| *     | 0 or more |
+| *?    | 0 or more non-greeedy |
+| {3}   | 3 |
+| {3,5} | 3, 4 or 5 |
+
+
+## Group
+
+|       |   |
+| ---   | --- |
+| .     | Any char |
+| (a)   |   |
+| `(a   | b)` |
+| (?a)  | Non catpuring |
+| [ab]  | Range: a or b |
+| [^ab] | Range not |
+| [a-q] | Range |
+
+## Anchor
+
+|     |   |
+| --- | --- |
+| ^   |   |
+| $   |   |
+| \A  | Start of string |
+| \Z  | End of string |
+| \b  | Word boundary |
+| \B  | Not word boundary |
+| \<  | Start of word |
+| \>  | End of word |
+
+## Asssertion
+
+|     |   |
+| --- | --- |
+| ?=  | Lookahead |
+| ?!  | Negative lookahead |
+| ?<= | Lookbehind |
+| ?<! | Negative lookbehind |
+| ?>  | Once-only subexpression |
+| ?() | Condition if then |
+| ?#  | Comment |
+
+and `?|` for if then else
+  
+
+# Dump
 
 -------- -----------------------------                           
 `\t`     tab                    
