@@ -167,6 +167,132 @@
 
 # Selected
 
+### Full Metal Alchemist: Brothers
+
+Video: https://www.youtube.com/watch?v=DsAa0KzaJSg
+Tab: https://www.harptabs.com/song.php?ID=6203
+
+```text
+Intro: -9 8 -9 8 -8 7 -6   6 7 -6
+
+-4  -5  5 -5 6  -6    -5 5     -4
+How can I repay you, brother of mine?
+
+-4  -5  5  -5 6   7  -6  6 -6
+How can I expect you to forgive?
+
+-4  -5   5  -5   6  -6 -5    5   -4
+Clinging to the past I shed our blood
+
+-44  -4 -4    5    -5    5  -4
+and shatterd your chance to live.
+
+---
+
+  -4  -5  5   -5   6   -6 -5   5   -4
+Though I knew the laws, I paid no heed.
+
+-4  -5  5  -5 6   7   -6  6    -6
+How can I return your wasted breath?
+
+-4  -5  5  -5   6   -6  -5    5   -4
+What I did not know has cost you dear
+
+-44  -4   -4 5  -5    5   -4
+for there is no cure for death.
+
+---
+
+-6 6 -6    6 -4    -6   7   6
+Beautiful mother, soft and sweet
+
+-6    6   -6   6   -4  5   -5    6 5
+Once you were gone we were not complete
+
+-6      6    -6   6    -4  -6      7   6
+Back through the years we reached for you
+
+ ?    -6  6  -6   -7   6  -6 
+Alas, it was not meant to be.
+
+---
+
+-6     -8  -8  7    6 -6
+And how can I make amends
+
+-6  -8   8  -8  7    6   -6
+For all that I took from you?
+
+-6 6  -6   6    -5 5     -4
+I led you with hopeless dreams
+
+-6  6 -6    6 -5  5 5-4
+My brother, I was a fool
+
+---
+
+Long Violin Part with no words(Semi Tabbed): 
+-6 -7 -6 6 -5 6 -6 5   
+-4 -6 -6 -7 -6 6 -6 
+-9 8 -8 8 7 -6 -8 8 
+-9 8 -9 9 8 -8 
+
+---
+
+ -4   -5   5  -4   6    -6   -5 5     -4
+Don't cry for the past, now brother of mine
+
+-4 -5   5  -5  6  7   -6   6    -6
+Nether you nor I are free from blame
+
+-4  -5   5   -5    6  -6 -5  5  -4
+Nothing can erase the things we did
+
+-4   4  -4   -4  5   -5   5  -4
+for the path we took was the same
+
+---
+
+-6 6 -6    6 -4    -6   7   6
+Beautiful mother, soft and sweet
+
+-6    6   -6   6   -4  5   -5    6 5
+Once you were gone we were not complete
+
+-6      6    -6   6    -4  -6      7   6
+Back through the years we reached for you
+
+ ?    -6  6  -6   -7   6  -6 
+Alas, it was not meant to be.
+
+---
+
+-6  -8      -8      7    6  -6
+My dreams made me blind and mute
+
+-6 -8  8   -8 7   6  6   -6
+I long to return to that time
+
+-6 6 -6   6 -5   5 -4 
+I follow without a word
+
+-6  6 -6     6   -5   5 5 -4
+My brother, the fault is mine
+
+---
+
+-6     -8   -8  7  6    -6
+So where do we go from here?
+
+-6  -8  8   -8 7   6    -6
+And how to forget and forgive?
+
+ -6     6   -6  6 -5 5  -4
+What's gone is forever lost
+
+-6   6  -6  6  -5 5  5 -4
+Now all we can do is live.
+```
 
 ### Simon & Garfunkel: The boxer
 
@@ -486,7 +612,7 @@ In the wind of change
 
 3     5  | 3   5  -4     5  | 3   5 -4    5 | 3   5 -4    -4  4   
 And   now, the end is   near; and so I   face the final   curtain.
--3    -5 |   -5   -5  5     -5 |  -3    -5   5    -5 | -4   6   5 -4  -5  5 
+-3    -5 |   -5   -5  5     -5 |  -3    -5   5    -5 | -4   6  -4  -5  5 
 My friend, I'll say it   clear, I'll state my   case, of which I'm certain.
 4    6 | 6   6    -5       6   | 6    6  -6      6 | -5 -5  5     6 -5 5 -5 
 I've lived a life that's   full. I've traveled   each and every highwa a--ay;
@@ -497,7 +623,7 @@ and more, much more than   this, I did it   my   way.
 Re---grets, 
 6    5  -4   5 ; 3    5 -4     5 ;   5   5  -4    -4  4   
 I’ve had a few; but then a---gain, too few to   mention.
--3   -5 | -5 -5  -5  5  -5 | -3  -5  5   -5 |  -4  6  5 -4  -5   5
+-3   -5 | -5 -5  -5  5  -5 | -3  -5  5   -5 |  -4  6  -4  -5   5
 I   did  what I had to do    and saw it through without e-x---emption. 
 4       6  |  6    6  -5        6  |  -6    5  6  -5 | -5 -5   5    6 -5
 I   planned each chartered   course; each careful step along the byway,
@@ -624,9 +750,14 @@ plays.
 
 INTRO: 2 x pattern #1
 
-[Em]4 [C] 6 -5 5 [D] -4 4 [G] 3 
-[Em] 6 [C] 7 -6 6 [D] -6 6 [G] 5 
-[Em]4 4 4 [C] 5 5 5 5 5 [D] -5 5 [G] 4 
+     .        . 
+5 6 -5 5 | -4 4 3...
+
+     .        .
+6 7 -6 6 | -6 6 5.. 
+
+" . " " . " " . "       .
+4 4 4 5 5 5 6 6 6  | -5 5 4.. 
 
 -> 1 x pattern #1
 
@@ -652,10 +783,16 @@ C                      Am7  G
  3   3   4  4   4 
 and I'm gettin old. 
 
-SOLO 1: 
-[Em] 4 6 6 [C] -5 5 [D] -4 4 [G] 3             
-[Em] 7 [C] 8 -6 6 [D] -6 6 -6 6 [G] 5
-[Em] 67 67 67 56 56 56 [C] 45 45 45 45 45 [D] -4 4 -4 5 [G] 5 -4 4
+--- SOLO 2 ---
+4 6 6... -5 5. -4 4 3...
+
+     .        . .  . .      .
+7 8 -6 6.  | -6 6 -6 6 5.. -4 4..
+
+" . " . " . " .   .  . .  . .      .
+7 7 6 6 5 5 4 4 / 4 -4 4 -4 5 5.. -4 4..
+
+
 
        -> 1 x pattern #1
 
@@ -734,6 +871,11 @@ Pattern #2: Am7 to G
 
 Strumming pattern you can use: (b for base note)
 b b D   D U 
+
+SOLO 1: 
+[Em] 4 6 6 [C] -5 5 [D] -4 4 [G] 3             
+[Em] 7 [C] 8 -6 6 [D] -6 6 -6 6 [G] 5
+[Em] 67 67 67 56 56 56 [C] 45 45 45 45 45 [D] -4 4 -4 5 [G] 5 -4 4
 ```
 
 

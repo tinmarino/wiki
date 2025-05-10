@@ -7,7 +7,7 @@
 
 
 ```bash
-# Rang in pipe
+# Range in pipe (repeat n times comand)
 seq 0 10 | xargs -I% echo pre % post
 
 # Sed colorize

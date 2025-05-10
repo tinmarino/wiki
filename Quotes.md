@@ -98,6 +98,16 @@
 
 * Education breeds confidence. Confidence breeds hope. Hope breeds peace (Confucius)
 
+* Great things are not done by impulse, but by a series of small things brought together. (Vincent Van Gogh)
+
+* The quieter you become the more you are able to hear (Jalal ad-Din Muhammad ar-Rumi)
+
+* Les cons ca ose tout, c'est même à ca qu'on les reconnait. (Audiard)
+
+* Le hacking est un état d'esprit (Julien Metayer)
+
+* Totalement inutile donc indispensable (Julien Metayer)
+
 
 # Boileau
 

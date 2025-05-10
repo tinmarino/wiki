@@ -19,6 +19,22 @@ docker ps -a
 su - www-data -s /bin/bash
 ```
 
+## AWS Load and save
+
+## Guardar imagen en mi rata
+sudo docker save -o ~/image-converter_web.tar image-converter_web:latest
+
+## Rapatriar
+rsync -avz -e 'ssh -i /home/mtourneboeuf/Secret/aws-tin-key.pem -o StrictHostKeyChecking=no' ubuntu@rat.tinmarino.com:image-converter_web.tar  .
+
+## Enviar
+rsync -avz -e 'ssh -i /home/mtourneboeuf/Secret/aws-tin-key.pem -o StrictHostKeyChecking=no'  ./ ubuntu@ctf.tinmarino.com:Tar/
+
+## Cargar imagen en ctf
+sudo docker load -i image-converter_web.tar
+
+## Instanciar un contenedor con los directorios y puertos que corresponden
+./readme_admin.sh
 ## Tips
 
 * If cannot connect to host, enusre no sudo problem: https://askubuntu.com/questions/477551/how-can-i-use-docker-without-sudo

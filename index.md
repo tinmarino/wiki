@@ -50,7 +50,9 @@
 
 
 ## Program
+  * [Emoji](Emoji.md)
   * [AWS](AWS.md)
+  * [CloudStorage](CloudStorage.md)
   * [ElasticSearch](ElasticSearch)
   * [Documentation](Documentation)
   * [Jupyter](Jupyter)
