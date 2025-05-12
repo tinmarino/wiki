@@ -140,30 +140,27 @@ export CFLAGS='-O2'
             --with-compiledby="Tinmarino"
 
 ./configure \
-            --with-features=huge \
-            --disable-netbeans \
-            --enable-gui=auto \
-            \
-            --enable-cscope \
-            --enable-fail-if-missing \
-            --enable-largefile \
-            --enable-luainterp \
-            --enable-multibyte \
-            \
-            --enable-perlinterp=dynamic \
-            --enable-python3interp=dynamic \
-            --with-python3-config-dir=$(python3-config --configdir) \
-            --enable-rubyinterp=dynamic \
-            --with-ruby-command=$(which ruby) \
-            --with-luajit \
-            \
-            --enable-gui=gtk3 \
-            \
-            --with-compiledby="Tinmarino" \
+  --with-features=huge \
+  --disable-netbeans --enable-fail-if-missing \
+  --enable-gui=auto \
+  \
+  --enable-cscope --enable-largefile --enable-luainterp --enable-multibyte \
+  \
+  --enable-perlinterp=dynamic \
+  --enable-python3interp=dynamic \
+  --with-python3-config-dir=$(python3-config --configdir) \
+  --enable-rubyinterp=dynamic \
+  --with-ruby-command=$(which ruby) \
+  --with-luajit \
+  \
+  --enable-gui=gtk3 \
+  \
+  --with-compiledby="Tinmarino" 
 ```
 
 
 ##### On remote (Alma)
+
 ```sh
 # export LDFLAGS=-static
 # Do not see local --prefix=/usr/local \
@@ -183,7 +180,8 @@ export CFLAGS='-O2'
             \
             \
             --with-compiledby="Tinmarino" \
-make && make install 
+export MAKE_PARS="-j 16"
+make && sudo make install 
 make install DESTDIR=~/.local
 ```
 
